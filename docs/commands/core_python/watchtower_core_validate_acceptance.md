@@ -57,7 +57,7 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 - `core/python/src/watchtower_core/validation/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 - `core/control_plane/ledgers/validation_evidence/`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

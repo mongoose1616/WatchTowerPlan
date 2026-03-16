@@ -13,7 +13,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/
 ---
@@ -71,7 +71,7 @@ Review and refactor the repeated planning-related data-contract index standards 
 
 ## References
 - March 13, 2026 refactor audit
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md)
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md)
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md)

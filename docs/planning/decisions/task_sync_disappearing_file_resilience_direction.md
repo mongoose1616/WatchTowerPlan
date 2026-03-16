@@ -43,8 +43,8 @@ Harden the shared task-document iterator so disappearing task files are skipped 
 - The repository already relies on immediate task-index, task-tracking, and coordination refresh after task writes, so the smallest coherent fix is to harden the iterator boundary rather than require external serialization everywhere.
 
 ## Applied References and Implications
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task-derived tracking surfaces should remain reliable through legitimate lifecycle transitions between open and closed task storage roots.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): fix the reproduced failure at the narrow shared boundary and keep fail-closed behavior for real invalid data.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task-derived tracking surfaces should remain reliable through legitimate lifecycle transitions between open and closed task storage roots.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): fix the reproduced failure at the narrow shared boundary and keep fail-closed behavior for real invalid data.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/task_documents.py

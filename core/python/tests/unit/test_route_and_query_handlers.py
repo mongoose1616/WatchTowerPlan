@@ -7,7 +7,7 @@ from types import SimpleNamespace
 from watchtower_core.cli import (
     query_coordination_handlers,
     query_coordination_lookup_handlers,
-    query_coordination_projection_handlers,
+    query_coordination_rendered_handlers,
     route_handlers,
 )
 
@@ -216,7 +216,7 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
 def test_legacy_coordination_handler_facade_reexports_split_modules() -> None:
     assert (
         query_coordination_handlers._run_query_coordination
-        is query_coordination_projection_handlers._run_query_coordination
+        is query_coordination_rendered_handlers._run_query_coordination
     )
     assert (
         query_coordination_handlers._run_query_tasks
@@ -326,24 +326,24 @@ def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:
             return (_initiative_entry(),)
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "InitiativeQueryService",
         FakeService,
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "serialize_initiative_entry",
         lambda entry, *, compact=False: (_ for _ in ()).throw(
             AssertionError("serialize_initiative_entry should not be called")
         ),
     )
 
-    result = query_coordination_projection_handlers._run_query_initiatives(_query_args())
+    result = query_coordination_rendered_handlers._run_query_initiatives(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -364,24 +364,24 @@ def test_query_planning_prints_human_summary_without_serializing_json_payload(
             return (_planning_entry(),)
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "PlanningCatalogQueryService",
         FakeService,
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "serialize_planning_catalog_entry",
         lambda entry, *, compact=False: (_ for _ in ()).throw(
             AssertionError("serialize_planning_catalog_entry should not be called")
         ),
     )
 
-    result = query_coordination_projection_handlers._run_query_planning(_query_args())
+    result = query_coordination_rendered_handlers._run_query_planning(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -398,17 +398,17 @@ def test_query_initiatives_prints_empty_message(monkeypatch, capsys) -> None:
             return ()
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "InitiativeQueryService",
         FakeService,
     )
 
-    result = query_coordination_projection_handlers._run_query_initiatives(_query_args())
+    result = query_coordination_rendered_handlers._run_query_initiatives(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -443,17 +443,17 @@ def test_query_coordination_supports_json_defaults(monkeypatch, capsys) -> None:
             )
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
 
-    result = query_coordination_projection_handlers._run_query_coordination(
+    result = query_coordination_rendered_handlers._run_query_coordination(
         _query_args(format="json")
     )
 
@@ -497,17 +497,17 @@ def test_query_coordination_prints_recent_closeouts_when_no_active_entries(
             )
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
 
-    result = query_coordination_projection_handlers._run_query_coordination(_query_args())
+    result = query_coordination_rendered_handlers._run_query_coordination(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -540,24 +540,24 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
             )
 
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
     monkeypatch.setattr(
-        query_coordination_projection_handlers,
+        query_coordination_rendered_handlers,
         "serialize_initiative_entry",
         lambda entry, *, compact=False: (_ for _ in ()).throw(
             AssertionError("serialize_initiative_entry should not be called")
         ),
     )
 
-    result = query_coordination_projection_handlers._run_query_coordination(_query_args())
+    result = query_coordination_rendered_handlers._run_query_coordination(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0

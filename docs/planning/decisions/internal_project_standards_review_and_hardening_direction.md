@@ -48,13 +48,13 @@ Keep the current standards strict, fix repo-path extraction centrally in the Mar
 - The affected repo-path extraction helper is reused by multiple governed families, and decision-index sync still had a raw `Affected Surfaces` projection path, so a standards-only patch would leave other derived surfaces inconsistent.
 
 ## Applied References and Implications
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the repository already requires standards to normalize material external authority through governed local references and explicitly permits document-relative repo-local links.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the standard index must publish accurate applied-reference and external-authority data, which depends on consistent reference accounting and path extraction.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): semantic validation is already the fail-closed path for repo-local link integrity, so derived extraction should reuse the same link semantics rather than silently narrowing them.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): governed local reference docs are the canonical bridge to external authority and should be recognized consistently no matter which standards source section cites them.
-- [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): decision related paths should be published as repository-relative paths rather than raw authored relative strings.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): workflow additional-load extraction needs the same repo-local link resolution behavior as the rest of the governed Markdown corpus.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared adapter and standards helpers should be the seam for correctness, not duplicated family-specific logic.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the repository already requires standards to normalize material external authority through governed local references and explicitly permits document-relative repo-local links.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the standard index must publish accurate applied-reference and external-authority data, which depends on consistent reference accounting and path extraction.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): semantic validation is already the fail-closed path for repo-local link integrity, so derived extraction should reuse the same link semantics rather than silently narrowing them.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): governed local reference docs are the canonical bridge to external authority and should be recognized consistently no matter which standards source section cites them.
+- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): decision related paths should be published as repository-relative paths rather than raw authored relative strings.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): workflow additional-load extraction needs the same repo-local link resolution behavior as the rest of the governed Markdown corpus.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared adapter and standards helpers should be the seam for correctness, not duplicated family-specific logic.
 
 ## Affected Surfaces
 - `docs/standards/`

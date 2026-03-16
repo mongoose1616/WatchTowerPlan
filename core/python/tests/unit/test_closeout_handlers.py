@@ -44,10 +44,10 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
                 acceptance_issue_count=2,
                 acceptance_issues_allowed=True,
                 wrote=True,
-                traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
-                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
-                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.v1.json",
-                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.v1.json",
+                traceability_output_path="core/control_plane/indexes/traceability/traceability_index.json",
+                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.json",
+                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.json",
+                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.json",
                 initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
                 coordination_tracking_output_path="docs/planning/coordination_tracking.md",
                 prd_tracking_output_path="docs/planning/prds/prd_tracking.md",
@@ -114,10 +114,10 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
                 acceptance_issue_count=0,
                 acceptance_issues_allowed=False,
                 wrote=True,
-                traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
-                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
-                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.v1.json",
-                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.v1.json",
+                traceability_output_path="core/control_plane/indexes/traceability/traceability_index.json",
+                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.json",
+                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.json",
+                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.json",
                 initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
                 coordination_tracking_output_path="docs/planning/coordination_tracking.md",
                 prd_tracking_output_path="docs/planning/prds/prd_tracking.md",
@@ -138,7 +138,7 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
     assert payload["acceptance_issues_allowed"] is False
     assert (
         payload["planning_catalog_output_path"]
-        == "core/control_plane/indexes/planning/planning_catalog.v1.json"
+        == "core/control_plane/indexes/planning/planning_catalog.json"
     )
 
 
@@ -167,8 +167,8 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                     "docs/standards/governance/example.md",
                     "core/python/src/watchtower_core/closeout/purge_trace.py",
                 ),
-                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
-                purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
+                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
+                purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 refreshed_targets=("repository-paths", "planning-catalog", "coordination"),
             )
 
@@ -183,7 +183,7 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Removed Paths: 2" in captured.out
     assert (
         "Purge Ledger: "
-        "core/control_plane/ledgers/purges/example_purge_record.v1.json"
+        "core/control_plane/ledgers/purges/example_purge_record.json"
         in captured.out
     )
     assert "Trace package was deleted and derived surfaces were refreshed." in captured.out
@@ -228,7 +228,7 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
                 wrote=False,
                 removed_paths=("docs/planning/prds/example.md",),
                 retained_authority_paths=("docs/standards/governance/example.md",),
-                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
+                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 purge_ledger_output_path=None,
                 refreshed_targets=(),
             )
@@ -242,5 +242,5 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core closeout purge-trace"
-    assert payload["purge_ledger_relative_path"].endswith("example_purge_record.v1.json")
+    assert payload["purge_ledger_relative_path"].endswith("example_purge_record.json")
     assert payload["wrote"] is False

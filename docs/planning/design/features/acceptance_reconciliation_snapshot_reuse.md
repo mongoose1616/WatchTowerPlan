@@ -50,13 +50,13 @@ Defines the technical design boundary for Acceptance Reconciliation Snapshot Reu
   surfaces during one aggregate acceptance pass.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should reuse shared command-scoped state at the orchestration boundary instead of pushing ad hoc caching into loaders or query handlers.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the optimization must stay reviewable and fail closed.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should reuse shared command-scoped state at the orchestration boundary instead of pushing ad hoc caching into loaders or query handlers.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the optimization must stay reviewable and fail closed.
 
 ## Internal Standards and Canonical References Applied
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): validation behavior and coverage must remain intact after the optimization.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): acceptance reconciliation still has to read the same authoritative trace-linked planning surfaces.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): implementation belongs in the canonical Python workspace and should preserve thin command boundaries.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): validation behavior and coverage must remain intact after the optimization.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): acceptance reconciliation still has to read the same authoritative trace-linked planning surfaces.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): implementation belongs in the canonical Python workspace and should preserve thin command boundaries.
 
 ## Design Goals and Constraints
 - Reuse already-validated acceptance inputs within one reconciliation-service lifetime.
@@ -124,7 +124,7 @@ Defines the technical design boundary for Acceptance Reconciliation Snapshot Reu
   stops using the same filtering rules by trace.
 
 ## References
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/validation/acceptance.py)
-- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/validation/all.py)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance.py](/core/python/src/watchtower_core/validation/acceptance.py)
+- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py)

@@ -60,13 +60,13 @@ Defines the technical design boundary for Summary Surface Retirement.
   rewrite them before validation can stay green without `SUMMARY.md`.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): live repository-review routing should stay anchored to current repo scope and current planning state.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human docs, tests, acceptance contracts, and derived indexes must stay aligned in the same change.
+- [repository_scope.md](/docs/foundations/repository_scope.md): live repository-review routing should stay anchored to current repo scope and current planning state.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human docs, tests, acceptance contracts, and derived indexes must stay aligned in the same change.
 
 ## Internal Standards and Canonical References Applied
-- [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md): current planning state should route through coordination tracking and the machine coordination query.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the root README should stay a thin router instead of accumulating one-off historical reports.
-- [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py): this is the bounded fail-closed regression surface for the repaired entrypoints.
+- [docs/planning/README.md](/docs/planning/README.md): current planning state should route through coordination tracking and the machine coordination query.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the root README should stay a thin router instead of accumulating one-off historical reports.
+- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py): this is the bounded fail-closed regression surface for the repaired entrypoints.
 
 ## Design Goals and Constraints
 - Remove the redundant root summary surface without degrading current review or
@@ -148,8 +148,8 @@ Defines the technical design boundary for Summary Surface Retirement.
   document-semantics failure after the root summary is removed.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [docs/foundations/repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [docs/foundations/README.md](/docs/foundations/README.md)
+- [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
+- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)

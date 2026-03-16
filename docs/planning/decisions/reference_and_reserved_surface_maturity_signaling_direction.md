@@ -53,11 +53,11 @@ Execute the next refactor slice by deriving structured reference maturity from t
 - The slice should improve determinism and reduce ambiguity without forcing broad front-matter churn or deleting useful future guidance.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): simplify by tightening explicit seams and machine-readable read models instead of weakening governed families.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): docs, indexes, queries, and tests must stay aligned when a support-signal contract changes meaning.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): the reference family should keep local mapping explicit and should not hide lifecycle meaning in unrelated sections.
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): the machine-readable reference lookup surface is the right place to project structured maturity and touchpoint signals.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): reserved families should be called out explicitly during maintenance and review rather than left ambiguous.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): simplify by tightening explicit seams and machine-readable read models instead of weakening governed families.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): docs, indexes, queries, and tests must stay aligned when a support-signal contract changes meaning.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): the reference family should keep local mapping explicit and should not hide lifecycle meaning in unrelated sections.
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): the machine-readable reference lookup surface is the right place to project structured maturity and touchpoint signals.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): reserved families should be called out explicitly during maintenance and review rather than left ambiguous.
 
 ## Affected Surfaces
 - docs/references/

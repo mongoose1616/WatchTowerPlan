@@ -14,8 +14,8 @@ updated_at: '2026-03-13T00:36:52Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.json
 - docs/planning/coordination_tracking.md
 related_ids:
 - prd.foundations_entrypoint_coverage_alignment

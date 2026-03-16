@@ -33,13 +33,13 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Building validation logic for parsed document metadata.
 
 ## Related Standards and Sources
-- [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [front_matter_reference.md](/docs/references/front_matter_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/schemas/interfaces/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Front matter must appear at the top of the Markdown file and must be delimited by opening and closing `---` lines.
@@ -97,17 +97,17 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ### Current profile rules
 | Document Family | Front Matter Rule | Validation Profile |
 |---|---|---|
-| `docs/references/**` | Required for governed reference docs | `reference_front_matter.v1.schema.json` |
-| `docs/planning/prds/**` | Required | `prd_front_matter.v1.schema.json` |
-| `docs/planning/decisions/**` | Required | `decision_record_front_matter.v1.schema.json` |
-| `docs/planning/design/features/**` | Required for governed feature-design docs other than directory `README.md` files | `feature_design_front_matter.v1.schema.json` |
-| `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.v1.schema.json` |
-| `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` | Required for governed task docs other than directory `README.md` files and `task_tracking.md` | `task_front_matter.v1.schema.json` |
-| `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
-| `docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.v1.schema.json` |
+| `docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
+| `docs/planning/prds/**` | Required | `prd_front_matter.schema.json` |
+| `docs/planning/decisions/**` | Required | `decision_record_front_matter.schema.json` |
+| `docs/planning/design/features/**` | Required for governed feature-design docs other than directory `README.md` files | `feature_design_front_matter.schema.json` |
+| `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.schema.json` |
+| `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` | Required for governed task docs other than directory `README.md` files and `task_tracking.md` | `task_front_matter.schema.json` |
+| `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
+| `docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
 | `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
-| `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
+| `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
 | short directory `README.md` files | Not required by default | none |
 
 ### Validation boundary
@@ -158,13 +158,13 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Update companion references or document-family standards in the same change set when their metadata expectations change.
 
 ## References
-- [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/README.md)
+- [front_matter_reference.md](/docs/references/front_matter_reference.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
+- [README.md](/core/control_plane/schemas/interfaces/README.md)
 
 ## Notes
 - This standard intentionally does not require front matter on every document in `docs/**`.

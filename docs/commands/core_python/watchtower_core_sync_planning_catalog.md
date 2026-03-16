@@ -42,12 +42,12 @@ uv run watchtower-core sync planning-catalog --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync planning-catalog --output /tmp/planning_catalog.v1.json --format json
+uv run watchtower-core sync planning-catalog --output /tmp/planning_catalog.json --format json
 ```
 
 ## Behavior and Outputs
 - The command is dry-run by default.
-- With `--write`, it updates `core/control_plane/indexes/planning/planning_catalog.v1.json`.
+- With `--write`, it updates `core/control_plane/indexes/planning/planning_catalog.json`.
 - With `--output`, it writes the rebuilt planning catalog to the requested path.
 - In `json` mode, the command prints one JSON object with the command name, status, record count, write outcome, and output path when applicable.
 - If `--include-document` is set, the output includes the rebuilt planning-catalog JSON document.
@@ -65,7 +65,7 @@ uv run watchtower-core sync planning-catalog --output /tmp/planning_catalog.v1.j
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py`
-- `core/control_plane/indexes/planning/planning_catalog.v1.json`
+- `core/control_plane/indexes/planning/planning_catalog.json`
 
 ## Updated At
 - `2026-03-11T02:15:00Z`

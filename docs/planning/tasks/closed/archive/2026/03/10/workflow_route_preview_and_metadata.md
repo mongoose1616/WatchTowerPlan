@@ -41,8 +41,8 @@ Move workflow retrieval metadata into governed control-plane artifacts, add a de
 - `watchtower-core route preview` returns useful human and JSON output for common requests.
 
 ## Links
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- [workflow_system_operationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [workflow_system_operationalization_execution.md](/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T23:00:00Z`

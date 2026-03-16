@@ -51,7 +51,7 @@ def test_plan_scaffold_write_refreshes_prd_surfaces(tmp_path: Path) -> None:
     assert "Unit Test Scaffold PRD" in written_text
 
     prd_index = json.loads(
-        (repo_root / "core/control_plane/indexes/prds/prd_index.v1.json").read_text(
+        (repo_root / "core/control_plane/indexes/prds/prd_index.json").read_text(
             encoding="utf-8"
         )
     )
@@ -86,13 +86,13 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
     assert (repo_root / "docs/planning/decisions/unit_test_bootstrap_direction.md").exists()
     assert (
         repo_root
-        / "core/control_plane/contracts/acceptance/unit_test_bootstrap_acceptance.v1.json"
+        / "core/control_plane/contracts/acceptance/unit_test_bootstrap_acceptance.json"
     ).exists()
     assert (
         repo_root
         / (
             "core/control_plane/ledgers/validation_evidence/"
-            "unit_test_bootstrap_planning_baseline.v1.json"
+            "unit_test_bootstrap_planning_baseline.json"
         )
     ).exists()
     assert (repo_root / "docs/planning/tasks/open/unit_test_bootstrap_bootstrap.md").exists()
@@ -114,7 +114,7 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
     assert "## Applied References and Implications" in decision_text
 
     initiative_index = json.loads(
-        (repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json").read_text(
+        (repo_root / "core/control_plane/indexes/initiatives/initiative_index.json").read_text(
             encoding="utf-8"
         )
     )

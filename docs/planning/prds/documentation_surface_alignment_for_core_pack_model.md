@@ -67,4 +67,4 @@ Align the repository documentation corpus with the current reusable-core plus pl
 - Documentation changes can expose adjacent command-index or tracker drift that must be repaired in the same slice to keep lookup surfaces coherent.
 
 ## References
-- [validated_core_and_pack_data_shape_convergence.md](/home/j/WatchTowerPlan/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md)
+- [validated_core_and_pack_data_shape_convergence.md](/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md)

@@ -66,7 +66,7 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
+- [README.md](/docs/references/README.md)
 
 ## Notes
 - This reference supports future Python automation work but does not by itself make PEP 8 mandatory everywhere.

@@ -13,7 +13,7 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/cli/query_coordination_handlers.py
-- core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py
+- core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
 - core/python/src/watchtower_core/repo_ops/query/common.py
@@ -67,7 +67,7 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
   `core/python/src/watchtower_core/control_plane/models/planning_catalog.py`;
   `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`;
   `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py`;
-  `core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py`
+  `core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py`
 - Direct tests and consumers:
   `core/python/tests/unit/test_route_and_query_handlers.py`;
   `core/python/tests/unit/test_cli_planning_query_commands.py`;
@@ -80,7 +80,7 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
   `docs/commands/core_python/watchtower_core_query_coordination.md`;
   `docs/commands/core_python/watchtower_core_query_planning.md`;
   `docs/commands/core_python/watchtower_core_query_initiatives.md`;
-  `core/control_plane/indexes/commands/command_index.v1.json`;
+  `core/control_plane/indexes/commands/command_index.json`;
   `docs/planning/coordination_tracking.md`;
   `docs/planning/design/design_tracking.md`;
   `docs/planning/prds/prd_tracking.md`;
@@ -96,10 +96,10 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
   `repo_ops/sync/planning_catalog.py` `409`;
   `repo_ops/sync/initiative_index.py` `540`.
 - Current governed artifact sizes:
-  `planning_catalog.v1.json` `1092237` bytes;
-  `initiative_index.v1.json` `295669`;
-  `traceability_index.v1.json` `295254`;
-  `coordination_index.v1.json` `6235`.
+  `planning_catalog.json` `1092237` bytes;
+  `initiative_index.json` `295669`;
+  `traceability_index.json` `295254`;
+  `coordination_index.json` `6235`.
 - Current representative JSON payload sizes:
   `query planning --trace-id trace.refactor_umbrella_regression_and_growth_control --format json`
   about `18321` bytes;
@@ -118,9 +118,9 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
 | Finding | Severity | Status | Affected Surfaces | Verification Target |
 |---|---|---|---|---|
 | `finding.001` | `high` | `resolved` | `core/python/src/watchtower_core/repo_ops/query/common.py`; `core/python/src/watchtower_core/repo_ops/query/initiatives.py`; `core/python/src/watchtower_core/repo_ops/query/planning.py`; `core/python/src/watchtower_core/repo_ops/query/coordination.py` | Initiative, planning, and coordination query services now share one explicit runtime helper for the duplicated filter and ranking mechanics while preserving service-specific term selection and ordering. |
-| `finding.002` | `high` | `resolved` | `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`; direct tests and command docs | The concentrated coordination-query handler file is now a compatibility facade and the current subcommands live in focused modules without breaking current imports or CLI behavior. |
+| `finding.002` | `high` | `resolved` | `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`; direct tests and command docs | The concentrated coordination-query handler file is now a compatibility facade and the current subcommands live in focused modules without breaking current imports or CLI behavior. |
 | `finding.003` | `medium` | `resolved` | `docs/commands/core_python/watchtower_core_query_coordination.md`; `docs/commands/core_python/watchtower_core_query_planning.md`; `docs/commands/core_python/watchtower_core_query_initiatives.md`; `docs/commands/core_python/watchtower_core_query_authority.md`; `docs/commands/core_python/watchtower_core_query_tasks.md`; `docs/commands/core_python/watchtower_core_query_trace.md`; `core/python/tests/unit/test_cli.py`; `core/python/tests/unit/test_route_and_query_handlers.py` | The handler split stayed aligned with command docs and direct consumer tests so source-surface or compatibility drift did not replace the current hotspot. |
-| `finding.004` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json`; `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_query_efficiency_and_handler_modularity.md` | Acceptance-aware validation now covers the final closed validation task path and all five acceptance IDs instead of stopping at bootstrap-only evidence. |
+| `finding.004` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.json`; `core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.json`; `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_query_efficiency_and_handler_modularity.md` | Acceptance-aware validation now covers the final closed validation task path and all five acceptance IDs instead of stopping at bootstrap-only evidence. |
 | `finding.005` | `low` | `resolved` | `docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md` | Front matter `updated_at` values and Record Metadata `Updated At` lines now stay aligned across the traced planning corpus. |
 | `finding.006` | `low` | `resolved` | `docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md` | The decision record now satisfies document-semantics validation for explained bullets in `Applied References and Implications`. |
 
@@ -199,12 +199,12 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
   `planning.py`, `initiatives.py`, and `coordination.py` to consume it with
   explicit service-owned query-term builders.
 - Split the coordination-query runtime boundary into
-  `query_coordination_projection_handlers.py` and
+  `query_coordination_rendered_handlers.py` and
   `query_coordination_lookup_handlers.py`, while reducing
   `query_coordination_handlers.py` to a compatibility facade and keeping
   `query_coordination_family.py` as the authoritative registrar.
 - Added targeted regression coverage in
-  `core/python/tests/unit/test_projection_search_common.py` and reconciled the
+  `core/python/tests/unit/test_rendered_search_common.py` and reconciled the
   direct CLI or handler tests in `test_route_and_query_handlers.py` and
   `test_cli.py`.
 - Refreshed the affected query command pages, the repository-path index, the
@@ -217,7 +217,7 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
 ## Post-Remediation State
 - Hotspot sizes after the redesign:
   `query_coordination_handlers.py` `25` lines;
-  `query_coordination_projection_handlers.py` `354`;
+  `query_coordination_rendered_handlers.py` `354`;
   `query_coordination_lookup_handlers.py` `243`;
   `repo_ops/query/common.py` `212`;
   `repo_ops/query/planning.py` `61`;

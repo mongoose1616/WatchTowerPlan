@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
 aliases:
   - "local task tracking"
   - "task board"
@@ -43,16 +43,16 @@ This standard defines the repository's local-first task tracking model so multip
 - Reviewing whether a change should create or update a tracked task rather than only touching a planning document.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): companion standard that defines when work must create, update, transition, or explicitly decline a durable task record.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed task packages can later be removed at the trace boundary.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): companion standard that defines when work must create, update, transition, or explicitly decline a durable task record.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed task packages can later be removed at the trace boundary.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Treat local task records as the authoritative local execution surface.
@@ -88,7 +88,7 @@ This standard defines the repository's local-first task tracking model so multip
 - Keep terminal task history compact in `task_tracking.md`. Summarize closed status counts, show only a small recent-closeout preview, and route retained closed-task lookup to `docs/planning/tasks/closed/archive/` or explicit `watchtower-core query tasks --task-status ...` calls.
 - Treat archived task documents as retained execution history, not as the enduring source of current policy once equivalent standards, plans, or other canonical artifacts exist.
 - An explicit trace purge may later remove the full retained closed-task package after the surviving authority surfaces are reconciled.
-- Treat `core/control_plane/indexes/tasks/task_index.v1.json` as the machine-readable lookup surface derived from task records.
+- Treat `core/control_plane/indexes/tasks/task_index.json` as the machine-readable lookup surface derived from task records.
 - Keep optional GitHub foreign keys in task front matter when a later sync surface needs them:
   - `github_repository`
   - `github_issue_number`
@@ -108,7 +108,7 @@ This standard defines the repository's local-first task tracking model so multip
 |---|---|
 | Task Markdown record | Authoritative local task record |
 | `task_tracking.md` | Generated human-readable summary board |
-| `task_index.v1.json` | Generated machine-readable query surface |
+| `task_index.json` | Generated machine-readable query surface |
 
 ### Directory placement rules
 | Task State Class | Canonical Location |
@@ -133,11 +133,11 @@ This standard defines the repository's local-first task tracking model so multip
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/tasks/`; `core/control_plane/indexes/tasks/task_index.v1.json`; `docs/planning/tasks/open/`; `docs/planning/tasks/closed/`
+- `Operational Surfaces`: `docs/planning/tasks/`; `core/control_plane/indexes/tasks/task_index.json`; `docs/planning/tasks/open/`; `docs/planning/tasks/closed/`
 
 ## Validation
 - Task records should validate against the published task front-matter profile.
-- `task_tracking.md` and `task_index.v1.json` should agree with the current task-record corpus.
+- `task_tracking.md` and `task_index.json` should agree with the current task-record corpus.
 - A task in `open/` should not use terminal task statuses.
 - A task under `docs/planning/tasks/closed/**` should use only `done` or `cancelled`.
 - The human tracker should summarize terminal task history without inlining the full closed corpus by default.
@@ -150,13 +150,13 @@ This standard defines the repository's local-first task tracking model so multip
 - Update the task document standard, task template, task index schema, and companion sync logic in the same change set when task tracking changes structurally.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
+- [README.md](/docs/planning/tasks/README.md)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

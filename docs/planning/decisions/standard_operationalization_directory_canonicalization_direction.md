@@ -18,7 +18,7 @@ applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Operationalization Directory Canonicalization Direction Decision
@@ -40,16 +40,16 @@ Records the initial direction decision for Standard Operationalization Directory
 Standard operationalization metadata will treat exact files and directories as distinct canonical path forms: exact files stay repo-relative and slash-free, directories must end in `/`, and non-canonical directory spellings will fail validation before they reach the standard index.
 
 ## Trigger or Source Request
-- Another expansive internal standards review reproduced one live defect: [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md) publishes both `docs/commands` and `docs/commands/`, and the current parser/sync path preserves that semantic duplicate in the governed standard index.
+- Another expansive internal standards review reproduced one live defect: [cli_help_text_standard.md](/docs/standards/engineering/cli_help_text_standard.md) publishes both `docs/commands` and `docs/commands/`, and the current parser/sync path preserves that semantic duplicate in the governed standard index.
 
 ## Current Context and Constraints
 - `parse_standard_operationalization(...)` already validates existence and bounded glob behavior, so the smallest coherent fix is to tighten canonical path syntax at the shared parser boundary rather than adding downstream index cleanup.
 - The standard authoring contract and template need same-change alignment so the corpus does not keep encouraging non-canonical directory syntax after the parser becomes stricter.
 
 ## Applied References and Implications
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata should remain precise, auditable, and free of ambiguous path forms in live standards.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the derived standard index should not publish semantically duplicate operationalization paths for one standard entry.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the repository should fail closed at the shared contract layer instead of normalizing bad inputs silently after they leave the authored standards corpus.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): operationalization metadata should remain precise, auditable, and free of ambiguous path forms in live standards.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the derived standard index should not publish semantically duplicate operationalization paths for one standard entry.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the repository should fail closed at the shared contract layer instead of normalizing bad inputs silently after they leave the authored standards corpus.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/standards.py
@@ -59,7 +59,7 @@ Standard operationalization metadata will treat exact files and directories as d
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 
 ## Options Considered
 ### Option 1
@@ -82,7 +82,7 @@ Accept Option 2. Tighten the shared standards parser so non-canonical directory 
 
 ## Consequences and Follow-Up Impacts
 - The shared parser, document-semantics validation, and standard-index sync now need to agree on the same canonical file-or-directory path rule.
-- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md), [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md), and [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) need same-change updates so guidance matches enforcement.
+- [cli_help_text_standard.md](/docs/standards/engineering/cli_help_text_standard.md), [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md), and [standard_document_template.md](/docs/templates/standard_document_template.md) need same-change updates so guidance matches enforcement.
 - The final review pass must confirm there are no other live standards still publishing non-canonical operationalization paths.
 
 ## Risks, Dependencies, and Assumptions

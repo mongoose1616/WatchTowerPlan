@@ -7,20 +7,20 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.repo_ops.planning_projection_catalog_composition import (
+from watchtower_core.repo_ops.planning_rendered_catalog_composition import (
     build_trace_planning_catalog_entry,
 )
-from watchtower_core.repo_ops.planning_projection_serialization import (
+from watchtower_core.repo_ops.planning_rendered_serialization import (
     serialize_planning_catalog_entry,
 )
-from watchtower_core.repo_ops.planning_projection_snapshot import (
-    TracePlanningProjectionSnapshot,
+from watchtower_core.repo_ops.planning_rendered_snapshot import (
+    TracePlanningRenderedSnapshot,
     build_trace_planning_coordination_snapshot,
-    build_trace_planning_projection_snapshots,
+    build_trace_planning_rendered_snapshots,
 )
 
 PLANNING_CATALOG_ARTIFACT_PATH = (
-    "core/control_plane/indexes/planning/planning_catalog.v1.json"
+    "core/control_plane/indexes/planning/planning_catalog.json"
 )
 
 
@@ -38,7 +38,7 @@ class PlanningCatalogSyncService:
     def build_document(self) -> dict[str, object]:
         entries = [
             self._build_entry(snapshot)
-            for snapshot in build_trace_planning_projection_snapshots(self._loader)
+            for snapshot in build_trace_planning_rendered_snapshots(self._loader)
         ]
 
         document: dict[str, object] = {
@@ -64,7 +64,7 @@ class PlanningCatalogSyncService:
 
     def _build_entry(
         self,
-        snapshot: TracePlanningProjectionSnapshot,
+        snapshot: TracePlanningRenderedSnapshot,
     ) -> dict[str, object]:
         coordination = build_trace_planning_coordination_snapshot(snapshot)
         planning_entry = build_trace_planning_catalog_entry(snapshot, coordination)

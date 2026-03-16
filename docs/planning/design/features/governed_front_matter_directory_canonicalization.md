@@ -46,14 +46,14 @@ Defines the technical design boundary for Governed Front Matter Directory Canoni
 - Planning scaffolds and task lifecycle writes were still capable of reproducing the drift because they wrote `applies_to` values verbatim, while semantic validation and sync only enforced canonical path syntax for some other metadata families such as standard operationalization paths.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the fix should centralize one coherent path rule instead of duplicating family-specific normalization logic.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable standards guidance and machine-enforced repo behavior need to move together so lookup and governance surfaces stay aligned.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the fix should centralize one coherent path rule instead of duplicating family-specific normalization logic.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable standards guidance and machine-enforced repo behavior need to move together so lookup and governance surfaces stay aligned.
 
 ## Internal Standards and Canonical References Applied
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): path-valued `applies_to` metadata is governed front matter and needs one canonical repo-relative file-versus-directory rule.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on authored `applies_to` and derived `related_paths` staying canonical.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): standard docs are a live affected family and their operationalization guidance already models canonical directory syntax.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the implementation belongs in the canonical `core/python/` workspace and must keep command and validation behavior aligned with docs.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): path-valued `applies_to` metadata is governed front matter and needs one canonical repo-relative file-versus-directory rule.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on authored `applies_to` and derived `related_paths` staying canonical.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): standard docs are a live affected family and their operationalization guidance already models canonical directory syntax.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the implementation belongs in the canonical `core/python/` workspace and must keep command and validation behavior aligned with docs.
 
 ## Design Goals and Constraints
 - Use one helper for canonical path-valued `applies_to` normalization so standards, references, foundations, planning docs, and tasks do not drift through copy-pasted parsing logic.

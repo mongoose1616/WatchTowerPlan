@@ -33,9 +33,9 @@ aliases:
 Breaks the repository review remediation into bounded slices for README entrypoints, machine coordination, and core modularity plus supplemental schema loading.
 
 ## Source Request or Design
-- Feature design: [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- PRD: [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- Decision: [preimplementation_machine_coordination_entrypoint.md](/home/j/WatchTowerPlan/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
+- Feature design: [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- PRD: [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- Decision: [preimplementation_machine_coordination_entrypoint.md](/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
 
 ## Scope Summary
 - Bootstrap the traced review initiative and open the bounded execution tasks.
@@ -55,10 +55,10 @@ Breaks the repository review remediation into bounded slices for README entrypoi
 - The repo already has a deterministic coordination rebuild command, an initiative index, and query surfaces, so the work is refinement rather than a fresh subsystem bootstrap.
 
 ## Internal Standards and Canonical References Applied
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): README changes must preserve their quick-reference role.
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): coordination changes should strengthen the existing machine view instead of adding another family.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): core refactors should keep CLI entrypoints thin and behavior in package services.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): all code changes stay in the canonical Python workspace.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): README changes must preserve their quick-reference role.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): coordination changes should strengthen the existing machine view instead of adding another family.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): core refactors should keep CLI entrypoints thin and behavior in package services.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): all code changes stay in the canonical Python workspace.
 
 ## Proposed Technical Approach
 - Treat README compaction as a documentation-plus-standard slice.
@@ -96,9 +96,9 @@ Breaks the repository review remediation into bounded slices for README entrypoi
 - Land a final closeout commit after the repo is green and the initiative tasks are terminal.
 
 ## References
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- [preimplementation_machine_coordination_entrypoint.md](/home/j/WatchTowerPlan/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [preimplementation_machine_coordination_entrypoint.md](/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
 
 ## Updated At
 - `2026-03-10T17:55:24Z`

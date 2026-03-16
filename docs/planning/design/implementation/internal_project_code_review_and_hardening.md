@@ -46,9 +46,9 @@ Breaks the code-review remediation into bounded scaffold-sync, closeout-sync, an
 - Additive JSON payload changes are acceptable only when they accurately represent newly written outputs.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced planning and closeout state must stay aligned with traceability and derived coordination views.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): planning-catalog is a canonical machine-readable surface and must be refreshed when initiative state changes.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): the final closeout commit should preserve trace-linked context in one logical slice.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced planning and closeout state must stay aligned with traceability and derived coordination views.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): planning-catalog is a canonical machine-readable surface and must be refreshed when initiative state changes.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): the final closeout commit should preserve trace-linked context in one logical slice.
 
 ## Proposed Technical Approach
 - Extend `PlanningScaffoldService.scaffold()` so write mode performs the existing family-specific sync and then conditionally runs `CoordinationSyncService` only when the trace already participates in coordination.

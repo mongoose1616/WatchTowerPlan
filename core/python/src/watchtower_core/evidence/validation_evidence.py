@@ -265,4 +265,4 @@ class ValidationEvidenceRecorder:
 
     def _derive_evidence_relative_path(self, evidence_id: str) -> str:
         stem = evidence_id.removeprefix("evidence.").replace(".", "_")
-        return f"{VALIDATION_EVIDENCE_DIRECTORY}/{stem}.v1.json"
+        return f"{VALIDATION_EVIDENCE_DIRECTORY}/{stem}.json"

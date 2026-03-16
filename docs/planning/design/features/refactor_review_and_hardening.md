@@ -51,17 +51,17 @@ Defines the phase-one refactor design for workflow route discrimination, compact
 - The planning start-here docs and the root or group command pages still carry more route and example repetition than a route-first entrypoint needs, especially during closed-history-heavy repository states.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should remove duplicated start-here and routing burden at the projection boundary rather than by weakening explicit governed families.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human guidance, machine-readable lookup surfaces, and verification surfaces must change together when routing or current-state behavior changes.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the slice stays inside repository-maintenance refactor work and does not grow into broader product or policy redesign.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should remove duplicated start-here and routing burden at the projection boundary rather than by weakening explicit governed families.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human guidance, machine-readable lookup surfaces, and verification surfaces must change together when routing or current-state behavior changes.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the slice stays inside repository-maintenance refactor work and does not grow into broader product or policy redesign.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route discrimination must stay explicit and minimal-context rather than collapsing narrow workflows into broad generic procedures.
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): route-preview behavior must stay aligned with the authored routing table and machine-readable route index.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow retrieval metadata should help tooling distinguish adjacent routes without duplicating full workflow prose.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): the coordination surface is a compact current-state start-here projection, not a second deep historical planning join.
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker should mirror the compact machine current-state view rather than regrow full tracker-family detail.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): umbrella command pages should remain command references, not broad handbook-style catalogs that duplicate CLI help and leaf pages.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route discrimination must stay explicit and minimal-context rather than collapsing narrow workflows into broad generic procedures.
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md): route-preview behavior must stay aligned with the authored routing table and machine-readable route index.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow retrieval metadata should help tooling distinguish adjacent routes without duplicating full workflow prose.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): the coordination surface is a compact current-state start-here projection, not a second deep historical planning join.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker should mirror the compact machine current-state view rather than regrow full tracker-family detail.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): umbrella command pages should remain command references, not broad handbook-style catalogs that duplicate CLI help and leaf pages.
 
 ## Design Goals and Constraints
 - Reduce high-leverage navigation and projection duplication without weakening governed artifact boundaries.
@@ -93,7 +93,7 @@ Defines the phase-one refactor design for workflow route discrimination, compact
 - Recast planning and command umbrella docs as route-first entrypoints that point readers at coordination, CLI help, indexes, and leaf pages instead of re-enumerating the full catalog inline.
 
 ### Data and Interface Impacts
-- `workflows/ROUTING_TABLE.md`, `workflows/modules/*.md`, `core/control_plane/indexes/routes/route_index.v1.json`, `core/control_plane/indexes/workflows/workflow_index.v1.json`, and `core/control_plane/registries/workflow_metadata_registry.json` change together for the route-discrimination slice.
+- `workflows/ROUTING_TABLE.md`, `workflows/modules/*.md`, `core/control_plane/indexes/routes/route_index.json`, `core/control_plane/indexes/workflows/workflow_index.json`, and `core/control_plane/registries/workflow_metadata_registry.json` change together for the route-discrimination slice.
 - `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`, `core/python/src/watchtower_core/repo_ops/query/coordination.py`, `core/python/src/watchtower_core/cli/query_coordination_handlers.py`, coordination standards, coordination examples, and coordination-related tests change together for the compact-current-state slice.
 - `docs/planning/README.md`, `docs/planning/initiatives/README.md`, `docs/commands/core_python/watchtower_core.md`, `docs/commands/core_python/watchtower_core_query.md`, and `docs/commands/core_python/watchtower_core_sync.md` change together for the route-first entrypoint slice.
 

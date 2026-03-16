@@ -68,7 +68,7 @@ def build_parser() -> argparse.ArgumentParser:
             "docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
         ),
         formatter_class=HelpFormatter,
     )

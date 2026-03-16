@@ -32,10 +32,10 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - `https://diataxis.fr/compass/` - verified 2026-03-09; compass model guidance.
 
 ## Related Standards and Sources
-- [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [documentation_template.md](/docs/templates/documentation_template.md)
+- [readme_template.md](/docs/templates/readme_template.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### The Four Documentation Modes
@@ -67,12 +67,12 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 
 ### Why It Matters Here
 - `workflows/**` primarily map to how-to guidance because they define procedural steps for planning tasks and operational flows.
 - `docs/standards/**` primarily map to reference because they define structures, rules, naming, contracts, and documentation expectations.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md), [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md), and [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md), [product_direction.md](/docs/foundations/product_direction.md), and [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
 - `docs/templates/**` support how-to and tutorial-style authoring depending on whether a template is being used as a scaffold, a teaching aid, or a repeatable documentation starting point.
 - `README.md` files should usually act as orientation or navigation docs and should stay concise instead of absorbing full standards, workflows, or deep explanation content.
 
@@ -85,10 +85,10 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - If documentation validation tooling is added later, this document should become one of the reference inputs for classification guidance rather than an isolated prose note.
 
 ## References
-- [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [documentation_template.md](/docs/templates/documentation_template.md)
+- [readme_template.md](/docs/templates/readme_template.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 
 ## Notes
 - This document is intentionally short and operational.

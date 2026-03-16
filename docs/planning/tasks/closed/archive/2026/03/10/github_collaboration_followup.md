@@ -40,9 +40,9 @@ Tracks the remaining closeout and verification follow-up for the GitHub collabor
 - Ownership and next-step expectations remain visible in the task layer.
 
 ## Links
-- [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
+- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
 
 ## Updated At
 - `2026-03-10T03:53:14Z`

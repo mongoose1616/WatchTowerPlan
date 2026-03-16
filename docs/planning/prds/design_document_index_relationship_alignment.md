@@ -17,7 +17,7 @@ applies_to:
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/indexes/design_documents/design_document_index.v1.json
+- core/control_plane/indexes/design_documents/design_document_index.json
 - core/python/src/watchtower_core/repo_ops/sync/design_document_index.py
 - core/python/src/watchtower_core/repo_ops/sync/design_tracking.py
 - core/python/tests/
@@ -76,12 +76,12 @@ Together these defects make the design-document index less trustworthy as the ma
 - Companion standards, template guidance, generated tracker wording, and machine-readable examples must move with the code change or the repository will reintroduce standards drift in a different layer.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): relationship derivation should come from explicit, shared parsing seams instead of ad hoc tracker-specific logic.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): machine-readable planning surfaces should conform to the governed document contract instead of silently narrowing it.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): relationship derivation should come from explicit, shared parsing seams instead of ad hoc tracker-specific logic.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): machine-readable planning surfaces should conform to the governed document contract instead of silently narrowing it.
 
 ## References
 - docs/standards/data_contracts/design_document_index_standard.md
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- retired valid example index fixture design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.example.json

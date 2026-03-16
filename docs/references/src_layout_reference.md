@@ -29,10 +29,10 @@ Provide a simple layout baseline that keeps import behavior closer to installed 
 - `https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/` - verified 2026-03-09; src layout vs flat layout.
 
 ## Related Standards and Sources
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [src](/home/j/WatchTowerPlan/core/python/src/)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [pytest_reference.md](/docs/references/pytest_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [src](/core/python/src/)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -68,8 +68,8 @@ pyproject.toml
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [src](/home/j/WatchTowerPlan/core/python/src/)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [src](/core/python/src/)
 
 ### Why It Matters Here
 - Use this reference if repository automation grows from one-off scripts into reusable Python packages or shared modules.
@@ -81,10 +81,10 @@ pyproject.toml
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [src](/home/j/WatchTowerPlan/core/python/src/)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [pytest_reference.md](/docs/references/pytest_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [src](/core/python/src/)
 
 ## Notes
 - This reference matters only if the repo starts to contain reusable Python modules or packages.

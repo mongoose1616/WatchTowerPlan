@@ -41,9 +41,9 @@ Make generated planning trackers denser and more scan-friendly by removing low-v
 - Planning trackers rebuild into compact views with deterministic empty-state text and no low-value filler rows.
 
 ## Links
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
-- [template_and_output_efficiency_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- [template_and_output_efficiency_execution.md](/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
 
 ## Updated At
 - `2026-03-10T16:27:59Z`

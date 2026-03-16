@@ -41,12 +41,12 @@ uv run watchtower-core validate artifact --path <path> [--validator-id <validato
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json
+uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/indexes/traceability/traceability_index.v1.json --format json
+uv run watchtower-core validate artifact --path core/control_plane/indexes/traceability/traceability_index.json --format json
 ```
 
 ```sh
@@ -66,7 +66,7 @@ uv run watchtower-core validate artifact --path /tmp/pack_note.json --supplement
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json --record-evidence --trace-id trace.core_python_foundation
+uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json --record-evidence --trace-id trace.core_python_foundation
 ```
 
 ## Behavior and Outputs

@@ -41,21 +41,21 @@ Defines the design for making authored templates and generated planning trackers
 - Does not redesign the machine-readable artifact families or rewrite unrelated documentation just for style alignment.
 
 ## Current-State Context
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md) and [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md) do not include the governed front matter their live output families actually require.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md), [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md), and [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md) still normalize more required body structure than many small repository changes need.
-- The tracker sync services under [repo_ops/sync](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync) spend lines on repeated summary, update-rule, and reference scaffolding plus placeholder `None` rows.
+- [prd_template.md](/docs/templates/prd_template.md) and [decision_record_template.md](/docs/templates/decision_record_template.md) do not include the governed front matter their live output families actually require.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md), [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md), and [task_md_standard.md](/docs/standards/documentation/task_md_standard.md) still normalize more required body structure than many small repository changes need.
+- The tracker sync services under [repo_ops/sync](/core/python/src/watchtower_core/repo_ops/sync) spend lines on repeated summary, update-rule, and reference scaffolding plus placeholder `None` rows.
 - Documentation and planning workflow modules still describe outputs and data structures in ways that can encourage meta content rather than the smallest useful repository artifact.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): reduce ceremony where it does not materially improve correctness.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): machine-readable authority should absorb machine detail so human docs can stay focused on operator value.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): preserve context efficiency so future product work can spend more tokens on implementation and less on repeating scaffolding.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): reduce ceremony where it does not materially improve correctness.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): machine-readable authority should absorb machine detail so human docs can stay focused on operator value.
+- [product_direction.md](/docs/foundations/product_direction.md): preserve context efficiency so future product work can spend more tokens on implementation and less on repeating scaffolding.
 
 ## Internal Standards and Canonical References Applied
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governed document families still need stable front matter even when the body gets leaner.
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections but should stop implying that every output must include meta records of the work.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task records remain the authority while the task tracker becomes more compact.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains a derived start-here view and can be compacted without moving authority out of indexes and task records.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): governed document families still need stable front matter even when the body gets leaner.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections but should stop implying that every output must include meta records of the work.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task records remain the authority while the task tracker becomes more compact.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains a derived start-here view and can be compacted without moving authority out of indexes and task records.
 
 ## External Sources Consulted
 - None. The problem is repository-local alignment between templates, validators, sync renderers, and workflow guidance.
@@ -137,11 +137,11 @@ Defines the design for making authored templates and generated planning trackers
 - Whether the compact-authoring standard should eventually govern command pages and reference docs more strongly than this first pass.
 
 ## References
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [docs/templates/README.md](/home/j/WatchTowerPlan/docs/templates/README.md)
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md)
-- [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md)
-- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [docs/templates/README.md](/docs/templates/README.md)
+- [prd_template.md](/docs/templates/prd_template.md)
+- [decision_record_template.md](/docs/templates/decision_record_template.md)
+- [documentation_generation.md](/workflows/modules/documentation_generation.md)
 
 ## Updated At
 - `2026-03-10T16:00:54Z`

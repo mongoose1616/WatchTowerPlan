@@ -16,8 +16,8 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_program.md
 - docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md
 - docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/indexes/commands/command_index.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/indexes/commands/command_index.json
 - core/python/src/watchtower_core/cli/registry.py
 - core/python/src/watchtower_core/cli/parser.py
 related_ids:
@@ -50,18 +50,18 @@ Review the command-authority normalization entry package, confirm the current co
 ## Review Outcome
 - `Decision`: approved for exactly one bounded Phase 3 slice.
 - `Current command-authority boundary`: reaffirmed. `core/python/src/watchtower_core/cli/registry.py` and `core/python/src/watchtower_core/cli/parser.py` remain the only accepted machine authority for command presence and hierarchy.
-- `Approved first slice`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Approved first slice`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
 - `Slice rationale`: the command index already routes family-owned `doctor`, `sync`, and `validate` leaf commands to their owning family files, but `23` command docs still point to `core/python/src/watchtower_core/cli/main.py`. The first Phase 3 slice therefore stays inside companion-surface normalization rather than broader authority replacement.
 - `Classification sufficiency`: no additional command-adjacent workflow, route, or compatibility classification addendum is required for this first slice because it stays inside the already-classified CLI registry plus parser authority surfaces and the existing command index plus command docs companion surfaces.
 - `Public planning parity`: unchanged. The review does not authorize any change to the five planning-authority answers or their current machine-readable surfaces.
 - `Next-step decision`: open one bounded implementation task for the approved first slice and stop before implementation begins in this review change.
 
 ## Links
-- [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
-- [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_phase3_command_authority_entry.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
 
 ## Updated At
 - `2026-03-14T05:41:11Z`

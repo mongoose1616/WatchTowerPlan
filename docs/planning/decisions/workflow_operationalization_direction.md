@@ -47,9 +47,9 @@ The workflow-system follow-up confirmed that the earlier lifecycle issues were a
 - The project is still pre-implementation, so scaffolds should stay compact rather than enterprise-sized.
 
 ## Applied References and Implications
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): human routing authority remains in `AGENTS.md` plus `ROUTING_TABLE.md`.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow lookup can use governed machine metadata without replacing workflow docs.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task Markdown remains authoritative even when commands mutate structured fields.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): human routing authority remains in `AGENTS.md` plus `ROUTING_TABLE.md`.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow lookup can use governed machine metadata without replacing workflow docs.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task Markdown remains authoritative even when commands mutate structured fields.
 
 ## Affected Surfaces
 - `workflows/ROUTING_TABLE.md`
@@ -93,9 +93,9 @@ Adopt option 3. The repo keeps its current workflow-document authority model and
 - The approach assumes compact scaffolds are enough for the current project size and will not need large generated sections.
 
 ## References
-- [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md)
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- [end_to_end_repo_rationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
+- [workflow_system_operationalization.md](/docs/planning/prds/workflow_system_operationalization.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [end_to_end_repo_rationalization_direction.md](/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
 
 ## Updated At
 - `2026-03-10T21:59:21Z`

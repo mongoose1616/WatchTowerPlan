@@ -48,7 +48,7 @@ Defines the technical design boundary for Refactor Umbrella Regression and Growt
 ## Current-State Context
 - The original external audit identified seventeen `RF-*` findings. Most direct hotspot items
   now show improvement in the current tree:
-  - `coordination_index.v1.json` is now compact and active-first with empty `entries` when no
+  - `coordination_index.json` is now compact and active-first with empty `entries` when no
     initiatives are active, so `RF-CTL-001` is resolved.
   - `watchtower_core.md`, `watchtower_core_query.md`, and `watchtower_core_sync.md` are now
     `77`, `86`, and `79` lines respectively, down from the much larger umbrella pages noted by

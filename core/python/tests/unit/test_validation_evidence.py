@@ -77,8 +77,8 @@ def test_validation_evidence_recorder_writes_temp_outputs(tmp_path: Path) -> Non
         "docs/standards/metadata/front_matter_standard.md"
     )
     recorder = ValidationEvidenceRecorder(loader)
-    evidence_output = tmp_path / "evidence.v1.json"
-    traceability_output = tmp_path / "traceability_index.v1.json"
+    evidence_output = tmp_path / "evidence.json"
+    traceability_output = tmp_path / "traceability_index.json"
 
     write_result = recorder.record(
         result,
@@ -115,7 +115,7 @@ def test_validation_evidence_recorder_publishes_current_run_updates_to_loader_st
     )
     result = ValidationResult(
         validator_id="validator.control_plane.traceability_index",
-        target_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
+        target_path="core/control_plane/indexes/traceability/traceability_index.json",
         engine="json_schema",
         schema_ids=("urn:watchtower:schema:artifacts:indexes:traceability-index:v1",),
         passed=True,

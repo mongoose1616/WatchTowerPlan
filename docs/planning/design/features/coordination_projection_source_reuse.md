@@ -53,13 +53,13 @@ Defines the technical design boundary for Coordination Projection Source Reuse.
   reusable current-run inputs; otherwise reuse would dilute fail-closed behavior.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should centralize reuse in orchestration and loader boundaries instead of creating hidden caching behavior in individual sync services.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the reuse layer must stay explicit enough that validation and deterministic output guarantees remain reviewable.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should centralize reuse in orchestration and loader boundaries instead of creating hidden caching behavior in individual sync services.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the reuse layer must stay explicit enough that validation and deterministic output guarantees remain reviewable.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the implementation belongs in the canonical Python workspace and should preserve the thin CLI or orchestration boundary.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the design must keep validation coverage whole instead of trading correctness for speed.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): dry-run and write-mode task or initiative projections must remain coherent within the same coordination slice.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the implementation belongs in the canonical Python workspace and should preserve the thin CLI or orchestration boundary.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the design must keep validation coverage whole instead of trading correctness for speed.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): dry-run and write-mode task or initiative projections must remain coherent within the same coordination slice.
 
 ## Design Goals and Constraints
 - Reuse already-validated documents within one coordination sync run.
@@ -136,7 +136,7 @@ Defines the technical design boundary for Coordination Projection Source Reuse.
   so the optimization does not mask stale dry-run behavior.
 
 ## References
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/coordination_projection_source_reuse.md)
-- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/all.py)
-- [coordination.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/coordination.py)
+- [coordination_projection_source_reuse.md](/docs/planning/prds/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/implementation/coordination_projection_source_reuse.md)
+- [all.py](/core/python/src/watchtower_core/repo_ops/sync/all.py)
+- [coordination.py](/core/python/src/watchtower_core/repo_ops/sync/coordination.py)

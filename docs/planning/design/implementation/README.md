@@ -21,9 +21,9 @@
 | `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes
-- Documents in this directory should follow [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
-- Start new documents from [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md).
+- Documents in this directory should follow [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md).
+- Start new documents from [implementation_plan_template.md](/docs/templates/implementation_plan_template.md).
 - Governed implementation plans in this directory should use the implementation-plan front matter profile.
-- Human-readable tracking for this family lives in [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md).
+- Human-readable tracking for this family lives in [design_tracking.md](/docs/planning/design/design_tracking.md).
 - Use this directory when the main deliverable is engineering execution breakdown. If the main deliverable is architectural recommendation and tradeoff analysis, use `docs/planning/design/features/` instead.
 - Rewrite-specific phase plans, checkpoints, and entry-review packages should live here rather than in a separate rewrite-only directory.

@@ -35,8 +35,8 @@ aliases:
 Breaks the planning catalog, authority-map, and status-semantics work into bounded executable slices.
 
 ## Source Request or Design
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/prds/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/design/features/planning_authority_unification.md)
 
 ## Scope Summary
 - Add the planning-catalog index family plus canonical query and sync support.
@@ -56,9 +56,9 @@ Breaks the planning catalog, authority-map, and status-semantics work into bound
 - The command surface can add one new planning query and one new authority query without reopening the broader CLI design.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the implementation should assemble a canonical join from existing trace-linked governed artifacts rather than replacing traceability.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): new artifact families require schema, catalog, validator, and example updates in the same change set.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): new command surfaces need companion documentation and command-index alignment in the same slice.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the implementation should assemble a canonical join from existing trace-linked governed artifacts rather than replacing traceability.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): new artifact families require schema, catalog, validator, and example updates in the same change set.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): new command surfaces need companion documentation and command-index alignment in the same slice.
 
 ## Proposed Technical Approach
 - Add a new planning-catalog sync service that joins traceability, initiative, planning-document, task, acceptance, and evidence data into one canonical machine artifact.
@@ -91,5 +91,5 @@ Breaks the planning catalog, authority-map, and status-semantics work into bound
 - Close the initiative only after the canonical planning and authority surfaces are documented and validated.
 
 ## References
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/prds/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/design/features/planning_authority_unification.md)

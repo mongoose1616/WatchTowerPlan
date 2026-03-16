@@ -1,0 +1,201 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.rendered_surface_contract_enforcement.planning_baseline",
+  "title": "Rendered Surface Contract Enforcement Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.rendered_surface_contract_enforcement",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T17:40:06Z",
+  "source_prd_ids": [
+    "prd.rendered_surface_contract_enforcement"
+  ],
+  "source_design_ids": [
+    "design.features.rendered_surface_contract_enforcement"
+  ],
+  "source_plan_ids": [
+    "design.implementation.rendered_surface_contract_enforcement"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.rendered_surface_contract_enforcement"
+  ],
+  "checks": [
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.planning_chain_and_task_set_aligned",
+      "title": "The rendered-surface trace publishes the full planning chain, acceptance contract, evidence ledger, and closed bounded task set",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/rendered_surface_contract_enforcement.md",
+        "docs/planning/design/features/rendered_surface_contract_enforcement.md",
+        "docs/planning/design/implementation/rendered_surface_contract_enforcement.md",
+        "docs/planning/decisions/rendered_surface_contract_enforcement_direction.md",
+        "core/control_plane/contracts/acceptance/rendered_surface_contract_enforcement_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/rendered_surface_contract_enforcement_planning_baseline.json",
+        "docs/planning/tasks/closed/archive/2026/03/16/rendered_surface_contract_enforcement_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/implement_governed_rendered_surfaces_and_retire_live_projection_boundaries.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_rendered_surface_contract_enforcement.md"
+      ],
+      "subject_ids": [
+        "prd.rendered_surface_contract_enforcement",
+        "design.features.rendered_surface_contract_enforcement",
+        "design.implementation.rendered_surface_contract_enforcement",
+        "decision.rendered_surface_contract_enforcement_direction",
+        "task.rendered_surface_contract_enforcement.bootstrap.001",
+        "task.rendered_surface_contract_enforcement.rendered_registry_and_runtime_alignment.002",
+        "task.rendered_surface_contract_enforcement.validation_and_closeout.003",
+        "contract.acceptance.rendered_surface_contract_enforcement",
+        "evidence.rendered_surface_contract_enforcement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.001"
+      ],
+      "notes": "The trace now carries the bootstrap task plus the terminal implementation and validation-closeout tasks in the canonical archive path, and the current planning artifacts were refreshed to the same timestamp."
+    },
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.governed_registry_and_renderer_live",
+      "title": "The rendered-surface registry, schema, loader path, and generic Markdown renderer are active and the tracker family consumes them",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/schemas/artifacts/rendered_surface_registry.schema.json",
+        "core/control_plane/registries/rendered_surface_registry.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/python/src/watchtower_core/control_plane/models/catalog.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/adapters/rendered_markdown.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py"
+      ],
+      "subject_ids": [
+        "task.rendered_surface_contract_enforcement.rendered_registry_and_runtime_alignment.002",
+        "contract.acceptance.rendered_surface_contract_enforcement",
+        "evidence.rendered_surface_contract_enforcement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.002"
+      ],
+      "notes": "The control plane now carries one authored rendered-surface registry plus schema and validator coverage, and the six planning trackers render through the generic adapter rather than handwritten per-service section assembly."
+    },
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.live_scope_terminology_audit_clean",
+      "title": "The scoped live runtime, command, standards, and planning entry surfaces are free of active projection compatibility boundaries",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/planning_rendered_catalog_composition.py",
+        "core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/README.md"
+      ],
+      "subject_ids": [
+        "task.rendered_surface_contract_enforcement.rendered_registry_and_runtime_alignment.002",
+        "task.rendered_surface_contract_enforcement.validation_and_closeout.003",
+        "decision.rendered_surface_contract_enforcement_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.003"
+      ],
+      "notes": "The final scoped `rg` audit over active runtime, tests, command docs, standards, and current planning entry docs found no active `projection` or `rendered_surface.` compatibility boundary; the only remaining hit is the known historical test fixture that intentionally preserves an archival filename."
+    },
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.tracker_outputs_remain_compact_and_index_backed",
+      "title": "The rendered tracker family stays compact, repo-link safe, and index-backed after the registry refactor",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/test_tracking_output_compaction.py",
+        "core/python/tests/unit/test_all_sync.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.rendered_surface_contract_enforcement.rendered_registry_and_runtime_alignment.002",
+        "task.rendered_surface_contract_enforcement.validation_and_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.004"
+      ],
+      "notes": "The tracker sync layer now shapes section data in code and renders from the governed registry while preserving the compact active-first and actionable-first surfaces consumed by planning operators."
+    },
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.validation_stack_green",
+      "title": "The rendered-surface validation stack is green after the runtime rename, registry rollout, and tracker refactor",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/rendered_surface_contract_enforcement_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/rendered_surface_contract_enforcement_planning_baseline.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "task.rendered_surface_contract_enforcement.validation_and_closeout.003",
+        "contract.acceptance.rendered_surface_contract_enforcement",
+        "evidence.rendered_surface_contract_enforcement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.005"
+      ],
+      "notes": "The final validation checklist passed for this trace: `watchtower-core closeout initiative --trace-id trace.rendered_surface_contract_enforcement --initiative-status completed --closure-reason \"Delivered the governed rendered-surface registry, generic tracker renderer, runtime terminology rename, and clean validation with no remaining active projection compatibility surface in scope.\" --closed-at 2026-03-16T17:40:06Z --write --format json`, `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.rendered_surface_contract_enforcement --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .`."
+    },
+    {
+      "check_id": "check.rendered_surface_contract_enforcement.closeout_record_complete",
+      "title": "The trace records a bounded completed closeout with no remaining active projection compatibility surface in the scoped live layers",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_rendered_surface_contract_enforcement.md"
+      ],
+      "subject_ids": [
+        "prd.rendered_surface_contract_enforcement",
+        "task.rendered_surface_contract_enforcement.validation_and_closeout.003",
+        "contract.acceptance.rendered_surface_contract_enforcement",
+        "evidence.rendered_surface_contract_enforcement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.rendered_surface_contract_enforcement.006"
+      ],
+      "notes": "The explicit initiative closeout command recorded the trace as `completed` at 2026-03-16T17:40:06Z with zero acceptance issues, and the final coordination refresh returned `ready_for_bootstrap` with zero active initiatives and zero actionable tasks."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/rendered_surface_contract_enforcement_acceptance.json",
+    "core/control_plane/registries/rendered_surface_registry.json",
+    "core/control_plane/schemas/artifacts/rendered_surface_registry.schema.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Evidence refreshed for trace.rendered_surface_contract_enforcement at 2026-03-16T17:40:06Z after the governed rendered-surface registry, generic tracker renderer, active runtime terminology rename, archived terminal task chain, terminal initiative closeout, and the final acceptance, repository validation, pytest, mypy, and ruff passes all completed cleanly.",
+  "source_decision_ids": [
+    "decision.rendered_surface_contract_enforcement_direction"
+  ]
+}

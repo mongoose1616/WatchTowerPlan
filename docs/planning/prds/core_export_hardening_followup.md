@@ -83,14 +83,14 @@ The prior export-readiness initiative landed the main architecture split and clo
 - Whether a later extraction should keep compatibility shims for one release cycle once the reusable package boundary is published outside this repo.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the hardening work should make the package more deterministic and boundary-explicit rather than relying on convenience indirection.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must remain aligned while the boundary and sync behavior tighten.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): follow-up hardening should improve the shared substrate without starting product implementation work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the hardening work should make the package more deterministic and boundary-explicit rather than relying on convenience indirection.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must remain aligned while the boundary and sync behavior tighten.
+- [product_direction.md](/docs/foundations/product_direction.md): follow-up hardening should improve the shared substrate without starting product implementation work.
 
 ## References
-- [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
 
 ## Updated At
 - `2026-03-10T15:24:07Z`

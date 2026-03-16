@@ -45,9 +45,9 @@ Publish one authoritative repository-scope foundation for current `WatchTowerPla
 - The repo is healthy and validated, so the problem is coherence and routing rather than correctness or missing tooling.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen direction preserves explicit authority boundaries, compactness, and the reusable-core versus repo-ops split while clarifying current scope.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the decision favors one clearer authority surface over several co-equal foundation entrypoints for the same scope question.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the scope-direction change should remain explicitly tied to one trace, one accepted decision, and bounded closeable tasks rather than diffuse documentation edits.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the chosen direction preserves explicit authority boundaries, compactness, and the reusable-core versus repo-ops split while clarifying current scope.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the decision favors one clearer authority surface over several co-equal foundation entrypoints for the same scope question.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the scope-direction change should remain explicitly tied to one trace, one accepted decision, and bounded closeable tasks rather than diffuse documentation edits.
 
 ## Affected Surfaces
 - `docs/foundations/`
@@ -88,8 +88,8 @@ Adopt option 2. The repository will add a `repository_scope.md` foundation as th
 - If the new repository-scope doc is vague, the ambiguity will persist despite the extra file.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
 
 ## Updated At
 - `2026-03-11T01:27:13Z`

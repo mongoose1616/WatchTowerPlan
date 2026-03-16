@@ -56,7 +56,7 @@ Breaks Query Family Source Surface Alignment into a bounded implementation slice
   `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
 - Human and machine command lookup surfaces:
   `docs/commands/core_python/watchtower_core_query*.md`;
-  `core/control_plane/indexes/commands/command_index.v1.json`
+  `core/control_plane/indexes/commands/command_index.json`
 - Direct consumers and regression coverage:
   `core/python/tests/unit/test_command_index_sync.py`;
   `core/python/tests/unit/test_control_plane_loader.py`;
@@ -68,10 +68,10 @@ Breaks Query Family Source Surface Alignment into a bounded implementation slice
 ## Findings Ledger
 | Finding | Severity | Status | Affected Surfaces | Verification Target |
 |---|---|---|---|---|
-| `finding.001` | `high` | `resolved` | `core/python/src/watchtower_core/cli/introspection.py`; `core/python/src/watchtower_core/cli/registry.py`; `core/control_plane/indexes/commands/command_index.v1.json` | Query leaf command specs and the rebuilt command index expose the correct split family implementation paths. |
+| `finding.001` | `high` | `resolved` | `core/python/src/watchtower_core/cli/introspection.py`; `core/python/src/watchtower_core/cli/registry.py`; `core/control_plane/indexes/commands/command_index.json` | Query leaf command specs and the rebuilt command index expose the correct split family implementation paths. |
 | `finding.002` | `medium` | `resolved` | `docs/commands/core_python/watchtower_core_query*.md` | Affected query command pages stop pointing at stale `main.py` or umbrella `query_family.py` surfaces. |
 | `finding.003` | `medium` | `resolved` | `core/python/tests/unit/test_command_index_sync.py`; `core/python/tests/unit/test_control_plane_loader.py`; `core/python/tests/unit/test_cli_knowledge_query_commands.py` | Direct consumers fail if discovery, loader, or command-index surfaces drift back to coarse query-family ownership. |
-| `finding.004` | `medium` | `resolved` | `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_query_family_source_surface_alignment.md`; `core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json` | Acceptance-aware validation covers the final closed validation task path and all five acceptance IDs without bootstrap-only drift. |
+| `finding.004` | `medium` | `resolved` | `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_query_family_source_surface_alignment.md`; `core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.json`; `core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.json` | Acceptance-aware validation covers the final closed validation task path and all five acceptance IDs without bootstrap-only drift. |
 
 ## Assumptions and Constraints
 - The fix must preserve command IDs, help text, query payloads, and deterministic command-index

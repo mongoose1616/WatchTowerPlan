@@ -12,7 +12,7 @@ authority: "authoritative"
 applies_to:
   - "docs/planning/design/features/command_documentation_and_lookup.md"
   - "docs/commands/"
-  - "core/control_plane/indexes/commands/command_index.v1.json"
+  - "core/control_plane/indexes/commands/command_index.json"
   - "core/python/src/watchtower_core/cli/"
 aliases:
   - "command docs design"
@@ -46,21 +46,21 @@ This document defines the feature-level design for a human-readable command-page
 ## Current-State Context
 - `core/python/` now exists as the consolidated Python workspace and exposes `watchtower-core` command families for `doctor`, `query`, `sync`, `closeout`, and `validate`.
 - The repository now has a dedicated command-doc family under `docs/commands/`.
-- The repository now publishes a governed command-specific machine-readable index at `core/control_plane/indexes/commands/command_index.v1.json`.
+- The repository now publishes a governed command-specific machine-readable index at `core/control_plane/indexes/commands/command_index.json`.
 - Current command discovery can start from `docs/commands/`, the command index, or the repository path index rather than reading package code directly.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep discovery local, explicit, and inspectable rather than relying on hidden heuristics.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core command surfaces operational and support-oriented rather than product-marketing surfaces.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): use Markdown for human guidance and JSON for machine-readable lookup surfaces.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical purpose per artifact and avoid parallel truth between docs and machine-readable indexes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep discovery local, explicit, and inspectable rather than relying on hidden heuristics.
+- [product_direction.md](/docs/foundations/product_direction.md): keep core command surfaces operational and support-oriented rather than product-marketing surfaces.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): use Markdown for human guidance and JSON for machine-readable lookup surfaces.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one canonical purpose per artifact and avoid parallel truth between docs and machine-readable indexes.
 
 ## Internal Standards and Canonical References Applied
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages need a stable human-readable synopsis, options, examples, and behavior shape.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command lookup needs a governed machine index with stable command identities and doc links.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): command examples and workspace assumptions should stay anchored to `core/python/`.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): command-doc and command-index surfaces need to remain discoverable through the repository path index.
-- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md): each command page should share the same predictable authoring shape.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages need a stable human-readable synopsis, options, examples, and behavior shape.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): command lookup needs a governed machine index with stable command identities and doc links.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): command examples and workspace assumptions should stay anchored to `core/python/`.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): command-doc and command-index surfaces need to remain discoverable through the repository path index.
+- [command_reference_template.md](/docs/templates/command_reference_template.md): each command page should share the same predictable authoring shape.
 
 ## Design Goals and Constraints
 - Give humans one obvious place to find command docs.
@@ -122,8 +122,8 @@ This document defines the feature-level design for a human-readable command-page
 - `docs/standards/documentation/command_md_standard.md`
 - `docs/standards/data_contracts/command_index_standard.md`
 - `docs/templates/command_reference_template.md`
-- `core/control_plane/schemas/artifacts/command_index.v1.schema.json`
-- `core/control_plane/indexes/commands/command_index.v1.json`
+- `core/control_plane/schemas/artifacts/command_index.schema.json`
+- `core/control_plane/indexes/commands/command_index.json`
 
 ## Design Guardrails
 - Keep one command or subcommand per command page.
@@ -149,10 +149,10 @@ This document defines the feature-level design for a human-readable command-page
 - When the CLI grows options and additional subcommands, should the command index grow lightweight option summaries, or should it remain command-level only?
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
+- [core_python_workspace_and_harness.md](/docs/planning/design/features/core_python_workspace_and_harness.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md)
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md)
 
 ## Updated At
 - `2026-03-10T05:14:33Z`

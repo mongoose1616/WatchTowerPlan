@@ -44,9 +44,9 @@ Repair the invalid valid examples, include the governed valid example corpus in 
 - Documentation front-matter examples do not carry `$schema`, so valid-example coverage needs an explicit deterministic schema-resolution rule.
 
 ## Applied References and Implications
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): broad repository validation should cover the governed artifact surfaces relied on during closeout.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples are part of the schema contract and must remain aligned.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): fix the reproduced drift at the narrowest coherent boundary and keep the system fail closed.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): broad repository validation should cover the governed artifact surfaces relied on during closeout.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples are part of the schema contract and must remain aligned.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): fix the reproduced drift at the narrowest coherent boundary and keep the system fail closed.
 
 ## Affected Surfaces
 - retired valid example index fixture 

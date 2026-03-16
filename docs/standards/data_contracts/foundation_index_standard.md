@@ -33,12 +33,12 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Auditing where foundation documents are currently cited or applied across standards, workflows, and planning surfaces.
 
 ## Related Standards and Sources
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): foundation docs must publish stable metadata, references, and timestamps so the index can derive from them cleanly.
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): reverse-citation behavior should stay aligned with the broader reference-audit model.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): the foundation index complements path lookup with intent-specific retrieval and audit signals.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): foundation index timestamps must use UTC RFC 3339 values.
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md): family entrypoint and inventory surface for the governed foundation documents this index summarizes.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md): family entrypoint and inventory surface for the published foundation-index artifacts.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): foundation docs must publish stable metadata, references, and timestamps so the index can derive from them cleanly.
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): reverse-citation behavior should stay aligned with the broader reference-audit model.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): the foundation index complements path lookup with intent-specific retrieval and audit signals.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): foundation index timestamps must use UTC RFC 3339 values.
+- [README.md](/docs/foundations/README.md): family entrypoint and inventory surface for the governed foundation documents this index summarizes.
+- [README.md](/core/control_plane/indexes/foundations/README.md): family entrypoint and inventory surface for the published foundation-index artifacts.
 
 ## Guidance
 - Model foundation lookup as an index, not as a registry.
@@ -106,11 +106,11 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Update the companion artifact schema, live foundation index, family README, command docs, and query or sync surfaces in the same change set when the foundation-index family changes structurally.
 
 ## References
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md)
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
+- [README.md](/docs/foundations/README.md)
+- [README.md](/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At
 - `2026-03-12T23:12:00Z`

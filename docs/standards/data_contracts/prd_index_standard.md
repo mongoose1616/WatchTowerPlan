@@ -34,16 +34,16 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - Building lookup or traceability tooling that needs a compact machine-readable view over the PRD corpus.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this PRD-family standard narrows.
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md): companion planning or design surface this standard should remain consistent with.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this PRD-family standard narrows.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_tracking.md](/docs/planning/prds/prd_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/core/control_plane/indexes/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Every PRD index entry must point to an existing PRD under `docs/planning/prds/`.
 - Carry a shared `trace_id` in every entry so PRDs can join to decisions, designs, and plans.
 - Carry stable `prd_id` values in every entry.
@@ -101,9 +101,9 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - Update the human-readable PRD tracker in the same change set when indexed PRDs change materially.
 
 ## References
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [prd_tracking.md](/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

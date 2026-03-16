@@ -54,7 +54,7 @@ def test_design_document_index_sync_builds_schema_valid_document() -> None:
 def test_design_document_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = DesignDocumentIndexSyncService(loader)
-    output_path = tmp_path / "design_document_index.v1.json"
+    output_path = tmp_path / "design_document_index.json"
 
     document = service.build_document()
     written_path = service.write_document(document, output_path)
@@ -147,7 +147,7 @@ def test_design_document_index_sync_projects_feature_design_affected_surfaces(
             trace_id: trace.design_index_fixture
             id: design.features.design_index_fixture
             title: Design Index Fixture Feature Design
-            summary: Exercises feature-design affected-surface projection.
+            summary: Exercises feature-design affected-surface rendering.
             type: feature_design
             status: active
             owner: repository_maintainer
@@ -168,10 +168,10 @@ def test_design_document_index_sync_projects_feature_design_affected_surfaces(
             - `Updated At`: `2026-03-11T19:30:00Z`
 
             ## Summary
-            Exercises feature-design affected-surface projection.
+            Exercises feature-design affected-surface rendering.
 
             ## Source Request
-            - Added to reproduce missing related-path projection.
+            - Added to reproduce missing related-path rendering.
 
             ## Scope and Feature Boundary
             - Keep the fixture focused on one affected-surface path.
@@ -466,7 +466,7 @@ def test_design_document_index_sync_filters_stale_related_paths_from_existing_in
     )
 
     index_path = (
-        repo_root / "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+        repo_root / "core/control_plane/indexes/design_documents/design_document_index.json"
     )
     document = json.loads(index_path.read_text(encoding="utf-8"))
     document["entries"].append(

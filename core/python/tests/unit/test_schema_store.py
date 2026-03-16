@@ -33,10 +33,10 @@ def test_schema_store_resolves_cataloged_schema_paths() -> None:
     )
 
     assert record.canonical_relative_path == (
-        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json"
+        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json"
     )
     assert pack_record.canonical_relative_path == (
-        "core/control_plane/schemas/interfaces/packs/pack_work_item_note.v1.schema.json"
+        "core/control_plane/schemas/interfaces/packs/pack_work_item_note.schema.json"
     )
     assert store.resolve_path(record.schema_id) == REPO_ROOT / record.canonical_relative_path
 
@@ -364,7 +364,7 @@ def test_schema_store_rejects_duplicate_supplemental_schema_ids() -> None:
 
 
 def test_schema_store_accepts_supplemental_schema_file_paths(tmp_path: Path) -> None:
-    schema_path = tmp_path / "schemas" / "external_note.v1.schema.json"
+    schema_path = tmp_path / "schemas" / "external_note.schema.json"
     schema_id = "urn:watchtower:schema:external:test-note-from-file:v1"
     write_json(
         schema_path,
@@ -394,7 +394,7 @@ def test_schema_store_accepts_supplemental_schema_directory_paths(tmp_path: Path
     root_schema_id = "urn:watchtower:schema:external:root-note:v1"
     nested_schema_id = "urn:watchtower:schema:external:nested-note:v1"
     write_json(
-        schema_dir / "root_note.v1.schema.json",
+        schema_dir / "root_note.schema.json",
         {
             "$id": root_schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -407,7 +407,7 @@ def test_schema_store_accepts_supplemental_schema_directory_paths(tmp_path: Path
         },
     )
     write_json(
-        schema_dir / "nested" / "nested_note.v1.schema.json",
+        schema_dir / "nested" / "nested_note.schema.json",
         {
             "$id": nested_schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -442,7 +442,7 @@ def test_schema_store_rejects_empty_supplemental_schema_directory(tmp_path: Path
 
 
 def test_schema_store_rejects_invalid_supplemental_schema_from_path(tmp_path: Path) -> None:
-    invalid_schema_path = tmp_path / "schemas" / "invalid.v1.schema.json"
+    invalid_schema_path = tmp_path / "schemas" / "invalid.schema.json"
     invalid_schema_path.parent.mkdir(parents=True, exist_ok=True)
     invalid_schema_path.write_text("{not valid json", encoding="utf-8")
 
@@ -465,8 +465,8 @@ def test_schema_store_rejects_duplicate_supplemental_schema_ids_from_paths(
         "description": "Duplicate supplemental schema.",
         "type": "object",
     }
-    write_json(schema_dir / "first.v1.schema.json", schema_document)
-    write_json(schema_dir / "second.v1.schema.json", schema_document)
+    write_json(schema_dir / "first.schema.json", schema_document)
+    write_json(schema_dir / "second.schema.json", schema_document)
 
     with pytest.raises(SchemaResolutionError, match="duplicates an existing schema"):
         SchemaStore.from_repo_root(

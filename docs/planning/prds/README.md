@@ -17,7 +17,7 @@
 - Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view for a PRD-backed effort.
 - Treat `prd_tracking.md` as an active-first tracker. Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browsing and `uv run watchtower-core query planning --trace-id <trace_id> --format json` when you already know the PRD trace that needs deep historical detail.
 - Use `uv run watchtower-core query prds --trace-id <trace_id>` when you need one known PRD record without reopening the full tracker.
-- PRDs in this directory should follow [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md).
-- Start new documents from [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md).
+- PRDs in this directory should follow [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md).
+- Start new documents from [prd_template.md](/docs/templates/prd_template.md).
 - Keep the machine-readable companion index aligned under `core/control_plane/indexes/prds/`.
 - Add or update a companion acceptance contract under `core/control_plane/contracts/acceptance/` when a PRD publishes durable machine-consumable acceptance criteria.

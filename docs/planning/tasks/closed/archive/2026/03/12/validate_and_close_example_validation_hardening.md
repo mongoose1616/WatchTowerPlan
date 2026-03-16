@@ -14,8 +14,8 @@ updated_at: '2026-03-12T14:47:21Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.json
+- core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.json
 - docs/planning/tasks/
 - docs/planning/coordination_tracking.md
 related_ids:

@@ -5,16 +5,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.adapters import render_rendered_surface
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.sync.initiative_index import PHASE_ORDER
-from watchtower_core.repo_ops.sync.tracking_common import (
-    latest_timestamp,
-    markdown_repo_link,
-    render_markdown_table,
-)
+from watchtower_core.repo_ops.sync.tracking_common import latest_timestamp
 
 INITIATIVE_TRACKING_DOCUMENT_PATH = "docs/planning/initiatives/initiative_tracking.md"
+INITIATIVE_TRACKING_SURFACE_ID = "rendered.initiative_tracking"
 
 
 @dataclass(frozen=True, slots=True)
@@ -40,7 +38,6 @@ class InitiativeTrackingSyncService:
 
     def build_document(self) -> InitiativeTrackingBuildResult:
         initiative_index = self._loader.load_initiative_index()
-        updated_at = latest_timestamp(tuple(entry.updated_at for entry in initiative_index.entries))
         active_entries = tuple(
             sorted(
                 (
@@ -62,75 +59,53 @@ class InitiativeTrackingSyncService:
                 reverse=True,
             )
         )
-
-        lines = ["# Initiative Tracking", "", "## Active Initiatives"]
-        if not active_entries:
-            lines.append("_No active initiatives._")
-        else:
-            active_rows: list[tuple[str, ...]] = []
-            for entry in active_entries:
-                owners = ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
-                task_summary = f"`{entry.open_task_count}`"
-                if entry.blocked_task_count:
-                    task_summary = (
-                        f"`{entry.open_task_count}` "
-                        f"(`blocked={entry.blocked_task_count}`)"
-                    )
-                active_rows.append(
-                    (
-                        f"`{entry.trace_id}`",
-                        f"`{entry.current_phase}`",
-                        owners,
-                        task_summary,
-                        markdown_repo_link(
-                            self._repo_root,
-                            entry.key_surface_path,
-                            label=Path(entry.key_surface_path).name,
+        surface = self._loader.load_rendered_surface_registry().get(
+            INITIATIVE_TRACKING_SURFACE_ID
+        )
+        content = render_rendered_surface(
+            surface,
+            {
+                "active_initiatives": tuple(
+                    {
+                        "trace_id": entry.trace_id,
+                        "current_phase": entry.current_phase,
+                        "owners": (
+                            ", ".join(entry.active_owners)
+                            if entry.active_owners
+                            else "unassigned"
                         ),
-                        markdown_repo_link(
-                            self._repo_root,
-                            entry.next_surface_path,
-                            label=Path(entry.next_surface_path).name,
+                        "open_tasks": (
+                            f"`{entry.open_task_count}` "
+                            f"(`blocked={entry.blocked_task_count}`)"
+                            if entry.blocked_task_count
+                            else f"`{entry.open_task_count}`"
                         ),
-                        entry.next_action,
-                    )
-                )
-            lines.extend(
-                render_markdown_table(
-                    ("Trace ID", "Phase", "Owners", "Open Tasks", "Key", "Next", "Action"),
-                    tuple(active_rows),
-                )
-            )
-
-        lines.extend(["", "## Closed Initiatives"])
-        if not closed_entries:
-            lines.append("_No closed initiatives._")
-        else:
-            closed_rows: list[tuple[str, ...]] = []
-            for entry in closed_entries:
-                closure_reason = entry.closure_reason or "-"
-                closed_rows.append(
-                    (
-                        f"`{entry.trace_id}`",
-                        f"`{entry.initiative_status}`",
-                        markdown_repo_link(
-                            self._repo_root,
-                            entry.key_surface_path,
-                            label=Path(entry.key_surface_path).name,
-                        ),
-                        f"`{entry.closed_at}`" if entry.closed_at is not None else "-",
-                        closure_reason,
-                    )
-                )
-            lines.extend(
-                render_markdown_table(
-                    ("Trace ID", "Status", "Key", "Closed At", "Reason"),
-                    tuple(closed_rows),
-                )
-            )
-        lines.extend(["", f"_Updated At: `{updated_at}`_", ""])
+                        "key_surface_path": entry.key_surface_path,
+                        "key_label": Path(entry.key_surface_path).name,
+                        "next_surface_path": entry.next_surface_path,
+                        "next_label": Path(entry.next_surface_path).name,
+                        "next_action": entry.next_action,
+                    }
+                    for entry in active_entries
+                ),
+                "closed_initiatives": tuple(
+                    {
+                        "trace_id": entry.trace_id,
+                        "initiative_status": entry.initiative_status,
+                        "key_surface_path": entry.key_surface_path,
+                        "key_label": Path(entry.key_surface_path).name,
+                        "closed_at": entry.closed_at,
+                        "closure_reason": entry.closure_reason or "-",
+                    }
+                    for entry in closed_entries
+                ),
+                "updated_at": latest_timestamp(
+                    tuple(entry.updated_at for entry in initiative_index.entries)
+                ),
+            },
+        )
         return InitiativeTrackingBuildResult(
-            content="\n".join(lines),
+            content=content,
             initiative_count=len(initiative_index.entries),
             active_count=len(active_entries),
             closed_count=len(closed_entries),

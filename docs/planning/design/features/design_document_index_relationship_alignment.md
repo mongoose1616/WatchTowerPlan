@@ -16,7 +16,7 @@ applies_to:
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/indexes/design_documents/design_document_index.v1.json
+- core/control_plane/indexes/design_documents/design_document_index.json
 - core/python/src/watchtower_core/repo_ops/sync/design_document_index.py
 - core/python/src/watchtower_core/repo_ops/sync/design_tracking.py
 - core/python/tests/
@@ -56,15 +56,15 @@ Defines the technical design boundary for Design Document Index Relationship Ali
 - `DesignTrackingSyncService` labels implementation-plan sources as `Source Designs`, which reinforces the narrower implementation model even when the governing standards describe broader source lineage.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared parsing and relationship-derivation helpers should be explicit and composable so trackers and indexes do not encode different semantics.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): fail-closed repository governance requires derived planning surfaces to reflect the standards-valid authored relationship model.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared parsing and relationship-derivation helpers should be explicit and composable so trackers and indexes do not encode different semantics.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): fail-closed repository governance requires derived planning surfaces to reflect the standards-valid authored relationship model.
 
 ## Internal Standards and Canonical References Applied
-- [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md): the machine-readable design-document index must capture `related_paths` and `source_paths` consistently with the governed design corpus.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature designs must publish `Affected Surfaces`, so the index should not drop that required relationship data.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be driven by a feature design, PRD, or user request, so source-lineage derivation must support the traceable repo-local sources that contract already allows.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): relationship fields should carry normalized repository-relative paths rather than raw authored fragments.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): planning docs, task state, acceptance artifacts, and derived indexes must move in one traced change set.
+- [design_document_index_standard.md](/docs/standards/data_contracts/design_document_index_standard.md): the machine-readable design-document index must capture `related_paths` and `source_paths` consistently with the governed design corpus.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): feature designs must publish `Affected Surfaces`, so the index should not drop that required relationship data.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be driven by a feature design, PRD, or user request, so source-lineage derivation must support the traceable repo-local sources that contract already allows.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): relationship fields should carry normalized repository-relative paths rather than raw authored fragments.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): planning docs, task state, acceptance artifacts, and derived indexes must move in one traced change set.
 
 ## Design Goals and Constraints
 - Project feature-design `Affected Surfaces` into machine-readable `related_paths` without dropping existing linked-plan or front-matter path relationships.
@@ -121,7 +121,7 @@ Defines the technical design boundary for Design Document Index Relationship Ali
 - `docs/standards/documentation/feature_design_md_standard.md`
 - `docs/standards/documentation/implementation_plan_md_standard.md`
 - `docs/templates/implementation_plan_template.md`
-- `retired valid example index fixture design_document_index.v1.example.json`
+- `retired valid example index fixture design_document_index.example.json`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_tracking.py`
 - `core/python/tests/`
@@ -141,4 +141,4 @@ Defines the technical design boundary for Design Document Index Relationship Ali
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- retired valid example index fixture design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.example.json

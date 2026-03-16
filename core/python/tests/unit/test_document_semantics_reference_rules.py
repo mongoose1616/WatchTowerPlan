@@ -5,6 +5,7 @@ from textwrap import dedent
 
 from tests.unit.document_semantics_fixtures import (
     copy_control_plane_repo,
+    repo_markdown_link,
     write_reference_fixture,
     write_repo_file,
 )
@@ -72,7 +73,7 @@ def test_document_semantics_validation_rejects_reference_without_repository_stat
             - Keep the fixture tied to one local repository surface.
 
             ## References
-            - [support_target.md]({support_target})
+            - [support_target.md]({repo_markdown_link(support_target)})
 
             ## Updated At
             - `2026-03-11T17:35:00Z`

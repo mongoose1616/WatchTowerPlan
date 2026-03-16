@@ -16,9 +16,9 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md
 - docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md
 - docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json
 - core/python/src/watchtower_core/closeout/initiative.py
 - core/python/src/watchtower_core/cli/closeout_handlers.py
 - core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py
@@ -55,14 +55,14 @@ Route the remaining PRD, decision, and design tracking refresh step in Initiativ
 ## Outcome
 - `InitiativeCloseoutService.close` now writes traceability first, reuses `CoordinationSyncService.run_closeout_shared_outputs` for exactly `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking`, and then routes the remaining `prd-tracking`, `decision-tracking`, and `design-tracking` refresh step through one private closeout-local boundary instead of three direct inline calls.
 - `traceability_output_path` remains the pre-seam canonical write, the approved shared closeout seam remains unchanged, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain explicit result fields and CLI payload fields outside that seam.
-- `core/python/tests/unit/test_initiative_closeout.py` still pins the exact shared coordination target subset plus the preserved explicit tracker outputs, and the slice closed through [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md), which then recorded the explicit structural-rewrite program closeout decision instead of broader Phase 4 rollout.
+- `core/python/tests/unit/test_initiative_closeout.py` still pins the exact shared coordination target subset plus the preserved explicit tracker outputs, and the slice closed through [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md), which then recorded the explicit structural-rewrite program closeout decision instead of broader Phase 4 rollout.
 
 ## Links
-- [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
-- [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
-- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
-- [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
-- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
+- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- [structural_rewrite_phase4_closeout_tracking_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 
 ## Updated At
 - `2026-03-15T09:55:03Z`

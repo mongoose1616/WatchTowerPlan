@@ -41,5 +41,5 @@ Build the planning-catalog artifact family and make it the canonical machine pla
 - Companion schemas, registries, command docs, and tests are aligned and green.
 
 ## Links
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/prds/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/design/features/planning_authority_unification.md)

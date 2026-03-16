@@ -269,7 +269,7 @@ def test_sync_traceability_index_supports_json_output(capsys) -> None:
 
 
 def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "repository_path_index.v1.json"
+    output_path = tmp_path / "repository_path_index.json"
 
     result = main(
         ["sync", "repository-paths", "--output", str(output_path), "--format", "json"]
@@ -285,7 +285,7 @@ def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, caps
 
 
 def test_sync_command_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "command_index.v1.json"
+    output_path = tmp_path / "command_index.json"
 
     result = main(["sync", "command-index", "--output", str(output_path), "--format", "json"])
 
@@ -310,7 +310,7 @@ def test_sync_all_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> No
     assert payload["wrote"] is True
     assert payload["output_dir"] == str(output_dir.resolve())
     assert (
-        output_dir / "core/control_plane/indexes/commands/command_index.v1.json"
+        output_dir / "core/control_plane/indexes/commands/command_index.json"
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
 
@@ -328,12 +328,12 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["wrote"] is True
     assert payload["output_dir"] == str(output_dir.resolve())
-    assert (output_dir / "core/control_plane/indexes/tasks/task_index.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/tasks/task_index.json").exists()
     assert (
-        output_dir / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
     ).exists()
     assert (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
@@ -341,7 +341,7 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
 
 
 def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "standard_index.v1.json"
+    output_path = tmp_path / "standard_index.json"
 
     result = main(["sync", "standard-index", "--output", str(output_path), "--format", "json"])
 
@@ -355,7 +355,7 @@ def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys
 
 
 def test_sync_workflow_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "workflow_index.v1.json"
+    output_path = tmp_path / "workflow_index.json"
 
     result = main(["sync", "workflow-index", "--output", str(output_path), "--format", "json"])
 
@@ -369,7 +369,7 @@ def test_sync_workflow_index_can_write_to_explicit_output(tmp_path: Path, capsys
 
 
 def test_sync_foundation_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "foundation_index.v1.json"
+    output_path = tmp_path / "foundation_index.json"
 
     result = main(
         ["sync", "foundation-index", "--output", str(output_path), "--format", "json"]
@@ -385,7 +385,7 @@ def test_sync_foundation_index_can_write_to_explicit_output(tmp_path: Path, caps
 
 
 def test_sync_prd_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "prd_index.v1.json"
+    output_path = tmp_path / "prd_index.json"
 
     result = main(["sync", "prd-index", "--output", str(output_path), "--format", "json"])
 
@@ -399,7 +399,7 @@ def test_sync_prd_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> 
 
 
 def test_sync_decision_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "decision_index.v1.json"
+    output_path = tmp_path / "decision_index.json"
 
     result = main(["sync", "decision-index", "--output", str(output_path), "--format", "json"])
 
@@ -415,7 +415,7 @@ def test_sync_decision_index_can_write_to_explicit_output(tmp_path: Path, capsys
 def test_sync_design_document_index_can_write_to_explicit_output(
     tmp_path: Path, capsys
 ) -> None:
-    output_path = tmp_path / "design_document_index.v1.json"
+    output_path = tmp_path / "design_document_index.json"
 
     result = main(
         ["sync", "design-document-index", "--output", str(output_path), "--format", "json"]
@@ -431,7 +431,7 @@ def test_sync_design_document_index_can_write_to_explicit_output(
 
 
 def test_sync_initiative_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "initiative_index.v1.json"
+    output_path = tmp_path / "initiative_index.json"
 
     result = main(
         ["sync", "initiative-index", "--output", str(output_path), "--format", "json"]
@@ -465,7 +465,7 @@ def test_sync_initiative_tracking_can_write_to_explicit_output(
 
 
 def test_sync_task_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "task_index.v1.json"
+    output_path = tmp_path / "task_index.json"
 
     result = main(["sync", "task-index", "--output", str(output_path), "--format", "json"])
 
@@ -495,7 +495,7 @@ def test_sync_task_tracking_can_write_to_explicit_output(tmp_path: Path, capsys)
 def test_sync_traceability_index_can_write_to_explicit_output(
     tmp_path: Path, capsys
 ) -> None:
-    output_path = tmp_path / "traceability_index.v1.json"
+    output_path = tmp_path / "traceability_index.json"
 
     result = main(
         ["sync", "traceability-index", "--output", str(output_path), "--format", "json"]

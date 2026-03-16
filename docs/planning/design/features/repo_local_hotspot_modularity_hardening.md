@@ -44,15 +44,15 @@ Defines the technical design boundary for reducing the remaining report-validate
 - `traceability.py`, `github_tasks.py`, and `integrations/github/client.py` remain functional and tested, but they still combine several responsibilities in one file and keep the report's centralization concern alive.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the refactor should create explicit, bounded seams instead of replacing the repo's current service boundaries.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): report follow-up should close the still-live issue fail closed with validation and tracker alignment rather than treating it as advisory cleanup.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): internal modularity hardening should improve implementation readiness without expanding scope into new product-facing architecture.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the refactor should create explicit, bounded seams instead of replacing the repo's current service boundaries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): report follow-up should close the still-live issue fail closed with validation and tracker alignment rather than treating it as advisory cleanup.
+- [product_direction.md](/docs/foundations/product_direction.md): internal modularity hardening should improve implementation readiness without expanding scope into new product-facing architecture.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): helper extraction should reduce file-local responsibility concentration while preserving stable behavior.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): code-adjacent README updates need to stay semantically aligned with the refactored command and package structure.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the report finding should move through the bounded initiative lifecycle with explicit validation and closeout evidence.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the new planning chain, acceptance contract, tasks, and evidence must remain joined through the trace.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): helper extraction should reduce file-local responsibility concentration while preserving stable behavior.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): code-adjacent README updates need to stay semantically aligned with the refactored command and package structure.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the report finding should move through the bounded initiative lifecycle with explicit validation and closeout evidence.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the new planning chain, acceptance contract, tasks, and evidence must remain joined through the trace.
 
 ## Design Goals and Constraints
 - Reduce maintenance risk by moving repeated or separable logic into explicit helper modules grouped by concern.
@@ -116,5 +116,5 @@ Defines the technical design boundary for reducing the remaining report-validate
 - March 2026 review overview and method summary for the remaining modularity hotspots.
 - March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
 - March 2026 remediation-program summary for the final bounded modularity follow-up.
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)

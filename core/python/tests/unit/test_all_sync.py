@@ -119,7 +119,7 @@ def test_coordination_sync_runs_in_dry_run_mode() -> None:
     )
 
 
-def test_coordination_sync_reuses_stable_projection_sources(
+def test_coordination_sync_reuses_stable_rendered_sources(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
@@ -219,9 +219,9 @@ def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
     result = service.run(output_dir=output_dir)
 
     assert result.wrote is True
-    assert (output_dir / "core/control_plane/indexes/commands/command_index.v1.json").exists()
-    assert (output_dir / "core/control_plane/indexes/foundations/foundation_index.v1.json").exists()
-    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/commands/command_index.json").exists()
+    assert (output_dir / "core/control_plane/indexes/foundations/foundation_index.json").exists()
+    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.json").exists()
     assert (output_dir / "docs/planning/prds/prd_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
 
@@ -234,14 +234,14 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
     result = service.run(output_dir=output_dir)
 
     assert result.wrote is True
-    assert (output_dir / "core/control_plane/indexes/tasks/task_index.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/tasks/task_index.json").exists()
     assert (
-        output_dir / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
     ).exists()
-    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.v1.json").exists()
-    assert (output_dir / "core/control_plane/indexes/planning/planning_catalog.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.json").exists()
+    assert (output_dir / "core/control_plane/indexes/planning/planning_catalog.json").exists()
     assert (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
@@ -251,7 +251,7 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
 def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_path: Path) -> None:
     repo_root = _build_coordination_fixture_repo(tmp_path)
     initiative_index_path = (
-        repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+        repo_root / "core/control_plane/indexes/initiatives/initiative_index.json"
     )
     initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
     for entry in initiative_index["entries"]:
@@ -272,7 +272,7 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
     tracker_path = output_dir / "docs/planning/initiatives/initiative_tracking.md"
     tracker_text = tracker_path.read_text(encoding="utf-8")
     coordination_index_path = (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
     )
     coordination_text = coordination_index_path.read_text(encoding="utf-8")
     coordination_tracking_path = output_dir / "docs/planning/coordination_tracking.md"
@@ -283,7 +283,7 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
     assert "STALE SNAPSHOT MARKER" not in coordination_text
     assert "STALE SNAPSHOT MARKER" not in coordination_tracking_text
     planning_catalog_path = (
-        output_dir / "core/control_plane/indexes/planning/planning_catalog.v1.json"
+        output_dir / "core/control_plane/indexes/planning/planning_catalog.json"
     )
     planning_catalog_text = planning_catalog_path.read_text(encoding="utf-8")
     assert "STALE SNAPSHOT MARKER" not in planning_catalog_text
@@ -309,7 +309,7 @@ def test_all_sync_rejects_document_targets_without_entries_list() -> None:
             loader=loader,
             target="broken-index",
             artifact_kind="index",
-            relative_output_path="core/control_plane/indexes/broken/broken_index.v1.json",
+            relative_output_path="core/control_plane/indexes/broken/broken_index.json",
             service=BrokenDocumentService(),
             write=False,
             output_dir=None,
@@ -330,7 +330,7 @@ def test_all_sync_rejects_unvalidated_document_overrides() -> None:
 
     loader = ControlPlaneLoader(REPO_ROOT)
     service = AllSyncService(loader)
-    broken_output_path = "core/control_plane/indexes/broken/broken_index.v1.json"
+    broken_output_path = "core/control_plane/indexes/broken/broken_index.json"
 
     with pytest.raises(
         SchemaResolutionError,

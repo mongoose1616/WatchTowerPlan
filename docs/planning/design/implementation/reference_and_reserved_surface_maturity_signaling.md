@@ -41,9 +41,9 @@ applies_to:
 Breaks Reference and Reserved Surface Maturity Signaling into a bounded implementation slice.
 
 ## Source Request or Design
-- Feature design: [reference_and_reserved_surface_maturity_signaling.md](/home/j/WatchTowerPlan/docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md)
-- PRD: [reference_and_reserved_surface_maturity_signaling.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md)
-- Decision: [reference_and_reserved_surface_maturity_signaling_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md)
+- Feature design: [reference_and_reserved_surface_maturity_signaling.md](/docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md)
+- PRD: [reference_and_reserved_surface_maturity_signaling.md](/docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md)
+- Decision: [reference_and_reserved_surface_maturity_signaling_direction.md](/docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md)
 
 ## Scope Summary
 - Land the refactor slice that hardens reference maturity signaling and README-only reserved-family signaling across docs, machine-readable artifacts, query behavior, validation surfaces, and closeout tracking.
@@ -58,10 +58,10 @@ Breaks Reference and Reserved Surface Maturity Signaling into a bounded implemen
 - The broader refactor audit remains comparative input, but the trace itself should record only the local findings, tasks, evidence, and confirmation passes needed for this bounded slice.
 
 ## Internal Standards and Canonical References Applied
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): the authored reference corpus must publish clear local-mapping and lookup semantics.
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): the machine-readable reference lookup surface must reflect real touchpoints and source authority without overclaiming live support.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): README-only reserved families must be called out explicitly during maintenance and review.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): leaf command docs and CLI help must remain aligned with the implemented query semantics.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): the authored reference corpus must publish clear local-mapping and lookup semantics.
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): the machine-readable reference lookup surface must reflect real touchpoints and source authority without overclaiming live support.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): README-only reserved families must be called out explicitly during maintenance and review.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): leaf command docs and CLI help must remain aligned with the implemented query semantics.
 
 ## Proposed Technical Approach
 - Tighten the reference-doc contract and semantic validator around an approved `Current Repository Status` vocabulary, then derive a new `repository_status` field into the reference index from that section instead of from new front matter.
@@ -74,10 +74,10 @@ Breaks Reference and Reserved Surface Maturity Signaling into a bounded implemen
 | Coverage Area | Surfaces | Review Focus |
 |---|---|---|
 | Reference corpus and guidance | `docs/references/README.md`; reference docs under `docs/references/*_reference.md`; `docs/templates/reference_template.md`; `docs/standards/documentation/reference_md_standard.md`; `docs/standards/data_contracts/reference_index_standard.md` | Approved maturity vocabulary, touchpoint semantics, current-vs-future guidance, and authoring contract alignment |
-| Reference index family | `core/control_plane/indexes/references/reference_index.v1.json`; `core/control_plane/schemas/artifacts/reference_index.v1.schema.json`; `retired valid example index fixture reference_index.v1.example.json`; `retired invalid example index fixture reference_index_missing_upstream.v1.example.json`; `core/python/src/watchtower_core/control_plane/models/planning.py`; `core/python/src/watchtower_core/repo_ops/sync/reference_index.py` | Machine-readable maturity field, touchpoint accounting, schema/example alignment, and typed loader behavior |
+| Reference index family | `core/control_plane/indexes/references/reference_index.json`; `core/control_plane/schemas/artifacts/reference_index.schema.json`; `retired valid example index fixture reference_index.example.json`; `retired invalid example index fixture reference_index_missing_upstream.example.json`; `core/python/src/watchtower_core/control_plane/models/planning.py`; `core/python/src/watchtower_core/repo_ops/sync/reference_index.py` | Machine-readable maturity field, touchpoint accounting, schema/example alignment, and typed loader behavior |
 | Query and command surfaces | `core/python/src/watchtower_core/repo_ops/query/references.py`; `core/python/src/watchtower_core/cli/query_knowledge_family.py`; `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`; `docs/commands/core_python/watchtower_core_query_references.md`; `docs/commands/core_python/watchtower_core_query.md`; `core/python/README.md` | Status-aware lookup, directory related-path behavior, human/json output, and command-doc or help alignment |
 | Validation and tests | `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/tests/unit/test_reference_index_sync.py`; `core/python/tests/unit/test_cli_query_commands.py`; `core/python/tests/unit/test_document_semantics_validation.py`; full repo validation surfaces | Fail-closed status semantics, regression coverage, and full-repo guardrails |
-| Reserved-family signaling | `core/control_plane/indexes/README.md`; `core/control_plane/indexes/registries/README.md`; `core/control_plane/indexes/schemas/README.md`; `docs/standards/operations/repository_maintenance_loop_standard.md`; `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` | Explicit reserved-state language and adjacent start-here consistency |
+| Reserved-family signaling | `core/control_plane/indexes/README.md`; `core/control_plane/indexes/registries/README.md`; `core/control_plane/indexes/schemas/README.md`; `docs/standards/operations/repository_maintenance_loop_standard.md`; `core/control_plane/indexes/repository_paths/repository_path_index.json` | Explicit reserved-state language and adjacent start-here consistency |
 
 ## Findings Ledger
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |

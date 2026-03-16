@@ -78,14 +78,14 @@ Those modules still carry too much registration, builder, and orchestration resp
 - Whether `query_coordination_handlers.py` should be pulled into a later follow-up if coordination-query growth continues after this remaining report-set hotspot pass closes.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): simplify hidden machinery without changing durable behavior or flattening the architecture.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep planning docs, trackers, tests, and machine-readable surfaces aligned as the refactor lands.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep the work inside the shared repository-maintenance substrate rather than expanding into future pack behavior.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): simplify hidden machinery without changing durable behavior or flattening the architecture.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep planning docs, trackers, tests, and machine-readable surfaces aligned as the refactor lands.
+- [product_direction.md](/docs/foundations/product_direction.md): keep the work inside the shared repository-maintenance substrate rather than expanding into future pack behavior.
 
 ## References
 - March 2026 review overview and method summary for the remaining modularity hotspots.
 - March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
 - March 2026 remediation-program summary for the final bounded modularity follow-up.
-- [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
-- [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md)
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
+- [core_export_hardening_followup.md](/docs/planning/prds/core_export_hardening_followup.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)

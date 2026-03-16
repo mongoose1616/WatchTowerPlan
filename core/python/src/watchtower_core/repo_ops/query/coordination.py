@@ -7,9 +7,9 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
 from watchtower_core.repo_ops.query.common import (
-    ProjectionSearchFilters,
-    initiative_projection_query_terms,
-    search_projection_entries,
+    RenderedSearchFilters,
+    initiative_rendered_query_terms,
+    search_rendered_entries,
 )
 from watchtower_core.repo_ops.query.initiatives import (
     InitiativeQueryService,
@@ -43,9 +43,9 @@ class CoordinationQueryService:
                 entries=self._initiative_service.search(params),
             )
         entry_rank = {entry.trace_id: idx for idx, entry in enumerate(index.entries)}
-        entries = search_projection_entries(
+        entries = search_rendered_entries(
             index.entries,
-            ProjectionSearchFilters(
+            RenderedSearchFilters(
                 query=params.query,
                 trace_id=params.trace_id,
                 initiative_status=params.initiative_status,
@@ -54,7 +54,7 @@ class CoordinationQueryService:
                 blocked_only=params.blocked_only,
                 limit=params.limit,
             ),
-            query_fields=initiative_projection_query_terms,
+            query_fields=initiative_rendered_query_terms,
             sort_key=lambda entry: (entry_rank.get(entry.trace_id, 9999), entry.trace_id),
             trace_id=lambda entry: entry.trace_id,
             initiative_status=lambda entry: entry.initiative_status,

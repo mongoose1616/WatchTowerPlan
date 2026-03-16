@@ -28,7 +28,7 @@ authority: authoritative
 Align data-contract standards with their concrete valid and invalid example artifacts so standards lookup resolves example files back to the governing contract family, then harden the repo with regression coverage and full closeout validation.
 
 ## Problem Statement
-Concrete control-plane example artifacts currently fail to resolve back to their governing data-contract standards through `watchtower-core query standards --operationalization-path ...`. Representative queries for `retired valid example index fixture standard_index.v1.example.json`, `command_index.v1.example.json`, `initiative_index.v1.example.json`, and `traceability_index.v1.example.json` return generic schema and format standards but omit the family-specific standards that actually govern those artifact shapes. The gap exists because many data-contract standards require same-change example maintenance in their change-control sections but do not operationalize their family-specific example surfaces, so the live standard index cannot publish that coverage.
+Concrete control-plane example artifacts currently fail to resolve back to their governing data-contract standards through `watchtower-core query standards --operationalization-path ...`. Representative queries for `retired valid example index fixture standard_index.example.json`, `command_index.example.json`, `initiative_index.example.json`, and `traceability_index.example.json` return generic schema and format standards but omit the family-specific standards that actually govern those artifact shapes. The gap exists because many data-contract standards require same-change example maintenance in their change-control sections but do not operationalize their family-specific example surfaces, so the live standard index cannot publish that coverage.
 
 ## Goals
 - Make concrete valid and invalid example artifacts resolve back to their governing data-contract standards through standards lookup.
@@ -61,5 +61,5 @@ Concrete control-plane example artifacts currently fail to resolve back to their
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/data_contracts/schema_standard.md
 - docs/standards/engineering/engineering_best_practices_standard.md
-- retired valid example index fixture standard_index.v1.example.json
-- retired valid example index fixture command_index.v1.example.json
+- retired valid example index fixture standard_index.example.json
+- retired valid example index fixture command_index.example.json

@@ -15,10 +15,10 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md
 - docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json
-- core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.json
+- core/python/src/watchtower_core/repo_ops/planning_rendered_snapshot.py
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/closeout/initiative.py
@@ -53,16 +53,16 @@ Introduce one private trace-scoped planning projection snapshot behind initiativ
 - The slice stops with an explicit Phase 4 outcome-review task rather than broader Phase 4 rollout.
 
 ## Outcome
-- The slice adds `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py` as the single private trace-scoped planning projection helper and moves the shared coordination derivation behind that runtime-only seam.
+- The slice adds `core/python/src/watchtower_core/repo_ops/planning_rendered_snapshot.py` as the single private trace-scoped planning projection helper and moves the shared coordination derivation behind that runtime-only seam.
 - `InitiativeIndexSyncService` and `PlanningCatalogSyncService` now consume the same trace-scoped snapshot and coordination projection while preserving the current initiative-index and planning-catalog public payload contracts.
 - Direct parity coverage now asserts that the planning-catalog coordination section matches the initiative projection, the bounded sync and closeout suite passed, and the slice stops at an explicit Phase 4 outcome-review task instead of broader rollout.
 
 ## Links
-- [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
-- [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
-- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
-- [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
+- [structural_rewrite_phase4_shared_projection_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
+- [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [structural_rewrite_phase4_closeout_coordination_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 
 ## Updated At
 - `2026-03-14T18:27:09Z`

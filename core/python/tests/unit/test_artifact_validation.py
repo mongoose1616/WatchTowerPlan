@@ -20,7 +20,7 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(
-        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
 
     assert result.passed is True
@@ -32,7 +32,7 @@ def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
     tmp_path: Path,
 ) -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
-    artifact_path = tmp_path / "pack_work_item_note.v1.json"
+    artifact_path = tmp_path / "pack_work_item_note.json"
     write_json(
         artifact_path,
         {
@@ -90,7 +90,7 @@ def test_artifact_validation_reports_invalid_json(tmp_path: Path) -> None:
 
 def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: Path) -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
-    artifact_path = tmp_path / "pack_work_item_note_invalid.v1.json"
+    artifact_path = tmp_path / "pack_work_item_note_invalid.json"
     write_json(
         artifact_path,
         {
@@ -120,8 +120,8 @@ def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: P
 def test_artifact_validation_supports_external_schema_id_with_supplemental_schema_path(
     tmp_path: Path,
 ) -> None:
-    schema_path = tmp_path / "schemas" / "external_note.v1.schema.json"
-    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    schema_path = tmp_path / "schemas" / "external_note.schema.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.json"
     schema_id = "urn:watchtower:schema:external:artifact-validation-note:v1"
     write_json(
         schema_path,
@@ -161,10 +161,10 @@ def test_artifact_validation_supports_external_document_schema_with_supplemental
     tmp_path: Path,
 ) -> None:
     schema_dir = tmp_path / "schemas"
-    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.json"
     schema_id = "urn:watchtower:schema:external:artifact-validation-note-auto:v1"
     write_json(
-        schema_dir / "external_note_auto.v1.schema.json",
+        schema_dir / "external_note_auto.schema.json",
         {
             "$id": schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -204,7 +204,7 @@ def test_artifact_validation_supports_external_document_schema_with_supplemental
 def test_artifact_validation_rejects_external_file_without_validator_or_schema(
     tmp_path: Path,
 ) -> None:
-    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.json"
     write_json(
         artifact_path,
         {

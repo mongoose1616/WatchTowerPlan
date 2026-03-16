@@ -23,7 +23,7 @@ aliases:
 
 # Customer Story
 
-This document is supporting future-state product narrative. It is useful when shaping future WatchTower experience, but it is not the authority for current repository ownership. For that, use [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md). For future product structure, use [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md).
+This document is supporting future-state product narrative. It is useful when shaping future WatchTower experience, but it is not the authority for current repository ownership. For that, use [repository_scope.md](/docs/foundations/repository_scope.md). For future product structure, use [product_direction.md](/docs/foundations/product_direction.md).
 
 ## Audience
 
@@ -99,9 +99,9 @@ Trust in the future product should come from visible properties:
 - This narrative should not be read as proof that the product implementation already lives in this repo.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

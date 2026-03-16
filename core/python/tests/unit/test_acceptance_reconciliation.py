@@ -119,12 +119,12 @@ def test_acceptance_reconciliation_reports_missing_repo_local_paths(
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
         repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
     evidence_path = (
         repo_root
         / "core/control_plane/ledgers/validation_evidence/"
-        "core_python_foundation_traceability_validation.v1.json"
+        "core_python_foundation_traceability_validation.json"
     )
 
     contract = json.loads(contract_path.read_text(encoding="utf-8"))

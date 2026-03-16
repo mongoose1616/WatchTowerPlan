@@ -28,7 +28,7 @@ Provide a consistent commit-message baseline that supports readable history and 
 - `https://www.conventionalcommits.org/en/v1.0.0/` - verified 2026-03-09; Conventional Commits.
 
 ## Related Standards and Sources
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Core Rules
@@ -52,10 +52,10 @@ Provide a consistent commit-message baseline that supports readable history and 
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ### Why It Matters Here
-- Use this reference as supporting context for [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
+- Use this reference as supporting context for [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md).
 - Pair it with semantic versioning guidance when release semantics matter.
 
 ### If Local Policy Tightens
@@ -63,10 +63,10 @@ Provide a consistent commit-message baseline that supports readable history and 
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes
-- Repository-specific rules now live in [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
+- Repository-specific rules now live in [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md).
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 

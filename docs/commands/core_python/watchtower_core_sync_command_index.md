@@ -42,7 +42,7 @@ uv run watchtower-core sync command-index --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --format json
+uv run watchtower-core sync command-index --output /tmp/command_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -66,7 +66,7 @@ uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --
 - `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/cli/introspection.py`
 - `core/python/src/watchtower_core/repo_ops/sync/command_index.py`
-- `core/control_plane/indexes/commands/command_index.v1.json`
+- `core/control_plane/indexes/commands/command_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

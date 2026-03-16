@@ -33,12 +33,12 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Updating command docs after a command surface changes.
 
 ## Related Standards and Sources
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md): authoring scaffold that should stay aligned with this standard.
-- [README.md](/home/j/WatchTowerPlan/docs/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [cli_help_text_standard.md](/docs/standards/engineering/cli_help_text_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_reference_template.md](/docs/templates/command_reference_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/docs/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store repository-native command docs under `docs/commands/`.
@@ -92,7 +92,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `runtime`
-- `Operational Surfaces`: `docs/commands/`; `docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.v1.json`; `core/python/src/watchtower_core/cli/`
+- `Operational Surfaces`: `docs/commands/`; `docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.json`; `core/python/src/watchtower_core/cli/`
 
 ## Validation
 - Command pages should contain the required sections in the documented order.
@@ -107,10 +107,10 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Update command-family READMEs and the machine-readable command index in the same change set when command pages are added, renamed, or removed.
 
 ## References
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/commands/README.md)
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [command_reference_template.md](/docs/templates/command_reference_template.md)
+- [README.md](/docs/commands/README.md)
 
 ## Notes
 - Command pages are intended to be the human-readable man-page layer for repository commands.

@@ -12,7 +12,7 @@
       "schema_family": "artifact",
       "subject_kind": "acceptance_contract",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/acceptance_contract.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/acceptance_contract.schema.json",
       "aliases": [
         "acceptance contract schema"
       ]
@@ -25,7 +25,7 @@
       "schema_family": "artifact",
       "subject_kind": "command_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/command_index.schema.json",
       "aliases": [
         "command lookup schema",
         "command man page index schema"
@@ -39,7 +39,7 @@
       "schema_family": "artifact",
       "subject_kind": "coordination_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/coordination_index.schema.json",
       "aliases": [
         "coordination start-here index schema",
         "planning coordination overlay schema"
@@ -53,7 +53,7 @@
       "schema_family": "artifact",
       "subject_kind": "decision_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/decision_index.schema.json",
       "aliases": [
         "decision tracking index schema",
         "decision lookup schema"
@@ -67,7 +67,7 @@
       "schema_family": "artifact",
       "subject_kind": "design_document_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/design_document_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/design_document_index.schema.json",
       "aliases": [
         "design tracking index schema",
         "design document lookup schema"
@@ -81,7 +81,7 @@
       "schema_family": "artifact",
       "subject_kind": "foundation_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/foundation_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/foundation_index.schema.json",
       "aliases": [
         "foundation intent index schema",
         "foundation lookup schema"
@@ -95,7 +95,7 @@
       "schema_family": "artifact",
       "subject_kind": "initiative_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/initiative_index.schema.json",
       "aliases": [
         "initiative coordination index schema",
         "initiative phase lookup schema"
@@ -109,7 +109,7 @@
       "schema_family": "artifact",
       "subject_kind": "planning_catalog",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/planning_catalog.schema.json",
       "aliases": [
         "canonical planning graph schema",
         "deep planning catalog schema"
@@ -123,10 +123,24 @@
       "schema_family": "artifact",
       "subject_kind": "authority_map",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/authority_map.schema.json",
       "aliases": [
         "canonical surface map schema",
         "planning authority registry schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1",
+      "title": "Rendered Surface Registry",
+      "description": "Schema for authored rendered-surface registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "rendered_surface_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/rendered_surface_registry.schema.json",
+      "aliases": [
+        "rendered markdown registry schema",
+        "tracker rendering registry schema"
       ]
     },
     {
@@ -137,7 +151,7 @@
       "schema_family": "artifact",
       "subject_kind": "prd_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/prd_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/prd_index.schema.json",
       "aliases": [
         "prd tracking index schema",
         "requirements document lookup schema"
@@ -151,7 +165,7 @@
       "schema_family": "artifact",
       "subject_kind": "reference_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/reference_index.schema.json",
       "aliases": [
         "reference lookup schema",
         "reference corpus index schema"
@@ -165,7 +179,7 @@
       "schema_family": "artifact",
       "subject_kind": "repository_path_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/repository_path_index.schema.json",
       "aliases": [
         "path index schema",
         "repository search index schema"
@@ -179,7 +193,7 @@
       "schema_family": "artifact",
       "subject_kind": "route_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/route_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/route_index.schema.json",
       "aliases": [
         "route lookup schema",
         "routing table index schema"
@@ -193,7 +207,7 @@
       "schema_family": "artifact",
       "subject_kind": "standard_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/standard_index.schema.json",
       "aliases": [
         "standard lookup schema",
         "best practice index schema"
@@ -207,7 +221,7 @@
       "schema_family": "artifact",
       "subject_kind": "workflow_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/workflow_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/workflow_index.schema.json",
       "aliases": [
         "workflow lookup schema",
         "workflow module index schema"
@@ -221,7 +235,7 @@
       "schema_family": "artifact",
       "subject_kind": "migration_record",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/migration_record.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/migration_record.schema.json",
       "aliases": [
         "migration ledger schema"
       ]
@@ -234,7 +248,7 @@
       "schema_family": "artifact",
       "subject_kind": "release_record",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/release_record.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/release_record.schema.json",
       "aliases": [
         "release ledger schema"
       ]
@@ -247,7 +261,7 @@
       "schema_family": "artifact",
       "subject_kind": "trace_purge_record",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
       "aliases": [
         "trace purge ledger schema",
         "planning retention purge schema"
@@ -261,7 +275,7 @@
       "schema_family": "artifact",
       "subject_kind": "task_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/task_index.schema.json",
       "aliases": [
         "task tracking index schema",
         "task lookup schema"
@@ -275,7 +289,7 @@
       "schema_family": "artifact",
       "subject_kind": "traceability_index",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/traceability_index.schema.json",
       "aliases": [
         "trace join schema",
         "traceability lookup schema"
@@ -289,7 +303,7 @@
       "schema_family": "artifact",
       "subject_kind": "validation_evidence",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/validation_evidence.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/validation_evidence.schema.json",
       "aliases": [
         "validation evidence schema",
         "evidence ledger schema"
@@ -303,7 +317,7 @@
       "schema_family": "artifact",
       "subject_kind": "schema_catalog",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
       "aliases": [
         "schema registry schema",
         "schema lookup catalog schema"
@@ -317,7 +331,7 @@
       "schema_family": "artifact",
       "subject_kind": "validator_registry",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/validator_registry.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/validator_registry.schema.json",
       "aliases": [
         "validator catalog schema"
       ]
@@ -330,7 +344,7 @@
       "schema_family": "artifact",
       "subject_kind": "workflow_metadata_registry",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/workflow_metadata_registry.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/artifacts/workflow_metadata_registry.schema.json",
       "aliases": [
         "workflow retrieval metadata schema",
         "workflow metadata registry schema"
@@ -344,7 +358,7 @@
       "schema_family": "common",
       "subject_kind": "utc_timestamp",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/common/utc_timestamp.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/common/utc_timestamp.schema.json",
       "aliases": [
         "utc timestamp schema",
         "rfc3339 utc timestamp schema"
@@ -359,7 +373,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter_base",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/front_matter_base.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/front_matter_base.schema.json",
       "aliases": [
         "front matter base schema"
       ],
@@ -373,7 +387,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.schema.json",
       "aliases": [
         "feature design metadata schema"
       ]
@@ -386,7 +400,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/foundation_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/foundation_front_matter.schema.json",
       "aliases": [
         "foundation metadata schema"
       ]
@@ -399,7 +413,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.schema.json",
       "aliases": [
         "implementation plan metadata schema"
       ]
@@ -412,7 +426,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json",
       "aliases": [
         "reference metadata schema"
       ]
@@ -425,7 +439,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/prd_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
       "aliases": [
         "prd metadata schema"
       ]
@@ -438,7 +452,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json",
       "aliases": [
         "decision record metadata schema"
       ]
@@ -451,7 +465,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.schema.json",
       "aliases": [
         "standard metadata schema"
       ]
@@ -464,7 +478,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
       "aliases": [
         "task metadata schema"
       ]
@@ -477,7 +491,7 @@
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/workflow_front_matter.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/workflow_front_matter.schema.json",
       "aliases": [
         "workflow metadata schema"
       ]
@@ -490,7 +504,7 @@
       "schema_family": "interface",
       "subject_kind": "pack_work_item_note",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_work_item_note.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_work_item_note.schema.json",
       "aliases": [
         "pack note schema",
         "work item note schema"
@@ -582,7 +596,7 @@
       "schema_family": "interface",
       "subject_kind": "extraction_output_envelope",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.v1.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.schema.json",
       "aliases": [
         "workflow extraction output schema"
       ]

@@ -16,8 +16,8 @@ applies_to:
   - "docs/planning/prds/core_export_hardening_followup.md"
   - "docs/planning/design/features/core_export_hardening.md"
   - "docs/planning/design/implementation/core_export_hardening_execution.md"
-  - "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.json"
   - "docs/planning/tasks/open/"
 related_ids:
   - "prd.core_export_hardening_followup"
@@ -42,9 +42,9 @@ Create the traced planning chain, acceptance baseline, and bounded implementatio
 - The new trace is visible in the planning corpus with open implementation tasks.
 
 ## Links
-- [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md)
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
+- [core_export_hardening_followup.md](/docs/planning/prds/core_export_hardening_followup.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [core_export_hardening_execution.md](/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
 - `2026-03-10T15:24:07Z`

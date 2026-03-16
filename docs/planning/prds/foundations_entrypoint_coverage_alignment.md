@@ -35,16 +35,16 @@ Align foundations family entrypoints and the foundations context review workflow
 
 ## Problem Statement
 - The foundations family currently routes human reviewers to
-  [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+  [coordination_tracking.md](/docs/planning/coordination_tracking.md)
   and future-state readers to
-  [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md),
-  but [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+  [customer_story.md](/docs/foundations/customer_story.md),
+  but [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
   does not load either surface for the review contexts where the family README
   says they matter.
 - The foundations family also under-documents its machine entrypoints:
-  [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md),
-  [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md),
-  and [core/control_plane/indexes/foundations/README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md)
+  [docs/foundations/README.md](/docs/foundations/README.md),
+  [repository_scope.md](/docs/foundations/repository_scope.md),
+  and [core/control_plane/indexes/foundations/README.md](/core/control_plane/indexes/foundations/README.md)
   do not coherently point readers toward the authoritative
   `watchtower-core query foundations` and `watchtower-core sync foundation-index`
   surfaces.
@@ -81,14 +81,14 @@ Align foundations family entrypoints and the foundations context review workflow
 ## Acceptance Criteria
 - `ac.foundations_entrypoint_coverage_alignment.001`: The foundations family
   entrypoint docs explicitly point to
-  [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md)
+  [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md)
   and
-  [watchtower_core_sync_foundation_index.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_foundation_index.md)
+  [watchtower_core_sync_foundation_index.md](/docs/commands/core_python/watchtower_core_sync_foundation_index.md)
   where machine lookup or rebuild is the right next step.
 - `ac.foundations_entrypoint_coverage_alignment.002`:
-  [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
-  loads [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
-  and [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+  [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+  loads [customer_story.md](/docs/foundations/customer_story.md)
+  and [coordination_tracking.md](/docs/planning/coordination_tracking.md)
   for the review contexts already described by the foundations layer and
   surfaces `watchtower-core query foundations` as the deterministic discovery
   helper.
@@ -105,7 +105,7 @@ Align foundations family entrypoints and the foundations context review workflow
   command docs.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [customer_story.md](/docs/foundations/customer_story.md)

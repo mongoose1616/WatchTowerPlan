@@ -18,7 +18,7 @@ applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Operationalization Directory Canonicalization Feature Design
@@ -44,15 +44,15 @@ Defines the technical design boundary for Standard Operationalization Directory 
 
 ## Current-State Context
 - `parse_standard_operationalization(...)` currently validates existence and bounded globs but preserves directory path spellings exactly, so `docs/commands` and `docs/commands/` are treated as distinct values until they reach the standard index.
-- The live standard corpus currently has one reproduced instance of the defect in [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md), and the generic standard-document guidance does not explicitly require canonical directory-path syntax.
+- The live standard corpus currently has one reproduced instance of the defect in [cli_help_text_standard.md](/docs/standards/engineering/cli_help_text_standard.md), and the generic standard-document guidance does not explicitly require canonical directory-path syntax.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer a fail-closed contract fix at the shared parser boundary over leaving semantically duplicate metadata to be cleaned up only in downstream indexes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): prefer a fail-closed contract fix at the shared parser boundary over leaving semantically duplicate metadata to be cleaned up only in downstream indexes.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the standards corpus must make operational enforcement explicit and auditable without ambiguous path forms.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the live standard index should not publish semantically duplicate operationalization metadata for one standard entry.
-- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md): the reproduced defect lives in the CLI help standard and must be corrected in the same slice as the parser hardening.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the standards corpus must make operational enforcement explicit and auditable without ambiguous path forms.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the live standard index should not publish semantically duplicate operationalization metadata for one standard entry.
+- [cli_help_text_standard.md](/docs/standards/engineering/cli_help_text_standard.md): the reproduced defect lives in the CLI help standard and must be corrected in the same slice as the parser hardening.
 
 ## Design Goals and Constraints
 - Fail closed on non-canonical directory operationalization paths instead of silently tolerating duplicate spellings.
@@ -98,7 +98,7 @@ Defines the technical design boundary for Standard Operationalization Directory 
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 
 ## Design Guardrails
 - Keep the remediation bounded to standard-operationalization canonicalization; do not broaden unrelated standards-query behavior in the same slice.

@@ -101,7 +101,7 @@ def _write_task(
 
         ## Scope
         - Publish a governed task record with explicit status and ownership.
-        - Let the task feed task, traceability, and initiative projections.
+        - Let the task feed task, traceability, and initiative rendered surfaces.
 
         ## Done When
         - The task is visible through the rebuilt helper surfaces.
@@ -309,8 +309,8 @@ def test_initiative_closeout_fails_closed_until_task_state_is_terminal(
         task_kind="governance",
         applies_to=(
             "docs/planning/prds/core_python_foundation.md",
-            "core/control_plane/indexes/traceability/traceability_index.v1.json",
-            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.json",
+            "core/control_plane/indexes/initiatives/initiative_index.json",
         ),
         related_ids=(
             "prd.core_python_foundation",

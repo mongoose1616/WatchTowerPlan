@@ -276,7 +276,7 @@ def test_initiative_closeout_rejects_acceptance_issues_without_override(
 
     contract_path = (
         repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     contract["entries"] = contract["entries"][:1]
@@ -318,7 +318,7 @@ def test_initiative_closeout_allows_explicit_acceptance_issue_override(
 
     contract_path = (
         repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     contract["entries"] = contract["entries"][:1]

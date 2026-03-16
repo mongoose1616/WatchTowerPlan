@@ -16,9 +16,9 @@ applies_to:
 - docs/planning/prds/structural_rewrite_program.md
 - docs/planning/design/features/structural_rewrite_program.md
 - docs/planning/design/implementation/structural_rewrite_program.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program

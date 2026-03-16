@@ -16,9 +16,9 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_program.md
 - docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md
 - docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program
@@ -57,10 +57,10 @@ Review the bounded artifact-role registry pilot, confirm parity held, and decide
 - The next material rewrite risk sits at the command-authority boundary, and that boundary already has a dedicated later-phase guardrail in the rewrite program. It should therefore advance only through an explicit Phase 3 entry package.
 
 ## Links
-- [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
-- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_phase3_command_authority_entry.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- [review_structural_rewrite_phase3_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
+- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Updated At
 - `2026-03-14T05:41:11Z`

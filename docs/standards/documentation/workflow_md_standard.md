@@ -34,13 +34,13 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Reviewing whether a workflow file is structurally consistent with the repository model.
 
 ## Related Standards and Sources
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): workflow modules inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules explicit, narrow, and efficient for LLM or agent use.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): workflow modules inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules explicit, narrow, and efficient for LLM or agent use.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
+- [workflow_template.md](/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Workflow files should live under `workflows/modules/` unless a narrower repository standard defines another workflow surface.
@@ -115,14 +115,14 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Update affected workflow modules in the same change set when structural expectations change.
 
 ## References
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md)
+- [AGENTS.md](/AGENTS.md)
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md)
 
 ## Notes
 - The workflow template is an authoring scaffold. This standard is the normative file-shape rule.

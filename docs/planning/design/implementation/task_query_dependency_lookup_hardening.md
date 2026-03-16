@@ -84,4 +84,4 @@ Breaks Task Query Dependency Lookup Hardening into a bounded implementation slic
 
 ## References
 - `docs/planning/prds/task_query_dependency_lookup_hardening.md`
-- `core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json`
+- `core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.json`

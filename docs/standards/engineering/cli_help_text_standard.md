@@ -41,10 +41,10 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - Reviewing whether CLI help is readable enough for new engineers or occasional users.
 
 ## Related Standards and Sources
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 
 ## Guidance
 - Write CLI help for a new engineer first, then for a frequent operator, and only then for an already-context-loaded maintainer.
@@ -104,9 +104,9 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - Update command docs and the command index in the same change set when help-surface changes materially affect how commands are discovered or used.
 
 ## References
-- [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md)
-- [docs/commands/core_python/watchtower_core.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core.md)
-- [docs/templates/command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
+- [core/python/README.md](/core/python/README.md)
+- [docs/commands/core_python/watchtower_core.md](/docs/commands/core_python/watchtower_core.md)
+- [docs/templates/command_reference_template.md](/docs/templates/command_reference_template.md)
 
 ## Updated At
 - `2026-03-12T02:46:38Z`

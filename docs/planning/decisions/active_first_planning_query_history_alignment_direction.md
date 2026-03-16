@@ -45,10 +45,10 @@ Adopt an active-default browse policy for filterless `watchtower-core query plan
 - Known-trace and explicit historical lookup must remain reliable because completed traces are still durable repository history, not deprecated data.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): favors explicit route-first behavior and visible defaults over implicit history browsing.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires human and machine surfaces that claim the same navigation model to stay synchronized in one change set.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): keeps deep-planning and initiative-family history accessible after the default changes.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): constrains the compact initiative-family view and preserves explicit status semantics.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): favors explicit route-first behavior and visible defaults over implicit history browsing.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires human and machine surfaces that claim the same navigation model to stay synchronized in one change set.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): keeps deep-planning and initiative-family history accessible after the default changes.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): constrains the compact initiative-family view and preserves explicit status semantics.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/query/
@@ -92,4 +92,4 @@ Accept Option 2. The refactor will keep the initiative index and planning catalo
 
 ## References
 - March 13, 2026 refactor audit
-- [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md)
+- [active_first_planning_query_history_alignment.md](/docs/planning/prds/active_first_planning_query_history_alignment.md)

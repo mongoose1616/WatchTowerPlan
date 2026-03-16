@@ -23,7 +23,7 @@ def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
 
 
 def _load_coordination_index(repo_root: Path) -> dict[str, object]:
-    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.json"
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -65,7 +65,7 @@ def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
 
 
 def _write_coordination_index(repo_root: Path, document: dict[str, object]) -> None:
-    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.json"
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 

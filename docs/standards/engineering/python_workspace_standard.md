@@ -33,16 +33,16 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Reviewing whether a Python-related file belongs in `core/python/` or somewhere else.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [uv_reference.md](/home/j/WatchTowerPlan/docs/references/uv_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [ruff_reference.md](/home/j/WatchTowerPlan/docs/references/ruff_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [mypy_reference.md](/home/j/WatchTowerPlan/docs/references/mypy_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [src_layout_reference.md](/docs/references/src_layout_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [uv_reference.md](/docs/references/uv_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [pytest_reference.md](/docs/references/pytest_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [ruff_reference.md](/docs/references/ruff_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [mypy_reference.md](/docs/references/mypy_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Keep all Python-specific repository surfaces under `core/python/`.
@@ -129,12 +129,12 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Update affected feature designs when the package boundaries for validators, query, or control-plane loading change materially.
 
 ## References
-- [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md)
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [uv_reference.md](/home/j/WatchTowerPlan/docs/references/uv_reference.md)
-- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
-- [ruff_reference.md](/home/j/WatchTowerPlan/docs/references/ruff_reference.md)
-- [mypy_reference.md](/home/j/WatchTowerPlan/docs/references/mypy_reference.md)
+- [src_layout_reference.md](/docs/references/src_layout_reference.md)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [uv_reference.md](/docs/references/uv_reference.md)
+- [pytest_reference.md](/docs/references/pytest_reference.md)
+- [ruff_reference.md](/docs/references/ruff_reference.md)
+- [mypy_reference.md](/docs/references/mypy_reference.md)
 
 ## Notes
 - This standard intentionally keeps the Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.

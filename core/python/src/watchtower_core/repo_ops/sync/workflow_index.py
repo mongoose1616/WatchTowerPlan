@@ -30,7 +30,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.reference_resolution import build_reference_urls_by_path
 
-WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
+WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
 WORKFLOW_DOC_ROOT = "workflows/modules"
 WORKFLOW_EXCLUDED_NAMES = {"README.md"}
 WORKFLOW_REQUIRED_SECTIONS = (

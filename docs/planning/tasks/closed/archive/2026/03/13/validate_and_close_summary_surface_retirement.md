@@ -14,8 +14,8 @@ updated_at: '2026-03-13T01:47:55Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.json
+- core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.json
 - docs/planning/prds/summary_surface_retirement.md
 related_ids:
 - trace.summary_surface_retirement

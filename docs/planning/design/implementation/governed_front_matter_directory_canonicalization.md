@@ -46,10 +46,10 @@ Breaks Governed Front Matter Directory Canonicalization into a bounded implement
 - Derived coordination and planning surfaces must be refreshed after the authored corpus changes or stale paths will remain in indexes and trackers.
 
 ## Internal Standards and Canonical References Applied
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governs the canonical path syntax that authored `applies_to` metadata must use.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on canonical authored `applies_to` and derived `related_paths`.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): implementation, tests, and CLI validation stay inside `core/python/`.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): planning docs, tasks, and derived trackers need to stay synchronized throughout the slice.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): governs the canonical path syntax that authored `applies_to` metadata must use.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on canonical authored `applies_to` and derived `related_paths`.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): implementation, tests, and CLI validation stay inside `core/python/`.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): planning docs, tasks, and derived trackers need to stay synchronized throughout the slice.
 
 ## Proposed Technical Approach
 - Add a shared `front_matter_paths` helper that canonicalizes path-valued `applies_to` entries and optionally rejects authored non-canonical path syntax.

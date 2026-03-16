@@ -137,7 +137,7 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
                     trace_id="trace.plan_example",
                     source_prd_id="prd.plan_example",
                     title="Plan Example Acceptance Contract",
-                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json",
+                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.json",
                     content='{"id":"contract.acceptance.plan_example"}\n',
                     wrote=False,
                 ),
@@ -146,7 +146,7 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
                     trace_id="trace.plan_example",
                     title="Plan Example Planning Baseline Evidence",
                     overall_result="passed",
-                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json",
+                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json",
                     content='{"id":"evidence.plan_example.planning_baseline"}\n',
                     wrote=False,
                 ),
@@ -207,7 +207,7 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
                     trace_id="trace.plan_example",
                     source_prd_id="prd.plan_example",
                     title="Plan Example Acceptance Contract",
-                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json",
+                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.json",
                     content='{"id":"contract.acceptance.plan_example"}\n',
                     wrote=True,
                 ),
@@ -216,7 +216,7 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
                     trace_id="trace.plan_example",
                     title="Plan Example Planning Baseline Evidence",
                     overall_result="passed",
-                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json",
+                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json",
                     content='{"id":"evidence.plan_example.planning_baseline"}\n',
                     wrote=True,
                 ),
@@ -246,11 +246,11 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
     assert "- prd: docs/planning/prds/plan_example.md" in captured.out
     assert (
         "- acceptance_contract: "
-        "core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json"
+        "core/control_plane/contracts/acceptance/plan_example_acceptance.json"
     ) in captured.out
     assert (
         "- validation_evidence: "
-        "core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json"
+        "core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json"
     ) in captured.out
     assert "# PRD" in captured.out
     assert "Derived planning surfaces were refreshed." in captured.out

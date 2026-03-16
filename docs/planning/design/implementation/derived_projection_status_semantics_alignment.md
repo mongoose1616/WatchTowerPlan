@@ -51,9 +51,9 @@ Breaks Derived Projection Status Semantics Alignment into a bounded implementati
 - The new trace only needs one execution task because the work is one bounded contract-alignment slice rather than a multi-phase architecture change.
 
 ## Internal Standards and Canonical References Applied
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): the implementation must update the initiative-entry contract and its companion schema together.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): the coordination projection must remain schema-valid after inheriting the renamed initiative-entry field.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): query docs need to describe the JSON contract change in the same slice as the code.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): the implementation must update the initiative-entry contract and its companion schema together.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): the coordination projection must remain schema-valid after inheriting the renamed initiative-entry field.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): query docs need to describe the JSON contract change in the same slice as the code.
 
 ## Proposed Technical Approach
 - Update the planning chain and decision first so the contract change is explicit before code and schema edits land.
@@ -75,4 +75,4 @@ Breaks Derived Projection Status Semantics Alignment into a bounded implementati
 - Run `watchtower-core sync all --write --format json`, `watchtower-core validate all --format json`, `python -m mypy src`, `ruff check .`, and `pytest -q` before closeout.
 
 ## References
-- [derived_projection_status_semantics_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/derived_projection_status_semantics_alignment.md)
+- [derived_projection_status_semantics_alignment.md](/docs/planning/prds/derived_projection_status_semantics_alignment.md)

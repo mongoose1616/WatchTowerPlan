@@ -92,15 +92,15 @@ The repository is substantially healthier than the earlier pre-implementation ba
 - Whether future external pack validation should also accept supplemental validator-registry overlays after one second repository proves the need.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the follow-up work should remove ambiguity and coupling rather than add another navigation layer.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable surfaces must stay aligned as guardrails and extensibility seams evolve.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core should stop at shared substrate hardening and future-ready pack seams rather than starting product behavior here.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md): future pack-owned artifacts should be supportable by shared core without leaking domain-specific authority into this repo.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the follow-up work should remove ambiguity and coupling rather than add another navigation layer.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable surfaces must stay aligned as guardrails and extensibility seams evolve.
+- [product_direction.md](/docs/foundations/product_direction.md): core should stop at shared substrate hardening and future-ready pack seams rather than starting product behavior here.
+- [customer_story.md](/docs/foundations/customer_story.md): future pack-owned artifacts should be supportable by shared core without leaking domain-specific authority into this repo.
 
 ## References
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [machine_first_coordination_surface.md](/docs/planning/prds/machine_first_coordination_surface.md)
 
 ## Updated At
 - `2026-03-10T19:43:34Z`

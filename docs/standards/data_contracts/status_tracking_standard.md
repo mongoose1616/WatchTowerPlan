@@ -34,9 +34,9 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Deciding whether an artifact should be deprecated or deleted.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 
 ## Guidance
 - Use `status` only for lifecycle state of governed artifacts.
@@ -81,7 +81,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `core/control_plane/indexes/coordination/coordination_index.v1.json`; `core/control_plane/indexes/tasks/task_index.v1.json`
+- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `core/control_plane/indexes/coordination/coordination_index.json`; `core/control_plane/indexes/tasks/task_index.json`
 
 ## Validation
 - Governed artifacts that expose lifecycle status should use only `draft`, `active`, or `deprecated`.
@@ -95,9 +95,9 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Prefer deleting obsolete governed artifacts instead of expanding the deprecation taxonomy.
 
 ## References
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Notes
 - This standard is intentionally narrow. It defines lifecycle status only.

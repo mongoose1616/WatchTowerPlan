@@ -19,8 +19,8 @@ applies_to:
 - docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md
 - docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md
 - docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md
-- core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.json
 - docs/planning/tasks/open/
 related_ids:
 - prd.foundation_scope_and_entrypoint_realignment
@@ -49,12 +49,12 @@ Create the traced planning chain, accepted direction, acceptance baseline, plann
 - The work is documentation-only, but it still needs a bounded trace because it changes authoritative foundations and root entrypoints.
 
 ## Links
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md)
-- [foundation_scope_and_entrypoint_realignment_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md)
-- [foundation_scope_and_entrypoint_realignment_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json)
-- [foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment_direction.md](/docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md)
+- [foundation_scope_and_entrypoint_realignment_acceptance.json](/core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.json)
+- [foundation_scope_and_entrypoint_realignment_planning_baseline.json](/core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.json)
 
 ## Updated At
 - `2026-03-11T01:33:06Z`

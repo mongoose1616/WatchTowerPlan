@@ -14,8 +14,8 @@ updated_at: '2026-03-12T02:26:01Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.json
+- core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.json
 - docs/planning/tasks/
 related_ids:
 - prd.standard_operationalization_directory_canonicalization

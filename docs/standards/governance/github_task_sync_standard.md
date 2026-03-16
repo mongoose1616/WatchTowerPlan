@@ -43,14 +43,14 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - Reviewing whether a proposed sync change would let GitHub override local task state.
 
 ## Related Standards and Sources
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md): companion planning or design surface this standard should remain consistent with.
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md): companion planning or design surface this standard should remain consistent with.
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Treat local task records as the authoritative source of truth.
@@ -156,11 +156,11 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - Update the task front-matter schema, task index schema, task template, task sync command docs, and implementation surfaces in the same change set when this sync contract changes structurally.
 
 ## References
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
 
 ## Updated At
 - `2026-03-12T22:05:00Z`

@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
   - "core/python/src/watchtower_core/query/"
   - "core/python/src/watchtower_core/sync/"
 related_ids:
@@ -39,12 +39,12 @@ Establishes governed local task records, a generated human tracker, a generated 
 
 ## Done When
 - Local task records exist as a governed document family.
-- `task_tracking.md` and `task_index.v1.json` are derived from the task records.
+- `task_tracking.md` and `task_index.json` are derived from the task records.
 - `watchtower-core` can query tasks and rebuild the task tracker and task index.
 
 ## Links
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 
 ## Updated At
 - `2026-03-09T14:41:51Z`

@@ -1,0 +1,598 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1",
+  "id": "registry.rendered_surfaces",
+  "title": "Rendered Surface Registry",
+  "status": "active",
+  "surfaces": [
+    {
+      "surface_id": "rendered.prd_tracking",
+      "title": "PRD Tracking",
+      "output_path": "docs/planning/prds/prd_tracking.md",
+      "sections": [
+        {
+          "section_id": "active_prds",
+          "title": "Active PRDs",
+          "kind": "table",
+          "source_key": "active_prds",
+          "empty_message": "_No active PRDs. Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse or `watchtower-core query prds --trace-id <trace_id>` for one known trace._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "PRD",
+              "field": "prd_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Linked Designs and Plans",
+              "field": "linked_designs_and_plans",
+              "formatter": "markdown"
+            }
+          ]
+        },
+        {
+          "section_id": "terminal_history",
+          "title": "Terminal History",
+          "kind": "bullet_summary",
+          "source_key": "terminal_counts",
+          "empty_message": "_No terminal PRD traces._",
+          "label_field": "label",
+          "count_field": "count"
+        },
+        {
+          "section_id": "terminal_history_notes",
+          "kind": "lines",
+          "source_key": "terminal_history_notes"
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.decision_tracking",
+      "title": "Decision Tracking",
+      "output_path": "docs/planning/decisions/decision_tracking.md",
+      "sections": [
+        {
+          "section_id": "active_decisions",
+          "title": "Active Decisions",
+          "kind": "table",
+          "source_key": "active_decisions",
+          "empty_message": "_No active decisions. Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse or `watchtower-core query decisions --trace-id <trace_id>` for one known trace._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Decision",
+              "field": "decision_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Outcome",
+              "field": "decision_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "terminal_history",
+          "title": "Terminal History",
+          "kind": "bullet_summary",
+          "source_key": "terminal_counts",
+          "empty_message": "_No terminal decision traces._",
+          "label_field": "label",
+          "count_field": "count"
+        },
+        {
+          "section_id": "terminal_history_notes",
+          "kind": "lines",
+          "source_key": "terminal_history_notes"
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.design_tracking",
+      "title": "Design Tracking",
+      "output_path": "docs/planning/design/design_tracking.md",
+      "sections": [
+        {
+          "section_id": "active_feature_designs",
+          "title": "Active Feature Designs",
+          "kind": "table",
+          "source_key": "active_feature_designs",
+          "empty_message": "_No active feature designs. Use `watchtower-core query designs --trace-id <trace_id>` for one known trace or `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Design",
+              "field": "document_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Linked Plans",
+              "field": "linked_plans",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Notes",
+              "field": "notes",
+              "formatter": "plain",
+              "enabled_when_key": "include_feature_design_notes"
+            }
+          ]
+        },
+        {
+          "section_id": "active_implementation_plans",
+          "title": "Active Implementation Plans",
+          "kind": "table",
+          "source_key": "active_implementation_plans",
+          "empty_message": "_No active implementation plans. Use `watchtower-core query designs --family implementation_plan --trace-id <trace_id>` for one known trace or `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Plan",
+              "field": "document_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Sources",
+              "field": "sources",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Notes",
+              "field": "notes",
+              "formatter": "plain",
+              "enabled_when_key": "include_implementation_plan_notes"
+            }
+          ]
+        },
+        {
+          "section_id": "terminal_history",
+          "title": "Terminal History",
+          "kind": "bullet_summary",
+          "source_key": "terminal_counts",
+          "empty_message": "_No terminal design traces._",
+          "label_field": "label",
+          "count_field": "count"
+        },
+        {
+          "section_id": "terminal_history_notes",
+          "kind": "lines",
+          "source_key": "terminal_history_notes"
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.task_tracking",
+      "title": "Task Tracking",
+      "output_path": "docs/planning/tasks/task_tracking.md",
+      "sections": [
+        {
+          "section_id": "open_tasks",
+          "title": "Open Tasks",
+          "kind": "table",
+          "source_key": "open_tasks",
+          "empty_message": "_No open tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_blocked_by_column"
+            }
+          ]
+        },
+        {
+          "section_id": "closed_task_summary",
+          "title": "Closed Task Summary",
+          "kind": "bullet_summary",
+          "source_key": "closed_task_counts",
+          "empty_message": "_No closed tasks._",
+          "label_field": "label",
+          "count_field": "count"
+        },
+        {
+          "section_id": "closed_task_notes",
+          "kind": "lines",
+          "source_key": "closed_task_notes"
+        },
+        {
+          "section_id": "recently_closed_tasks",
+          "title": "Recently Closed Tasks",
+          "kind": "table",
+          "source_key": "recently_closed_tasks",
+          "empty_message": "_No recently closed tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_blocked_by_column"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.initiative_tracking",
+      "title": "Initiative Tracking",
+      "output_path": "docs/planning/initiatives/initiative_tracking.md",
+      "sections": [
+        {
+          "section_id": "active_initiatives",
+          "title": "Active Initiatives",
+          "kind": "table",
+          "source_key": "active_initiatives",
+          "empty_message": "_No active initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Phase",
+              "field": "current_phase",
+              "formatter": "code"
+            },
+            {
+              "header": "Owners",
+              "field": "owners",
+              "formatter": "plain"
+            },
+            {
+              "header": "Open Tasks",
+              "field": "open_tasks",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            },
+            {
+              "header": "Next",
+              "field": "next_label",
+              "formatter": "repo_link",
+              "path_field": "next_surface_path",
+              "label_field": "next_label"
+            },
+            {
+              "header": "Action",
+              "field": "next_action",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "closed_initiatives",
+          "title": "Closed Initiatives",
+          "kind": "table",
+          "source_key": "closed_initiatives",
+          "empty_message": "_No closed initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            },
+            {
+              "header": "Closed At",
+              "field": "closed_at",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Reason",
+              "field": "closure_reason",
+              "formatter": "plain",
+              "empty_value": "-"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.coordination_tracking",
+      "title": "Coordination Tracking",
+      "output_path": "docs/planning/coordination_tracking.md",
+      "sections": [
+        {
+          "section_id": "current_state",
+          "title": "Current State",
+          "kind": "table",
+          "source_key": "current_state",
+          "columns": [
+            {
+              "header": "Field",
+              "field": "field",
+              "formatter": "plain"
+            },
+            {
+              "header": "Value",
+              "field": "value",
+              "formatter": "markdown"
+            }
+          ]
+        },
+        {
+          "section_id": "active_initiatives",
+          "title": "Active Initiatives",
+          "kind": "table",
+          "source_key": "active_initiatives",
+          "empty_message": "_No active initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Phase",
+              "field": "current_phase",
+              "formatter": "code"
+            },
+            {
+              "header": "Owners",
+              "field": "owners",
+              "formatter": "plain"
+            },
+            {
+              "header": "Next",
+              "field": "next_label",
+              "formatter": "repo_link",
+              "path_field": "next_surface_path",
+              "label_field": "next_label"
+            },
+            {
+              "header": "Action",
+              "field": "next_action",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "active_initiative_notes",
+          "kind": "lines",
+          "source_key": "active_initiative_notes"
+        },
+        {
+          "section_id": "actionable_tasks",
+          "title": "Actionable Tasks",
+          "kind": "table",
+          "source_key": "actionable_tasks",
+          "empty_message": "_No actionable tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Initiative",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            }
+          ]
+        },
+        {
+          "section_id": "actionable_task_notes",
+          "kind": "lines",
+          "source_key": "actionable_task_notes"
+        },
+        {
+          "section_id": "recent_closeouts",
+          "title": "Recent Closeouts",
+          "kind": "table",
+          "source_key": "recent_closeouts",
+          "empty_message": "_No recent closeouts._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Closed At",
+              "field": "closed_at",
+              "formatter": "code"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    }
+  ]
+}

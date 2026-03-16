@@ -28,7 +28,7 @@ Provide a storage-behavior baseline when SQLite durability, concurrency, or reco
 - `https://www.sqlite.org/wal.html` - verified 2026-03-09; Write-Ahead Logging.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### What WAL Changes
@@ -53,7 +53,7 @@ Provide a storage-behavior baseline when SQLite durability, concurrency, or reco
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
 
 ### Why It Matters Here
 - Use this reference only if the repository adopts SQLite-backed state or indexes.
@@ -64,7 +64,7 @@ Provide a storage-behavior baseline when SQLite durability, concurrency, or reco
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

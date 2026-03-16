@@ -13,8 +13,8 @@ updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
-  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+  - "core/control_plane/indexes/traceability/traceability_index.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.json"
   - "docs/planning/prds/prd_tracking.md"
   - "docs/planning/design/design_tracking.md"
   - "docs/planning/decisions/decision_tracking.md"
@@ -46,12 +46,12 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Updating the planning trackers or traceability index to show initiative outcome clearly.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when a terminal trace can later become purge-eligible.
-- [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md): workflow surface that operationalizes or depends on this standard.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when a terminal trace can later become purge-eligible.
+- [initiative_closeout.md](/workflows/modules/initiative_closeout.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Do not overload artifact lifecycle `status` with initiative outcome.
@@ -98,7 +98,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `artifact`
-- `Operational Surfaces`: `workflows/modules/initiative_closeout.md`; `docs/planning/initiatives/initiative_tracking.md`; `core/control_plane/indexes/initiatives/initiative_index.v1.json`; `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `Operational Surfaces`: `workflows/modules/initiative_closeout.md`; `docs/planning/initiatives/initiative_tracking.md`; `core/control_plane/indexes/initiatives/initiative_index.json`; `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Validation
 - Every traceability entry should publish `initiative_status`.
@@ -114,11 +114,11 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Update the traceability schema, traceability sync logic, planning trackers, and initiative-closeout workflow surface in the same change set when this closeout model changes materially.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
+- [initiative_closeout.md](/workflows/modules/initiative_closeout.md)
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

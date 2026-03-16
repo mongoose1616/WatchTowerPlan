@@ -148,7 +148,7 @@ def test_task_update_can_move_task_and_clear_optional_fields(tmp_path: Path) -> 
     assert "The task is now complete." in written_text
 
     coordination_index_path = (
-        repo_root / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        repo_root / "core/control_plane/indexes/coordination/coordination_index.json"
     )
     coordination_index = json.loads(coordination_index_path.read_text(encoding="utf-8"))
     assert coordination_index["status"] == "active"

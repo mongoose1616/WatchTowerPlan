@@ -15,7 +15,7 @@ applies_to:
 - docs/templates/standard_document_template.md
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Authoring Surface Alignment Implementation Plan
@@ -48,14 +48,14 @@ Breaks Standard Authoring Surface Alignment into a bounded implementation slice.
 - The fix should remain compact and documentation-first; introducing special-case runtime code for one template path would be the wrong layer.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the template must match the required section contract for governed standard docs.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata should expose the real authoring and enforcement surfaces used by a standard.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): the authoring scaffold should not direct maintainers toward outputs that violate the live semantic validator.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the repaired template should stay compact even while restoring required sections.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the template must match the required section contract for governed standard docs.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata should expose the real authoring and enforcement surfaces used by a standard.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): the authoring scaffold should not direct maintainers toward outputs that violate the live semantic validator.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the repaired template should stay compact even while restoring required sections.
 
 ## Proposed Technical Approach
-- Rewrite [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) to include the required standard-document sections, correct explained-bullet guidance, `Operationalization`, and `Updated At`.
-- Update [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md) so its related sources, operationalization metadata, and companion references explicitly include the standard template.
+- Rewrite [standard_document_template.md](/docs/templates/standard_document_template.md) to include the required standard-document sections, correct explained-bullet guidance, `Operationalization`, and `Updated At`.
+- Update [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md) so its related sources, operationalization metadata, and companion references explicitly include the standard template.
 - Add an integration test that checks the standard template remains aligned with the required section contract.
 - Add a CLI query test that asserts querying by `docs/templates/standard_document_template.md` returns `std.documentation.standard_md`.
 - Refresh the standard index and traced planning artifacts through the normal sync and closeout flows.

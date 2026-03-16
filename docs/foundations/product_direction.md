@@ -23,7 +23,7 @@ aliases:
 
 # Product Direction
 
-This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what `WatchTowerPlan` owns today.
+This document defines the intended future WatchTower product shape. For current repository ownership and current implementation scope, [repository_scope.md](/docs/foundations/repository_scope.md) is authoritative. Read this document when the question is where the broader product is meant to go, not when the question is what `WatchTowerPlan` owns today.
 
 ## Audience
 
@@ -81,10 +81,10 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [customer_story.md](/docs/foundations/customer_story.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

@@ -61,7 +61,7 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 - Bootstrap-generated decision records now include the governed `Applied References and Implications` section with explained placeholder bullets, so the shared scaffold output is immediately compatible with repository decision semantics.
 - Document IDs are derived from the trace suffix and the bootstrap task defaults to `task.<trace_suffix>.bootstrap.001` unless overridden.
 - In write mode, the command writes the scaffold chain, the acceptance contract, the planning-baseline evidence artifact, and refreshes derived planning, task, initiative, traceability, and coordination surfaces.
-- While the bootstrap task is the only active task for the trace, initiative and planning projections keep the trace in `implementation_planning`; the phase moves to `execution` only after non-bootstrap active work exists.
+- While the bootstrap task is the only active task for the trace, initiative and planning rendered surfaces keep the trace in `implementation_planning`; the phase moves to `execution` only after non-bootstrap active work exists.
 - In `json` mode, the command prints one JSON object with the scaffolded planning documents, acceptance contract, validation evidence, and bootstrap task outcome.
 
 ## Related Commands

@@ -25,6 +25,22 @@ def write_repo_file(path: Path, content: str = "# Placeholder\n") -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def repo_markdown_link(target: Path) -> str:
+    """Return one repository-native Markdown link target for a fixture path."""
+
+    repo_root = _find_fixture_repo_root(target)
+    return f"/{target.relative_to(repo_root).as_posix()}"
+
+
+def _find_fixture_repo_root(path: Path) -> Path:
+    """Return the temporary repo root that contains one fixture path."""
+
+    for candidate in (path, *path.parents):
+        if (candidate / "core" / "control_plane").exists():
+            return candidate
+    raise ValueError(f"Could not determine fixture repo root for {path}")
+
+
 def write_reference_fixture(
     path: Path,
     *,
@@ -46,7 +62,8 @@ def write_reference_fixture(
         else ""
     )
     current_touchpoints = (
-        f"### Current Touchpoints\n- [support_target.md]({support_target})\n\n"
+        "### Current Touchpoints\n"
+        f"- [support_target.md]({repo_markdown_link(support_target)})\n\n"
         if include_current_touchpoints
         else ""
     )
@@ -90,7 +107,7 @@ def write_reference_fixture(
         .replace("__CANONICAL_UPSTREAM__", canonical_upstream)
         .replace("__REPOSITORY_STATUS_LINE__", repository_status_line)
         .replace("__CURRENT_TOUCHPOINTS__", current_touchpoints)
-        .replace("__SUPPORT_TARGET__", str(support_target)),
+        .replace("__SUPPORT_TARGET__", repo_markdown_link(support_target)),
         encoding="utf-8",
     )
 
@@ -145,7 +162,7 @@ def write_standard_fixture(
         - Running semantic validation tests.
 
         ## Related Standards and Sources
-        - [example_reference.md]({related_target}): defines a repo-local target for tests.
+        - [example_reference.md]({repo_markdown_link(related_target)}): defines a local test target.
         __GUIDANCE_HEADING__
         - Keep fixtures small and deterministic.
 
@@ -160,7 +177,7 @@ def write_standard_fixture(
         - Update the validator and template together if this rule changes.
 
         ## References
-        - [supporting_template.md]({reference_target})
+        - [supporting_template.md]({repo_markdown_link(reference_target)})
 
         ## Updated At
         - `2026-03-10T20:33:00Z`

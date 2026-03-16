@@ -83,9 +83,9 @@ These issues belong in one bounded refactor slice because they are both about de
 - Reserved-family clarification must preserve those directories as intentional future landing zones; the goal is explicit maturity signaling, not accidental retirement of valid repository boundaries.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): simplification should tighten explicit seams and deterministic read models rather than replace them with opaque heuristics or weaker authority boundaries.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable docs, machine-readable indexes, query behavior, and validation surfaces must move together when a supporting authority surface changes meaning.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the slice stays inside repository-maintenance refactor work and does not expand into future product policy or implementation work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): simplification should tighten explicit seams and deterministic read models rather than replace them with opaque heuristics or weaker authority boundaries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable docs, machine-readable indexes, query behavior, and validation surfaces must move together when a supporting authority surface changes meaning.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the slice stays inside repository-maintenance refactor work and does not expand into future product policy or implementation work.
 
 ## References
 - March 2026 refactor audit

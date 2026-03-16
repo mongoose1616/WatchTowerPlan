@@ -45,9 +45,9 @@ Use explicit `artifact_status` naming for derived initiative and coordination pr
 - The change should stay bounded to the derived initiative-family projections so current traceability and closeout semantics do not churn unnecessarily.
 
 ## Applied References and Implications
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): the initiative-entry contract changes directly, so the schema, examples, sync output, and docs must land together.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): coordination inherits the initiative-entry shape and therefore needs the same explicit lifecycle field naming.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): the planning catalog already models explicit lifecycle naming and provides the precedent for this bounded projection cleanup.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): the initiative-entry contract changes directly, so the schema, examples, sync output, and docs must land together.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): coordination inherits the initiative-entry shape and therefore needs the same explicit lifecycle field naming.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): the planning catalog already models explicit lifecycle naming and provides the precedent for this bounded projection cleanup.
 
 ## Affected Surfaces
 - core/control_plane/indexes/initiatives/
@@ -85,4 +85,4 @@ Option 2 is accepted. Derived initiative-family entries will use `artifact_statu
 - The decision assumes the planning catalog remains the preferred deep-planning machine path and that derived initiative-family views should follow its explicit naming model where practical.
 
 ## References
-- [planning_authority_unification_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/planning_authority_unification_direction.md)
+- [planning_authority_unification_direction.md](/docs/planning/decisions/planning_authority_unification_direction.md)

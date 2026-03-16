@@ -42,7 +42,7 @@ uv run watchtower-core sync traceability-index --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync traceability-index --output /tmp/traceability_index.v1.json --format json
+uv run watchtower-core sync traceability-index --output /tmp/traceability_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -66,7 +66,7 @@ uv run watchtower-core sync traceability-index --output /tmp/traceability_index.
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/traceability.py`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

@@ -83,21 +83,21 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - Reject tools that blur authority boundaries or make failure modes harder to inspect.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
-- [uv_reference.md](/home/j/WatchTowerPlan/docs/references/uv_reference.md)
-- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
-- [ruff_reference.md](/home/j/WatchTowerPlan/docs/references/ruff_reference.md)
-- [mypy_reference.md](/home/j/WatchTowerPlan/docs/references/mypy_reference.md)
-- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md)
-- [opa_rego_reference.md](/home/j/WatchTowerPlan/docs/references/opa_rego_reference.md)
-- [cyclonedx_1_7_reference.md](/home/j/WatchTowerPlan/docs/references/cyclonedx_1_7_reference.md)
-- [sigstore_reference.md](/home/j/WatchTowerPlan/docs/references/sigstore_reference.md)
-- [slsa_1_1_reference.md](/home/j/WatchTowerPlan/docs/references/slsa_1_1_reference.md)
-- [in_toto_v1_0_reference.md](/home/j/WatchTowerPlan/docs/references/in_toto_v1_0_reference.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [json_schema_2020_12_reference.md](/docs/references/json_schema_2020_12_reference.md)
+- [uv_reference.md](/docs/references/uv_reference.md)
+- [pytest_reference.md](/docs/references/pytest_reference.md)
+- [ruff_reference.md](/docs/references/ruff_reference.md)
+- [mypy_reference.md](/docs/references/mypy_reference.md)
+- [pydantic_strict_mode_reference.md](/docs/references/pydantic_strict_mode_reference.md)
+- [opa_rego_reference.md](/docs/references/opa_rego_reference.md)
+- [cyclonedx_1_7_reference.md](/docs/references/cyclonedx_1_7_reference.md)
+- [sigstore_reference.md](/docs/references/sigstore_reference.md)
+- [slsa_1_1_reference.md](/docs/references/slsa_1_1_reference.md)
+- [in_toto_v1_0_reference.md](/docs/references/in_toto_v1_0_reference.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

@@ -28,8 +28,8 @@ Provide a stable Markdown baseline so docs render predictably across tools and d
 - `https://spec.commonmark.org/0.31.2/` - verified 2026-03-09; CommonMark Spec.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [templates](/home/j/WatchTowerPlan/docs/templates/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/docs/templates/)
 
 ## Quick Reference or Distilled Reference
 ### Portable Markdown Rules
@@ -54,8 +54,8 @@ Provide a stable Markdown baseline so docs render predictably across tools and d
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [templates](/home/j/WatchTowerPlan/docs/templates/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/docs/templates/)
 
 ### Why It Matters Here
 - Use this reference when shaping Markdown-heavy templates in `docs/templates/**`.
@@ -66,8 +66,8 @@ Provide a stable Markdown baseline so docs render predictably across tools and d
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [templates](/home/j/WatchTowerPlan/docs/templates/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/docs/templates/)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

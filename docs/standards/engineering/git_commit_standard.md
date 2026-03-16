@@ -27,7 +27,7 @@ This standard defines the repository commit-message policy for human maintainers
 ## Scope
 - Covers commit message format, allowed types, scope usage, breaking-change notation, body and footer expectations, and local automation guidance.
 - Applies to commits created for this repository by human maintainers and assistant contributors.
-- Does not define branch naming or local branch lifecycle policy. Those rules live in [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md).
+- Does not define branch naming or local branch lifecycle policy. Those rules live in [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md).
 - Does not define pull-request title policy or broader release-management process.
 
 ## Use When
@@ -36,12 +36,12 @@ This standard defines the repository commit-message policy for human maintainers
 - Checking whether human or agent-generated commit text meets the repository contract.
 
 ## Related Standards and Sources
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md): commit closeout should fit the local branch workflow instead of carrying branch policy inline.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
-- [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md): commit closeout should fit the local branch workflow instead of carrying branch policy inline.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
+- [git_commit_message_guidance_reference.md](/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [commit_closeout.md](/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 ### Canonical Format and Quick Reference
@@ -254,11 +254,11 @@ fi
 - Update contributor-facing workflows or templates in the same change set when commit expectations change for humans or agents.
 
 ## References
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
-- [conventional_commits_reference.md](/home/j/WatchTowerPlan/docs/references/conventional_commits_reference.md)
-- [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md)
-- [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md)
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
+- [conventional_commits_reference.md](/docs/references/conventional_commits_reference.md)
+- [git_commit_message_guidance_reference.md](/docs/references/git_commit_message_guidance_reference.md)
+- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md)
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 
 ## Notes
 - This is the normative repository policy for Git commit messages.

@@ -40,13 +40,13 @@ Prefer direct cleanup of confirmed rewrite regressions and proven-unused control
 ## Current Context and Constraints
 - `core/python/.venv/bin/pytest -q` currently fails because the workspace-standard integration test still expects retired compatibility wording.
 - `PackContext` startup fails when a required declared surface moves away from the repository-default path because `load_known_surface()` only returns typed artifacts for hard-coded locations.
-- The control-plane can validate and document inventory-only surfaces such as `repository_manifest.v1.json`, so rewrite leftovers can remain governed even when they no longer participate in runtime behavior.
+- The control-plane can validate and document inventory-only surfaces such as `repository_manifest.json`, so rewrite leftovers can remain governed even when they no longer participate in runtime behavior.
 - The current validation and standards baseline still treats the rewrite-era example corpus as active enforcement even though those fixtures are not part of the reusable-core load root or a live pack boundary.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): compatibility aids should be temporary and cleanup should prefer explicit boundaries once migration help is no longer needed.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): `pytest`, `ruff`, and `mypy` remain the default workspace validation contract, so a failing full `pytest` run is a release-blocking regression.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): pack settings are the reusable-core startup root, so required-surface loading must follow declarations rather than hidden repo-specific assumptions.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): compatibility aids should be temporary and cleanup should prefer explicit boundaries once migration help is no longer needed.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): `pytest`, `ruff`, and `mypy` remain the default workspace validation contract, so a failing full `pytest` run is a release-blocking regression.
+- [README.md](/core/control_plane/README.md): pack settings are the reusable-core startup root, so required-surface loading must follow declarations rather than hidden repo-specific assumptions.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/control_plane/
@@ -80,10 +80,10 @@ Option 2 is accepted. The trace will first repair the failing workspace-standard
 - Compatibility or intake contracts, example-fixture coverage, and retained repo-local artifact catalogs are the next review targets because the current code audit shows no live reusable-core consumer for them.
 
 ## Risks, Dependencies, and Assumptions
-- Assumption confirmed in this trace: `repository_manifest.v1.json` was inventory-only and not required by a live runtime or external consumer.
+- Assumption confirmed in this trace: `repository_manifest.json` was inventory-only and not required by a live runtime or external consumer.
 - Risk: pack-loading changes could break current default-path behavior if typed caching is not preserved.
 - Dependency: validator registries, schema catalog entries, docs, and derived indexes must be repaired in the same slice as any governed-family retirement.
 
 ## References
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md)

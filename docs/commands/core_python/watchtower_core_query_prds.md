@@ -60,7 +60,7 @@ uv run watchtower-core query prds --requirement-id req.core_python_foundation.00
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/prds.py`
-- `core/control_plane/indexes/prds/prd_index.v1.json`
+- `core/control_plane/indexes/prds/prd_index.json`
 
 ## Updated At
 - `2026-03-13T21:57:29Z`

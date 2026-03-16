@@ -37,11 +37,11 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 - `https://gohugo.io/content-management/front-matter/` - verified 2026-03-09; Front matter.
 
 ## Related Standards and Sources
-- [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
-- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
+- [documentation_template.md](/docs/templates/documentation_template.md)
+- [yaml_1_2_2_reference.md](/docs/references/yaml_1_2_2_reference.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)
+- [reference_front_matter.schema.json](/core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json)
 
 ## Quick Reference or Distilled Reference
 ### Use Front Matter When
@@ -108,28 +108,28 @@ aliases:
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [reference_front_matter.schema.json](/core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json)
 
 ### Why It Matters Here
 - Use front matter mainly on longer-lived references, standards, workflows, and other documents where indexing, ownership, or status need to be explicit.
 - Small orientation docs such as many `README.md` files can usually stay plain Markdown unless metadata becomes operationally useful.
-- Repository-front-matter policy now lives in [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md), while this reference remains the supporting working reference.
+- Repository-front-matter policy now lives in [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md), while this reference remains the supporting working reference.
 
 ### If Local Policy Tightens
 - Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
-- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
+- [documentation_template.md](/docs/templates/documentation_template.md)
+- [yaml_1_2_2_reference.md](/docs/references/yaml_1_2_2_reference.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [reference_front_matter.schema.json](/core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json)
 
 ## Notes
 - This document is a working reference, not a mandatory metadata policy by itself.
 - Front matter is a convention rather than one single universal standard, so this reference uses the YAML specification plus widely adopted documentation-system implementations as its upstream basis.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md) is now the authority for repository front matter policy.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md) is now the authority for repository front matter policy.
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 

@@ -43,11 +43,11 @@ This standard defines the repository's compact human coordination tracker so hum
 - Reviewing whether the repo-level human coordination surface is still proportional and useful.
 
 ## Related Standards and Sources
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): defines the machine-readable coordination source that this tracker derives from.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the deeper initiative-family tracker that remains available beneath this root view.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the deeper task-family tracker this view links to for full execution detail.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): defines the proportional-authoring constraints this tracker should follow.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/README.md): planning-root entrypoint guidance that should stay aligned with this standard.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): defines the machine-readable coordination source that this tracker derives from.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the deeper initiative-family tracker that remains available beneath this root view.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the deeper task-family tracker this view links to for full execution detail.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): defines the proportional-authoring constraints this tracker should follow.
+- [README.md](/docs/planning/README.md): planning-root entrypoint guidance that should stay aligned with this standard.
 
 ## Guidance
 - Treat `docs/planning/coordination_tracking.md` as the default human start-here planning surface.
@@ -105,10 +105,10 @@ This standard defines the repository's compact human coordination tracker so hum
 - Update the coordination sync logic, planning README entrypoint guidance, and coordination-index companion standards in the same change set when this tracker changes structurally.
 
 ## References
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/README.md)
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [README.md](/docs/planning/README.md)
 
 ## Updated At
 - `2026-03-13T15:05:00Z`

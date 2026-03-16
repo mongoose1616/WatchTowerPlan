@@ -39,8 +39,8 @@ Breaks the documentation-alignment initiative into a bounded refresh and closeou
 - Command, standards, and README refreshes may require same-change tracker or index updates when lookup guidance changes materially.
 
 ## Internal Standards and Canonical References Applied
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): docs and machine-readable lookup surfaces should stay aligned when repository guidance changes.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages should match current CLI behavior and repository boundaries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): docs and machine-readable lookup surfaces should stay aligned when repository guidance changes.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages should match current CLI behavior and repository boundaries.
 
 ## Proposed Technical Approach
 - Start with the main entrypoint READMEs and standards that define the current repository shape.
@@ -61,4 +61,4 @@ Breaks the documentation-alignment initiative into a bounded refresh and closeou
 - Confirm coordination and planning trackers point at the refreshed documentation slice cleanly.
 
 ## References
-- [documentation_surface_alignment_for_core_pack_model.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)
+- [documentation_surface_alignment_for_core_pack_model.md](/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)

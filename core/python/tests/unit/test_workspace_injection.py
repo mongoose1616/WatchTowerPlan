@@ -37,11 +37,11 @@ def test_schema_store_loads_from_injected_workspace(tmp_path: Path) -> None:
     )
 
     assert record.canonical_relative_path == (
-        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json"
+        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json"
     )
     assert record.canonical_path == (
         workspace_config.control_plane_root
-        / "schemas/interfaces/documentation/reference_front_matter.v1.schema.json"
+        / "schemas/interfaces/documentation/reference_front_matter.schema.json"
     )
 
 
@@ -54,7 +54,7 @@ def test_control_plane_loader_validates_logical_control_plane_path_in_custom_wor
     registry = loader.load_validator_registry()
     index = loader.load_repository_path_index()
     result = ArtifactValidationService(loader).validate(
-        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        "core/control_plane/indexes/traceability/traceability_index.json"
     )
 
     assert registry.artifact_id == "registry.validators"
@@ -70,7 +70,7 @@ def test_validation_evidence_recorder_writes_default_outputs_to_injected_workspa
     recorder = ValidationEvidenceRecorder(loader)
     result = ValidationResult(
         validator_id="validator.control_plane.traceability_index",
-        target_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
+        target_path="core/control_plane/indexes/traceability/traceability_index.json",
         engine="json_schema",
         schema_ids=(
             "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
@@ -90,5 +90,5 @@ def test_validation_evidence_recorder_writes_default_outputs_to_injected_workspa
     assert traceability_output.exists()
     assert evidence_output.is_relative_to(workspace_config.control_plane_root)
     assert traceability_output == (
-        workspace_config.control_plane_root / "indexes/traceability/traceability_index.v1.json"
+        workspace_config.control_plane_root / "indexes/traceability/traceability_index.json"
     )

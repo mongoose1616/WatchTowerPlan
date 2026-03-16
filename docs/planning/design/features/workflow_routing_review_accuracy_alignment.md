@@ -45,13 +45,13 @@ Defines the technical design boundary for Workflow Routing Review Accuracy Align
 - Foundations context review already exists as a workflow module, but no review-oriented route currently composes it with documentation refresh, so prompts about aligning docs with repository foundations still miss or route too narrowly.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the routing fix should prefer explicit, inspectable logic over fuzzy heuristics that are hard to reason about.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): route preview should remain assistive shared-core infrastructure rather than expanding into an autonomous planner.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the routing fix should prefer explicit, inspectable logic over fuzzy heuristics that are hard to reason about.
+- [product_direction.md](/docs/foundations/product_direction.md): route preview should remain assistive shared-core infrastructure rather than expanding into an autonomous planner.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must remain advisory over authored routing surfaces and route from full request context without becoming a free-form grammar.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md): the prior hardening established that natural maintenance prompts should be fixed through explicit authored coverage rather than semantic inference.
-- [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md): the route index stays derived from the authored routing table, so the design must keep human and machine routing surfaces aligned.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must remain advisory over authored routing surfaces and route from full request context without becoming a free-form grammar.
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md): the prior hardening established that natural maintenance prompts should be fixed through explicit authored coverage rather than semantic inference.
+- [workflow_system_operationalization.md](/docs/planning/prds/workflow_system_operationalization.md): the route index stays derived from the authored routing table, so the design must keep human and machine routing surfaces aligned.
 
 ## Design Goals and Constraints
 - Make the matched-route set explainable from authored task types and trigger phrases alone.
@@ -82,7 +82,7 @@ Defines the technical design boundary for Workflow Routing Review Accuracy Align
 - Add a bounded `Foundations Alignment Review` route that reuses the existing `foundations_context_review` and `documentation_refresh` modules for documentation-alignment prompts that explicitly mention repository foundations.
 
 ### Data and Interface Impacts
-- `workflows/ROUTING_TABLE.md` changes and therefore `core/control_plane/indexes/routes/route_index.v1.json` must be regenerated.
+- `workflows/ROUTING_TABLE.md` changes and therefore `core/control_plane/indexes/routes/route_index.json` must be regenerated.
 - `watchtower-core route preview` behavior changes for the discussed prompt families, so command docs and regression tests must be updated in the same slice.
 - The workflow-module guidance for `foundations_context_review.md` should acknowledge review and documentation-alignment usage in addition to planning/design usage.
 

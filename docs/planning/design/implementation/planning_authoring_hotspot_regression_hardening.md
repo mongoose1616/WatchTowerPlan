@@ -29,9 +29,9 @@ Breaks Planning Authoring Hotspot Regression Hardening into a bounded implementa
 
 ## Source Request or Design
 - Review the March 13, 2026 refactor audit and keep reviewing under one stable planning-authoring hotspot theme until repeated confirmation passes find no new actionable issue.
-- Feature design: [planning_authoring_hotspot_regression_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md)
-- PRD: [planning_authoring_hotspot_regression_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
-- Decision: [planning_authoring_hotspot_regression_hardening_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md)
+- Feature design: [planning_authoring_hotspot_regression_hardening.md](/docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md)
+- PRD: [planning_authoring_hotspot_regression_hardening.md](/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
+- Decision: [planning_authoring_hotspot_regression_hardening_direction.md](/docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md)
 
 ## Scope Summary
 - Recover smaller helper-backed seams around planning scaffolds and task lifecycle mutation where the hotspot regrew after the earlier modularity trace.
@@ -44,12 +44,12 @@ Breaks Planning Authoring Hotspot Regression Hardening into a bounded implementa
 - The earlier hotspot-modularity trace remains historical context and should not be retroactively rewritten to mask later regrowth.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task moves must keep governed acceptance and validation-evidence references aligned.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): task record placement and required sections stay stable.
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): PRD scaffolds must keep the current metadata and acceptance contract shape.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature-design scaffolds must preserve required explained-source sections.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): implementation-plan scaffolds must preserve required source and validation sections.
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): decision scaffolds must preserve decision-status and applied-reference structure.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task moves must keep governed acceptance and validation-evidence references aligned.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): task record placement and required sections stay stable.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): PRD scaffolds must keep the current metadata and acceptance contract shape.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): feature-design scaffolds must preserve required explained-source sections.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): implementation-plan scaffolds must preserve required source and validation sections.
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): decision scaffolds must preserve decision-status and applied-reference structure.
 
 ## Proposed Technical Approach
 - Extract scaffold-kind specs into a declarative helper so plan-kind contract changes stop relying on several parallel maps in one file.
@@ -64,8 +64,8 @@ Breaks Planning Authoring Hotspot Regression Hardening into a bounded implementa
 | Planning scaffold service | `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`; new helper-backed scaffold modules under `core/python/src/watchtower_core/repo_ops/` | Orchestration readability, bootstrap artifact generation, planning-surface refresh isolation, stable result payloads |
 | Scaffold contracts and rendering | `core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py`; any new scaffold spec or rendering helpers; planning document standards under `docs/standards/documentation/` | Declarative plan-kind contracts, render-path drift risk, section and metadata stability |
 | Task lifecycle mutation | `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`; `core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py`; new task companion repair helper | Stable task mutation behavior, isolated governed companion repair, path-canonicalization preservation |
-| Command and runtime boundaries | `core/python/src/watchtower_core/cli/plan_handlers.py`; `core/python/src/watchtower_core/cli/task_handlers.py`; [watchtower_core_plan.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_plan.md); [watchtower_core_task.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_task.md); `core/python/src/watchtower_core/repo_ops/README.md` | Behavior drift, source-surface clarity, same-change doc alignment |
-| Governed planning companions | `docs/planning/**`; `core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.v1.json`; planning trackers and indexes | Traceability alignment, task-path references, closeout evidence, tracker or index coherence |
+| Command and runtime boundaries | `core/python/src/watchtower_core/cli/plan_handlers.py`; `core/python/src/watchtower_core/cli/task_handlers.py`; [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md); [watchtower_core_task.md](/docs/commands/core_python/watchtower_core_task.md); `core/python/src/watchtower_core/repo_ops/README.md` | Behavior drift, source-surface clarity, same-change doc alignment |
+| Governed planning companions | `docs/planning/**`; `core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.json`; `core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.json`; planning trackers and indexes | Traceability alignment, task-path references, closeout evidence, tracker or index coherence |
 | Regression coverage and validation | `core/python/tests/unit/test_planning_scaffolds.py`; `core/python/tests/integration/test_planning_scaffolds_service.py`; `core/python/tests/unit/test_task_lifecycle.py`; `core/python/tests/integration/test_task_lifecycle_service.py`; `core/python/tests/unit/test_plan_and_task_handlers.py` | Behavior preservation, adjacent dependency coverage, confirmation-pass probes |
 
 ## Findings Ledger
@@ -96,5 +96,5 @@ Breaks Planning Authoring Hotspot Regression Hardening into a bounded implementa
 
 ## References
 - March 13, 2026 refactor audit
-- [planning_authoring_hotspot_regression_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [planning_authoring_hotspot_regression_hardening.md](/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)

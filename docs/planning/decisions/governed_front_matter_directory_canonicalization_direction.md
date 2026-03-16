@@ -43,9 +43,9 @@ Use one shared canonicalization helper for path-valued governed `applies_to` met
 - Planning scaffolds and task lifecycle writes could still reproduce the drift, while semantic validation and sync did not share one common `applies_to` path rule.
 
 ## Applied References and Implications
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governed `applies_to` metadata is the authoritative place to define canonical repo-relative file-versus-directory syntax.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on canonical authored `applies_to` values and canonical derived `related_paths`.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the canonicalization logic and regressions should live in the shared Python workspace instead of ad hoc scripts.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): governed `applies_to` metadata is the authoritative place to define canonical repo-relative file-versus-directory syntax.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): exact standards lookup depends on canonical authored `applies_to` values and canonical derived `related_paths`.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the canonicalization logic and regressions should live in the shared Python workspace instead of ad hoc scripts.
 
 ## Affected Surfaces
 - docs/

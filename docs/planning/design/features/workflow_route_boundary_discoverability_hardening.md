@@ -50,14 +50,14 @@ Defines the technical design boundary for Workflow Route Boundary Discoverabilit
 - The current route-preview selection merges every positive route match, which means single-word matches like `validation` can leak unrelated workflows into a strongly scored handoff preview even when the request clearly signals a different dominant route.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): route-first and inspectable deterministic behavior should be preserved instead of replaced with opaque fuzzy routing.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): thin routing entrypoints should guide users toward the right explicit surface without duplicating workflow behavior or leaving neighboring routes ambiguous.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): route-first and inspectable deterministic behavior should be preserved instead of replaced with opaque fuzzy routing.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): thin routing entrypoints should guide users toward the right explicit surface without duplicating workflow behavior or leaving neighboring routes ambiguous.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): routing must use full prompt context rather than exact keyword matching alone, while keeping route preview advisory and deterministic.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): workflow modules must stay narrow, explicit, and distinct rather than being collapsed to hide route ambiguity.
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): route-preview behavior must stay aligned with the authored routing table and companion workflow lookup surfaces.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow metadata should publish retrieval-oriented trigger terms that help users distinguish adjacent workflows without scanning raw Markdown.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): routing must use full prompt context rather than exact keyword matching alone, while keeping route preview advisory and deterministic.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): workflow modules must stay narrow, explicit, and distinct rather than being collapsed to hide route ambiguity.
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md): route-preview behavior must stay aligned with the authored routing table and companion workflow lookup surfaces.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow metadata should publish retrieval-oriented trigger terms that help users distinguish adjacent workflows without scanning raw Markdown.
 
 ## Design Goals and Constraints
 - Improve realistic route discoverability for adjacent reconciliation and task routes without widening the workflow family or weakening determinism.
@@ -118,4 +118,4 @@ Defines the technical design boundary for Workflow Route Boundary Discoverabilit
 
 ## References
 - March 13, 2026 refactor audit
-- [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md)
+- [workflow_route_boundary_discoverability_hardening.md](/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md)

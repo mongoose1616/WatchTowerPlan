@@ -45,9 +45,9 @@ Breaks Control Plane Example Validation Hardening into a bounded implementation 
 - Invalid examples should remain intentionally failing surfaces proven through tests rather than aggregate passing targets.
 
 ## Internal Standards and Canonical References Applied
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the broad validation tier should catch governed valid-example drift.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples remain part of the schema-backed contract boundary.
-- [watchtower_core_validate_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_all.md): command docs must stay aligned with the aggregate validator's real coverage.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the broad validation tier should catch governed valid-example drift.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples remain part of the schema-backed contract boundary.
+- [watchtower_core_validate_all.md](/docs/commands/core_python/watchtower_core_validate_all.md): command docs must stay aligned with the aggregate validator's real coverage.
 
 ## Proposed Technical Approach
 - Add a repo-local helper for enumerating control-plane examples and resolving their schema IDs, then wire it into the aggregate artifact validation flow for valid examples only.

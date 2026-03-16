@@ -12,7 +12,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
@@ -42,22 +42,22 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 - Excludes a full semantic router, package extraction, domain-pack implementation, and the broader planning-document contract-unification program.
 
 ## Current-State Context
-- `core/control_plane/indexes/standards/standard_index.v1.json` currently captures citation and reference usage, but it still has no owner or operationalization fields beyond what can be inferred from prose.
+- `core/control_plane/indexes/standards/standard_index.json` currently captures citation and reference usage, but it still has no owner or operationalization fields beyond what can be inferred from prose.
 - `core/python/src/watchtower_core/` currently has no package-level README files, so runtime ownership and supported import expectations have to be inferred from code and older planning docs.
 - `watchtower-core route preview --request "review the regression findings and fix the valid issues with planning, tasks, validation, and commits"` currently returns no selected routes because the scoring model requires exact trigger-phrase matches before any token overlap matters.
 - The March 2026 review concerns around foundation alignment, maintenance freshness loops, and layered health reporting no longer reproduce as open defects in the live repo, so this initiative should stay tightly scoped to the remaining explicitness gaps.
 - `core/python/src/watchtower_core/repo_ops/planning_documents.py` already centralizes runtime planning-document validation, which means the earlier contract-duplication concern is not the bounded change target for this slice.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): authored operationalization metadata and package-boundary docs should strengthen explicit seams instead of adding hidden side registries.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the remaining report findings should be closed with fail-closed validation and durable lookup alignment rather than informal guidance alone.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): route-preview hardening should improve maintainability workflows without changing the repo's human-governed routing authority.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): authored operationalization metadata and package-boundary docs should strengthen explicit seams instead of adding hidden side registries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the remaining report findings should be closed with fail-closed validation and durable lookup alignment rather than informal guidance alone.
+- [product_direction.md](/docs/foundations/product_direction.md): route-preview hardening should improve maintainability workflows without changing the repo's human-governed routing authority.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): standard documents stay the source of truth, so operationalization metadata belongs in the governed standard shape.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-scoring work should preserve stable contracts while reducing ambiguity.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the trace should join the planning chain, standards work, runtime docs, command docs, and acceptance evidence coherently.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): query and route-preview behavior changes must be reflected in the governed command surfaces.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): standard documents stay the source of truth, so operationalization metadata belongs in the governed standard shape.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-scoring work should preserve stable contracts while reducing ambiguity.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the trace should join the planning chain, standards work, runtime docs, command docs, and acceptance evidence coherently.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): query and route-preview behavior changes must be reflected in the governed command surfaces.
 
 ## Design Goals and Constraints
 - Make operationalization explicit in authored sources rather than inventing another hidden Python-only truth surface.
@@ -90,7 +90,7 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 
 ### Data and Interface Impacts
 - Touched standard docs under `docs/standards/**` gain a new required section with structured operationalization bullets.
-- `core/control_plane/schemas/artifacts/standard_index.v1.schema.json` and the live plus example standard-index artifacts gain operationalization fields.
+- `core/control_plane/schemas/artifacts/standard_index.schema.json` and the live plus example standard-index artifacts gain operationalization fields.
 - `watchtower-core query standards` gains richer output and matching over the new operationalization fields.
 - `docs/commands/core_python/watchtower_core_query_standards.md` and `docs/commands/core_python/watchtower_core_route_preview.md` must reflect the new behavior.
 
@@ -108,14 +108,14 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 
 ## Affected Surfaces
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
 - core/python/tests/
-- core/control_plane/schemas/artifacts/standard_index.v1.schema.json
-- retired valid example index fixture standard_index.v1.example.json
-- retired invalid example index fixture standard_index_external_without_urls.v1.example.json
+- core/control_plane/schemas/artifacts/standard_index.schema.json
+- retired valid example index fixture standard_index.example.json
+- retired invalid example index fixture standard_index_external_without_urls.example.json
 
 ## Design Guardrails
 - Do not move standard-operationalization authority into a new standalone registry when the standard docs themselves can carry the source metadata.
@@ -128,7 +128,7 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 - Package README docs can drift if future refactors change exports without same-change updates to the new boundary docs.
 
 ## References
-- [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
-- [workflow_operationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md)
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
+- [standard_runtime_and_route_explicitness_hardening.md](/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
+- [workflow_operationalization_direction.md](/docs/planning/decisions/workflow_operationalization_direction.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)

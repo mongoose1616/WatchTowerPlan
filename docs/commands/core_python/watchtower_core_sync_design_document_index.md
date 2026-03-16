@@ -42,7 +42,7 @@ uv run watchtower-core sync design-document-index --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync design-document-index --output /tmp/design_document_index.v1.json --format json
+uv run watchtower-core sync design-document-index --output /tmp/design_document_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -64,7 +64,7 @@ uv run watchtower-core sync design-document-index --output /tmp/design_document_
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
-- `core/control_plane/indexes/design_documents/design_document_index.v1.json`
+- `core/control_plane/indexes/design_documents/design_document_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

@@ -44,11 +44,11 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - `https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects` - verified 2026-03-09; GitHub Projects GraphQL API guidance.
 
 ## Related Standards and Sources
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
+- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
 
 ## Quick Reference or Distilled Reference
 ### Hosted Surface Roles
@@ -83,11 +83,11 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - Active support for current repository standards, design docs, `.github/` collaboration scaffolding, and push-only GitHub task sync.
 
 ### Current Touchpoints
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [README.md](/home/j/WatchTowerPlan/.github/README.md)
-- [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [README.md](/.github/README.md)
+- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
+- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
 - `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 
 ### Why It Matters Here
@@ -95,10 +95,10 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - Standards should cite this document when they depend on GitHub capabilities instead of duplicating the same raw external URLs repeatedly.
 
 ## References
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
+- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` while normalizing GitHub-facing repository guidance through local references.

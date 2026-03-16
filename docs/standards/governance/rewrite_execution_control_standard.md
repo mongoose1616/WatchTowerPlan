@@ -46,18 +46,18 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - Deciding whether a proposed rewrite change is allowed to enter implementation.
 
 ## Related Standards and Sources
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): later rewrite slices must pair execution control with surface classification.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract is materialized as a machine-readable acceptance contract.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): durable parity and checkpoint evidence must land in the validation-evidence ledger.
-- [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): parity checks must preserve the current canonical planning-authority answers unless an accepted decision changes them.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): rewrite control surfaces must stay joined through one trace and active task chain.
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): closed rewrite trace packages may later be purged, so current rewrite policy cannot depend on specific retained historical task files.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): rewrite slices still need the normal inspect, refresh, rebuild, validate, and record loop.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): compatibility and helper-layer changes must stay bounded and explicit.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): later rewrite slices must pair execution control with surface classification.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract is materialized as a machine-readable acceptance contract.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): durable parity and checkpoint evidence must land in the validation-evidence ledger.
+- [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): parity checks must preserve the current canonical planning-authority answers unless an accepted decision changes them.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): rewrite control surfaces must stay joined through one trace and active task chain.
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): closed rewrite trace packages may later be purged, so current rewrite policy cannot depend on specific retained historical task files.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): rewrite slices still need the normal inspect, refresh, rebuild, validate, and record loop.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): compatibility and helper-layer changes must stay bounded and explicit.
 
 ## Guidance
 - Phase 0 and Phase 1 may publish prerequisites, classifications, and review packages only. They do not authorize Phase 2 implementation by themselves.
-- The program-level machine-readable parity contract lives at [structural_rewrite_program_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json).
+- The program-level machine-readable parity contract lives at [structural_rewrite_program_acceptance.json](/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json).
 - The default slice-control package for Phase 2 and later is:
   - one human checkpoint document under `docs/planning/design/implementation/`
   - one machine migration record under `core/control_plane/ledgers/migrations/`
@@ -80,7 +80,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
   - the loader, query, sync, or validator consumers
   - the parity method
   - the rollback path
-- A positive later-phase entry review must name the full consumer boundary for the approved slice. For projection or orchestration slices, that boundary includes the coordination-sync ordering, write-side mutation callers, direct rebuild paths, affected tracker emitters, and one exact rollback-safe builder or orchestration seam.
+- A positive later-phase entry review must name the full consumer boundary for the approved slice. For rendered-surface or orchestration slices, that boundary includes the coordination-sync ordering, write-side mutation callers, direct rebuild paths, affected tracker emitters, and one exact rollback-safe builder or orchestration seam.
 - A positive slice outcome review does not authorize an unnamed successor checkpoint. If a review passes, it must name the next bounded checkpoint explicitly and keep higher-blast-radius implementation blocked until that checkpoint's own review closes.
 - If a later-phase outcome review passes and the next materially different rewrite risk sits on a different consumer boundary inside the same phase, prefer a new bounded entry package over direct implementation so the next seam is reviewed explicitly before code changes begin.
 - If a bounded implementation slice lands, close its implementation task, publish its migration and validation-evidence artifacts, and make the explicit outcome-review task the next controlling surface in the same change set.
@@ -137,7 +137,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/`; `docs/planning/tasks/open/`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
+- `Operational Surfaces`: `docs/planning/design/implementation/`; `docs/planning/tasks/open/`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
 
 ## Validation
 - Rewrite checkpoints should not rely on prose-only approval.
@@ -151,10 +151,10 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - Update the structural rewrite acceptance contract, migration records, validation evidence, and checkpoint plan in the same change set when this standard changes materially.
 
 ## References
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_program_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json)
-- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map.json)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_program_acceptance.json](/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json)
+- [authority_map.json](/core/control_plane/registries/authority_map.json)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

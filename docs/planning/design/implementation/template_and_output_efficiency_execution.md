@@ -33,8 +33,8 @@ aliases:
 Breaks the template and output efficiency initiative into compact authoring, tracker compaction, and workflow-guidance slices.
 
 ## Source Request or Design
-- Feature design: [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
-- PRD: [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
+- Feature design: [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- PRD: [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
 - User request to start a new initiative, complete the related work, and commit each succinct slice.
 
 ## Scope Summary
@@ -54,9 +54,9 @@ Breaks the template and output efficiency initiative into compact authoring, tra
 - Generated trackers are deterministic and already have test coverage, which makes compact renderer changes straightforward to validate.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): keep the work modular, tested, and companion-surface aligned.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): regenerate derived trackers and indexes before the final validation pass.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): compact human output should not change source-of-truth boundaries.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): keep the work modular, tested, and companion-surface aligned.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): regenerate derived trackers and indexes before the final validation pass.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): compact human output should not change source-of-truth boundaries.
 
 ## Proposed Technical Approach
 - Extend planning-document helper utilities so explained-bullet sections can be optional when present, not universally required.
@@ -96,8 +96,8 @@ Breaks the template and output efficiency initiative into compact authoring, tra
 - None. The initiative is bounded to repository-local guidance, validation, and generated output behavior.
 
 ## References
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
 
 ## Updated At
 - `2026-03-10T16:00:54Z`

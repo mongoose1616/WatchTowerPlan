@@ -10,8 +10,8 @@ from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningC
 
 
 @dataclass(frozen=True, slots=True)
-class ProjectionSearchFilters:
-    """Normalized filter inputs for trace-linked projection search."""
+class RenderedSearchFilters:
+    """Normalized filter inputs for trace-linked rendered-surface search."""
 
     query: str | None = None
     trace_id: str | None = None
@@ -62,9 +62,9 @@ def query_score(query: str | None, fields: Iterable[str]) -> int | None:
     return score
 
 
-def search_projection_entries[EntryT](
+def search_rendered_entries[EntryT](
     entries: Iterable[EntryT],
-    filters: ProjectionSearchFilters,
+    filters: RenderedSearchFilters,
     *,
     query_fields: Callable[[EntryT], Iterable[str]],
     sort_key: Callable[[EntryT], Any],
@@ -75,7 +75,7 @@ def search_projection_entries[EntryT](
     active_owners: Callable[[EntryT], Iterable[str]],
     blocked_task_count: Callable[[EntryT], int] | None = None,
 ) -> tuple[EntryT, ...]:
-    """Apply shared projection search filters and deterministic ranking."""
+    """Apply shared rendered-surface search filters and deterministic ranking."""
     normalized_trace_id = normalize_optional_text(filters.trace_id)
     normalized_initiative_status = normalize_optional_text(filters.initiative_status)
     normalized_current_phase = normalize_optional_text(filters.current_phase)
@@ -120,8 +120,8 @@ def search_projection_entries[EntryT](
     return tuple(ordered_entries)
 
 
-def initiative_projection_query_terms(entry: InitiativeIndexEntry) -> tuple[str, ...]:
-    """Return deterministic searchable terms for compact initiative projections."""
+def initiative_rendered_query_terms(entry: InitiativeIndexEntry) -> tuple[str, ...]:
+    """Return deterministic searchable terms for compact initiative rendered surfaces."""
     return (
         entry.trace_id,
         entry.title,
@@ -155,8 +155,10 @@ def initiative_projection_query_terms(entry: InitiativeIndexEntry) -> tuple[str,
     )
 
 
-def planning_catalog_query_terms(entry: PlanningCatalogEntry) -> tuple[str, ...]:
-    """Return deterministic searchable terms for deep planning projections."""
+def planning_catalog_rendered_query_terms(
+    entry: PlanningCatalogEntry,
+) -> tuple[str, ...]:
+    """Return deterministic searchable terms for deep planning rendered surfaces."""
     return (
         entry.trace_id,
         entry.title,

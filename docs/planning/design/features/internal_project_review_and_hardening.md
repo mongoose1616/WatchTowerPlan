@@ -48,16 +48,16 @@ Defines the review-backed design for validation-compatible planning bootstrap ou
 - Coordination-facing JSON payloads are currently shaped separately in initiative-index sync, planning-catalog sync, and query handlers, which increases maintenance and drift risk for the same machine-facing fields.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): bootstrap output should be small, deterministic, and valid by construction rather than depending on immediate manual cleanup.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): authored docs, machine-readable contracts, evidence, and derived mirrors should remain synchronized in one write flow.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core repository hardening should improve shared substrate reliability before product work expands these flows further.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): bootstrap output should be small, deterministic, and valid by construction rather than depending on immediate manual cleanup.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): authored docs, machine-readable contracts, evidence, and derived mirrors should remain synchronized in one write flow.
+- [product_direction.md](/docs/foundations/product_direction.md): core repository hardening should improve shared substrate reliability before product work expands these flows further.
 
 ## Internal Standards and Canonical References Applied
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): generated feature-design docs must respect governed design-document structure.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): generated implementation plans must include the same repository-compliant applied-reference framing expected by validation and review.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): traced initiatives that publish durable acceptance IDs must publish one aligned machine-readable contract.
-- [acceptance_evidence_reconciliation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): bootstrap should not create a trace that immediately fails acceptance reconciliation.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): coordination and planning projection fields should remain consistent across machine-readable lookup surfaces.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): generated feature-design docs must respect governed design-document structure.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): generated implementation plans must include the same repository-compliant applied-reference framing expected by validation and review.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): traced initiatives that publish durable acceptance IDs must publish one aligned machine-readable contract.
+- [acceptance_evidence_reconciliation_standard.md](/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): bootstrap should not create a trace that immediately fails acceptance reconciliation.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): coordination and planning projection fields should remain consistent across machine-readable lookup surfaces.
 
 ## Design Goals and Constraints
 - Make `plan bootstrap --write` publish a minimal but validation-compatible traced baseline in one bounded flow.

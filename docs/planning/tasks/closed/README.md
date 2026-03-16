@@ -11,4 +11,4 @@
 
 ## Notes
 - Keep the root compact. Terminal task files should live under `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/`.
-- Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) for a compact recent-closeout view, `watchtower-core query tasks --task-status done --format json` for completed-task lookup, and `watchtower-core query tasks --task-status cancelled --format json` for cancelled-task lookup.
+- Use [task_tracking.md](/docs/planning/tasks/task_tracking.md) for a compact recent-closeout view, `watchtower-core query tasks --task-status done --format json` for completed-task lookup, and `watchtower-core query tasks --task-status cancelled --format json` for cancelled-task lookup.

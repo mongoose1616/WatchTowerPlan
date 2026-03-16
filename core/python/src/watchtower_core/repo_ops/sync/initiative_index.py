@@ -8,15 +8,15 @@ from pathlib import Path
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.repo_ops.planning_projection_serialization import serialize_initiative_entry
-from watchtower_core.repo_ops.planning_projection_snapshot import (
-    TracePlanningProjectionSnapshot,
+from watchtower_core.repo_ops.planning_rendered_serialization import serialize_initiative_entry
+from watchtower_core.repo_ops.planning_rendered_snapshot import (
+    TracePlanningRenderedSnapshot,
     build_trace_planning_coordination_snapshot,
-    build_trace_planning_projection_snapshots,
+    build_trace_planning_rendered_snapshots,
 )
 from watchtower_core.repo_ops.sync.tracking_common import effective_updated_at
 
-INITIATIVE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+INITIATIVE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/initiatives/initiative_index.json"
 PHASE_ORDER = {
     "prd": 1,
     "design": 2,
@@ -42,7 +42,7 @@ class InitiativeIndexSyncService:
     def build_document(self) -> dict[str, object]:
         entries = [
             self._build_entry(snapshot)
-            for snapshot in build_trace_planning_projection_snapshots(self._loader)
+            for snapshot in build_trace_planning_rendered_snapshots(self._loader)
         ]
 
         document: dict[str, object] = {
@@ -67,7 +67,7 @@ class InitiativeIndexSyncService:
 
     def _build_entry(
         self,
-        snapshot: TracePlanningProjectionSnapshot,
+        snapshot: TracePlanningRenderedSnapshot,
     ) -> dict[str, object]:
         trace_entry = snapshot.trace_entry
         coordination = build_trace_planning_coordination_snapshot(snapshot)

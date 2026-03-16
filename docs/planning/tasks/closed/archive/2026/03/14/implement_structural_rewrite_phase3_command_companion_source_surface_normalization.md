@@ -15,9 +15,9 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md
 - docs/commands/core_python/
-- core/control_plane/indexes/commands/command_index.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json
+- core/control_plane/indexes/commands/command_index.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.json
 - core/python/src/watchtower_core/cli/registry.py
 - core/python/src/watchtower_core/cli/parser.py
 - core/python/src/watchtower_core/cli/introspection.py
@@ -55,9 +55,9 @@ Normalize command-doc source-surface metadata for the first bounded Phase 3 slic
 - The slice remains companion-only. `registry.py` plus `parser.py` still own command presence and hierarchy, and the next controlling surface is an explicit outcome review task rather than broader rewrite rollout.
 
 ## Links
-- [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [review_structural_rewrite_phase3_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Updated At
 - `2026-03-14T05:41:11Z`

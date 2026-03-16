@@ -51,13 +51,13 @@ Standard operationalization metadata will support bounded repo-relative glob pat
 - `watchtower-core query standards --operationalization-path docs/references/AGENTS.md --format json` returns only `std.data_contracts.format_selection`, so nested `AGENTS.md` files are not discoverable through `std.documentation.agents_md`.
 - `watchtower-core query standards --operationalization-path docs/planning/README.md --format json` omits `std.documentation.readme_md`, and `docs/references/commonmark_reference.md` omits `std.documentation.reference_md`.
 - `watchtower-core query standards --operationalization-path docs/standards/documentation/readme_md_standard.md --format json` omits `std.documentation.standard_md`.
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md) still starts with `# \`<Directory Name>\`` and places optional sections before the required inventory scaffold.
+- [readme_template.md](/docs/templates/readme_template.md) still starts with `# \`<Directory Name>\`` and places optional sections before the required inventory scaffold.
 
 ## Applied References and Implications
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the standard index must stay authoritative for standards lookup, so the operationalization contract has to express the real governing surfaces.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata should explain enforcement and embodiment clearly enough that maintainers do not need code spelunking to understand scope.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the README template must use repo-relative directory-path titles and a compact inventory-first structure.
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md) and [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): recurring documentation families must remain discoverable through standards lookup, not only by manual browsing.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the standard index must stay authoritative for standards lookup, so the operationalization contract has to express the real governing surfaces.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): operationalization metadata should explain enforcement and embodiment clearly enough that maintainers do not need code spelunking to understand scope.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the README template must use repo-relative directory-path titles and a compact inventory-first structure.
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md) and [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): recurring documentation families must remain discoverable through standards lookup, not only by manual browsing.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/standards.py

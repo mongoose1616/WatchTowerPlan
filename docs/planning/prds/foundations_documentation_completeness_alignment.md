@@ -70,7 +70,7 @@ These gaps make the foundations layer less complete for humans and less useful f
 ## Acceptance Criteria
 - `ac.foundations_documentation_completeness_alignment.001`: The traced planning chain, decision record, acceptance contract, evidence ledger, and closed task set all reconcile for `trace.foundations_documentation_completeness_alignment`.
 - `ac.foundations_documentation_completeness_alignment.002`: `workflows/modules/foundations_context_review.md` explicitly loads the authoritative foundation set needed for foundations-aware review, and the guidance remains aligned with `docs/foundations/README.md`.
-- `ac.foundations_documentation_completeness_alignment.003`: `docs/foundations/engineering_stack_direction.md` cites governed local reference docs for its material external technologies and the rebuilt `foundation_index.v1.json` records non-empty `reference_doc_paths` and `external_reference_urls` for `foundation.engineering_stack_direction`.
+- `ac.foundations_documentation_completeness_alignment.003`: `docs/foundations/engineering_stack_direction.md` cites governed local reference docs for its material external technologies and the rebuilt `foundation_index.json` records non-empty `reference_doc_paths` and `external_reference_urls` for `foundation.engineering_stack_direction`.
 - `ac.foundations_documentation_completeness_alignment.004`: The CLI help and command doc for `watchtower-core query foundations` publish live examples that return real results against the current foundation corpus, with targeted regression coverage for the refreshed lookup path.
 - `ac.foundations_documentation_completeness_alignment.005`: Targeted and full validation pass, and two post-fix review passes find no additional actionable issues in the touched foundations/documentation/query area.
 
@@ -80,7 +80,7 @@ These gaps make the foundations layer less complete for humans and less useful f
 - Help-text and command-doc examples must remain grounded in current corpus reality; otherwise the repository will keep publishing examples that are technically valid commands but operationally misleading.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md)
-- [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+- [README.md](/docs/foundations/README.md)
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md)
+- [foundations_context_review.md](/workflows/modules/foundations_context_review.md)

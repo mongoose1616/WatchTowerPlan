@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/commands/"
-  - "core/control_plane/indexes/commands/command_index.v1.json"
+  - "core/control_plane/indexes/commands/command_index.json"
   - "core/python/src/watchtower_core/cli/"
 related_ids:
   - "design.features.command_documentation_and_lookup"
@@ -40,9 +40,9 @@ Tracks the remaining closeout and verification follow-up for the command documen
 - The initiative and task views agree on ownership and next action.
 
 ## Links
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
-- [watchtower_core_sync_command_index.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_command_index.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md)
+- [watchtower_core_sync_command_index.md](/docs/commands/core_python/watchtower_core_sync_command_index.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
 
 ## Updated At
 - `2026-03-10T03:53:14Z`

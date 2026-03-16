@@ -196,7 +196,7 @@ def test_github_task_sync_write_updates_local_bindings_and_indexes(tmp_path: Pat
     assert "ITEM_ID" in written_task
 
     task_index = json.loads(
-        (repo_root / "core/control_plane/indexes/tasks/task_index.v1.json").read_text(
+        (repo_root / "core/control_plane/indexes/tasks/task_index.json").read_text(
             encoding="utf-8"
         )
     )

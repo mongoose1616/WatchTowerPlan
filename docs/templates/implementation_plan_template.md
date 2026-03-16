@@ -19,9 +19,10 @@ aliases:
 # <Implementation Plan Title>
 
 > Use this template for implementation plans that translate an approved feature design or user request into concrete engineering work.
-> Store the finished document under `docs/planning/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
+> Store the finished document under `docs/planning/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md).
 > Keep front matter valid against the governed implementation-plan front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
+> Prefer repository-native Markdown links such as `/docs/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
 > Keep at least one traceable repo-local source surface across `Source Designs`, `Linked PRDs`, or repo-local references in `Source Request or Design`; `Source Designs` may be `None` only when another traceable source remains.

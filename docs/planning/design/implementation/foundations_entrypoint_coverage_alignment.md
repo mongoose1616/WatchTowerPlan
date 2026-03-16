@@ -49,9 +49,9 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
   surfaces remain entrypoints, not broad handbooks.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): the family docs remain authoritative entrypoints for the governed foundations corpus.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundations family should surface its authoritative query and rebuild routes explicitly.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): the workflow fix must remain procedural and sequence-aware.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): the family docs remain authoritative entrypoints for the governed foundations corpus.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundations family should surface its authoritative query and rebuild routes explicitly.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): the workflow fix must remain procedural and sequence-aware.
 
 ## Proposed Technical Approach
 - Add missing machine-route references and companion-context guidance directly to
@@ -61,16 +61,16 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
   foundations routes drift again.
 
 ## Work Breakdown
-1. Update [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md),
-   [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md),
-   and [core/control_plane/indexes/foundations/README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md)
+1. Update [docs/foundations/README.md](/docs/foundations/README.md),
+   [repository_scope.md](/docs/foundations/repository_scope.md),
+   and [core/control_plane/indexes/foundations/README.md](/core/control_plane/indexes/foundations/README.md)
    so the human and machine foundations entrypoints cross-reference correctly.
-2. Update [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+2. Update [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
    so it loads `customer_story.md` and
    `docs/planning/coordination_tracking.md` for the relevant review contexts
    and points reviewers to `watchtower-core query foundations` for
    deterministic discovery.
-3. Extend [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py),
+3. Extend [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py),
    run targeted validation, then run full repository validation and repeated
    foundations-themed confirmation passes.
 
@@ -86,7 +86,7 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
   workflow module, adjacent command docs, and standards lookup surfaces.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [customer_story.md](/docs/foundations/customer_story.md)

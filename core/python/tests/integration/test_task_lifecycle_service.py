@@ -196,11 +196,11 @@ def test_task_update_write_repairs_governed_companion_paths_when_task_moves(
 
     contract_relative_path = (
         "core/control_plane/contracts/acceptance/"
-        "task_lifecycle_service_path_repair_acceptance.v1.json"
+        "task_lifecycle_service_path_repair_acceptance.json"
     )
     evidence_relative_path = (
         "core/control_plane/ledgers/validation_evidence/"
-        "task_lifecycle_service_path_repair_planning_baseline.v1.json"
+        "task_lifecycle_service_path_repair_planning_baseline.json"
     )
     (repo_root / contract_relative_path).write_text(
         json.dumps(

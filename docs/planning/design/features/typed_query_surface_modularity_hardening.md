@@ -50,13 +50,13 @@ Defines the technical design boundary for Typed Query Surface Modularity Hardeni
 - Direct consumer pressure is real: `ControlPlaneLoader`, multiple `repo_ops/query/*.py` services, planning-sync code, acceptance validation, and CLI handlers all depend on the typed model export surface staying stable.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): requires explicit, inspectable typed surfaces and rejects opaque abstractions that blur authority boundaries.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favors local-first deterministic code and reviewable repository-native helpers over clever indirection.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): requires explicit, inspectable typed surfaces and rejects opaque abstractions that blur authority boundaries.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): favors local-first deterministic code and reviewable repository-native helpers over clever indirection.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): keeps the Python workspace layout explicit and requires runtime-boundary docs to stay aligned when package boundaries change materially.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): traced execution work needs durable task records and aligned derived planning surfaces.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): constrains the bounded task set shape used to execute and close the slice.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): keeps the Python workspace layout explicit and requires runtime-boundary docs to stay aligned when package boundaries change materially.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): traced execution work needs durable task records and aligned derived planning surfaces.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): constrains the bounded task set shape used to execute and close the slice.
 
 ## Design Goals and Constraints
 - Reduce hotspot size and repeated boilerplate while keeping the typed model contracts explicit at the field level.
@@ -110,8 +110,8 @@ Defines the technical design boundary for Typed Query Surface Modularity Hardeni
 - `core/python/tests/unit/`
 - `core/python/src/watchtower_core/control_plane/README.md`
 - `docs/planning/`
-- `core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json`
-- `core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.v1.json`
+- `core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.json`
+- `core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.json`
 
 ## Design Guardrails
 - Prefer small explicit helpers over generic registries or reflection-heavy abstractions.
@@ -125,6 +125,6 @@ Defines the technical design boundary for Typed Query Surface Modularity Hardeni
 
 ## References
 - March 13, 2026 refactor audit
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/typed_query_surface_modularity_hardening.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/prds/typed_query_surface_modularity_hardening.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)

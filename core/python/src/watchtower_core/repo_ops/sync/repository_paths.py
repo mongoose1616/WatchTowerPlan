@@ -12,7 +12,7 @@ from watchtower_core.control_plane.models import RepositoryPathEntry, Repository
 from watchtower_core.control_plane.paths import discover_repo_root
 
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+    "core/control_plane/indexes/repository_paths/repository_path_index.json"
 )
 
 

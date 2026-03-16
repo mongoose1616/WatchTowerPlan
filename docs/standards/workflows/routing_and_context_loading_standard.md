@@ -33,12 +33,12 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Deciding whether a rule belongs in `AGENTS.md`, the routing table, or a module.
 
 ## Related Standards and Sources
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): defines the derived machine-readable route surface used for advisory route preview.
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_table_md_standard.md](/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md): defines the derived machine-readable route surface used for advisory route preview.
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
@@ -105,11 +105,11 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Update `AGENTS.md`, `ROUTING_TABLE.md`, and related workflow standards together when load order or routing semantics change.
 
 ## References
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
-- [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md)
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md)
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md)
+- [routing_table_md_standard.md](/docs/standards/documentation/routing_table_md_standard.md)
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md)
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
 
 ## Notes
 - This concern belongs under `workflows/` because it defines routing behavior and context-loading semantics.

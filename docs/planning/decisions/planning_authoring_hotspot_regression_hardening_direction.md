@@ -39,10 +39,10 @@ Recover the planning authoring hotspot through bounded helper extraction: split 
 - The refactor must preserve current CLI behavior, planning artifact contracts, task mutation behavior, governed companion rewrites, and coordination refresh semantics.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): use explicit helper seams inside `repo_ops` rather than a new generic framework or reusable-core migration.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): same-change updates must keep docs, trackers, indexes, acceptance, and evidence aligned with the refactor.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task path moves still require same-change governed companion repair, but that responsibility does not need to live inside the mutation service itself.
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): scaffold behavior must preserve the current document contracts rather than changing the planning authoring model.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): use explicit helper seams inside `repo_ops` rather than a new generic framework or reusable-core migration.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): same-change updates must keep docs, trackers, indexes, acceptance, and evidence aligned with the refactor.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task path moves still require same-change governed companion repair, but that responsibility does not need to live inside the mutation service itself.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): scaffold behavior must preserve the current document contracts rather than changing the planning authoring model.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/planning_scaffolds.py
@@ -90,5 +90,5 @@ Adopt option 3. The repository should recover smaller explicit seams around plan
 
 ## References
 - March 13, 2026 refactor audit
-- [planning_authoring_hotspot_regression_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [planning_authoring_hotspot_regression_hardening.md](/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)

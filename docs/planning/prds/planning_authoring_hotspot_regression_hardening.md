@@ -66,6 +66,6 @@ Review and refactor the regrown planning scaffold and task lifecycle hotspots so
 
 ## References
 - March 13, 2026 refactor audit
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md)

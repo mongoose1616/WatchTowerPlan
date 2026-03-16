@@ -14,7 +14,7 @@ applies_to:
 - docs/templates/standard_document_template.md
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Authoring Surface Alignment Direction Decision
@@ -47,15 +47,15 @@ Align the standard-authoring scaffold, the governing Standard Document Standard,
 - No automated regression currently checks this authoring seam, so any fix should add durable test coverage rather than relying on future reviews to spot the same drift.
 
 ## Applied References and Implications
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the governing standard should remain the source of truth for both template shape and standard-index operationalization.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata should expose the real authoring and enforcement surfaces that standards query relies on.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): the authoring scaffold should not instruct maintainers toward outputs that would violate current semantic validation.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the repaired template should restore required sections without reintroducing gratuitous boilerplate.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the governing standard should remain the source of truth for both template shape and standard-index operationalization.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata should expose the real authoring and enforcement surfaces that standards query relies on.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): the authoring scaffold should not instruct maintainers toward outputs that would violate current semantic validation.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the repaired template should restore required sections without reintroducing gratuitous boilerplate.
 
 ## Affected Surfaces
 - `docs/standards/documentation/standard_md_standard.md`
 - `docs/templates/standard_document_template.md`
-- `core/control_plane/indexes/standards/standard_index.v1.json`
+- `core/control_plane/indexes/standards/standard_index.json`
 - `core/python/tests/unit/test_cli_query_commands.py`
 - `core/python/tests/integration/test_control_plane_artifacts.py`
 - `docs/planning/`

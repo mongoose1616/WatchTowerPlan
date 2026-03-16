@@ -61,7 +61,7 @@ Provide a clear baseline for labeling and handling information with different sh
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
+- [README.md](/docs/references/README.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

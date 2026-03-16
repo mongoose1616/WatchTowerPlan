@@ -16,8 +16,8 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md
 - core/control_plane/registries/schema_catalog.json
 - core/control_plane/registries/validator_registry.json
-- core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json
+- core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program
@@ -49,8 +49,8 @@ Publish the bounded artifact-role registry family and its checkpoint companions 
 - The slice remains descriptive only and does not change runtime routing, sync selection, validator dispatch, command authority, or planning-boundary behavior.
 
 ## Links
-- [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
-- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- [structural_rewrite_artifact_role_registry_pilot.md](/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
+- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
 
 ## Updated At
 - `2026-03-14T04:31:59Z`

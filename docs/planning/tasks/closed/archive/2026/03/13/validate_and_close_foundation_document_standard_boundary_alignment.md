@@ -14,8 +14,8 @@ updated_at: '2026-03-13T00:04:27Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.json
 - docs/planning/coordination_tracking.md
 related_ids:
 - prd.foundation_document_standard_boundary_alignment

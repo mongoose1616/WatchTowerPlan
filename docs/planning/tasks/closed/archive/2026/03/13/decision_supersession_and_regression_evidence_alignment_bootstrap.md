@@ -19,7 +19,7 @@ applies_to:
 - docs/standards/documentation/decision_record_md_standard.md
 - docs/templates/decision_record_template.md
 - docs/standards/data_contracts/decision_index_standard.md
-- core/control_plane/schemas/artifacts/decision_index.v1.schema.json
+- core/control_plane/schemas/artifacts/decision_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/decision_index.py
 - core/python/src/watchtower_core/repo_ops/query/decisions.py
 - core/python/src/watchtower_core/cli/query_records_handlers.py

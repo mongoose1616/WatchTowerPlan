@@ -18,7 +18,7 @@ applies_to:
 - core/control_plane/indexes/registries/README.md
 - core/control_plane/indexes/schemas/README.md
 - docs/standards/operations/repository_maintenance_loop_standard.md
-- core/control_plane/indexes/repository_paths/repository_path_index.v1.json
+- core/control_plane/indexes/repository_paths/repository_path_index.json
 related_ids:
 - trace.reference_and_reserved_surface_maturity_signaling
 - prd.reference_and_reserved_surface_maturity_signaling

@@ -103,16 +103,16 @@ on-disk intermediate artifacts than it needs to be.
   projection chain.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): optimization should remove repeated work through explicit composition boundaries rather than hidden mutable state.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): reuse changes must preserve fail-closed behavior and keep human and machine planning surfaces aligned in the same slice.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): as the governed core grows, internal repository orchestration needs to scale without losing operator trust or fidelity.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): optimization should remove repeated work through explicit composition boundaries rather than hidden mutable state.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): reuse changes must preserve fail-closed behavior and keep human and machine planning surfaces aligned in the same slice.
+- [product_direction.md](/docs/foundations/product_direction.md): as the governed core grows, internal repository orchestration needs to scale without losing operator trust or fidelity.
 
 ## References
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/coordination_projection_source_reuse.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/features/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/implementation/coordination_projection_source_reuse.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 
 ## Updated At
 - `2026-03-12T16:16:44Z`

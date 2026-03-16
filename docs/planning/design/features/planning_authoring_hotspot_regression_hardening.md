@@ -42,16 +42,16 @@ Defines the technical design boundary for Planning Authoring Hotspot Regression 
 - `planning_scaffold_support.py` still carries several parallel per-kind maps and one large `render_sections()` branch, so scaffold-contract updates still require synchronized edits across multiple structures.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep repo-local orchestration explicit, readable, and bounded without leaking repository semantics into reusable core.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): same-change updates must keep code, docs, trackers, and machine-readable surfaces aligned through the refactor.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep repo-local orchestration explicit, readable, and bounded without leaking repository semantics into reusable core.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): same-change updates must keep code, docs, trackers, and machine-readable surfaces aligned through the refactor.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task path moves must keep governed acceptance and validation-evidence references aligned in the same change set.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): task-document placement and section contracts remain unchanged while internals move into helpers.
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): PRD scaffolds must retain the current section and metadata contract under the new helper structure.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature-design scaffolds must retain the explained applied-reference sections under the split renderers.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): implementation-plan scaffolds must retain the current required-source and validation-plan structure.
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): decision scaffolds must retain the current decision-status and explained reference contract.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task path moves must keep governed acceptance and validation-evidence references aligned in the same change set.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): task-document placement and section contracts remain unchanged while internals move into helpers.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): PRD scaffolds must retain the current section and metadata contract under the new helper structure.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): feature-design scaffolds must retain the explained applied-reference sections under the split renderers.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): implementation-plan scaffolds must retain the current required-source and validation-plan structure.
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): decision scaffolds must retain the current decision-status and explained reference contract.
 
 ## Design Goals and Constraints
 - Reduce blast radius by separating scaffold specs, scaffold rendering, bootstrap artifact builders, planning-surface refresh, and task companion repair into explicit collaborators.
@@ -124,5 +124,5 @@ Defines the technical design boundary for Planning Authoring Hotspot Regression 
 
 ## References
 - March 13, 2026 refactor audit
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)

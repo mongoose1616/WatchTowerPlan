@@ -19,9 +19,10 @@ aliases:
 # <Feature Design Title>
 
 > Use this template for feature-level technical designs that should be specific enough for implementation planning.
-> Store the finished document under `docs/planning/design/features/` and keep it aligned with [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
+> Store the finished document under `docs/planning/design/features/` and keep it aligned with [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md).
 > Keep front matter valid against the governed feature-design front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
+> Prefer repository-native Markdown links such as `/docs/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Keep the document focused on one feature or narrowly related capability.
 > Record the recommended design, its tradeoffs, and the implementation guardrails without turning the document into a task checklist.
 > Publish `Foundations References Applied` and `Internal Standards and Canonical References Applied` as explained `source: implication` sections.

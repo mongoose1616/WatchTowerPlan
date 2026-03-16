@@ -33,12 +33,12 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Refreshing a feature design after standards, control-plane artifacts, or architecture decisions change materially.
 
 ## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
-- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md): authoring scaffold that should stay aligned with this standard.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
+- [feature_design_template.md](/docs/templates/feature_design_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/docs/planning/design/features/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store feature designs under `docs/planning/design/features/`.
@@ -111,7 +111,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 
 ## Validation
 - Feature designs should contain the required sections in the documented order.
-- Feature-design front matter should validate against `feature_design_front_matter.v1.schema.json`.
+- Feature-design front matter should validate against `feature_design_front_matter.schema.json`.
 - The recommended design should be specific enough that an implementation plan can break it into concrete work without re-deciding the architecture.
 - Required applied-reference sections should explain the implication of each cited
   source.
@@ -125,9 +125,9 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Refresh affected implementation plans when a feature design changes in a way that invalidates their assumptions or work breakdown.
 
 ## References
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md)
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
+- [feature_design_template.md](/docs/templates/feature_design_template.md)
+- [README.md](/docs/planning/design/features/README.md)
 
 ## Notes
 - Feature designs are the design-authority layer for a capability until a later standard or control-plane artifact takes over a narrower concern.

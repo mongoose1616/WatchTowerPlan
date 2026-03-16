@@ -36,16 +36,16 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - Reviewing whether acceptance expectations are still only implicit in prose.
 
 ## Related Standards and Sources
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/contracts/acceptance/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Keep the human source of acceptance intent in the PRD.
-- Use acceptance contracts as the machine-readable projection of durable acceptance criteria.
+- Use acceptance contracts as the machine-readable rendered surface of durable acceptance criteria.
 - Store published acceptance contracts under `core/control_plane/contracts/acceptance/`.
 - Use JSON for published acceptance contracts.
 - Use one contract per traced initiative or other durable change boundary.
@@ -113,9 +113,9 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - Update the source PRD, traceability surfaces, and related evidence expectations in the same change set when acceptance meaning changes materially.
 
 ## References
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/README.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [README.md](/core/control_plane/contracts/acceptance/README.md)
 
 ## Notes
 - This family exists so Python and workflow automation can consume acceptance expectations consistently.

@@ -59,7 +59,7 @@ uv run watchtower-core query designs --trace-id trace.core_python_foundation --f
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/designs.py`
-- `core/control_plane/indexes/design_documents/design_document_index.v1.json`
+- `core/control_plane/indexes/design_documents/design_document_index.json`
 
 ## Updated At
 - `2026-03-13T21:57:29Z`

@@ -15,7 +15,7 @@ applies_to:
 - docs/templates/standard_document_template.md
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 ---
 
@@ -34,7 +34,7 @@ applies_to:
 Aligns the governed standard-authoring scaffold, lookup surfaces, and regression coverage with the live standard-document contract.
 
 ## Problem Statement
-The standards review reproduced two live authoring-surface defects in the standards family. First, [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) is stale against the governed [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md) and the current semantic validator. The template omits required sections such as `Scope`, `Use When`, `Related Standards and Sources`, `Operationalization`, and `Updated At`, and it incorrectly tells authors that some of those sections are optional. That means the repo’s canonical scaffold for new standards actively encourages outputs that would violate the documented standard-document contract.
+The standards review reproduced two live authoring-surface defects in the standards family. First, [standard_document_template.md](/docs/templates/standard_document_template.md) is stale against the governed [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md) and the current semantic validator. The template omits required sections such as `Scope`, `Use When`, `Related Standards and Sources`, `Operationalization`, and `Updated At`, and it incorrectly tells authors that some of those sections are optional. That means the repo’s canonical scaffold for new standards actively encourages outputs that would violate the documented standard-document contract.
 
 Second, the governing standard itself does not publish the standard-authoring template as one of its operational surfaces. That omission propagates into the standard index and standards query surfaces. A direct reproduction using `watchtower-core query standards --operationalization-path docs/templates/standard_document_template.md --format json` returns zero results today, even though the standard template is the primary authoring scaffold for the governed standard-document family. This leaves the repo without a reliable lookup path from the template to its governing standard.
 
@@ -72,8 +72,8 @@ Together these defects weaken the standards family at the point contributors act
 - Regression coverage needs to be specific enough to catch future authoring-surface drift without becoming a brittle snapshot of unrelated documentation wording.
 
 ## Foundations References Applied
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the canonical authoring scaffold should reinforce the governed contract rather than silently narrowing or weakening it.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): authoring entrypoints and lookup surfaces should have one explicit, tested contract instead of diverging by accident.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the canonical authoring scaffold should reinforce the governed contract rather than silently narrowing or weakening it.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): authoring entrypoints and lookup surfaces should have one explicit, tested contract instead of diverging by accident.
 
 ## References
 - docs/standards/documentation/standard_md_standard.md

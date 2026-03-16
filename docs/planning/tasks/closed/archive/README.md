@@ -5,4 +5,4 @@
 
 ## Notes
 - Keep terminal task files under `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/`.
-- Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) for the compact recent-closeout view.
+- Use [task_tracking.md](/docs/planning/tasks/task_tracking.md) for the compact recent-closeout view.

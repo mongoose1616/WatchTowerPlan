@@ -13,5 +13,5 @@
 | `core/control_plane/schemas/interfaces/packs/status_registry.schema.json` | Schema for one global status registry. |
 | `core/control_plane/schemas/interfaces/packs/actor_registry.schema.json` | Schema for one actor registry. |
 | `core/control_plane/schemas/interfaces/packs/artifact_index.schema.json` | Schema for one future pack artifact index. |
-| `core/control_plane/schemas/interfaces/packs/pack_work_item_note.v1.schema.json` | Schema for one pack-owned work-item note. |
-| `core/control_plane/schemas/interfaces/packs/extraction_output_envelope.v1.schema.json` | Schema for one structured extraction workflow output envelope. |
+| `core/control_plane/schemas/interfaces/packs/pack_work_item_note.schema.json` | Schema for one pack-owned work-item note. |
+| `core/control_plane/schemas/interfaces/packs/extraction_output_envelope.schema.json` | Schema for one structured extraction workflow output envelope. |

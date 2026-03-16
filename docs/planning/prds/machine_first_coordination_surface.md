@@ -87,13 +87,13 @@ The repository now has clean planning families and an explicit `query coordinati
 - Whether a later planning control-pack overlay should route directly through the coordination index once product work begins.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the start-here surface should remove ambiguity rather than introduce another pseudo-authority.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable coordination surfaces must stay derived from the same authoritative state.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core planning control should stay generic and future-ready for product work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the start-here surface should remove ambiguity rather than introduce another pseudo-authority.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable coordination surfaces must stay derived from the same authoritative state.
+- [product_direction.md](/docs/foundations/product_direction.md): core planning control should stay generic and future-ready for product work.
 
 ## References
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
 
 ## Updated At
 - `2026-03-10T18:54:43Z`

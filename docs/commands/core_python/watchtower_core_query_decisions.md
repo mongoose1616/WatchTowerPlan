@@ -60,7 +60,7 @@ uv run watchtower-core query decisions --linked-prd-id prd.core_python_foundatio
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/decisions.py`
-- `core/control_plane/indexes/decisions/decision_index.v1.json`
+- `core/control_plane/indexes/decisions/decision_index.json`
 
 ## Updated At
 - `2026-03-13T21:57:29Z`

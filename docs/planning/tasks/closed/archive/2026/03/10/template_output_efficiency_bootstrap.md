@@ -16,8 +16,8 @@ applies_to:
   - "docs/planning/prds/template_and_output_efficiency.md"
   - "docs/planning/design/features/compact_document_authoring_and_tracking.md"
   - "docs/planning/design/implementation/template_and_output_efficiency_execution.md"
-  - "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.json"
   - "docs/planning/tasks/open/"
 related_ids:
   - "prd.template_and_output_efficiency"
@@ -42,9 +42,9 @@ Create the traced planning chain, acceptance baseline, and bounded task set for 
 - The new trace is visible in the planning corpus with open implementation tasks.
 
 ## Links
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
-- [template_and_output_efficiency_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- [template_and_output_efficiency_execution.md](/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
 
 ## Updated At
 - `2026-03-10T16:00:54Z`

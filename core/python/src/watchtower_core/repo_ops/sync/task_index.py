@@ -10,7 +10,7 @@ from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.task_documents import iter_task_documents
 
-TASK_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
+TASK_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/tasks/task_index.json"
 
 
 def _entry_to_document(entry: TaskIndexEntry) -> dict[str, object]:

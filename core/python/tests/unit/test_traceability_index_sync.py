@@ -29,7 +29,7 @@ def test_traceability_index_sync_builds_schema_valid_document() -> None:
 def test_traceability_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = TraceabilityIndexSyncService(loader)
-    output_path = tmp_path / "traceability_index.v1.json"
+    output_path = tmp_path / "traceability_index.json"
 
     document = service.build_document()
     written_path = service.write_document(document, output_path)
@@ -51,7 +51,7 @@ def test_traceability_index_sync_uses_closed_at_as_effective_updated_at(
 ) -> None:
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     traceability_path = (
-        repo_root / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
     )
     document = json.loads(traceability_path.read_text(encoding="utf-8"))
     entries = document["entries"]
@@ -86,9 +86,9 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     trace_id = "trace.machine_first_coordination_surface"
     traceability_path = (
-        repo_root / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
     )
-    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.v1.json"
+    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.json"
 
     traceability_document = json.loads(traceability_path.read_text(encoding="utf-8"))
     trace_entries = traceability_document["entries"]
@@ -136,10 +136,10 @@ def test_traceability_index_sync_prefers_latest_same_rank_note(tmp_path: Path) -
         document = json.loads(path.read_text(encoding="utf-8"))
         if document.get("trace_id") != "trace.structural_rewrite_program":
             continue
-        if path.name == "structural_rewrite_artifact_role_registry_pilot.v1.json":
+        if path.name == "structural_rewrite_artifact_role_registry_pilot.json":
             document["notes"] = "Earlier checkpoint note."
             document["recorded_at"] = "2026-03-14T03:56:23Z"
-        elif path.name == "structural_rewrite_phase4_shared_projection_entry_ready.v1.json":
+        elif path.name == "structural_rewrite_phase4_shared_projection_entry_ready.json":
             document["notes"] = "Latest checkpoint note."
             document["recorded_at"] = "2026-03-14T23:59:59Z"
         else:

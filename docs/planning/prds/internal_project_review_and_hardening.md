@@ -68,8 +68,8 @@ The internal review validated two repo-level hardening gaps. First, `watchtower-
 - This initiative depends on keeping generated trackers and indexes synchronized in the same change sets as the authored planning and contract artifacts.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the fix should remove known failure paths and duplicated shaping logic instead of adding more manual repair steps.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-authored planning, machine-readable contracts, and derived mirrors must remain aligned in the same traced change set.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the fix should remove known failure paths and duplicated shaping logic instead of adding more manual repair steps.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-authored planning, machine-readable contracts, and derived mirrors must remain aligned in the same traced change set.
 
 ## References
 - docs/planning/coordination_tracking.md

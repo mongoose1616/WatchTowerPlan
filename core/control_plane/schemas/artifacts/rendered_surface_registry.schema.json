@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1",
+  "title": "Rendered Surface Registry",
+  "description": "Catalog of governed rendered output surfaces, including ordered sections, table columns, and constrained Markdown formatting rules.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "surfaces"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.rendered_surfaces"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/renderedSurface"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "columnFormatter": {
+      "type": "string",
+      "enum": [
+        "plain",
+        "code",
+        "repo_link",
+        "markdown"
+      ]
+    },
+    "sectionKind": {
+      "type": "string",
+      "enum": [
+        "table",
+        "bullet_summary",
+        "lines",
+        "updated_at"
+      ]
+    },
+    "columnDefinition": {
+      "type": "object",
+      "required": [
+        "header",
+        "field",
+        "formatter"
+      ],
+      "properties": {
+        "header": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formatter": {
+          "$ref": "#/$defs/columnFormatter"
+        },
+        "path_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "empty_value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "enabled_when_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "formatter": {
+                "const": "repo_link"
+              }
+            },
+            "required": [
+              "formatter"
+            ]
+          },
+          "then": {
+            "required": [
+              "path_field"
+            ]
+          }
+        }
+      ]
+    },
+    "sectionDefinition": {
+      "type": "object",
+      "required": [
+        "section_id",
+        "kind",
+        "source_key"
+      ],
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "$ref": "#/$defs/sectionKind"
+        },
+        "source_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "empty_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/columnDefinition"
+          }
+        },
+        "label_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "count_field": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "table"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "title",
+              "columns"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "bullet_summary"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "title",
+              "label_field",
+              "count_field"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "updated_at"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "title"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "renderedSurface": {
+      "type": "object",
+      "required": [
+        "surface_id",
+        "title",
+        "output_path",
+        "sections"
+      ],
+      "properties": {
+        "surface_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sectionDefinition"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

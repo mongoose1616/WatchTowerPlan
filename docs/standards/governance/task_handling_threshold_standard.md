@@ -44,13 +44,13 @@ This standard defines when repository work must create, update, transition, or e
 - Closing out a change set or preparing a commit.
 
 ## Related Standards and Sources
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): durable local task records remain the authoritative execution-tracking surface once the threshold is crossed.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep task handling explicit rather than relying on prose-only history.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): non-trivial changes need trace, task, or explicit no-task metadata in commit history.
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): hosted pull-request metadata should mirror the local task-handling outcome when GitHub is used.
-- [task_scope_definition.md](/home/j/WatchTowerPlan/workflows/modules/task_scope_definition.md): routed work should decide task-handling outcome early instead of improvising it at closeout.
-- [task_handoff_review.md](/home/j/WatchTowerPlan/workflows/modules/task_handoff_review.md): handoff review must surface missing task handling when the threshold was crossed.
-- [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md): commit closeout should preserve the task-handling outcome in durable metadata.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): durable local task records remain the authoritative execution-tracking surface once the threshold is crossed.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced work should keep task handling explicit rather than relying on prose-only history.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): non-trivial changes need trace, task, or explicit no-task metadata in commit history.
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): hosted pull-request metadata should mirror the local task-handling outcome when GitHub is used.
+- [task_scope_definition.md](/workflows/modules/task_scope_definition.md): routed work should decide task-handling outcome early instead of improvising it at closeout.
+- [task_handoff_review.md](/workflows/modules/task_handoff_review.md): handoff review must surface missing task handling when the threshold was crossed.
+- [commit_closeout.md](/workflows/modules/commit_closeout.md): commit closeout should preserve the task-handling outcome in durable metadata.
 
 ## Guidance
 - Create, update, transition, or close a durable local task when any of these are true:
@@ -68,7 +68,7 @@ This standard defines when repository work must create, update, transition, or e
 - When a durable task is not required, record an explicit `No-Task-Reason` in the commit or pull-request closeout metadata for non-trivial changes.
 - Do not use silence as the signal that no task was needed.
 - When a durable task exists, use its stable `task_id` in commit or pull-request metadata instead of inventing parallel ad hoc identifiers.
-- Active traced initiatives should not remain active in initiative or traceability projections without linked durable task IDs.
+- Active traced initiatives should not remain active in initiative or traceability rendered surfaces without linked durable task IDs.
 
 ## Structure or Data Model
 ### Allowed task-handling outcomes
@@ -99,10 +99,10 @@ This standard defines when repository work must create, update, transition, or e
 - Update task workflows, commit guidance, and hosted collaboration scaffolding in the same change set when this threshold changes materially.
 
 ## References
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [README.md](/docs/planning/tasks/README.md)
 
 ## Updated At
 - `2026-03-11T06:00:00Z`

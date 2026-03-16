@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/
 related_ids:

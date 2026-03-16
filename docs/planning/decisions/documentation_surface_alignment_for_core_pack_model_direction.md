@@ -47,8 +47,8 @@ Treat WatchTowerPlan documentation as the operator surface for reusable core plu
 - The documentation corpus is broader than the implementation slice and still needs a bounded cleanup pass to remove stale assumptions without turning into an untracked rewrite.
 
 ## Applied References and Implications
-- [validated_core_and_pack_data_shape_convergence.md](/home/j/WatchTowerPlan/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md): the documentation slice should treat the pack-settings cutover and flat registries as the new baseline rather than reopening that technical decision.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable guidance and machine-readable lookup surfaces should stay aligned in the same change set.
+- [validated_core_and_pack_data_shape_convergence.md](/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md): the documentation slice should treat the pack-settings cutover and flat registries as the new baseline rather than reopening that technical decision.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable guidance and machine-readable lookup surfaces should stay aligned in the same change set.
 
 ## Affected Surfaces
 - docs/
@@ -87,5 +87,5 @@ Run one documentation-first follow-on that updates the repository's entrypoints,
 - Depends on keeping adjacent command and planning trackers aligned if the documentation refresh changes lookup guidance materially.
 
 ## References
-- [documentation_surface_alignment_for_core_pack_model.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)
-- [validated_core_and_pack_data_shape_convergence.md](/home/j/WatchTowerPlan/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md)
+- [documentation_surface_alignment_for_core_pack_model.md](/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)
+- [validated_core_and_pack_data_shape_convergence.md](/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md)

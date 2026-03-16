@@ -23,6 +23,10 @@ from watchtower_core.adapters.markdown import (
     parse_markdown_table,
     split_semicolon_list,
 )
+from watchtower_core.adapters.rendered_markdown import (
+    render_rendered_surface,
+    render_repo_link,
+)
 
 __all__ = [
     "FrontMatterParseError",
@@ -43,5 +47,7 @@ __all__ = [
     "parse_markdown_table",
     "render_front_matter",
     "replace_front_matter",
+    "render_rendered_surface",
     "split_semicolon_list",
+    "render_repo_link",
 ]

@@ -28,8 +28,8 @@ Provide a format baseline for YAML-backed metadata or configuration so parsers a
 - `https://yaml.org/spec/1.2.2/` - verified 2026-03-09; YAML Ain’t Markup Language (YAML™) revision 1.2.2.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Practical YAML Rules
@@ -54,8 +54,8 @@ Provide a format baseline for YAML-backed metadata or configuration so parsers a
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 
 ### Why It Matters Here
 - Use this reference for any future YAML metadata standards under `docs/standards/metadata/**`.
@@ -66,8 +66,8 @@ Provide a format baseline for YAML-backed metadata or configuration so parsers a
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

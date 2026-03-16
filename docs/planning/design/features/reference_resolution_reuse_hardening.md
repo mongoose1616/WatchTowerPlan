@@ -45,15 +45,15 @@ Defines the technical design boundary for Reference Resolution Reuse Hardening.
 - The reused reference-resolution data is command-local and identical across those repeated builds, so the current behavior spends time rescanning the same governed reference corpus without improving correctness.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the fix should create one explicit seam for derived reference resolution instead of burying repeated work inside downstream loaders.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the refactor must stay fail closed and preserve same-change alignment across code, tests, and planning evidence.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): the Python helper layer should remain deterministic and small, favoring bounded in-process reuse over heavier persistence machinery.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the fix should create one explicit seam for derived reference resolution instead of burying repeated work inside downstream loaders.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the refactor must stay fail closed and preserve same-change alignment across code, tests, and planning evidence.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): the Python helper layer should remain deterministic and small, favoring bounded in-process reuse over heavier persistence machinery.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): prefer explicit helper seams and narrow bounded state over copy-pasted logic or hidden globals.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): optimization changes must keep the broad validation baseline green and explicitly tested.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow-module loading and indexing must stay aligned with the derived workflow index contract.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): workflow semantic validation must preserve the current structure and link guardrails while the loader internals change.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): prefer explicit helper seams and narrow bounded state over copy-pasted logic or hidden globals.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): optimization changes must keep the broad validation baseline green and explicitly tested.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow-module loading and indexing must stay aligned with the derived workflow index contract.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): workflow semantic validation must preserve the current structure and link guardrails while the loader internals change.
 
 ## Design Goals and Constraints
 - Reuse derived reference-resolution data exactly once per command-scoped validation or sync run when the same loader inputs are being examined repeatedly.
@@ -110,10 +110,10 @@ Defines the technical design boundary for Reference Resolution Reuse Hardening.
 - Sync orchestration changes could introduce subtle artifact drift if the shared reference-resolution map were wired to the wrong targets or built from stale documents.
 
 ## References
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/prds/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
 
 ## Updated At
 - `2026-03-12T15:09:05Z`

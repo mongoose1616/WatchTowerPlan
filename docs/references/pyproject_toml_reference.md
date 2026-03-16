@@ -32,8 +32,8 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - `https://peps.python.org/pep-0621/` - verified 2026-03-09; PEP 621 – Storing project metadata in pyproject.toml.
 
 ## Related Standards and Sources
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -62,8 +62,8 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ### Why It Matters Here
 - Use this reference if repository automation adopts shared Python tooling and needs one canonical configuration file.
@@ -75,8 +75,8 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ## Notes
 - This reference is intentionally practical rather than exhaustive.

@@ -48,8 +48,8 @@ Add the coordination-index artifact family, sync logic, loader support, and quer
 - Extended `sync coordination` and `sync all` to rebuild the coordination index in dependency order, with loader support, typed models, and targeted validation coverage.
 
 ## Links
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
-- [machine_first_coordination_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/machine_first_coordination_execution.md)
+- [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
+- [machine_first_coordination_execution.md](/docs/planning/design/implementation/machine_first_coordination_execution.md)
 
 ## Updated At
 - `2026-03-10T19:20:47Z`

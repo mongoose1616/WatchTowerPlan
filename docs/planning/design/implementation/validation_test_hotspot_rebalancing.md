@@ -37,9 +37,9 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 
 ## Source Request or Design
 - Review the March 13, 2026 refactor audit under one stable validation-hotspot theme until repeated confirmation passes find no new actionable issue.
-- Feature design: [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/design/features/validation_test_hotspot_rebalancing.md)
-- PRD: [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/validation_test_hotspot_rebalancing.md)
-- Decision: [validation_test_hotspot_rebalancing_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md)
+- Feature design: [validation_test_hotspot_rebalancing.md](/docs/planning/design/features/validation_test_hotspot_rebalancing.md)
+- PRD: [validation_test_hotspot_rebalancing.md](/docs/planning/prds/validation_test_hotspot_rebalancing.md)
+- Decision: [validation_test_hotspot_rebalancing_direction.md](/docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md)
 
 ## Scope Summary
 - Split the remaining oversized integration and unit validation suites into focused family-oriented files backed by small shared helpers.
@@ -53,10 +53,10 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 - README inventories are the authoritative source for repository-path indexing, so discoverability changes must ship in the same change set as the split.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): constrains test layout and same-change documentation alignment in the Python workspace.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): README inventories must remain honest, scoped entrypoints for the touched test families.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): repository-path indexing must stay aligned with README inventory changes.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): traced implementation work needs bounded task records and aligned trackers.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): constrains test layout and same-change documentation alignment in the Python workspace.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): README inventories must remain honest, scoped entrypoints for the touched test families.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): repository-path indexing must stay aligned with README inventory changes.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): traced implementation work needs bounded task records and aligned trackers.
 
 ## Proposed Technical Approach
 - Introduce one small helper module under `core/python/tests/integration/` for repeated JSON or front-matter loading and related repository-aware assertions, then split `test_control_plane_artifacts.py` into focused integration suites by validation family while keeping the original path as a compatibility marker.
@@ -70,8 +70,8 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 | Integration validation hotspot | `core/python/tests/integration/test_control_plane_artifacts.py`; new helper-backed integration suites under `core/python/tests/integration/`; `core/python/src/watchtower_core/control_plane/loader.py`; `core/python/src/watchtower_core/validation/artifact.py`; example-artifact helpers | Failure locality, live loader or schema coverage preservation, helper minimalism, compatibility-path strategy |
 | Document-semantics hotspot | `core/python/tests/unit/test_document_semantics_validation.py`; new fixture-backed unit suites under `core/python/tests/unit/`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py` | Validator-selection coverage, explicit fixture writing, fail-closed semantic rule preservation, path canonicalization coverage |
 | Validation orchestration boundaries | `core/python/src/watchtower_core/repo_ops/validation/all.py`; `core/python/src/watchtower_core/cli/validation_handlers.py`; `docs/commands/core_python/watchtower_core_validate.md` | No runtime behavior drift, no output-contract drift, adjacency review around aggregate validation |
-| Discoverability and indexing | `core/python/tests/unit/README.md`; `core/python/tests/integration/README.md`; `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`; `watchtower-core query paths` | README inventory truth, repository-path index coherence, historical-path compatibility, query discoverability |
-| Traced governance surfaces | `docs/planning/**`; `core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json` | Coverage-map durability, findings ledger, acceptance alignment, evidence coverage, closeout state |
+| Discoverability and indexing | `core/python/tests/unit/README.md`; `core/python/tests/integration/README.md`; `core/control_plane/indexes/repository_paths/repository_path_index.json`; `watchtower-core query paths` | README inventory truth, repository-path index coherence, historical-path compatibility, query discoverability |
+| Traced governance surfaces | `docs/planning/**`; `core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.json`; `core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.json` | Coverage-map durability, findings ledger, acceptance alignment, evidence coverage, closeout state |
 
 ## Findings Ledger
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |
@@ -80,7 +80,7 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 | `finding.validation_test_hotspot_rebalancing.002` | `medium` | `resolved` | `core/python/tests/unit/test_document_semantics_validation.py`; document-semantics validator surfaces; shared fixture-writing paths | the 1053-line unit hotspot now resolves through an 8-line compatibility marker plus four focused suites and a shared fixture-writer helper, and both the focused semantic-rule pytest subset and the final full `pytest -q` pass stayed green |
 | `finding.validation_test_hotspot_rebalancing.003` | `medium` | `resolved` | `core/python/tests/unit/README.md`; `core/python/tests/integration/README.md`; repository path index; `watchtower-core query paths` | README inventory refresh plus `watchtower-core sync all --write --format json` rebuilt the repository-path index to 557 records, and `query paths` now resolves both preserved hotspot markers and new focused-suite paths |
 | `finding.validation_test_hotspot_rebalancing.004` | `high` | `resolved` | `core/python/tests/integration/__init__.py`; `core/python/tests/integration/fixture_repo_support.py`; direct integration and unit consumers of the helper | the first full `pytest -q` rerun exposed a `ModuleNotFoundError` for bare `fixture_repo_support` imports after the new integration package boundary landed; the loop reopened and repaired all direct consumers to import through `tests.integration.fixture_repo_support`, after which the acceptance-aware full `pytest -q` rerun passed |
-| `finding.validation_test_hotspot_rebalancing.005` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json` | the first `watchtower-core validate acceptance --trace-id trace.validation_test_hotspot_rebalancing --format json` pass found missing durable evidence coverage for acceptance IDs `002` through `005`; the evidence ledger was expanded and the final acceptance reconciliation plus `watchtower-core validate all --format json` both passed cleanly |
+| `finding.validation_test_hotspot_rebalancing.005` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.json`; `core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.json` | the first `watchtower-core validate acceptance --trace-id trace.validation_test_hotspot_rebalancing --format json` pass found missing durable evidence coverage for acceptance IDs `002` through `005`; the evidence ledger was expanded and the final acceptance reconciliation plus `watchtower-core validate all --format json` both passed cleanly |
 
 ## Work Breakdown
 1. Replace the planning, decision, acceptance, evidence, and bootstrap-task placeholders with the real validation-hotspot scope, coverage map, findings ledger, accepted direction, and bounded execution tasks.
@@ -102,4 +102,4 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 
 ## References
 - March 13, 2026 refactor audit
-- [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/validation_test_hotspot_rebalancing.md)
+- [validation_test_hotspot_rebalancing.md](/docs/planning/prds/validation_test_hotspot_rebalancing.md)

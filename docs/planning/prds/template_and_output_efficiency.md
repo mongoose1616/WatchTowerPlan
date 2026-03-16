@@ -86,17 +86,17 @@ The repository currently enforces more document surface area than the project ne
 - Whether a later pass should compact additional non-planning generated surfaces once this planning- and template-focused slice proves stable.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): simplify the working surface where possible, but keep contracts explicit and deterministic.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must change together when one depends on the other.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): repository work should keep the planning and execution substrate efficient so future product implementation can use more of the context window on real product decisions.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): simplify the working surface where possible, but keep contracts explicit and deterministic.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must change together when one depends on the other.
+- [product_direction.md](/docs/foundations/product_direction.md): repository work should keep the planning and execution substrate efficient so future product implementation can use more of the context window on real product decisions.
 
 ## References
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md)
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md)
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md)
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
 
 ## Updated At
 - `2026-03-10T16:00:54Z`

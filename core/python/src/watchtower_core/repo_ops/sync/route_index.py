@@ -11,7 +11,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 
 ROUTING_TABLE_DOCUMENT_PATH = "workflows/ROUTING_TABLE.md"
-ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.v1.json"
+ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.json"
 _ROUTE_TABLE_HEADER = "| Task Type | Trigger Keywords (Examples) | Required Workflows |"
 
 

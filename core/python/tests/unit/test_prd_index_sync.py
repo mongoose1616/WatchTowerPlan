@@ -31,7 +31,7 @@ def test_prd_index_sync_builds_schema_valid_document() -> None:
 def test_prd_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = PrdIndexSyncService(loader)
-    output_path = tmp_path / "prd_index.v1.json"
+    output_path = tmp_path / "prd_index.json"
 
     document = service.build_document()
     written_path = service.write_document(document, output_path)
@@ -108,7 +108,7 @@ def test_prd_index_sync_filters_stale_related_paths_from_existing_index(tmp_path
         encoding="utf-8",
     )
 
-    index_path = repo_root / "core/control_plane/indexes/prds/prd_index.v1.json"
+    index_path = repo_root / "core/control_plane/indexes/prds/prd_index.json"
     document = json.loads(index_path.read_text(encoding="utf-8"))
     document["entries"].append(
         {

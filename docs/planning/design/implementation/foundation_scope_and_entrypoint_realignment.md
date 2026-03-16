@@ -34,8 +34,8 @@ aliases:
 Breaks the foundation-scope and root-entrypoint cleanup into bounded documentation slices with one accepted scope decision and a traced acceptance baseline.
 
 ## Source Request or Design
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
 
 ## Scope Summary
 - Add one repository-scope foundation doc and realign the existing foundation layer around current repository ownership versus future WatchTower product context.
@@ -53,9 +53,9 @@ Breaks the foundation-scope and root-entrypoint cleanup into bounded documentati
 - An earlier whole-repo review already captured the evidence and rationale for this cleanup.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the plan must preserve explicit links from the initiative to the decision, acceptance contract, evidence, and bounded tasks through closeout.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): the work breakdown and rollout plan need to terminate in a clean initiative closeout with no hidden open-task exceptions.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the execution slices should keep the cleanup documentation-only and avoid expanding the scope into adjacent planning-graph or validator work.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the plan must preserve explicit links from the initiative to the decision, acceptance contract, evidence, and bounded tasks through closeout.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): the work breakdown and rollout plan need to terminate in a clean initiative closeout with no hidden open-task exceptions.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the execution slices should keep the cleanup documentation-only and avoid expanding the scope into adjacent planning-graph or validator work.
 
 ## Proposed Technical Approach
 - Record an accepted direction decision that establishes the repository-scope precedence model.
@@ -92,8 +92,8 @@ Breaks the foundation-scope and root-entrypoint cleanup into bounded documentati
 - Land a final closeout commit after validation passes and the trace is terminal.
 
 ## References
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
-- [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
+- [foundation_scope_and_entrypoint_realignment.md](/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
 
 ## Updated At
 - `2026-03-11T01:27:13Z`

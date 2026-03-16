@@ -19,7 +19,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
-DECISION_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
+DECISION_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/decisions/decision_index.json"
 DECISION_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1"
 )

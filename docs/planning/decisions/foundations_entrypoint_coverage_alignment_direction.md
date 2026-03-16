@@ -54,11 +54,11 @@ companions for the review contexts the foundations layer already advertises.
   documentation and workflow alignment.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the current repository boundary should stay easy to resolve from both human and machine entrypoints.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): adjacent human and machine guidance should land in the same change set.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md): the foundations family already treats this document as supporting future-state context, so the review workflow should load it when that route matters.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundation family needs clear query and rebuild entrypoints alongside the published artifact.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): the workflow update should stay procedural and focused on execution.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the current repository boundary should stay easy to resolve from both human and machine entrypoints.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): adjacent human and machine guidance should land in the same change set.
+- [customer_story.md](/docs/foundations/customer_story.md): the foundations family already treats this document as supporting future-state context, so the review workflow should load it when that route matters.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundation family needs clear query and rebuild entrypoints alongside the published artifact.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): the workflow update should stay procedural and focused on execution.
 
 ## Affected Surfaces
 - docs/foundations/README.md
@@ -103,7 +103,7 @@ workflow module, and the targeted integration regression in one bounded slice.
   stay limited to route selection and context loading.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [customer_story.md](/docs/foundations/customer_story.md)

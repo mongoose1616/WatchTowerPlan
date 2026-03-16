@@ -37,7 +37,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync command-index --write",
             "uv run watchtower-core sync command-index --output "
-            "/tmp/command_index.v1.json --format json",
+            "/tmp/command_index.json --format json",
         ),
     },
     {
@@ -55,7 +55,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync foundation-index",
             "uv run watchtower-core sync foundation-index --write",
             "uv run watchtower-core sync foundation-index --output "
-            "/tmp/foundation_index.v1.json --format json",
+            "/tmp/foundation_index.json --format json",
         ),
     },
     {
@@ -74,7 +74,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync planning-catalog",
             "uv run watchtower-core sync planning-catalog --write",
             "uv run watchtower-core sync planning-catalog --output "
-            "/tmp/planning_catalog.v1.json --format json",
+            "/tmp/planning_catalog.json --format json",
         ),
     },
     {
@@ -92,7 +92,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync reference-index --write",
             "uv run watchtower-core sync reference-index --output "
-            "/tmp/reference_index.v1.json --format json",
+            "/tmp/reference_index.json --format json",
         ),
     },
     {
@@ -108,7 +108,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
         "examples": (
             "uv run watchtower-core sync route-index",
             "uv run watchtower-core sync route-index --write",
-            "uv run watchtower-core sync route-index --output /tmp/route_index.v1.json "
+            "uv run watchtower-core sync route-index --output /tmp/route_index.json "
             "--format json",
         ),
     },
@@ -127,7 +127,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync standard-index --write",
             "uv run watchtower-core sync standard-index --output "
-            "/tmp/standard_index.v1.json --format json",
+            "/tmp/standard_index.json --format json",
         ),
     },
     {
@@ -145,7 +145,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync workflow-index",
             "uv run watchtower-core sync workflow-index --write",
             "uv run watchtower-core sync workflow-index --output "
-            "/tmp/workflow_index.v1.json --format json",
+            "/tmp/workflow_index.json --format json",
         ),
     },
     {
@@ -162,7 +162,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
         "examples": (
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync prd-index --write",
-            "uv run watchtower-core sync prd-index --output /tmp/prd_index.v1.json --format json",
+            "uv run watchtower-core sync prd-index --output /tmp/prd_index.json --format json",
         ),
     },
     {
@@ -180,7 +180,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync decision-index",
             "uv run watchtower-core sync decision-index --write",
             "uv run watchtower-core sync decision-index --output "
-            "/tmp/decision_index.v1.json --format json",
+            "/tmp/decision_index.json --format json",
         ),
     },
     {
@@ -198,7 +198,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync design-document-index",
             "uv run watchtower-core sync design-document-index --write",
             "uv run watchtower-core sync design-document-index --output "
-            "/tmp/design_document_index.v1.json --format json",
+            "/tmp/design_document_index.json --format json",
         ),
     },
     {
@@ -216,7 +216,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync initiative-index",
             "uv run watchtower-core sync initiative-index --write",
             "uv run watchtower-core sync initiative-index --output "
-            "/tmp/initiative_index.v1.json --format json",
+            "/tmp/initiative_index.json --format json",
         ),
     },
     {
@@ -233,7 +233,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
         "examples": (
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-index --write",
-            "uv run watchtower-core sync task-index --output /tmp/task_index.v1.json --format json",
+            "uv run watchtower-core sync task-index --output /tmp/task_index.json --format json",
         ),
     },
     {
@@ -251,7 +251,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync traceability-index --write",
             "uv run watchtower-core sync traceability-index --output "
-            "/tmp/traceability_index.v1.json --format json",
+            "/tmp/traceability_index.json --format json",
         ),
     },
     {
@@ -268,7 +268,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
             "uv run watchtower-core sync repository-paths --output "
-            "/tmp/repository_path_index.v1.json --format json",
+            "/tmp/repository_path_index.json --format json",
         ),
     },
 )

@@ -43,8 +43,8 @@ Make the most frequently opened README entrypoints compact, high-signal orientat
 - The README standard and template now explicitly prefer anchor files, path families, and compact notes over exhaustive same-shape enumerations.
 
 ## Links
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
 
 ## Updated At
 - `2026-03-10T18:05:14Z`

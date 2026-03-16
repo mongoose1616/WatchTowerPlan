@@ -24,7 +24,8 @@ aliases:
 > Prefer the smallest useful section set for the document's actual job.
 > Write the document as native to this repository rather than as a description of where the idea came from.
 > Keep the YAML front matter when the document family requires governed metadata or when metadata is operationally useful. Delete it otherwise.
-> If you keep front matter, align the keys and allowed values with [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md) and the matching document-family profile.
+> If you keep front matter, align the keys and allowed values with [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md) and the matching document-family profile.
+> Prefer repository-native Markdown links such as `/docs/...`, `/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Delete any front matter keys that the chosen profile does not permit.
 > Delete any optional section that adds no non-derivable information.
 

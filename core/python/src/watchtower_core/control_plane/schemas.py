@@ -19,7 +19,7 @@ from watchtower_core.control_plane.workspace import (
     WorkspaceConfig,
 )
 
-SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json"
+SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.schema.json"
 SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog.json"
 
 

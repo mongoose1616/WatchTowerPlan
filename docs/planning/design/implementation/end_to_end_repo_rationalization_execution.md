@@ -34,9 +34,9 @@ aliases:
 Breaks the final pre-implementation review follow-up into bounded slices for documentation guardrails, derived metadata hardening, external pack validation seams, and query CLI modularity.
 
 ## Source Request or Design
-- Feature design: [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- PRD: [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- Decision: [end_to_end_repo_rationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
+- Feature design: [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- PRD: [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- Decision: [end_to_end_repo_rationalization_direction.md](/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
 
 ## Scope Summary
 - Bootstrap the traced review-remediation initiative and publish the accepted direction.
@@ -56,10 +56,10 @@ Breaks the final pre-implementation review follow-up into bounded slices for doc
 - README entrypoints and planning defaults are already lean enough that another README-only pass is not justified now.
 
 ## Internal Standards and Canonical References Applied
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): the new link rule must live in the governed semantics layer.
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): tracker trust depends on timestamp correctness.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): supplemental schemas must stay outside the canonical catalog while validating fail closed.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): refactors should prefer smaller modules and stable contracts.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): the new link rule must live in the governed semantics layer.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): tracker trust depends on timestamp correctness.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): supplemental schemas must stay outside the canonical catalog while validating fail closed.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): refactors should prefer smaller modules and stable contracts.
 
 ## Proposed Technical Approach
 - Treat documentation guardrails and derived metadata as one trust-surface slice.
@@ -97,9 +97,9 @@ Breaks the final pre-implementation review follow-up into bounded slices for doc
 - Land a final closeout commit after the repo is green and the initiative tasks are terminal.
 
 ## References
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [end_to_end_repo_rationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [end_to_end_repo_rationalization_direction.md](/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
 
 ## Updated At
 - `2026-03-10T19:43:34Z`

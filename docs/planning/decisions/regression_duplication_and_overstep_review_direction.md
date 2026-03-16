@@ -49,11 +49,11 @@ Fix the confirmed regression and duplication issues inside the existing authorit
 - `docs/references/**` is scoped to externally published authorities, so a repo-local regression-audit summary there would be category drift and duplicated authority rather than a clean fix.
 
 ## Applied References and Implications
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task records must remain authoritative and trace-linked state cannot silently fall out of derived planning views.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance contracts must keep their repo-local target paths aligned when governed planning artifacts move.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): evidence related paths and subject paths must remain valid, inspectable local references.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): repeated review and validation passes are part of the maintenance contract, not optional cleanup.
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md): `docs/references/**` is reserved for externally published sources with canonical upstream links, which rules out a repo-native regression summary in that family.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task records must remain authoritative and trace-linked state cannot silently fall out of derived planning views.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance contracts must keep their repo-local target paths aligned when governed planning artifacts move.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): evidence related paths and subject paths must remain valid, inspectable local references.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): repeated review and validation passes are part of the maintenance contract, not optional cleanup.
+- [AGENTS.md](/docs/references/AGENTS.md): `docs/references/**` is reserved for externally published sources with canonical upstream links, which rules out a repo-native regression summary in that family.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/task_lifecycle.py
@@ -68,7 +68,7 @@ Fix the confirmed regression and duplication issues inside the existing authorit
 - core/python/src/watchtower_core/validation/acceptance.py
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/
-- core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json
+- core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json
 - docs/planning/
 - docs/commands/core_python/
 - docs/standards/
@@ -111,8 +111,8 @@ Adopt option 2. The review hardens the existing task lifecycle, validation, sync
 - Risks accidental under-documentation if the planning-chain rewrite is treated as incidental instead of part of the reviewed defect boundary.
 
 ## References
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/features/regression_duplication_and_overstep_review.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/regression_duplication_and_overstep_review.md)
-- [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/design/features/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/design/implementation/regression_duplication_and_overstep_review.md)
+- [decision_supersession_and_regression_evidence_alignment.md](/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
+- [AGENTS.md](/docs/references/AGENTS.md)

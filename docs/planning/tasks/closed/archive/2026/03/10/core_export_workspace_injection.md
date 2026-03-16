@@ -43,9 +43,9 @@ Replace implicit repo-root discovery with injected workspace configuration, arti
 - Loader and coordination behavior is validated against injected workspace configuration in tests.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [control_plane_loaders_and_schema_store.md](/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
 
 ## Updated At
 - `2026-03-10T05:58:19Z`

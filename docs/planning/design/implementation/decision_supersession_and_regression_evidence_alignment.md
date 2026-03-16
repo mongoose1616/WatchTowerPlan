@@ -15,7 +15,7 @@ applies_to:
 - docs/standards/documentation/decision_record_md_standard.md
 - docs/templates/decision_record_template.md
 - docs/standards/data_contracts/decision_index_standard.md
-- core/control_plane/schemas/artifacts/decision_index.v1.schema.json
+- core/control_plane/schemas/artifacts/decision_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/decision_index.py
 - core/python/src/watchtower_core/repo_ops/query/decisions.py
 - core/python/src/watchtower_core/cli/query_records_handlers.py
@@ -42,8 +42,8 @@ applies_to:
 Historical implementation note for a cancelled slice that was normalized into a historical planning record instead of executed.
 
 ## Source Request or Design
-- Feature design: [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md)
-- Cancellation decision: [decision_supersession_and_regression_evidence_alignment_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md)
+- Feature design: [decision_supersession_and_regression_evidence_alignment.md](/docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md)
+- Cancellation decision: [decision_supersession_and_regression_evidence_alignment_direction.md](/docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md)
 
 ## Scope Summary
 - Normalize this trace into a historical cancelled record.
@@ -55,9 +55,9 @@ Historical implementation note for a cancelled slice that was normalized into a 
 - The active regression/duplication trace owns the still-live hardening work from the same review theme.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): cancelled work should not leave open tasks.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): historical planning records should remain coherent in the derived planning surfaces.
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md): no repo-native regression summary belongs in `docs/references/**`.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): cancelled work should not leave open tasks.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): historical planning records should remain coherent in the derived planning surfaces.
+- [AGENTS.md](/docs/references/AGENTS.md): no repo-native regression summary belongs in `docs/references/**`.
 
 ## Proposed Technical Approach
 - Rewrite the planning documents so they explain cancellation instead of advertising unfinished active work.
@@ -77,5 +77,5 @@ Historical implementation note for a cancelled slice that was normalized into a 
 - Include the historical-trace cleanup in the full validation baseline for the active regression/duplication review.
 
 ## References
-- [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [decision_supersession_and_regression_evidence_alignment.md](/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)

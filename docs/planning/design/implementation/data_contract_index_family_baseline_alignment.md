@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/
 ---
@@ -35,8 +35,8 @@ Breaks Data-Contract Index Family Baseline Alignment into a bounded implementati
 ## Source Request or Design
 - design.features.data_contract_index_family_baseline_alignment
 - Review the March 13, 2026 refactor audit under one stable standards-family theme until repeated confirmation passes find no new actionable issue.
-- PRD: [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md)
-- Decision: [data_contract_index_family_baseline_alignment_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md)
+- PRD: [data_contract_index_family_baseline_alignment.md](/docs/planning/prds/data_contract_index_family_baseline_alignment.md)
+- Decision: [data_contract_index_family_baseline_alignment_direction.md](/docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md)
 
 ## Scope Summary
 - Add one shared baseline standard for the planning-related data-contract index family and refactor the affected member standards to reference it while keeping their family-specific deltas explicit.
@@ -50,10 +50,10 @@ Breaks Data-Contract Index Family Baseline Alignment into a bounded implementati
 - README, command-doc, standard-index, and traced planning surfaces are companion authorities for this slice and must ship in the same change set as the member-standard refactor.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): constrains the required standard sections and the need to keep the shared baseline explicit rather than implicit.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): keeps the family discoverability work tied to the governed standard index and its query consumers.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the resulting standards remain easy to review.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): requires bounded traced tasks and aligned closeout surfaces for the implementation loop.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): constrains the required standard sections and the need to keep the shared baseline explicit rather than implicit.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): keeps the family discoverability work tied to the governed standard index and its query consumers.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the resulting standards remain easy to review.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): requires bounded traced tasks and aligned closeout surfaces for the implementation loop.
 
 ## Proposed Technical Approach
 - Add `docs/standards/data_contracts/planning_index_family_standard.md` as the narrow shared baseline for the planning-related derived index standards.
@@ -67,18 +67,18 @@ Breaks Data-Contract Index Family Baseline Alignment into a bounded implementati
 |---|---|---|
 | Planning-index family standards | `docs/standards/data_contracts/planning_index_family_standard.md`; `coordination_index_standard.md`; `initiative_index_standard.md`; `planning_catalog_standard.md`; `prd_index_standard.md`; `decision_index_standard.md`; `design_document_index_standard.md`; `task_index_standard.md`; `traceability_index_standard.md` | repeated baseline prose, family-specific delta preservation, tag consistency, explicit operationalization or validation contracts |
 | Standards navigation and family orientation | `docs/standards/README.md`; `docs/standards/data_contracts/README.md`; `docs/standards/documentation/standard_md_standard.md` | grouped navigation, reusable boilerplate guidance, family-boundary clarity, authoring guardrails |
-| Standard index and query discoverability | `core/control_plane/indexes/standards/standard_index.v1.json`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md` | metadata sufficiency, no runtime regression, stable shared tag retrieval, human or machine parity |
+| Standard index and query discoverability | `core/control_plane/indexes/standards/standard_index.json`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md` | metadata sufficiency, no runtime regression, stable shared tag retrieval, human or machine parity |
 | Validation and regression coverage | `core/python/tests/unit/test_standard_index_sync.py`; `core/python/tests/unit/test_cli_knowledge_query_commands.py` | shared-tag projection, query-surface discoverability, family-baseline inclusion, no stale expectations |
-| Traced governance surfaces | `docs/planning/**`; `core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json` | coverage-map durability, findings ledger, acceptance alignment, evidence coverage, closeout state |
+| Traced governance surfaces | `docs/planning/**`; `core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.json`; `core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.json` | coverage-map durability, findings ledger, acceptance alignment, evidence coverage, closeout state |
 
 ## Findings Ledger
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |
 |---|---|---|---|---|
 | `finding.data_contract_index_family_baseline_alignment.001` | `medium` | `resolved` | `docs/standards/data_contracts/planning_index_family_standard.md`; `coordination_index_standard.md`; `initiative_index_standard.md`; `planning_catalog_standard.md`; `prd_index_standard.md`; `decision_index_standard.md`; `design_document_index_standard.md`; `task_index_standard.md`; `traceability_index_standard.md` | the new shared planning-index family baseline now holds the repeated derived-index contract, the eight member standards cite it and keep explicit family-specific deltas, and the exact-set verification over the rebuilt standard index resolved to the expected nine-family set with no extras or misses |
-| `finding.data_contract_index_family_baseline_alignment.002` | `medium` | `resolved` | `docs/standards/README.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/standard_index.v1.json`; `docs/commands/core_python/watchtower_core_query_standards.md`; `core/python/tests/unit/test_standard_index_sync.py`; `core/python/tests/unit/test_cli_knowledge_query_commands.py` | the standards READMEs now expose the family explicitly, `watchtower-core query standards --category data_contracts --tag planning_index_family --limit 20 --format json` returned `result_count: 9`, the command-doc operationalization probe returned only `std.data_contracts.planning_index_family`, and the focused sync or CLI-query pytest subset passed |
+| `finding.data_contract_index_family_baseline_alignment.002` | `medium` | `resolved` | `docs/standards/README.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/standard_index.json`; `docs/commands/core_python/watchtower_core_query_standards.md`; `core/python/tests/unit/test_standard_index_sync.py`; `core/python/tests/unit/test_cli_knowledge_query_commands.py` | the standards READMEs now expose the family explicitly, `watchtower-core query standards --category data_contracts --tag planning_index_family --limit 20 --format json` returned `result_count: 9`, the command-doc operationalization probe returned only `std.data_contracts.planning_index_family`, and the focused sync or CLI-query pytest subset passed |
 | `finding.data_contract_index_family_baseline_alignment.003` | `low` | `resolved` | `docs/standards/documentation/standard_md_standard.md`; member standards that rely on repeated boilerplate | `standard_md_standard.md` now governs the narrow shared-baseline pattern explicitly, and both `planning_index_family_standard.md` and the refactored `prd_index_standard.md` passed targeted document-semantics validation with `issue_count: 0` |
 | `finding.data_contract_index_family_baseline_alignment.004` | `low` | `resolved` | `core/python/tests/unit/test_standard_index_sync.py`; `core/python/tests/unit/test_all_validation.py`; `core/python/` validation suite | the first full repository pass exposed a line-length regression in the new `test_standard_index_sync.py` assertion; the loop reopened, the assertion was wrapped, `ruff check .` passed, and the subsequent `pytest -q` rerun passed cleanly |
-| `finding.data_contract_index_family_baseline_alignment.005` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json` | the first full `watchtower-core validate all --format json` pass exposed bootstrap-only acceptance or evidence alignment drift for acceptance IDs `002` through `005`; the loop reopened, the contract and evidence ledger were expanded, `watchtower-core validate acceptance --trace-id trace.data_contract_index_family_baseline_alignment --format json` returned `issue_count: 0`, `watchtower-core validate all --format json` passed with `1116` passed and `0` failed, and `pytest -q` then passed |
+| `finding.data_contract_index_family_baseline_alignment.005` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.json`; `core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.json` | the first full `watchtower-core validate all --format json` pass exposed bootstrap-only acceptance or evidence alignment drift for acceptance IDs `002` through `005`; the loop reopened, the contract and evidence ledger were expanded, `watchtower-core validate acceptance --trace-id trace.data_contract_index_family_baseline_alignment --format json` returned `issue_count: 0`, `watchtower-core validate all --format json` passed with `1116` passed and `0` failed, and `pytest -q` then passed |
 
 ## Work Breakdown
 1. Replace the planning placeholders with the real coverage map, findings ledger, accepted direction, and bounded execution tasks for the standards-family refactor.
@@ -100,4 +100,4 @@ Breaks Data-Contract Index Family Baseline Alignment into a bounded implementati
 
 ## References
 - March 13, 2026 refactor audit
-- [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md)
+- [data_contract_index_family_baseline_alignment.md](/docs/planning/prds/data_contract_index_family_baseline_alignment.md)

@@ -54,16 +54,16 @@ def test_generated_tracking_outputs_use_links_and_not_placeholder_rows() -> None
         assert "| `None` | `None` |" not in content
 
     for content in (task_content, initiative_content, coordination_content):
-        assert "](/home/j/WatchTowerPlan/" in content
+        assert "](/" in content
 
-    assert "No active PRDs" in prd_content or "](/home/j/WatchTowerPlan/" in prd_content
+    assert "No active PRDs" in prd_content or "](/" in prd_content
     assert (
         "No active decisions" in decision_content
-        or "](/home/j/WatchTowerPlan/" in decision_content
+        or "](/" in decision_content
     )
     assert (
         "No active feature designs" in design_content
-        or "](/home/j/WatchTowerPlan/" in design_content
+        or "](/" in design_content
     )
 
 

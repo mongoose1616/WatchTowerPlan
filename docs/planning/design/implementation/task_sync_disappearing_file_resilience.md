@@ -45,8 +45,8 @@ Breaks Task Sync Disappearing File Resilience into a bounded implementation slic
 - The slice should remain one implementation task plus one validation/closeout task after the bootstrap task is closed.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task lifecycle state must remain reliable through the generated task and coordination views.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): the final commit should preserve the traced remediation context and bounded scope.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task lifecycle state must remain reliable through the generated task and coordination views.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): the final commit should preserve the traced remediation context and bounded scope.
 
 ## Proposed Technical Approach
 - Harden `iter_task_documents(...)` to ignore only `FileNotFoundError` from paths that disappeared after enumeration and before load.

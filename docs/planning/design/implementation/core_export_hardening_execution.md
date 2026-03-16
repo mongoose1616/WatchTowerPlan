@@ -31,8 +31,8 @@ aliases:
 Breaks the export-hardening follow-up into bounded slices for output-directory sync consistency, command metadata repair, and public boundary cleanup.
 
 ## Source Request or Design
-- Feature design: [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- PRD: [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md)
+- Feature design: [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- PRD: [core_export_hardening_followup.md](/docs/planning/prds/core_export_hardening_followup.md)
 - User request to take the repo review findings through the full traced planning and implementation flow.
 
 ## Scope Summary
@@ -52,9 +52,9 @@ Breaks the export-hardening follow-up into bounded slices for output-directory s
 - The current sync and validation command surfaces already exist, so the main execution risk is coherence rather than missing tooling.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): keep the hardening work modular and regression-tested.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command metadata must stay trustworthy as a governed lookup surface.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): track this work as a separate bounded initiative.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): keep the hardening work modular and regression-tested.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): command metadata must stay trustworthy as a governed lookup surface.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): track this work as a separate bounded initiative.
 
 ## Proposed Technical Approach
 - Add an output-directory overlay artifact source and keep sync orchestration otherwise unchanged.
@@ -88,8 +88,8 @@ Breaks the export-hardening follow-up into bounded slices for output-directory s
 - Close the initiative in a final planning-only commit after the repo is green.
 
 ## References
-- [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md)
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
+- [core_export_hardening_followup.md](/docs/planning/prds/core_export_hardening_followup.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
 
 ## Updated At
 - `2026-03-10T15:24:07Z`

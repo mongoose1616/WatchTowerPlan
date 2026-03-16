@@ -33,9 +33,9 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Reviewing whether routing entries are too broad, duplicated, or ambiguous.
 
 ## Related Standards and Sources
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md): authoring scaffold that should stay aligned with this standard.
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_table_template.md](/docs/templates/routing_table_template.md): authoring scaffold that should stay aligned with this standard.
 
 ## Guidance
 - `ROUTING_TABLE.md` must be the canonical routing index for workflow selection.
@@ -75,9 +75,9 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Update this standard and the routing behavior standard together if routing semantics change.
 
 ## References
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md)
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [routing_table_template.md](/docs/templates/routing_table_template.md)
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md)
 
 ## Notes
 - The routing table should answer "what should be loaded?" and not "how should the task be executed?"

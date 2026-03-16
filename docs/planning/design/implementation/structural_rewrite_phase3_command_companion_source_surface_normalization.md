@@ -37,11 +37,11 @@ aliases:
 Implement the first bounded Phase 3 slice by reconciling command-doc source-surface metadata to the existing registry-backed command authority model without changing command presence, hierarchy, or public planning behavior.
 
 ## Source Request or Design
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/features/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
+- [structural_rewrite_program.md](/docs/planning/prds/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/features/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_phase3_command_authority_entry.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- [review_structural_rewrite_phase3_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
 
 ## Scope Summary
 - Reconcile the `Source Surface` fields in the first bounded set of command companion docs whose current source-surface metadata still points at `core/python/src/watchtower_core/cli/main.py` while the command index already points at the owning family module.
@@ -67,12 +67,12 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 - The slice therefore stayed inside the already-published command authority boundary instead of inventing a new command descriptor family or touching route, workflow, or compatibility surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the slice must stay bounded, rollback-explicit, and tied to the current checkpoint package.
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): the slice must stay within already-classified command authority and generated companion surfaces.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): the command index is the machine-readable routing aid and already points to owning implementation surfaces.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command docs must route engineers to the responsible source surface rather than to a stale entrypoint.
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md): the command docs and command index must remain aligned as human and machine companion surfaces.
-- [query_family_source_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/query_family_source_surface_alignment.md): provides the bounded source-surface reconciliation pattern that this Phase 3 slice follows.
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md): the slice must stay bounded, rollback-explicit, and tied to the current checkpoint package.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): the slice must stay within already-classified command authority and generated companion surfaces.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): the command index is the machine-readable routing aid and already points to owning implementation surfaces.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command docs must route engineers to the responsible source surface rather than to a stale entrypoint.
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md): the command docs and command index must remain aligned as human and machine companion surfaces.
+- [query_family_source_surface_alignment.md](/docs/planning/design/implementation/query_family_source_surface_alignment.md): provides the bounded source-surface reconciliation pattern that this Phase 3 slice follows.
 
 ## Classification Sufficiency Decision
 - No additional command-adjacent workflow, route, or compatibility classification addendum is required for this first Phase 3 slice.
@@ -84,7 +84,7 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 ## Slice Boundary
 ### In scope
 - The root command page plus the `23` bounded `doctor`, `sync`, and `validate` command docs under `docs/commands/core_python/`
-- `core/control_plane/indexes/commands/command_index.v1.json` as the current machine-readable parity oracle for command companion ownership
+- `core/control_plane/indexes/commands/command_index.json` as the current machine-readable parity oracle for command companion ownership
 - `core/python/src/watchtower_core/cli/registry.py`
 - `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/cli/introspection.py`
@@ -104,7 +104,7 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 - `core/python/src/watchtower_core/cli/parser.py`
 
 ### Derived companion outputs to keep aligned
-- `core/control_plane/indexes/commands/command_index.v1.json`
+- `core/control_plane/indexes/commands/command_index.json`
 - the affected command docs under `docs/commands/core_python/`
 
 ## Current Consumers
@@ -140,7 +140,7 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 - `core/python/tests/unit/test_command_index_sync.py` now enforces that alignment directly for the current command-doc family.
 
 ## Parity Method
-- Compare each affected command doc against the corresponding `implementation_path` entry in `core/control_plane/indexes/commands/command_index.v1.json`.
+- Compare each affected command doc against the corresponding `implementation_path` entry in `core/control_plane/indexes/commands/command_index.json`.
 - Reconfirm that the command index entries remain derived from:
   - `core/python/src/watchtower_core/cli/registry.py`
   - `core/python/src/watchtower_core/cli/parser.py`
@@ -178,10 +178,10 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 - Do not widen this slice into command-presence, route-family, workflow-family, compatibility, or public-planning changes.
 
 ## References
-- [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
-- [query_family_source_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/query_family_source_surface_alignment.md)
+- [structural_rewrite_phase3_command_authority_entry.md](/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md)
+- [query_family_source_surface_alignment.md](/docs/planning/design/implementation/query_family_source_surface_alignment.md)
 
 ## Updated At
 - `2026-03-14T05:41:11Z`

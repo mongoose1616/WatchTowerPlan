@@ -19,7 +19,7 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/query/planning.py
 - core/python/src/watchtower_core/repo_ops/query/coordination.py
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/tests/unit/test_projection_search_common.py
+- core/python/tests/unit/test_rendered_search_common.py
 related_ids:
 - prd.planning_query_efficiency_and_handler_modularity
 - design.features.planning_query_efficiency_and_handler_modularity

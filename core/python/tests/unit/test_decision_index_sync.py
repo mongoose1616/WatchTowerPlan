@@ -32,7 +32,7 @@ def test_decision_index_sync_builds_schema_valid_document() -> None:
 def test_decision_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = DecisionIndexSyncService(loader)
-    output_path = tmp_path / "decision_index.v1.json"
+    output_path = tmp_path / "decision_index.json"
 
     document = service.build_document()
     written_path = service.write_document(document, output_path)
@@ -91,7 +91,7 @@ def test_decision_index_sync_normalizes_document_relative_affected_surfaces(
             Normalize document-relative affected-surface paths before projecting them.
 
             ## Trigger or Source Request
-            - Added to reproduce a decision-index projection drift.
+            - Added to reproduce a decision-index rendered-surface drift.
 
             ## Current Context and Constraints
             - Decision semantics already accept document-relative repo-local links.
@@ -331,7 +331,7 @@ def test_decision_index_sync_filters_stale_related_paths_from_existing_index(
         ),
         encoding="utf-8",
     )
-    index_path = repo_root / "core/control_plane/indexes/decisions/decision_index.v1.json"
+    index_path = repo_root / "core/control_plane/indexes/decisions/decision_index.json"
     document = json.loads(index_path.read_text(encoding="utf-8"))
     document["entries"].append(
         {

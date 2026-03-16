@@ -49,14 +49,14 @@ Split the typed planning and documentation retrieval models into domain-focused 
 - The repository foundations require explicit, inspectable typed models and deterministic real-command validation, so the refactor cannot trade clarity for generic magic.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen design keeps explicit typed contracts and rejects opaque abstraction.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): the refactor stays local-first, deterministic, and reviewable.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the implementation must keep the Python package layout and runtime-boundary docs aligned.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the chosen design keeps explicit typed contracts and rejects opaque abstraction.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): the refactor stays local-first, deterministic, and reviewable.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the implementation must keep the Python package layout and runtime-boundary docs aligned.
 
 ## Affected Surfaces
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/typed_query_surface_modularity_hardening.md)
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/typed_query_surface_modularity_hardening.md)
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/typed_query_surface_modularity_hardening.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/prds/typed_query_surface_modularity_hardening.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/design/features/typed_query_surface_modularity_hardening.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/design/implementation/typed_query_surface_modularity_hardening.md)
 - `core/python/src/watchtower_core/control_plane/models/`
 - `core/python/src/watchtower_core/control_plane/loader.py`
 - `core/python/src/watchtower_core/repo_ops/query/`
@@ -98,5 +98,5 @@ Accept Option 2. The implementation will split the mixed-domain typed model hots
 
 ## References
 - March 13, 2026 refactor audit
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/typed_query_surface_modularity_hardening.md)
-- [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/typed_query_surface_modularity_hardening.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/prds/typed_query_surface_modularity_hardening.md)
+- [typed_query_surface_modularity_hardening.md](/docs/planning/design/features/typed_query_surface_modularity_hardening.md)

@@ -4,12 +4,12 @@ from pathlib import Path
 from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.planning_projection_catalog_composition import (
+from watchtower_core.repo_ops.planning_rendered_catalog_composition import (
     build_trace_planning_catalog_aggregation,
 )
-from watchtower_core.repo_ops.planning_projection_snapshot import (
+from watchtower_core.repo_ops.planning_rendered_snapshot import (
     build_trace_planning_coordination_snapshot,
-    build_trace_planning_projection_snapshots,
+    build_trace_planning_rendered_snapshots,
 )
 from watchtower_core.repo_ops.query.planning import (
     PlanningCatalogQueryService,
@@ -112,7 +112,7 @@ def test_planning_catalog_aggregation_collects_catalog_only_metadata(
     loader = ControlPlaneLoader(repo_root)
     snapshot = next(
         item
-        for item in build_trace_planning_projection_snapshots(loader)
+        for item in build_trace_planning_rendered_snapshots(loader)
         if item.trace_entry.trace_id == "trace.planning_authority_unification"
     )
     coordination = build_trace_planning_coordination_snapshot(snapshot)
@@ -149,7 +149,7 @@ def test_planning_catalog_aggregation_collects_catalog_only_metadata(
     assert snapshot.task_entries[0].doc_path in aggregation.related_paths
 
 
-def test_planning_catalog_coordination_matches_initiative_projection(
+def test_planning_catalog_coordination_matches_initiative_rendered_surface(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_control_plane_fixture_repo(tmp_path)

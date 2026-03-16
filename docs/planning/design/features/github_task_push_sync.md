@@ -11,7 +11,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
   - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github task push sync"
@@ -49,18 +49,18 @@ This document defines the first push-only sync from local task records to GitHub
 - There is no live GitHub sync implementation yet, and no current way to publish local task state to a hosted board.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep durable machine-readable authority explicit and reviewable in git.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): combine planning, execution, validation, and closeout without hiding state in disconnected tools.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): keep Markdown as the human task source and JSON as the machine-readable lookup surface.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep durable machine-readable authority explicit and reviewable in git.
+- [product_direction.md](/docs/foundations/product_direction.md): combine planning, execution, validation, and closeout without hiding state in disconnected tools.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): keep Markdown as the human task source and JSON as the machine-readable lookup surface.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): local task Markdown records must stay the authoritative task source.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): push-only sync, foreign-key persistence, and hosted status mapping must stay deterministic.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): synced GitHub metadata has to land in the machine-readable task index.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): synced tasks still need stable `trace_id` joins back to planning and evidence surfaces.
-- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): local task records need a consistent document shape so sync can render them predictably.
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared summary of the issue and project API assumptions.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): local task Markdown records must stay the authoritative task source.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): push-only sync, foreign-key persistence, and hosted status mapping must stay deterministic.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): synced GitHub metadata has to land in the machine-readable task index.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): synced tasks still need stable `trace_id` joins back to planning and evidence surfaces.
+- [task_template.md](/docs/templates/task_template.md): local task records need a consistent document shape so sync can render them predictably.
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared summary of the issue and project API assumptions.
 
 ## Design Goals and Constraints
 - Keep local task files authoritative.
@@ -103,7 +103,7 @@ This document defines the first push-only sync from local task records to GitHub
 3. Create or update the GitHub issue from the local task content.
 4. Optionally create or update the GitHub Project item and its mapped status field.
 5. Persist returned GitHub foreign keys and `github_synced_at` on the task records.
-6. Rebuild `task_index.v1.json`, `task_tracking.md`, and `traceability_index.v1.json`.
+6. Rebuild `task_index.json`, `task_tracking.md`, and `traceability_index.json`.
 
 ### Invariants and Failure Cases
 - Local task IDs remain stable and do not become GitHub issue identities.
@@ -116,8 +116,8 @@ This document defines the first push-only sync from local task records to GitHub
 - `docs/standards/governance/github_task_sync_standard.md`
 - `docs/standards/governance/task_tracking_standard.md`
 - `docs/standards/data_contracts/task_index_standard.md`
-- `core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json`
-- `core/control_plane/schemas/artifacts/task_index.v1.schema.json`
+- `core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json`
+- `core/control_plane/schemas/artifacts/task_index.schema.json`
 - `core/python/src/watchtower_core/integrations/github/`
 - `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 
@@ -150,10 +150,10 @@ This document defines the first push-only sync from local task records to GitHub
 - Should a later sync phase support multiple GitHub repositories per local task corpus, or should one repo remain the normal case?
 
 ## References
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md)
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
 
 ## Updated At
 - `2026-03-16T04:05:50Z`

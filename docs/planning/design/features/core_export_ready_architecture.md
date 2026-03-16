@@ -44,28 +44,28 @@ Defines the in-repo architecture needed to separate reusable core behavior from 
 - Does not implement the CTF pack or domain-specific workflows in this design.
 
 ## Current-State Context
-- [main.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/main.py) is the dominant coupling point for CLI registration, help text, and command-family imports.
-- [loader.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/loader.py) and [paths.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/paths.py) still assume the `WatchTowerPlan` repository layout directly.
-- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/all.py) and [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/validation/all.py) still maintain manual family enumerations for repo-specific sync and aggregate-validation orchestration.
-- The control-plane typed artifact layer under [models](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models) concentrated many artifact families into one dense shared layer before the family split.
+- [main.py](/core/python/src/watchtower_core/cli/main.py) is the dominant coupling point for CLI registration, help text, and command-family imports.
+- [loader.py](/core/python/src/watchtower_core/control_plane/loader.py) and [paths.py](/core/python/src/watchtower_core/control_plane/paths.py) still assume the `WatchTowerPlan` repository layout directly.
+- [all.py](/core/python/src/watchtower_core/repo_ops/sync/all.py) and [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py) still maintain manual family enumerations for repo-specific sync and aggregate-validation orchestration.
+- The control-plane typed artifact layer under [models](/core/python/src/watchtower_core/control_plane/models) concentrated many artifact families into one dense shared layer before the family split.
 - Query, sync, and validation families currently mix reusable coordination logic with repo-specific planning-doc and Markdown-semantics behavior.
 - The current workspace is healthy: `doctor`, `pytest`, `mypy`, and `ruff` all pass against the live repo, so the main problem is architecture and maintenance fan-out rather than baseline instability.
 
 ## Foundations References Applied
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the design must preserve the split between domain-agnostic core and future domain-pack implementation.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): reusable core behavior must stay deterministic, inspectable, and separated from pack-specific or repo-specific authority.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): architecture changes must keep human-readable and machine-readable companion surfaces synchronized instead of introducing parallel truth.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md): the design must prepare core to support future CTF-oriented operator workflows without hard-coding offensive-security concepts into shared layers.
+- [product_direction.md](/docs/foundations/product_direction.md): the design must preserve the split between domain-agnostic core and future domain-pack implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): reusable core behavior must stay deterministic, inspectable, and separated from pack-specific or repo-specific authority.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): architecture changes must keep human-readable and machine-readable companion surfaces synchronized instead of introducing parallel truth.
+- [customer_story.md](/docs/foundations/customer_story.md): the design must prepare core to support future CTF-oriented operator workflows without hard-coding offensive-security concepts into shared layers.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the refactor must stay inside the canonical Python workspace under `core/python/`.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the design should prefer thin CLI entrypoints, modular services, and same-change companion updates.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command lookup must remain machine-readable and aligned with human command docs as the command authority model changes.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): retrieval improvements must remain index-backed instead of collapsing into more README scanning.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow discovery metadata can grow, but the workflow modules remain the procedural authority.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): new pack-facing contracts must land as governed interfaces with fail-closed schemas and companion examples.
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md): the new design must build on the existing validated core foundation instead of reopening its closed scope.
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md): the new command authority model must preserve human command pages while improving machine-authoritative command wiring.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the refactor must stay inside the canonical Python workspace under `core/python/`.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the design should prefer thin CLI entrypoints, modular services, and same-change companion updates.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): command lookup must remain machine-readable and aligned with human command docs as the command authority model changes.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): retrieval improvements must remain index-backed instead of collapsing into more README scanning.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow discovery metadata can grow, but the workflow modules remain the procedural authority.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): new pack-facing contracts must land as governed interfaces with fail-closed schemas and companion examples.
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md): the new design must build on the existing validated core foundation instead of reopening its closed scope.
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md): the new command authority model must preserve human command pages while improving machine-authoritative command wiring.
 
 ## Design Goals and Constraints
 - Make the reusable-versus-repo-ops boundary explicit before any extraction attempt.
@@ -168,12 +168,12 @@ Defines the in-repo architecture needed to separate reusable core behavior from 
 - The pack-facing interface set could become domain-specific too early if it is drafted from CTF needs without preserving generic naming and provenance rules.
 
 ## References
-- [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [control_plane_loaders_and_schema_store.md](/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
 
 ## Updated At
 - `2026-03-16T04:05:50Z`

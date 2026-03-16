@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/initiatives/"
-  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.json"
   - "core/python/src/watchtower_core/closeout/initiative.py"
 related_ids:
   - "design.features.initiative_closeout_and_planning_trackers"
@@ -40,9 +40,9 @@ Tracks the remaining closeout and verification follow-up for the initiative clos
 - Initiative and traceability surfaces agree on current task ownership and next step.
 
 ## Links
-- [initiative_closeout_and_planning_trackers.md](/home/j/WatchTowerPlan/docs/planning/design/features/initiative_closeout_and_planning_trackers.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
+- [initiative_closeout_and_planning_trackers.md](/docs/planning/design/features/initiative_closeout_and_planning_trackers.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
 
 ## Updated At
 - `2026-03-10T03:53:14Z`

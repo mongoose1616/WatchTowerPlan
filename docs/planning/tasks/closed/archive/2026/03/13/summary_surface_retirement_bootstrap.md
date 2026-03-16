@@ -21,8 +21,8 @@ applies_to:
 - docs/planning/decisions/summary_surface_retirement_direction.md
 - docs/planning/design/features/summary_surface_retirement.md
 - docs/planning/design/implementation/summary_surface_retirement.md
-- core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.json
+- core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.json
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/test_traceability_index_sync.py
 related_ids:

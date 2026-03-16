@@ -10,4 +10,4 @@
 
 ## Notes
 - This directory is currently empty.
-- Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) or `watchtower-core query tasks --format json` for the current non-terminal task inventory.
+- Use [task_tracking.md](/docs/planning/tasks/task_tracking.md) or `watchtower-core query tasks --format json` for the current non-terminal task inventory.

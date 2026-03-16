@@ -35,8 +35,8 @@ aliases:
 This plan breaks the first executable `core/python` slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable `SchemaStore`.
 
 ## Source Request or Design
-- PRD: [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- Decision: [core_python_workspace_root.md](/home/j/WatchTowerPlan/docs/planning/decisions/core_python_workspace_root.md)
+- PRD: [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- Decision: [core_python_workspace_root.md](/docs/planning/decisions/core_python_workspace_root.md)
 - This plan is driven by the approved feature designs for the core Python workspace, schema resolution and index search, and validator execution.
 
 ## Scope Summary
@@ -55,20 +55,20 @@ This plan breaks the first executable `core/python` slice into concrete work for
 ## Current-State Context
 - `core/control_plane/registries/schema_catalog.json` now catalogs published schema IDs and canonical local schema paths.
 - `core/control_plane/registries/validator_registry.json` declares validation capabilities that later code will need to load.
-- `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` and `core/control_plane/indexes/commands/command_index.v1.json` now provide governed lookup surfaces.
+- `core/control_plane/indexes/repository_paths/repository_path_index.json` and `core/control_plane/indexes/commands/command_index.json` now provide governed lookup surfaces.
 - `core/control_plane/contracts/acceptance/`, `core/control_plane/indexes/traceability/`, and `core/control_plane/ledgers/validation_evidence/` now publish the first downstream traceability surfaces the loader layer will eventually need to expose.
 - `core/python/src/watchtower_core/control_plane/` now publishes live loaders, typed models, and schema-resolution helpers that later query, sync, and validation slices reuse.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): loaders and query services should stay in modular package code under `core/python/`.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema resolution must come from the governed catalog rather than hardcoded filenames.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): loaded artifact schemas should be validated and reused consistently.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): query services should consume the generated repository path index instead of raw repository scans.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command lookup loaders should consume the governed command index.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance loading should resolve the governed contract family directly.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): trace queries must consume the unified traceability joins rather than ad hoc link logic.
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md): the loader slice should support the validator execution path without duplicating resolution logic.
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md): implementation should follow the approved split between schema resolution and index-backed search.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): loaders and query services should stay in modular package code under `core/python/`.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): schema resolution must come from the governed catalog rather than hardcoded filenames.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): loaded artifact schemas should be validated and reused consistently.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): query services should consume the generated repository path index instead of raw repository scans.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): command lookup loaders should consume the governed command index.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance loading should resolve the governed contract family directly.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): trace queries must consume the unified traceability joins rather than ad hoc link logic.
+- [python_validator_execution.md](/docs/planning/design/features/python_validator_execution.md): the loader slice should support the validator execution path without duplicating resolution logic.
+- [schema_resolution_and_index_search.md](/docs/planning/design/features/schema_resolution_and_index_search.md): implementation should follow the approved split between schema resolution and index-backed search.
 
 ## Proposed Technical Approach
 - Add a small `control_plane` module split into:
@@ -116,10 +116,10 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - Whether future artifact models should remain dataclass-based or move to a stricter runtime model layer once more executable surfaces exist.
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
+- [core_python_workspace_and_harness.md](/docs/planning/design/features/core_python_workspace_and_harness.md)
+- [python_validator_execution.md](/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/docs/planning/design/features/schema_resolution_and_index_search.md)
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
 
 ## Updated At
 - `2026-03-10T02:30:31Z`

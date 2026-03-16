@@ -37,10 +37,10 @@ aliases:
 Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutService` write path with the existing coordination-sync orchestration after the first bounded private planning projection snapshot slice passed review, and keep broader Phase 4 and later-phase implementation blocked in this change set.
 
 ## Source Request or Design
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/features/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [structural_rewrite_program.md](/docs/planning/prds/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/features/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
 
 ## Scope Summary
 - Reconfirm the public planning parity boundary after the first bounded Phase 4 shared private snapshot slice passed review.
@@ -50,7 +50,7 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 
 ## Assumptions and Constraints
 - The five current planning-authority answers remain the public machine boundary at this checkpoint.
-- `planning_projection_snapshot.py` remains a private runtime detail and does not become a governed public artifact family.
+- `planning_rendered_snapshot.py` remains a private runtime detail and does not become a governed public artifact family.
 - `TaskLifecycleService` and `PlanningScaffoldService` already rebuild through `CoordinationSyncService.run(write=True)` and remain outside the exact future implementation seam for this checkpoint.
 - This package may define the next Phase 4 entry conditions, but it may not start closeout-orchestration implementation.
 - This package does not authorize broader coordination-sync reordering, hotspot decomposition, compatibility retirement, or Phase 5 work.
@@ -60,13 +60,13 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 - `TaskLifecycleService.create`, `update`, and `transition` plus `PlanningScaffoldService.scaffold` and `bootstrap` already rebuild the planning and coordination slice through `CoordinationSyncService.run(write=True)` when they mutate traced planning state.
 - `InitiativeCloseoutService.close` still writes traceability and then rebuilds the adjacent `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` surfaces directly instead of flowing through the existing coordination-sync orchestration.
 - The closeout command also publishes a result contract with individual output-path fields for the traceability, initiative, planning-catalog, coordination, and tracker surfaces it rebuilds.
-- The `.012` review passed for one bounded successor slice, that slice landed through [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), its outcome review then passed through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), the closeout-tracking entry review then passed through [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), the approved successor slice then landed through [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), and the trace closed through [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md) rather than broadening Phase 4 rollout.
+- The `.012` review passed for one bounded successor slice, that slice landed through [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), its outcome review then passed through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), the closeout-tracking entry review then passed through [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), the approved successor slice then landed through [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), and the trace closed through [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md) rather than broadening Phase 4 rollout.
 
 ## Internal Standards and Canonical References Applied
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the next Phase 4 checkpoint still needs a bounded package, explicit authored-truth and rollback declarations, and an explicit review outcome before any later implementation begins.
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): closeout, orchestration, tracker, and public planning surfaces touched by the next checkpoint must keep using the controlled four-axis vocabulary.
-- [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): the next checkpoint may not disturb the public planning-authority boundary while write-path convergence is being reviewed.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the next Phase 4 review remains task-backed rather than implied by doc edits alone.
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md): the next Phase 4 checkpoint still needs a bounded package, explicit authored-truth and rollback declarations, and an explicit review outcome before any later implementation begins.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): closeout, orchestration, tracker, and public planning surfaces touched by the next checkpoint must keep using the controlled four-axis vocabulary.
+- [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): the next checkpoint may not disturb the public planning-authority boundary while write-path convergence is being reviewed.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the next Phase 4 review remains task-backed rather than implied by doc edits alone.
 
 ## Proposed Phase 4 Boundary
 ### In scope for the future phase
@@ -86,8 +86,8 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 |---|---|---|
 | `core/python/src/watchtower_core/closeout/initiative.py`; closeout command docs | traced initiative terminal-state mutation and write-mode output reporting | Eligible for bounded orchestration normalization only if the acceptance gate, output-path contract, and public planning parity stay intact. |
 | `core/python/src/watchtower_core/repo_ops/sync/coordination.py`; `registry.py` | canonical coordination-sync ordering and orchestration boundary | Preserve as the current write-path contract; later reuse must stay rollback-bounded and explicit. |
-| `core/control_plane/indexes/coordination/coordination_index.v1.json`; `planning_catalog.v1.json`; `initiative_index.v1.json`; selected human trackers | canonical public planning answers and human byproducts | Preserve unchanged while the next checkpoint evaluates one closeout write-path convergence seam. |
-| `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py`; adjacent sync services | private runtime projection helpers | May support a later closeout seam but remain private implementation detail rather than new public authority. |
+| `core/control_plane/indexes/coordination/coordination_index.json`; `planning_catalog.json`; `initiative_index.json`; selected human trackers | canonical public planning answers and human byproducts | Preserve unchanged while the next checkpoint evaluates one closeout write-path convergence seam. |
+| `core/python/src/watchtower_core/repo_ops/planning_rendered_snapshot.py`; adjacent sync services | private runtime projection helpers | May support a later closeout seam but remain private implementation detail rather than new public authority. |
 
 ## Current Write-Side Caller Comparison
 - `TaskLifecycleService.create`, `update`, and `transition` rebuild the coordination slice through `CoordinationSyncService.run(write=True)`.
@@ -98,12 +98,12 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 ### Authored truth to preserve at entry
 - `docs/planning/`
 - `core/control_plane/registries/authority_map.json`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 
 ### Derived outputs to keep aligned
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
-- `core/control_plane/indexes/planning/planning_catalog.v1.json`
-- `core/control_plane/indexes/coordination/coordination_index.v1.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
+- `core/control_plane/indexes/planning/planning_catalog.json`
+- `core/control_plane/indexes/coordination/coordination_index.json`
 - `docs/planning/initiatives/initiative_tracking.md`
 - `docs/planning/coordination_tracking.md`
 
@@ -123,7 +123,7 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 - `Public planning boundary`: reaffirmed. The five current planning-authority answers remain the explicit public machine boundary for the approved closeout slice.
 - `Remaining direct outlier`: reaffirmed. `InitiativeCloseoutService.close` remains the only approved write-path convergence target in the reviewed consumer boundary.
 - `Closeout result contract boundary`: explicit. `traceability_output_path` remains the pre-seam write, the approved shared-output seam is limited to `initiative_index_output_path`, `planning_catalog_output_path`, `coordination_index_output_path`, `initiative_tracking_output_path`, and `coordination_tracking_output_path`, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain direct outputs outside the approved seam.
-- `Approved first slice`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- `Approved first slice`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - `Exact seam`: one post-traceability closeout step that reuses `CoordinationSyncService` for the shared planning and coordination outputs only while leaving `TaskLifecycleService`, `PlanningScaffoldService`, and the direct PRD, decision, and design tracking outputs unchanged.
 
 ## Work Breakdown
@@ -148,10 +148,10 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
   - `core/python/src/watchtower_core/closeout/initiative.py`
   - `core/python/src/watchtower_core/repo_ops/sync/coordination.py`
   - `core/python/src/watchtower_core/repo_ops/sync/registry.py`
-  - `core/control_plane/indexes/traceability/traceability_index.v1.json`
-  - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
-  - `core/control_plane/indexes/planning/planning_catalog.v1.json`
-  - `core/control_plane/indexes/coordination/coordination_index.v1.json`
+  - `core/control_plane/indexes/traceability/traceability_index.json`
+  - `core/control_plane/indexes/initiatives/initiative_index.json`
+  - `core/control_plane/indexes/planning/planning_catalog.json`
+  - `core/control_plane/indexes/coordination/coordination_index.json`
 - Accept the entry package only if the five public planning answers remain explicit, the private planning graph stays private, and the next write-path slice remains rollback-bounded.
 
 ## Rollback Path
@@ -182,13 +182,13 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 - Do not widen this package into broader shared-projection rollout, task-lifecycle or scaffold mutation changes, public-planning-boundary changes, or later phases.
 
 ## References
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
-- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
-- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
 - `2026-03-15T09:55:03Z`

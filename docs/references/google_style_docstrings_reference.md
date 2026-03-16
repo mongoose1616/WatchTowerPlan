@@ -29,7 +29,7 @@ Provide a practical format for docstrings that need predictable sections such as
 - `https://google.github.io/styleguide/pyguide.html` - verified 2026-03-09; styleguide.
 
 ## Related Standards and Sources
-- [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md)
+- [pep257_reference.md](/docs/references/pep257_reference.md)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -60,7 +60,7 @@ Provide a practical format for docstrings that need predictable sections such as
 
 ### Why It Matters Here
 - Use this reference when repository Python automation needs docstrings richer than a one-line summary but still wants a consistent sectioned format.
-- Pair it with [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md) for the baseline docstring expectations that apply before section style choices.
+- Pair it with [pep257_reference.md](/docs/references/pep257_reference.md) for the baseline docstring expectations that apply before section style choices.
 - If Google-style docstrings become the required local format, codify that rule under `docs/standards/engineering/**` rather than leaving it only here.
 
 ### If Local Policy Tightens
@@ -68,7 +68,7 @@ Provide a practical format for docstrings that need predictable sections such as
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md)
+- [pep257_reference.md](/docs/references/pep257_reference.md)
 
 ## Notes
 - This reference is most useful when the repo starts to accumulate reusable Python surfaces.

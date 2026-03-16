@@ -32,10 +32,10 @@ Provide a practical baseline for using type checks to catch interface drift, unc
 - `https://mypy.readthedocs.io/en/stable/config_file.html` - verified 2026-03-09; The mypy configuration file.
 
 ## Related Standards and Sources
-- [pep8_reference.md](/home/j/WatchTowerPlan/docs/references/pep8_reference.md)
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [pep8_reference.md](/docs/references/pep8_reference.md)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -62,8 +62,8 @@ Provide a practical baseline for using type checks to catch interface drift, unc
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ### Why It Matters Here
 - Use this reference when repository automation grows large enough that typed interfaces reduce review and maintenance risk.
@@ -75,10 +75,10 @@ Provide a practical baseline for using type checks to catch interface drift, unc
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [pep8_reference.md](/home/j/WatchTowerPlan/docs/references/pep8_reference.md)
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [pep8_reference.md](/docs/references/pep8_reference.md)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
 
 ## Notes
 - This reference is most useful once the repo has reusable Python modules rather than only one-off scripts.

@@ -34,16 +34,16 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Building lookup or traceability tooling that needs a compact machine-readable view over the decision corpus.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this decision-family standard narrows.
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_tracking.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_tracking.md): companion planning or design surface this standard should remain consistent with.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this decision-family standard narrows.
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_tracking.md](/docs/planning/decisions/decision_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/core/control_plane/indexes/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Every decision index entry must point to an existing decision record under `docs/planning/decisions/`.
 - Carry a shared `trace_id` in every entry so decisions can join to their PRDs, designs, and plans.
 - Carry stable `decision_id` values in every entry.
@@ -104,9 +104,9 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Update the human-readable decision tracker in the same change set when indexed decision records change materially.
 
 ## References
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md)
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

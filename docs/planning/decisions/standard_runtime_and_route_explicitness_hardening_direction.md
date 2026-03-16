@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
@@ -46,14 +46,14 @@ Close the still-valid report-set gaps by adding authored operationalization meta
 - Foundation-scope drift, layered health reporting, and recurring maintenance-loop clarity are already addressed in the current repo, so this initiative should not reopen them.
 
 ## Applied References and Implications
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata should live in the governed standard documents themselves, not in a separate authored registry.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-matching changes should improve clarity without widening the public runtime contract.
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview remains advisory support for human routing rather than a replacement for workflow authority.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): any route-preview or standards-query behavior change must ship with aligned command documentation.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): operationalization metadata should live in the governed standard documents themselves, not in a separate authored registry.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-matching changes should improve clarity without widening the public runtime contract.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route preview remains advisory support for human routing rather than a replacement for workflow authority.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): any route-preview or standards-query behavior change must ship with aligned command documentation.
 
 ## Affected Surfaces
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
@@ -96,7 +96,7 @@ Adopt option 2. The standard docs themselves will carry an `Operationalization` 
 - The runtime boundary docs assume the current compatibility guards in `query`, `sync`, and `validation` accurately reflect the supported boundary.
 
 ## References
-- [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
-- [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md)
-- [workflow_operationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
+- [standard_runtime_and_route_explicitness_hardening.md](/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
+- [standard_runtime_and_route_explicitness_hardening.md](/docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md)
+- [workflow_operationalization_direction.md](/docs/planning/decisions/workflow_operationalization_direction.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)

@@ -48,8 +48,8 @@ Add file-system supplemental schema loading and CLI-level external artifact vali
 - Added targeted unit coverage plus refreshed the workspace README, validate command docs, and schema or validation standards for the new path.
 
 ## Links
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [end_to_end_repo_rationalization_execution.md](/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T21:58:00Z`

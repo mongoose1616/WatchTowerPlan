@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md

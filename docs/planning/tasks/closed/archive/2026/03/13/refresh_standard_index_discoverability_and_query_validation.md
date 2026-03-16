@@ -14,7 +14,7 @@ updated_at: '2026-03-13T20:07:34Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/test_standard_index_sync.py
 - core/python/tests/unit/test_cli_knowledge_query_commands.py

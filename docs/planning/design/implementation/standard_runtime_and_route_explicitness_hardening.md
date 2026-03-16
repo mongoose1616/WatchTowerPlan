@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
@@ -45,10 +45,10 @@ Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implem
 - Excludes already-closed health-reporting and maintenance-loop remediation work.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the first execution slice must update the governed standard shape and keep derived index behavior sourced from those documents.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): each reproduced gap should close through an explicit bounded task rather than an untracked sweep.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): final verification for standards, runtime docs, and route-preview behavior needs a durable evidence record before closeout.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): route-preview and standards-query docs must refresh in the same change set as the runtime behavior.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the first execution slice must update the governed standard shape and keep derived index behavior sourced from those documents.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): each reproduced gap should close through an explicit bounded task rather than an untracked sweep.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): final verification for standards, runtime docs, and route-preview behavior needs a durable evidence record before closeout.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): route-preview and standards-query docs must refresh in the same change set as the runtime behavior.
 
 ## Assumptions and Constraints
 - Standard docs remain the authored authority, so the operationalization fields must be captured in the documents themselves rather than in a new parallel registry.
@@ -96,7 +96,7 @@ Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implem
 - Review the refreshed planning, initiative, task, and coordination surfaces to confirm the traced closeout state is coherent.
 
 ## References
-- [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
-- [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md)
+- [standard_runtime_and_route_explicitness_hardening.md](/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md)
+- [standard_runtime_and_route_explicitness_hardening.md](/docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md)

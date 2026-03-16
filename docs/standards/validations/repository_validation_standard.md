@@ -43,13 +43,13 @@ This standard defines the baseline validation expectations for repository change
 - Defining or updating local automation that checks repository health.
 
 ## Related Standards and Sources
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): document-semantics validation should fail closed on shared Markdown guardrails such as repo-local link integrity.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): Python validation commands should run from the canonical workspace using the standard local environment.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): validation should stay aligned with same-change-set updates across docs, code, and governed artifacts.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): schema-backed surfaces should fail closed when malformed.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): durable evidence should be recorded when a validation flow writes governed proof.
-- [watchtower_core_validate_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_all.md): documents the aggregate validation command that operationalizes the current baseline.
-- [watchtower_core_sync_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_all.md): derived local state should be regenerated before broad validation when the change touches generated trackers or indexes.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): document-semantics validation should fail closed on shared Markdown guardrails such as repo-local link integrity.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): Python validation commands should run from the canonical workspace using the standard local environment.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): validation should stay aligned with same-change-set updates across docs, code, and governed artifacts.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): schema-backed surfaces should fail closed when malformed.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): durable evidence should be recorded when a validation flow writes governed proof.
+- [watchtower_core_validate_all.md](/docs/commands/core_python/watchtower_core_validate_all.md): documents the aggregate validation command that operationalizes the current baseline.
+- [watchtower_core_sync_all.md](/docs/commands/core_python/watchtower_core_sync_all.md): derived local state should be regenerated before broad validation when the change touches generated trackers or indexes.
 
 ## Guidance
 - Use the narrowest meaningful validation while working.
@@ -87,11 +87,11 @@ This standard defines the baseline validation expectations for repository change
 - Update command docs, local automation, and related workflows in the same change set when this validation contract changes materially.
 
 ## References
-- [watchtower_core_validate_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_all.md)
-- [watchtower_core_sync_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_all.md)
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [watchtower_core_validate_all.md](/docs/commands/core_python/watchtower_core_validate_all.md)
+- [watchtower_core_sync_all.md](/docs/commands/core_python/watchtower_core_sync_all.md)
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
 - `2026-03-12T14:40:00Z`

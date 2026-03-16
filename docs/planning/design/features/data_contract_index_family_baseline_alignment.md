@@ -12,7 +12,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/
 ---
@@ -37,7 +37,7 @@ Defines the technical design boundary for Data-Contract Index Family Baseline Al
 
 ## Scope and Feature Boundary
 - Covers the planning-related data-contract index standards for coordination, initiatives, planning catalogs, PRDs, decisions, design documents, tasks, and traceability, plus the shared family baseline standard that those member standards will inherit.
-- Covers adjacent discoverability surfaces that materially govern or consume the family: `docs/standards/README.md`, `docs/standards/data_contracts/README.md`, `core/control_plane/indexes/standards/standard_index.v1.json`, `docs/commands/core_python/watchtower_core_query_standards.md`, and the direct standard-index sync or CLI query tests.
+- Covers adjacent discoverability surfaces that materially govern or consume the family: `docs/standards/README.md`, `docs/standards/data_contracts/README.md`, `core/control_plane/indexes/standards/standard_index.json`, `docs/commands/core_python/watchtower_core_query_standards.md`, and the direct standard-index sync or CLI query tests.
 - Excludes unrelated standards families, command-surface rationalization, traceability policy changes, and low-priority runtime hotspots that the audit explicitly marked as deferred or non-recommended.
 
 ## Current-State Context
@@ -47,14 +47,14 @@ Defines the technical design boundary for Data-Contract Index Family Baseline Al
 - `docs/standards/README.md` and `docs/standards/data_contracts/README.md` are both flat entrypoints today, so the family is coherent only after manual reading rather than through explicit navigation or query cues.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keeps the refactor explicit, inspectable, and locally auditable rather than hiding differences behind aggressive template indirection.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable guidance surfaces to stay synchronized in the same change set.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keeps the refactor explicit, inspectable, and locally auditable rather than hiding differences behind aggressive template indirection.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable guidance surfaces to stay synchronized in the same change set.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): governs the required sections and means the refactor must preserve explicit operationalization, validation, and change-control contracts.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): means the new family pattern must stay queryable and indexable, not just visually cleaner in prose.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the narrower shared baseline remains readable and the member-specific deltas stay explicit.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): keeps README navigation and repository-path discoverability in scope when the standards family layout changes.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): governs the required sections and means the refactor must preserve explicit operationalization, validation, and change-control contracts.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): means the new family pattern must stay queryable and indexable, not just visually cleaner in prose.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the narrower shared baseline remains readable and the member-specific deltas stay explicit.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): keeps README navigation and repository-path discoverability in scope when the standards family layout changes.
 
 ## Design Goals and Constraints
 - Reduce repeated family-level prose without deleting the normative sections that make the standards governable.
@@ -101,7 +101,7 @@ Defines the technical design boundary for Data-Contract Index Family Baseline Al
 
 ## Affected Surfaces
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/standards/README.md
 - docs/standards/data_contracts/README.md
 - docs/commands/core_python/watchtower_core_query_standards.md
@@ -118,4 +118,4 @@ Defines the technical design boundary for Data-Contract Index Family Baseline Al
 
 ## References
 - March 13, 2026 refactor audit
-- [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md)
+- [data_contract_index_family_baseline_alignment.md](/docs/planning/prds/data_contract_index_family_baseline_alignment.md)

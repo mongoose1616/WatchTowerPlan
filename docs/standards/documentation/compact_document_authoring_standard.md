@@ -34,10 +34,10 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Reviewing whether a generated human-readable output is duplicating machine-readable authority without adding human value.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): compact authoring must preserve governed front matter where the document family requires machine-readable metadata.
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections, but their execution guidance should still prefer proportional repository output.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): human task tracking remains derived from authoritative task records and can therefore stay compact.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains a compact start-here view rather than a second planning authority layer.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): compact authoring must preserve governed front matter where the document family requires machine-readable metadata.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections, but their execution guidance should still prefer proportional repository output.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): human task tracking remains derived from authoritative task records and can therefore stay compact.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains a compact start-here view rather than a second planning authority layer.
 
 ## Guidance
 - Default every authored template to the smallest section set that usually carries non-derivable value.
@@ -64,12 +64,12 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Update validators or index builders in the same change set when a compact-authoring rule changes the required body shape for a governed family.
 
 ## References
-- [docs/templates/README.md](/home/j/WatchTowerPlan/docs/templates/README.md)
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md)
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md)
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
+- [docs/templates/README.md](/docs/templates/README.md)
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md)
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md)
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md)
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
 
 ## Updated At
 - `2026-03-15T05:45:00Z`

@@ -61,12 +61,12 @@ Provide a stable timestamp format baseline for logs, records, manifests, and str
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
+- [README.md](/docs/references/README.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
-- The current repository timestamp baseline is defined in [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md).
+- The current repository timestamp baseline is defined in [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md).
 
 ## Updated At
 - `2026-03-09T05:06:54Z`

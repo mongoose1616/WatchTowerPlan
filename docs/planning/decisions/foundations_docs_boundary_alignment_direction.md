@@ -35,28 +35,28 @@ Update the current authoritative command docs, README navigation surface, standa
 
 ## Current Context and Constraints
 - The current foundations-focused review reproduced three real issues: the core Python command-doc README under-inventories the live foundations-relevant entrypoints; many command pages still cite compatibility wrappers as owning source surfaces; and several current authoritative standards or references still describe the pre-`repo_ops` package layout.
-- The package-boundary READMEs and [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md) already document the intended current model, so the repair should align the stale surfaces to that published authority rather than redefining the architecture again.
+- The package-boundary READMEs and [core/python/README.md](/core/python/README.md) already document the intended current model, so the repair should align the stale surfaces to that published authority rather than redefining the architecture again.
 - README inventory rows must continue to resolve to real repository paths so the repository-path index rebuild stays valid.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the change stays inside current repository-owned documentation and governance surfaces.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen path makes authority boundaries explicit instead of relying on compatibility shims as implied owners.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): command docs, standards, references, tests, and derived indexes should move together in one bounded slice.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): workspace guidance should steer contributors to the real implementation boundary for query and sync work.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages must point to the implementation surface that actually owns the behavior.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact and concrete rather than pretending to be an exhaustive live dump.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the change stays inside current repository-owned documentation and governance surfaces.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the chosen path makes authority boundaries explicit instead of relying on compatibility shims as implied owners.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): command docs, standards, references, tests, and derived indexes should move together in one bounded slice.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): workspace guidance should steer contributors to the real implementation boundary for query and sync work.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages must point to the implementation surface that actually owns the behavior.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact and concrete rather than pretending to be an exhaustive live dump.
 
 ## Affected Surfaces
-- [foundations_docs_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_docs_boundary_alignment.md)
-- [foundations_docs_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/foundations_docs_boundary_alignment.md)
-- [foundations_docs_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/foundations_docs_boundary_alignment.md)
-- [README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
-- [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py)
+- [foundations_docs_boundary_alignment.md](/docs/planning/prds/foundations_docs_boundary_alignment.md)
+- [foundations_docs_boundary_alignment.md](/docs/planning/design/features/foundations_docs_boundary_alignment.md)
+- [foundations_docs_boundary_alignment.md](/docs/planning/design/implementation/foundations_docs_boundary_alignment.md)
+- [README.md](/docs/commands/core_python/README.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
+- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py)
 
 ## Options Considered
 ### Option 1
@@ -84,12 +84,12 @@ Apply a bounded current-authority alignment across command discovery, command so
 - The post-fix validation passes will include a confirmation sweep over adjacent command, standards, and reference surfaces to catch any missed current-authority drift.
 
 ## Risks, Dependencies, and Assumptions
-- Assumes the package-boundary READMEs and [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md) remain the authoritative description of the current runtime ownership model.
+- Assumes the package-boundary READMEs and [core/python/README.md](/core/python/README.md) remain the authoritative description of the current runtime ownership model.
 - Risks missing one stale command page unless regression coverage checks the family directly.
 - Depends on derived path-index refresh after the README inventory changes.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

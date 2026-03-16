@@ -44,10 +44,10 @@ Keep route preview deterministic and authored by removing broad fuzzy token matc
 - The repository already has a `foundations_context_review` workflow module, but no explicit review route currently composes it with documentation refresh.
 
 ## Applied References and Implications
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must remain advisory over authored routing surfaces and should improve through explicit routing guidance, not opaque inference.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md): recent route-preview hardening already established the preference for authored keyword coverage over semantic expansion.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the routing fix should stay inspectable and bounded rather than rely on fuzzy logic that is hard to reason about.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the shared-core workflow system should assist operators without becoming an autonomous planner.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must remain advisory over authored routing surfaces and should improve through explicit routing guidance, not opaque inference.
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md): recent route-preview hardening already established the preference for authored keyword coverage over semantic expansion.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the routing fix should stay inspectable and bounded rather than rely on fuzzy logic that is hard to reason about.
+- [product_direction.md](/docs/foundations/product_direction.md): the shared-core workflow system should assist operators without becoming an autonomous planner.
 
 ## Affected Surfaces
 - workflows/

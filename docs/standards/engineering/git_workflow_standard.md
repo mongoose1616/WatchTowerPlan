@@ -43,11 +43,11 @@ This standard defines repository-standard local git workflow behavior, including
 - Preparing a local branch for review, closeout, or merge.
 
 ## Related Standards and Sources
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): local git workflow should reinforce small, modular, synchronized changes instead of broad mixed-purpose branches.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): branch workflow must hand off cleanly into commit-closeout behavior without duplicating commit-message policy.
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): hosted issue and pull-request rules remain separate from local branch naming and local history maintenance.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should use bounded branches and explicit task handling instead of ad hoc long-lived local changes.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep branch names easy to map back to stable initiative or task concepts.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): local git workflow should reinforce small, modular, synchronized changes instead of broad mixed-purpose branches.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): branch workflow must hand off cleanly into commit-closeout behavior without duplicating commit-message policy.
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): hosted issue and pull-request rules remain separate from local branch naming and local history maintenance.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should use bounded branches and explicit task handling instead of ad hoc long-lived local changes.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced work should keep branch names easy to map back to stable initiative or task concepts.
 
 ## Guidance
 - Create a branch for non-trivial work when any of these are true:
@@ -113,14 +113,14 @@ This standard defines repository-standard local git workflow behavior, including
 
 ## Change Control
 - Update this standard when the repository changes its branch naming scheme, approved branch kinds, or local sync expectations.
-- Update [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md), [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md), and related workflow guidance in the same change set when the local git workflow contract changes materially.
+- Update [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md), [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md), and related workflow guidance in the same change set when the local git workflow contract changes materially.
 
 ## References
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
 - `2026-03-11T06:00:00Z`

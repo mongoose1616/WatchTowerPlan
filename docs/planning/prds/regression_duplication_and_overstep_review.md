@@ -77,14 +77,14 @@ The confirmed issues included:
 - The confirmation loop depends on continuing to review the same stable scope instead of wandering into unrelated cleanup.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): fix the real failure modes directly and reduce repeated work by tightening explicit seams rather than adding new side channels.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): authored planning, machine-readable authority, derived mirrors, and tests must move together in one governed slice.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): repository review work should continue through repeated validation and confirmation until no new actionable issues remain.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): fix the real failure modes directly and reduce repeated work by tightening explicit seams rather than adding new side channels.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): authored planning, machine-readable authority, derived mirrors, and tests must move together in one governed slice.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): repository review work should continue through repeated validation and confirmation until no new actionable issues remain.
 
 ## References
-- [regression_duplication_and_overstep_review_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/features/regression_duplication_and_overstep_review.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/regression_duplication_and_overstep_review.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
+- [regression_duplication_and_overstep_review_direction.md](/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/design/features/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/design/implementation/regression_duplication_and_overstep_review.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)

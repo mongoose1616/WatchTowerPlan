@@ -11,7 +11,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
   - "core/python/src/watchtower_core/query/"
   - "core/python/src/watchtower_core/sync/"
 aliases:
@@ -49,17 +49,17 @@ This document defines the feature-level design for local-first task records, a g
 - Planning trackers are not appropriate as the live task board because they summarize document families, not execution state.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and reviewable in git.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep repository-native execution support local and inspectable before introducing hosted dependencies.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): use Markdown for human task records and JSON for machine-readable task lookup.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one source of truth per concern and derive secondary lookup surfaces.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and reviewable in git.
+- [product_direction.md](/docs/foundations/product_direction.md): keep repository-native execution support local and inspectable before introducing hosted dependencies.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): use Markdown for human task records and JSON for machine-readable task lookup.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one source of truth per concern and derive secondary lookup surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): one task per file and local-first authority should shape the tracking model.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): task documents need a stable front matter and section shape so sync and query remain deterministic.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): task metadata needs a derived machine index for lookup and later hosted sync.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): task records must carry stable `trace_id` links back to PRDs, designs, and evidence.
-- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): task authoring should stay consistent enough to support automation and shared review.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): one task per file and local-first authority should shape the tracking model.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): task documents need a stable front matter and section shape so sync and query remain deterministic.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): task metadata needs a derived machine index for lookup and later hosted sync.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): task records must carry stable `trace_id` links back to PRDs, designs, and evidence.
+- [task_template.md](/docs/templates/task_template.md): task authoring should stay consistent enough to support automation and shared review.
 
 ## Design Goals and Constraints
 - Keep task authoring human-readable and easy to review in git.
@@ -89,7 +89,7 @@ This document defines the feature-level design for local-first task records, a g
 - Add a governed task-document family under `docs/planning/tasks/`.
 - Keep one task per file under `open/` or `closed/`.
 - Generate `task_tracking.md` as the human summary board from the task files.
-- Generate `task_index.v1.json` as the machine-readable task lookup surface.
+- Generate `task_index.json` as the machine-readable task lookup surface.
 - Extend the traceability index to carry task IDs for traced initiatives.
 - Reserve optional GitHub foreign keys in task front matter for later sync.
 
@@ -108,7 +108,7 @@ This document defines the feature-level design for local-first task records, a g
 
 ### Invariants and Failure Cases
 - Task records remain the local source of truth.
-- `task_tracking.md` and `task_index.v1.json` remain derived surfaces.
+- `task_tracking.md` and `task_index.json` remain derived surfaces.
 - Task execution state stays in `task_status`.
 - Open and closed directory placement must agree with task-status class.
 - Task blockers and dependencies must point to existing task IDs.
@@ -119,10 +119,10 @@ This document defines the feature-level design for local-first task records, a g
 - `docs/standards/documentation/task_md_standard.md`
 - `docs/standards/data_contracts/task_index_standard.md`
 - `docs/templates/task_template.md`
-- `core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json`
-- `core/control_plane/schemas/artifacts/task_index.v1.schema.json`
-- `core/control_plane/indexes/tasks/task_index.v1.json`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json`
+- `core/control_plane/schemas/artifacts/task_index.schema.json`
+- `core/control_plane/indexes/tasks/task_index.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Design Guardrails
 - Keep the first task metadata set small and explicit.
@@ -149,10 +149,10 @@ This document defines the feature-level design for local-first task records, a g
 - Should future task queries support dependency expansion and blocker graphs, or stay simple and list-oriented?
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
+- [core_python_workspace_and_harness.md](/docs/planning/design/features/core_python_workspace_and_harness.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
 - `2026-03-10T02:30:31Z`

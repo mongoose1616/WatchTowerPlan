@@ -35,7 +35,7 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 
 ## Notes
 - Use `watchtower-core query coordination` when you want the machine start-here path for current planning state.
-- Use `watchtower-core query planning` when you need the canonical deep planning record for one trace rather than a compact initiative projection.
+- Use `watchtower-core query planning` when you need the canonical deep planning record for one trace rather than a compact initiative rendered surface.
 - Use `watchtower-core query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
 - Filterless browse now defaults to active initiatives; this command remains the broader initiative query surface for explicit historical or status-specific lookup.
 
@@ -83,9 +83,9 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py`
+- `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
 
 ## Updated At
 - `2026-03-13T23:21:33Z`

@@ -46,8 +46,8 @@ Reduce maintenance risk in the largest remaining CLI modules by splitting query 
 - Added a compatibility regression test and reran the CLI-focused unit suite, mypy, and ruff against the refactor.
 
 ## Links
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [end_to_end_repo_rationalization_execution.md](/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T22:12:00Z`

@@ -43,8 +43,8 @@ Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-sp
 - Repo-specific consumers no longer depend on top-level export-safe convenience re-exports and the public boundary matches the intended architecture.
 
 ## Links
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [core_export_hardening_execution.md](/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
 - `2026-03-10T17:04:57Z`

@@ -49,9 +49,9 @@ Use this workflow to create, update, split, unblock, or close local task records
 
 ## Outputs
 - Created or updated task record files
-- Updated `docs/planning/tasks/task_tracking.md` and `core/control_plane/indexes/tasks/task_index.v1.json`
-- Updated `docs/planning/initiatives/initiative_tracking.md` and `core/control_plane/indexes/initiatives/initiative_index.v1.json` when traced task state changed
-- Updated `core/control_plane/indexes/traceability/traceability_index.v1.json` when traced task links changed materially
+- Updated `docs/planning/tasks/task_tracking.md` and `core/control_plane/indexes/tasks/task_index.json`
+- Updated `docs/planning/initiatives/initiative_tracking.md` and `core/control_plane/indexes/initiatives/initiative_index.json` when traced task state changed
+- Updated `core/control_plane/indexes/traceability/traceability_index.json` when traced task links changed materially
 
 ## Done When
 - The authoritative task record reflects the intended lifecycle state clearly.

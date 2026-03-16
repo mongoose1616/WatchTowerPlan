@@ -45,9 +45,9 @@ Extend retrieval indexes with stronger authority hints and add a deterministic c
 - Task-state and initiative rebuild behavior has one obvious deterministic path instead of several implied steps.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
 
 ## Updated At
 - `2026-03-10T06:26:48Z`

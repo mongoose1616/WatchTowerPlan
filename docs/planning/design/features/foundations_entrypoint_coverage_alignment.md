@@ -53,15 +53,15 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
   the machine query or rebuild routes for the same corpus.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the foundations family should expose the canonical route for deciding which repo surface one foundation governs.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): documentation and adjacent machine-readable surfaces should stay aligned in the same change set.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future-product direction remains relevant to foundations-aware planning.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md): the supporting future-state narrative is part of the documented foundations route and should be loadable by the review workflow when that context matters.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the foundations family should expose the canonical route for deciding which repo surface one foundation governs.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): documentation and adjacent machine-readable surfaces should stay aligned in the same change set.
+- [product_direction.md](/docs/foundations/product_direction.md): future-product direction remains relevant to foundations-aware planning.
+- [customer_story.md](/docs/foundations/customer_story.md): the supporting future-state narrative is part of the documented foundations route and should be loadable by the review workflow when that context matters.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): the human family docs should stay queryable and auditable as first-class intent surfaces.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundations family needs clear human and rebuild entrypoints alongside the live index artifact.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): the workflow module must stay focused on execution guidance rather than turning into a broad explainer.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): the human family docs should stay queryable and auditable as first-class intent surfaces.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the machine-readable foundations family needs clear human and rebuild entrypoints alongside the live index artifact.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): the workflow module must stay focused on execution guidance rather than turning into a broad explainer.
 
 ## Design Goals and Constraints
 - Make the foundations family discoverable from both human and machine entry
@@ -136,7 +136,7 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
   the fix must stay concise enough that the workflow remains an execution aid.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [customer_story.md](/docs/foundations/customer_story.md)

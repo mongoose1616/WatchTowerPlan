@@ -58,9 +58,9 @@ the touched entrypoint and validation surfaces.
   surfaces.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): live repo-review entrypoints should route through current repository scope and coordination rather than through a one-off root report.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): retiring the root summary requires the adjacent docs, tests, and derived machine-readable surfaces to move together.
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md): this already serves as the durable human current-state entrypoint for repository review, active work, and next remediation decisions.
+- [repository_scope.md](/docs/foundations/repository_scope.md): live repo-review entrypoints should route through current repository scope and coordination rather than through a one-off root report.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): retiring the root summary requires the adjacent docs, tests, and derived machine-readable surfaces to move together.
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md): this already serves as the durable human current-state entrypoint for repository review, active work, and next remediation decisions.
 
 ## Affected Surfaces
 - README.md
@@ -124,8 +124,8 @@ Apply option 2.
   `SUMMARY.md` dependency chain.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [docs/foundations/repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [docs/foundations/README.md](/docs/foundations/README.md)
+- [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
+- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)

@@ -28,7 +28,7 @@ Provide a standard identifier baseline when UUIDs are used in structured records
 - `https://www.rfc-editor.org/info/rfc9562` - verified 2026-03-09; Information on RFC 9562 » RFC Editor.
 
 ## Related Standards and Sources
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Common UUID Version Choices
@@ -53,7 +53,7 @@ Provide a standard identifier baseline when UUIDs are used in structured records
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
 
 ### Why It Matters Here
 - Use this reference when identifier standards are added under `docs/standards/metadata/**` or `docs/standards/data_contracts/**`.
@@ -64,7 +64,7 @@ Provide a standard identifier baseline when UUIDs are used in structured records
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

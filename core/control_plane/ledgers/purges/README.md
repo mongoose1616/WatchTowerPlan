@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/ledgers/purges/README.md` | Describes the purpose of the trace-purge ledger directory and its current contents. |
-| `core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json` | Purge ledger record for the retired planning-projection modularity hardening trace package. |
+| `core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.json` | Purge ledger record for the retired planning-projection modularity hardening trace package. |

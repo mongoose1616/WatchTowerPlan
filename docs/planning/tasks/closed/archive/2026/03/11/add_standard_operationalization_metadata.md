@@ -15,8 +15,8 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
-- core/control_plane/schemas/artifacts/standard_index.v1.schema.json
+- core/control_plane/indexes/standards/standard_index.json
+- core/control_plane/schemas/artifacts/standard_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/standard_index.py
 - core/python/src/watchtower_core/repo_ops/query/standards.py
 related_ids:

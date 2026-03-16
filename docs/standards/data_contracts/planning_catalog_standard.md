@@ -29,7 +29,7 @@ This standard defines the role, structure, and boundary rules for the canonical 
 ## Scope
 - Applies to machine-readable planning-catalog artifacts stored under `core/control_plane/indexes/planning/`.
 - Covers placement, root artifact fields, planning-entry shape, explicit status-field naming, and update expectations.
-- Does not replace coordination, initiative, traceability, or family-specific indexes as supporting projections or source joins.
+- Does not replace coordination, initiative, traceability, or family-specific indexes as supporting rendered surfaces or source joins.
 
 ## Use When
 - Building agent or automation workflows that need one canonical machine planning record after current-state coordination routing.
@@ -37,17 +37,17 @@ This standard defines the role, structure, and boundary rules for the canonical 
 - Updating the canonical planning join or its query surface.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this canonical planning join narrows.
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the current-phase and per-trace coordination projection the planning catalog embeds.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the trace-linked source join and initiative outcome fields the planning catalog must preserve.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): defines the contract-family source data the planning catalog summarizes.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): defines the evidence-family source data the planning catalog summarizes.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): governs the explicit status vocabulary the planning catalog should preserve rather than collapsing into one ambiguous field.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/planning/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this canonical planning join narrows.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): defines the current-phase and per-trace coordination rendered surface the planning catalog embeds.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the trace-linked source join and initiative outcome fields the planning catalog must preserve.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): defines the contract-family source data the planning catalog summarizes.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): defines the evidence-family source data the planning catalog summarizes.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): governs the explicit status vocabulary the planning catalog should preserve rather than collapsing into one ambiguous field.
+- [README.md](/core/control_plane/indexes/planning/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Treat the planning catalog as the canonical deep-planning machine join after coordination identifies the trace of interest.
 - Use explicit field names such as `artifact_status`, `initiative_status`, `record_status`, `decision_status`, and `task_status` instead of one generic `status` field inside planning entries.
 - Embed one coordination section per trace rather than forcing machines to reopen the initiative index immediately after loading the planning catalog.
@@ -74,7 +74,7 @@ This standard defines the role, structure, and boundary rules for the canonical 
 | `artifact_status` | Required | Lifecycle state mirrored from the traceability entry. |
 | `initiative_status` | Required | Initiative outcome mirrored from the traceability entry. |
 | `updated_at` | Required | RFC 3339 UTC timestamp matching the latest governing source in the joined record. |
-| `coordination` | Required | Per-trace coordination section containing `current_phase`, next-step guidance, open-task counts, and current owner projection. |
+| `coordination` | Required | Per-trace coordination section containing `current_phase`, next-step guidance, open-task counts, and current owner rendering. |
 | `prds` | Optional | Compact PRD summaries with `artifact_status` and linked IDs when present. |
 | `decisions` | Optional | Compact decision summaries with explicit `record_status` and `decision_status`. |
 | `design_documents` | Optional | Compact feature-design and implementation-plan summaries with `artifact_status`. |
@@ -104,11 +104,11 @@ This standard defines the role, structure, and boundary rules for the canonical 
 - Update the query and navigation docs in the same change set when canonical planning precedence changes materially.
 
 ## References
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/planning/README.md)
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
+- [README.md](/core/control_plane/indexes/planning/README.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

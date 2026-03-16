@@ -28,8 +28,8 @@ Provide a schema-validation baseline for structured data contracts that need mac
 - `https://json-schema.org/draft/2020-12` - verified 2026-03-09; JSON Schema.
 
 ## Related Standards and Sources
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/core/control_plane/schemas/)
 
 ## Quick Reference or Distilled Reference
 ### Core Validation Rules
@@ -55,8 +55,8 @@ Provide a schema-validation baseline for structured data contracts that need mac
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/core/control_plane/schemas/)
 
 ### Why It Matters Here
 - Use this reference for schema-heavy content under `docs/standards/data_contracts/**`.
@@ -67,8 +67,8 @@ Provide a schema-validation baseline for structured data contracts that need mac
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/core/control_plane/schemas/)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

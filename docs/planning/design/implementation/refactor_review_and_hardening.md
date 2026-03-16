@@ -36,9 +36,9 @@ applies_to:
 Breaks the phase-one refactor slice into workflow-route discrimination, compact coordination payloads, route-first entrypoint updates, and closeout.
 
 ## Source Request or Design
-- Feature design: [refactor_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/refactor_review_and_hardening.md)
-- PRD: [refactor_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/refactor_review_and_hardening.md)
-- Decision: [refactor_review_and_hardening_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/refactor_review_and_hardening_direction.md)
+- Feature design: [refactor_review_and_hardening.md](/docs/planning/design/features/refactor_review_and_hardening.md)
+- PRD: [refactor_review_and_hardening.md](/docs/planning/prds/refactor_review_and_hardening.md)
+- Decision: [refactor_review_and_hardening_direction.md](/docs/planning/decisions/refactor_review_and_hardening_direction.md)
 
 ## Scope Summary
 - Complete the audit's phase-one current-state simplification slice plus the workflow-route prerequisite.
@@ -53,11 +53,11 @@ Breaks the phase-one refactor slice into workflow-route discrimination, compact 
 - The broader refactor audit remains comparative input; this trace should record only the local phase-one conclusions and follow-up boundaries needed to execute safely.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route-discrimination changes must stay aligned across routing prose, route-preview metadata, and workflow-module boundaries.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): the coordination artifact must remain a compact current-state start-here surface.
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker should mirror the compact coordination contract rather than regrow family-detail duplication.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): umbrella command docs remain command references and should route readers to leaf docs and live help.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): deeper initiative-family views remain valid deeper routes after the planning-root entrypoint is thinned.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route-discrimination changes must stay aligned across routing prose, route-preview metadata, and workflow-module boundaries.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): the coordination artifact must remain a compact current-state start-here surface.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker should mirror the compact coordination contract rather than regrow family-detail duplication.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): umbrella command docs remain command references and should route readers to leaf docs and live help.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): deeper initiative-family views remain valid deeper routes after the planning-root entrypoint is thinned.
 
 ## Proposed Technical Approach
 - Finish the existing workflow-route discrimination slice, keeping the new documentation-review route and adjacent workflow distinctions aligned across the routing table, workflow metadata registry, workflow index, route index, route-preview docs, and targeted tests.
@@ -68,11 +68,11 @@ Breaks the phase-one refactor slice into workflow-route discrimination, compact 
 ## Coverage Map
 | Coverage Area | Surfaces | Review Focus |
 |---|---|---|
-| Workflow routing | `workflows/ROUTING_TABLE.md`; `workflows/modules/README.md`; `workflows/modules/documentation_review.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/repository_review.md`; `workflows/modules/task_handoff_review.md`; `core/control_plane/indexes/routes/route_index.v1.json`; `core/control_plane/indexes/workflows/workflow_index.v1.json`; `core/control_plane/registries/workflow_metadata_registry.json`; `docs/commands/core_python/watchtower_core_route_preview.md`; `core/python/tests/unit/test_route_index_sync.py`; `core/python/tests/unit/test_workflow_index_sync.py` | Route discrimination, metadata alignment, route-preview behavior, and regression coverage |
-| Coordination current-state | `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`; `core/python/src/watchtower_core/repo_ops/query/coordination.py`; `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py`; `core/control_plane/indexes/coordination/coordination_index.v1.json`; coordination schema and examples; coordination-related tests; coordination standards | Current-state compactness, explicit terminal lookup behavior, query and tracker alignment |
+| Workflow routing | `workflows/ROUTING_TABLE.md`; `workflows/modules/README.md`; `workflows/modules/documentation_review.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/repository_review.md`; `workflows/modules/task_handoff_review.md`; `core/control_plane/indexes/routes/route_index.json`; `core/control_plane/indexes/workflows/workflow_index.json`; `core/control_plane/registries/workflow_metadata_registry.json`; `docs/commands/core_python/watchtower_core_route_preview.md`; `core/python/tests/unit/test_route_index_sync.py`; `core/python/tests/unit/test_workflow_index_sync.py` | Route discrimination, metadata alignment, route-preview behavior, and regression coverage |
+| Coordination current-state | `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`; `core/python/src/watchtower_core/repo_ops/query/coordination.py`; `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py`; `core/control_plane/indexes/coordination/coordination_index.json`; coordination schema and examples; coordination-related tests; coordination standards | Current-state compactness, explicit terminal lookup behavior, query and tracker alignment |
 | Planning entrypoints | `docs/planning/README.md`; `docs/planning/initiatives/README.md`; `docs/planning/coordination_tracking.md`; initiative and coordination standards | Start-here routing, current-state versus deeper-history guidance, artifact-status clarity |
 | Command entrypoints | `docs/commands/core_python/watchtower_core.md`; `docs/commands/core_python/watchtower_core_query.md`; `docs/commands/core_python/watchtower_core_sync.md`; `core/python/README.md`; command standards; CLI help behavior | Route-first umbrella docs, low-value catalog removal, leaf-doc and help alignment |
-| Trace closeout surfaces | `docs/planning/tasks/`; `docs/planning/coordination_tracking.md`; `docs/planning/initiatives/initiative_tracking.md`; `docs/planning/prds/prd_tracking.md`; `docs/planning/design/design_tracking.md`; `docs/planning/decisions/decision_tracking.md`; `core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/refactor_review_and_hardening_planning_baseline.v1.json` | Bounded task chain, acceptance alignment, evidence refresh, and closeout readiness |
+| Trace closeout surfaces | `docs/planning/tasks/`; `docs/planning/coordination_tracking.md`; `docs/planning/initiatives/initiative_tracking.md`; `docs/planning/prds/prd_tracking.md`; `docs/planning/design/design_tracking.md`; `docs/planning/decisions/decision_tracking.md`; `core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.json`; `core/control_plane/ledgers/validation_evidence/refactor_review_and_hardening_planning_baseline.json` | Bounded task chain, acceptance alignment, evidence refresh, and closeout readiness |
 
 ## Findings Ledger
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |

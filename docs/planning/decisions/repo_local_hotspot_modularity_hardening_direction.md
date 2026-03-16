@@ -42,10 +42,10 @@ Close the remaining report-validated hotspot modularity issue by splitting the o
 - The repository is currently green and coordination is ready for one bounded initiative, so the right move is a narrow refactor trace rather than a new broad architecture program.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen direction favors bounded helper seams over a larger structural redesign because the issue is concentration of responsibility, not a broken top-level architecture.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): stable service and CLI contracts should stay intact while implementation detail moves into smaller helpers.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the decision commits this work to a bounded traced initiative with explicit validation and closeout rather than an untracked cleanup pass.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the report finding, decision, design, tasks, code changes, and acceptance evidence must remain joined through one trace until final closeout.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the chosen direction favors bounded helper seams over a larger structural redesign because the issue is concentration of responsibility, not a broken top-level architecture.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): stable service and CLI contracts should stay intact while implementation detail moves into smaller helpers.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the decision commits this work to a bounded traced initiative with explicit validation and closeout rather than an untracked cleanup pass.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the report finding, decision, design, tasks, code changes, and acceptance evidence must remain joined through one trace until final closeout.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/cli/
@@ -87,5 +87,5 @@ Option 2 is accepted. The repository should close the remaining report-validated
 - March 2026 review overview and method summary for the remaining modularity hotspots.
 - March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
 - March 2026 remediation-program summary for the final bounded modularity follow-up.
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)

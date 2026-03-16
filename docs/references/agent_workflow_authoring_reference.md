@@ -108,7 +108,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
 - [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
 - [workflow_template.md](/docs/templates/workflow_template.md)
-- [workflow_index.v1.json](/core/control_plane/indexes/workflows/workflow_index.v1.json)
+- [workflow_index.json](/core/control_plane/indexes/workflows/workflow_index.json)
 
 ### Why It Matters Here
 - The repository already has a routed baseline context layer. Workflow modules should only add context that is specific to the module and helpful for immediate execution.

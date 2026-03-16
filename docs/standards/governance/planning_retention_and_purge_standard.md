@@ -47,12 +47,12 @@ This standard defines the promote-then-purge retention model for closed traced p
 - Implementing or reviewing a repo-local purge workflow for traced planning artifacts.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): purge must preserve explicit surviving authority and must not create silent trace-link drift.
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): accepted decisions should move into canonical artifacts instead of remaining the only active policy surface.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): only terminal traces are eligible for purge consideration.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task archives remain the normal retained state until an explicit purge removes the full trace package.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): low-value retained history should not become default clutter when stronger authority already exists elsewhere.
-- [summary_surface_retirement.md](/home/j/WatchTowerPlan/docs/planning/design/features/summary_surface_retirement.md): retirement work must repair the direct dependency chain instead of deleting artifacts blindly.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): purge must preserve explicit surviving authority and must not create silent trace-link drift.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): accepted decisions should move into canonical artifacts instead of remaining the only active policy surface.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): only terminal traces are eligible for purge consideration.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task archives remain the normal retained state until an explicit purge removes the full trace package.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): low-value retained history should not become default clutter when stronger authority already exists elsewhere.
+- [summary_surface_retirement.md](/docs/planning/design/features/summary_surface_retirement.md): retirement work must repair the direct dependency chain instead of deleting artifacts blindly.
 
 ## Guidance
 - Treat closed trace-local planning artifacts as temporary retained history, not automatic permanent authority.
@@ -124,11 +124,11 @@ This standard defines the promote-then-purge retention model for closed traced p
 - Update the purge ledger schema or artifact shape, purge workflow surface, planning trackers, and affected indexes in the same change set when this standard changes structurally.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [summary_surface_retirement.md](/home/j/WatchTowerPlan/docs/planning/design/features/summary_surface_retirement.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [summary_surface_retirement.md](/docs/planning/design/features/summary_surface_retirement.md)
 
 ## Updated At
 - `2026-03-15T11:00:00Z`

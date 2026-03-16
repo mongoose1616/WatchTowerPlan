@@ -54,7 +54,7 @@ def test_repository_path_index_sync_filters_stale_related_paths(tmp_path: Path) 
     }
     (
         tmp_path
-        / "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+        / "core/control_plane/indexes/repository_paths/repository_path_index.json"
     ).write_text(f"{json.dumps(existing_index, indent=2)}\n", encoding="utf-8")
 
     class _FakeLoader:

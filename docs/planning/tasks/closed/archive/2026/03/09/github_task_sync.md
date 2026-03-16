@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
   - "core/python/src/watchtower_core/sync/"
 related_ids:
   - "design.features.local_task_tracking_and_github_sync"
@@ -42,8 +42,8 @@ Adds one-way GitHub sync support so local task records can publish to GitHub iss
 - Sync mappings between local task status and GitHub status fields are explicit.
 
 ## Links
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 
 ## Updated At
 - `2026-03-09T16:14:14Z`

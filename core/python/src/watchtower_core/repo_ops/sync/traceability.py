@@ -20,12 +20,12 @@ from watchtower_core.repo_ops.sync.traceability_support import (
     tuple_of_strings,
 )
 
-PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
-DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
+PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.json"
+DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.json"
 DESIGN_DOCUMENT_INDEX_PATH = (
-    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+    "core/control_plane/indexes/design_documents/design_document_index.json"
 )
-TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
+TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.json"
 ACCEPTANCE_CONTRACT_DIRECTORY = "core/control_plane/contracts/acceptance"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 

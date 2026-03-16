@@ -36,9 +36,9 @@ applies_to:
 Breaks the regression-and-duplication review into a coverage-led remediation, validation, and confirmation loop across planning, control-plane, and runtime surfaces.
 
 ## Source Request or Design
-- Feature design: [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/features/regression_duplication_and_overstep_review.md)
-- PRD: [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- Decision: [regression_duplication_and_overstep_review_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
+- Feature design: [regression_duplication_and_overstep_review.md](/docs/planning/design/features/regression_duplication_and_overstep_review.md)
+- PRD: [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- Decision: [regression_duplication_and_overstep_review_direction.md](/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
 
 ## Scope Summary
 - Complete the themed review loop for traceability drift, governed companion-path drift, stale derived relationships, and planning-surface coherence.
@@ -58,11 +58,11 @@ Breaks the regression-and-duplication review into a coverage-led remediation, va
 - The adjacent cancelled trace is already closed as cancelled, but its authored planning docs still look like unfinished active work unless they are rewritten as historical records.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task creation, movement, and closure must remain authoritative and same-change aligned with derived planning views.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): contract path references must remain valid and should move with the governed artifacts they point at.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): evidence must remain durable, inspectable, and tied to concrete validated subject paths.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): repaired source state must stay joined across human-readable planning and machine-readable planning indexes.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): repository review requires targeted validation, full validation, and repeated no-new-issues confirmation before closeout.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task creation, movement, and closure must remain authoritative and same-change aligned with derived planning views.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): contract path references must remain valid and should move with the governed artifacts they point at.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): evidence must remain durable, inspectable, and tied to concrete validated subject paths.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): repaired source state must stay joined across human-readable planning and machine-readable planning indexes.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): repository review requires targeted validation, full validation, and repeated no-new-issues confirmation before closeout.
 
 ## Proposed Technical Approach
 - Add strict trace-linkage validation to task authoring and task updates, then cover that behavior with unit and integration tests.
@@ -103,6 +103,6 @@ Breaks the regression-and-duplication review into a coverage-led remediation, va
 - Refresh the acceptance contract and validation-evidence ledger with the actual remediation and confirmation results before closeout.
 
 ## References
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- [regression_duplication_and_overstep_review_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/design/features/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review_direction.md](/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/design/features/regression_duplication_and_overstep_review.md)

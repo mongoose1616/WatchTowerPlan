@@ -58,17 +58,17 @@ This document is authoritative for current repository ownership. It does not rep
 
 ## Relationship to Future WatchTower Product Work
 
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md) defines the intended future WatchTower product shape.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md) provides supporting future-state narrative.
+- [product_direction.md](/docs/foundations/product_direction.md) defines the intended future WatchTower product shape.
+- [customer_story.md](/docs/foundations/customer_story.md) provides supporting future-state narrative.
 - Those documents remain important because they shape planning and design decisions in this repo.
 - They are not the authority for present repository ownership. This document is.
 
 ## EntryPoint Guidance
 
 - Start here when the question is whether work belongs in `WatchTowerPlan`.
-- Start with [README.md](/home/j/WatchTowerPlan/README.md) when the main need is root routing.
-- Start with [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md) when the main need is current work state, overall repository coherence, or next remediation work.
-- Start with [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
+- Start with [README.md](/README.md) when the main need is root routing.
+- Start with [coordination_tracking.md](/docs/planning/coordination_tracking.md) when the main need is current work state, overall repository coherence, or next remediation work.
+- Start with [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
 
 ## Boundaries That Must Hold
 
@@ -78,8 +78,8 @@ This document is authoritative for current repository ownership. It does not rep
 - Repo-specific behavior stays explicit instead of leaking into reusable surfaces.
 
 ## References
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

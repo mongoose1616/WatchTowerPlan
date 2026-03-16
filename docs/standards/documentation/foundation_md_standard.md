@@ -33,10 +33,10 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - Reviewing whether the foundation layer is structured enough to remain queryable and auditable.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): foundation docs must publish governed metadata so the intent layer is indexable and traceable.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): external authority that materially shapes foundations should be normalized through local reference docs when practical.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): foundation docs must use UTC `updated_at` values consistently.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): foundation docs must publish governed metadata so the intent layer is indexable and traceable.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): external authority that materially shapes foundations should be normalized through local reference docs when practical.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): foundation docs must use UTC `updated_at` values consistently.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
 
 ## Guidance
 - Store governed foundation documents under `docs/foundations/`.
@@ -72,7 +72,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - `Operational Surfaces`: `docs/foundations/customer_story.md`; `docs/foundations/engineering_design_principles.md`; `docs/foundations/engineering_stack_direction.md`; `docs/foundations/product_direction.md`; `docs/foundations/repository_scope.md`; `docs/foundations/repository_standards_posture.md`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`
 
 ## Validation
-- Foundation-doc front matter should validate against `foundation_front_matter.v1.schema.json`.
+- Foundation-doc front matter should validate against `foundation_front_matter.schema.json`.
 - Foundation docs should publish `References` and `Updated At`.
 - `updated_at` in front matter and the `Updated At` body section should match.
 - Standards lookup should resolve this standard for the governed foundation
@@ -88,9 +88,9 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - Update the foundation front matter schema, templates, and foundation index surfaces in the same change set when this document family changes structurally.
 
 ## References
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
+- [README.md](/docs/foundations/README.md)
 
 ## Updated At
 - `2026-03-12T23:43:00Z`

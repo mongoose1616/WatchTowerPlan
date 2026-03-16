@@ -61,7 +61,7 @@ uv run watchtower-core query planning --initiative-status completed --trace-id t
 - With no explicit `--trace-id`, `--query`, `--current-phase`, `--owner`, or `--initiative-status`, the command defaults to `initiative_status=active` so filterless browse stays aligned with the active-first planning navigation model.
 - The JSON payload uses explicit status fields inside the joined sections, including `artifact_status`, `initiative_status`, `record_status`, `decision_status`, and `task_status`.
 - When that active-default path is applied, the JSON payload also includes `default_initiative_status: "active"` so machine consumers can tell the filter was injected by the entrypoint rather than supplied explicitly.
-- This command is the canonical deep-planning read path, while coordination remains the start-here path and initiative or trace queries remain narrower projections.
+- This command is the canonical deep-planning read path, while coordination remains the start-here path and initiative or trace queries remain narrower rendered surfaces.
 - Explicit terminal-history browsing remains available through `--initiative-status completed|cancelled|superseded` or a known `--trace-id`.
 - If no entries match the requested filters, the command exits successfully and reports that no planning-catalog entries matched.
 
@@ -78,9 +78,9 @@ uv run watchtower-core query planning --initiative-status completed --trace-id t
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py`
+- `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/planning.py`
-- `core/control_plane/indexes/planning/planning_catalog.v1.json`
+- `core/control_plane/indexes/planning/planning_catalog.json`
 
 ## Updated At
 - `2026-03-14T00:04:17Z`

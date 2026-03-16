@@ -33,7 +33,7 @@ Remediates confirmed post-rewrite regressions, pack-boundary defects, and retain
 ## Problem Statement
 - The rewritten core-plus-pack boundary currently claims a reusable startup surface, but `core/python/.venv/bin/pytest -q` fails because the workspace-standard integration test still asserts retired compatibility wording instead of the current guardrail namespace language.
 - The new `PackContext` startup path only succeeds when required surfaces stay on this repository's hard-coded paths; relocating a declared required surface in pack settings currently downgrades it to an untyped `dict` and fails startup.
-- The control-plane carried inventory-only governed surfaces that added validation, schema, and documentation maintenance without a demonstrated runtime consumer. This trace retires `core/control_plane/manifests/repository_manifest.v1.json` as the first proven-unused family.
+- The control-plane carried inventory-only governed surfaces that added validation, schema, and documentation maintenance without a demonstrated runtime consumer. This trace retires `core/control_plane/manifests/repository_manifest.json` as the first proven-unused family.
 - The current validation baseline still spends active maintenance on rewrite-era fixture and inventory surfaces that do not participate in the reusable-core startup contract, including the example-driven validation path, compatibility and intake contract families, and retained artifact type or role catalogs with no runtime reader.
 
 ## Goals
@@ -65,6 +65,6 @@ Remediates confirmed post-rewrite regressions, pack-boundary defects, and retain
 - Derived indexes, trackers, and validation contracts must stay aligned with the repaired docs and retired surfaces in the same cleanup slices.
 
 ## References
-- [post_rewrite_core_cleanup_and_surface_reduction_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md)
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md)
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction_direction.md](/docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md)

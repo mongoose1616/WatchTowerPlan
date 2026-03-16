@@ -17,8 +17,8 @@ applies_to:
   - "docs/planning/design/features/preimplementation_repo_readiness.md"
   - "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md"
   - "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
-  - "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.json"
   - "docs/planning/tasks/open/"
 related_ids:
   - "prd.preimplementation_repo_review_and_hardening"
@@ -45,10 +45,10 @@ Creates the traced planning chain, decision record, acceptance baseline, and bou
 - The bounded execution task set exists under `docs/planning/tasks/open/`.
 
 ## Links
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- [preimplementation_repo_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/preimplementation_repo_hardening_execution.md)
-- [preimplementation_machine_coordination_entrypoint.md](/home/j/WatchTowerPlan/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [preimplementation_repo_hardening_execution.md](/docs/planning/design/implementation/preimplementation_repo_hardening_execution.md)
+- [preimplementation_machine_coordination_entrypoint.md](/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
 
 ## Updated At
 - `2026-03-10T17:55:24Z`

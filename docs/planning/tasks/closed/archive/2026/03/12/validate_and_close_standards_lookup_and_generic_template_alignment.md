@@ -15,8 +15,8 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/planning/
-- core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.json
 - core/control_plane/indexes/
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/

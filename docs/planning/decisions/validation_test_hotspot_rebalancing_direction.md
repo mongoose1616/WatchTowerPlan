@@ -47,16 +47,16 @@ Split the remaining governed validation hotspots into focused family-oriented su
 - The repository-path index is README-derived, and both hotspot files are currently omitted from the relevant README inventories, so `query paths` cannot discover them today.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keeps the split explicit, inspectable, and local-first rather than relying on generic test generation.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): requires preserving deterministic repository-aware validation instead of substituting shallow mocks.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): means README inventory changes are part of the authoritative discoverability contract, not optional documentation cleanup.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keeps the split explicit, inspectable, and local-first rather than relying on generic test generation.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): requires preserving deterministic repository-aware validation instead of substituting shallow mocks.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): means README inventory changes are part of the authoritative discoverability contract, not optional documentation cleanup.
 
 ## Affected Surfaces
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/test_document_semantics_validation.py
 - core/python/tests/integration/README.md
 - core/python/tests/unit/README.md
-- core/control_plane/indexes/repository_paths/repository_path_index.v1.json
+- core/control_plane/indexes/repository_paths/repository_path_index.json
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/repo_ops/validation/all.py
@@ -100,4 +100,4 @@ Accept Option 2. The implementation will split both remaining validation hotspot
 
 ## References
 - March 13, 2026 refactor audit
-- [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/validation_test_hotspot_rebalancing.md)
+- [validation_test_hotspot_rebalancing.md](/docs/planning/prds/validation_test_hotspot_rebalancing.md)

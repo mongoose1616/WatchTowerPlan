@@ -74,6 +74,6 @@ Review and refactor the remaining governed validation test hotspots so artifact 
 
 ## References
 - March 13, 2026 refactor audit
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)

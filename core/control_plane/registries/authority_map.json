@@ -10,7 +10,7 @@
       "question": "What is the current planning state and next action?",
       "status": "active",
       "artifact_kind": "coordination_index",
-      "canonical_path": "core/control_plane/indexes/coordination/coordination_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/coordination/coordination_index.json",
       "preferred_command": "watchtower-core query coordination",
       "preferred_human_path": "docs/planning/coordination_tracking.md",
       "status_fields": [
@@ -20,7 +20,7 @@
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/tasks/task_tracking.md"
       ],
@@ -37,7 +37,7 @@
       "question": "What is the full trace-linked planning context for one initiative?",
       "status": "active",
       "artifact_kind": "planning_catalog",
-      "canonical_path": "core/control_plane/indexes/planning/planning_catalog.v1.json",
+      "canonical_path": "core/control_plane/indexes/planning/planning_catalog.json",
       "preferred_command": "watchtower-core query planning",
       "preferred_human_path": "docs/commands/core_python/watchtower_core_query_planning.md",
       "status_fields": [
@@ -48,8 +48,8 @@
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/traceability/traceability_index.v1.json",
-        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
         "docs/planning/prds/"
       ],
       "aliases": [
@@ -65,7 +65,7 @@
       "question": "What is the compact initiative-family view, including history?",
       "status": "active",
       "artifact_kind": "initiative_index",
-      "canonical_path": "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/initiatives/initiative_index.json",
       "preferred_command": "watchtower-core query initiatives",
       "preferred_human_path": "docs/planning/initiatives/initiative_tracking.md",
       "status_fields": [
@@ -74,8 +74,8 @@
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/coordination/coordination_index.v1.json",
-        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "core/control_plane/indexes/planning/planning_catalog.json",
         "docs/planning/coordination_tracking.md"
       ],
       "aliases": [
@@ -91,7 +91,7 @@
       "question": "What is the durable trace-linked source join and initiative closeout state?",
       "status": "active",
       "artifact_kind": "traceability_index",
-      "canonical_path": "core/control_plane/indexes/traceability/traceability_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
       "preferred_command": "watchtower-core query trace",
       "preferred_human_path": "docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
@@ -99,8 +99,8 @@
         "initiative_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/planning/planning_catalog.v1.json",
-        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
         "docs/planning/decisions/decision_tracking.md"
       ],
       "aliases": [
@@ -116,7 +116,7 @@
       "question": "What is the authoritative task execution state and dependency graph?",
       "status": "active",
       "artifact_kind": "task_index",
-      "canonical_path": "core/control_plane/indexes/tasks/task_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/tasks/task_index.json",
       "preferred_command": "watchtower-core query tasks",
       "preferred_human_path": "docs/planning/tasks/task_tracking.md",
       "status_fields": [
@@ -125,8 +125,8 @@
         "priority"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/coordination/coordination_index.v1.json",
-        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
         "docs/planning/coordination_tracking.md"
       ],
       "aliases": [
@@ -142,7 +142,7 @@
       "question": "Which command surface should I use and where is it documented?",
       "status": "active",
       "artifact_kind": "command_index",
-      "canonical_path": "core/control_plane/indexes/commands/command_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/commands/command_index.json",
       "preferred_command": "watchtower-core query commands",
       "preferred_human_path": "docs/commands/core_python/README.md",
       "status_fields": [
@@ -150,7 +150,7 @@
       ],
       "fallback_paths": [
         "docs/commands/core_python/watchtower_core_query.md",
-        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+        "core/control_plane/indexes/repository_paths/repository_path_index.json"
       ],
       "aliases": [
         "command discovery",
@@ -165,7 +165,7 @@
       "question": "Which workflow modules are canonical for this request type?",
       "status": "active",
       "artifact_kind": "route_index",
-      "canonical_path": "core/control_plane/indexes/routes/route_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/routes/route_index.json",
       "preferred_command": "watchtower-core route preview",
       "preferred_human_path": "workflows/ROUTING_TABLE.md",
       "fallback_paths": [
@@ -185,7 +185,7 @@
       "question": "Which repository standard governs this surface or rule?",
       "status": "active",
       "artifact_kind": "standard_index",
-      "canonical_path": "core/control_plane/indexes/standards/standard_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/standards/standard_index.json",
       "preferred_command": "watchtower-core query standards",
       "preferred_human_path": "docs/standards/README.md",
       "status_fields": [
@@ -209,7 +209,7 @@
       "question": "Which foundation document defines the governing intent for this area?",
       "status": "active",
       "artifact_kind": "foundation_index",
-      "canonical_path": "core/control_plane/indexes/foundations/foundation_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/foundations/foundation_index.json",
       "preferred_command": "watchtower-core query foundations",
       "preferred_human_path": "docs/foundations/README.md",
       "status_fields": [
@@ -233,12 +233,12 @@
       "question": "Which repository path or entrypoint is the right place to start?",
       "status": "active",
       "artifact_kind": "repository_path_index",
-      "canonical_path": "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+      "canonical_path": "core/control_plane/indexes/repository_paths/repository_path_index.json",
       "preferred_command": "watchtower-core query paths",
       "preferred_human_path": "README.md",
       "fallback_paths": [
         "docs/commands/core_python/README.md",
-        "core/control_plane/indexes/commands/command_index.v1.json"
+        "core/control_plane/indexes/commands/command_index.json"
       ],
       "aliases": [
         "entrypoint lookup",

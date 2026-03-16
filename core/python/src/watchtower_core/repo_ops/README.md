@@ -12,7 +12,7 @@ WatchTowerPlan-specific planning, task, query, sync, and validation behavior tha
 - `planning_documents.py` and `task_documents.py`: Repo-native document parsing and validation helpers.
 - `planning_scaffolds.py` and `task_lifecycle.py`: Stable planning and task authoring or transition service entrypoints.
 - `planning_scaffold_specs.py`, `planning_scaffold_rendering.py`, and `planning_bootstrap_support.py`: Declarative scaffold contracts, section rendering, bootstrap artifact builders, and planning-surface refresh helpers behind `planning_scaffolds.py`.
-- `planning_projection_snapshot.py`, `planning_projection_source_assembly.py`, `planning_projection_policy.py`, `planning_projection_task_selection.py`, `planning_projection_serialization.py`, and `planning_projection_catalog_composition.py`: Private planning-projection helpers behind the initiative and planning sync entrypoints.
+- `planning_rendered_snapshot.py`, `planning_rendered_source_assembly.py`, `planning_rendered_policy.py`, `planning_rendered_task_selection.py`, `planning_rendered_serialization.py`, and `planning_rendered_catalog_composition.py`: Private planning-rendered helpers behind the initiative and planning sync entrypoints.
 - `task_companion_path_repair.py`: Governed acceptance-contract and validation-evidence task-path repair isolated from `task_lifecycle.py`.
 - `query/`, `sync/`, and `validation/`: Repo-local authoritative implementations behind the top-level guardrail roots and reusable validation boundary.
 

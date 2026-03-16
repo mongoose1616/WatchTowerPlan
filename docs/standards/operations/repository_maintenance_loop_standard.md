@@ -44,12 +44,12 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - Reviewing whether recurring upkeep responsibilities are still explicit and bounded.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): recurring upkeep should not let planning joins and derived trackers drift silently.
-- [repository_review.md](/home/j/WatchTowerPlan/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): recurring upkeep should not let planning joins and derived trackers drift silently.
+- [repository_review.md](/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
+- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
 
 ## Guidance
 - Keep recurring maintenance local-first and deterministic.
@@ -88,10 +88,10 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - Update maintenance workflows, validation guidance, and review conventions in the same change set when this operating loop changes materially.
 
 ## References
-- [repository_review.md](/home/j/WatchTowerPlan/workflows/modules/repository_review.md)
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/README.md)
+- [repository_review.md](/workflows/modules/repository_review.md)
+- [documentation_refresh.md](/workflows/modules/documentation_refresh.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [README.md](/docs/README.md)
 
 ## Updated At
 - `2026-03-13T18:18:00Z`

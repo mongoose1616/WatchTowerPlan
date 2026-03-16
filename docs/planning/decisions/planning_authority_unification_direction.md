@@ -46,9 +46,9 @@ Add one canonical machine planning catalog and one machine-readable authority ma
 - Compatibility matters because current query and tracker surfaces are already in use.
 
 ## Applied References and Implications
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the chosen direction preserves traceability as the durable join anchor and builds the canonical planning catalog from governed trace-linked sources.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): initiative and coordination views remain valid projections, but they should no longer be treated as the only machine planning answers.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): canonical authority should be explicit and machine-resolvable rather than distributed across several equally plausible surfaces.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the chosen direction preserves traceability as the durable join anchor and builds the canonical planning catalog from governed trace-linked sources.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative and coordination views remain valid projections, but they should no longer be treated as the only machine planning answers.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): canonical authority should be explicit and machine-resolvable rather than distributed across several equally plausible surfaces.
 
 ## Affected Surfaces
 - `core/control_plane/indexes/planning/`
@@ -96,6 +96,6 @@ Adopt option 2. The repo will add one planning catalog as the canonical machine 
 - Compatibility assumptions in current consumers may require keeping some legacy fields or notes during the transition.
 
 ## References
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)
-- [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [initiative_index.json](/core/control_plane/indexes/initiatives/initiative_index.json)
+- [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)

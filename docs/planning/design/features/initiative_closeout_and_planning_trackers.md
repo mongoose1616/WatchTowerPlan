@@ -10,7 +10,7 @@ updated_at: "2026-03-16T04:05:50Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
+  - "core/control_plane/indexes/traceability/traceability_index.json"
   - "docs/planning/prds/prd_tracking.md"
   - "docs/planning/design/design_tracking.md"
   - "docs/planning/decisions/decision_tracking.md"
@@ -50,16 +50,16 @@ This document defines the first initiative closeout model, its traceability fiel
 - Initiative outcome is now recorded through the traceability layer and mirrored into the initiative index and planning trackers.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and use derived human surfaces for orientation.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): preserve reusable closeout behavior tied to planning, validation, and execution.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): keep JSON for machine-readable join state and Markdown for human-readable tracker views.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one source of truth for initiative outcome and derive secondary mirrors from it.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and use derived human surfaces for orientation.
+- [product_direction.md](/docs/foundations/product_direction.md): preserve reusable closeout behavior tied to planning, validation, and execution.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): keep JSON for machine-readable join state and Markdown for human-readable tracker views.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one source of truth for initiative outcome and derive secondary mirrors from it.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): initiative lifecycle closeout has to update the shared trace record rather than only the human trackers.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): closure state and linked planning surfaces must remain queryable through the unified trace index.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): closeout must set initiative outcome, timestamp, and closure reason consistently.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): planning closeout should leave local task tracking aligned with final initiative state.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): initiative lifecycle closeout has to update the shared trace record rather than only the human trackers.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): closure state and linked planning surfaces must remain queryable through the unified trace index.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): closeout must set initiative outcome, timestamp, and closure reason consistently.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): planning closeout should leave local task tracking aligned with final initiative state.
 
 ## Design Goals and Constraints
 - Keep initiative outcome separate from artifact lifecycle state.
@@ -109,8 +109,8 @@ This document defines the first initiative closeout model, its traceability fiel
 - Open linked tasks should block closeout by default unless the operator explicitly allows the exception.
 
 ## Affected Surfaces
-- `core/control_plane/schemas/artifacts/traceability_index.v1.schema.json`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/schemas/artifacts/traceability_index.schema.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 - `docs/planning/prds/prd_tracking.md`
 - `docs/planning/decisions/decision_tracking.md`
 - `docs/planning/design/design_tracking.md`
@@ -143,9 +143,9 @@ This document defines the first initiative closeout model, its traceability fiel
 - Should future initiative closeout also summarize validation-evidence coverage requirements before allowing `completed`?
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
 
 ## Updated At
 - `2026-03-16T04:05:50Z`

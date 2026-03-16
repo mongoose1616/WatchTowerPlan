@@ -47,11 +47,11 @@ Execute only the audit's phase-one current-state simplification slice in this tr
 - Deeper hotspot decomposition and policy-cost review remain important, but they are higher-risk follow-up work that would over-expand this trace.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the right simplifications remove duplicated current-state and routing burden while preserving explicit authority seams.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): docs, indexes, query behavior, and tests must stay aligned in the same change sets when start-here semantics change.
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): workflow modularity stays intact; route discrimination should get clearer before any consolidation is considered.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): the coordination layer remains a compact current-state surface rather than a second full historical planning join.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): umbrella command pages remain route-first command references and should not grow into broad handbooks.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the right simplifications remove duplicated current-state and routing burden while preserving explicit authority seams.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): docs, indexes, query behavior, and tests must stay aligned in the same change sets when start-here semantics change.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): workflow modularity stays intact; route discrimination should get clearer before any consolidation is considered.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): the coordination layer remains a compact current-state surface rather than a second full historical planning join.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): umbrella command pages remain route-first command references and should not grow into broad handbooks.
 
 ## Affected Surfaces
 - core/python/

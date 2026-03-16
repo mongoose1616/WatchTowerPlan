@@ -46,10 +46,10 @@ Keep the existing planning and traceability validation model intact, refresh coo
 - The planning catalog is a canonical machine-readable planning surface and should not lag behind initiative closeout.
 
 ## Applied References and Implications
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced lifecycle mutations need to leave traceability and coordination-derived surfaces aligned without requiring a repair sync.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): initiative closeout has to refresh the canonical planning join immediately because `query planning` is part of the normal machine-readable contract.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): new scaffolded traces should not enter active coordination until bounded task state exists, which is why scaffold refresh stays conditional instead of unconditional.
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): this record documents why the repository fixes the write-path defects directly rather than weakening validation or shifting the burden to operators.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced lifecycle mutations need to leave traceability and coordination-derived surfaces aligned without requiring a repair sync.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): initiative closeout has to refresh the canonical planning join immediately because `query planning` is part of the normal machine-readable contract.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): new scaffolded traces should not enter active coordination until bounded task state exists, which is why scaffold refresh stays conditional instead of unconditional.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): this record documents why the repository fixes the write-path defects directly rather than weakening validation or shifting the burden to operators.
 
 ## Affected Surfaces
 - `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`

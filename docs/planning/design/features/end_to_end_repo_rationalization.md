@@ -49,19 +49,19 @@ Defines the review-backed design for documentation link guardrails, closeout-con
 - Repo-local markdown links appear clean today, but there is no dedicated validation rule preventing future broken absolute repo links.
 - `initiative_tracking.md` and `coordination_tracking.md` can change on closeout while still showing `_Updated At` values that trail the effective closeout timestamp.
 - `SchemaStore` and `ControlPlaneLoader` accept programmatic supplemental schema documents, but future external pack consumers still lack a first-class file-system-driven loading path and CLI affordance.
-- The largest remaining Python hotspots are [query_handlers.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/query_handlers.py) and [query_family.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/query_family.py), which are materially larger than the rest of the CLI workspace.
+- The largest remaining Python hotspots are [query_handlers.py](/core/python/src/watchtower_core/cli/query_handlers.py) and [query_family.py](/core/python/src/watchtower_core/cli/query_family.py), which are materially larger than the rest of the CLI workspace.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): new seams should be explicit, small, and deterministic.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): guardrails should fail closed and derived surfaces should not drift from their authoritative inputs.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): pack-oriented extensibility should remain generic and configurable inside shared core.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): new seams should be explicit, small, and deterministic.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): guardrails should fail closed and derived surfaces should not drift from their authoritative inputs.
+- [product_direction.md](/docs/foundations/product_direction.md): pack-oriented extensibility should remain generic and configurable inside shared core.
 
 ## Internal Standards and Canonical References Applied
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): semantic validation is the right home for repo-local markdown-link enforcement.
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker remains the default start-here surface and should stay trustworthy after closeout.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the initiative layer remains the deeper family-specific coordination view rather than being replaced again.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): supplemental schemas must stay outside the canonical catalog boundary while still validating fail closed.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the refactor should prefer smaller modules and thin orchestration layers.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): semantic validation is the right home for repo-local markdown-link enforcement.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): the human coordination tracker remains the default start-here surface and should stay trustworthy after closeout.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the initiative layer remains the deeper family-specific coordination view rather than being replaced again.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): supplemental schemas must stay outside the canonical catalog boundary while still validating fail closed.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the refactor should prefer smaller modules and thin orchestration layers.
 
 ## Design Goals and Constraints
 - Add the smallest useful documentation guardrail rather than a broad external-link crawler.
@@ -92,7 +92,7 @@ Defines the review-backed design for documentation link guardrails, closeout-con
 - Record this choice explicitly so the review closes the “should we collapse planning families again?” question for the current pre-implementation phase.
 
 ### Documentation Guardrails
-- Extend repo-local document semantics validation to check absolute markdown links that point back into `/home/j/WatchTowerPlan/`.
+- Extend repo-local document semantics validation to check absolute markdown links that point back into `/`.
 - Treat missing repo-local targets as validation failures.
 - Keep the rule narrow to repo-local file links and do not attempt full external-link validation.
 
@@ -152,9 +152,9 @@ Defines the review-backed design for documentation link guardrails, closeout-con
 - Query-family refactors are mechanically noisy and require strong regression tests.
 
 ## References
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
 
 ## Updated At
 - `2026-03-10T19:43:34Z`

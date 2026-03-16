@@ -16,8 +16,8 @@ authority: authoritative
 applies_to:
 - core/python/tests/unit/
 - docs/planning/
-- core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.json
+- core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.json
 related_ids:
 - prd.refactor_umbrella_regression_and_growth_control
 - design.features.refactor_umbrella_regression_and_growth_control

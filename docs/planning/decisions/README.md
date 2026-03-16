@@ -16,6 +16,6 @@
 - Treat `decision_tracking.md` as an active-first tracker. Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browsing and `uv run watchtower-core query decisions --trace-id <trace_id>` for one known decision trace.
 - Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when a closed decision trace needs the canonical joined planning record instead of the compact family tracker.
 - Treat decision records as durable rationale, not as the only home of active policy. When an accepted rule has already been promoted into standards or other current canonical surfaces, those surviving artifacts stay authoritative.
-- Decision records in this directory should follow [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md).
-- Start new documents from [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md).
+- Decision records in this directory should follow [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md).
+- Start new documents from [decision_record_template.md](/docs/templates/decision_record_template.md).
 - Keep the machine-readable companion index aligned under `core/control_plane/indexes/decisions/`.

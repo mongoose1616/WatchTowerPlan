@@ -135,16 +135,16 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - The trace depends on the existing authority map, planning indexes, traceability projections, task tracking model, and acceptance or evidence ledgers remaining authoritative.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the rewrite remains a repository-governance and shared-core maintenance program, not future product implementation work.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the rewrite must preserve explicit authority boundaries, deterministic local artifacts, and bounded compatibility shims.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the rewrite must keep one canonical answer per important question and must gate risky operations explicitly.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the rewrite remains a repository-governance and shared-core maintenance program, not future product implementation work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the rewrite must preserve explicit authority boundaries, deterministic local artifacts, and bounded compatibility shims.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the rewrite must keep one canonical answer per important question and must gate risky operations explicitly.
 
 ## References
-- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map.json)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
+- [authority_map.json](/core/control_plane/registries/authority_map.json)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [structural_rewrite_artifact_role_registry_pilot.md](/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
 - `2026-03-15T09:55:03Z`

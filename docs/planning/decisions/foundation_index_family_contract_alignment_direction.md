@@ -41,16 +41,16 @@ Repair the foundation-index family contract by publishing the missing authoritat
 - Comprehensive internal project review for documentation coverage, standards alignment, and cohesiveness with foundations/**.
 
 ## Current Context and Constraints
-- The current review reproduced a real lookup gap: [watchtower-core query standards](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_standards.md) does not return [std.data_contracts.foundation_index](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md) for [foundation_index.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/foundation_index.py), [foundations.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/query/foundations.py), or the foundations-specific command pages because the standard never operationalized those surfaces.
+- The current review reproduced a real lookup gap: [watchtower-core query standards](/docs/commands/core_python/watchtower_core_query_standards.md) does not return [std.data_contracts.foundation_index](/docs/standards/data_contracts/foundation_index_standard.md) for [foundation_index.py](/core/python/src/watchtower_core/repo_ops/sync/foundation_index.py), [foundations.py](/core/python/src/watchtower_core/repo_ops/query/foundations.py), or the foundations-specific command pages because the standard never operationalized those surfaces.
 - The same standard explicitly says command docs and query or sync surfaces must stay aligned when the family changes structurally, so the governing contract and the live lookup behavior are currently inconsistent.
 - The foundations document-family standard and broader engineering standards already resolve from some of those surfaces; the fix must add the missing data-contract match without removing other legitimate standards.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): keeps the repair inside current repository-owned standards, command docs, indexes, and tests.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): favors explicit contract publication over implicit family membership or inferred runtime behavior.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires the authored standard, derived standard index, command docs, and regressions to move together in one slice.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): preserves deterministic local standards lookup instead of introducing new heuristics.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): establishes the peer pattern for index-family operationalization coverage across sync/query/family-readme surfaces.
+- [repository_scope.md](/docs/foundations/repository_scope.md): keeps the repair inside current repository-owned standards, command docs, indexes, and tests.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): favors explicit contract publication over implicit family membership or inferred runtime behavior.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires the authored standard, derived standard index, command docs, and regressions to move together in one slice.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): preserves deterministic local standards lookup instead of introducing new heuristics.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): establishes the peer pattern for index-family operationalization coverage across sync/query/family-readme surfaces.
 
 ## Affected Surfaces
 - docs/standards/data_contracts/foundation_index_standard.md
@@ -91,7 +91,7 @@ Apply the broader bounded contract alignment in Option 2 and keep standards-quer
 - Depends on refreshing derived indexes and planning trackers after the standard changes.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

@@ -87,13 +87,13 @@ The foundation layer currently mixes two kinds of truth. Some foundation documen
 - Whether a later initiative should bring root Markdown into an explicit root-document validation contract after the scope and routing model is stabilized.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the repo must keep a clear boundary between reusable core, repo-specific operations, and future operator-facing product layers.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): root and foundation surfaces should stay coherent, thin where possible, and explicit about authority.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future product structure remains important, but it should not blur the current repository boundary.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the repo must keep a clear boundary between reusable core, repo-specific operations, and future operator-facing product layers.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): root and foundation surfaces should stay coherent, thin where possible, and explicit about authority.
+- [product_direction.md](/docs/foundations/product_direction.md): future product structure remains important, but it should not blur the current repository boundary.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
 
 ## Updated At
 - `2026-03-11T01:27:13Z`

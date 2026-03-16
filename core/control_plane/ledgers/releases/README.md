@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/ledgers/releases/README.md` | Describes the purpose of the release ledger directory and its current contents. |
-| `core/control_plane/ledgers/releases/core_python_foundation_release.v1.json` | Release ledger record for the first governed core Python foundation release baseline. |
+| `core/control_plane/ledgers/releases/core_python_foundation_release.json` | Release ledger record for the first governed core Python foundation release baseline. |

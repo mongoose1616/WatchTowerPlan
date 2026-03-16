@@ -37,27 +37,27 @@ Defines the technical design boundary for Foundation Index Family Contract Align
 - Comprehensive internal project review for documentation coverage, standards alignment, and cohesiveness with foundations/**.
 
 ## Scope and Feature Boundary
-- Covers the foundation-index family contract published by [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md), the machine-readable standard index derived from it, and the bounded documentation/code surfaces that must resolve back to that contract.
+- Covers the foundation-index family contract published by [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md), the machine-readable standard index derived from it, and the bounded documentation/code surfaces that must resolve back to that contract.
 - Covers regression tests at the CLI-query, standard-index sync, and integration-doc levels.
 - Excludes runtime changes to foundation-index generation or query behavior.
 - Excludes broad standards-query feature changes or unrelated foundations documentation cleanup.
 
 ## Current-State Context
 - The governing standard says the foundation-index family must stay aligned with command docs and query or sync surfaces when it changes structurally, but its current `Operationalization` section only names the schema, artifact directory, and example surfaces.
-- The live standards query currently resolves [std.documentation.foundation_md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md) and broad engineering standards from [foundation_index.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/foundation_index.py) and [foundations.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/query/foundations.py), but not [std.data_contracts.foundation_index](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md).
-- The same omission affects [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md) and [watchtower_core_sync_foundation_index.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_foundation_index.md), so the family contract is not discoverable from the operator-facing surfaces tied directly to the foundations index.
+- The live standards query currently resolves [std.documentation.foundation_md](/docs/standards/documentation/foundation_md_standard.md) and broad engineering standards from [foundation_index.py](/core/python/src/watchtower_core/repo_ops/sync/foundation_index.py) and [foundations.py](/core/python/src/watchtower_core/repo_ops/query/foundations.py), but not [std.data_contracts.foundation_index](/docs/standards/data_contracts/foundation_index_standard.md).
+- The same omission affects [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md) and [watchtower_core_sync_foundation_index.md](/docs/commands/core_python/watchtower_core_sync_foundation_index.md), so the family contract is not discoverable from the operator-facing surfaces tied directly to the foundations index.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): keeps the slice bounded to current repository-owned documentation, validation, and lookup surfaces.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): favors explicit, auditable authority boundaries over implicit family membership.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires the human-readable standard, machine-readable index, command docs, and tests to move together in one slice.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): preserves deterministic local machine lookup instead of adding looser or inferred runtime behavior.
+- [repository_scope.md](/docs/foundations/repository_scope.md): keeps the slice bounded to current repository-owned documentation, validation, and lookup surfaces.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): favors explicit, auditable authority boundaries over implicit family membership.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires the human-readable standard, machine-readable index, command docs, and tests to move together in one slice.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): preserves deterministic local machine lookup instead of adding looser or inferred runtime behavior.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): defines the complementary document-family contract that should continue to match the underlying foundations docs without replacing the data-contract standard.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): shows the expected pattern for publishing sync/query/family-readme operationalization metadata on an index-family standard.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): keeps the foundations command pages as current authoritative operator surfaces that should remain explicitly governed.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): requires synchronized updates between standards, derived indexes, and regression coverage.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): defines the complementary document-family contract that should continue to match the underlying foundations docs without replacing the data-contract standard.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): shows the expected pattern for publishing sync/query/family-readme operationalization metadata on an index-family standard.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): keeps the foundations command pages as current authoritative operator surfaces that should remain explicitly governed.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): requires synchronized updates between standards, derived indexes, and regression coverage.
 
 ## Design Goals and Constraints
 - Restore one coherent family contract so standards lookup can resolve the foundation-index standard from the surfaces that actually embody or explain the family.
@@ -77,14 +77,14 @@ Defines the technical design boundary for Foundation Index Family Contract Align
 
 ## Recommended Design
 ### Architecture
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md) remains the authoritative source for the family contract and is expanded to publish the missing operationalization metadata explicitly.
-- [standard_index.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/standard_index.py) remains unchanged in behavior and simply reprojects the repaired operationalization metadata into [standard_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/standard_index.v1.json).
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md) remains the authoritative source for the family contract and is expanded to publish the missing operationalization metadata explicitly.
+- [standard_index.py](/core/python/src/watchtower_core/repo_ops/sync/standard_index.py) remains unchanged in behavior and simply reprojects the repaired operationalization metadata into [standard_index.json](/core/control_plane/indexes/standards/standard_index.json).
 - Regression tests assert both the raw standard-document contract and the live query surface so future drift cannot hide behind only one layer.
 
 ### Data and Interface Impacts
-- Updates the authored standard in [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md).
-- Regenerates [standard_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/standard_index.v1.json) and adjacent planning/coordination trackers through normal sync flows.
-- Extends [test_cli_query_commands.py](/home/j/WatchTowerPlan/core/python/tests/unit/test_cli_query_commands.py), [test_standard_index_sync.py](/home/j/WatchTowerPlan/core/python/tests/unit/test_standard_index_sync.py), and [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py).
+- Updates the authored standard in [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md).
+- Regenerates [standard_index.json](/core/control_plane/indexes/standards/standard_index.json) and adjacent planning/coordination trackers through normal sync flows.
+- Extends [test_cli_query_commands.py](/core/python/tests/unit/test_cli_query_commands.py), [test_standard_index_sync.py](/core/python/tests/unit/test_standard_index_sync.py), and [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py).
 
 ### Execution Flow
 1. Update the traced planning and decision artifacts to record the confirmed standards-lookup gap and the chosen bounded repair.
@@ -112,7 +112,7 @@ Defines the technical design boundary for Foundation Index Family Contract Align
 - Because the fix is documentation-driven, the main risk is incomplete regression coverage that would let the contract drift again without a failing test.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

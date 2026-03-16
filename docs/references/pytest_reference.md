@@ -32,11 +32,11 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - `https://docs.pytest.org/en/stable/how-to/cache.html` - verified 2026-03-09; How to re-run failed tests and maintain state between test runs.
 
 ## Related Standards and Sources
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [tests](/home/j/WatchTowerPlan/core/python/tests/)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [src_layout_reference.md](/docs/references/src_layout_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [tests](/core/python/tests/)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -65,9 +65,9 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [tests](/home/j/WatchTowerPlan/core/python/tests/)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [tests](/core/python/tests/)
 
 ### Why It Matters Here
 - Use this reference when future repository automation needs a default Python test framework.
@@ -79,11 +79,11 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
-- [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [tests](/home/j/WatchTowerPlan/core/python/tests/)
+- [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [src_layout_reference.md](/docs/references/src_layout_reference.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [tests](/core/python/tests/)
 
 ## Notes
 - This reference supports future Python automation work and does not imply the repo already has a Python test suite.

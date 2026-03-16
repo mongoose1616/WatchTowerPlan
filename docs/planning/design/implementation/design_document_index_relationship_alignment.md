@@ -16,7 +16,7 @@ applies_to:
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/indexes/design_documents/design_document_index.v1.json
+- core/control_plane/indexes/design_documents/design_document_index.json
 - core/python/src/watchtower_core/repo_ops/sync/design_document_index.py
 - core/python/src/watchtower_core/repo_ops/sync/design_tracking.py
 - core/python/tests/
@@ -52,11 +52,11 @@ Breaks Design Document Index Relationship Alignment into a bounded implementatio
 - The implementation should fail closed when an implementation plan still lacks any traceable source surface after all supported derivation paths are checked.
 
 ## Internal Standards and Canonical References Applied
-- [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md): the machine-readable design-document index should publish relationship data that matches the governed design-document family.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature designs must publish `Affected Surfaces`, so the index should treat that section as authoritative relationship input.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be driven by a design, PRD, or user request, which means source derivation must support the traceable repo-local source surfaces already allowed by the standard.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): relationship paths should remain normalized repository-relative values.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): planning docs, task records, acceptance artifacts, and derived indexes need to stay aligned through the full task cycle.
+- [design_document_index_standard.md](/docs/standards/data_contracts/design_document_index_standard.md): the machine-readable design-document index should publish relationship data that matches the governed design-document family.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): feature designs must publish `Affected Surfaces`, so the index should treat that section as authoritative relationship input.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be driven by a design, PRD, or user request, which means source derivation must support the traceable repo-local source surfaces already allowed by the standard.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): relationship paths should remain normalized repository-relative values.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): planning docs, task records, acceptance artifacts, and derived indexes need to stay aligned through the full task cycle.
 
 ## Proposed Technical Approach
 - Extend the design-document index sync service with explicit helper logic for feature-design `related_paths` and implementation-plan `source_paths` so both relationship fields come from standards-governed document sections or metadata instead of partially inferred prior state.
@@ -84,11 +84,11 @@ Breaks Design Document Index Relationship Alignment into a bounded implementatio
 - `./.venv/bin/watchtower-core validate acceptance --trace-id trace.design_document_index_relationship_alignment --format json`
 - `./.venv/bin/watchtower-core validate all --format json`
 - `./.venv/bin/pytest -q`
-- Final refreshed planning evidence under `core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json`
+- Final refreshed planning evidence under `core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.json`
 
 ## References
 - docs/standards/data_contracts/design_document_index_standard.md
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- retired valid example index fixture design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.example.json

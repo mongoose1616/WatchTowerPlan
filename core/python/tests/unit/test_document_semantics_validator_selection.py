@@ -8,6 +8,7 @@ import pytest
 from tests.unit.document_semantics_fixtures import (
     REPO_ROOT,
     copy_control_plane_repo,
+    repo_markdown_link,
     write_repo_file,
     write_standard_fixture,
 )
@@ -133,7 +134,7 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
             - One test request.
 
             ## Additional Files to Load
-            - [missing_reference.md]({missing_target}): should fail because the target is absent.
+            - [missing_reference.md]({repo_markdown_link(missing_target)}): target should be absent.
 
             ## Workflow
             1. Validate the workflow fixture.

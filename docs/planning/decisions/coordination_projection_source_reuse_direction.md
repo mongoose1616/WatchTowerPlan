@@ -49,9 +49,9 @@ implicit cache.
   safely participate in cache invalidation today.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer explicit, bounded composition over hidden mutable behavior.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): preserve fail-closed deterministic behavior while optimizing internal orchestration.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): keep the implementation inside the canonical Python workspace and validate it with the standard toolchain.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): prefer explicit, bounded composition over hidden mutable behavior.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): preserve fail-closed deterministic behavior while optimizing internal orchestration.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): keep the implementation inside the canonical Python workspace and validate it with the standard toolchain.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/control_plane/
@@ -98,6 +98,6 @@ artifacts.
   cache behavior implicitly.
 
 ## References
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/prds/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/features/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/implementation/coordination_projection_source_reuse.md)

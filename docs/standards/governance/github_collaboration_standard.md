@@ -44,17 +44,17 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Configuring a GitHub Project for this repository.
 
 ## Related Standards and Sources
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md): local branch creation, naming, and sync behavior should stay separate from hosted collaboration rules.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md): local branch creation, naming, and sync behavior should stay separate from hosted collaboration rules.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
 - Keep repo-local PRDs, decisions, designs, tasks, contracts, evidence, and traceability surfaces authoritative.
-- Keep local branch naming and local history maintenance under [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md) instead of redefining them in hosted collaboration rules.
+- Keep local branch naming and local history maintenance under [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md) instead of redefining them in hosted collaboration rules.
 - Use GitHub issue forms for structured intake only.
 - Before merge, accepted GitHub work should link or create the corresponding repo-local planning or task artifact.
 - Every pull request should publish:
@@ -112,11 +112,11 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Update `.github/`, `github_task_sync_standard.md`, and the GitHub sync command docs in the same change set when the collaboration contract changes materially.
 
 ## References
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
-- [README.md](/home/j/WatchTowerPlan/.github/README.md)
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
+- [README.md](/.github/README.md)
 
 ## Updated At
 - `2026-03-12T22:05:00Z`

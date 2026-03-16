@@ -18,7 +18,7 @@ applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Operationalization Directory Canonicalization Implementation Plan
@@ -48,9 +48,9 @@ Breaks Standard Operationalization Directory Canonicalization into a bounded imp
 - The trace should stay bounded to one implementation task plus one validation/closeout task after the bootstrap task is closed.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the implementation must make canonical operationalization syntax explicit in both guidance and enforcement.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the slice needs explicit task transitions as it moves from planning to implementation and then to validation closeout.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): closeout must preserve the trace and task identifiers in the final commit metadata.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the implementation must make canonical operationalization syntax explicit in both guidance and enforcement.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the slice needs explicit task transitions as it moves from planning to implementation and then to validation closeout.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): closeout must preserve the trace and task identifiers in the final commit metadata.
 
 ## Proposed Technical Approach
 - Tighten the shared standard-operationalization parser so directory surfaces that omit `/` fail with a clear validation error before standard-index sync can publish them.

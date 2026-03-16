@@ -19,7 +19,7 @@ applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Operationalization Directory Canonicalization PRD

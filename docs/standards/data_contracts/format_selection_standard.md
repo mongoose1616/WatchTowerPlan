@@ -33,15 +33,15 @@ Keep format choices small, predictable, and aligned with the repository's author
 - Reviewing whether an existing format choice is introducing avoidable complexity.
 
 ## Related Standards and Sources
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [ndjson_spec_reference.md](/home/j/WatchTowerPlan/docs/references/ndjson_spec_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [sqlite_wal_reference.md](/home/j/WatchTowerPlan/docs/references/sqlite_wal_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [rfc_8259_json_reference.md](/docs/references/rfc_8259_json_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [yaml_1_2_2_reference.md](/docs/references/yaml_1_2_2_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [ndjson_spec_reference.md](/docs/references/ndjson_spec_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [sqlite_wal_reference.md](/docs/references/sqlite_wal_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [commonmark_reference.md](/docs/references/commonmark_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Prefer the simplest format that preserves determinism, reviewability, and clear source-of-truth boundaries.
@@ -115,15 +115,15 @@ Keep format choices small, predictable, and aligned with the repository's author
 - If a narrower standard adopts a different format for a specific artifact family, it must justify the exception explicitly.
 
 ## References
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md)
-- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
-- [ndjson_spec_reference.md](/home/j/WatchTowerPlan/docs/references/ndjson_spec_reference.md)
-- [sqlite_wal_reference.md](/home/j/WatchTowerPlan/docs/references/sqlite_wal_reference.md)
-- [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [rfc_8259_json_reference.md](/docs/references/rfc_8259_json_reference.md)
+- [yaml_1_2_2_reference.md](/docs/references/yaml_1_2_2_reference.md)
+- [ndjson_spec_reference.md](/docs/references/ndjson_spec_reference.md)
+- [sqlite_wal_reference.md](/docs/references/sqlite_wal_reference.md)
+- [commonmark_reference.md](/docs/references/commonmark_reference.md)
 
 ## Notes
 - This standard deliberately keeps format choice separate from schema design, identifier policy, and runtime validation logic.

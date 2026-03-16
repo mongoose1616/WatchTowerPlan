@@ -43,9 +43,9 @@ Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementa
 - Consumer audits for compatibility, intake, and retained repo-local registry families must stay empty before this trace deletes them and repairs companion surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): full workspace validation remains the default completion contract for the Python boundary.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): pack settings remain the reusable-core startup root throughout the cleanup.
-- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/validation/all.py): aggregate validation must stay deterministic while dead governed surfaces are removed.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): full workspace validation remains the default completion contract for the Python boundary.
+- [README.md](/core/control_plane/README.md): pack settings remain the reusable-core startup root throughout the cleanup.
+- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py): aggregate validation must stay deterministic while dead governed surfaces are removed.
 
 ## Proposed Technical Approach
 - Land each confirmed review finding in its own small slice so code, docs, tests, and governed surfaces can be committed independently.
@@ -71,5 +71,5 @@ Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementa
 - Perform one final review pass focused on rewrite leftovers after the last code slice lands and only close the trace if that pass surfaces no new concrete issue.
 
 ## References
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
-- [post_rewrite_core_cleanup_and_surface_reduction_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction_direction.md](/docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md)

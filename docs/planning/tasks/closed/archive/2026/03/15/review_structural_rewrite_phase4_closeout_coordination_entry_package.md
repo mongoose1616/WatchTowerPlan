@@ -17,15 +17,15 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md
 - docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json
-- core/control_plane/indexes/coordination/coordination_index.v1.json
-- core/control_plane/indexes/initiatives/initiative_index.v1.json
-- core/control_plane/indexes/planning/planning_catalog.v1.json
-- core/control_plane/indexes/traceability/traceability_index.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json
+- core/control_plane/indexes/coordination/coordination_index.json
+- core/control_plane/indexes/initiatives/initiative_index.json
+- core/control_plane/indexes/planning/planning_catalog.json
+- core/control_plane/indexes/traceability/traceability_index.json
 - core/python/src/watchtower_core/closeout/initiative.py
 - core/python/src/watchtower_core/cli/closeout_handlers.py
 - core/python/src/watchtower_core/repo_ops/sync/coordination.py
@@ -64,9 +64,9 @@ Review the bounded Phase 4 closeout-coordination entry package, confirm the publ
 ## Review Outcome
 - `Decision`: approved for exactly one bounded Phase 4 slice.
 - `Public planning boundary`: reaffirmed. `watchtower-core query authority --domain planning --format json` still resolves the same five planning-authority answers, and the review does not authorize any public planning-boundary change.
-- `Private planning boundary`: reaffirmed. `planning_projection_snapshot.py` remains a private runtime helper, and the review does not authorize any new public planning graph or helper family.
+- `Private planning boundary`: reaffirmed. `planning_rendered_snapshot.py` remains a private runtime helper, and the review does not authorize any new public planning graph or helper family.
 - `Closeout result contract boundary`: explicit. `traceability_output_path` remains the pre-seam canonical write, the approved shared-output seam is limited to `initiative_index_output_path`, `planning_catalog_output_path`, `coordination_index_output_path`, `initiative_tracking_output_path`, and `coordination_tracking_output_path`, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain direct post-sync outputs outside the approved seam for this slice.
-- `Approved first slice`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- `Approved first slice`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - `Exact seam`: one post-traceability closeout step in which `InitiativeCloseoutService.close` reuses `CoordinationSyncService` for the shared planning and coordination outputs only, while `TaskLifecycleService` and `PlanningScaffoldService` remain unchanged and the PRD, decision, and design tracking outputs stay direct.
 - `Next-step decision`: open one bounded implementation task for the approved first slice and keep broader Phase 4, Phase 5, Phase 6, and Phase 7 work blocked.
 
@@ -76,12 +76,12 @@ Review the bounded Phase 4 closeout-coordination entry package, confirm the publ
 - Keeping `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` direct for this slice preserves the current closeout command result contract while isolating one exact duplication seam for proof.
 
 ## Links
-- [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
-- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
-- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_phase4_closeout_coordination_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
 
 ## Updated At
 - `2026-03-15T06:18:27Z`

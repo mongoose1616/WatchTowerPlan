@@ -91,15 +91,15 @@ The repository now has a strong workflow-document set, healthy sync and validati
 - Whether future WatchTower product packs should eventually consume the same route-index pattern for pack-local workflows.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): workflow operationalization should add deterministic, low-ambiguity seams rather than more hidden behavior.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human and machine workflow surfaces must stay aligned.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): this work should stop at shared workflow infrastructure, not start product implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): workflow operationalization should add deterministic, low-ambiguity seams rather than more hidden behavior.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human and machine workflow surfaces must stay aligned.
+- [product_direction.md](/docs/foundations/product_direction.md): this work should stop at shared workflow infrastructure, not start product implementation.
 
 ## References
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 
 ## Updated At
 - `2026-03-10T21:59:21Z`

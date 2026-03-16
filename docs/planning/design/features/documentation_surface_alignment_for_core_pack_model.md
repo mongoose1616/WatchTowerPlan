@@ -48,12 +48,12 @@ Defines the technical design boundary for aligning repository documentation with
 - The repo still contains command pages, standards, and READMEs that were written before the pack-settings cutover or the policy-surface removal.
 
 ## Foundations References Applied
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): authoritative docs and machine-readable lookup surfaces should move together.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer clear, inspectable seams over compatibility wording that hides the current boundary.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): authoritative docs and machine-readable lookup surfaces should move together.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): prefer clear, inspectable seams over compatibility wording that hides the current boundary.
 
 ## Internal Standards and Canonical References Applied
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages should reflect the current CLI and repository boundaries.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): refresh the docs by clarifying current authority, not by expanding stale prose.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages should reflect the current CLI and repository boundaries.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): refresh the docs by clarifying current authority, not by expanding stale prose.
 
 ## Design Goals and Constraints
 - Keep the slice documentation-first and bounded.
@@ -96,4 +96,4 @@ Defines the technical design boundary for aligning repository documentation with
 - Command docs may expose adjacent implementation drift that has to be resolved before the documentation slice can close.
 
 ## References
-- [documentation_surface_alignment_for_core_pack_model.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)
+- [documentation_surface_alignment_for_core_pack_model.md](/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md)

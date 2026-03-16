@@ -76,10 +76,10 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - Allow domain-specific expression without bypassing shared core contracts.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

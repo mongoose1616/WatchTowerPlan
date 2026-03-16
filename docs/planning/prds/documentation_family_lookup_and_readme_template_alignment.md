@@ -45,7 +45,7 @@ Allow standards operationalization metadata to cover repeating documentation fil
 - `watchtower-core query standards --operationalization-path docs/planning/README.md --format json` does not return `std.documentation.readme_md`, even though the README standard governs that file family.
 - `watchtower-core query standards --operationalization-path docs/references/AGENTS.md --format json` returns only `std.data_contracts.format_selection`, so nested `AGENTS.md` files are not discoverable through the AGENTS standard.
 - `watchtower-core query standards --operationalization-path docs/references/commonmark_reference.md --format json` does not return `std.documentation.reference_md`, and `docs/standards/documentation/readme_md_standard.md` does not return `std.documentation.standard_md`, because those family standards do not operationalize the governed document families themselves.
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md) still uses a generic `<Directory Name>` title placeholder and places optional sections ahead of the required inventory, which drifts from the governed README contract.
+- [readme_template.md](/docs/templates/readme_template.md) still uses a generic `<Directory Name>` title placeholder and places optional sections ahead of the required inventory, which drifts from the governed README contract.
 
 ## Goals
 - Make `watchtower-core query standards --operationalization-path <concrete_path>` return the governing family standards for representative concrete `AGENTS.md`, `README.md`, reference, and standard documents.

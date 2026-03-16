@@ -41,8 +41,8 @@ Add compact decision support that distinguishes documentation, traceability, gov
 - Companion standards or references stay aligned.
 
 ## Links
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
 
 ## Updated At
 - `2026-03-10T23:23:39Z`

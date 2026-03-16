@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/cli/query_coordination_handlers.py
-- core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py
+- core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
 - core/python/src/watchtower_core/repo_ops/query/common.py
@@ -69,7 +69,7 @@ query contracts stable in this trace.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/cli/query_coordination_handlers.py
-- core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py
+- core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
 - core/python/src/watchtower_core/repo_ops/query/common.py

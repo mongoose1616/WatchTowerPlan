@@ -28,7 +28,7 @@ Provide a concise baseline for recording important architectural or policy decis
 - `https://adr.github.io/` - verified 2026-03-09; Architectural Decision Records (ADRs).
 
 ## Related Standards and Sources
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### When ADRs Add Value
@@ -53,7 +53,7 @@ Provide a concise baseline for recording important architectural or policy decis
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
 
 ### Why It Matters Here
 - Use this reference when building ADR templates or decision-capture standards under `docs/standards/governance/**`.
@@ -64,7 +64,7 @@ Provide a concise baseline for recording important architectural or policy decis
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

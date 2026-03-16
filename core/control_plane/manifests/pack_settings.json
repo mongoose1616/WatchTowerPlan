@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Pack settings load root for the reusable WatchTowerPlan core boundary.",
-  "updated_at": "2026-03-16T05:15:00Z",
+  "updated_at": "2026-03-16T18:20:00Z",
   "pack_id": "pack.watchtower_plan",
   "surfaces": [
     {
@@ -56,6 +56,13 @@
       "visibility": "mixed"
     },
     {
+      "surface_name": "rendered_surface_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/rendered_surface_registry.json",
+      "authority": "authoritative",
+      "visibility": "mixed"
+    },
+    {
       "surface_name": "workflow_metadata_registry",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/workflow_metadata_registry.json",
@@ -65,7 +72,7 @@
     {
       "surface_name": "repository_path_index",
       "surface_kind": "index",
-      "path": "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+      "path": "core/control_plane/indexes/repository_paths/repository_path_index.json",
       "authority": "derived",
       "visibility": "mixed",
       "rebuildable": true
@@ -73,7 +80,7 @@
     {
       "surface_name": "command_index",
       "surface_kind": "index",
-      "path": "core/control_plane/indexes/commands/command_index.v1.json",
+      "path": "core/control_plane/indexes/commands/command_index.json",
       "authority": "derived",
       "visibility": "mixed",
       "rebuildable": true
@@ -81,7 +88,7 @@
     {
       "surface_name": "route_index",
       "surface_kind": "index",
-      "path": "core/control_plane/indexes/routes/route_index.v1.json",
+      "path": "core/control_plane/indexes/routes/route_index.json",
       "authority": "derived",
       "visibility": "mixed",
       "rebuildable": true

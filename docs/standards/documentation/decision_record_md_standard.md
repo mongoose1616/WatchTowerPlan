@@ -25,7 +25,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 ## Scope
 - Applies to durable decision-record documents stored under `docs/planning/decisions/`.
 - Covers placement, required sections, and the relationship between decision records, their tracker, and the machine-readable decision index.
-- Does not replace the governance rules in [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md).
+- Does not replace the governance rules in [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md).
 
 ## Use When
 - Creating a new durable decision record.
@@ -33,12 +33,12 @@ Keep decision records consistent enough that rationale, status, affected surface
 - Reviewing whether a decision record is structured clearly enough to support traceability and later lookup.
 
 ## Related Standards and Sources
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
-- [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md): authoring scaffold that should stay aligned with this standard.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
+- [decision_record_template.md](/docs/templates/decision_record_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/docs/planning/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store durable decision records under `docs/planning/decisions/`.
@@ -112,9 +112,9 @@ Keep decision records consistent enough that rationale, status, affected surface
 - Update the decision tracker and machine-readable decision index in the same change set when decision records are added, renamed, removed, or materially retargeted.
 
 ## References
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [decision_record_template.md](/docs/templates/decision_record_template.md)
 
 ## Updated At
 - `2026-03-11T20:38:54Z`

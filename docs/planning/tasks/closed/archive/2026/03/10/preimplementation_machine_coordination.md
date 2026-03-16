@@ -13,8 +13,8 @@ updated_at: "2026-03-10T18:20:44Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json"
-  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+  - "core/control_plane/schemas/artifacts/initiative_index.schema.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.json"
   - "core/python/src/watchtower_core/repo_ops/query/initiatives.py"
   - "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py"
   - "core/python/src/watchtower_core/cli/"
@@ -47,8 +47,8 @@ Elevate the initiative index into the explicit machine coordination start-here p
 - Coordination docs and standards now point humans and agents at the same start-here surfaces without collapsing the authored planning families.
 
 ## Links
-- [preimplementation_machine_coordination_entrypoint.md](/home/j/WatchTowerPlan/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [preimplementation_machine_coordination_entrypoint.md](/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
 
 ## Updated At
 - `2026-03-10T18:20:44Z`

@@ -64,16 +64,16 @@ The comprehensive refactoring and optimization review found one bounded but real
 - The work depends on the current reference index remaining the canonical source for governed reference-to-upstream resolution inside the repo-local orchestration layer.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): reduce repeated work by making shared data derivation explicit and command-scoped instead of relying on hidden implicit behavior.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): optimization work must preserve fail-closed behavior and same-change alignment across code, tests, and planning surfaces.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): scaling the governed core should remove internal friction before future product implementation increases repository load further.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): reduce repeated work by making shared data derivation explicit and command-scoped instead of relying on hidden implicit behavior.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): optimization work must preserve fail-closed behavior and same-change alignment across code, tests, and planning surfaces.
+- [product_direction.md](/docs/foundations/product_direction.md): scaling the governed core should remove internal friction before future product implementation increases repository load further.
 
 ## References
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/features/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
 
 ## Updated At
 - `2026-03-12T15:09:05Z`

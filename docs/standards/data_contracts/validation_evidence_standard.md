@@ -36,13 +36,13 @@ This standard defines committed validation-evidence records stored under `core/c
 - Reviewing whether a validation outcome belongs in a committed retained record or should remain transient runtime output.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/ledgers/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
@@ -117,9 +117,9 @@ This standard defines committed validation-evidence records stored under `core/c
 - Update the unified traceability index in the same change set when durable evidence is added, renamed, or removed.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/README.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [README.md](/core/control_plane/ledgers/validation_evidence/README.md)
 
 ## Notes
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.

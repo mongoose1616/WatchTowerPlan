@@ -99,12 +99,12 @@ repeated loading increases validation cost without adding fidelity.
   the authoritative reconciliation inputs.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the optimization should remove repeated work through explicit command-scoped composition rather than hidden ambient state.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): optimization must preserve fail-closed validation behavior and same-change alignment across human and machine surfaces.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): as the governed core grows, internal validation paths need to scale without eroding operator trust or fidelity.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the optimization should remove repeated work through explicit command-scoped composition rather than hidden ambient state.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): optimization must preserve fail-closed validation behavior and same-change alignment across human and machine surfaces.
+- [product_direction.md](/docs/foundations/product_direction.md): as the governed core grows, internal validation paths need to scale without eroding operator trust or fidelity.
 
 ## References
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)

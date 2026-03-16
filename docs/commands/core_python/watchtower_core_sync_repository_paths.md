@@ -42,7 +42,7 @@ uv run watchtower-core sync repository-paths --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync repository-paths --output /tmp/repository_path_index.v1.json --format json
+uv run watchtower-core sync repository-paths --output /tmp/repository_path_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -58,12 +58,12 @@ uv run watchtower-core sync repository-paths --output /tmp/repository_path_index
 |---|---|
 | `watchtower-core sync` | Parent command group for rebuild operations. |
 | `watchtower-core query paths` | Reads the repository path index that this command rebuilds. |
-| `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` | Canonical governed artifact written by this command when `--write` is used. |
+| `core/control_plane/indexes/repository_paths/repository_path_index.json` | Canonical governed artifact written by this command when `--write` is used. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/repository_paths.py`
-- `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
+- `core/control_plane/indexes/repository_paths/repository_path_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

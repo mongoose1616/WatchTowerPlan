@@ -74,9 +74,9 @@ These issues belong to one stable phase-one refactor slice because they all affe
 - Deeper hotspot and policy findings from the audit remain real follow-up work; this initiative depends on keeping that later work explicit instead of letting the current slice expand into an uncloseable mega-trace.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): simplify by tightening explicit seams and current-state projections rather than weakening governed artifact boundaries.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human docs, machine-readable indexes, query behavior, and regression coverage must move together when start-here or routing behavior changes.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): this trace stays inside repository-maintenance refactor work and does not expand into future product implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): simplify by tightening explicit seams and current-state projections rather than weakening governed artifact boundaries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human docs, machine-readable indexes, query behavior, and regression coverage must move together when start-here or routing behavior changes.
+- [repository_scope.md](/docs/foundations/repository_scope.md): this trace stays inside repository-maintenance refactor work and does not expand into future product implementation.
 
 ## References
 - March 2026 refactor audit

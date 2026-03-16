@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/
 ---
@@ -45,16 +45,16 @@ Introduce one narrow shared planning-index-family baseline standard, refactor th
 - The runtime `query standards` and `sync standard-index` surfaces already support authored tags, so the preferred path is better authored metadata and documentation rather than new code unless the loop finds a direct behavior gap.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): favors a small explicit family baseline over hidden macros or broad templating.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires the human guidance, machine index, and validation surfaces to move together in one change set.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): keeps operationalization, validation, and change-control sections mandatory, so the chosen design must standardize repeated content without deleting those contracts.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): means discoverability improvements should flow through governed tags and index output instead of ad hoc notes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): favors a small explicit family baseline over hidden macros or broad templating.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires the human guidance, machine index, and validation surfaces to move together in one change set.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): keeps operationalization, validation, and change-control sections mandatory, so the chosen design must standardize repeated content without deleting those contracts.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): means discoverability improvements should flow through governed tags and index output instead of ad hoc notes.
 
 ## Affected Surfaces
 - docs/standards/data_contracts/
 - docs/standards/README.md
 - docs/standards/data_contracts/README.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 - core/python/tests/unit/test_standard_index_sync.py
 - core/python/tests/unit/test_cli_knowledge_query_commands.py
@@ -95,4 +95,4 @@ Accept Option 2. The trace will add one narrow planning-index-family baseline st
 
 ## References
 - March 13, 2026 refactor audit
-- [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md)
+- [data_contract_index_family_baseline_alignment.md](/docs/planning/prds/data_contract_index_family_baseline_alignment.md)

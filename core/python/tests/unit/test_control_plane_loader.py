@@ -12,7 +12,11 @@ from watchtower_core.control_plane.loader import (
     VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.control_plane.models import PackSettings, SchemaCatalog
+from watchtower_core.control_plane.models import (
+    PackSettings,
+    RenderedSurfaceRegistry,
+    SchemaCatalog,
+)
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -144,6 +148,17 @@ def test_control_plane_loader_reads_authority_map() -> None:
     assert entry.artifact_kind == "planning_catalog"
     assert entry.preferred_command == "watchtower-core query planning"
     assert "artifact_status" in entry.status_fields
+
+
+def test_control_plane_loader_reads_rendered_surface_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    registry = loader.load_rendered_surface_registry()
+    surface = registry.get("rendered.task_tracking")
+
+    assert registry.artifact_id == "registry.rendered_surfaces"
+    assert surface.output_path == "docs/planning/tasks/task_tracking.md"
+    assert surface.sections[-1].kind == "updated_at"
 
 
 def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
@@ -571,7 +586,7 @@ def test_control_plane_loader_accepts_supplemental_schema_documents() -> None:
 
 
 def test_control_plane_loader_accepts_supplemental_schema_paths(tmp_path: Path) -> None:
-    schema_path = tmp_path / "schemas" / "loader_path.v1.schema.json"
+    schema_path = tmp_path / "schemas" / "loader_path.schema.json"
     schema_id = "urn:watchtower:schema:external:loader-path-check:v1"
     write_json(
         schema_path,
@@ -665,6 +680,9 @@ def test_control_plane_loader_reads_pack_settings() -> None:
     assert pack_settings.get("schema_catalog").path == (
         "core/control_plane/registries/schema_catalog.json"
     )
+    assert pack_settings.get("rendered_surface_registry").path == (
+        "core/control_plane/registries/rendered_surface_registry.json"
+    )
     assert pack_settings.get("status_registry").surface_kind == "status_registry"
     assert pack_settings.get("route_index").rebuildable is True
 
@@ -689,3 +707,14 @@ def test_control_plane_loader_load_known_surface_materializes_schema_catalog() -
 
     assert isinstance(surface, SchemaCatalog)
     assert surface.get("urn:watchtower:schema:interfaces:packs:pack-settings:v1").version == "v1"
+
+
+def test_control_plane_loader_load_known_surface_materializes_rendered_surface_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    surface = loader.load_known_surface(
+        "core/control_plane/registries/rendered_surface_registry.json"
+    )
+
+    assert isinstance(surface, RenderedSurfaceRegistry)
+    assert surface.get("rendered.coordination_tracking").title == "Coordination Tracking"

@@ -48,9 +48,9 @@ Breaks Acceptance Reconciliation Snapshot Reuse into a bounded implementation sl
   adding a second aggregate-acceptance pipeline.
 
 ## Internal Standards and Canonical References Applied
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the slice closes only after targeted and full validation passes.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the implementation must keep the same authoritative trace-linked inputs.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): keep the change inside `core/python/` and validate with the workspace baseline.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the slice closes only after targeted and full validation passes.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the implementation must keep the same authoritative trace-linked inputs.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): keep the change inside `core/python/` and validate with the workspace baseline.
 
 ## Proposed Technical Approach
 - Add lazy command-scoped snapshot helpers to `AcceptanceReconciliationService` for shared
@@ -84,6 +84,6 @@ Breaks Acceptance Reconciliation Snapshot Reuse into a bounded implementation sl
   surfaces and confirm no additional actionable issues remain.
 
 ## References
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse_acceptance.json](/core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.json)

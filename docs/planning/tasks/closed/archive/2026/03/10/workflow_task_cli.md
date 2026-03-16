@@ -42,8 +42,8 @@ Expose task creation, structured task updates, and handoff-style transitions thr
 - Handoff-style task transitions refresh the dependent planning surfaces correctly.
 
 ## Links
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- [workflow_system_operationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [workflow_system_operationalization_execution.md](/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T23:01:32Z`

@@ -33,7 +33,7 @@ from watchtower_core.repo_ops.sync.prd_index import (
 from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+    "core/control_plane/indexes/design_documents/design_document_index.json"
 )
 FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1"

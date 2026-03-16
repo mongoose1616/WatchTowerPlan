@@ -106,7 +106,7 @@ Defines the technical design boundary for Query Family Source Surface Alignment.
 
 ### Data and Interface Impacts
 - No CLI arguments, command IDs, payload schemas, or help text contracts change.
-- `core/control_plane/indexes/commands/command_index.v1.json` changes its
+- `core/control_plane/indexes/commands/command_index.json` changes its
   `implementation_path` values for query leaf entries.
 - The affected query command pages change only in their source-surface metadata and related
   routing guidance.

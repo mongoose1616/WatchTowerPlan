@@ -17,7 +17,7 @@ authority: authoritative
 applies_to:
 - workflows/ROUTING_TABLE.md
 - core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 related_ids:
 - prd.workflow_route_boundary_discoverability_hardening
 - design.features.workflow_route_boundary_discoverability_hardening

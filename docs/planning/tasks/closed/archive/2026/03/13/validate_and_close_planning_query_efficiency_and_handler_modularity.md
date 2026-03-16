@@ -17,8 +17,8 @@ applies_to:
 - core/python/tests/unit/
 - docs/commands/core_python/
 - docs/planning/
-- core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.json
+- core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.json
 related_ids:
 - prd.planning_query_efficiency_and_handler_modularity
 - design.features.planning_query_efficiency_and_handler_modularity

@@ -17,8 +17,8 @@ applies_to:
   - "docs/planning/design/features/end_to_end_repo_rationalization.md"
   - "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md"
   - "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
-  - "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.json"
   - "docs/planning/tasks/open/"
 related_ids:
   - "prd.end_to_end_repo_review_and_rationalization"
@@ -50,10 +50,10 @@ Creates the traced planning chain, accepted direction, acceptance baseline, plan
 - Opened bounded tasks for documentation guardrails, derived metadata trust, external pack validation seams, and query CLI modularity.
 
 ## Links
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
-- [end_to_end_repo_rationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [end_to_end_repo_rationalization_execution.md](/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
+- [end_to_end_repo_rationalization_direction.md](/docs/planning/decisions/end_to_end_repo_rationalization_direction.md)
 
 ## Updated At
 - `2026-03-10T19:43:34Z`

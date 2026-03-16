@@ -28,7 +28,7 @@ Provide human-readable commit-writing guidance that complements formal commit co
 - `https://cbea.ms/git-commit/` - verified 2026-03-09; How to Write a Git Commit Message.
 
 ## Related Standards and Sources
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Commit Message Shape
@@ -52,10 +52,10 @@ Provide human-readable commit-writing guidance that complements formal commit co
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ### Why It Matters Here
-- Use this reference as supporting guidance for [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
+- Use this reference as supporting guidance for [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md).
 - Treat it as style guidance layered on top of any formal commit convention.
 
 ### If Local Policy Tightens
@@ -63,10 +63,10 @@ Provide human-readable commit-writing guidance that complements formal commit co
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes
-- Repository-specific rules now live in [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
+- Repository-specific rules now live in [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md).
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 

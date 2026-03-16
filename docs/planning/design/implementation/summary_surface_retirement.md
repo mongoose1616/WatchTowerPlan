@@ -56,9 +56,9 @@ Breaks Summary Surface Retirement into a bounded implementation slice.
   once the root artifact is deleted.
 
 ## Internal Standards and Canonical References Applied
-- [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md): the work should reinforce coordination tracking and query coordination as the live planning entrypoints.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): root surfaces should remain compact routers.
-- [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py): this provides the targeted regression boundary for the retired summary route.
+- [docs/planning/README.md](/docs/planning/README.md): the work should reinforce coordination tracking and query coordination as the live planning entrypoints.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): root surfaces should remain compact routers.
+- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py): this provides the targeted regression boundary for the retired summary route.
 
 ## Proposed Technical Approach
 - Rewrite active root, foundations, workflow, and regression-test surfaces to
@@ -85,7 +85,7 @@ Breaks Summary Surface Retirement into a bounded implementation slice.
 
 ## Validation Plan
 - Run targeted integration coverage for
-  [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py).
+  [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py).
 - Run `watchtower-core sync all --write --format json`,
   `watchtower-core validate all --skip-acceptance --format json`,
   `python -m mypy src`, `ruff check .`, `watchtower-core validate acceptance
@@ -95,8 +95,8 @@ Breaks Summary Surface Retirement into a bounded implementation slice.
   repo-local `SUMMARY.md` mentions after the cleanup.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [docs/foundations/repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [docs/foundations/README.md](/docs/foundations/README.md)
+- [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
+- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)

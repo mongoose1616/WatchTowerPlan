@@ -53,13 +53,13 @@ Defines the technical design boundary for Documentation Family Lookup and README
 - The README template still suggests a generic title placeholder instead of the repo-relative directory-path title the README standard requires.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer one reusable contract improvement over growing special-case enumerations for individual files.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): prefer one reusable contract improvement over growing special-case enumerations for individual files.
 
 ## Internal Standards and Canonical References Applied
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata must stay queryable and auditable through the derived standard index.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata must stay precise enough to explain how a standard is enforced or embodied locally.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): README authoring must use repo-relative directory-path titles and a compact inventory-first shape.
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md) and [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): recurring documentation families must remain discoverable through the standards corpus.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): operationalization metadata must stay queryable and auditable through the derived standard index.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): operationalization metadata must stay precise enough to explain how a standard is enforced or embodied locally.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): README authoring must use repo-relative directory-path titles and a compact inventory-first shape.
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md) and [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): recurring documentation families must remain discoverable through the standards corpus.
 
 ## Design Goals and Constraints
 - Add the smallest operationalization-contract change that fixes real lookup gaps without weakening existing exact or directory semantics.

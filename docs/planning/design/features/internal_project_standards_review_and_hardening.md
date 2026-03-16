@@ -53,17 +53,17 @@ Defines the technical design boundary for Internal Project Standards Review and 
 - The result is an inconsistent enforcement boundary where human-valid governed docs can project incomplete machine-readable reference lineage.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared parsing and reference-accounting helpers should stay composable and deterministic rather than re-encoding the same rule in multiple families.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): fail-closed repository governance requires validation and derived indexes to apply the same authored standards contract.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared parsing and reference-accounting helpers should stay composable and deterministic rather than re-encoding the same rule in multiple families.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): fail-closed repository governance requires validation and derived indexes to apply the same authored standards contract.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): standards documents must preserve the local-reference rule for external authority and allow repository-absolute or document-relative repo-local links.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the derived standard index must audit applied references and external-authority usage accurately enough to stay aligned with the governed standards corpus.
-- [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): decision index related paths must stay normalized to repository-relative paths even when authored through document-relative links.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): repo-local Markdown links may use repository-absolute or document-relative targets, so derived extraction cannot silently ignore the latter.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): governed local reference docs are the repository-normalized bridge for external authority and therefore need consistent capture in both sync and validation layers.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): workflow additional-load and related-reference extraction should honor the same repo-local link semantics as the rest of the governed Markdown corpus.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): planning, sync, tests, and acceptance artifacts must move in one traced change set.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): standards documents must preserve the local-reference rule for external authority and allow repository-absolute or document-relative repo-local links.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the derived standard index must audit applied references and external-authority usage accurately enough to stay aligned with the governed standards corpus.
+- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): decision index related paths must stay normalized to repository-relative paths even when authored through document-relative links.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): repo-local Markdown links may use repository-absolute or document-relative targets, so derived extraction cannot silently ignore the latter.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): governed local reference docs are the repository-normalized bridge for external authority and therefore need consistent capture in both sync and validation layers.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): workflow additional-load and related-reference extraction should honor the same repo-local link semantics as the rest of the governed Markdown corpus.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): planning, sync, tests, and acceptance artifacts must move in one traced change set.
 
 ## Design Goals and Constraints
 - Remove the duplicated standard-reference decision logic that allowed semantic validation to drift from standard-index sync.

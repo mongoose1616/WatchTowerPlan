@@ -97,4 +97,4 @@ Breaks Control Plane Loader Cache Reuse into a bounded implementation slice.
 
 ## References
 - `docs/planning/prds/control_plane_loader_cache_reuse.md`
-- `core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json`
+- `core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.json`

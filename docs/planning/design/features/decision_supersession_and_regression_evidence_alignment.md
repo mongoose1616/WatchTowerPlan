@@ -15,7 +15,7 @@ applies_to:
 - docs/standards/documentation/decision_record_md_standard.md
 - docs/templates/decision_record_template.md
 - docs/standards/data_contracts/decision_index_standard.md
-- core/control_plane/schemas/artifacts/decision_index.v1.schema.json
+- core/control_plane/schemas/artifacts/decision_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/decision_index.py
 - core/python/src/watchtower_core/repo_ops/query/decisions.py
 - core/python/src/watchtower_core/cli/query_records_handlers.py
@@ -55,13 +55,13 @@ Historical design record for a cancelled slice that would have mixed decision su
 - The still-live repository defects from the same review theme are being fixed directly in the active regression/duplication trace, making this mixed slice unnecessary.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): bounded maintenance work should tighten the real seams rather than adding a second narrative layer.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): historical records should preserve context without competing with active authority.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): bounded maintenance work should tighten the real seams rather than adding a second narrative layer.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): historical records should preserve context without competing with active authority.
 
 ## Internal Standards and Canonical References Applied
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): the cancellation should remain explicit and durable.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the cancelled trace should stay queryable while its task state becomes terminal.
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md): the references subtree does not authorize a repo-native regression summary.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): the cancellation should remain explicit and durable.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the cancelled trace should stay queryable while its task state becomes terminal.
+- [AGENTS.md](/docs/references/AGENTS.md): the references subtree does not authorize a repo-native regression summary.
 
 ## Design Goals and Constraints
 - Preserve the reasoning for cancelling this mixed-scope slice.
@@ -115,5 +115,5 @@ Historical design record for a cancelled slice that would have mixed decision su
 - Historical traces can still create confusion if their authored docs and task state are not normalized consistently.
 
 ## References
-- [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [decision_supersession_and_regression_evidence_alignment.md](/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)

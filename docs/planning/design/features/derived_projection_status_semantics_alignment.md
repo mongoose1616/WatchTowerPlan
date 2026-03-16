@@ -46,14 +46,14 @@ Defines the technical design boundary for Derived Projection Status Semantics Al
 - The initiative and coordination indexes are both derived projections, so they can be made more explicit without changing the underlying traceability source model.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): explicit field naming should make machine authority and lifecycle semantics easier to consume without extra inference.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): companion schemas, docs, code, and tests need to move together when a governed contract changes.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): this work stays inside the governed core and planning substrate rather than expanding into future product-pack behavior.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): explicit field naming should make machine authority and lifecycle semantics easier to consume without extra inference.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): companion schemas, docs, code, and tests need to move together when a governed contract changes.
+- [repository_scope.md](/docs/foundations/repository_scope.md): this work stays inside the governed core and planning substrate rather than expanding into future product-pack behavior.
 
 ## Internal Standards and Canonical References Applied
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): the initiative index is the primary contract being clarified in this slice.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): the coordination index inherits the initiative-entry contract and must remain aligned with it.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): the canonical planning path already uses explicit status naming and sets the direction for the derived projection cleanup.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): the initiative index is the primary contract being clarified in this slice.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): the coordination index inherits the initiative-entry contract and must remain aligned with it.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): the canonical planning path already uses explicit status naming and sets the direction for the derived projection cleanup.
 
 ## Design Goals and Constraints
 - Make lifecycle meaning obvious in derived initiative-family payloads.
@@ -81,10 +81,10 @@ Defines the technical design boundary for Derived Projection Status Semantics Al
 - Sync services emit `artifact_status` for derived initiative entries, and typed models plus CLI query handlers read and print the renamed field consistently.
 
 ### Data and Interface Impacts
-- `core/control_plane/schemas/artifacts/initiative_index.v1.schema.json`
-- `core/control_plane/schemas/artifacts/coordination_index.v1.schema.json`
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
-- `core/control_plane/indexes/coordination/coordination_index.v1.json`
+- `core/control_plane/schemas/artifacts/initiative_index.schema.json`
+- `core/control_plane/schemas/artifacts/coordination_index.schema.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
+- `core/control_plane/indexes/coordination/coordination_index.json`
 - `core/python/src/watchtower_core/control_plane/models/coordination.py`
 - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
@@ -117,5 +117,5 @@ Defines the technical design boundary for Derived Projection Status Semantics Al
 - The coordination index depends on the initiative-entry schema shape, so the sync and validation updates must land together.
 
 ## References
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md)
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md)

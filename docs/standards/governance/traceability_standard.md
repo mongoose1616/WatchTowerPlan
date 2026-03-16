@@ -36,17 +36,17 @@ This standard defines the repository's baseline traceability model so product in
 - Reviewing whether a repository change leaves an important upstream or downstream trace link implicit.
 
 ## Related Standards and Sources
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when closed trace-local artifacts remain retained history versus becoming purge-eligible.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when closed trace-local artifacts remain retained history versus becoming purge-eligible.
 
 ## Guidance
 - Use one shared `trace_id` to tie the artifacts of a single initiative, feature, or change boundary together.
@@ -66,7 +66,7 @@ This standard defines the repository's baseline traceability model so product in
   - closeout artifacts when that family is established
 - Use the unified traceability index as the machine-readable join layer for the full traced chain.
 - Use the planning catalog as the preferred deep-planning read model above the traceability index when the question needs joined planning, task, acceptance, and evidence context.
-- Use the initiative index and initiative tracker as derived coordination projections over the traceability layer plus current planning and task state.
+- Use the initiative index and initiative tracker as derived coordination rendered surfaces over the traceability layer plus current planning and task state.
 - Use the authority map when you need to resolve whether traceability or another planning surface is canonical for a recurring lookup question.
 - Keep family-specific human trackers active-first by default. Route terminal trace browsing to explicit initiative, planning, or family query surfaces instead of inlining the full closed trace corpus in every tracker.
 - Do not treat retained closed trace packages as the enduring source of current policy when equivalent standards, current planning documents, or machine-readable authority surfaces already exist.
@@ -127,7 +127,7 @@ This standard defines the repository's baseline traceability model so product in
 4. Add or refresh the machine-readable index entry for that family.
 5. Update upstream or downstream artifacts when the change introduces or invalidates a trace link.
 6. Refresh the unified traceability index when the change affects a traced initiative.
-7. Refresh the derived initiative coordination surfaces when the change affects initiative phase, ownership, or next-step projection materially.
+7. Refresh the derived initiative coordination surfaces when the change affects initiative phase, ownership, or next-step guidance materially.
 8. Record missing downstream trace work explicitly when the full chain cannot be completed in the same change.
 
 ## Examples
@@ -155,11 +155,11 @@ This standard defines the repository's baseline traceability model so product in
 - Update the PRD, decision, design, acceptance, evidence, and traceability tracking surfaces in the same change set when traceability expectations change materially.
 
 ## References
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
-- [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
+- [design_tracking.md](/docs/planning/design/design_tracking.md)
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

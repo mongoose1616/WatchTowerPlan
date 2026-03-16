@@ -22,7 +22,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 ## Purpose
 - Publish one machine-readable policy answer for which planning or governance surface is canonical for a recurring question.
 - Reduce surface-lookup ambiguity for agents, scripts, and maintainers without turning the authority map into a second path index or prose encyclopedia.
-- Keep canonical-versus-projection relationships explicit as the planning and governance corpus grows.
+- Keep canonical-versus-rendered-surface relationships explicit as the planning and governance corpus grows.
 
 ## Scope
 - Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/`.
@@ -35,12 +35,12 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Reviewing whether a proposed lookup policy belongs in the authority map or in a different registry or index.
 
 ## Related Standards and Sources
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): defines the canonical deep-planning machine join that the authority map should point to for full trace-linked planning context.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): defines the machine start-here planning surface the authority map should point to for current-state questions.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from the planning catalog.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): defines the broader repository path lookup surface the authority map must not duplicate.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines schema-catalog update expectations for this registry family.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): defines the canonical deep-planning machine join that the authority map should point to for full trace-linked planning context.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): defines the machine start-here planning surface the authority map should point to for current-state questions.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from the planning catalog.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): defines the broader repository path lookup surface the authority map must not duplicate.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines schema-catalog update expectations for this registry family.
+- [README.md](/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model canonical-surface lookup as an authored registry, not as a derived index.
@@ -59,7 +59,7 @@ This standard defines the role, structure, and boundary rules for the authored a
   - one or more `fallback_paths`
 - Use `preferred_human_path` when one human companion surface materially helps contributors route faster.
 - Use `status_fields` only when the question depends on a specific status vocabulary or status interpretation.
-- Point to canonical machine surfaces first and use fallback paths for narrower projections, companion trackers, or human guidance.
+- Point to canonical machine surfaces first and use fallback paths for narrower rendered surfaces, companion trackers, or human guidance.
 - Do not use the authority map to restate whole standards, command pages, or README prose.
 - Do not let the authority map compete with the path index for general repository navigation or with the command index for exhaustive command discovery.
 
@@ -83,7 +83,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 | `artifact_kind` | Required | Canonical governed artifact kind that should answer the question. |
 | `canonical_path` | Required | Repository-relative path to the canonical machine-readable artifact. |
 | `preferred_command` | Required | Preferred CLI command for resolving the same question. |
-| `fallback_paths` | Required | One or more narrower projections, companion docs, or adjacent lookup surfaces to use when the canonical path is not enough. |
+| `fallback_paths` | Required | One or more narrower rendered surfaces, companion docs, or adjacent lookup surfaces to use when the canonical path is not enough. |
 | `preferred_human_path` | Optional | Human-oriented companion surface such as a tracker, README, or command page. |
 | `status_fields` | Optional | Status fields that a consumer should trust when status interpretation matters. |
 | `aliases` | Optional | Alternate search phrases that materially improve retrieval. |
@@ -106,11 +106,11 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Prefer updating the authority map over scattering canonical-surface policy across several READMEs.
 
 ## References
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md)
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md)
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md)
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md)
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
+- [README.md](/core/control_plane/registries/README.md)
 
 ## Updated At
 - `2026-03-12T01:22:49Z`

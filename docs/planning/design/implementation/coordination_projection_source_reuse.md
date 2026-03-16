@@ -51,9 +51,9 @@ Breaks Coordination Projection Source Reuse into a bounded implementation slice.
   reads for downstream services.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): keep the implementation in `core/python/` and validate with the standard Python workspace command set.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the slice closes only after targeted and full validation passes.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the traced task set and coordination surfaces must stay aligned during execution and closeout.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): keep the implementation in `core/python/` and validate with the standard Python workspace command set.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the slice closes only after targeted and full validation passes.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the traced task set and coordination surfaces must stay aligned during execution and closeout.
 
 ## Proposed Technical Approach
 - Add explicit override support to `ControlPlaneLoader` for validated single-document and
@@ -91,6 +91,6 @@ Breaks Coordination Projection Source Reuse into a bounded implementation slice.
   no additional actionable issues remain.
 
 ## References
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/coordination_projection_source_reuse.md)
-- [coordination_projection_source_reuse_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json)
+- [coordination_projection_source_reuse.md](/docs/planning/prds/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse.md](/docs/planning/design/features/coordination_projection_source_reuse.md)
+- [coordination_projection_source_reuse_acceptance.json](/core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.json)

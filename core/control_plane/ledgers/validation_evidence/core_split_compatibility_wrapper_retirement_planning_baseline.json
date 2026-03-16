@@ -1,0 +1,75 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.core_split_compatibility_wrapper_retirement.planning_baseline",
+  "title": "Core Split Compatibility Wrapper Retirement Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T04:15:30Z",
+  "source_prd_ids": [
+    "prd.core_split_compatibility_wrapper_retirement"
+  ],
+  "source_design_ids": [
+    "design.features.core_split_compatibility_wrapper_retirement"
+  ],
+  "source_plan_ids": [
+    "design.implementation.core_split_compatibility_wrapper_retirement"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.core_split_compatibility_wrapper_retirement"
+  ],
+  "checks": [
+    {
+      "check_id": "check.core_split_compatibility_wrapper_retirement.planning_baseline",
+      "title": "Planning chain, completed task set, and terminal closeout reconcile",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
+        "docs/planning/design/features/core_split_compatibility_wrapper_retirement.md",
+        "docs/planning/design/implementation/core_split_compatibility_wrapper_retirement.md",
+        "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
+        "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.json",
+        "docs/planning/tasks/closed/archive/2026/03/16/core_split_compatibility_wrapper_retirement_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md"
+      ],
+      "subject_ids": [
+        "prd.core_split_compatibility_wrapper_retirement",
+        "design.features.core_split_compatibility_wrapper_retirement",
+        "design.implementation.core_split_compatibility_wrapper_retirement",
+        "task.core_split_compatibility_wrapper_retirement.bootstrap.001",
+        "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002",
+        "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
+        "task.core_split_compatibility_wrapper_retirement.validation_closeout.004",
+        "contract.acceptance.core_split_compatibility_wrapper_retirement",
+        "decision.core_split_compatibility_wrapper_retirement_direction",
+        "evidence.core_split_compatibility_wrapper_retirement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.core_split_compatibility_wrapper_retirement.001",
+        "ac.core_split_compatibility_wrapper_retirement.002",
+        "ac.core_split_compatibility_wrapper_retirement.003",
+        "ac.core_split_compatibility_wrapper_retirement.004"
+      ],
+      "notes": "Wrapper retirement closed with all four task slices terminal, `watchtower-core sync all --write --format json` refreshing 21 derived targets, `python -m mypy src/watchtower_core`, `ruff check .`, `watchtower-core validate acceptance --trace-id trace.core_split_compatibility_wrapper_retirement --format json`, `watchtower-core validate all --format json`, and a clean `pytest -q` run, followed by initiative closeout at 2026-03-16T04:15:30Z."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.json",
+    "core/control_plane/indexes/coordination/coordination_index.json",
+    "core/control_plane/indexes/initiatives/initiative_index.json",
+    "core/control_plane/indexes/traceability/traceability_index.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Evidence refreshed at 2026-03-16T04:15:30Z after wrapper retirement, boundary-proof completion, full repo validation, final sync, and terminal initiative closeout for trace.core_split_compatibility_wrapper_retirement.",
+  "source_decision_ids": [
+    "decision.core_split_compatibility_wrapper_retirement_direction"
+  ]
+}

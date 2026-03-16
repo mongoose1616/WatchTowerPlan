@@ -17,7 +17,7 @@ from watchtower_core.repo_ops.sync.initiative_index import PHASE_ORDER
 from watchtower_core.repo_ops.sync.tracking_common import latest_timestamp
 
 COORDINATION_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    "core/control_plane/indexes/coordination/coordination_index.json"
 )
 PLANNING_README_PATH = "docs/planning/README.md"
 RECENT_CLOSEOUT_LIMIT = 10

@@ -103,8 +103,8 @@ Retire SUMMARY.md as a root surface, remove its dedicated restoration artifacts,
   dependency chain would add churn without improving the retirement outcome.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/README.md)
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [docs/foundations/repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
+- [README.md](/README.md)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [docs/foundations/README.md](/docs/foundations/README.md)
+- [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
+- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)

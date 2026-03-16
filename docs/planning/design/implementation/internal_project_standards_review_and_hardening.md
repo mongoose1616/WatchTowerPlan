@@ -48,12 +48,12 @@ Breaks Internal Project Standards Review and Hardening into a bounded implementa
 - The standard index remains a derived surface; the fix should improve correctness of derived reference data without moving authority out of the standard docs themselves.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): standards documents need consistent external-authority enforcement and support for document-relative repo-local links.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the standard index must reflect applied and cited reference use accurately enough for governance audits and machine lookup.
-- [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): decision related paths need the same repository-relative normalization as other governed sync surfaces.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): document-relative repo-local links are governed-valid and therefore need matching machine-readable extraction.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): planning docs, tasks, acceptance artifacts, and evidence need to stay aligned through the full task cycle.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): the final commit should close the trace in one logical slice with the runtime, tests, and planning surfaces aligned.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): standards documents need consistent external-authority enforcement and support for document-relative repo-local links.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the standard index must reflect applied and cited reference use accurately enough for governance audits and machine lookup.
+- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): decision related paths need the same repository-relative normalization as other governed sync surfaces.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): document-relative repo-local links are governed-valid and therefore need matching machine-readable extraction.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): planning docs, tasks, acceptance artifacts, and evidence need to stay aligned through the full task cycle.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): the final commit should close the trace in one logical slice with the runtime, tests, and planning surfaces aligned.
 
 ## Proposed Technical Approach
 - Extend the Markdown adapter's repo-path normalization helpers with optional source-document context so one shared path can normalize repository-absolute, repo-root-relative, and document-relative repo-local references.
@@ -80,7 +80,7 @@ Breaks Internal Project Standards Review and Hardening into a bounded implementa
 - `./.venv/bin/watchtower-core validate acceptance --trace-id trace.internal_project_standards_review_and_hardening --format json`
 - `./.venv/bin/watchtower-core validate all --format json`
 - `./.venv/bin/pytest -q`
-- Final refreshed planning evidence under `core/control_plane/ledgers/validation_evidence/internal_project_standards_review_and_hardening_planning_baseline.v1.json`
+- Final refreshed planning evidence under `core/control_plane/ledgers/validation_evidence/internal_project_standards_review_and_hardening_planning_baseline.json`
 
 ## References
 - docs/standards/documentation/standard_md_standard.md

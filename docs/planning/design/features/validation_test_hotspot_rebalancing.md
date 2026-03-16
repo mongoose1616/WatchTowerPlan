@@ -49,15 +49,15 @@ Defines the technical design boundary for Validation Test Hotspot Rebalancing.
 - More than 300 planning references still mention `test_control_plane_artifacts.py`, and more than 100 still mention `test_document_semantics_validation.py`, so the design must preserve historical path compatibility instead of simply deleting the old filenames.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keeps the test surface explicit, inspectable, and local-first rather than collapsing coverage into opaque generators or helper magic.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): requires deterministic repository-aware validation instead of reducing the live contract checks to shallow mocks.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires companion human and machine surfaces to stay synchronized when layout or discoverability changes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keeps the test surface explicit, inspectable, and local-first rather than collapsing coverage into opaque generators or helper magic.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): requires deterministic repository-aware validation instead of reducing the live contract checks to shallow mocks.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires companion human and machine surfaces to stay synchronized when layout or discoverability changes.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): constrains package-local test layout, workspace command execution, and same-change documentation alignment.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): README inventories are governed entrypoint surfaces and must stay current when test-family structure changes.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): README inventory changes must continue to drive a coherent repository-path index and query-path surface.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): traced execution work needs durable tasks and aligned planning closeout surfaces.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): constrains package-local test layout, workspace command execution, and same-change documentation alignment.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): README inventories are governed entrypoint surfaces and must stay current when test-family structure changes.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): README inventory changes must continue to drive a coherent repository-path index and query-path surface.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): traced execution work needs durable tasks and aligned planning closeout surfaces.
 
 ## Design Goals and Constraints
 - Improve failure locality and maintainability for the remaining governed validation hotspots without reducing contract breadth.
@@ -107,7 +107,7 @@ Defines the technical design boundary for Validation Test Hotspot Rebalancing.
 - core/python/tests/unit/test_document_semantics_validation.py
 - core/python/tests/integration/README.md
 - core/python/tests/unit/README.md
-- core/control_plane/indexes/repository_paths/repository_path_index.v1.json
+- core/control_plane/indexes/repository_paths/repository_path_index.json
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/repo_ops/validation/all.py
@@ -126,4 +126,4 @@ Defines the technical design boundary for Validation Test Hotspot Rebalancing.
 
 ## References
 - March 13, 2026 refactor audit
-- [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/validation_test_hotspot_rebalancing.md)
+- [validation_test_hotspot_rebalancing.md](/docs/planning/prds/validation_test_hotspot_rebalancing.md)

@@ -33,9 +33,9 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - Reviewing whether a README is carrying content that belongs in `AGENTS.md`, `docs/standards/**`, or `workflows/**` instead.
 
 ## Related Standards and Sources
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md): authoring scaffold that should stay aligned with this standard.
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [readme_template.md](/docs/templates/readme_template.md): authoring scaffold that should stay aligned with this standard.
 
 ## Guidance
 - A `README.md` should describe the current directory, not the repository in general and not a neighboring directory.
@@ -95,9 +95,9 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - Update related `AGENTS.md`, workflow, or standards documents in the same change set when README boundaries change between those surfaces.
 
 ## References
-- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md)
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [readme_template.md](/docs/templates/readme_template.md)
+- [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 
 ## Notes
 - A good README helps a contributor understand a directory before opening many files.

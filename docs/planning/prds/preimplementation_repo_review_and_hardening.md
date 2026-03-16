@@ -87,14 +87,14 @@ The repository is green today, but a full pre-implementation review shows three 
 - Whether future external consumers should adopt a published overlay-catalog format or stay with programmatic schema registration until a second repo proves the need for a governed shared format.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the remediation should reduce ambiguity and coupling instead of adding ceremony-only layers.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable surfaces must stay synchronized as the coordination and README boundaries tighten.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the repo should stop at shared substrate hardening and future-ready generic seams rather than starting product or pack implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the remediation should reduce ambiguity and coupling instead of adding ceremony-only layers.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable surfaces must stay synchronized as the coordination and README boundaries tighten.
+- [product_direction.md](/docs/foundations/product_direction.md): the repo should stop at shared substrate hardening and future-ready generic seams rather than starting product or pack implementation.
 
 ## References
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
 
 ## Updated At
 - `2026-03-10T17:55:24Z`

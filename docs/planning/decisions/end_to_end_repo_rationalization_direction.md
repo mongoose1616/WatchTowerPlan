@@ -46,16 +46,16 @@ The end-to-end review rechecked documentation, code structure, machine and human
 - The repo should avoid reopening planning-model churn after several successful hardening initiatives.
 
 ## Applied References and Implications
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): keeps the compact coordination tracker as the root human start-here surface.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): keeps the initiative layer as the deeper family-specific coordination view rather than replacing it again.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): preserves the traceability index as the durable machine join beneath the coordination layer.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): external schema support should remain supplemental, not canonicalized into this repo's catalog.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): keeps the compact coordination tracker as the root human start-here surface.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): keeps the initiative layer as the deeper family-specific coordination view rather than replacing it again.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): preserves the traceability index as the durable machine join beneath the coordination layer.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): external schema support should remain supplemental, not canonicalized into this repo's catalog.
 
 ## Affected Surfaces
 - `docs/planning/README.md`
 - `docs/planning/coordination_tracking.md`
-- `core/control_plane/indexes/coordination/coordination_index.v1.json`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/coordination/coordination_index.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 - `core/python/src/watchtower_core/control_plane/`
 - `core/python/src/watchtower_core/cli/`
 
@@ -94,9 +94,9 @@ Adopt option 2. The current planning entrypoint model stays in place for the pre
 - The current follow-up assumes supplemental schema loading is enough for the first external pack validation seam and that supplemental validator overlays can wait.
 
 ## References
-- [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [machine_first_coordination_entry_surface.md](/home/j/WatchTowerPlan/docs/planning/decisions/machine_first_coordination_entry_surface.md)
+- [end_to_end_repo_review_and_rationalization.md](/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [machine_first_coordination_entry_surface.md](/docs/planning/decisions/machine_first_coordination_entry_surface.md)
 
 ## Updated At
 - `2026-03-10T19:43:34Z`

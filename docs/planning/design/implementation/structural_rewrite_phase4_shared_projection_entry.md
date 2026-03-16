@@ -37,10 +37,10 @@ aliases:
 Define the bounded Phase 4 entry checkpoint for shared projection mechanics and a private internal planning graph after the first bounded Phase 3 command companion normalization slice passed review, record the approved first rollback-safe Phase 4 slice, and keep broader Phase 4 implementation blocked in this change set.
 
 ## Source Request or Design
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/features/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_program.md](/docs/planning/prds/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/features/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Scope Summary
 - Reconfirm the public planning parity boundary before any Phase 4 implementation starts.
@@ -59,14 +59,14 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 - The first bounded Phase 3 slice has already reconciled the root command page plus the bounded `doctor`, `sync`, and `validate` command docs to the existing command-index implementation paths.
 - `watchtower-core sync command-index --format json` remains green and `python -m pytest tests/unit/test_command_index_sync.py` keeps the new fail-closed command-companion drift guard under direct coverage.
 - `core/python/src/watchtower_core/cli/registry.py` plus `core/python/src/watchtower_core/cli/parser.py` remain the only accepted command-authority source, and public planning parity remains unchanged after the closed Phase 3 outcome review.
-- The current shared-projection duplication sits in the trace-scoped planning projection builders: `initiative_index.py` and `planning_catalog.py` both regroup the same trace-linked governed sources, while `planning_projection_serialization.py` only handles payload rendering and does not yet provide a private runtime source graph.
+- The current shared-projection duplication sits in the trace-scoped planning projection builders: `initiative_index.py` and `planning_catalog.py` both regroup the same trace-linked governed sources, while `planning_rendered_serialization.py` only handles payload rendering and does not yet provide a private runtime source graph.
 - The next materially different rewrite risk therefore sits at shared planning projection duplication and the boundary between a possible private internal planning graph and the existing public planning-authority surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): Phase 4 still needs a bounded checkpoint package, explicit authored-truth and rollback declarations, and an explicit review outcome before implementation.
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): projection, sync, validator, and public planning surfaces touched by Phase 4 must use the controlled four-axis vocabulary.
-- [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): Phase 4 may not disturb the public planning-authority boundary while shared projection work is being normalized.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the Phase 4 entry review remains task-backed rather than implied by doc edits alone.
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md): Phase 4 still needs a bounded checkpoint package, explicit authored-truth and rollback declarations, and an explicit review outcome before implementation.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): projection, sync, validator, and public planning surfaces touched by Phase 4 must use the controlled four-axis vocabulary.
+- [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): Phase 4 may not disturb the public planning-authority boundary while shared projection work is being normalized.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the Phase 4 entry review remains task-backed rather than implied by doc edits alone.
 
 ## Proposed Phase 4 Boundary
 ### In scope for the future phase
@@ -85,9 +85,9 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 | Surface Family | Current Role | Phase 4 Entry Treatment |
 |---|---|---|
 | `docs/planning/**` trace records and family trackers | authored authority plus human companion surfaces | Preserve as authored inputs or human byproducts; do not collapse them into hidden runtime-only truth. |
-| `core/control_plane/indexes/coordination/coordination_index.v1.json`; `planning_catalog.v1.json`; `initiative_index.v1.json`; `task_index.v1.json`; `traceability_index.v1.json` | canonical machine answers to the five planning questions | Preserve as the public planning contract; any new shared projection logic remains behind these same surfaces. |
+| `core/control_plane/indexes/coordination/coordination_index.json`; `planning_catalog.json`; `initiative_index.json`; `task_index.json`; `traceability_index.json` | canonical machine answers to the five planning questions | Preserve as the public planning contract; any new shared projection logic remains behind these same surfaces. |
 | `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`; `planning_catalog.py`; `initiative_index.py`; `task_index.py`; `traceability.py`; `coordination_tracking.py` | generated-projection builders and tracker emitters | Eligible for bounded normalization only through explicit parity proof and rollback-bounded slices. |
-| `core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py`; adjacent shared projection helpers | private runtime support for projection composition | Eligible for refactoring in a later Phase 4 slice, but must remain a private implementation detail rather than a public authority surface. |
+| `core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py`; adjacent shared projection helpers | private runtime support for projection composition | Eligible for refactoring in a later Phase 4 slice, but must remain a private implementation detail rather than a public authority surface. |
 | validator or loader-adjacent support that only exists to keep projection assembly fail-closed | supporting infrastructure | Must stay bounded, explicit, and subordinate to the existing authored truth and public planning parity contract. |
 
 ## Live Coordination-Sync and Mutation Boundary
@@ -117,11 +117,11 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 - `core/control_plane/registries/authority_map.json`
 
 ### Derived outputs to keep aligned
-- `core/control_plane/indexes/coordination/coordination_index.v1.json`
-- `core/control_plane/indexes/planning/planning_catalog.v1.json`
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
-- `core/control_plane/indexes/tasks/task_index.v1.json`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/coordination/coordination_index.json`
+- `core/control_plane/indexes/planning/planning_catalog.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
+- `core/control_plane/indexes/tasks/task_index.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 - selected human planning trackers under `docs/planning/`
 
 ### Current consumers to confirm during review
@@ -142,7 +142,7 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 - `Public planning boundary`: reaffirmed. The five current planning-authority answers remain the explicit public machine boundary for Phase 4.
 - `Internal graph boundary`: reaffirmed. Any internal planning graph introduced by the first Phase 4 slice remains a private runtime detail unless a separate accepted decision creates a new public artifact family.
 - `Classification sufficiency`: passed for the first slice once the live coordination-sync ordering, write-side callers, initiative-closeout rebuild path, and touched tracker emitters are named explicitly.
-- `Approved first slice`: [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- `Approved first slice`: [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
 - `Exact seam`: one private trace-scoped planning projection snapshot consumed by `InitiativeIndexSyncService` and `PlanningCatalogSyncService`. `task_index`, `traceability_index`, `coordination_index`, tracker emitters, and mutation callers remain on their current public outputs for this first slice.
 
 ## Work Breakdown
@@ -165,11 +165,11 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
   - `./.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
 - Inspect the current projection boundary directly in:
   - `core/control_plane/registries/authority_map.json`
-  - `core/control_plane/indexes/coordination/coordination_index.v1.json`
-  - `core/control_plane/indexes/planning/planning_catalog.v1.json`
-  - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
-  - `core/control_plane/indexes/tasks/task_index.v1.json`
-  - `core/control_plane/indexes/traceability/traceability_index.v1.json`
+  - `core/control_plane/indexes/coordination/coordination_index.json`
+  - `core/control_plane/indexes/planning/planning_catalog.json`
+  - `core/control_plane/indexes/initiatives/initiative_index.json`
+  - `core/control_plane/indexes/tasks/task_index.json`
+  - `core/control_plane/indexes/traceability/traceability_index.json`
   - `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`
   - `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py`
   - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
@@ -201,12 +201,12 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 - Do not widen this package into broader shared-projection rollout, compatibility, history, hotspot-decomposition, or public-planning-boundary changes.
 
 ## References
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Updated At
 - `2026-03-14T17:49:25Z`

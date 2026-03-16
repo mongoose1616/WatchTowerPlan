@@ -34,7 +34,7 @@ from watchtower_core.repo_ops.reference_semantics import (
     parse_reference_local_mapping,
 )
 
-REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
+REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.json"
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
 )

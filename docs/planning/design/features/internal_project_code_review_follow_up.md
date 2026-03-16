@@ -50,14 +50,14 @@ Defines the follow-up design for bootstrap decision-template validity, decision-
 - A newly bootstrapped trace therefore enters coordination as active execution even though the initiative-tracking standard defines `implementation_planning` as the phase before execution has actually started.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared scaffolding paths should be valid and deterministic by default because bootstrap is a common repository entrypoint.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): generated docs and derived coordination projections should conform to authored repository standards rather than competing with them.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared scaffolding paths should be valid and deterministic by default because bootstrap is a common repository entrypoint.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): generated docs and derived coordination projections should conform to authored repository standards rather than competing with them.
 
 ## Internal Standards and Canonical References Applied
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): generated decision records must satisfy the governed decision shape and explain the applied references that constrain the decision.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): `implementation_planning` remains the canonical phase until execution has actually started, and initiative projections should not overstate progress.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): bootstrap tasks stay visible as authoritative task records even when they do not yet imply execution phase.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): traced initiatives need explicit bounded tasks, but a bootstrap task alone is not a substitute for the later execution task set.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): generated decision records must satisfy the governed decision shape and explain the applied references that constrain the decision.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): `implementation_planning` remains the canonical phase until execution has actually started, and initiative projections should not overstate progress.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): bootstrap tasks stay visible as authoritative task records even when they do not yet imply execution phase.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): traced initiatives need explicit bounded tasks, but a bootstrap task alone is not a substitute for the later execution task set.
 
 ## Design Goals and Constraints
 - Emit governed-valid decision records from shared scaffold helpers without requiring manual patching after bootstrap.

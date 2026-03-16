@@ -42,9 +42,9 @@ Move repository-specific query, sync, validation, and planning-document semantic
 - Reusable layers no longer depend on planning-doc semantics through accidental imports.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
 
 ## Updated At
 - `2026-03-10T05:45:03Z`

@@ -35,8 +35,8 @@ aliases:
 Breaks the export-readiness architecture into concrete in-repo phases that isolate repo-ops, reduce maintenance fan-out, and publish generic pack-facing contracts without extracting the package yet.
 
 ## Source Request or Design
-- Feature design: [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- PRD: [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
+- Feature design: [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- PRD: [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
 - User request to synthesize the implementation and optimization goals into one clean initiative that prepares core for future WatchTower product work.
 
 ## Scope Summary
@@ -60,14 +60,14 @@ Breaks the export-readiness architecture into concrete in-repo phases that isola
 - Current repo tooling can already rebuild indexes and trackers deterministically through the local Python workspace.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the implementation should prefer thin CLI entrypoints, modular services, explicit arguments, and synchronized companion updates.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): all package code, tests, and command execution stay under `core/python/`.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): new generic interfaces must land with fail-closed schemas, examples, and aligned validation surfaces.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): registry-backed command authority still has to preserve governed command lookup and command-doc alignment.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): retrieval metadata changes must remain index-backed and aligned with README inventories.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow-discovery metadata changes must preserve the workflow modules as the procedural authority.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the initiative must move through durable open tasks instead of relying on implied execution state.
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md): the work should continue on bounded initiative and task branches with clear trace alignment and linear local history expectations.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the implementation should prefer thin CLI entrypoints, modular services, explicit arguments, and synchronized companion updates.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): all package code, tests, and command execution stay under `core/python/`.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): new generic interfaces must land with fail-closed schemas, examples, and aligned validation surfaces.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): registry-backed command authority still has to preserve governed command lookup and command-doc alignment.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): retrieval metadata changes must remain index-backed and aligned with README inventories.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow-discovery metadata changes must preserve the workflow modules as the procedural authority.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the initiative must move through durable open tasks instead of relying on implied execution state.
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md): the work should continue on bounded initiative and task branches with clear trace alignment and linear local history expectations.
 
 ## Proposed Technical Approach
 - Phase the work so each architectural improvement lands behind current behavior rather than as a large extraction-first rewrite.
@@ -111,13 +111,13 @@ Breaks the export-readiness architecture into concrete in-repo phases that isola
 - Treat standalone package extraction and `WatchTower` adoption as explicit follow-up work after this plan is delivered and validated.
 
 ## References
-- [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
-- [core_export_readiness_and_optimization_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
+- [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [control_plane_loaders_and_schema_store.md](/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
+- [core_export_readiness_and_optimization_acceptance.json](/core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json)
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
 
 ## Updated At
 - `2026-03-10T04:44:27Z`

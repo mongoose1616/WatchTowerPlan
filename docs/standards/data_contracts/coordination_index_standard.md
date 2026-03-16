@@ -36,19 +36,19 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Reviewing whether the repository is actively executing work, blocked, or ready for one new initiative.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this family-specific standard narrows.
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the initiative-family projection that this coordination layer reads from.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the task authority layer behind actionable work and blockers.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace join that initiative state still mirrors.
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): defines the compact human companion tracker derived from this index.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the human initiative coordination layer that remains available beneath this machine-first view.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by coordination records.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/coordination/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this family-specific standard narrows.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): defines the initiative-family rendered surface that this coordination layer reads from.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the task authority layer behind actionable work and blockers.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace join that initiative state still mirrors.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): defines the compact human companion tracker derived from this index.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the human initiative coordination layer that remains available beneath this machine-first view.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by coordination records.
+- [README.md](/core/control_plane/indexes/coordination/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
-- Build the coordination index from the initiative index and its task-backed active-task projection rather than reparsing human trackers.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
+- Build the coordination index from the initiative index and its task-backed active-task rendered detail rather than reparsing human trackers.
 - Publish one repo-level coordination mode and one recommended next action plus next surface path at the root of the artifact.
 - Keep `entries` limited to the active current-state initiative set that the coordination start-here experience is summarizing.
 - Carry actionable-task summaries only when they improve the first machine coordination pass.
@@ -105,10 +105,10 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Update the coordination query docs, coordination-tracking companion surface, and nearby planning guidance when the coordination start-here experience changes materially.
 
 ## References
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md)
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

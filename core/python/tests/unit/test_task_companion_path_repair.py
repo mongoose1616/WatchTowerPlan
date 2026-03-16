@@ -32,11 +32,11 @@ def test_repair_governed_task_path_references_updates_matching_paths_only(
 
     contract_relative_path = (
         "core/control_plane/contracts/acceptance/"
-        "unit_test_task_companion_path_repair_acceptance.v1.json"
+        "unit_test_task_companion_path_repair_acceptance.json"
     )
     evidence_relative_path = (
         "core/control_plane/ledgers/validation_evidence/"
-        "unit_test_task_companion_path_repair_planning_baseline.v1.json"
+        "unit_test_task_companion_path_repair_planning_baseline.json"
     )
     loader.artifact_store.write_json_object(
         contract_relative_path,

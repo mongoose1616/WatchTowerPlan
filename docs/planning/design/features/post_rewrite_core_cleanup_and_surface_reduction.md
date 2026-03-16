@@ -43,13 +43,13 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 - The external gap review against `STEP1_FINAL.md` reinforces that current example fixtures, compatibility or intake contracts, and retained repo-local catalogs should not become long-lived reusable-core contracts unless a live pack consumer depends on them.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): temporary migration aids should retire once the intended boundary is clear.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): code, docs, schemas, registries, and tests must move together when a governed boundary changes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): temporary migration aids should retire once the intended boundary is clear.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): code, docs, schemas, registries, and tests must move together when a governed boundary changes.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the rewritten workspace contract must stay consistent with default validation entrypoints and current runtime-boundary wording.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): pack settings are the reusable-core startup root, so required-surface loading must follow declared paths.
-- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/validation/all.py): aggregate validation is the active enforcement path for governed artifact families and should not keep dead surfaces alive without runtime value.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the rewritten workspace contract must stay consistent with default validation entrypoints and current runtime-boundary wording.
+- [README.md](/core/control_plane/README.md): pack settings are the reusable-core startup root, so required-surface loading must follow declared paths.
+- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py): aggregate validation is the active enforcement path for governed artifact families and should not keep dead surfaces alive without runtime value.
 
 ## Design Goals and Constraints
 - Keep the current default repository behavior green while repairing the rewrite regressions.
@@ -108,5 +108,5 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 - Historical acceptance contracts and standards can fail closed if example or inventory surfaces are removed without same-slice reconciliation.
 
 ## References
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
-- [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)
+- [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md)

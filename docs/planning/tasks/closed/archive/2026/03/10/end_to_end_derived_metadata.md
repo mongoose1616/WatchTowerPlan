@@ -46,8 +46,8 @@ Make traceability-derived initiative and coordination surfaces keep timestamps a
 - Added regression coverage for traceability rebuilds and the initiative closeout write path.
 
 ## Links
-- [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
-- [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
+- [end_to_end_repo_rationalization.md](/docs/planning/design/features/end_to_end_repo_rationalization.md)
+- [end_to_end_repo_rationalization_execution.md](/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T21:24:00Z`

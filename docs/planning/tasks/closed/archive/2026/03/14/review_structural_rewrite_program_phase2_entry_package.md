@@ -16,9 +16,9 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_program.md
 - docs/standards/governance/rewrite_surface_classification_standard.md
 - docs/standards/governance/rewrite_execution_control_standard.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program
@@ -61,8 +61,8 @@ Review the Phase 0 and Phase 1 rewrite package, confirm the artifact-role metada
 - The public parity boundary remains unchanged because the first slice publishes descriptive metadata only.
 
 ## Links
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_artifact_role_registry_pilot.md](/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
 - `2026-03-14T03:56:23Z`

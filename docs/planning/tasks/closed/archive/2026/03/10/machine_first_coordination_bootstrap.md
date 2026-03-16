@@ -17,8 +17,8 @@ applies_to:
   - "docs/planning/design/features/machine_first_coordination_surface.md"
   - "docs/planning/design/implementation/machine_first_coordination_execution.md"
   - "docs/planning/decisions/machine_first_coordination_entry_surface.md"
-  - "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.json"
   - "docs/planning/tasks/open/"
 related_ids:
   - "prd.machine_first_coordination_surface"
@@ -45,10 +45,10 @@ Creates the traced planning chain, decision record, acceptance baseline, and bou
 - The bounded execution task set exists under `docs/planning/tasks/open/`.
 
 ## Links
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md)
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
-- [machine_first_coordination_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/machine_first_coordination_execution.md)
-- [machine_first_coordination_entry_surface.md](/home/j/WatchTowerPlan/docs/planning/decisions/machine_first_coordination_entry_surface.md)
+- [machine_first_coordination_surface.md](/docs/planning/prds/machine_first_coordination_surface.md)
+- [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
+- [machine_first_coordination_execution.md](/docs/planning/design/implementation/machine_first_coordination_execution.md)
+- [machine_first_coordination_entry_surface.md](/docs/planning/decisions/machine_first_coordination_entry_surface.md)
 
 ## Updated At
 - `2026-03-10T18:54:43Z`

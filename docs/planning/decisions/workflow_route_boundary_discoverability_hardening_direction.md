@@ -49,9 +49,9 @@ Accept a bounded workflow-discoverability hardening slice that sharpens determin
 - The workflow family should remain explicit, route-first, deterministic, and inspectable.
 
 ## Applied References and Implications
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must stay advisory and deterministic while using full prompt context rather than exact keyword matching alone.
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): any routing-surface changes must stay derived from the authored routing table and aligned with route-preview behavior.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow retrieval cues should remain explicit, machine-readable, and aligned with the authored workflow corpus.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route preview must stay advisory and deterministic while using full prompt context rather than exact keyword matching alone.
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md): any routing-surface changes must stay derived from the authored routing table and aligned with route-preview behavior.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow retrieval cues should remain explicit, machine-readable, and aligned with the authored workflow corpus.
 - March 13, 2026 refactor audit: recommends clarifying route discrimination criteria and preserving the small explicit workflow family rather than collapsing it.
 
 ## Affected Surfaces
@@ -93,5 +93,5 @@ Choose Option 2. Implement a bounded deterministic scorer hardening plus authore
 
 ## References
 - March 13, 2026 refactor audit
-- [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md)
-- [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md)
+- [workflow_route_boundary_discoverability_hardening.md](/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md)
+- [workflow_route_boundary_discoverability_hardening.md](/docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md)

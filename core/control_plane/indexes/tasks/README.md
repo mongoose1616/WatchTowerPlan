@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/tasks/README.md` | Describes the purpose of the task-index directory and its current contents. |
-| `core/control_plane/indexes/tasks/task_index.v1.json` | Machine-readable task index for current local task records. |
+| `core/control_plane/indexes/tasks/task_index.json` | Machine-readable task index for current local task records. |

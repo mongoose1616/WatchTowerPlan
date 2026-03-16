@@ -54,7 +54,7 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching document-semantics validator automatically when the path is repository-local.
-- Repo-local Markdown links are validated fail closed when they point to missing repository targets.
+- Repo-local Markdown links are validated fail closed when they point to missing repository targets, use filesystem-absolute checkout paths, or escape the current repository root.
 - If `--validator-id` is provided, the command validates against that explicit semantic validator instead of auto-selecting by path.
 - In `human` mode, the command prints `PASS` or `FAIL`, the selected validator, and any validation issues.
 - In `json` mode, the command prints one JSON object with the execution status, pass or fail result, selected validator, issue count, and issue records.
@@ -76,4 +76,4 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-16T04:05:50Z`
+- `2026-03-16T14:07:07Z`

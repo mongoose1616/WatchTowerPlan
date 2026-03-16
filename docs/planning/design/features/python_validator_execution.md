@@ -35,7 +35,7 @@ This document defines the feature-level technical design for a Python validation
 
 ## Source Request
 - User request to make the validator work a `docs/planning/design/features` artifact after establishing the first control-plane validator registry.
-- Downstream planning authority is captured in [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md).
+- Downstream planning authority is captured in [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md).
 
 ## Scope and Feature Boundary
 - Covers the Python-side execution model for registry-driven validation.
@@ -54,22 +54,22 @@ This document defines the feature-level technical design for a Python validation
 - The repository now has a Python execution path that turns those artifacts into live behavior through front-matter validation, schema-backed artifact validation, document-semantics validation, acceptance reconciliation, and durable validation evidence.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core local-first, deterministic, schema-first, and fail-closed.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core as the shared runtime and governance substrate rather than the user-facing product.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favor Python for helper and harness layers and JSON Schema for machine-validated contracts.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical source for machine-facing facts and avoid parallel truth in code.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep core local-first, deterministic, schema-first, and fail-closed.
+- [product_direction.md](/docs/foundations/product_direction.md): keep core as the shared runtime and governance substrate rather than the user-facing product.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): favor Python for helper and harness layers and JSON Schema for machine-validated contracts.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one canonical source for machine-facing facts and avoid parallel truth in code.
 
 ## Internal Standards and Canonical References Applied
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): schema-backed validators need to consume published artifact and interface schemas rather than local ad hoc contracts.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): validator IDs, evidence IDs, and trace IDs must stay stable and machine-usable.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): validation results must not overload artifact lifecycle status fields.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): evidence and governed validation surfaces should stay in the expected Markdown or JSON formats.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): validation behavior belongs in modular `core/python` services and thin CLI entrypoints.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): the first validator wave needs to honor the governed documentation profiles.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance reconciliation should consume declared machine-readable boundaries.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): durable validation outcomes need governed evidence artifacts.
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json): validator selection should stay declarative by governed registry ID.
-- [validator_registry.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/artifacts/validator_registry.v1.schema.json): validator-registry payload shape should stay schema-validated.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): schema-backed validators need to consume published artifact and interface schemas rather than local ad hoc contracts.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): validator IDs, evidence IDs, and trace IDs must stay stable and machine-usable.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): validation results must not overload artifact lifecycle status fields.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): evidence and governed validation surfaces should stay in the expected Markdown or JSON formats.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): validation behavior belongs in modular `core/python` services and thin CLI entrypoints.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): the first validator wave needs to honor the governed documentation profiles.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance reconciliation should consume declared machine-readable boundaries.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): durable validation outcomes need governed evidence artifacts.
+- [validator_registry.json](/core/control_plane/registries/validator_registry.json): validator selection should stay declarative by governed registry ID.
+- [validator_registry.schema.json](/core/control_plane/schemas/artifacts/validator_registry.schema.json): validator-registry payload shape should stay schema-validated.
 
 ## Design Goals and Constraints
 - Keep validator identity and selection declarative in the control plane rather than hardcoded in Python.
@@ -160,10 +160,10 @@ This document defines the feature-level technical design for a Python validation
 - Where should parsed front matter extraction live: inside the validation package or as a reusable control-plane adapter?
 
 ## References
-- [feature_design_planning.md](/home/j/WatchTowerPlan/workflows/modules/feature_design_planning.md)
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [feature_design_planning.md](/workflows/modules/feature_design_planning.md)
+- [validator_registry.json](/core/control_plane/registries/validator_registry.json)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
 - `2026-03-10T02:30:31Z`

@@ -32,9 +32,9 @@ applies_to:
 Breaks the internal review remediation into bounded slices for bootstrap hardening, projection canonicalization, and traced closeout.
 
 ## Source Request or Design
-- Feature design: [internal_project_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/internal_project_review_and_hardening.md)
-- PRD: [internal_project_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/internal_project_review_and_hardening.md)
-- Decision: [internal_project_review_and_hardening_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/internal_project_review_and_hardening_direction.md)
+- Feature design: [internal_project_review_and_hardening.md](/docs/planning/design/features/internal_project_review_and_hardening.md)
+- PRD: [internal_project_review_and_hardening.md](/docs/planning/prds/internal_project_review_and_hardening.md)
+- Decision: [internal_project_review_and_hardening_direction.md](/docs/planning/decisions/internal_project_review_and_hardening_direction.md)
 
 ## Scope Summary
 - Complete the current trace's planning baseline so bootstrap state becomes validation-compatible.
@@ -54,11 +54,11 @@ Breaks the internal review remediation into bounded slices for bootstrap hardeni
 - The initiative, planning catalog, and coordination query outputs share the same structural fields today but are shaped through separate helper stacks.
 
 ## Internal Standards and Canonical References Applied
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): bootstrap must publish the contract in the canonical family and keep it aligned with PRD acceptance IDs.
-- [acceptance_evidence_reconciliation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): baseline evidence must cover the trace acceptance IDs so `validate all` remains green.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): scaffolded feature-design output must satisfy the repo's applied-reference expectations.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): scaffolded implementation-plan output must satisfy the same governed-document expectations.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): projection changes must preserve machine-readable planning structure while reducing duplicate shaping logic.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): bootstrap must publish the contract in the canonical family and keep it aligned with PRD acceptance IDs.
+- [acceptance_evidence_reconciliation_standard.md](/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): baseline evidence must cover the trace acceptance IDs so `validate all` remains green.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): scaffolded feature-design output must satisfy the repo's applied-reference expectations.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): scaffolded implementation-plan output must satisfy the same governed-document expectations.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): projection changes must preserve machine-readable planning structure while reducing duplicate shaping logic.
 
 ## Proposed Technical Approach
 - Add deterministic scaffold helpers for the applied-reference sections and reuse them in feature-design and implementation-plan rendering.

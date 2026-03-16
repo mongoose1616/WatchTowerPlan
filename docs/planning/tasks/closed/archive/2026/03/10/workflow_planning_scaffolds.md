@@ -42,8 +42,8 @@ Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decis
 - Command docs and tests cover the new scaffold surface.
 
 ## Links
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- [workflow_system_operationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [workflow_system_operationalization_execution.md](/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
 
 ## Updated At
 - `2026-03-10T23:17:55Z`

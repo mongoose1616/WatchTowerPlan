@@ -35,8 +35,8 @@ aliases:
 Breaks workflow-system operationalization into bounded slices for route metadata, route preview, planning scaffolds, task lifecycle commands, and reconciliation guidance.
 
 ## Source Request or Design
-- Feature design: [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- PRD: [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md)
+- Feature design: [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- PRD: [workflow_system_operationalization.md](/docs/planning/prds/workflow_system_operationalization.md)
 
 ## Scope Summary
 - Add governed workflow metadata and route lookup artifacts.
@@ -55,10 +55,10 @@ Breaks workflow-system operationalization into bounded slices for route metadata
 - Task front matter can already be parsed and updated, which reduces the task-command implementation surface.
 
 ## Internal Standards and Canonical References Applied
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): new command families must keep command docs and the command index aligned.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow lookup stays derived from workflow docs plus governed metadata.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task commands must refresh the derived task and initiative surfaces in the same change.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): all code and tests stay inside `core/python/`.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): new command families must keep command docs and the command index aligned.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow lookup stays derived from workflow docs plus governed metadata.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task commands must refresh the derived task and initiative surfaces in the same change.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): all code and tests stay inside `core/python/`.
 
 ## Proposed Technical Approach
 - Add the new machine-readable workflow metadata registry and route index first.
@@ -89,10 +89,10 @@ Breaks workflow-system operationalization into bounded slices for route metadata
 - Preserve current behavior for existing query, sync, validation, and closeout surfaces while new families are added.
 
 ## References
-- [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md)
-- [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
-- [workflow_system_operationalization_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.v1.json)
-- [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md)
+- [workflow_system_operationalization.md](/docs/planning/prds/workflow_system_operationalization.md)
+- [workflow_routing_and_authoring.md](/docs/planning/design/features/workflow_routing_and_authoring.md)
+- [workflow_system_operationalization_acceptance.json](/core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.json)
+- [routing_table_md_standard.md](/docs/standards/documentation/routing_table_md_standard.md)
 
 ## Updated At
 - `2026-03-10T21:59:21Z`

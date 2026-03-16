@@ -37,23 +37,23 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Reviewing whether the current initiative phase and ownership are explicit enough for another contributor to continue the work.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this initiative-family standard narrows.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the coordination boundary, phase vocabulary, and authority model this index must preserve.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the traced artifact relationships the initiative index projects from.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines initiative closeout state that this index must mirror.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the task authority layer this index must use for owner and open-task projection.
-- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): defines the repo-level coordination overlay that projects from this initiative-family view.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by initiative records.
-- [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this index.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this initiative-family standard narrows.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the coordination boundary, phase vocabulary, and authority model this index must preserve.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): defines the traced artifact relationships the initiative index projects from.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): defines initiative closeout state that this index must mirror.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the task authority layer this index must use for owner and open-task rendering.
+- [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): defines the repo-level coordination overlay that projects from this initiative-family view.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by initiative records.
+- [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this index.
+- [README.md](/core/control_plane/indexes/initiatives/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep the initiative index focused on initiative-family detail rather than repo-level bootstrap or recent-closeout summary state.
 - Build the initiative index from the traceability index plus current planning and task indexes rather than scanning human trackers.
 - Carry `current_phase`, `next_action`, and `next_surface_path` in every active initiative entry.
-- Carry active owner and open-task projection for every active initiative with non-terminal tasks.
+- Carry active owner and open-task rendering for every active initiative with non-terminal tasks.
 - Carry compact `active_task_summaries` for active initiatives with non-terminal tasks so the first machine coordination pass can see task titles, status, priority, ownership, and actionability without reopening the task index immediately.
 - Do not publish an active initiative entry without linked task IDs.
 - Mirror terminal initiative closeout state from traceability rather than inventing a second closeout authority.
@@ -119,14 +119,14 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Change Control
 - In addition to the shared planning-index-family change-control contract:
-- Update this standard when the repository changes the initiative-phase projection model or initiative-index entry shape.
+- Update this standard when the repository changes the initiative-phase rendered model or initiative-index entry shape.
 - Update the human-readable initiative tracker in the same change set when indexed initiative coordination changes materially.
 
 ## References
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

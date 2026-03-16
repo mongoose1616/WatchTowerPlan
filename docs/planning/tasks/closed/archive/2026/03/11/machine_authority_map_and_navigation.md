@@ -46,5 +46,5 @@ Add the machine authority-map registry, authority query surface, and the documen
 - Root, planning, and command docs explain the new canonical machine path clearly.
 
 ## Links
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/prds/planning_authority_unification.md)
+- [planning_authority_unification.md](/docs/planning/design/features/planning_authority_unification.md)

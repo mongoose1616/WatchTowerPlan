@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/commands/README.md` | Describes the purpose of the command-index directory and its current contents. |
-| `core/control_plane/indexes/commands/command_index.v1.json` | First-pass command index for the core Python workspace and watchtower-core CLI family. |
+| `core/control_plane/indexes/commands/command_index.json` | First-pass command index for the core Python workspace and watchtower-core CLI family. |

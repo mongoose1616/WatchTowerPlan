@@ -33,12 +33,12 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - Reviewing whether a timestamp field is ambiguous, inconsistent, or using the wrong timezone or field name.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [rfc_3339_timestamp_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_3339_timestamp_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [rfc_9557_timestamp_extensions_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9557_timestamp_extensions_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [rfc_3339_timestamp_reference.md](/docs/references/rfc_3339_timestamp_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [rfc_9557_timestamp_extensions_reference.md](/docs/references/rfc_9557_timestamp_extensions_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Use UTC for governed mutable timestamps across repository docs, control-plane artifacts, and generated outputs.
@@ -84,12 +84,12 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - Record any future exception for non-UTC or richer timestamp encoding in a narrower artifact-family standard rather than weakening this baseline.
 
 ## References
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
-- [rfc_3339_timestamp_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_3339_timestamp_reference.md)
-- [rfc_9557_timestamp_extensions_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9557_timestamp_extensions_reference.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
+- [rfc_3339_timestamp_reference.md](/docs/references/rfc_3339_timestamp_reference.md)
+- [rfc_9557_timestamp_extensions_reference.md](/docs/references/rfc_9557_timestamp_extensions_reference.md)
 
 ## Notes
 - This repository uses a narrower subset of RFC 3339 than the full standard: UTC only, trailing `Z`, and whole-second precision.

@@ -39,9 +39,9 @@ Bootstraps the initial planning chain for Unit Test Hardening and Rebalancing.
 - The bootstrap task and the bounded execution tasks are visible through the derived coordination surfaces.
 
 ## Links
-- [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md)
-- [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/design/features/unit_test_hardening_and_rebalancing.md)
-- [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md)
+- [unit_test_hardening_and_rebalancing.md](/docs/planning/prds/unit_test_hardening_and_rebalancing.md)
+- [unit_test_hardening_and_rebalancing.md](/docs/planning/design/features/unit_test_hardening_and_rebalancing.md)
+- [unit_test_hardening_and_rebalancing.md](/docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md)
 
 ## Updated At
 - `2026-03-12T02:46:38Z`

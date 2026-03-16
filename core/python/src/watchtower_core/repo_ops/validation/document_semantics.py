@@ -447,11 +447,24 @@ class DocumentSemanticsValidationService:
             if in_fence:
                 continue
             for target in extract_markdown_links(line):
-                target_path = self._resolve_repo_local_markdown_link_target(
+                target_path, target_style = self._resolve_repo_local_markdown_link_target(
                     target,
                     repo_root=repo_root,
                     source_path=resolved_path,
                 )
+                if target_style is None:
+                    continue
+                if target_style == "filesystem_absolute":
+                    raise ValueError(
+                        f"{relative_path} repo-local Markdown link on line {line_number} "
+                        f"uses a filesystem-absolute checkout path: {target}. Use "
+                        "repository-native '/...' or document-relative links instead."
+                    )
+                if target_style == "outside_repo":
+                    raise ValueError(
+                        f"{relative_path} repo-local Markdown link on line {line_number} "
+                        f"escapes the current repository root: {target}"
+                    )
                 if target_path is None or target_path.exists():
                     continue
                 normalized = target_path.relative_to(repo_root).as_posix()
@@ -466,29 +479,55 @@ class DocumentSemanticsValidationService:
         *,
         repo_root: Path,
         source_path: Path,
-    ) -> Path | None:
+    ) -> tuple[Path | None, str | None]:
         stripped = target.strip()
         if not stripped or stripped.startswith(("http://", "https://", "mailto:", "#")):
-            return None
+            return None, None
 
         without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
         if not without_fragment:
-            return None
+            return None, None
+
+        repo_top_level_names = {
+            ".github",
+            "AGENTS.md",
+            "README.md",
+            "core",
+            "docs",
+            "workflows",
+        }
+        repo_top_level_names.update(child.name for child in repo_root.iterdir())
+
+        if without_fragment.startswith("/"):
+            repo_relative_candidate = without_fragment.lstrip("/")
+            if repo_relative_candidate:
+                first_part = Path(repo_relative_candidate).parts[0]
+                if first_part in repo_top_level_names:
+                    return (repo_root / repo_relative_candidate).resolve(), "repo_root_relative"
+
+            absolute_candidate = Path(without_fragment).resolve()
+            try:
+                absolute_candidate.relative_to(repo_root)
+            except ValueError:
+                return absolute_candidate, "outside_repo"
+            return absolute_candidate, "filesystem_absolute"
 
         candidate = Path(without_fragment)
-        if candidate.is_absolute():
-            resolved = candidate.resolve()
-            try:
-                resolved.relative_to(repo_root)
-            except ValueError:
-                return None
-            return resolved
+        source_candidate = (source_path.parent / candidate).resolve()
+        repo_candidate = (repo_root / candidate).resolve()
 
-        for base_path in (source_path.parent, repo_root):
-            resolved = (base_path / candidate).resolve()
+        candidate_paths: list[Path] = []
+        for resolved in (source_candidate, repo_candidate):
             try:
                 resolved.relative_to(repo_root)
             except ValueError:
                 continue
-            return resolved
-        return None
+            if resolved not in candidate_paths:
+                candidate_paths.append(resolved)
+
+        for resolved in candidate_paths:
+            if resolved.exists():
+                return resolved, "relative"
+        if candidate_paths:
+            return candidate_paths[0], "relative"
+        return source_candidate, "outside_repo"

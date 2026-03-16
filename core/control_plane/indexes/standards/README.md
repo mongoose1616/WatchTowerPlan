@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/standards/README.md` | Describes the purpose of the standard-index directory and its current artifact family. |
-| `core/control_plane/indexes/standards/standard_index.v1.json` | Machine-readable standard index for governed standards and their reference usage. |
+| `core/control_plane/indexes/standards/standard_index.json` | Machine-readable standard index for governed standards and their reference usage. |

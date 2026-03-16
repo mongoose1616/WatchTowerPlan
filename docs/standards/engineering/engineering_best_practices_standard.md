@@ -34,13 +34,13 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Reviewing whether a change is modular enough and validated enough for this repository.
 
 ## Related Standards and Sources
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
 
 ## Guidance
 - Start from the routed workflow set and the nearest applicable `AGENTS.md` and `README.md` before making changes.
@@ -97,12 +97,12 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Update local instruction surfaces when the default implementation or validation path for contributors changes materially.
 
 ## References
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
 
 ## Notes
 - This standard is intentionally repo-specific. It complements narrower standards rather than replacing them.

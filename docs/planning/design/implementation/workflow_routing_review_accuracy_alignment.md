@@ -45,9 +45,9 @@ Breaks Workflow Routing Review Accuracy Alignment into a bounded implementation 
 - Validation needs to prove both the newly fixed audit prompts and the previously fixed natural-maintenance prompt remain correct.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): constrains the slice to explicit routing-table and workflow-module authority rather than hidden routing logic.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md): requires preservation of the earlier natural-maintenance route-preview behavior.
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): requires the derived route index to stay aligned with the authored routing table after route taxonomy changes.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): constrains the slice to explicit routing-table and workflow-module authority rather than hidden routing logic.
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md): requires preservation of the earlier natural-maintenance route-preview behavior.
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md): requires the derived route index to stay aligned with the authored routing table after route taxonomy changes.
 
 ## Proposed Technical Approach
 - Simplify the route-preview scorer so token matches are exact and route behavior depends on curated route-table coverage rather than broad lexical similarity.
@@ -56,7 +56,7 @@ Breaks Workflow Routing Review Accuracy Alignment into a bounded implementation 
 
 ## Work Breakdown
 1. Update the route-preview scoring helper in `core/python/src/watchtower_core/repo_ops/query/routes.py` and add or refresh unit coverage for the reproduced routing failures.
-2. Revise `workflows/ROUTING_TABLE.md`, regenerate `core/control_plane/indexes/routes/route_index.v1.json`, and align the affected workflow and command docs with the new route behavior.
+2. Revise `workflows/ROUTING_TABLE.md`, regenerate `core/control_plane/indexes/routes/route_index.json`, and align the affected workflow and command docs with the new route behavior.
 3. Run the route-preview regression sweep, targeted tests, full validation, and a follow-up no-new-issues routing review pass before task and initiative closeout.
 
 ## Risks

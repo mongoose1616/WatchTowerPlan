@@ -41,9 +41,9 @@ Tracks the remaining closeout and verification follow-up for the acceptance and 
 - The initiative and traceability views no longer rely on implied ownership.
 
 ## Links
-- [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md)
-- [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
+- [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md)
+- [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md)
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md)
 
 ## Updated At
 - `2026-03-10T03:53:14Z`

@@ -76,7 +76,7 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 - Add regression coverage that inspects the live standard index and exercises `watchtower-core query standards --operationalization-path ...` on representative example files across artifact families.
 
 ### Data and Interface Impacts
-- Live `core/control_plane/indexes/standards/standard_index.v1.json` entries for the affected data-contract standards gain valid and invalid example glob patterns in `operationalization_paths`.
+- Live `core/control_plane/indexes/standards/standard_index.json` entries for the affected data-contract standards gain valid and invalid example glob patterns in `operationalization_paths`.
 - The authored data-contract standards under `docs/standards/data_contracts/` gain example-family operationalization coverage.
 - Regression tests gain expectations for example lookup resolution and live standard-index coverage.
 
@@ -92,7 +92,7 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 ## Affected Surfaces
 - docs/standards/data_contracts/
 - the retired control-plane example corpus
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/test_cli_query_commands.py
 
@@ -107,5 +107,5 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 ## References
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/data_contracts/schema_standard.md
-- retired valid example index fixture standard_index.v1.example.json
-- retired valid example registry fixture authority_map.v1.example.json
+- retired valid example index fixture standard_index.example.json
+- retired valid example registry fixture authority_map.example.json

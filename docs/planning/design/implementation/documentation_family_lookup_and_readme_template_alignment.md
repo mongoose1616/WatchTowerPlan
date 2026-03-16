@@ -53,10 +53,10 @@ Breaks Documentation Family Lookup and README Template Alignment into a bounded 
 - The implementation must preserve existing exact and directory-descendant standards lookup behavior for current callers.
 
 ## Internal Standards and Canonical References Applied
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the index must stay compact and auditable while gaining enough expressiveness for repeating file families.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata changes must remain explicit in the standards corpus itself.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the README template update must follow the governed title and inventory contract.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the template should stay compact and avoid low-value pre-inventory scaffolding.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the index must stay compact and auditable while gaining enough expressiveness for repeating file families.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): operationalization metadata changes must remain explicit in the standards corpus itself.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the README template update must follow the governed title and inventory contract.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the template should stay compact and avoid low-value pre-inventory scaffolding.
 
 ## Proposed Technical Approach
 - Add glob-aware operationalization parsing and matching helpers in the standards repo-ops layer, then reuse them from standard-index sync, document semantics, and standards query behavior.

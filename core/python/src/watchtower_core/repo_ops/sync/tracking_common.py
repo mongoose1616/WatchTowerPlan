@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections import Counter
 from collections.abc import Mapping
-from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
@@ -57,32 +56,3 @@ def effective_updated_at(updated_at: str, closed_at: str | None = None) -> str:
         return closed_at
     return updated_at
 
-
-def markdown_repo_link(repo_root: Path, relative_path: str, *, label: str) -> str:
-    """Return one repository-local Markdown link for a tracker cell."""
-    return f"[{label}]({repo_root / relative_path})"
-
-
-def render_markdown_table(
-    headers: tuple[str, ...],
-    rows: tuple[tuple[str, ...], ...],
-) -> tuple[str, ...]:
-    """Render one Markdown table from headers and rows."""
-    separator = tuple("---" for _ in headers)
-    lines = [
-        "| " + " | ".join(headers) + " |",
-        "| " + " | ".join(separator) + " |",
-    ]
-    lines.extend("| " + " | ".join(row) + " |" for row in rows)
-    return tuple(lines)
-
-
-def render_bullet_summary(
-    items: tuple[tuple[str, int], ...],
-    *,
-    empty_message: str,
-) -> tuple[str, ...]:
-    """Render one compact bullet summary from labeled integer counts."""
-    if not items:
-        return (empty_message,)
-    return tuple(f"- `{label}`: {count}" for label, count in items)

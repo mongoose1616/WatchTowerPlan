@@ -34,10 +34,10 @@ This standard defines the shared baseline for planning-related derived index sta
 - Improving discoverability for the planning-related derived index family in README, standard-index, or query surfaces.
 
 ## Related Standards and Sources
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): keeps the shared baseline pattern explicit and section-complete instead of turning the member standards into vague stubs.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): requires the family baseline and member standards to stay queryable through the governed standard index.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the remaining member-standard deltas stay readable and reviewable.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable surfaces to move together when this family changes.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): keeps the shared baseline pattern explicit and section-complete instead of turning the member standards into vague stubs.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): requires the family baseline and member standards to stay queryable through the governed standard index.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the remaining member-standard deltas stay readable and reviewable.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable surfaces to move together when this family changes.
 
 ## Guidance
 - Treat the member standards in this family as derived indexes over governed planning, task, or traceability authority surfaces rather than as primary authored authorities themselves.
@@ -50,7 +50,7 @@ This standard defines the shared baseline for planning-related derived index sta
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `query`
-- `Operational Surfaces`: `docs/standards/data_contracts/planning_index_family_standard.md`; `docs/standards/data_contracts/coordination_index_standard.md`; `docs/standards/data_contracts/initiative_index_standard.md`; `docs/standards/data_contracts/planning_catalog_standard.md`; `docs/standards/data_contracts/prd_index_standard.md`; `docs/standards/data_contracts/decision_index_standard.md`; `docs/standards/data_contracts/design_document_index_standard.md`; `docs/standards/data_contracts/task_index_standard.md`; `docs/standards/data_contracts/traceability_index_standard.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/README.md`; `core/control_plane/indexes/standards/standard_index.v1.json`; `docs/commands/core_python/watchtower_core_query_standards.md`
+- `Operational Surfaces`: `docs/standards/data_contracts/planning_index_family_standard.md`; `docs/standards/data_contracts/coordination_index_standard.md`; `docs/standards/data_contracts/initiative_index_standard.md`; `docs/standards/data_contracts/planning_catalog_standard.md`; `docs/standards/data_contracts/prd_index_standard.md`; `docs/standards/data_contracts/decision_index_standard.md`; `docs/standards/data_contracts/design_document_index_standard.md`; `docs/standards/data_contracts/task_index_standard.md`; `docs/standards/data_contracts/traceability_index_standard.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/README.md`; `core/control_plane/indexes/standards/standard_index.json`; `docs/commands/core_python/watchtower_core_query_standards.md`
 
 ## Validation
 - Every member standard in this family should cite this baseline in `Related Standards and Sources`.
@@ -63,9 +63,9 @@ This standard defines the shared baseline for planning-related derived index sta
 - Update the affected member standards, `docs/standards/README.md`, `docs/standards/data_contracts/README.md`, the governed standard index, the `watchtower-core query standards` command page, and the direct regression tests in the same change set when family membership or family-wide discoverability changes.
 
 ## References
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md)
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/README.md)
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md)
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md)
+- [README.md](/docs/standards/data_contracts/README.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

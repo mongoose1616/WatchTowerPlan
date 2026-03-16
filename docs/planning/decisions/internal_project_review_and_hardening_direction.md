@@ -45,11 +45,11 @@ Keep the current validation and governance rules intact, fix `watchtower-core pl
 - Coordination and planning query payloads currently shape the same fields in more than one place.
 
 ## Applied References and Implications
-- [acceptance_evidence_reconciliation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): new traces should not enter the repo in a state that immediately fails acceptance reconciliation.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): bootstrap should publish the contract in the canonical family when the PRD emits durable acceptance IDs.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): generated feature-design docs must satisfy the repository's governed-document expectations, not just front matter shape.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): generated implementation plans need the same validation-compatible applied-reference framing.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): coordination and planning projections should stay structurally consistent across machine-readable lookup surfaces.
+- [acceptance_evidence_reconciliation_standard.md](/docs/standards/governance/acceptance_evidence_reconciliation_standard.md): new traces should not enter the repo in a state that immediately fails acceptance reconciliation.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): bootstrap should publish the contract in the canonical family when the PRD emits durable acceptance IDs.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): generated feature-design docs must satisfy the repository's governed-document expectations, not just front matter shape.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): generated implementation plans need the same validation-compatible applied-reference framing.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): coordination and planning projections should stay structurally consistent across machine-readable lookup surfaces.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py

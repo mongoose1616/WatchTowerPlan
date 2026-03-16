@@ -17,7 +17,7 @@ applies_to:
   - "docs/planning/prds/"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/validation_evidence/"
-  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
+  - "core/control_plane/indexes/traceability/traceability_index.json"
 aliases:
   - "acceptance reconciliation"
   - "evidence reconciliation"
@@ -45,11 +45,11 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - Reviewing whether acceptance and evidence drift exists across a traced initiative.
 
 ## Related Standards and Sources
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/acceptance_evidence_reconciliation.md): workflow surface that operationalizes or depends on this standard.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [acceptance_evidence_reconciliation.md](/workflows/modules/acceptance_evidence_reconciliation.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Reconcile acceptance at the shared `trace_id` level.
@@ -84,7 +84,7 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/prds/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `Operational Surfaces`: `docs/planning/prds/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Validation
 - PRD acceptance IDs, acceptance-contract acceptance IDs, and traceability acceptance IDs should match exactly.
@@ -97,9 +97,9 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - Update the workflow module, Python reconciliation command, validator registry, and any affected evidence artifacts in the same change set when this rule changes materially.
 
 ## References
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
-- [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/acceptance_evidence_reconciliation.md)
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
+- [acceptance_evidence_reconciliation.md](/workflows/modules/acceptance_evidence_reconciliation.md)
 
 ## Updated At
 - `2026-03-11T06:00:00Z`

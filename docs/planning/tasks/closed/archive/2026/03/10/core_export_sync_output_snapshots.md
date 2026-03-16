@@ -38,8 +38,8 @@ Ensure sync output directories feed later dependent targets from the materialize
 - Output-directory sync runs produce dependency-correct coordination outputs and the regression is covered by tests.
 
 ## Links
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [core_export_hardening_execution.md](/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
 - `2026-03-10T16:02:31Z`

@@ -14,7 +14,7 @@ updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "core/control_plane/indexes/tasks/task_index.v1.json"
+  - "core/control_plane/indexes/tasks/task_index.json"
 aliases:
   - "task index"
   - "task board index"
@@ -39,17 +39,17 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - Reviewing whether task metadata belongs in the task index or only in task prose.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this task-family standard narrows.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed-task entries can disappear from the current index because the full trace was purged.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this task-family standard narrows.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed-task entries can disappear from the current index because the full trace was purged.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.
 - Keep the task tracker and task index derived from those records.
 - Every task-index entry must point to an existing task document while the task's parent trace remains retained in the planning corpus.
@@ -112,7 +112,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
+- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:
@@ -124,13 +124,13 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 ## Change Control
 - In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes how tasks are indexed or queried.
-- Update the task tracker, traceability projection, and coordination projection in the same change set when task-index changes alter execution visibility materially.
+- Update the task tracker, traceability rendered surface, and coordination rendered surface in the same change set when task-index changes alter execution visibility materially.
 
 ## References
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
-- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
+- [README.md](/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

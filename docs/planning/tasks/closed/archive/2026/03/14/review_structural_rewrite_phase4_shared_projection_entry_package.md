@@ -16,14 +16,14 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_program.md
 - docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md
 - docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/indexes/coordination/coordination_index.v1.json
-- core/control_plane/indexes/planning/planning_catalog.v1.json
-- core/control_plane/indexes/initiatives/initiative_index.v1.json
-- core/control_plane/indexes/tasks/task_index.v1.json
-- core/control_plane/indexes/traceability/traceability_index.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/indexes/coordination/coordination_index.json
+- core/control_plane/indexes/planning/planning_catalog.json
+- core/control_plane/indexes/initiatives/initiative_index.json
+- core/control_plane/indexes/tasks/task_index.json
+- core/control_plane/indexes/traceability/traceability_index.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program
@@ -56,7 +56,7 @@ Review the bounded Phase 4 shared-projection entry package, confirm the public p
 - `Public planning boundary`: reaffirmed. `watchtower-core query authority --domain planning --format json` still resolves the same five planning-authority answers, and the review does not authorize any public planning-boundary change.
 - `Private internal-graph boundary`: reaffirmed. Any internal planning graph introduced by the first Phase 4 slice remains a private runtime detail rather than a new public artifact family.
 - `Consumer boundary`: explicit. The reviewed boundary now carries the coordination-sync group ordering (`task-index` -> `traceability-index` -> `initiative-index` -> `planning-catalog` -> `coordination-index` -> `task-tracking` -> `initiative-tracking` -> `coordination-tracking`), the task lifecycle and planning scaffold write paths that already call `CoordinationSyncService`, the direct initiative-closeout rebuild path, and the downstream tracker emitters the first slice can affect.
-- `Approved first slice`: [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- `Approved first slice`: [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
 - `Exact seam`: one private trace-scoped planning projection snapshot consumed by `InitiativeIndexSyncService` and `PlanningCatalogSyncService`. `task_index`, `traceability_index`, `coordination_index`, tracker emitters, and mutation callers remain on their current public outputs for this first slice.
 - `Next-step decision`: open one bounded implementation task for the approved first slice and keep broader Phase 4, Phase 5, Phase 6, and Phase 7 work blocked.
 
@@ -66,10 +66,10 @@ Review the bounded Phase 4 shared-projection entry package, confirm the public p
 - Refactoring `initiative_index` and `planning_catalog` behind one private snapshot is enough to prove shared-projection reuse and private-graph discipline without reopening the five public planning answers.
 
 ## Links
-- [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
-- [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
-- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- [structural_rewrite_phase4_shared_projection_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
+- [structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
+- [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Updated At
 - `2026-03-14T18:27:09Z`

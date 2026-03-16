@@ -32,8 +32,8 @@ aliases:
 Breaks the coordination-surface work into bounded slices for the coordination index, the generated human byproduct, and aligned planning entrypoint guidance.
 
 ## Source Request or Design
-- Feature design: [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
-- PRD: [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md)
+- Feature design: [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
+- PRD: [machine_first_coordination_surface.md](/docs/planning/prds/machine_first_coordination_surface.md)
 
 ## Scope Summary
 - Add the coordination index, schema, model, loader entry, sync service, and query path.
@@ -52,8 +52,8 @@ Breaks the coordination-surface work into bounded slices for the coordination in
 - The sync and validation command surfaces already exist, so the main work is adding one derived artifact family and rerouting entrypoint guidance.
 
 ## Internal Standards and Canonical References Applied
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the generated human coordination surface must stay proportional.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): family trackers remain available, but default entrypoint guidance can shift to the new coordination layer.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the generated human coordination surface must stay proportional.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): family trackers remain available, but default entrypoint guidance can shift to the new coordination layer.
 
 ## Proposed Technical Approach
 - Add a new coordination-index artifact family and keep it derived from the existing initiative and task families.
@@ -87,8 +87,8 @@ Breaks the coordination-surface work into bounded slices for the coordination in
 - Land a final closeout commit after the repo is green.
 
 ## References
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md)
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
+- [machine_first_coordination_surface.md](/docs/planning/prds/machine_first_coordination_surface.md)
+- [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
 
 ## Updated At
 - `2026-03-10T18:54:43Z`

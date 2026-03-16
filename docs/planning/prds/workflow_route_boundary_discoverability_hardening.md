@@ -77,7 +77,7 @@ Harden workflow route preview and workflow lookup so realistic reconciliation an
 
 ## References
 - March 13, 2026 refactor audit
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
+- [route_index_standard.md](/docs/standards/data_contracts/route_index_standard.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)

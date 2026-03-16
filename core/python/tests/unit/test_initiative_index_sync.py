@@ -11,10 +11,10 @@ from watchtower_core.control_plane.models import (
     TaskIndexEntry,
     TraceabilityEntry,
 )
-from watchtower_core.repo_ops.planning_projection_policy import (
+from watchtower_core.repo_ops.planning_rendered_policy import (
     _determine_current_phase,
 )
-from watchtower_core.repo_ops.planning_projection_task_selection import (
+from watchtower_core.repo_ops.planning_rendered_task_selection import (
     _build_active_task_summaries,
     _select_coordination_task,
     _task_is_blocked,
@@ -218,9 +218,9 @@ def test_initiative_index_allows_validation_phase_without_active_tasks(
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     trace_id = "trace.core_python_foundation"
     traceability_path = (
-        repo_root / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
     )
-    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.v1.json"
+    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.json"
 
     traceability_document = json.loads(traceability_path.read_text(encoding="utf-8"))
     trace_entries = traceability_document["entries"]

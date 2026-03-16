@@ -5,16 +5,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.adapters import render_rendered_surface, render_repo_link
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.repo_ops.sync.tracking_common import (
-    markdown_repo_link,
-    render_markdown_table,
-)
 
 COORDINATION_TRACKING_DOCUMENT_PATH = "docs/planning/coordination_tracking.md"
 INITIATIVE_TRACKING_DOCUMENT_PATH = "docs/planning/initiatives/initiative_tracking.md"
 TASK_TRACKING_DOCUMENT_PATH = "docs/planning/tasks/task_tracking.md"
+COORDINATION_TRACKING_SURFACE_ID = "rendered.coordination_tracking"
 ACTIVE_INITIATIVE_LIMIT = 5
 ACTIONABLE_TASK_LIMIT = 5
 RECENT_CLOSEOUT_LIMIT = 5
@@ -54,142 +52,107 @@ class CoordinationTrackingSyncService:
         recent_closed_preview = coordination_index.recent_closed_initiatives[
             :RECENT_CLOSEOUT_LIMIT
         ]
-
-        current_state_rows = (
-            ("Mode", f"`{coordination_index.coordination_mode}`"),
-            ("Summary", coordination_index.summary),
-            ("Next", coordination_index.recommended_next_action),
-            (
-                "Open First",
-                markdown_repo_link(
-                    self._repo_root,
-                    coordination_index.recommended_surface_path,
-                    label=coordination_index.recommended_surface_path,
-                ),
-            ),
-            (
-                "Companion Views",
-                ", ".join(
-                    [
-                        markdown_repo_link(
-                            self._repo_root,
-                            INITIATIVE_TRACKING_DOCUMENT_PATH,
-                            label="initiative_tracking.md",
-                        ),
-                        markdown_repo_link(
-                            self._repo_root,
-                            TASK_TRACKING_DOCUMENT_PATH,
-                            label="task_tracking.md",
-                        ),
-                    ]
-                ),
-            ),
+        surface = self._loader.load_rendered_surface_registry().get(
+            COORDINATION_TRACKING_SURFACE_ID
         )
-
-        lines = ["# Coordination Tracking", "", "## Current State"]
-        lines.extend(render_markdown_table(("Field", "Value"), current_state_rows))
-
-        lines.extend(["", "## Active Initiatives"])
-        if not active_preview:
-            lines.append("_No active initiatives._")
-        else:
-            rows: list[tuple[str, ...]] = []
-            for entry in active_preview:
-                owners = ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
-                rows.append(
+        content = render_rendered_surface(
+            surface,
+            {
+                "current_state": (
+                    {
+                        "field": "Mode",
+                        "value": f"`{coordination_index.coordination_mode}`",
+                    },
+                    {
+                        "field": "Summary",
+                        "value": coordination_index.summary,
+                    },
+                    {
+                        "field": "Next",
+                        "value": coordination_index.recommended_next_action,
+                    },
+                    {
+                        "field": "Open First",
+                        "value": render_repo_link(
+                            coordination_index.recommended_surface_path,
+                            label=coordination_index.recommended_surface_path,
+                        ),
+                    },
+                    {
+                        "field": "Companion Views",
+                        "value": ", ".join(
+                            (
+                                render_repo_link(
+                                    INITIATIVE_TRACKING_DOCUMENT_PATH,
+                                    label="initiative_tracking.md",
+                                ),
+                                render_repo_link(
+                                    TASK_TRACKING_DOCUMENT_PATH,
+                                    label="task_tracking.md",
+                                ),
+                            )
+                        ),
+                    },
+                ),
+                "active_initiatives": tuple(
+                    {
+                        "trace_id": entry.trace_id,
+                        "current_phase": entry.current_phase,
+                        "owners": (
+                            ", ".join(entry.active_owners)
+                            if entry.active_owners
+                            else "unassigned"
+                        ),
+                        "next_surface_path": entry.next_surface_path,
+                        "next_label": Path(entry.next_surface_path).name,
+                        "next_action": entry.next_action,
+                    }
+                    for entry in active_preview
+                ),
+                "active_initiative_notes": (
                     (
-                        f"`{entry.trace_id}`",
-                        f"`{entry.current_phase}`",
-                        owners,
-                        markdown_repo_link(
-                            self._repo_root,
-                            entry.next_surface_path,
-                            label=Path(entry.next_surface_path).name,
-                        ),
-                        entry.next_action,
-                    )
-                )
-            lines.extend(
-                render_markdown_table(
-                    ("Trace ID", "Phase", "Owners", "Next", "Action"),
-                    tuple(rows),
-                )
-            )
-            if coordination_index.active_initiative_count > len(active_preview):
-                lines.extend(
-                    [
-                        "",
-                        (
-                            f"_Showing {len(active_preview)} of "
-                            f"{coordination_index.active_initiative_count} active initiatives. "
-                            "Open initiative_tracking.md for the full family view._"
-                        ),
-                    ]
-                )
-
-        lines.extend(["", "## Actionable Tasks"])
-        if not actionable_preview:
-            lines.append("_No actionable tasks._")
-        else:
-            rows = [
-                (
-                    markdown_repo_link(
-                        self._repo_root,
-                        entry.doc_path,
-                        label=entry.task_id,
-                    ),
-                    f"`{entry.trace_id}`",
-                    f"`{entry.task_status}`",
-                    f"`{entry.priority}`",
-                    f"`{entry.owner}`",
-                )
-                for entry in actionable_preview
-            ]
-            lines.extend(
-                render_markdown_table(
-                    ("Task", "Initiative", "Status", "Priority", "Owner"),
-                    tuple(rows),
-                )
-            )
-            if coordination_index.actionable_task_count > len(actionable_preview):
-                lines.extend(
-                    [
-                        "",
-                        (
-                            f"_Showing {len(actionable_preview)} of "
-                            f"{coordination_index.actionable_task_count} actionable tasks. "
-                            "Use task_tracking.md or query coordination --format json for more._"
-                        ),
-                    ]
-                )
-
-        lines.extend(["", "## Recent Closeouts"])
-        if not recent_closed_preview:
-            lines.append("_No recent closeouts._")
-        else:
-            rows = [
-                (
-                    f"`{entry.trace_id}`",
-                    f"`{entry.initiative_status}`",
-                    f"`{entry.closed_at}`",
-                    markdown_repo_link(
-                        self._repo_root,
-                        entry.key_surface_path,
-                        label=Path(entry.key_surface_path).name,
+                        f"_Showing {len(active_preview)} of "
+                        f"{coordination_index.active_initiative_count} active initiatives. "
+                        "Open initiative_tracking.md for the full family view._"
                     ),
                 )
-                for entry in recent_closed_preview
-            ]
-            lines.extend(
-                render_markdown_table(
-                    ("Trace ID", "Status", "Closed At", "Key"),
-                    tuple(rows),
+                if coordination_index.active_initiative_count > len(active_preview)
+                else (),
+                "actionable_tasks": tuple(
+                    {
+                        "task_id": entry.task_id,
+                        "doc_path": entry.doc_path,
+                        "trace_id": entry.trace_id,
+                        "task_status": entry.task_status,
+                        "priority": entry.priority,
+                        "owner": entry.owner,
+                    }
+                    for entry in actionable_preview
+                ),
+                "actionable_task_notes": (
+                    (
+                        f"_Showing {len(actionable_preview)} of "
+                        f"{coordination_index.actionable_task_count} actionable tasks. "
+                        "Use task_tracking.md or query coordination --format json for more._"
+                    ),
                 )
-            )
-
-        lines.extend(["", f"_Updated At: `{coordination_index.updated_at}`_", ""])
+                if coordination_index.actionable_task_count > len(actionable_preview)
+                else (),
+                "recent_closeouts": tuple(
+                    {
+                        "trace_id": entry.trace_id,
+                        "initiative_status": entry.initiative_status,
+                        "closed_at": entry.closed_at,
+                        "key_surface_path": entry.key_surface_path,
+                        "key_label": Path(entry.key_surface_path).name,
+                    }
+                    for entry in recent_closed_preview
+                ),
+                "updated_at": coordination_index.updated_at,
+            },
+        )
         return CoordinationTrackingBuildResult(
-            content="\n".join(lines),
+            content=content,
             coordination_entry_count=len(coordination_index.entries),
             active_initiative_count=coordination_index.active_initiative_count,
             actionable_task_count=coordination_index.actionable_task_count,

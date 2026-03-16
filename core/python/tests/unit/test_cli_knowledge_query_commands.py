@@ -354,7 +354,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.documentation.standard_md",
         ),
         (
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "std.data_contracts.acceptance_contract",
         ),
         (
@@ -362,7 +362,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.authority_map",
         ),
         (
-            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/indexes/standards/standard_index.json",
             "std.data_contracts.standard_index",
         ),
         (
@@ -388,12 +388,12 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
         (
             (
                 "core/control_plane/ledgers/validation_evidence/"
-                "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json"
+                "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json"
             ),
             "std.data_contracts.validation_evidence",
         ),
         (
-            "core/control_plane/indexes/workflows/workflow_index.v1.json",
+            "core/control_plane/indexes/workflows/workflow_index.json",
             "std.data_contracts.workflow_index",
         ),
     )

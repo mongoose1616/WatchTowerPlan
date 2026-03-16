@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 related_ids:
 - prd.data_contract_example_operationalization_alignment
 - design.features.data_contract_example_operationalization_alignment

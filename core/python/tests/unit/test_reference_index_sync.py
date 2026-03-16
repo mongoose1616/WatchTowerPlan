@@ -37,7 +37,7 @@ def test_reference_index_sync_builds_schema_valid_document() -> None:
 def test_reference_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = ReferenceIndexSyncService(loader)
-    output_path = tmp_path / "reference_index.v1.json"
+    output_path = tmp_path / "reference_index.json"
 
     document = service.build_document()
     written_path = service.write_document(document, output_path)

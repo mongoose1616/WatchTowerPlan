@@ -17,7 +17,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
 
-COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
+COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 
 
 def _normalize_command_token(token: str) -> str:

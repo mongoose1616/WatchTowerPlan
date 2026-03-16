@@ -15,9 +15,9 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md
 - docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.json
 - core/python/src/watchtower_core/closeout/initiative.py
 - core/python/src/watchtower_core/cli/closeout_handlers.py
 - core/python/src/watchtower_core/repo_ops/sync/coordination.py
@@ -44,7 +44,7 @@ Route InitiativeCloseoutService through CoordinationSyncService for the shared p
 
 ## Scope
 - Reuse `CoordinationSyncService` for `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` after the traceability write in `InitiativeCloseoutService.close`.
-- Preserve the traceability write, the five public planning-authority answers, and the current `planning_projection_snapshot.py` privacy boundary.
+- Preserve the traceability write, the five public planning-authority answers, and the current `planning_rendered_snapshot.py` privacy boundary.
 - Keep `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` as direct closeout outputs outside the approved seam for this slice.
 - Keep `TaskLifecycleService` and `PlanningScaffoldService` write behavior unchanged in this checkpoint.
 
@@ -56,13 +56,13 @@ Route InitiativeCloseoutService through CoordinationSyncService for the shared p
 ## Outcome
 - `InitiativeCloseoutService.close` now writes traceability first, then reuses `CoordinationSyncService.run_closeout_shared_outputs` for exactly `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` without widening the seam to `task-index`, `traceability-index`, or `task-tracking`.
 - `traceability_output_path` remains the pre-seam canonical write, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain direct post-sync outputs outside the approved seam while the closeout CLI payload keeps the full output-path contract unchanged.
-- `core/python/tests/unit/test_initiative_closeout.py` now pins the exact shared coordination target subset plus the preserved direct tracker outputs, the closeout-plus-sync regression suite passed cleanly, and the slice now closes through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md) instead of broader Phase 4 rollout.
+- `core/python/tests/unit/test_initiative_closeout.py` now pins the exact shared coordination target subset plus the preserved direct tracker outputs, the closeout-plus-sync regression suite passed cleanly, and the slice now closes through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md) instead of broader Phase 4 rollout.
 
 ## Links
-- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
-- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
-- [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- [structural_rewrite_phase4_closeout_coordination_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 
 ## Updated At
 - `2026-03-15T06:18:27Z`

@@ -51,14 +51,14 @@ Defines the technical design for a canonical planning catalog, a machine authori
 - There is no machine-readable authority map that answers which artifact or query surface is canonical for common planning and governance questions.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should make authority explicit, keep joins deterministic, and prefer well-bounded reusable interfaces over implied conventions.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the canonical machine answer for a question should be explicit rather than reconstructed across overlapping surfaces.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): this work belongs inside the repository's governed core and planning substrate, not in future product-pack implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should make authority explicit, keep joins deterministic, and prefer well-bounded reusable interfaces over implied conventions.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the canonical machine answer for a question should be explicit rather than reconstructed across overlapping surfaces.
+- [repository_scope.md](/docs/foundations/repository_scope.md): this work belongs inside the repository's governed core and planning substrate, not in future product-pack implementation.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the new canonical planning join must preserve explicit trace links instead of replacing them with undocumented derived assumptions.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): initiative and coordination views remain useful projections, so the design must clarify their role relative to the canonical machine planning catalog.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): the authority and planning surfaces should stay discoverable through machine-readable lookup rather than only through prose docs.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the new canonical planning join must preserve explicit trace links instead of replacing them with undocumented derived assumptions.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative and coordination views remain useful projections, so the design must clarify their role relative to the canonical machine planning catalog.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): the authority and planning surfaces should stay discoverable through machine-readable lookup rather than only through prose docs.
 
 ## Design Goals and Constraints
 - Provide one canonical machine planning surface without forcing a destabilizing rewrite of all existing family indexes.
@@ -102,7 +102,7 @@ Defines the technical design for a canonical planning catalog, a machine authori
 ### Data and Interface Impacts
 - New schema: `urn:watchtower:schema:artifacts:indexes:planning-catalog:v1`.
 - New schema: `urn:watchtower:schema:artifacts:registries:authority-map:v1`.
-- New canonical artifact: `core/control_plane/indexes/planning/planning_catalog.v1.json`.
+- New canonical artifact: `core/control_plane/indexes/planning/planning_catalog.json`.
 - New canonical artifact: `core/control_plane/registries/authority_map.json`.
 - Loader support gains `load_planning_catalog()` and `load_authority_map()`.
 - Query support gains typed planning-catalog and authority-map query services.
@@ -153,6 +153,6 @@ Defines the technical design for a canonical planning catalog, a machine authori
 - Existing command consumers may rely on current JSON shapes, so compatibility notes and tests must be deliberate.
 
 ## References
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)
-- [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [initiative_index.json](/core/control_plane/indexes/initiatives/initiative_index.json)
+- [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)

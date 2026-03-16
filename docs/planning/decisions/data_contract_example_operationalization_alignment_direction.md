@@ -34,18 +34,18 @@ Update the affected data-contract standards to publish family-specific valid and
 - Another expansive internal standards review confirmed that concrete control-plane example artifacts do not resolve back to their governing family standards through standards lookup.
 
 ## Current Context and Constraints
-- `watchtower-core query standards --operationalization-path retired valid example index fixture standard_index.v1.example.json --format json` omits `std.data_contracts.standard_index`.
+- `watchtower-core query standards --operationalization-path retired valid example index fixture standard_index.example.json --format json` omits `std.data_contracts.standard_index`.
 - The same lookup blind spot reproduces for representative command-index, initiative-index, design-document-index, and traceability-index example artifacts, and the pattern extends beyond indexes into contract, ledger, and registry example families.
 - The standards query path already supports bounded repo-relative glob matching, so the gap is authored operationalization coverage rather than missing runtime capability.
 
 ## Applied References and Implications
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the live standard index must reflect the authored operationalization surfaces, so the governing standards themselves need to publish the example-family coverage.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): example artifacts remain schema-governed machine-readable surfaces, but schema-level coverage alone is too generic to answer which artifact-family standard applies.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the authored standards, derived index, and regression coverage must land together.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the live standard index must reflect the authored operationalization surfaces, so the governing standards themselves need to publish the example-family coverage.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): example artifacts remain schema-governed machine-readable surfaces, but schema-level coverage alone is too generic to answer which artifact-family standard applies.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the authored standards, derived index, and regression coverage must land together.
 
 ## Affected Surfaces
 - docs/standards/data_contracts/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/test_cli_query_commands.py
 - docs/planning/prds/data_contract_example_operationalization_alignment.md
@@ -88,5 +88,5 @@ Accept option 3. Publish family-specific valid and invalid example globs in the 
 ## References
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/data_contracts/schema_standard.md
-- retired valid example index fixture standard_index.v1.example.json
-- retired valid example contract fixture acceptance_contract.v1.example.json
+- retired valid example index fixture standard_index.example.json
+- retired valid example contract fixture acceptance_contract.example.json

@@ -46,14 +46,14 @@ The repo review showed that the current coordination path still leaves agents gu
 - The repo should not create a second authored planning family just to add a start-here view.
 
 ## Applied References and Implications
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains available, but default current-state navigation can move up one derived layer.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traceability remains the durable cross-family join, not the human start-here layer.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the human coordination byproduct must stay compact and not recreate the entire family trackers.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains available, but default current-state navigation can move up one derived layer.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traceability remains the durable cross-family join, not the human start-here layer.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the human coordination byproduct must stay compact and not recreate the entire family trackers.
 
 ## Affected Surfaces
 - `docs/planning/README.md`
 - `docs/planning/coordination_tracking.md`
-- `core/control_plane/indexes/coordination/coordination_index.v1.json`
+- `core/control_plane/indexes/coordination/coordination_index.json`
 - `core/python/src/watchtower_core/repo_ops/sync/`
 - `core/python/src/watchtower_core/cli/`
 
@@ -91,9 +91,9 @@ Adopt option 2. The coordination index becomes the default machine start-here pl
 - The design assumes humans still need family-specific trackers after the first coordination pass.
 
 ## References
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md)
-- [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
-- [preimplementation_machine_coordination_entrypoint.md](/home/j/WatchTowerPlan/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
+- [machine_first_coordination_surface.md](/docs/planning/prds/machine_first_coordination_surface.md)
+- [machine_first_coordination_surface.md](/docs/planning/design/features/machine_first_coordination_surface.md)
+- [preimplementation_machine_coordination_entrypoint.md](/docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md)
 
 ## Updated At
 - `2026-03-10T18:54:43Z`

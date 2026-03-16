@@ -7,6 +7,6 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/contracts/acceptance/README.md` | Describes the purpose of the acceptance contracts directory and its current contents. |
-| `core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json` | Acceptance contract for the core export readiness and optimization trace. |
-| `core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json` | Acceptance contract for the core Python foundation trace. |
-| `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json` | Acceptance contract for the guarded structural rewrite program through the approved closeout-tracking refresh-boundary checkpoint. |
+| `core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json` | Acceptance contract for the core export readiness and optimization trace. |
+| `core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json` | Acceptance contract for the core Python foundation trace. |
+| `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json` | Acceptance contract for the guarded structural rewrite program through the approved closeout-tracking refresh-boundary checkpoint. |

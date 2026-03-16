@@ -16,8 +16,8 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/planning/
-- core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.json
 - core/control_plane/indexes/
 - core/python/tests/unit/test_design_document_index_sync.py
 depends_on:

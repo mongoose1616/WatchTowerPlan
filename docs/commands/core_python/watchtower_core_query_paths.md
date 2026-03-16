@@ -67,7 +67,7 @@ uv run watchtower-core query paths --surface-kind command_doc --limit 5 --format
 - `core/python/src/watchtower_core/cli/query_discovery_family.py`
 - `core/python/src/watchtower_core/cli/query_discovery_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/repository.py`
-- `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
+- `core/control_plane/indexes/repository_paths/repository_path_index.json`
 
 ## Updated At
 - `2026-03-13T21:57:29Z`

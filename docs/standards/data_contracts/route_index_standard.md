@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable route indexes stored under `core/control_plane/indexes/routes/`.
 
 ## Purpose
-Provide a compact machine-readable projection of the routing table so route-preview tooling can resolve task types and required workflow modules without reparsing `workflows/ROUTING_TABLE.md` on every lookup.
+Provide a compact machine-readable rendered surface of the routing table so route-preview tooling can resolve task types and required workflow modules without reparsing `workflows/ROUTING_TABLE.md` on every lookup.
 
 ## Scope
 - Applies to machine-readable route index artifacts stored under `core/control_plane/indexes/routes/`.
@@ -33,10 +33,10 @@ Provide a compact machine-readable projection of the routing table so route-prev
 - Auditing whether routed task types still point to the correct workflow modules.
 
 ## Related Standards and Sources
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): defines the higher-level routing semantics that the route index mirrors for machine use.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): defines the companion workflow lookup surface referenced by route entries.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): published route indexes use JSON as the governed machine-readable format.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): canonical authored routing source that the route index derives from.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): defines the higher-level routing semantics that the route index mirrors for machine use.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): defines the companion workflow lookup surface referenced by route entries.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): published route indexes use JSON as the governed machine-readable format.
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): canonical authored routing source that the route index derives from.
 
 ## Guidance
 - Model route lookup as a derived index, not as an authored registry.
@@ -85,9 +85,9 @@ Provide a compact machine-readable projection of the routing table so route-prev
 - Update the companion artifact schema, live route index, command docs, and routing guidance in the same change set when the route-index family changes structurally.
 
 ## References
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md)
 
 ## Updated At
 - `2026-03-12T01:22:49Z`

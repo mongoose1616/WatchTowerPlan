@@ -36,23 +36,23 @@ Defines the technical design boundary for Foundations Documentation Boundary Ali
 - Does not rewrite historical planning records that are no longer current authority.
 
 ## Current-State Context
-- [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md) classifies `watchtower_core.query` and `watchtower_core.sync` as boundary-layer compatibility namespaces and `watchtower_core.repo_ops` as the authoritative repo-local orchestration layer.
-- Many current command pages under [docs/commands/core_python](/home/j/WatchTowerPlan/docs/commands/core_python) still cite `watchtower_core.query/*` or `watchtower_core.sync/*` compatibility wrappers in `Source Surface`.
-- [docs/commands/core_python/README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md) under-inventories the live command-doc corpus and does not route readers to the foundations-specific query or sync pages.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md), [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md), and the GitHub collaboration docs still encode the pre-`repo_ops` ownership model for parts of the runtime surface.
+- [core/python/README.md](/core/python/README.md) classifies `watchtower_core.query` and `watchtower_core.sync` as boundary-layer compatibility namespaces and `watchtower_core.repo_ops` as the authoritative repo-local orchestration layer.
+- Many current command pages under [docs/commands/core_python](/docs/commands/core_python) still cite `watchtower_core.query/*` or `watchtower_core.sync/*` compatibility wrappers in `Source Surface`.
+- [docs/commands/core_python/README.md](/docs/commands/core_python/README.md) under-inventories the live command-doc corpus and does not route readers to the foundations-specific query or sync pages.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md), [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md), and the GitHub collaboration docs still encode the pre-`repo_ops` ownership model for parts of the runtime surface.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the fix must stay inside `WatchTowerPlan`'s current owned documentation and governed-core surfaces rather than reopening future product scope.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the documentation fix should make authority seams more explicit and inspectable instead of leaving compatibility layers to masquerade as owners.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): current authoritative human-readable and machine-readable surfaces must agree in the same change set.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): the Python workspace guidance should reflect the real implementation boundary so maintainers do not route work to stale package locations.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the fix must stay inside `WatchTowerPlan`'s current owned documentation and governed-core surfaces rather than reopening future product scope.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the documentation fix should make authority seams more explicit and inspectable instead of leaving compatibility layers to masquerade as owners.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): current authoritative human-readable and machine-readable surfaces must agree in the same change set.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): the Python workspace guidance should reflect the real implementation boundary so maintainers do not route work to stale package locations.
 
 ## Internal Standards and Canonical References Applied
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact and high-signal while still covering the important foundations-related entrypoints.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages must identify the implementation surface that actually owns the command behavior.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the workspace standard must publish the current package-layout boundary correctly.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): authoritative docs must steer new repo-local query or sync work into the correct module families.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): governance surfaces that describe GitHub sync must point at the authoritative sync owner.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact and high-signal while still covering the important foundations-related entrypoints.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages must identify the implementation surface that actually owns the command behavior.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the workspace standard must publish the current package-layout boundary correctly.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): authoritative docs must steer new repo-local query or sync work into the correct module families.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): governance surfaces that describe GitHub sync must point at the authoritative sync owner.
 
 ## Design Goals and Constraints
 - Keep the documentation changes bounded to current authoritative surfaces while fixing the whole reproduced ownership drift in one slice.
@@ -73,7 +73,7 @@ Defines the technical design boundary for Foundations Documentation Boundary Ali
 
 ## Recommended Design
 ### Architecture
-- Treat [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md), package README boundaries, current command docs, current standards, and current reference docs as one documentation-authority slice.
+- Treat [core/python/README.md](/core/python/README.md), package README boundaries, current command docs, current standards, and current reference docs as one documentation-authority slice.
 - Align query and sync leaf command pages to the authoritative `repo_ops` owners while leaving group pages and CLI-family source surfaces unchanged when they are already correct.
 - Narrow the core Python command-doc README to anchor entrypoints and foundations-relevant leaves instead of a misleading partial list of subcommands.
 
@@ -113,7 +113,7 @@ Defines the technical design boundary for Foundations Documentation Boundary Ali
 - The workspace standard update can create new drift if it fixes the package-layout table but leaves the examples or operationalization metadata on the old path model.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

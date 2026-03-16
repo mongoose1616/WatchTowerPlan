@@ -13,7 +13,7 @@ authority: supporting
 applies_to:
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/unit/test_standard_index_sync.py
 - core/python/tests/integration/test_control_plane_artifacts.py
@@ -41,21 +41,21 @@ Repair the foundations-family boundary by narrowing the authored foundation docu
 - Comprehensive internal project review for documentation coverage, standards alignment, and cohesiveness with foundations/**.
 
 ## Current Context and Constraints
-- The current review reproduced a real mismatch between the authored standard and live machine lookup: `watchtower-core query standards --operationalization-path docs/foundations/README.md` returns `std.documentation.foundation_md` even though [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md) explicitly excludes the family README from scope.
-- The foundations README is already covered by [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md), so the extra foundation-document match is incorrect rather than simply redundant.
+- The current review reproduced a real mismatch between the authored standard and live machine lookup: `watchtower-core query standards --operationalization-path docs/foundations/README.md` returns `std.documentation.foundation_md` even though [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md) explicitly excludes the family README from scope.
+- The foundations README is already covered by [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md), so the extra foundation-document match is incorrect rather than simply redundant.
 - Current regressions do not fail closed on complete governed foundation-doc coverage plus README exclusion, so the same drift can recur silently.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): keeps the fix inside the repo-owned docs, standards, indexes, and test surfaces.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): favors explicit, deterministic published contracts over hidden heuristics.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires the authored standard, derived standard index, and regressions to move together in one slice.
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): is the contract whose scope and operationalization need to agree again.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): confirms that the family README belongs to the README-document family rather than the governed foundation-document family.
+- [repository_scope.md](/docs/foundations/repository_scope.md): keeps the fix inside the repo-owned docs, standards, indexes, and test surfaces.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): favors explicit, deterministic published contracts over hidden heuristics.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires the authored standard, derived standard index, and regressions to move together in one slice.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): is the contract whose scope and operationalization need to agree again.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): confirms that the family README belongs to the README-document family rather than the governed foundation-document family.
 
 ## Affected Surfaces
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/unit/test_standard_index_sync.py
 - core/python/tests/integration/test_control_plane_artifacts.py
@@ -90,8 +90,8 @@ Apply Option 2 and keep standards-query runtime behavior unchanged.
 - Risks incomplete coverage if the tests do not verify both positive governed doc matches and the negative README case.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md)

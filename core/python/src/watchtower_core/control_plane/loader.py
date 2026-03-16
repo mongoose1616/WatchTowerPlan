@@ -23,6 +23,7 @@ from watchtower_core.control_plane.models import (
     PlanningCatalog,
     PrdIndex,
     ReferenceIndex,
+    RenderedSurfaceRegistry,
     RepositoryPathIndex,
     RouteIndex,
     SchemaCatalog,
@@ -59,25 +60,26 @@ GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
 STATUS_REGISTRY_PATH = "core/control_plane/registries/status_registry.json"
 ACTOR_REGISTRY_PATH = "core/control_plane/registries/actor_registry.json"
+RENDERED_SURFACE_REGISTRY_PATH = "core/control_plane/registries/rendered_surface_registry.json"
 REPOSITORY_PATH_INDEX_PATH = (
-    "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+    "core/control_plane/indexes/repository_paths/repository_path_index.json"
 )
-COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
-ROUTE_INDEX_PATH = "core/control_plane/indexes/routes/route_index.v1.json"
-REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
-FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.v1.json"
-INITIATIVE_INDEX_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
-COORDINATION_INDEX_PATH = "core/control_plane/indexes/coordination/coordination_index.v1.json"
-STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
-WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
-PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
-DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
+COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.json"
+ROUTE_INDEX_PATH = "core/control_plane/indexes/routes/route_index.json"
+REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.json"
+FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.json"
+INITIATIVE_INDEX_PATH = "core/control_plane/indexes/initiatives/initiative_index.json"
+COORDINATION_INDEX_PATH = "core/control_plane/indexes/coordination/coordination_index.json"
+STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.json"
+WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
+PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.json"
+DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.json"
 DESIGN_DOCUMENT_INDEX_PATH = (
-    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+    "core/control_plane/indexes/design_documents/design_document_index.json"
 )
-TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
-TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
-PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.v1.json"
+TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.json"
+TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.json"
+PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 TRACE_PURGE_LEDGER_DIRECTORY = "core/control_plane/ledgers/purges"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
@@ -285,6 +287,13 @@ class ControlPlaneLoader:
             AuthorityMap.from_document,
         )
 
+    def load_rendered_surface_registry(self) -> RenderedSurfaceRegistry:
+        """Load the current rendered-surface registry."""
+        return self._load_typed_document(
+            RENDERED_SURFACE_REGISTRY_PATH,
+            RenderedSurfaceRegistry.from_document,
+        )
+
     def load_workflow_metadata_registry(self) -> WorkflowMetadataRegistry:
         """Load the current workflow metadata registry."""
         return self._load_typed_document(
@@ -483,6 +492,11 @@ class ControlPlaneLoader:
             return self._load_typed_document(relative_path, ValidatorRegistry.from_document)
         if surface_name == "authority_map":
             return self._load_typed_document(relative_path, AuthorityMap.from_document)
+        if surface_name == "rendered_surface_registry":
+            return self._load_typed_document(
+                relative_path,
+                RenderedSurfaceRegistry.from_document,
+            )
         if surface_name == "workflow_metadata_registry":
             return self._load_typed_document(relative_path, WorkflowMetadataRegistry.from_document)
         if surface_name == "pack_settings":
@@ -536,6 +550,8 @@ class ControlPlaneLoader:
             return self.load_validator_registry()
         if relative_path == AUTHORITY_MAP_PATH:
             return self.load_authority_map()
+        if relative_path == RENDERED_SURFACE_REGISTRY_PATH:
+            return self.load_rendered_surface_registry()
         if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
             return self.load_workflow_metadata_registry()
         if relative_path == PACK_SETTINGS_PATH:

@@ -53,9 +53,9 @@ Implement the confirmed documentation and workflow alignment fixes without chang
 - Assume the existing local reference corpus already contains the technologies and standards named by the engineering stack foundation.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): constrains the minimum structure and reference visibility expected from foundation docs.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): constrains what the synced foundation index should expose once the source foundation doc is complete.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): constrains same-change-set drift closure and the required validation loop.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): constrains the minimum structure and reference visibility expected from foundation docs.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): constrains what the synced foundation index should expose once the source foundation doc is complete.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): constrains same-change-set drift closure and the required validation loop.
 
 ## Proposed Technical Approach
 - Edit `docs/foundations/engineering_stack_direction.md` to cite the governed local references for the technologies and standards it materially names.
@@ -80,6 +80,6 @@ Implement the confirmed documentation and workflow alignment fixes without chang
 - Complete two post-fix review passes from different angles and record that neither found additional actionable issues.
 
 ## References
-- [foundation_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/foundation_index.v1.json)
-- [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
-- [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md)
+- [foundation_index.json](/core/control_plane/indexes/foundations/foundation_index.json)
+- [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+- [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md)

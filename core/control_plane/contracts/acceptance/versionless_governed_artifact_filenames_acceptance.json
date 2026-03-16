@@ -1,0 +1,143 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.versionless_governed_artifact_filenames",
+  "title": "Versionless Governed Artifact Filenames Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.versionless_governed_artifact_filenames",
+  "source_prd_id": "prd.versionless_governed_artifact_filenames",
+  "entries": [
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.001",
+      "summary": "The trace publishes the full planning chain, aligned acceptance or evidence artifacts, and a bounded execution task set for the governed filename migration.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/versionless_governed_artifact_filenames.md",
+        "docs/planning/design/features/versionless_governed_artifact_filenames.md",
+        "docs/planning/design/implementation/versionless_governed_artifact_filenames.md",
+        "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
+        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The trace must stay internally aligned while the breaking filename migration is executed and closed."
+    },
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.002",
+      "summary": "The naming and schema standards reject filename-embedded major-version tokens and direct compatibility signaling into artifact content instead of the path.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.002"
+      ],
+      "validation_targets": [
+        "docs/standards/metadata/naming_and_ids_standard.md",
+        "docs/standards/data_contracts/schema_standard.md"
+      ],
+      "related_paths": [
+        "core/control_plane/README.md",
+        "core/control_plane/registries/schema_catalog.json"
+      ],
+      "notes": "Compatibility metadata remains in schema URNs, `$schema` references, artifact IDs, and explicit version fields, not in governed filenames."
+    },
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.003",
+      "summary": "The canonical governed file tree uses versionless filenames across schemas, contracts, indexes, ledgers, manifests, registries, and related governed artifacts in scope.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.003",
+        "req.versionless_governed_artifact_filenames.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
+        "core/control_plane/indexes/commands/command_index.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+        "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/indexes/",
+        "core/control_plane/ledgers/",
+        "core/control_plane/manifests/",
+        "core/control_plane/registries/",
+        "core/control_plane/schemas/"
+      ],
+      "notes": "No active compatibility copies, duplicate physical governed files, or mixed filename conventions may remain in the canonical control-plane tree."
+    },
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.004",
+      "summary": "Runtime code, validation logic, tests, command docs, and planning records resolve only the versionless governed paths with no retained compatibility aliases, wrappers, or shims.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.004",
+        "req.versionless_governed_artifact_filenames.005"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/closeout/purge_trace.py",
+        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+        "core/python/src/watchtower_core/repo_ops/validation/governed_filenames.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/commands/core_python/watchtower_core_validate.md",
+        "core/python/README.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Temporary migration helpers are allowed only during execution and must be removed before initiative closeout."
+    },
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.005",
+      "summary": "The governed filename migration lands with sync, acceptance reconciliation, full repository validation, tests, typing, and linting all green.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.006"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/"
+      ],
+      "notes": "The explicit validation bar is `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.versionless_governed_artifact_filenames --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .`."
+    },
+    {
+      "acceptance_id": "ac.versionless_governed_artifact_filenames.006",
+      "summary": "Closeout records that the migration is complete and that no active `.v1` filename convention, compatibility shim, duplicate governed file, or similar transitional artifact remains in scope.",
+      "source_requirement_ids": [
+        "req.versionless_governed_artifact_filenames.005",
+        "req.versionless_governed_artifact_filenames.006"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
+        "core/control_plane/indexes/tasks/task_index.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/standards/",
+        "docs/planning/"
+      ],
+      "notes": "The trace does not close until the active repo is free of retained compatibility or historical migration surfaces in scope."
+    }
+  ]
+}

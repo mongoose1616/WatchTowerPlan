@@ -33,11 +33,11 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - Reviewing whether a proposed machine-readable path catalog is correctly modeled as a derived index.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/indexes/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model repository path lookup as an index, not as a registry.
@@ -116,11 +116,11 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - Prefer regenerating the index over hand-editing drift when the index is intended to be machine-produced.
 
 ## References
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/README.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [README.md](/core/control_plane/indexes/README.md)
 
 ## Notes
 - README files remain the human orientation layer for directories.

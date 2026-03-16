@@ -29,7 +29,7 @@ Provide a baseline for deciding when typed model validation should reject coerci
 - `https://docs.pydantic.dev/latest/` - verified 2026-03-09; Welcome to Pydantic.
 
 ## Related Standards and Sources
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### What Strict Mode Changes
@@ -53,7 +53,7 @@ Provide a baseline for deciding when typed model validation should reject coerci
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ### Why It Matters Here
 - Use this reference when future Python automation needs typed input validation.
@@ -64,7 +64,7 @@ Provide a baseline for deciding when typed model validation should reject coerci
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

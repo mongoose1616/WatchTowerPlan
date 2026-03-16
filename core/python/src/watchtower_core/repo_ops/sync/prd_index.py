@@ -19,7 +19,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
-PRD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
+PRD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/prds/prd_index.json"
 PRD_FRONT_MATTER_SCHEMA_ID = "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1"
 PRD_DOC_ROOT = "docs/planning/prds"
 PRD_EXCLUDED_NAMES = {"README.md", "prd_tracking.md"}

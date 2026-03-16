@@ -69,8 +69,8 @@ These problems undermine the repository's intended bootstrap contract in differe
 - The trace depends on keeping planning docs, task records, acceptance artifacts, and derived indexes synchronized throughout the review cycle.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): reusable write paths should produce valid outputs by default instead of depending on downstream cleanup or manual interpretation.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the repository's authored standards remain authoritative, so fixes should align generated artifacts and derived projections to those rules rather than weakening the rules.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): reusable write paths should produce valid outputs by default instead of depending on downstream cleanup or manual interpretation.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the repository's authored standards remain authoritative, so fixes should align generated artifacts and derived projections to those rules rather than weakening the rules.
 
 ## References
 - docs/planning/coordination_tracking.md

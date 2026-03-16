@@ -43,9 +43,9 @@ Introduce governed sync-family and validation-family registries so orchestration
 - Aggregate sync and validation flows no longer require parallel manual enumerations to stay correct.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
 
 ## Updated At
 - `2026-03-10T05:24:43Z`

@@ -11,7 +11,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - workflows/ROUTING_TABLE.md
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 ---
@@ -43,15 +43,15 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - The route-preview command docs and tests currently protect a different maintenance-request phrase, so the exact live request that reproduced the review issue is not yet covered by regression validation.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer one explicit metadata seam over a larger routing redesign.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): route behavior should stay governed by authored metadata plus same-change validation.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): route preview should keep helping maintainers inside the shared-core workflow model without claiming autonomous execution authority.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): prefer one explicit metadata seam over a larger routing redesign.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): route behavior should stay governed by authored metadata plus same-change validation.
+- [product_direction.md](/docs/foundations/product_direction.md): route preview should keep helping maintainers inside the shared-core workflow model without claiming autonomous execution authority.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): the routed task taxonomy remains authoritative, so the fix belongs in the authored routed keyword layer.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): route-preview behavior changes must ship with aligned command examples and notes.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): derived lookup surfaces must stay aligned with the authored workflow model.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the planning chain, route change, tests, and evidence should remain linked through one trace.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): the routed task taxonomy remains authoritative, so the fix belongs in the authored routed keyword layer.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): route-preview behavior changes must ship with aligned command examples and notes.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): derived lookup surfaces must stay aligned with the authored workflow model.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the planning chain, route change, tests, and evidence should remain linked through one trace.
 
 ## Design Goals and Constraints
 - Make the exact report-review maintenance request match the same workflow set a maintainer would select manually.
@@ -77,7 +77,7 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 
 ### Data and Interface Impacts
 - `workflows/ROUTING_TABLE.md` changes the authored keyword examples for two routed task types.
-- `core/control_plane/indexes/routes/route_index.v1.json` changes through sync and becomes the machine-readable expression of the new cues.
+- `core/control_plane/indexes/routes/route_index.json` changes through sync and becomes the machine-readable expression of the new cues.
 - `watchtower-core route preview` docs and tests change to protect the exact reproduced request.
 
 ### Execution Flow
@@ -92,7 +92,7 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 
 ## Affected Surfaces
 - workflows/ROUTING_TABLE.md
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 - core/python/tests/unit/test_route_index_sync.py
@@ -107,4 +107,4 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 
 ## References
 - March 2026 workflow and governance review summary for the reproduced route-preview gap.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md)

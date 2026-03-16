@@ -50,11 +50,11 @@ Repair foundations documentation completeness by updating the authoritative foun
 - The repository’s foundations-alignment workflow should foreground current repository scope and standards posture, not only future-product or design-philosophy context.
 
 ## Applied References and Implications
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): foundations-aware review must keep current repository ownership explicit, so the workflow context cannot omit scope.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): same-change-set coherence across docs, indexes, and validation is a governing constraint for this repair.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): the stack-direction foundation is the right source surface to repair because the index is derived from it.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the existing index contract already expects reference and external-authority metadata when present in the source docs.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): a maintenance-style review slice should close bounded drift rather than leave partially repaired surfaces behind.
+- [repository_scope.md](/docs/foundations/repository_scope.md): foundations-aware review must keep current repository ownership explicit, so the workflow context cannot omit scope.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): same-change-set coherence across docs, indexes, and validation is a governing constraint for this repair.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): the stack-direction foundation is the right source surface to repair because the index is derived from it.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the existing index contract already expects reference and external-authority metadata when present in the source docs.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): a maintenance-style review slice should close bounded drift rather than leave partially repaired surfaces behind.
 
 ## Affected Surfaces
 - docs/foundations/
@@ -99,7 +99,7 @@ Choose Option 2. Treat the issue as source-document incompleteness and workflow/
 - Future foundation-audience changes could stale examples again if not kept under regression coverage.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md)
-- [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md)
+- [README.md](/docs/foundations/README.md)
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md)
+- [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md)

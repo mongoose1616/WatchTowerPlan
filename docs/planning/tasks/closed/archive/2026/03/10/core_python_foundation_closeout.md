@@ -14,8 +14,8 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/prds/core_python_foundation.md"
-  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
-  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+  - "core/control_plane/indexes/traceability/traceability_index.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.json"
 related_ids:
   - "prd.core_python_foundation"
   - "contract.acceptance.core_python_foundation"
@@ -42,9 +42,9 @@ Tracks the remaining initiative-level closeout for the core Python foundation sl
 - The planning corpus no longer relies on implied completion for the foundation slice.
 
 ## Links
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [watchtower_core_closeout_initiative.md](/docs/commands/core_python/watchtower_core_closeout_initiative.md)
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
 
 ## Updated At
 - `2026-03-10T03:53:14Z`

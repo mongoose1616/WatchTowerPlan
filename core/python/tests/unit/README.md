@@ -22,7 +22,7 @@
 | `core/python/tests/unit/test_cli_validate_commands.py` | Parser-level JSON and evidence-recording tests for the validation command family. |
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
-| `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path projection. |
+| `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path rendering. |
 | `core/python/tests/unit/document_semantics_fixtures.py` | Shared temporary-repo and fixture writers for the focused document-semantics validation suites. |
 | `core/python/tests/unit/test_document_semantics_validation.py` | Compatibility marker that preserves the historical document-semantics hotspot path and points to the focused suites. |
 | `core/python/tests/unit/test_document_semantics_validator_selection.py` | Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules. |
@@ -34,7 +34,7 @@
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
 | `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
 | `core/python/tests/unit/test_planning_catalog_sync.py` | Unit tests for rebuilding the planning catalog and validating the deep planning query behavior against the governed artifact. |
-| `core/python/tests/unit/test_projection_search_common.py` | Unit tests for the shared projection-search helper that planning, initiative, and coordination queries now share. |
+| `core/python/tests/unit/test_rendered_search_common.py` | Unit tests for the shared rendered-surface search helper that planning, initiative, and coordination queries now share. |
 | `core/python/tests/unit/test_repo_ops_compatibility.py` | Unit tests for the explicit repo-ops boundary and its compatibility shims. |
 | `core/python/tests/unit/test_prd_index_sync.py` | Unit tests for rebuilding the PRD index from governed PRD documents. |
 | `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |

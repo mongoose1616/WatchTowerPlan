@@ -48,8 +48,8 @@ Refactor the largest coordination-facing Python modules into smaller family modu
 - Targeted and full-repo validation passed after the refactor.
 
 ## Links
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- [preimplementation_repo_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/preimplementation_repo_hardening_execution.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [preimplementation_repo_hardening_execution.md](/docs/planning/design/implementation/preimplementation_repo_hardening_execution.md)
 
 ## Updated At
 - `2026-03-10T18:47:27Z`

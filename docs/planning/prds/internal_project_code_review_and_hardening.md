@@ -68,8 +68,8 @@ The review also confirmed an adjacent constraint that shapes the scaffold fix: s
 - The trace depends on keeping PRD, decision, design, contract, evidence, task, index, and tracker surfaces aligned through the final sync and closeout cycle.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): write paths should be deterministic and valid by construction rather than relying on manual reconciliation after mutation.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): authoritative planning and machine-readable companion surfaces must remain synchronized in the same bounded change.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): write paths should be deterministic and valid by construction rather than relying on manual reconciliation after mutation.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): authoritative planning and machine-readable companion surfaces must remain synchronized in the same bounded change.
 
 ## References
 - docs/planning/coordination_tracking.md

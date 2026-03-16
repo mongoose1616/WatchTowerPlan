@@ -49,14 +49,14 @@ Defines the code-review-backed design for lifecycle sync completeness across tra
 - The user-facing repro shows `query planning` still reporting `initiative_status: active` and `current_phase: closeout` after closeout while coordination already reports the trace as `completed` and `closed`.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): deterministic write paths should leave derived machine surfaces truthful without extra operator repair steps.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): companion machine-readable views must remain aligned with authoritative planning mutations.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): deterministic write paths should leave derived machine surfaces truthful without extra operator repair steps.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): companion machine-readable views must remain aligned with authoritative planning mutations.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced planning changes need explicit traceability outcomes instead of silent drift.
-- [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md): the planning catalog is a canonical machine-readable planning join and must stay current after closeout.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): lifecycle changes that alter current phase, ownership, or next action must refresh the initiative-family coordination view.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): new traces should not be treated as active coordination work until they have bounded task state.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced planning changes need explicit traceability outcomes instead of silent drift.
+- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): the planning catalog is a canonical machine-readable planning join and must stay current after closeout.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): lifecycle changes that alter current phase, ownership, or next action must refresh the initiative-family coordination view.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): new traces should not be treated as active coordination work until they have bounded task state.
 
 ## Design Goals and Constraints
 - Refresh stale coordination-derived surfaces immediately after traced scaffold mutations that belong to an existing coordination-valid trace.

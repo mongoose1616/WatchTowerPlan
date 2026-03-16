@@ -36,8 +36,8 @@ aliases:
 Breaks unit-test hardening and suite rebalancing into bounded slices for planning bootstrap, executable coverage, suite structure, and orchestration hardening.
 
 ## Source Request or Design
-- Feature design: [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/design/features/unit_test_hardening_and_rebalancing.md)
-- PRD: [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md)
+- Feature design: [unit_test_hardening_and_rebalancing.md](/docs/planning/design/features/unit_test_hardening_and_rebalancing.md)
+- PRD: [unit_test_hardening_and_rebalancing.md](/docs/planning/prds/unit_test_hardening_and_rebalancing.md)
 
 ## Scope Summary
 - Add direct unit coverage for under-tested executable surfaces and rebalance CLI test structure.
@@ -49,10 +49,10 @@ Breaks unit-test hardening and suite rebalancing into bounded slices for plannin
 - The initiative should prefer direct handler or service tests over more aggregate CLI smoke tests whenever both can cover the same behavior.
 
 ## Internal Standards and Canonical References Applied
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): the plan should state the concrete standards and canonical references that constrain the execution sequence.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): each slice should stay modular, validated, and aligned with its companion planning surfaces.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): validation and execution stay inside `core/python/` and use the canonical workspace tooling.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): task, tracker, and initiative closeout steps must move with the implementation work instead of being deferred informally.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): the plan should state the concrete standards and canonical references that constrain the execution sequence.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): each slice should stay modular, validated, and aligned with its companion planning surfaces.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): validation and execution stay inside `core/python/` and use the canonical workspace tooling.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): task, tracker, and initiative closeout steps must move with the implementation work instead of being deferred informally.
 
 ## Proposed Technical Approach
 - Land the work in small slices: bootstrap and tasking, critical executable coverage, suite-structure rebalancing, orchestration-failure coverage, and closeout.

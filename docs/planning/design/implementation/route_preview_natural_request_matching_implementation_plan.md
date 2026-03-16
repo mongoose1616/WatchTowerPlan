@@ -11,7 +11,7 @@ audience: shared
 authority: supporting
 applies_to:
 - workflows/ROUTING_TABLE.md
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 ---
@@ -32,7 +32,7 @@ applies_to:
 Break the natural maintenance-request route matching fix into one bounded implementation and validation slice.
 
 ## Source Request or Design
-- Feature design: [route_preview_natural_request_matching_design.md](/home/j/WatchTowerPlan/docs/planning/design/features/route_preview_natural_request_matching_design.md)
+- Feature design: [route_preview_natural_request_matching_design.md](/docs/planning/design/features/route_preview_natural_request_matching_design.md)
 - Final review request: `review the regression findings and fix the valid issues with planning, tasks, validation, and commits`
 
 ## Scope Summary
@@ -41,10 +41,10 @@ Break the natural maintenance-request route matching fix into one bounded implem
 - Exclude semantic routing and broader workflow-taxonomy redesign.
 
 ## Internal Standards and Canonical References Applied
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): the authored routing table remains the place to encode bounded route intent.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): route-preview docs must refresh with behavior changes.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): the final route-preview baseline needs durable evidence before initiative closeout.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): acceptance contract, evidence, and trackers must stay aligned with the route change.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): the authored routing table remains the place to encode bounded route intent.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): route-preview docs must refresh with behavior changes.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): the final route-preview baseline needs durable evidence before initiative closeout.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): acceptance contract, evidence, and trackers must stay aligned with the route change.
 
 ## Assumptions and Constraints
 - Route preview remains advisory and deterministic.
@@ -74,4 +74,4 @@ Break the natural maintenance-request route matching fix into one bounded implem
 
 ## References
 - March 2026 workflow and governance review summary for the reproduced route-preview gap.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md)

@@ -33,12 +33,12 @@ Keep standards structured enough that internal and external authority is not onl
 - Reviewing whether a standard captures the concrete local effect of the authorities it cites.
 
 ## Related Standards and Sources
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): governed standards inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governed standards must use the standard front matter profile.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): external authority should be normalized through local reference docs when practical.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): standard docs must remain structured enough for the governed standard index to capture citation and application signals.
-- [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md): authoring scaffold that should stay aligned with this standard.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): standard docs must use UTC `updated_at` values consistently.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): governed standards inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): governed standards must use the standard front matter profile.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): external authority should be normalized through local reference docs when practical.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): standard docs must remain structured enough for the governed standard index to capture citation and application signals.
+- [standard_document_template.md](/docs/templates/standard_document_template.md): authoring scaffold that should stay aligned with this standard.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): standard docs must use UTC `updated_at` values consistently.
 
 ## Guidance
 - Use governed front matter on standards and validate it against the standard front matter profile.
@@ -76,7 +76,7 @@ Keep standards structured enough that internal and external authority is not onl
 | `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
 ## Validation
-- Standard-doc front matter should validate against `standard_front_matter.v1.schema.json`.
+- Standard-doc front matter should validate against `standard_front_matter.schema.json`.
 - `Related Standards and Sources` should use explained `source: implication` bullets rather than bare link lists.
 - `Operationalization` should include metadata bullets for `Modes` and `Operational Surfaces`, and each operational surface should resolve to a real repository path or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
 - Exact file surfaces should use repo-relative file paths without a trailing slash, and directory surfaces should use repo-relative directory paths ending in `/`.
@@ -91,11 +91,11 @@ Keep standards structured enough that internal and external authority is not onl
 - Update the standards template, standard index, and affected live standards in the same change set when this family changes structurally.
 
 ## References
-- [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md)
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
+- [standard_document_template.md](/docs/templates/standard_document_template.md)
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md)
+- [README.md](/docs/standards/README.md)
 
 ## Updated At
 - `2026-03-13T20:01:23Z`

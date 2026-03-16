@@ -12,4 +12,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/foundations/README.md` | Describes the purpose of the foundation-index directory and its current artifact family. |
-| `core/control_plane/indexes/foundations/foundation_index.v1.json` | Machine-readable foundation index for governed foundation documents and their downstream citation or application use. |
+| `core/control_plane/indexes/foundations/foundation_index.json` | Machine-readable foundation index for governed foundation documents and their downstream citation or application use. |

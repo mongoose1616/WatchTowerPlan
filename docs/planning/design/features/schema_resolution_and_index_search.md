@@ -12,7 +12,7 @@ authority: "authoritative"
 applies_to:
   - "docs/planning/design/features/schema_resolution_and_index_search.md"
   - "core/control_plane/registries/schema_catalog.json"
-  - "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+  - "core/control_plane/indexes/repository_paths/repository_path_index.json"
   - "core/python/src/watchtower_core/query/"
 aliases:
   - "schema resolution design"
@@ -35,7 +35,7 @@ This document defines the feature-level technical design for deterministic local
 
 ## Source Request
 - User request to define the best method for loading schemas and searching indexes as the repository file count grows.
-- Downstream planning authority is captured in [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md).
+- Downstream planning authority is captured in [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md).
 
 ## Scope and Feature Boundary
 - Covers a schema catalog-driven resolution path for published schema `$id` values.
@@ -46,27 +46,27 @@ This document defines the feature-level technical design for deterministic local
 - Does not define validation policy or intake contract selection.
 
 ## Current-State Context
-- `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` already defines a generated repository path index for entrypoint retrieval.
+- `core/control_plane/indexes/repository_paths/repository_path_index.json` already defines a generated repository path index for entrypoint retrieval.
 - `core/control_plane/registries/validator_registry.json` already declares validation capabilities by stable validator ID.
 - `core/control_plane/registries/schema_catalog.json` now publishes the governed schema catalog artifact.
 - Published schema `$id` values are now resolved through the catalog-backed `SchemaStore` rather than only by ad hoc local wiring.
 - `core/python/src/watchtower_core/` now contains live control-plane loaders, query services, sync services, and validation services built on the same deterministic lookup boundary.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core deterministic, local-first, and fail-closed rather than inference-heavy.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core as the shared machine substrate rather than a UI-first search product.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favor simple local Python and structured machine-readable contracts before adding heavier infrastructure.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical machine-readable authority per concept and avoid parallel truth in code.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep core deterministic, local-first, and fail-closed rather than inference-heavy.
+- [product_direction.md](/docs/foundations/product_direction.md): keep core as the shared machine substrate rather than a UI-first search product.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): favor simple local Python and structured machine-readable contracts before adding heavier infrastructure.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one canonical machine-readable authority per concept and avoid parallel truth in code.
 
 ## Internal Standards and Canonical References Applied
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema lookup should resolve through cataloged schema IDs rather than repository scans.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): repository search should start from the derived path index instead of generic tree walking.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): loaded schemas should stay governed and validated before use.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): catalogs and indexes should stay in JSON while human guidance remains in Markdown.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): schema and query services belong in reusable `core/python` modules.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): schema IDs and related lookup identifiers need stable naming rules.
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md): validator execution should reuse the same deterministic schema-resolution boundary.
-- [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json): the current path index is the read-optimized discovery surface the query layer should consume.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): schema lookup should resolve through cataloged schema IDs rather than repository scans.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): repository search should start from the derived path index instead of generic tree walking.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): loaded schemas should stay governed and validated before use.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): catalogs and indexes should stay in JSON while human guidance remains in Markdown.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): schema and query services belong in reusable `core/python` modules.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): schema IDs and related lookup identifiers need stable naming rules.
+- [python_validator_execution.md](/docs/planning/design/features/python_validator_execution.md): validator execution should reuse the same deterministic schema-resolution boundary.
+- [repository_path_index.json](/core/control_plane/indexes/repository_paths/repository_path_index.json): the current path index is the read-optimized discovery surface the query layer should consume.
 
 ## Design Goals and Constraints
 - Resolve published schemas deterministically by stable schema `$id`, not by filesystem scanning or text search.
@@ -155,10 +155,10 @@ This document defines the feature-level technical design for deterministic local
 - Should alias matching be exact-only in the first version, or should it allow normalized token matching across aliases and summaries?
 
 ## References
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
+- [python_validator_execution.md](/docs/planning/design/features/python_validator_execution.md)
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
+- [repository_path_index.json](/core/control_plane/indexes/repository_paths/repository_path_index.json)
 
 ## Updated At
 - `2026-03-10T02:30:31Z`

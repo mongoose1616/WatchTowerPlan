@@ -49,15 +49,15 @@ Defines the technical design boundary for strengthening low-coverage executable 
 - Many tests still bind directly to the canonical repository root or inline temp-repo builders, and there is still no shared `conftest.py`.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): coverage work should improve confidence by testing the narrowest meaningful executable boundary instead of piling more broad smoke tests into one place.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable planning and machine-readable tracking surfaces need to stay aligned while the unit-suite structure changes.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the test foundation should be reliable and maintainable before WatchTower product implementation starts consuming the exported core.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): coverage work should improve confidence by testing the narrowest meaningful executable boundary instead of piling more broad smoke tests into one place.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable planning and machine-readable tracking surfaces need to stay aligned while the unit-suite structure changes.
+- [product_direction.md](/docs/foundations/product_direction.md): the test foundation should be reliable and maintainable before WatchTower product implementation starts consuming the exported core.
 
 ## Internal Standards and Canonical References Applied
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature designs should explain the concrete repository standards and references that shape the design, not only the desired outcome.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the changes stay inside the canonical Python workspace and its governed command and validation flow.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the suite should move toward smaller focused tests, deterministic fixtures, and same-change documentation or tracker updates.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the initiative keeps its planning, task, and acceptance surfaces synchronized while execution slices land.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): feature designs should explain the concrete repository standards and references that shape the design, not only the desired outcome.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the changes stay inside the canonical Python workspace and its governed command and validation flow.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the suite should move toward smaller focused tests, deterministic fixtures, and same-change documentation or tracker updates.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the initiative keeps its planning, task, and acceptance surfaces synchronized while execution slices land.
 
 ## Design Goals and Constraints
 - Move expensive behavior checks down to the handler or service layer whenever broad parser smoke tests are not the best assertion point.

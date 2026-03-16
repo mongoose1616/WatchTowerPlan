@@ -19,9 +19,10 @@ aliases:
 # <Decision Title>
 
 > Use this template for durable decision records stored under `docs/planning/decisions/`.
-> Keep the final document aligned with [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md) and [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md).
+> Keep the final document aligned with [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md) and [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md).
 > Keep front matter aligned with the `Record Metadata` block below.
 > When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
+> Prefer repository-native Markdown links such as `/docs/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Keep one primary decision per file.
 
 ## Record Metadata

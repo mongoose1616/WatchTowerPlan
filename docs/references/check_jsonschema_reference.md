@@ -28,7 +28,7 @@ Provide a lightweight validator reference for enforcing JSON Schema-backed contr
 - `https://check-jsonschema.readthedocs.io/en/latest/usage.html` - verified 2026-03-09; Usage.
 
 ## Related Standards and Sources
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### When It Fits
@@ -52,7 +52,7 @@ Provide a lightweight validator reference for enforcing JSON Schema-backed contr
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ### Why It Matters Here
 - Use this reference if repository validation tooling is added under `docs/standards/validations/**` or future CI scripts.
@@ -63,7 +63,7 @@ Provide a lightweight validator reference for enforcing JSON Schema-backed contr
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

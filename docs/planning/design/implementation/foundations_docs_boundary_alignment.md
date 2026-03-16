@@ -40,10 +40,10 @@ Breaks Foundations Documentation Boundary Alignment into a bounded implementatio
 - Treat newly revealed drift from targeted or full validation as in-scope if it belongs to the same documentation-boundary theme.
 
 ## Internal Standards and Canonical References Applied
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact while still covering the important entrypoints.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages must publish the owning implementation surface clearly.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): workspace package-boundary guidance must match the live runtime layout.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): GitHub sync docs must point to the authoritative repo-local sync owner.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the command-doc README should stay compact while still covering the important entrypoints.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages must publish the owning implementation surface clearly.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): workspace package-boundary guidance must match the live runtime layout.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): GitHub sync docs must point to the authoritative repo-local sync owner.
 
 ## Proposed Technical Approach
 - Update the slice planning docs and acceptance contract first so the governed closeout record matches the confirmed review findings.
@@ -68,7 +68,7 @@ Breaks Foundations Documentation Boundary Alignment into a bounded implementatio
 - Finish with repeated documentation-boundary confirmation passes over the touched command docs, standards, reference docs, and adjacent package-boundary READMEs.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

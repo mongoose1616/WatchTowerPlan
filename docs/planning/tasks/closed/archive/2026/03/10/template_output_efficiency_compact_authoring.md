@@ -40,10 +40,10 @@ Add the compact-authoring standard, align templates with governed outputs, and r
 - Compact-authored document rules are durable, templates match governed families, and leaner planning documents validate cleanly.
 
 ## Links
-- [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
-- [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
-- [template_and_output_efficiency_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md)
+- [template_and_output_efficiency.md](/docs/planning/prds/template_and_output_efficiency.md)
+- [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- [template_and_output_efficiency_execution.md](/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md)
 
 ## Updated At
 - `2026-03-10T16:19:08Z`

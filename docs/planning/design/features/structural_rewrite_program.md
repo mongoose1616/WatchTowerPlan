@@ -61,24 +61,24 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - The final rewrite checkpoint remained healthy under `watchtower-core doctor --format json` and `watchtower-core validate all`, and `watchtower-core query authority --domain planning --format json` still resolved the same five public planning questions to coordination, planning catalog, initiatives, tasks, and traceability through closeout.
 - The closed final review recorded one explicit program-closeout decision, so `trace.structural_rewrite_program` no longer has an actionable task in the active coordination view.
 - `watchtower-core sync command-index --format json` stays green with `60` entries and no write, and `python -m pytest tests/unit/test_command_index_sync.py` passes `4/4` tests for the new fail-closed command-companion drift guard.
-- The first Phase 4 slice has now passed both implementation and explicit outcome review as `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py`, the closeout-coordination entry review has now passed explicitly, the bounded closeout coordination sync-reuse slice has now landed, that slice's outcome review has now also passed, the closeout-tracking entry review has now passed explicitly, the bounded closeout-tracking refresh-boundary slice has now landed, and the trace has now closed through its explicit outcome review and program-closeout decision rather than broader Phase 4 rollout.
-- The hotspot picture has shifted since earlier rewrite prose. The new `planning_projection_snapshot.py` is now `513` lines, `initiative_index.py` has dropped to `129`, and the remaining larger Python files still include `repo_ops/validation/document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_projection_serialization.py` (`419`). Later rewrite work must keep using fresh live counts instead of stale hotspot examples.
+- The first Phase 4 slice has now passed both implementation and explicit outcome review as `core/python/src/watchtower_core/repo_ops/planning_rendered_snapshot.py`, the closeout-coordination entry review has now passed explicitly, the bounded closeout coordination sync-reuse slice has now landed, that slice's outcome review has now also passed, the closeout-tracking entry review has now passed explicitly, the bounded closeout-tracking refresh-boundary slice has now landed, and the trace has now closed through its explicit outcome review and program-closeout decision rather than broader Phase 4 rollout.
+- The hotspot picture has shifted since earlier rewrite prose. The new `planning_rendered_snapshot.py` is now `513` lines, `initiative_index.py` has dropped to `129`, and the remaining larger Python files still include `repo_ops/validation/document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_rendered_serialization.py` (`419`). Later rewrite work must keep using fresh live counts instead of stale hotspot examples.
 - The repo still carries mixed compatibility surfaces on purpose: `watchtower_core.query/` and `watchtower_core.sync/` are current boundary-layer namespaces, `watchtower_core.validation.all` is still a compatibility wrapper for aggregate validation, `query_coordination_handlers.py` is now a thin compatibility facade, and several test-marker files remain in place for repository-path continuity.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the rewrite remains inside repository governance, planning, and shared-core maintenance work.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should preserve explicit authority seams, treat compatibility shims carefully, and keep helper-layer complexity reviewable.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the rewrite must preserve one canonical answer per question and must not widen risky changes without explicit control surfaces.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the rewrite remains inside repository governance, planning, and shared-core maintenance work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should preserve explicit authority seams, treat compatibility shims carefully, and keep helper-layer complexity reviewable.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the rewrite must preserve one canonical answer per question and must not widen risky changes without explicit control surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the rewrite needs one traced PRD, design, plan, evidence, and task chain rather than prose-only execution.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one task-backed initiative through the bounded checkpoints and close it explicitly only after the final review records a terminal decision.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): the rewrite crosses the durable-task threshold and cannot stay as no-task work.
-- [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): the rewrite parity contract must preserve the current authority answers rather than reconstructing them informally.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract should be machine-readable and acceptance-oriented.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): baseline, parity, and review completion need durable evidence, not transient notes.
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): critical, historical, and compatibility surfaces need the same classification vocabulary before any later cleanup slice.
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): later rewrite slices need explicit checkpoint packages, authored-truth declarations, and rollback paths.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the rewrite needs one traced PRD, design, plan, evidence, and task chain rather than prose-only execution.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one task-backed initiative through the bounded checkpoints and close it explicitly only after the final review records a terminal decision.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): the rewrite crosses the durable-task threshold and cannot stay as no-task work.
+- [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): the rewrite parity contract must preserve the current authority answers rather than reconstructing them informally.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract should be machine-readable and acceptance-oriented.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): baseline, parity, and review completion need durable evidence, not transient notes.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): critical, historical, and compatibility surfaces need the same classification vocabulary before any later cleanup slice.
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md): later rewrite slices need explicit checkpoint packages, authored-truth declarations, and rollback paths.
 
 ## Design Goals and Constraints
 - Publish all Phase 0 and Phase 1 rewrite prerequisites in repo-native homes before any deeper implementation starts.
@@ -165,11 +165,11 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - A dedicated-registry slice can still create false confidence if later readers mistake its published metadata for runtime authority instead of bounded descriptive state.
 
 ## References
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
-- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map.json)
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
+- [structural_rewrite_program.md](/docs/planning/prds/structural_rewrite_program.md)
+- [authority_map.json](/core/control_plane/registries/authority_map.json)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [structural_rewrite_artifact_role_registry_pilot.md](/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Open Questions
 - None. The final outcome review closed the trace with an explicit program-closeout decision; any later rewrite work requires a new bounded trace instead of continuing from this program implicitly.

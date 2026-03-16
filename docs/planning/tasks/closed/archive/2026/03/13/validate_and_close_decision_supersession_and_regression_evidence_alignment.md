@@ -14,8 +14,8 @@ updated_at: '2026-03-13T03:30:46Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.json
 - docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md
 related_ids:
 - trace.decision_supersession_and_regression_evidence_alignment

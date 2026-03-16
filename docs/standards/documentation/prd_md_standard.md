@@ -33,15 +33,15 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 - Reviewing whether a planning document is actually structured as a PRD rather than as a design doc or implementation plan.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_generation.md](/home/j/WatchTowerPlan/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md): authoring scaffold that should stay aligned with this standard.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_generation.md](/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
+- [product_direction.md](/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [prd_template.md](/docs/templates/prd_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/docs/planning/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store PRDs under `docs/planning/prds/`.
@@ -108,12 +108,12 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 - Update affected feature designs, implementation plans, or companion docs in the same change set when a PRD change materially alters scope or product intent.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md)
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md)
-- [prd_generation.md](/home/j/WatchTowerPlan/workflows/modules/prd_generation.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md)
+- [prd_template.md](/docs/templates/prd_template.md)
+- [prd_generation.md](/workflows/modules/prd_generation.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
 
 ## Notes
 - A PRD is a planning authority artifact, not a complete solution design.

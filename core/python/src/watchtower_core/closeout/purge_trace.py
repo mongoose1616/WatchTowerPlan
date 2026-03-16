@@ -441,7 +441,7 @@ def _ledger_record_id(trace_id: str) -> str:
 def _ledger_relative_path(trace_id: str) -> str:
     slug_source = trace_id.removeprefix("trace.")
     slug = re.sub(r"[^a-z0-9]+", "_", slug_source.casefold()).strip("_") or "trace"
-    return f"{TRACE_PURGE_LEDGER_DIRECTORY}/{slug}_purge_record.v1.json"
+    return f"{TRACE_PURGE_LEDGER_DIRECTORY}/{slug}_purge_record.json"
 
 
 def _is_trace_local_path(relative_path: str) -> bool:

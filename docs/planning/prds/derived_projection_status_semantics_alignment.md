@@ -62,5 +62,5 @@ The repository now has a canonical planning catalog and authority map, but the d
 - The planning-authority work is a dependency because this follow-up assumes the planning catalog and authority map remain the canonical deep-planning path.
 
 ## References
-- [watchtower_core_query_initiatives.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_initiatives.md)
-- [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
+- [watchtower_core_query_initiatives.md](/docs/commands/core_python/watchtower_core_query_initiatives.md)
+- [planning_authority_unification.md](/docs/planning/prds/planning_authority_unification.md)

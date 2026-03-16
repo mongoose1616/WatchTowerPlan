@@ -42,7 +42,7 @@ uv run watchtower-core sync reference-index --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync reference-index --output /tmp/reference_index.v1.json --format json
+uv run watchtower-core sync reference-index --output /tmp/reference_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -61,7 +61,7 @@ uv run watchtower-core sync reference-index --output /tmp/reference_index.v1.jso
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/reference_index.py`
-- `core/control_plane/indexes/references/reference_index.v1.json`
+- `core/control_plane/indexes/references/reference_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

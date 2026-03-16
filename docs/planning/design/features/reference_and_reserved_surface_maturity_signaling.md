@@ -56,15 +56,15 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 - The repository-maintenance standard already distinguishes README-only reserved families from active families, but the control-plane family entrypoints still describe the README-only schema-index and registry-index directories in the same tone as live artifact families.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): preserve explicit governed surfaces and deterministic lookup behavior while tightening the seams that currently overstate present-tense support.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep the authored docs, derived indexes, query behavior, and tests aligned in the same change set when a support-signal contract changes.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): keep the slice inside repository-maintenance and governance-support boundaries rather than turning it into future product policy work.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): preserve explicit governed surfaces and deterministic lookup behavior while tightening the seams that currently overstate present-tense support.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep the authored docs, derived indexes, query behavior, and tests aligned in the same change set when a support-signal contract changes.
+- [repository_scope.md](/docs/foundations/repository_scope.md): keep the slice inside repository-maintenance and governance-support boundaries rather than turning it into future product policy work.
 
 ## Internal Standards and Canonical References Applied
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): reference docs should stay focused on durable lookup content with explicit local mapping rather than generic bibliography links or hidden lifecycle signals.
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): the reference index is the machine-readable lookup surface for repository touchpoints and upstream authority, so its fields must reflect the real local-mapping boundary.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): maintenance reviews should call out whether a family is active, reserved, or ambiguous in maturity, and README-only reserved families should be treated as future scope.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages should stay aligned with live CLI behavior and avoid examples that do not match the implemented lookup semantics.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): reference docs should stay focused on durable lookup content with explicit local mapping rather than generic bibliography links or hidden lifecycle signals.
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): the reference index is the machine-readable lookup surface for repository touchpoints and upstream authority, so its fields must reflect the real local-mapping boundary.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): maintenance reviews should call out whether a family is active, reserved, or ambiguous in maturity, and README-only reserved families should be treated as future scope.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): command pages should stay aligned with live CLI behavior and avoid examples that do not match the implemented lookup semantics.
 
 ## Design Goals and Constraints
 - Make maturity signaling explicit enough that humans and machines can tell active support, supporting authority, candidate future guidance, and reserved placeholders apart without browsing raw prose manually.
@@ -97,7 +97,7 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 - Mark the README-only schema-index and registry-index directories as reserved placeholders in both their leaf READMEs and their parent family entrypoints.
 
 ### Data and Interface Impacts
-- `core/control_plane/schemas/artifacts/reference_index.v1.schema.json`, `retired valid example index fixture reference_index.v1.example.json`, `core/control_plane/indexes/references/reference_index.v1.json`, and the typed `ReferenceIndexEntry` model gain the derived `repository_status` field.
+- `core/control_plane/schemas/artifacts/reference_index.schema.json`, `retired valid example index fixture reference_index.example.json`, `core/control_plane/indexes/references/reference_index.json`, and the typed `ReferenceIndexEntry` model gain the derived `repository_status` field.
 - `core/python/src/watchtower_core/repo_ops/sync/reference_index.py`, `core/python/src/watchtower_core/repo_ops/query/references.py`, `core/python/src/watchtower_core/cli/query_knowledge_family.py`, and `core/python/src/watchtower_core/cli/query_knowledge_handlers.py` change together for the status derivation, related-path behavior, and query output.
 - `docs/references/README.md`, `docs/templates/reference_template.md`, `docs/standards/documentation/reference_md_standard.md`, `docs/standards/data_contracts/reference_index_standard.md`, `docs/commands/core_python/watchtower_core_query_references.md`, and nearby workspace command guidance change together for the human-facing contract.
 - `core/control_plane/indexes/README.md`, `core/control_plane/indexes/registries/README.md`, `core/control_plane/indexes/schemas/README.md`, and the repository-maintenance standard change together for reserved-family signaling.

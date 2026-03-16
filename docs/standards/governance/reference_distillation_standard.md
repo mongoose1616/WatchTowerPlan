@@ -36,12 +36,12 @@ This standard defines how externally published source material is distilled into
 - Turning repeated research on an external topic into a durable repository artifact.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
-- [reference_distillation.md](/home/j/WatchTowerPlan/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_template.md](/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
+- [reference_distillation.md](/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Prefer authoritative primary sources over secondhand summaries when the topic is standards-driven, version-sensitive, or materially affects repository behavior.
@@ -111,11 +111,11 @@ This standard defines how externally published source material is distilled into
 - Refresh affected local references or standards when upstream source material changes in ways that materially affect local guidance.
 
 ## References
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
-- [reference_distillation.md](/home/j/WatchTowerPlan/workflows/modules/reference_distillation.md)
-- [diataxis_local_reference.md](/home/j/WatchTowerPlan/docs/references/diataxis_local_reference.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
+- [reference_template.md](/docs/templates/reference_template.md)
+- [reference_distillation.md](/workflows/modules/reference_distillation.md)
+- [diataxis_local_reference.md](/docs/references/diataxis_local_reference.md)
 
 ## Notes
 - Distillation is not the same as policy adoption. A local reference may summarize an external source without making every part of that source a mandatory repository rule.

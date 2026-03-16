@@ -46,10 +46,10 @@ Breaks the follow-up bootstrap hardening work into planning, scaffold-validity, 
 - A bootstrap-only trace should not be treated as active execution until a non-bootstrap active task exists.
 
 ## Internal Standards and Canonical References Applied
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): generated decision records must satisfy the governed section model and remain easy to review.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): phase semantics need to reflect actual lifecycle state rather than optimistic projection.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): task, planning, acceptance, and evidence surfaces must stay aligned through the review and closeout cycle.
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): the final closeout commit should preserve the trace-linked context in one logical slice.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): generated decision records must satisfy the governed section model and remain easy to review.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): phase semantics need to reflect actual lifecycle state rather than optimistic projection.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): task, planning, acceptance, and evidence surfaces must stay aligned through the review and closeout cycle.
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): the final closeout commit should preserve the trace-linked context in one logical slice.
 
 ## Proposed Technical Approach
 - Update `planning_scaffold_support.py` so decision scaffolds emit `Applied References and Implications`, and extend scaffold validation to enforce the same explained-bullet section for decision docs.

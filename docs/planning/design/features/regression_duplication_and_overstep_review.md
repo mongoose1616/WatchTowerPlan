@@ -52,16 +52,16 @@ Defines the review and remediation design for traceability joins, governed compa
 - The current review trace and an adjacent cancelled trace still contain placeholder bootstrap content or stale task state, which creates planning noise and hides the actual reviewed state.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): close the real failure paths in the canonical surfaces instead of layering on more manual repair steps.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): docs, code, contracts, ledgers, indexes, and tests must stay aligned in one deterministic change set.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the work remains bounded to repository-maintenance infrastructure and should not expand into product feature design.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): close the real failure paths in the canonical surfaces instead of layering on more manual repair steps.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): docs, code, contracts, ledgers, indexes, and tests must stay aligned in one deterministic change set.
+- [product_direction.md](/docs/foundations/product_direction.md): the work remains bounded to repository-maintenance infrastructure and should not expand into product feature design.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task records and task status transitions must remain authoritative and trace-linked.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the planning corpus must remain joinable across human- and machine-readable surfaces.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance contracts must keep valid repo-local path targets and move with governed planning artifacts.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): evidence subject paths and related paths must stay inspectable and current.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): the maintenance workflow requires repeated validation and no-new-issues confirmation, not just first-pass fixes.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task records and task status transitions must remain authoritative and trace-linked.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the planning corpus must remain joinable across human- and machine-readable surfaces.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance contracts must keep valid repo-local path targets and move with governed planning artifacts.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): evidence subject paths and related paths must stay inspectable and current.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): the maintenance workflow requires repeated validation and no-new-issues confirmation, not just first-pass fixes.
 
 ## Design Goals and Constraints
 - Remove repeated-work and stale-state paths at the authoritative source rather than documenting around them.
@@ -94,7 +94,7 @@ Defines the review and remediation design for traceability joins, governed compa
 - Rewrite the current and adjacent cancelled planning chains so they accurately reflect active versus historical work and no longer carry placeholder or raw external-path leakage.
 
 ### Data and Interface Impacts
-- `core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json` gains explicit trace-linkage requirements for trace-related task records.
+- `core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json` gains explicit trace-linkage requirements for trace-related task records.
 - Acceptance contracts and validation evidence now fail validation when repo-local path references are stale or missing.
 - Derived PRD, decision, design, foundation, reference, and standard indexes stop rehydrating deleted `related_paths`.
 - Command docs and standards docs expand to describe the stricter task and governed-companion behavior.
@@ -139,6 +139,6 @@ Defines the review and remediation design for traceability joins, governed compa
 - Confirmation passes can become redundant if they reuse the same viewpoint, so the review must deliberately vary the angle of inspection.
 
 ## References
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- [regression_duplication_and_overstep_review_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [regression_duplication_and_overstep_review_direction.md](/docs/planning/decisions/regression_duplication_and_overstep_review_direction.md)
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md)

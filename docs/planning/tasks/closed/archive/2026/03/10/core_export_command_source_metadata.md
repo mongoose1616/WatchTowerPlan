@@ -15,7 +15,7 @@ authority: "authoritative"
 applies_to:
   - "core/python/src/watchtower_core/cli/"
   - "core/python/src/watchtower_core/repo_ops/sync/command_index.py"
-  - "core/control_plane/indexes/commands/command_index.v1.json"
+  - "core/control_plane/indexes/commands/command_index.json"
 related_ids:
   - "prd.core_export_hardening_followup"
   - "design.features.core_export_hardening"
@@ -40,8 +40,8 @@ Publish command-family implementation paths in command metadata instead of point
 - Command index entries point at useful command-family implementation surfaces.
 
 ## Links
-- [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
-- [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
+- [core_export_hardening.md](/docs/planning/design/features/core_export_hardening.md)
+- [core_export_hardening_execution.md](/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
 - `2026-03-10T16:18:44Z`

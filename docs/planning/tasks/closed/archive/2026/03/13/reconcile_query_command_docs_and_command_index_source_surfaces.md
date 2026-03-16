@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/commands/core_python/
-- core/control_plane/indexes/commands/command_index.v1.json
+- core/control_plane/indexes/commands/command_index.json
 - core/python/tests/unit/test_route_and_query_handlers.py
 related_ids:
 - prd.query_family_source_surface_alignment

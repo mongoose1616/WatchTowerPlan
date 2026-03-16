@@ -42,9 +42,9 @@ Use one explicit command-scoped reference-resolution snapshot for workflow seman
 - The reference index already owns the governed mapping from reference docs to canonical upstream URLs, so the solution should reuse that authority rather than create a competing source of truth.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): explicit local seams are preferable to implicit repeated work or hidden long-lived state.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the optimization must keep the full repository baseline green and must be evidenced through explicit validation.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow loading must remain aligned with the governed workflow index contract while internal reuse changes.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): explicit local seams are preferable to implicit repeated work or hidden long-lived state.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the optimization must keep the full repository baseline green and must be evidenced through explicit validation.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow loading must remain aligned with the governed workflow index contract while internal reuse changes.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/validation/
@@ -85,9 +85,9 @@ Choose Option 3. Build one fresh reference-index document when the active valida
 - The approach assumes one command run operates over one stable source snapshot; it is not intended to survive arbitrary in-process repo mutation.
 
 ## References
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/prds/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/features/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/implementation/reference_resolution_reuse_hardening.md)
 
 ## Updated At
 - `2026-03-12T15:09:05Z`

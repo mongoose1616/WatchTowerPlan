@@ -37,19 +37,19 @@ This standard defines the unified machine-readable traceability index stored und
 - Adding a new durable artifact family that should participate in end-to-end traceability.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this traceability-family standard narrows.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this traceability-family standard narrows.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [design_document_index_standard.md](/docs/standards/data_contracts/design_document_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/indexes/traceability/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep family-specific indexes as their local lookup surfaces and use the unified traceability index as the cross-family join layer.
 - Treat the governed PRD index, decision index, design-document index, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
@@ -127,9 +127,9 @@ This standard defines the unified machine-readable traceability index stored und
 - Update related family-specific indexes and evidence artifacts in the same change set when a trace entry changes materially.
 
 ## References
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md)
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
+- [README.md](/core/control_plane/indexes/traceability/README.md)
 
 ## Notes
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.

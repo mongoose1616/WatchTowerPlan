@@ -14,7 +14,7 @@ applies_to:
 - docs/templates/standard_document_template.md
 - core/python/tests/unit/test_cli_query_commands.py
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 ---
 
 # Standard Authoring Surface Alignment Feature Design
@@ -43,21 +43,21 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 - Does not add a new standards query capability when the existing `--operationalization-path` filter already models the required lookup.
 
 ## Current-State Context
-- [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) currently omits `Scope`, `Use When`, `Related Standards and Sources`, `Operationalization`, and `Updated At`, even though [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md) and `validator.documentation.standard_semantics` require those sections.
+- [standard_document_template.md](/docs/templates/standard_document_template.md) currently omits `Scope`, `Use When`, `Related Standards and Sources`, `Operationalization`, and `Updated At`, even though [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md) and `validator.documentation.standard_semantics` require those sections.
 - The template also tells authors those sections are optional, which means the canonical scaffold encodes the wrong contract at the point of authoring.
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md) currently omits [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) from its `Related Standards and Sources`, `Operationalization`, and `References` surfaces.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md) currently omits [standard_document_template.md](/docs/templates/standard_document_template.md) from its `Related Standards and Sources`, `Operationalization`, and `References` surfaces.
 - Because standard-index sync derives operationalization data from the standard document itself, `watchtower-core query standards --operationalization-path docs/templates/standard_document_template.md --format json` currently returns zero results.
 - No existing automated coverage asserts that the standard template stays aligned with the governed standard-document contract or that the template operationalization path resolves back to `std.documentation.standard_md`.
 
 ## Foundations References Applied
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the repo should keep its authoring entrypoints aligned with the governed standard they operationalize.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): lookup and authoring seams should be explicit, deterministic, and regression-tested rather than inferred from reviewer memory.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the repo should keep its authoring entrypoints aligned with the governed standard they operationalize.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): lookup and authoring seams should be explicit, deterministic, and regression-tested rather than inferred from reviewer memory.
 
 ## Internal Standards and Canonical References Applied
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the template and lookup surfaces must reflect the current required section set and operationalization model for standards.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): the standard index should expose real operational surfaces so query tooling can find the governing standard from the authoring scaffold.
-- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): template guidance should not normalize output that would violate the shared semantic validator once authored as a governed standard.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the template should remain concise, but compactness cannot contradict required contract sections.
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): the template and lookup surfaces must reflect the current required section set and operationalization model for standards.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): the standard index should expose real operational surfaces so query tooling can find the governing standard from the authoring scaffold.
+- [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md): template guidance should not normalize output that would violate the shared semantic validator once authored as a governed standard.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): the template should remain concise, but compactness cannot contradict required contract sections.
 
 ## Design Goals and Constraints
 - Make the standard template author the live standards-valid shape instead of an outdated minimal subset.
@@ -68,7 +68,7 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 
 ## Options Considered
 ### Option 1
-- Patch only [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) and leave the governing standard plus query coverage unchanged.
+- Patch only [standard_document_template.md](/docs/templates/standard_document_template.md) and leave the governing standard plus query coverage unchanged.
 - Strength: smallest documentation delta.
 - Tradeoff: leaves the template-to-governing-standard lookup gap unresolved and does not prevent the same omission from recurring.
 
@@ -84,8 +84,8 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 
 ## Recommended Design
 ### Architecture
-- Rewrite [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md) so its default scaffold matches the required section set and guidance defined by [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md).
-- Update [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md) so it explicitly cites and operationalizes the standard template as a governing authoring surface.
+- Rewrite [standard_document_template.md](/docs/templates/standard_document_template.md) so its default scaffold matches the required section set and guidance defined by [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md).
+- Update [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md) so it explicitly cites and operationalizes the standard template as a governing authoring surface.
 - Let existing standard-index sync rebuild `operationalization_paths` from the corrected standard document instead of adding special-case code.
 - Add one repo-contract test for template alignment and one CLI standards-query test for the template operationalization lookup.
 
@@ -110,7 +110,7 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 ## Affected Surfaces
 - `docs/standards/documentation/standard_md_standard.md`
 - `docs/templates/standard_document_template.md`
-- `core/control_plane/indexes/standards/standard_index.v1.json`
+- `core/control_plane/indexes/standards/standard_index.json`
 - `core/python/tests/unit/test_cli_query_commands.py`
 - `core/python/tests/integration/test_control_plane_artifacts.py`
 - `docs/planning/`

@@ -49,9 +49,9 @@ validation.
   coverage mismatches.
 
 ## Applied References and Implications
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): optimize by reusing explicit command-scoped state at the service boundary instead of introducing hidden ambient caches.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep validation logic reviewable and fail closed while reducing repeated work.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the optimization must preserve the repository validation contract rather than trading correctness for speed.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): optimize by reusing explicit command-scoped state at the service boundary instead of introducing hidden ambient caches.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep validation logic reviewable and fail closed while reducing repeated work.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the optimization must preserve the repository validation contract rather than trading correctness for speed.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/validation/
@@ -98,6 +98,6 @@ Accept Option 2. The implementation will add lazy service-scoped grouped snapsho
   validation in `ValidationAllService`.
 
 ## References
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
-- [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md)
+- [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)

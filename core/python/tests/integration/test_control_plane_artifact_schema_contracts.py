@@ -52,7 +52,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     initiative_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+        REPO_ROOT / "core/control_plane/indexes/initiatives/initiative_index.json"
     )
     invalid_index = deepcopy(initiative_index)
     del invalid_index["entries"][0]["current_phase"]
@@ -64,7 +64,7 @@ def test_initiative_index_rejects_missing_current_phase() -> None:
 def test_coordination_index_rejects_missing_coordination_mode() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     coordination_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        REPO_ROOT / "core/control_plane/indexes/coordination/coordination_index.json"
     )
     invalid_index = deepcopy(coordination_index)
     del invalid_index["coordination_mode"]
@@ -114,7 +114,7 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
 def test_planning_catalog_rejects_missing_coordination_section() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     planning_catalog = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/planning/planning_catalog.v1.json"
+        REPO_ROOT / "core/control_plane/indexes/planning/planning_catalog.json"
     )
     invalid_catalog = deepcopy(planning_catalog)
     del invalid_catalog["entries"][0]["coordination"]
@@ -126,7 +126,7 @@ def test_planning_catalog_rejects_missing_coordination_section() -> None:
 def test_route_index_rejects_missing_required_workflow_ids() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     route_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/routes/route_index.v1.json"
+        REPO_ROOT / "core/control_plane/indexes/routes/route_index.json"
     )
     invalid_index = deepcopy(route_index)
     del invalid_index["entries"][0]["required_workflow_ids"]
@@ -242,7 +242,7 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
     validation_evidence = load_json_object(
         REPO_ROOT
         / "core/control_plane/ledgers/validation_evidence/"
-        "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json"
+        "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json"
     )
     validation_evidence["recorded_at"] = "2026-03-09T05:06:54+01:00"
     with pytest.raises(ValidationError):

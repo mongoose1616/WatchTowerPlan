@@ -14,8 +14,8 @@ updated_at: '2026-03-12T21:31:36Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.json
 - docs/planning/
 related_ids:
 - contract.acceptance.foundations_documentation_completeness_alignment

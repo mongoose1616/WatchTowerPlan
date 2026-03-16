@@ -63,7 +63,7 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/traceability.py`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At
 - `2026-03-13T23:21:33Z`

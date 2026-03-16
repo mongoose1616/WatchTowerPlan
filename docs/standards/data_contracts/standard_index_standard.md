@@ -33,12 +33,12 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Auditing whether standards use internal references, external references, and repo-local distilled references consistently.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/indexes/standards/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model standard lookup as an index, not as a registry.
@@ -114,9 +114,9 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Update the companion artifact schema, live standard index, command docs, and query or sync surfaces in the same change set when the standard-index family changes structurally.
 
 ## References
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
+- [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
 - `2026-03-12T02:46:38Z`

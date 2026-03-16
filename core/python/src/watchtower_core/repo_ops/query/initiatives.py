@@ -7,9 +7,9 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.repo_ops.query.common import (
-    ProjectionSearchFilters,
-    initiative_projection_query_terms,
-    search_projection_entries,
+    RenderedSearchFilters,
+    initiative_rendered_query_terms,
+    search_rendered_entries,
 )
 
 
@@ -35,9 +35,9 @@ class InitiativeQueryService:
     def search(self, params: InitiativeSearchParams) -> tuple[InitiativeIndexEntry, ...]:
         """Return initiative entries matching the requested filters."""
         index = self._loader.load_initiative_index()
-        return search_projection_entries(
+        return search_rendered_entries(
             index.entries,
-            ProjectionSearchFilters(
+            RenderedSearchFilters(
                 query=params.query,
                 trace_id=params.trace_id,
                 initiative_status=params.initiative_status,
@@ -46,7 +46,7 @@ class InitiativeQueryService:
                 blocked_only=params.blocked_only,
                 limit=params.limit,
             ),
-            query_fields=initiative_projection_query_terms,
+            query_fields=initiative_rendered_query_terms,
             sort_key=lambda entry: entry.trace_id,
             trace_id=lambda entry: entry.trace_id,
             initiative_status=lambda entry: entry.initiative_status,

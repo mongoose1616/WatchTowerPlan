@@ -74,6 +74,6 @@ Review and refactor the typed planning and documentation retrieval surface so in
 
 ## References
 - March 13, 2026 refactor audit
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)

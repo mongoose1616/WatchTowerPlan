@@ -44,14 +44,14 @@ Breaks Foundation Index Family Contract Alignment into a bounded implementation 
 
 ## Assumptions and Constraints
 - Preserve current standards-query matching behavior; the repair should come from the authored standard metadata, not from new query heuristics.
-- Preserve the valid complementary match from [std.documentation.foundation_md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md) when querying the authoritative foundations code surfaces.
+- Preserve the valid complementary match from [std.documentation.foundation_md](/docs/standards/documentation/foundation_md_standard.md) when querying the authoritative foundations code surfaces.
 - Treat any new issue revealed by targeted or full validation in the same standards/foundations theme as in-scope for the same slice.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the governing source that must publish the missing family contract explicitly.
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): provides the peer pattern for index-family operationalization coverage.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): requires synchronized updates between docs, indexes, and validation surfaces.
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): constrains the complementary standards match that must remain valid after the change.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the governing source that must publish the missing family contract explicitly.
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): provides the peer pattern for index-family operationalization coverage.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): requires synchronized updates between docs, indexes, and validation surfaces.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): constrains the complementary standards match that must remain valid after the change.
 
 ## Proposed Technical Approach
 - Update the foundation-index standard to enumerate the authoritative foundations sync/query implementation surfaces, the family README, and the two foundations-specific command pages in `Operationalization`, then align the surrounding prose and change-control language to that contract.
@@ -60,7 +60,7 @@ Breaks Foundation Index Family Contract Alignment into a bounded implementation 
 
 ## Work Breakdown
 1. Update the PRD, design, implementation plan, decision record, and acceptance contract to describe the confirmed standards-lookup gap and chosen repair.
-2. Edit [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md) to publish the missing foundations family surfaces and align companion-source wording.
+2. Edit [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md) to publish the missing foundations family surfaces and align companion-source wording.
 3. Add targeted regressions in CLI-query, standard-index sync, and integration artifact coverage, then regenerate derived indexes and planning trackers.
 4. Run targeted tests, full validation, themed follow-up reviews, acceptance validation, and initiative closeout.
 
@@ -69,12 +69,12 @@ Breaks Foundation Index Family Contract Alignment into a bounded implementation 
 
 ## Validation Plan
 - Verify the authored standard text includes the repaired family surfaces through targeted integration coverage.
-- Verify [StandardIndexSyncService](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/standard_index.py) projects the new operationalization paths and modes into the generated standard index.
-- Verify [watchtower-core query standards](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_standards.md) resolves [std.data_contracts.foundation_index](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md) from the authoritative foundations sync/query modules and command docs.
+- Verify [StandardIndexSyncService](/core/python/src/watchtower_core/repo_ops/sync/standard_index.py) projects the new operationalization paths and modes into the generated standard index.
+- Verify [watchtower-core query standards](/docs/commands/core_python/watchtower_core_query_standards.md) resolves [std.data_contracts.foundation_index](/docs/standards/data_contracts/foundation_index_standard.md) from the authoritative foundations sync/query modules and command docs.
 - Run full repository validation, then repeat post-fix themed review and adversarial confirmation passes before closeout.
 
 ## References
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)

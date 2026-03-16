@@ -43,11 +43,11 @@ Defines the technical design boundary for Task Sync Disappearing File Resilience
 - `TaskLifecycleService.update(...)` can move task files between `open/` and `closed/`, and coordination refresh rebuilds task-derived surfaces immediately after each write, so overlapping lifecycle operations can expose a transient path that no longer exists by load time.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the design should fail closed for real invalid task documents while remaining robust to transient repository-state churn caused by valid lifecycle operations.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the design should fail closed for real invalid task documents while remaining robust to transient repository-state churn caused by valid lifecycle operations.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): task lifecycle state must stay reliable and queryable through the generated task and coordination surfaces even when tasks transition between open and closed storage roots.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the fix should stay inside the canonical Python workspace and land with automated regression coverage.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task lifecycle state must stay reliable and queryable through the generated task and coordination surfaces even when tasks transition between open and closed storage roots.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): the fix should stay inside the canonical Python workspace and land with automated regression coverage.
 
 ## Design Goals and Constraints
 - Localize the fix to the task iterator so every task-sync consumer benefits without duplicating retry logic.
@@ -73,7 +73,7 @@ Defines the technical design boundary for Task Sync Disappearing File Resilience
 ## Recommended Design
 ### Architecture
 - Keep `TaskLifecycleService` responsible for task moves and writes.
-- Harden `iter_task_documents(...)` in [task_documents.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/task_documents.py) so the shared task enumeration path tolerates a vanished file during load.
+- Harden `iter_task_documents(...)` in [task_documents.py](/core/python/src/watchtower_core/repo_ops/task_documents.py) so the shared task enumeration path tolerates a vanished file during load.
 - Preserve downstream task-index and task-tracking sync logic unchanged so they continue to consume one deterministic tuple of surviving task documents.
 
 ### Data and Interface Impacts

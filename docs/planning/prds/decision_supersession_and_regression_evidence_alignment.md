@@ -15,7 +15,7 @@ applies_to:
 - docs/standards/documentation/decision_record_md_standard.md
 - docs/templates/decision_record_template.md
 - docs/standards/data_contracts/decision_index_standard.md
-- core/control_plane/schemas/artifacts/decision_index.v1.schema.json
+- core/control_plane/schemas/artifacts/decision_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/decision_index.py
 - core/python/src/watchtower_core/repo_ops/query/decisions.py
 - core/python/src/watchtower_core/cli/query_records_handlers.py
@@ -70,12 +70,12 @@ The still-live regression and duplication issues were better handled directly in
 - If the cancellation rationale is too thin, future contributors may recreate the same mixed-scope slice and repeat the same overstep.
 
 ## Cancellation Disposition
-- The live regression and duplication findings moved into [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md), which fixes the authoritative planning, validation, sync, and task-lifecycle defects directly.
+- The live regression and duplication findings moved into [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md), which fixes the authoritative planning, validation, sync, and task-lifecycle defects directly.
 - The proposed repo-local regression summary was not created because `docs/references/**` is reserved for externally published authorities, not repository-native review notes.
 - Explicit decision supersession remains future work only if a new review proves it is independently necessary.
 
 ## References
-- [decision_supersession_and_regression_evidence_alignment_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md)
+- [decision_supersession_and_regression_evidence_alignment_direction.md](/docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [AGENTS.md](/docs/references/AGENTS.md)

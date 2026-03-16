@@ -45,9 +45,9 @@ Add generic pack-facing schemas, examples, and validation hooks for work-item no
 - The interfaces are generic enough to support future CTF product work without importing domain-specific content into shared core.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
 
 ## Updated At
 - `2026-03-10T06:42:17Z`

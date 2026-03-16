@@ -49,11 +49,11 @@ Keep the existing repository standards strict, make shared decision scaffolds em
 - The initiative-tracking standard already defines `implementation_planning` as the phase before execution begins, so the issue is in the projection logic rather than the standard.
 
 ## Applied References and Implications
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): generated decision records must include the applied-reference rationale that makes later review and governance checks meaningful.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): the aggregate validation surfaces should preserve the same deterministic rule set that repository workflows and automation rely on.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): bootstrap-only traces should not project `execution` before real execution work exists because the standard already reserves `implementation_planning` for that state.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the bootstrap task should remain visible and authoritative as a task record even when it does not yet imply execution phase.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): the repository still needs explicit bounded execution tasks after bootstrap, which is why bootstrap-only coordination should remain a planning-phase state.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): generated decision records must include the applied-reference rationale that makes later review and governance checks meaningful.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): the aggregate validation surfaces should preserve the same deterministic rule set that repository workflows and automation rely on.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): bootstrap-only traces should not project `execution` before real execution work exists because the standard already reserves `implementation_planning` for that state.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the bootstrap task should remain visible and authoritative as a task record even when it does not yet imply execution phase.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): the repository still needs explicit bounded execution tasks after bootstrap, which is why bootstrap-only coordination should remain a planning-phase state.
 
 ## Affected Surfaces
 - `core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py`

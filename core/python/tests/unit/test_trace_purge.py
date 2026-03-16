@@ -70,11 +70,11 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     task_path = "docs/planning/tasks/closed/archive/2026/03/10/example_purge_cleanup.md"
     authority_path = "docs/standards/governance/example_retained_authority.md"
     contract_path = (
-        "core/control_plane/contracts/acceptance/example_purge_acceptance.v1.json"
+        "core/control_plane/contracts/acceptance/example_purge_acceptance.json"
     )
     evidence_path = (
         "core/control_plane/ledgers/validation_evidence/"
-        "example_purge_planning_baseline.v1.json"
+        "example_purge_planning_baseline.json"
     )
 
     for relative_path in (
@@ -295,9 +295,9 @@ class _FakeAllSyncService:
                 AllSyncRecord(
                     target="repository-paths",
                     artifact_kind="index",
-                    relative_output_path="core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+                    relative_output_path="core/control_plane/indexes/repository_paths/repository_path_index.json",
                     output_path=(
-                        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+                        "core/control_plane/indexes/repository_paths/repository_path_index.json"
                         if write
                         else None
                     ),
@@ -308,9 +308,9 @@ class _FakeAllSyncService:
                 AllSyncRecord(
                     target="planning-catalog",
                     artifact_kind="index",
-                    relative_output_path="core/control_plane/indexes/planning/planning_catalog.v1.json",
+                    relative_output_path="core/control_plane/indexes/planning/planning_catalog.json",
                     output_path=(
-                        "core/control_plane/indexes/planning/planning_catalog.v1.json"
+                        "core/control_plane/indexes/planning/planning_catalog.json"
                         if write
                         else None
                     ),
@@ -340,7 +340,7 @@ def test_trace_purge_writes_ledger_and_deletes_package(tmp_path: Path) -> None:
         assert not (repo_root / relative_path).exists()
 
     purge_ledger_path = (
-        repo_root / "core/control_plane/ledgers/purges/example_purge_purge_record.v1.json"
+        repo_root / "core/control_plane/ledgers/purges/example_purge_purge_record.json"
     )
     assert purge_ledger_path.exists()
     purge_document = json.loads(purge_ledger_path.read_text(encoding="utf-8"))
@@ -400,7 +400,7 @@ def test_trace_purge_rejects_duplicate_ledger_records(tmp_path: Path) -> None:
     _configure_trace_fixture(repo_root)
     _write_json(
         repo_root,
-        f"{TRACE_PURGE_LEDGER_DIRECTORY}/example_purge_purge_record.v1.json",
+        f"{TRACE_PURGE_LEDGER_DIRECTORY}/example_purge_purge_record.json",
         {
             "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
             "id": "purge.example_purge",

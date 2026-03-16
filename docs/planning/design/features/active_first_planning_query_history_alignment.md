@@ -48,14 +48,14 @@ Defines the technical design boundary for Active-First Planning Query History Al
 - The initiative index, planning catalog, loaders, and query services are already explicit and deterministic. The mismatch is centered in how the CLI entrypoints choose default browse behavior and how their companion docs explain that choice.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): requires route-first, inspectable behavior with explicit human-and-machine parity rather than hidden default history browsing.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): requires thin start-here entrypoints and synchronized companion-surface updates when behavior expectations change.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): requires route-first, inspectable behavior with explicit human-and-machine parity rather than hidden default history browsing.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires thin start-here entrypoints and synchronized companion-surface updates when behavior expectations change.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): keeps deep planning and initiative views explicitly linked to trace state while preserving the authority hierarchy across planning projections.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): constrains how initiative-family browsing, phase state, and historical lookup remain available after the active-default browse change.
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): reinforces that lifecycle `status` must not be overloaded with initiative outcome semantics, so the design should continue using explicit `initiative_status`.
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): requires the query command docs to describe the changed default and historical opt-in path explicitly.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): keeps deep planning and initiative views explicitly linked to trace state while preserving the authority hierarchy across planning projections.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): constrains how initiative-family browsing, phase state, and historical lookup remain available after the active-default browse change.
+- [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): reinforces that lifecycle `status` must not be overloaded with initiative outcome semantics, so the design should continue using explicit `initiative_status`.
+- [command_md_standard.md](/docs/standards/documentation/command_md_standard.md): requires the query command docs to describe the changed default and historical opt-in path explicitly.
 
 ## Design Goals and Constraints
 - Make filterless planning and initiative browse behavior consistent with the active-first planning navigation model.
@@ -118,4 +118,4 @@ Defines the technical design boundary for Active-First Planning Query History Al
 
 ## References
 - March 13, 2026 refactor audit
-- [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md)
+- [active_first_planning_query_history_alignment.md](/docs/planning/prds/active_first_planning_query_history_alignment.md)

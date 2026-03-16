@@ -19,9 +19,10 @@ aliases:
 # <PRD Title>
 
 > Use this template for product requirements documents stored under `docs/planning/prds/`.
-> Keep the final document aligned with [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md).
+> Keep the final document aligned with [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md).
 > Keep front matter aligned with the `Record Metadata` block below.
 > When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
+> Prefer repository-native Markdown links such as `/docs/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Start with the required sections below and add optional sections only when they materially reduce ambiguity.
 
 ## Record Metadata

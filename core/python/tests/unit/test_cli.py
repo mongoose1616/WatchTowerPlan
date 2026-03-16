@@ -9,7 +9,7 @@ from watchtower_core.cli.main import main
 from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_tasks as split_query_tasks,
 )
-from watchtower_core.cli.query_coordination_projection_handlers import (
+from watchtower_core.cli.query_coordination_rendered_handlers import (
     _run_query_coordination as split_query_coordination,
 )
 from watchtower_core.cli.query_handlers import (

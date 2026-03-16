@@ -4,6 +4,7 @@ from pathlib import Path
 
 from tests.unit.document_semantics_fixtures import (
     copy_control_plane_repo,
+    repo_markdown_link,
     write_reference_fixture,
     write_repo_file,
     write_standard_fixture,
@@ -77,11 +78,11 @@ def test_document_semantics_validation_accepts_local_reference_doc_in_related_so
                 "drives the rule."
             ),
             (
-                f"- [example_reference.md]({reference_path}): governed local reference doc "
-                "captures the applied implication."
+                f"- [example_reference.md]({repo_markdown_link(reference_path)}): "
+                "governed local reference."
             ),
         ),
-        reference_lines=(f"- [README.md]({support_target})",),
+        reference_lines=(f"- [README.md]({repo_markdown_link(support_target)})",),
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
@@ -166,7 +167,7 @@ Keep the fixture focused on applies_to path semantics.
 - Running semantic validation tests.
 
 ## Related Standards and Sources
-- [example_reference.md]({related_target}): provides one governed local reference.
+- [example_reference.md]({repo_markdown_link(related_target)}): provides local reference.
 
 ## Guidance
 - Keep applies_to directory paths canonical.
@@ -182,7 +183,7 @@ Keep the fixture focused on applies_to path semantics.
 - Update validation and sync together if the rule changes.
 
 ## References
-- [README.md]({support_target})
+- [README.md]({repo_markdown_link(support_target)})
 
 ## Updated At
 - `2026-03-12T02:46:38Z`
@@ -210,7 +211,7 @@ def test_document_semantics_validation_rejects_external_authority_without_local_
     write_standard_reference_rule_fixture(
         standard_path,
         related_lines=(
-            f"- [README.md]({support_target}): local repository context for the fixture.",
+            f"- [README.md]({repo_markdown_link(support_target)}): local repo context.",
         ),
         reference_lines=("- [Example upstream](https://example.com/reference)",),
     )
@@ -221,3 +222,29 @@ def test_document_semantics_validation_rejects_external_authority_without_local_
     assert result.passed is False
     assert result.issue_count == 1
     assert "governed local reference doc under docs/references/" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_filesystem_absolute_checkout_link(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    related_target = repo_root / "docs/references/example_reference.md"
+    write_repo_file(support_target)
+    write_repo_file(related_target)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    write_standard_reference_rule_fixture(
+        standard_path,
+        related_lines=(
+            f"- [example_reference.md]({repo_markdown_link(related_target)}): "
+            "governed local reference.",
+        ),
+        reference_lines=(f"- [README.md]({support_target})",),
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "filesystem-absolute checkout path" in result.issues[0].message

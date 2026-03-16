@@ -33,12 +33,12 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Building lookup or routing tooling that needs a compact machine-readable view over the reference corpus.
 
 ## Related Standards and Sources
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/docs/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [README.md](/core/control_plane/indexes/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model reference lookup as an index, not as a registry.
@@ -104,9 +104,9 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Update reference-command docs and lookup surfaces in the same change set when the reference index changes how engineers or agents are expected to use it.
 
 ## References
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
+- [README.md](/docs/references/README.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
 - `2026-03-13T18:08:00Z`

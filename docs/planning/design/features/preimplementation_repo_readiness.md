@@ -47,24 +47,24 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 - The repository currently passes `doctor`, `validate all`, `pytest`, `mypy`, and `ruff`, so the main issues are structural rather than baseline instability.
 - Local Markdown link validation is effectively clean; the review did not surface broken repo-local links.
 - A few high-traffic README entrypoints are still oversized for their role:
-  - [docs/references/README.md](/home/j/WatchTowerPlan/docs/references/README.md)
-  - [docs/commands/core_python/README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md)
-  - [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md)
+  - [docs/references/README.md](/docs/references/README.md)
+  - [docs/commands/core_python/README.md](/docs/commands/core_python/README.md)
+  - [core/python/README.md](/core/python/README.md)
 - The repository already has a derived machine coordination artifact in the initiative index, but agent navigation is still ambiguous because that surface is not clearly elevated above the other family indexes for traced coordination.
-- At review start, the core package concentrated too much behavior in [handlers.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/handlers.py) and the old single-file model surface now exported from [models](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models).
-- Workspace injection exists, but [schemas.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/schemas.py) still assumes one local schema catalog and does not provide a first-class extension seam for future external schema sets.
+- At review start, the core package concentrated too much behavior in [handlers.py](/core/python/src/watchtower_core/cli/handlers.py) and the old single-file model surface now exported from [models](/core/python/src/watchtower_core/control_plane/models).
+- Workspace injection exists, but [schemas.py](/core/python/src/watchtower_core/control_plane/schemas.py) still assumes one local schema catalog and does not provide a first-class extension seam for future external schema sets.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen design should reduce ambiguity and coupling rather than hiding them behind larger abstractions.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the design must preserve authoritative source layers and derived companion surfaces instead of creating parallel truth.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future pack support should stay generic and configurable at the core layer.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the chosen design should reduce ambiguity and coupling rather than hiding them behind larger abstractions.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the design must preserve authoritative source layers and derived companion surfaces instead of creating parallel truth.
+- [product_direction.md](/docs/foundations/product_direction.md): future pack support should stay generic and configurable at the core layer.
 
 ## Internal Standards and Canonical References Applied
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): README entrypoints must stay compact and directory-scoped.
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): the initiative index already owns the compact machine-readable coordination view for traced work.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the initiative layer remains the cross-family coordination view rather than an authored replacement for PRDs, designs, or tasks.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): CLI entrypoints should stay thin and long-lived behavior should move into modular package services.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): modularity work must stay inside the canonical Python workspace.
+- [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): README entrypoints must stay compact and directory-scoped.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): the initiative index already owns the compact machine-readable coordination view for traced work.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the initiative layer remains the cross-family coordination view rather than an authored replacement for PRDs, designs, or tasks.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): CLI entrypoints should stay thin and long-lived behavior should move into modular package services.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): modularity work must stay inside the canonical Python workspace.
 
 ## Design Goals and Constraints
 - Reduce token and scan cost in the most frequently opened orientation docs.
@@ -92,7 +92,7 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 ## Recommended Design
 ### Documentation Entry Points
 - Tighten the README standard so large same-shaped directories prefer grouped entrypoints and governed lookup references over exhaustive file dumps.
-- Compact [docs/references/README.md](/home/j/WatchTowerPlan/docs/references/README.md), [docs/commands/core_python/README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md), and [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md) around category entrypoints, common tasks, and query surfaces.
+- Compact [docs/references/README.md](/docs/references/README.md), [docs/commands/core_python/README.md](/docs/commands/core_python/README.md), and [core/python/README.md](/core/python/README.md) around category entrypoints, common tasks, and query surfaces.
 
 ### Planning Coordination
 - Keep the authored planning families unchanged.
@@ -101,8 +101,8 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 - Expose that surface directly through a `watchtower-core query coordination` command while preserving the existing `query initiatives` surface for backward-compatible family lookup.
 
 ### Core Modularity and Configurability
-- Split CLI runtime behavior into family-focused handler modules under [cli](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli).
-- Split the control-plane typed artifact layer into smaller model modules under [models](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models).
+- Split CLI runtime behavior into family-focused handler modules under [cli](/core/python/src/watchtower_core/cli).
+- Split the control-plane typed artifact layer into smaller model modules under [models](/core/python/src/watchtower_core/control_plane/models).
 - Preserve compatibility re-exports through package `__init__` files so internal callers can migrate cleanly in one change set.
 - Extend the schema store with supplemental schema sets that can be merged into validation for future external pack-owned artifacts without editing the local schema catalog.
 
@@ -117,8 +117,8 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 - `docs/planning/README.md`
 - `docs/planning/initiatives/README.md`
 - `docs/commands/core_python/`
-- `core/control_plane/schemas/artifacts/initiative_index.v1.schema.json`
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
+- `core/control_plane/schemas/artifacts/initiative_index.schema.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
 - `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/control_plane/`
 - `core/python/src/watchtower_core/repo_ops/query/`
@@ -148,9 +148,9 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 - Compatibility-preserving refactors could leave stale internal imports if tests do not cover the moved modules.
 
 ## References
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [compact_document_authoring_and_tracking.md](/docs/planning/design/features/compact_document_authoring_and_tracking.md)
 
 ## Updated At
 - `2026-03-10T17:55:24Z`

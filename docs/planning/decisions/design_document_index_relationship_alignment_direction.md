@@ -16,7 +16,7 @@ applies_to:
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/indexes/design_documents/design_document_index.v1.json
+- core/control_plane/indexes/design_documents/design_document_index.json
 - core/python/src/watchtower_core/repo_ops/sync/design_document_index.py
 - core/python/src/watchtower_core/repo_ops/sync/design_tracking.py
 - core/python/tests/
@@ -52,12 +52,12 @@ Align the design-document index to the authored standards contract by projecting
 - Derived planning and tracking surfaces consume the design-document index, so relationship drift here spreads into multiple downstream views.
 
 ## Applied References and Implications
-- [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md): the index must carry relationship data that matches the design-document family rather than a narrower implementation shortcut.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): the required `Affected Surfaces` section is the authoritative feature-design relationship input and should not be omitted from the index.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be design-, PRD-, or request-driven, so traceable PRD or repo-local source surfaces must be supported in `source_paths`.
-- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): the template already signals that `Source Designs` may be `None`, so sync and tracker wording must not force a design-only model.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): relationship fields need normalized repository-relative paths, not raw authored fragments.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared parsing seams should drive correctness instead of ad hoc tracker-specific logic.
+- [design_document_index_standard.md](/docs/standards/data_contracts/design_document_index_standard.md): the index must carry relationship data that matches the design-document family rather than a narrower implementation shortcut.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): the required `Affected Surfaces` section is the authoritative feature-design relationship input and should not be omitted from the index.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): implementation plans may be design-, PRD-, or request-driven, so traceable PRD or repo-local source surfaces must be supported in `source_paths`.
+- [implementation_plan_template.md](/docs/templates/implementation_plan_template.md): the template already signals that `Source Designs` may be `None`, so sync and tracker wording must not force a design-only model.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): relationship fields need normalized repository-relative paths, not raw authored fragments.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared parsing seams should drive correctness instead of ad hoc tracker-specific logic.
 
 ## Affected Surfaces
 - `docs/planning/design/`
@@ -66,7 +66,7 @@ Align the design-document index to the authored standards contract by projecting
 - `docs/standards/documentation/feature_design_md_standard.md`
 - `docs/standards/documentation/implementation_plan_md_standard.md`
 - `docs/templates/implementation_plan_template.md`
-- `retired valid example index fixture design_document_index.v1.example.json`
+- `retired valid example index fixture design_document_index.example.json`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_tracking.py`
 - `core/python/tests/`
@@ -110,4 +110,4 @@ Adopt option 3. The repository should preserve the broader authored relationship
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- retired valid example index fixture design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.example.json

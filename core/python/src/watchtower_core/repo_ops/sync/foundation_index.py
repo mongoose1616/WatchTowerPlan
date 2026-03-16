@@ -34,7 +34,7 @@ from watchtower_core.repo_ops.sync.reference_index import iter_citation_audit_do
 from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 FOUNDATION_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/foundations/foundation_index.v1.json"
+    "core/control_plane/indexes/foundations/foundation_index.json"
 )
 FOUNDATION_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1"

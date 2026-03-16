@@ -89,14 +89,14 @@ The repository now has a growing control-plane surface, but the executable Pytho
 - Should the next bounded follow-up split reusable runtime layers from `WatchTowerPlan` repo-operations so the core can be consumed directly by `WatchTower`?
 
 ## Foundations References Applied
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core should provide routing, validation, evidence capture, and reusable closeout behavior.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): core should remain deterministic, schema-first, and traceable.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): important planning and validation surfaces should exist in both human-readable and machine-usable forms.
+- [product_direction.md](/docs/foundations/product_direction.md): core should provide routing, validation, evidence capture, and reusable closeout behavior.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): core should remain deterministic, schema-first, and traceable.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): important planning and validation surfaces should exist in both human-readable and machine-usable forms.
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
-- [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
-- [core_python_foundation_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json)
-- [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
+- [core_python_workspace_and_harness.md](/docs/planning/design/features/core_python_workspace_and_harness.md)
+- [python_validator_execution.md](/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/docs/planning/design/features/schema_resolution_and_index_search.md)
+- [control_plane_loaders_and_schema_store.md](/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
+- [core_python_foundation_acceptance.json](/core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json)
+- [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)

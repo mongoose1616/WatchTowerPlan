@@ -208,7 +208,7 @@ def build_acceptance_contract_artifact(
 ) -> tuple[dict[str, object], AcceptanceContractResult]:
     """Build the bootstrap acceptance contract artifact and preview."""
 
-    doc_path = f"{ACCEPTANCE_CONTRACT_DIRECTORY}/{identifiers.trace_id_suffix}_acceptance.v1.json"
+    doc_path = f"{ACCEPTANCE_CONTRACT_DIRECTORY}/{identifiers.trace_id_suffix}_acceptance.json"
     ensure_available_path(loader, doc_path)
     document: dict[str, object] = {
         "$schema": ACCEPTANCE_CONTRACT_SCHEMA_ID,
@@ -268,7 +268,7 @@ def build_validation_evidence_artifact(
     """Build the bootstrap validation-evidence artifact and preview."""
 
     doc_path = (
-        f"{VALIDATION_EVIDENCE_DIRECTORY}/{identifiers.trace_id_suffix}_planning_baseline.v1.json"
+        f"{VALIDATION_EVIDENCE_DIRECTORY}/{identifiers.trace_id_suffix}_planning_baseline.json"
     )
     ensure_available_path(loader, doc_path)
     subject_paths = [

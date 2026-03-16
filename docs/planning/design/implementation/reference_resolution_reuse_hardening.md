@@ -32,7 +32,7 @@ applies_to:
 Breaks Reference Resolution Reuse Hardening into a bounded implementation slice.
 
 ## Source Request or Design
-- Feature design: [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/reference_resolution_reuse_hardening.md)
+- Feature design: [reference_resolution_reuse_hardening.md](/docs/planning/design/features/reference_resolution_reuse_hardening.md)
 - Review request: Do a comprehensive project review for refactoring and potential optimizations without reducing capability, fidelity, or performance.
 
 ## Scope Summary
@@ -47,9 +47,9 @@ Breaks Reference Resolution Reuse Hardening into a bounded implementation slice.
 - Standalone family syncs and single-document validation calls must continue to work without requiring aggregate orchestration.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the refactor should reduce duplicated work through explicit helpers and narrow injected state.
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): the implementation must prove both targeted reuse behavior and full baseline health.
-- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow-module loading must remain aligned with the derived workflow index contract.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): the refactor should reduce duplicated work through explicit helpers and narrow injected state.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): the implementation must prove both targeted reuse behavior and full baseline health.
+- [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow-module loading must remain aligned with the derived workflow index contract.
 
 ## Proposed Technical Approach
 - Add `repo_ops/reference_resolution.py` to build `reference_urls_by_path` from one fresh reference-index document.
@@ -78,9 +78,9 @@ Breaks Reference Resolution Reuse Hardening into a bounded implementation slice.
 - Run `./.venv/bin/pytest -q`.
 
 ## References
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/reference_resolution_reuse_hardening.md)
-- [reference_resolution_reuse_hardening_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json)
+- [reference_resolution_reuse_hardening.md](/docs/planning/prds/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening.md](/docs/planning/design/features/reference_resolution_reuse_hardening.md)
+- [reference_resolution_reuse_hardening_acceptance.json](/core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.json)
 
 ## Updated At
 - `2026-03-12T15:09:05Z`

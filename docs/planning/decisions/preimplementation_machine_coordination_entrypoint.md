@@ -11,7 +11,7 @@ audience: "shared"
 authority: "supporting"
 applies_to:
   - "docs/planning/"
-  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.json"
   - "core/python/src/watchtower_core/repo_ops/query/initiatives.py"
   - "core/python/src/watchtower_core/cli/"
 aliases:
@@ -46,17 +46,17 @@ The repository review identified real coordination friction for agent-first use,
 - Adding another planning family would increase rather than reduce the number of entrypoints unless it replaced something, which would create migration and authority churn.
 
 ## Applied References and Implications
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): the repo already defines the initiative index as the compact machine-readable coordination view, so the right move is to strengthen that surface rather than invent a competing one.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the initiative layer is already the cross-family coordination layer and should stay derived rather than authored.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the traceability index remains the durable artifact join; coordination must project from it rather than replace it.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): the repo already defines the initiative index as the compact machine-readable coordination view, so the right move is to strengthen that surface rather than invent a competing one.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): the initiative layer is already the cross-family coordination layer and should stay derived rather than authored.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the traceability index remains the durable artifact join; coordination must project from it rather than replace it.
 
 ## Affected Surfaces
 - `docs/planning/README.md`
 - `docs/planning/initiatives/README.md`
 - `docs/standards/data_contracts/initiative_index_standard.md`
 - `docs/standards/governance/initiative_tracking_standard.md`
-- `core/control_plane/schemas/artifacts/initiative_index.v1.schema.json`
-- `core/control_plane/indexes/initiatives/initiative_index.v1.json`
+- `core/control_plane/schemas/artifacts/initiative_index.schema.json`
+- `core/control_plane/indexes/initiatives/initiative_index.json`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
 - `core/python/src/watchtower_core/cli/`
 
@@ -95,10 +95,10 @@ Adopt option 3. The current authored families stay intact, and the initiative in
 - The repo still needs family-specific indexes for detailed lookup after the coordination start-here step.
 
 ## References
-- [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
-- [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
+- [preimplementation_repo_review_and_hardening.md](/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
+- [preimplementation_repo_readiness.md](/docs/planning/design/features/preimplementation_repo_readiness.md)
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
 
 ## Updated At
 - `2026-03-10T17:55:24Z`

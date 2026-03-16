@@ -95,18 +95,18 @@ The current `watchtower_core` package is functional and validated, but its reusa
 - Whether the eventual export should remain an in-repo package boundary or later become a separately published package once the boundary is stable.
 
 ## Foundations References Applied
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core must stop at the shared governed substrate and generic pack-facing contracts rather than absorbing domain-pack implementation.
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the refactor must stay deterministic, local-first, schema-first, and explicit about human versus machine authority boundaries.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must stay aligned as the architecture and tooling boundaries change.
-- [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md): future core contracts should support the first CTF-oriented product path without embedding offensive-security-specific content inside shared core.
+- [product_direction.md](/docs/foundations/product_direction.md): core must stop at the shared governed substrate and generic pack-facing contracts rather than absorbing domain-pack implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the refactor must stay deterministic, local-first, schema-first, and explicit about human versus machine authority boundaries.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): human-readable and machine-readable companion surfaces must stay aligned as the architecture and tooling boundaries change.
+- [customer_story.md](/docs/foundations/customer_story.md): future core contracts should support the first CTF-oriented product path without embedding offensive-security-specific content inside shared core.
 
 ## References
-- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
-- [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md)
+- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
+- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
+- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
 
 ## Updated At
 - `2026-03-10T04:28:34Z`

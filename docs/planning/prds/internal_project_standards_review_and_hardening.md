@@ -70,8 +70,8 @@ These gaps weaken the repository's standards posture in different ways. The firs
 - The trace depends on keeping planning docs, task records, acceptance artifacts, tests, and derived indexes synchronized as the fixes move from planning into execution.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): shared parsing and standards-enforcement helpers should preserve explicit seams and deterministic behavior rather than leaving correctness to duplicated family logic.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): authored standards remain authoritative, so the machine-readable and validation layers should conform to them instead of silently weakening them.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): shared parsing and standards-enforcement helpers should preserve explicit seams and deterministic behavior rather than leaving correctness to duplicated family logic.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): authored standards remain authoritative, so the machine-readable and validation layers should conform to them instead of silently weakening them.
 
 ## References
 - docs/standards/documentation/standard_md_standard.md

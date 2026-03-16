@@ -1,0 +1,95 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.documentation_surface_alignment_for_core_pack_model.planning_baseline",
+  "title": "Documentation Surface Alignment For Core and Pack Model Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T06:02:05Z",
+  "source_prd_ids": [
+    "prd.documentation_surface_alignment_for_core_pack_model"
+  ],
+  "source_design_ids": [
+    "design.features.documentation_surface_alignment_for_core_pack_model"
+  ],
+  "source_plan_ids": [
+    "design.implementation.documentation_surface_alignment_for_core_pack_model"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.documentation_surface_alignment_for_core_pack_model"
+  ],
+  "checks": [
+    {
+      "check_id": "check.documentation_surface_alignment_for_core_pack_model.planning_baseline",
+      "title": "Documentation-alignment planning baseline exists and is linked",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/decisions/documentation_surface_alignment_for_core_pack_model_direction.md",
+        "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/refresh_repository_documentation_for_core_pack_model_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+        "core/control_plane/contracts/acceptance/documentation_surface_alignment_for_core_pack_model_acceptance.json"
+      ],
+      "subject_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model",
+        "decision.documentation_surface_alignment_for_core_pack_model_direction",
+        "design.features.documentation_surface_alignment_for_core_pack_model",
+        "design.implementation.documentation_surface_alignment_for_core_pack_model",
+        "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001",
+        "task.documentation_surface_alignment_for_core_pack_model.refresh.002",
+        "task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003",
+        "contract.acceptance.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.documentation_surface_alignment_for_core_pack_model.001"
+      ],
+      "notes": "The documentation-alignment follow-on is bootstrapped and ready for execution after the core-plus-pack convergence trace closed."
+    },
+    {
+      "check_id": "check.documentation_surface_alignment_for_core_pack_model.acceptance_baseline",
+      "title": "Documentation-alignment acceptance coverage is established for the planned execution slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md",
+        "core/control_plane/README.md",
+        "core/control_plane/manifests/README.md",
+        "core/control_plane/registries/README.md",
+        "core/control_plane/schemas/artifacts/README.md",
+        "core/python/README.md",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "docs/planning/tasks/closed/archive/2026/03/16/refresh_repository_documentation_for_core_pack_model_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_documentation_surface_alignment_for_core_pack_model.md"
+      ],
+      "subject_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model",
+        "design.features.documentation_surface_alignment_for_core_pack_model",
+        "design.implementation.documentation_surface_alignment_for_core_pack_model",
+        "task.documentation_surface_alignment_for_core_pack_model.refresh.002",
+        "task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003",
+        "contract.acceptance.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.documentation_surface_alignment_for_core_pack_model.002",
+        "ac.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "notes": "The bootstrap sets the bounded documentation targets, the execution task, and the closeout path that will satisfy the documentation refresh acceptance surface."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence recorded for the documentation-alignment follow-on bootstrap at 2026-03-16T06:02:05Z.",
+  "source_decision_ids": [
+    "decision.documentation_surface_alignment_for_core_pack_model_direction"
+  ]
+}

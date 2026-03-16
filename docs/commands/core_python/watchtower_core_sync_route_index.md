@@ -42,7 +42,7 @@ uv run watchtower-core sync route-index --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync route-index --output /tmp/route_index.v1.json --format json
+uv run watchtower-core sync route-index --output /tmp/route_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -64,7 +64,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.v1.json --form
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/sync/route_index.py`
-- `core/control_plane/indexes/routes/route_index.v1.json`
+- `core/control_plane/indexes/routes/route_index.json`
 
 ## Updated At
 - `2026-03-10T22:45:00Z`

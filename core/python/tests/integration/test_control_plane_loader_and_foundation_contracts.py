@@ -21,6 +21,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     catalog = loader.load_schema_catalog()
     validators = loader.load_validator_registry()
     authority_map = loader.load_authority_map()
+    rendered_surface_registry = loader.load_rendered_surface_registry()
     workflow_metadata_registry = loader.load_workflow_metadata_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
@@ -37,6 +38,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
     assert authority_map.artifact_id == "registry.authority_map"
+    assert rendered_surface_registry.artifact_id == "registry.rendered_surfaces"
     assert workflow_metadata_registry.artifact_id == "registry.workflow_metadata"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
@@ -156,7 +158,7 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
     assert "docs/planning/coordination_tracking.md" in foundations_readme
     assert (
         "[coordination_tracking.md]"
-        "(/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)"
+        "(/docs/planning/coordination_tracking.md)"
     ) in repository_scope
     assert "SUMMARY.md" not in root_readme
     assert "SUMMARY.md" not in foundations_readme
@@ -213,20 +215,20 @@ def test_control_plane_loader_validates_current_traceability_artifacts() -> None
     loader = ControlPlaneLoader(REPO_ROOT)
 
     acceptance_contract = loader.load_validated_document(
-        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
     traceability_index = loader.load_validated_document(
-        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        "core/control_plane/indexes/traceability/traceability_index.json"
     )
     validation_evidence = loader.load_validated_document(
         "core/control_plane/ledgers/validation_evidence/"
-        "core_python_foundation_traceability_validation.v1.json"
+        "core_python_foundation_traceability_validation.json"
     )
     initiative_index = loader.load_validated_document(
-        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+        "core/control_plane/indexes/initiatives/initiative_index.json"
     )
     coordination_index = loader.load_validated_document(
-        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        "core/control_plane/indexes/coordination/coordination_index.json"
     )
 
     assert acceptance_contract["id"] == "contract.acceptance.core_python_foundation"

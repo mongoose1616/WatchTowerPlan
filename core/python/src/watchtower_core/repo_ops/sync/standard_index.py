@@ -38,7 +38,7 @@ from watchtower_core.repo_ops.standards import (
 )
 from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
-STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
+STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.json"
 STANDARD_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
 )

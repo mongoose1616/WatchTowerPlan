@@ -47,16 +47,16 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - Multiple engineers need a predictable hosted layer for intake and review even when the authoritative planning state stays in git.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): preserve deterministic, inspectable authority boundaries rather than hiding planning state in an external tool.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): support maintainers and automated workflows with reusable structured surfaces.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep human-facing and machine-facing collaboration surfaces aligned in the same change set when they depend on each other.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): preserve deterministic, inspectable authority boundaries rather than hiding planning state in an external tool.
+- [product_direction.md](/docs/foundations/product_direction.md): support maintainers and automated workflows with reusable structured surfaces.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep human-facing and machine-facing collaboration surfaces aligned in the same change set when they depend on each other.
 
 ## Internal Standards and Canonical References Applied
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): GitHub should remain a hosted collaboration layer that complements repo-local authority instead of replacing it.
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): issue labels, mirrored status, and project fields need to stay aligned with the sync contract.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): hosted intake and PR review still need clear links back to local task records.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): `.github/`, sync code, and companion docs should be updated together.
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared local summary of the hosted collaboration surfaces and APIs.
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): GitHub should remain a hosted collaboration layer that complements repo-local authority instead of replacing it.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): issue labels, mirrored status, and project fields need to stay aligned with the sync contract.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): hosted intake and PR review still need clear links back to local task records.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): `.github/`, sync code, and companion docs should be updated together.
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared local summary of the hosted collaboration surfaces and APIs.
 
 ## External Sources Consulted
 - [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository): shaped the issue-form structure and bounded intake expectations.
@@ -125,10 +125,10 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - GitHub field or label drift can create confusing mismatches between hosted visibility and repo-local task state if sync assumptions change without companion updates.
 
 ## References
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
-- [README.md](/home/j/WatchTowerPlan/.github/README.md)
+- [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
+- [README.md](/.github/README.md)
 - [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
 - [Creating a pull request template for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)

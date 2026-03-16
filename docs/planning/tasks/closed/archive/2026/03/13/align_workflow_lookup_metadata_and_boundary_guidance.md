@@ -17,7 +17,7 @@ authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/query/workflows.py
 - core/control_plane/registries/workflow_metadata_registry.json
-- core/control_plane/indexes/workflows/workflow_index.v1.json
+- core/control_plane/indexes/workflows/workflow_index.json
 - docs/commands/core_python/watchtower_core_route_preview.md
 - docs/commands/core_python/watchtower_core_query_workflows.md
 - workflows/modules/

@@ -12,7 +12,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/standards/
-- core/control_plane/indexes/standards/standard_index.v1.json
+- core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
 - workflows/ROUTING_TABLE.md
@@ -87,8 +87,8 @@ Closes the still-valid report-set gaps around standards operationalization metad
 - This slice depends on keeping human-readable docs, control-plane artifacts, command docs, and Python tests aligned in the same change set.
 
 ## References
-- [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
-- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md)
-- [workflow_operationalization_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md)
+- [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md)
+- [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md)
+- [workflow_operationalization_direction.md](/docs/planning/decisions/workflow_operationalization_direction.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md)

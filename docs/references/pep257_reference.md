@@ -58,7 +58,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 
 ### Why It Matters Here
 - Use this reference as the baseline for when repository Python code needs docstrings at all.
-- Pair it with [google_style_docstrings_reference.md](/home/j/WatchTowerPlan/docs/references/google_style_docstrings_reference.md) if the repo adopts a structured section format for richer docstrings.
+- Pair it with [google_style_docstrings_reference.md](/docs/references/google_style_docstrings_reference.md) if the repo adopts a structured section format for richer docstrings.
 - If docstring requirements become mandatory for local Python code, define the precise rule under `docs/standards/engineering/**`.
 
 ### If Local Policy Tightens
@@ -66,7 +66,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
+- [README.md](/docs/references/README.md)
 
 ## Notes
 - This reference supports future Python automation work but does not by itself mandate docstrings for every function in the repo.

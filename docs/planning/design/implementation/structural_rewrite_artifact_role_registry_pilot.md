@@ -39,10 +39,10 @@ aliases:
 Implements the first bounded Phase 2 slice by publishing an additive, read-only artifact-role registry for the six public planning-authority surfaces already classified in Phase 1.
 
 ## Source Request or Design
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/features/structural_rewrite_program.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [review_structural_rewrite_program_phase2_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md)
+- [structural_rewrite_program.md](/docs/planning/prds/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/features/structural_rewrite_program.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [review_structural_rewrite_program_phase2_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md)
 
 ## Scope Summary
 - Publish the new `artifact_role_registry` family and its schema-backed validation companions.
@@ -62,10 +62,10 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 - The follow-on checkpoint after this slice is a review task, not broader implementation authorization.
 
 ## Internal Standards and Canonical References Applied
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): the registry entries must use the controlled authority-role, storage-class, compatibility-support, and retention-reason vocabulary already fixed in Phase 1.
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the slice must publish one checkpoint document, one migration record, one validation-evidence artifact, and explicit parity and rollback notes.
-- [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): the slice may not change the five public planning-authority answers.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): the first slice needs durable evidence, not transient operator notes.
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md): the registry entries must use the controlled authority-role, storage-class, compatibility-support, and retention-reason vocabulary already fixed in Phase 1.
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md): the slice must publish one checkpoint document, one migration record, one validation-evidence artifact, and explicit parity and rollback notes.
+- [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): the slice may not change the five public planning-authority answers.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): the first slice needs durable evidence, not transient operator notes.
 
 ## Slice Boundary
 - Publish one new governed family: `artifact_role_registry`.
@@ -99,8 +99,8 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 - Companion publication surfaces were required same-change artifacts, not runtime-derived outputs. The surviving companion records after the later retirement are:
   - `core/control_plane/registries/schema_catalog.json`
   - `core/control_plane/registries/validator_registry.json`
-  - `core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json`
-  - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
+  - `core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.json`
+  - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.json`
 
 ## Current Consumers
 - Current consumers are governance and validation surfaces only:
@@ -108,8 +108,8 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
   - `core/python/src/watchtower_core/validation/artifact.py`
   - `core/control_plane/registries/validator_registry.json`
   - `core/control_plane/registries/schema_catalog.json`
-  - `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json`
-  - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
+  - `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json`
+  - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.json`
 - There are intentionally no runtime query, sync, loader-selection, or validator-dispatch consumers beyond schema-backed validation in this slice.
 
 ## Parity Method
@@ -175,10 +175,10 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 - Do not start a second metadata slice or any Phase 3 work in the same pass.
 
 ## References
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
-- [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
-- [structural_rewrite_program_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
+- [rewrite_execution_control_standard.md](/docs/standards/governance/rewrite_execution_control_standard.md)
+- [structural_rewrite_program_acceptance.json](/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json)
 
 ## Updated At
 - `2026-03-14T03:56:23Z`

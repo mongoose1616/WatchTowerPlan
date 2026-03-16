@@ -34,17 +34,17 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Building query or routing tools that need a compact machine-readable view over the design corpus.
 
 ## Related Standards and Sources
-- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this design-document family standard narrows.
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md): companion planning or design surface this standard should remain consistent with.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this design-document family standard narrows.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [design_tracking.md](/docs/planning/design/design_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/core/control_plane/indexes/design_documents/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep design semantics in the documents under `docs/planning/design/**`.
 - Catalog only durable feature designs and implementation plans that live under `docs/planning/design/features/` or `docs/planning/design/implementation/`.
 - Source stable identity and summary fields from the governed design-document front matter rather than reconstructing them from body prose.
@@ -121,10 +121,10 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Update the human-readable design tracker in the same change set when indexed design documents change materially.
 
 ## References
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md)
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md)
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
+- [design_tracking.md](/docs/planning/design/design_tracking.md)
+- [README.md](/core/control_plane/indexes/design_documents/README.md)
 
 ## Notes
 - The human tracker is for quick scanning and editorial review.

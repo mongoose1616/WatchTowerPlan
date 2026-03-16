@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/repository_paths/README.md` | Describes the purpose of the repository path index directory and its current contents. |
-| `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` | First-pass repository path index artifact covering high-signal entrypoints. |
+| `core/control_plane/indexes/repository_paths/repository_path_index.json` | First-pass repository path index artifact covering high-signal entrypoints. |

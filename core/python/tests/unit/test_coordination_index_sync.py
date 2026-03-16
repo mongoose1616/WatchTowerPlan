@@ -23,14 +23,14 @@ def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
 
 def _load_initiative_index(repo_root: Path) -> dict[str, object]:
     initiative_index_path = (
-        repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+        repo_root / "core/control_plane/indexes/initiatives/initiative_index.json"
     )
     return json.loads(initiative_index_path.read_text(encoding="utf-8"))
 
 
 def _write_initiative_index(repo_root: Path, document: dict[str, object]) -> None:
     initiative_index_path = (
-        repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+        repo_root / "core/control_plane/indexes/initiatives/initiative_index.json"
     )
     initiative_index_path.write_text(
         f"{json.dumps(document, indent=2)}\n",

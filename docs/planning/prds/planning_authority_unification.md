@@ -88,14 +88,14 @@ The repository's planning model is disciplined, but machine consumers still need
 - Whether later initiatives should derive more human trackers directly from the planning catalog once the canonical machine join has stabilized.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the solution should prefer explicit boundaries, deterministic joins, and export-safe machine interfaces over informal multi-surface navigation.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the repo should reduce authority ambiguity and favor clearly named canonical surfaces instead of preserving equivalent entrypoints indefinitely.
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the work belongs in `WatchTowerPlan` because it strengthens the reusable governed core and planning substrate, not product implementation.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): the solution should prefer explicit boundaries, deterministic joins, and export-safe machine interfaces over informal multi-surface navigation.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): the repo should reduce authority ambiguity and favor clearly named canonical surfaces instead of preserving equivalent entrypoints indefinitely.
+- [repository_scope.md](/docs/foundations/repository_scope.md): the work belongs in `WatchTowerPlan` because it strengthens the reusable governed core and planning substrate, not product implementation.
 
 ## References
-- [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
-- [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
-- [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)
+- [coordination_tracking.md](/docs/planning/coordination_tracking.md)
+- [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)
+- [initiative_index.json](/core/control_plane/indexes/initiatives/initiative_index.json)
 
 ## Updated At
 - `2026-03-11T01:48:43Z`

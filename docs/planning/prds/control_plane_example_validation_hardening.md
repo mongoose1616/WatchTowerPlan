@@ -63,8 +63,8 @@ The comprehensive project review found two live control-plane drift defects that
 - The follow-up review pass must confirm the fix closes the example-validation gap rather than only patching the two currently broken examples.
 
 ## References
-- retired valid example index fixture foundation_index.v1.example.json
-- retired valid example index fixture traceability_index.v1.example.json
+- retired valid example index fixture foundation_index.example.json
+- retired valid example index fixture traceability_index.example.json
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - core/python/tests/integration/test_control_plane_artifacts.py
 - docs/standards/validations/repository_validation_standard.md

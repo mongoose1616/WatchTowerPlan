@@ -25,6 +25,7 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     assert context.governance_surface_map.get("routing_table").path == "workflows/ROUTING_TABLE.md"
     assert context.status_registry.get("accepted").entry_status == "active"
     assert context.actor_registry.get("actor.codex").actor_type == "agent"
+    assert "rendered_surface_registry" in context.registries
     assert "validator_registry" in context.registries
     assert "route_index" in context.indexes
 

@@ -33,12 +33,12 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Refreshing a plan after the design, standards, or control-plane artifacts it depends on have changed materially.
 
 ## Related Standards and Sources
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
-- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): authoring scaffold that should stay aligned with this standard.
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
+- [implementation_plan_template.md](/docs/templates/implementation_plan_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/docs/planning/design/implementation/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Store implementation plans under `docs/planning/design/implementation/`.
@@ -104,7 +104,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 
 ## Validation
 - Implementation plans should contain the required sections in the documented order.
-- Implementation-plan front matter should validate against `implementation_plan_front_matter.v1.schema.json`.
+- Implementation-plan front matter should validate against `implementation_plan_front_matter.schema.json`.
 - The work breakdown should be concrete enough to guide coding, testing, and review.
 - The plan should clearly state how success will be validated.
 - The required `Internal Standards and Canonical References Applied` section
@@ -119,9 +119,9 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Refresh affected implementation plans when an upstream feature design or standard changes their assumptions materially.
 
 ## References
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md)
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md)
+- [implementation_plan_template.md](/docs/templates/implementation_plan_template.md)
+- [README.md](/docs/planning/design/implementation/README.md)
 
 ## Notes
 - A good implementation plan narrows ambiguity before coding starts without duplicating workflow execution steps.

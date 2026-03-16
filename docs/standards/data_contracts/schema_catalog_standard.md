@@ -33,13 +33,13 @@ Provide deterministic local resolution from published schema `$id` values to can
 - Reviewing whether schema lookup metadata belongs in a registry or an index.
 
 ## Related Standards and Sources
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json): companion governed or implementation surface this standard describes or constrains.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [validator_registry.json](/core/control_plane/registries/validator_registry.json): companion governed or implementation surface this standard describes or constrains.
+- [README.md](/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model schema lookup as a registry, not as an index.
@@ -111,12 +111,12 @@ Provide deterministic local resolution from published schema `$id` values to can
 - Update related validator, contract, or loader surfaces in the same change set when schema lookup behavior changes materially.
 
 ## References
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [validator_registry.json](/core/control_plane/registries/validator_registry.json)
+- [README.md](/core/control_plane/registries/README.md)
 
 ## Notes
 - The schema catalog exists because published schema identities are stable governed artifacts, not just filesystem paths.

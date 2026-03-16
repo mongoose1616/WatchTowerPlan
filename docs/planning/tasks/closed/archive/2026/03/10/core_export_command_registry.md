@@ -16,7 +16,7 @@ applies_to:
   - "core/python/src/watchtower_core/cli/"
   - "core/python/src/watchtower_core/repo_ops/sync/command_index.py"
   - "docs/commands/core_python/"
-  - "core/control_plane/indexes/commands/command_index.v1.json"
+  - "core/control_plane/indexes/commands/command_index.json"
 related_ids:
   - "prd.core_export_readiness_and_optimization"
   - "design.features.core_export_ready_architecture"
@@ -42,9 +42,9 @@ Introduce registry-backed CLI command authority so parser wiring, command lookup
 - Command-index generation and CLI surface tests no longer depend on one monolithic parser file as the main authority.
 
 ## Links
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [command_documentation_and_lookup.md](/docs/planning/design/features/command_documentation_and_lookup.md)
 
 ## Updated At
 - `2026-03-10T05:14:33Z`

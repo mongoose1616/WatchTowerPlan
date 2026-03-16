@@ -30,10 +30,10 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - `https://docs.astral.sh/uv/reference/settings/#cache-dir` - verified 2026-03-09; Settings.
 
 ## Related Standards and Sources
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
-- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [uv.lock](/core/python/uv.lock)
+- [watchtower_core_doctor.md](/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Quick Reference or Distilled Reference
 ### Common `uv` Operations
@@ -58,10 +58,10 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
-- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [uv.lock](/core/python/uv.lock)
+- [watchtower_core_doctor.md](/docs/commands/core_python/watchtower_core_doctor.md)
 
 ### Why It Matters Here
 - Use this reference if `docs/standards/engineering/**` starts defining Python environment tooling.
@@ -72,10 +72,10 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
-- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
-- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
+- [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/core/python/pyproject.toml)
+- [uv.lock](/core/python/uv.lock)
+- [watchtower_core_doctor.md](/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

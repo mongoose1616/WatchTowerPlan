@@ -10,7 +10,7 @@ from typing import Any
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 TRACEABILITY_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/traceability/traceability_index.v1.json"
+    "core/control_plane/indexes/traceability/traceability_index.json"
 )
 
 

@@ -32,7 +32,7 @@ Breaks the remaining report-validated repo-local hotspot modularity work into bo
 
 ## Source Request or Design
 - Review the March 2026 maintenance findings again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
-- Feature design: [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
+- Feature design: [repo_local_hotspot_modularity_hardening.md](/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
 
 ## Scope Summary
 - Reduce the still-live report-example hotspots in planning scaffolds, task lifecycle, sync CLI registration and handlers, traceability sync, GitHub task sync, and GitHub client internals.
@@ -40,10 +40,10 @@ Breaks the remaining report-validated repo-local hotspot modularity work into bo
 - Close the remaining modularity concern from the March 2026 report set without reopening already-completed traces.
 
 ## Internal Standards and Canonical References Applied
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): each slice should favor small helpers, thin facades, and targeted regression coverage.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): task closure and validation evidence need to match the initiative's active-to-validation-to-closeout progression.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): the bounded execution slices should each close through terminal task state rather than leaving the report work implicit.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): the final baseline must be published as durable evidence before initiative closeout.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): each slice should favor small helpers, thin facades, and targeted regression coverage.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): task closure and validation evidence need to match the initiative's active-to-validation-to-closeout progression.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): the bounded execution slices should each close through terminal task state rather than leaving the report work implicit.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): the final baseline must be published as durable evidence before initiative closeout.
 
 ## Assumptions and Constraints
 - Existing service and module import paths should remain usable by current repo-local callers and tests.
@@ -76,6 +76,6 @@ Breaks the remaining report-validated repo-local hotspot modularity work into bo
 - March 2026 review overview and method summary for the remaining modularity hotspots.
 - March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
 - March 2026 remediation-program summary for the final bounded modularity follow-up.
-- [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
-- [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
-- [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
+- [repo_local_hotspot_modularity_hardening.md](/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
+- [core_export_hardening_execution.md](/docs/planning/design/implementation/core_export_hardening_execution.md)
+- [end_to_end_repo_rationalization_execution.md](/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)

@@ -17,15 +17,15 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md
 - docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md
-- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json
-- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json
-- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json
-- core/control_plane/indexes/coordination/coordination_index.v1.json
-- core/control_plane/indexes/initiatives/initiative_index.v1.json
-- core/control_plane/indexes/planning/planning_catalog.v1.json
-- core/control_plane/indexes/traceability/traceability_index.v1.json
+- core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.json
+- core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.json
+- core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.json
+- core/control_plane/indexes/coordination/coordination_index.json
+- core/control_plane/indexes/initiatives/initiative_index.json
+- core/control_plane/indexes/planning/planning_catalog.json
+- core/control_plane/indexes/traceability/traceability_index.json
 - core/python/src/watchtower_core/closeout/initiative.py
 - core/python/src/watchtower_core/cli/closeout_handlers.py
 - core/python/src/watchtower_core/repo_ops/sync/coordination.py
@@ -52,7 +52,7 @@ Review the bounded Phase 4 closeout coordination sync-reuse slice, confirm the a
 ## Scope
 - Confirm `InitiativeCloseoutService.close` now reuses `CoordinationSyncService` for exactly `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` after the traceability write.
 - Confirm `traceability_output_path` remains the pre-seam canonical write and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain explicit direct outputs outside the approved seam.
-- Confirm the five public planning-authority answers, the private `planning_projection_snapshot.py` boundary, and the current `TaskLifecycleService` and `PlanningScaffoldService` write behavior remain unchanged.
+- Confirm the five public planning-authority answers, the private `planning_rendered_snapshot.py` boundary, and the current `TaskLifecycleService` and `PlanningScaffoldService` write behavior remain unchanged.
 - Decide whether the rewrite stays blocked at this review or may proceed to one new explicit bounded checkpoint.
 
 ## Done When
@@ -72,14 +72,14 @@ Review the bounded Phase 4 closeout coordination sync-reuse slice, confirm the a
 - Opening a bounded entry package for that exact remaining step advances the rewrite without implying broader coordination-group redesign, tracker-family convergence, or later-phase work.
 
 ## Links
-- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
-- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
-- [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
-- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
-- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
-- [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [structural_rewrite_phase4_closeout_tracking_entry.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
+- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
 
 ## Updated At
 - `2026-03-15T09:04:41Z`

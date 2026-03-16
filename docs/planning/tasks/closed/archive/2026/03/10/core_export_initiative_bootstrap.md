@@ -16,8 +16,8 @@ applies_to:
   - "docs/planning/prds/core_export_readiness_and_optimization.md"
   - "docs/planning/design/features/core_export_ready_architecture.md"
   - "docs/planning/design/implementation/core_export_readiness_execution.md"
-  - "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
-  - "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json"
+  - "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json"
+  - "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.json"
   - "docs/standards/engineering/git_workflow_standard.md"
   - "docs/planning/tasks/open/"
 related_ids:
@@ -50,12 +50,12 @@ Creates the initiative's PRD, feature design, implementation plan, acceptance ba
 - The missing git workflow standard exists and the affected standards corpus is aligned with it.
 
 ## Links
-- [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
-- [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
-- [core_export_readiness_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_readiness_execution.md)
-- [core_export_readiness_and_optimization_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json)
-- [core_export_readiness_and_optimization_planning_baseline.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json)
-- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
+- [core_export_readiness_and_optimization.md](/docs/planning/prds/core_export_readiness_and_optimization.md)
+- [core_export_ready_architecture.md](/docs/planning/design/features/core_export_ready_architecture.md)
+- [core_export_readiness_execution.md](/docs/planning/design/implementation/core_export_readiness_execution.md)
+- [core_export_readiness_and_optimization_acceptance.json](/core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json)
+- [core_export_readiness_and_optimization_planning_baseline.json](/core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.json)
+- [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
 
 ## Updated At
 - `2026-03-10T04:44:27Z`

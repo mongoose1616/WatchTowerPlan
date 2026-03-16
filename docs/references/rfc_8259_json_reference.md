@@ -28,8 +28,8 @@ Provide a standards-track JSON baseline when machine-readable payload semantics 
 - `https://www.rfc-editor.org/rfc/rfc8259` - verified 2026-03-09; RFC 8259: The JavaScript Object Notation (JSON) Data Interchange Format.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/core/control_plane/)
 
 ## Quick Reference or Distilled Reference
 ### JSON Baseline
@@ -55,8 +55,8 @@ Provide a standards-track JSON baseline when machine-readable payload semantics 
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/core/control_plane/)
 
 ### Why It Matters Here
 - Use this reference when data-contract standards under `docs/standards/data_contracts/**` need a JSON baseline.
@@ -67,8 +67,8 @@ Provide a standards-track JSON baseline when machine-readable payload semantics 
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/core/control_plane/)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

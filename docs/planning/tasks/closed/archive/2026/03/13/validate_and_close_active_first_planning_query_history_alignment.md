@@ -17,8 +17,8 @@ applies_to:
 - core/python/
 - docs/planning/
 - docs/commands/core_python/
-- core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json
-- core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json
+- core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.json
+- core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.json
 related_ids:
 - prd.active_first_planning_query_history_alignment
 - design.implementation.active_first_planning_query_history_alignment

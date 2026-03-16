@@ -28,8 +28,8 @@ Provide a consistent way to reason about compatibility and release impact when t
 - `https://semver.org/` - verified 2026-03-09; Semantic Versioning 2.0.0.
 
 ## Related Standards and Sources
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Version Components
@@ -54,8 +54,8 @@ Provide a consistent way to reason about compatibility and release impact when t
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ### Why It Matters Here
 - Use this reference when version fields or release workflows are added under `docs/standards/**` or `workflows/**`.
@@ -66,8 +66,8 @@ Provide a consistent way to reason about compatibility and release impact when t
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.

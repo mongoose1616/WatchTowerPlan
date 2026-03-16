@@ -7,10 +7,10 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/initiatives/README.md` | Describes the purpose of the initiative-index directory and its current artifacts. |
-| `core/control_plane/indexes/initiatives/initiative_index.v1.json` | Machine-readable initiative index for current traced initiatives, their phases, active owners, and next actions. |
+| `core/control_plane/indexes/initiatives/initiative_index.json` | Machine-readable initiative index for current traced initiatives, their phases, active owners, and next actions. |
 
 ## Notes
 - Treat this directory as a derived lookup surface, not as the source of truth for planning or task content.
 - Build the initiative index from traceability plus the current planning and task indexes.
-- Keep the coordination overlay aligned at `core/control_plane/indexes/coordination/coordination_index.v1.json`.
+- Keep the coordination overlay aligned at `core/control_plane/indexes/coordination/coordination_index.json`.
 - Keep the human-readable companion tracker aligned at `docs/planning/initiatives/initiative_tracking.md`.

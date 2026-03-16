@@ -52,16 +52,16 @@ This slice is a documentation-completeness and retrieval-cohesion repair for the
 - The foundations query command already supports useful filters such as `--reference-path`, `--related-path`, and `--applied-by-path`, but the published examples do not fully reflect the current corpus.
 
 ## Foundations References Applied
-- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): foundations-aware review has to foreground current repository ownership before future-product narrative, so the workflow context cannot omit repository scope.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): same-change-set alignment between docs, machine-readable indexes, and validation surfaces is part of the governing standards posture for this repair.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): the design must improve the engineering stack foundation's reference completeness without changing its substantive direction.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future-product context remains relevant, but it must stay explicitly subordinate to current repository scope in foundations-aware review.
+- [repository_scope.md](/docs/foundations/repository_scope.md): foundations-aware review has to foreground current repository ownership before future-product narrative, so the workflow context cannot omit repository scope.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): same-change-set alignment between docs, machine-readable indexes, and validation surfaces is part of the governing standards posture for this repair.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): the design must improve the engineering stack foundation's reference completeness without changing its substantive direction.
+- [product_direction.md](/docs/foundations/product_direction.md): future-product context remains relevant, but it must stay explicitly subordinate to current repository scope in foundations-aware review.
 
 ## Internal Standards and Canonical References Applied
-- [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md): foundation docs must remain indexable, auditable, and explicit about material references.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the foundation index should carry reference and external-authority metadata when the source foundation doc publishes it.
-- [repository_maintenance_loop_standard.md](/home/j/WatchTowerPlan/docs/standards/operations/repository_maintenance_loop_standard.md): maintenance and review work should close drift in one bounded change and re-check the foundations intent layer before closeout.
-- [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md): command docs must stay aligned with actual help text and current queryable surfaces.
+- [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md): foundation docs must remain indexable, auditable, and explicit about material references.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the foundation index should carry reference and external-authority metadata when the source foundation doc publishes it.
+- [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): maintenance and review work should close drift in one bounded change and re-check the foundations intent layer before closeout.
+- [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md): command docs must stay aligned with actual help text and current queryable surfaces.
 
 ## Design Goals and Constraints
 - Improve foundations completeness by editing the authoritative source docs rather than patching the derived index directly.
@@ -85,7 +85,7 @@ This slice is a documentation-completeness and retrieval-cohesion repair for the
 - `workflows/modules/foundations_context_review.md` becomes the corrected review-context loader for foundations-aware work.
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py` and the companion command doc publish examples grounded in live corpus behavior.
 - `core/python/tests/**` add regression coverage for the refreshed reference-path lookup and help text.
-- `core/control_plane/indexes/foundations/foundation_index.v1.json` is regenerated from the updated foundation source docs.
+- `core/control_plane/indexes/foundations/foundation_index.json` is regenerated from the updated foundation source docs.
 
 ### Data and Interface Impacts
 - No schema changes.
@@ -125,6 +125,6 @@ This slice is a documentation-completeness and retrieval-cohesion repair for the
 - A help-text example can drift again later if future foundation audiences change and there is no regression coverage.
 
 ## References
-- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
-- [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md)
-- [foundation_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/foundation_index.v1.json)
+- [README.md](/docs/foundations/README.md)
+- [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md)
+- [foundation_index.json](/core/control_plane/indexes/foundations/foundation_index.json)

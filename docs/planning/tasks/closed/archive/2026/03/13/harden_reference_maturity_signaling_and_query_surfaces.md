@@ -17,8 +17,8 @@ authority: authoritative
 applies_to:
 - docs/references/
 - core/control_plane/indexes/references/
-- core/control_plane/schemas/artifacts/reference_index.v1.schema.json
-- core/control_plane/indexes/references/reference_index.v1.json
+- core/control_plane/schemas/artifacts/reference_index.schema.json
+- core/control_plane/indexes/references/reference_index.json
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/control_plane/models/planning.py

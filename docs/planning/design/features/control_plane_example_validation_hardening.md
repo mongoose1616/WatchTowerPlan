@@ -45,13 +45,13 @@ Defines the technical design boundary for Control Plane Example Validation Harde
 - The integration audit intended to enforce governed markdown `applies_to` canonicality has unreachable loop logic and uses non-recursive `glob("*.md")`, so most nested standards docs are not actually checked there.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): validation should keep the machine-readable substrate trustworthy and fail closed at the narrowest coherent boundary.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): validation should keep the machine-readable substrate trustworthy and fail closed at the narrowest coherent boundary.
 
 ## Internal Standards and Canonical References Applied
-- [repository_validation_standard.md](/home/j/WatchTowerPlan/docs/standards/validations/repository_validation_standard.md): broad repository validation should cover governed artifacts through the baseline validation flow.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples are part of the governed schema boundary and must stay aligned.
-- [foundation_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/foundation_index_standard.md): the foundation-index family operationalizes valid and invalid examples as companion surfaces.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): the traceability-index family likewise depends on valid and invalid examples remaining authoritative.
+- [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): broad repository validation should cover governed artifacts through the baseline validation flow.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): canonical valid and invalid examples are part of the governed schema boundary and must stay aligned.
+- [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md): the foundation-index family operationalizes valid and invalid examples as companion surfaces.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): the traceability-index family likewise depends on valid and invalid examples remaining authoritative.
 
 ## Design Goals and Constraints
 - Catch canonical valid-example drift in the aggregate validation baseline rather than relying only on sparse hand-authored example tests.
@@ -110,7 +110,7 @@ Defines the technical design boundary for Control Plane Example Validation Harde
 
 ## References
 - docs/planning/prds/control_plane_example_validation_hardening.md
-- retired valid example index fixture foundation_index.v1.example.json
-- retired valid example index fixture traceability_index.v1.example.json
+- retired valid example index fixture foundation_index.example.json
+- retired valid example index fixture traceability_index.example.json
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - docs/standards/data_contracts/schema_standard.md

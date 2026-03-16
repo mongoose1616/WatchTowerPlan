@@ -15,7 +15,7 @@ applies_to:
 - docs/standards/documentation/decision_record_md_standard.md
 - docs/templates/decision_record_template.md
 - docs/standards/data_contracts/decision_index_standard.md
-- core/control_plane/schemas/artifacts/decision_index.v1.schema.json
+- core/control_plane/schemas/artifacts/decision_index.schema.json
 - core/python/src/watchtower_core/repo_ops/sync/decision_index.py
 - core/python/src/watchtower_core/repo_ops/query/decisions.py
 - core/python/src/watchtower_core/cli/query_records_handlers.py
@@ -54,10 +54,10 @@ Cancel this slice before execution, keep it only as historical context, move any
 - The active `trace.regression_duplication_and_overstep_review` now owns the still-live traceability, validation, and planning-hygiene defects from the same review theme.
 
 ## Applied References and Implications
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): the cancellation should still be captured as a durable decision record instead of leaving an unexplained abandoned slice.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): cancelled initiatives should not leave open execution tasks behind.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): historical planning records should remain queryable without competing with active execution traces.
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md): the references family boundary rules out a repo-local regression summary in that subtree.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): the cancellation should still be captured as a durable decision record instead of leaving an unexplained abandoned slice.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): cancelled initiatives should not leave open execution tasks behind.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): historical planning records should remain queryable without competing with active execution traces.
+- [AGENTS.md](/docs/references/AGENTS.md): the references family boundary rules out a repo-local regression summary in that subtree.
 
 ## Affected Surfaces
 - docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md
@@ -107,6 +107,6 @@ Adopt option 3. This trace remains only as a historical cancelled record, its op
 - Depends on keeping the planning trackers and coordination outputs aligned with the cancelled task state.
 
 ## References
-- [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
-- [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/docs/references/AGENTS.md)
+- [decision_supersession_and_regression_evidence_alignment.md](/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md)
+- [regression_duplication_and_overstep_review.md](/docs/planning/prds/regression_duplication_and_overstep_review.md)
+- [AGENTS.md](/docs/references/AGENTS.md)

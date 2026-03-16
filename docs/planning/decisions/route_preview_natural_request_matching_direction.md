@@ -11,7 +11,7 @@ audience: shared
 authority: supporting
 applies_to:
 - workflows/ROUTING_TABLE.md
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 ---
 
@@ -42,14 +42,14 @@ Fix the reproduced route-preview miss by expanding governed route keywords for e
 - The repository should not reopen a broader semantic-routing initiative for this one reproduced regression.
 
 ## Applied References and Implications
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview remains advisory support for governed routing rather than a replacement for workflow authority.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): prefer the smallest explicit and reviewable change over a broader algorithm rewrite.
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): record the choice to keep this fix in governed metadata because it intentionally declines a broader semantic-routing posture.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the report finding, route update, tests, and evidence should remain linked through one trace.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): route preview remains advisory support for governed routing rather than a replacement for workflow authority.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): prefer the smallest explicit and reviewable change over a broader algorithm rewrite.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): record the choice to keep this fix in governed metadata because it intentionally declines a broader semantic-routing posture.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the report finding, route update, tests, and evidence should remain linked through one trace.
 
 ## Affected Surfaces
 - workflows/ROUTING_TABLE.md
-- core/control_plane/indexes/routes/route_index.v1.json
+- core/control_plane/indexes/routes/route_index.json
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 
@@ -84,4 +84,4 @@ Option 1 is accepted. The repository should fix this regression through explicit
 
 ## References
 - March 2026 workflow and governance review summary for the reproduced route-preview gap.
-- [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)
+- [route_preview_natural_request_matching.md](/docs/planning/prds/route_preview_natural_request_matching.md)

@@ -13,7 +13,7 @@ applies_to:
   - "docs/planning/design/features/acceptance_evidence_reconciliation.md"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/validation_evidence/"
-  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
+  - "core/control_plane/indexes/traceability/traceability_index.json"
 aliases:
   - "acceptance evidence reconciliation"
   - "acceptance coverage reconciliation"
@@ -49,17 +49,17 @@ This document defines the feature-level design for the acceptance and evidence r
 - The repository now has a live workflow module and semantic validation command for this concern.
 
 ## Foundations References Applied
-- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep repository behavior deterministic, inspectable, and local-first rather than dependent on hidden inference.
-- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): preserve reusable validation and closeout capabilities that can support maintainers and automated workflows.
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep companion human-readable and machine-readable surfaces aligned in the same change set when they depend on one another.
+- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): keep repository behavior deterministic, inspectable, and local-first rather than dependent on hidden inference.
+- [product_direction.md](/docs/foundations/product_direction.md): preserve reusable validation and closeout capabilities that can support maintainers and automated workflows.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep companion human-readable and machine-readable surfaces aligned in the same change set when they depend on one another.
 
 ## Internal Standards and Canonical References Applied
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance IDs and expected outcomes need to stay machine-readable and stable across reconciliation.
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): validation results need durable evidence records rather than ad hoc closeout notes.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): acceptance and evidence updates must stay linked through the shared trace chain.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): reconciled acceptance and evidence state must land in the unified machine index.
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): reconciliation should stay as a narrow composable workflow instead of a mixed-purpose catch-all.
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): code, docs, indexes, and evidence surfaces should be refreshed in the same change set.
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance IDs and expected outcomes need to stay machine-readable and stable across reconciliation.
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): validation results need durable evidence records rather than ad hoc closeout notes.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): acceptance and evidence updates must stay linked through the shared trace chain.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): reconciled acceptance and evidence state must land in the unified machine index.
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): reconciliation should stay as a narrow composable workflow instead of a mixed-purpose catch-all.
+- [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): code, docs, indexes, and evidence surfaces should be refreshed in the same change set.
 
 ## Design Goals and Constraints
 - Make acceptance-to-evidence reconciliation a repeatable concern once repository usage justifies it.
@@ -115,7 +115,7 @@ This document defines the feature-level design for the acceptance and evidence r
 - `docs/standards/governance/acceptance_evidence_reconciliation_standard.md`
 - `core/control_plane/contracts/acceptance/`
 - `core/control_plane/ledgers/validation_evidence/`
-- `core/control_plane/indexes/traceability/traceability_index.v1.json`
+- `core/control_plane/indexes/traceability/traceability_index.json`
 - `core/control_plane/registries/validator_registry.json`
 - `core/python/src/watchtower_core/query/`
 - `core/python/src/watchtower_core/validation/acceptance.py`
@@ -145,11 +145,11 @@ This document defines the feature-level design for the acceptance and evidence r
 - Should future semantic acceptance validation also write durable evidence directly, or should evidence remain a separately curated follow-on step?
 
 ## References
-- [traceability_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/traceability_reconciliation.md)
-- [governed_artifact_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/governed_artifact_reconciliation.md)
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
-- [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
+- [traceability_reconciliation.md](/workflows/modules/traceability_reconciliation.md)
+- [governed_artifact_reconciliation.md](/workflows/modules/governed_artifact_reconciliation.md)
+- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
+- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
+- [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)
 
 ## Updated At
 - `2026-03-10T02:30:31Z`
