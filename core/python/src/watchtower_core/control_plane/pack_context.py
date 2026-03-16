@@ -49,7 +49,11 @@ class PackContext:
         registries: dict[str, object] = {}
         indexes: dict[str, object] = {}
         for declaration in pack_settings.surfaces:
-            surface = _load_declared_surface(loader, declaration.path)
+            surface = _load_declared_surface(
+                loader,
+                surface_name=declaration.surface_name,
+                relative_path=declaration.path,
+            )
             surfaces[declaration.surface_name] = surface
             if declaration.surface_kind == "registry":
                 registries[declaration.surface_name] = surface
@@ -96,10 +100,18 @@ class PackContext:
         return self.surfaces[surface_name]
 
 
-def _load_declared_surface(loader: ControlPlaneLoader, relative_path: str) -> object:
-    """Load one declared surface through the loader's generic known-surface resolver."""
+def _load_declared_surface(
+    loader: ControlPlaneLoader,
+    *,
+    surface_name: str,
+    relative_path: str,
+) -> object:
+    """Load one declared surface through the loader's declaration-aware resolver."""
 
-    return loader.load_known_surface(relative_path)
+    return loader.load_declared_surface(
+        surface_name=surface_name,
+        relative_path=relative_path,
+    )
 
 
 def _require_surface[TExpected](

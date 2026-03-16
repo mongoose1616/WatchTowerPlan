@@ -3451,7 +3451,7 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T06:40:30Z",
+      "updated_at": "2026-03-16T06:46:32Z",
       "prd_ids": [
         "prd.post_rewrite_core_cleanup_and_surface_reduction"
       ],
@@ -3513,9 +3513,9 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-        "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",

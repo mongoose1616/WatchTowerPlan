@@ -3,13 +3,13 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-16T06:40:30Z",
+  "updated_at": "2026-03-16T06:46:32Z",
   "coordination_mode": "active_work",
   "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
   "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-  "recommended_surface_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+  "recommended_surface_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
   "active_initiative_count": 1,
-  "blocked_task_count": 2,
+  "blocked_task_count": 1,
   "actionable_task_count": 1,
   "entries": [
     {
@@ -19,29 +19,28 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-16T06:40:30Z",
-      "open_task_count": 3,
-      "blocked_task_count": 2,
+      "updated_at": "2026-03-16T06:46:32Z",
+      "open_task_count": 2,
+      "blocked_task_count": 1,
       "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
       "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+      "next_surface_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
         "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
         "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
-          "title": "Generalize pack context surface loading",
+          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
+          "title": "Retire the inventory-only repository manifest surface",
           "task_status": "in_progress",
-          "priority": "high",
+          "priority": "medium",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+          "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
           "is_actionable": true
         },
         {
@@ -55,22 +54,9 @@
           "depends_on": [
             "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
           ]
-        },
-        {
-          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
-          "title": "Retire the inventory-only repository manifest surface",
-          "task_status": "backlog",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003"
-          ]
         }
       ],
       "blocked_by_task_ids": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
         "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
       ],
       "prd_ids": [
@@ -124,9 +110,9 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-        "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
@@ -142,12 +128,12 @@
     {
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "initiative_title": "Post-Rewrite Core Cleanup and Surface Reduction PRD",
-      "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
-      "title": "Generalize pack context surface loading",
+      "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
+      "title": "Retire the inventory-only repository manifest surface",
       "task_status": "in_progress",
-      "priority": "high",
+      "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+      "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
       "is_actionable": true
     }
   ],

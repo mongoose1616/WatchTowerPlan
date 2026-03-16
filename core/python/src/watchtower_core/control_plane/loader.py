@@ -466,6 +466,67 @@ class ControlPlaneLoader:
 
         return PackContext.from_loader(self, pack_settings_path=pack_settings_path)
 
+    def load_declared_surface(
+        self,
+        *,
+        surface_name: str,
+        relative_path: str,
+    ) -> object:
+        """Load one pack-declared surface as a typed artifact when the surface is known."""
+
+        if surface_name == "schema_catalog":
+            return self._load_typed_document(
+                relative_path,
+                lambda document: SchemaCatalog.from_document(document, self.workspace_config),
+            )
+        if surface_name == "validator_registry":
+            return self._load_typed_document(relative_path, ValidatorRegistry.from_document)
+        if surface_name == "authority_map":
+            return self._load_typed_document(relative_path, AuthorityMap.from_document)
+        if surface_name == "workflow_metadata_registry":
+            return self._load_typed_document(relative_path, WorkflowMetadataRegistry.from_document)
+        if surface_name == "pack_settings":
+            return self._load_typed_document(relative_path, PackSettings.from_document)
+        if surface_name == "governance_surface_map":
+            return self._load_typed_document(relative_path, GovernanceSurfaceMap.from_document)
+        if surface_name == "path_pattern_registry":
+            return self._load_typed_document(relative_path, PathPatternRegistry.from_document)
+        if surface_name == "status_registry":
+            return self._load_typed_document(relative_path, StatusRegistry.from_document)
+        if surface_name == "actor_registry":
+            return self._load_typed_document(relative_path, ActorRegistry.from_document)
+        if surface_name == "repository_path_index":
+            return self._load_typed_document(relative_path, RepositoryPathIndex.from_document)
+        if surface_name == "command_index":
+            return self._load_typed_document(relative_path, CommandIndex.from_document)
+        if surface_name == "route_index":
+            return self._load_typed_document(relative_path, RouteIndex.from_document)
+        if surface_name == "reference_index":
+            return self._load_typed_document(relative_path, ReferenceIndex.from_document)
+        if surface_name == "foundation_index":
+            return self._load_typed_document(relative_path, FoundationIndex.from_document)
+        if surface_name == "initiative_index":
+            return self._load_typed_document(relative_path, InitiativeIndex.from_document)
+        if surface_name == "coordination_index":
+            return self._load_typed_document(relative_path, CoordinationIndex.from_document)
+        if surface_name == "standard_index":
+            return self._load_typed_document(relative_path, StandardIndex.from_document)
+        if surface_name == "workflow_index":
+            return self._load_typed_document(relative_path, WorkflowIndex.from_document)
+        if surface_name == "prd_index":
+            return self._load_typed_document(relative_path, PrdIndex.from_document)
+        if surface_name == "decision_index":
+            return self._load_typed_document(relative_path, DecisionIndex.from_document)
+        if surface_name == "design_document_index":
+            return self._load_typed_document(relative_path, DesignDocumentIndex.from_document)
+        if surface_name == "task_index":
+            return self._load_typed_document(relative_path, TaskIndex.from_document)
+        if surface_name == "traceability_index":
+            return self._load_typed_document(relative_path, TraceabilityIndex.from_document)
+        if surface_name == "planning_catalog":
+            return self._load_typed_document(relative_path, PlanningCatalog.from_document)
+        return self.load_known_surface(relative_path)
+
     def load_known_surface(self, relative_path: str) -> object:
         """Load one known governed surface as a typed artifact when available."""
 

@@ -12823,31 +12823,30 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T06:40:30Z",
+      "updated_at": "2026-03-16T06:46:32Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
-        "open_task_count": 3,
-        "blocked_task_count": 2,
+        "next_surface_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
+        "open_task_count": 2,
+        "blocked_task_count": 1,
         "primary_owner": "repository_maintainer",
         "active_owners": [
           "repository_maintainer"
         ],
         "active_task_ids": [
-          "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
           "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
           "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
         ],
         "active_task_summaries": [
           {
-            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
-            "title": "Generalize pack context surface loading",
+            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
+            "title": "Retire the inventory-only repository manifest surface",
             "task_status": "in_progress",
-            "priority": "high",
+            "priority": "medium",
             "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+            "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
             "is_actionable": true
           },
           {
@@ -12861,22 +12860,9 @@
             "depends_on": [
               "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
             ]
-          },
-          {
-            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
-            "title": "Retire the inventory-only repository manifest surface",
-            "task_status": "backlog",
-            "priority": "medium",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003"
-            ]
           }
         ],
         "blocked_by_task_ids": [
-          "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
           "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
         ]
       },
@@ -12983,12 +12969,12 @@
           "title": "Generalize pack context surface loading",
           "summary": "Make pack-context startup resolve typed required surfaces from declared paths instead of repo-specific loader constants.",
           "artifact_status": "active",
-          "task_status": "in_progress",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
-          "updated_at": "2026-03-16T06:40:30Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
+          "updated_at": "2026-03-16T06:46:32Z",
           "related_ids": [
             "prd.post_rewrite_core_cleanup_and_surface_reduction",
             "design.features.post_rewrite_core_cleanup_and_surface_reduction",
@@ -13007,15 +12993,12 @@
           "title": "Retire the inventory-only repository manifest surface",
           "summary": "Remove the retained repository_manifest family if it has no runtime consumer and repair the remaining schema, validator, and docs references.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "in_progress",
           "task_kind": "chore",
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-          "updated_at": "2026-03-16T06:33:26Z",
-          "depends_on": [
-            "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003"
-          ],
+          "updated_at": "2026-03-16T06:46:32Z",
           "related_ids": [
             "prd.post_rewrite_core_cleanup_and_surface_reduction",
             "design.features.post_rewrite_core_cleanup_and_surface_reduction",
@@ -13095,9 +13078,9 @@
             "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
             "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
             "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
             "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-            "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
             "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
             "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md"
           ],
@@ -13196,9 +13179,9 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-        "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",

@@ -6,11 +6,11 @@ summary: Make pack-context startup resolve typed required surfaces from declared
   instead of repo-specific loader constants.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T06:40:30Z'
+updated_at: '2026-03-16T06:46:32Z'
 audience: shared
 authority: authoritative
 applies_to:

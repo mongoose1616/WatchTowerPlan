@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import json
+import shutil
+import tempfile
 from pathlib import Path
 
 from watchtower_core.control_plane import ControlPlaneLoader, PackContext
@@ -33,3 +36,36 @@ def test_pack_context_exposes_loaded_surfaces_by_name() -> None:
     surface = context.get_surface("path_pattern_registry")
 
     assert surface is context.path_pattern_registry
+
+
+def test_pack_context_loads_required_surface_from_relocated_declared_path() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    base_settings = json.loads(
+        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    with tempfile.TemporaryDirectory(dir=REPO_ROOT) as tmp_dir:
+        tmp_path = Path(tmp_dir)
+        relocated_status_path = tmp_path / "status_registry.json"
+        shutil.copy2(
+            REPO_ROOT / "core/control_plane/registries/status_registry.json",
+            relocated_status_path,
+        )
+
+        custom_settings = dict(base_settings)
+        custom_settings["surfaces"] = [dict(entry) for entry in base_settings["surfaces"]]
+        for entry in custom_settings["surfaces"]:
+            if entry["surface_name"] == "status_registry":
+                entry["path"] = relocated_status_path.relative_to(REPO_ROOT).as_posix()
+                break
+        custom_settings_path = tmp_path / "pack_settings.json"
+        custom_settings_path.write_text(
+            f"{json.dumps(custom_settings, indent=2)}\n",
+            encoding="utf-8",
+        )
+
+        context = loader.load_pack_context(custom_settings_path.relative_to(REPO_ROOT).as_posix())
+
+    assert context.status_registry.get("accepted").entry_status == "active"

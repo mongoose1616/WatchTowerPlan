@@ -6,11 +6,11 @@ summary: Remove the retained repository_manifest family if it has no runtime con
   and repair the remaining schema, validator, and docs references.
 type: task
 status: active
-task_status: backlog
+task_status: in_progress
 task_kind: chore
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-16T06:33:26Z'
+updated_at: '2026-03-16T06:46:32Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -23,8 +23,6 @@ related_ids:
 - design.implementation.post_rewrite_core_cleanup_and_surface_reduction
 - decision.post_rewrite_core_cleanup_and_surface_reduction_direction
 - contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction
-depends_on:
-- task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003
 ---
 
 # Retire the inventory-only repository manifest surface
