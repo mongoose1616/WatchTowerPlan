@@ -13,6 +13,7 @@ Workspace-aware artifact loading, schema validation, typed models, PackContext l
 - `pack_context.py`: PackContext materialization from pack settings and declared governed surfaces.
 - `artifact_family.py`: Pack-local artifact-family resolution for placement, status, visibility, and renderability rules.
 - `documentation_family.py`: Pack-local documentation-family resolution for governed authored guidance families, allowed roots, and mirror rules.
+- `discrepancy.py`: Governed discrepancy-record helpers for drift detection, reconciliation, and open-record loading.
 - `event_stream.py`: Append-only event stream helpers for governed initiative and task event records.
 - `planning_vocabulary.py`: Pack-local lifecycle, review, and provenance vocabulary resolution for plan-runtime helpers.
 - `project_surface_policy.py`: Pack-local project-root surface policy resolution for required machine and rendered project surfaces.

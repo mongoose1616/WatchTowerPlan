@@ -23,6 +23,14 @@
       "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract."
     },
     {
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "title": "Plan Discrepancy Helper Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T21:51:03Z",
+      "key_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/plan.md",
+      "closure_reason": "Delivered reusable discrepancy helper and live plan discrepancy refactor."
+    },
+    {
       "trace_id": "trace.plan_generic_sync_harness_export_foundation",
       "title": "Plan Generic Sync Harness Export Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T18:58:00Z",
       "key_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/plan.md",
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
-    },
-    {
-      "trace_id": "trace.plan_workflow_root_authority_split",
-      "title": "Plan Workflow Root Authority Split",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T18:55:30Z",
-      "key_surface_path": "plan/initiatives/plan_workflow_root_authority_split/plan.md",
-      "closure_reason": "Delivered the split workflow routing tables, domain-owned workflow module roots, runtime index rebuilds, and human guidance cutover required by requirements.md and decisions.md."
     }
   ]
 }

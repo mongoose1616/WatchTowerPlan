@@ -116,6 +116,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "title": "Plan Discrepancy Helper Foundation",
+      "summary": "Extracts a reusable discrepancy helper for governed discrepancy records and refactors live plan initiative and workspace drift handling onto it so requirements.md and decisions.md no longer rely on ad hoc repo-local discrepancy logic.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T21:51:03Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/progress.md",
+      "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+      "slug": "plan_discrepancy_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts",
+        "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper",
+        "task.plan_discrepancy_helper_foundation.validate_discrepancy_helper_and_requirements_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_discrepancy_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T21:51:03Z",
+      "closure_reason": "Delivered reusable discrepancy helper and live plan discrepancy refactor.",
+      "related_paths": [
+        "plan/initiatives/plan_discrepancy_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_discrepancy_helper_foundation/design_record.md",
+        "plan/initiatives/plan_discrepancy_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_discrepancy_helper_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
       "title": "Plan Documentation Family And Template Catalog Foundation",
       "summary": "Adds the missing documentation-family registry and template catalog foundations for live plan guidance families and current rendered plan/project surfaces.",

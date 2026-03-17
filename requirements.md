@@ -138,7 +138,7 @@ The permanent product boundary and the current execution boundary are intentiona
 | `rendered_view_builder` | `Partial` | Rebuild initiative-local and pack-level rendered views from authoritative machine surfaces through a generic registry-backed builder. | Today rendered planning trackers are rich, but their builders remain repo-local and mostly target docs-backed planning families. |
 | `artifact_index_builder` | `Missing` | Build a generic pack artifact index across plan-domain artifact families and lifecycle surfaces. | Current indexes are family-specific and planning-specific; the generic `artifact_index` interface has no live builder yet. |
 | `evidence_helper` | `Partial` | Expand from validation evidence into a broader evidence bundle model usable by pack closeout and review. | `validation_evidence` already exists, but there is no general pack evidence contract. |
-| `discrepancy_helper` | `Missing` | Turn validation and sync drift into first-class discrepancy records with controlled severity and resolution. | Needed before multi-pack governance becomes practical. |
+| `discrepancy_helper` | `Current` | Turn validation and sync drift into first-class discrepancy records with controlled severity and resolution. | Keep the helper schema-backed and reusable while plan services provide concrete drift detection and managed-category policy. |
 | `initiative_tracking_builder` | `Missing` | Build pack-level initiative and task rollups under `plan/.wt/` from both pack-wide initiatives and project-scoped initiatives. | Needed to avoid crawling every initiative directory for routine status queries. |
 | `guidance_promotion_helper` | `Missing` | Extract reviewed durable decisions, standards, references, and long-term guidance out of live initiative state into `plan/docs/`, with optional core-specific duplication into `core/docs/`. | Needed to keep docs curated and live planning separate. |
 | `closeout_helper` | `Partial` | Coordinate initiative closeout recaps, required evidence, promotion candidates, and terminal state transitions. | Current closeout logic is initiative-oriented but still coupled to the docs-based planning corpus. |
@@ -579,7 +579,7 @@ The following remain explicitly owner-gated and should never appear by default:
 | `project_repository_map` | `Missing` | Add a governed contract for linking a project to one or more repositories such as planning, implementation, or deployment repos. |
 | `extraction_output_envelope` | `Partial` | Keep as an optional reusable output envelope, but align it with explicit promotion and extraction flows rather than ad hoc exports. |
 | `validation_bundle` | `Missing` | Add a broader evidence or validation bundle contract if suites, reviews, and closeout start sharing evidence packages. |
-| `discrepancy_record` | `Missing` | Required before validation drift, sync drift, or accepted exceptions become common multi-surface concerns. |
+| `discrepancy_record` | `Current` | Keep the governed discrepancy record authoritative for initiative-local validation drift, sync drift, and accepted exception tracking. |
 | `environment_context` | `Missing` | Add if route safety and execution mode decisions need durable environment records. |
 | `closeout_recap` | `Missing` | Add if future plan-pack closeout needs a stronger machine companion to initiative `summary.md` beyond current initiative closeout surfaces. |
 | `review_record` | `Future` | Add if human approval, review state, and promotion decisions need stronger machine authority. |

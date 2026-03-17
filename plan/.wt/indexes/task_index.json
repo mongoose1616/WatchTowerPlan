@@ -152,6 +152,54 @@
       ]
     },
     {
+      "task_id": "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts",
+      "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "initiative_title": "Plan Discrepancy Helper Foundation",
+      "title": "Publish discrepancy helper contracts",
+      "summary": "Add a reusable helper for governed discrepancy records, severity, and resolution behavior.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/publish_discrepancy_helper_contracts/task.json",
+      "updated_at": "2026-03-17T21:50:12Z"
+    },
+    {
+      "task_id": "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper",
+      "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "initiative_title": "Plan Discrepancy Helper Foundation",
+      "title": "Refactor live plan discrepancy writes onto helper",
+      "summary": "Move initiative package and plan workspace discrepancy creation and reconciliation onto the reusable helper.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/refactor_live_plan_discrepancy_writes_onto_helper/task.json",
+      "updated_at": "2026-03-17T21:50:12Z",
+      "depends_on": [
+        "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_discrepancy_helper_foundation.validate_discrepancy_helper_and_requirements_alignment",
+      "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "initiative_title": "Plan Discrepancy Helper Foundation",
+      "title": "Validate discrepancy helper and requirements alignment",
+      "summary": "Add coverage for discrepancy creation and resolution, then update touched requirements rows to current state.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/validate_discrepancy_helper_and_requirements_alignment/task.json",
+      "updated_at": "2026-03-17T21:50:12Z",
+      "depends_on": [
+        "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper"
+      ]
+    },
+    {
       "task_id": "task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts",
       "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
       "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",

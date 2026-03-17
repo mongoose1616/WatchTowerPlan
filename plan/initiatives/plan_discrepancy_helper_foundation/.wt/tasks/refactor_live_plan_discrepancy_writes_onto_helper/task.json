@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper",
+  "slug": "refactor_live_plan_discrepancy_writes_onto_helper",
+  "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+  "title": "Refactor live plan discrepancy writes onto helper",
+  "summary": "Move initiative package and plan workspace discrepancy creation and reconciliation onto the reusable helper.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:37:34Z",
+  "updated_at": "2026-03-17T21:50:12Z",
+  "dependency_task_ids": [
+    "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

@@ -7,6 +7,11 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane.discrepancy import (
+    DiscrepancyDescriptor,
+    DiscrepancyHelper,
+    DiscrepancyIssue,
+)
 from watchtower_core.control_plane.event_stream import (
     EventStreamDescriptor,
     EventStreamHelper,
@@ -520,7 +525,7 @@ class InitiativePackageService:
             location=location,
             initiative_document=initiative_document,
         )
-        issues.extend(issue.message for issue in authored_input_issues)
+        issues.extend(issue.summary for issue in authored_input_issues)
         if authored_input_issues:
             blocking_reasons.append("authored_input_drift")
 
@@ -532,7 +537,7 @@ class InitiativePackageService:
                     *self._project_surface_issues(location),
                 )
             )
-        issues.extend(issue.message for issue in derived_surface_issues)
+        issues.extend(issue.summary for issue in derived_surface_issues)
         if derived_surface_issues:
             blocking_reasons.append("stale_derived_surfaces")
 
@@ -1345,18 +1350,18 @@ class InitiativePackageService:
         *,
         location: _InitiativeLocation,
         initiative_document: dict[str, object],
-    ) -> tuple[_DiscrepancyIssue, ...]:
-        issues: list[_DiscrepancyIssue] = []
+    ) -> tuple[DiscrepancyIssue, ...]:
+        issues: list[DiscrepancyIssue] = []
         for record in initiative_document["authored_inputs"]:
             relative_path = str(record["path"])
             current_digest = self._sha256_for_relative_path(relative_path)
             if current_digest != record["sha256"]:
                 issues.append(
-                    _DiscrepancyIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{record['doc_kind']}_drift",
                         category="authored_input_drift",
-                        doc_kind=str(record["doc_kind"]),
-                        relative_paths=(relative_path,),
-                        message=(
+                        source_paths=(relative_path,),
+                        summary=(
                             f"Authored input drift detected for {relative_path}; "
                             "machine confirmation is required."
                         ),
@@ -1370,32 +1375,23 @@ class InitiativePackageService:
     def _stale_derived_surface_issues(
         self,
         location: _InitiativeLocation,
-    ) -> tuple[_DiscrepancyIssue, ...]:
-        return tuple(
-            _DiscrepancyIssue(
-                category=issue.category,
-                doc_kind=Path(issue.relative_path).stem,
-                relative_paths=(issue.relative_path,),
-                message=issue.message,
-                discrepancy_id=issue.discrepancy_id,
-            )
-            for issue in PlanWorkspaceService(self._loader).expected_surface_issues(
-                location.initiative_root_relative
-            )
+    ) -> tuple[DiscrepancyIssue, ...]:
+        return PlanWorkspaceService(self._loader).expected_surface_issues(
+            location.initiative_root_relative
         )
 
     def _project_surface_issues(
         self,
         location: _InitiativeLocation,
-    ) -> tuple[_DiscrepancyIssue, ...]:
+    ) -> tuple[DiscrepancyIssue, ...]:
         if location.project_slug is None:
             return ()
         return tuple(
-            _DiscrepancyIssue(
+            DiscrepancyIssue(
+                record_slug=f"{Path(issue.relative_path).stem}_project_drift",
                 category=issue.category,
-                doc_kind=Path(issue.relative_path).stem,
-                relative_paths=(issue.relative_path,),
-                message=issue.message,
+                source_paths=(issue.relative_path,),
+                summary=issue.message,
                 discrepancy_id=(
                     f"discrepancy.{location.discrepancy_namespace}.{Path(issue.relative_path).stem}_project_drift"
                 ),
@@ -1435,89 +1431,38 @@ class InitiativePackageService:
         self,
         location: _InitiativeLocation,
     ) -> tuple[tuple[str, dict[str, object]], ...]:
-        discrepancy_dir = self._loader.repo_root / self._initiative_path_for_location(
-            location,
-            ".wt/discrepancies",
+        return self._discrepancy_helper().open_records(
+            DiscrepancyDescriptor(
+                relative_dir=self._initiative_path_for_location(location, ".wt/discrepancies"),
+                initiative_id=str(
+                    self._load_json(
+                        self._initiative_path_for_location(location, ".wt/initiative.json")
+                    )["initiative_id"]
+                ),
+            )
         )
-        if not discrepancy_dir.exists():
-            return ()
-        documents: list[tuple[str, dict[str, object]]] = []
-        for path in sorted(discrepancy_dir.glob("*.json")):
-            document = json.loads(path.read_text(encoding="utf-8"))
-            if document["status"] == "open":
-                documents.append((str(path.relative_to(self._loader.repo_root)), document))
-        return tuple(documents)
 
     def _sync_managed_discrepancies(
         self,
         *,
         location: _InitiativeLocation,
         initiative_id: str,
-        discrepancy_issues: tuple[_DiscrepancyIssue, ...],
+        discrepancy_issues: tuple[DiscrepancyIssue, ...],
         updated_at: str,
     ) -> None:
-        discrepancy_dir = self._loader.repo_root / self._initiative_path_for_location(
-            location,
-            ".wt/discrepancies",
+        self._discrepancy_helper().sync_records(
+            DiscrepancyDescriptor(
+                relative_dir=self._initiative_path_for_location(location, ".wt/discrepancies"),
+                initiative_id=initiative_id,
+            ),
+            issues=discrepancy_issues,
+            updated_at=updated_at,
+            managed_categories=(
+                "authored_input_drift",
+                "stale_rendered_surface",
+                "stale_aggregate_index",
+            ),
         )
-        discrepancy_dir.mkdir(parents=True, exist_ok=True)
-        issue_map = {issue.discrepancy_id: issue for issue in discrepancy_issues}
-        managed_categories = {
-            "authored_input_drift",
-            "stale_rendered_surface",
-            "stale_aggregate_index",
-            *(issue.category for issue in discrepancy_issues),
-        }
-
-        existing_paths = sorted(discrepancy_dir.glob("*.json"))
-        for path in existing_paths:
-            document = json.loads(path.read_text(encoding="utf-8"))
-            discrepancy_id = str(document["discrepancy_id"])
-            if discrepancy_id in issue_map:
-                issue = issue_map[discrepancy_id]
-                document["category"] = issue.category
-                document["severity"] = issue.severity
-                document["gate_effect"] = issue.gate_effect
-                document["status"] = "open"
-                document["summary"] = issue.message
-                document["source_paths"] = list(issue.relative_paths)
-                document["resolution_owner"] = issue.resolution_owner
-                document["updated_at"] = updated_at
-                self._loader.artifact_store.write_json_object(
-                    str(path.relative_to(self._loader.repo_root)),
-                    document,
-                )
-                issue_map.pop(discrepancy_id, None)
-            elif document["category"] in managed_categories and document["status"] == "open":
-                document["status"] = "resolved"
-                document["updated_at"] = updated_at
-                self._loader.artifact_store.write_json_object(
-                    str(path.relative_to(self._loader.repo_root)),
-                    document,
-                )
-
-        for issue in issue_map.values():
-            relative_path = self._initiative_path_for_location(
-                location,
-                f".wt/discrepancies/{issue.doc_kind}_drift.json",
-            )
-            self._loader.artifact_store.write_json_object(
-                relative_path,
-                {
-                    "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
-                    "discrepancy_id": issue.discrepancy_id,
-                    "initiative_id": initiative_id,
-                    "category": issue.category,
-                    "severity": issue.severity,
-                    "gate_effect": issue.gate_effect,
-                    "status": "open",
-                    "summary": issue.message,
-                    "source_paths": list(issue.relative_paths),
-                    "resolution_owner": issue.resolution_owner,
-                    "detected_at": updated_at,
-                    "updated_at": updated_at,
-                },
-            )
 
     def _append_initiative_event(
         self,
@@ -1550,6 +1495,12 @@ class InitiativePackageService:
 
     def _event_stream_helper(self) -> EventStreamHelper:
         return EventStreamHelper.from_loader(
+            self._loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+
+    def _discrepancy_helper(self) -> DiscrepancyHelper:
+        return DiscrepancyHelper.from_loader(
             self._loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
@@ -1686,17 +1637,3 @@ class InitiativePackageService:
         if location.project_slug is not None:
             ProjectWorkspaceService(self._loader).sync(write=True)
         PlanWorkspaceService(self._loader).sync(write=True)
-
-
-@dataclass(frozen=True, slots=True)
-class _DiscrepancyIssue:
-    """Internal discrepancy sync record produced by initiative validation."""
-
-    category: str
-    doc_kind: str
-    relative_paths: tuple[str, ...]
-    message: str
-    discrepancy_id: str
-    severity: str = "high"
-    gate_effect: str = "readiness"
-    resolution_owner: str = "repository_maintainer"

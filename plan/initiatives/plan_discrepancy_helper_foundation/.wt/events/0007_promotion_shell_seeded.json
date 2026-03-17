@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_discrepancy_helper_foundation.0007_promotion_shell_seeded",
+  "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+  "sequence": 7,
+  "event_type": "promotion_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T21:37:34Z",
+  "summary": "Seeded the promotion shell.",
+  "payload": {
+    "task_count": 3
+  },
+  "trace_id": "trace.plan_discrepancy_helper_foundation",
+  "related_paths": [
+    "plan/initiatives/plan_discrepancy_helper_foundation/initiative_brief.md",
+    "plan/initiatives/plan_discrepancy_helper_foundation/design_record.md",
+    "plan/initiatives/plan_discrepancy_helper_foundation/implementation_slice.md",
+    "plan/initiatives/plan_discrepancy_helper_foundation/decision_notes.md"
+  ]
+}

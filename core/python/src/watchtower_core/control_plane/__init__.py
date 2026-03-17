@@ -8,6 +8,12 @@ from watchtower_core.control_plane.documentation_family import (
     DocumentationFamilyHelper,
     DocumentationFamilyIssue,
 )
+from watchtower_core.control_plane.discrepancy import (
+    DISCREPANCY_RECORD_SCHEMA_ID,
+    DiscrepancyDescriptor,
+    DiscrepancyHelper,
+    DiscrepancyIssue,
+)
 from watchtower_core.control_plane.event_stream import (
     EventStreamDescriptor,
     EventStreamHelper,
@@ -50,8 +56,12 @@ __all__ = [
     "ArtifactFamilyHelper",
     "ArtifactFamilyIssue",
     "ControlPlaneLoader",
+    "DISCREPANCY_RECORD_SCHEMA_ID",
     "DocumentationFamilyHelper",
     "DocumentationFamilyIssue",
+    "DiscrepancyDescriptor",
+    "DiscrepancyHelper",
+    "DiscrepancyIssue",
     "EventStreamDescriptor",
     "EventStreamHelper",
     "EventStreamWriteRequest",

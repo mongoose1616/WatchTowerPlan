@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.adapters.front_matter import FrontMatterParseError, load_front_matter
-from watchtower_core.control_plane import PlanningVocabularyHelper
+from watchtower_core.control_plane import DiscrepancyIssue, PlanningVocabularyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     CoordinationIndex,
@@ -337,16 +337,6 @@ class PlanDiscrepancySearchParams:
 
 
 @dataclass(frozen=True, slots=True)
-class DerivedSurfaceIssue:
-    """One stale or missing rendered/index surface discovered during validation."""
-
-    category: str
-    relative_path: str
-    message: str
-    discrepancy_id: str
-
-
-@dataclass(frozen=True, slots=True)
 class PlanWorkspaceSyncResult:
     """Summary of one plan-workspace rebuild run."""
 
@@ -415,7 +405,7 @@ class PlanWorkspaceService:
             wrote=write,
         )
 
-    def expected_surface_issues(self, initiative_root: str) -> tuple[DerivedSurfaceIssue, ...]:
+    def expected_surface_issues(self, initiative_root: str) -> tuple[DiscrepancyIssue, ...]:
         snapshots = self._load_initiative_snapshots()
         documents = self._build_documents(snapshots)
         snapshot = next(
@@ -463,14 +453,18 @@ class PlanWorkspaceService:
             ),
         }
 
-        issues: list[DerivedSurfaceIssue] = []
+        issues: list[DiscrepancyIssue] = []
         for relative_path, expected in expected_markdown.items():
             if not expected:
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_surface_drift",
                         category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Required rendered surface is missing from the expected build: {relative_path}.",
+                        summary=(
+                            "Required rendered surface is missing from the expected build: "
+                            f"{relative_path}."
+                        ),
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
                         ),
@@ -480,10 +474,11 @@ class PlanWorkspaceService:
             candidate = self._loader.repo_root / relative_path
             if not candidate.exists():
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_surface_drift",
                         category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Required rendered surface is missing: {relative_path}.",
+                        summary=f"Required rendered surface is missing: {relative_path}.",
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
                         ),
@@ -492,10 +487,11 @@ class PlanWorkspaceService:
                 continue
             if candidate.read_text(encoding="utf-8") != expected:
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_surface_drift",
                         category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Rendered surface drift detected for {relative_path}.",
+                        summary=f"Rendered surface drift detected for {relative_path}.",
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
                         ),
@@ -506,10 +502,11 @@ class PlanWorkspaceService:
             candidate = self._loader.repo_root / relative_path
             if not candidate.exists():
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_index_drift",
                         category="stale_aggregate_index",
-                        relative_path=relative_path,
-                        message=f"Required aggregate index is missing: {relative_path}.",
+                        summary=f"Required aggregate index is missing: {relative_path}.",
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
                         ),
@@ -520,10 +517,11 @@ class PlanWorkspaceService:
                 current = json.loads(candidate.read_text(encoding="utf-8"))
             except json.JSONDecodeError:
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_index_drift",
                         category="stale_aggregate_index",
-                        relative_path=relative_path,
-                        message=f"Aggregate index is not valid JSON: {relative_path}.",
+                        summary=f"Aggregate index is not valid JSON: {relative_path}.",
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
                         ),
@@ -532,16 +530,22 @@ class PlanWorkspaceService:
                 continue
             if current != expected:
                 issues.append(
-                    DerivedSurfaceIssue(
+                    DiscrepancyIssue(
+                        record_slug=f"{Path(relative_path).stem}_index_drift",
                         category="stale_aggregate_index",
-                        relative_path=relative_path,
-                        message=f"Aggregate index drift detected for {relative_path}.",
+                        summary=f"Aggregate index drift detected for {relative_path}.",
+                        source_paths=(relative_path,),
                         discrepancy_id=(
                             f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
                         ),
                     )
                 )
-        return tuple(sorted(issues, key=lambda issue: (issue.category, issue.relative_path)))
+        return tuple(
+            sorted(
+                issues,
+                key=lambda issue: (issue.category, issue.source_paths[0]),
+            )
+        )
 
     def load_initiative_index(self) -> InitiativeIndex:
         return InitiativeIndex.from_document(self._load_plan_json(PLAN_INITIATIVE_INDEX_PATH))
