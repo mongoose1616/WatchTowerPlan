@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
+- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `artifacts`, `readiness`, `discrepancies`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
 - `-h`, `--help`: Show the query-group help text.
 - Pass filters, limits, and output-mode flags to the selected leaf command.
 
@@ -36,6 +36,11 @@ uv run watchtower-core query --help
 ```sh
 cd core/python
 uv run watchtower-core query coordination --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core query artifacts --artifact-family initiative_state --format json
 ```
 
 ```sh
@@ -72,9 +77,11 @@ uv run watchtower-core query authority --domain planning --format json
 - With no leaf command, the group prints help and exits successfully.
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `plan/.wt/indexes/coordination_index.json` as the live plan-workspace machine start-here path for current planning state and next action.
+- Use `plan/.wt/indexes/artifact_index.json` when the question spans multiple live plan artifact families or you need canonical machine artifact paths and context metadata.
 - Use `plan/.wt/indexes/readiness_index.json` for execution-gate lookup, `plan/.wt/indexes/discrepancy_index.json` for blocking drift, and `plan/.wt/indexes/project_index.json` for project-container browse.
 - Use `project-context` when the operation is project-scoped and you need the validated project record, initiative root, and linked repositories on top of always-loaded `pack_context`.
 - Use `coordination` when you need the live machine start-here planning payload.
+- Use `artifacts` when you need cross-family live plan artifact lookup without opening raw JSON manually.
 - Use `readiness` when the question is whether an initiative package may start or resume execution.
 - Use `discrepancies` when you need mismatch, drift, or stale-surface records without opening one initiative directly.
 - Use `projects` when you need project lookup without loading the full project context payload.
@@ -90,6 +97,7 @@ uv run watchtower-core query authority --domain planning --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core query coordination` | Live machine start-here planning lookup surface. |
+| `watchtower-core query artifacts` | Cross-family machine artifact lookup surface for live `plan/**` state. |
 | `watchtower-core query readiness` | Live readiness-gate lookup surface for initiative execution state. |
 | `watchtower-core query discrepancies` | Live mismatch and drift lookup surface for plan discrepancies. |
 | `watchtower-core query projects` | Live project-container browse surface. |
@@ -109,4 +117,4 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/repo_ops/project_context.py`
 
 ## Updated At
-- `2026-03-17T19:13:00Z`
+- `2026-03-17T20:03:23Z`

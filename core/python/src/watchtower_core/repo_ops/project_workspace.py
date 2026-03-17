@@ -9,6 +9,10 @@ from pathlib import Path
 from watchtower_core.control_plane import PlanningVocabularyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
+from watchtower_core.repo_ops.artifact_index import (
+    ArtifactIndexService,
+    PLAN_ARTIFACT_INDEX_PATH,
+)
 from watchtower_core.repo_ops.project_context import (
     PLAN_PACK_SETTINGS_PATH,
     ProjectContext,
@@ -286,10 +290,19 @@ class ProjectWorkspaceService:
 
         snapshots = self._load_project_snapshots()
         documents = self._build_documents(snapshots)
+        artifact_index_document = ArtifactIndexService(self._loader).build_document(
+            aggregate_overrides={
+                PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+            }
+        )
         if write:
             self._loader.artifact_store.write_json_object(
                 PLAN_PROJECT_INDEX_PATH,
                 documents["project_index"],
+            )
+            self._loader.artifact_store.write_json_object(
+                PLAN_ARTIFACT_INDEX_PATH,
+                artifact_index_document,
             )
             for relative_path, content in documents["project_views"].items():
                 self._write_markdown(relative_path, content)
@@ -333,6 +346,11 @@ class ProjectWorkspaceService:
         }
         expected_json = {
             PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+            PLAN_ARTIFACT_INDEX_PATH: ArtifactIndexService(self._loader).build_document(
+                aggregate_overrides={
+                    PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+                }
+            ),
         }
 
         issues: list[DerivedProjectSurfaceIssue] = []

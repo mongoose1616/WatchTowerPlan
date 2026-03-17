@@ -69,6 +69,10 @@ def test_root_command_prints_help(capsys) -> None:
         "--document-id prd.example --title \"Example PRD\"" in captured.out
     )
     assert "uv run watchtower-core query coordination --format json" in captured.out
+    assert (
+        "uv run watchtower-core query artifacts --artifact-family initiative_state --format json"
+        in captured.out
+    )
     assert "uv run watchtower-core query readiness --ready-for-execution true --format json" in captured.out
     assert "uv run watchtower-core query projects --slug watchtower --format json" in captured.out
     assert (
@@ -118,6 +122,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
     assert "query coordination" in captured.out
+    assert "query artifacts" in captured.out
     assert "query readiness" in captured.out
     assert "query discrepancies" in captured.out
     assert "query projects" in captured.out

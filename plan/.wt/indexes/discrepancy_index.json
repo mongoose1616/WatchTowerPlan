@@ -6,6 +6,66 @@
   "updated_at": "2026-03-17T21:23:00Z",
   "entries": [
     {
+      "discrepancy_id": "discrepancy.plan_artifact_index_runtime_foundation.coordination_index_index_drift",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-17T19:42:45Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_artifact_index_runtime_foundation.initiative_index_index_drift",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-17T19:42:45Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_artifact_index_runtime_foundation.readiness_index_index_drift",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-17T19:42:45Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_artifact_index_runtime_foundation.summary_surface_drift",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_artifact_index_runtime_foundation/summary.md.",
+      "source_paths": [
+        "plan/initiatives/plan_artifact_index_runtime_foundation/summary.md"
+      ],
+      "updated_at": "2026-03-17T19:42:45Z"
+    },
+    {
       "discrepancy_id": "discrepancy.plan_core_documentation_template_authority_foundation.coordination_index_index_drift",
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",

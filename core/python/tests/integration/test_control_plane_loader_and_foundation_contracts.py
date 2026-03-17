@@ -29,6 +29,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     initiative_index = loader.load_initiative_index()
     planning_catalog = loader.load_planning_catalog()
     coordination_index = loader.load_coordination_index()
+    artifact_index = loader.load_artifact_index()
     reference_index = loader.load_reference_index()
     route_index = loader.load_route_index()
     standard_index = loader.load_standard_index()
@@ -46,6 +47,8 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert initiative_index.artifact_id == "index.initiatives"
     assert planning_catalog.artifact_id == "index.planning_catalog"
     assert coordination_index.artifact_id == "index.coordination"
+    assert artifact_index.surface_name == "artifact_index"
+    assert artifact_index.get("index.artifacts").path == "plan/.wt/indexes/artifact_index.json"
     assert reference_index.artifact_id == "index.references"
     assert route_index.artifact_id == "index.routes"
     assert standard_index.artifact_id == "index.standards"

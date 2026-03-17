@@ -79,6 +79,14 @@
           "type": "string",
           "minLength": 1
         },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
         "status": {
           "type": "string",
           "minLength": 1
@@ -99,14 +107,6 @@
         "updated_at": {
           "type": "string",
           "format": "date-time"
-        },
-        "challenge_id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "session_id": {
-          "type": "string",
-          "minLength": 1
         },
         "title": {
           "type": "string",
@@ -144,15 +144,15 @@
           "type": "string",
           "minLength": 1
         },
+        "source_context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_channel": {
+          "type": "string",
+          "minLength": 1
+        },
         "source_summary": {
-          "type": "string",
-          "minLength": 1
-        },
-        "source_platform": {
-          "type": "string",
-          "minLength": 1
-        },
-        "source_event": {
           "type": "string",
           "minLength": 1
         },

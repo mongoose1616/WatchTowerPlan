@@ -10,9 +10,11 @@ from watchtower_core.cli.handler_common import (
     _task_dependency_payload,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import AuthorityMapEntry
+from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
 from watchtower_core.repo_ops.project_context import load_project_context
 from watchtower_core.repo_ops.query import (
+    ArtifactQueryService,
+    ArtifactSearchParams,
     AuthorityMapQueryService,
     AuthorityMapSearchParams,
     DiscrepancyQueryService,
@@ -61,6 +63,60 @@ def _run_query_authority(args: argparse.Namespace) -> int:
             print(f"  Human: {entry.preferred_human_path}")
         if entry.status_fields:
             print(f"  Status fields: {', '.join(entry.status_fields)}")
+    return 0
+
+
+def _run_query_artifacts(args: argparse.Namespace) -> int:
+    service = ArtifactQueryService(ControlPlaneLoader())
+    entries = service.search(
+        ArtifactSearchParams(
+            query=args.query,
+            artifact_id=args.artifact_id,
+            artifact_family=args.artifact_family,
+            context_id=args.context_id,
+            source_context=args.source_context,
+            source_channel=args.source_channel,
+            status=args.status,
+            authoritative=(
+                None if args.authoritative is None else args.authoritative == "true"
+            ),
+            derived=None if args.derived is None else args.derived == "true",
+            hidden=None if args.hidden is None else args.hidden == "true",
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query artifacts",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_artifact_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No artifact entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} artifact entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.artifact_id} [{entry.artifact_family}, {entry.status}]")
+        if entry.title is not None:
+            print(f"  {entry.title}")
+        if entry.summary is not None:
+            print(f"  {entry.summary}")
+        print(f"  Path: {entry.path}")
+        if entry.context_ids:
+            print(f"  Context IDs: {', '.join(entry.context_ids)}")
+        if entry.source_context is not None or entry.source_channel is not None:
+            print(
+                "  Source: "
+                f"{entry.source_context or '-'} / {entry.source_channel or '-'}"
+            )
+        print(
+            "  Authority: "
+            f"authoritative={entry.authoritative} derived={entry.derived} hidden={entry.hidden}"
+        )
     return 0
 
 
@@ -512,3 +568,49 @@ def _project_entry_payload(entry: object) -> dict[str, object]:
         "updated_at": entry.updated_at,
     }
     return {key: value for key, value in payload.items() if value is not None}
+
+
+def _artifact_entry_payload(entry: ArtifactIndexEntry) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "artifact_id": entry.artifact_id,
+        "artifact_family": entry.artifact_family,
+        "path": entry.path,
+        "pack": entry.pack,
+        "status": entry.status,
+        "authoritative": entry.authoritative,
+        "hidden": entry.hidden,
+        "derived": entry.derived,
+        "created_at": entry.created_at,
+        "updated_at": entry.updated_at,
+        "context_ids": list(entry.context_ids),
+        "related_artifact_ids": list(entry.related_artifact_ids),
+    }
+    if entry.subdomain is not None:
+        payload["subdomain"] = entry.subdomain
+    if entry.title is not None:
+        payload["title"] = entry.title
+    if entry.summary is not None:
+        payload["summary"] = entry.summary
+    if entry.parent_artifact_id is not None:
+        payload["parent_artifact_id"] = entry.parent_artifact_id
+    if entry.route_id is not None:
+        payload["route_id"] = entry.route_id
+    if entry.rendered_view_path is not None:
+        payload["rendered_view_path"] = entry.rendered_view_path
+    if entry.workflow_surface is not None:
+        payload["workflow_surface"] = entry.workflow_surface
+    if entry.review_status is not None:
+        payload["review_status"] = entry.review_status
+    if entry.source_context is not None:
+        payload["source_context"] = entry.source_context
+    if entry.source_channel is not None:
+        payload["source_channel"] = entry.source_channel
+    if entry.source_summary is not None:
+        payload["source_summary"] = entry.source_summary
+    if entry.source_url is not None:
+        payload["source_url"] = entry.source_url
+    if entry.source_ref is not None:
+        payload["source_ref"] = entry.source_ref
+    if entry.source_type is not None:
+        payload["source_type"] = entry.source_type
+    return payload

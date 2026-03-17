@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     ActorRegistry,
     GovernanceSurfaceMap,
@@ -71,11 +72,16 @@ class PackContext:
         registries: dict[str, object] = {}
         indexes: dict[str, object] = {}
         for declaration in pack_settings.surfaces:
-            surface = _load_declared_surface(
-                effective_loader,
-                surface_name=declaration.surface_name,
-                relative_path=declaration.path,
-            )
+            try:
+                surface = _load_declared_surface(
+                    effective_loader,
+                    surface_name=declaration.surface_name,
+                    relative_path=declaration.path,
+                )
+            except ArtifactLoadError:
+                if declaration.rebuildable is not True or declaration.authority != "derived":
+                    raise
+                continue
             surfaces[declaration.surface_name] = surface
             if declaration.surface_kind == "registry":
                 registries[declaration.surface_name] = surface

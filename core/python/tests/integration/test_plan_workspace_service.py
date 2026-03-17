@@ -13,6 +13,7 @@ from watchtower_core.repo_ops.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_core.repo_ops.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_core.repo_ops.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH,
     PLAN_GUIDANCE_INDEX_PATH,
@@ -32,6 +33,7 @@ from watchtower_core.repo_ops.project_workspace import (
     ProjectRepositoryLinkSpec,
     ProjectWorkspaceService,
 )
+from watchtower_core.repo_ops.query import ArtifactQueryService, ArtifactSearchParams
 from watchtower_core.repo_ops.query.common import RenderedSearchFilters
 from watchtower_core.validation.artifact import ArtifactValidationService
 
@@ -185,6 +187,7 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
         PLAN_PROMOTION_INDEX_PATH,
         PLAN_GUIDANCE_INDEX_PATH,
         PLAN_COORDINATION_INDEX_PATH,
+        PLAN_ARTIFACT_INDEX_PATH,
         PLAN_OVERVIEW_PATH,
         "plan/initiatives/workspace_alpha/plan.md",
         "plan/initiatives/workspace_alpha/progress.md",
@@ -205,6 +208,25 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
     coordination_index = workspace_service.load_coordination_index()
     assert coordination_index.active_initiative_count == 2
     assert coordination_index.recommended_surface_path == "plan/initiatives/workspace_alpha/progress.md"
+
+    artifact_index = loader.load_artifact_index()
+    self_entry = artifact_index.get("index.artifacts")
+    assert self_entry.path == PLAN_ARTIFACT_INDEX_PATH
+    assert self_entry.source_channel == "aggregate_index"
+
+    pack_note_entry = artifact_index.get("note.plan.stage1_bootstrap_record")
+    assert pack_note_entry.artifact_family == "pack_work_item_note"
+    assert "bootstrap.plan.stage1_bootstrap" in pack_note_entry.context_ids
+    assert "trace.capture_first_plan_workspace_bootstrap" in pack_note_entry.context_ids
+
+    artifact_matches = ArtifactQueryService(loader).search(
+        ArtifactSearchParams(
+            artifact_family="initiative_state",
+            context_id="trace.workspace_alpha",
+        )
+    )
+    assert len(artifact_matches) == 1
+    assert artifact_matches[0].artifact_id == "initiative.workspace_alpha"
 
     readiness_blocked = workspace_service.search_readiness(
         PlanReadinessSearchParams(blocked_only=True)

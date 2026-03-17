@@ -45,6 +45,11 @@ uv run watchtower-core query coordination --format json
 
 ```sh
 cd core/python
+uv run watchtower-core query artifacts --artifact-family initiative_state --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync all --format json
 ```
 
@@ -73,4 +78,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_core/cli/registry.py`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-17T20:03:23Z`

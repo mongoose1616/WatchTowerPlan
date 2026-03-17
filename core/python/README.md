@@ -43,6 +43,7 @@
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
 - `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
+- `uv run watchtower-core query artifacts --artifact-family initiative_state --format json`
 - `uv run watchtower-core query readiness --ready-for-execution true --format json`
 - `uv run watchtower-core query projects --slug watchtower --format json`
 - `uv run watchtower-core query project-context --project-slug watchtower --format json`
@@ -108,6 +109,7 @@
 - `plan/.wt/indexes/coordination_index.json` is the live machine-readable current-state entrypoint for the plan workspace.
 - `uv run watchtower-core query project-context --project-slug <slug> --format json` is the explicit runtime proof path for loading `project_context` on top of always-loaded `pack_context` for project-scoped work.
 - `uv run watchtower-core query coordination --format json` is the live plan-workspace machine start-here command backed by `plan/.wt/indexes/coordination_index.json`.
+- `uv run watchtower-core query artifacts --format json` exposes the cross-family live artifact lookup under `plan/.wt/indexes/artifact_index.json`.
 - `uv run watchtower-core query readiness --format json`, `query discrepancies --format json`, and `query projects --format json` expose the live readiness, discrepancy, and project indexes under `plan/.wt/indexes/`.
 - Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.

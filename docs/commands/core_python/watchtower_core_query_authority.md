@@ -60,6 +60,7 @@ uv run watchtower-core query authority --artifact-kind route_index
 | Command | Relationship |
 |---|---|
 | `watchtower-core query coordination` | Canonical machine start-here path for current planning state and next action. |
+| `watchtower-core query artifacts` | Canonical cross-family artifact lookup when the question spans multiple live plan machine artifact families. |
 | `watchtower-core query readiness` | Canonical execution-gate lookup when the question is whether an initiative may start or resume work. |
 | `watchtower-core query discrepancies` | Canonical mismatch and drift lookup when the question is blocking discrepancies. |
 | `watchtower-core query projects` | Canonical project-container browse surface for pack-level project lookup. |
@@ -76,4 +77,4 @@ uv run watchtower-core query authority --artifact-kind route_index
 - `core/control_plane/registries/authority_map.json`
 
 ## Updated At
-- `2026-03-17T19:13:00Z`
+- `2026-03-17T20:03:23Z`

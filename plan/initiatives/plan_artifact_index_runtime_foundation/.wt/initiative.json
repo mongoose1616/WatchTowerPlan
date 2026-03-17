@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+  "trace_id": "trace.plan_artifact_index_runtime_foundation",
+  "slug": "plan_artifact_index_runtime_foundation",
+  "title": "Plan Artifact Index Runtime Foundation",
+  "summary": "Publishes the missing live plan artifact index, removes legacy artifact-index field leakage, and exposes the cross-family query surface required by requirements.md and decisions.md.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T19:41:51Z",
+  "updated_at": "2026-03-17T20:36:00Z",
+  "task_ids": [
+    "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields",
+    "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface",
+    "task.plan_artifact_index_runtime_foundation.validate_artifact_index_coverage_and_guidance"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_artifact_index_runtime_foundation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_artifact_index_runtime_foundation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_artifact_index_runtime_foundation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_artifact_index_runtime_foundation/initiative_brief.md",
+      "sha256": "3751d0a649ad2e96619346c21d8893d45d343d402bb182323352069fee4c9637",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T19:42:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_artifact_index_runtime_foundation/design_record.md",
+      "sha256": "4687fceee650516938759d5d81a9dfd278840968add1c784f0d262bed1f617a3",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T19:42:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_artifact_index_runtime_foundation/implementation_slice.md",
+      "sha256": "32cd7e1cf0bd3cba737a27aebf74a48d1e24a809432f7b3431e93eb438503c04",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T19:42:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_artifact_index_runtime_foundation/decision_notes.md",
+      "sha256": "3686d20e85211addf7791b54ce31155ebeb709f8434e1d958fd108746ca33ee9",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T19:42:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T19:42:31Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T19:42:46Z"
+    }
+  ],
+  "closed_at": "2026-03-17T20:36:00Z",
+  "closure_reason": "Implemented the live artifact index runtime, query surface, validator wiring, and guidance updates required by requirements.md and decisions.md."
+}

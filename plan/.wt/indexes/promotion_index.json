@@ -33,6 +33,33 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_artifact_index_runtime_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "initiative_title": "Plan Artifact Index Runtime Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_artifact_index_runtime_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_artifact_index_runtime_foundation/initiative_brief.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/design_record.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/implementation_slice.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T20:36:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_core_documentation_template_authority_foundation.bootstrap_shell",
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",

@@ -31,6 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
             "--summary \"Frames the example initiative.\" --format json",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
+            "uv run watchtower-core query artifacts --artifact-family initiative_state --format json",
             "uv run watchtower-core query readiness --ready-for-execution true --format json",
             "uv run watchtower-core query projects --slug watchtower --format json",
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation "

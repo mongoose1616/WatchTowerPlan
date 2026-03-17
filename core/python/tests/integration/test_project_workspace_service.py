@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import copytree, rmtree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_core.repo_ops.initiative_packages import (
     InitiativeBootstrapParams,
     InitiativePackageService,
@@ -105,6 +106,7 @@ def test_project_workspace_bootstrap_writes_machine_package_views_index_and_cont
     assert (project_root / "repositories.md").exists()
     assert (project_root / "summary.md").exists()
     assert (repo_root / PLAN_PROJECT_INDEX_PATH).exists()
+    assert (repo_root / PLAN_ARTIFACT_INDEX_PATH).exists()
 
     context = service.load_project_context("watchtower")
     assert context.pack_context.pack_settings.pack_id == "pack.plan"
@@ -120,6 +122,11 @@ def test_project_workspace_bootstrap_writes_machine_package_views_index_and_cont
     assert len(entries) == 1
     assert entries[0].project_id == "project.watchtower"
     assert entries[0].repository_count == 2
+
+    artifact_index = ControlPlaneLoader(repo_root).load_artifact_index()
+    project_entry = artifact_index.get("project.watchtower")
+    assert project_entry.path == "plan/projects/watchtower/.wt/project.json"
+    assert project_entry.rendered_view_path == "plan/projects/watchtower/project.md"
 
 
 def test_project_workspace_validation_detects_stale_surfaces_until_rebuilt(
@@ -216,6 +223,14 @@ def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
         if entry["project_id"] == "project.watchtower"
     )
     assert project_entry["updated_at"] == "2026-03-17T17:30:00Z"
+
+    artifact_index = _load_json(repo_root / PLAN_ARTIFACT_INDEX_PATH)
+    artifact_entry = next(
+        entry
+        for entry in artifact_index["artifacts"]
+        if entry["artifact_id"] == "index.projects"
+    )
+    assert artifact_entry["updated_at"] == "2026-03-17T17:30:00Z"
 
     summary_view = (repo_root / "plan/projects/watchtower/summary.md").read_text(
         encoding="utf-8"

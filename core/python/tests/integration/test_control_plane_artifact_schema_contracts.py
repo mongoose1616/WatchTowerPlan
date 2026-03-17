@@ -220,6 +220,7 @@ def test_plan_artifact_family_registry_covers_current_live_plan_families() -> No
     }
 
     assert {
+        "pack_work_item_note",
         "initiative_state",
         "initiative_event_stream",
         "task_state",
@@ -237,6 +238,7 @@ def test_plan_artifact_family_registry_covers_current_live_plan_families() -> No
         "discrepancy_index",
         "promotion_index",
         "guidance_index",
+        "artifact_index",
         "coordination_index",
         "project_index",
     }.issubset(families)

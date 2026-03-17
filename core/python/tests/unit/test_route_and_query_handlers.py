@@ -27,6 +27,11 @@ def _query_args(**overrides: object) -> argparse.Namespace:
         "project_slug": None,
         "project_id": None,
         "slug": None,
+        "artifact_id": None,
+        "artifact_family": None,
+        "context_id": None,
+        "source_context": None,
+        "source_channel": None,
         "task_id": [],
         "trace_id": None,
         "initiative_id": None,
@@ -42,6 +47,9 @@ def _query_args(**overrides: object) -> argparse.Namespace:
         "severity": None,
         "status": None,
         "repository_role": None,
+        "authoritative": None,
+        "derived": None,
+        "hidden": None,
         "blocking_only": False,
         "blocked_by": None,
         "depends_on": None,
@@ -99,6 +107,39 @@ def _active_task_summary(**overrides: object) -> SimpleNamespace:
         "is_actionable": True,
         "blocked_by": (),
         "depends_on": (),
+    }
+    defaults.update(overrides)
+    return SimpleNamespace(**defaults)
+
+
+def _artifact_entry(**overrides: object) -> SimpleNamespace:
+    defaults: dict[str, object] = {
+        "artifact_id": "initiative.example",
+        "artifact_family": "initiative_state",
+        "path": "plan/initiatives/example/.wt/initiative.json",
+        "pack": "pack.plan",
+        "subdomain": "plan",
+        "status": "ready_for_execution",
+        "authoritative": True,
+        "hidden": True,
+        "derived": False,
+        "created_at": "2026-03-10T23:59:59Z",
+        "updated_at": "2026-03-10T23:59:59Z",
+        "context_ids": ("initiative.example", "trace.example", "pack.plan"),
+        "title": "Example Initiative",
+        "summary": "Example initiative artifact.",
+        "parent_artifact_id": None,
+        "related_artifact_ids": (),
+        "route_id": None,
+        "rendered_view_path": "plan/initiatives/example/plan.md",
+        "workflow_surface": None,
+        "review_status": "approved",
+        "source_context": "initiative.example",
+        "source_channel": "initiative_package",
+        "source_summary": "Example initiative artifact.",
+        "source_url": None,
+        "source_ref": None,
+        "source_type": "initiative_state",
     }
     defaults.update(overrides)
     return SimpleNamespace(**defaults)
@@ -318,6 +359,30 @@ def test_query_tasks_prints_empty_message(monkeypatch, capsys) -> None:
     captured = capsys.readouterr()
     assert result == 0
     assert "No task entries matched the requested filters." in captured.out
+
+
+def test_query_artifacts_prints_human_summary(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def search(self, params: object) -> tuple[SimpleNamespace, ...]:
+            return (_artifact_entry(),)
+
+    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(
+        query_coordination_lookup_handlers,
+        "ArtifactQueryService",
+        FakeService,
+    )
+
+    result = query_coordination_lookup_handlers._run_query_artifacts(_query_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Found 1 artifact entry:" in captured.out
+    assert "initiative.example [initiative_state, ready_for_execution]" in captured.out
+    assert "Source: initiative.example / initiative_package" in captured.out
 
 
 def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:

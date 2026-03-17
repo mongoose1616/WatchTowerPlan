@@ -260,6 +260,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.artifacts",
+      "command": "watchtower-core query artifacts",
+      "summary": "Search the cross-family plan artifact index for live machine artifacts and aggregate indexes.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_artifacts.md",
+      "synopsis": "uv run watchtower-core query artifacts [-h] [--query QUERY] [--artifact-id ARTIFACT_ID] [--artifact-family ARTIFACT_FAMILY] [--context-id CONTEXT_ID] [--source-context SOURCE_CONTEXT] [--source-channel SOURCE_CHANNEL] [--status STATUS] [--authoritative {true,false}] [--derived {true,false}] [--hidden {true,false}] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "artifacts"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.authority",
       "command": "watchtower-core query authority",
       "summary": "Search the authored authority map for canonical planning and governance surfaces, preferred commands, and documented fallback paths.",

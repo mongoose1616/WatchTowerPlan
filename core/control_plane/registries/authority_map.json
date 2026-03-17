@@ -190,6 +190,32 @@
       "notes": "Use this when the question is mismatch severity, gate effect, or unresolved drift rather than overall readiness."
     },
     {
+      "question_id": "authority.planning.artifact_catalog",
+      "domain": "planning",
+      "question": "What live plan artifacts exist across families and where are they stored?",
+      "status": "active",
+      "artifact_kind": "artifact_index",
+      "canonical_path": "plan/.wt/indexes/artifact_index.json",
+      "preferred_command": "watchtower-core query artifacts",
+      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_artifacts.md",
+      "status_fields": [
+        "status",
+        "review_status"
+      ],
+      "fallback_paths": [
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/project_index.json",
+        "plan/initiatives/",
+        "plan/projects/"
+      ],
+      "aliases": [
+        "artifact catalog",
+        "cross family artifact lookup",
+        "live artifact inventory"
+      ],
+      "notes": "Use this when the question spans multiple live plan artifact families or you need canonical artifact paths and context metadata without crawling the workspace manually."
+    },
+    {
       "question_id": "authority.planning.project_catalog",
       "domain": "planning",
       "question": "What project containers exist and which repositories or initiative roots do they expose?",

@@ -10,6 +10,7 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
     ActorRegistry,
+    ArtifactIndex,
     ArtifactFamilyRegistry,
     AuthorityMap,
     CommandIndex,
@@ -75,6 +76,7 @@ SOURCE_TYPE_REGISTRY_PATH = "plan/.wt/registries/source_type_registry.json"
 PROJECT_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/project_surface_policy_registry.json"
 HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
 RETENTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/retention_policy_registry.json"
+ARTIFACT_INDEX_PATH = "plan/.wt/indexes/artifact_index.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
@@ -163,6 +165,7 @@ class ControlPlaneLoader:
         self._active_project_surface_policy_registry_path: str | None = None
         self._active_human_surface_policy_registry_path: str | None = None
         self._active_retention_policy_registry_path: str | None = None
+        self._active_artifact_index_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
@@ -331,6 +334,17 @@ class ControlPlaneLoader:
             retention_policy_declaration.path
             if retention_policy_declaration is not None
             else None
+        )
+        artifact_index_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "artifact_index"
+            ),
+            None,
+        )
+        self._active_artifact_index_path = (
+            artifact_index_declaration.path if artifact_index_declaration is not None else None
         )
 
     def set_validated_document_override(
@@ -609,6 +623,18 @@ class ControlPlaneLoader:
             RetentionPolicyRegistry.from_document,
         )
 
+    def load_artifact_index(
+        self,
+        relative_path: str = ARTIFACT_INDEX_PATH,
+    ) -> ArtifactIndex:
+        """Load the current pack artifact index."""
+
+        effective_path = self._current_artifact_index_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            ArtifactIndex.from_document,
+        )
+
     def load_repository_path_index(self) -> RepositoryPathIndex:
         """Load the current repository path index."""
         return self._load_typed_document(
@@ -857,6 +883,8 @@ class ControlPlaneLoader:
                 relative_path,
                 RetentionPolicyRegistry.from_document,
             )
+        if surface_name == "artifact_index":
+            return self._load_typed_document(relative_path, ArtifactIndex.from_document)
         if surface_name == "pack_settings":
             return self._load_typed_document(relative_path, PackSettings.from_document)
         if surface_name == "governance_surface_map":
@@ -932,6 +960,8 @@ class ControlPlaneLoader:
             return self.load_human_surface_policy_registry()
         if relative_path == RETENTION_POLICY_REGISTRY_PATH:
             return self.load_retention_policy_registry()
+        if relative_path == ARTIFACT_INDEX_PATH:
+            return self.load_artifact_index()
         if relative_path == PACK_SETTINGS_PATH:
             return self.load_pack_settings()
         if (
@@ -994,6 +1024,11 @@ class ControlPlaneLoader:
             and relative_path == self._active_retention_policy_registry_path
         ):
             return self.load_retention_policy_registry(relative_path)
+        if (
+            self._active_artifact_index_path is not None
+            and relative_path == self._active_artifact_index_path
+        ):
+            return self.load_artifact_index(relative_path)
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -1143,6 +1178,13 @@ class ControlPlaneLoader:
             and self._active_retention_policy_registry_path is not None
         ):
             return self._active_retention_policy_registry_path
+        return relative_path
+
+    def _current_artifact_index_path(self, relative_path: str) -> str:
+        """Return the artifact-index path active for this loader instance."""
+
+        if relative_path == ARTIFACT_INDEX_PATH and self._active_artifact_index_path is not None:
+            return self._active_artifact_index_path
         return relative_path
 
     def load_typed_document(

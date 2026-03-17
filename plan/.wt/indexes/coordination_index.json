@@ -31,6 +31,14 @@
       "closure_reason": "Delivered the relation type registry and status transition rule surfaces."
     },
     {
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T20:36:00Z",
+      "key_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/plan.md",
+      "closure_reason": "Implemented the live artifact index runtime, query surface, validator wiring, and guidance updates required by requirements.md and decisions.md."
+    },
+    {
       "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
       "title": "Plan Promotion Policy and Guidance Indexes",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T17:39:18Z",
       "key_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md",
       "closure_reason": "Delivered the documentation-family registry, template catalog, governed template assets, typed helpers, and validation coverage for current plan guidance and rendered surfaces."
-    },
-    {
-      "trace_id": "trace.plan_project_surface_policy_registry",
-      "title": "Plan Project Surface Policy Registry",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T17:28:00Z",
-      "key_surface_path": "plan/initiatives/plan_project_surface_policy_registry/plan.md",
-      "closure_reason": "Delivered the project-surface policy registry, typed helper, and project validation integration for required project-root surfaces."
     }
   ]
 }

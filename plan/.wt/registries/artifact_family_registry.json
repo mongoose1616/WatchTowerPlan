@@ -5,6 +5,21 @@
   "status": "active",
   "entries": [
     {
+      "family_id": "pack_work_item_note",
+      "entry_status": "active",
+      "summary": "Pack-level work-item notes stored under the live plan machine root.",
+      "canonical_schema_id": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+      "placement_roots": [
+        "plan/.wt/work_items/*.json"
+      ],
+      "status_field": "lifecycle_stage",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.artifacts"
+      ],
+      "visibility": "hidden"
+    },
+    {
       "family_id": "initiative_state",
       "entry_status": "active",
       "summary": "Authoritative current-state snapshot for one plan initiative package.",
@@ -352,6 +367,21 @@
       "visibility": "mixed"
     },
     {
+      "family_id": "artifact_index",
+      "entry_status": "active",
+      "summary": "Cross-family live artifact lookup built from plan machine artifacts and aggregate indexes.",
+      "canonical_schema_id": "urn:watchtower:schema:interfaces:packs:artifact-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/artifact_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.artifacts"
+      ],
+      "visibility": "mixed"
+    },
+    {
       "family_id": "coordination_index",
       "entry_status": "active",
       "summary": "Pack-level start-here coordination index built from initiative and task aggregates.",
@@ -385,5 +415,5 @@
       "visibility": "mixed"
     }
   ],
-  "notes": "This registry publishes the first plan-pack artifact family taxonomy required by requirements.md so placement, status semantics, renderability, and derived-index participation stop living only in path conventions and scattered runtime code."
+  "notes": "This registry publishes the live plan-pack artifact family taxonomy required by requirements.md so placement, status semantics, renderability, and derived-index participation stop living only in path conventions and scattered runtime code."
 }

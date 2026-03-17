@@ -42,6 +42,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "summary": "Publishes the missing live plan artifact index, removes legacy artifact-index field leakage, and exposes the cross-family query surface required by requirements.md and decisions.md.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T20:36:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/progress.md",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "slug": "plan_artifact_index_runtime_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields",
+        "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface",
+        "task.plan_artifact_index_runtime_foundation.validate_artifact_index_coverage_and_guidance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_artifact_index_runtime_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T20:36:00Z",
+      "closure_reason": "Implemented the live artifact index runtime, query surface, validator wiring, and guidance updates required by requirements.md and decisions.md.",
+      "related_paths": [
+        "plan/initiatives/plan_artifact_index_runtime_foundation/initiative_brief.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/design_record.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/implementation_slice.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",
       "title": "Plan Core Documentation Template Authority Foundation",
       "summary": "Adds the missing core-owned documentation family registry, template catalog, reusable templates, and validation coverage required by requirements.md.",

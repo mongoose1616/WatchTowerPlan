@@ -204,6 +204,20 @@ def test_query_readiness_supports_json_output(capsys) -> None:
     )
 
 
+def test_query_artifacts_supports_json_output(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "artifacts", "--artifact-family", "artifact_index"],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query artifacts"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["artifact_id"] == "index.artifacts" for entry in payload["results"]
+    )
+
+
 def test_query_discrepancies_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,

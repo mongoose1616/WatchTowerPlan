@@ -3214,6 +3214,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_artifacts.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_authority.md",
       "kind": "file",
       "surface_kind": "command_doc",

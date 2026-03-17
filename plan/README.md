@@ -32,6 +32,7 @@
 - `plan/.wt/registries/lifecycle_stage_registry.json`, `review_status_registry.json`, and `source_type_registry.json` now hold the live plan-pack vocabulary for lifecycle, approval, and provenance semantics that must stay consistent with initiative state, readiness views, and promotion/evidence surfaces.
 - `plan/.wt/registries/project_surface_policy_registry.json` is the project-root contract for which machine artifacts, rendered views, and optional project-local subroots may exist under `plan/projects/<project_slug>/`.
 - `plan/.wt/indexes/promotion_index.json` and `plan/.wt/indexes/guidance_index.json` are the pack-level lookup surfaces for initiative-local promotion records and approved plan guidance.
+- `plan/.wt/indexes/artifact_index.json` is the pack-level cross-family lookup surface for live plan machine artifacts, pack work-item notes, and aggregate indexes.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
 - `plan/workflows/ROUTING_TABLE.md` is the authoritative plan-domain routing table, and its routes may reference shared reusable modules under `core/workflows/modules/`.
 - Do not start new live work under `docs/planning/**`; the retained bootstrap trace there exists only until later cutover slices replace the old entrypoints.

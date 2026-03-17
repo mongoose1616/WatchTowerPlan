@@ -660,10 +660,12 @@ def test_control_plane_loader_reads_initiative_index() -> None:
 
     initiative_index = loader.load_initiative_index()
     coordination_index = loader.load_coordination_index()
+    artifact_index = loader.load_artifact_index()
     entry = initiative_index.get("trace.core_python_foundation")
 
     assert entry.trace_id == "trace.core_python_foundation"
     assert coordination_index.artifact_id == "index.coordination"
+    assert artifact_index.get("index.artifacts").artifact_family == "artifact_index"
     assert entry.current_phase in {
         "prd",
         "design",

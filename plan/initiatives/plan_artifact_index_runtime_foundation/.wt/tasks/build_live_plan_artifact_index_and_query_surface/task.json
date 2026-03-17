@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface",
+  "slug": "build_live_plan_artifact_index_and_query_surface",
+  "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+  "title": "Build live plan artifact index and query surface",
+  "summary": "Build plan/.wt/artifact_index.json from live plan artifact families and expose it through a first-class query command.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T19:41:51Z",
+  "updated_at": "2026-03-17T20:35:24Z",
+  "dependency_task_ids": [
+    "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

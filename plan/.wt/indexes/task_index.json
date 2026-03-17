@@ -54,6 +54,55 @@
       ]
     },
     {
+      "task_id": "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "initiative_title": "Plan Artifact Index Runtime Foundation",
+      "title": "Build live plan artifact index and query surface",
+      "summary": "Build plan/.wt/artifact_index.json from live plan artifact families and expose it through a first-class query command.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/build_live_plan_artifact_index_and_query_surface/task.json",
+      "updated_at": "2026-03-17T20:35:24Z",
+      "depends_on": [
+        "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields"
+      ]
+    },
+    {
+      "task_id": "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "initiative_title": "Plan Artifact Index Runtime Foundation",
+      "title": "Publish artifact index contract and neutralize legacy fields",
+      "summary": "Update the generic pack artifact-index contract, typed models, and validation so challenge-specific and platform-specific leakage is replaced by plan-safe provenance fields.",
+      "status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/publish_artifact_index_contract_and_neutralize_legacy_fields/task.json",
+      "updated_at": "2026-03-17T20:35:24Z"
+    },
+    {
+      "task_id": "task.plan_artifact_index_runtime_foundation.validate_artifact_index_coverage_and_guidance",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "initiative_title": "Plan Artifact Index Runtime Foundation",
+      "title": "Validate artifact index coverage and guidance",
+      "summary": "Add tests, validator wiring, and command guidance proving the live artifact index stays aligned with requirements.md and decisions.md.",
+      "status": "completed",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/validate_artifact_index_coverage_and_guidance/task.json",
+      "updated_at": "2026-03-17T20:35:24Z",
+      "depends_on": [
+        "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields",
+        "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface"
+      ]
+    },
+    {
       "task_id": "task.plan_core_documentation_template_authority_foundation.add_core_validation_coverage",
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",

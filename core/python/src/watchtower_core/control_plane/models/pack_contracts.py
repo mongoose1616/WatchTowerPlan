@@ -297,8 +297,7 @@ class ArtifactIndexEntry:
     created_at: str
     updated_at: str
     subdomain: str | None = None
-    challenge_id: str | None = None
-    session_id: str | None = None
+    context_ids: tuple[str, ...] = ()
     title: str | None = None
     summary: str | None = None
     parent_artifact_id: str | None = None
@@ -307,9 +306,9 @@ class ArtifactIndexEntry:
     rendered_view_path: str | None = None
     workflow_surface: str | None = None
     review_status: str | None = None
+    source_context: str | None = None
+    source_channel: str | None = None
     source_summary: str | None = None
-    source_platform: str | None = None
-    source_event: str | None = None
     source_url: str | None = None
     source_ref: str | None = None
     source_type: str | None = None
@@ -328,8 +327,7 @@ class ArtifactIndexEntry:
             created_at=document["created_at"],
             updated_at=document["updated_at"],
             subdomain=document.get("subdomain"),
-            challenge_id=document.get("challenge_id"),
-            session_id=document.get("session_id"),
+            context_ids=_tuple_of_strings(document, "context_ids"),
             title=document.get("title"),
             summary=document.get("summary"),
             parent_artifact_id=document.get("parent_artifact_id"),
@@ -338,9 +336,9 @@ class ArtifactIndexEntry:
             rendered_view_path=document.get("rendered_view_path"),
             workflow_surface=document.get("workflow_surface"),
             review_status=document.get("review_status"),
+            source_context=document.get("source_context"),
+            source_channel=document.get("source_channel"),
             source_summary=document.get("source_summary"),
-            source_platform=document.get("source_platform"),
-            source_event=document.get("source_event"),
             source_url=document.get("source_url"),
             source_ref=document.get("source_ref"),
             source_type=document.get("source_type"),

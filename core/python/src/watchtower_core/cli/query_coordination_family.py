@@ -7,6 +7,7 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.query_coordination_lookup_handlers import (
+    _run_query_artifacts,
     _run_query_authority,
     _run_query_discrepancies,
     _run_query_project_context,
@@ -151,6 +152,85 @@ def register_query_coordination_commands(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_tasks_parser.set_defaults(handler=_run_query_tasks)
+
+    query_artifacts_parser = query_subparsers.add_parser(
+        "artifacts",
+        help="Search the live plan artifact index.",
+        description=dedent(
+            """
+            Search the cross-family plan artifact index for live machine
+            artifacts and aggregate indexes.
+
+            Use this when you need one query surface across initiative-local
+            machine artifacts, project machine artifacts, and pack-level live
+            indexes without crawling the workspace manually.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query artifacts --artifact-family initiative_state",
+            (
+                "uv run watchtower-core query artifacts "
+                "--context-id trace.plan_artifact_index_runtime_foundation --format json"
+            ),
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_artifacts_parser.add_argument(
+        "--query",
+        help="Free-text query over artifact fields such as IDs, family, path, title, summary, and context IDs.",
+    )
+    query_artifacts_parser.add_argument(
+        "--artifact-id",
+        help="Exact artifact identifier such as initiative.plan_artifact_index_runtime_foundation.",
+    )
+    query_artifacts_parser.add_argument(
+        "--artifact-family",
+        help="Exact artifact-family filter such as initiative_state, task_state, or artifact_index.",
+    )
+    query_artifacts_parser.add_argument(
+        "--context-id",
+        help="Exact context identifier filter such as trace.plan_artifact_index_runtime_foundation or project.watchtower.",
+    )
+    query_artifacts_parser.add_argument(
+        "--source-context",
+        help="Exact source-context filter such as initiative.plan_artifact_index_runtime_foundation or pack.plan.",
+    )
+    query_artifacts_parser.add_argument(
+        "--source-channel",
+        help="Exact source-channel filter such as initiative_package, project_container, event_stream, or aggregate_index.",
+    )
+    query_artifacts_parser.add_argument(
+        "--status",
+        help="Exact artifact status filter such as ready_for_execution, planned, active, or completed.",
+    )
+    query_artifacts_parser.add_argument(
+        "--authoritative",
+        choices=("true", "false"),
+        help="Filter by whether the artifact is authoritative.",
+    )
+    query_artifacts_parser.add_argument(
+        "--derived",
+        choices=("true", "false"),
+        help="Filter by whether the artifact is derived.",
+    )
+    query_artifacts_parser.add_argument(
+        "--hidden",
+        choices=("true", "false"),
+        help="Filter by whether the artifact lives on a hidden machine surface.",
+    )
+    query_artifacts_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_artifacts_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_artifacts_parser.set_defaults(handler=_run_query_artifacts)
 
     query_readiness_parser = query_subparsers.add_parser(
         "readiness",

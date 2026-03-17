@@ -12,6 +12,7 @@
 - Use `watchtower_core_sync.md` when the main question is which derived artifact to rebuild, then open `watchtower_core_sync_foundation_index.md` when a foundations change needs the machine-readable intent index refreshed.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_query_coordination.md` when the main question is current live planning state, next action, and active work context.
+- Use `watchtower_core_query_artifacts.md` when the main question spans multiple live plan artifact families or needs canonical machine artifact paths and context metadata.
 - Use `watchtower_core_query_readiness.md` when the main question is whether initiative packages are execution-ready.
 - Use `watchtower_core_query_discrepancies.md` when the main question is blocking drift, mismatches, or derived-surface discrepancies.
 - Use `watchtower_core_query_projects.md` when the main question is which project containers exist before loading a full project context.
@@ -30,6 +31,7 @@
 | `docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
 | `docs/commands/core_python/watchtower_core_plan.md` | Entry page for planning scaffold and bootstrap commands. |
 | `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including planning, standards, references, and trace surfaces. |
+| `docs/commands/core_python/watchtower_core_query_artifacts.md` | Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`. |
 | `docs/commands/core_python/watchtower_core_query_readiness.md` | Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`. |
 | `docs/commands/core_python/watchtower_core_query_discrepancies.md` | Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`. |
 | `docs/commands/core_python/watchtower_core_query_projects.md` | Query page for pack-level project lookup under `plan/.wt/indexes/project_index.json`. |

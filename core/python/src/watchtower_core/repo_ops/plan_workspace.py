@@ -17,6 +17,10 @@ from watchtower_core.control_plane.models import (
     InitiativeIndex,
     InitiativeIndexEntry,
 )
+from watchtower_core.repo_ops.artifact_index import (
+    ArtifactIndexService,
+    PLAN_ARTIFACT_INDEX_PATH,
+)
 from watchtower_core.repo_ops.planning_rendered_serialization import serialize_initiative_entry
 from watchtower_core.repo_ops.query.common import (
     RenderedSearchFilters,
@@ -381,6 +385,17 @@ class PlanWorkspaceService:
     def sync(self, *, write: bool) -> PlanWorkspaceSyncResult:
         snapshots = self._load_initiative_snapshots()
         documents = self._build_documents(snapshots)
+        artifact_document = ArtifactIndexService(self._loader).build_document(
+            aggregate_overrides={
+                PLAN_INITIATIVE_INDEX_PATH: documents["initiative_index"],
+                PLAN_TASK_INDEX_PATH: documents["task_index"],
+                PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
+                PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+                PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
+                PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
+                PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
+            }
+        )
         if write:
             self._write_json(PLAN_INITIATIVE_INDEX_PATH, documents["initiative_index"])
             self._write_json(PLAN_TASK_INDEX_PATH, documents["task_index"])
@@ -389,6 +404,7 @@ class PlanWorkspaceService:
             self._write_json(PLAN_PROMOTION_INDEX_PATH, documents["promotion_index"])
             self._write_json(PLAN_GUIDANCE_INDEX_PATH, documents["guidance_index"])
             self._write_json(PLAN_COORDINATION_INDEX_PATH, documents["coordination_index"])
+            self._write_json(PLAN_ARTIFACT_INDEX_PATH, artifact_document)
             self._write_markdown(PLAN_OVERVIEW_PATH, str(documents["plan_overview"]))
             for relative_path, content in documents["initiative_views"].items():
                 self._write_markdown(relative_path, content)
@@ -434,6 +450,17 @@ class PlanWorkspaceService:
             PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
             PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
             PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
+            PLAN_ARTIFACT_INDEX_PATH: ArtifactIndexService(self._loader).build_document(
+                aggregate_overrides={
+                    PLAN_INITIATIVE_INDEX_PATH: documents["initiative_index"],
+                    PLAN_TASK_INDEX_PATH: documents["task_index"],
+                    PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
+                    PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+                    PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
+                    PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
+                    PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
+                }
+            ),
         }
 
         issues: list[DerivedSurfaceIssue] = []

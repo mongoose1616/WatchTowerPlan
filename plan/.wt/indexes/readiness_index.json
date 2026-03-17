@@ -21,6 +21,21 @@
       "updated_at": "2026-03-17T21:23:00Z"
     },
     {
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Plan Artifact Index Runtime Foundation",
+      "initiative_root": "plan/initiatives/plan_artifact_index_runtime_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T20:36:00Z"
+    },
+    {
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",
       "title": "Plan Core Documentation Template Authority Foundation",

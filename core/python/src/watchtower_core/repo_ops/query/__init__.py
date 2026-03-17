@@ -8,6 +8,8 @@ from typing import Any
 __all__ = [
     "AcceptanceContractQueryService",
     "AcceptanceContractSearchParams",
+    "ArtifactQueryService",
+    "ArtifactSearchParams",
     "AuthorityMapQueryService",
     "AuthorityMapSearchParams",
     "CommandQueryService",
@@ -51,6 +53,8 @@ __all__ = [
 _EXPORT_MODULES = {
     "AcceptanceContractQueryService": "watchtower_core.repo_ops.query.acceptance",
     "AcceptanceContractSearchParams": "watchtower_core.repo_ops.query.acceptance",
+    "ArtifactQueryService": "watchtower_core.repo_ops.query.artifacts",
+    "ArtifactSearchParams": "watchtower_core.repo_ops.query.artifacts",
     "AuthorityMapQueryService": "watchtower_core.repo_ops.query.authority",
     "AuthorityMapSearchParams": "watchtower_core.repo_ops.query.authority",
     "CommandQueryService": "watchtower_core.repo_ops.query.commands",
