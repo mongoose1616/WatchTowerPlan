@@ -1,15 +1,19 @@
 # `watchtower_core.query`
 
 ## Summary
-Guardrail namespace root that keeps repo-local query orchestration out of the export-safe package surface.
+Export-safe generic query services over governed pack surfaces, command and workflow indexes, authority maps, route metadata, and artifact-family rules.
 
 ## Boundary
-- `Classification`: `boundary_layer`
-- `Supported Imports`: The namespace root only, for boundary discovery and explicit failure when callers reach for repo-local query services from the wrong package.
-- `Non-Goals`: Supported repo-specific leaf imports under `watchtower_core.query`.
+- `Classification`: `reusable_core`
+- `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, and `artifact_families`.
+- `Non-Goals`: Live planning, initiative, task, discrepancy, and docs-backed knowledge query services that still depend on `watchtower_core.repo_ops.query`.
 
 ## Key Surfaces
-- `__init__.py`: Guardrail that rejects repo-local query imports and redirects callers to `watchtower_core.repo_ops.query`.
+- `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing repo-local planning queries.
+- `commands.py`, `workflows.py`, and `authority.py`: Index and registry query services for generic governed lookups.
+- `routes.py`: Export-safe advisory route-preview service over the governed route and workflow indexes.
+- `governance_surfaces.py`: Pack-surface lookup over `pack_settings` and `governance_surface_map`.
+- `artifact_families.py`: Artifact-family registry query and path-resolution helpers.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/query/README.md`

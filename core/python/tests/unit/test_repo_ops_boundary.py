@@ -19,9 +19,20 @@ from watchtower_core.validation.all import ValidationAllService
 PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
 
 
-def test_public_query_root_fails_closed_with_repo_ops_guidance() -> None:
+def test_public_query_root_exports_generic_query_services_and_fails_closed_for_repo_local_queries() -> None:
+    assert public_query.CommandQueryService.__module__ == "watchtower_core.query.commands"
+    assert public_query.RoutePreviewService.__module__ == "watchtower_core.query.routes"
+    assert (
+        public_query.GovernanceSurfaceQueryService.__module__
+        == "watchtower_core.query.governance_surfaces"
+    )
+    assert (
+        public_query.ArtifactFamilyQueryService.__module__
+        == "watchtower_core.query.artifact_families"
+    )
+
     with pytest.raises(AttributeError, match="watchtower_core.repo_ops.query"):
-        _ = public_query.CommandQueryService
+        _ = public_query.CoordinationQueryService
 
 
 def test_public_sync_root_fails_closed_with_repo_ops_guidance() -> None:
@@ -39,7 +50,16 @@ def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
 
 
 def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
-    assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == ["__init__.py"]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
+        "__init__.py",
+        "artifact_families.py",
+        "authority.py",
+        "commands.py",
+        "common.py",
+        "governance_surfaces.py",
+        "routes.py",
+        "workflows.py",
+    ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == [
         "__init__.py",
         "harness.py",
@@ -49,8 +69,9 @@ def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -
 @pytest.mark.parametrize(
     "module_name",
     (
-        "watchtower_core.query.commands",
+        "watchtower_core.query.coordination",
         "watchtower_core.query.foundations",
+        "watchtower_core.query.planning",
         "watchtower_core.query.traceability",
         "watchtower_core.sync.all",
         "watchtower_core.sync.command_index",
@@ -68,7 +89,7 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
 
 
 def test_repo_ops_boundary_owners_remain_available() -> None:
-    assert CommandQueryService.__module__ == "watchtower_core.repo_ops.query.commands"
+    assert CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_core.repo_ops.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
     assert (

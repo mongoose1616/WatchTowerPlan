@@ -14,7 +14,7 @@
 | `adapters/` | `reusable_core` | Parsing and normalizing governed front matter and Markdown surfaces. |
 | `control_plane/` | `reusable_core` | Workspace-aware schema, artifact, and loader primitives. |
 | `validation/` | `reusable_core` | Export-safe validation services and result models; repo-local document semantics and aggregate validation stay under `repo_ops.validation`. |
-| `query/` | `boundary_layer` | Guardrail namespace root; repo-local query orchestration lives under `repo_ops.query`. |
+| `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; live planning queries stay under `repo_ops.query`. |
 | `sync/` | `reusable_core` | Export-safe sync harness and target contracts; repo-local sync target registries and orchestration live under `repo_ops.sync`. |
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
 | `repo_ops/` | `repo_local_orchestration` | WatchTowerPlan-specific planning, query, sync, and validation behavior. |

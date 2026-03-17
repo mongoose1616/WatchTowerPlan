@@ -135,7 +135,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
 | `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; repo-local document semantics stay in `repo_ops.validation`. |
-| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Guardrail namespace root only; repo-local query implementations live under `repo_ops/query/`. |
+| `core/python/src/watchtower_core/query/README.md` | `reusable_core` | Export-safe generic query services over governed indexes, routes, pack surfaces, and artifact families; live planning query implementations stay under `repo_ops/query/`. |
 | `core/python/src/watchtower_core/sync/README.md` | `reusable_core` | Export-safe generic sync harness and target contracts; repo-local sync implementations still live under `repo_ops/sync/`. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/repo_ops/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific planning, query, sync, and validation behavior. |

@@ -1,17 +1,18 @@
 # `watchtower_core.repo_ops.query`
 
 ## Summary
-Authoritative repository query services for governed indexes, planning joins, and route-preview lookup behavior.
+Authoritative repository query services for live planning indexes, planning joins, and other repo-local lookup behavior that is not export-safe enough for the reusable-core query package.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
 - `Supported Imports`: Explicit query services such as `StandardQueryService`, `RouteQueryService`, and planning-record query modules.
-- `Non-Goals`: Stable public export surface through `watchtower_core.query`.
+- `Non-Goals`: Re-owning the generic command, workflow, authority, route-preview, governance-surface, or artifact-family query services that now live under `watchtower_core.query`.
 
 ## Key Surfaces
-- `commands.py`, `coordination.py`, and `planning.py`: Machine-readable repository navigation and planning lookup.
-- `routes.py`: Advisory route-preview matching logic.
-- `standards.py`, `tasks.py`, `workflows.py`, and related modules: Family-specific index-backed lookup.
+- `coordination.py` and `planning.py`: Live planning and deep-trace lookup over plan-workspace indexes and joins.
+- `initiatives.py`, `tasks.py`, `readiness.py`, `projects.py`, and `discrepancies.py`: Initiative-local and pack-local planning state lookup.
+- `standards.py`, `references.py`, `foundations.py`, and related modules: Repo-local docs-backed knowledge lookup that still depends on this repository's current corpus.
+- `commands.py`, `workflows.py`, `authority.py`, and `routes.py`: Compatibility import locations for reusable-core generic query services.
 
 ## Files
 | Path | Description |

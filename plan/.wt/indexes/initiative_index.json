@@ -226,6 +226,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "title": "Plan Generic Query Harness Export Foundation",
+      "summary": "Exports a reusable generic query surface from watchtower_core.query and refactors export-safe query services onto that public boundary so requirements.md and decisions.md no longer depend on a guardrail-only query root.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T22:37:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/progress.md",
+      "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+      "slug": "plan_generic_query_harness_export_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts",
+        "task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface",
+        "task.plan_generic_query_harness_export_foundation.validate_query_harness_export_and_guidance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_generic_query_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T22:37:00Z",
+      "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract.",
+      "related_paths": [
+        "plan/initiatives/plan_generic_query_harness_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/design_record.md",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/implementation_slice.md",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_generic_sync_harness_export_foundation",
       "title": "Plan Generic Sync Harness Export Foundation",
       "summary": "Exports a reusable sync harness from watchtower_core.sync and refactors repo-local sync orchestration onto that generic layer so requirements.md and decisions.md no longer depend on a repo_ops-only sync coordinator.",

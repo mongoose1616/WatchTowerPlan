@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts",
+  "slug": "publish_generic_query_harness_contracts",
+  "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+  "title": "Publish generic query harness contracts",
+  "summary": "Add export-safe query modules, search parameter types, and reusable query services under watchtower_core.query.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T20:58:44Z",
+  "updated_at": "2026-03-17T22:35:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

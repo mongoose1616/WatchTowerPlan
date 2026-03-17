@@ -87,7 +87,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 |---|---|
 | `core/python/src/watchtower_core/control_plane/` | Loaders, resolvers, and artifact access for governed control-plane surfaces. |
 | `core/python/src/watchtower_core/validation/` | Validator execution, schema-backed checks, and validation result modeling. |
-| `core/python/src/watchtower_core/query/` | Guardrail query namespace root only; authoritative repo-local query logic lives under `core/python/src/watchtower_core/repo_ops/query/`. |
+| `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `core/python/src/watchtower_core/repo_ops/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
 | `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
@@ -106,8 +106,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 ## Examples
 - A new schema loader belongs in `core/python/src/watchtower_core/control_plane/`.
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
-- A repo-local query helper that searches the repository path index belongs in `core/python/src/watchtower_core/repo_ops/query/`.
-- A guardrail package root that blocks repo-local query imports from leaking into reusable surfaces belongs in `core/python/src/watchtower_core/query/`.
+- A reusable-core query helper that searches governed command, workflow, authority, route, or artifact-family metadata belongs in `core/python/src/watchtower_core/query/`.
+- A repo-local query helper that searches live planning indexes, initiative packages, or docs-backed planning joins belongs in `core/python/src/watchtower_core/repo_ops/query/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
 ## Operationalization

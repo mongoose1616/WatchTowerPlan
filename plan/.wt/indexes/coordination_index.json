@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T21:51:00Z",
+  "updated_at": "2026-03-17T22:37:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "title": "Plan Generic Query Harness Export Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T22:37:00Z",
+      "key_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/plan.md",
+      "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract."
+    },
     {
       "trace_id": "trace.plan_generic_sync_harness_export_foundation",
       "title": "Plan Generic Sync Harness Export Foundation",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T18:17:57Z",
       "key_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/plan.md",
       "closure_reason": "Delivered the core-owned documentation family registry, template catalog, reusable templates, and explicit validation coverage required by requirements.md and decisions.md."
-    },
-    {
-      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
-      "title": "Plan Template Section-Spec Enforcement Foundation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T18:04:42Z",
-      "key_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/plan.md",
-      "closure_reason": "Delivered governed section-spec schemas, aligned template contracts to requirements.md, and added fail-closed section-spec validation for plan template assets."
     }
   ]
 }

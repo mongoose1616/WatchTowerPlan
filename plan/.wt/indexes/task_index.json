@@ -274,6 +274,54 @@
       ]
     },
     {
+      "task_id": "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts",
+      "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "initiative_title": "Plan Generic Query Harness Export Foundation",
+      "title": "Publish generic query harness contracts",
+      "summary": "Add export-safe query modules, search parameter types, and reusable query services under watchtower_core.query.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/publish_generic_query_harness_contracts/task.json",
+      "updated_at": "2026-03-17T22:35:00Z"
+    },
+    {
+      "task_id": "task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface",
+      "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "initiative_title": "Plan Generic Query Harness Export Foundation",
+      "title": "Refactor repo query services onto public query surface",
+      "summary": "Move generic repo-local query implementations onto the reusable-core query surface without moving plan-live query services out of repo_ops.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/refactor_repo_query_services_onto_public_query_surface/task.json",
+      "updated_at": "2026-03-17T22:35:00Z",
+      "depends_on": [
+        "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_generic_query_harness_export_foundation.validate_query_harness_export_and_guidance",
+      "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "initiative_title": "Plan Generic Query Harness Export Foundation",
+      "title": "Validate query harness export and guidance",
+      "summary": "Add boundary tests and package guidance proving watchtower_core.query now exports reusable generic query services aligned to requirements.md and decisions.md.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/validate_query_harness_export_and_guidance/task.json",
+      "updated_at": "2026-03-17T22:35:00Z",
+      "depends_on": [
+        "task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface"
+      ]
+    },
+    {
       "task_id": "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
       "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
       "trace_id": "trace.plan_generic_sync_harness_export_foundation",

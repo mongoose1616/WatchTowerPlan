@@ -184,23 +184,28 @@ def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> No
         assert "core/python/src/watchtower_core/sync/" not in markdown, path
 
 
-def test_workspace_and_github_docs_publish_current_repo_ops_ownership_model() -> None:
+def test_workspace_and_github_docs_publish_current_query_and_sync_boundary_model() -> None:
     workspace_standard = (
         REPO_ROOT / "docs/standards/engineering/python_workspace_standard.md"
+    ).read_text(encoding="utf-8")
+    query_readme = (
+        REPO_ROOT / "core/python/src/watchtower_core/query/README.md"
+    ).read_text(encoding="utf-8")
+    package_readme = (
+        REPO_ROOT / "core/python/src/watchtower_core/README.md"
     ).read_text(encoding="utf-8")
     best_practices_standard = (
         REPO_ROOT / "docs/standards/engineering/engineering_best_practices_standard.md"
     ).read_text(encoding="utf-8")
 
     assert "core/python/src/watchtower_core/repo_ops/query/" in workspace_standard
+    assert "core/python/src/watchtower_core/query/" in workspace_standard
     assert "core/python/src/watchtower_core/repo_ops/sync/" in workspace_standard
-    assert "Guardrail query namespace root only" in workspace_standard
+    assert "Export-safe generic query services" in workspace_standard
     assert "Export-safe generic sync harness and target contracts" in workspace_standard
-    assert "A repo-local query helper" in workspace_standard
-    assert (
-        "core/python/src/watchtower_core/query/` | Index-backed retrieval and structured query "
-        "helpers."
-    ) not in workspace_standard
+    assert "A reusable-core query helper" in workspace_standard
+    assert "Classification`: `reusable_core`" in query_readme
+    assert "| `query/` | `reusable_core` |" in package_readme
     assert "core/python/src/watchtower_core/repo_ops/query/" in best_practices_standard
 
     for relative_path in (
