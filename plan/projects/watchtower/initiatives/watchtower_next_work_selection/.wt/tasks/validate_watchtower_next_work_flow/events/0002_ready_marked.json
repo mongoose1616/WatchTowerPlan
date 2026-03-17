@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_next_work_selection.validate_watchtower_next_work_flow.0002_ready_marked",
+  "initiative_id": "initiative.watchtower_next_work_selection",
+  "task_id": "task.watchtower_next_work_selection.validate_watchtower_next_work_flow",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:32:58Z",
+  "summary": "Marked the WatchTower next-work validation task ready after the next-work flow landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.watchtower_next_work_selection.add_watchtower_next_work_flow"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_next_work_selection.validate_watchtower_next_work_flow.0003_started",
+  "initiative_id": "initiative.watchtower_next_work_selection",
+  "task_id": "task.watchtower_next_work_selection.validate_watchtower_next_work_flow",
+  "sequence": 3,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:32:59Z",
+  "summary": "Started the WatchTower next-work validation task.",
+  "payload": {
+    "status": "in_progress",
+    "validation_scope": [
+      "cli_pytest",
+      "work_next_selection",
+      "bootstrap_guidance_refresh"
+    ]
+  }
+}

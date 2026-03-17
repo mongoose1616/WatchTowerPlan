@@ -100,6 +100,41 @@
       ]
     },
     {
+      "trace_id": "trace.watchtower_next_work_selection",
+      "title": "WatchTower Next Work Selection",
+      "summary": "Adds a local-first next-work command so operators can ask WatchTower what unfinished work should be picked up next from the current workspace state.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T08:37:25Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/summary.md",
+      "initiative_id": "initiative.watchtower_next_work_selection",
+      "slug": "watchtower_next_work_selection",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.watchtower_next_work_selection.add_watchtower_next_work_flow",
+        "task.watchtower_next_work_selection.validate_watchtower_next_work_flow"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_next_work_selection.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_status_snapshot",
       "title": "WatchTower Status Snapshot",
       "summary": "Adds one local-first status command so operators can see workspace readiness and current work-item counts from a single WatchTower entrypoint.",

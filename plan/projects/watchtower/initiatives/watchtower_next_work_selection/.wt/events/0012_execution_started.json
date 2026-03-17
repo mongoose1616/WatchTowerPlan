@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_next_work_selection.0012_execution_started",
+  "initiative_id": "initiative.watchtower_next_work_selection",
+  "trace_id": "trace.watchtower_next_work_selection",
+  "sequence": 12,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:32:55Z",
+  "summary": "Execution started for the WatchTower next-work selection slice.",
+  "payload": {
+    "task_id": "task.watchtower_next_work_selection.add_watchtower_next_work_flow",
+    "repository_locator": "/home/j/WatchTower"
+  }
+}

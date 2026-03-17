@@ -9,6 +9,7 @@
 ## Active Initiatives
 - `trace.plan_entrypoint_cutover_proof`: Plan Entrypoint Cutover Proof (`implementation_planning` / `pack_wide`)
 - `trace.watchtower_initial_implementation_bootstrap`: WatchTower Initial Implementation Bootstrap (`closeout` / `project_scoped`)
+- `trace.watchtower_next_work_selection`: WatchTower Next Work Selection (`closeout` / `project_scoped`)
 - `trace.watchtower_status_snapshot`: WatchTower Status Snapshot (`closeout` / `project_scoped`)
 - `trace.watchtower_work_item_bootstrap`: WatchTower Work Item Bootstrap (`closeout` / `project_scoped`)
 - `trace.watchtower_work_item_lifecycle`: WatchTower Work Item Lifecycle (`closeout` / `project_scoped`)

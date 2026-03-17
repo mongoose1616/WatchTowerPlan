@@ -71,6 +71,37 @@
       ]
     },
     {
+      "task_id": "task.watchtower_next_work_selection.add_watchtower_next_work_flow",
+      "initiative_id": "initiative.watchtower_next_work_selection",
+      "trace_id": "trace.watchtower_next_work_selection",
+      "initiative_title": "WatchTower Next Work Selection",
+      "title": "Add WatchTower next-work flow",
+      "summary": "Add a CLI path that selects one unfinished local work item and returns a compact resume snapshot.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/add_watchtower_next_work_flow/task.json",
+      "updated_at": "2026-03-17T08:32:57Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_next_work_selection.validate_watchtower_next_work_flow",
+      "initiative_id": "initiative.watchtower_next_work_selection",
+      "trace_id": "trace.watchtower_next_work_selection",
+      "initiative_title": "WatchTower Next Work Selection",
+      "title": "Validate WatchTower next-work flow",
+      "summary": "Cover next-work selection with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/validate_watchtower_next_work_flow/task.json",
+      "updated_at": "2026-03-17T08:33:00Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_next_work_selection.add_watchtower_next_work_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
       "initiative_id": "initiative.watchtower_status_snapshot",
       "trace_id": "trace.watchtower_status_snapshot",

@@ -3,7 +3,7 @@
   "id": "index.projects",
   "title": "Plan Workspace Project Index",
   "status": "active",
-  "updated_at": "2026-03-17T08:20:44Z",
+  "updated_at": "2026-03-17T08:37:25Z",
   "entries": [
     {
       "project_id": "project.watchtower",
@@ -14,13 +14,13 @@
       "project_root": "plan/projects/watchtower",
       "initiative_root": "plan/projects/watchtower/initiatives",
       "repository_count": 2,
-      "active_initiative_count": 6,
+      "active_initiative_count": 7,
       "blocked_initiative_count": 0,
       "linked_repository_roles": [
         "planning",
         "implementation"
       ],
-      "updated_at": "2026-03-17T08:20:44Z",
+      "updated_at": "2026-03-17T08:37:25Z",
       "repository_locators": [
         "/home/j/WatchTowerPlan",
         "/home/j/WatchTower"

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_next_work_selection.add_watchtower_next_work_flow.0003_completed",
+  "initiative_id": "initiative.watchtower_next_work_selection",
+  "task_id": "task.watchtower_next_work_selection.add_watchtower_next_work_flow",
+  "sequence": 3,
+  "event_type": "completed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:32:57Z",
+  "summary": "Completed the WatchTower next-work implementation task.",
+  "payload": {
+    "status": "completed",
+    "next_work_command": "watchtower work next --format json",
+    "selection_basis": [
+      "unfinished_status_only",
+      "latest_updated_at_desc",
+      "slug_desc_tiebreak"
+    ]
+  }
+}
