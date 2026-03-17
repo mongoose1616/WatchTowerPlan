@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow.0001_created",
+  "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+  "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T07:27:24Z",
+  "summary": "Created task task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

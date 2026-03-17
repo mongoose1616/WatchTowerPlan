@@ -69,6 +69,37 @@
       "related_ids": [
         "project.watchtower"
       ]
+    },
+    {
+      "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
+      "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "initiative_title": "WatchTower Workspace Init Bootstrap",
+      "title": "Add WatchTower workspace init flow",
+      "summary": "Add a CLI init path that writes a local workspace manifest and establishes the managed state root.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/add_watchtower_workspace_init_flow/task.json",
+      "updated_at": "2026-03-17T07:30:33Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_workspace_init_bootstrap.validate_watchtower_workspace_init_flow",
+      "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "initiative_title": "WatchTower Workspace Init Bootstrap",
+      "title": "Validate WatchTower workspace init flow",
+      "summary": "Exercise the generated workspace manifest through CLI tests and update doctor to surface the initialized workspace state.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/validate_watchtower_workspace_init_flow/task.json",
+      "updated_at": "2026-03-17T07:30:35Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow"
+      ]
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
+  "slug": "add_watchtower_workspace_init_flow",
+  "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+  "title": "Add WatchTower workspace init flow",
+  "summary": "Add a CLI init path that writes a local workspace manifest and establishes the managed state root.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T07:27:24Z",
+  "updated_at": "2026-03-17T07:30:33Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}
