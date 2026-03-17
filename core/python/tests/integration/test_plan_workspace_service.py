@@ -451,3 +451,64 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
         task["trace_id"] != "trace.workspace_epsilon"
         for task in coordination_index["actionable_tasks"]
     )
+
+
+def test_validate_packwide_preserves_closing_lifecycle_while_rebuilding_stale_surfaces(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_zeta",
+            title="Workspace Zeta",
+            updated_at="2026-03-17T17:20:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_zeta",
+        "actor.repository_maintainer",
+        write=True,
+    )
+    workspace_service.sync(write=True)
+
+    initiative_root = repo_root / "plan/initiatives/workspace_zeta/.wt"
+    for slug in ("seed_contracts", "validate_gate"):
+        task_path = initiative_root / "tasks" / slug / "task.json"
+        task_document = _load_json(task_path)
+        task_document["status"] = "completed"
+        task_document["updated_at"] = "2026-03-17T17:25:00Z"
+        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
+    initiative_path = initiative_root / "initiative.json"
+    initiative_document = _load_json(initiative_path)
+    initiative_document["lifecycle_stage"] = "closing"
+    initiative_document["updated_at"] = "2026-03-17T17:25:00Z"
+    initiative_path.write_text(f"{json.dumps(initiative_document, indent=2)}\n", encoding="utf-8")
+
+    readiness = package_service.validate_packwide(
+        "workspace_zeta",
+        write=True,
+        require_approved=True,
+    )
+
+    assert readiness.passed is False
+    assert readiness.lifecycle_stage == "closing"
+    assert "stale_derived_surfaces" in readiness.blocking_reasons
+
+    persisted_state = _load_json(initiative_path)
+    assert persisted_state["lifecycle_stage"] == "closing"
+
+    workspace_service.sync(write=True)
+    restored = package_service.validate_packwide(
+        "workspace_zeta",
+        write=True,
+        require_approved=True,
+    )
+
+    assert restored.passed is True
+    assert restored.lifecycle_stage == "closing"

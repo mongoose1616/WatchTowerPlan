@@ -516,11 +516,14 @@ class InitiativePackageService:
             else:
                 lifecycle_stage = "ready_for_review"
         elif issues:
-            lifecycle_stage = (
-                "blocked"
-                if current_lifecycle_stage in {"ready_for_execution", "in_progress"}
-                else "capture_incomplete"
-            )
+            if current_lifecycle_stage == "closing":
+                lifecycle_stage = "closing"
+            else:
+                lifecycle_stage = (
+                    "blocked"
+                    if current_lifecycle_stage in {"ready_for_execution", "in_progress"}
+                    else "capture_incomplete"
+                )
 
         discrepancy_ids = tuple(document["discrepancy_id"] for _, document in open_discrepancies)
         if write:
