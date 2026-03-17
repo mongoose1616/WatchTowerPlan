@@ -1,6 +1,8 @@
 """Typed models for governed control-plane artifacts."""
 
 from watchtower_core.control_plane.models.catalog import (
+    ArtifactFamilyEntry,
+    ArtifactFamilyRegistry,
     AuthorityMap,
     AuthorityMapEntry,
     HumanSurfacePolicyEntry,
@@ -97,6 +99,8 @@ __all__ = [
     "AcceptanceContractItem",
     "ActorEntry",
     "ActorRegistry",
+    "ArtifactFamilyEntry",
+    "ArtifactFamilyRegistry",
     "AuthorityMap",
     "AuthorityMapEntry",
     "ArtifactIndex",

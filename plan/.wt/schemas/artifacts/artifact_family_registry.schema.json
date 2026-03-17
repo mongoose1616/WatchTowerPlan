@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1",
+  "title": "Artifact Family Registry",
+  "description": "Schema for the plan-pack artifact family registry covering placement rules, status subsets, renderability, and derived-index participation.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1"
+    },
+    "id": {
+      "const": "registry.artifact_family"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/familyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "hidden",
+        "mixed",
+        "user"
+      ]
+    },
+    "statusField": {
+      "type": "string",
+      "enum": [
+        "status",
+        "lifecycle_stage",
+        "review_status",
+        "none"
+      ]
+    },
+    "familyEntry": {
+      "type": "object",
+      "required": [
+        "family_id",
+        "entry_status",
+        "summary",
+        "canonical_schema_id",
+        "placement_roots",
+        "status_field",
+        "renderable",
+        "derived_index_ids",
+        "visibility"
+      ],
+      "properties": {
+        "family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "active",
+            "deprecated"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "placement_roots": {
+          "$ref": "#/$defs/stringList"
+        },
+        "status_field": {
+          "$ref": "#/$defs/statusField"
+        },
+        "allowed_status_values": {
+          "$ref": "#/$defs/stringList"
+        },
+        "renderable": {
+          "type": "boolean"
+        },
+        "rendered_companion_surface_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "derived_index_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "visibility": {
+          "$ref": "#/$defs/visibility"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

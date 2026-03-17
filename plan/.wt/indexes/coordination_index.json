@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T20:53:00Z",
+  "updated_at": "2026-03-17T21:23:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "title": "Plan Artifact Family Registry Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T21:23:00Z",
+      "key_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/plan.md",
+      "closure_reason": "Delivered the artifact family registry foundation, typed resolver, and alignment coverage for live plan artifact families."
+    },
     {
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
       "title": "Plan Status Transition and Relation Rule Registries",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:18Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/plan.md",
       "closure_reason": "Delivered the WatchTower work-item inspection and completion flows."
-    },
-    {
-      "trace_id": "trace.watchtower_work_item_bootstrap",
-      "title": "WatchTower Work Item Bootstrap",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:17Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower work-item bootstrap flow."
     }
   ]
 }

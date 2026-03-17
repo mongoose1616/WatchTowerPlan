@@ -56,6 +56,13 @@
       "visibility": "hidden"
     },
     {
+      "surface_name": "artifact_family_registry",
+      "surface_kind": "registry",
+      "path": "plan/.wt/registries/artifact_family_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
       "surface_name": "validation_suite_registry",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/validation_suite_registry.json",
@@ -91,5 +98,5 @@
       "visibility": "hidden"
     }
   ],
-  "notes": "The Stage 1 seed now delegates schema, validator, human-surface policy, retention-policy, promotion-policy, relation-type, and status-transition resolution to plan-owned machine surfaces while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add more pack-local registries and extracted-guidance policies under plan/.wt/."
+  "notes": "The Stage 1 seed now delegates schema, validator, human-surface policy, retention-policy, promotion-policy, relation-type, status-transition, and artifact-family resolution to plan-owned machine surfaces while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add more pack-local registries and extracted-guidance policies under plan/.wt/."
 }

@@ -7,6 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane import ControlPlaneLoader, PackContext
 from watchtower_core.control_plane.models import (
+    ArtifactFamilyRegistry,
     HumanSurfacePolicyRegistry,
     RetentionPolicyRegistry,
 )
@@ -93,6 +94,16 @@ def test_plan_pack_context_loads_human_surface_policy_registry() -> None:
     assert registry.get("policy.human_surface.plan_root").surfaces[2].relative_path == (
         "plan_overview.md"
     )
+
+
+def test_plan_pack_context_loads_artifact_family_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context("plan/.wt/manifests/pack_settings.json")
+
+    registry = context.registries["artifact_family_registry"]
+    assert isinstance(registry, ArtifactFamilyRegistry)
+    assert registry.get("deferred_item_record").status_field == "status"
 
 
 def test_plan_pack_context_loads_retention_policy_registry() -> None:

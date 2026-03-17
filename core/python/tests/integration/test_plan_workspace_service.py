@@ -558,7 +558,7 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
     task_path = repo_root / "plan/initiatives/workspace_delta/.wt/tasks/seed_contracts/task.json"
     task_document = _load_json(task_path)
     task_document["status"] = "ready"
-    task_document["updated_at"] = "2026-03-17T16:30:00Z"
+    task_document["updated_at"] = "2026-03-17T23:30:00Z"
     task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
 
     workspace_service.sync(write=True)
@@ -569,7 +569,7 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
         for entry in initiative_index["entries"]
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
-    assert initiative_entry["updated_at"] == "2026-03-17T16:30:00Z"
+    assert initiative_entry["updated_at"] == "2026-03-17T23:30:00Z"
     assert initiative_entry["active_task_summaries"][0]["task_status"] == "ready"
 
     readiness_index = _load_json(repo_root / PLAN_READINESS_INDEX_PATH)
@@ -578,16 +578,16 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
         for entry in readiness_index["entries"]
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
-    assert readiness_entry["updated_at"] == "2026-03-17T16:30:00Z"
+    assert readiness_entry["updated_at"] == "2026-03-17T23:30:00Z"
 
     coordination_index = _load_json(repo_root / PLAN_COORDINATION_INDEX_PATH)
-    assert coordination_index["updated_at"] == "2026-03-17T16:30:00Z"
+    assert coordination_index["updated_at"] == "2026-03-17T23:30:00Z"
     assert coordination_index["actionable_task_count"] == 1
 
     summary_view = (
         repo_root / "plan/initiatives/workspace_delta/summary.md"
     ).read_text(encoding="utf-8")
-    assert "`updated_at`: `2026-03-17T16:30:00Z`" in summary_view
+    assert "`updated_at`: `2026-03-17T23:30:00Z`" in summary_view
 
 
 def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(

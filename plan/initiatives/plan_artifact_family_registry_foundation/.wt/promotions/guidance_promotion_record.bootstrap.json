@@ -1,0 +1,34 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.plan_artifact_family_registry_foundation.bootstrap_shell",
+  "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+  "title": "Bootstrap Promotion Shell",
+  "status": "candidate",
+  "updated_at": "2026-03-17T21:23:00Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/plan_artifact_family_registry_foundation/initiative_brief.md",
+      "target_family": "reference",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_artifact_family_registry_foundation/design_record.md",
+      "target_family": "decision_record",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_artifact_family_registry_foundation/implementation_slice.md",
+      "target_family": "reference",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_artifact_family_registry_foundation/decision_notes.md",
+      "target_family": "reference",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    }
+  ]
+}

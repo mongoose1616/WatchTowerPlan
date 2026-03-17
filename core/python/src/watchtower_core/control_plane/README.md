@@ -11,6 +11,7 @@ Workspace-aware artifact loading, schema validation, typed models, PackContext l
 ## Key Surfaces
 - `loader.py`: High-level governed artifact loader, including generic typed loading and pack-settings-driven context loading.
 - `pack_context.py`: PackContext materialization from pack settings and declared governed surfaces.
+- `artifact_family.py`: Pack-local artifact-family resolution for placement, status, visibility, and renderability rules.
 - `schemas.py`: Schema store and supplemental-schema registration.
 - `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.
 - `models/`: Typed artifact models grouped by artifact family, including the pack-facing contract surfaces used by PackContext.

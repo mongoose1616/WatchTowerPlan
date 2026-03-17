@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+  "slug": "publish_artifact_family_registry_schema",
+  "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+  "title": "Publish artifact family registry schema",
+  "summary": "Add the governed schema contract for the plan-pack artifact family registry.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:05:00Z",
+  "updated_at": "2026-03-17T21:20:30Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

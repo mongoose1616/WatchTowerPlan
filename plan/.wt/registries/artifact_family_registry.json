@@ -1,0 +1,389 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1",
+  "id": "registry.artifact_family",
+  "title": "Plan Artifact Family Registry",
+  "status": "active",
+  "entries": [
+    {
+      "family_id": "initiative_state",
+      "entry_status": "active",
+      "summary": "Authoritative current-state snapshot for one plan initiative package.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/initiative.json",
+        "plan/projects/**/initiatives/**/.wt/initiative.json"
+      ],
+      "status_field": "lifecycle_stage",
+      "allowed_status_values": [
+        "capture_incomplete",
+        "ready_for_review",
+        "ready_for_execution",
+        "in_progress",
+        "blocked",
+        "closing",
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.initiative.plan",
+        "rendered.initiative.progress",
+        "rendered.initiative.summary"
+      ],
+      "derived_index_ids": [
+        "index.initiatives",
+        "index.readiness",
+        "index.plan_tasks",
+        "index.plan_discrepancies",
+        "index.promotions",
+        "index.coordination"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "initiative_event_stream",
+      "entry_status": "active",
+      "summary": "Append-only initiative-local event history for lifecycle and approval changes.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/events/*.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.coordination"
+      ],
+      "visibility": "hidden"
+    },
+    {
+      "family_id": "task_state",
+      "entry_status": "active",
+      "summary": "Authoritative current-state snapshot for one initiative-local task.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/tasks/**/task.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/task.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "planned",
+        "ready",
+        "in_progress",
+        "in_review",
+        "blocked",
+        "completed",
+        "cancelled"
+      ],
+      "renderable": true,
+      "derived_index_ids": [
+        "index.plan_tasks",
+        "index.initiatives",
+        "index.coordination"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "task_event_stream",
+      "entry_status": "active",
+      "summary": "Append-only task-local event history for task execution and review changes.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/tasks/**/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/events/*.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.plan_tasks",
+        "index.coordination"
+      ],
+      "visibility": "hidden"
+    },
+    {
+      "family_id": "deferred_item_record",
+      "entry_status": "active",
+      "summary": "Initiative-local deferred item contract for required unknowns that remain unresolved.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/deferred/*.json",
+        "plan/projects/**/initiatives/**/.wt/deferred/*.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "open",
+        "resolved"
+      ],
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.initiative.plan",
+        "rendered.initiative.summary"
+      ],
+      "derived_index_ids": [
+        "index.initiatives",
+        "index.readiness",
+        "index.coordination"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "validation_bundle",
+      "entry_status": "active",
+      "summary": "Initiative-local evidence shell or validation bundle.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/evidence/*.json",
+        "plan/projects/**/initiatives/**/.wt/evidence/*.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "planned",
+        "active",
+        "completed"
+      ],
+      "renderable": true,
+      "derived_index_ids": [
+        "index.initiatives"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "closeout_recap",
+      "entry_status": "active",
+      "summary": "Initiative-local closeout shell or structured closeout recap.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:closeout-recap:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/closeout/*.json",
+        "plan/projects/**/initiatives/**/.wt/closeout/*.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "planned",
+        "active",
+        "completed"
+      ],
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.initiative.summary"
+      ],
+      "derived_index_ids": [
+        "index.initiatives",
+        "index.coordination"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "discrepancy_record",
+      "entry_status": "active",
+      "summary": "Initiative-local discrepancy and drift record.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/discrepancies/*.json",
+        "plan/projects/**/initiatives/**/.wt/discrepancies/*.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "open",
+        "resolved"
+      ],
+      "renderable": false,
+      "derived_index_ids": [
+        "index.plan_discrepancies",
+        "index.readiness"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "guidance_promotion_record",
+      "entry_status": "active",
+      "summary": "Initiative-local promotion shell or durable-guidance promotion record.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+      "placement_roots": [
+        "plan/initiatives/**/.wt/promotions/*.json",
+        "plan/projects/**/initiatives/**/.wt/promotions/*.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "planned",
+        "candidate",
+        "promoted",
+        "rejected"
+      ],
+      "renderable": false,
+      "derived_index_ids": [
+        "index.promotions"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "project_record",
+      "entry_status": "active",
+      "summary": "Authoritative current-state snapshot for one project container.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
+      "placement_roots": [
+        "plan/projects/**/.wt/project.json"
+      ],
+      "status_field": "status",
+      "allowed_status_values": [
+        "planned",
+        "active",
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.project.project",
+        "rendered.project.repositories",
+        "rendered.project.summary"
+      ],
+      "derived_index_ids": [
+        "index.projects"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "project_repository_map",
+      "entry_status": "active",
+      "summary": "Linked repository map attached to one project container.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1",
+      "placement_roots": [
+        "plan/projects/**/.wt/project_repository_map.json"
+      ],
+      "status_field": "none",
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.project.repositories"
+      ],
+      "derived_index_ids": [
+        "index.projects"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "initiative_index",
+      "entry_status": "active",
+      "summary": "Pack-level aggregate initiative index built from initiative-local state.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.initiatives"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "task_index",
+      "entry_status": "active",
+      "summary": "Pack-level aggregate task index built from initiative-local task state.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.plan_tasks"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "readiness_index",
+      "entry_status": "active",
+      "summary": "Pack-level readiness gate index built from initiative-local state and discrepancies.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:readiness-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.readiness"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "discrepancy_index",
+      "entry_status": "active",
+      "summary": "Pack-level discrepancy index built from initiative-local discrepancy records.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/discrepancy_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.plan_discrepancies"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "promotion_index",
+      "entry_status": "active",
+      "summary": "Pack-level promotion history index built from initiative-local promotion records.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:promotion-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/promotion_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.promotions"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "guidance_index",
+      "entry_status": "active",
+      "summary": "Pack-level durable guidance index built from governed plan/docs guidance records.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:guidance-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/guidance_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.guidance"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "coordination_index",
+      "entry_status": "active",
+      "summary": "Pack-level start-here coordination index built from initiative and task aggregates.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "status_field": "none",
+      "renderable": true,
+      "rendered_companion_surface_ids": [
+        "rendered.plan.plan_overview"
+      ],
+      "derived_index_ids": [
+        "index.coordination"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "project_index",
+      "entry_status": "active",
+      "summary": "Pack-level aggregate project index built from project container state.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:project-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/project_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.projects"
+      ],
+      "visibility": "mixed"
+    }
+  ],
+  "notes": "This registry publishes the first plan-pack artifact family taxonomy required by requirements.md so placement, status semantics, renderability, and derived-index participation stop living only in path conventions and scattered runtime code."
+}

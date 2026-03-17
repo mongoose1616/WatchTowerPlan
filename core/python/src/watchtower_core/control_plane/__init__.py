@@ -1,5 +1,9 @@
 """Control-plane loaders and resolvers for authored core artifacts."""
 
+from watchtower_core.control_plane.artifact_family import (
+    ArtifactFamilyHelper,
+    ArtifactFamilyIssue,
+)
 from watchtower_core.control_plane.human_surface_policy import (
     HumanSurfacePolicyHelper,
     HumanSurfacePolicyIssue,
@@ -21,6 +25,8 @@ from watchtower_core.control_plane.workspace import (
 __all__ = [
     "ArtifactSource",
     "ArtifactStore",
+    "ArtifactFamilyHelper",
+    "ArtifactFamilyIssue",
     "ControlPlaneLoader",
     "FileSystemArtifactIO",
     "HumanSurfacePolicyHelper",

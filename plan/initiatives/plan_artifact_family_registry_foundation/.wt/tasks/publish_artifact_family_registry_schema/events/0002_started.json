@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema.0002_started",
+  "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+  "task_id": "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T21:20:00Z",
+  "summary": "Started publishing the artifact family registry schema.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "artifact_family_registry_schema"
+  }
+}

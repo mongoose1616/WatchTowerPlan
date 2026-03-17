@@ -266,6 +266,20 @@
       ]
     },
     {
+      "id": "validator.plan.artifact_family_registry",
+      "title": "Plan Artifact Family Registry Validator",
+      "description": "Validates the plan-pack artifact family registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "artifact_family_registry",
+      "applies_to": [
+        "plan/.wt/registries/artifact_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1"
+      ]
+    },
+    {
       "id": "validator.plan.project_record",
       "title": "Plan Project Record Validator",
       "description": "Validates project-container current-state snapshots.",

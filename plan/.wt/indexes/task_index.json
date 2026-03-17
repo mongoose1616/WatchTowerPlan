@@ -5,6 +5,52 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "initiative_title": "Plan Artifact Family Registry Foundation",
+      "title": "Publish artifact family registry schema",
+      "summary": "Add the governed schema contract for the plan-pack artifact family registry.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/publish_artifact_family_registry_schema/task.json",
+      "updated_at": "2026-03-17T21:20:30Z"
+    },
+    {
+      "task_id": "task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "initiative_title": "Plan Artifact Family Registry Foundation",
+      "title": "Seed artifact family registry entries",
+      "summary": "Seed the initial plan-pack artifact family taxonomy for live initiative, task, evidence, promotion, discrepancy, project, and aggregate surfaces.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/seed_artifact_family_registry_entries/task.json",
+      "updated_at": "2026-03-17T21:21:30Z",
+      "depends_on": [
+        "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema"
+      ]
+    },
+    {
+      "task_id": "task.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "initiative_title": "Plan Artifact Family Registry Foundation",
+      "title": "Validate artifact family registry coverage",
+      "summary": "Add validation coverage proving the artifact family registry stays aligned with current live plan artifact schemas and indexes.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/validate_artifact_family_registry_coverage/task.json",
+      "updated_at": "2026-03-17T21:22:30Z",
+      "depends_on": [
+        "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+        "task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries"
+      ]
+    },
+    {
       "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
       "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
       "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",

@@ -165,6 +165,16 @@
       "canonical_path": "plan/.wt/schemas/artifacts/status_transition_rules.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1",
+      "title": "Artifact Family Registry",
+      "description": "Schema for the plan-pack artifact family registry covering placement rules, status subsets, renderability, and derived-index participation.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "artifact_family_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/artifact_family_registry.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
       "title": "Project Record",
       "description": "Schema for the authoritative current-state snapshot of one project container.",

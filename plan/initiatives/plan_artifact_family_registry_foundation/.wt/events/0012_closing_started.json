@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_artifact_family_registry_foundation.0012_closing_started",
+  "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+  "trace_id": "trace.plan_artifact_family_registry_foundation",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T21:22:45Z",
+  "summary": "Closeout started after the artifact family registry foundation slice completed its bounded work.",
+  "payload": {}
+}

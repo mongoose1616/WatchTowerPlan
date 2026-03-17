@@ -5,6 +5,43 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "title": "Plan Artifact Family Registry Foundation",
+      "summary": "Adds the missing artifact family registry so plan-pack artifact placement, status subsets, and derived index participation stop living only in path conventions and scattered code.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T21:23:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/progress.md",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "slug": "plan_artifact_family_registry_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+        "task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries",
+        "task.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_artifact_family_registry_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T21:23:00Z",
+      "closure_reason": "Delivered the artifact family registry foundation, typed resolver, and alignment coverage for live plan artifact families.",
+      "related_paths": [
+        "plan/initiatives/plan_artifact_family_registry_foundation/initiative_brief.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/design_record.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/implementation_slice.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
       "title": "Plan Duplicated Foundations Corpus Bootstrap",
       "summary": "Duplicates the current foundations corpus into core/docs/foundations and plan/docs/foundations so both roots carry the same guiding context required by requirements.md.",

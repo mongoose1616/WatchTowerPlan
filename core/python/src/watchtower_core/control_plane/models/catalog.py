@@ -583,6 +583,74 @@ class RetentionPolicyRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class ArtifactFamilyEntry:
+    """One governed artifact-family entry for one pack-local family."""
+
+    family_id: str
+    entry_status: str
+    summary: str
+    canonical_schema_id: str
+    placement_roots: tuple[str, ...]
+    status_field: str
+    allowed_status_values: tuple[str, ...] = ()
+    renderable: bool = False
+    rendered_companion_surface_ids: tuple[str, ...] = ()
+    derived_index_ids: tuple[str, ...] = ()
+    visibility: str = "hidden"
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ArtifactFamilyEntry:
+        return cls(
+            family_id=document["family_id"],
+            entry_status=document["entry_status"],
+            summary=document["summary"],
+            canonical_schema_id=document["canonical_schema_id"],
+            placement_roots=tuple(document["placement_roots"]),
+            status_field=document["status_field"],
+            allowed_status_values=tuple(document.get("allowed_status_values", ())),
+            renderable=bool(document["renderable"]),
+            rendered_companion_surface_ids=tuple(
+                document.get("rendered_companion_surface_ids", ())
+            ),
+            derived_index_ids=tuple(document["derived_index_ids"]),
+            visibility=document["visibility"],
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ArtifactFamilyRegistry:
+    """Typed artifact-family registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[ArtifactFamilyEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ArtifactFamilyRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(ArtifactFamilyEntry.from_document(item) for item in document["entries"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, family_id: str) -> ArtifactFamilyEntry:
+        """Return one artifact-family entry by identifier."""
+
+        for entry in self.entries:
+            if entry.family_id == family_id:
+                return entry
+        raise KeyError(family_id)
+
+
+@dataclass(frozen=True, slots=True)
 class RenderedSurfaceColumnDefinition:
     """Rendered-surface column definition."""
 

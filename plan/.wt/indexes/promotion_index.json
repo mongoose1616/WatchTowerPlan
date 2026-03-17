@@ -3,8 +3,35 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-17T20:53:00Z",
+  "updated_at": "2026-03-17T21:23:00Z",
   "entries": [
+    {
+      "promotion_id": "promotion.plan_artifact_family_registry_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "initiative_title": "Plan Artifact Family Registry Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_artifact_family_registry_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_artifact_family_registry_foundation/initiative_brief.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/design_record.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/implementation_slice.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T21:23:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
     {
       "promotion_id": "promotion.plan_duplicated_foundations_corpus_bootstrap.bootstrap_shell",
       "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",

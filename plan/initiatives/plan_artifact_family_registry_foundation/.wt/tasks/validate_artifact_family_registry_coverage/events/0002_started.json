@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage.0002_started",
+  "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+  "task_id": "task.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T21:22:00Z",
+  "summary": "Started validating the artifact family registry coverage.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "artifact_family_registry_validation"
+  }
+}

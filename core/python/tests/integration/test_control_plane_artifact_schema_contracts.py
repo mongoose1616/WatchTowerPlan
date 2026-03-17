@@ -159,6 +159,54 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
         )
 
 
+def test_plan_artifact_family_registry_covers_current_live_plan_families() -> None:
+    registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/artifact_family_registry.json"
+    )
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+
+    catalog_schema_ids = {
+        record.schema_id
+        for record in loader.load_schema_catalog().records
+    }
+    families = {
+        entry["family_id"]: entry
+        for entry in registry["entries"]
+    }
+
+    assert {
+        "initiative_state",
+        "initiative_event_stream",
+        "task_state",
+        "task_event_stream",
+        "deferred_item_record",
+        "validation_bundle",
+        "closeout_recap",
+        "discrepancy_record",
+        "guidance_promotion_record",
+        "project_record",
+        "project_repository_map",
+        "initiative_index",
+        "task_index",
+        "readiness_index",
+        "discrepancy_index",
+        "promotion_index",
+        "guidance_index",
+        "coordination_index",
+        "project_index",
+    }.issubset(families)
+
+    for family_id, entry in families.items():
+        assert entry["canonical_schema_id"] in catalog_schema_ids, (
+            f"{family_id} references a schema not published in the schema catalog"
+        )
+        assert entry["placement_roots"], f"{family_id} is missing placement roots"
+        assert entry["derived_index_ids"], f"{family_id} is missing derived index participation"
+
+
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     initiative_index = load_json_object(
