@@ -16,6 +16,7 @@
 
 ## Notes
 - Start with `docs/foundations/repository_scope.md` when the main question is whether work belongs in this repository or in future product implementation.
+- Treat `requirements.md` and `decisions.md` as the authoritative implementation contract for the current plan-workspace migration; use the retained traced planning corpus here as supporting context unless those two files are already reflected directly.
 - Start with `plan/plan_overview.md` when the main question is the current live human-readable planning state and next action.
 - Start with `plan/workflows/README.md` when the main question is the current live plan-domain workflow start-here surface.
 - Start with `plan/.wt/indexes/coordination_index.json` when the main question is the machine-readable live current-state view and next action.

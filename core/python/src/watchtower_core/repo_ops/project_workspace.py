@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
 from watchtower_core.repo_ops.query.common import (
@@ -338,6 +339,12 @@ class ProjectWorkspaceService:
         if not issues:
             derived_issues = self.expected_surface_issues(project_slug)
             issues.extend(issue.message for issue in derived_issues)
+
+        machine_root_issues = HumanSurfacePolicyHelper.from_loader(
+            self._pack_loader(),
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        ).validate_root(self._loader.repo_root, self._project_path(project_slug, ".wt"))
+        issues.extend(issue.message for issue in machine_root_issues)
 
         return ProjectValidationResult(
             project_id=project_id,

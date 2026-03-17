@@ -48,13 +48,31 @@ class PackContext:
     ) -> PackContext:
         """Build one pack context by loading the declared pack settings and surfaces."""
 
-        pack_settings = loader.load_pack_settings(pack_settings_path)
+        from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+
+        effective_pack_settings_path = (
+            loader.active_pack_settings_path
+            if pack_settings_path == PACK_SETTINGS_PATH and loader.active_pack_settings_path
+            else pack_settings_path
+        )
+        effective_loader = (
+            loader
+            if loader.active_pack_settings_path == effective_pack_settings_path
+            else ControlPlaneLoader(
+                workspace_config=loader.workspace_config,
+                artifact_source=loader.artifact_source,
+                artifact_store=loader.artifact_store,
+                active_pack_settings_path=effective_pack_settings_path,
+            )
+        )
+
+        pack_settings = effective_loader.load_pack_settings(effective_pack_settings_path)
         surfaces: dict[str, object] = {}
         registries: dict[str, object] = {}
         indexes: dict[str, object] = {}
         for declaration in pack_settings.surfaces:
             surface = _load_declared_surface(
-                loader,
+                effective_loader,
                 surface_name=declaration.surface_name,
                 relative_path=declaration.path,
             )
@@ -65,8 +83,8 @@ class PackContext:
                 indexes[declaration.surface_name] = surface
 
         return cls(
-            pack_root=loader.resolve_path(pack_settings_path).parent,
-            pack_settings_path=pack_settings_path,
+            pack_root=effective_loader.resolve_path(effective_pack_settings_path).parent,
+            pack_settings_path=effective_pack_settings_path,
             pack_settings=pack_settings,
             schema_catalog=_require_surface(
                 surfaces,

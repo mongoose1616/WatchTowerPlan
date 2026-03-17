@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.plan_human_surface_policy_and_core_root_seeding.discrepancy_index_index_drift",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "category": "stale_aggregate_index",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Aggregate index drift detected for plan/.wt/indexes/discrepancy_index.json.",
+  "source_paths": [
+    "plan/.wt/indexes/discrepancy_index.json"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-17T09:22:47Z",
+  "updated_at": "2026-03-17T09:23:00Z"
+}

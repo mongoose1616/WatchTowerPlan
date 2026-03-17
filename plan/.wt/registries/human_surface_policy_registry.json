@@ -1,0 +1,421 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1",
+  "id": "registry.human_surface_policy",
+  "title": "Plan Human Surface Policy Registry",
+  "status": "active",
+  "entries": [
+    {
+      "policy_id": "policy.human_surface.repository_root",
+      "path_pattern": ".",
+      "match_mode": "exact",
+      "root_kind": "repository_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "The repository root stays thin and routes people into plan, docs, workflows, and core.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "required",
+          "authorship_mode": "authored",
+          "notes": "Root agent instructions remain required while repo-wide routing still begins at the repository root."
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.core_root",
+      "path_pattern": "core",
+      "match_mode": "exact",
+      "root_kind": "domain_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "The core root explains shared implementation scope and routes people into the core-owned subtrees.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.core_docs_root",
+      "path_pattern": "core/docs",
+      "match_mode": "exact",
+      "root_kind": "documentation_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "documentation_family_registry",
+        "template_catalog"
+      ],
+      "clarifying_rule": "The core docs root is the durable home for core-only guidance and must not hold live plan work.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.core_workflows_root",
+      "path_pattern": "core/workflows",
+      "match_mode": "exact",
+      "root_kind": "workflow_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "workflow_metadata_registry"
+      ],
+      "clarifying_rule": "The core workflows root is the human entrypoint for future core-owned workflow guidance and routing surfaces.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "ROUTING_TABLE.md",
+          "entity_shape": "file",
+          "surface_role": "routing_table",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "modules/README.md",
+          "entity_shape": "file",
+          "surface_role": "workflow_modules_router",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_root",
+      "path_pattern": "plan",
+      "match_mode": "exact",
+      "root_kind": "domain_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "rendered_surface_registry"
+      ],
+      "clarifying_rule": "The plan root is the live plan-domain start-here surface and its overview is rendered from machine state.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "plan_overview.md",
+          "entity_shape": "file",
+          "surface_role": "rendered_visibility",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_docs_root",
+      "path_pattern": "plan/docs",
+      "match_mode": "exact",
+      "root_kind": "documentation_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "promotion_policy_registry",
+        "documentation_family_registry"
+      ],
+      "clarifying_rule": "The plan docs root is the durable home for promoted plan guidance, not live initiative state.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_workflows_root",
+      "path_pattern": "plan/workflows",
+      "match_mode": "exact",
+      "root_kind": "workflow_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "workflow_metadata_registry"
+      ],
+      "clarifying_rule": "The plan workflows root is the human plan-domain workflow entrypoint while the backend split remains in progress.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "ROUTING_TABLE.md",
+          "entity_shape": "file",
+          "surface_role": "routing_table",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "modules/README.md",
+          "entity_shape": "file",
+          "surface_role": "workflow_modules_router",
+          "mode": "required",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_initiatives_root",
+      "path_pattern": "plan/initiatives",
+      "match_mode": "exact",
+      "root_kind": "container_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "The initiatives root is a navigation surface only; initiative state lives inside child containers.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_initiative_root",
+      "path_pattern": "plan/initiatives/*",
+      "match_mode": "glob",
+      "root_kind": "initiative_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "rendered_surface_registry"
+      ],
+      "clarifying_rule": "Initiative-local plan, progress, and summary views are rendered from local machine state.",
+      "surfaces": [
+        {
+          "relative_path": "plan.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_plan",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "progress.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_progress",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "summary.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_summary",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_projects_root",
+      "path_pattern": "plan/projects",
+      "match_mode": "exact",
+      "root_kind": "container_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "The projects root is a navigation surface for project discovery.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "required",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.plan_project_root",
+      "path_pattern": "plan/projects/*",
+      "match_mode": "glob",
+      "root_kind": "project_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "project_surface_policy_registry",
+        "rendered_surface_registry"
+      ],
+      "clarifying_rule": "Project roots publish rendered summaries and linked-repository context while project-scoped initiatives live below them.",
+      "surfaces": [
+        {
+          "relative_path": "project.md",
+          "entity_shape": "file",
+          "surface_role": "project_summary",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "repositories.md",
+          "entity_shape": "file",
+          "surface_role": "project_repositories",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "summary.md",
+          "entity_shape": "file",
+          "surface_role": "project_closeout_summary",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.project_scoped_initiative_root",
+      "path_pattern": "plan/projects/*/initiatives/*",
+      "match_mode": "glob",
+      "root_kind": "initiative_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry",
+        "rendered_surface_registry"
+      ],
+      "clarifying_rule": "Project-scoped initiative roots publish the same rendered plan, progress, and summary surfaces as pack-wide initiative roots.",
+      "surfaces": [
+        {
+          "relative_path": "plan.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_plan",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "progress.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_progress",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "summary.md",
+          "entity_shape": "file",
+          "surface_role": "initiative_summary",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        }
+      ]
+    },
+    {
+      "policy_id": "policy.human_surface.machine_root",
+      "path_pattern": "**/.wt",
+      "match_mode": "glob",
+      "root_kind": "machine_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "Machine-only roots must stay discoverable through helpers and indexes rather than local README or AGENTS files.",
+      "surfaces": [
+        {
+          "relative_path": "README.md",
+          "entity_shape": "file",
+          "surface_role": "readme",
+          "mode": "forbidden",
+          "authorship_mode": "machine_only"
+        },
+        {
+          "relative_path": "AGENTS.md",
+          "entity_shape": "file",
+          "surface_role": "agents",
+          "mode": "forbidden",
+          "authorship_mode": "machine_only"
+        }
+      ]
+    }
+  ],
+  "notes": "This slice governs the roots explicitly named by requirements.md and seeds the currently required router surfaces without treating legacy docs-backed planning as authority."
+}

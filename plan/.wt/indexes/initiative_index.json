@@ -39,6 +39,41 @@
       ]
     },
     {
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "title": "Plan Human Surface Policy and Core Root Seeding",
+      "summary": "Adds the governed human-surface policy contract, the helper and validation path that resolve those rules, and the missing core-owned human roots that requirements.md declares as required.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T09:23:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/summary.md",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "slug": "plan_human_surface_policy_and_core_root_seeding",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+        "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+        "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_human_surface_policy_and_core_root_seeding.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",
       "title": "WatchTower Initial Implementation Bootstrap",
       "summary": "Captures the first WatchTower project-scoped implementation package before execution starts.",

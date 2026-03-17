@@ -6,6 +6,7 @@ import tempfile
 from pathlib import Path
 
 from watchtower_core.control_plane import ControlPlaneLoader, PackContext
+from watchtower_core.control_plane.models import HumanSurfacePolicyRegistry
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -77,3 +78,15 @@ def test_pack_context_loads_required_surface_from_relocated_declared_path() -> N
         context = loader.load_pack_context(custom_settings_path.relative_to(REPO_ROOT).as_posix())
 
     assert context.status_registry.get("accepted").entry_status == "active"
+
+
+def test_plan_pack_context_loads_human_surface_policy_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context("plan/.wt/manifests/pack_settings.json")
+
+    registry = context.registries["human_surface_policy_registry"]
+    assert isinstance(registry, HumanSurfacePolicyRegistry)
+    assert registry.get("policy.human_surface.plan_root").surfaces[2].relative_path == (
+        "plan_overview.md"
+    )

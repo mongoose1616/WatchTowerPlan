@@ -10,12 +10,15 @@
 | `plan/AGENTS.md` | Defines plan-domain instructions for live plan work and authority surfaces. |
 | `plan/plan_overview.md` | Renders the current pack-level plan status board from authoritative machine state. |
 | `plan/.wt/` | Holds the authoritative machine-readable plan-pack root and Stage 1 bootstrap record. |
+| `plan/docs/` | Holds the seeded durable plan-guidance root for future promoted guidance. |
 | `plan/initiatives/` | Holds pack-wide initiative containers for live work. |
 | `plan/projects/` | Holds project containers and project-scoped initiative roots. |
 | `plan/workflows/` | Holds the plan-domain human workflow entrypoint during workflow-root migration. |
 
 ## Notes
 - Human start-here: `plan/README.md`, then `plan/plan_overview.md`.
+- Authoritative implementation contract for the current migration: `requirements.md` and `decisions.md`.
+- Use local standards, references, and retained docs-backed planning context only where they conform to that contract.
 - Human workflow start-here: `plan/workflows/README.md`.
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
 - `plan/AGENTS.md` is the local instruction layer for work under `plan/**`.

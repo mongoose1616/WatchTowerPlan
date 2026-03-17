@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.0004_task_state_seeded",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T08:58:40Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "related_paths": [
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

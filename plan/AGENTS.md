@@ -15,6 +15,8 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
+- Treat [requirements.md](/home/j/WatchTowerPlan/requirements.md) and [decisions.md](/home/j/WatchTowerPlan/decisions.md) as the authoritative implementation directions for live `plan/**` work until that contract is fully implemented.
+- Use standards, references, and legacy planning docs only where they support or conform to those two files.
 - Use [README.md](/home/j/WatchTowerPlan/plan/README.md) as the quick reference for plan-root purpose and entrypoints before broader scans.
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.
 - Treat `plan/plan_overview.md` and initiative-local rendered views as derived human surfaces, not manual authority.

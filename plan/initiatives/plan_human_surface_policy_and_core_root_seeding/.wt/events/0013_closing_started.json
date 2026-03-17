@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.0013_closing_started",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+  "sequence": 13,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:19:20Z",
+  "summary": "The human-surface policy and root-seeding slice entered closing after implementation and validation completed.",
+  "payload": {
+    "completed_task_ids": [
+      "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+      "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+      "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance"
+    ],
+    "next_phase": "closeout"
+  }
+}

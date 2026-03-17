@@ -84,7 +84,7 @@
       "path": "core/README.md",
       "kind": "file",
       "surface_kind": "core_file",
-      "summary": "Describes the purpose of the core directory and its current boundaries.",
+      "summary": "Describes the purpose of the core root and its main subtrees.",
       "parent_path": "core/",
       "maturity": "supporting",
       "priority": "medium",
@@ -94,7 +94,7 @@
       "path": "core/control_plane/",
       "kind": "directory",
       "surface_kind": "control_plane",
-      "summary": "Holds the versioned control-plane artifact tree.",
+      "summary": "Holds authoritative machine-readable schemas, registries, contracts, indexes, examples, and ledgers.",
       "parent_path": "core/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2095,10 +2095,30 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/docs/",
+      "kind": "directory",
+      "surface_kind": "core_surface",
+      "summary": "Holds durable core-only guidance surfaces.",
+      "parent_path": "core/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/README.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Describes the purpose of the core docs root and its current migration boundary.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/python/",
       "kind": "directory",
       "surface_kind": "python_workspace",
-      "summary": "Holds the consolidated Python workspace for the helper and harness layer.",
+      "summary": "Holds the canonical Python workspace for `watchtower_core` code, tests, and tooling.",
       "parent_path": "core/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2845,6 +2865,56 @@
       "surface_kind": "python_workspace_file",
       "summary": "Locked dependency graph used for repeatable local onboarding.",
       "parent_path": "core/python/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/workflows/",
+      "kind": "directory",
+      "surface_kind": "core_surface",
+      "summary": "Holds the human entrypoint for future core-owned workflow guidance and routing surfaces.",
+      "parent_path": "core/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/workflows/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines local instructions for future core-owned workflow guidance.",
+      "parent_path": "core/workflows/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
+      "path": "core/workflows/README.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Describes the purpose of the core workflow root and its current migration boundary.",
+      "parent_path": "core/workflows/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/workflows/ROUTING_TABLE.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Thin router surface that points to the current canonical routing backend.",
+      "parent_path": "core/workflows/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/workflows/modules/README.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Explains the current status of core-owned workflow-module migration.",
+      "parent_path": "core/workflows/modules/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"
@@ -4980,6 +5050,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/docs/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds the seeded durable plan-guidance root for future promoted guidance.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Describes the purpose of the plan docs root and its current migration boundary.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/initiatives/",
       "kind": "directory",
       "surface_kind": "repository_surface",
@@ -5035,6 +5125,26 @@
       "surface_kind": "repository_file",
       "summary": "Describes the purpose of the plan workflow entrypoint and its current migration boundary.",
       "parent_path": "plan/workflows/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/workflows/ROUTING_TABLE.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Thin router surface that points to the current canonical routing backend.",
+      "parent_path": "plan/workflows/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/workflows/modules/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Explains the current status of plan-owned workflow-module migration.",
+      "parent_path": "plan/workflows/modules/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

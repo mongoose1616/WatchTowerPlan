@@ -17,6 +17,7 @@ from watchtower_core.control_plane.models import (
     DesignDocumentIndex,
     FoundationIndex,
     GovernanceSurfaceMap,
+    HumanSurfacePolicyRegistry,
     InitiativeIndex,
     PackSettings,
     PathPatternRegistry,
@@ -57,6 +58,7 @@ AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
+HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
@@ -136,6 +138,7 @@ class ControlPlaneLoader:
         self._active_schema_catalog_path: str | None = None
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
+        self._active_human_surface_policy_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
@@ -189,6 +192,19 @@ class ControlPlaneLoader:
         )
         self._active_validation_suite_registry_path = (
             suite_registry_declaration.path if suite_registry_declaration is not None else None
+        )
+        human_surface_policy_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "human_surface_policy_registry"
+            ),
+            None,
+        )
+        self._active_human_surface_policy_registry_path = (
+            human_surface_policy_declaration.path
+            if human_surface_policy_declaration is not None
+            else None
         )
 
     def set_validated_document_override(
@@ -357,6 +373,18 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             WORKFLOW_METADATA_REGISTRY_PATH,
             WorkflowMetadataRegistry.from_document,
+        )
+
+    def load_human_surface_policy_registry(
+        self,
+        relative_path: str = HUMAN_SURFACE_POLICY_REGISTRY_PATH,
+    ) -> HumanSurfacePolicyRegistry:
+        """Load the current human-surface policy registry."""
+
+        effective_path = self._current_human_surface_policy_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            HumanSurfacePolicyRegistry.from_document,
         )
 
     def load_repository_path_index(self) -> RepositoryPathIndex:
@@ -565,6 +593,11 @@ class ControlPlaneLoader:
             )
         if surface_name == "workflow_metadata_registry":
             return self._load_typed_document(relative_path, WorkflowMetadataRegistry.from_document)
+        if surface_name == "human_surface_policy_registry":
+            return self._load_typed_document(
+                relative_path,
+                HumanSurfacePolicyRegistry.from_document,
+            )
         if surface_name == "pack_settings":
             return self._load_typed_document(relative_path, PackSettings.from_document)
         if surface_name == "governance_surface_map":
@@ -622,6 +655,8 @@ class ControlPlaneLoader:
             return self.load_rendered_surface_registry()
         if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
             return self.load_workflow_metadata_registry()
+        if relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH:
+            return self.load_human_surface_policy_registry()
         if relative_path == PACK_SETTINGS_PATH:
             return self.load_pack_settings()
         if (
@@ -639,6 +674,11 @@ class ControlPlaneLoader:
             and relative_path == self._active_validation_suite_registry_path
         ):
             return self.load_validation_suite_registry()
+        if (
+            self._active_human_surface_policy_registry_path is not None
+            and relative_path == self._active_human_surface_policy_registry_path
+        ):
+            return self.load_human_surface_policy_registry(relative_path)
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -699,6 +739,16 @@ class ControlPlaneLoader:
         if self._active_validation_suite_registry_path is not None:
             return self._active_validation_suite_registry_path
         return VALIDATION_SUITE_REGISTRY_PATH
+
+    def _current_human_surface_policy_registry_path(self, relative_path: str) -> str:
+        """Return the human-surface policy registry path active for this loader instance."""
+
+        if (
+            relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH
+            and self._active_human_surface_policy_registry_path is not None
+        ):
+            return self._active_human_surface_policy_registry_path
+        return relative_path
 
     def load_typed_document(
         self,

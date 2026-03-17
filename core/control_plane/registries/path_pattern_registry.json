@@ -38,6 +38,15 @@
       "authoritative": true
     },
     {
+      "family_name": "human_surface_policy_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/human_surface_policy_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Plan-pack human-surface placement policy for README, AGENTS, and routed workflow entrypoints."
+    },
+    {
       "family_name": "workflow_module",
       "path_kind": "user_visible",
       "path_pattern": "workflows/modules/*.md",

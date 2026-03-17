@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces.0002_started",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:08:50Z",
+  "summary": "Started seeding the governed human roots and router surfaces required by the new policy.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "human_root_router"
+  }
+}

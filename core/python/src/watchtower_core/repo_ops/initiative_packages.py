@@ -7,6 +7,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.project_workspace import ProjectWorkspaceService
@@ -471,6 +472,11 @@ class InitiativePackageService:
         issues.extend(issue.message for issue in derived_surface_issues)
         if derived_surface_issues:
             blocking_reasons.append("stale_derived_surfaces")
+
+        machine_root_issues = self._machine_root_policy_issues(location)
+        issues.extend(machine_root_issues)
+        if machine_root_issues:
+            blocking_reasons.append("machine_root_policy")
 
         deferred_issues = self._blocking_deferred_item_issues(location)
         issues.extend(deferred_issues)
@@ -1182,6 +1188,16 @@ class InitiativePackageService:
             for issue in ProjectWorkspaceService(self._loader).expected_surface_issues(
                 location.project_slug
             )
+        )
+
+    def _machine_root_policy_issues(self, location: _InitiativeLocation) -> tuple[str, ...]:
+        helper = HumanSurfacePolicyHelper.from_loader(
+            self._pack_loader(),
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        machine_root = self._initiative_path_for_location(location, ".wt")
+        return tuple(
+            issue.message for issue in helper.validate_root(self._loader.repo_root, machine_root)
         )
 
     def _blocking_deferred_item_issues(self, location: _InitiativeLocation) -> tuple[str, ...]:

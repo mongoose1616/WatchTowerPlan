@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance.0002_ready_marked",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:12:20Z",
+  "summary": "Marked the human-surface validation task ready after the contract and root surfaces landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+      "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces"
+    ]
+  }
+}

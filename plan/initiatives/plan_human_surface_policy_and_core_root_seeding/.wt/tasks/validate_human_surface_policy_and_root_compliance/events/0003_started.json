@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance.0003_started",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance",
+  "sequence": 3,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:12:30Z",
+  "summary": "Started validating the human-surface policy and the seeded root compliance path.",
+  "payload": {
+    "status": "in_progress",
+    "validation_scope": [
+      "pack_context_loading",
+      "artifact_schema_validation",
+      "initiative_machine_root_policy",
+      "project_machine_root_policy",
+      "repo_root_compliance"
+    ]
+  }
+}

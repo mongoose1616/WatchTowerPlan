@@ -284,6 +284,26 @@ def test_authored_input_drift_requires_confirmation_before_review_is_restored(
     assert resolved_discrepancy["status"] == "resolved"
 
 
+def test_machine_root_human_surface_policy_blocks_stray_readme(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = InitiativePackageService(ControlPlaneLoader(repo_root))
+    service.bootstrap_packwide(_bootstrap_params(), write=True)
+
+    machine_root = _initiative_root(repo_root) / ".wt"
+    (machine_root / "README.md").write_text(
+        "This file should not exist inside a machine-only root.\n",
+        encoding="utf-8",
+    )
+
+    readiness = service.validate_packwide(INITIATIVE_SLUG, write=False)
+
+    assert readiness.passed is False
+    assert "machine_root_policy" in readiness.blocking_reasons
+    assert any("Forbidden human surface is present" in message for message in readiness.issue_messages)
+
+
 def test_packwide_initiative_approval_requires_default_human_maintainer(
     tmp_path: Path,
 ) -> None:

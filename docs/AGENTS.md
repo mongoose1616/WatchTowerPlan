@@ -17,6 +17,8 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the controlling implementation contract for docs that describe active migration, planning authority, or future endstate behavior.
+- Use older standards, references, and legacy docs only when they help clarify or validate those two authoritative files without materially changing their decisions.
 - Write documentation as native guidance for this repository.
 - Use current repository paths, names, and terminology.
 - Keep each document focused on one succinct standard, topic, or area.

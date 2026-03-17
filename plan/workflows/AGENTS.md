@@ -16,6 +16,7 @@
 - Use [README.md](/home/j/WatchTowerPlan/plan/workflows/README.md) as the quick reference before broader scans.
 - Keep this subtree focused on plan-domain workflow entrypoint guidance and migration notes.
 - Point to the canonical workflow modules under `workflows/modules/` until a later slice moves them.
+- Keep [ROUTING_TABLE.md](/home/j/WatchTowerPlan/plan/workflows/ROUTING_TABLE.md) and `modules/README.md` aligned with the current migration boundary when this subtree changes.
 
 ## Do
 - Route readers toward the current canonical routing backend and the live `plan/**` authority surfaces together.

@@ -5,6 +5,16 @@
   "status": "active",
   "schemas": [
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1",
+      "title": "Human Surface Policy Registry",
+      "description": "Schema for the plan-pack human-surface placement policy registry.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "human_surface_policy_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/human_surface_policy_registry.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
       "title": "Initiative State",
       "description": "Schema for the authoritative current-state snapshot of one plan initiative.",

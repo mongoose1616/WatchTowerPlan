@@ -1,0 +1,23 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces.0003_completed",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+  "sequence": 3,
+  "event_type": "completed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:12:10Z",
+  "summary": "Completed the required root seeding for core and plan human router surfaces.",
+  "payload": {
+    "status": "completed",
+    "published_paths": [
+      "core/README.md",
+      "core/docs/README.md",
+      "core/workflows/README.md",
+      "core/workflows/AGENTS.md",
+      "core/workflows/ROUTING_TABLE.md",
+      "plan/docs/README.md",
+      "plan/workflows/ROUTING_TABLE.md"
+    ]
+  }
+}

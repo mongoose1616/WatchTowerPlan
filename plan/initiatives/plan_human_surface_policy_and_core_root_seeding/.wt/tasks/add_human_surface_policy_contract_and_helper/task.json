@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+  "slug": "add_human_surface_policy_contract_and_helper",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "title": "Add human-surface policy contract and helper",
+  "summary": "Add the human_surface_policy_registry schema, registry, typed loader support, and a helper that resolves required, optional, and forbidden human surfaces by root.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T08:58:40Z",
+  "updated_at": "2026-03-17T09:08:40Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

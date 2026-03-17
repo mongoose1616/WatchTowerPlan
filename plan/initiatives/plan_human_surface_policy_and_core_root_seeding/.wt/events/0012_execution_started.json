@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.0012_execution_started",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+  "sequence": 12,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:00:10Z",
+  "summary": "Execution started for the human-surface policy and root-seeding slice.",
+  "payload": {
+    "task_id": "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+    "affected_paths": [
+      "plan/.wt/registries/human_surface_policy_registry.json",
+      "core/README.md",
+      "core/workflows/README.md",
+      "plan/docs/README.md",
+      "plan/workflows/ROUTING_TABLE.md"
+    ]
+  }
+}

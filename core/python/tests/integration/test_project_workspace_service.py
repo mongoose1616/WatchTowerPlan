@@ -193,3 +193,22 @@ def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
         encoding="utf-8"
     )
     assert "`updated_at`: `2026-03-17T17:30:00Z`" in summary_view
+
+
+def test_project_workspace_validation_blocks_stray_machine_root_agents_file(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = ProjectWorkspaceService(ControlPlaneLoader(repo_root))
+    service.bootstrap(_bootstrap_params(), write=True)
+
+    machine_root = repo_root / "plan" / "projects" / "watchtower" / ".wt"
+    (machine_root / "AGENTS.md").write_text(
+        "This file should not exist inside a machine-only root.\n",
+        encoding="utf-8",
+    )
+
+    validation = service.validate("watchtower", write=False)
+
+    assert validation.passed is False
+    assert any("Forbidden human surface is present" in message for message in validation.issue_messages)

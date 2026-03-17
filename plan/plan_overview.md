@@ -8,6 +8,7 @@
 
 ## Active Initiatives
 - `trace.plan_entrypoint_cutover_proof`: Plan Entrypoint Cutover Proof (`closeout` / `pack_wide`)
+- `trace.plan_human_surface_policy_and_core_root_seeding`: Plan Human Surface Policy and Core Root Seeding (`closeout` / `pack_wide`)
 - `trace.watchtower_initial_implementation_bootstrap`: WatchTower Initial Implementation Bootstrap (`closeout` / `project_scoped`)
 - `trace.watchtower_next_work_selection`: WatchTower Next Work Selection (`closeout` / `project_scoped`)
 - `trace.watchtower_status_snapshot`: WatchTower Status Snapshot (`closeout` / `project_scoped`)

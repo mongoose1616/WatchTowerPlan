@@ -16,6 +16,8 @@
 
 ## Notes
 - Current repository scope: `docs/foundations/repository_scope.md`
+- Authoritative implementation contract until the migration is complete: `requirements.md` and `decisions.md`.
+- Treat standards, references, and older supporting docs as secondary guidance that must conform to those two files.
 - Human current-state start-here: `plan/README.md`, then `plan/plan_overview.md`
 - Human plan workflow start-here: `plan/workflows/README.md`
 - Machine current-state start-here: `plan/.wt/indexes/coordination_index.json`

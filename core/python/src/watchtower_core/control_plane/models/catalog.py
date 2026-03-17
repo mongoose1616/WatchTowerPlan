@@ -422,6 +422,95 @@ class WorkflowMetadataRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class HumanSurfacePolicySurfaceDefinition:
+    """One governed human-facing surface under a declared root."""
+
+    relative_path: str
+    entity_shape: str
+    surface_role: str
+    mode: str
+    authorship_mode: str
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> HumanSurfacePolicySurfaceDefinition:
+        return cls(
+            relative_path=document["relative_path"],
+            entity_shape=document["entity_shape"],
+            surface_role=document["surface_role"],
+            mode=document["mode"],
+            authorship_mode=document["authorship_mode"],
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class HumanSurfacePolicyEntry:
+    """One human-surface placement rule for a root or root pattern."""
+
+    policy_id: str
+    path_pattern: str
+    match_mode: str
+    root_kind: str
+    entry_status: str
+    governing_surfaces: tuple[str, ...]
+    clarifying_rule: str
+    surfaces: tuple[HumanSurfacePolicySurfaceDefinition, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> HumanSurfacePolicyEntry:
+        return cls(
+            policy_id=document["policy_id"],
+            path_pattern=document["path_pattern"],
+            match_mode=document["match_mode"],
+            root_kind=document["root_kind"],
+            entry_status=document["entry_status"],
+            governing_surfaces=tuple(document.get("governing_surfaces", ())),
+            clarifying_rule=document["clarifying_rule"],
+            surfaces=tuple(
+                HumanSurfacePolicySurfaceDefinition.from_document(item)
+                for item in document["surfaces"]
+            ),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class HumanSurfacePolicyRegistry:
+    """Typed human-surface placement policy registry."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[HumanSurfacePolicyEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> HumanSurfacePolicyRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(
+                HumanSurfacePolicyEntry.from_document(item)
+                for item in document["entries"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, policy_id: str) -> HumanSurfacePolicyEntry:
+        """Return one policy entry by identifier."""
+
+        for entry in self.entries:
+            if entry.policy_id == policy_id:
+                return entry
+        raise KeyError(policy_id)
+
+
+@dataclass(frozen=True, slots=True)
 class RenderedSurfaceColumnDefinition:
     """Rendered-surface column definition."""
 

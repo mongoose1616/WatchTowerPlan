@@ -34,6 +34,49 @@
       ]
     },
     {
+      "task_id": "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "initiative_title": "Plan Human Surface Policy and Core Root Seeding",
+      "title": "Add human-surface policy contract and helper",
+      "summary": "Add the human_surface_policy_registry schema, registry, typed loader support, and a helper that resolves required, optional, and forbidden human surfaces by root.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/add_human_surface_policy_contract_and_helper/task.json",
+      "updated_at": "2026-03-17T09:08:40Z"
+    },
+    {
+      "task_id": "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "initiative_title": "Plan Human Surface Policy and Core Root Seeding",
+      "title": "Seed missing core human roots and router surfaces",
+      "summary": "Create the missing core/, core/docs/, and core/workflows/ entrypoint surfaces and any thin router files required by the new human-surface policy.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/seed_missing_core_human_roots_and_router_surfaces/task.json",
+      "updated_at": "2026-03-17T09:12:10Z"
+    },
+    {
+      "task_id": "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "initiative_title": "Plan Human Surface Policy and Core Root Seeding",
+      "title": "Validate human-surface policy and root compliance",
+      "summary": "Add focused tests and validation coverage proving the registry, helper, and current repo roots conform to requirements.md and decisions.md.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/validate_human_surface_policy_and_root_compliance/task.json",
+      "updated_at": "2026-03-17T09:19:20Z",
+      "depends_on": [
+        "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+        "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces"
+      ]
+    },
+    {
       "task_id": "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",

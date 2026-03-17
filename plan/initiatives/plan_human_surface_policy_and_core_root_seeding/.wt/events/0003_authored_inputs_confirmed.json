@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_human_surface_policy_and_core_root_seeding.0003_authored_inputs_confirmed",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+  "sequence": 3,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T08:58:40Z",
+  "summary": "Confirmed the authored intake documents into machine state.",
+  "related_paths": [
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
+    "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

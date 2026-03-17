@@ -11,6 +11,8 @@
 - This file adds Python-workspace execution rules and must not weaken repository-wide safety or documentation rules.
 
 ## Local Rules
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for migration, workspace, routing, and plan-pack runtime behavior until those files are fully implemented.
+- Use existing standards, references, and helper docs only where they stay consistent with [requirements.md](/requirements.md) and [decisions.md](/decisions.md).
 - Treat [core/python](/core/python) as the only canonical Python workspace in this repository.
 - Run Python package commands from `core/python/` unless a narrower subpath is explicitly required.
 - Prefer `uv run <command>` for tests, linting, typechecking, CLI execution, and ad hoc package-local Python invocations.

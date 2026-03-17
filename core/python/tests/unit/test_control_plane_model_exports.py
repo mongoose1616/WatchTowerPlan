@@ -6,6 +6,7 @@ import sys
 import pytest
 
 from watchtower_core.control_plane.models import (
+    HumanSurfacePolicyRegistry,
     PackSettings,
     PrdIndex,
     StatusRegistry,
@@ -134,6 +135,39 @@ def test_control_plane_models_export_validation_suite_registry_types() -> None:
     assert registry.get("suite.example.validation_baseline").get_step(
         "step.example.pack_contract"
     ).step_kind == "pack_contract"
+
+
+def test_control_plane_models_export_human_surface_policy_registry_types() -> None:
+    registry = HumanSurfacePolicyRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1",
+            "id": "registry.human_surface_policy",
+            "title": "Example Human Surface Policy",
+            "status": "active",
+            "entries": [
+                {
+                    "policy_id": "policy.example.root",
+                    "path_pattern": "plan",
+                    "match_mode": "exact",
+                    "root_kind": "domain_root",
+                    "entry_status": "active",
+                    "governing_surfaces": ["human_surface_policy_registry"],
+                    "clarifying_rule": "Example root policy.",
+                    "surfaces": [
+                        {
+                            "relative_path": "README.md",
+                            "entity_shape": "file",
+                            "surface_role": "readme",
+                            "mode": "required",
+                            "authorship_mode": "authored",
+                        }
+                    ],
+                }
+            ],
+        }
+    )
+
+    assert registry.get("policy.example.root").surfaces[0].relative_path == "README.md"
 
 
 def test_retired_planning_reexport_module_is_not_importable() -> None:

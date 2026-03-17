@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+  "slug": "seed_missing_core_human_roots_and_router_surfaces",
+  "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+  "title": "Seed missing core human roots and router surfaces",
+  "summary": "Create the missing core/, core/docs/, and core/workflows/ entrypoint surfaces and any thin router files required by the new human-surface policy.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T08:58:40Z",
+  "updated_at": "2026-03-17T09:12:10Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

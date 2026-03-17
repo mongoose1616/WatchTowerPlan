@@ -49,6 +49,24 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
             assert result.passed, f"{path} failed schema validation: {result.issues}"
 
 
+def test_plan_pack_governed_json_artifacts_have_active_schema_validation_coverage() -> None:
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    service = ArtifactValidationService(loader)
+    target_roots = (
+        REPO_ROOT / "plan" / ".wt" / "manifests",
+        REPO_ROOT / "plan" / ".wt" / "registries",
+        REPO_ROOT / "plan" / ".wt" / "indexes",
+    )
+
+    for root in target_roots:
+        for path in sorted(root.glob("*.json")):
+            result = service.validate(path.relative_to(REPO_ROOT).as_posix())
+            assert result.passed, f"{path} failed schema validation: {result.issues}"
+
+
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     initiative_index = load_json_object(

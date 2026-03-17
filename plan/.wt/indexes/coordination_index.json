@@ -3,12 +3,12 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T08:50:29Z",
+  "updated_at": "2026-03-17T09:23:00Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Finalize closeout, evidence, and promotion decisions.",
   "recommended_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/summary.md",
-  "active_initiative_count": 9,
+  "active_initiative_count": 10,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
@@ -44,6 +44,41 @@
         "plan/initiatives/plan_entrypoint_cutover_proof/design_record.md",
         "plan/initiatives/plan_entrypoint_cutover_proof/implementation_slice.md",
         "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "title": "Plan Human Surface Policy and Core Root Seeding",
+      "summary": "Adds the governed human-surface policy contract, the helper and validation path that resolve those rules, and the missing core-owned human roots that requirements.md declares as required.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T09:23:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/summary.md",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "slug": "plan_human_surface_policy_and_core_root_seeding",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+        "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+        "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_human_surface_policy_and_core_root_seeding.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
       ]
     },
     {
