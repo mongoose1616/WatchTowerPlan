@@ -15,6 +15,10 @@ from watchtower_core.control_plane.human_surface_policy import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
 from watchtower_core.control_plane.planning_vocabulary import PlanningVocabularyHelper
+from watchtower_core.control_plane.project_surface_policy import (
+    ProjectSurfacePolicyHelper,
+    ProjectSurfacePolicyIssue,
+)
 from watchtower_core.control_plane.retention_policy import (
     RetentionPolicyHelper,
     RetentionPolicyIssue,
@@ -40,6 +44,8 @@ __all__ = [
     "HumanSurfacePolicyIssue",
     "PackContext",
     "PlanningVocabularyHelper",
+    "ProjectSurfacePolicyHelper",
+    "ProjectSurfacePolicyIssue",
     "RetentionPolicyHelper",
     "RetentionPolicyIssue",
     "SchemaStore",

@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_project_surface_policy_registry.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.plan_project_surface_policy_registry",
+  "trace_id": "trace.plan_project_surface_policy_registry",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:08:47Z",
+  "summary": "Seeded the evidence shell.",
+  "related_paths": [
+    "plan/initiatives/plan_project_surface_policy_registry/initiative_brief.md",
+    "plan/initiatives/plan_project_surface_policy_registry/design_record.md",
+    "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

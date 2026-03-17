@@ -8,6 +8,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane import PlanningVocabularyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
 from watchtower_core.repo_ops.project_context import (
     PLAN_PACK_SETTINGS_PATH,
     ProjectContext,
@@ -157,6 +158,10 @@ class ProjectWorkspaceService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._vocabulary = PlanningVocabularyHelper.from_loader(
+            loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        self._project_surface_policy = ProjectSurfacePolicyHelper.from_loader(
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
@@ -318,19 +323,13 @@ class ProjectWorkspaceService:
         snapshots = self._load_project_snapshots()
         documents = self._build_documents(snapshots)
         project_root = self._project_root_relative(project_slug)
+        required_rendered_paths = self._project_surface_policy.required_relative_paths(
+            project_root,
+            surface_kind="rendered_view",
+        )
         expected_markdown = {
-            f"{project_root}/project.md": documents["project_views"].get(
-                f"{project_root}/project.md",
-                "",
-            ),
-            f"{project_root}/repositories.md": documents["project_views"].get(
-                f"{project_root}/repositories.md",
-                "",
-            ),
-            f"{project_root}/summary.md": documents["project_views"].get(
-                f"{project_root}/summary.md",
-                "",
-            ),
+            relative_path: documents["project_views"].get(relative_path, "")
+            for relative_path in required_rendered_paths
         }
         expected_json = {
             PLAN_PROJECT_INDEX_PATH: documents["project_index"],

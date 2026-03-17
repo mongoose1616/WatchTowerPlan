@@ -350,6 +350,52 @@
       ]
     },
     {
+      "task_id": "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "initiative_title": "Plan Project Surface Policy Registry",
+      "title": "Publish project surface policy registry schema",
+      "summary": "Add the governed schema contract for the plan-owned project surface policy registry.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/publish_project_surface_policy_registry_schema/task.json",
+      "updated_at": "2026-03-17T17:24:30Z"
+    },
+    {
+      "task_id": "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "initiative_title": "Plan Project Surface Policy Registry",
+      "title": "Seed project surface policy entries",
+      "summary": "Seed active policy entries covering required machine artifacts, rendered project views, and allowed optional project-local roots.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/seed_project_surface_policy_entries/task.json",
+      "updated_at": "2026-03-17T17:25:30Z",
+      "depends_on": [
+        "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema"
+      ]
+    },
+    {
+      "task_id": "task.plan_project_surface_policy_registry.wire_helper_and_project_validation",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "initiative_title": "Plan Project Surface Policy Registry",
+      "title": "Wire helper and project validation",
+      "summary": "Add typed loader support, a project surface policy helper, and validation coverage that uses the new registry.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/wire_helper_and_project_validation/task.json",
+      "updated_at": "2026-03-17T17:26:30Z",
+      "depends_on": [
+        "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema",
+        "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries"
+      ]
+    },
+    {
       "task_id": "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime",
       "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
       "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",

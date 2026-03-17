@@ -298,6 +298,42 @@
       ]
     },
     {
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "title": "Plan Project Surface Policy Registry",
+      "summary": "Adds the missing project-surface policy registry plus helper-backed project validation so project containers follow a declared surface contract instead of hardcoded assumptions.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T17:28:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_project_surface_policy_registry/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_project_surface_policy_registry/progress.md",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "slug": "plan_project_surface_policy_registry",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema",
+        "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries",
+        "task.plan_project_surface_policy_registry.wire_helper_and_project_validation"
+      ],
+      "evidence_ids": [
+        "evidence.plan_project_surface_policy_registry.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T17:28:00Z",
+      "closure_reason": "Delivered the project-surface policy registry, typed helper, and project validation integration for required project-root surfaces.",
+      "related_paths": [
+        "plan/initiatives/plan_project_surface_policy_registry/initiative_brief.md",
+        "plan/initiatives/plan_project_surface_policy_registry/design_record.md",
+        "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
       "title": "Plan Promotion Policy and Guidance Indexes",
       "summary": "Adds the missing promotion policy registry and pack-level promotion and guidance indexes so initiative-local promotion records and approved plan guidance are machine-queryable under plan/.wt.",

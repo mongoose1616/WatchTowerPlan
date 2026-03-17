@@ -126,6 +126,21 @@
       "updated_at": "2026-03-17T18:58:00Z"
     },
     {
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "title": "Plan Project Surface Policy Registry",
+      "initiative_root": "plan/initiatives/plan_project_surface_policy_registry",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T17:28:00Z"
+    },
+    {
       "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
       "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
       "title": "Plan Promotion Policy and Guidance Indexes",

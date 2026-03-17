@@ -220,6 +220,32 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_project_surface_policy_registry.bootstrap_shell",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "initiative_title": "Plan Project Surface Policy Registry",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_project_surface_policy_registry",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_project_surface_policy_registry/initiative_brief.md",
+        "plan/initiatives/plan_project_surface_policy_registry/design_record.md",
+        "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T17:28:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_promotion_policy_and_guidance_indexes.bootstrap_shell",
       "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
       "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",

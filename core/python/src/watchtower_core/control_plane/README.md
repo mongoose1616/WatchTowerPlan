@@ -13,6 +13,7 @@ Workspace-aware artifact loading, schema validation, typed models, PackContext l
 - `pack_context.py`: PackContext materialization from pack settings and declared governed surfaces.
 - `artifact_family.py`: Pack-local artifact-family resolution for placement, status, visibility, and renderability rules.
 - `planning_vocabulary.py`: Pack-local lifecycle, review, and provenance vocabulary resolution for plan-runtime helpers.
+- `project_surface_policy.py`: Pack-local project-root surface policy resolution for required machine and rendered project surfaces.
 - `governance_surfaces.py`: Cross-surface resolution helper for governed surface path, authority, rebuildability, and declared dependencies.
 - `schemas.py`: Schema store and supplemental-schema registration.
 - `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.

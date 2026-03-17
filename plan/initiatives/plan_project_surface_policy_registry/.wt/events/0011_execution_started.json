@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_project_surface_policy_registry.0011_execution_started",
+  "initiative_id": "initiative.plan_project_surface_policy_registry",
+  "trace_id": "trace.plan_project_surface_policy_registry",
+  "sequence": 11,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:24:00Z",
+  "summary": "Execution started for the project surface policy registry slice.",
+  "payload": {}
+}

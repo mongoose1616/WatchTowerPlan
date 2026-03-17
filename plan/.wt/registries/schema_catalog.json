@@ -205,6 +205,16 @@
       "canonical_path": "plan/.wt/schemas/artifacts/source_type_registry.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1",
+      "title": "Project Surface Policy Registry",
+      "description": "Schema for the plan-pack project-surface policy registry covering allowed and required project-local surfaces.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "project_surface_policy_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/project_surface_policy_registry.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
       "title": "Project Record",
       "description": "Schema for the authoritative current-state snapshot of one project container.",

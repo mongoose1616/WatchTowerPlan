@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Plan-pack settings load root for the Stage 1 capture-first workspace bootstrap.",
-  "updated_at": "2026-03-17T17:05:00Z",
+  "updated_at": "2026-03-17T17:22:00Z",
   "pack_id": "pack.plan",
   "surfaces": [
     {
@@ -84,6 +84,13 @@
       "visibility": "hidden"
     },
     {
+      "surface_name": "project_surface_policy_registry",
+      "surface_kind": "registry",
+      "path": "plan/.wt/registries/project_surface_policy_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
       "surface_name": "validation_suite_registry",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/validation_suite_registry.json",
@@ -119,5 +126,5 @@
       "visibility": "hidden"
     }
   ],
-  "notes": "The Stage 1 seed now delegates schema, validator, lifecycle-stage, review-status, source-type, human-surface policy, retention-policy, promotion-policy, relation-type, status-transition, and artifact-family resolution to plan-owned machine surfaces while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add the remaining pack-local registries and extracted-guidance policies under plan/.wt/."
+  "notes": "The Stage 1 seed now delegates schema, validator, lifecycle-stage, review-status, source-type, project-surface, human-surface policy, retention-policy, promotion-policy, relation-type, status-transition, and artifact-family resolution to plan-owned machine surfaces while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add the remaining pack-local registries and extracted-guidance policies under plan/.wt/."
 }

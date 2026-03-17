@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
@@ -116,6 +117,10 @@ def validate_project_machine_state(
     issues: list[str] = []
     project_document: dict[str, object] | None = None
     repository_map_document: dict[str, object] | None = None
+    project_surface_helper = ProjectSurfacePolicyHelper.from_loader(
+        _pack_loader(loader, pack_settings_path),
+        pack_settings_path=pack_settings_path,
+    )
 
     if not project_root.exists():
         issues.append(f"Project root is missing: {project_root_relative}.")
@@ -129,9 +134,9 @@ def validate_project_machine_state(
             repository_map_document=None,
         )
 
-    required_paths = (
-        f"{project_root_relative}/.wt/project.json",
-        f"{project_root_relative}/.wt/project_repository_map.json",
+    required_paths = project_surface_helper.required_relative_paths(
+        project_root_relative,
+        surface_kind="machine_artifact",
     )
     validator = ArtifactValidationService(_pack_loader(loader, pack_settings_path))
     artifact_results: list[ValidationResult] = []
@@ -140,10 +145,13 @@ def validate_project_machine_state(
             issues.append(f"Required project artifact is missing: {relative_path}.")
             continue
         artifact_results.append(validator.validate(relative_path))
-
+    policy_issues = project_surface_helper.validate_root(
+        loader.repo_root,
+        project_root_relative,
+        surface_kinds=("machine_root", "machine_artifact", "initiative_container"),
+    )
+    issues.extend(issue.message for issue in policy_issues)
     initiative_root = f"{project_root_relative}/initiatives"
-    if not (loader.repo_root / initiative_root).exists():
-        issues.append(f"Project initiative root is missing: {initiative_root}.")
 
     if not issues:
         project_document = _load_json(loader, f"{project_root_relative}/.wt/project.json")

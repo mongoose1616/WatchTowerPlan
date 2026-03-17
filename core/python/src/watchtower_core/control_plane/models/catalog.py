@@ -511,6 +511,98 @@ class HumanSurfacePolicyRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class ProjectSurfacePolicySurfaceDefinition:
+    """One declared project-root surface definition."""
+
+    relative_path: str
+    entity_shape: str
+    surface_kind: str
+    mode: str
+    authorship_mode: str
+    source_family: str | None = None
+    required_metadata_fields: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ProjectSurfacePolicySurfaceDefinition:
+        return cls(
+            relative_path=document["relative_path"],
+            entity_shape=document["entity_shape"],
+            surface_kind=document["surface_kind"],
+            mode=document["mode"],
+            authorship_mode=document["authorship_mode"],
+            source_family=document.get("source_family"),
+            required_metadata_fields=tuple(document.get("required_metadata_fields", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ProjectSurfacePolicyEntry:
+    """One project-root policy rule for allowed and required project surfaces."""
+
+    policy_id: str
+    path_pattern: str
+    match_mode: str
+    root_kind: str
+    entry_status: str
+    governing_surfaces: tuple[str, ...]
+    clarifying_rule: str
+    surfaces: tuple[ProjectSurfacePolicySurfaceDefinition, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ProjectSurfacePolicyEntry:
+        return cls(
+            policy_id=document["policy_id"],
+            path_pattern=document["path_pattern"],
+            match_mode=document["match_mode"],
+            root_kind=document["root_kind"],
+            entry_status=document["entry_status"],
+            governing_surfaces=tuple(document.get("governing_surfaces", ())),
+            clarifying_rule=document["clarifying_rule"],
+            surfaces=tuple(
+                ProjectSurfacePolicySurfaceDefinition.from_document(item)
+                for item in document["surfaces"]
+            ),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ProjectSurfacePolicyRegistry:
+    """Typed project-surface policy registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[ProjectSurfacePolicyEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ProjectSurfacePolicyRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(
+                ProjectSurfacePolicyEntry.from_document(item) for item in document["entries"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, policy_id: str) -> ProjectSurfacePolicyEntry:
+        """Return one project-surface policy entry by identifier."""
+
+        for entry in self.entries:
+            if entry.policy_id == policy_id:
+                return entry
+        raise KeyError(policy_id)
+
+
+@dataclass(frozen=True, slots=True)
 class RetentionPolicyEntry:
     """One retention-policy rule for a live or legacy repository subtree."""
 

@@ -1,0 +1,100 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1",
+  "id": "registry.project_surface_policy",
+  "title": "Plan Project Surface Policy Registry",
+  "status": "active",
+  "entries": [
+    {
+      "policy_id": "policy.project_surface.project_root",
+      "path_pattern": "plan/projects/*",
+      "match_mode": "glob",
+      "root_kind": "project_root",
+      "entry_status": "active",
+      "governing_surfaces": [
+        "project_surface_policy_registry",
+        "human_surface_policy_registry",
+        "artifact_family_registry"
+      ],
+      "clarifying_rule": "Every project root must carry a machine package, the initiative container, and the rendered project visibility set; optional docs and references may exist later without becoming required for bootstrap.",
+      "surfaces": [
+        {
+          "relative_path": ".wt",
+          "entity_shape": "directory",
+          "surface_kind": "machine_root",
+          "mode": "required",
+          "authorship_mode": "machine_only"
+        },
+        {
+          "relative_path": ".wt/project.json",
+          "entity_shape": "file",
+          "surface_kind": "machine_artifact",
+          "mode": "required",
+          "authorship_mode": "machine_only",
+          "source_family": "project_record",
+          "required_metadata_fields": [
+            "project_id",
+            "slug",
+            "initiative_root",
+            "linked_repository_refs"
+          ]
+        },
+        {
+          "relative_path": ".wt/project_repository_map.json",
+          "entity_shape": "file",
+          "surface_kind": "machine_artifact",
+          "mode": "required",
+          "authorship_mode": "machine_only",
+          "source_family": "project_repository_map",
+          "required_metadata_fields": [
+            "project_id",
+            "repositories"
+          ]
+        },
+        {
+          "relative_path": "initiatives",
+          "entity_shape": "directory",
+          "surface_kind": "initiative_container",
+          "mode": "required",
+          "authorship_mode": "mixed"
+        },
+        {
+          "relative_path": "project.md",
+          "entity_shape": "file",
+          "surface_kind": "rendered_view",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "repositories.md",
+          "entity_shape": "file",
+          "surface_kind": "rendered_view",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "summary.md",
+          "entity_shape": "file",
+          "surface_kind": "rendered_view",
+          "mode": "required",
+          "authorship_mode": "rendered"
+        },
+        {
+          "relative_path": "docs",
+          "entity_shape": "directory",
+          "surface_kind": "docs_root",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        },
+        {
+          "relative_path": "references",
+          "entity_shape": "directory",
+          "surface_kind": "references_root",
+          "mode": "optional",
+          "authorship_mode": "authored"
+        }
+      ],
+      "notes": "Rendered project views remain derived surfaces, so the helper validates their presence separately from machine-state validation when a project workspace is rebuilt."
+    }
+  ],
+  "notes": "The first-tranche project surface policy declares the minimum allowed and required project-root surfaces without forcing optional project-local docs or references to exist yet."
+}

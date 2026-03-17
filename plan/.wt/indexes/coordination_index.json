@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "title": "Plan Project Surface Policy Registry",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T17:28:00Z",
+      "key_surface_path": "plan/initiatives/plan_project_surface_policy_registry/plan.md",
+      "closure_reason": "Delivered the project-surface policy registry, typed helper, and project validation integration for required project-root surfaces."
+    },
+    {
       "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
       "title": "Plan Lifecycle Review And Source Vocab Registries",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:24Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
       "closure_reason": "Delivered the local-first WatchTower next-work selection flow."
-    },
-    {
-      "trace_id": "trace.watchtower_work_item_notes",
-      "title": "WatchTower Work Item Notes",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:22Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower work-item note flow."
     }
   ]
 }

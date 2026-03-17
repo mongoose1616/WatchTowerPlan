@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1",
+  "title": "Project Surface Policy Registry",
+  "description": "Schema for the plan-pack project-surface policy registry covering allowed and required project-local surfaces.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1"
+    },
+    "id": {
+      "const": "registry.project_surface_policy"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/policyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "matchMode": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "glob"
+      ]
+    },
+    "rootKind": {
+      "type": "string",
+      "enum": [
+        "project_root"
+      ]
+    },
+    "entryStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entityShape": {
+      "type": "string",
+      "enum": [
+        "file",
+        "directory"
+      ]
+    },
+    "surfaceMode": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "forbidden"
+      ]
+    },
+    "authorshipMode": {
+      "type": "string",
+      "enum": [
+        "authored",
+        "rendered",
+        "machine_only",
+        "mixed"
+      ]
+    },
+    "surfaceKind": {
+      "type": "string",
+      "enum": [
+        "machine_root",
+        "machine_artifact",
+        "initiative_container",
+        "rendered_view",
+        "docs_root",
+        "references_root"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "surfaceDefinition": {
+      "type": "object",
+      "required": [
+        "relative_path",
+        "entity_shape",
+        "surface_kind",
+        "mode",
+        "authorship_mode"
+      ],
+      "properties": {
+        "relative_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity_shape": {
+          "$ref": "#/$defs/entityShape"
+        },
+        "surface_kind": {
+          "$ref": "#/$defs/surfaceKind"
+        },
+        "mode": {
+          "$ref": "#/$defs/surfaceMode"
+        },
+        "authorship_mode": {
+          "$ref": "#/$defs/authorshipMode"
+        },
+        "source_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_metadata_fields": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "policyEntry": {
+      "type": "object",
+      "required": [
+        "policy_id",
+        "path_pattern",
+        "match_mode",
+        "root_kind",
+        "entry_status",
+        "governing_surfaces",
+        "clarifying_rule",
+        "surfaces"
+      ],
+      "properties": {
+        "policy_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "path_pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "match_mode": {
+          "$ref": "#/$defs/matchMode"
+        },
+        "root_kind": {
+          "$ref": "#/$defs/rootKind"
+        },
+        "entry_status": {
+          "$ref": "#/$defs/entryStatus"
+        },
+        "governing_surfaces": {
+          "$ref": "#/$defs/stringList"
+        },
+        "clarifying_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/surfaceDefinition"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

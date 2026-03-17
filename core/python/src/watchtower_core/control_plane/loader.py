@@ -28,6 +28,7 @@ from watchtower_core.control_plane.models import (
     ReferenceIndex,
     RetentionPolicyRegistry,
     RenderedSurfaceRegistry,
+    ProjectSurfacePolicyRegistry,
     ReviewStatusRegistry,
     RepositoryPathIndex,
     RouteIndex,
@@ -67,6 +68,7 @@ ARTIFACT_FAMILY_REGISTRY_PATH = "plan/.wt/registries/artifact_family_registry.js
 LIFECYCLE_STAGE_REGISTRY_PATH = "plan/.wt/registries/lifecycle_stage_registry.json"
 REVIEW_STATUS_REGISTRY_PATH = "plan/.wt/registries/review_status_registry.json"
 SOURCE_TYPE_REGISTRY_PATH = "plan/.wt/registries/source_type_registry.json"
+PROJECT_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/project_surface_policy_registry.json"
 HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
 RETENTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/retention_policy_registry.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
@@ -152,6 +154,7 @@ class ControlPlaneLoader:
         self._active_lifecycle_stage_registry_path: str | None = None
         self._active_review_status_registry_path: str | None = None
         self._active_source_type_registry_path: str | None = None
+        self._active_project_surface_policy_registry_path: str | None = None
         self._active_human_surface_policy_registry_path: str | None = None
         self._active_retention_policy_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
@@ -258,6 +261,19 @@ class ControlPlaneLoader:
         self._active_source_type_registry_path = (
             source_type_registry_declaration.path
             if source_type_registry_declaration is not None
+            else None
+        )
+        project_surface_policy_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "project_surface_policy_registry"
+            ),
+            None,
+        )
+        self._active_project_surface_policy_registry_path = (
+            project_surface_policy_declaration.path
+            if project_surface_policy_declaration is not None
             else None
         )
         human_surface_policy_declaration = next(
@@ -501,6 +517,18 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             effective_path,
             SourceTypeRegistry.from_document,
+        )
+
+    def load_project_surface_policy_registry(
+        self,
+        relative_path: str = PROJECT_SURFACE_POLICY_REGISTRY_PATH,
+    ) -> ProjectSurfacePolicyRegistry:
+        """Load the current project-surface policy registry."""
+
+        effective_path = self._current_project_surface_policy_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            ProjectSurfacePolicyRegistry.from_document,
         )
 
     def load_human_surface_policy_registry(
@@ -753,6 +781,11 @@ class ControlPlaneLoader:
                 relative_path,
                 SourceTypeRegistry.from_document,
             )
+        if surface_name == "project_surface_policy_registry":
+            return self._load_typed_document(
+                relative_path,
+                ProjectSurfacePolicyRegistry.from_document,
+            )
         if surface_name == "human_surface_policy_registry":
             return self._load_typed_document(
                 relative_path,
@@ -828,6 +861,8 @@ class ControlPlaneLoader:
             return self.load_review_status_registry()
         if relative_path == SOURCE_TYPE_REGISTRY_PATH:
             return self.load_source_type_registry()
+        if relative_path == PROJECT_SURFACE_POLICY_REGISTRY_PATH:
+            return self.load_project_surface_policy_registry()
         if relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH:
             return self.load_human_surface_policy_registry()
         if relative_path == RETENTION_POLICY_REGISTRY_PATH:
@@ -869,6 +904,11 @@ class ControlPlaneLoader:
             and relative_path == self._active_source_type_registry_path
         ):
             return self.load_source_type_registry(relative_path)
+        if (
+            self._active_project_surface_policy_registry_path is not None
+            and relative_path == self._active_project_surface_policy_registry_path
+        ):
+            return self.load_project_surface_policy_registry(relative_path)
         if (
             self._active_human_surface_policy_registry_path is not None
             and relative_path == self._active_human_surface_policy_registry_path
@@ -978,6 +1018,16 @@ class ControlPlaneLoader:
             and self._active_source_type_registry_path is not None
         ):
             return self._active_source_type_registry_path
+        return relative_path
+
+    def _current_project_surface_policy_registry_path(self, relative_path: str) -> str:
+        """Return the project-surface policy registry path active for this loader instance."""
+
+        if (
+            relative_path == PROJECT_SURFACE_POLICY_REGISTRY_PATH
+            and self._active_project_surface_policy_registry_path is not None
+        ):
+            return self._active_project_surface_policy_registry_path
         return relative_path
 
     def _current_human_surface_policy_registry_path(self, relative_path: str) -> str:

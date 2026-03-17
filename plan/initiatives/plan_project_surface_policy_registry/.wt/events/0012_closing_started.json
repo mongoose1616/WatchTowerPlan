@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_project_surface_policy_registry.0012_closing_started",
+  "initiative_id": "initiative.plan_project_surface_policy_registry",
+  "trace_id": "trace.plan_project_surface_policy_registry",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:27:00Z",
+  "summary": "Closeout started after the project surface policy registry slice completed its bounded work.",
+  "payload": {}
+}

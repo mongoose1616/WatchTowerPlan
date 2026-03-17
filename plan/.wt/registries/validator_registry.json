@@ -131,6 +131,20 @@
       ]
     },
     {
+      "id": "validator.plan.project_surface_policy_registry",
+      "title": "Plan Project Surface Policy Validator",
+      "description": "Validates the plan-pack project-surface policy registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "project_surface_policy_registry",
+      "applies_to": [
+        "plan/.wt/registries/project_surface_policy_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1"
+      ]
+    },
+    {
       "id": "validator.plan.initiative_state",
       "title": "Plan Initiative State Validator",
       "description": "Validates initiative-local current-state snapshots.",

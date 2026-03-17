@@ -1,0 +1,73 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_project_surface_policy_registry",
+  "trace_id": "trace.plan_project_surface_policy_registry",
+  "slug": "plan_project_surface_policy_registry",
+  "title": "Plan Project Surface Policy Registry",
+  "summary": "Adds the missing project-surface policy registry plus helper-backed project validation so project containers follow a declared surface contract instead of hardcoded assumptions.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T17:08:47Z",
+  "updated_at": "2026-03-17T17:28:00Z",
+  "task_ids": [
+    "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema",
+    "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries",
+    "task.plan_project_surface_policy_registry.wire_helper_and_project_validation"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_project_surface_policy_registry.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_project_surface_policy_registry.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_project_surface_policy_registry.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_project_surface_policy_registry/initiative_brief.md",
+      "sha256": "eaf3208598362e645fb951f97ecc6e695037fb4cfce5bd16a88ac0384a149ef4",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T17:08:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_project_surface_policy_registry/design_record.md",
+      "sha256": "d14e628b78dfe0de60f0ba7dd1fd822f98470a691c6ff9d3b52b80102ed980d5",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T17:08:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md",
+      "sha256": "702a0de8b6ffb0ba68ebd863ed78f6ecf4405389f1c385b4a93211525af4aa05",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T17:08:47Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T17:08:50Z"
+    }
+  ],
+  "closed_at": "2026-03-17T17:28:00Z",
+  "closure_reason": "Delivered the project-surface policy registry, typed helper, and project validation integration for required project-root surfaces."
+}
