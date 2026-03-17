@@ -1,0 +1,7 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+  "id": "index.initiatives",
+  "title": "Plan Workspace Initiative Index",
+  "status": "active",
+  "entries": []
+}

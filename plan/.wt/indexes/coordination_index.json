@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+  "id": "index.coordination",
+  "title": "Plan Workspace Coordination Index",
+  "status": "active",
+  "updated_at": "2026-03-17T05:23:09Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active plan-workspace initiatives exist.",
+  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
+  "recommended_surface_path": "plan/plan_overview.md",
+  "active_initiative_count": 0,
+  "blocked_task_count": 0,
+  "actionable_task_count": 0,
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": []
+}

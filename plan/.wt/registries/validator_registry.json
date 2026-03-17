@@ -194,6 +194,76 @@
       "schema_ids": [
         "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1"
       ]
+    },
+    {
+      "id": "validator.plan.initiative_index",
+      "title": "Plan Initiative Index Validator",
+      "description": "Validates the plan-workspace initiative index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "initiative_index",
+      "applies_to": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_summary_index",
+      "title": "Plan Task Summary Index Validator",
+      "description": "Validates the plan-workspace task summary index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_task_summary_index",
+      "applies_to": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-summary-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.readiness_index",
+      "title": "Plan Readiness Index Validator",
+      "description": "Validates the plan-workspace readiness index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_readiness_index",
+      "applies_to": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:readiness-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.discrepancy_index",
+      "title": "Plan Discrepancy Index Validator",
+      "description": "Validates the plan-workspace discrepancy index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_discrepancy_index",
+      "applies_to": [
+        "plan/.wt/indexes/discrepancy_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.coordination_index",
+      "title": "Plan Coordination Index Validator",
+      "description": "Validates the plan-workspace coordination index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "coordination_index",
+      "applies_to": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+      ]
     }
   ]
 }

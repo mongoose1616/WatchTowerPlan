@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.planning_scaffold_specs import trace_suffix
 from watchtower_core.repo_ops.task_lifecycle_support import slugify_file_stem
 from watchtower_core.utils.timestamps import utc_timestamp_now
@@ -238,6 +239,7 @@ class InitiativePackageService:
         )
         for relative_path, document in initiative_events.items():
             self._loader.artifact_store.write_json_object(relative_path, document)
+        PlanWorkspaceService(self._loader).sync(write=True)
 
         readiness = self.validate_packwide(
             initiative_slug,
@@ -293,12 +295,23 @@ class InitiativePackageService:
         issues.extend(issue.message for issue in authored_input_issues)
         if authored_input_issues:
             blocking_reasons.append("authored_input_drift")
+        derived_surface_issues = self._stale_derived_surface_issues(initiative_slug)
+        issues.extend(issue.message for issue in derived_surface_issues)
+        if derived_surface_issues:
+            blocking_reasons.append("stale_derived_surfaces")
 
         deferred_issues = self._blocking_deferred_item_issues(initiative_slug)
         issues.extend(deferred_issues)
         if deferred_issues:
             blocking_reasons.append("blocking_deferred_items")
 
+        if write:
+            self._sync_managed_discrepancies(
+                initiative_slug=initiative_slug,
+                initiative_id=initiative_id,
+                discrepancy_issues=tuple((*authored_input_issues, *derived_surface_issues)),
+                updated_at=utc_timestamp_now(),
+            )
         open_discrepancies = self._open_discrepancy_documents(initiative_slug)
         if open_discrepancies:
             issues.extend(
@@ -330,16 +343,6 @@ class InitiativePackageService:
 
         discrepancy_ids = tuple(document["discrepancy_id"] for _, document in open_discrepancies)
         if write:
-            self._sync_authored_input_discrepancies(
-                initiative_slug=initiative_slug,
-                initiative_id=initiative_id,
-                authored_input_issues=tuple(authored_input_issues),
-                updated_at=utc_timestamp_now(),
-            )
-            discrepancy_ids = tuple(
-                document["discrepancy_id"]
-                for _, document in self._open_discrepancy_documents(initiative_slug)
-            )
             initiative_document["updated_at"] = utc_timestamp_now()
             initiative_document["lifecycle_stage"] = lifecycle_stage
             initiative_document["review_status"] = (
@@ -376,6 +379,7 @@ class InitiativePackageService:
                     actor_id="actor.watchtower_core",
                     recorded_at=str(initiative_document["updated_at"]),
                 )
+            PlanWorkspaceService(self._loader).sync(write=True)
 
         return InitiativeReadinessResult(
             initiative_id=initiative_id,
@@ -420,7 +424,6 @@ class InitiativePackageService:
         initiative_document["updated_at"] = updated_at
         if write:
             self._loader.artifact_store.write_json_object(initiative_state_path, initiative_document)
-            self._resolve_authored_input_discrepancies(initiative_slug, updated_at=updated_at)
             self._append_initiative_event(
                 initiative_slug=initiative_slug,
                 initiative_id=str(initiative_document["initiative_id"]),
@@ -430,6 +433,7 @@ class InitiativePackageService:
                 actor_id=approver_actor_id,
                 recorded_at=updated_at,
             )
+            PlanWorkspaceService(self._loader).sync(write=True)
             readiness = self.validate_packwide(
                 initiative_slug,
                 write=True,
@@ -512,6 +516,7 @@ class InitiativePackageService:
                 actor_id="actor.watchtower_core",
                 recorded_at=updated_at,
             )
+            PlanWorkspaceService(self._loader).sync(write=True)
 
         return InitiativePackageResult(
             initiative_id=str(initiative_document["initiative_id"]),
@@ -910,16 +915,17 @@ class InitiativePackageService:
         *,
         initiative_slug: str,
         initiative_document: dict[str, object],
-    ) -> tuple[_AuthoredInputIssue, ...]:
-        issues: list[_AuthoredInputIssue] = []
+    ) -> tuple[_DiscrepancyIssue, ...]:
+        issues: list[_DiscrepancyIssue] = []
         for record in initiative_document["authored_inputs"]:
             relative_path = str(record["path"])
             current_digest = self._sha256_for_relative_path(relative_path)
             if current_digest != record["sha256"]:
                 issues.append(
-                    _AuthoredInputIssue(
+                    _DiscrepancyIssue(
+                        category="authored_input_drift",
                         doc_kind=str(record["doc_kind"]),
-                        relative_path=relative_path,
+                        relative_paths=(relative_path,),
                         message=(
                             f"Authored input drift detected for {relative_path}; "
                             "machine confirmation is required."
@@ -928,6 +934,18 @@ class InitiativePackageService:
                     )
                 )
         return tuple(issues)
+
+    def _stale_derived_surface_issues(self, initiative_slug: str) -> tuple[_DiscrepancyIssue, ...]:
+        return tuple(
+            _DiscrepancyIssue(
+                category=issue.category,
+                doc_kind=Path(issue.relative_path).stem,
+                relative_paths=(issue.relative_path,),
+                message=issue.message,
+                discrepancy_id=issue.discrepancy_id,
+            )
+            for issue in PlanWorkspaceService(self._loader).expected_surface_issues(initiative_slug)
+        )
 
     def _blocking_deferred_item_issues(self, initiative_slug: str) -> tuple[str, ...]:
         deferred_dir = self._loader.repo_root / self._initiative_path(initiative_slug, ".wt/deferred")
@@ -959,12 +977,12 @@ class InitiativePackageService:
                 documents.append((str(path.relative_to(self._loader.repo_root)), document))
         return tuple(documents)
 
-    def _sync_authored_input_discrepancies(
+    def _sync_managed_discrepancies(
         self,
         *,
         initiative_slug: str,
         initiative_id: str,
-        authored_input_issues: tuple[_AuthoredInputIssue, ...],
+        discrepancy_issues: tuple[_DiscrepancyIssue, ...],
         updated_at: str,
     ) -> None:
         discrepancy_dir = self._loader.repo_root / self._initiative_path(
@@ -972,21 +990,34 @@ class InitiativePackageService:
             ".wt/discrepancies",
         )
         discrepancy_dir.mkdir(parents=True, exist_ok=True)
-        issue_map = {issue.discrepancy_id: issue for issue in authored_input_issues}
+        issue_map = {issue.discrepancy_id: issue for issue in discrepancy_issues}
+        managed_categories = {
+            "authored_input_drift",
+            "stale_rendered_surface",
+            "stale_aggregate_index",
+            *(issue.category for issue in discrepancy_issues),
+        }
 
         existing_paths = sorted(discrepancy_dir.glob("*.json"))
         for path in existing_paths:
             document = json.loads(path.read_text(encoding="utf-8"))
             discrepancy_id = str(document["discrepancy_id"])
             if discrepancy_id in issue_map:
+                issue = issue_map[discrepancy_id]
+                document["category"] = issue.category
+                document["severity"] = issue.severity
+                document["gate_effect"] = issue.gate_effect
                 document["status"] = "open"
+                document["summary"] = issue.message
+                document["source_paths"] = list(issue.relative_paths)
+                document["resolution_owner"] = issue.resolution_owner
                 document["updated_at"] = updated_at
                 self._loader.artifact_store.write_json_object(
                     str(path.relative_to(self._loader.repo_root)),
                     document,
                 )
                 issue_map.pop(discrepancy_id, None)
-            elif document["category"] == "authored_input_drift" and document["status"] == "open":
+            elif document["category"] in managed_categories and document["status"] == "open":
                 document["status"] = "resolved"
                 document["updated_at"] = updated_at
                 self._loader.artifact_store.write_json_object(
@@ -1005,39 +1036,16 @@ class InitiativePackageService:
                     "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
                     "discrepancy_id": issue.discrepancy_id,
                     "initiative_id": initiative_id,
-                    "category": "authored_input_drift",
-                    "severity": "high",
-                    "gate_effect": "readiness",
+                    "category": issue.category,
+                    "severity": issue.severity,
+                    "gate_effect": issue.gate_effect,
                     "status": "open",
                     "summary": issue.message,
-                    "source_paths": [issue.relative_path],
-                    "resolution_owner": "repository_maintainer",
+                    "source_paths": list(issue.relative_paths),
+                    "resolution_owner": issue.resolution_owner,
                     "detected_at": updated_at,
                     "updated_at": updated_at,
                 },
-            )
-
-    def _resolve_authored_input_discrepancies(
-        self,
-        initiative_slug: str,
-        *,
-        updated_at: str,
-    ) -> None:
-        discrepancy_dir = self._loader.repo_root / self._initiative_path(
-            initiative_slug,
-            ".wt/discrepancies",
-        )
-        if not discrepancy_dir.exists():
-            return
-        for path in sorted(discrepancy_dir.glob("*.json")):
-            document = json.loads(path.read_text(encoding="utf-8"))
-            if document["category"] != "authored_input_drift" or document["status"] != "open":
-                continue
-            document["status"] = "resolved"
-            document["updated_at"] = updated_at
-            self._loader.artifact_store.write_json_object(
-                str(path.relative_to(self._loader.repo_root)),
-                document,
             )
 
     def _append_initiative_event(
@@ -1099,10 +1107,14 @@ class InitiativePackageService:
 
 
 @dataclass(frozen=True, slots=True)
-class _AuthoredInputIssue:
-    """Internal authored-input drift result used to build discrepancies."""
+class _DiscrepancyIssue:
+    """Internal discrepancy sync record produced by initiative validation."""
 
+    category: str
     doc_kind: str
-    relative_path: str
+    relative_paths: tuple[str, ...]
     message: str
     discrepancy_id: str
+    severity: str = "high"
+    gate_effect: str = "readiness"
+    resolution_owner: str = "repository_maintainer"

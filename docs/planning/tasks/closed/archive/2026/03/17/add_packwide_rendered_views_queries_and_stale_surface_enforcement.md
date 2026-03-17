@@ -6,11 +6,11 @@ summary: Rebuilds pack-level and initiative-level visibility from the new author
   model and fails closed on stale derived surfaces.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-17T05:03:37Z'
+updated_at: '2026-03-17T05:23:37Z'
 audience: shared
 authority: authoritative
 applies_to:

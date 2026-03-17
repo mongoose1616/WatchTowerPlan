@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1",
+  "title": "Plan Discrepancy Index",
+  "description": "Schema for the plan-workspace discrepancy index built from initiative-local discrepancy records.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "updated_at", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1"
+    },
+    "id": {
+      "const": "index.plan_discrepancies"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/discrepancyEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "sourcePaths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/).+"
+      }
+    },
+    "discrepancyEntry": {
+      "type": "object",
+      "required": [
+        "discrepancy_id",
+        "initiative_id",
+        "trace_id",
+        "title",
+        "category",
+        "severity",
+        "gate_effect",
+        "status",
+        "summary",
+        "source_paths",
+        "updated_at"
+      ],
+      "properties": {
+        "discrepancy_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "initiative_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "gate_effect": {
+          "type": "string",
+          "enum": ["none", "readiness", "execution", "all_progress"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "resolved"]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_paths": {
+          "$ref": "#/$defs/sourcePaths"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

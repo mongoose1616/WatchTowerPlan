@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:readiness-index:v1",
+  "title": "Plan Readiness Index",
+  "description": "Schema for the plan-workspace readiness index built from initiative-local gate state.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "updated_at", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:readiness-index:v1"
+    },
+    "id": {
+      "const": "index.readiness"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/readinessEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "blockingReasons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "readinessEntry": {
+      "type": "object",
+      "required": [
+        "initiative_id",
+        "trace_id",
+        "title",
+        "initiative_root",
+        "scope_type",
+        "lifecycle_stage",
+        "review_status",
+        "capture_complete",
+        "machine_valid",
+        "approval_status",
+        "ready_for_execution",
+        "blocking_reasons",
+        "updated_at"
+      ],
+      "properties": {
+        "initiative_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initiative_root": {
+          "type": "string",
+          "pattern": "^plan/(initiatives|projects/.+/initiatives)/.+$"
+        },
+        "scope_type": {
+          "type": "string",
+          "enum": ["pack_wide", "project_scoped"]
+        },
+        "lifecycle_stage": {
+          "type": "string",
+          "enum": [
+            "capture_incomplete",
+            "ready_for_review",
+            "ready_for_execution",
+            "in_progress",
+            "blocked",
+            "closing",
+            "completed",
+            "superseded",
+            "cancelled"
+          ]
+        },
+        "review_status": {
+          "type": "string",
+          "enum": ["pending", "approved"]
+        },
+        "capture_complete": {
+          "type": "boolean"
+        },
+        "machine_valid": {
+          "type": "boolean"
+        },
+        "approval_status": {
+          "type": "string",
+          "enum": ["pending", "approved"]
+        },
+        "ready_for_execution": {
+          "type": "boolean"
+        },
+        "blocking_reasons": {
+          "$ref": "#/$defs/blockingReasons"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

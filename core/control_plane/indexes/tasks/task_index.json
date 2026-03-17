@@ -306,12 +306,12 @@
       "title": "Add pack-wide rendered views, queries, and stale-surface enforcement",
       "summary": "Rebuilds pack-level and initiative-level visibility from the new authority model and fails closed on stale derived surfaces.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
-      "updated_at": "2026-03-17T05:03:37Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
+      "updated_at": "2026-03-17T05:23:37Z",
       "trace_id": "trace.capture_first_plan_workspace_bootstrap",
       "depends_on": [
         "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003"

@@ -784,13 +784,13 @@
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-17T05:03:37Z",
+      "updated_at": "2026-03-17T05:23:37Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
         "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
-        "open_task_count": 3,
+        "next_surface_path": "docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md",
+        "open_task_count": 2,
         "blocked_task_count": 1,
         "primary_owner": "repository_maintainer",
         "active_owners": [
@@ -798,22 +798,9 @@
         ],
         "active_task_ids": [
           "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
-          "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
           "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
         ],
         "active_task_summaries": [
-          {
-            "task_id": "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
-            "title": "Add pack-wide rendered views, queries, and stale-surface enforcement",
-            "task_status": "ready",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
-            "is_actionable": true,
-            "depends_on": [
-              "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003"
-            ]
-          },
           {
             "task_id": "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005",
             "title": "Add project container bootstrap and project-scoped initiative flow",
@@ -841,7 +828,6 @@
           }
         ],
         "blocked_by_task_ids": [
-          "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
           "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
         ]
       },
@@ -1017,12 +1003,12 @@
           "title": "Add pack-wide rendered views, queries, and stale-surface enforcement",
           "summary": "Rebuilds pack-level and initiative-level visibility from the new authority model and fails closed on stale derived surfaces.",
           "artifact_status": "active",
-          "task_status": "ready",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
-          "updated_at": "2026-03-17T05:03:37Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
+          "updated_at": "2026-03-17T05:23:37Z",
           "depends_on": [
             "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003"
           ],
@@ -1113,9 +1099,9 @@
             "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
             "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/17/add_initiative_package_contracts_and_strict_readiness_gate.md",
+            "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
             "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-            "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
             "docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md",
             "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md"
           ],
@@ -1232,9 +1218,9 @@
         "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/17/add_initiative_package_contracts_and_strict_readiness_gate.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-        "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
         "docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
         "docs/planning/tasks/task_tracking.md",

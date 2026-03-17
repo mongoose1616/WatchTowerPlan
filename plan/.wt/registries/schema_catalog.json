@@ -93,6 +93,36 @@
       "subject_kind": "guidance_promotion_record",
       "version": "v1",
       "canonical_path": "plan/.wt/schemas/artifacts/guidance_promotion_record.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
+      "title": "Plan Task Summary Index",
+      "description": "Schema for the plan-workspace task summary index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_task_summary_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/task_summary_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:readiness-index:v1",
+      "title": "Plan Readiness Index",
+      "description": "Schema for the plan-workspace readiness index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_readiness_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/readiness_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1",
+      "title": "Plan Discrepancy Index",
+      "description": "Schema for the plan-workspace discrepancy index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_discrepancy_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/discrepancy_index.schema.json"
     }
   ]
 }

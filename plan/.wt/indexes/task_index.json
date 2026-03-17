@@ -1,0 +1,7 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
+  "id": "index.plan_tasks",
+  "title": "Plan Workspace Task Index",
+  "status": "active",
+  "entries": []
+}
