@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_event_stream_helper_foundation",
+  "trace_id": "trace.plan_event_stream_helper_foundation",
+  "slug": "plan_event_stream_helper_foundation",
+  "title": "Plan Event Stream Helper Foundation",
+  "summary": "Extracts a reusable event-stream helper for initiative and task event records, then refactors initiative package event writes onto it so requirements.md and decisions.md no longer depend on ad hoc repo-local event recording.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:18:11Z",
+  "updated_at": "2026-03-17T21:35:44Z",
+  "task_ids": [
+    "task.plan_event_stream_helper_foundation.publish_event_stream_helper_contracts",
+    "task.plan_event_stream_helper_foundation.refactor_initiative_package_event_writes_onto_helper",
+    "task.plan_event_stream_helper_foundation.validate_event_stream_helper_and_contracts"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_event_stream_helper_foundation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_event_stream_helper_foundation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_event_stream_helper_foundation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_event_stream_helper_foundation/initiative_brief.md",
+      "sha256": "28ab5c2443a6a98a641bd952152137fd1ba1ff141cfdaff51d5e19aea88beb60",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:18:11Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_event_stream_helper_foundation/design_record.md",
+      "sha256": "e344c6125c8dfb48ea82f90a4a9973e845cef8a8b279be7cbdd266c74b98e197",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:18:11Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_event_stream_helper_foundation/implementation_slice.md",
+      "sha256": "05eeaa92fc0ffdfc42c587538cec01a27ff5e907c31e90de35c17d19a75ac2e1",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:18:11Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_event_stream_helper_foundation/decision_notes.md",
+      "sha256": "c0df45907ac11a621dd44a243818b15fdb533c5d8e36f71dcf82cd0c0cef9ece",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:18:11Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T21:18:20Z"
+    }
+  ],
+  "closed_at": "2026-03-17T21:35:44Z",
+  "closure_reason": "Delivered reusable event stream helper and initiative package refactor."
+}

@@ -31,6 +31,14 @@
       "closure_reason": "Exported the reusable sync harness from watchtower_core.sync, refactored repo-local orchestration onto it, and aligned tests and package-boundary guidance to requirements.md and decisions.md."
     },
     {
+      "trace_id": "trace.plan_event_stream_helper_foundation",
+      "title": "Plan Event Stream Helper Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T21:35:44Z",
+      "key_surface_path": "plan/initiatives/plan_event_stream_helper_foundation/plan.md",
+      "closure_reason": "Delivered reusable event stream helper and initiative package refactor."
+    },
+    {
       "trace_id": "trace.plan_artifact_family_registry_foundation",
       "title": "Plan Artifact Family Registry Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T18:55:30Z",
       "key_surface_path": "plan/initiatives/plan_workflow_root_authority_split/plan.md",
       "closure_reason": "Delivered the split workflow routing tables, domain-owned workflow module roots, runtime index rebuilds, and human guidance cutover required by requirements.md and decisions.md."
-    },
-    {
-      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
-      "title": "Plan Core Documentation Template Authority Foundation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T18:17:57Z",
-      "key_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/plan.md",
-      "closure_reason": "Delivered the core-owned documentation family registry, template catalog, reusable templates, and explicit validation coverage required by requirements.md and decisions.md."
     }
   ]
 }

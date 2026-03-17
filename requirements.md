@@ -133,7 +133,7 @@ The permanent product boundary and the current execution boundary are intentiona
 | `route_preview_helper` | `Partial` | Expose typed advisory route-preview results that downstream packs can call without importing repo-local CLI handlers. | The repo already has `watchtower-core route preview`, but the reusable runtime contract is still implicit. |
 | `workflow_catalog_helper` | `Partial` | Query workflow metadata, route relationships, compatibility, and companion workflows through one helper. | Current metadata exists in `workflow_metadata_registry` and indexes, but the reusable helper layer is thin. |
 | `workflow_execution_harness` | `Missing` | Execute routed workflow chains with mode checks, gates, and event recording. | The repo can route workflows, but it does not yet publish a generic workflow execution contract. |
-| `event_stream_helper` | `Missing` | Provide append-only event recording, validation, and replay for initiative-level and task-level live planning history. | Needed before initiative-local `.wt/events/` can become a durable planning primitive. |
+| `event_stream_helper` | `Current` | Provide append-only event recording, validation, and replay for initiative-level and task-level live planning history. | Keep the helper generic and schema-backed while initiative-local and task-local planning services build on it for concrete event families. |
 | `markdown_reconciliation` | `Partial` | Provide a pack-safe way to reconcile rendered human initiative surfaces with authoritative machine state. | Current front matter adapters and planning rendered builders are useful, but still planning-specific and docs-centric. |
 | `rendered_view_builder` | `Partial` | Rebuild initiative-local and pack-level rendered views from authoritative machine surfaces through a generic registry-backed builder. | Today rendered planning trackers are rich, but their builders remain repo-local and mostly target docs-backed planning families. |
 | `artifact_index_builder` | `Missing` | Build a generic pack artifact index across plan-domain artifact families and lifecycle surfaces. | Current indexes are family-specific and planning-specific; the generic `artifact_index` interface has no live builder yet. |
@@ -571,9 +571,9 @@ The following remain explicitly owner-gated and should never appear by default:
 | `pack_work_item_note` | `Current` | Keep as a generic operator-authored note contract for plan-pack work items. |
 | `artifact_index` | `Partial` | Make it truly domain-neutral for planning packs and back it with a real builder plus family registry. |
 | `initiative_state` | `Missing` | Add an authoritative current-state snapshot contract for one initiative under either a pack-wide or project-scoped initiative root. |
-| `initiative_event_stream` | `Missing` | Add an initiative-level append-only event contract so live planning can be event-backed instead of doc-backed. |
+| `initiative_event_stream` | `Current` | Keep an initiative-level append-only event contract so live planning can be event-backed instead of doc-backed. |
 | `task_state` | `Missing` | Add a current-state snapshot contract for initiative-local tasks. |
-| `task_event_stream` | `Missing` | Add a task-level append-only event contract where task churn needs separate event history. |
+| `task_event_stream` | `Current` | Keep a task-level append-only event contract where task churn needs separate event history. |
 | `guidance_promotion_record` | `Missing` | Add a governed record for extracting approved decisions, standards, references, and guidance from live initiatives into `plan/docs/` guidance surfaces. |
 | `project_record` | `Missing` | Add a governed current-state contract for one project container under `plan/projects/<project_slug>/.wt/project.json`. |
 | `project_repository_map` | `Missing` | Add a governed contract for linking a project to one or more repositories such as planning, implementation, or deployment repos. |

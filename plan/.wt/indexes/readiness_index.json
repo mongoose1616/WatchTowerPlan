@@ -96,6 +96,21 @@
       "updated_at": "2026-03-17T15:06:09Z"
     },
     {
+      "initiative_id": "initiative.plan_event_stream_helper_foundation",
+      "trace_id": "trace.plan_event_stream_helper_foundation",
+      "title": "Plan Event Stream Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_event_stream_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T21:35:44Z"
+    },
+    {
       "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
       "trace_id": "trace.plan_generic_query_harness_export_foundation",
       "title": "Plan Generic Query Harness Export Foundation",

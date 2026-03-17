@@ -7,6 +7,11 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane.event_stream import (
+    EventStreamDescriptor,
+    EventStreamHelper,
+    EventStreamWriteRequest,
+)
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
@@ -1035,6 +1040,7 @@ class InitiativePackageService:
         updated_at: str,
     ) -> dict[str, dict[str, object]]:
         initiative_slug = location.initiative_slug
+        event_helper = self._event_stream_helper()
         documents: dict[str, dict[str, object]] = {}
         for spec in task_specs:
             task_slug = spec.slug or slugify_file_stem(spec.title)
@@ -1057,26 +1063,32 @@ class InitiativePackageService:
                 "blocker_task_ids": list(spec.blocked_by),
                 "related_ids": list(spec.related_ids),
             }
-            documents[
-                self._initiative_path_for_location(
+            task_event_descriptor = EventStreamDescriptor.task(
+                relative_dir=self._initiative_path_for_location(
                     location,
-                    f".wt/tasks/{task_slug}/events/0001_created.json",
+                    f".wt/tasks/{task_slug}/events",
+                ),
+                event_id_prefix=f"event.{initiative_slug}.{task_slug}",
+                initiative_id=initiative_id,
+                task_id=task_id,
+            )
+            documents.update(
+                event_helper.build_seed_documents(
+                    task_event_descriptor,
+                    (
+                        EventStreamWriteRequest(
+                            event_type="created",
+                            actor_id="actor.watchtower_core",
+                            recorded_at=updated_at,
+                            summary=f"Created task {task_id} during initiative bootstrap.",
+                            payload={
+                                "status": "planned",
+                                "owner": spec.owner,
+                            },
+                        ),
+                    ),
                 )
-            ] = {
-                "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
-                "event_id": f"event.{initiative_slug}.{task_slug}.0001_created",
-                "initiative_id": initiative_id,
-                "task_id": task_id,
-                "sequence": 1,
-                "event_type": "created",
-                "actor_id": "actor.watchtower_core",
-                "recorded_at": updated_at,
-                "summary": f"Created task {task_id} during initiative bootstrap.",
-                "payload": {
-                    "status": "planned",
-                    "owner": spec.owner,
-                },
-            }
+            )
         return documents
 
     def _build_deferred_documents(
@@ -1273,6 +1285,13 @@ class InitiativePackageService:
         related_paths: tuple[str, ...],
     ) -> dict[str, dict[str, object]]:
         initiative_slug = location.initiative_slug
+        event_helper = self._event_stream_helper()
+        descriptor = EventStreamDescriptor.initiative(
+            relative_dir=self._initiative_path_for_location(location, ".wt/events"),
+            event_id_prefix=f"event.{initiative_slug}",
+            initiative_id=initiative_id,
+            trace_id=trace_id,
+        )
         event_types = [
             ("created", "Created the initiative package root."),
             (
@@ -1289,29 +1308,24 @@ class InitiativePackageService:
             ("closeout_shell_seeded", "Seeded the closeout shell."),
             ("promotion_shell_seeded", "Seeded the promotion shell."),
         ]
-        events: dict[str, dict[str, object]] = {}
-        for sequence, (event_type, summary) in enumerate(event_types, start=1):
-            events[
-                self._initiative_path_for_location(
-                    location,
-                    f".wt/events/{sequence:04d}_{event_type}.json",
+        return event_helper.build_seed_documents(
+            descriptor,
+            tuple(
+                EventStreamWriteRequest(
+                    event_type=event_type,
+                    actor_id="actor.watchtower_core",
+                    recorded_at=updated_at,
+                    summary=summary,
+                    related_paths=related_paths,
+                    payload={
+                        "task_count": sum(
+                            1 for path in task_documents if path.endswith("/task.json")
+                        )
+                    },
                 )
-            ] = {
-                "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
-                "event_id": f"event.{initiative_slug}.{sequence:04d}_{event_type}",
-                "initiative_id": initiative_id,
-                "trace_id": trace_id,
-                "sequence": sequence,
-                "event_type": event_type,
-                "actor_id": "actor.watchtower_core",
-                "recorded_at": updated_at,
-                "summary": summary,
-                "related_paths": list(related_paths),
-                "payload": {
-                    "task_count": sum(1 for path in task_documents if path.endswith("/task.json"))
-                },
-            }
-        return events
+                for event_type, summary in event_types
+            ),
+        )
 
     def _pack_loader(self) -> ControlPlaneLoader:
         return ControlPlaneLoader(
@@ -1517,29 +1531,27 @@ class InitiativePackageService:
         recorded_at: str,
     ) -> None:
         initiative_slug = location.initiative_slug
-        events_dir = self._loader.repo_root / self._initiative_path_for_location(
-            location,
-            ".wt/events",
+        descriptor = EventStreamDescriptor.initiative(
+            relative_dir=self._initiative_path_for_location(location, ".wt/events"),
+            event_id_prefix=f"event.{initiative_slug}",
+            initiative_id=initiative_id,
+            trace_id=trace_id,
         )
-        sequence = len(tuple(events_dir.glob("*.json"))) + 1
-        relative_path = self._initiative_path_for_location(
-            location,
-            f".wt/events/{sequence:04d}_{event_type}.json",
+        self._event_stream_helper().append_event(
+            descriptor,
+            EventStreamWriteRequest(
+                event_type=event_type,
+                actor_id=actor_id,
+                recorded_at=recorded_at,
+                summary=summary,
+                payload={},
+            ),
         )
-        self._loader.artifact_store.write_json_object(
-            relative_path,
-            {
-                "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
-                "event_id": f"event.{initiative_slug}.{sequence:04d}_{event_type}",
-                "initiative_id": initiative_id,
-                "trace_id": trace_id,
-                "sequence": sequence,
-                "event_type": event_type,
-                "actor_id": actor_id,
-                "recorded_at": recorded_at,
-                "summary": summary,
-                "payload": {},
-            },
+
+    def _event_stream_helper(self) -> EventStreamHelper:
+        return EventStreamHelper.from_loader(
+            self._loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
 
     def _assert_default_authorized_maintainer(self, actor_id: str) -> None:

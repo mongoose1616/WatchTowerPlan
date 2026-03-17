@@ -168,6 +168,33 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_event_stream_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_event_stream_helper_foundation",
+      "trace_id": "trace.plan_event_stream_helper_foundation",
+      "initiative_title": "Plan Event Stream Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_event_stream_helper_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_event_stream_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_event_stream_helper_foundation/design_record.md",
+        "plan/initiatives/plan_event_stream_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_event_stream_helper_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T21:35:44Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_generic_query_harness_export_foundation.bootstrap_shell",
       "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
       "trace_id": "trace.plan_generic_query_harness_export_foundation",

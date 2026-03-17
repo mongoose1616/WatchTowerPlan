@@ -8,6 +8,11 @@ from watchtower_core.control_plane.documentation_family import (
     DocumentationFamilyHelper,
     DocumentationFamilyIssue,
 )
+from watchtower_core.control_plane.event_stream import (
+    EventStreamDescriptor,
+    EventStreamHelper,
+    EventStreamWriteRequest,
+)
 from watchtower_core.control_plane.governance_surfaces import (
     GovernanceSurfaceResolution,
     GovernanceSurfaceResolver,
@@ -47,6 +52,9 @@ __all__ = [
     "ControlPlaneLoader",
     "DocumentationFamilyHelper",
     "DocumentationFamilyIssue",
+    "EventStreamDescriptor",
+    "EventStreamHelper",
+    "EventStreamWriteRequest",
     "FileSystemArtifactIO",
     "GovernanceSurfaceResolution",
     "GovernanceSurfaceResolver",

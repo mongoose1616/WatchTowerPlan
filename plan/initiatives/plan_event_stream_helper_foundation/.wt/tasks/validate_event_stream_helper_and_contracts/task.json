@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_event_stream_helper_foundation.validate_event_stream_helper_and_contracts",
+  "slug": "validate_event_stream_helper_and_contracts",
+  "initiative_id": "initiative.plan_event_stream_helper_foundation",
+  "title": "Validate event stream helper and contracts",
+  "summary": "Add tests proving seeded records, append behavior, replay ordering, and initiative package regressions stay aligned with requirements.md and decisions.md.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:18:11Z",
+  "updated_at": "2026-03-17T21:34:34Z",
+  "dependency_task_ids": [
+    "task.plan_event_stream_helper_foundation.refactor_initiative_package_event_writes_onto_helper"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}
