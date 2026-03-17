@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery.0001_created",
+  "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+  "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T19:15:00Z",
+  "summary": "Created task task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

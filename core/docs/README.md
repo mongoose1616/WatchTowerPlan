@@ -7,8 +7,10 @@
 | Path | Description |
 |---|---|
 | `core/docs/README.md` | Describes the purpose of the core docs root and its current migration boundary. |
+| `core/docs/foundations/` | Holds the duplicated foundations corpus for core-owned guidance roots. |
 
 ## Notes
 - `requirements.md` and `decisions.md` remain authoritative while this root is being seeded and future guidance families move into place.
+- `core/docs/foundations/` and `plan/docs/foundations/` intentionally duplicate the same foundation guidance and must stay aligned.
 - Do not place live initiative state or plan-domain execution artifacts here.
 - Use `docs/` for repository-wide durable guidance until a later slice promotes or duplicates the core-owned families that belong here.

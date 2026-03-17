@@ -14,6 +14,7 @@
 
 ## Recent Closeouts
 - `trace.plan_project_context_runtime_standardization`: Plan Project Context Runtime Standardization (`completed` at `2026-03-17T18:58:00Z`) - Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views.
+- `trace.plan_duplicated_foundations_corpus_bootstrap`: Plan Duplicated Foundations Corpus Bootstrap (`completed` at `2026-03-17T15:44:57Z`) - Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots.
 - `trace.watchtower_work_item_begin_flow`: WatchTower Work Item Begin Flow (`completed` at `2026-03-17T15:06:26Z`) - Delivered the local-first WatchTower work-item begin flow.
 - `trace.watchtower_next_work_selection`: WatchTower Next Work Selection (`completed` at `2026-03-17T15:06:24Z`) - Delivered the local-first WatchTower next-work selection flow.
 - `trace.watchtower_work_item_notes`: WatchTower Work Item Notes (`completed` at `2026-03-17T15:06:22Z`) - Delivered the local-first WatchTower work-item note flow.
@@ -22,4 +23,3 @@
 - `trace.watchtower_work_item_bootstrap`: WatchTower Work Item Bootstrap (`completed` at `2026-03-17T15:06:17Z`) - Delivered the local-first WatchTower work-item bootstrap flow.
 - `trace.watchtower_workspace_init_bootstrap`: WatchTower Workspace Init Bootstrap (`completed` at `2026-03-17T15:06:15Z`) - Delivered the local-first WatchTower workspace init flow.
 - `trace.watchtower_initial_implementation_bootstrap`: WatchTower Initial Implementation Bootstrap (`completed` at `2026-03-17T15:06:13Z`) - Delivered the first WatchTower implementation bootstrap package and boundary capture.
-- `trace.plan_terminal_initiative_closeout_runtime`: Plan Terminal Initiative Closeout Runtime (`completed` at `2026-03-17T15:06:11Z`) - Delivered the live terminal closeout runtime, CLI surface, and recent-closeout coordination flow.

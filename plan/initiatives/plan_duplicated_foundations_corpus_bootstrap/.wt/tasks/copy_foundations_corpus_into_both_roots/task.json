@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
+  "slug": "copy_foundations_corpus_into_both_roots",
+  "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+  "title": "Copy foundations corpus into both roots",
+  "summary": "Duplicate the current foundations documents into both the core and plan docs roots without changing their shared guidance content.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T19:15:00Z",
+  "updated_at": "2026-03-17T19:19:00Z",
+  "dependency_task_ids": [
+    "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

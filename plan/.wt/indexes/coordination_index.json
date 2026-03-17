@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T18:58:00Z",
+  "updated_at": "2026-03-17T19:21:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -21,6 +21,14 @@
       "closed_at": "2026-03-17T18:58:00Z",
       "key_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/plan.md",
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
+    },
+    {
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:44:57Z",
+      "key_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/plan.md",
+      "closure_reason": "Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots."
     },
     {
       "trace_id": "trace.watchtower_work_item_begin_flow",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:13Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
       "closure_reason": "Delivered the first WatchTower implementation bootstrap package and boundary capture."
-    },
-    {
-      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
-      "title": "Plan Terminal Initiative Closeout Runtime",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:11Z",
-      "key_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/plan.md",
-      "closure_reason": "Delivered the live terminal closeout runtime, CLI surface, and recent-closeout coordination flow."
     }
   ]
 }

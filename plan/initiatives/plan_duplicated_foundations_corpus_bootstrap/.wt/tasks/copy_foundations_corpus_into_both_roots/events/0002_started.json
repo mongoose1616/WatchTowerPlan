@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots.0002_started",
+  "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+  "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T19:18:00Z",
+  "summary": "Started copying the foundations corpus into both duplicated roots.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "foundations"
+  }
+}

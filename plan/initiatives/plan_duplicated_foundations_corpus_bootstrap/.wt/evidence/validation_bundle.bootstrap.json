@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.plan_duplicated_foundations_corpus_bootstrap.bootstrap_validation_bundle",
+  "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+  "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+  "title": "Bootstrap Validation Bundle",
+  "status": "completed",
+  "updated_at": "2026-03-17T15:44:57Z",
+  "entries": [
+    {
+      "entry_id": "entry.plan_duplicated_foundations_corpus_bootstrap.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.plan_duplicated_foundations_corpus_bootstrap.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/discrepancies"
+      ]
+    }
+  ]
+}

@@ -7,7 +7,9 @@
 | Path | Description |
 |---|---|
 | `plan/docs/README.md` | Describes the purpose of the plan docs root and its current migration boundary. |
+| `plan/docs/foundations/` | Holds the duplicated foundations corpus for plan-domain guidance roots. |
 
 ## Notes
 - `requirements.md` and `decisions.md` remain the authoritative contract while this root is being seeded and future promotion paths are still landing.
+- `plan/docs/foundations/` and `core/docs/foundations/` intentionally duplicate the same foundation guidance and must stay aligned.
 - Use this root for approved, durable plan guidance once promotion support exists; do not use it as a second live planning workspace.

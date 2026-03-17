@@ -5,6 +5,52 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "initiative_title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "title": "Copy foundations corpus into both roots",
+      "summary": "Duplicate the current foundations documents into both the core and plan docs roots without changing their shared guidance content.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/copy_foundations_corpus_into_both_roots/task.json",
+      "updated_at": "2026-03-17T19:19:00Z",
+      "depends_on": [
+        "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots"
+      ]
+    },
+    {
+      "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "initiative_title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "title": "Seed duplicated foundations roots",
+      "summary": "Prepare the core/docs/foundations and plan/docs/foundations roots and align their README surfaces.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/seed_duplicated_foundations_roots/task.json",
+      "updated_at": "2026-03-17T19:17:00Z"
+    },
+    {
+      "task_id": "task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "initiative_title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "title": "Validate duplicated foundations discovery",
+      "summary": "Refresh derived indexes and confirm the duplicated foundations roots are discoverable without breaking current guidance lookup.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/validate_duplicated_foundations_discovery/task.json",
+      "updated_at": "2026-03-17T19:21:00Z",
+      "depends_on": [
+        "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots",
+        "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots"
+      ]
+    },
+    {
       "task_id": "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
       "initiative_id": "initiative.plan_entrypoint_cutover_proof",
       "trace_id": "trace.plan_entrypoint_cutover_proof",

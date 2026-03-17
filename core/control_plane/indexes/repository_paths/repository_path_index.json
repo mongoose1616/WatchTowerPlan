@@ -2115,6 +2115,86 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/foundations/",
+      "kind": "directory",
+      "surface_kind": "core_surface",
+      "summary": "Holds the duplicated foundations corpus for core-owned guidance roots.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/README.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Describes the purpose of the duplicated core foundations directory and the intended read order across its documents.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/customer_story.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Provides supporting future-state product story, user problem, and intended operator experience.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/engineering_design_principles.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/engineering_stack_direction.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/product_direction.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Defines the future WatchTower product direction, layer boundaries, and first-wave scope.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/repository_scope.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Defines the authoritative current repository charter and ownership boundary.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/foundations/repository_standards_posture.md",
+      "kind": "file",
+      "surface_kind": "core_file",
+      "summary": "Explains the repository-wide standards posture and authority model.",
+      "parent_path": "core/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/python/",
       "kind": "directory",
       "surface_kind": "python_workspace",
@@ -5085,6 +5165,86 @@
       "surface_kind": "repository_file",
       "summary": "Describes the purpose of the plan docs root and its current migration boundary.",
       "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds the duplicated foundations corpus for plan-domain guidance roots.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Describes the purpose of the duplicated plan foundations directory and the intended read order across its documents.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/customer_story.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Provides supporting future-state product story, user problem, and intended operator experience.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/engineering_design_principles.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/engineering_stack_direction.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/product_direction.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Defines the future WatchTower product direction, layer boundaries, and first-wave scope.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/repository_scope.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Defines the authoritative current repository charter and ownership boundary.",
+      "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/foundations/repository_standards_posture.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Explains the repository-wide standards posture and authority model.",
+      "parent_path": "plan/docs/foundations/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

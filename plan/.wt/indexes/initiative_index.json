@@ -5,6 +5,43 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "summary": "Duplicates the current foundations corpus into core/docs/foundations and plan/docs/foundations so both roots carry the same guiding context required by requirements.md.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T19:21:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/progress.md",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "slug": "plan_duplicated_foundations_corpus_bootstrap",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots",
+        "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
+        "task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery"
+      ],
+      "evidence_ids": [
+        "evidence.plan_duplicated_foundations_corpus_bootstrap.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T15:44:57Z",
+      "closure_reason": "Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots.",
+      "related_paths": [
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/initiative_brief.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/design_record.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/implementation_slice.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_entrypoint_cutover_proof",
       "title": "Plan Entrypoint Cutover Proof",
       "summary": "Proves the pack-wide capture-first flow for the plan authority cutover.",
