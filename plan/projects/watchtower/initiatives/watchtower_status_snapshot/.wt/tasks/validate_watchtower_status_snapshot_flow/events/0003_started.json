@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow.0003_started",
+  "initiative_id": "initiative.watchtower_status_snapshot",
+  "task_id": "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow",
+  "sequence": 3,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T07:56:36Z",
+  "summary": "Started the WatchTower status snapshot validation task.",
+  "payload": {
+    "status": "in_progress",
+    "validation_scope": [
+      "cli_pytest",
+      "status_snapshot",
+      "workspace_summary"
+    ]
+  }
+}

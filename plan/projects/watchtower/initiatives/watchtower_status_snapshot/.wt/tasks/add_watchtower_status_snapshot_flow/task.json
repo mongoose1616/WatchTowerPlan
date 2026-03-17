@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
+  "slug": "add_watchtower_status_snapshot_flow",
+  "initiative_id": "initiative.watchtower_status_snapshot",
+  "title": "Add WatchTower status snapshot flow",
+  "summary": "Add a top-level CLI path that reports workspace state and summarized work-item counts from the local .watchtower store.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T07:53:43Z",
+  "updated_at": "2026-03-17T07:56:32Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

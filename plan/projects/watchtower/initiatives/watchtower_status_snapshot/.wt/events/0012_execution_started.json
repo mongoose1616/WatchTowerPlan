@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_status_snapshot.0012_execution_started",
+  "initiative_id": "initiative.watchtower_status_snapshot",
+  "trace_id": "trace.watchtower_status_snapshot",
+  "sequence": 12,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T07:55:40Z",
+  "summary": "Execution started for the WatchTower status snapshot slice.",
+  "payload": {
+    "task_id": "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
+    "repository_locator": "/home/j/WatchTower"
+  }
+}

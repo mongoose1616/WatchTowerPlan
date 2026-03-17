@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow.0002_ready_marked",
+  "initiative_id": "initiative.watchtower_status_snapshot",
+  "task_id": "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T07:56:34Z",
+  "summary": "Marked the WatchTower status snapshot validation task ready after the status command landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow"
+    ]
+  }
+}

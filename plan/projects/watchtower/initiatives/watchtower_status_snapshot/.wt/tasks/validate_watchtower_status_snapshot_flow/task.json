@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow",
+  "slug": "validate_watchtower_status_snapshot_flow",
+  "initiative_id": "initiative.watchtower_status_snapshot",
+  "title": "Validate WatchTower status snapshot flow",
+  "summary": "Cover the status command with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T07:53:43Z",
+  "updated_at": "2026-03-17T07:56:52Z",
+  "dependency_task_ids": [
+    "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

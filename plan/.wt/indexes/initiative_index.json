@@ -100,6 +100,41 @@
       ]
     },
     {
+      "trace_id": "trace.watchtower_status_snapshot",
+      "title": "WatchTower Status Snapshot",
+      "summary": "Adds one local-first status command so operators can see workspace readiness and current work-item counts from a single WatchTower entrypoint.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T07:57:12Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/summary.md",
+      "initiative_id": "initiative.watchtower_status_snapshot",
+      "slug": "watchtower_status_snapshot",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
+        "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_status_snapshot.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_work_item_bootstrap",
       "title": "WatchTower Work Item Bootstrap",
       "summary": "Adds a local-first work-item record flow so operators can start bounded work inside an initialized WatchTower workspace.",

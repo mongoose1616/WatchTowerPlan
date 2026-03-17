@@ -71,6 +71,37 @@
       ]
     },
     {
+      "task_id": "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
+      "initiative_id": "initiative.watchtower_status_snapshot",
+      "trace_id": "trace.watchtower_status_snapshot",
+      "initiative_title": "WatchTower Status Snapshot",
+      "title": "Add WatchTower status snapshot flow",
+      "summary": "Add a top-level CLI path that reports workspace state and summarized work-item counts from the local .watchtower store.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/add_watchtower_status_snapshot_flow/task.json",
+      "updated_at": "2026-03-17T07:56:32Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow",
+      "initiative_id": "initiative.watchtower_status_snapshot",
+      "trace_id": "trace.watchtower_status_snapshot",
+      "initiative_title": "WatchTower Status Snapshot",
+      "title": "Validate WatchTower status snapshot flow",
+      "summary": "Cover the status command with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/validate_watchtower_status_snapshot_flow/task.json",
+      "updated_at": "2026-03-17T07:56:52Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow",
       "initiative_id": "initiative.watchtower_work_item_bootstrap",
       "trace_id": "trace.watchtower_work_item_bootstrap",
