@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_initial_implementation_bootstrap.0012_ready_for_review_marked",
+  "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
+  "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+  "sequence": 12,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T06:24:43Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {}
+}

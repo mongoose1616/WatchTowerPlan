@@ -2,9 +2,14 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from shutil import copytree, rmtree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.initiative_packages import (
+    InitiativeBootstrapParams,
+    InitiativePackageService,
+    InitiativeTaskSpec,
+)
 from watchtower_core.repo_ops.project_workspace import (
     PLAN_PROJECT_INDEX_PATH,
     PlanProjectSearchParams,
@@ -20,6 +25,20 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "plan", repo_root / "plan")
+    for path in (repo_root / "plan" / "initiatives").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
+    for path in (repo_root / "plan" / "projects").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
     (repo_root / "core" / "python").mkdir(parents=True)
     return repo_root
 
@@ -47,6 +66,23 @@ def _bootstrap_params() -> ProjectBootstrapParams:
 
 def _load_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _initiative_params() -> InitiativeBootstrapParams:
+    return InitiativeBootstrapParams(
+        trace_id="trace.watchtower_scope_flow",
+        title="WatchTower Scope Flow",
+        summary="Bootstraps one project-scoped initiative for project workspace tests.",
+        initiative_slug="watchtower_scope_flow",
+        task_specs=(
+            InitiativeTaskSpec(
+                title="Seed WatchTower scope flow",
+                summary="Creates one project-scoped initiative package.",
+                slug="seed_watchtower_scope_flow",
+            ),
+        ),
+        updated_at="2026-03-17T17:05:00Z",
+    )
 
 
 def test_project_workspace_bootstrap_writes_machine_package_views_index_and_context(
@@ -114,3 +150,46 @@ def test_project_workspace_validation_detects_stale_surfaces_until_rebuilt(
     service.sync(write=True)
     restored = service.validate("watchtower", write=False)
     assert restored.passed is True
+
+
+def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    project_service = ProjectWorkspaceService(loader)
+    initiative_service = InitiativePackageService(loader)
+
+    project_service.bootstrap(_bootstrap_params(), write=True)
+    initiative_service.bootstrap_project_scoped(
+        "watchtower",
+        _initiative_params(),
+        write=True,
+    )
+
+    initiative_path = (
+        repo_root
+        / "plan/projects/watchtower/initiatives/watchtower_scope_flow/.wt/initiative.json"
+    )
+    initiative_document = _load_json(initiative_path)
+    initiative_document["updated_at"] = "2026-03-17T17:30:00Z"
+    initiative_document["lifecycle_stage"] = "in_progress"
+    initiative_path.write_text(
+        f"{json.dumps(initiative_document, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    project_service.sync(write=True)
+
+    project_index = _load_json(repo_root / PLAN_PROJECT_INDEX_PATH)
+    project_entry = next(
+        entry
+        for entry in project_index["entries"]
+        if entry["project_id"] == "project.watchtower"
+    )
+    assert project_entry["updated_at"] == "2026-03-17T17:30:00Z"
+
+    summary_view = (repo_root / "plan/projects/watchtower/summary.md").read_text(
+        encoding="utf-8"
+    )
+    assert "`updated_at`: `2026-03-17T17:30:00Z`" in summary_view

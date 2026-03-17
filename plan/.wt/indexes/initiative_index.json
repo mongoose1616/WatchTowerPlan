@@ -71,13 +71,13 @@
       "summary": "Captures the first WatchTower project-scoped implementation package before execution starts.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "current_phase": "implementation_planning",
-      "updated_at": "2026-03-17T06:08:09Z",
-      "open_task_count": 2,
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T06:46:56Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
-      "next_action": "Start the highest-priority ready task from the initiative package.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/summary.md",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "slug": "watchtower_initial_implementation_bootstrap",
       "scope_type": "project_scoped",
@@ -85,33 +85,6 @@
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
-        "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
-          "title": "Capture WatchTower implementation boundary",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/capture_watchtower_implementation_boundary/task.json",
-          "is_actionable": true
-        },
-        {
-          "task_id": "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate",
-          "title": "Validate WatchTower readiness gate",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/validate_watchtower_readiness_gate/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary"
-          ]
-        }
       ],
       "task_ids": [
         "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",

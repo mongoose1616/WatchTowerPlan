@@ -438,3 +438,155 @@ def test_project_scoped_initiative_bootstrap_and_approval_use_project_root(
         require_approved=True,
     )
     assert final_readiness.passed is True
+
+
+def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_packages(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    _bootstrap_project(loader)
+    service = InitiativePackageService(loader)
+
+    params = InitiativeBootstrapParams(
+        trace_id="trace.watchtower_runtime_bootstrap",
+        title="WatchTower Runtime Bootstrap",
+        summary="Bootstraps one project-scoped initiative package for WatchTower.",
+        initiative_slug="watchtower_runtime_bootstrap",
+        task_specs=(
+            InitiativeTaskSpec(
+                title="Seed WatchTower project initiative",
+                summary="Creates the project-scoped initiative package.",
+                slug="seed_watchtower_project_initiative",
+            ),
+        ),
+        updated_at=UPDATED_AT,
+    )
+    service.bootstrap_project_scoped("watchtower", params, write=True)
+    service.approve_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    state_path = (
+        repo_root
+        / "plan"
+        / "projects"
+        / "watchtower"
+        / "initiatives"
+        / "watchtower_runtime_bootstrap"
+        / ".wt"
+        / "initiative.json"
+    )
+    state = _load_json(state_path)
+    state["lifecycle_stage"] = "in_progress"
+    state_path.write_text(f"{json.dumps(state, indent=2)}\n", encoding="utf-8")
+    service._sync_derived_surfaces(  # noqa: SLF001 - integration test exercises real derived sync.
+        service._project_scoped_location_for_slug(  # noqa: SLF001
+            "watchtower",
+            "watchtower_runtime_bootstrap",
+        )
+    )
+
+    readiness = service.validate_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        write=True,
+        require_approved=True,
+    )
+
+    assert readiness.passed is True
+    assert readiness.lifecycle_stage == "in_progress"
+
+    refreshed_state = _load_json(state_path)
+    assert refreshed_state["lifecycle_stage"] == "in_progress"
+    assert refreshed_state["gate_state"] == {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "approved",
+        "ready_for_execution": True,
+        "blocking_reasons": [],
+    }
+
+
+def test_project_scoped_validation_restores_in_progress_after_transient_block(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    _bootstrap_project(loader)
+    service = InitiativePackageService(loader)
+
+    params = InitiativeBootstrapParams(
+        trace_id="trace.watchtower_runtime_bootstrap",
+        title="WatchTower Runtime Bootstrap",
+        summary="Bootstraps one project-scoped initiative package for WatchTower.",
+        initiative_slug="watchtower_runtime_bootstrap",
+        task_specs=(
+            InitiativeTaskSpec(
+                title="Seed WatchTower project initiative",
+                summary="Creates the project-scoped initiative package.",
+                slug="seed_watchtower_project_initiative",
+            ),
+        ),
+        updated_at=UPDATED_AT,
+    )
+    service.bootstrap_project_scoped("watchtower", params, write=True)
+    service.approve_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    initiative_root = (
+        repo_root
+        / "plan"
+        / "projects"
+        / "watchtower"
+        / "initiatives"
+        / "watchtower_runtime_bootstrap"
+    )
+    events_root = initiative_root / ".wt" / "events"
+    execution_started_path = events_root / "0011_execution_started.json"
+    execution_started_path.write_text(
+        f"{json.dumps({
+            '$schema': 'urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1',
+            'event_id': 'event.watchtower_runtime_bootstrap.0011_execution_started',
+            'initiative_id': 'initiative.watchtower_runtime_bootstrap',
+            'trace_id': 'trace.watchtower_runtime_bootstrap',
+            'sequence': 11,
+            'event_type': 'execution_started',
+            'actor_id': 'actor.repository_maintainer',
+            'recorded_at': '2026-03-17T17:10:00Z',
+            'summary': 'Execution started for the WatchTower project-scoped initiative.',
+            'payload': {'task_id': 'task.watchtower_runtime_bootstrap.seed_watchtower_project_initiative'},
+        }, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    state_path = initiative_root / ".wt" / "initiative.json"
+    state = _load_json(state_path)
+    state["lifecycle_stage"] = "blocked"
+    state_path.write_text(f"{json.dumps(state, indent=2)}\n", encoding="utf-8")
+    service._sync_derived_surfaces(  # noqa: SLF001 - integration test exercises real derived sync.
+        service._project_scoped_location_for_slug(  # noqa: SLF001
+            "watchtower",
+            "watchtower_runtime_bootstrap",
+        )
+    )
+
+    readiness = service.validate_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        write=True,
+        require_approved=True,
+    )
+
+    assert readiness.passed is True
+    assert readiness.lifecycle_stage == "in_progress"
+
+    refreshed_state = _load_json(state_path)
+    assert refreshed_state["lifecycle_stage"] == "in_progress"

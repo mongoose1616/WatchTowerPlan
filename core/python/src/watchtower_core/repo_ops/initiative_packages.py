@@ -499,17 +499,26 @@ class InitiativePackageService:
             blocking_reasons.append("approval_pending")
 
         passed = not issues and all(result.passed for result in artifact_results)
-        lifecycle_stage = (
-            "ready_for_review"
-            if passed and not require_approved
-            else str(initiative_document["lifecycle_stage"])
-        )
-        if require_approved and passed:
-            lifecycle_stage = "ready_for_execution"
+        current_lifecycle_stage = str(initiative_document["lifecycle_stage"])
+        approval_status = str(initiative_document["gate_state"]["approval_status"])
+        lifecycle_stage = current_lifecycle_stage
+        if passed:
+            if current_lifecycle_stage in {"in_progress", "closing"}:
+                lifecycle_stage = current_lifecycle_stage
+            elif (
+                current_lifecycle_stage == "blocked"
+                and approval_status == "approved"
+                and self._has_execution_started(location)
+            ):
+                lifecycle_stage = "in_progress"
+            elif approval_status == "approved":
+                lifecycle_stage = "ready_for_execution"
+            else:
+                lifecycle_stage = "ready_for_review"
         elif issues:
             lifecycle_stage = (
                 "blocked"
-                if initiative_document["lifecycle_stage"] in {"ready_for_execution", "in_progress"}
+                if current_lifecycle_stage in {"ready_for_execution", "in_progress"}
                 else "capture_incomplete"
             )
 
@@ -530,9 +539,9 @@ class InitiativePackageService:
                     for reason in blocking_reasons
                 ),
                 "machine_valid": not issues,
-                "approval_status": initiative_document["gate_state"]["approval_status"],
+                "approval_status": approval_status,
                 "ready_for_execution": (
-                    initiative_document["gate_state"]["approval_status"] == "approved" and passed
+                    approval_status == "approved" and passed
                 ),
                 "blocking_reasons": sorted(set(blocking_reasons)),
             }
@@ -1381,6 +1390,16 @@ class InitiativePackageService:
                     or str(document.get("trace_id")) == trace_id
                 ):
                     return True
+        return False
+
+    def _has_execution_started(self, location: _InitiativeLocation) -> bool:
+        events_root = self._initiative_root(location) / ".wt" / "events"
+        if not events_root.exists():
+            return False
+        for path in sorted(events_root.glob("*.json")):
+            document = json.loads(path.read_text(encoding="utf-8"))
+            if str(document.get("event_type")) == "execution_started":
+                return True
         return False
 
     def _sync_derived_surfaces(self, location: _InitiativeLocation) -> None:

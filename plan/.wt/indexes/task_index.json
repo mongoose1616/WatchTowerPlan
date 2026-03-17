@@ -39,13 +39,16 @@
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",
       "initiative_title": "WatchTower Initial Implementation Bootstrap",
       "title": "Capture WatchTower implementation boundary",
-      "summary": "Record the first bounded WatchTower implementation slice under the project container.",
-      "status": "ready",
+      "summary": "Bootstrap /home/j/WatchTower with root guidance, a Python workspace, and a minimal operator-facing CLI shell.",
+      "status": "completed",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/capture_watchtower_implementation_boundary/task.json",
-      "updated_at": "2026-03-17T06:08:09Z",
-      "project_id": "project.watchtower"
+      "updated_at": "2026-03-17T06:24:50Z",
+      "project_id": "project.watchtower",
+      "related_ids": [
+        "project.watchtower"
+      ]
     },
     {
       "task_id": "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate",
@@ -53,15 +56,18 @@
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",
       "initiative_title": "WatchTower Initial Implementation Bootstrap",
       "title": "Validate WatchTower readiness gate",
-      "summary": "Prove the WatchTower project-scoped package reaches ready_for_execution cleanly.",
-      "status": "planned",
+      "summary": "Validate the bootstrap repo and keep the WatchTower project-scoped package execution-ready after the first slice lands.",
+      "status": "completed",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/validate_watchtower_readiness_gate/task.json",
-      "updated_at": "2026-03-17T06:08:09Z",
+      "updated_at": "2026-03-17T06:42:14Z",
       "project_id": "project.watchtower",
       "depends_on": [
         "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary"
+      ],
+      "related_ids": [
+        "project.watchtower"
       ]
     }
   ]

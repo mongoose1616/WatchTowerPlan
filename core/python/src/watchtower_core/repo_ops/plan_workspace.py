@@ -1188,12 +1188,12 @@ def _next_action(
 ) -> str:
     if readiness.blocking_reasons:
         return "Resolve blocking reasons and rebuild derived surfaces before execution."
+    if snapshot.initiative_document["lifecycle_stage"] == "closing":
+        return "Finalize closeout, evidence, and promotion decisions."
     if readiness.review_status != "approved" and not readiness.ready_for_execution:
         return "Review and approve the initiative package for execution."
     if readiness.ready_for_execution:
         return "Start the highest-priority ready task from the initiative package."
-    if snapshot.initiative_document["lifecycle_stage"] == "closing":
-        return "Finalize closeout, evidence, and promotion decisions."
     return "Keep initiative-local task state current before opening follow-up work."
 
 
@@ -1203,6 +1203,8 @@ def _next_surface_path(
 ) -> str:
     if readiness.blocking_reasons:
         return f"{snapshot.initiative_root}/progress.md"
+    if snapshot.initiative_document["lifecycle_stage"] == "closing":
+        return f"{snapshot.initiative_root}/summary.md"
     if readiness.ready_for_execution:
         return f"{snapshot.initiative_root}/plan.md"
     return f"{snapshot.initiative_root}/progress.md"

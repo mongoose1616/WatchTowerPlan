@@ -4,14 +4,16 @@
   "slug": "capture_watchtower_implementation_boundary",
   "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
   "title": "Capture WatchTower implementation boundary",
-  "summary": "Record the first bounded WatchTower implementation slice under the project container.",
-  "status": "ready",
+  "summary": "Bootstrap /home/j/WatchTower with root guidance, a Python workspace, and a minimal operator-facing CLI shell.",
+  "status": "completed",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-17T06:01:17Z",
-  "updated_at": "2026-03-17T06:08:09Z",
+  "updated_at": "2026-03-17T06:24:50Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [
+    "project.watchtower"
+  ]
 }

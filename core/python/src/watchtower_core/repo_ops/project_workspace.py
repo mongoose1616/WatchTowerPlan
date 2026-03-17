@@ -511,9 +511,7 @@ class ProjectWorkspaceService:
         self,
         snapshots: tuple[_ProjectSnapshot, ...],
     ) -> dict[str, object]:
-        updated_at = _latest_timestamp(
-            str(snapshot.project_document["updated_at"]) for snapshot in snapshots
-        )
+        updated_at = _latest_timestamp(_snapshot_updated_at(snapshot) for snapshot in snapshots)
         project_entries = tuple(
             sorted(
                 (self._build_project_entry(snapshot) for snapshot in snapshots),
@@ -568,7 +566,7 @@ class ProjectWorkspaceService:
             repository_locators=tuple(
                 str(entry["repository_locator"]) for entry in repositories
             ),
-            updated_at=str(project["updated_at"]),
+            updated_at=_snapshot_updated_at(snapshot),
         )
 
     def _render_project_views(
@@ -638,7 +636,7 @@ class ProjectWorkspaceService:
                     f"- `repository_count`: `{len(repositories)}`",
                     f"- `active_initiative_count`: `{active_initiative_count}`",
                     f"- `blocked_initiative_count`: `{blocked_initiative_count}`",
-                    f"- `updated_at`: `{project['updated_at']}`",
+                    f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
                     "",
                     "## Child Initiatives",
                     initiative_lines,
@@ -728,6 +726,21 @@ class ProjectWorkspaceService:
 def _latest_timestamp(values: object) -> str:
     normalized = [value for value in values if isinstance(value, str) and value]
     return max(normalized, default=utc_timestamp_now())
+
+
+def _snapshot_updated_at(snapshot: _ProjectSnapshot) -> str:
+    documents = (snapshot.project_document, *snapshot.child_initiatives)
+    return _latest_timestamp(_document_updated_at(document) for document in documents)
+
+
+def _document_updated_at(document: dict[str, object]) -> str:
+    updated_at = document.get("updated_at")
+    if isinstance(updated_at, str) and updated_at:
+        return updated_at
+    created_at = document.get("created_at")
+    if isinstance(created_at, str) and created_at:
+        return created_at
+    return ""
 
 
 def _search_project_entries(

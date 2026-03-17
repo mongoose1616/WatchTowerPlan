@@ -393,3 +393,61 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
         repo_root / "plan/initiatives/workspace_delta/summary.md"
     ).read_text(encoding="utf-8")
     assert "`updated_at`: `2026-03-17T16:30:00Z`" in summary_view
+
+
+def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_epsilon",
+            title="Workspace Epsilon",
+            updated_at="2026-03-17T17:00:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_epsilon",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    initiative_root = repo_root / "plan/initiatives/workspace_epsilon/.wt"
+    for slug in ("seed_contracts", "validate_gate"):
+        task_path = initiative_root / "tasks" / slug / "task.json"
+        task_document = _load_json(task_path)
+        task_document["status"] = "completed"
+        task_document["updated_at"] = "2026-03-17T17:10:00Z"
+        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
+    initiative_path = initiative_root / "initiative.json"
+    initiative_document = _load_json(initiative_path)
+    initiative_document["lifecycle_stage"] = "closing"
+    initiative_document["updated_at"] = "2026-03-17T17:10:00Z"
+    initiative_path.write_text(f"{json.dumps(initiative_document, indent=2)}\n", encoding="utf-8")
+
+    sync_result = workspace_service.sync(write=True)
+
+    assert sync_result.wrote is True
+
+    initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
+    initiative_entry = next(
+        entry
+        for entry in initiative_index["entries"]
+        if entry["initiative_id"] == "initiative.workspace_epsilon"
+    )
+    assert initiative_entry["current_phase"] == "closeout"
+    assert initiative_entry["open_task_count"] == 0
+    assert initiative_entry["next_action"] == "Finalize closeout, evidence, and promotion decisions."
+    assert initiative_entry["next_surface_path"] == "plan/initiatives/workspace_epsilon/summary.md"
+
+    coordination_index = _load_json(repo_root / PLAN_COORDINATION_INDEX_PATH)
+    assert all(
+        task["trace_id"] != "trace.workspace_epsilon"
+        for task in coordination_index["actionable_tasks"]
+    )
