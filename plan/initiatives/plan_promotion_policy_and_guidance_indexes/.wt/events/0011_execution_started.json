@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_promotion_policy_and_guidance_indexes.0011_execution_started",
+  "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+  "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+  "sequence": 11,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T15:50:00Z",
+  "summary": "Execution started for the promotion policy and guidance index slice.",
+  "payload": {}
+}

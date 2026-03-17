@@ -212,6 +212,52 @@
       ]
     },
     {
+      "task_id": "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "initiative_title": "Plan Promotion Policy and Guidance Indexes",
+      "title": "Build promotion and guidance index runtime",
+      "summary": "Aggregate initiative-local promotion records and approved plan guidance into derived plan/.wt index surfaces.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/build_promotion_and_guidance_index_runtime/task.json",
+      "updated_at": "2026-03-17T20:10:00Z",
+      "depends_on": [
+        "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry"
+      ]
+    },
+    {
+      "task_id": "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "initiative_title": "Plan Promotion Policy and Guidance Indexes",
+      "title": "Publish promotion policy schema and registry",
+      "summary": "Add the governed promotion-policy registry contract and seed the initial plan-pack promotion policy entries.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/publish_promotion_policy_schema_and_registry/task.json",
+      "updated_at": "2026-03-17T20:05:00Z"
+    },
+    {
+      "task_id": "task.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "initiative_title": "Plan Promotion Policy and Guidance Indexes",
+      "title": "Validate promotion and guidance lookup",
+      "summary": "Add validation coverage proving the new promotion policy registry and aggregate indexes stay aligned with live promotion records and plan/docs guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/validate_promotion_and_guidance_lookup/task.json",
+      "updated_at": "2026-03-17T20:16:00Z",
+      "depends_on": [
+        "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry",
+        "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime"
+      ]
+    },
+    {
       "task_id": "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",

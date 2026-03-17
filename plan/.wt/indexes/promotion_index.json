@@ -1,0 +1,421 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:promotion-index:v1",
+  "id": "index.promotions",
+  "title": "Plan Workspace Promotion Index",
+  "status": "active",
+  "updated_at": "2026-03-17T20:20:00Z",
+  "entries": [
+    {
+      "promotion_id": "promotion.plan_duplicated_foundations_corpus_bootstrap.bootstrap_shell",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "initiative_title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/initiative_brief.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/design_record.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/implementation_slice.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:44:57Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_entrypoint_cutover_proof.bootstrap_shell",
+      "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+      "trace_id": "trace.plan_entrypoint_cutover_proof",
+      "initiative_title": "Plan Entrypoint Cutover Proof",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_entrypoint_cutover_proof",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_entrypoint_cutover_proof/initiative_brief.md",
+        "plan/initiatives/plan_entrypoint_cutover_proof/design_record.md",
+        "plan/initiatives/plan_entrypoint_cutover_proof/implementation_slice.md",
+        "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:09Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_human_surface_policy_and_core_root_seeding.bootstrap_shell",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "initiative_title": "Plan Human Surface Policy and Core Root Seeding",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:10Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_legacy_history_retention_reconciliation.bootstrap_shell",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "initiative_title": "Plan Legacy History and Retention Reconciliation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_legacy_history_retention_reconciliation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/design_record.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/implementation_slice.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:10Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_project_context_runtime_standardization.bootstrap_shell",
+      "initiative_id": "initiative.plan_project_context_runtime_standardization",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "initiative_title": "Plan Project Context Runtime Standardization",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_project_context_runtime_standardization",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_project_context_runtime_standardization/initiative_brief.md",
+        "plan/initiatives/plan_project_context_runtime_standardization/design_record.md",
+        "plan/initiatives/plan_project_context_runtime_standardization/implementation_slice.md",
+        "plan/initiatives/plan_project_context_runtime_standardization/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T18:58:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_promotion_policy_and_guidance_indexes.bootstrap_shell",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "initiative_title": "Plan Promotion Policy and Guidance Indexes",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_promotion_policy_and_guidance_indexes",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/initiative_brief.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/design_record.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/implementation_slice.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T20:20:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_terminal_initiative_closeout_runtime.bootstrap_shell",
+      "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "initiative_title": "Plan Terminal Initiative Closeout Runtime",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_terminal_initiative_closeout_runtime",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/initiative_brief.md",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/design_record.md",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/implementation_slice.md",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:11Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_initial_implementation_bootstrap.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "initiative_title": "WatchTower Initial Implementation Bootstrap",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:13Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_next_work_selection.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_next_work_selection",
+      "trace_id": "trace.watchtower_next_work_selection",
+      "initiative_title": "WatchTower Next Work Selection",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_next_work_selection",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:24Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_status_snapshot.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_status_snapshot",
+      "trace_id": "trace.watchtower_status_snapshot",
+      "initiative_title": "WatchTower Status Snapshot",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_status_snapshot",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:20Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_work_item_begin_flow.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "initiative_title": "WatchTower Work Item Begin Flow",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:26Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_work_item_bootstrap.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_work_item_bootstrap",
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "initiative_title": "WatchTower Work Item Bootstrap",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:17Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_work_item_lifecycle.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "initiative_title": "WatchTower Work Item Lifecycle",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:18Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_work_item_notes.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_work_item_notes",
+      "trace_id": "trace.watchtower_work_item_notes",
+      "initiative_title": "WatchTower Work Item Notes",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_notes",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:22Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.watchtower_workspace_init_bootstrap.bootstrap_shell",
+      "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "initiative_title": "WatchTower Workspace Init Bootstrap",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T15:06:15Z",
+      "project_id": "project.watchtower",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    }
+  ]
+}

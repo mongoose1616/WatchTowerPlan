@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1",
+  "id": "registry.promotion_policy",
+  "title": "Plan Promotion Policy Registry",
+  "status": "active",
+  "entries": [
+    {
+      "policy_id": "policy.promotion.plan_reference",
+      "entry_status": "active",
+      "source_artifact_kinds": [
+        "initiative_brief",
+        "implementation_slice",
+        "decision_notes"
+      ],
+      "target_family": "reference",
+      "target_root": "plan/docs/references",
+      "required_review_path": "repository_maintainer_review",
+      "provenance_requirements": [
+        "initiative_id",
+        "trace_id",
+        "evidence_id"
+      ],
+      "mirror_update_mode": "none",
+      "notes": "Use for durable plan-domain references extracted from bounded initiative work."
+    },
+    {
+      "policy_id": "policy.promotion.plan_decision_record",
+      "entry_status": "active",
+      "source_artifact_kinds": [
+        "design_record",
+        "decision_notes"
+      ],
+      "target_family": "decision_record",
+      "target_root": "plan/docs/decisions",
+      "required_review_path": "repository_maintainer_review",
+      "provenance_requirements": [
+        "initiative_id",
+        "trace_id",
+        "evidence_id"
+      ],
+      "mirror_update_mode": "none",
+      "notes": "Use for accepted technical or planning decisions promoted out of initiative-local design records."
+    },
+    {
+      "policy_id": "policy.promotion.plan_pattern",
+      "entry_status": "active",
+      "source_artifact_kinds": [
+        "design_record",
+        "implementation_slice",
+        "decision_notes"
+      ],
+      "target_family": "pattern",
+      "target_root": "plan/docs/patterns",
+      "required_review_path": "repository_maintainer_review",
+      "provenance_requirements": [
+        "initiative_id",
+        "trace_id",
+        "evidence_id"
+      ],
+      "mirror_update_mode": "none",
+      "notes": "Use for reusable plan-domain execution and coordination patterns proven by initiative evidence."
+    },
+    {
+      "policy_id": "policy.promotion.plan_standard",
+      "entry_status": "active",
+      "source_artifact_kinds": [
+        "implementation_slice",
+        "decision_notes"
+      ],
+      "target_family": "standard",
+      "target_root": "plan/docs/standards",
+      "required_review_path": "repository_maintainer_review",
+      "provenance_requirements": [
+        "initiative_id",
+        "trace_id",
+        "evidence_id"
+      ],
+      "mirror_update_mode": "none",
+      "notes": "Use for durable operational standards that outlive one initiative package."
+    },
+    {
+      "policy_id": "policy.promotion.shared_foundation",
+      "entry_status": "active",
+      "source_artifact_kinds": [
+        "initiative_brief",
+        "design_record",
+        "implementation_slice",
+        "decision_notes"
+      ],
+      "target_family": "foundation",
+      "target_root": "plan/docs/foundations",
+      "required_review_path": "repository_maintainer_review",
+      "provenance_requirements": [
+        "initiative_id",
+        "trace_id",
+        "evidence_id"
+      ],
+      "mirror_update_mode": "same_change_set",
+      "mirror_roots": [
+        "core/docs/foundations",
+        "plan/docs/foundations"
+      ],
+      "notes": "Use when promoted guidance becomes shared foundational context and both duplicated foundations roots must update together."
+    }
+  ],
+  "notes": "This registry encodes the first live promotion policy required by requirements.md: initiative-local outputs may become durable plan guidance only through governed target families, required review, provenance capture, and mirror-update rules."
+}

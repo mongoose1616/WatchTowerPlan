@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_promotion_policy_and_guidance_indexes.0012_closing_started",
+  "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+  "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T20:17:00Z",
+  "summary": "Closeout started after the promotion policy and guidance index slice completed its bounded work.",
+  "payload": {}
+}

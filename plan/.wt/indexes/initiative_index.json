@@ -189,6 +189,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "title": "Plan Promotion Policy and Guidance Indexes",
+      "summary": "Adds the missing promotion policy registry and pack-level promotion and guidance indexes so initiative-local promotion records and approved plan guidance are machine-queryable under plan/.wt.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T20:20:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/progress.md",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "slug": "plan_promotion_policy_and_guidance_indexes",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry",
+        "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime",
+        "task.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup"
+      ],
+      "evidence_ids": [
+        "evidence.plan_promotion_policy_and_guidance_indexes.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T20:20:00Z",
+      "closure_reason": "Delivered the promotion policy registry and plan guidance lookup indexes.",
+      "related_paths": [
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/initiative_brief.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/design_record.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/implementation_slice.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
       "title": "Plan Terminal Initiative Closeout Runtime",
       "summary": "Adds the live terminal closeout mutation path for pack-wide and project-scoped initiative packages so closing initiatives can move into completed, superseded, or cancelled and the coordination surfaces can show recent closeouts instead of stuck active work.",

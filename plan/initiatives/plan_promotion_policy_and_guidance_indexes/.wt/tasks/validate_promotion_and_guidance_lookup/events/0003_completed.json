@@ -1,0 +1,14 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup.0003_completed",
+  "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+  "task_id": "task.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup",
+  "sequence": 3,
+  "event_type": "completed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T20:16:00Z",
+  "summary": "Completed validation coverage for promotion and guidance lookup.",
+  "payload": {
+    "status": "completed"
+  }
+}

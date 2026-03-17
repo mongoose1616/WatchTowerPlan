@@ -115,6 +115,36 @@
       "canonical_path": "plan/.wt/schemas/artifacts/guidance_promotion_record.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1",
+      "title": "Promotion Policy Registry",
+      "description": "Schema for the plan-pack promotion policy registry covering extracted guidance review and mirror-update rules.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "promotion_policy_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/promotion_policy_registry.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:promotion-index:v1",
+      "title": "Plan Promotion Index",
+      "description": "Schema for the plan-pack promotion index built from initiative-local guidance-promotion records.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_promotion_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/promotion_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:guidance-index:v1",
+      "title": "Plan Guidance Index",
+      "description": "Schema for the plan-pack guidance index built from governed plan/docs guidance records.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_guidance_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/guidance_index.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
       "title": "Project Record",
       "description": "Schema for the authoritative current-state snapshot of one project container.",

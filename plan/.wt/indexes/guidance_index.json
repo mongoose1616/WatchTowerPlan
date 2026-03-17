@@ -1,0 +1,137 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-index:v1",
+  "id": "index.guidance",
+  "title": "Plan Workspace Guidance Index",
+  "status": "active",
+  "updated_at": "2026-03-17T20:20:00Z",
+  "entries": [
+    {
+      "guidance_id": "foundation.customer_story",
+      "title": "Customer Story",
+      "summary": "Provides supporting future-state product narrative for the intended WatchTower operator experience.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/customer_story.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "supporting",
+      "tags": [
+        "foundation",
+        "product_narrative"
+      ],
+      "applies_to": [
+        "docs/foundations/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "guidance_id": "foundation.engineering_design_principles",
+      "title": "Engineering Design Principles",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/engineering_design_principles.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "foundation",
+        "design_philosophy"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/modules/",
+        "docs/standards/"
+      ]
+    },
+    {
+      "guidance_id": "foundation.engineering_stack_direction",
+      "title": "Engineering Stack Direction",
+      "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/engineering_stack_direction.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "foundation",
+        "technology_stack"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/standards/"
+      ]
+    },
+    {
+      "guidance_id": "foundation.product_direction",
+      "title": "Product Direction",
+      "summary": "Defines the intended future WatchTower product shape and how that future direction relates to the current repository boundary.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/product_direction.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "foundation",
+        "product"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ]
+    },
+    {
+      "guidance_id": "foundation.repository_scope",
+      "title": "Repository Scope",
+      "summary": "Defines the current repository charter, ownership boundary, and the relationship between WatchTowerPlan and future WatchTower product implementation.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/repository_scope.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "foundation",
+        "scope",
+        "repository_charter"
+      ],
+      "applies_to": [
+        "README.md",
+        "docs/",
+        "workflows/",
+        "core/"
+      ]
+    },
+    {
+      "guidance_id": "foundation.repository_standards_posture",
+      "title": "Repository Standards Posture",
+      "summary": "Explains the repository-wide standards posture, authority model, and why governed standards matter.",
+      "guidance_family": "foundation",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/foundations/repository_standards_posture.md",
+      "updated_at": "2026-03-16T06:28:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "foundation",
+        "standards"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ]
+    }
+  ]
+}

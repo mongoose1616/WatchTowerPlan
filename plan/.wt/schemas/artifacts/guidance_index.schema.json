@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:guidance-index:v1",
+  "title": "Plan Guidance Index",
+  "description": "Schema for the pack-level guidance index built from governed plan/docs guidance documents.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "updated_at", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:guidance-index:v1"
+    },
+    "id": {
+      "const": "index.guidance"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/guidanceEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "guidanceEntry": {
+      "type": "object",
+      "required": [
+        "guidance_id",
+        "title",
+        "summary",
+        "guidance_family",
+        "status",
+        "owner",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "guidance_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guidance_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_path": {
+          "type": "string",
+          "pattern": "^plan/docs/.+\\.md$"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "audience": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T19:21:00Z",
+  "updated_at": "2026-03-17T20:20:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "title": "Plan Promotion Policy and Guidance Indexes",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T20:20:00Z",
+      "key_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/plan.md",
+      "closure_reason": "Delivered the promotion policy registry and plan guidance lookup indexes."
+    },
     {
       "trace_id": "trace.plan_project_context_runtime_standardization",
       "title": "Plan Project Context Runtime Standardization",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:15Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/plan.md",
       "closure_reason": "Delivered the local-first WatchTower workspace init flow."
-    },
-    {
-      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
-      "title": "WatchTower Initial Implementation Bootstrap",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:13Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
-      "closure_reason": "Delivered the first WatchTower implementation bootstrap package and boundary capture."
     }
   ]
 }

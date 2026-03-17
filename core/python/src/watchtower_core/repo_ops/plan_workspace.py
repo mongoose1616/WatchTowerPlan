@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.adapters.front_matter import FrontMatterParseError, load_front_matter
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     CoordinationIndex,
@@ -31,6 +32,8 @@ PLAN_INITIATIVE_INDEX_PATH = "plan/.wt/indexes/initiative_index.json"
 PLAN_TASK_INDEX_PATH = "plan/.wt/indexes/task_index.json"
 PLAN_READINESS_INDEX_PATH = "plan/.wt/indexes/readiness_index.json"
 PLAN_DISCREPANCY_INDEX_PATH = "plan/.wt/indexes/discrepancy_index.json"
+PLAN_PROMOTION_INDEX_PATH = "plan/.wt/indexes/promotion_index.json"
+PLAN_GUIDANCE_INDEX_PATH = "plan/.wt/indexes/guidance_index.json"
 PLAN_COORDINATION_INDEX_PATH = "plan/.wt/indexes/coordination_index.json"
 PLAN_OVERVIEW_PATH = "plan/plan_overview.md"
 
@@ -201,6 +204,98 @@ class PlanDiscrepancyIndexEntry:
 
 
 @dataclass(frozen=True, slots=True)
+class PlanPromotionIndexEntry:
+    """Machine-readable promotion-summary entry for one initiative-local record."""
+
+    promotion_id: str
+    initiative_id: str
+    project_id: str | None
+    trace_id: str
+    initiative_title: str
+    title: str
+    status: str
+    initiative_root: str
+    candidate_count: int
+    candidate_paths: tuple[str, ...]
+    target_families: tuple[str, ...]
+    review_paths: tuple[str, ...]
+    updated_at: str
+    provenance_expectations: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, object]) -> PlanPromotionIndexEntry:
+        return cls(
+            promotion_id=str(document["promotion_id"]),
+            initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
+            trace_id=str(document["trace_id"]),
+            initiative_title=str(document["initiative_title"]),
+            title=str(document["title"]),
+            status=str(document["status"]),
+            initiative_root=str(document["initiative_root"]),
+            candidate_count=int(document["candidate_count"]),
+            candidate_paths=tuple(document["candidate_paths"]),
+            target_families=tuple(document["target_families"]),
+            review_paths=tuple(document["review_paths"]),
+            updated_at=str(document["updated_at"]),
+            provenance_expectations=tuple(document.get("provenance_expectations", ())),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PlanGuidanceIndexEntry:
+    """Machine-readable plan-guidance summary entry for one promoted document."""
+
+    guidance_id: str
+    title: str
+    summary: str
+    guidance_family: str
+    status: str
+    owner: str
+    doc_path: str
+    updated_at: str
+    trace_id: str | None = None
+    audience: str | None = None
+    authority: str | None = None
+    tags: tuple[str, ...] = ()
+    applies_to: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, object]) -> PlanGuidanceIndexEntry:
+        return cls(
+            guidance_id=str(document["guidance_id"]),
+            title=str(document["title"]),
+            summary=str(document["summary"]),
+            guidance_family=str(document["guidance_family"]),
+            status=str(document["status"]),
+            owner=str(document["owner"]),
+            doc_path=str(document["doc_path"]),
+            updated_at=str(document["updated_at"]),
+            trace_id=(
+                str(document["trace_id"])
+                if document.get("trace_id") is not None
+                else None
+            ),
+            audience=(
+                str(document["audience"])
+                if document.get("audience") is not None
+                else None
+            ),
+            authority=(
+                str(document["authority"])
+                if document.get("authority") is not None
+                else None
+            ),
+            tags=tuple(document.get("tags", ())),
+            applies_to=tuple(document.get("applies_to", ())),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class PlanTaskSearchParams:
     """Structured task lookup filters for plan-workspace task summaries."""
 
@@ -295,6 +390,8 @@ class PlanWorkspaceService:
             self._write_json(PLAN_TASK_INDEX_PATH, documents["task_index"])
             self._write_json(PLAN_READINESS_INDEX_PATH, documents["readiness_index"])
             self._write_json(PLAN_DISCREPANCY_INDEX_PATH, documents["discrepancy_index"])
+            self._write_json(PLAN_PROMOTION_INDEX_PATH, documents["promotion_index"])
+            self._write_json(PLAN_GUIDANCE_INDEX_PATH, documents["guidance_index"])
             self._write_json(PLAN_COORDINATION_INDEX_PATH, documents["coordination_index"])
             self._write_markdown(PLAN_OVERVIEW_PATH, str(documents["plan_overview"]))
             for relative_path, content in documents["initiative_views"].items():
@@ -338,6 +435,8 @@ class PlanWorkspaceService:
             PLAN_TASK_INDEX_PATH: documents["task_index"],
             PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
             PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+            PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
+            PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
             PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
         }
 
@@ -439,6 +538,14 @@ class PlanWorkspaceService:
         document = self._load_plan_json(PLAN_DISCREPANCY_INDEX_PATH)
         return tuple(PlanDiscrepancyIndexEntry.from_document(entry) for entry in document["entries"])
 
+    def load_promotion_entries(self) -> tuple[PlanPromotionIndexEntry, ...]:
+        document = self._load_plan_json(PLAN_PROMOTION_INDEX_PATH)
+        return tuple(PlanPromotionIndexEntry.from_document(entry) for entry in document["entries"])
+
+    def load_guidance_entries(self) -> tuple[PlanGuidanceIndexEntry, ...]:
+        document = self._load_plan_json(PLAN_GUIDANCE_INDEX_PATH)
+        return tuple(PlanGuidanceIndexEntry.from_document(entry) for entry in document["entries"])
+
     def search_initiatives(
         self,
         filters: RenderedSearchFilters,
@@ -529,6 +636,22 @@ class PlanWorkspaceService:
                 key=lambda entry: entry.discrepancy_id,
             )
         )
+        promotion_entries = tuple(
+            sorted(
+                (
+                    entry
+                    for snapshot in snapshots
+                    for entry in self._build_promotion_entries(snapshot)
+                ),
+                key=lambda entry: entry.promotion_id,
+            )
+        )
+        guidance_entries = tuple(
+            sorted(
+                self._build_guidance_entries(),
+                key=lambda entry: entry.doc_path,
+            )
+        )
         initiative_index = {
             "$schema": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
             "id": "index.initiatives",
@@ -564,6 +687,26 @@ class PlanWorkspaceService:
             ),
             "entries": [self._serialize_discrepancy_entry(entry) for entry in discrepancy_entries],
         }
+        promotion_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:promotion-index:v1",
+            "id": "index.promotions",
+            "title": "Plan Workspace Promotion Index",
+            "status": "active",
+            "updated_at": _latest_timestamp(
+                [*(entry.updated_at for entry in promotion_entries), workspace_updated_at]
+            ),
+            "entries": [self._serialize_promotion_entry(entry) for entry in promotion_entries],
+        }
+        guidance_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:guidance-index:v1",
+            "id": "index.guidance",
+            "title": "Plan Workspace Guidance Index",
+            "status": "active",
+            "updated_at": _latest_timestamp(
+                [*(entry.updated_at for entry in guidance_entries), workspace_updated_at]
+            ),
+            "entries": [self._serialize_guidance_entry(entry) for entry in guidance_entries],
+        }
 
         pack_loader = self._pack_loader()
         for document in (
@@ -572,6 +715,8 @@ class PlanWorkspaceService:
             task_index,
             readiness_index,
             discrepancy_index,
+            promotion_index,
+            guidance_index,
         ):
             pack_loader.schema_store.validate_instance(document)
 
@@ -581,6 +726,8 @@ class PlanWorkspaceService:
             "task_index": task_index,
             "readiness_index": readiness_index,
             "discrepancy_index": discrepancy_index,
+            "promotion_index": promotion_index,
+            "guidance_index": guidance_index,
             "plan_overview": self._render_plan_overview(coordination_index),
             "initiative_views": self._render_initiative_views(snapshots),
         }
@@ -732,6 +879,141 @@ class PlanWorkspaceService:
             )
             for document in snapshot.discrepancy_documents
         )
+
+    def _build_promotion_entries(
+        self,
+        snapshot: _PlanInitiativeSnapshot,
+    ) -> tuple[PlanPromotionIndexEntry, ...]:
+        initiative = snapshot.initiative_document
+        return tuple(
+            PlanPromotionIndexEntry(
+                promotion_id=str(document["id"]),
+                initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
+                trace_id=str(initiative["trace_id"]),
+                initiative_title=str(initiative["title"]),
+                title=str(document["title"]),
+                status=str(document["status"]),
+                initiative_root=snapshot.initiative_root,
+                candidate_count=len(document["candidates"]),
+                candidate_paths=tuple(
+                    str(candidate["candidate_path"]) for candidate in document["candidates"]
+                ),
+                target_families=tuple(
+                    sorted(
+                        {
+                            str(candidate["target_family"])
+                            for candidate in document["candidates"]
+                        }
+                    )
+                ),
+                review_paths=tuple(
+                    sorted(
+                        {
+                            str(candidate["review_path"])
+                            for candidate in document["candidates"]
+                        }
+                    )
+                ),
+                updated_at=str(document["updated_at"]),
+                provenance_expectations=tuple(
+                    sorted(
+                        {
+                            str(candidate["provenance_expectation"])
+                            for candidate in document["candidates"]
+                        }
+                    )
+                ),
+            )
+            for document in snapshot.promotion_documents
+        )
+
+    def _build_guidance_entries(self) -> tuple[PlanGuidanceIndexEntry, ...]:
+        entries: list[PlanGuidanceIndexEntry] = []
+        docs_root = self._loader.repo_root / "plan" / "docs"
+        if not docs_root.exists():
+            return ()
+        for path in sorted(docs_root.rglob("*.md")):
+            if path.name in {"README.md", "AGENTS.md"}:
+                continue
+            relative_path = path.relative_to(self._loader.repo_root).as_posix()
+            try:
+                front_matter = load_front_matter(path)
+            except FrontMatterParseError as exc:
+                raise ValueError(
+                    f"{relative_path} must carry governed front matter for guidance indexing: {exc.message}"
+                ) from exc
+            guidance_id = front_matter.get("id")
+            title = front_matter.get("title")
+            summary = front_matter.get("summary")
+            guidance_family = front_matter.get("type")
+            status = front_matter.get("status")
+            owner = front_matter.get("owner")
+            updated_at = front_matter.get("updated_at")
+            required_fields = {
+                "id": guidance_id,
+                "title": title,
+                "summary": summary,
+                "type": guidance_family,
+                "status": status,
+                "owner": owner,
+                "updated_at": updated_at,
+            }
+            missing_fields = [
+                field_name
+                for field_name, value in required_fields.items()
+                if not isinstance(value, str) or not value
+            ]
+            if missing_fields:
+                joined = ", ".join(missing_fields)
+                raise ValueError(
+                    f"{relative_path} is missing required guidance-index front matter fields: {joined}"
+                )
+            entries.append(
+                PlanGuidanceIndexEntry(
+                    guidance_id=str(guidance_id),
+                    title=str(title),
+                    summary=str(summary),
+                    guidance_family=str(guidance_family),
+                    status=str(status),
+                    owner=str(owner),
+                    doc_path=relative_path,
+                    updated_at=str(updated_at),
+                    trace_id=(
+                        str(front_matter["trace_id"])
+                        if isinstance(front_matter.get("trace_id"), str)
+                        and front_matter.get("trace_id")
+                        else None
+                    ),
+                    audience=(
+                        str(front_matter["audience"])
+                        if isinstance(front_matter.get("audience"), str)
+                        and front_matter.get("audience")
+                        else None
+                    ),
+                    authority=(
+                        str(front_matter["authority"])
+                        if isinstance(front_matter.get("authority"), str)
+                        and front_matter.get("authority")
+                        else None
+                    ),
+                    tags=tuple(
+                        value
+                        for value in front_matter.get("tags", ())
+                        if isinstance(value, str) and value
+                    ),
+                    applies_to=tuple(
+                        value
+                        for value in front_matter.get("applies_to", ())
+                        if isinstance(value, str) and value
+                    ),
+                )
+            )
+        return tuple(entries)
 
     def _build_active_task_summary(
         self,
@@ -1209,6 +1491,50 @@ class PlanWorkspaceService:
             "source_paths": list(entry.source_paths),
             "updated_at": entry.updated_at,
         }
+
+    def _serialize_promotion_entry(self, entry: PlanPromotionIndexEntry) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "promotion_id": entry.promotion_id,
+            "initiative_id": entry.initiative_id,
+            "trace_id": entry.trace_id,
+            "initiative_title": entry.initiative_title,
+            "title": entry.title,
+            "status": entry.status,
+            "initiative_root": entry.initiative_root,
+            "candidate_count": entry.candidate_count,
+            "candidate_paths": list(entry.candidate_paths),
+            "target_families": list(entry.target_families),
+            "review_paths": list(entry.review_paths),
+            "updated_at": entry.updated_at,
+        }
+        if entry.project_id is not None:
+            payload["project_id"] = entry.project_id
+        if entry.provenance_expectations:
+            payload["provenance_expectations"] = list(entry.provenance_expectations)
+        return payload
+
+    def _serialize_guidance_entry(self, entry: PlanGuidanceIndexEntry) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "guidance_id": entry.guidance_id,
+            "title": entry.title,
+            "summary": entry.summary,
+            "guidance_family": entry.guidance_family,
+            "status": entry.status,
+            "owner": entry.owner,
+            "doc_path": entry.doc_path,
+            "updated_at": entry.updated_at,
+        }
+        if entry.trace_id is not None:
+            payload["trace_id"] = entry.trace_id
+        if entry.audience is not None:
+            payload["audience"] = entry.audience
+        if entry.authority is not None:
+            payload["authority"] = entry.authority
+        if entry.tags:
+            payload["tags"] = list(entry.tags)
+        if entry.applies_to:
+            payload["applies_to"] = list(entry.applies_to)
+        return payload
 
 
 def _task_status_for_id(

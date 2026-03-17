@@ -13,6 +13,7 @@
 - None.
 
 ## Recent Closeouts
+- `trace.plan_promotion_policy_and_guidance_indexes`: Plan Promotion Policy and Guidance Indexes (`completed` at `2026-03-17T20:20:00Z`) - Delivered the promotion policy registry and plan guidance lookup indexes.
 - `trace.plan_project_context_runtime_standardization`: Plan Project Context Runtime Standardization (`completed` at `2026-03-17T18:58:00Z`) - Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views.
 - `trace.plan_duplicated_foundations_corpus_bootstrap`: Plan Duplicated Foundations Corpus Bootstrap (`completed` at `2026-03-17T15:44:57Z`) - Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots.
 - `trace.watchtower_work_item_begin_flow`: WatchTower Work Item Begin Flow (`completed` at `2026-03-17T15:06:26Z`) - Delivered the local-first WatchTower work-item begin flow.
@@ -22,4 +23,3 @@
 - `trace.watchtower_work_item_lifecycle`: WatchTower Work Item Lifecycle (`completed` at `2026-03-17T15:06:18Z`) - Delivered the WatchTower work-item inspection and completion flows.
 - `trace.watchtower_work_item_bootstrap`: WatchTower Work Item Bootstrap (`completed` at `2026-03-17T15:06:17Z`) - Delivered the local-first WatchTower work-item bootstrap flow.
 - `trace.watchtower_workspace_init_bootstrap`: WatchTower Workspace Init Bootstrap (`completed` at `2026-03-17T15:06:15Z`) - Delivered the local-first WatchTower workspace init flow.
-- `trace.watchtower_initial_implementation_bootstrap`: WatchTower Initial Implementation Bootstrap (`completed` at `2026-03-17T15:06:13Z`) - Delivered the first WatchTower implementation bootstrap package and boundary capture.

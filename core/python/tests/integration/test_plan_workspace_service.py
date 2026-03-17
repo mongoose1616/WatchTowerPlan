@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from shutil import copytree, rmtree
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.initiative_packages import (
     DeferredItemSpec,
@@ -13,8 +15,10 @@ from watchtower_core.repo_ops.initiative_packages import (
 )
 from watchtower_core.repo_ops.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH,
+    PLAN_GUIDANCE_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_OVERVIEW_PATH,
+    PLAN_PROMOTION_INDEX_PATH,
     PLAN_READINESS_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
     PLAN_DISCREPANCY_INDEX_PATH,
@@ -29,6 +33,7 @@ from watchtower_core.repo_ops.project_workspace import (
     ProjectWorkspaceService,
 )
 from watchtower_core.repo_ops.query.common import RenderedSearchFilters
+from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -177,6 +182,8 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
         PLAN_TASK_INDEX_PATH,
         PLAN_READINESS_INDEX_PATH,
         PLAN_DISCREPANCY_INDEX_PATH,
+        PLAN_PROMOTION_INDEX_PATH,
+        PLAN_GUIDANCE_INDEX_PATH,
         PLAN_COORDINATION_INDEX_PATH,
         PLAN_OVERVIEW_PATH,
         "plan/initiatives/workspace_alpha/plan.md",
@@ -224,6 +231,73 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
     plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
     assert "Workspace Alpha" in plan_overview
     assert "Workspace Beta" in plan_overview
+
+
+def test_plan_workspace_sync_builds_promotion_and_guidance_indexes_and_validates_them(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_promotions",
+            title="Workspace Promotions",
+            updated_at="2026-03-17T16:07:00Z",
+        ),
+        write=True,
+    )
+
+    workspace_service.sync(write=True)
+
+    promotion_entries = workspace_service.load_promotion_entries()
+    assert len(promotion_entries) == 1
+    promotion_entry = promotion_entries[0]
+    assert promotion_entry.promotion_id == "promotion.workspace_promotions.bootstrap_shell"
+    assert promotion_entry.initiative_id == "initiative.workspace_promotions"
+    assert promotion_entry.candidate_count == 3
+    assert promotion_entry.target_families == ("decision_record", "reference")
+    assert promotion_entry.review_paths == ("repository_maintainer_review",)
+    assert promotion_entry.initiative_root == "plan/initiatives/workspace_promotions"
+
+    guidance_entries = workspace_service.load_guidance_entries()
+    guidance_ids = {entry.guidance_id for entry in guidance_entries}
+    assert "foundation.repository_scope" in guidance_ids
+    assert "foundation.product_direction" in guidance_ids
+    repository_scope_entry = next(
+        entry for entry in guidance_entries if entry.guidance_id == "foundation.repository_scope"
+    )
+    assert repository_scope_entry.guidance_family == "foundation"
+    assert repository_scope_entry.doc_path == "plan/docs/foundations/repository_scope.md"
+
+    validator = ArtifactValidationService(loader)
+    for relative_path in (
+        "plan/.wt/registries/promotion_policy_registry.json",
+        PLAN_PROMOTION_INDEX_PATH,
+        PLAN_GUIDANCE_INDEX_PATH,
+    ):
+        result = validator.validate(relative_path)
+        assert result.passed, f"{relative_path} failed schema validation: {result.issues}"
+
+
+def test_plan_workspace_sync_fails_closed_when_guidance_doc_lacks_front_matter(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    bad_doc_path = repo_root / "plan/docs/references/bad_guidance.md"
+    bad_doc_path.parent.mkdir(parents=True, exist_ok=True)
+    bad_doc_path.write_text("# Missing front matter\n", encoding="utf-8")
+
+    loader = ControlPlaneLoader(repo_root)
+    workspace_service = PlanWorkspaceService(loader)
+
+    with pytest.raises(ValueError, match="governed front matter"):
+        workspace_service.sync(write=False)
 
 
 def test_plan_workspace_stale_surface_drift_blocks_readiness_until_explicit_rebuild(

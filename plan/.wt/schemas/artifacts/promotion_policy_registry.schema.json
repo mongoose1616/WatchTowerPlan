@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1",
+  "title": "Promotion Policy Registry",
+  "description": "Schema for the plan-pack promotion policy registry that governs how initiative-local outputs may become durable guidance.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1"
+    },
+    "id": {
+      "const": "registry.promotion_policy"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/policyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "docsRootPattern": {
+      "type": "string",
+      "pattern": "^(plan|core)/docs(?:/[a-z0-9._-]+)*$"
+    },
+    "policyEntry": {
+      "type": "object",
+      "required": [
+        "policy_id",
+        "entry_status",
+        "source_artifact_kinds",
+        "target_family",
+        "target_root",
+        "required_review_path",
+        "provenance_requirements",
+        "mirror_update_mode"
+      ],
+      "properties": {
+        "policy_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "entry_status": {
+          "type": "string",
+          "enum": ["active", "deprecated"]
+        },
+        "source_artifact_kinds": {
+          "$ref": "#/$defs/stringList"
+        },
+        "target_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_root": {
+          "$ref": "#/$defs/docsRootPattern"
+        },
+        "required_review_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance_requirements": {
+          "$ref": "#/$defs/stringList"
+        },
+        "mirror_update_mode": {
+          "type": "string",
+          "enum": ["none", "same_change_set", "generated_copy", "promotion_fan_out"]
+        },
+        "mirror_roots": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/docsRootPattern"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
