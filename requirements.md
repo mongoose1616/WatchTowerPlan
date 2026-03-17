@@ -136,16 +136,16 @@ The permanent product boundary and the current execution boundary are intentiona
 | `event_stream_helper` | `Current` | Provide append-only event recording, validation, and replay for initiative-level and task-level live planning history. | Keep the helper generic and schema-backed while initiative-local and task-local planning services build on it for concrete event families. |
 | `markdown_reconciliation` | `Partial` | Provide a pack-safe way to reconcile rendered human initiative surfaces with authoritative machine state. | Current front matter adapters and planning rendered builders are useful, but still planning-specific and docs-centric. |
 | `rendered_view_builder` | `Partial` | Rebuild initiative-local and pack-level rendered views from authoritative machine surfaces through a generic registry-backed builder. | Today rendered planning trackers are rich, but their builders remain repo-local and mostly target docs-backed planning families. |
-| `artifact_index_builder` | `Missing` | Build a generic pack artifact index across plan-domain artifact families and lifecycle surfaces. | Current indexes are family-specific and planning-specific; the generic `artifact_index` interface has no live builder yet. |
+| `artifact_index_builder` | `Current` | Build a generic pack artifact index across plan-domain artifact families and lifecycle surfaces. | The live artifact-index builder now rebuilds the plan-pack artifact catalog across initiative, project, work-item-note, and aggregate-index families. |
 | `evidence_helper` | `Partial` | Expand from validation evidence into a broader evidence bundle model usable by pack closeout and review. | `validation_evidence` already exists, but there is no general pack evidence contract. |
 | `discrepancy_helper` | `Current` | Turn validation and sync drift into first-class discrepancy records with controlled severity and resolution. | Keep the helper schema-backed and reusable while plan services provide concrete drift detection and managed-category policy. |
-| `initiative_tracking_builder` | `Missing` | Build pack-level initiative and task rollups under `plan/.wt/` from both pack-wide initiatives and project-scoped initiatives. | Needed to avoid crawling every initiative directory for routine status queries. |
-| `guidance_promotion_helper` | `Missing` | Extract reviewed durable decisions, standards, references, and long-term guidance out of live initiative state into `plan/docs/`, with optional core-specific duplication into `core/docs/`. | Needed to keep docs curated and live planning separate. |
+| `initiative_tracking_builder` | `Current` | Build pack-level initiative and task rollups under `plan/.wt/` from both pack-wide initiatives and project-scoped initiatives. | Plan-workspace sync now rebuilds initiative, task, readiness, discrepancy, promotion, guidance, coordination, and project rollups across both initiative root types. |
+| `guidance_promotion_helper` | `Current` | Extract reviewed durable decisions, standards, references, and long-term guidance out of live initiative state into `plan/docs/`, with optional core-specific duplication into `core/docs/`. | The live promotion helper now writes governed durable guidance, updates initiative-local promotion records, and supports mirrored foundation fan-out rules. |
 | `closeout_helper` | `Partial` | Coordinate initiative closeout recaps, required evidence, promotion candidates, and terminal state transitions. | Current closeout logic is initiative-oriented but still coupled to the docs-based planning corpus. |
 | `environment_context_helper` | `Missing` | Normalize execution context and expose it to routing, workflow safety, and evidence surfaces. | No durable environment contract exists yet. |
 | `actor_registry_helper` | `Partial` | Resolve actors, validate actor references, and enforce actor-type expectations across surfaces. | Typed actor models exist, but there is no stronger reusable helper and validator layer yet. |
 | `terminology_helper` | `Missing` | Provide shared terminology lookup, deprecation, and alias resolution for pack-local vocabulary. | This will matter once the `plan` pack gains a larger reusable guidance layer. |
-| `template_catalog_helper` | `Partial` | Resolve governed templates and section-spec contracts for pack-authored and rendered surfaces. | Planning scaffolds exist under `repo_ops`, but there is no generic pack template catalog yet. |
+| `template_catalog_helper` | `Current` | Resolve governed templates and section-spec contracts for pack-authored and rendered surfaces. | The typed template-catalog helper now resolves active template bindings and validates template-path plus section-spec alignment for pack and core surfaces. |
 | `release_and_migration_helper` | `Current but not part of the clean target state` | Existing release or migration helpers should not define the long-term operating model for `plan`. | Keep only what is still needed for current cleanup work, then remove or isolate it rather than carrying it into the clean endstate. |
 
 ## Surface Type Reference
@@ -550,18 +550,18 @@ The following remain explicitly owner-gated and should never appear by default:
 | `schema_catalog` | `Current` | Continue to support core-owned plus pack-owned schema catalogs without copy-pasting schemas into core. |
 | `validator_registry` | `Current` | Continue pack-aware validator selection and expand only when new step kinds or engines are truly needed. |
 | `validation_suite_registry` | `Current` | Become the standard way to declare validation baselines for both internal and future external packs. |
-| `artifact_family_registry` | `Missing` | Add authoritative family taxonomy for pack artifacts, placement rules, allowed status subsets, renderability, and derived-index participation. |
-| `relation_type_registry` | `Missing` | Add controlled cross-artifact relation names before artifact graphs grow more complex. |
-| `review_status_registry` | `Missing` | Add controlled review state vocabulary instead of reusing loose string fields across artifacts. |
-| `source_type_registry` | `Missing` | Add a generic source/provenance vocabulary for references, external imports, generated outputs, and derived artifacts. |
-| `lifecycle_stage_registry` | `Missing` | Distinguish status from lifecycle stage for pack work items and evidence. |
-| `status_transition_rules` | `Missing` | Move family-specific allowed status transitions out of code and prose into machine-readable policy. |
-| `promotion_policy_registry` | `Missing` | Define what kinds of initiative-local outputs may be promoted into `plan/docs/` guidance surfaces and what review is required. |
-| `project_surface_policy_registry` | `Missing` | Define what kinds of project-specific artifacts, linked repository metadata, and initiative-derived outputs may live under `plan/projects/` and what metadata they must carry. |
-| `documentation_family_registry` | `Missing` | Bind each governed documentation family to its front-matter base schema, family subschema, template ids, section-spec schema, and allowed roots. |
-| `template_catalog` | `Missing` | Govern template ids, required and optional sections, section order, section-spec schemas, and any LLM-facing authoring guidance for initiative-local rendered views, project surfaces, and extracted guidance surfaces. |
-| `human_surface_policy_registry` | `Missing` | Define where `README.md`, `AGENTS.md`, authored workflow docs, and rendered visibility files are required, optional, or forbidden, and whether each human-facing surface is authored or rendered. |
-| `retention_policy_registry` | `Optional` | If it exists at all, it should describe cleanup and deletion rules rather than long-lived archival retention. |
+| `artifact_family_registry` | `Current` | Add authoritative family taxonomy for pack artifacts, placement rules, allowed status subsets, renderability, and derived-index participation. |
+| `relation_type_registry` | `Current` | Add controlled cross-artifact relation names before artifact graphs grow more complex. |
+| `review_status_registry` | `Current` | Add controlled review state vocabulary instead of reusing loose string fields across artifacts. |
+| `source_type_registry` | `Current` | Add a generic source/provenance vocabulary for references, external imports, generated outputs, and derived artifacts. |
+| `lifecycle_stage_registry` | `Current` | Distinguish status from lifecycle stage for pack work items and evidence. |
+| `status_transition_rules` | `Current` | Move family-specific allowed status transitions out of code and prose into machine-readable policy. |
+| `promotion_policy_registry` | `Current` | Define what kinds of initiative-local outputs may be promoted into `plan/docs/` guidance surfaces and what review is required. |
+| `project_surface_policy_registry` | `Current` | Define what kinds of project-specific artifacts, linked repository metadata, and initiative-derived outputs may live under `plan/projects/` and what metadata they must carry. |
+| `documentation_family_registry` | `Current` | Bind each governed documentation family to its front-matter base schema, family subschema, template ids, section-spec schema, and allowed roots. |
+| `template_catalog` | `Current` | Govern template ids, required and optional sections, section order, section-spec schemas, and any LLM-facing authoring guidance for initiative-local rendered views, project surfaces, and extracted guidance surfaces. |
+| `human_surface_policy_registry` | `Current` | Define where `README.md`, `AGENTS.md`, authored workflow docs, and rendered visibility files are required, optional, or forbidden, and whether each human-facing surface is authored or rendered. |
+| `retention_policy_registry` | `Current but transitional` | The live registry now governs migration-era retention and cleanup posture while the clean-endstate purge model is still being reconciled. |
 | `compatibility_contract_registry` | `Not part of the clean endstate` | Do not add unless explicitly approved for a concrete external-consumer need. |
 
 ### Required Endstate Pack-Facing Artifact And Interface Contracts
@@ -574,7 +574,7 @@ The following remain explicitly owner-gated and should never appear by default:
 | `initiative_event_stream` | `Current` | Keep an initiative-level append-only event contract so live planning can be event-backed instead of doc-backed. |
 | `task_state` | `Missing` | Add a current-state snapshot contract for initiative-local tasks. |
 | `task_event_stream` | `Current` | Keep a task-level append-only event contract where task churn needs separate event history. |
-| `guidance_promotion_record` | `Missing` | Add a governed record for extracting approved decisions, standards, references, and guidance from live initiatives into `plan/docs/` guidance surfaces. |
+| `guidance_promotion_record` | `Current` | Add a governed record for extracting approved decisions, standards, references, and guidance from live initiatives into `plan/docs/` guidance surfaces. |
 | `project_record` | `Missing` | Add a governed current-state contract for one project container under `plan/projects/<project_slug>/.wt/project.json`. |
 | `project_repository_map` | `Missing` | Add a governed contract for linking a project to one or more repositories such as planning, implementation, or deployment repos. |
 | `extraction_output_envelope` | `Partial` | Keep as an optional reusable output envelope, but align it with explicit promotion and extraction flows rather than ad hoc exports. |

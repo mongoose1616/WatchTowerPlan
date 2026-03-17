@@ -6,7 +6,10 @@ from shutil import copytree, rmtree
 
 import pytest
 
+from watchtower_core.adapters.front_matter import load_front_matter
+from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.guidance_promotion import GuidancePromotionService
 from watchtower_core.repo_ops.initiative_packages import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
@@ -68,6 +71,7 @@ def _bootstrap_params(
     title: str,
     updated_at: str,
     deferred_items: tuple[DeferredItemSpec, ...] = (),
+    include_decision_notes: bool = False,
 ) -> InitiativeBootstrapParams:
     task_id = f"task.{initiative_slug}.seed_contracts"
     return InitiativeBootstrapParams(
@@ -90,6 +94,7 @@ def _bootstrap_params(
             ),
         ),
         deferred_items=deferred_items,
+        include_decision_notes=include_decision_notes,
         updated_at=updated_at,
     )
 
@@ -283,9 +288,15 @@ def test_plan_workspace_sync_builds_promotion_and_guidance_indexes_and_validates
     assert promotion_entry.promotion_id == "promotion.workspace_promotions.bootstrap_shell"
     assert promotion_entry.initiative_id == "initiative.workspace_promotions"
     assert promotion_entry.candidate_count == 3
-    assert promotion_entry.target_families == ("decision_record", "reference")
+    assert promotion_entry.target_families == ("decision_record", "pattern", "reference")
     assert promotion_entry.review_paths == ("repository_maintainer_review",)
     assert promotion_entry.initiative_root == "plan/initiatives/workspace_promotions"
+    assert promotion_entry.target_paths == (
+        "plan/docs/decisions/workspace_promotions_design_record.md",
+        "plan/docs/patterns/workspace_promotions_implementation_slice.md",
+        "plan/docs/references/workspace_promotions_initiative_brief.md",
+    )
+    assert promotion_entry.approval_state == "pending"
 
     guidance_entries = workspace_service.load_guidance_entries()
     guidance_ids = {entry.guidance_id for entry in guidance_entries}
@@ -305,6 +316,150 @@ def test_plan_workspace_sync_builds_promotion_and_guidance_indexes_and_validates
     ):
         result = validator.validate(relative_path)
         assert result.passed, f"{relative_path} failed schema validation: {result.issues}"
+
+
+def test_guidance_promotion_service_promotes_outputs_and_updates_indexes(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    package_service = InitiativePackageService(loader)
+    promotion_service = GuidancePromotionService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_guidance_promotion",
+            title="Workspace Guidance Promotion",
+            updated_at="2026-03-17T16:12:00Z",
+            include_decision_notes=True,
+        ),
+        write=True,
+    )
+
+    result = promotion_service.promote_packwide(
+        "workspace_guidance_promotion",
+        updated_at="2026-03-17T16:13:00Z",
+        write=True,
+    )
+    workspace_service.sync(write=True)
+
+    assert result.status == "promoted"
+    assert result.wrote is True
+    assert {output.target_family for output in result.outputs} == {
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard",
+    }
+
+    promoted_paths = {output.target_path for output in result.outputs}
+    assert promoted_paths == {
+        "plan/docs/decisions/workspace_guidance_promotion_design_record.md",
+        "plan/docs/patterns/workspace_guidance_promotion_implementation_slice.md",
+        "plan/docs/references/workspace_guidance_promotion_initiative_brief.md",
+        "plan/docs/standards/workspace_guidance_promotion_decision_notes.md",
+    }
+    for relative_path in promoted_paths:
+        front_matter = load_front_matter(repo_root / relative_path)
+        family = DocumentationFamilyHelper.from_loader(
+            loader,
+            pack_settings_path="plan/.wt/manifests/pack_settings.json",
+        ).family(str(front_matter["type"]))
+        loader.schema_store.validate_instance(
+            front_matter,
+            schema_id=family.front_matter_schema_id,
+        )
+
+    promotion_record = _load_json(
+        repo_root
+        / "plan/initiatives/workspace_guidance_promotion/.wt/promotions/guidance_promotion_record.bootstrap.json"
+    )
+    assert promotion_record["status"] == "promoted"
+    assert promotion_record["approval_state"] == "approved"
+    assert promotion_record["evidence_refs"] == [
+        "evidence.workspace_guidance_promotion.bootstrap_validation_bundle"
+    ]
+
+    promotion_entries = workspace_service.load_promotion_entries()
+    promoted_entry = next(
+        entry
+        for entry in promotion_entries
+        if entry.promotion_id == "promotion.workspace_guidance_promotion.bootstrap_shell"
+    )
+    assert promoted_entry.approval_state == "approved"
+    assert promoted_entry.target_paths == tuple(sorted(promoted_paths))
+
+    guidance_entries = workspace_service.load_guidance_entries()
+    guidance_ids = {entry.guidance_id for entry in guidance_entries}
+    assert {
+        "decision.workspace_guidance_promotion_design_record",
+        "pattern.workspace_guidance_promotion_implementation_slice",
+        "reference.workspace_guidance_promotion_initiative_brief",
+        "standard.workspace_guidance_promotion_decision_notes",
+    }.issubset(guidance_ids)
+
+
+def test_guidance_promotion_service_fans_out_foundation_mirrors(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    package_service = InitiativePackageService(loader)
+    promotion_service = GuidancePromotionService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_foundation_promotion",
+            title="Workspace Foundation Promotion",
+            updated_at="2026-03-17T16:14:00Z",
+        ),
+        write=True,
+    )
+
+    promotion_record_path = (
+        repo_root
+        / "plan/initiatives/workspace_foundation_promotion/.wt/promotions/guidance_promotion_record.bootstrap.json"
+    )
+    promotion_record = _load_json(promotion_record_path)
+    promotion_record["candidates"] = [
+        {
+            "candidate_path": "plan/initiatives/workspace_foundation_promotion/initiative_brief.md",
+            "source_artifact_kind": "initiative_brief",
+            "target_family": "foundation",
+            "review_path": "repository_maintainer_review",
+            "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+            "mirror_update_mode": "same_change_set",
+        }
+    ]
+    promotion_record_path.write_text(
+        f"{json.dumps(promotion_record, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    result = promotion_service.promote_packwide(
+        "workspace_foundation_promotion",
+        updated_at="2026-03-17T16:15:00Z",
+        write=True,
+    )
+
+    assert len(result.outputs) == 1
+    output = result.outputs[0]
+    assert output.target_family == "foundation"
+    assert output.target_path == "plan/docs/foundations/workspace_foundation_promotion_initiative_brief.md"
+    assert output.mirror_target_paths == (
+        "core/docs/foundations/workspace_foundation_promotion_initiative_brief.md",
+    )
+
+    plan_doc = repo_root / output.target_path
+    core_doc = repo_root / output.mirror_target_paths[0]
+    assert plan_doc.read_text(encoding="utf-8") == core_doc.read_text(encoding="utf-8")
 
 
 def test_plan_workspace_sync_fails_closed_when_guidance_doc_lacks_front_matter(

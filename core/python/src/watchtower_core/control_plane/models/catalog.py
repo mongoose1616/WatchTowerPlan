@@ -877,6 +877,68 @@ class RetentionPolicyRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class PromotionPolicyEntry:
+    """One promotion-policy rule for initiative-local durable guidance extraction."""
+
+    policy_id: str
+    entry_status: str
+    source_artifact_kinds: tuple[str, ...]
+    target_family: str
+    target_root: str
+    required_review_path: str
+    provenance_requirements: tuple[str, ...]
+    mirror_update_mode: str
+    mirror_roots: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PromotionPolicyEntry:
+        return cls(
+            policy_id=document["policy_id"],
+            entry_status=document["entry_status"],
+            source_artifact_kinds=tuple(document["source_artifact_kinds"]),
+            target_family=document["target_family"],
+            target_root=document["target_root"],
+            required_review_path=document["required_review_path"],
+            provenance_requirements=tuple(document["provenance_requirements"]),
+            mirror_update_mode=document["mirror_update_mode"],
+            mirror_roots=tuple(document.get("mirror_roots", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PromotionPolicyRegistry:
+    """Typed promotion-policy registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[PromotionPolicyEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PromotionPolicyRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(PromotionPolicyEntry.from_document(item) for item in document["entries"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, policy_id: str) -> PromotionPolicyEntry:
+        """Return one policy entry by identifier."""
+
+        for entry in self.entries:
+            if entry.policy_id == policy_id:
+                return entry
+        raise KeyError(policy_id)
+
+
+@dataclass(frozen=True, slots=True)
 class ArtifactFamilyEntry:
     """One governed artifact-family entry for one pack-local family."""
 

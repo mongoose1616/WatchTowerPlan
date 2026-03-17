@@ -11,6 +11,7 @@ from watchtower_core.control_plane.models import (
     DocumentationFamilyRegistry,
     HumanSurfacePolicyRegistry,
     LifecycleStageRegistry,
+    PromotionPolicyRegistry,
     ProjectSurfacePolicyRegistry,
     RetentionPolicyRegistry,
     ReviewStatusRegistry,
@@ -189,6 +190,16 @@ def test_plan_pack_context_loads_lifecycle_review_and_source_registries() -> Non
     assert review_registry.get("approved").allows_execution is True
     assert isinstance(source_registry, SourceTypeRegistry)
     assert source_registry.get("promoted_guidance").source_class == "promoted_guidance"
+
+
+def test_plan_pack_context_loads_promotion_policy_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context("plan/.wt/manifests/pack_settings.json")
+
+    registry = context.registries["promotion_policy_registry"]
+    assert isinstance(registry, PromotionPolicyRegistry)
+    assert registry.get("policy.promotion.plan_pattern").target_root == "plan/docs/patterns"
 
 
 def test_plan_pack_context_loads_project_surface_policy_registry() -> None:

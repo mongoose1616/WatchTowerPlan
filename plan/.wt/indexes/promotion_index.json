@@ -301,6 +301,45 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "initiative_title": "Plan Guidance Promotion Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "promoted",
+      "initiative_root": "plan/initiatives/plan_guidance_promotion_helper_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T22:23:02Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_guidance_promotion_helper_foundation_design_record.md",
+        "plan/docs/patterns/plan_guidance_promotion_helper_foundation_implementation_slice.md",
+        "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
+        "plan/docs/standards/plan_guidance_promotion_helper_foundation_decision_notes.md"
+      ],
+      "approval_state": "approved",
+      "evidence_refs": [
+        "evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_human_surface_policy_and_core_root_seeding.bootstrap_shell",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",

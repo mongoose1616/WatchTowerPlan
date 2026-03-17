@@ -516,6 +516,54 @@
       ]
     },
     {
+      "task_id": "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "initiative_title": "Plan Guidance Promotion Helper Foundation",
+      "title": "Implement governed guidance promotion flow",
+      "summary": "Promote approved initiative outputs into plan/docs guidance roots with policy, template, and mirror enforcement.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/implement_governed_guidance_promotion_flow/task.json",
+      "updated_at": "2026-03-17T22:21:35Z",
+      "depends_on": [
+        "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "initiative_title": "Plan Guidance Promotion Helper Foundation",
+      "title": "Publish promotion helper contracts",
+      "summary": "Add typed promotion-policy and guidance-promotion helper contracts for governed extraction flows.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/publish_promotion_helper_contracts/task.json",
+      "updated_at": "2026-03-17T22:21:35Z"
+    },
+    {
+      "task_id": "task.plan_guidance_promotion_helper_foundation.validate_promoted_guidance_extraction_and_requirements_alignment",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "initiative_title": "Plan Guidance Promotion Helper Foundation",
+      "title": "Validate promoted guidance extraction and requirements alignment",
+      "summary": "Add coverage for promotion output, mirror handling, and touched requirements rows.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/validate_promoted_guidance_extraction_and_requirements_alignment/task.json",
+      "updated_at": "2026-03-17T22:21:35Z",
+      "depends_on": [
+        "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow"
+      ]
+    },
+    {
       "task_id": "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",

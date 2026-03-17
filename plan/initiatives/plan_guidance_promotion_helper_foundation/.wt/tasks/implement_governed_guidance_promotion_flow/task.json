@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow",
+  "slug": "implement_governed_guidance_promotion_flow",
+  "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+  "title": "Implement governed guidance promotion flow",
+  "summary": "Promote approved initiative outputs into plan/docs guidance roots with policy, template, and mirror enforcement.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:54:17Z",
+  "updated_at": "2026-03-17T22:21:35Z",
+  "dependency_task_ids": [
+    "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

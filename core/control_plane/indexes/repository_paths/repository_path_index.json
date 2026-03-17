@@ -5260,6 +5260,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/docs/decisions/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds durable decision records promoted out of live initiative work.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/docs/foundations/",
       "kind": "directory",
       "surface_kind": "repository_surface",
@@ -5335,6 +5345,36 @@
       "surface_kind": "repository_file",
       "summary": "Explains the repository-wide standards posture and authority model.",
       "parent_path": "plan/docs/foundations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/patterns/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds reusable patterns promoted from validated initiative outcomes.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/references/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds curated plan-domain reference material promoted from initiative-local authored inputs.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds durable operational standards promoted from initiative-local guidance.",
+      "parent_path": "plan/docs/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

@@ -8,8 +8,12 @@
     "$schema",
     "id",
     "initiative_id",
+    "trace_id",
     "title",
     "status",
+    "approval_state",
+    "review_refs",
+    "evidence_refs",
     "updated_at",
     "candidates"
   ],
@@ -21,6 +25,9 @@
       "$ref": "#/$defs/idPattern"
     },
     "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "trace_id": {
       "$ref": "#/$defs/idPattern"
     },
     "title": {
@@ -35,6 +42,38 @@
         "promoted",
         "rejected"
       ]
+    },
+    "approval_state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ]
+    },
+    "approver_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "review_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
     },
     "updated_at": {
       "type": "string",
@@ -58,18 +97,29 @@
       "type": "object",
       "required": [
         "candidate_path",
+        "source_artifact_kind",
         "target_family",
+        "target_path",
         "review_path",
-        "provenance_expectation"
+        "provenance_expectation",
+        "mirror_update_mode"
       ],
       "properties": {
         "candidate_path": {
           "type": "string",
           "pattern": "^(?!/).+"
         },
+        "source_artifact_kind": {
+          "type": "string",
+          "minLength": 1
+        },
         "target_family": {
           "type": "string",
           "minLength": 1
+        },
+        "target_path": {
+          "type": "string",
+          "pattern": "^(plan|core)/docs/.+\\.md$"
         },
         "review_path": {
           "type": "string",
@@ -78,6 +128,23 @@
         "provenance_expectation": {
           "type": "string",
           "minLength": 1
+        },
+        "mirror_update_mode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "same_change_set",
+            "generated_copy",
+            "promotion_fan_out"
+          ]
+        },
+        "mirror_target_paths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(plan|core)/docs/.+\\.md$"
+          }
         }
       },
       "additionalProperties": false

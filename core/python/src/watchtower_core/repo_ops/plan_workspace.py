@@ -213,9 +213,12 @@ class PlanPromotionIndexEntry:
     initiative_root: str
     candidate_count: int
     candidate_paths: tuple[str, ...]
+    target_paths: tuple[str, ...]
     target_families: tuple[str, ...]
     review_paths: tuple[str, ...]
     updated_at: str
+    approval_state: str | None = None
+    evidence_refs: tuple[str, ...] = ()
     provenance_expectations: tuple[str, ...] = ()
 
     @classmethod
@@ -235,9 +238,16 @@ class PlanPromotionIndexEntry:
             initiative_root=str(document["initiative_root"]),
             candidate_count=int(document["candidate_count"]),
             candidate_paths=tuple(document["candidate_paths"]),
+            target_paths=tuple(document.get("target_paths", ())),
             target_families=tuple(document["target_families"]),
             review_paths=tuple(document["review_paths"]),
             updated_at=str(document["updated_at"]),
+            approval_state=(
+                str(document["approval_state"])
+                if document.get("approval_state") is not None
+                else None
+            ),
+            evidence_refs=tuple(document.get("evidence_refs", ())),
             provenance_expectations=tuple(document.get("provenance_expectations", ())),
         )
 
@@ -931,6 +941,15 @@ class PlanWorkspaceService:
                 candidate_paths=tuple(
                     str(candidate["candidate_path"]) for candidate in document["candidates"]
                 ),
+                target_paths=tuple(
+                    sorted(
+                        {
+                            str(candidate["target_path"])
+                            for candidate in document["candidates"]
+                            if candidate.get("target_path") is not None
+                        }
+                    )
+                ),
                 target_families=tuple(
                     sorted(
                         {
@@ -948,6 +967,14 @@ class PlanWorkspaceService:
                     )
                 ),
                 updated_at=str(document["updated_at"]),
+                approval_state=(
+                    str(document["approval_state"])
+                    if document.get("approval_state") is not None
+                    else None
+                ),
+                evidence_refs=tuple(
+                    str(reference) for reference in document.get("evidence_refs", ())
+                ),
                 provenance_expectations=tuple(
                     sorted(
                         {
@@ -1538,6 +1565,12 @@ class PlanWorkspaceService:
         }
         if entry.project_id is not None:
             payload["project_id"] = entry.project_id
+        if entry.target_paths:
+            payload["target_paths"] = list(entry.target_paths)
+        if entry.approval_state is not None:
+            payload["approval_state"] = entry.approval_state
+        if entry.evidence_refs:
+            payload["evidence_refs"] = list(entry.evidence_refs)
         if entry.provenance_expectations:
             payload["provenance_expectations"] = list(entry.provenance_expectations)
         return payload

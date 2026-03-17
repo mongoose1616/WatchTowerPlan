@@ -409,6 +409,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "title": "Plan Guidance Promotion Helper Foundation",
+      "summary": "Adds governed promotion-policy and guidance-promotion helpers, then extracts approved initiative-local outputs into durable plan/docs guidance surfaces so requirements.md and decisions.md no longer stop at promotion shells.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T22:23:02Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/progress.md",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "slug": "plan_guidance_promotion_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts",
+        "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow",
+        "task.plan_guidance_promotion_helper_foundation.validate_promoted_guidance_extraction_and_requirements_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T22:23:02Z",
+      "closure_reason": "Delivered typed promotion-policy loading, governed guidance promotion runtime, and durable plan/docs promotion outputs.",
+      "related_paths": [
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
       "title": "Plan Human Surface Policy and Core Root Seeding",
       "summary": "Adds the governed human-surface policy contract, the helper and validation path that resolve those rules, and the missing core-owned human roots that requirements.md declares as required.",

@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow.0001_created",
+  "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T21:54:17Z",
+  "summary": "Created task task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow"
+}

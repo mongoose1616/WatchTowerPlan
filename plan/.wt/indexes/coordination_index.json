@@ -23,6 +23,14 @@
       "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract."
     },
     {
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "title": "Plan Guidance Promotion Helper Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T22:23:02Z",
+      "key_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/plan.md",
+      "closure_reason": "Delivered typed promotion-policy loading, governed guidance promotion runtime, and durable plan/docs promotion outputs."
+    },
+    {
       "trace_id": "trace.plan_discrepancy_helper_foundation",
       "title": "Plan Discrepancy Helper Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T19:38:14Z",
       "key_surface_path": "plan/initiatives/plan_live_query_authority_cutover/plan.md",
       "closure_reason": "Cut public planning query authority over to the live plan workspace indexes, added readiness/discrepancy/project query commands, and aligned command guidance and authority docs to requirements.md and decisions.md."
-    },
-    {
-      "trace_id": "trace.plan_project_context_runtime_standardization",
-      "title": "Plan Project Context Runtime Standardization",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T18:58:00Z",
-      "key_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/plan.md",
-      "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     }
   ]
 }

@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+  "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+  "slug": "plan_guidance_promotion_helper_foundation",
+  "title": "Plan Guidance Promotion Helper Foundation",
+  "summary": "Adds governed promotion-policy and guidance-promotion helpers, then extracts approved initiative-local outputs into durable plan/docs guidance surfaces so requirements.md and decisions.md no longer stop at promotion shells.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:54:17Z",
+  "updated_at": "2026-03-17T22:23:02Z",
+  "task_ids": [
+    "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts",
+    "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow",
+    "task.plan_guidance_promotion_helper_foundation.validate_promoted_guidance_extraction_and_requirements_alignment"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_guidance_promotion_helper_foundation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md",
+      "sha256": "c627a2f0eadc19377e00b389a06001c70b8244238b6a3c05f9f1550ec8cf10cb",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:54:17Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md",
+      "sha256": "d7cdf31a2504e78c3804372ab547149d1058463a553dae3f844017a98b3de250",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:54:17Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_guidance_promotion_helper_foundation/implementation_slice.md",
+      "sha256": "4927cc3bc1959ab33c2c0237f19c3466612231410fb9f60e7bc261ad1c53e8d5",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:54:17Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md",
+      "sha256": "682233d558340c62cc13b13a7ebc1e31a837a85a3908f6a44d8c68bb72674a81",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T21:54:17Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T21:54:27Z"
+    }
+  ],
+  "closed_at": "2026-03-17T22:23:02Z",
+  "closure_reason": "Delivered typed promotion-policy loading, governed guidance promotion runtime, and durable plan/docs promotion outputs."
+}

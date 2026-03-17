@@ -171,6 +171,21 @@
       "updated_at": "2026-03-17T16:41:00Z"
     },
     {
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "title": "Plan Guidance Promotion Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_guidance_promotion_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T22:23:02Z"
+    },
+    {
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
       "title": "Plan Human Surface Policy and Core Root Seeding",

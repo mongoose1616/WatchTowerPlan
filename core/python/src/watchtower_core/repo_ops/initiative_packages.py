@@ -18,7 +18,14 @@ from watchtower_core.control_plane.event_stream import (
     EventStreamWriteRequest,
 )
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
+from watchtower_core.control_plane.promotion_policy import PromotionPolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.guidance_promotion import (
+    default_mirror_target_paths,
+    default_target_family_for_source_kind,
+    default_target_path,
+    source_artifact_kind_for_path,
+)
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.project_workspace import ProjectWorkspaceService
 from watchtower_core.repo_ops.planning_scaffold_specs import trace_suffix
@@ -391,7 +398,9 @@ class InitiativePackageService:
         promotion_document = self._build_promotion_shell(
             location=location,
             initiative_id=initiative_id,
+            trace_id=params.trace_id,
             authored_document_paths=tuple(authored_documents),
+            evidence_id=str(evidence_document["id"]),
             updated_at=updated_at,
         )
         initiative_document = self._build_initiative_state(
@@ -1201,26 +1210,67 @@ class InitiativePackageService:
         *,
         location: _InitiativeLocation,
         initiative_id: str,
+        trace_id: str,
         authored_document_paths: tuple[str, ...],
+        evidence_id: str,
         updated_at: str,
     ) -> dict[str, object]:
         initiative_slug = location.initiative_slug
+        policy_helper = PromotionPolicyHelper.from_loader(
+            self._pack_loader(),
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        candidates: list[dict[str, object]] = []
+        review_refs: set[str] = set()
+        for path in authored_document_paths:
+            source_artifact_kind = source_artifact_kind_for_path(path)
+            target_family = default_target_family_for_source_kind(source_artifact_kind)
+            policy = policy_helper.resolve(
+                source_artifact_kind=source_artifact_kind,
+                target_family=target_family,
+            )
+            review_refs.add(policy.required_review_path)
+            target_path = default_target_path(
+                initiative_slug=initiative_slug,
+                source_path=path,
+                target_root=policy.target_root,
+            )
+            mirror_target_paths = (
+                default_mirror_target_paths(
+                    target_path=target_path,
+                    target_root=policy.target_root,
+                    mirror_roots=policy.mirror_roots,
+                )
+                if policy.mirror_update_mode != "none"
+                else ()
+            )
+            candidates.append(
+                {
+                    "candidate_path": path,
+                    "source_artifact_kind": source_artifact_kind,
+                    "target_family": target_family,
+                    "target_path": target_path,
+                    "review_path": policy.required_review_path,
+                    "provenance_expectation": (
+                        "Promotions must cite the source initiative id, trace id, and "
+                        "evidence bundle id."
+                    ),
+                    "mirror_update_mode": policy.mirror_update_mode,
+                    "mirror_target_paths": list(mirror_target_paths),
+                }
+            )
         return {
             "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
             "id": f"promotion.{initiative_slug}.bootstrap_shell",
             "initiative_id": initiative_id,
+            "trace_id": trace_id,
             "title": "Bootstrap Promotion Shell",
             "status": "planned",
+            "approval_state": "pending",
+            "review_refs": sorted(review_refs),
+            "evidence_refs": [evidence_id],
             "updated_at": updated_at,
-            "candidates": [
-                {
-                    "candidate_path": path,
-                    "target_family": "decision_record" if path.endswith("design_record.md") else "reference",
-                    "review_path": "repository_maintainer_review",
-                    "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
-                }
-                for path in authored_document_paths
-            ],
+            "candidates": candidates,
         }
 
     def _build_initiative_state(

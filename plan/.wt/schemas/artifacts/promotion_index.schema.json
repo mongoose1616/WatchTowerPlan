@@ -107,10 +107,20 @@
         "candidate_paths": {
           "$ref": "#/$defs/pathList"
         },
+        "target_paths": {
+          "$ref": "#/$defs/pathList"
+        },
         "target_families": {
           "$ref": "#/$defs/stringList"
         },
         "review_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "approval_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
           "$ref": "#/$defs/stringList"
         },
         "provenance_expectations": {

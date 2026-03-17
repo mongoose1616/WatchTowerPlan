@@ -16,6 +16,7 @@ Workspace-aware artifact loading, schema validation, typed models, PackContext l
 - `discrepancy.py`: Governed discrepancy-record helpers for drift detection, reconciliation, and open-record loading.
 - `event_stream.py`: Append-only event stream helpers for governed initiative and task event records.
 - `planning_vocabulary.py`: Pack-local lifecycle, review, and provenance vocabulary resolution for plan-runtime helpers.
+- `promotion_policy.py`: Pack-local promotion-policy resolution for governed initiative-to-guidance extraction rules.
 - `project_surface_policy.py`: Pack-local project-root surface policy resolution for required machine and rendered project surfaces.
 - `template_catalog.py`: Pack-local template-catalog resolution for governed template assets, section-spec contracts, and fail-closed template-heading validation.
 - `governance_surfaces.py`: Cross-surface resolution helper for governed surface path, authority, rebuildability, and declared dependencies.
