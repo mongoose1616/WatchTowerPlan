@@ -119,11 +119,11 @@ The permanent product boundary and the current execution boundary are intentiona
 | Name | Current State | Future Endstate Requirement | Required Change |
 |---|---|---|---|
 | `pack_context` | `Current` | Remain the canonical runtime context for pack-aware services. | Expand only by declared surfaces and typed models, not by repo-specific shortcuts. |
-| `project_context_loader` | `Missing` | Load project-specific context separately from `pack_context` when a path, command, or workflow is project-scoped. | Build it on top of `project_record`, `project_repository_map`, and project-local guidance rather than overloading `pack_context`. |
+| `project_context_loader` | `Current` | Load project-specific context separately from `pack_context` when a path, command, or workflow is project-scoped. | Keep it layered on top of `project_record`, `project_repository_map`, and project-local guidance rather than overloading `pack_context`. |
 | `pack_settings_loader` | `Current` inside `ControlPlaneLoader` | Keep fail-closed load-root validation, version checks, and startup resolution. | Split into a more explicit pack-entry helper only if a second consumer pack makes the seam valuable. |
 | `schema_loader` / `schema_store` | `Current` | Remain the shared schema authority for core-owned and pack-owned schemas. | Keep merged-catalog behavior and add more explicit support for shared subschema families if future pack contracts require them. |
 | `governance_surface_resolver` | `Partial` | Provide a direct helper that answers where a governed surface lives, whether it is authoritative, whether it is rebuildable, and what companion views depend on it. | Today this knowledge is spread across `pack_settings`, `governance_surface_map`, and loader logic. Consolidate it behind one query surface. |
-| `artifact_family_resolver` | `Missing` | Load an authoritative artifact-family taxonomy for plan-pack artifacts and answer placement, status, visibility, and renderability rules. | Add `artifact_family_registry` and typed helpers instead of inferring family behavior from scattered indexes or path conventions. |
+| `artifact_family_resolver` | `Current` | Load an authoritative artifact-family taxonomy for plan-pack artifacts and answer placement, status, visibility, and renderability rules. | Keep the typed helper registry-backed and fail closed instead of inferring family behavior from scattered indexes or path conventions. |
 | `path_and_id_helpers` | `Partial` | Provide generic pack-relative path, id, slug, and naming coherence helpers. | Today path rules are split between path registries, per-family conventions, and repo-local helpers. |
 | `query_harness` | `Current` at reusable-core root | Offer export-safe querying over pack surfaces, indexes, registries, routes, workflow metadata, and artifact families. | Keep reusable-core query exports focused on governed generic metadata while leaving live planning and docs-backed repo-local query services under `repo_ops`. |
 | `validation_harness` | `Current` and strong | Stay the fail-closed, schema-first, pack-aware validation entrypoint. | Expand suite step kinds later for rendered views, compatibility checks, lifecycle rules, and discrepancy policies without leaking repo-local semantics. |
@@ -187,14 +187,14 @@ The permanent product boundary and the current execution boundary are intentiona
 | Surface Family | Current Status | Notes |
 |---|---|---|
 | Current root docs corpus | `Current but mislocated` | The repo already has durable core-oriented guidance, but the future boundary should move core-only docs under `core/docs/`. |
-| `plan/docs/` guidance layer | `Missing` | There is no distinct plan-domain guidance layer yet. |
+| `plan/docs/` guidance layer | `Current` | The distinct plan-domain guidance layer now exists, including promoted decisions, patterns, references, standards, and duplicated foundations. |
 | `docs/planning/` live planning families | `Current but misaligned` | The repo currently stores live planning here, but this conflicts with the intended split between live initiative state, plan-domain guidance, and core-development docs. |
-| `plan/` live initiative roots | `Missing` | There is no first-class live `plan` workspace yet for either pack-wide initiatives or project-scoped initiatives. |
-| `plan/.wt/` aggregate tracking root | `Missing` | There is no first-class pack-level aggregate root for initiative and task status rollups yet. |
-| `core/workflows/` workflow root | `Missing` | There is no first-class core-only workflow root yet. |
-| `plan/workflows/` workflow root | `Missing` | There is no first-class plan-domain workflow root yet. |
-| Human-surface placement policy | `Missing` | There is no explicit machine-readable rule set for where `README.md` and `AGENTS.md` should exist. |
-| `plan/projects/` project root | `Missing` | There is no first-class per-project area yet, including a home for project-scoped initiatives. |
+| `plan/` live initiative roots | `Current` | The first-class live `plan` workspace now exists for both pack-wide initiatives and project-scoped initiatives. |
+| `plan/.wt/` aggregate tracking root | `Current` | The first-class pack-level aggregate root now exists for initiative, task, readiness, discrepancy, promotion, guidance, and project status rollups. |
+| `core/workflows/` workflow root | `Current` | The first-class core-only workflow root now exists. |
+| `plan/workflows/` workflow root | `Current` | The first-class plan-domain workflow root now exists. |
+| Human-surface placement policy | `Current` | The explicit machine-readable rule set for governed `README.md` and `AGENTS.md` placement now exists. |
+| `plan/projects/` project root | `Current` | The first-class per-project area now exists, including a home for project-scoped initiatives. |
 
 ### Current Schema Families
 
@@ -203,7 +203,7 @@ The permanent product boundary and the current execution boundary are intentiona
 | Artifact schemas under `core/control_plane/schemas/artifacts/` | `Current` | Acceptance contracts, indexes, registries, evidence, migration, release, and purge records are schema-backed. |
 | Documentation front-matter base schema | `Current but likely incomplete for the endstate` | Shared front-matter vocabulary already exists at `core/control_plane/schemas/interfaces/documentation/front_matter_base.schema.json`, but the final field set may still need removals, additions, and stronger constraints. |
 | Documentation front-matter family schemas | `Current but likely incomplete for the endstate` | Governed markdown front matter is validated through dedicated family schemas today, but those family profiles should be treated as the current baseline rather than the final contract. |
-| Documentation family binding registry | `Missing` | The machine-readable mapping from documentation family to schema, template, section spec, and allowed roots is still implicit rather than governed. |
+| Documentation family binding registry | `Current` | The machine-readable mapping from documentation family to schema, template, section spec, and allowed roots is now governed explicitly. |
 | Pack-facing interface schemas | `Partial` | Good start, but still incomplete for full pack runtime and still contain some legacy field naming. |
 
 ### Documentation Front-Matter And Template Machine Contract
@@ -570,18 +570,18 @@ The following remain explicitly owner-gated and should never appear by default:
 |---|---|---|
 | `pack_work_item_note` | `Current` | Keep as a generic operator-authored note contract for plan-pack work items. |
 | `artifact_index` | `Partial` | Make it truly domain-neutral for planning packs and back it with a real builder plus family registry. |
-| `initiative_state` | `Missing` | Add an authoritative current-state snapshot contract for one initiative under either a pack-wide or project-scoped initiative root. |
+| `initiative_state` | `Current` | Keep the authoritative current-state snapshot contract for one initiative under either a pack-wide or project-scoped initiative root. |
 | `initiative_event_stream` | `Current` | Keep an initiative-level append-only event contract so live planning can be event-backed instead of doc-backed. |
-| `task_state` | `Missing` | Add a current-state snapshot contract for initiative-local tasks. |
+| `task_state` | `Current` | Keep the current-state snapshot contract for initiative-local tasks. |
 | `task_event_stream` | `Current` | Keep a task-level append-only event contract where task churn needs separate event history. |
 | `guidance_promotion_record` | `Current` | Add a governed record for extracting approved decisions, standards, references, and guidance from live initiatives into `plan/docs/` guidance surfaces. |
-| `project_record` | `Missing` | Add a governed current-state contract for one project container under `plan/projects/<project_slug>/.wt/project.json`. |
-| `project_repository_map` | `Missing` | Add a governed contract for linking a project to one or more repositories such as planning, implementation, or deployment repos. |
+| `project_record` | `Current` | Keep the governed current-state contract for one project container under `plan/projects/<project_slug>/.wt/project.json`. |
+| `project_repository_map` | `Current` | Keep the governed contract for linking a project to one or more repositories such as planning, implementation, or deployment repos. |
 | `extraction_output_envelope` | `Partial` | Keep as an optional reusable output envelope, but align it with explicit promotion and extraction flows rather than ad hoc exports. |
-| `validation_bundle` | `Missing` | Add a broader evidence or validation bundle contract if suites, reviews, and closeout start sharing evidence packages. |
+| `validation_bundle` | `Current` | Keep the governed validation-bundle contract for initiative-local evidence while broadening it only when suites, reviews, and closeout genuinely need more shared evidence structure. |
 | `discrepancy_record` | `Current` | Keep the governed discrepancy record authoritative for initiative-local validation drift, sync drift, and accepted exception tracking. |
 | `environment_context` | `Missing` | Add if route safety and execution mode decisions need durable environment records. |
-| `closeout_recap` | `Missing` | Add if future plan-pack closeout needs a stronger machine companion to initiative `summary.md` beyond current initiative closeout surfaces. |
+| `closeout_recap` | `Current` | Keep the closeout recap as the current machine companion to initiative closeout and strengthen it only when future closeout needs go beyond the existing recap contract. |
 | `review_record` | `Future` | Add if human approval, review state, and promotion decisions need stronger machine authority. |
 
 ### Required Endstate Runtime And Harness Boundaries
@@ -602,15 +602,15 @@ The following remain explicitly owner-gated and should never appear by default:
 
 | Derived Surface | Current Coverage | Future Requirement |
 |---|---|---|
-| Initiative-local `plan.md` | `Missing` | Render the current plan shape for one initiative from local `.wt/` state rather than authoring it as the primary machine authority. |
-| Initiative-local `progress.md` | `Missing` | Render live progress and recent status for one initiative from local `.wt/` state. |
-| Initiative-local `summary.md` | `Missing` | Render current summary or closeout recap for one initiative from local `.wt/` state. |
-| Pack-level initiative and task indexes under `plan/.wt/` | `Missing` | Provide aggregate lookup and status rollups across both pack-wide and project-scoped initiatives without crawling every initiative path. |
-| Pack-level `plan_overview.md` under `plan/` | `Missing` | Render a short description of the plan domain plus a sectioned status board over ongoing initiatives and projects. |
-| Plan-domain workflow docs under `plan/workflows/` | `Missing` | Hold human-authored routing references, workflow modules, and operator procedures for the plan domain, backed by workflow metadata and route indexes. |
-| Project-level views under `plan/projects/` | `Missing` | Provide project-local human-facing summaries, supporting docs, references, linked repository information, and implementation-boundary context. |
-| Guidance and promotion indexes | `Missing` | Provide aggregate lookup over approved extracted guidance and promotion history under `plan/.wt/` and `plan/docs/`. |
-| Human navigation and instruction surfaces | `Missing` | Govern and expose `README.md` and `AGENTS.md` only where they help navigation or materially change agent interaction. |
+| Initiative-local `plan.md` | `Current` | Render the current plan shape for one initiative from local `.wt/` state rather than authoring it as the primary machine authority. |
+| Initiative-local `progress.md` | `Current` | Render live progress and recent status for one initiative from local `.wt/` state. |
+| Initiative-local `summary.md` | `Current` | Render current summary or closeout recap for one initiative from local `.wt/` state. |
+| Pack-level initiative and task indexes under `plan/.wt/` | `Current` | Provide aggregate lookup and status rollups across both pack-wide and project-scoped initiatives without crawling every initiative path. |
+| Pack-level `plan_overview.md` under `plan/` | `Current` | Render a short description of the plan domain plus a sectioned status board over ongoing initiatives and projects. |
+| Plan-domain workflow docs under `plan/workflows/` | `Current` | Hold human-authored routing references, workflow modules, and operator procedures for the plan domain, backed by workflow metadata and route indexes. |
+| Project-level views under `plan/projects/` | `Current` | Provide project-local human-facing summaries, supporting docs, references, linked repository information, and implementation-boundary context. |
+| Guidance and promotion indexes | `Current` | Provide aggregate lookup over approved extracted guidance and promotion history under `plan/.wt/` and `plan/docs/`. |
+| Human navigation and instruction surfaces | `Current` | Govern and expose `README.md` and `AGENTS.md` only where they help navigation or materially change agent interaction. |
 | Planning and coordination indexes | `Current` | Current family-specific indexes should eventually re-root to initiative-backed live state or be retired where they only mirror docs-backed planning families. |
 | Route and workflow indexes | `Current` | Keep as derived views from routing guidance and workflow metadata; later expose more reusable query helpers over them. |
 | Rendered planning trackers | `Current` | Current trackers should either become pack-level rendered live views under `plan/` or be retired once they no longer belong in docs. |

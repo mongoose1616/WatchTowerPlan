@@ -291,6 +291,21 @@
       "updated_at": "2026-03-17T20:20:00Z"
     },
     {
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "title": "Plan Requirements Current State Reconciliation",
+      "initiative_root": "plan/initiatives/plan_requirements_current_state_reconciliation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T22:30:20Z"
+    },
+    {
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
       "title": "Plan Status Transition and Relation Rule Registries",

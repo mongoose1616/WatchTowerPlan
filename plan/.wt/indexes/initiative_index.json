@@ -703,6 +703,42 @@
       ]
     },
     {
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "title": "Plan Requirements Current State Reconciliation",
+      "summary": "Align requirements.md status tables to already implemented plan/** and reusable helper surfaces so the authoritative contract reflects the true remaining gaps.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T22:30:20Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/progress.md",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "slug": "plan_requirements_current_state_reconciliation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows",
+        "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows",
+        "task.plan_requirements_current_state_reconciliation.validate_and_close_requirements_reconciliation"
+      ],
+      "evidence_ids": [
+        "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T22:30:20Z",
+      "closure_reason": "Aligned requirements.md status tables to the implemented plan/** and helper surfaces so the authoritative contract reflects the true remaining gaps.",
+      "related_paths": [
+        "plan/initiatives/plan_requirements_current_state_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/design_record.md",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/implementation_slice.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
       "title": "Plan Status Transition and Relation Rule Registries",
       "summary": "Adds the missing status transition rules and relation type registries so lifecycle policy and cross-artifact relations stop living only in code and prose.",

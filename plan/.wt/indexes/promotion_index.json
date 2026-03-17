@@ -527,6 +527,42 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_requirements_current_state_reconciliation.bootstrap_shell",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "initiative_title": "Plan Requirements Current State Reconciliation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_requirements_current_state_reconciliation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_requirements_current_state_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/design_record.md",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T22:30:20Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_requirements_current_state_reconciliation_design_record.md",
+        "plan/docs/patterns/plan_requirements_current_state_reconciliation_implementation_slice.md",
+        "plan/docs/references/plan_requirements_current_state_reconciliation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_status_transition_and_relation_rule_registries.bootstrap_shell",
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",

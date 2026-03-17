@@ -901,6 +901,54 @@
       ]
     },
     {
+      "task_id": "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "initiative_title": "Plan Requirements Current State Reconciliation",
+      "title": "Reconcile helper and runtime status rows",
+      "summary": "Update reusable-helper and runtime-helper status rows that are stale in requirements.md.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_helper_and_runtime_status_rows/task.json",
+      "updated_at": "2026-03-17T22:29:33Z"
+    },
+    {
+      "task_id": "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "initiative_title": "Plan Requirements Current State Reconciliation",
+      "title": "Reconcile live workspace and interface contract rows",
+      "summary": "Update plan root, initiative/project workspace, and pack-facing contract rows that are already implemented.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_live_workspace_and_interface_contract_rows/task.json",
+      "updated_at": "2026-03-17T22:29:33Z",
+      "depends_on": [
+        "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_current_state_reconciliation.validate_and_close_requirements_reconciliation",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "initiative_title": "Plan Requirements Current State Reconciliation",
+      "title": "Validate and close requirements reconciliation",
+      "summary": "Validate the updated requirements authority surface and close the bounded reconciliation slice.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/validate_and_close_requirements_reconciliation/task.json",
+      "updated_at": "2026-03-17T22:29:33Z",
+      "depends_on": [
+        "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows"
+      ]
+    },
+    {
       "task_id": "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",

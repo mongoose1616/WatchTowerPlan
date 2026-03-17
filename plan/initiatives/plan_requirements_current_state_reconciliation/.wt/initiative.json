@@ -1,0 +1,73 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+  "trace_id": "trace.plan_requirements_current_state_reconciliation",
+  "slug": "plan_requirements_current_state_reconciliation",
+  "title": "Plan Requirements Current State Reconciliation",
+  "summary": "Align requirements.md status tables to already implemented plan/** and reusable helper surfaces so the authoritative contract reflects the true remaining gaps.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T22:25:00Z",
+  "updated_at": "2026-03-17T22:30:20Z",
+  "task_ids": [
+    "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows",
+    "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows",
+    "task.plan_requirements_current_state_reconciliation.validate_and_close_requirements_reconciliation"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_requirements_current_state_reconciliation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_requirements_current_state_reconciliation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_requirements_current_state_reconciliation/initiative_brief.md",
+      "sha256": "5ca01d71b08a0b109e1e2801be4aac666561aa4eca7373c83393fc37b0eef335",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T22:25:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_requirements_current_state_reconciliation/design_record.md",
+      "sha256": "242832d644e24b9ea3fdf66240f6139b45e9c4871aacdc7b8024d1a2890bb44e",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T22:25:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_requirements_current_state_reconciliation/implementation_slice.md",
+      "sha256": "e2ab4d5281e164bc19c701cb93e92e2ecb31c5b0dde1fbda993c1158d35b6c71",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T22:25:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T22:28:25Z"
+    }
+  ],
+  "closed_at": "2026-03-17T22:30:20Z",
+  "closure_reason": "Aligned requirements.md status tables to the implemented plan/** and helper surfaces so the authoritative contract reflects the true remaining gaps."
+}

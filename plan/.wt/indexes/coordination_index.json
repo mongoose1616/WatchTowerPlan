@@ -23,6 +23,14 @@
       "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract."
     },
     {
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "title": "Plan Requirements Current State Reconciliation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T22:30:20Z",
+      "key_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/plan.md",
+      "closure_reason": "Aligned requirements.md status tables to the implemented plan/** and helper surfaces so the authoritative contract reflects the true remaining gaps."
+    },
+    {
       "trace_id": "trace.plan_guidance_promotion_helper_foundation",
       "title": "Plan Guidance Promotion Helper Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T20:20:00Z",
       "key_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/plan.md",
       "closure_reason": "Delivered the promotion policy registry and plan guidance lookup indexes."
-    },
-    {
-      "trace_id": "trace.plan_live_query_authority_cutover",
-      "title": "Plan Live Query Authority Cutover",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T19:38:14Z",
-      "key_surface_path": "plan/initiatives/plan_live_query_authority_cutover/plan.md",
-      "closure_reason": "Cut public planning query authority over to the live plan workspace indexes, added readiness/discrepancy/project query commands, and aligned command guidance and authority docs to requirements.md and decisions.md."
     }
   ]
 }
