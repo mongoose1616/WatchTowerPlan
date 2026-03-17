@@ -26,6 +26,7 @@
 - `plan/plan_overview.md` and the initiative-local rendered views are derived from the live machine state and must stay current with the indexes under `plan/.wt/indexes/`.
 - `plan/.wt/registries/retention_policy_registry.json` is the live policy surface for how frozen `docs/planning/**` history, transitional initiative archives, promoted guidance, and purge ledgers should be treated during migration and in the clean endstate.
 - `plan/.wt/registries/promotion_policy_registry.json` governs what initiative-local outputs may be promoted into durable `plan/docs/**` guidance and when mirrored updates are required.
+- `plan/.wt/registries/relation_type_registry.json` and `plan/.wt/policies/status_transition_rules.json` are the plan-pack rule surfaces for controlled relation names and family-specific lifecycle transitions.
 - `plan/.wt/indexes/promotion_index.json` and `plan/.wt/indexes/guidance_index.json` are the pack-level lookup surfaces for initiative-local promotion records and approved plan guidance.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
 - `plan/workflows/` is the human plan-domain workflow entrypoint, but the canonical routing backend remains `workflows/ROUTING_TABLE.md` and `workflows/modules/` until the workflow split lands.

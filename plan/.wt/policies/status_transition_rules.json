@@ -1,0 +1,285 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1",
+  "id": "policy.status_transition_rules",
+  "title": "Plan Status Transition Rules",
+  "status": "active",
+  "entries": [
+    {
+      "rule_id": "rule.status_transition.initiative_lifecycle",
+      "entry_status": "active",
+      "family_id": "initiative_state",
+      "transition_field": "lifecycle_stage",
+      "initial_states": [
+        "capture_incomplete"
+      ],
+      "terminal_states": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "transitions": [
+        {
+          "from_state": "capture_incomplete",
+          "to_state": "ready_for_review",
+          "review_required": false
+        },
+        {
+          "from_state": "ready_for_review",
+          "to_state": "ready_for_execution",
+          "review_required": true
+        },
+        {
+          "from_state": "ready_for_execution",
+          "to_state": "in_progress",
+          "review_required": false
+        },
+        {
+          "from_state": "ready_for_execution",
+          "to_state": "blocked",
+          "review_required": false
+        },
+        {
+          "from_state": "in_progress",
+          "to_state": "blocked",
+          "review_required": false
+        },
+        {
+          "from_state": "blocked",
+          "to_state": "in_progress",
+          "review_required": false
+        },
+        {
+          "from_state": "in_progress",
+          "to_state": "closing",
+          "review_required": false
+        },
+        {
+          "from_state": "blocked",
+          "to_state": "closing",
+          "review_required": false
+        },
+        {
+          "from_state": "closing",
+          "to_state": "completed",
+          "review_required": true
+        },
+        {
+          "from_state": "closing",
+          "to_state": "superseded",
+          "review_required": true
+        },
+        {
+          "from_state": "closing",
+          "to_state": "cancelled",
+          "review_required": true
+        }
+      ],
+      "notes": "Encodes the strict initiative lifecycle selected in decisions.md."
+    },
+    {
+      "rule_id": "rule.status_transition.task_lifecycle",
+      "entry_status": "active",
+      "family_id": "task_state",
+      "transition_field": "status",
+      "initial_states": [
+        "planned"
+      ],
+      "terminal_states": [
+        "completed",
+        "cancelled"
+      ],
+      "transitions": [
+        {
+          "from_state": "planned",
+          "to_state": "ready",
+          "review_required": false
+        },
+        {
+          "from_state": "ready",
+          "to_state": "in_progress",
+          "review_required": false
+        },
+        {
+          "from_state": "in_progress",
+          "to_state": "in_review",
+          "review_required": false
+        },
+        {
+          "from_state": "in_review",
+          "to_state": "completed",
+          "review_required": true
+        },
+        {
+          "from_state": "ready",
+          "to_state": "blocked",
+          "review_required": false
+        },
+        {
+          "from_state": "in_progress",
+          "to_state": "blocked",
+          "review_required": false
+        },
+        {
+          "from_state": "in_review",
+          "to_state": "blocked",
+          "review_required": false
+        },
+        {
+          "from_state": "blocked",
+          "to_state": "ready",
+          "review_required": false
+        },
+        {
+          "from_state": "blocked",
+          "to_state": "in_progress",
+          "review_required": false
+        },
+        {
+          "from_state": "planned",
+          "to_state": "cancelled",
+          "review_required": false
+        },
+        {
+          "from_state": "ready",
+          "to_state": "cancelled",
+          "review_required": false
+        }
+      ],
+      "notes": "Encodes the task lifecycle selected in decisions.md."
+    },
+    {
+      "rule_id": "rule.status_transition.validation_bundle",
+      "entry_status": "active",
+      "family_id": "validation_bundle",
+      "transition_field": "status",
+      "initial_states": [
+        "planned"
+      ],
+      "terminal_states": [
+        "completed"
+      ],
+      "transitions": [
+        {
+          "from_state": "planned",
+          "to_state": "active",
+          "review_required": false
+        },
+        {
+          "from_state": "active",
+          "to_state": "completed",
+          "review_required": true
+        }
+      ]
+    },
+    {
+      "rule_id": "rule.status_transition.closeout_recap",
+      "entry_status": "active",
+      "family_id": "closeout_recap",
+      "transition_field": "status",
+      "initial_states": [
+        "planned"
+      ],
+      "terminal_states": [
+        "completed"
+      ],
+      "transitions": [
+        {
+          "from_state": "planned",
+          "to_state": "active",
+          "review_required": false
+        },
+        {
+          "from_state": "active",
+          "to_state": "completed",
+          "review_required": true
+        }
+      ]
+    },
+    {
+      "rule_id": "rule.status_transition.guidance_promotion_record",
+      "entry_status": "active",
+      "family_id": "guidance_promotion_record",
+      "transition_field": "status",
+      "initial_states": [
+        "planned"
+      ],
+      "terminal_states": [
+        "promoted",
+        "rejected"
+      ],
+      "transitions": [
+        {
+          "from_state": "planned",
+          "to_state": "candidate",
+          "review_required": false
+        },
+        {
+          "from_state": "candidate",
+          "to_state": "promoted",
+          "review_required": true
+        },
+        {
+          "from_state": "candidate",
+          "to_state": "rejected",
+          "review_required": true
+        }
+      ]
+    },
+    {
+      "rule_id": "rule.status_transition.discrepancy_record",
+      "entry_status": "active",
+      "family_id": "discrepancy_record",
+      "transition_field": "status",
+      "initial_states": [
+        "open"
+      ],
+      "terminal_states": [
+        "resolved"
+      ],
+      "transitions": [
+        {
+          "from_state": "open",
+          "to_state": "resolved",
+          "review_required": false
+        }
+      ]
+    },
+    {
+      "rule_id": "rule.status_transition.project_record",
+      "entry_status": "active",
+      "family_id": "project_record",
+      "transition_field": "status",
+      "initial_states": [
+        "planned"
+      ],
+      "terminal_states": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "transitions": [
+        {
+          "from_state": "planned",
+          "to_state": "active",
+          "review_required": false
+        },
+        {
+          "from_state": "active",
+          "to_state": "completed",
+          "review_required": true
+        },
+        {
+          "from_state": "active",
+          "to_state": "superseded",
+          "review_required": true
+        },
+        {
+          "from_state": "active",
+          "to_state": "cancelled",
+          "review_required": true
+        }
+      ]
+    }
+  ],
+  "notes": "These rules publish the family-specific lifecycle policy required by requirements.md and decisions.md. Runtime enforcement can tighten over time, but the transition contract is now machine-readable instead of living only in code paths and prose."
+}

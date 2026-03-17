@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1",
+  "title": "Status Transition Rules",
+  "description": "Schema for the plan-pack status transition rules covering family-specific allowed lifecycle and status transitions.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1"
+    },
+    "id": {
+      "const": "policy.status_transition_rules"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ruleEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "transitionField": {
+      "type": "string",
+      "enum": [
+        "status",
+        "lifecycle_stage",
+        "review_status"
+      ]
+    },
+    "transitionRecord": {
+      "type": "object",
+      "required": [
+        "from_state",
+        "to_state",
+        "review_required"
+      ],
+      "properties": {
+        "from_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_required": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "ruleEntry": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "entry_status",
+        "family_id",
+        "transition_field",
+        "initial_states",
+        "terminal_states",
+        "transitions"
+      ],
+      "properties": {
+        "rule_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "entry_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "active",
+            "deprecated"
+          ]
+        },
+        "family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transition_field": {
+          "$ref": "#/$defs/transitionField"
+        },
+        "initial_states": {
+          "$ref": "#/$defs/stringList"
+        },
+        "terminal_states": {
+          "$ref": "#/$defs/stringList"
+        },
+        "transitions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/transitionRecord"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

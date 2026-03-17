@@ -57,6 +57,7 @@ def test_plan_pack_governed_json_artifacts_have_active_schema_validation_coverag
     service = ArtifactValidationService(loader)
     target_roots = (
         REPO_ROOT / "plan" / ".wt" / "manifests",
+        REPO_ROOT / "plan" / ".wt" / "policies",
         REPO_ROOT / "plan" / ".wt" / "registries",
         REPO_ROOT / "plan" / ".wt" / "indexes",
     )
@@ -65,6 +66,97 @@ def test_plan_pack_governed_json_artifacts_have_active_schema_validation_coverag
         for path in sorted(root.glob("*.json")):
             result = service.validate(path.relative_to(REPO_ROOT).as_posix())
             assert result.passed, f"{path} failed schema validation: {result.issues}"
+
+
+def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None:
+    relation_registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/relation_type_registry.json"
+    )
+    transition_rules = load_json_object(
+        REPO_ROOT / "plan/.wt/policies/status_transition_rules.json"
+    )
+
+    relation_names = {entry["canonical_name"] for entry in relation_registry["entries"]}
+    assert {
+        "depends_on",
+        "blocked_by",
+        "related_to",
+        "implements",
+        "supersedes",
+        "evidences",
+        "derived_from",
+        "covers",
+    }.issubset(relation_names)
+
+    transition_rules_by_family = {
+        entry["family_id"]: entry for entry in transition_rules["entries"]
+    }
+    assert {
+        "initiative_state",
+        "task_state",
+        "validation_bundle",
+        "closeout_recap",
+        "guidance_promotion_record",
+        "discrepancy_record",
+        "project_record",
+    }.issubset(transition_rules_by_family)
+
+    def _allowed_states_for(schema_path: Path, field_name: str) -> set[str]:
+        schema = load_json_object(schema_path)
+        return set(schema["properties"][field_name]["enum"])
+
+    initiative_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/initiative_state.schema.json",
+        "lifecycle_stage",
+    )
+    task_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/task_state.schema.json",
+        "status",
+    )
+    validation_bundle_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/validation_bundle.schema.json",
+        "status",
+    )
+    closeout_recap_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/closeout_recap.schema.json",
+        "status",
+    )
+    promotion_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/guidance_promotion_record.schema.json",
+        "status",
+    )
+    discrepancy_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/discrepancy_record.schema.json",
+        "status",
+    )
+    project_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/project_record.schema.json",
+        "status",
+    )
+
+    allowed_states_by_family = {
+        "initiative_state": initiative_states,
+        "task_state": task_states,
+        "validation_bundle": validation_bundle_states,
+        "closeout_recap": closeout_recap_states,
+        "guidance_promotion_record": promotion_states,
+        "discrepancy_record": discrepancy_states,
+        "project_record": project_states,
+    }
+
+    for family_id, allowed_states in allowed_states_by_family.items():
+        entry = transition_rules_by_family[family_id]
+        configured_states = set(entry["initial_states"]) | set(entry["terminal_states"])
+        configured_states |= {
+            transition["from_state"] for transition in entry["transitions"]
+        }
+        configured_states |= {
+            transition["to_state"] for transition in entry["transitions"]
+        }
+        assert configured_states.issubset(allowed_states), (
+            f"{family_id} transition rules reference states outside the live schema: "
+            f"{sorted(configured_states - allowed_states)}"
+        )
 
 
 def test_initiative_index_rejects_missing_current_phase() -> None:

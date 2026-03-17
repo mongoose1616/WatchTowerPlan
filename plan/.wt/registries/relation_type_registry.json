@@ -1,0 +1,166 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:relation-type-registry:v1",
+  "id": "registry.relation_type",
+  "title": "Plan Relation Type Registry",
+  "status": "active",
+  "entries": [
+    {
+      "relation_type_id": "relation.depends_on",
+      "canonical_name": "depends_on",
+      "entry_status": "active",
+      "summary": "Declares an ordered dependency that must resolve before the source artifact can proceed.",
+      "directional": true,
+      "source_families": [
+        "initiative_state",
+        "task_state",
+        "deferred_item_record"
+      ],
+      "target_families": [
+        "initiative_state",
+        "task_state",
+        "deferred_item_record"
+      ],
+      "cardinality": "many_to_many",
+      "allowed_path_fields": [
+        "dependency_task_ids",
+        "depends_on"
+      ]
+    },
+    {
+      "relation_type_id": "relation.blocked_by",
+      "canonical_name": "blocked_by",
+      "entry_status": "active",
+      "summary": "Declares a blocking relation that prevents the source artifact from progressing.",
+      "directional": true,
+      "source_families": [
+        "initiative_state",
+        "task_state"
+      ],
+      "target_families": [
+        "initiative_state",
+        "task_state",
+        "discrepancy_record"
+      ],
+      "cardinality": "many_to_many",
+      "allowed_path_fields": [
+        "blocker_task_ids",
+        "blocked_by"
+      ]
+    },
+    {
+      "relation_type_id": "relation.related_to",
+      "canonical_name": "related_to",
+      "entry_status": "active",
+      "summary": "Declares a non-blocking cross-artifact relationship that should stay queryable.",
+      "directional": false,
+      "source_families": [
+        "initiative_state",
+        "task_state",
+        "deferred_item_record",
+        "discrepancy_record",
+        "guidance_promotion_record"
+      ],
+      "target_families": [
+        "initiative_state",
+        "task_state",
+        "validation_bundle",
+        "closeout_recap",
+        "guidance_promotion_record",
+        "project_record"
+      ],
+      "cardinality": "many_to_many",
+      "allowed_path_fields": [
+        "related_ids"
+      ]
+    },
+    {
+      "relation_type_id": "relation.implements",
+      "canonical_name": "implements",
+      "entry_status": "active",
+      "summary": "Declares that the source artifact implements the scoped intent of another artifact family.",
+      "directional": true,
+      "source_families": [
+        "task_state",
+        "guidance_promotion_record"
+      ],
+      "target_families": [
+        "initiative_state",
+        "project_record"
+      ],
+      "cardinality": "many_to_many"
+    },
+    {
+      "relation_type_id": "relation.supersedes",
+      "canonical_name": "supersedes",
+      "entry_status": "active",
+      "summary": "Declares that one artifact replaces another artifact of the same or compatible family.",
+      "directional": true,
+      "source_families": [
+        "initiative_state",
+        "guidance_promotion_record",
+        "project_record"
+      ],
+      "target_families": [
+        "initiative_state",
+        "guidance_promotion_record",
+        "project_record"
+      ],
+      "cardinality": "many_to_many"
+    },
+    {
+      "relation_type_id": "relation.evidences",
+      "canonical_name": "evidences",
+      "entry_status": "active",
+      "summary": "Declares that the source artifact provides validation or closeout evidence for the target artifact.",
+      "directional": true,
+      "source_families": [
+        "validation_bundle",
+        "closeout_recap"
+      ],
+      "target_families": [
+        "initiative_state",
+        "guidance_promotion_record"
+      ],
+      "cardinality": "many_to_many",
+      "allowed_path_fields": [
+        "evidence_ids"
+      ]
+    },
+    {
+      "relation_type_id": "relation.derived_from",
+      "canonical_name": "derived_from",
+      "entry_status": "active",
+      "summary": "Declares that the source artifact is derived from another authoritative surface.",
+      "directional": true,
+      "source_families": [
+        "guidance_promotion_record",
+        "closeout_recap",
+        "validation_bundle"
+      ],
+      "target_families": [
+        "initiative_state",
+        "task_state",
+        "project_record"
+      ],
+      "cardinality": "many_to_many"
+    },
+    {
+      "relation_type_id": "relation.covers",
+      "canonical_name": "covers",
+      "entry_status": "active",
+      "summary": "Declares that the source artifact covers a requirement, acceptance item, or planned output boundary.",
+      "directional": true,
+      "source_families": [
+        "validation_bundle",
+        "closeout_recap",
+        "guidance_promotion_record"
+      ],
+      "target_families": [
+        "initiative_state",
+        "task_state"
+      ],
+      "cardinality": "many_to_many"
+    }
+  ],
+  "notes": "This registry publishes the first controlled relation vocabulary for the live plan pack so dependency, blocker, evidence, derivation, and supersession semantics stop living only in code and prose."
+}

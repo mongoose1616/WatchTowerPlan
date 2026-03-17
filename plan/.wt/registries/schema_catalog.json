@@ -145,6 +145,26 @@
       "canonical_path": "plan/.wt/schemas/artifacts/guidance_index.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:relation-type-registry:v1",
+      "title": "Relation Type Registry",
+      "description": "Schema for the plan-pack relation type registry covering controlled cross-artifact relation names.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "relation_type_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/relation_type_registry.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1",
+      "title": "Status Transition Rules",
+      "description": "Schema for the plan-pack status transition rules covering family-specific allowed lifecycle and status transitions.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "status_transition_rules",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/status_transition_rules.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
       "title": "Project Record",
       "description": "Schema for the authoritative current-state snapshot of one project container.",

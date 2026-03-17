@@ -238,6 +238,34 @@
       ]
     },
     {
+      "id": "validator.plan.relation_type_registry",
+      "title": "Plan Relation Type Validator",
+      "description": "Validates the plan-pack relation type registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "relation_type_registry",
+      "applies_to": [
+        "plan/.wt/registries/relation_type_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:relation-type-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.status_transition_rules",
+      "title": "Plan Status Transition Rules Validator",
+      "description": "Validates the plan-pack status transition rules.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "status_transition_rules",
+      "applies_to": [
+        "plan/.wt/policies/status_transition_rules.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1"
+      ]
+    },
+    {
       "id": "validator.plan.project_record",
       "title": "Plan Project Record Validator",
       "description": "Validates project-container current-state snapshots.",

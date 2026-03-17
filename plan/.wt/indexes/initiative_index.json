@@ -226,6 +226,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "title": "Plan Status Transition and Relation Rule Registries",
+      "summary": "Adds the missing status transition rules and relation type registries so lifecycle policy and cross-artifact relations stop living only in code and prose.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T20:53:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/progress.md",
+      "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+      "slug": "plan_status_transition_and_relation_rule_registries",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
+        "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries",
+        "task.plan_status_transition_and_relation_rule_registries.validate_rule_registry_coverage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_status_transition_and_relation_rule_registries.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T20:53:00Z",
+      "closure_reason": "Delivered the relation type registry and status transition rule surfaces.",
+      "related_paths": [
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/initiative_brief.md",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/design_record.md",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/implementation_slice.md",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
       "title": "Plan Terminal Initiative Closeout Runtime",
       "summary": "Adds the live terminal closeout mutation path for pack-wide and project-scoped initiative packages so closing initiatives can move into completed, superseded, or cancelled and the coordination surfaces can show recent closeouts instead of stuck active work.",

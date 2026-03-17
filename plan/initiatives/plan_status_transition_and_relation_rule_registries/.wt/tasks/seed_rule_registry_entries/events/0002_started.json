@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries.0002_started",
+  "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+  "task_id": "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T20:44:00Z",
+  "summary": "Started seeding the relation type and status transition rule entries.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "rule_registries"
+  }
+}

@@ -258,6 +258,52 @@
       ]
     },
     {
+      "task_id": "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
+      "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "initiative_title": "Plan Status Transition and Relation Rule Registries",
+      "title": "Publish rule registry schemas",
+      "summary": "Add governed schema contracts for the status transition and relation type registries.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/publish_rule_registry_schemas/task.json",
+      "updated_at": "2026-03-17T20:43:00Z"
+    },
+    {
+      "task_id": "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries",
+      "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "initiative_title": "Plan Status Transition and Relation Rule Registries",
+      "title": "Seed rule registry entries",
+      "summary": "Seed the initial plan-pack status transition and relation type registry entries.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/seed_rule_registry_entries/task.json",
+      "updated_at": "2026-03-17T20:46:00Z",
+      "depends_on": [
+        "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas"
+      ]
+    },
+    {
+      "task_id": "task.plan_status_transition_and_relation_rule_registries.validate_rule_registry_coverage",
+      "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "initiative_title": "Plan Status Transition and Relation Rule Registries",
+      "title": "Validate rule registry coverage",
+      "summary": "Add validation coverage proving the new rule registries remain aligned with live plan artifact families.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/validate_rule_registry_coverage/task.json",
+      "updated_at": "2026-03-17T20:49:00Z",
+      "depends_on": [
+        "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
+        "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries"
+      ]
+    },
+    {
       "task_id": "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",

@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries",
+  "slug": "seed_rule_registry_entries",
+  "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+  "title": "Seed rule registry entries",
+  "summary": "Seed the initial plan-pack status transition and relation type registry entries.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T20:35:00Z",
+  "updated_at": "2026-03-17T20:46:00Z",
+  "dependency_task_ids": [
+    "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

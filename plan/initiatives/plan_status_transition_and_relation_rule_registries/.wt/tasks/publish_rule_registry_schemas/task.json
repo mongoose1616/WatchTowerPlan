@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
+  "slug": "publish_rule_registry_schemas",
+  "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+  "title": "Publish rule registry schemas",
+  "summary": "Add governed schema contracts for the status transition and relation type registries.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T20:35:00Z",
+  "updated_at": "2026-03-17T20:43:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}
