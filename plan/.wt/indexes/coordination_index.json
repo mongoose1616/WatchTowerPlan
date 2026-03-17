@@ -3,12 +3,12 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T08:37:25Z",
+  "updated_at": "2026-03-17T08:43:05Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Start the highest-priority ready task from the initiative package.",
   "recommended_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/plan.md",
-  "active_initiative_count": 8,
+  "active_initiative_count": 9,
   "blocked_task_count": 0,
   "actionable_task_count": 1,
   "entries": [
@@ -175,6 +175,41 @@
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/implementation_slice.md",
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/decision_notes.md"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "title": "WatchTower Work Item Begin Flow",
+      "summary": "Adds a local-first begin command so operators can mark one WatchTower work item as actively in progress before completion.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T08:43:05Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/summary.md",
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "slug": "watchtower_work_item_begin_flow",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow",
+        "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_begin_flow.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/decision_notes.md"
       ]
     },
     {

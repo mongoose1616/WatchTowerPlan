@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow.0002_ready_marked",
+  "initiative_id": "initiative.watchtower_work_item_begin_flow",
+  "task_id": "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:41:28Z",
+  "summary": "Marked the WatchTower work-item begin validation task ready after the begin flow landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow"
+    ]
+  }
+}

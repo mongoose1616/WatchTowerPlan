@@ -1,0 +1,84 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.watchtower_work_item_begin_flow",
+  "trace_id": "trace.watchtower_work_item_begin_flow",
+  "slug": "watchtower_work_item_begin_flow",
+  "title": "WatchTower Work Item Begin Flow",
+  "summary": "Adds a local-first begin command so operators can mark one WatchTower work item as actively in progress before completion.",
+  "scope_type": "project_scoped",
+  "project_id": "project.watchtower",
+  "status": "active",
+  "lifecycle_stage": "closing",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T08:39:01Z",
+  "updated_at": "2026-03-17T08:43:05Z",
+  "task_ids": [
+    "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow",
+    "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.watchtower_work_item_begin_flow.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.watchtower_work_item_begin_flow.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.watchtower_work_item_begin_flow.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/initiative_brief.md",
+      "sha256": "f521682e80511846956378bab14b01b6c6c04b09ba7b4cc88ddd8ef506f101fd",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T08:39:55Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/design_record.md",
+      "sha256": "ac1822de76da6693fb6ec72a8471f019057a92822202c1fc94bb39f03a735732",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T08:39:55Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/implementation_slice.md",
+      "sha256": "371cb05b9e2c18931dbfb8c5322a2e779c94086a7b03a489278ac0e2145a88c2",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T08:39:55Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/decision_notes.md",
+      "sha256": "4af20f6f4b3d8cbac11b5a030fcd174836438f85e5551b92cff02aba5326b597",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T08:39:55Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T08:39:55Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T08:39:58Z"
+    }
+  ]
+}

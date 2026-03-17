@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow",
+  "slug": "validate_watchtower_work_item_begin_flow",
+  "initiative_id": "initiative.watchtower_work_item_begin_flow",
+  "title": "Validate WatchTower work-item begin flow",
+  "summary": "Cover the begin flow with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T08:39:01Z",
+  "updated_at": "2026-03-17T08:41:29Z",
+  "dependency_task_ids": [
+    "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

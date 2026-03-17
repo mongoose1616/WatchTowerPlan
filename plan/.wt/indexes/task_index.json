@@ -133,6 +133,37 @@
       ]
     },
     {
+      "task_id": "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow",
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "initiative_title": "WatchTower Work Item Begin Flow",
+      "title": "Add WatchTower work-item begin flow",
+      "summary": "Add a CLI path that marks one local work item in progress and persists active-work metadata.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/add_watchtower_work_item_begin_flow/task.json",
+      "updated_at": "2026-03-17T08:41:27Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow",
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "initiative_title": "WatchTower Work Item Begin Flow",
+      "title": "Validate WatchTower work-item begin flow",
+      "summary": "Cover the begin flow with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/validate_watchtower_work_item_begin_flow/task.json",
+      "updated_at": "2026-03-17T08:41:29Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow",
       "initiative_id": "initiative.watchtower_work_item_bootstrap",
       "trace_id": "trace.watchtower_work_item_bootstrap",

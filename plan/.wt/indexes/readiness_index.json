@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-17T08:37:25Z",
+  "updated_at": "2026-03-17T08:43:05Z",
   "entries": [
     {
       "initiative_id": "initiative.plan_entrypoint_cutover_proof",
@@ -67,6 +67,22 @@
       "ready_for_execution": true,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T07:57:12Z"
+    },
+    {
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "project_id": "project.watchtower",
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "title": "WatchTower Work Item Begin Flow",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow",
+      "scope_type": "project_scoped",
+      "lifecycle_stage": "closing",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": true,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T08:43:05Z"
     },
     {
       "initiative_id": "initiative.watchtower_work_item_bootstrap",
