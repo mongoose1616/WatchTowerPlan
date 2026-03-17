@@ -335,6 +335,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "summary": "Cuts planning query authority over to the live plan workspace indexes and exposes the missing readiness, discrepancy, and project query surfaces required by requirements.md and decisions.md.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T19:38:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_live_query_authority_cutover/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_live_query_authority_cutover/progress.md",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "slug": "plan_live_query_authority_cutover",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_live_query_authority_cutover.reroot_public_planning_queries_onto_live_plan_indexes",
+        "task.plan_live_query_authority_cutover.add_readiness_discrepancy_and_project_query_commands",
+        "task.plan_live_query_authority_cutover.refresh_docs_and_validate_live_query_cutover"
+      ],
+      "evidence_ids": [
+        "evidence.plan_live_query_authority_cutover.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T19:38:14Z",
+      "closure_reason": "Cut public planning query authority over to the live plan workspace indexes, added readiness/discrepancy/project query commands, and aligned command guidance and authority docs to requirements.md and decisions.md.",
+      "related_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/initiative_brief.md",
+        "plan/initiatives/plan_live_query_authority_cutover/design_record.md",
+        "plan/initiatives/plan_live_query_authority_cutover/implementation_slice.md",
+        "plan/initiatives/plan_live_query_authority_cutover/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_project_context_runtime_standardization",
       "title": "Plan Project Context Runtime Standardization",
       "summary": "Promotes project-scoped context loading into a first-class runtime surface layered on always-loaded pack context and proves it through a narrow query path.",

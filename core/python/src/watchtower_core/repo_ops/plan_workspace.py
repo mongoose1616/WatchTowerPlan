@@ -78,6 +78,7 @@ class PlanTaskIndexEntry:
     title: str
     summary: str
     status: str
+    task_kind: str
     priority: str
     owner: str
     doc_path: str
@@ -101,6 +102,7 @@ class PlanTaskIndexEntry:
             title=str(document["title"]),
             summary=str(document["summary"]),
             status=str(document["status"]),
+            task_kind=str(document.get("task_kind", "feature")),
             priority=str(document["priority"]),
             owner=str(document["owner"]),
             doc_path=str(document["doc_path"]),
@@ -812,6 +814,7 @@ class PlanWorkspaceService:
                 title=str(task["title"]),
                 summary=str(task["summary"]),
                 status=str(task["status"]),
+                task_kind=str(task.get("task_kind", "feature")),
                 priority=str(task["priority"]),
                 owner=str(task["owner"]),
                 doc_path=f"{snapshot.initiative_root}/.wt/tasks/{task['slug']}/task.json",
@@ -1437,6 +1440,7 @@ class PlanWorkspaceService:
             "title": entry.title,
             "summary": entry.summary,
             "status": entry.status,
+            "task_kind": entry.task_kind,
             "priority": entry.priority,
             "owner": entry.owner,
             "doc_path": entry.doc_path,

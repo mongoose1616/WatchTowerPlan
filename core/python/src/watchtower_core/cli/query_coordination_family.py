@@ -8,7 +8,10 @@ from textwrap import dedent
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_authority,
+    _run_query_discrepancies,
     _run_query_project_context,
+    _run_query_projects,
+    _run_query_readiness,
     _run_query_tasks,
     _run_query_trace,
 )
@@ -58,22 +61,26 @@ def register_query_coordination_commands(
 
     query_tasks_parser = query_subparsers.add_parser(
         "tasks",
-        help="Search the task index.",
+        help="Search the live plan task index.",
         description=dedent(
             """
-            Search the task index for local-first task records.
+            Search the live plan task index for initiative-local task records.
 
             Use this when you need to find work by task status, owner, trace,
             priority, task kind, or free-text summary content.
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query tasks --task-status backlog",
+            "uv run watchtower-core query tasks --task-status planned",
             (
                 "uv run watchtower-core query tasks "
-                "--blocked-by task.local_task_tracking.github_sync.001"
+                "--blocked-by task.plan_live_query_authority_cutover."
+                "reroot_public_planning_queries_onto_live_plan_indexes"
             ),
-            "uv run watchtower-core query tasks --trace-id trace.local_task_tracking --format json",
+            (
+                "uv run watchtower-core query tasks "
+                "--trace-id trace.plan_live_query_authority_cutover --format json"
+            ),
         ),
         formatter_class=HelpFormatter,
     )
@@ -92,11 +99,14 @@ def register_query_coordination_commands(
     )
     query_tasks_parser.add_argument(
         "--trace-id",
-        help="Exact trace filter such as trace.local_task_tracking.",
+        help="Exact trace filter such as trace.plan_live_query_authority_cutover.",
     )
     query_tasks_parser.add_argument(
         "--task-status",
-        help="Exact task-status filter such as backlog, in_progress, or done.",
+        help=(
+            "Exact task-status filter such as planned, ready, in_progress, "
+            "blocked, completed, or cancelled."
+        ),
     )
     query_tasks_parser.add_argument(
         "--priority",
@@ -142,13 +152,203 @@ def register_query_coordination_commands(
     )
     query_tasks_parser.set_defaults(handler=_run_query_tasks)
 
+    query_readiness_parser = query_subparsers.add_parser(
+        "readiness",
+        help="Search the live plan readiness index.",
+        description=dedent(
+            """
+            Search the readiness-gate index for initiative execution readiness.
+
+            Use this when you need to inspect capture completeness, approval
+            state, lifecycle stage, or blocking gate reasons before execution
+            starts or resumes.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query readiness --ready-for-execution true",
+            (
+                "uv run watchtower-core query readiness "
+                "--trace-id trace.plan_live_query_authority_cutover --format json"
+            ),
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_readiness_parser.add_argument(
+        "--query",
+        help="Free-text query over readiness entry fields such as trace ID, title, and blocking reasons.",
+    )
+    query_readiness_parser.add_argument(
+        "--initiative-id",
+        help="Exact initiative identifier such as initiative.plan_live_query_authority_cutover.",
+    )
+    query_readiness_parser.add_argument(
+        "--project-id",
+        help="Exact project identifier such as project.watchtower.",
+    )
+    query_readiness_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.plan_live_query_authority_cutover.",
+    )
+    query_readiness_parser.add_argument(
+        "--lifecycle-stage",
+        help="Exact lifecycle-stage filter such as ready_for_execution, in_progress, or completed.",
+    )
+    query_readiness_parser.add_argument(
+        "--review-status",
+        help="Exact review-status filter such as approved or pending.",
+    )
+    query_readiness_parser.add_argument(
+        "--ready-for-execution",
+        choices=("true", "false"),
+        help="Filter by whether the initiative is currently marked ready_for_execution.",
+    )
+    query_readiness_parser.add_argument(
+        "--blocked-only",
+        action="store_true",
+        help="Return only entries with one or more blocking reasons.",
+    )
+    query_readiness_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_readiness_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_readiness_parser.set_defaults(handler=_run_query_readiness)
+
+    query_discrepancies_parser = query_subparsers.add_parser(
+        "discrepancies",
+        help="Search the live plan discrepancy index.",
+        description=dedent(
+            """
+            Search the discrepancy index for drift, validation, and readiness
+            mismatches captured in the live plan workspace.
+
+            Use this when you need blocking discrepancy state without opening
+            one initiative package directly.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query discrepancies --blocking-only",
+            (
+                "uv run watchtower-core query discrepancies "
+                "--trace-id trace.plan_core_documentation_template_authority_foundation "
+                "--format json"
+            ),
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_discrepancies_parser.add_argument(
+        "--query",
+        help="Free-text query over discrepancy fields such as IDs, title, summary, category, and source paths.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--initiative-id",
+        help="Exact initiative identifier such as initiative.plan_live_query_authority_cutover.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--project-id",
+        help="Exact project identifier such as project.watchtower.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.plan_core_documentation_template_authority_foundation.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--category",
+        help="Exact discrepancy category such as stale_aggregate_index or scope_mismatch.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--severity",
+        help="Exact severity filter such as low, high, or critical.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--status",
+        help="Exact discrepancy status such as open or resolved.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--blocking-only",
+        action="store_true",
+        help="Return only discrepancies whose gate effect is blocking readiness or execution.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_discrepancies_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_discrepancies_parser.set_defaults(handler=_run_query_discrepancies)
+
+    query_projects_parser = query_subparsers.add_parser(
+        "projects",
+        help="Search the live plan project index.",
+        description=dedent(
+            """
+            Search the pack-level project index for project containers and their
+            linked repositories.
+
+            Use this when you need project lookup without loading one full
+            project context.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query projects --slug watchtower",
+            "uv run watchtower-core query projects --repository-role implementation --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_projects_parser.add_argument(
+        "--query",
+        help="Free-text query over project fields such as project ID, slug, title, summary, and repository locators.",
+    )
+    query_projects_parser.add_argument(
+        "--project-id",
+        help="Exact project identifier such as project.watchtower.",
+    )
+    query_projects_parser.add_argument(
+        "--slug",
+        help="Exact project slug such as watchtower.",
+    )
+    query_projects_parser.add_argument(
+        "--status",
+        help="Exact project status filter such as active or planned.",
+    )
+    query_projects_parser.add_argument(
+        "--repository-role",
+        help="Exact repository-role filter such as implementation or planning.",
+    )
+    query_projects_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_projects_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_projects_parser.set_defaults(handler=_run_query_projects)
+
     query_coordination_parser = query_subparsers.add_parser(
         "coordination",
         help="Start with the current planning coordination view.",
         description=dedent(
             """
             Search the coordination index through the machine start-here
-            path for current planning state.
+            path for live current planning state.
 
             By default this command returns active initiatives only. Use
             `initiatives` for broader family lookup or pass `--initiative-status`
@@ -183,7 +383,10 @@ def register_query_coordination_commands(
     )
     query_coordination_parser.add_argument(
         "--current-phase",
-        help="Exact current-phase filter such as prd, execution, or closed.",
+        help=(
+            "Exact current-phase filter such as implementation_planning, "
+            "execution, closeout, or closed."
+        ),
     )
     query_coordination_parser.add_argument(
         "--owner",
@@ -371,7 +574,10 @@ def register_query_coordination_commands(
     )
     query_initiatives_parser.add_argument(
         "--current-phase",
-        help="Exact current-phase filter such as prd, execution, or closed.",
+        help=(
+            "Exact current-phase filter such as implementation_planning, "
+            "execution, closeout, or closed."
+        ),
     )
     query_initiatives_parser.add_argument(
         "--owner",

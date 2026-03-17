@@ -69,6 +69,8 @@ def test_root_command_prints_help(capsys) -> None:
         "--document-id prd.example --title \"Example PRD\"" in captured.out
     )
     assert "uv run watchtower-core query coordination --format json" in captured.out
+    assert "uv run watchtower-core query readiness --ready-for-execution true --format json" in captured.out
+    assert "uv run watchtower-core query projects --slug watchtower --format json" in captured.out
     assert (
         "uv run watchtower-core query planning --trace-id trace.core_python_foundation"
         in captured.out
@@ -116,6 +118,9 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
     assert "query coordination" in captured.out
+    assert "query readiness" in captured.out
+    assert "query discrepancies" in captured.out
+    assert "query projects" in captured.out
     assert "query project-context" in captured.out
     assert "query planning" in captured.out
     assert "query authority" in captured.out
@@ -157,7 +162,7 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
         ["query", "initiatives", "--help"],
     ),
 )
-def test_query_planning_family_help_uses_closed_terminal_phase(
+def test_query_planning_family_help_uses_live_phase_terms(
     command: list[str],
     capsys,
 ) -> None:
@@ -167,7 +172,7 @@ def test_query_planning_family_help_uses_closed_terminal_phase(
     captured = capsys.readouterr()
     assert excinfo.value.code == 0
     assert "closed" in captured.out
-    assert "closeout" not in captured.out
+    assert "prd" not in captured.out
 
 
 def test_route_group_prints_group_specific_help(capsys) -> None:

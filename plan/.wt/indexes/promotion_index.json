@@ -247,6 +247,33 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_live_query_authority_cutover.bootstrap_shell",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "initiative_title": "Plan Live Query Authority Cutover",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_live_query_authority_cutover",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/initiative_brief.md",
+        "plan/initiatives/plan_live_query_authority_cutover/design_record.md",
+        "plan/initiatives/plan_live_query_authority_cutover/implementation_slice.md",
+        "plan/initiatives/plan_live_query_authority_cutover/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T19:38:14Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_project_context_runtime_standardization.bootstrap_shell",
       "initiative_id": "initiative.plan_project_context_runtime_standardization",
       "trace_id": "trace.plan_project_context_runtime_standardization",

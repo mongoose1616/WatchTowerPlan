@@ -2166,7 +2166,7 @@
       "standard_id": "std.governance.coordination_tracking",
       "category": "governance",
       "title": "Coordination Tracking Standard",
-      "summary": "This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces.",
+      "summary": "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
@@ -2488,16 +2488,17 @@
       ],
       "operationalization_paths": [
         "docs/planning/initiatives/",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "core/control_plane/indexes/initiatives/",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/plan_overview.md",
         "docs/planning/prds/"
       ],
       "applies_to": [
         "docs/planning/initiatives/",
-        "core/control_plane/indexes/initiatives/initiative_index.json"
+        "plan/.wt/indexes/initiative_index.json"
       ],
       "related_paths": [
         "docs/planning/initiatives/",
+        "plan/.wt/indexes/initiative_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json"
       ],
       "internal_reference_paths": [

@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/initiatives/"
-  - "core/control_plane/indexes/initiatives/initiative_index.json"
+  - "plan/.wt/indexes/initiative_index.json"
 aliases:
   - "initiative tracking"
   - "initiative coordination"
@@ -30,11 +30,11 @@ This standard defines the repository's cross-family initiative tracking model so
 - Give humans one family-specific initiative view for "what is this initiative, who owns it, what phase is it in, and what is next?"
 - Preserve the current artifact-family structure for PRDs, decisions, designs, plans, and tasks instead of collapsing them into one mixed planning folder.
 - Publish one machine-readable initiative rendered surface so the coordination layer and family-specific workflows do not have to reconstruct current phase and ownership from several indexes every time.
-- Keep the docs-backed initiative layer available beneath the live `plan/**` coordination entrypoints while preserving `query initiatives` as the initiative-family lookup surface.
+- Keep the retained initiative tracker available beneath the live `plan/**` coordination entrypoints while preserving `query initiatives` as the live initiative-family lookup surface.
 
 ## Scope
 - Applies to the human-readable initiative tracker under `docs/planning/initiatives/`.
-- Applies to the machine-readable initiative index under `core/control_plane/indexes/initiatives/`.
+- Applies to the machine-readable initiative index under `plan/.wt/indexes/initiative_index.json`.
 - Covers initiative phase vocabulary, owner rendering rules, next-step rendering, and the authority boundary between initiative views and their source artifacts.
 - Does not replace PRDs, decisions, designs, plans, task records, or the unified traceability index.
 
@@ -68,7 +68,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Treat the initiative layer as a compact rendered surface, not as the canonical deep-planning join for one trace now that the planning catalog exists.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
 - Use `plan/.wt/indexes/coordination_index.json` as the live machine start-here path for repo-level planning state.
-- Use `watchtower-core query coordination --format json` when you need the docs-backed traced-planning coordination payload rather than the live `plan/**` indexes.
+- Use `watchtower-core query coordination --format json` when you need the live machine-readable start-here coordination payload.
 - Use the authority map when you need to confirm whether initiative lookup, coordination, traceability, or the planning catalog is canonical for a specific planning question.
 - Keep the initiative layer compact enough that the coordination index can project from it without becoming a second planning authority.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
@@ -76,7 +76,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Publish one initiative entry per shared `trace_id`.
 - Keep active initiatives explicitly task-backed; do not leave an initiative active without durable task linkage.
 - Active initiatives should usually be explicitly owned through non-terminal task records.
-- The allowed exceptions are active `validation` and `closeout` phase, where all linked tasks may already be terminal and validation or initiative closeout is the only remaining step.
+- The allowed exception is active `closeout`, where all linked tasks may already be terminal and initiative closeout is the only remaining step.
 - Every initiative entry must make these questions easy to answer:
   - what this initiative is
   - whether it is active or closed
@@ -85,18 +85,15 @@ This standard defines the repository's cross-family initiative tracking model so
   - what the next expected step is
   - which surface the next contributor should open
 - Use only these initiative phase values:
-  - `prd`
-  - `design`
   - `implementation_planning`
   - `execution`
-  - `validation`
   - `closeout`
   - `closed`
 - Derive `primary_owner` only when exactly one active owner is present on non-terminal task records for the initiative.
 - Publish `active_owners` and `active_task_ids` when open task records exist.
 - Publish compact `active_task_summaries` for active initiatives with non-terminal tasks so machines can see task names and actionability without reparsing the task index first.
-- Allow active `validation` and `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and validation or initiative closeout is the only next action.
-- Active initiatives outside `validation` and `closeout` should carry linked task IDs and active-task rendered detail instead of relying on implied execution ownership.
+- Allow active `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
+- Active initiatives outside `closeout` should carry linked task IDs and active-task rendered detail instead of relying on implied execution ownership.
 - Use `closed` as the initiative phase for terminal initiative states rather than overloading `current_phase` with `completed`, `superseded`, `cancelled`, or `abandoned`.
 - For terminal initiatives, project entry `updated_at` from the later of traceability `updated_at` and `closed_at`.
 - Publish initiative-entry lifecycle as `artifact_status` and initiative outcome as `initiative_status`; do not collapse those meanings into one generic entry-level `status` field.
@@ -109,18 +106,15 @@ This standard defines the repository's cross-family initiative tracking model so
 |---|---|
 | Traceability index | Authoritative machine join for trace-linked artifact IDs and initiative closeout status |
 | Task records and task index | Authoritative source for active ownership, blockers, and execution state |
-| Initiative index | Derived machine-readable coordination rendered surface |
+| Initiative index | Derived machine-readable live initiative-family surface |
 | `initiative_tracking.md` | Derived human-readable initiative board |
 
 ### Initiative phase expectations
 | Phase | Meaning | Typical Next Step |
 |---|---|---|
-| `prd` | Intent exists, but technical design is not yet captured. | Create or update a feature design. |
-| `design` | A feature design exists, but executable planning is not yet captured. | Create or update an implementation plan. |
-| `implementation_planning` | An implementation plan exists, but execution has not yet started through active tasks. | Create and assign execution tasks. |
-| `execution` | Non-terminal task work is active for the initiative. | Continue, unblock, review, or close the active task set. |
-| `validation` | Execution is complete enough that validation and evidence are the next controlling step. | Run validation and record evidence. |
-| `closeout` | Validation is present and the initiative is ready for terminal closeout. | Run initiative closeout. |
+| `implementation_planning` | Capture, review, or approval work is still in progress before execution starts. | Finish capture, pass validation, and approve readiness. |
+| `execution` | Execution or blocking work is active for the initiative. | Continue, unblock, review, or close the active task set. |
+| `closeout` | Execution is complete and closeout or promotion work is underway. | Finalize closeout, evidence, and promotion decisions. |
 | `closed` | The initiative has reached a terminal closeout state. | No further default action. |
 
 ## Process or Workflow
@@ -132,14 +126,14 @@ This standard defines the repository's cross-family initiative tracking model so
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/initiatives/`; `core/control_plane/indexes/initiatives/initiative_index.json`; `core/control_plane/indexes/initiatives/`; `docs/planning/prds/`
+- `Operational Surfaces`: `docs/planning/initiatives/`; `plan/.wt/indexes/initiative_index.json`; `plan/plan_overview.md`; `docs/planning/prds/`
 
 ## Validation
 - Every initiative entry should correspond to one current traceability entry.
 - Every initiative entry should publish `current_phase`, `next_action`, and `next_surface_path`.
 - Active initiative owner and active-task rendered detail should agree with the current open task corpus whenever non-terminal tasks exist.
 - Active initiatives should not remain in the index without linked task IDs.
-- Active initiatives outside `validation` and `closeout` should not remain in the index without non-terminal task ownership.
+- Active initiatives outside `closeout` should not remain in the index without non-terminal task ownership.
 - Initiative closeout state should agree with the traceability index rather than competing with it.
 - Terminal initiative entries should not publish `updated_at` earlier than `closed_at`.
 - Reviewers should reject initiative views that hide ambiguity by inventing owners, tasks, or progress that the source surfaces do not publish.

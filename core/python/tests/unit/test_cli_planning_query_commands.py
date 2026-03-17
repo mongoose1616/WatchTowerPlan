@@ -2,6 +2,20 @@ from __future__ import annotations
 
 from tests.unit.cli_command_helpers import run_json_command
 
+ACTIVE_TRACE_ID = "trace.plan_live_query_authority_cutover"
+ACTIVE_INITIATIVE_ID = "initiative.plan_live_query_authority_cutover"
+ACTIVE_TASK_ID = (
+    "task.plan_live_query_authority_cutover."
+    "reroot_public_planning_queries_onto_live_plan_indexes"
+)
+DEPENDENCY_TASK_ID = (
+    "task.plan_live_query_authority_cutover."
+    "add_readiness_discrepancy_and_project_query_commands"
+)
+COMPLETED_TRACE_ID = "trace.plan_workflow_root_authority_split"
+DISCREPANCY_TRACE_ID = "trace.plan_core_documentation_template_authority_foundation"
+WATCHTOWER_PROJECT_ID = "project.watchtower"
+
 
 def test_query_prds_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
@@ -85,16 +99,17 @@ def test_query_evidence_supports_json_output(capsys) -> None:
 def test_query_tasks_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "tasks", "--trace-id", "trace.local_task_tracking"],
+        ["query", "tasks", "--trace-id", ACTIVE_TRACE_ID],
     )
 
     assert result == 0
     assert payload["command"] == "watchtower-core query tasks"
     assert payload["status"] == "ok"
     assert any(
-        entry["task_id"] == "task.local_task_tracking.github_sync.001"
+        entry["task_id"] == ACTIVE_TASK_ID
         for entry in payload["results"]
     )
+    assert all(entry["trace_id"] == ACTIVE_TRACE_ID for entry in payload["results"])
 
 
 def test_query_tasks_supports_dependency_details_json_output(capsys) -> None:
@@ -104,7 +119,7 @@ def test_query_tasks_supports_dependency_details_json_output(capsys) -> None:
             "query",
             "tasks",
             "--task-id",
-            "task.local_task_tracking.github_sync.001",
+            DEPENDENCY_TASK_ID,
             "--include-dependency-details",
         ],
     )
@@ -112,7 +127,7 @@ def test_query_tasks_supports_dependency_details_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query tasks"
     entry = payload["results"][0]
-    assert entry["task_id"] == "task.local_task_tracking.github_sync.001"
+    assert entry["task_id"] == DEPENDENCY_TASK_ID
     assert "blocked_by_details" in entry
     assert "depends_on_details" in entry
     assert "reverse_dependency_details" in entry
@@ -121,7 +136,7 @@ def test_query_tasks_supports_dependency_details_json_output(capsys) -> None:
 def test_query_initiatives_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "initiatives", "--trace-id", "trace.core_python_foundation"],
+        ["query", "initiatives", "--trace-id", ACTIVE_TRACE_ID],
     )
 
     assert result == 0
@@ -129,7 +144,7 @@ def test_query_initiatives_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
     assert "default_initiative_status" not in payload
     assert any(
-        entry["trace_id"] == "trace.core_python_foundation" for entry in payload["results"]
+        entry["trace_id"] == ACTIVE_TRACE_ID for entry in payload["results"]
     )
 
 
@@ -160,7 +175,7 @@ def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
             "--initiative-status",
             "completed",
             "--trace-id",
-            "trace.core_python_foundation",
+            COMPLETED_TRACE_ID,
         ],
     )
 
@@ -168,11 +183,50 @@ def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
     assert payload["command"] == "watchtower-core query coordination"
     assert payload["status"] == "ok"
     matched = next(
-        entry for entry in payload["results"] if entry["trace_id"] == "trace.core_python_foundation"
+        entry for entry in payload["results"] if entry["trace_id"] == COMPLETED_TRACE_ID
     )
     assert matched["artifact_status"] == "active"
     assert matched["initiative_status"] == "completed"
     assert "status" not in matched
+
+
+def test_query_readiness_supports_json_output(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "readiness", "--initiative-id", ACTIVE_INITIATIVE_ID],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query readiness"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["initiative_id"] == ACTIVE_INITIATIVE_ID for entry in payload["results"]
+    )
+
+
+def test_query_discrepancies_supports_json_output(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "discrepancies", "--trace-id", DISCREPANCY_TRACE_ID],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query discrepancies"
+    assert payload["status"] == "ok"
+    assert payload["result_count"] > 0
+    assert all(entry["trace_id"] == DISCREPANCY_TRACE_ID for entry in payload["results"])
+
+
+def test_query_projects_supports_json_output(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "projects", "--project-id", WATCHTOWER_PROJECT_ID],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query projects"
+    assert payload["status"] == "ok"
+    assert payload["results"][0]["project_id"] == WATCHTOWER_PROJECT_ID
 
 
 def test_query_project_context_supports_json_output(capsys) -> None:
@@ -223,7 +277,7 @@ def test_query_initiatives_uses_explicit_artifact_status_field(capsys) -> None:
             "query",
             "initiatives",
             "--trace-id",
-            "trace.core_python_foundation",
+            COMPLETED_TRACE_ID,
             "--initiative-status",
             "completed",
         ],
@@ -232,7 +286,7 @@ def test_query_initiatives_uses_explicit_artifact_status_field(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query initiatives"
     entry = next(
-        item for item in payload["results"] if item["trace_id"] == "trace.core_python_foundation"
+        item for item in payload["results"] if item["trace_id"] == COMPLETED_TRACE_ID
     )
     assert entry["artifact_status"] == "active"
     assert entry["initiative_status"] == "completed"

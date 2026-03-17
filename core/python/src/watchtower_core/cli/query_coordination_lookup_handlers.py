@@ -15,6 +15,12 @@ from watchtower_core.repo_ops.project_context import load_project_context
 from watchtower_core.repo_ops.query import (
     AuthorityMapQueryService,
     AuthorityMapSearchParams,
+    DiscrepancyQueryService,
+    DiscrepancySearchParams,
+    ProjectQueryService,
+    ProjectSearchParams,
+    ReadinessQueryService,
+    ReadinessSearchParams,
     TaskQueryService,
     TaskSearchParams,
     TraceabilityQueryService,
@@ -86,50 +92,12 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
         "status": "ok",
         "result_count": len(entries),
         "results": [
-            {
-                "task_id": entry.task_id,
-                "trace_id": entry.trace_id,
-                "title": entry.title,
-                "summary": entry.summary,
-                "status": entry.status,
-                "task_status": entry.task_status,
-                "task_kind": entry.task_kind,
-                "priority": entry.priority,
-                "owner": entry.owner,
-                "doc_path": entry.doc_path,
-                "updated_at": entry.updated_at,
-                "blocked_by": list(entry.blocked_by),
-                "depends_on": list(entry.depends_on),
-                "related_ids": list(entry.related_ids),
-                "applies_to": list(entry.applies_to),
-                "github_repository": entry.github_repository,
-                "github_issue_number": entry.github_issue_number,
-                "github_issue_node_id": entry.github_issue_node_id,
-                "github_project_owner": entry.github_project_owner,
-                "github_project_owner_type": entry.github_project_owner_type,
-                "github_project_number": entry.github_project_number,
-                "github_project_item_id": entry.github_project_item_id,
-                "github_synced_at": entry.github_synced_at,
-                "tags": list(entry.tags),
-                **(
-                    {
-                        "blocked_by_details": [
-                            _task_dependency_payload(service.get(task_id))
-                            for task_id in entry.blocked_by
-                        ],
-                        "depends_on_details": [
-                            _task_dependency_payload(service.get(task_id))
-                            for task_id in entry.depends_on
-                        ],
-                        "reverse_dependency_details": [
-                            _task_dependency_payload(task)
-                            for task in reverse_dependencies.get(entry.task_id, ())
-                        ],
-                    }
-                    if args.include_dependency_details
-                    else {}
-                ),
-            }
+            _task_entry_payload(
+                entry,
+                service=service,
+                reverse_dependencies=reverse_dependencies,
+                include_dependency_details=args.include_dependency_details,
+            )
             for entry in entries
         ],
     }
@@ -142,7 +110,8 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} task entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.task_id} [{entry.task_status}, {entry.priority}]")
+        task_status = getattr(entry, "status", getattr(entry, "task_status", "unknown"))
+        print(f"- {entry.task_id} [{task_status}, {entry.priority}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
         if args.include_dependency_details:
@@ -156,6 +125,144 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
                     "  Reverse dependencies: "
                     + ", ".join(task.task_id for task in reverse_links)
                 )
+    return 0
+
+
+def _run_query_readiness(args: argparse.Namespace) -> int:
+    service = ReadinessQueryService(ControlPlaneLoader())
+    ready_for_execution = (
+        None
+        if args.ready_for_execution is None
+        else args.ready_for_execution == "true"
+    )
+    entries = service.search(
+        ReadinessSearchParams(
+            query=args.query,
+            initiative_id=args.initiative_id,
+            project_id=args.project_id,
+            trace_id=args.trace_id,
+            lifecycle_stage=args.lifecycle_stage,
+            review_status=args.review_status,
+            ready_for_execution=ready_for_execution,
+            blocked_only=args.blocked_only,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query readiness",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_readiness_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No readiness entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} readiness entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        readiness_state = "ready" if entry.ready_for_execution else "not_ready"
+        print(
+            f"- {entry.trace_id} [{entry.lifecycle_stage}, {entry.review_status}, {readiness_state}]"
+        )
+        print(f"  {entry.title}")
+        if entry.project_id is not None:
+            print(f"  Project: {entry.project_id}")
+        print(
+            "  Capture/Machine/Approval: "
+            f"{'complete' if entry.capture_complete else 'incomplete'}, "
+            f"{'valid' if entry.machine_valid else 'invalid'}, "
+            f"{entry.approval_status}"
+        )
+        if entry.blocking_reasons:
+            print(f"  Blocking reasons: {', '.join(entry.blocking_reasons)}")
+        print(f"  Root: {entry.initiative_root}")
+    return 0
+
+
+def _run_query_discrepancies(args: argparse.Namespace) -> int:
+    service = DiscrepancyQueryService(ControlPlaneLoader())
+    entries = service.search(
+        DiscrepancySearchParams(
+            query=args.query,
+            initiative_id=args.initiative_id,
+            project_id=args.project_id,
+            trace_id=args.trace_id,
+            category=args.category,
+            severity=args.severity,
+            status=args.status,
+            blocking_only=args.blocking_only,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query discrepancies",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_discrepancy_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No discrepancy entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} discrepancy entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(
+            f"- {entry.discrepancy_id} "
+            f"[{entry.severity}, {entry.gate_effect}, {entry.status}]"
+        )
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(f"  Category: {entry.category}")
+        if entry.source_paths:
+            print(f"  Sources: {', '.join(entry.source_paths)}")
+    return 0
+
+
+def _run_query_projects(args: argparse.Namespace) -> int:
+    service = ProjectQueryService(ControlPlaneLoader())
+    entries = service.search(
+        ProjectSearchParams(
+            query=args.query,
+            project_id=args.project_id,
+            slug=args.slug,
+            status=args.status,
+            repository_role=args.repository_role,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query projects",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_project_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No project entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} project entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.project_id} [{entry.status}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(
+            "  Initiatives: "
+            f"active={entry.active_initiative_count} blocked={entry.blocked_initiative_count}"
+        )
+        print(
+            "  Repositories: "
+            f"{entry.repository_count} via {', '.join(entry.linked_repository_roles)}"
+        )
+        print(f"  Root: {entry.project_root}")
     return 0
 
 
@@ -305,3 +412,103 @@ def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
         "aliases": list(entry.aliases),
         "notes": entry.notes,
     }
+
+
+def _task_entry_payload(
+    entry: object,
+    *,
+    service: TaskQueryService,
+    reverse_dependencies: dict[str, tuple[object, ...]],
+    include_dependency_details: bool,
+) -> dict[str, object]:
+    status = getattr(entry, "status", getattr(entry, "task_status", None))
+    payload: dict[str, object] = {
+        "task_id": entry.task_id,
+        "initiative_id": getattr(entry, "initiative_id", None),
+        "project_id": getattr(entry, "project_id", None),
+        "trace_id": entry.trace_id,
+        "initiative_title": getattr(entry, "initiative_title", None),
+        "title": entry.title,
+        "summary": entry.summary,
+        "status": status,
+        "task_status": status,
+        "task_kind": getattr(entry, "task_kind", None),
+        "priority": entry.priority,
+        "owner": entry.owner,
+        "doc_path": entry.doc_path,
+        "updated_at": entry.updated_at,
+        "blocked_by": list(getattr(entry, "blocked_by", ())),
+        "depends_on": list(getattr(entry, "depends_on", ())),
+        "related_ids": list(getattr(entry, "related_ids", ())),
+    }
+    if include_dependency_details:
+        payload["blocked_by_details"] = [
+            _task_dependency_payload(service.get(task_id))
+            for task_id in getattr(entry, "blocked_by", ())
+        ]
+        payload["depends_on_details"] = [
+            _task_dependency_payload(service.get(task_id))
+            for task_id in getattr(entry, "depends_on", ())
+        ]
+        payload["reverse_dependency_details"] = [
+            _task_dependency_payload(task)
+            for task in reverse_dependencies.get(entry.task_id, ())
+        ]
+    return {key: value for key, value in payload.items() if value is not None}
+
+
+def _readiness_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "initiative_id": entry.initiative_id,
+        "project_id": entry.project_id,
+        "trace_id": entry.trace_id,
+        "title": entry.title,
+        "initiative_root": entry.initiative_root,
+        "scope_type": entry.scope_type,
+        "lifecycle_stage": entry.lifecycle_stage,
+        "review_status": entry.review_status,
+        "capture_complete": entry.capture_complete,
+        "machine_valid": entry.machine_valid,
+        "approval_status": entry.approval_status,
+        "ready_for_execution": entry.ready_for_execution,
+        "blocking_reasons": list(entry.blocking_reasons),
+        "updated_at": entry.updated_at,
+    }
+    return {key: value for key, value in payload.items() if value is not None}
+
+
+def _discrepancy_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "discrepancy_id": entry.discrepancy_id,
+        "initiative_id": entry.initiative_id,
+        "project_id": entry.project_id,
+        "trace_id": entry.trace_id,
+        "title": entry.title,
+        "category": entry.category,
+        "severity": entry.severity,
+        "gate_effect": entry.gate_effect,
+        "status": entry.status,
+        "summary": entry.summary,
+        "source_paths": list(entry.source_paths),
+        "updated_at": entry.updated_at,
+    }
+    return {key: value for key, value in payload.items() if value is not None}
+
+
+def _project_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "project_id": entry.project_id,
+        "slug": entry.slug,
+        "title": entry.title,
+        "summary": entry.summary,
+        "status": entry.status,
+        "project_root": entry.project_root,
+        "initiative_root": entry.initiative_root,
+        "repository_count": entry.repository_count,
+        "active_initiative_count": entry.active_initiative_count,
+        "blocked_initiative_count": entry.blocked_initiative_count,
+        "linked_repository_roles": list(entry.linked_repository_roles),
+        "repository_locators": list(entry.repository_locators),
+        "updated_at": entry.updated_at,
+    }
+    return {key: value for key, value in payload.items() if value is not None}

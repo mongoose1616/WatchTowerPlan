@@ -1,7 +1,7 @@
 ---
 id: "std.governance.coordination_tracking"
 title: "Coordination Tracking Standard"
-summary: "This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces."
+summary: "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces."
 type: "standard"
 status: "active"
 tags:
@@ -24,10 +24,10 @@ aliases:
 # Coordination Tracking Standard
 
 ## Summary
-This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces.
+This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.
 
 ## Purpose
-- Give humans one compact docs-backed planning surface for traced current state, next follow-up work, and retained backlog context after the live `plan/**` entrypoints route them into the planning corpus.
+- Give humans one compact retained-planning surface for traced current state, next follow-up work, and legacy backlog context after the live `plan/**` entrypoints route them into the planning corpus.
 - Keep the human coordination view derived from the machine-readable coordination index rather than becoming a second planning authority.
 - Preserve the deeper family trackers as companion views instead of forcing users to guess which tracker to open first.
 
@@ -72,7 +72,7 @@ This standard defines the repository's compact docs-backed coordination tracker 
 | Layer | Role |
 |---|---|
 | `plan/.wt/indexes/coordination_index.json` and `plan/plan_overview.md` | Live plan-workspace start-here surfaces |
-| Coordination index | Authoritative machine-readable docs-backed coordination source |
+| Coordination index | Authoritative machine-readable live coordination source |
 | `coordination_tracking.md` | Derived human-readable traced-planning tracker |
 | Family trackers | Deeper human companion views for initiatives, tasks, PRDs, designs, and decisions |
 

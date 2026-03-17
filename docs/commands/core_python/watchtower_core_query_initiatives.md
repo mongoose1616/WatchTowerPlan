@@ -24,9 +24,9 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed initiative fields such as trace ID, title, summary, owner, next action, and linked artifact IDs.
-- `--trace-id <trace_id>`: Exact trace filter such as `trace.core_python_foundation`.
+- `--trace-id <trace_id>`: Exact trace filter such as `trace.plan_live_query_authority_cutover`.
 - `--initiative-status <status>`: Exact initiative-status filter such as `active`, `completed`, or `superseded`. When omitted for filterless browse, the command defaults to `active`.
-- `--current-phase <phase>`: Exact current-phase filter such as `prd`, `execution`, `validation`, or `closed`.
+- `--current-phase <phase>`: Exact current-phase filter such as `implementation_planning`, `execution`, `closeout`, or `closed`.
 - `--owner <owner>`: Exact active-owner filter such as `repository_maintainer`.
 - `--blocked-only`: Return only initiatives with one or more currently blocked active tasks.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
@@ -38,6 +38,7 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 - Use `watchtower-core query planning` when you need the canonical deep planning record for one trace rather than a compact initiative rendered surface.
 - Use `watchtower-core query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
 - Filterless browse now defaults to active initiatives; this command remains the broader initiative query surface for explicit historical or status-specific lookup.
+- This command reads the live initiative-family index under `plan/.wt/indexes/initiative_index.json`.
 
 ## Examples
 ```sh
@@ -52,7 +53,7 @@ uv run watchtower-core query initiatives --blocked-only --format json
 
 ```sh
 cd core/python
-uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
+uv run watchtower-core query initiatives --trace-id trace.plan_live_query_authority_cutover
 ```
 
 ```sh
@@ -76,8 +77,7 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 | `watchtower-core query coordination` | Preferred machine start-here path for current planning state. |
 | `watchtower-core query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or planning should answer instead. |
 | `watchtower-core query planning` | Canonical deep-planning read path when the initiative summary is too compact. |
-| `watchtower-core sync initiative-index` | Rebuilds the initiative index that this command reads. |
-| `watchtower-core sync initiative-tracking` | Rebuilds the human-readable tracker derived from the same initiative view. |
+| `watchtower-core sync all` | Rebuilds the live initiative-family index and its rendered companions. |
 | `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
 | `watchtower-core query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
 
@@ -85,7 +85,7 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
-- `core/control_plane/indexes/initiatives/initiative_index.json`
+- `plan/.wt/indexes/initiative_index.json`
 
 ## Updated At
-- `2026-03-13T23:21:33Z`
+- `2026-03-17T19:13:00Z`

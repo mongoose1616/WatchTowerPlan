@@ -53,12 +53,16 @@ uv run watchtower-core query authority --artifact-kind route_index
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and authority-map entries.
 - The command is authority-oriented: it tells you which surface is canonical, not every surface that might contain related data.
 - For planning questions, the active-first navigation model still applies after authority resolution: filterless `query planning` and `query initiatives` browse calls default to active, while explicit historical lookup remains opt-in through `--initiative-status` or a known `--trace-id`.
+- The current planning authority entries now point first to live `plan/.wt/**` indexes and `plan/plan_overview.md`, with retained docs-backed planning surfaces kept only as fallback or historical companions where applicable.
 - If no entries match the requested filters, the command exits successfully and reports that no authority-map entries matched.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core query coordination` | Canonical machine start-here path for current planning state and next action. |
+| `watchtower-core query readiness` | Canonical execution-gate lookup when the question is whether an initiative may start or resume work. |
+| `watchtower-core query discrepancies` | Canonical mismatch and drift lookup when the question is blocking discrepancies. |
+| `watchtower-core query projects` | Canonical project-container browse surface for pack-level project lookup. |
 | `watchtower-core query planning` | Canonical deep-planning read path for one trace after coordination identifies it. |
 | `watchtower-core query initiatives` | Focused initiative-family lookup surface that the authority map may point to for history or compact phase browsing. |
 | `watchtower-core query trace` | Durable trace-linked source join when the question is IDs or closeout state rather than the full planning read model. |
@@ -72,4 +76,4 @@ uv run watchtower-core query authority --artifact-kind route_index
 - `core/control_plane/registries/authority_map.json`
 
 ## Updated At
-- `2026-03-13T23:21:33Z`
+- `2026-03-17T19:13:00Z`

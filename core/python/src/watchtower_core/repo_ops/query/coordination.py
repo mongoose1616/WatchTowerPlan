@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.query.common import (
     RenderedSearchFilters,
     initiative_rendered_query_terms,
@@ -31,20 +32,18 @@ class CoordinationQueryService:
     """Search the coordination index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._loader = loader
+        self._plan_workspace = PlanWorkspaceService(loader)
         self._initiative_service = InitiativeQueryService(loader)
 
     def search(self, params: CoordinationSearchParams) -> CoordinationQueryResult:
         """Return coordination entries matching the requested filters."""
-        index = self._loader.load_coordination_index()
+        index = self._plan_workspace.load_coordination_index()
         if _delegates_to_initiative_history(params):
             return CoordinationQueryResult(
                 index=index,
                 entries=self._initiative_service.search(params),
             )
-        entry_rank = {entry.trace_id: idx for idx, entry in enumerate(index.entries)}
-        entries = search_rendered_entries(
-            index.entries,
+        entries = self._plan_workspace.search_coordination(
             RenderedSearchFilters(
                 query=params.query,
                 trace_id=params.trace_id,
@@ -53,15 +52,7 @@ class CoordinationQueryService:
                 owner=params.owner,
                 blocked_only=params.blocked_only,
                 limit=params.limit,
-            ),
-            query_fields=initiative_rendered_query_terms,
-            sort_key=lambda entry: (entry_rank.get(entry.trace_id, 9999), entry.trace_id),
-            trace_id=lambda entry: entry.trace_id,
-            initiative_status=lambda entry: entry.initiative_status,
-            current_phase=lambda entry: entry.current_phase,
-            primary_owner=lambda entry: entry.primary_owner,
-            active_owners=lambda entry: entry.active_owners,
-            blocked_task_count=lambda entry: entry.blocked_task_count,
+            )
         )
         return CoordinationQueryResult(index=index, entries=entries)
 

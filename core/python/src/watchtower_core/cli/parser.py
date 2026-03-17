@@ -31,6 +31,8 @@ def build_parser() -> argparse.ArgumentParser:
             "--summary \"Frames the example initiative.\" --format json",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
+            "uv run watchtower-core query readiness --ready-for-execution true --format json",
+            "uv run watchtower-core query projects --slug watchtower --format json",
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation "
             "--format json",
             "uv run watchtower-core query authority --domain planning --format json",
@@ -40,7 +42,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query tasks --task-status backlog",
+            "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core task transition --task-id task.example.001 "
             "--task-status done --format json",

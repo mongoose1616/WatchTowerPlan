@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_live_query_authority_cutover.0011_execution_started",
+  "initiative_id": "initiative.plan_live_query_authority_cutover",
+  "trace_id": "trace.plan_live_query_authority_cutover",
+  "sequence": 11,
+  "event_type": "execution_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T19:14:00Z",
+  "summary": "Implementation began for the live query authority cutover slice.",
+  "payload": {}
+}

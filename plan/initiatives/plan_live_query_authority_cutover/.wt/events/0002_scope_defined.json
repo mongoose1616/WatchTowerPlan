@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_live_query_authority_cutover.0002_scope_defined",
+  "initiative_id": "initiative.plan_live_query_authority_cutover",
+  "trace_id": "trace.plan_live_query_authority_cutover",
+  "sequence": 2,
+  "event_type": "scope_defined",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T18:59:43Z",
+  "summary": "Recorded the initial pack-wide initiative scope.",
+  "related_paths": [
+    "plan/initiatives/plan_live_query_authority_cutover/initiative_brief.md",
+    "plan/initiatives/plan_live_query_authority_cutover/design_record.md",
+    "plan/initiatives/plan_live_query_authority_cutover/implementation_slice.md",
+    "plan/initiatives/plan_live_query_authority_cutover/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

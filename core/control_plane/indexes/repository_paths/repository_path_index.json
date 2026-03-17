@@ -3244,6 +3244,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_discrepancies.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_foundations.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -3268,6 +3278,26 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Loads the explicit machine-first runtime context for one project container under `plan/projects/**`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_projects.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for pack-level project lookup under `plan/.wt/indexes/project_index.json`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_readiness.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",

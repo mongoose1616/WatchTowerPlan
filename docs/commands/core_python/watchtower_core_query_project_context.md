@@ -52,7 +52,7 @@ uv run watchtower-core query project-context --project-slug watchtower --format 
 | `watchtower-core query coordination` | Pack-level current-state entrypoint before narrowing to one project. |
 | `watchtower-core query planning` | Deep trace-linked planning lookup after the project root is known. |
 | `watchtower-core query authority` | Canonical-surface resolver when you are not sure which machine surface to trust. |
-| `watchtower-core sync all` | Rebuilds command and docs-backed indexes after query-surface changes. |
+| `watchtower-core sync all` | Rebuilds command docs, live plan indexes, and retained companion surfaces after query-surface changes. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
@@ -63,4 +63,4 @@ uv run watchtower-core query project-context --project-slug watchtower --format 
 - `plan/projects/<project_slug>/.wt/project_repository_map.json`
 
 ## Updated At
-- `2026-03-17T18:37:00Z`
+- `2026-03-17T19:13:00Z`

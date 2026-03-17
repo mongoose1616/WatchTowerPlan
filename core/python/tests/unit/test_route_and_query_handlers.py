@@ -25,13 +25,24 @@ def _query_args(**overrides: object) -> argparse.Namespace:
     defaults: dict[str, object] = {
         "query": None,
         "project_slug": None,
+        "project_id": None,
+        "slug": None,
         "task_id": [],
         "trace_id": None,
+        "initiative_id": None,
         "task_status": None,
         "priority": None,
         "owner": None,
         "task_kind": None,
         "blocked_only": False,
+        "ready_for_execution": None,
+        "lifecycle_stage": None,
+        "review_status": None,
+        "category": None,
+        "severity": None,
+        "status": None,
+        "repository_role": None,
+        "blocking_only": False,
         "blocked_by": None,
         "depends_on": None,
         "limit": 20,
@@ -50,12 +61,12 @@ def _task_entry(**overrides: object) -> SimpleNamespace:
         "trace_id": "trace.example",
         "title": "Example task",
         "summary": "Task summary.",
-        "status": "active",
-        "task_status": "blocked",
+        "status": "planned",
+        "task_status": "planned",
         "task_kind": "feature",
         "priority": "high",
         "owner": "repository_maintainer",
-        "doc_path": "docs/planning/tasks/open/example.md",
+        "doc_path": "plan/initiatives/example/.wt/tasks/example/task.json",
         "updated_at": "2026-03-10T23:59:59Z",
         "blocked_by": ("task.blocker.001",),
         "depends_on": ("task.depends.001",),
@@ -81,10 +92,10 @@ def _active_task_summary(**overrides: object) -> SimpleNamespace:
         "initiative_title": "Example Initiative",
         "task_id": "task.example.001",
         "title": "Example task",
-        "task_status": "backlog",
+        "task_status": "planned",
         "priority": "high",
         "owner": "repository_maintainer",
-        "doc_path": "docs/planning/tasks/open/example.md",
+        "doc_path": "plan/initiatives/example/.wt/tasks/example/task.json",
         "is_actionable": True,
         "blocked_by": (),
         "depends_on": (),
@@ -554,7 +565,7 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
     captured = capsys.readouterr()
     assert result == 0
     assert "Found 1 initiative entry:" in captured.out
-    assert "Task: task.example.001 [backlog, high, actionable]" in captured.out
+    assert "Task: task.example.001 [planned, high, actionable]" in captured.out
     assert "Open first: docs/planning/tasks/open/example.md" in captured.out
 
 

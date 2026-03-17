@@ -636,6 +636,126 @@
       "updated_at": "2026-03-17T17:04:47Z"
     },
     {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.coordination_index_index_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.initiative_index_index_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.plan_overview_surface_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/plan_overview.md.",
+      "source_paths": [
+        "plan/plan_overview.md"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.plan_surface_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_live_query_authority_cutover/plan.md.",
+      "source_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/plan.md"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.progress_surface_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_live_query_authority_cutover/progress.md.",
+      "source_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/progress.md"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.readiness_index_index_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.summary_surface_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_live_query_authority_cutover/summary.md.",
+      "source_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/summary.md"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_live_query_authority_cutover.task_index_index_drift",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/task_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "updated_at": "2026-03-17T19:37:44Z"
+    },
+    {
       "discrepancy_id": "discrepancy.plan_template_section_spec_enforcement_foundation.coordination_index_index_drift",
       "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
       "trace_id": "trace.plan_template_section_spec_enforcement_foundation",

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_live_query_authority_cutover.refresh_docs_and_validate_live_query_cutover",
+  "slug": "refresh_docs_and_validate_live_query_cutover",
+  "initiative_id": "initiative.plan_live_query_authority_cutover",
+  "title": "Refresh docs and validate live query cutover",
+  "summary": "Update command docs, authority guidance, and regression coverage so the public query surface matches the plan/.wt authority model.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T18:59:43Z",
+  "updated_at": "2026-03-17T19:15:00Z",
+  "dependency_task_ids": [
+    "task.plan_live_query_authority_cutover.reroot_public_planning_queries_onto_live_plan_indexes",
+    "task.plan_live_query_authority_cutover.add_readiness_discrepancy_and_project_query_commands"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

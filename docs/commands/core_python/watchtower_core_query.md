@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose a leaf command such as `coordination`, `project-context`, `planning`, `authority`, `initiatives`, `tasks`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
+- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
 - `-h`, `--help`: Show the query-group help text.
 - Pass filters, limits, and output-mode flags to the selected leaf command.
 
@@ -36,6 +36,16 @@ uv run watchtower-core query --help
 ```sh
 cd core/python
 uv run watchtower-core query coordination --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core query readiness --ready-for-execution true --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core query projects --slug watchtower --format json
 ```
 
 ```sh
@@ -62,8 +72,12 @@ uv run watchtower-core query authority --domain planning --format json
 - With no leaf command, the group prints help and exits successfully.
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `plan/.wt/indexes/coordination_index.json` as the live plan-workspace machine start-here path for current planning state and next action.
+- Use `plan/.wt/indexes/readiness_index.json` for execution-gate lookup, `plan/.wt/indexes/discrepancy_index.json` for blocking drift, and `plan/.wt/indexes/project_index.json` for project-container browse.
 - Use `project-context` when the operation is project-scoped and you need the validated project record, initiative root, and linked repositories on top of always-loaded `pack_context`.
-- Use `coordination` when you need the docs-backed traced-planning coordination payload or compatibility lookup.
+- Use `coordination` when you need the live machine start-here planning payload.
+- Use `readiness` when the question is whether an initiative package may start or resume execution.
+- Use `discrepancies` when you need mismatch, drift, or stale-surface records without opening one initiative directly.
+- Use `projects` when you need project lookup without loading the full project context payload.
 - Filterless `planning` and `initiatives` browse calls now default to `initiative_status=active`; pass explicit `--initiative-status` for terminal history and `--trace-id` when you already know the closed trace.
 - Use `planning` after coordination when you need the canonical deep machine-readable record for one trace.
 - Use `initiatives` when you need broader initiative-family browsing, filtered terminal history, or explicit non-active status lookup.
@@ -75,7 +89,10 @@ uv run watchtower-core query authority --domain planning --format json
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query coordination` | Docs-backed traced-planning coordination lookup surface. |
+| `watchtower-core query coordination` | Live machine start-here planning lookup surface. |
+| `watchtower-core query readiness` | Live readiness-gate lookup surface for initiative execution state. |
+| `watchtower-core query discrepancies` | Live mismatch and drift lookup surface for plan discrepancies. |
+| `watchtower-core query projects` | Live project-container browse surface. |
 | `watchtower-core query project-context` | Explicit project-scoped runtime context load on top of pack context. |
 | `watchtower-core query planning` | Canonical deep planning join for one trace. |
 | `watchtower-core query initiatives` | Broader initiative-family and historical-status lookup. |
@@ -92,4 +109,4 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/repo_ops/project_context.py`
 
 ## Updated At
-- `2026-03-17T18:37:00Z`
+- `2026-03-17T19:13:00Z`

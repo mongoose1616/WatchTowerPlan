@@ -6,8 +6,7 @@ import argparse
 import json
 from collections.abc import Callable, Mapping
 from pathlib import Path
-
-from watchtower_core.control_plane.models import TaskIndexEntry
+from typing import Any
 
 
 def _run_help(args: argparse.Namespace) -> int:
@@ -58,11 +57,12 @@ def _emit_command_error(
     return 1
 
 
-def _task_dependency_payload(task: TaskIndexEntry) -> dict[str, object]:
+def _task_dependency_payload(task: Any) -> dict[str, object]:
+    task_status = getattr(task, "task_status", getattr(task, "status", None))
     return {
         "task_id": task.task_id,
         "title": task.title,
-        "task_status": task.task_status,
+        "task_status": task_status,
         "priority": task.priority,
         "owner": task.owner,
         "doc_path": task.doc_path,

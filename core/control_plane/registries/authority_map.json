@@ -10,9 +10,9 @@
       "question": "What is the current planning state and next action?",
       "status": "active",
       "artifact_kind": "coordination_index",
-      "canonical_path": "core/control_plane/indexes/coordination/coordination_index.json",
+      "canonical_path": "plan/.wt/indexes/coordination_index.json",
       "preferred_command": "watchtower-core query coordination",
-      "preferred_human_path": "docs/planning/coordination_tracking.md",
+      "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "mode",
         "initiative_status",
@@ -20,16 +20,16 @@
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/task_index.json",
+        "docs/planning/coordination_tracking.md"
       ],
       "aliases": [
         "planning start here",
         "current planning state",
         "next action"
       ],
-      "notes": "Use this first when the question is repo-level current work, blockers, or the next surface to open."
+      "notes": "Use this first when the question is repo-level current work, blockers, or the next live initiative or project surface to open."
     },
     {
       "question_id": "authority.planning.deep_trace_context",
@@ -65,16 +65,17 @@
       "question": "What is the compact initiative-family view, including history?",
       "status": "active",
       "artifact_kind": "initiative_index",
-      "canonical_path": "core/control_plane/indexes/initiatives/initiative_index.json",
+      "canonical_path": "plan/.wt/indexes/initiative_index.json",
       "preferred_command": "watchtower-core query initiatives",
-      "preferred_human_path": "docs/planning/initiatives/initiative_tracking.md",
+      "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "initiative_status",
         "current_phase",
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/coordination/coordination_index.json",
+        "plan/.wt/indexes/coordination_index.json",
+        "docs/planning/initiatives/initiative_tracking.md",
         "core/control_plane/indexes/planning/planning_catalog.json",
         "docs/planning/coordination_tracking.md"
       ],
@@ -83,7 +84,7 @@
         "initiative board",
         "phase overview"
       ],
-      "notes": "Use this when you need broader initiative-family lookup or closed-history browsing instead of the full deep planning join."
+      "notes": "Use this when you need broader live initiative-family lookup or closed-history browsing instead of the full deep planning join."
     },
     {
       "question_id": "authority.planning.trace_join",
@@ -116,25 +117,101 @@
       "question": "What is the authoritative task execution state and dependency graph?",
       "status": "active",
       "artifact_kind": "task_index",
-      "canonical_path": "core/control_plane/indexes/tasks/task_index.json",
+      "canonical_path": "plan/.wt/indexes/task_index.json",
       "preferred_command": "watchtower-core query tasks",
-      "preferred_human_path": "docs/planning/tasks/task_tracking.md",
+      "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
-        "status",
         "task_status",
         "priority"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/coordination/coordination_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/coordination_tracking.md"
+        "plan/.wt/indexes/coordination_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "docs/planning/tasks/task_tracking.md"
       ],
       "aliases": [
         "task board",
         "execution state",
         "dependency graph"
       ],
-      "notes": "Use this when the question is task ownership, blockers, dependencies, or execution state, not higher-level initiative summaries."
+      "notes": "Use this when the question is live initiative-local task ownership, blockers, dependencies, or execution state, not higher-level initiative summaries."
+    },
+    {
+      "question_id": "authority.planning.readiness_state",
+      "domain": "planning",
+      "question": "What is the authoritative execution-readiness and gate state for initiative packages?",
+      "status": "active",
+      "artifact_kind": "readiness_index",
+      "canonical_path": "plan/.wt/indexes/readiness_index.json",
+      "preferred_command": "watchtower-core query readiness",
+      "preferred_human_path": "plan/plan_overview.md",
+      "status_fields": [
+        "lifecycle_stage",
+        "review_status",
+        "approval_status",
+        "ready_for_execution"
+      ],
+      "fallback_paths": [
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/.wt/indexes/discrepancy_index.json",
+        "plan/initiatives/"
+      ],
+      "aliases": [
+        "readiness gate",
+        "execution readiness",
+        "package readiness"
+      ],
+      "notes": "Use this when the question is whether an initiative may start or resume execution under the capture-first gate."
+    },
+    {
+      "question_id": "authority.planning.discrepancy_state",
+      "domain": "planning",
+      "question": "What mismatches, drift, or blocking discrepancies exist in the live plan workspace?",
+      "status": "active",
+      "artifact_kind": "discrepancy_index",
+      "canonical_path": "plan/.wt/indexes/discrepancy_index.json",
+      "preferred_command": "watchtower-core query discrepancies",
+      "preferred_human_path": "plan/plan_overview.md",
+      "status_fields": [
+        "severity",
+        "gate_effect",
+        "status"
+      ],
+      "fallback_paths": [
+        "plan/.wt/indexes/readiness_index.json",
+        "plan/initiatives/",
+        "plan/projects/"
+      ],
+      "aliases": [
+        "discrepancy lookup",
+        "drift state",
+        "blocking mismatches"
+      ],
+      "notes": "Use this when the question is mismatch severity, gate effect, or unresolved drift rather than overall readiness."
+    },
+    {
+      "question_id": "authority.planning.project_catalog",
+      "domain": "planning",
+      "question": "What project containers exist and which repositories or initiative roots do they expose?",
+      "status": "active",
+      "artifact_kind": "project_index",
+      "canonical_path": "plan/.wt/indexes/project_index.json",
+      "preferred_command": "watchtower-core query projects",
+      "preferred_human_path": "plan/plan_overview.md",
+      "status_fields": [
+        "status"
+      ],
+      "fallback_paths": [
+        "plan/projects/",
+        "plan/.wt/indexes/coordination_index.json",
+        "docs/commands/core_python/watchtower_core_query_project_context.md"
+      ],
+      "aliases": [
+        "project lookup",
+        "project containers",
+        "project catalog"
+      ],
+      "notes": "Use this when you need pack-level project lookup before loading one full project context."
     },
     {
       "question_id": "authority.governance.command_lookup",

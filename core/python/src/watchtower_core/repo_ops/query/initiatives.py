@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.query.common import (
     RenderedSearchFilters,
     initiative_rendered_query_terms,
@@ -30,13 +31,12 @@ class InitiativeQueryService:
     """Search the initiative index with simple structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._loader = loader
+        self._plan_workspace = PlanWorkspaceService(loader)
 
     def search(self, params: InitiativeSearchParams) -> tuple[InitiativeIndexEntry, ...]:
         """Return initiative entries matching the requested filters."""
-        index = self._loader.load_initiative_index()
         return search_rendered_entries(
-            index.entries,
+            self._plan_workspace.load_initiative_index().entries,
             RenderedSearchFilters(
                 query=params.query,
                 trace_id=params.trace_id,
@@ -58,4 +58,4 @@ class InitiativeQueryService:
 
     def get(self, trace_id: str) -> InitiativeIndexEntry:
         """Return one initiative entry by its trace identifier."""
-        return self._loader.load_initiative_index().get(trace_id)
+        return self._plan_workspace.load_initiative_index().get(trace_id)

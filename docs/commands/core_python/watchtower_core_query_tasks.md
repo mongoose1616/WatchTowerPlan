@@ -1,7 +1,7 @@
 # `watchtower-core query tasks`
 
 ## Summary
-This command searches the governed task index so engineers and agents can find local task records by task ID, task status, owner, trace, blockers, dependencies, priority, task kind, or free-text execution context.
+This command searches the live plan task index so engineers and agents can find initiative-local task records by task ID, task status, owner, trace, blockers, dependencies, priority, task kind, or free-text execution context.
 
 ## Use When
 - You need to find active or closed local tasks without opening the raw task index JSON directly.
@@ -25,8 +25,8 @@ uv run watchtower-core query tasks [--query <text>] [--task-id <task_id>] [--tra
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed task fields such as IDs, title, summary, owner, related IDs, and applies-to paths.
 - `--task-id <task_id>`: Exact task identifier filter. Repeat for multiple task IDs.
-- `--trace-id <trace_id>`: Exact trace filter such as `trace.local_task_tracking`.
-- `--task-status <task_status>`: Exact task-status filter such as `backlog`, `in_progress`, or `done`.
+- `--trace-id <trace_id>`: Exact trace filter such as `trace.plan_live_query_authority_cutover`.
+- `--task-status <task_status>`: Exact task-status filter such as `planned`, `ready`, `in_progress`, `blocked`, `completed`, or `cancelled`.
 - `--priority <priority>`: Exact priority filter such as `critical`, `high`, `medium`, or `low`.
 - `--owner <owner>`: Exact owner filter such as `repository_maintainer`.
 - `--task-kind <task_kind>`: Exact task-kind filter such as `feature`, `bug`, or `chore`.
@@ -41,7 +41,7 @@ uv run watchtower-core query tasks [--query <text>] [--task-id <task_id>] [--tra
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query tasks --task-status backlog
+uv run watchtower-core query tasks --task-status planned
 ```
 
 ```sh
@@ -51,28 +51,28 @@ uv run watchtower-core query tasks --blocked-only --include-dependency-details
 
 ```sh
 cd core/python
-uv run watchtower-core query tasks --trace-id trace.local_task_tracking --format json
+uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cutover --format json
 ```
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching task IDs, task statuses, priorities, titles, summaries, and optional dependency detail when requested.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and result records.
+- The command reads `plan/.wt/indexes/task_index.json` and exposes initiative ID, project ID when present, and dependency links from live initiative-local task state.
 - If no entries match the requested filters, the command exits successfully and reports that no task entries matched.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core sync task-index` | Rebuilds the task index that this command reads. |
-| `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker derived from the same task records. |
+| `watchtower-core sync all` | Rebuilds the live task index and its rendered companions. |
 | `watchtower-core query trace` | Resolves a joined trace record when you already know the trace ID and want linked task IDs. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/tasks.py`
-- `core/control_plane/indexes/tasks/task_index.json`
+- `plan/.wt/indexes/task_index.json`
 
 ## Updated At
-- `2026-03-13T23:21:33Z`
+- `2026-03-17T19:13:00Z`

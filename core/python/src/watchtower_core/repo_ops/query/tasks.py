@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import TaskIndexEntry
+from watchtower_core.repo_ops.plan_workspace import PlanTaskIndexEntry, PlanWorkspaceService
 from watchtower_core.repo_ops.query.common import query_score
 
 
@@ -30,12 +30,12 @@ class TaskQueryService:
     """Search the task index with simple structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._loader = loader
-        self._reverse_dependency_map: dict[str, tuple[TaskIndexEntry, ...]] | None = None
+        self._plan_workspace = PlanWorkspaceService(loader)
+        self._reverse_dependency_map: dict[str, tuple[PlanTaskIndexEntry, ...]] | None = None
 
-    def search(self, params: TaskSearchParams) -> tuple[TaskIndexEntry, ...]:
+    def search(self, params: TaskSearchParams) -> tuple[PlanTaskIndexEntry, ...]:
         """Return task entries matching the requested filters."""
-        index = self._loader.load_task_index()
+        entries = self._plan_workspace.load_task_entries()
         selected_task_ids = {task_id.casefold() for task_id in params.task_ids}
         trace_id = params.trace_id.casefold() if params.trace_id is not None else None
         task_status = params.task_status.casefold() if params.task_status is not None else None
@@ -53,13 +53,13 @@ class TaskQueryService:
             else None
         )
 
-        matches: list[tuple[int, TaskIndexEntry]] = []
-        for entry in index.entries:
+        matches: list[tuple[int, PlanTaskIndexEntry]] = []
+        for entry in entries:
             if selected_task_ids and entry.task_id.casefold() not in selected_task_ids:
                 continue
-            if trace_id is not None and (entry.trace_id or "").casefold() != trace_id:
+            if trace_id is not None and entry.trace_id.casefold() != trace_id:
                 continue
-            if task_status is not None and entry.task_status.casefold() != task_status:
+            if task_status is not None and entry.status.casefold() != task_status:
                 continue
             if priority is not None and entry.priority.casefold() != priority:
                 continue
@@ -82,16 +82,17 @@ class TaskQueryService:
                 params.query,
                 (
                     entry.task_id,
-                    entry.trace_id or "",
+                    entry.trace_id,
+                    entry.initiative_id,
+                    entry.project_id or "",
+                    entry.initiative_title,
                     entry.title,
                     entry.summary,
-                    entry.task_status,
+                    entry.status,
                     entry.priority,
                     entry.owner,
                     entry.task_kind,
                     *entry.related_ids,
-                    *entry.applies_to,
-                    *entry.tags,
                 ),
             )
             if score is None:
@@ -104,18 +105,21 @@ class TaskQueryService:
             entries = entries[: params.limit]
         return tuple(entries)
 
-    def get(self, task_id: str) -> TaskIndexEntry:
+    def get(self, task_id: str) -> PlanTaskIndexEntry:
         """Return one task entry by its stable task identifier."""
-        return self._loader.load_task_index().get(task_id)
+        for entry in self._plan_workspace.load_task_entries():
+            if entry.task_id == task_id:
+                return entry
+        raise KeyError(task_id)
 
-    def reverse_dependencies(self, task_id: str) -> tuple[TaskIndexEntry, ...]:
+    def reverse_dependencies(self, task_id: str) -> tuple[PlanTaskIndexEntry, ...]:
         """Return task entries that depend on or are blocked by the given task."""
         return self.reverse_dependencies_for((task_id,)).get(task_id, ())
 
     def reverse_dependencies_for(
         self,
         task_ids: tuple[str, ...],
-    ) -> dict[str, tuple[TaskIndexEntry, ...]]:
+    ) -> dict[str, tuple[PlanTaskIndexEntry, ...]]:
         """Return reverse dependencies for each requested task identifier."""
         reverse_dependency_map = self._load_reverse_dependency_map()
         return {
@@ -123,13 +127,13 @@ class TaskQueryService:
             for task_id in task_ids
         }
 
-    def _load_reverse_dependency_map(self) -> dict[str, tuple[TaskIndexEntry, ...]]:
+    def _load_reverse_dependency_map(self) -> dict[str, tuple[PlanTaskIndexEntry, ...]]:
         """Build one reverse-dependency map per service-backed query run."""
         if self._reverse_dependency_map is not None:
             return self._reverse_dependency_map
 
-        matches: dict[str, list[TaskIndexEntry]] = {}
-        for entry in self._loader.load_task_index().entries:
+        matches: dict[str, list[PlanTaskIndexEntry]] = {}
+        for entry in self._plan_workspace.load_task_entries():
             referenced_task_ids = {
                 value.casefold() for value in (*entry.depends_on, *entry.blocked_by)
             }

@@ -59,6 +59,10 @@
       "type": "string",
       "enum": ["planned", "ready", "in_progress", "in_review", "blocked", "completed", "cancelled"]
     },
+    "taskKind": {
+      "type": "string",
+      "minLength": 1
+    },
     "taskEntry": {
       "type": "object",
       "required": [
@@ -69,6 +73,7 @@
         "title",
         "summary",
         "status",
+        "task_kind",
         "priority",
         "owner",
         "doc_path",
@@ -101,6 +106,9 @@
         },
         "status": {
           "$ref": "#/$defs/taskStatus"
+        },
+        "task_kind": {
+          "$ref": "#/$defs/taskKind"
         },
         "priority": {
           "$ref": "#/$defs/priority"

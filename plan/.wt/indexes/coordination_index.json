@@ -39,6 +39,14 @@
       "closure_reason": "Delivered the promotion policy registry and plan guidance lookup indexes."
     },
     {
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Plan Live Query Authority Cutover",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T19:38:14Z",
+      "key_surface_path": "plan/initiatives/plan_live_query_authority_cutover/plan.md",
+      "closure_reason": "Cut public planning query authority over to the live plan workspace indexes, added readiness/discrepancy/project query commands, and aligned command guidance and authority docs to requirements.md and decisions.md."
+    },
+    {
       "trace_id": "trace.plan_project_context_runtime_standardization",
       "title": "Plan Project Context Runtime Standardization",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T17:28:00Z",
       "key_surface_path": "plan/initiatives/plan_project_surface_policy_registry/plan.md",
       "closure_reason": "Delivered the project-surface policy registry, typed helper, and project validation integration for required project-root surfaces."
-    },
-    {
-      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
-      "title": "Plan Lifecycle Review And Source Vocab Registries",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T17:13:00Z",
-      "key_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md",
-      "closure_reason": "Delivered the lifecycle-stage, review-status, and source-type registries, typed planning vocabulary helper, and runtime alignment coverage for plan workspace lifecycle semantics."
     }
   ]
 }

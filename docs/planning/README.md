@@ -22,10 +22,11 @@
 - Start with `plan/.wt/indexes/coordination_index.json` when the main question is the machine-readable live current-state view and next action.
 - Start with `docs/planning/coordination_tracking.md` when the main question is the traced planning backlog or the legacy docs-backed planning corpus rather than the new live `plan/**` authority.
 - Treat the frozen `docs/planning/**` corpus as legacy history during hard cutover; the live retention rule now belongs in `plan/.wt/registries/retention_policy_registry.json`, and this directory is not the authority for those migration decisions.
-- Use `./.venv/bin/watchtower-core query coordination --format json` from `core/python/` when you need the docs-backed traced-planning coordination view without relying on `uv` on `PATH`.
+- Use `./.venv/bin/watchtower-core query coordination --format json` from `core/python/` when you need the live machine-readable current-state view without relying on `uv` on `PATH`.
+- Use `./.venv/bin/watchtower-core query readiness --format json`, `query discrepancies --format json`, or `query projects --format json` when you need live execution-gate, mismatch, or project lookup from the authoritative `plan/.wt/**` indexes.
 - Treat coordination as an active-first start-here rendered surface plus compact recent-closeout context, not as the exhaustive historical planning view.
 - Filterless `uv run watchtower-core query initiatives --format json` and `uv run watchtower-core query planning --format json` now default to `initiative_status=active`; use explicit `--initiative-status <status>` for terminal history and `--trace-id <trace_id>` when you already know the closed trace you need.
-- Use `docs/planning/initiatives/initiative_tracking.md` when you need filtered terminal history, broader docs-backed initiative-family browsing, or explicit non-active status lookup for the traced planning corpus.
+- Use `docs/planning/initiatives/initiative_tracking.md` when you need the retained human initiative tracker for the traced planning corpus; use `query initiatives` for the live machine-readable initiative-family index.
 - Treat the PRD, design, and decision family trackers as active-first views with compact terminal-history summaries, not as exhaustive closed-trace ledgers.
 - Do not treat retained closed trace packages as the enduring source of current policy. Current standards, current planning query surfaces, and other surviving canonical artifacts remain authoritative even when older trace-local packages become purge-eligible later.
 - Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when the main question is the canonical deep planning record for one known trace rather than the filterless active browse.

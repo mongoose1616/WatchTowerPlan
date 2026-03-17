@@ -28,22 +28,28 @@ def register_query_family(
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `coordination` for the machine start-here planning view, `foundations`
-            for the intent-layer foundation corpus, `workflows` for workflow-module
-            lookup, `references` for the reference library, `standards` for governed
+            `coordination` for the machine start-here planning view, `initiatives`
+            for broader initiative-family lookup including history, `tasks` for
+            initiative-local task execution state, `readiness` for execution-gate
+            state, `discrepancies` for blocking drift or mismatch records,
+            `projects` for pack-level project lookup, `project-context` for one
+            fully loaded project container, `planning` for the canonical deep
+            planning join after coordination, `authority` for canonical planning
+            and governance surface lookup, `foundations` for the intent-layer
+            foundation corpus, `workflows` for workflow-module lookup,
+            `references` for the reference library, `standards` for governed
             repository standards, `prds`, `decisions`, `designs`, `acceptance`,
-            `evidence`, `tasks`, and `project-context` for planning and execution
-            lookup, `planning` for the canonical deep planning join after
-            coordination, `authority` for canonical planning and governance
-            surface lookup, `initiatives` for broader initiative-family lookup
-            including history, and `trace` when you already know the trace
-            identifier you want.
+            and `evidence`, and `trace` when you already know the trace identifier
+            you want.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
+            "uv run watchtower-core query readiness --ready-for-execution true --format json",
+            "uv run watchtower-core query discrepancies --blocking-only --format json",
+            "uv run watchtower-core query projects --slug watchtower --format json",
             "uv run watchtower-core query project-context --project-slug watchtower --format json",
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
             "uv run watchtower-core query authority --domain planning --format json",
@@ -59,7 +65,7 @@ def register_query_family(
             "uv run watchtower-core query designs --family implementation_plan",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query evidence --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query tasks --task-status backlog",
+            "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
         ),
