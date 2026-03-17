@@ -215,34 +215,13 @@
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-17T06:16:04Z",
-      "open_task_count": 1,
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T09:40:00Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
-          "title": "Reconcile legacy history and retention with clean endstate",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
-          ]
-        }
-      ],
+      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
       "prd_ids": [
         "prd.capture_first_plan_workspace_bootstrap"
       ],
@@ -300,8 +279,8 @@
         "docs/planning/tasks/closed/archive/2026/03/17/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-        "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/task_tracking.md",
         "requirements.md",
         "workflows/"

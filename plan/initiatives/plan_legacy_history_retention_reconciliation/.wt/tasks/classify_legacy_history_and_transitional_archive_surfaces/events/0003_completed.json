@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces.0003_completed",
+  "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+  "task_id": "task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces",
+  "sequence": 3,
+  "event_type": "completed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:38:15Z",
+  "summary": "Encoded the live retention dispositions for legacy docs history, promoted guidance, transitional initiative archives, and purge ledgers, and aligned adjacent entrypoint docs.",
+  "payload": {
+    "status": "completed",
+    "affected_paths": [
+      "plan/README.md",
+      "docs/planning/README.md",
+      "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+      "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
+      "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",
+      "plan/initiatives/plan_legacy_history_retention_reconciliation/design_record.md",
+      "plan/initiatives/plan_legacy_history_retention_reconciliation/implementation_slice.md",
+      "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md"
+    ]
+  }
+}

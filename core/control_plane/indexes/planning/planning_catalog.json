@@ -784,35 +784,14 @@
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-17T06:16:04Z",
+      "updated_at": "2026-03-17T09:40:00Z",
       "coordination": {
-        "current_phase": "execution",
+        "current_phase": "closeout",
         "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-        "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-        "next_surface_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
-        "open_task_count": 1,
-        "blocked_task_count": 0,
-        "primary_owner": "repository_maintainer",
-        "active_owners": [
-          "repository_maintainer"
-        ],
-        "active_task_ids": [
-          "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007"
-        ],
-        "active_task_summaries": [
-          {
-            "task_id": "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
-            "title": "Reconcile legacy history and retention with clean endstate",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
-            "is_actionable": true,
-            "depends_on": [
-              "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
-            ]
-          }
-        ]
+        "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+        "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
       },
       "prds": [
         {
@@ -962,12 +941,12 @@
           "title": "Reconcile legacy history and retention with clean endstate",
           "summary": "Defines the follow-up tranche for historical docs handling, archive retention, and the clean-endstate purge policy after first-tranche cutover.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
-          "updated_at": "2026-03-17T06:02:31Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/reconcile_legacy_history_and_retention_with_clean_endstate.md",
+          "updated_at": "2026-03-17T09:40:00Z",
           "depends_on": [
             "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
           ],
@@ -1213,6 +1192,7 @@
         "core/control_plane/contracts/acceptance/capture_first_plan_workspace_bootstrap_acceptance.json",
         "core/control_plane/ledgers/validation_evidence/capture_first_plan_workspace_bootstrap_planning_baseline.json",
         "core/python/",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",
@@ -1228,8 +1208,8 @@
         "docs/planning/tasks/closed/archive/2026/03/17/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-        "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/task_tracking.md",
         "requirements.md",
         "workflows/"

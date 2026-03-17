@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Plan-pack settings load root for the Stage 1 capture-first workspace bootstrap.",
-  "updated_at": "2026-03-17T04:18:29Z",
+  "updated_at": "2026-03-17T09:34:00Z",
   "pack_id": "pack.plan",
   "surfaces": [
     {
@@ -24,6 +24,13 @@
       "surface_name": "human_surface_policy_registry",
       "surface_kind": "registry",
       "path": "plan/.wt/registries/human_surface_policy_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "retention_policy_registry",
+      "surface_kind": "registry",
+      "path": "plan/.wt/registries/retention_policy_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },
@@ -63,5 +70,5 @@
       "visibility": "hidden"
     }
   ],
-  "notes": "The Stage 1 seed now delegates schema, validator, and human-surface policy resolution to plan-owned registries while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add more pack-local registries and extracted-guidance policies under plan/.wt/."
+  "notes": "The Stage 1 seed now delegates schema, validator, human-surface policy, and retention-policy resolution to plan-owned registries while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add more pack-local registries and extracted-guidance policies under plan/.wt/."
 }

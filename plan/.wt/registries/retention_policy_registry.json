@@ -1,0 +1,141 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
+  "id": "registry.retention_policy",
+  "title": "Plan Retention Policy Registry",
+  "status": "active",
+  "entries": [
+    {
+      "policy_id": "policy.retention.legacy_docs_planning",
+      "path_pattern": "docs/planning",
+      "match_mode": "exact",
+      "path_kind": "legacy_history_root",
+      "phase_qualifier": "legacy_only",
+      "entry_status": "active",
+      "current_disposition": "legacy_ignored",
+      "clean_endstate_disposition": "purge_when_eligible",
+      "operational_visibility": "hidden",
+      "purge_gate": "promotion_before_deletion",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "The frozen docs/planning corpus remains outside the live operational model during hard cutover and is only retained until its durable authority is promoted or explicitly purged.",
+      "surviving_authority_paths": [
+        "plan/",
+        "plan/.wt/registries/retention_policy_registry.json",
+        "core/control_plane/ledgers/purges/"
+      ]
+    },
+    {
+      "policy_id": "policy.retention.plan_machine_authority",
+      "path_pattern": "plan/.wt",
+      "match_mode": "exact",
+      "path_kind": "machine_root",
+      "phase_qualifier": "always",
+      "entry_status": "active",
+      "current_disposition": "authoritative",
+      "clean_endstate_disposition": "authoritative",
+      "operational_visibility": "visible",
+      "purge_gate": "none",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "pack_settings",
+        "schema_catalog",
+        "validator_registry"
+      ],
+      "clarifying_rule": "The live plan-pack machine root remains authoritative in both the transitional model and the clean endstate.",
+      "surviving_authority_paths": [
+        "plan/.wt/"
+      ]
+    },
+    {
+      "policy_id": "policy.retention.plan_promoted_guidance",
+      "path_pattern": "plan/docs",
+      "match_mode": "exact",
+      "path_kind": "guidance_root",
+      "phase_qualifier": "always",
+      "entry_status": "active",
+      "current_disposition": "authoritative",
+      "clean_endstate_disposition": "authoritative",
+      "operational_visibility": "visible",
+      "purge_gate": "none",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "promotion_policy_registry",
+        "human_surface_policy_registry"
+      ],
+      "clarifying_rule": "Promoted plan guidance survives closeout and purge because it is already durable authority rather than transitional initiative-local state.",
+      "surviving_authority_paths": [
+        "plan/docs/"
+      ]
+    },
+    {
+      "policy_id": "policy.retention.plan_packwide_initiative_archive",
+      "path_pattern": "plan/initiatives/*",
+      "match_mode": "glob",
+      "path_kind": "initiative_archive_root",
+      "phase_qualifier": "terminal_only",
+      "entry_status": "active",
+      "current_disposition": "transitional_archive",
+      "clean_endstate_disposition": "purge_when_eligible",
+      "operational_visibility": "hidden",
+      "purge_gate": "promotion_before_deletion",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "closeout_recap",
+        "guidance_promotion_record"
+      ],
+      "clarifying_rule": "Whole-package archive for closed pack-wide initiative roots is allowed only as a transitional policy and must collapse to promoted guidance plus minimal surviving records in the clean endstate.",
+      "surviving_authority_paths": [
+        "plan/docs/",
+        "plan/.wt/registries/retention_policy_registry.json",
+        "core/control_plane/ledgers/purges/"
+      ],
+      "notes": "This encodes the Q24 plus Q31 compromise from decisions.md: archive whole package for now, but do not treat that archive as the long-term operating model."
+    },
+    {
+      "policy_id": "policy.retention.plan_project_initiative_archive",
+      "path_pattern": "plan/projects/*/initiatives/*",
+      "match_mode": "glob",
+      "path_kind": "initiative_archive_root",
+      "phase_qualifier": "terminal_only",
+      "entry_status": "active",
+      "current_disposition": "transitional_archive",
+      "clean_endstate_disposition": "purge_when_eligible",
+      "operational_visibility": "hidden",
+      "purge_gate": "promotion_before_deletion",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "closeout_recap",
+        "guidance_promotion_record"
+      ],
+      "clarifying_rule": "Whole-package archive for closed project-scoped initiative roots is transitional only and must not become permanent history in the clean endstate.",
+      "surviving_authority_paths": [
+        "plan/docs/",
+        "plan/.wt/registries/retention_policy_registry.json",
+        "core/control_plane/ledgers/purges/"
+      ]
+    },
+    {
+      "policy_id": "policy.retention.trace_purge_ledgers",
+      "path_pattern": "core/control_plane/ledgers/purges",
+      "match_mode": "exact",
+      "path_kind": "purge_ledger_root",
+      "phase_qualifier": "always",
+      "entry_status": "active",
+      "current_disposition": "minimal_ledger",
+      "clean_endstate_disposition": "minimal_ledger",
+      "operational_visibility": "visible",
+      "purge_gate": "none",
+      "governing_surfaces": [
+        "retention_policy_registry",
+        "trace_purge_record"
+      ],
+      "clarifying_rule": "Minimal purge ledgers remain the retained machine history after eligible legacy packages are deleted.",
+      "surviving_authority_paths": [
+        "core/control_plane/ledgers/purges/"
+      ]
+    }
+  ],
+  "notes": "The registry makes the transitional archive rule and the legacy-history hard-cutover rule explicit in live plan authority. It does not reopen docs/planning as operational authority."
+}

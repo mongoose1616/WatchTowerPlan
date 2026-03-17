@@ -21,6 +21,7 @@
 - Start with `plan/workflows/README.md` when the main question is the current live plan-domain workflow start-here surface.
 - Start with `plan/.wt/indexes/coordination_index.json` when the main question is the machine-readable live current-state view and next action.
 - Start with `docs/planning/coordination_tracking.md` when the main question is the traced planning backlog or the legacy docs-backed planning corpus rather than the new live `plan/**` authority.
+- Treat the frozen `docs/planning/**` corpus as legacy history during hard cutover; the live retention rule now belongs in `plan/.wt/registries/retention_policy_registry.json`, and this directory is not the authority for those migration decisions.
 - Use `./.venv/bin/watchtower-core query coordination --format json` from `core/python/` when you need the docs-backed traced-planning coordination view without relying on `uv` on `PATH`.
 - Treat coordination as an active-first start-here rendered surface plus compact recent-closeout context, not as the exhaustive historical planning view.
 - Filterless `uv run watchtower-core query initiatives --format json` and `uv run watchtower-core query planning --format json` now default to `initiative_status=active`; use explicit `--initiative-status <status>` for terminal history and `--trace-id <trace_id>` when you already know the closed trace you need.

@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | `1` | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) | [reconcile_legacy_history_and_retention_with_clean_endstate.md](/docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.capture_first_plan_workspace_bootstrap` | `closeout` | unassigned | `0` | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) | [watchtower_core_closeout_initiative.md](/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -80,4 +80,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-17T06:16:04Z`_
+_Updated At: `2026-03-17T09:40:00Z`_

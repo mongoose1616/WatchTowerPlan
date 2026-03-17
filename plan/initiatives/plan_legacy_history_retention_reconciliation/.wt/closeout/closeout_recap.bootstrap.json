@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:closeout-recap:v1",
+  "id": "closeout.plan_legacy_history_retention_reconciliation.bootstrap_recap",
+  "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+  "title": "Bootstrap Closeout Shell",
+  "status": "planned",
+  "updated_at": "2026-03-17T09:26:17Z",
+  "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+  "acceptance_ids": [
+    "acceptance.plan_legacy_history_retention_reconciliation.bootstrap"
+  ],
+  "evidence_ids": [
+    "evidence.plan_legacy_history_retention_reconciliation.bootstrap_validation_bundle"
+  ],
+  "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+  "promotion_review_required": true,
+  "terminal_state_options": [
+    "completed",
+    "superseded",
+    "cancelled"
+  ]
+}

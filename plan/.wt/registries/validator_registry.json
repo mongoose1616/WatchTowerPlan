@@ -75,6 +75,20 @@
       ]
     },
     {
+      "id": "validator.plan.retention_policy_registry",
+      "title": "Plan Retention Policy Validator",
+      "description": "Validates the plan-pack retention-policy registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "retention_policy_registry",
+      "applies_to": [
+        "plan/.wt/registries/retention_policy_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1"
+      ]
+    },
+    {
       "id": "validator.plan.initiative_state",
       "title": "Plan Initiative State Validator",
       "description": "Validates initiative-local current-state snapshots.",

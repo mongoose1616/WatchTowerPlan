@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
+  "title": "Retention Policy Registry",
+  "description": "Schema for the plan-pack retention-policy registry covering legacy history, transitional archives, and clean-endstate purge rules.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1"
+    },
+    "id": {
+      "const": "registry.retention_policy"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/policyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "matchMode": {
+      "type": "string",
+      "enum": [
+        "exact",
+        "glob"
+      ]
+    },
+    "pathKind": {
+      "type": "string",
+      "enum": [
+        "legacy_history_root",
+        "initiative_archive_root",
+        "guidance_root",
+        "machine_root",
+        "purge_ledger_root"
+      ]
+    },
+    "phaseQualifier": {
+      "type": "string",
+      "enum": [
+        "always",
+        "terminal_only",
+        "legacy_only"
+      ]
+    },
+    "entryStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "retentionDisposition": {
+      "type": "string",
+      "enum": [
+        "authoritative",
+        "transitional_archive",
+        "legacy_ignored",
+        "purge_when_eligible",
+        "minimal_ledger"
+      ]
+    },
+    "operationalVisibility": {
+      "type": "string",
+      "enum": [
+        "visible",
+        "hidden"
+      ]
+    },
+    "purgeGate": {
+      "type": "string",
+      "enum": [
+        "none",
+        "promotion_before_deletion",
+        "owner_exception_or_active_reference"
+      ]
+    },
+    "policyEntry": {
+      "type": "object",
+      "required": [
+        "policy_id",
+        "path_pattern",
+        "match_mode",
+        "path_kind",
+        "phase_qualifier",
+        "entry_status",
+        "current_disposition",
+        "clean_endstate_disposition",
+        "operational_visibility",
+        "purge_gate",
+        "governing_surfaces",
+        "clarifying_rule",
+        "surviving_authority_paths"
+      ],
+      "properties": {
+        "policy_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "path_pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "match_mode": {
+          "$ref": "#/$defs/matchMode"
+        },
+        "path_kind": {
+          "$ref": "#/$defs/pathKind"
+        },
+        "phase_qualifier": {
+          "$ref": "#/$defs/phaseQualifier"
+        },
+        "entry_status": {
+          "$ref": "#/$defs/entryStatus"
+        },
+        "current_disposition": {
+          "$ref": "#/$defs/retentionDisposition"
+        },
+        "clean_endstate_disposition": {
+          "$ref": "#/$defs/retentionDisposition"
+        },
+        "operational_visibility": {
+          "$ref": "#/$defs/operationalVisibility"
+        },
+        "purge_gate": {
+          "$ref": "#/$defs/purgeGate"
+        },
+        "governing_surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "clarifying_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surviving_authority_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

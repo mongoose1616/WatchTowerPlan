@@ -9,6 +9,7 @@ from watchtower_core.control_plane.models import (
     HumanSurfacePolicyRegistry,
     PackSettings,
     PrdIndex,
+    RetentionPolicyRegistry,
     StatusRegistry,
     ValidationSuiteRegistry,
     WorkflowIndex,
@@ -168,6 +169,38 @@ def test_control_plane_models_export_human_surface_policy_registry_types() -> No
     )
 
     assert registry.get("policy.example.root").surfaces[0].relative_path == "README.md"
+
+
+def test_control_plane_models_export_retention_policy_registry_types() -> None:
+    registry = RetentionPolicyRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
+            "id": "registry.retention_policy",
+            "title": "Example Retention Policy",
+            "status": "active",
+            "entries": [
+                {
+                    "policy_id": "policy.retention.example",
+                    "path_pattern": "docs/planning",
+                    "match_mode": "exact",
+                    "path_kind": "legacy_history_root",
+                    "phase_qualifier": "legacy_only",
+                    "entry_status": "active",
+                    "current_disposition": "legacy_ignored",
+                    "clean_endstate_disposition": "purge_when_eligible",
+                    "operational_visibility": "hidden",
+                    "purge_gate": "promotion_before_deletion",
+                    "governing_surfaces": ["retention_policy_registry"],
+                    "clarifying_rule": "Example retention rule.",
+                    "surviving_authority_paths": ["plan/"],
+                }
+            ],
+        }
+    )
+
+    assert registry.get("policy.retention.example").clean_endstate_disposition == (
+        "purge_when_eligible"
+    )
 
 
 def test_retired_planning_reexport_module_is_not_importable() -> None:

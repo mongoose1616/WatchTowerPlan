@@ -24,6 +24,7 @@
 - `plan/AGENTS.md` is the local instruction layer for work under `plan/**`.
 - Use `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.
 - `plan/plan_overview.md` and the initiative-local rendered views are derived from the live machine state and must stay current with the indexes under `plan/.wt/indexes/`.
+- `plan/.wt/registries/retention_policy_registry.json` is the live policy surface for how frozen `docs/planning/**` history, transitional initiative archives, promoted guidance, and purge ledgers should be treated during migration and in the clean endstate.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
 - `plan/workflows/` is the human plan-domain workflow entrypoint, but the canonical routing backend remains `workflows/ROUTING_TABLE.md` and `workflows/modules/` until the workflow split lands.
 - Do not start new live work under `docs/planning/**`; the retained bootstrap trace there exists only until later cutover slices replace the old entrypoints.

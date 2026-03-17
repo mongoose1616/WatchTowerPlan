@@ -74,6 +74,41 @@
       ]
     },
     {
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "summary": "Encodes the transitional archive policy and clean-endstate purge rules for legacy docs/planning history and closed initiative packages directly in the live plan authority.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T09:40:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "slug": "plan_legacy_history_retention_reconciliation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_legacy_history_retention_reconciliation.publish_retention_policy_registry_and_loader_support",
+        "task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces",
+        "task.plan_legacy_history_retention_reconciliation.validate_retention_policy_alignment_and_follow_up_linkage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_legacy_history_retention_reconciliation.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/design_record.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/implementation_slice.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",
       "title": "WatchTower Initial Implementation Bootstrap",
       "summary": "Captures the first WatchTower project-scoped implementation package before execution starts.",

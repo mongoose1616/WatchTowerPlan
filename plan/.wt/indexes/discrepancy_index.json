@@ -3,7 +3,7 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-17T09:23:00Z",
+  "updated_at": "2026-03-17T09:40:00Z",
   "entries": [
     {
       "discrepancy_id": "discrepancy.plan_human_surface_policy_and_core_root_seeding.coordination_index_index_drift",
@@ -139,6 +139,141 @@
         "plan/.wt/indexes/task_index.json"
       ],
       "updated_at": "2026-03-17T09:23:00Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.coordination_index_index_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.discrepancy_index_index_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/discrepancy_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/discrepancy_index.json"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.initiative_index_index_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.plan_overview_surface_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/plan_overview.md.",
+      "source_paths": [
+        "plan/plan_overview.md"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.plan_surface_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md.",
+      "source_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.progress_surface_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_legacy_history_retention_reconciliation/progress.md.",
+      "source_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/progress.md"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.readiness_index_index_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.summary_surface_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md.",
+      "source_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_legacy_history_retention_reconciliation.task_index_index_drift",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/task_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "updated_at": "2026-03-17T09:39:05Z"
     },
     {
       "discrepancy_id": "discrepancy.watchtower.watchtower_initial_implementation_bootstrap.coordination_index_index_drift",

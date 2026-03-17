@@ -6,11 +6,11 @@ summary: Defines the follow-up tranche for historical docs handling, archive ret
   and the clean-endstate purge policy after first-tranche cutover.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-17T06:02:31Z'
+updated_at: '2026-03-17T09:40:00Z'
 audience: shared
 authority: authoritative
 related_ids:

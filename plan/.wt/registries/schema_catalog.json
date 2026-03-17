@@ -15,6 +15,16 @@
       "canonical_path": "plan/.wt/schemas/artifacts/human_surface_policy_registry.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
+      "title": "Retention Policy Registry",
+      "description": "Schema for the plan-pack retention-policy registry covering legacy history and transitional archive cleanup rules.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "retention_policy_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/retention_policy_registry.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
       "title": "Initiative State",
       "description": "Schema for the authoritative current-state snapshot of one plan initiative.",

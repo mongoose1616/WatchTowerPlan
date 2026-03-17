@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for the reusable core boundary surfaces and their human-visible companions.",
-  "updated_at": "2026-03-16T05:15:00Z",
+  "updated_at": "2026-03-17T09:34:00Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -45,6 +45,15 @@
       "visibility": "hidden",
       "authoritative": true,
       "notes": "Plan-pack human-surface placement policy for README, AGENTS, and routed workflow entrypoints."
+    },
+    {
+      "family_name": "retention_policy_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/retention_policy_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Plan-pack retention policy for legacy history handling, transitional archives, and clean-endstate purge rules."
     },
     {
       "family_name": "workflow_module",

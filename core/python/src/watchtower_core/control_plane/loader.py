@@ -24,6 +24,7 @@ from watchtower_core.control_plane.models import (
     PlanningCatalog,
     PrdIndex,
     ReferenceIndex,
+    RetentionPolicyRegistry,
     RenderedSurfaceRegistry,
     RepositoryPathIndex,
     RouteIndex,
@@ -59,6 +60,7 @@ WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
 HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
+RETENTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/retention_policy_registry.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
@@ -139,6 +141,7 @@ class ControlPlaneLoader:
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
         self._active_human_surface_policy_registry_path: str | None = None
+        self._active_retention_policy_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
@@ -204,6 +207,19 @@ class ControlPlaneLoader:
         self._active_human_surface_policy_registry_path = (
             human_surface_policy_declaration.path
             if human_surface_policy_declaration is not None
+            else None
+        )
+        retention_policy_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "retention_policy_registry"
+            ),
+            None,
+        )
+        self._active_retention_policy_registry_path = (
+            retention_policy_declaration.path
+            if retention_policy_declaration is not None
             else None
         )
 
@@ -385,6 +401,18 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             effective_path,
             HumanSurfacePolicyRegistry.from_document,
+        )
+
+    def load_retention_policy_registry(
+        self,
+        relative_path: str = RETENTION_POLICY_REGISTRY_PATH,
+    ) -> RetentionPolicyRegistry:
+        """Load the current retention-policy registry."""
+
+        effective_path = self._current_retention_policy_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            RetentionPolicyRegistry.from_document,
         )
 
     def load_repository_path_index(self) -> RepositoryPathIndex:
@@ -598,6 +626,11 @@ class ControlPlaneLoader:
                 relative_path,
                 HumanSurfacePolicyRegistry.from_document,
             )
+        if surface_name == "retention_policy_registry":
+            return self._load_typed_document(
+                relative_path,
+                RetentionPolicyRegistry.from_document,
+            )
         if surface_name == "pack_settings":
             return self._load_typed_document(relative_path, PackSettings.from_document)
         if surface_name == "governance_surface_map":
@@ -657,6 +690,8 @@ class ControlPlaneLoader:
             return self.load_workflow_metadata_registry()
         if relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH:
             return self.load_human_surface_policy_registry()
+        if relative_path == RETENTION_POLICY_REGISTRY_PATH:
+            return self.load_retention_policy_registry()
         if relative_path == PACK_SETTINGS_PATH:
             return self.load_pack_settings()
         if (
@@ -679,6 +714,11 @@ class ControlPlaneLoader:
             and relative_path == self._active_human_surface_policy_registry_path
         ):
             return self.load_human_surface_policy_registry(relative_path)
+        if (
+            self._active_retention_policy_registry_path is not None
+            and relative_path == self._active_retention_policy_registry_path
+        ):
+            return self.load_retention_policy_registry(relative_path)
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -748,6 +788,16 @@ class ControlPlaneLoader:
             and self._active_human_surface_policy_registry_path is not None
         ):
             return self._active_human_surface_policy_registry_path
+        return relative_path
+
+    def _current_retention_policy_registry_path(self, relative_path: str) -> str:
+        """Return the retention-policy registry path active for this loader instance."""
+
+        if (
+            relative_path == RETENTION_POLICY_REGISTRY_PATH
+            and self._active_retention_policy_registry_path is not None
+        ):
+            return self._active_retention_policy_registry_path
         return relative_path
 
     def load_typed_document(

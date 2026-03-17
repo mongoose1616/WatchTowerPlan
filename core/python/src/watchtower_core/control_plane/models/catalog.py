@@ -511,6 +511,78 @@ class HumanSurfacePolicyRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class RetentionPolicyEntry:
+    """One retention-policy rule for a live or legacy repository subtree."""
+
+    policy_id: str
+    path_pattern: str
+    match_mode: str
+    path_kind: str
+    phase_qualifier: str
+    entry_status: str
+    current_disposition: str
+    clean_endstate_disposition: str
+    operational_visibility: str
+    purge_gate: str
+    governing_surfaces: tuple[str, ...]
+    clarifying_rule: str
+    surviving_authority_paths: tuple[str, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> RetentionPolicyEntry:
+        return cls(
+            policy_id=document["policy_id"],
+            path_pattern=document["path_pattern"],
+            match_mode=document["match_mode"],
+            path_kind=document["path_kind"],
+            phase_qualifier=document["phase_qualifier"],
+            entry_status=document["entry_status"],
+            current_disposition=document["current_disposition"],
+            clean_endstate_disposition=document["clean_endstate_disposition"],
+            operational_visibility=document["operational_visibility"],
+            purge_gate=document["purge_gate"],
+            governing_surfaces=tuple(document["governing_surfaces"]),
+            clarifying_rule=document["clarifying_rule"],
+            surviving_authority_paths=tuple(document["surviving_authority_paths"]),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class RetentionPolicyRegistry:
+    """Typed retention-policy registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[RetentionPolicyEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> RetentionPolicyRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(
+                RetentionPolicyEntry.from_document(item) for item in document["entries"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, policy_id: str) -> RetentionPolicyEntry:
+        """Return one policy entry by identifier."""
+
+        for entry in self.entries:
+            if entry.policy_id == policy_id:
+                return entry
+        raise KeyError(policy_id)
+
+
+@dataclass(frozen=True, slots=True)
 class RenderedSurfaceColumnDefinition:
     """Rendered-surface column definition."""
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_legacy_history_retention_reconciliation.0010_ready_for_execution_approved",
+  "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+  "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+  "sequence": 10,
+  "event_type": "ready_for_execution_approved",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T09:37:01Z",
+  "summary": "An authorized maintainer approved the initiative package for execution.",
+  "payload": {}
+}

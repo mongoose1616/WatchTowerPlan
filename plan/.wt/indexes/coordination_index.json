@@ -3,12 +3,12 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T09:23:00Z",
+  "updated_at": "2026-03-17T09:40:00Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Finalize closeout, evidence, and promotion decisions.",
   "recommended_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/summary.md",
-  "active_initiative_count": 10,
+  "active_initiative_count": 11,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
@@ -79,6 +79,41 @@
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Plan Legacy History and Retention Reconciliation",
+      "summary": "Encodes the transitional archive policy and clean-endstate purge rules for legacy docs/planning history and closed initiative packages directly in the live plan authority.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T09:40:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "slug": "plan_legacy_history_retention_reconciliation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_legacy_history_retention_reconciliation.publish_retention_policy_registry_and_loader_support",
+        "task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces",
+        "task.plan_legacy_history_retention_reconciliation.validate_retention_policy_alignment_and_follow_up_linkage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_legacy_history_retention_reconciliation.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/design_record.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/implementation_slice.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md"
       ]
     },
     {
