@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow.0002_ready_marked",
+  "initiative_id": "initiative.watchtower_work_item_lifecycle",
+  "task_id": "task.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T07:46:50Z",
+  "summary": "Marked the WatchTower work-item lifecycle validation task ready after the inspection and completion flows landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows",
+      "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow"
+    ]
+  }
+}

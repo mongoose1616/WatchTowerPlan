@@ -102,6 +102,55 @@
       ]
     },
     {
+      "task_id": "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "initiative_title": "WatchTower Work Item Lifecycle",
+      "title": "Add WatchTower work-item completion flow",
+      "summary": "Add a CLI path that marks one local work item completed and records its closeout metadata.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_completion_flow/task.json",
+      "updated_at": "2026-03-17T07:46:46Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows"
+      ]
+    },
+    {
+      "task_id": "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "initiative_title": "WatchTower Work Item Lifecycle",
+      "title": "Add WatchTower work-item inspection flows",
+      "summary": "Add CLI paths that list local work items and show one work-item record from the initialized workspace state root.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_inspection_flows/task.json",
+      "updated_at": "2026-03-17T07:45:08Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "initiative_title": "WatchTower Work Item Lifecycle",
+      "title": "Validate WatchTower work-item lifecycle flow",
+      "summary": "Cover work-item inspection and completion with CLI tests, exercise the commands against the initialized WatchTower repo, and refresh repo guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/validate_watchtower_work_item_lifecycle_flow/task.json",
+      "updated_at": "2026-03-17T07:47:10Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows",
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
       "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
       "trace_id": "trace.watchtower_workspace_init_bootstrap",

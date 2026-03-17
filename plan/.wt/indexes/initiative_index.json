@@ -135,6 +135,42 @@
       ]
     },
     {
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "title": "WatchTower Work Item Lifecycle",
+      "summary": "Adds local-first work-item inspection and completion flows so operators can see current work and close it cleanly inside an initialized WatchTower workspace.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T07:52:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/summary.md",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "slug": "watchtower_work_item_lifecycle",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows",
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow",
+        "task.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_lifecycle.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_workspace_init_bootstrap",
       "title": "WatchTower Workspace Init Bootstrap",
       "summary": "Adds a local-first workspace manifest and init flow so later WatchTower operator work starts from a real on-disk state root.",
