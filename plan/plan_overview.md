@@ -12,6 +12,7 @@
 - `trace.watchtower_status_snapshot`: WatchTower Status Snapshot (`closeout` / `project_scoped`)
 - `trace.watchtower_work_item_bootstrap`: WatchTower Work Item Bootstrap (`closeout` / `project_scoped`)
 - `trace.watchtower_work_item_lifecycle`: WatchTower Work Item Lifecycle (`closeout` / `project_scoped`)
+- `trace.watchtower_work_item_notes`: WatchTower Work Item Notes (`closeout` / `project_scoped`)
 - `trace.watchtower_workspace_init_bootstrap`: WatchTower Workspace Init Bootstrap (`closeout` / `project_scoped`)
 
 ## Actionable Tasks

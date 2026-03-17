@@ -206,6 +206,41 @@
       ]
     },
     {
+      "trace_id": "trace.watchtower_work_item_notes",
+      "title": "WatchTower Work Item Notes",
+      "summary": "Adds local-first note capture on work items so operators can preserve thread context and resume a bounded slice without external scratch notes.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-17T08:20:44Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/plan.md",
+      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/summary.md",
+      "initiative_id": "initiative.watchtower_work_item_notes",
+      "slug": "watchtower_work_item_notes",
+      "scope_type": "project_scoped",
+      "project_id": "project.watchtower",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow",
+        "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_notes.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/initiative_brief.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/design_record.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_workspace_init_bootstrap",
       "title": "WatchTower Workspace Init Bootstrap",
       "summary": "Adds a local-first workspace manifest and init flow so later WatchTower operator work starts from a real on-disk state root.",

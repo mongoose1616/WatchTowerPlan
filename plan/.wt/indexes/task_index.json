@@ -182,6 +182,37 @@
       ]
     },
     {
+      "task_id": "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow",
+      "initiative_id": "initiative.watchtower_work_item_notes",
+      "trace_id": "trace.watchtower_work_item_notes",
+      "initiative_title": "WatchTower Work Item Notes",
+      "title": "Add WatchTower work-item note flow",
+      "summary": "Add a CLI path that appends one timestamped note to an existing local work-item record.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/add_watchtower_work_item_note_flow/task.json",
+      "updated_at": "2026-03-17T08:19:56Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow",
+      "initiative_id": "initiative.watchtower_work_item_notes",
+      "trace_id": "trace.watchtower_work_item_notes",
+      "initiative_title": "WatchTower Work Item Notes",
+      "title": "Validate WatchTower work-item note flow",
+      "summary": "Cover note capture with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/validate_watchtower_work_item_note_flow/task.json",
+      "updated_at": "2026-03-17T08:20:10Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
       "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
       "trace_id": "trace.watchtower_workspace_init_bootstrap",

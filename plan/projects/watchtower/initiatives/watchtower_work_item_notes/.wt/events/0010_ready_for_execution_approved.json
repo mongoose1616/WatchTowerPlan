@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_work_item_notes.0010_ready_for_execution_approved",
+  "initiative_id": "initiative.watchtower_work_item_notes",
+  "trace_id": "trace.watchtower_work_item_notes",
+  "sequence": 10,
+  "event_type": "ready_for_execution_approved",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:18:35Z",
+  "summary": "An authorized maintainer approved the initiative package for execution.",
+  "payload": {}
+}

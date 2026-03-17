@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow",
+  "slug": "validate_watchtower_work_item_note_flow",
+  "initiative_id": "initiative.watchtower_work_item_notes",
+  "title": "Validate WatchTower work-item note flow",
+  "summary": "Cover note capture with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T08:18:00Z",
+  "updated_at": "2026-03-17T08:20:10Z",
+  "dependency_task_ids": [
+    "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

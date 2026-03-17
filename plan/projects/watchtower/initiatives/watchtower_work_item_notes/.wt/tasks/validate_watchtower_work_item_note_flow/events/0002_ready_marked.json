@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_work_item_notes.validate_watchtower_work_item_note_flow.0002_ready_marked",
+  "initiative_id": "initiative.watchtower_work_item_notes",
+  "task_id": "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow",
+  "sequence": 2,
+  "event_type": "ready_marked",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:19:58Z",
+  "summary": "Marked the WatchTower work-item note validation task ready after the note flow landed.",
+  "payload": {
+    "status": "ready",
+    "depends_on": [
+      "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.watchtower_work_item_notes.0013_closing_started",
+  "initiative_id": "initiative.watchtower_work_item_notes",
+  "trace_id": "trace.watchtower_work_item_notes",
+  "sequence": 13,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:20:12Z",
+  "summary": "The WatchTower work-item notes slice entered closing after the implementation and validation tasks completed.",
+  "payload": {
+    "completed_task_ids": [
+      "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow",
+      "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow"
+    ],
+    "next_phase": "closeout"
+  }
+}
