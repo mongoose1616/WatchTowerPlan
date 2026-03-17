@@ -216,7 +216,7 @@
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-17T05:58:41Z",
+      "updated_at": "2026-03-17T06:16:04Z",
       "prd_ids": [
         "prd.capture_first_plan_workspace_bootstrap"
       ],
@@ -232,6 +232,7 @@
       "task_ids": [
         "task.capture_first_plan_workspace_bootstrap.bootstrap.001",
         "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
+        "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
         "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
         "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
         "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
@@ -284,8 +285,9 @@
         "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
         "docs/planning/tasks/closed/archive/2026/03/17/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-        "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+        "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/task_tracking.md",
         "requirements.md",
         "workflows/"

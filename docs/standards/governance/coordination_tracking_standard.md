@@ -1,7 +1,7 @@
 ---
 id: "std.governance.coordination_tracking"
 title: "Coordination Tracking Standard"
-summary: "This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts."
+summary: "This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "coordination_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T15:05:00Z"
+updated_at: "2026-03-17T06:08:09Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -24,21 +24,21 @@ aliases:
 # Coordination Tracking Standard
 
 ## Summary
-This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts.
+This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces.
 
 ## Purpose
-- Give humans one start-here planning surface for current state, next action, and the most relevant active work.
+- Give humans one compact docs-backed planning surface for traced current state, next follow-up work, and retained backlog context after the live `plan/**` entrypoints route them into the planning corpus.
 - Keep the human coordination view derived from the machine-readable coordination index rather than becoming a second planning authority.
 - Preserve the deeper family trackers as companion views instead of forcing users to guess which tracker to open first.
 
 ## Scope
 - Applies to `docs/planning/coordination_tracking.md`.
-- Applies to the planning-root entrypoint guidance that routes humans to the coordination tracker first.
+- Applies to the planning-root entrypoint guidance that routes humans to the coordination tracker for traced-planning corpus questions.
 - Covers compactness, authority boundaries, and rebuild expectations for the human coordination byproduct.
 - Does not replace initiative, task, PRD, design, or decision source artifacts.
 
 ## Use When
-- A contributor needs a compact current-state planning view before opening deeper planning families.
+- A contributor needs a compact traced-planning view after the live `plan/**` surfaces point them to the docs-backed planning corpus.
 - Updating human start-here guidance for planning entrypoints.
 - Reviewing whether the repo-level human coordination surface is still proportional and useful.
 
@@ -50,7 +50,8 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/docs/planning/README.md): planning-root entrypoint guidance that should stay aligned with this standard.
 
 ## Guidance
-- Treat `docs/planning/coordination_tracking.md` as the default human start-here planning surface.
+- Treat `docs/planning/coordination_tracking.md` as the start-here surface for the retained docs-backed planning corpus, not as the live plan-workspace start-here surface.
+- Route live plan-workspace state to `plan/plan_overview.md` and `plan/.wt/indexes/coordination_index.json`.
 - Build the tracker from the coordination index rather than from ad hoc scans of family trackers.
 - Treat the coordination tracker as the human start-here companion to the coordination index, not as the canonical deep-planning answer for one trace.
 - Keep the tracker compact, scan-first, and capped:
@@ -70,8 +71,9 @@ This standard defines the repository's compact human coordination tracker so hum
 ### Source-of-truth layers
 | Layer | Role |
 |---|---|
-| Coordination index | Authoritative machine-readable coordination source |
-| `coordination_tracking.md` | Derived human-readable current-state tracker |
+| `plan/.wt/indexes/coordination_index.json` and `plan/plan_overview.md` | Live plan-workspace start-here surfaces |
+| Coordination index | Authoritative machine-readable docs-backed coordination source |
+| `coordination_tracking.md` | Derived human-readable traced-planning tracker |
 | Family trackers | Deeper human companion views for initiatives, tasks, PRDs, designs, and decisions |
 
 ### Required tracker sections
@@ -86,11 +88,11 @@ This standard defines the repository's compact human coordination tracker so hum
 1. Update the source planning artifacts, task records, or closeout state.
 2. Rebuild the task, traceability, initiative, and coordination indexes in dependency order.
 3. Rebuild `coordination_tracking.md` from the coordination index in the same change set.
-4. Keep planning README and nearby agent or command entrypoint guidance aligned when the start-here experience changes.
+4. Keep planning README and nearby agent or command entrypoint guidance aligned when the live-versus-traced start-here split changes.
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `docs/planning/README.md`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `docs/planning/README.md`; `docs/planning/coordination_tracking.md`; `plan/plan_overview.md`
 
 ## Validation
 - `coordination_tracking.md` should be regenerated, not hand-authored.
@@ -101,7 +103,7 @@ This standard defines the repository's compact human coordination tracker so hum
 - The tracker `_Updated At` value should not trail a later initiative closeout timestamp.
 
 ## Change Control
-- Update this standard when the repository changes the human planning start-here experience or the compact coordination tracker structure.
+- Update this standard when the repository changes the docs-backed planning start-here experience or the compact coordination tracker structure.
 - Update the coordination sync logic, planning README entrypoint guidance, and coordination-index companion standards in the same change set when this tracker changes structurally.
 
 ## References
@@ -111,4 +113,4 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/docs/planning/README.md)
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-03-17T06:08:09Z`

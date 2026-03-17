@@ -10,9 +10,9 @@
 | `docs/planning/initiatives/initiative_tracking.md` | Generated human-readable initiative board for current traced initiatives, their phases, active owners, and next steps. |
 
 ## Notes
-- Use `docs/planning/coordination_tracking.md` as the root planning start-here surface.
-- Use this directory for the deeper initiative-family view beneath the root coordination tracker, including broader active context and explicit terminal-history browsing.
-- Use `uv run watchtower-core query coordination --format json` as the machine start-here path for active current planning state.
+- Use `plan/plan_overview.md` and `plan/.wt/indexes/coordination_index.json` as the live planning start-here surfaces.
+- Use this directory for the deeper docs-backed initiative-family view beneath the live `plan/**` entrypoints when you need traced-planning context, broader artifact-family browsing, or explicit terminal-history lookup.
+- Use `uv run watchtower-core query initiatives --format json` when you need the machine-readable initiative-family view for the docs-backed planning corpus.
 - Filterless `uv run watchtower-core query initiatives --format json` now defaults to active initiatives only; use `--initiative-status <status>` when you need completed, cancelled, or superseded history instead of the current active family view.
 - Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need completed, cancelled, or superseded initiative lookup without opening the full deep planning record.
 - Treat the family directories under `docs/planning/prds/`, `docs/planning/design/`, `docs/planning/decisions/`, and `docs/planning/tasks/` as the authored source surfaces.

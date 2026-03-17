@@ -251,12 +251,12 @@
       "title": "Cut over to plan entrypoints and prove first-tranche flows",
       "summary": "Completes the hard cutover for new work, proves one pack-wide and one project-scoped flow, and records the history or retention follow-up tranche.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
-      "updated_at": "2026-03-17T05:58:41Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+      "updated_at": "2026-03-17T06:16:04Z",
       "trace_id": "trace.capture_first_plan_workspace_bootstrap",
       "depends_on": [
         "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
@@ -274,6 +274,29 @@
         "core/python/",
         "docs/planning/",
         "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
+      "title": "Reconcile legacy history and retention with clean endstate",
+      "summary": "Defines the follow-up tranche for historical docs handling, archive retention, and the clean-endstate purge policy after first-tranche cutover.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
+      "updated_at": "2026-03-17T06:02:31Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "depends_on": [
+        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
+      ],
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
       ]
     },
     {

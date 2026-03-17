@@ -11,8 +11,8 @@
 | `docs/planning/decisions/decision_tracking.md` | Human-readable tracker for the current decision-record corpus. |
 
 ## Notes
-- Start with `docs/planning/coordination_tracking.md` when the main question is current planning state rather than the decision corpus by itself.
-- Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view behind a decision-backed change.
+- Start with `plan/plan_overview.md` when the main question is the live planning state rather than the decision corpus by itself.
+- Use `docs/planning/coordination_tracking.md` and `docs/planning/initiatives/initiative_tracking.md` when you need the deeper traced-planning family view behind a decision-backed change.
 - Treat `decision_tracking.md` as an active-first tracker. Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browsing and `uv run watchtower-core query decisions --trace-id <trace_id>` for one known decision trace.
 - Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when a closed decision trace needs the canonical joined planning record instead of the compact family tracker.
 - Treat decision records as durable rationale, not as the only home of active policy. When an accepted rule has already been promoted into standards or other current canonical surfaces, those surviving artifacts stay authoritative.

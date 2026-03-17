@@ -1,0 +1,14 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:project-record:v1",
+  "project_id": "project.watchtower",
+  "slug": "watchtower",
+  "title": "WatchTower",
+  "summary": "Operator-facing implementation target governed through the plan workspace.",
+  "status": "active",
+  "linked_repository_refs": [
+    "repository.watchtower.planning",
+    "repository.watchtower.implementation"
+  ],
+  "initiative_root": "plan/projects/watchtower/initiatives",
+  "updated_at": "2026-03-17T06:01:14Z"
+}

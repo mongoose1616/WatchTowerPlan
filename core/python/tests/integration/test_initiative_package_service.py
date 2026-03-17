@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from shutil import copytree, rmtree
 
 import pytest
 
@@ -29,6 +29,20 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "plan", repo_root / "plan")
+    for path in (repo_root / "plan" / "initiatives").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
+    for path in (repo_root / "plan" / "projects").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
     (repo_root / "core" / "python").mkdir(parents=True)
     return repo_root
 

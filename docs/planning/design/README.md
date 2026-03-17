@@ -12,8 +12,8 @@
 | `docs/planning/design/implementation/` | Holds implementation-plan documents that break approved designs into concrete engineering work. |
 
 ## Notes
-- Start with `docs/planning/coordination_tracking.md` when you need the current repo-level planning state before opening design-specific surfaces.
-- Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view behind a design.
+- Start with `plan/plan_overview.md` when you need the live repo-level planning state before opening design-specific surfaces.
+- Use `docs/planning/coordination_tracking.md` and `docs/planning/initiatives/initiative_tracking.md` when you need the deeper traced-planning family view behind a design.
 - Treat `design_tracking.md` as an active-first tracker. Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browsing and `uv run watchtower-core query designs --trace-id <trace_id>` for one known design trace.
 - Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when a closed design trace needs the canonical joined planning record rather than the compact family tracker.
 - Documents under `docs/planning/design/features/**` should follow [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md) and start from [feature_design_template.md](/docs/templates/feature_design_template.md).

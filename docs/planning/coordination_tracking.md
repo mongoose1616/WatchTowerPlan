@@ -5,19 +5,19 @@
 | --- | --- |
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
-| Next | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
-| Open First | [docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) |
+| Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| Open First | [docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md](/docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md) |
 | Companion Views | [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | [cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
+| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | [reconcile_legacy_history_and_retention_with_clean_endstate.md](/docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) | `trace.capture_first_plan_workspace_bootstrap` | `in_progress` | `high` | `repository_maintainer` |
+| [task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007](/docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md) | `trace.capture_first_plan_workspace_bootstrap` | `backlog` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +28,4 @@
 | `trace.rendered_surface_contract_enforcement` | `completed` | `2026-03-16T17:40:06Z` | [rendered_surface_contract_enforcement.md](/docs/planning/prds/rendered_surface_contract_enforcement.md) |
 | `trace.post_rewrite_core_cleanup_and_surface_reduction` | `completed` | `2026-03-16T07:50:26Z` | [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) |
 
-_Updated At: `2026-03-17T05:58:41Z`_
+_Updated At: `2026-03-17T06:16:04Z`_

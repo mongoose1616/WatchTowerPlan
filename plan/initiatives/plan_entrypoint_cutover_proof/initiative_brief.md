@@ -1,0 +1,13 @@
+# Plan Entrypoint Cutover Proof
+
+## Summary
+Proves the pack-wide capture-first flow for the plan authority cutover.
+
+## Identity
+- `initiative_id`: `initiative.plan_entrypoint_cutover_proof`
+- `trace_id`: `trace.plan_entrypoint_cutover_proof`
+- `scope_type`: `pack_wide`
+
+## Initial Task Set
+- `task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints`: Capture the pack-wide start-here surfaces for the new live plan authority.
+- `task.plan_entrypoint_cutover_proof.validate_packwide_proof_package`: Prove the pack-wide initiative can reach ready_for_execution cleanly.

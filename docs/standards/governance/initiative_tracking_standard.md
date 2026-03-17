@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:21:01Z"
+updated_at: "2026-03-17T06:08:09Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -30,7 +30,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Give humans one family-specific initiative view for "what is this initiative, who owns it, what phase is it in, and what is next?"
 - Preserve the current artifact-family structure for PRDs, decisions, designs, plans, and tasks instead of collapsing them into one mixed planning folder.
 - Publish one machine-readable initiative rendered surface so the coordination layer and family-specific workflows do not have to reconstruct current phase and ownership from several indexes every time.
-- Keep `watchtower-core query coordination` pointed at the repo-level coordination index while preserving `query initiatives` as the initiative-family lookup surface.
+- Keep the docs-backed initiative layer available beneath the live `plan/**` coordination entrypoints while preserving `query initiatives` as the initiative-family lookup surface.
 
 ## Scope
 - Applies to the human-readable initiative tracker under `docs/planning/initiatives/`.
@@ -62,11 +62,13 @@ This standard defines the repository's cross-family initiative tracking model so
   - designs and plans in `docs/planning/design/`
   - engineer-sized execution tasks in `docs/planning/tasks/`
 - Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
-- Use `docs/planning/coordination_tracking.md` as the root human start-here surface for current planning state.
+- Use `plan/plan_overview.md` as the live human start-here surface for current planning state.
+- Use `docs/planning/coordination_tracking.md` as the root human start-here surface for the docs-backed traced planning corpus.
 - Treat the initiative index and initiative tracker as derived rendered surfaces, not as the authoritative source for artifact content or task state.
 - Treat the initiative layer as a compact rendered surface, not as the canonical deep-planning join for one trace now that the planning catalog exists.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
-- Use `watchtower-core query coordination --format json` as the default machine start-here path for repo-level planning state.
+- Use `plan/.wt/indexes/coordination_index.json` as the live machine start-here path for repo-level planning state.
+- Use `watchtower-core query coordination --format json` when you need the docs-backed traced-planning coordination payload rather than the live `plan/**` indexes.
 - Use the authority map when you need to confirm whether initiative lookup, coordination, traceability, or the planning catalog is canonical for a specific planning question.
 - Keep the initiative layer compact enough that the coordination index can project from it without becoming a second planning authority.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
@@ -126,7 +128,7 @@ This standard defines the repository's cross-family initiative tracking model so
 2. Rebuild the family-specific indexes and the unified traceability index when traced artifacts or tasks change materially.
 3. Rebuild the initiative index after those source surfaces change.
 4. Rebuild the human initiative tracker from the initiative index in the same change set.
-5. Use the initiative tracker as the deeper initiative-family view beneath `coordination_tracking.md`.
+5. Use the initiative tracker as the deeper docs-backed initiative-family view beneath the live `plan/**` entrypoints and `coordination_tracking.md`.
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
@@ -155,4 +157,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-11T06:21:01Z`
+- `2026-03-17T06:08:09Z`

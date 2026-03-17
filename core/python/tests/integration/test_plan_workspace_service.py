@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from shutil import copytree, rmtree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.initiative_packages import (
@@ -37,6 +37,20 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "plan", repo_root / "plan")
+    for path in (repo_root / "plan" / "initiatives").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
+    for path in (repo_root / "plan" / "projects").iterdir():
+        if path.name == "README.md":
+            continue
+        if path.is_dir():
+            rmtree(path)
+        else:
+            path.unlink()
     (repo_root / "core" / "python").mkdir(parents=True)
     return repo_root
 
@@ -322,3 +336,60 @@ def test_plan_workspace_sync_includes_project_scoped_initiatives_in_pack_indexes
     )
     assert len(task_entries) == 2
     assert all(entry.project_id == "project.watchtower" for entry in task_entries)
+
+
+def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_delta",
+            title="Workspace Delta",
+            updated_at="2026-03-17T16:00:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_delta",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    task_path = repo_root / "plan/initiatives/workspace_delta/.wt/tasks/seed_contracts/task.json"
+    task_document = _load_json(task_path)
+    task_document["status"] = "ready"
+    task_document["updated_at"] = "2026-03-17T16:30:00Z"
+    task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
+    workspace_service.sync(write=True)
+
+    initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
+    initiative_entry = next(
+        entry
+        for entry in initiative_index["entries"]
+        if entry["initiative_id"] == "initiative.workspace_delta"
+    )
+    assert initiative_entry["updated_at"] == "2026-03-17T16:30:00Z"
+    assert initiative_entry["active_task_summaries"][0]["task_status"] == "ready"
+
+    readiness_index = _load_json(repo_root / PLAN_READINESS_INDEX_PATH)
+    readiness_entry = next(
+        entry
+        for entry in readiness_index["entries"]
+        if entry["initiative_id"] == "initiative.workspace_delta"
+    )
+    assert readiness_entry["updated_at"] == "2026-03-17T16:30:00Z"
+
+    coordination_index = _load_json(repo_root / PLAN_COORDINATION_INDEX_PATH)
+    assert coordination_index["updated_at"] == "2026-03-17T16:30:00Z"
+    assert coordination_index["actionable_task_count"] == 1
+
+    summary_view = (
+        repo_root / "plan/initiatives/workspace_delta/summary.md"
+    ).read_text(encoding="utf-8")
+    assert "`updated_at`: `2026-03-17T16:30:00Z`" in summary_view

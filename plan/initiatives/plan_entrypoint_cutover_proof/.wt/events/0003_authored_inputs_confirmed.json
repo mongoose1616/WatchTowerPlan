@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_entrypoint_cutover_proof.0003_authored_inputs_confirmed",
+  "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+  "trace_id": "trace.plan_entrypoint_cutover_proof",
+  "sequence": 3,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T06:01:15Z",
+  "summary": "Confirmed the authored intake documents into machine state.",
+  "related_paths": [
+    "plan/initiatives/plan_entrypoint_cutover_proof/initiative_brief.md",
+    "plan/initiatives/plan_entrypoint_cutover_proof/design_record.md",
+    "plan/initiatives/plan_entrypoint_cutover_proof/implementation_slice.md",
+    "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 2
+  }
+}

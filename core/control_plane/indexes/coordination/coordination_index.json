@@ -3,11 +3,11 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T05:58:41Z",
+  "updated_at": "2026-03-17T06:16:04Z",
   "coordination_mode": "active_work",
   "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
-  "recommended_next_action": "Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands.",
-  "recommended_surface_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+  "recommended_next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+  "recommended_surface_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
   "active_initiative_count": 1,
   "blocked_task_count": 0,
   "actionable_task_count": 1,
@@ -19,31 +19,30 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-17T05:58:41Z",
+      "updated_at": "2026-03-17T06:16:04Z",
       "open_task_count": 1,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-      "next_action": "Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands.",
-      "next_surface_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
+        "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007"
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
-          "title": "Cut over to plan entrypoints and prove first-tranche flows",
-          "task_status": "in_progress",
+          "task_id": "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
+          "title": "Reconcile legacy history and retention with clean endstate",
+          "task_status": "backlog",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+          "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
           "is_actionable": true,
           "depends_on": [
-            "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
-            "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
+            "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
           ]
         }
       ],
@@ -62,6 +61,7 @@
       "task_ids": [
         "task.capture_first_plan_workspace_bootstrap.bootstrap.001",
         "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
+        "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
         "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
         "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
         "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
@@ -102,8 +102,9 @@
         "docs/planning/tasks/closed/archive/2026/03/17/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
         "docs/planning/tasks/closed/archive/2026/03/17/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
-        "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+        "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/task_tracking.md",
         "requirements.md",
         "workflows/"
@@ -118,16 +119,15 @@
     {
       "trace_id": "trace.capture_first_plan_workspace_bootstrap",
       "initiative_title": "Capture-First Plan Workspace Bootstrap PRD",
-      "task_id": "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
-      "title": "Cut over to plan entrypoints and prove first-tranche flows",
-      "task_status": "in_progress",
+      "task_id": "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
+      "title": "Reconcile legacy history and retention with clean endstate",
+      "task_status": "backlog",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+      "doc_path": "docs/planning/tasks/open/reconcile_legacy_history_and_retention_with_clean_endstate.md",
       "is_actionable": true,
       "depends_on": [
-        "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
-        "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
+        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
       ]
     }
   ],

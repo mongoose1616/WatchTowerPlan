@@ -1,0 +1,26 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1",
+  "id": "projectmap.watchtower",
+  "project_id": "project.watchtower",
+  "updated_at": "2026-03-17T06:01:14Z",
+  "repositories": [
+    {
+      "repository_id": "repository.watchtower.planning",
+      "repository_role": "planning",
+      "repository_locator": "/home/j/WatchTowerPlan",
+      "repository_kind": "planning",
+      "owner": "repository_maintainer",
+      "access": "local_write",
+      "active": true
+    },
+    {
+      "repository_id": "repository.watchtower.implementation",
+      "repository_role": "implementation",
+      "repository_locator": "/home/j/WatchTower",
+      "repository_kind": "implementation",
+      "owner": "repository_maintainer",
+      "access": "local_write",
+      "active": true
+    }
+  ]
+}

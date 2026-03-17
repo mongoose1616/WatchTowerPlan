@@ -495,7 +495,7 @@ class PlanWorkspaceService:
         snapshots: tuple[_PlanInitiativeSnapshot, ...],
     ) -> dict[str, object]:
         workspace_updated_at = _latest_timestamp(
-            str(snapshot.initiative_document["updated_at"]) for snapshot in snapshots
+            _snapshot_updated_at(snapshot) for snapshot in snapshots
         )
         initiative_entries = tuple(
             sorted(
@@ -611,7 +611,7 @@ class PlanWorkspaceService:
             artifact_status="active",
             initiative_status=_initiative_status(initiative),
             current_phase=_current_phase_for_lifecycle(lifecycle_stage),
-            updated_at=str(initiative["updated_at"]),
+            updated_at=_snapshot_updated_at(snapshot),
             open_task_count=len(active_task_summaries),
             blocked_task_count=sum(
                 1 for task in active_task_summaries if task.task_status == "blocked"
@@ -687,7 +687,7 @@ class PlanWorkspaceService:
             approval_status=str(gate_state["approval_status"]),
             ready_for_execution=bool(gate_state["ready_for_execution"]),
             blocking_reasons=tuple(gate_state.get("blocking_reasons", ())),
-            updated_at=str(initiative["updated_at"]),
+            updated_at=_snapshot_updated_at(snapshot),
             scope_type=str(initiative["scope_type"]),
         )
 
@@ -973,7 +973,7 @@ class PlanWorkspaceService:
                     "## Lifecycle",
                     f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
                     f"- `owner`: `{initiative['owner']}`",
-                    f"- `updated_at`: `{initiative['updated_at']}`",
+                    f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
                     "",
                     "## Evidence",
                     "\n".join(
@@ -1206,6 +1206,29 @@ def _next_surface_path(
     if readiness.ready_for_execution:
         return f"{snapshot.initiative_root}/plan.md"
     return f"{snapshot.initiative_root}/progress.md"
+
+
+def _snapshot_updated_at(snapshot: _PlanInitiativeSnapshot) -> str:
+    documents = (
+        snapshot.initiative_document,
+        *snapshot.task_documents,
+        *snapshot.deferred_documents,
+        *snapshot.discrepancy_documents,
+        *snapshot.evidence_documents,
+        *snapshot.closeout_documents,
+        *snapshot.promotion_documents,
+    )
+    return _latest_timestamp(_document_updated_at(document) for document in documents)
+
+
+def _document_updated_at(document: dict[str, object]) -> str:
+    updated_at = document.get("updated_at")
+    if isinstance(updated_at, str) and updated_at:
+        return updated_at
+    created_at = document.get("created_at")
+    if isinstance(created_at, str) and created_at:
+        return created_at
+    return ""
 
 
 def _latest_timestamp(values: object) -> str:

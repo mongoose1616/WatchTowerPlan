@@ -30,7 +30,8 @@
 - Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
-- When the main question is current planning state, next work, or repo coordination, start with `uv run watchtower-core query coordination --format json` and the derived `docs/planning/coordination_tracking.md`.
+- When the main question is live planning state, next work, or repo coordination, start with `plan/.wt/indexes/coordination_index.json` and the derived `plan/plan_overview.md`.
+- Use `docs/planning/**` when the main need is the traced planning corpus, historical PRD or design context, or the implementation backlog that still lives in the docs-backed planning families.
 - During any non-documentation workflow, if a documentation gap is discovered, update adjacent docs in the same change when needed for coherence, otherwise load the minimum documentation workflow needed to close the gap or record explicit follow-up work if it is deferred.
 - When code, commands, schemas, or governed artifacts may have drifted from companion docs or machine-readable lookup surfaces, use the documentation-implementation reconciliation workflow or record why no explicit reconciliation pass was needed.
 - When traced planning or governance artifacts may have drifted from their companion trackers, family-specific indexes, or unified traceability joins, use the traceability reconciliation workflow or record why no explicit reconciliation pass was needed.
@@ -41,7 +42,7 @@
 - Use the nearest applicable [README.md](/README.md) as the quick reference before broader scans.
 - Apply [docs/AGENTS.md](/docs/AGENTS.md) when work falls under `docs/**`.
 - Prefer structured command output such as `--format json` for agent or workflow use when a command supports it.
-- Use the coordination query and coordination tracker as the default repo-level planning entrypoints before opening deeper planning families.
+- Use the live `plan/**` coordination index and rendered overview as the default repo-level planning entrypoints before opening deeper planning families.
 - Update adjacent indexes, trackers, examples, and validation surfaces when a governed document or control-plane artifact changes materially.
 
 ## Do Not

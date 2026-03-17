@@ -2166,11 +2166,11 @@
       "standard_id": "std.governance.coordination_tracking",
       "category": "governance",
       "title": "Coordination Tracking Standard",
-      "summary": "This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts.",
+      "summary": "This standard defines the repository's compact docs-backed coordination tracker so humans can browse the traced planning corpus without replacing the live `plan/**` authority surfaces.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
-      "updated_at": "2026-03-13T15:05:00Z",
+      "updated_at": "2026-03-17T06:08:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2178,7 +2178,8 @@
       ],
       "operationalization_paths": [
         "docs/planning/README.md",
-        "docs/planning/coordination_tracking.md"
+        "docs/planning/coordination_tracking.md",
+        "plan/plan_overview.md"
       ],
       "applies_to": [
         "docs/planning/coordination_tracking.md",
@@ -2478,7 +2479,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-11T06:21:01Z",
+      "updated_at": "2026-03-17T06:08:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

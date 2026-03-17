@@ -13,8 +13,8 @@
 | `docs/planning/prds/prd_tracking.md` | Human-readable tracker for the current PRD corpus. |
 
 ## Notes
-- Start with `docs/planning/coordination_tracking.md` when you need the current repo-level planning state before opening PRD-specific surfaces.
-- Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view for a PRD-backed effort.
+- Start with `plan/plan_overview.md` when you need the live repo-level planning state before opening PRD-specific surfaces.
+- Use `docs/planning/coordination_tracking.md` and `docs/planning/initiatives/initiative_tracking.md` when you need the deeper traced-planning family view for a PRD-backed effort.
 - Treat `prd_tracking.md` as an active-first tracker. Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browsing and `uv run watchtower-core query planning --trace-id <trace_id> --format json` when you already know the PRD trace that needs deep historical detail.
 - Use `uv run watchtower-core query prds --trace-id <trace_id>` when you need one known PRD record without reopening the full tracker.
 - PRDs in this directory should follow [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md).

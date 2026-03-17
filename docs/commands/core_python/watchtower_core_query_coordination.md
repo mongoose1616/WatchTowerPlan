@@ -1,10 +1,10 @@
 # `watchtower-core query coordination`
 
 ## Summary
-This command is the explicit machine start-here path for current planning coordination, including repo state, active initiatives, actionable tasks, blockers, recent closeouts, and bootstrap-ready guidance.
+This command provides the machine-readable docs-backed coordination view for the traced planning corpus, including active initiatives, actionable tasks, blockers, and recent closeouts.
 
 ## Use When
-- You want the current planning-state view without reopening initiative, task, and traceability surfaces separately.
+- You want the current docs-backed traced-planning view without reopening initiative, task, and traceability surfaces separately.
 - You need machine-readable coordination output for an agent, workflow, or script.
 - You want compact active-task summaries plus one recommended next surface to open first.
 
@@ -34,10 +34,11 @@ uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id
 - `-h`, `--help`: Show the command help text.
 
 ## Notes
-- This command defaults to active initiatives because it is the coordination start-here path.
+- Use `plan/.wt/indexes/coordination_index.json` as the live plan-workspace machine start-here path.
+- This command defaults to active initiatives because it is the start-here path for the docs-backed traced planning corpus.
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
 - Explicit non-active `--initiative-status` lookups resolve result rows from initiative-family data while the top-level coordination snapshot remains the current repo state.
-- `docs/planning/coordination_tracking.md` is the compact human companion view built from the same coordination state.
+- `docs/planning/coordination_tracking.md` is the compact human companion view built from the same docs-backed coordination state.
 - Use `watchtower-core query planning` after this command when you need the canonical deep planning record for one trace.
 - Use `watchtower-core query authority` when you need to confirm whether coordination is canonical for the question you are asking.
 - Use `watchtower-core query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
@@ -91,4 +92,4 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 - `core/control_plane/indexes/coordination/coordination_index.json`
 
 ## Updated At
-- `2026-03-13T23:21:33Z`
+- `2026-03-17T06:08:09Z`

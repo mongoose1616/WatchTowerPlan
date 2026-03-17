@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints.0001_created",
+  "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+  "task_id": "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T06:01:15Z",
+  "summary": "Created task task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

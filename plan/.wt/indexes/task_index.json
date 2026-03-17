@@ -3,5 +3,66 @@
   "id": "index.plan_tasks",
   "title": "Plan Workspace Task Index",
   "status": "active",
-  "entries": []
+  "entries": [
+    {
+      "task_id": "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
+      "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+      "trace_id": "trace.plan_entrypoint_cutover_proof",
+      "initiative_title": "Plan Entrypoint Cutover Proof",
+      "title": "Publish plan authority entrypoints",
+      "summary": "Capture the pack-wide start-here surfaces for the new live plan authority.",
+      "status": "ready",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/publish_plan_authority_entrypoints/task.json",
+      "updated_at": "2026-03-17T06:08:09Z"
+    },
+    {
+      "task_id": "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package",
+      "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+      "trace_id": "trace.plan_entrypoint_cutover_proof",
+      "initiative_title": "Plan Entrypoint Cutover Proof",
+      "title": "Validate pack-wide proof package",
+      "summary": "Prove the pack-wide initiative can reach ready_for_execution cleanly.",
+      "status": "planned",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/validate_packwide_proof_package/task.json",
+      "updated_at": "2026-03-17T06:08:09Z",
+      "depends_on": [
+        "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints"
+      ]
+    },
+    {
+      "task_id": "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
+      "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "initiative_title": "WatchTower Initial Implementation Bootstrap",
+      "title": "Capture WatchTower implementation boundary",
+      "summary": "Record the first bounded WatchTower implementation slice under the project container.",
+      "status": "ready",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/capture_watchtower_implementation_boundary/task.json",
+      "updated_at": "2026-03-17T06:08:09Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate",
+      "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "initiative_title": "WatchTower Initial Implementation Bootstrap",
+      "title": "Validate WatchTower readiness gate",
+      "summary": "Prove the WatchTower project-scoped package reaches ready_for_execution cleanly.",
+      "status": "planned",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/validate_watchtower_readiness_gate/task.json",
+      "updated_at": "2026-03-17T06:08:09Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary"
+      ]
+    }
+  ]
 }

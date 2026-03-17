@@ -6,11 +6,11 @@ summary: Completes the hard cutover for new work, proves one pack-wide and one p
   flow, and records the history or retention follow-up tranche.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-17T05:58:41Z'
+updated_at: '2026-03-17T06:16:04Z'
 audience: shared
 authority: authoritative
 applies_to:
