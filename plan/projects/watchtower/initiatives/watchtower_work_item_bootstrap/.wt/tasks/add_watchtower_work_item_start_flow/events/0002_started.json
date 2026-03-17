@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow.0002_started",
+  "initiative_id": "initiative.watchtower_work_item_bootstrap",
+  "task_id": "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T07:35:20Z",
+  "summary": "Started the WatchTower work-item start implementation task.",
+  "payload": {
+    "status": "in_progress",
+    "repository_locator": "/home/j/WatchTower"
+  }
+}

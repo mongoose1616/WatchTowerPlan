@@ -71,6 +71,37 @@
       ]
     },
     {
+      "task_id": "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow",
+      "initiative_id": "initiative.watchtower_work_item_bootstrap",
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "initiative_title": "WatchTower Work Item Bootstrap",
+      "title": "Add WatchTower work-item start flow",
+      "summary": "Add a CLI path that creates one local work-item record under the initialized workspace state root.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/add_watchtower_work_item_start_flow/task.json",
+      "updated_at": "2026-03-17T07:35:53Z",
+      "project_id": "project.watchtower"
+    },
+    {
+      "task_id": "task.watchtower_work_item_bootstrap.validate_watchtower_work_item_start_flow",
+      "initiative_id": "initiative.watchtower_work_item_bootstrap",
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "initiative_title": "WatchTower Work Item Bootstrap",
+      "title": "Validate WatchTower work-item start flow",
+      "summary": "Cover workspace-required work-item creation with CLI tests and exercise the flow against the initialized WatchTower repo.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/validate_watchtower_work_item_start_flow/task.json",
+      "updated_at": "2026-03-17T07:35:55Z",
+      "project_id": "project.watchtower",
+      "depends_on": [
+        "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow"
+      ]
+    },
+    {
       "task_id": "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
       "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
       "trace_id": "trace.watchtower_workspace_init_bootstrap",
