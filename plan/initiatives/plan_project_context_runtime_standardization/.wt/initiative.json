@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_project_context_runtime_standardization",
+  "trace_id": "trace.plan_project_context_runtime_standardization",
+  "slug": "plan_project_context_runtime_standardization",
+  "title": "Plan Project Context Runtime Standardization",
+  "summary": "Promotes project-scoped context loading into a first-class runtime surface layered on always-loaded pack context and proves it through a narrow query path.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T18:35:00Z",
+  "updated_at": "2026-03-17T18:58:00Z",
+  "task_ids": [
+    "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+    "task.plan_project_context_runtime_standardization.expose_project_context_query_surface",
+    "task.plan_project_context_runtime_standardization.validate_project_context_load_contract"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_project_context_runtime_standardization.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_project_context_runtime_standardization.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_project_context_runtime_standardization.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_project_context_runtime_standardization/initiative_brief.md",
+      "sha256": "da9168cb3d0ccfe2c2cc676a4ea2e1437a9d5e7c3dee13b30b0412b56e0afb0a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T18:35:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_project_context_runtime_standardization/design_record.md",
+      "sha256": "46bcdba0262de5cd4240cb2f0ba98d868e56ecb1e5bcc59f1c50633868364d31",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T18:35:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_project_context_runtime_standardization/implementation_slice.md",
+      "sha256": "29119537a63fa294a995a932636332637772afb5176f381618551176695850ab",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T18:35:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_project_context_runtime_standardization/decision_notes.md",
+      "sha256": "0eae4d1ccfd89d9c1bae54f1039bb4c2f133be2857e24dadd54308216a7e6527",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T18:35:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T15:13:26Z"
+    }
+  ],
+  "closed_at": "2026-03-17T18:58:00Z",
+  "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
+}

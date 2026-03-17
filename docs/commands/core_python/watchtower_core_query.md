@@ -1,7 +1,7 @@
 # `watchtower-core query`
 
 ## Summary
-This command group provides read-only lookup over governed repository indexes. Use it to route from a current-state question to the smallest useful command or machine-readable surface.
+This command group provides read-only lookup over governed repository indexes and narrow runtime context loads. Use it to route from a current-state question to the smallest useful command or machine-readable surface.
 
 ## Use When
 - You need to choose the correct lookup path before opening raw JSON or scanning docs manually.
@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose a leaf command such as `coordination`, `planning`, `authority`, `initiatives`, `tasks`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
+- `<query_command>`: Choose a leaf command such as `coordination`, `project-context`, `planning`, `authority`, `initiatives`, `tasks`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
 - `-h`, `--help`: Show the query-group help text.
 - Pass filters, limits, and output-mode flags to the selected leaf command.
 
@@ -36,6 +36,11 @@ uv run watchtower-core query --help
 ```sh
 cd core/python
 uv run watchtower-core query coordination --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core query project-context --project-slug watchtower --format json
 ```
 
 ```sh
@@ -57,6 +62,7 @@ uv run watchtower-core query authority --domain planning --format json
 - With no leaf command, the group prints help and exits successfully.
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `plan/.wt/indexes/coordination_index.json` as the live plan-workspace machine start-here path for current planning state and next action.
+- Use `project-context` when the operation is project-scoped and you need the validated project record, initiative root, and linked repositories on top of always-loaded `pack_context`.
 - Use `coordination` when you need the docs-backed traced-planning coordination payload or compatibility lookup.
 - Filterless `planning` and `initiatives` browse calls now default to `initiative_status=active`; pass explicit `--initiative-status` for terminal history and `--trace-id` when you already know the closed trace.
 - Use `planning` after coordination when you need the canonical deep machine-readable record for one trace.
@@ -70,6 +76,7 @@ uv run watchtower-core query authority --domain planning --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core query coordination` | Docs-backed traced-planning coordination lookup surface. |
+| `watchtower-core query project-context` | Explicit project-scoped runtime context load on top of pack context. |
 | `watchtower-core query planning` | Canonical deep planning join for one trace. |
 | `watchtower-core query initiatives` | Broader initiative-family and historical-status lookup. |
 | `watchtower-core query authority` | Canonical-surface resolver for planning and governance questions. |
@@ -82,6 +89,7 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/repo_ops/query/`
+- `core/python/src/watchtower_core/repo_ops/project_context.py`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-17T18:37:00Z`

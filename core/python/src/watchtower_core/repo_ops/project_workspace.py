@@ -6,18 +6,21 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.repo_ops.project_context import (
+    PLAN_PACK_SETTINGS_PATH,
+    ProjectContext,
+    load_project_context,
+    validate_project_machine_state,
+)
 from watchtower_core.repo_ops.query.common import (
     normalize_optional_text,
     normalize_text,
     query_score,
 )
 from watchtower_core.utils.timestamps import utc_timestamp_now
-from watchtower_core.validation import ArtifactValidationService, ValidationResult
+from watchtower_core.validation import ValidationResult
 
-PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
 PLAN_PROJECT_INDEX_PATH = "plan/.wt/indexes/project_index.json"
 
 _ACTIVE_PROJECT_STATUSES = frozenset({"active", "planned"})
@@ -70,34 +73,6 @@ class ProjectValidationResult:
     issue_messages: tuple[str, ...]
     artifact_results: tuple[ValidationResult, ...]
     wrote: bool
-
-
-@dataclass(frozen=True, slots=True)
-class ProjectRepositoryLink:
-    """Loaded repository-link record for a project context."""
-
-    repository_id: str
-    repository_role: str
-    repository_locator: str
-    repository_kind: str
-    owner: str
-    access: str
-    active: bool
-
-
-@dataclass(frozen=True, slots=True)
-class ProjectContext:
-    """Project-specific runtime context layered on top of the pack context."""
-
-    pack_context: PackContext
-    project_id: str
-    slug: str
-    title: str
-    summary: str
-    status: str
-    project_root: str
-    initiative_root: str
-    repository_links: tuple[ProjectRepositoryLink, ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -276,121 +251,26 @@ class ProjectWorkspaceService:
     ) -> ProjectValidationResult:
         """Validate one project container and its derived project surfaces."""
 
-        project_root = self._project_root(project_slug)
-        project_root_relative = self._project_root_relative(project_slug)
-        project_id = f"project.{project_slug}"
-        issues: list[str] = []
-
-        if not project_root.exists():
-            issues.append(f"Project root is missing: {project_root_relative}.")
-            return ProjectValidationResult(
-                project_id=project_id,
-                project_root=project_root_relative,
-                passed=False,
-                issue_messages=tuple(issues),
-                artifact_results=(),
-                wrote=write,
-            )
-
-        required_paths = (
-            self._project_path(project_slug, ".wt/project.json"),
-            self._project_path(project_slug, ".wt/project_repository_map.json"),
-        )
-        validator = ArtifactValidationService(self._pack_loader())
-        artifact_results: list[ValidationResult] = []
-        for relative_path in required_paths:
-            if not (self._loader.repo_root / relative_path).exists():
-                issues.append(f"Required project artifact is missing: {relative_path}.")
-                continue
-            artifact_results.append(validator.validate(relative_path))
-
-        initiatives_dir = project_root / "initiatives"
-        if not initiatives_dir.exists():
-            issues.append(
-                f"Project initiative root is missing: {self._project_path(project_slug, 'initiatives')}."
-            )
-
-        if not issues:
-            project_document = self._load_json(self._project_path(project_slug, ".wt/project.json"))
-            repository_map_document = self._load_json(
-                self._project_path(project_slug, ".wt/project_repository_map.json")
-            )
-            if str(project_document["initiative_root"]) != self._project_initiative_root_relative(
-                project_slug
-            ):
-                issues.append(
-                    "Project record initiative_root does not match the canonical project initiatives path."
-                )
-            repository_refs = tuple(project_document.get("linked_repository_refs", ()))
-            map_ids = tuple(
-                entry["repository_id"] for entry in repository_map_document.get("repositories", ())
-            )
-            if tuple(repository_refs) != map_ids:
-                issues.append(
-                    "Project record linked_repository_refs do not match project_repository_map repositories."
-                )
-
-        for result in artifact_results:
-            if not result.passed:
-                issues.append(
-                    f"{result.target_path} failed {result.validator_id} with {result.issue_count} issue(s)."
-                )
+        validation = validate_project_machine_state(self._loader, project_slug)
+        issues = list(validation.issue_messages)
 
         if not issues:
             derived_issues = self.expected_surface_issues(project_slug)
             issues.extend(issue.message for issue in derived_issues)
 
-        machine_root_issues = HumanSurfacePolicyHelper.from_loader(
-            self._pack_loader(),
-            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-        ).validate_root(self._loader.repo_root, self._project_path(project_slug, ".wt"))
-        issues.extend(issue.message for issue in machine_root_issues)
-
         return ProjectValidationResult(
-            project_id=project_id,
-            project_root=project_root_relative,
-            passed=not issues and all(result.passed for result in artifact_results),
+            project_id=validation.project_id,
+            project_root=validation.project_root,
+            passed=not issues and all(result.passed for result in validation.artifact_results),
             issue_messages=tuple(issues),
-            artifact_results=tuple(artifact_results),
+            artifact_results=validation.artifact_results,
             wrote=write,
         )
 
     def load_project_context(self, project_slug: str) -> ProjectContext:
         """Load project-specific context on top of the always-loaded pack context."""
 
-        validation = self.validate(project_slug, write=False)
-        if not validation.passed:
-            raise ValueError(
-                "Project context cannot load from an invalid project container: "
-                + "; ".join(validation.issue_messages)
-            )
-
-        project_document = self._load_json(self._project_path(project_slug, ".wt/project.json"))
-        repository_map_document = self._load_json(
-            self._project_path(project_slug, ".wt/project_repository_map.json")
-        )
-        return ProjectContext(
-            pack_context=self._loader.load_pack_context(PLAN_PACK_SETTINGS_PATH),
-            project_id=str(project_document["project_id"]),
-            slug=str(project_document["slug"]),
-            title=str(project_document["title"]),
-            summary=str(project_document["summary"]),
-            status=str(project_document["status"]),
-            project_root=self._project_root_relative(project_slug),
-            initiative_root=str(project_document["initiative_root"]),
-            repository_links=tuple(
-                ProjectRepositoryLink(
-                    repository_id=str(entry["repository_id"]),
-                    repository_role=str(entry["repository_role"]),
-                    repository_locator=str(entry["repository_locator"]),
-                    repository_kind=str(entry["repository_kind"]),
-                    owner=str(entry["owner"]),
-                    access=str(entry["access"]),
-                    active=bool(entry["active"]),
-                )
-                for entry in repository_map_document["repositories"]
-            ),
-        )
+        return load_project_context(self._loader, project_slug)
 
     def sync(self, *, write: bool) -> ProjectWorkspaceSyncResult:
         """Rebuild the project index and project-local rendered views."""
@@ -707,10 +587,6 @@ class ProjectWorkspaceService:
             self._loader.repo_root,
             active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
-
-    def _load_json(self, relative_path: str) -> dict[str, object]:
-        path = self._loader.repo_root / relative_path
-        return json.loads(path.read_text(encoding="utf-8"))
 
     def _write_markdown(self, relative_path: str, content: str) -> None:
         path = self._loader.repo_root / relative_path

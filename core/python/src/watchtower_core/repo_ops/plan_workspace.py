@@ -804,16 +804,25 @@ class PlanWorkspaceService:
             )
         )
         recent_closed = tuple(
-            CoordinationRecentInitiativeSummary(
-                trace_id=entry.trace_id,
-                title=entry.title,
-                initiative_status=entry.initiative_status,
-                closed_at=entry.closed_at or entry.updated_at,
-                key_surface_path=entry.key_surface_path,
-                closure_reason=entry.closure_reason,
+            sorted(
+                (
+                    CoordinationRecentInitiativeSummary(
+                        trace_id=entry.trace_id,
+                        title=entry.title,
+                        initiative_status=entry.initiative_status,
+                        closed_at=entry.closed_at or entry.updated_at,
+                        key_surface_path=entry.key_surface_path,
+                        closure_reason=entry.closure_reason,
+                    )
+                    for entry in entries
+                    if entry.initiative_status != "active"
+                ),
+                key=lambda entry: (
+                    entry.closed_at,
+                    entry.trace_id,
+                ),
+                reverse=True,
             )
-            for entry in entries
-            if entry.initiative_status != "active"
         )[:10]
         if not active_entries:
             summary = "No active plan-workspace initiatives exist."

@@ -116,6 +116,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
     assert "query coordination" in captured.out
+    assert "query project-context" in captured.out
     assert "query planning" in captured.out
     assert "query authority" in captured.out
     assert "query foundations" in captured.out

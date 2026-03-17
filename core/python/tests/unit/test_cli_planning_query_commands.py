@@ -175,6 +175,21 @@ def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
     assert "status" not in matched
 
 
+def test_query_project_context_supports_json_output(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "project-context", "--project-slug", "watchtower"],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query project-context"
+    assert payload["status"] == "ok"
+    assert payload["result"]["project_id"] == "project.watchtower"
+    assert payload["result"]["pack_context"]["pack_id"] == "pack.plan"
+    assert payload["result"]["initiative_root"] == "plan/projects/watchtower/initiatives"
+    assert len(payload["result"]["repository_links"]) >= 1
+
+
 def test_query_planning_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,

@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_project_context_runtime_standardization.extract_project_context_runtime_helper.0002_started",
+  "initiative_id": "initiative.plan_project_context_runtime_standardization",
+  "task_id": "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T18:37:00Z",
+  "summary": "Started extracting the project-context runtime helper.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "project_context"
+  }
+}

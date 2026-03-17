@@ -12,6 +12,7 @@
 - Use `watchtower_core_sync.md` when the main question is which derived artifact to rebuild, then open `watchtower_core_sync_foundation_index.md` when a foundations change needs the machine-readable intent index refreshed.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
+- Use `watchtower_core_query_project_context.md` when the main question is how to load one validated project-scoped runtime context on top of the always-loaded pack context.
 - Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
 - Use `watchtower_core_query_authority.md` when the main question is which machine surface is canonical for a planning or governance lookup.
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
@@ -26,6 +27,7 @@
 | `docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
 | `docs/commands/core_python/watchtower_core_plan.md` | Entry page for planning scaffold and bootstrap commands. |
 | `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including planning, standards, references, and trace surfaces. |
+| `docs/commands/core_python/watchtower_core_query_project_context.md` | Loads the explicit machine-first runtime context for one project container under `plan/projects/**`. |
 | `docs/commands/core_python/watchtower_core_query_foundations.md` | Query foundations by topic, related surface, authority, or downstream citation or application use. |
 | `docs/commands/core_python/watchtower_core_query_coordination.md` | Machine start-here command page for active traced initiative coordination and next-step lookup. |
 | `docs/commands/core_python/watchtower_core_query_planning.md` | Canonical deep-planning query page for one trace-linked planning record with explicit status semantics. |

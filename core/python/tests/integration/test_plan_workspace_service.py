@@ -448,6 +448,10 @@ def test_plan_workspace_coordination_surfaces_recent_closeouts_after_terminal_cl
         "trace.workspace_alpha",
         "trace.watchtower_scope_flow",
     }
+    assert tuple(entry.trace_id for entry in coordination_index.recent_closed_initiatives) == (
+        "trace.watchtower_scope_flow",
+        "trace.workspace_alpha",
+    )
 
     plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
     assert "## Recent Closeouts" in plan_overview

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_project_context_runtime_standardization.0012_closing_started",
+  "initiative_id": "initiative.plan_project_context_runtime_standardization",
+  "trace_id": "trace.plan_project_context_runtime_standardization",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T18:57:00Z",
+  "summary": "Closeout started after the project-context runtime slice completed its bounded work.",
+  "payload": {}
+}

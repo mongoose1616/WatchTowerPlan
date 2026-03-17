@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_project_context_runtime_standardization.validate_project_context_load_contract.0002_started",
+  "initiative_id": "initiative.plan_project_context_runtime_standardization",
+  "task_id": "task.plan_project_context_runtime_standardization.validate_project_context_load_contract",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T18:54:00Z",
+  "summary": "Started validating the project-context load contract and CLI coverage.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "validation"
+  }
+}

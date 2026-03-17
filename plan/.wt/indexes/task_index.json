@@ -120,6 +120,52 @@
       ]
     },
     {
+      "task_id": "task.plan_project_context_runtime_standardization.expose_project_context_query_surface",
+      "initiative_id": "initiative.plan_project_context_runtime_standardization",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "initiative_title": "Plan Project Context Runtime Standardization",
+      "title": "Expose project context query surface",
+      "summary": "Add a bounded CLI query path that loads pack context and project context explicitly for one project-scoped target.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/expose_project_context_query_surface/task.json",
+      "updated_at": "2026-03-17T18:53:00Z",
+      "depends_on": [
+        "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper"
+      ]
+    },
+    {
+      "task_id": "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+      "initiative_id": "initiative.plan_project_context_runtime_standardization",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "initiative_title": "Plan Project Context Runtime Standardization",
+      "title": "Extract project context runtime helper",
+      "summary": "Move project-scoped context loading behind a first-class runtime surface that builds on project record and repository map artifacts.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/extract_project_context_runtime_helper/task.json",
+      "updated_at": "2026-03-17T18:50:00Z"
+    },
+    {
+      "task_id": "task.plan_project_context_runtime_standardization.validate_project_context_load_contract",
+      "initiative_id": "initiative.plan_project_context_runtime_standardization",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "initiative_title": "Plan Project Context Runtime Standardization",
+      "title": "Validate project context load contract",
+      "summary": "Add integration and command coverage proving separate project-context loading and scope-aware query behavior.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/validate_project_context_load_contract/task.json",
+      "updated_at": "2026-03-17T18:56:00Z",
+      "depends_on": [
+        "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+        "task.plan_project_context_runtime_standardization.expose_project_context_query_surface"
+      ]
+    },
+    {
       "task_id": "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",

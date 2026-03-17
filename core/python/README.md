@@ -43,6 +43,7 @@
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
 - `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
+- `uv run watchtower-core query project-context --project-slug watchtower --format json`
 - `uv run watchtower-core query planning --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core query authority --domain planning --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
@@ -103,6 +104,7 @@
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
 - `plan/.wt/indexes/coordination_index.json` is the live machine-readable current-state entrypoint for the plan workspace.
+- `uv run watchtower-core query project-context --project-slug <slug> --format json` is the explicit runtime proof path for loading `project_context` on top of always-loaded `pack_context` for project-scoped work.
 - `uv run watchtower-core query coordination --format json` remains useful when you need the docs-backed traced-planning coordination payload.
 - Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.

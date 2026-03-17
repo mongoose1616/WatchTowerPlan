@@ -10,6 +10,7 @@ from watchtower_core.repo_ops.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_core.repo_ops.project_context import load_project_context
 from watchtower_core.repo_ops.project_workspace import (
     PLAN_PROJECT_INDEX_PATH,
     PlanProjectSearchParams,
@@ -150,6 +151,33 @@ def test_project_workspace_validation_detects_stale_surfaces_until_rebuilt(
     service.sync(write=True)
     restored = service.validate("watchtower", write=False)
     assert restored.passed is True
+
+
+def test_project_context_load_uses_machine_state_even_when_rendered_surfaces_drift(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    service = ProjectWorkspaceService(loader)
+    service.bootstrap(_bootstrap_params(), write=True)
+
+    project_md = repo_root / "plan" / "projects" / "watchtower" / "project.md"
+    project_md.write_text(
+        project_md.read_text(encoding="utf-8")
+        + "\n## Drift\nThis manual edit should not block machine context loading.\n",
+        encoding="utf-8",
+    )
+
+    context = load_project_context(loader, "watchtower")
+
+    assert context.pack_context.pack_settings.pack_id == "pack.plan"
+    assert context.project_id == "project.watchtower"
+    assert context.initiative_root == "plan/projects/watchtower/initiatives"
+    assert len(context.repository_links) == 2
+
+    validation = service.validate("watchtower", write=False)
+    assert validation.passed is False
+    assert any("Project rendered surface drift detected" in message for message in validation.issue_messages)
 
 
 def test_project_workspace_sync_uses_latest_child_initiative_timestamp(

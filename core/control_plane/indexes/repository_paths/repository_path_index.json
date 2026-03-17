@@ -3134,6 +3134,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_project_context.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Loads the explicit machine-first runtime context for one project container under `plan/projects/**`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_route.md",
       "kind": "file",
       "surface_kind": "command_doc",

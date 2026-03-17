@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_project_context_runtime_standardization.validate_project_context_load_contract",
+  "slug": "validate_project_context_load_contract",
+  "initiative_id": "initiative.plan_project_context_runtime_standardization",
+  "title": "Validate project context load contract",
+  "summary": "Add integration and command coverage proving separate project-context loading and scope-aware query behavior.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T18:35:00Z",
+  "updated_at": "2026-03-17T18:56:00Z",
+  "dependency_task_ids": [
+    "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+    "task.plan_project_context_runtime_standardization.expose_project_context_query_surface"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

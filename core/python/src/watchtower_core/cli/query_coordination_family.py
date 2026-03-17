@@ -8,6 +8,7 @@ from textwrap import dedent
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_authority,
+    _run_query_project_context,
     _run_query_tasks,
     _run_query_trace,
 )
@@ -22,6 +23,39 @@ def register_query_coordination_commands(
     query_subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register coordination-oriented query commands."""
+    query_project_context_parser = query_subparsers.add_parser(
+        "project-context",
+        help="Load the machine-first context for one project container.",
+        description=dedent(
+            """
+            Load one project-scoped runtime context on top of the always-loaded
+            pack context.
+
+            Use this when a command, workflow, or implementation step targets
+            exactly one project and you need the validated project record,
+            initiative root, and linked repository metadata without relying on
+            rendered views.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query project-context --project-slug watchtower",
+            "uv run watchtower-core query project-context --project-slug watchtower --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_project_context_parser.add_argument(
+        "--project-slug",
+        required=True,
+        help="Project slug such as watchtower.",
+    )
+    query_project_context_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_project_context_parser.set_defaults(handler=_run_query_project_context)
+
     query_tasks_parser = query_subparsers.add_parser(
         "tasks",
         help="Search the task index.",

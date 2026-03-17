@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T15:35:00Z",
+  "updated_at": "2026-03-17T18:58:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -15,60 +15,12 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
-      "trace_id": "trace.plan_entrypoint_cutover_proof",
-      "title": "Plan Entrypoint Cutover Proof",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "title": "Plan Project Context Runtime Standardization",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:09Z",
-      "key_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/plan.md",
-      "closure_reason": "Delivered the plan authority cutover proof and validated the live plan entrypoints."
-    },
-    {
-      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
-      "title": "Plan Human Surface Policy and Core Root Seeding",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:10Z",
-      "key_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/plan.md",
-      "closure_reason": "Delivered the governed human-surface policy and seeded the missing core human roots."
-    },
-    {
-      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
-      "title": "Plan Legacy History and Retention Reconciliation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:10Z",
-      "key_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md",
-      "closure_reason": "Delivered the transitional retention policy registry and classified retained planning history."
-    },
-    {
-      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
-      "title": "Plan Terminal Initiative Closeout Runtime",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:11Z",
-      "key_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/plan.md",
-      "closure_reason": "Delivered the live terminal closeout runtime, CLI surface, and recent-closeout coordination flow."
-    },
-    {
-      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
-      "title": "WatchTower Initial Implementation Bootstrap",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:13Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
-      "closure_reason": "Delivered the first WatchTower implementation bootstrap package and boundary capture."
-    },
-    {
-      "trace_id": "trace.watchtower_next_work_selection",
-      "title": "WatchTower Next Work Selection",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:24Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower next-work selection flow."
-    },
-    {
-      "trace_id": "trace.watchtower_status_snapshot",
-      "title": "WatchTower Status Snapshot",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:20Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower status snapshot command."
+      "closed_at": "2026-03-17T18:58:00Z",
+      "key_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/plan.md",
+      "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
       "trace_id": "trace.watchtower_work_item_begin_flow",
@@ -79,12 +31,28 @@
       "closure_reason": "Delivered the local-first WatchTower work-item begin flow."
     },
     {
-      "trace_id": "trace.watchtower_work_item_bootstrap",
-      "title": "WatchTower Work Item Bootstrap",
+      "trace_id": "trace.watchtower_next_work_selection",
+      "title": "WatchTower Next Work Selection",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:17Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower work-item bootstrap flow."
+      "closed_at": "2026-03-17T15:06:24Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
+      "closure_reason": "Delivered the local-first WatchTower next-work selection flow."
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_notes",
+      "title": "WatchTower Work Item Notes",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:22Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/plan.md",
+      "closure_reason": "Delivered the local-first WatchTower work-item note flow."
+    },
+    {
+      "trace_id": "trace.watchtower_status_snapshot",
+      "title": "WatchTower Status Snapshot",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:20Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
+      "closure_reason": "Delivered the local-first WatchTower status snapshot command."
     },
     {
       "trace_id": "trace.watchtower_work_item_lifecycle",
@@ -93,6 +61,38 @@
       "closed_at": "2026-03-17T15:06:18Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/plan.md",
       "closure_reason": "Delivered the WatchTower work-item inspection and completion flows."
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "title": "WatchTower Work Item Bootstrap",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:17Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/plan.md",
+      "closure_reason": "Delivered the local-first WatchTower work-item bootstrap flow."
+    },
+    {
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "title": "WatchTower Workspace Init Bootstrap",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:15Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/plan.md",
+      "closure_reason": "Delivered the local-first WatchTower workspace init flow."
+    },
+    {
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "title": "WatchTower Initial Implementation Bootstrap",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:13Z",
+      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
+      "closure_reason": "Delivered the first WatchTower implementation bootstrap package and boundary capture."
+    },
+    {
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "title": "Plan Terminal Initiative Closeout Runtime",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T15:06:11Z",
+      "key_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/plan.md",
+      "closure_reason": "Delivered the live terminal closeout runtime, CLI surface, and recent-closeout coordination flow."
     }
   ]
 }

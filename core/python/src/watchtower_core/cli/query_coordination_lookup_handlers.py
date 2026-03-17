@@ -11,6 +11,7 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import AuthorityMapEntry
+from watchtower_core.repo_ops.project_context import load_project_context
 from watchtower_core.repo_ops.query import (
     AuthorityMapQueryService,
     AuthorityMapSearchParams,
@@ -223,6 +224,69 @@ def _run_query_trace(args: argparse.Namespace) -> int:
         print(f"Acceptance Contracts: {', '.join(entry.acceptance_contract_ids)}")
     if entry.evidence_ids:
         print(f"Evidence: {', '.join(entry.evidence_ids)}")
+    return 0
+
+
+def _run_query_project_context(args: argparse.Namespace) -> int:
+    try:
+        context = load_project_context(ControlPlaneLoader(), args.project_slug)
+    except ValueError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core query project-context",
+            str(exc),
+        )
+
+    payload = {
+        "command": "watchtower-core query project-context",
+        "status": "ok",
+        "result": {
+            "pack_context": {
+                "pack_id": context.pack_context.pack_settings.pack_id,
+                "pack_settings_path": context.pack_context.pack_settings_path,
+            },
+            "project_id": context.project_id,
+            "slug": context.slug,
+            "title": context.title,
+            "summary": context.summary,
+            "status": context.status,
+            "project_root": context.project_root,
+            "initiative_root": context.initiative_root,
+            "repository_links": [
+                {
+                    "repository_id": link.repository_id,
+                    "repository_role": link.repository_role,
+                    "repository_locator": link.repository_locator,
+                    "repository_kind": link.repository_kind,
+                    "owner": link.owner,
+                    "access": link.access,
+                    "active": link.active,
+                }
+                for link in context.repository_links
+            ],
+        },
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    print(f"{context.project_id}: {context.title} [{context.status}]")
+    print(context.summary)
+    print(
+        "Pack Context: "
+        f"{context.pack_context.pack_settings.pack_id} via "
+        f"{context.pack_context.pack_settings_path}"
+    )
+    print(f"Project Root: {context.project_root}")
+    print(f"Initiative Root: {context.initiative_root}")
+    if context.repository_links:
+        print("Repositories:")
+        for link in context.repository_links:
+            state = "active" if link.active else "inactive"
+            print(
+                "- "
+                f"{link.repository_role}: {link.repository_locator} "
+                f"[{link.repository_kind}, {state}]"
+            )
     return 0
 
 

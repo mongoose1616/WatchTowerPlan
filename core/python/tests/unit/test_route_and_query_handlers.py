@@ -24,6 +24,7 @@ def _route_args(**overrides: object) -> argparse.Namespace:
 def _query_args(**overrides: object) -> argparse.Namespace:
     defaults: dict[str, object] = {
         "query": None,
+        "project_slug": None,
         "task_id": [],
         "trace_id": None,
         "task_status": None,
@@ -94,11 +95,15 @@ def _active_task_summary(**overrides: object) -> SimpleNamespace:
 
 def _initiative_entry(**overrides: object) -> SimpleNamespace:
     defaults: dict[str, object] = {
+        "initiative_id": "initiative.example",
         "trace_id": "trace.example",
+        "slug": "example",
         "title": "Example Initiative",
         "summary": "Initiative summary.",
         "artifact_status": "active",
         "initiative_status": "active",
+        "scope_type": "pack_wide",
+        "project_id": None,
         "current_phase": "execution",
         "updated_at": "2026-03-10T23:59:59Z",
         "open_task_count": 1,
@@ -629,3 +634,74 @@ def test_query_trace_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Superseded By: trace.next" in captured.out
     assert "Acceptance Contracts: contract.acceptance.example" in captured.out
     assert "Evidence: evidence.example" in captured.out
+
+
+def test_query_project_context_prints_human_summary(monkeypatch, capsys) -> None:
+    project_context = SimpleNamespace(
+        pack_context=SimpleNamespace(
+            pack_settings=SimpleNamespace(
+                pack_id="pack.plan",
+            ),
+            pack_settings_path="plan/.wt/manifests/pack_settings.json",
+        ),
+        project_id="project.watchtower",
+        slug="watchtower",
+        title="WatchTower",
+        summary="Operator-facing target.",
+        status="active",
+        project_root="plan/projects/watchtower",
+        initiative_root="plan/projects/watchtower/initiatives",
+        repository_links=(
+            SimpleNamespace(
+                repository_id="repository.watchtower.planning",
+                repository_role="planning",
+                repository_locator="/home/j/WatchTowerPlan",
+                repository_kind="planning",
+                owner="repository_maintainer",
+                access="local_write",
+                active=True,
+            ),
+        ),
+    )
+
+    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(
+        query_coordination_lookup_handlers,
+        "load_project_context",
+        lambda loader, project_slug: project_context,
+    )
+
+    result = query_coordination_lookup_handlers._run_query_project_context(
+        _query_args(project_slug="watchtower")
+    )
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "project.watchtower: WatchTower [active]" in captured.out
+    assert "Pack Context: pack.plan via plan/.wt/manifests/pack_settings.json" in captured.out
+    assert "Initiative Root: plan/projects/watchtower/initiatives" in captured.out
+    assert "- planning: /home/j/WatchTowerPlan [planning, active]" in captured.out
+
+
+def test_query_project_context_supports_json_errors(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(
+        query_coordination_lookup_handlers,
+        "load_project_context",
+        lambda loader, project_slug: (_ for _ in ()).throw(
+            ValueError("Project root is missing: plan/projects/watchtower.")
+        ),
+    )
+
+    result = query_coordination_lookup_handlers._run_query_project_context(
+        _query_args(project_slug="watchtower", format="json")
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload == {
+        "command": "watchtower-core query project-context",
+        "message": "Project root is missing: plan/projects/watchtower.",
+        "status": "error",
+    }
