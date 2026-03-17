@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | `3` (`blocked=1`) | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) | [add_packwide_rendered_views_queries_and_stale_surface_enforcement.md](/docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -78,4 +80,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T21:41:48Z`_
+_Updated At: `2026-03-17T05:03:37Z`_

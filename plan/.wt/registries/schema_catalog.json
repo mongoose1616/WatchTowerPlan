@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "Plan Workspace Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+      "title": "Initiative State",
+      "description": "Schema for the authoritative current-state snapshot of one plan initiative.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "initiative_state",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/initiative_state.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+      "title": "Initiative Event Stream",
+      "description": "Schema for one append-only initiative event record in the local event stream.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "initiative_event_stream",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/initiative_event_stream.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+      "title": "Task State",
+      "description": "Schema for the authoritative current-state snapshot of one initiative-local task.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "task_state",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/task_state.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+      "title": "Task Event Stream",
+      "description": "Schema for one append-only initiative-task event record.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "task_event_stream",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/task_event_stream.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1",
+      "title": "Deferred Item Record",
+      "description": "Schema for one initiative-local deferred item contract.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "deferred_item_record",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/deferred_item_record.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+      "title": "Discrepancy Record",
+      "description": "Schema for one initiative-local discrepancy record.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "discrepancy_record",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/discrepancy_record.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+      "title": "Validation Bundle",
+      "description": "Schema for the structured evidence shell attached to one initiative package.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "validation_bundle",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/validation_bundle.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:closeout-recap:v1",
+      "title": "Closeout Recap",
+      "description": "Schema for the structured closeout shell attached to one initiative package.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "closeout_recap",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/closeout_recap.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+      "title": "Guidance Promotion Record",
+      "description": "Schema for one initiative-local promotion shell or guidance-promotion record.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "guidance_promotion_record",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/guidance_promotion_record.schema.json"
+    }
+  ]
+}

@@ -54,7 +54,7 @@
     },
     "pathString": {
       "type": "string",
-      "pattern": "^(?:core/control_plane|domain_packs/.+/\\.wt)/schemas/.+\\.schema\\.json$"
+      "pattern": "^(?:core/control_plane|domain_packs/.+/\\.wt|plan/\\.wt)/schemas/.+\\.schema\\.json$"
     },
     "version": {
       "type": "string",

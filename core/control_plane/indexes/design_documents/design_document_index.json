@@ -105,6 +105,37 @@
       ]
     },
     {
+      "document_id": "design.features.capture_first_plan_workspace_bootstrap",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "family": "feature_design",
+      "title": "Capture-First Plan Workspace Bootstrap Feature Design",
+      "summary": "Defines the machine-first `plan/**` workspace design and the first-tranche runtime needed to enforce capture-before-execution.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "workflows/",
+        "core/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "requirements.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/planning/README.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "docs/planning/prds/capture_first_plan_workspace_bootstrap.md"
+      ]
+    },
+    {
       "document_id": "design.features.command_documentation_and_lookup",
       "trace_id": "trace.command_documentation_and_lookup",
       "family": "feature_design",
@@ -2528,6 +2559,40 @@
         "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/planning/prds/active_first_planning_query_history_alignment.md",
         "docs/planning/design/features/active_first_planning_query_history_alignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.capture_first_plan_workspace_bootstrap",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "family": "implementation_plan",
+      "title": "Capture-First Plan Workspace Bootstrap Implementation Plan",
+      "summary": "Breaks Capture-First Plan Workspace Bootstrap into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "workflows/",
+        "core/"
+      ],
+      "internal_reference_paths": [
+        "requirements.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md"
       ]
     },
     {

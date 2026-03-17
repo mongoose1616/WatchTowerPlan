@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1",
+  "title": "Deferred Item Record",
+  "description": "Schema for one initiative-local deferred item contract.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "deferred_item_id",
+    "initiative_id",
+    "category",
+    "summary",
+    "reason",
+    "owner",
+    "resolution_trigger",
+    "status",
+    "blocks_ready_for_execution",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1"
+    },
+    "deferred_item_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resolution_trigger": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "resolved"
+      ]
+    },
+    "blocks_ready_for_execution": {
+      "type": "boolean"
+    },
+    "related_task_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    }
+  }
+}

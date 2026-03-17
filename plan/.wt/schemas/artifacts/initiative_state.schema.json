@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "title": "Initiative State",
+  "description": "Schema for the authoritative current-state snapshot of one plan initiative package.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "initiative_id",
+    "trace_id",
+    "slug",
+    "title",
+    "summary",
+    "scope_type",
+    "status",
+    "lifecycle_stage",
+    "review_status",
+    "owner",
+    "created_at",
+    "updated_at",
+    "task_ids",
+    "evidence_ids",
+    "promotion_ids",
+    "closeout_ids",
+    "authored_inputs",
+    "gate_state"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:initiative-state:v1"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "slug": {
+      "$ref": "#/$defs/slugPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_type": {
+      "type": "string",
+      "enum": [
+        "pack_wide",
+        "project_scoped"
+      ]
+    },
+    "project_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "blocked",
+        "completed",
+        "superseded",
+        "cancelled"
+      ]
+    },
+    "lifecycle_stage": {
+      "type": "string",
+      "enum": [
+        "capture_incomplete",
+        "ready_for_review",
+        "ready_for_execution",
+        "in_progress",
+        "blocked",
+        "closing",
+        "completed",
+        "superseded",
+        "cancelled"
+      ]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "task_ids": {
+      "$ref": "#/$defs/nonEmptyIdList"
+    },
+    "deferred_item_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "discrepancy_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "evidence_ids": {
+      "$ref": "#/$defs/nonEmptyIdList"
+    },
+    "promotion_ids": {
+      "$ref": "#/$defs/nonEmptyIdList"
+    },
+    "closeout_ids": {
+      "$ref": "#/$defs/nonEmptyIdList"
+    },
+    "authored_inputs": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/authoredInputRecord"
+      }
+    },
+    "gate_state": {
+      "$ref": "#/$defs/gateState"
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/approvalRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "slugPattern": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "nonEmptyIdList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "authoredInputRecord": {
+      "type": "object",
+      "required": [
+        "doc_kind",
+        "path",
+        "sha256",
+        "proposal_status",
+        "last_confirmed_at",
+        "last_confirmed_by"
+      ],
+      "properties": {
+        "doc_kind": {
+          "type": "string",
+          "enum": [
+            "initiative_brief",
+            "design_record",
+            "implementation_slice",
+            "decision_notes"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/).+\\.md$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "proposal_status": {
+          "type": "string",
+          "enum": [
+            "confirmed",
+            "proposed"
+          ]
+        },
+        "last_confirmed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_confirmed_by": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "gateState": {
+      "type": "object",
+      "required": [
+        "capture_complete",
+        "machine_valid",
+        "approval_status",
+        "ready_for_execution",
+        "blocking_reasons"
+      ],
+      "properties": {
+        "capture_complete": {
+          "type": "boolean"
+        },
+        "machine_valid": {
+          "type": "boolean"
+        },
+        "approval_status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved"
+          ]
+        },
+        "ready_for_execution": {
+          "type": "boolean"
+        },
+        "blocking_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "approvalRecord": {
+      "type": "object",
+      "required": [
+        "approval_kind",
+        "actor_id",
+        "approved_at"
+      ],
+      "properties": {
+        "approval_kind": {
+          "type": "string",
+          "enum": [
+            "ready_for_execution",
+            "authored_input_confirmation"
+          ]
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

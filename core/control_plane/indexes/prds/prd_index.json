@@ -98,6 +98,57 @@
       ]
     },
     {
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "prd_id": "prd.capture_first_plan_workspace_bootstrap",
+      "title": "Capture-First Plan Workspace Bootstrap PRD",
+      "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.capture_first_plan_workspace_bootstrap.001",
+        "req.capture_first_plan_workspace_bootstrap.002",
+        "req.capture_first_plan_workspace_bootstrap.003",
+        "req.capture_first_plan_workspace_bootstrap.004",
+        "req.capture_first_plan_workspace_bootstrap.005",
+        "req.capture_first_plan_workspace_bootstrap.006",
+        "req.capture_first_plan_workspace_bootstrap.007"
+      ],
+      "acceptance_ids": [
+        "ac.capture_first_plan_workspace_bootstrap.001",
+        "ac.capture_first_plan_workspace_bootstrap.002",
+        "ac.capture_first_plan_workspace_bootstrap.003",
+        "ac.capture_first_plan_workspace_bootstrap.004",
+        "ac.capture_first_plan_workspace_bootstrap.005",
+        "ac.capture_first_plan_workspace_bootstrap.006",
+        "ac.capture_first_plan_workspace_bootstrap.007"
+      ],
+      "linked_decision_ids": [
+        "decision.capture_first_plan_workspace_bootstrap_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.capture_first_plan_workspace_bootstrap"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.capture_first_plan_workspace_bootstrap"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "workflows/",
+        "core/"
+      ],
+      "internal_reference_paths": [
+        "requirements.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.control_plane_example_validation_hardening",
       "prd_id": "prd.control_plane_example_validation_hardening",
       "title": "Control Plane Example Validation Hardening PRD",

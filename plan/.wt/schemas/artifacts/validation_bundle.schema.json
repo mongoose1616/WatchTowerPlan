@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "title": "Validation Bundle",
+  "description": "Schema for one initiative-local evidence shell or validation bundle.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "initiative_id",
+    "trace_id",
+    "title",
+    "status",
+    "updated_at",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+    },
+    "id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "active",
+        "completed"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entryRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "entryRecord": {
+      "type": "object",
+      "required": [
+        "entry_id",
+        "acceptance_label",
+        "validation_type",
+        "owner",
+        "target_phase",
+        "expected_output_paths"
+      ],
+      "properties": {
+        "entry_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "acceptance_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validation_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_phase": {
+          "type": "string",
+          "enum": [
+            "capture",
+            "readiness",
+            "execution",
+            "closeout"
+          ]
+        },
+        "expected_output_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(?!/).+"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

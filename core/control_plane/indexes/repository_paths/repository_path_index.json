@@ -4940,6 +4940,46 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/.wt/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds the authoritative machine-readable plan-pack root and Stage 1 bootstrap record.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Describes the purpose of the plan root and the main surfaces seeded here.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/initiatives/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds pack-wide initiative containers for live work.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/projects/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds project containers and project-scoped initiative roots.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "workflows/",
       "kind": "directory",
       "surface_kind": "repository_surface",

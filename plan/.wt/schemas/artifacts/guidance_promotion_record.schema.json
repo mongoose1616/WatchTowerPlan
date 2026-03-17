@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "title": "Guidance Promotion Record",
+  "description": "Schema for one initiative-local promotion shell or guidance-promotion record.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "initiative_id",
+    "title",
+    "status",
+    "updated_at",
+    "candidates"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1"
+    },
+    "id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "candidate",
+        "promoted",
+        "rejected"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/candidateRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "candidateRecord": {
+      "type": "object",
+      "required": [
+        "candidate_path",
+        "target_family",
+        "review_path",
+        "provenance_expectation"
+      ],
+      "properties": {
+        "candidate_path": {
+          "type": "string",
+          "pattern": "^(?!/).+"
+        },
+        "target_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance_expectation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

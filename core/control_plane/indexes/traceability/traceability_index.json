@@ -211,6 +211,91 @@
       "notes": "Planning baseline evidence refreshed for the active-first planning-query review loop after the query-entrypoint change, documentation alignment, acceptance and evidence coverage repair, the stale adjacent empty-message regression fix, and final trace closeout."
     },
     {
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "title": "Capture-First Plan Workspace Bootstrap PRD",
+      "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T05:03:37Z",
+      "prd_ids": [
+        "prd.capture_first_plan_workspace_bootstrap"
+      ],
+      "decision_ids": [
+        "decision.capture_first_plan_workspace_bootstrap_direction"
+      ],
+      "design_ids": [
+        "design.features.capture_first_plan_workspace_bootstrap"
+      ],
+      "plan_ids": [
+        "design.implementation.capture_first_plan_workspace_bootstrap"
+      ],
+      "task_ids": [
+        "task.capture_first_plan_workspace_bootstrap.bootstrap.001",
+        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
+        "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
+        "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
+        "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
+        "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
+      ],
+      "requirement_ids": [
+        "req.capture_first_plan_workspace_bootstrap.001",
+        "req.capture_first_plan_workspace_bootstrap.002",
+        "req.capture_first_plan_workspace_bootstrap.003",
+        "req.capture_first_plan_workspace_bootstrap.004",
+        "req.capture_first_plan_workspace_bootstrap.005",
+        "req.capture_first_plan_workspace_bootstrap.006",
+        "req.capture_first_plan_workspace_bootstrap.007"
+      ],
+      "acceptance_ids": [
+        "ac.capture_first_plan_workspace_bootstrap.001",
+        "ac.capture_first_plan_workspace_bootstrap.002",
+        "ac.capture_first_plan_workspace_bootstrap.003",
+        "ac.capture_first_plan_workspace_bootstrap.004",
+        "ac.capture_first_plan_workspace_bootstrap.005",
+        "ac.capture_first_plan_workspace_bootstrap.006",
+        "ac.capture_first_plan_workspace_bootstrap.007"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.capture_first_plan_workspace_bootstrap.planning_baseline"
+      ],
+      "related_paths": [
+        "core/",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/capture_first_plan_workspace_bootstrap_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/capture_first_plan_workspace_bootstrap_planning_baseline.json",
+        "core/python/",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/add_initiative_package_contracts_and_strict_readiness_gate.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
+        "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
+        "docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md",
+        "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+        "docs/planning/tasks/task_tracking.md",
+        "requirements.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-17T03:30:21Z after replacing the scaffolded bootstrap artifacts with the real requirements-driven planning package, accepted direction decision, and bounded execution backlog for the first capture-first tranche."
+    },
+    {
       "trace_id": "trace.command_documentation_and_lookup",
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",

@@ -1,0 +1,60 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "surface_name": "pack_settings",
+  "contract_version": "v1",
+  "description": "Plan-pack settings load root for the Stage 1 capture-first workspace bootstrap.",
+  "updated_at": "2026-03-17T04:18:29Z",
+  "pack_id": "pack.plan",
+  "surfaces": [
+    {
+      "surface_name": "schema_catalog",
+      "surface_kind": "schema_collection",
+      "path": "plan/.wt/registries/schema_catalog.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validator_registry",
+      "surface_kind": "registry",
+      "path": "plan/.wt/registries/validator_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "governance_surface_map",
+      "surface_kind": "governance_surface_map",
+      "path": "core/control_plane/registries/governance_surface_map.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "path_pattern_registry",
+      "surface_kind": "path_pattern_registry",
+      "path": "core/control_plane/registries/path_pattern_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "status_registry",
+      "surface_kind": "status_registry",
+      "path": "core/control_plane/registries/status_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "actor_registry",
+      "surface_kind": "actor_registry",
+      "path": "core/control_plane/registries/actor_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    }
+  ],
+  "notes": "The Stage 1 seed now delegates schema and validator resolution to plan-owned registries while still reusing the shared core validation-suite, governance, path, status, and actor surfaces. Later tranche tasks will add aggregate indexes, rendered-surface declarations, and pack-local suite coverage under plan/.wt/."
+}

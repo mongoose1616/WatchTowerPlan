@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+  "id": "note.plan.stage1_bootstrap_record",
+  "title": "Stage 1 Plan Workspace Bootstrap Record",
+  "summary": "Tracks the two-step seed that creates the live plan roots and installs the first authoritative machine state for the capture-first workspace.",
+  "status": "active",
+  "pack_id": "pack.plan",
+  "work_item_id": "bootstrap.plan.stage1_bootstrap",
+  "work_item_type": "bootstrap_record",
+  "lifecycle_stage": "active",
+  "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+  "updated_at": "2026-03-17T04:18:29Z",
+  "tags": [
+    "plan_workspace",
+    "stage1",
+    "bootstrap",
+    "watchtower_target"
+  ],
+  "source_paths": [
+    "requirements.md",
+    "plan/.wt/manifests/pack_settings.json",
+    "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
+    "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
+    "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
+    "docs/planning/tasks/open/seed_plan_workspace_roots_and_stage1_bootstrap_record.md"
+  ],
+  "notes": "Stage 1 seeds plan-pack machine authority inside WatchTowerPlan so later tasks can bootstrap WatchTower-targeted implementation from plan/** rather than from docs-backed live planning."
+}

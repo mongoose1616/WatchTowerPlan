@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "title": "Initiative Event Stream Record",
+  "description": "Schema for one append-only initiative event record.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "event_id",
+    "initiative_id",
+    "trace_id",
+    "sequence",
+    "event_type",
+    "actor_id",
+    "recorded_at",
+    "summary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1"
+    },
+    "event_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "related_paths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/).+"
+      }
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    }
+  }
+}

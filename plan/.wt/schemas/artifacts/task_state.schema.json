@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "title": "Task State",
+  "description": "Schema for the authoritative current-state snapshot of one initiative-local task.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "task_id",
+    "slug",
+    "initiative_id",
+    "title",
+    "summary",
+    "status",
+    "task_kind",
+    "priority",
+    "owner",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:task-state:v1"
+    },
+    "task_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "slug": {
+      "$ref": "#/$defs/slugPattern"
+    },
+    "initiative_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "ready",
+        "in_progress",
+        "in_review",
+        "blocked",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "task_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dependency_task_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "blocker_task_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "related_ids": {
+      "$ref": "#/$defs/idList"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "slugPattern": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    }
+  }
+}

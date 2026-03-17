@@ -215,6 +215,174 @@
       ]
     },
     {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.bootstrap.001",
+      "title": "Bootstrap Capture-First Plan Workspace Bootstrap planning chain",
+      "summary": "Finalizes the traced planning package and seeds the initial execution backlog for Capture-First Plan Workspace Bootstrap.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap",
+        "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
+        "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
+        "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
+        "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005",
+        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006"
+      ],
+      "applies_to": [
+        "requirements.md",
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
+      "title": "Cut over to plan entrypoints and prove first-tranche flows",
+      "summary": "Completes the hard cutover for new work, proves one pack-wide and one project-scoped flow, and records the history or retention follow-up tranche.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "depends_on": [
+        "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
+        "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
+      ],
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
+      "title": "Add initiative package contracts and strict readiness gate",
+      "summary": "Adds initiative-local state, event, deferred-item, discrepancy, approval, and gate behavior for the capture-first model.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/add_initiative_package_contracts_and_strict_readiness_gate.md",
+      "updated_at": "2026-03-17T05:03:37Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
+      "title": "Add pack-wide rendered views, queries, and stale-surface enforcement",
+      "summary": "Rebuilds pack-level and initiative-level visibility from the new authority model and fails closed on stale derived surfaces.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/add_packwide_rendered_views_queries_and_stale_surface_enforcement.md",
+      "updated_at": "2026-03-17T05:03:37Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "depends_on": [
+        "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003"
+      ],
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
+      "title": "Seed plan workspace roots and Stage 1 bootstrap record",
+      "summary": "Creates the bare `plan/**` roots and immediately persists the tracked Stage 1 bootstrap record under `plan/.wt/`.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
+      "updated_at": "2026-03-17T04:20:21Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005",
+      "title": "Add project container bootstrap and project-scoped initiative flow",
+      "summary": "Introduces the full project bootstrap package and proves the project-scoped initiative path.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md",
+      "updated_at": "2026-03-17T03:30:21Z",
+      "trace_id": "trace.capture_first_plan_workspace_bootstrap",
+      "depends_on": [
+        "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003"
+      ],
+      "related_ids": [
+        "prd.capture_first_plan_workspace_bootstrap",
+        "design.features.capture_first_plan_workspace_bootstrap",
+        "design.implementation.capture_first_plan_workspace_bootstrap",
+        "decision.capture_first_plan_workspace_bootstrap_direction",
+        "contract.acceptance.capture_first_plan_workspace_bootstrap"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/"
+      ]
+    },
+    {
       "task_id": "task.command_documentation_and_lookup.followup.001",
       "title": "Close remaining command documentation and lookup follow-up",
       "summary": "Tracks the remaining closeout and verification follow-up for the command documentation and lookup initiative.",

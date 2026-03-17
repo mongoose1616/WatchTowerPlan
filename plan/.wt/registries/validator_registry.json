@@ -1,0 +1,199 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+  "id": "registry.validators",
+  "title": "Plan Workspace Validators",
+  "status": "active",
+  "validators": [
+    {
+      "id": "validator.plan.pack_settings",
+      "title": "Plan Pack Settings Validator",
+      "description": "Validates the plan-pack load-root manifest.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_settings",
+      "applies_to": [
+        "plan/.wt/manifests/pack_settings.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.schema_catalog",
+      "title": "Plan Schema Catalog Validator",
+      "description": "Validates the plan-pack schema catalog.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "schema_catalog",
+      "applies_to": [
+        "plan/.wt/registries/schema_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.validator_registry",
+      "title": "Plan Validator Registry Validator",
+      "description": "Validates the plan-pack validator registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validator_registry",
+      "applies_to": [
+        "plan/.wt/registries/validator_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.pack_work_item_note",
+      "title": "Plan Pack Work Item Note Validator",
+      "description": "Validates plan-pack work item notes stored under plan/.wt/work_items/.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_work_item_note",
+      "applies_to": [
+        "plan/.wt/work_items/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.initiative_state",
+      "title": "Plan Initiative State Validator",
+      "description": "Validates initiative-local current-state snapshots.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "initiative_state",
+      "applies_to": [
+        "plan/initiatives/**/.wt/initiative.json",
+        "plan/projects/**/initiatives/**/.wt/initiative.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:initiative-state:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.initiative_event_stream",
+      "title": "Plan Initiative Event Validator",
+      "description": "Validates initiative-local event-stream records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "initiative_event_stream",
+      "applies_to": [
+        "plan/initiatives/**/.wt/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/events/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_state",
+      "title": "Plan Task State Validator",
+      "description": "Validates initiative-local task-state snapshots.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "task_state",
+      "applies_to": [
+        "plan/initiatives/**/.wt/tasks/**/task.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/task.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-state:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_event_stream",
+      "title": "Plan Task Event Validator",
+      "description": "Validates initiative-local task event-stream records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "task_event_stream",
+      "applies_to": [
+        "plan/initiatives/**/.wt/tasks/**/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/events/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-event-stream:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.deferred_item_record",
+      "title": "Plan Deferred Item Validator",
+      "description": "Validates initiative-local deferred item contracts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "deferred_item_record",
+      "applies_to": [
+        "plan/initiatives/**/.wt/deferred/*.json",
+        "plan/projects/**/initiatives/**/.wt/deferred/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.discrepancy_record",
+      "title": "Plan Discrepancy Record Validator",
+      "description": "Validates initiative-local discrepancy records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "discrepancy_record",
+      "applies_to": [
+        "plan/initiatives/**/.wt/discrepancies/*.json",
+        "plan/projects/**/initiatives/**/.wt/discrepancies/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.validation_bundle",
+      "title": "Plan Validation Bundle Validator",
+      "description": "Validates initiative-local evidence shells and validation bundles.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_bundle",
+      "applies_to": [
+        "plan/initiatives/**/.wt/evidence/*.json",
+        "plan/projects/**/initiatives/**/.wt/evidence/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.closeout_recap",
+      "title": "Plan Closeout Recap Validator",
+      "description": "Validates initiative-local closeout shells and closeout recaps.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "closeout_recap",
+      "applies_to": [
+        "plan/initiatives/**/.wt/closeout/*.json",
+        "plan/projects/**/initiatives/**/.wt/closeout/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:closeout-recap:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.guidance_promotion_record",
+      "title": "Plan Guidance Promotion Validator",
+      "description": "Validates initiative-local promotion shells and guidance-promotion records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "guidance_promotion_record",
+      "applies_to": [
+        "plan/initiatives/**/.wt/promotions/*.json",
+        "plan/projects/**/initiatives/**/.wt/promotions/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1"
+      ]
+    }
+  ]
+}
