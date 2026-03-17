@@ -25,11 +25,17 @@ def test_template_catalog_helper_resolves_rendered_initiative_templates() -> Non
 
     assert entry.surface_id == "rendered.initiative.progress"
     assert entry.required_section_ids == (
-        "gate_state",
-        "task_status",
-        "discrepancies",
+        "current_status",
+        "recent_events_or_changes",
+        "active_tasks",
+        "blockers",
+        "next_actions",
+        "evidence_or_validation_state",
     )
-    assert helper.validate_paths(REPO_ROOT) == ()
+    assert entry.section_spec_schema_id == (
+        "urn:watchtower:schema:interfaces:plan:documentation:initiative-progress-section-spec:v1"
+    )
+    assert helper.validate_contracts(REPO_ROOT) == ()
 
 
 def test_template_catalog_helper_reports_missing_template_path(tmp_path: Path) -> None:
@@ -44,3 +50,21 @@ def test_template_catalog_helper_reports_missing_template_path(tmp_path: Path) -
 
     assert len(issues) == 1
     assert issues[0].issue_code == "template_missing"
+
+
+def test_template_catalog_helper_reports_section_spec_mismatch(tmp_path: Path) -> None:
+    helper = _helper()
+    shutil.copytree(REPO_ROOT / "plan/.wt/templates", tmp_path / "plan/.wt/templates")
+    target = tmp_path / "plan/.wt/templates/initiatives/progress.md"
+    target.write_text(
+        target.read_text(encoding="utf-8").replace(
+            "## Current Status",
+            "## Broken Status",
+            1,
+        ),
+        encoding="utf-8",
+    )
+
+    issues = helper.validate_contracts(tmp_path)
+
+    assert any(issue.issue_code == "section_spec_mismatch" for issue in issues)

@@ -445,6 +445,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "title": "Plan Template Section-Spec Enforcement Foundation",
+      "summary": "Adds governed section-spec schemas and validation coverage for plan template contracts and rendered surface templates.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T18:06:15Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/progress.md",
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "slug": "plan_template_section_spec_enforcement_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts",
+        "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts",
+        "task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_template_section_spec_enforcement_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T18:04:42Z",
+      "closure_reason": "Delivered governed section-spec schemas, aligned template contracts to requirements.md, and added fail-closed section-spec validation for plan template assets.",
+      "related_paths": [
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/initiative_brief.md",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/design_record.md",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/implementation_slice.md",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
       "title": "Plan Terminal Initiative Closeout Runtime",
       "summary": "Adds the live terminal closeout mutation path for pack-wide and project-scoped initiative packages so closing initiatives can move into completed, superseded, or cancelled and the coordination surfaces can show recent closeouts instead of stuck active work.",

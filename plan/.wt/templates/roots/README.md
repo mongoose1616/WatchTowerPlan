@@ -1,15 +1,15 @@
-# Root Description
+# Root Purpose
 
-Shortly describe the purpose of the governed root and what belongs there.
+Briefly describe the governed root and what belongs there.
 
-## Quick Start
-
-- Point to the first human surface that readers should open next.
-
-## Paths
+## Contents or Subtrees
 
 - List the important child paths or files with one-line descriptions.
 
-## Notes
+## Navigation Hints
 
-- Call out the relevant machine-readable authority surfaces or operating constraints.
+- Point to the next human surface that readers should open.
+
+## Related Machine Surfaces
+
+- Call out the machine-readable authority surfaces or operating constraints that shape this root.

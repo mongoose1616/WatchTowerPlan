@@ -293,6 +293,156 @@
       "subject_kind": "plan_project_index",
       "version": "v1",
       "canonical_path": "plan/.wt/schemas/artifacts/project_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:root-readme-section-spec:v1",
+      "title": "Root README Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed root README template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/root_readme_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:root-agents-section-spec:v1",
+      "title": "Root AGENTS Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed AGENTS.md template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/root_agents_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
+      "title": "Workflow Module Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed workflow module template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/workflow_module_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:foundation-section-spec:v1",
+      "title": "Foundation Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed foundation template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/foundation_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:standard-section-spec:v1",
+      "title": "Standard Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed standard template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/standard_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:reference-section-spec:v1",
+      "title": "Reference Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed reference template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/reference_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:decision-record-section-spec:v1",
+      "title": "Decision Record Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed decision-record template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/decision_record_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:pattern-section-spec:v1",
+      "title": "Pattern Section Spec",
+      "description": "Schema for the normalized section projection used to validate the governed pattern template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/pattern_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:plan-overview-section-spec:v1",
+      "title": "Plan Overview Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered plan overview template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/plan_overview_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1",
+      "title": "Initiative Plan Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered initiative plan template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/initiative_plan_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-progress-section-spec:v1",
+      "title": "Initiative Progress Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered initiative progress template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/initiative_progress_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-summary-section-spec:v1",
+      "title": "Initiative Summary Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered initiative summary template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/initiative_summary_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-surface-section-spec:v1",
+      "title": "Project Surface Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered project.md template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/project_surface_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-repositories-section-spec:v1",
+      "title": "Project Repositories Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered project repositories template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/project_repositories_section_spec.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1",
+      "title": "Project Summary Section Spec",
+      "description": "Schema for the normalized section projection used to validate the rendered project summary template.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_section_spec",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/interfaces/documentation/project_summary_section_spec.schema.json"
     }
   ]
 }

@@ -122,9 +122,15 @@ def test_plan_pack_context_loads_documentation_family_and_template_catalog() -> 
 
     assert isinstance(documentation_registry, DocumentationFamilyRegistry)
     assert documentation_registry.get("foundation").mirror_group_id == "mirror.foundations"
+    assert documentation_registry.get("foundation").section_spec_schema_id == (
+        "urn:watchtower:schema:interfaces:plan:documentation:foundation-section-spec:v1"
+    )
     assert isinstance(template_catalog, TemplateCatalog)
     assert template_catalog.get("template.plan.rendered.project.summary").surface_id == (
         "rendered.project.summary"
+    )
+    assert template_catalog.get("template.plan.rendered.project.summary").section_spec_schema_id == (
+        "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1"
     )
 
 

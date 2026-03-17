@@ -18,7 +18,7 @@ Describe the situation where the pattern applies.
 
 - Describe the preferred structure or approach.
 
-## Boundaries
+## Boundaries or Constraints
 
 - State where the pattern does not apply or where extra care is required.
 
@@ -26,6 +26,6 @@ Describe the situation where the pattern applies.
 
 - Describe practical usage guidance.
 
-## Example
+## Illustrative Example
 
 - Add a short illustrative example when it materially clarifies the pattern.

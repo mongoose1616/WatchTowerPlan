@@ -1,13 +1,21 @@
 # Project Summary
 
-## Status
+## Project Delivery Summary
 
-- Render the project health, repository count, and active initiative counts.
+- Render the current delivery summary for the project.
 
-## Child Initiatives
+## Current Health
 
-- Render the project initiative set with lifecycle and review state.
+- Render the current project health and delivery posture.
 
 ## Open Risks
 
 - Render notable risks or follow-ups when they exist.
+
+## Next Milestones or Follow-Ups
+
+- Render the next meaningful milestones or follow-up obligations.
+
+## Promotion or Guidance Impacts
+
+- Render notable guidance impacts, promotions, or durable outputs.

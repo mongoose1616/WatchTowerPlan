@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage.0001_created",
+  "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+  "task_id": "task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:50:50Z",
+  "summary": "Created task task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

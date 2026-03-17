@@ -1,20 +1,28 @@
 # Initiative Plan
 
-## Summary
-
-- Render the bounded initiative summary.
-
-## Identity
+## Initiative Identity
 
 - Render the initiative identity, trace, scope, lifecycle stage, and review status.
 
-## Task Plan
+## Scope and Non-Goals
 
-- Render the current task set with status and priority.
+- Render the initiative scope boundary and any explicit non-goals.
 
-## Deferred Items
+## Objectives
 
-- Render any deferred items or state that none remain.
+- Render the initiative objectives that the bounded package must deliver.
+
+## Planned Slices or Workstreams
+
+- Render the current execution slices or workstreams from machine state.
+
+## Dependencies and Risks
+
+- Render the key dependencies, blockers, and notable risks.
+
+## Validation or Completion Gates
+
+- Render the current validation, evidence, or completion gates.
 
 ## Linked Outputs
 

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1",
+  "title": "Project Summary Section Spec",
+  "description": "Schema for the normalized section projection used to validate the rendered project summary template.",
+  "type": "object",
+  "required": [
+    "template_id",
+    "required_section_ids",
+    "optional_section_ids",
+    "section_order",
+    "template_heading_ids",
+    "required_rendered_surface_ids"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "template.plan.rendered.project.summary"
+    },
+    "required_section_ids": {
+      "const": [
+        "project_delivery_summary",
+        "current_health",
+        "open_risks",
+        "next_milestones_or_follow_ups",
+        "promotion_or_guidance_impacts"
+      ]
+    },
+    "optional_section_ids": {
+      "const": []
+    },
+    "section_order": {
+      "const": [
+        "project_delivery_summary",
+        "current_health",
+        "open_risks",
+        "next_milestones_or_follow_ups",
+        "promotion_or_guidance_impacts"
+      ]
+    },
+    "template_heading_ids": {
+      "const": [
+        "project_delivery_summary",
+        "current_health",
+        "open_risks",
+        "next_milestones_or_follow_ups",
+        "promotion_or_guidance_impacts"
+      ]
+    },
+    "required_rendered_surface_ids": {
+      "const": [
+        "rendered.project.summary"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

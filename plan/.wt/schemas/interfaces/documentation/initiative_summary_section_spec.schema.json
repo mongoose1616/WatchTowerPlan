@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-summary-section-spec:v1",
+  "title": "Initiative Summary Section Spec",
+  "description": "Schema for the normalized section projection used to validate the rendered initiative summary template.",
+  "type": "object",
+  "required": [
+    "template_id",
+    "required_section_ids",
+    "optional_section_ids",
+    "section_order",
+    "template_heading_ids",
+    "required_rendered_surface_ids"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "template.plan.rendered.initiative.summary"
+    },
+    "required_section_ids": {
+      "const": [
+        "outcome_summary",
+        "delivered_outputs",
+        "promoted_guidance",
+        "evidence_references",
+        "unresolved_follow_ups",
+        "closeout_state"
+      ]
+    },
+    "optional_section_ids": {
+      "const": []
+    },
+    "section_order": {
+      "const": [
+        "outcome_summary",
+        "delivered_outputs",
+        "promoted_guidance",
+        "evidence_references",
+        "unresolved_follow_ups",
+        "closeout_state"
+      ]
+    },
+    "template_heading_ids": {
+      "const": [
+        "outcome_summary",
+        "delivered_outputs",
+        "promoted_guidance",
+        "evidence_references",
+        "unresolved_follow_ups",
+        "closeout_state"
+      ]
+    },
+    "required_rendered_surface_ids": {
+      "const": [
+        "rendered.initiative.summary"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

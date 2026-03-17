@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:plan:documentation:standard-section-spec:v1",
+  "title": "Standard Section Spec",
+  "description": "Schema for the normalized section projection used to validate the governed standard template.",
+  "type": "object",
+  "required": [
+    "template_id",
+    "required_section_ids",
+    "optional_section_ids",
+    "section_order",
+    "template_heading_ids"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "template.plan.guidance.standard"
+    },
+    "required_section_ids": {
+      "const": [
+        "purpose",
+        "applicability",
+        "required_or_prohibited_rules",
+        "enforcement_or_validation_implications"
+      ]
+    },
+    "optional_section_ids": {
+      "const": [
+        "examples",
+        "notes"
+      ]
+    },
+    "section_order": {
+      "const": [
+        "purpose",
+        "applicability",
+        "required_or_prohibited_rules",
+        "enforcement_or_validation_implications",
+        "examples",
+        "notes"
+      ]
+    },
+    "template_heading_ids": {
+      "const": [
+        "purpose",
+        "applicability",
+        "required_or_prohibited_rules",
+        "enforcement_or_validation_implications",
+        "examples",
+        "notes"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

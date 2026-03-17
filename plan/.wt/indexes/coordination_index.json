@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "title": "Plan Template Section-Spec Enforcement Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T18:04:42Z",
+      "key_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/plan.md",
+      "closure_reason": "Delivered governed section-spec schemas, aligned template contracts to requirements.md, and added fail-closed section-spec validation for plan template assets."
+    },
+    {
       "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
       "title": "Plan Documentation Family And Template Catalog Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:44:57Z",
       "key_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/plan.md",
       "closure_reason": "Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots."
-    },
-    {
-      "trace_id": "trace.watchtower_work_item_begin_flow",
-      "title": "WatchTower Work Item Begin Flow",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:26Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower work-item begin flow."
     }
   ]
 }

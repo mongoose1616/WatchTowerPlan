@@ -21,7 +21,7 @@ Describe the narrow goal of the module.
 
 - List the inputs the module expects.
 
-## Additional Files to Load
+## Additional Files
 
 - List only the extra local files that materially change execution.
 

@@ -10,27 +10,27 @@ audience: "shared"
 authority: "authoritative"
 ---
 
-# Audience
+# Purpose or Context
 
-- State who should read or apply this foundation.
-
-## Purpose
-
-Describe the durable intent of the foundation.
+Describe the durable intent or boundary that this foundation establishes.
 
 ## Scope Boundary
 
 - State what is in scope.
 - State what is out of scope.
 
-## Guiding Principles
+## Guiding Principles or Rules
 
 - Capture the durable principles that should hold.
 
-## Implications
+## Implications for Behavior
 
 - Describe what behavior or design this foundation should change.
 
 ## Related Surfaces
 
 - Link to related guidance or machine-readable authority surfaces.
+
+## Notes
+
+- Capture short clarifications only when they materially tighten the boundary.

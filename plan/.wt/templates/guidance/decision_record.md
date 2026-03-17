@@ -23,10 +23,7 @@ State the decision clearly.
 
 - Describe the intended consequences and tradeoffs.
 
-## Current Status
+## Current Status or Supersession Notes
 
-- State whether the decision is active, superseded, or otherwise changed.
-
-## Supersession Notes
-
+- State whether the decision is active, superseded, replaced, or otherwise changed.
 - Record any replacement or supersession guidance when needed.

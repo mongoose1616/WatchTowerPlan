@@ -527,6 +527,52 @@
       ]
     },
     {
+      "task_id": "task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage",
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "initiative_title": "Plan Template Section-Spec Enforcement Foundation",
+      "title": "Add template validation coverage",
+      "summary": "Extend template helpers and tests so section-spec references and template headings fail closed on drift.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/add_template_validation_coverage/task.json",
+      "updated_at": "2026-03-17T18:04:42Z",
+      "depends_on": [
+        "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts",
+        "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts",
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "initiative_title": "Plan Template Section-Spec Enforcement Foundation",
+      "title": "Bind templates to section-spec contracts",
+      "summary": "Update template catalog entries and related family bindings to reference the new section-spec schemas.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/bind_templates_to_section_spec_contracts/task.json",
+      "updated_at": "2026-03-17T18:04:42Z",
+      "depends_on": [
+        "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts",
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "initiative_title": "Plan Template Section-Spec Enforcement Foundation",
+      "title": "Publish section-spec schema contracts",
+      "summary": "Add governed section-spec schemas for the current high-impact plan templates and rendered surfaces.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/publish_section_spec_schema_contracts/task.json",
+      "updated_at": "2026-03-17T18:04:42Z"
+    },
+    {
       "task_id": "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",

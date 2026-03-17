@@ -11,19 +11,19 @@
       "authorship_mode": "authored",
       "template_path": "plan/.wt/templates/roots/README.md",
       "required_section_ids": [
-        "description",
-        "paths",
-        "notes"
+        "root_purpose",
+        "contents_or_subtrees",
+        "navigation_hints",
+        "related_machine_surfaces"
       ],
-      "optional_section_ids": [
-        "quick_start"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "description",
-        "quick_start",
-        "paths",
-        "notes"
+        "root_purpose",
+        "contents_or_subtrees",
+        "navigation_hints",
+        "related_machine_surfaces"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:root-readme-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Create a thin navigation surface for one governed human root.",
         "hard_requirements": [
@@ -40,6 +40,8 @@
       "allowed_roots": [
         ".",
         "core",
+        "core/docs",
+        "core/workflows",
         "plan",
         "plan/docs",
         "plan/initiatives",
@@ -56,8 +58,9 @@
       "required_section_ids": [
         "role",
         "scope",
-        "routing",
-        "local_rules"
+        "routing_or_behavior_differences",
+        "local_instructions",
+        "exclusions_or_constraints"
       ],
       "optional_section_ids": [
         "do",
@@ -66,11 +69,13 @@
       "section_order": [
         "role",
         "scope",
-        "routing",
-        "local_rules",
+        "routing_or_behavior_differences",
+        "local_instructions",
+        "exclusions_or_constraints",
         "do",
         "do_not"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:root-agents-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Create a narrow local instruction overlay that tightens behavior for one subtree.",
         "hard_requirements": [
@@ -86,9 +91,12 @@
       "operator_notes": "Use for AGENTS.md files where agent behavior changes materially from the parent root.",
       "allowed_roots": [
         ".",
+        "core/docs",
+        "core/workflows",
         "core/python",
         "docs",
         "plan",
+        "plan/docs",
         "plan/workflows"
       ]
     },
@@ -121,6 +129,7 @@
         "outputs",
         "done_when"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Capture a reusable workflow module with explicit task boundaries and outputs.",
         "hard_requirements": [
@@ -146,25 +155,24 @@
       "template_path": "plan/.wt/templates/guidance/foundation.md",
       "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
       "required_section_ids": [
-        "audience",
-        "purpose",
+        "purpose_or_context",
         "scope_boundary",
-        "guiding_principles",
-        "implications"
+        "guiding_principles_or_rules",
+        "implications_for_behavior"
       ],
       "optional_section_ids": [
         "related_surfaces",
         "notes"
       ],
       "section_order": [
-        "audience",
-        "purpose",
+        "purpose_or_context",
         "scope_boundary",
-        "guiding_principles",
-        "implications",
+        "guiding_principles_or_rules",
+        "implications_for_behavior",
         "related_surfaces",
         "notes"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:foundation-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Create durable foundation guidance that defines a stable boundary or posture for the pack.",
         "hard_requirements": [
@@ -192,8 +200,8 @@
       "required_section_ids": [
         "purpose",
         "applicability",
-        "rules",
-        "validation"
+        "required_or_prohibited_rules",
+        "enforcement_or_validation_implications"
       ],
       "optional_section_ids": [
         "examples",
@@ -202,11 +210,12 @@
       "section_order": [
         "purpose",
         "applicability",
-        "rules",
-        "validation",
+        "required_or_prohibited_rules",
+        "enforcement_or_validation_implications",
         "examples",
         "notes"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:standard-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Capture normative requirements that change operator or implementation behavior.",
         "hard_requirements": [
@@ -232,7 +241,7 @@
       "required_section_ids": [
         "subject_summary",
         "usage_guidance",
-        "provenance",
+        "provenance_or_source_notes",
         "related_surfaces"
       ],
       "optional_section_ids": [
@@ -241,10 +250,11 @@
       "section_order": [
         "subject_summary",
         "usage_guidance",
-        "provenance",
+        "provenance_or_source_notes",
         "related_surfaces",
         "notes"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:reference-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Capture curated reference material with enough provenance and usage guidance to keep it reusable.",
         "hard_requirements": [
@@ -268,18 +278,16 @@
         "context",
         "decision",
         "consequences",
-        "current_status"
+        "current_status_or_supersession_notes"
       ],
-      "optional_section_ids": [
-        "supersession_notes"
-      ],
+      "optional_section_ids": [],
       "section_order": [
         "context",
         "decision",
         "consequences",
-        "current_status",
-        "supersession_notes"
+        "current_status_or_supersession_notes"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:decision-record-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Promote one durable decision out of initiative work without losing the decision rationale.",
         "hard_requirements": [
@@ -302,19 +310,20 @@
       "required_section_ids": [
         "scenario",
         "recommended_structure",
-        "boundaries",
+        "boundaries_or_constraints",
         "usage_notes"
       ],
       "optional_section_ids": [
-        "example"
+        "illustrative_example"
       ],
       "section_order": [
         "scenario",
         "recommended_structure",
-        "boundaries",
+        "boundaries_or_constraints",
         "usage_notes",
-        "example"
+        "illustrative_example"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:pattern-section-spec:v1",
       "llm_guidance": {
         "authoring_goal": "Capture a reusable pattern that others can apply without re-reading the source initiative.",
         "hard_requirements": [
@@ -334,20 +343,25 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/pack/plan_overview.md",
       "required_section_ids": [
-        "current_state",
-        "active_initiatives",
-        "actionable_tasks",
-        "recent_closeouts"
+        "plan_domain_summary",
+        "active_pack_wide_initiatives",
+        "active_project_initiatives",
+        "blocked_or_attention_needed_items",
+        "recent_completions_or_changes",
+        "navigation_links"
       ],
-      "optional_section_ids": [
-        "navigation"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "current_state",
-        "active_initiatives",
-        "actionable_tasks",
-        "recent_closeouts",
-        "navigation"
+        "plan_domain_summary",
+        "active_pack_wide_initiatives",
+        "active_project_initiatives",
+        "blocked_or_attention_needed_items",
+        "recent_completions_or_changes",
+        "navigation_links"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:plan-overview-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.plan.overview"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the expected rendered shape for the pack-level overview built from machine state.",
@@ -368,20 +382,27 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/initiatives/plan.md",
       "required_section_ids": [
-        "summary",
-        "identity",
-        "task_plan",
-        "deferred_items"
-      ],
-      "optional_section_ids": [
+        "initiative_identity",
+        "scope_and_non_goals",
+        "objectives",
+        "planned_slices_or_workstreams",
+        "dependencies_and_risks",
+        "validation_or_completion_gates",
         "linked_outputs"
       ],
+      "optional_section_ids": [],
       "section_order": [
-        "summary",
-        "identity",
-        "task_plan",
-        "deferred_items",
+        "initiative_identity",
+        "scope_and_non_goals",
+        "objectives",
+        "planned_slices_or_workstreams",
+        "dependencies_and_risks",
+        "validation_or_completion_gates",
         "linked_outputs"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.initiative.plan"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered initiative plan view built from initiative-local machine state.",
@@ -403,18 +424,25 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/initiatives/progress.md",
       "required_section_ids": [
-        "gate_state",
-        "task_status",
-        "discrepancies"
+        "current_status",
+        "recent_events_or_changes",
+        "active_tasks",
+        "blockers",
+        "next_actions",
+        "evidence_or_validation_state"
       ],
-      "optional_section_ids": [
-        "recent_events"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "gate_state",
-        "task_status",
-        "discrepancies",
-        "recent_events"
+        "current_status",
+        "recent_events_or_changes",
+        "active_tasks",
+        "blockers",
+        "next_actions",
+        "evidence_or_validation_state"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-progress-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.initiative.progress"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered initiative progress view built from readiness, task, and discrepancy state.",
@@ -436,20 +464,25 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/initiatives/summary.md",
       "required_section_ids": [
-        "lifecycle",
-        "evidence",
-        "closeout",
-        "promotion"
+        "outcome_summary",
+        "delivered_outputs",
+        "promoted_guidance",
+        "evidence_references",
+        "unresolved_follow_ups",
+        "closeout_state"
       ],
-      "optional_section_ids": [
-        "unresolved_follow_ups"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "lifecycle",
-        "evidence",
-        "closeout",
-        "promotion",
-        "unresolved_follow_ups"
+        "outcome_summary",
+        "delivered_outputs",
+        "promoted_guidance",
+        "evidence_references",
+        "unresolved_follow_ups",
+        "closeout_state"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:initiative-summary-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.initiative.summary"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered initiative summary or closeout view built from machine state.",
@@ -471,18 +504,26 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/projects/project.md",
       "required_section_ids": [
-        "summary",
-        "identity",
+        "project_identity",
+        "purpose_and_scope",
+        "current_state",
+        "linked_initiatives",
         "linked_repositories"
+        ,
+        "key_references_or_docs"
       ],
-      "optional_section_ids": [
-        "linked_initiatives"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "summary",
-        "identity",
+        "project_identity",
+        "purpose_and_scope",
+        "current_state",
+        "linked_initiatives",
         "linked_repositories",
-        "linked_initiatives"
+        "key_references_or_docs"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-surface-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.project.project"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered project identity view built from project machine state.",
@@ -503,14 +544,23 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/projects/repositories.md",
       "required_section_ids": [
-        "repository_map"
+        "repository_role_summary",
+        "repository_locations",
+        "ownership_or_access_notes",
+        "implementation_vs_planning_boundary",
+        "active_flags"
       ],
-      "optional_section_ids": [
-        "ownership_notes"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "repository_map",
-        "ownership_notes"
+        "repository_role_summary",
+        "repository_locations",
+        "ownership_or_access_notes",
+        "implementation_vs_planning_boundary",
+        "active_flags"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-repositories-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.project.repositories"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered project repository map view built from project_repository_map state.",
@@ -531,16 +581,23 @@
       "authorship_mode": "rendered",
       "template_path": "plan/.wt/templates/projects/summary.md",
       "required_section_ids": [
-        "status",
-        "child_initiatives"
+        "project_delivery_summary",
+        "current_health",
+        "open_risks",
+        "next_milestones_or_follow_ups",
+        "promotion_or_guidance_impacts"
       ],
-      "optional_section_ids": [
-        "open_risks"
-      ],
+      "optional_section_ids": [],
       "section_order": [
-        "status",
-        "child_initiatives",
-        "open_risks"
+        "project_delivery_summary",
+        "current_health",
+        "open_risks",
+        "next_milestones_or_follow_ups",
+        "promotion_or_guidance_impacts"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1",
+      "required_rendered_surface_ids": [
+        "rendered.project.summary"
       ],
       "llm_guidance": {
         "authoring_goal": "Describe the rendered project summary built from current project and initiative state.",

@@ -1,21 +1,25 @@
 # Plan Overview
 
-## Current State
+## Plan Domain Summary
 
 - Render the current coordination mode, summary, and next action from machine state.
 
-## Active Initiatives
+## Active Pack-Wide Initiatives
 
-- Render the active pack-wide and project-scoped initiatives.
+- Render the active pack-wide initiatives.
 
-## Actionable Tasks
+## Active Project Initiatives
 
-- Render the currently startable or attention-worthy tasks.
+- Render the active project-scoped initiatives.
 
-## Recent Closeouts
+## Blocked or Attention-Needed Items
 
-- Render the most recent initiative closeouts.
+- Render blocked items, discrepancies, or next actions that need attention now.
 
-## Navigation
+## Recent Completions or Changes
+
+- Render recent closeouts or other meaningful state changes.
+
+## Navigation Links
 
 - Link to relevant projects, guidance roots, and workflow entrypoints when they matter.

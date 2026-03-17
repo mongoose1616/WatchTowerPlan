@@ -19,10 +19,14 @@ Describe the reference subject briefly.
 
 - Explain how this reference should be used in the repository.
 
-## Provenance
+## Provenance or Source Notes
 
 - Record the source or provenance that distinguishes this reference from local guidance.
 
 ## Related Surfaces
 
 - Link to related docs or machine-readable surfaces.
+
+## Notes
+
+- Record short local interpretation notes only when they materially help reuse.

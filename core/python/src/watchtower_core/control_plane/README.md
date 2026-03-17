@@ -15,7 +15,7 @@ Workspace-aware artifact loading, schema validation, typed models, PackContext l
 - `documentation_family.py`: Pack-local documentation-family resolution for governed authored guidance families, allowed roots, and mirror rules.
 - `planning_vocabulary.py`: Pack-local lifecycle, review, and provenance vocabulary resolution for plan-runtime helpers.
 - `project_surface_policy.py`: Pack-local project-root surface policy resolution for required machine and rendered project surfaces.
-- `template_catalog.py`: Pack-local template-catalog resolution for governed template assets and required section contracts.
+- `template_catalog.py`: Pack-local template-catalog resolution for governed template assets, section-spec contracts, and fail-closed template-heading validation.
 - `governance_surfaces.py`: Cross-surface resolution helper for governed surface path, authority, rebuildability, and declared dependencies.
 - `schemas.py`: Schema store and supplemental-schema registration.
 - `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.

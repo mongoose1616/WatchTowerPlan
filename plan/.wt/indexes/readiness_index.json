@@ -186,6 +186,21 @@
       "updated_at": "2026-03-17T20:53:00Z"
     },
     {
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "title": "Plan Template Section-Spec Enforcement Foundation",
+      "initiative_root": "plan/initiatives/plan_template_section_spec_enforcement_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T18:06:15Z"
+    },
+    {
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
       "title": "Plan Terminal Initiative Closeout Runtime",

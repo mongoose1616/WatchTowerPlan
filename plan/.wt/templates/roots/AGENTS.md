@@ -6,13 +6,17 @@
 
 - Define which subtree the file governs and how it relates to parent instructions.
 
-## Routing
+## Routing or Behavior Differences
 
 - Describe any routing differences or additional workflow modules needed here.
 
-## Local Rules
+## Local Instructions
 
 - List only the local rules that materially change agent behavior.
+
+## Exclusions or Constraints
+
+- Capture the local exclusions or constraints that materially change agent interaction.
 
 ## Do
 

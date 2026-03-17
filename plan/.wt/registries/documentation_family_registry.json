@@ -13,6 +13,7 @@
       "template_ids": [
         "template.plan.guidance.foundation"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:foundation-section-spec:v1",
       "allowed_roots": [
         "core/docs/foundations",
         "plan/docs/foundations"
@@ -39,6 +40,7 @@
       "template_ids": [
         "template.plan.guidance.standard"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:standard-section-spec:v1",
       "allowed_roots": [
         "plan/docs/standards"
       ],
@@ -56,6 +58,7 @@
       "template_ids": [
         "template.plan.guidance.reference"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:reference-section-spec:v1",
       "allowed_roots": [
         "plan/docs/references"
       ],
@@ -73,6 +76,7 @@
       "template_ids": [
         "template.plan.guidance.decision_record"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:decision-record-section-spec:v1",
       "allowed_roots": [
         "plan/docs/decisions"
       ],
@@ -91,6 +95,7 @@
       "template_ids": [
         "template.plan.guidance.pattern"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:pattern-section-spec:v1",
       "allowed_roots": [
         "plan/docs/patterns"
       ],
@@ -109,6 +114,7 @@
       "template_ids": [
         "template.plan.workflow.module"
       ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
       "allowed_roots": [
         "workflows/modules",
         "plan/workflows/modules"

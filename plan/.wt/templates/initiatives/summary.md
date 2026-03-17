@@ -1,21 +1,25 @@
 # Initiative Summary
 
-## Lifecycle
+## Outcome Summary
 
-- Render the current lifecycle, owner, and closeout state.
+- Render the completed or current outcome in one concise summary.
 
-## Evidence
+## Delivered Outputs
 
-- Render evidence bundle state and relevant evidence references.
+- Render the outputs delivered by the initiative.
 
-## Closeout
+## Promoted Guidance
 
-- Render closeout recap state and closure details when terminal.
+- Render any guidance promotions or candidates derived from the initiative.
 
-## Promotion
+## Evidence References
 
-- Render promotion shell or promotion record state.
+- Render the evidence bundle state and durable evidence references.
 
 ## Unresolved Follow-Ups
 
 - Render any remaining follow-up obligations when they exist.
+
+## Closeout State
+
+- Render closeout recap state and closure details when terminal.

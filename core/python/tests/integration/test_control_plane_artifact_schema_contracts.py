@@ -11,6 +11,7 @@ from tests.integration.control_plane_artifact_helpers import (
     load_front_matter,
     load_json_object,
 )
+from watchtower_core.control_plane import TemplateCatalogHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
 from watchtower_core.validation.artifact import ArtifactValidationService
@@ -305,10 +306,13 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
     assert "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1" in plan_schema_ids
     assert "urn:watchtower:schema:artifacts:plan:template-catalog:v1" in plan_schema_ids
     assert "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1" in core_schema_ids
+    assert "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1" in plan_schema_ids
+    assert "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1" in plan_schema_ids
 
     for family_id, entry in families.items():
         assert entry["front_matter_base_schema_id"] in core_schema_ids
         assert entry["front_matter_schema_id"] in core_schema_ids
+        assert entry["section_spec_schema_id"] in plan_schema_ids
         for template_id in entry["template_ids"]:
             assert template_id in template_entries, (
                 f"{family_id} references missing template entry {template_id}"
@@ -323,6 +327,18 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
         front_matter_schema_id = entry.get("front_matter_schema_id")
         if isinstance(front_matter_schema_id, str):
             assert front_matter_schema_id in core_schema_ids
+        section_spec_schema_id = entry.get("section_spec_schema_id")
+        if isinstance(section_spec_schema_id, str):
+            assert section_spec_schema_id in plan_schema_ids
+        required_rendered_surface_ids = entry.get("required_rendered_surface_ids", [])
+        for rendered_surface_id in required_rendered_surface_ids:
+            assert rendered_surface_id in rendered_surface_ids
+
+    helper = TemplateCatalogHelper.from_loader(
+        pack_loader,
+        pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    assert helper.validate_contracts(REPO_ROOT) == ()
 
 
 def test_initiative_index_rejects_missing_current_phase() -> None:

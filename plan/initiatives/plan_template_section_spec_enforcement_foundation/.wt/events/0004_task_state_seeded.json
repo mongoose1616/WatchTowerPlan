@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_template_section_spec_enforcement_foundation.0004_task_state_seeded",
+  "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+  "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:50:50Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "related_paths": [
+    "plan/initiatives/plan_template_section_spec_enforcement_foundation/initiative_brief.md",
+    "plan/initiatives/plan_template_section_spec_enforcement_foundation/design_record.md",
+    "plan/initiatives/plan_template_section_spec_enforcement_foundation/implementation_slice.md",
+    "plan/initiatives/plan_template_section_spec_enforcement_foundation/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

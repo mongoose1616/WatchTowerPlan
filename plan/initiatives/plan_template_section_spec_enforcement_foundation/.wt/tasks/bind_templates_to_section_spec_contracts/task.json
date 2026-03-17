@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts",
+  "slug": "bind_templates_to_section_spec_contracts",
+  "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+  "title": "Bind templates to section-spec contracts",
+  "summary": "Update template catalog entries and related family bindings to reference the new section-spec schemas.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T17:50:50Z",
+  "updated_at": "2026-03-17T18:04:42Z",
+  "dependency_task_ids": [
+    "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

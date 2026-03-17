@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage",
+  "slug": "add_template_validation_coverage",
+  "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+  "title": "Add template validation coverage",
+  "summary": "Extend template helpers and tests so section-spec references and template headings fail closed on drift.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T17:50:50Z",
+  "updated_at": "2026-03-17T18:04:42Z",
+  "dependency_task_ids": [
+    "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts",
+    "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

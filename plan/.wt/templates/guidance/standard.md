@@ -19,15 +19,19 @@ Describe why the standard exists.
 - State where the standard applies.
 - State any important boundaries.
 
-## Rules
+## Required or Prohibited Rules
 
 - State the required rules.
 - State the prohibited rules.
 
-## Validation
+## Enforcement or Validation Implications
 
 - Describe how the rules are checked or enforced.
 
 ## Examples
 
 - Add short examples only when they materially clarify the rule.
+
+## Notes
+
+- Record short clarifications only when they materially change how the standard should be applied.
