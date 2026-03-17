@@ -651,6 +651,176 @@ class ArtifactFamilyRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class LifecycleStageEntry:
+    """One governed lifecycle-stage entry for plan-runtime work."""
+
+    stage_id: str
+    value: str
+    entry_status: str
+    summary: str
+    current_phase: str
+    terminal: bool
+    allowed_families: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> LifecycleStageEntry:
+        return cls(
+            stage_id=document["stage_id"],
+            value=document["value"],
+            entry_status=document["entry_status"],
+            summary=document["summary"],
+            current_phase=document["current_phase"],
+            terminal=bool(document["terminal"]),
+            allowed_families=tuple(document.get("allowed_families", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class LifecycleStageRegistry:
+    """Typed lifecycle-stage registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[LifecycleStageEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> LifecycleStageRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(LifecycleStageEntry.from_document(item) for item in document["entries"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, value: str) -> LifecycleStageEntry:
+        """Return one lifecycle-stage entry by value."""
+
+        for entry in self.entries:
+            if entry.value == value:
+                return entry
+        raise KeyError(value)
+
+
+@dataclass(frozen=True, slots=True)
+class ReviewStatusEntry:
+    """One governed review-status entry for plan-runtime approval state."""
+
+    review_status_id: str
+    value: str
+    entry_status: str
+    summary: str
+    allows_execution: bool
+    allowed_families: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ReviewStatusEntry:
+        return cls(
+            review_status_id=document["review_status_id"],
+            value=document["value"],
+            entry_status=document["entry_status"],
+            summary=document["summary"],
+            allows_execution=bool(document["allows_execution"]),
+            allowed_families=tuple(document.get("allowed_families", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ReviewStatusRegistry:
+    """Typed review-status registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[ReviewStatusEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ReviewStatusRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(ReviewStatusEntry.from_document(item) for item in document["entries"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, value: str) -> ReviewStatusEntry:
+        """Return one review-status entry by value."""
+
+        for entry in self.entries:
+            if entry.value == value:
+                return entry
+        raise KeyError(value)
+
+
+@dataclass(frozen=True, slots=True)
+class SourceTypeEntry:
+    """One governed source-type entry for plan-runtime provenance."""
+
+    source_type_id: str
+    value: str
+    entry_status: str
+    summary: str
+    source_class: str
+    allowed_families: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> SourceTypeEntry:
+        return cls(
+            source_type_id=document["source_type_id"],
+            value=document["value"],
+            entry_status=document["entry_status"],
+            summary=document["summary"],
+            source_class=document["source_class"],
+            allowed_families=tuple(document.get("allowed_families", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class SourceTypeRegistry:
+    """Typed source-type registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[SourceTypeEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> SourceTypeRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=tuple(SourceTypeEntry.from_document(item) for item in document["entries"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, value: str) -> SourceTypeEntry:
+        """Return one source-type entry by value."""
+
+        for entry in self.entries:
+            if entry.value == value:
+                return entry
+        raise KeyError(value)
+
+
+@dataclass(frozen=True, slots=True)
 class RenderedSurfaceColumnDefinition:
     """Rendered-surface column definition."""
 

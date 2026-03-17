@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.adapters.front_matter import FrontMatterParseError, load_front_matter
+from watchtower_core.control_plane import PlanningVocabularyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     CoordinationIndex,
@@ -46,17 +47,6 @@ _TASK_STATUS_MAP = {
     "completed": "done",
     "cancelled": "cancelled",
 }
-_ACTIVE_LIFECYCLE_STAGES = frozenset(
-    {
-        "capture_incomplete",
-        "ready_for_review",
-        "ready_for_execution",
-        "in_progress",
-        "blocked",
-        "closing",
-    }
-)
-_TERMINAL_LIFECYCLE_STAGES = frozenset({"completed", "superseded", "cancelled"})
 _TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
 _PRIORITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 _PHASE_ORDER = {
@@ -381,6 +371,10 @@ class PlanWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._vocabulary = PlanningVocabularyHelper.from_loader(
+            loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
 
     def sync(self, *, write: bool) -> PlanWorkspaceSyncResult:
         snapshots = self._load_initiative_snapshots()
@@ -756,15 +750,15 @@ class PlanWorkspaceService:
             title=str(initiative["title"]),
             summary=str(initiative["summary"]),
             artifact_status="active",
-            initiative_status=_initiative_status(initiative),
-            current_phase=_current_phase_for_lifecycle(lifecycle_stage),
+            initiative_status=_initiative_status(initiative, self._vocabulary),
+            current_phase=_current_phase_for_lifecycle(lifecycle_stage, self._vocabulary),
             updated_at=_snapshot_updated_at(snapshot),
             open_task_count=len(active_task_summaries),
             blocked_task_count=sum(
                 1 for task in active_task_summaries if task.task_status == "blocked"
             ),
             key_surface_path=f"{snapshot.initiative_root}/plan.md",
-            next_action=_next_action(snapshot, readiness),
+            next_action=_next_action(snapshot, readiness, self._vocabulary),
             next_surface_path=_next_surface_path(snapshot, readiness),
             initiative_id=str(initiative["initiative_id"]),
             slug=str(initiative["slug"]),
@@ -1547,32 +1541,33 @@ def _task_status_for_id(
     return None
 
 
-def _initiative_status(document: dict[str, object]) -> str:
+def _initiative_status(
+    document: dict[str, object],
+    vocabulary: PlanningVocabularyHelper,
+) -> str:
     lifecycle_stage = str(document["lifecycle_stage"])
-    if lifecycle_stage in _TERMINAL_LIFECYCLE_STAGES:
+    if vocabulary.is_terminal_lifecycle(lifecycle_stage):
         return lifecycle_stage
     return "active"
 
 
-def _current_phase_for_lifecycle(lifecycle_stage: str) -> str:
-    if lifecycle_stage in {"capture_incomplete", "ready_for_review", "ready_for_execution"}:
-        return "implementation_planning"
-    if lifecycle_stage in {"in_progress", "blocked"}:
-        return "execution"
-    if lifecycle_stage == "closing":
-        return "closeout"
-    return "closed"
+def _current_phase_for_lifecycle(
+    lifecycle_stage: str,
+    vocabulary: PlanningVocabularyHelper,
+) -> str:
+    return vocabulary.current_phase_for_lifecycle(lifecycle_stage)
 
 
 def _next_action(
     snapshot: _PlanInitiativeSnapshot,
     readiness: PlanReadinessIndexEntry,
+    vocabulary: PlanningVocabularyHelper,
 ) -> str:
     if readiness.blocking_reasons:
         return "Resolve blocking reasons and rebuild derived surfaces before execution."
     if snapshot.initiative_document["lifecycle_stage"] == "closing":
         return "Finalize closeout, evidence, and promotion decisions."
-    if readiness.review_status != "approved" and not readiness.ready_for_execution:
+    if not vocabulary.allows_execution(readiness.review_status) and not readiness.ready_for_execution:
         return "Review and approve the initiative package for execution."
     if readiness.ready_for_execution:
         return "Start the highest-priority ready task from the initiative package."

@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:source-type-registry:v1",
+  "id": "registry.source_type",
+  "title": "Plan Source Type Registry",
+  "status": "active",
+  "entries": [
+    {
+      "source_type_id": "source.authored_input",
+      "value": "authored_input",
+      "entry_status": "active",
+      "summary": "Human-authored initiative-local input such as a brief, design record, or implementation slice.",
+      "source_class": "authored_input",
+      "allowed_families": [
+        "initiative_state",
+        "validation_bundle",
+        "guidance_promotion_record"
+      ]
+    },
+    {
+      "source_type_id": "source.machine_state",
+      "value": "machine_state",
+      "entry_status": "active",
+      "summary": "Authoritative machine-readable initiative, task, or project state.",
+      "source_class": "machine_state",
+      "allowed_families": [
+        "initiative_state",
+        "task_state",
+        "project_record"
+      ]
+    },
+    {
+      "source_type_id": "source.derived_surface",
+      "value": "derived_surface",
+      "entry_status": "active",
+      "summary": "Rendered or derived human-facing surface generated from authoritative machine state.",
+      "source_class": "derived_surface",
+      "allowed_families": [
+        "guidance_promotion_record",
+        "discrepancy_record"
+      ]
+    },
+    {
+      "source_type_id": "source.derived_artifact",
+      "value": "derived_artifact",
+      "entry_status": "active",
+      "summary": "Machine-generated artifact or aggregate index derived from authoritative source documents.",
+      "source_class": "derived_artifact",
+      "allowed_families": [
+        "guidance_promotion_record",
+        "discrepancy_record"
+      ]
+    },
+    {
+      "source_type_id": "source.external_reference",
+      "value": "external_reference",
+      "entry_status": "active",
+      "summary": "Reference material cited from outside the repository.",
+      "source_class": "external_reference",
+      "allowed_families": [
+        "guidance_promotion_record",
+        "validation_bundle"
+      ]
+    },
+    {
+      "source_type_id": "source.external_import",
+      "value": "external_import",
+      "entry_status": "active",
+      "summary": "Imported machine-readable material or metadata sourced from outside the repository.",
+      "source_class": "external_import",
+      "allowed_families": [
+        "project_repository_map",
+        "guidance_promotion_record"
+      ]
+    },
+    {
+      "source_type_id": "source.linked_repository",
+      "value": "linked_repository",
+      "entry_status": "active",
+      "summary": "Local or external repository target linked to one project or initiative.",
+      "source_class": "linked_repository",
+      "allowed_families": [
+        "project_record",
+        "project_repository_map",
+        "guidance_promotion_record"
+      ]
+    },
+    {
+      "source_type_id": "source.generated_output",
+      "value": "generated_output",
+      "entry_status": "active",
+      "summary": "Generated output produced during implementation or validation.",
+      "source_class": "generated_output",
+      "allowed_families": [
+        "validation_bundle",
+        "guidance_promotion_record"
+      ]
+    },
+    {
+      "source_type_id": "source.promoted_guidance",
+      "value": "promoted_guidance",
+      "entry_status": "active",
+      "summary": "Durable guidance promoted out of live initiative work into governed plan docs.",
+      "source_class": "promoted_guidance",
+      "allowed_families": [
+        "guidance_promotion_record"
+      ]
+    }
+  ],
+  "notes": "The first-tranche provenance vocabulary covers the categories explicitly called out in requirements.md while leaving room for later refinement."
+}

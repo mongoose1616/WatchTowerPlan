@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_lifecycle_review_and_source_vocab_registries.0006_closeout_shell_seeded",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+  "sequence": 6,
+  "event_type": "closeout_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T16:45:00Z",
+  "summary": "Seeded the closeout shell.",
+  "related_paths": [
+    "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/initiative_brief.md",
+    "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/design_record.md",
+    "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/implementation_slice.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

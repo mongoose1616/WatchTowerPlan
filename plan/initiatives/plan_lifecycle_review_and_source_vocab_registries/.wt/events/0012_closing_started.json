@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_lifecycle_review_and_source_vocab_registries.0012_closing_started",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:12:00Z",
+  "summary": "Closeout started after the lifecycle, review, and source vocabulary registry slice completed its bounded work.",
+  "payload": {}
+}

@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane import PlanningVocabularyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.project_context import (
     PLAN_PACK_SETTINGS_PATH,
@@ -24,7 +25,6 @@ from watchtower_core.validation import ValidationResult
 PLAN_PROJECT_INDEX_PATH = "plan/.wt/indexes/project_index.json"
 
 _ACTIVE_PROJECT_STATUSES = frozenset({"active", "planned"})
-_TERMINAL_INITIATIVE_STAGES = frozenset({"completed", "superseded", "cancelled"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -156,6 +156,10 @@ class ProjectWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._vocabulary = PlanningVocabularyHelper.from_loader(
+            loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
 
     def bootstrap(
         self,
@@ -427,7 +431,7 @@ class ProjectWorkspaceService:
         active_initiatives = tuple(
             initiative
             for initiative in child_initiatives
-            if str(initiative["lifecycle_stage"]) not in _TERMINAL_INITIATIVE_STAGES
+            if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
         )
         blocked_initiatives = tuple(
             initiative
@@ -478,7 +482,7 @@ class ProjectWorkspaceService:
             active_initiative_count = sum(
                 1
                 for initiative in snapshot.child_initiatives
-                if str(initiative["lifecycle_stage"]) not in _TERMINAL_INITIATIVE_STAGES
+                if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
             )
             blocked_initiative_count = sum(
                 1

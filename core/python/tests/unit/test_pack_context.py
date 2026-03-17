@@ -9,7 +9,10 @@ from watchtower_core.control_plane import ControlPlaneLoader, PackContext
 from watchtower_core.control_plane.models import (
     ArtifactFamilyRegistry,
     HumanSurfacePolicyRegistry,
+    LifecycleStageRegistry,
     RetentionPolicyRegistry,
+    ReviewStatusRegistry,
+    SourceTypeRegistry,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -116,3 +119,20 @@ def test_plan_pack_context_loads_retention_policy_registry() -> None:
     assert registry.get("policy.retention.legacy_docs_planning").current_disposition == (
         "legacy_ignored"
     )
+
+
+def test_plan_pack_context_loads_lifecycle_review_and_source_registries() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context("plan/.wt/manifests/pack_settings.json")
+
+    lifecycle_registry = context.registries["lifecycle_stage_registry"]
+    review_registry = context.registries["review_status_registry"]
+    source_registry = context.registries["source_type_registry"]
+
+    assert isinstance(lifecycle_registry, LifecycleStageRegistry)
+    assert lifecycle_registry.get("closing").current_phase == "closeout"
+    assert isinstance(review_registry, ReviewStatusRegistry)
+    assert review_registry.get("approved").allows_execution is True
+    assert isinstance(source_registry, SourceTypeRegistry)
+    assert source_registry.get("promoted_guidance").source_class == "promoted_guidance"

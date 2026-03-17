@@ -20,6 +20,7 @@ from watchtower_core.control_plane.models import (
     GovernanceSurfaceMap,
     HumanSurfacePolicyRegistry,
     InitiativeIndex,
+    LifecycleStageRegistry,
     PackSettings,
     PathPatternRegistry,
     PlanningCatalog,
@@ -27,11 +28,13 @@ from watchtower_core.control_plane.models import (
     ReferenceIndex,
     RetentionPolicyRegistry,
     RenderedSurfaceRegistry,
+    ReviewStatusRegistry,
     RepositoryPathIndex,
     RouteIndex,
     SchemaCatalog,
     StandardIndex,
     StatusRegistry,
+    SourceTypeRegistry,
     TaskIndex,
     TraceabilityIndex,
     TracePurgeRecord,
@@ -61,6 +64,9 @@ WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
 ARTIFACT_FAMILY_REGISTRY_PATH = "plan/.wt/registries/artifact_family_registry.json"
+LIFECYCLE_STAGE_REGISTRY_PATH = "plan/.wt/registries/lifecycle_stage_registry.json"
+REVIEW_STATUS_REGISTRY_PATH = "plan/.wt/registries/review_status_registry.json"
+SOURCE_TYPE_REGISTRY_PATH = "plan/.wt/registries/source_type_registry.json"
 HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
 RETENTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/retention_policy_registry.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
@@ -143,6 +149,9 @@ class ControlPlaneLoader:
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
         self._active_artifact_family_registry_path: str | None = None
+        self._active_lifecycle_stage_registry_path: str | None = None
+        self._active_review_status_registry_path: str | None = None
+        self._active_source_type_registry_path: str | None = None
         self._active_human_surface_policy_registry_path: str | None = None
         self._active_retention_policy_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
@@ -210,6 +219,45 @@ class ControlPlaneLoader:
         self._active_artifact_family_registry_path = (
             artifact_family_registry_declaration.path
             if artifact_family_registry_declaration is not None
+            else None
+        )
+        lifecycle_stage_registry_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "lifecycle_stage_registry"
+            ),
+            None,
+        )
+        self._active_lifecycle_stage_registry_path = (
+            lifecycle_stage_registry_declaration.path
+            if lifecycle_stage_registry_declaration is not None
+            else None
+        )
+        review_status_registry_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "review_status_registry"
+            ),
+            None,
+        )
+        self._active_review_status_registry_path = (
+            review_status_registry_declaration.path
+            if review_status_registry_declaration is not None
+            else None
+        )
+        source_type_registry_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "source_type_registry"
+            ),
+            None,
+        )
+        self._active_source_type_registry_path = (
+            source_type_registry_declaration.path
+            if source_type_registry_declaration is not None
             else None
         )
         human_surface_policy_declaration = next(
@@ -417,6 +465,42 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             effective_path,
             ArtifactFamilyRegistry.from_document,
+        )
+
+    def load_lifecycle_stage_registry(
+        self,
+        relative_path: str = LIFECYCLE_STAGE_REGISTRY_PATH,
+    ) -> LifecycleStageRegistry:
+        """Load the current lifecycle-stage registry."""
+
+        effective_path = self._current_lifecycle_stage_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            LifecycleStageRegistry.from_document,
+        )
+
+    def load_review_status_registry(
+        self,
+        relative_path: str = REVIEW_STATUS_REGISTRY_PATH,
+    ) -> ReviewStatusRegistry:
+        """Load the current review-status registry."""
+
+        effective_path = self._current_review_status_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            ReviewStatusRegistry.from_document,
+        )
+
+    def load_source_type_registry(
+        self,
+        relative_path: str = SOURCE_TYPE_REGISTRY_PATH,
+    ) -> SourceTypeRegistry:
+        """Load the current source-type registry."""
+
+        effective_path = self._current_source_type_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            SourceTypeRegistry.from_document,
         )
 
     def load_human_surface_policy_registry(
@@ -654,6 +738,21 @@ class ControlPlaneLoader:
                 relative_path,
                 ArtifactFamilyRegistry.from_document,
             )
+        if surface_name == "lifecycle_stage_registry":
+            return self._load_typed_document(
+                relative_path,
+                LifecycleStageRegistry.from_document,
+            )
+        if surface_name == "review_status_registry":
+            return self._load_typed_document(
+                relative_path,
+                ReviewStatusRegistry.from_document,
+            )
+        if surface_name == "source_type_registry":
+            return self._load_typed_document(
+                relative_path,
+                SourceTypeRegistry.from_document,
+            )
         if surface_name == "human_surface_policy_registry":
             return self._load_typed_document(
                 relative_path,
@@ -723,6 +822,12 @@ class ControlPlaneLoader:
             return self.load_workflow_metadata_registry()
         if relative_path == ARTIFACT_FAMILY_REGISTRY_PATH:
             return self.load_artifact_family_registry()
+        if relative_path == LIFECYCLE_STAGE_REGISTRY_PATH:
+            return self.load_lifecycle_stage_registry()
+        if relative_path == REVIEW_STATUS_REGISTRY_PATH:
+            return self.load_review_status_registry()
+        if relative_path == SOURCE_TYPE_REGISTRY_PATH:
+            return self.load_source_type_registry()
         if relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH:
             return self.load_human_surface_policy_registry()
         if relative_path == RETENTION_POLICY_REGISTRY_PATH:
@@ -749,6 +854,21 @@ class ControlPlaneLoader:
             and relative_path == self._active_artifact_family_registry_path
         ):
             return self.load_artifact_family_registry(relative_path)
+        if (
+            self._active_lifecycle_stage_registry_path is not None
+            and relative_path == self._active_lifecycle_stage_registry_path
+        ):
+            return self.load_lifecycle_stage_registry(relative_path)
+        if (
+            self._active_review_status_registry_path is not None
+            and relative_path == self._active_review_status_registry_path
+        ):
+            return self.load_review_status_registry(relative_path)
+        if (
+            self._active_source_type_registry_path is not None
+            and relative_path == self._active_source_type_registry_path
+        ):
+            return self.load_source_type_registry(relative_path)
         if (
             self._active_human_surface_policy_registry_path is not None
             and relative_path == self._active_human_surface_policy_registry_path
@@ -828,6 +948,36 @@ class ControlPlaneLoader:
             and self._active_artifact_family_registry_path is not None
         ):
             return self._active_artifact_family_registry_path
+        return relative_path
+
+    def _current_lifecycle_stage_registry_path(self, relative_path: str) -> str:
+        """Return the lifecycle-stage registry path active for this loader instance."""
+
+        if (
+            relative_path == LIFECYCLE_STAGE_REGISTRY_PATH
+            and self._active_lifecycle_stage_registry_path is not None
+        ):
+            return self._active_lifecycle_stage_registry_path
+        return relative_path
+
+    def _current_review_status_registry_path(self, relative_path: str) -> str:
+        """Return the review-status registry path active for this loader instance."""
+
+        if (
+            relative_path == REVIEW_STATUS_REGISTRY_PATH
+            and self._active_review_status_registry_path is not None
+        ):
+            return self._active_review_status_registry_path
+        return relative_path
+
+    def _current_source_type_registry_path(self, relative_path: str) -> str:
+        """Return the source-type registry path active for this loader instance."""
+
+        if (
+            relative_path == SOURCE_TYPE_REGISTRY_PATH
+            and self._active_source_type_registry_path is not None
+        ):
+            return self._active_source_type_registry_path
         return relative_path
 
     def _current_human_surface_policy_registry_path(self, relative_path: str) -> str:

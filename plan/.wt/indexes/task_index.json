@@ -258,6 +258,52 @@
       ]
     },
     {
+      "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "initiative_title": "Plan Lifecycle Review And Source Vocab Registries",
+      "title": "Publish lifecycle review and source registry schemas",
+      "summary": "Add governed schema contracts for the lifecycle-stage, review-status, and source-type registries.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/publish_lifecycle_review_and_source_registry_schemas/task.json",
+      "updated_at": "2026-03-17T17:08:30Z"
+    },
+    {
+      "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "initiative_title": "Plan Lifecycle Review And Source Vocab Registries",
+      "title": "Seed lifecycle review and source vocab entries",
+      "summary": "Seed active registry entries aligned to current plan-workspace lifecycle stages, review states, and provenance categories.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/seed_lifecycle_review_and_source_vocab_entries/task.json",
+      "updated_at": "2026-03-17T17:09:30Z",
+      "depends_on": [
+        "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas"
+      ]
+    },
+    {
+      "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "initiative_title": "Plan Lifecycle Review And Source Vocab Registries",
+      "title": "Wire typed helper and validation coverage",
+      "summary": "Add typed loader support, a vocabulary helper, and tests proving the registries stay aligned with live schemas and runtime use.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/wire_typed_helper_and_validation_coverage/task.json",
+      "updated_at": "2026-03-17T17:10:30Z",
+      "depends_on": [
+        "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas",
+        "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries"
+      ]
+    },
+    {
       "task_id": "task.plan_project_context_runtime_standardization.expose_project_context_query_surface",
       "initiative_id": "initiative.plan_project_context_runtime_standardization",
       "trace_id": "trace.plan_project_context_runtime_standardization",

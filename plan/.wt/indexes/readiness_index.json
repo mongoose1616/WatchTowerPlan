@@ -96,6 +96,21 @@
       "updated_at": "2026-03-17T15:06:10Z"
     },
     {
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "initiative_root": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T17:13:00Z"
+    },
+    {
       "initiative_id": "initiative.plan_project_context_runtime_standardization",
       "trace_id": "trace.plan_project_context_runtime_standardization",
       "title": "Plan Project Context Runtime Standardization",

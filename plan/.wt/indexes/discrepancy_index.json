@@ -276,6 +276,126 @@
       "updated_at": "2026-03-17T09:39:05Z"
     },
     {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.coordination_index_index_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.initiative_index_index_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.plan_overview_surface_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/plan_overview.md.",
+      "source_paths": [
+        "plan/plan_overview.md"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.plan_surface_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md.",
+      "source_paths": [
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.progress_surface_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/progress.md.",
+      "source_paths": [
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/progress.md"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.readiness_index_index_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.summary_surface_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/summary.md.",
+      "source_paths": [
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/summary.md"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_lifecycle_review_and_source_vocab_registries.task_index_index_drift",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/task_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "updated_at": "2026-03-17T17:04:47Z"
+    },
+    {
       "discrepancy_id": "discrepancy.watchtower.watchtower_initial_implementation_bootstrap.coordination_index_index_drift",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "project_id": "project.watchtower",

@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:review-status-registry:v1",
+  "id": "registry.review_status",
+  "title": "Plan Review Status Registry",
+  "status": "active",
+  "entries": [
+    {
+      "review_status_id": "review.pending",
+      "value": "pending",
+      "entry_status": "active",
+      "summary": "The package still requires review or approval before execution may begin.",
+      "allows_execution": false,
+      "allowed_families": [
+        "initiative_state",
+        "readiness_index",
+        "validation_bundle",
+        "closeout_recap",
+        "guidance_promotion_record",
+        "project_record"
+      ]
+    },
+    {
+      "review_status_id": "review.approved",
+      "value": "approved",
+      "entry_status": "active",
+      "summary": "An authorized maintainer approved the package or artifact for its next phase.",
+      "allows_execution": true,
+      "allowed_families": [
+        "initiative_state",
+        "readiness_index",
+        "validation_bundle",
+        "closeout_recap",
+        "guidance_promotion_record",
+        "project_record"
+      ]
+    }
+  ],
+  "notes": "Review status is intentionally small for the first tranche and governs readiness approval separately from lifecycle stage."
+}

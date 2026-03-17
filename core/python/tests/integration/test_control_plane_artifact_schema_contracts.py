@@ -72,6 +72,15 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
     relation_registry = load_json_object(
         REPO_ROOT / "plan/.wt/registries/relation_type_registry.json"
     )
+    lifecycle_registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/lifecycle_stage_registry.json"
+    )
+    review_registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/review_status_registry.json"
+    )
+    source_registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/source_type_registry.json"
+    )
     transition_rules = load_json_object(
         REPO_ROOT / "plan/.wt/policies/status_transition_rules.json"
     )
@@ -105,9 +114,21 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
         schema = load_json_object(schema_path)
         return set(schema["properties"][field_name]["enum"])
 
+    def _allowed_readiness_states(schema_path: Path, field_name: str) -> set[str]:
+        schema = load_json_object(schema_path)
+        return set(schema["$defs"]["readinessEntry"]["properties"][field_name]["enum"])
+
     initiative_states = _allowed_states_for(
         REPO_ROOT / "plan/.wt/schemas/artifacts/initiative_state.schema.json",
         "lifecycle_stage",
+    )
+    review_states = _allowed_states_for(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/initiative_state.schema.json",
+        "review_status",
+    )
+    readiness_review_states = _allowed_readiness_states(
+        REPO_ROOT / "plan/.wt/schemas/artifacts/readiness_index.schema.json",
+        "review_status",
     )
     task_states = _allowed_states_for(
         REPO_ROOT / "plan/.wt/schemas/artifacts/task_state.schema.json",
@@ -133,6 +154,15 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
         REPO_ROOT / "plan/.wt/schemas/artifacts/project_record.schema.json",
         "status",
     )
+    configured_lifecycle_states = {
+        entry["value"] for entry in lifecycle_registry["entries"] if entry["entry_status"] == "active"
+    }
+    configured_review_states = {
+        entry["value"] for entry in review_registry["entries"] if entry["entry_status"] == "active"
+    }
+    configured_source_types = {
+        entry["value"] for entry in source_registry["entries"] if entry["entry_status"] == "active"
+    }
 
     allowed_states_by_family = {
         "initiative_state": initiative_states,
@@ -157,6 +187,17 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
             f"{family_id} transition rules reference states outside the live schema: "
             f"{sorted(configured_states - allowed_states)}"
         )
+
+    assert configured_lifecycle_states == initiative_states
+    assert configured_review_states == review_states
+    assert configured_review_states == readiness_review_states
+    assert {
+        "authored_input",
+        "external_reference",
+        "external_import",
+        "generated_output",
+        "derived_artifact",
+    }.issubset(configured_source_types)
 
 
 def test_plan_artifact_family_registry_covers_current_live_plan_families() -> None:

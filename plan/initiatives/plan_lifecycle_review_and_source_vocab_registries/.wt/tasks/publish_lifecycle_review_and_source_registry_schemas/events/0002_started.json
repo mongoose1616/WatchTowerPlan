@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas.0002_started",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:08:00Z",
+  "summary": "Started publishing the lifecycle, review, and source registry schemas.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "plan_registry_schemas"
+  }
+}

@@ -89,6 +89,48 @@
       ]
     },
     {
+      "id": "validator.plan.lifecycle_stage_registry",
+      "title": "Plan Lifecycle Stage Registry Validator",
+      "description": "Validates the plan-pack lifecycle-stage registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "lifecycle_stage_registry",
+      "applies_to": [
+        "plan/.wt/registries/lifecycle_stage_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:lifecycle-stage-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.review_status_registry",
+      "title": "Plan Review Status Registry Validator",
+      "description": "Validates the plan-pack review-status registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "review_status_registry",
+      "applies_to": [
+        "plan/.wt/registries/review_status_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:review-status-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.source_type_registry",
+      "title": "Plan Source Type Registry Validator",
+      "description": "Validates the plan-pack source-type registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "source_type_registry",
+      "applies_to": [
+        "plan/.wt/registries/source_type_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:source-type-registry:v1"
+      ]
+    },
+    {
       "id": "validator.plan.initiative_state",
       "title": "Plan Initiative State Validator",
       "description": "Validates initiative-local current-state snapshots.",

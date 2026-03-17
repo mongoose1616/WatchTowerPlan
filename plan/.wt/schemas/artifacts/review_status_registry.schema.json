@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:review-status-registry:v1",
+  "title": "Review Status Registry",
+  "description": "Schema for the plan-pack review-status registry covering controlled approval-state vocabulary.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:review-status-registry:v1"
+    },
+    "id": {
+      "const": "registry.review_status"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/reviewStatusEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reviewStatusEntry": {
+      "type": "object",
+      "required": [
+        "review_status_id",
+        "value",
+        "entry_status",
+        "summary",
+        "allows_execution"
+      ],
+      "properties": {
+        "review_status_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "active",
+            "deprecated"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allows_execution": {
+          "type": "boolean"
+        },
+        "allowed_families": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -175,6 +175,36 @@
       "canonical_path": "plan/.wt/schemas/artifacts/artifact_family_registry.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:lifecycle-stage-registry:v1",
+      "title": "Lifecycle Stage Registry",
+      "description": "Schema for the plan-pack lifecycle-stage registry covering controlled lifecycle vocabulary separate from status values.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "lifecycle_stage_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/lifecycle_stage_registry.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:review-status-registry:v1",
+      "title": "Review Status Registry",
+      "description": "Schema for the plan-pack review-status registry covering controlled approval-state vocabulary.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "review_status_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/review_status_registry.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:source-type-registry:v1",
+      "title": "Source Type Registry",
+      "description": "Schema for the plan-pack source-type registry covering controlled provenance vocabulary.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "source_type_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/source_type_registry.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
       "title": "Project Record",
       "description": "Schema for the authoritative current-state snapshot of one project container.",

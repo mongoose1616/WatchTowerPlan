@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage.0002_started",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:10:00Z",
+  "summary": "Started wiring the typed helper and validation coverage for the new vocabularies.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "plan_vocabulary_runtime"
+  }
+}

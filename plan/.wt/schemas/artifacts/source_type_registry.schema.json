@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:source-type-registry:v1",
+  "title": "Source Type Registry",
+  "description": "Schema for the plan-pack source-type registry covering controlled provenance vocabulary.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:source-type-registry:v1"
+    },
+    "id": {
+      "const": "registry.source_type"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/sourceTypeEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sourceClass": {
+      "type": "string",
+      "enum": [
+        "authored_input",
+        "machine_state",
+        "derived_surface",
+        "derived_artifact",
+        "external_reference",
+        "external_import",
+        "linked_repository",
+        "generated_output",
+        "promoted_guidance"
+      ]
+    },
+    "sourceTypeEntry": {
+      "type": "object",
+      "required": [
+        "source_type_id",
+        "value",
+        "entry_status",
+        "summary",
+        "source_class"
+      ],
+      "properties": {
+        "source_type_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "active",
+            "deprecated"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_class": {
+          "$ref": "#/$defs/sourceClass"
+        },
+        "allowed_families": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

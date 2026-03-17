@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries.0002_started",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "task_id": "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries",
+  "sequence": 2,
+  "event_type": "started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T17:09:00Z",
+  "summary": "Started seeding the lifecycle, review, and source vocabulary entries.",
+  "payload": {
+    "status": "in_progress",
+    "surface_family": "plan_registry_entries"
+  }
+}

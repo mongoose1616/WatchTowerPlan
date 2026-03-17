@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:lifecycle-stage-registry:v1",
+  "id": "registry.lifecycle_stage",
+  "title": "Plan Lifecycle Stage Registry",
+  "status": "active",
+  "entries": [
+    {
+      "stage_id": "stage.capture_incomplete",
+      "value": "capture_incomplete",
+      "entry_status": "active",
+      "summary": "The initiative package exists, but required capture is still incomplete.",
+      "current_phase": "implementation_planning",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.ready_for_review",
+      "value": "ready_for_review",
+      "entry_status": "active",
+      "summary": "Required capture passed validation and is waiting for approval review.",
+      "current_phase": "implementation_planning",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.ready_for_execution",
+      "value": "ready_for_execution",
+      "entry_status": "active",
+      "summary": "The initiative package is approved and may begin execution.",
+      "current_phase": "implementation_planning",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.in_progress",
+      "value": "in_progress",
+      "entry_status": "active",
+      "summary": "Implementation work is actively executing.",
+      "current_phase": "execution",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.blocked",
+      "value": "blocked",
+      "entry_status": "active",
+      "summary": "Execution or readiness is blocked until a blocking condition is resolved.",
+      "current_phase": "execution",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.closing",
+      "value": "closing",
+      "entry_status": "active",
+      "summary": "Execution is complete and closeout or promotion work is underway.",
+      "current_phase": "closeout",
+      "terminal": false,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.completed",
+      "value": "completed",
+      "entry_status": "active",
+      "summary": "The initiative has reached its completed terminal state.",
+      "current_phase": "closed",
+      "terminal": true,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.superseded",
+      "value": "superseded",
+      "entry_status": "active",
+      "summary": "The initiative was replaced by another initiative and is terminal.",
+      "current_phase": "closed",
+      "terminal": true,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    },
+    {
+      "stage_id": "stage.cancelled",
+      "value": "cancelled",
+      "entry_status": "active",
+      "summary": "The initiative was cancelled and is terminal.",
+      "current_phase": "closed",
+      "terminal": true,
+      "allowed_families": [
+        "initiative_state"
+      ]
+    }
+  ],
+  "notes": "Lifecycle stage remains distinct from status so plan-runtime slices can model readiness, execution, and closeout independently."
+}

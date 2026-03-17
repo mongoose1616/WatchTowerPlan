@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Plan Lifecycle Review And Source Vocab Registries",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T17:13:00Z",
+      "key_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md",
+      "closure_reason": "Delivered the lifecycle-stage, review-status, and source-type registries, typed planning vocabulary helper, and runtime alignment coverage for plan workspace lifecycle semantics."
+    },
+    {
       "trace_id": "trace.plan_governance_surface_resolver_helper",
       "title": "Plan Governance Surface Resolver Helper",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:22Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/plan.md",
       "closure_reason": "Delivered the local-first WatchTower work-item note flow."
-    },
-    {
-      "trace_id": "trace.watchtower_status_snapshot",
-      "title": "WatchTower Status Snapshot",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:20Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower status snapshot command."
     }
   ]
 }

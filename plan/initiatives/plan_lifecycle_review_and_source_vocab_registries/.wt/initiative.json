@@ -1,0 +1,73 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+  "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+  "slug": "plan_lifecycle_review_and_source_vocab_registries",
+  "title": "Plan Lifecycle Review And Source Vocab Registries",
+  "summary": "Adds the missing lifecycle-stage, review-status, and source-type registries plus typed helper coverage so plan-pack workflow semantics stop living only in scattered schema enums and runtime string literals.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T16:45:00Z",
+  "updated_at": "2026-03-17T17:13:00Z",
+  "task_ids": [
+    "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas",
+    "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries",
+    "task.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_lifecycle_review_and_source_vocab_registries.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_lifecycle_review_and_source_vocab_registries.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_lifecycle_review_and_source_vocab_registries.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/initiative_brief.md",
+      "sha256": "f5e0a69b1c61856718e46c7e7759c25d3354f22ee83e50f8d0ee88b8ee27f964",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T16:45:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/design_record.md",
+      "sha256": "5b2f12aadd36e9e2949bc53c5de71e29bcc0466d84929dd0ea3a8aa03e18f225",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T16:45:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/implementation_slice.md",
+      "sha256": "6f78355653f8c372090a82e762b9ee53aef62b3245482b2dcad9b2b6b0c11396",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T16:45:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T16:46:57Z"
+    }
+  ],
+  "closed_at": "2026-03-17T17:13:00Z",
+  "closure_reason": "Delivered the lifecycle-stage, review-status, and source-type registries, typed planning vocabulary helper, and runtime alignment coverage for plan workspace lifecycle semantics."
+}
