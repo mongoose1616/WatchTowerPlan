@@ -195,7 +195,7 @@ def test_workspace_and_github_docs_publish_current_repo_ops_ownership_model() ->
     assert "core/python/src/watchtower_core/repo_ops/query/" in workspace_standard
     assert "core/python/src/watchtower_core/repo_ops/sync/" in workspace_standard
     assert "Guardrail query namespace root only" in workspace_standard
-    assert "Guardrail sync namespace root only" in workspace_standard
+    assert "Export-safe generic sync harness and target contracts" in workspace_standard
     assert "A repo-local query helper" in workspace_standard
     assert (
         "core/python/src/watchtower_core/query/` | Index-backed retrieval and structured query "

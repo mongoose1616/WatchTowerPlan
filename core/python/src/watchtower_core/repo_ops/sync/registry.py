@@ -1,12 +1,9 @@
-"""Canonical registry for deterministic sync targets."""
+"""Canonical registry for deterministic repo-local sync targets."""
 
 from __future__ import annotations
 
-from collections.abc import Callable
-from dataclasses import dataclass
 from typing import Literal
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
@@ -85,24 +82,10 @@ from watchtower_core.repo_ops.sync.workflow_index import (
     WORKFLOW_INDEX_ARTIFACT_PATH,
     WorkflowIndexSyncService,
 )
+from watchtower_core.sync.harness import SyncTargetSpec
 
-SyncServiceFactory = Callable[[ControlPlaneLoader], object]
-SyncTargetMode = Literal["document", "tracking"]
 SyncTargetGroup = Literal["coordination"]
 COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"
-
-
-@dataclass(frozen=True, slots=True)
-class SyncTargetSpec:
-    """One deterministic sync target included in aggregate orchestration."""
-
-    target: str
-    mode: SyncTargetMode
-    artifact_kind: str
-    relative_output_path: str
-    service_factory: SyncServiceFactory
-    record_count_attr: str | None = None
-    groups: tuple[SyncTargetGroup, ...] = ()
 
 
 SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (

@@ -25,6 +25,8 @@ def test_public_query_root_fails_closed_with_repo_ops_guidance() -> None:
 
 
 def test_public_sync_root_fails_closed_with_repo_ops_guidance() -> None:
+    assert public_sync.SyncHarness.__module__ == "watchtower_core.sync.harness"
+    assert public_sync.SyncTargetSpec.__module__ == "watchtower_core.sync.harness"
     with pytest.raises(AttributeError, match="watchtower_core.repo_ops.sync"):
         _ = public_sync.CommandIndexSyncService
 
@@ -38,7 +40,10 @@ def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
 
 def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == ["__init__.py"]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == ["__init__.py"]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == [
+        "__init__.py",
+        "harness.py",
+    ]
 
 
 @pytest.mark.parametrize(

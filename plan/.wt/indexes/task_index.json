@@ -274,6 +274,55 @@
       ]
     },
     {
+      "task_id": "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+      "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "initiative_title": "Plan Generic Sync Harness Export Foundation",
+      "title": "Publish generic sync harness contracts",
+      "summary": "Add the export-safe sync harness, shared result types, and reusable protocols under watchtower_core.sync.",
+      "status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/publish_generic_sync_harness_contracts/task.json",
+      "updated_at": "2026-03-17T21:50:00Z"
+    },
+    {
+      "task_id": "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness",
+      "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "initiative_title": "Plan Generic Sync Harness Export Foundation",
+      "title": "Refactor repo sync orchestration onto generic harness",
+      "summary": "Move all-sync and coordination-sync orchestration onto the generic sync harness without changing current sync target behavior.",
+      "status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/refactor_repo_sync_orchestration_onto_generic_harness/task.json",
+      "updated_at": "2026-03-17T21:50:00Z",
+      "depends_on": [
+        "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts"
+      ]
+    },
+    {
+      "task_id": "task.plan_generic_sync_harness_export_foundation.validate_sync_harness_export_and_guidance",
+      "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "initiative_title": "Plan Generic Sync Harness Export Foundation",
+      "title": "Validate sync harness export and guidance",
+      "summary": "Add tests and documentation proving watchtower_core.sync now publishes the reusable harness and remains aligned with requirements.md and decisions.md.",
+      "status": "completed",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/validate_sync_harness_export_and_guidance/task.json",
+      "updated_at": "2026-03-17T21:50:00Z",
+      "depends_on": [
+        "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+        "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness"
+      ]
+    },
+    {
       "task_id": "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage",
       "initiative_id": "initiative.plan_governance_surface_resolver_helper",
       "trace_id": "trace.plan_governance_surface_resolver_helper",

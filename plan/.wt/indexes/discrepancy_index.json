@@ -3,7 +3,7 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-17T21:23:00Z",
+  "updated_at": "2026-03-17T21:51:00Z",
   "entries": [
     {
       "discrepancy_id": "discrepancy.plan_artifact_index_runtime_foundation.coordination_index_index_drift",

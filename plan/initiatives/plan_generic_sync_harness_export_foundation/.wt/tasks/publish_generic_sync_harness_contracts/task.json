@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+  "slug": "publish_generic_sync_harness_contracts",
+  "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+  "title": "Publish generic sync harness contracts",
+  "summary": "Add the export-safe sync harness, shared result types, and reusable protocols under watchtower_core.sync.",
+  "status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:35:00Z",
+  "updated_at": "2026-03-17T21:50:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

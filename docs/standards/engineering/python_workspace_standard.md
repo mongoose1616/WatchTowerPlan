@@ -90,7 +90,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/query/` | Guardrail query namespace root only; authoritative repo-local query logic lives under `core/python/src/watchtower_core/repo_ops/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
-| `core/python/src/watchtower_core/sync/` | Guardrail sync namespace root only; authoritative repo-local sync logic lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
+| `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
 | `core/python/src/watchtower_core/repo_ops/` | WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |

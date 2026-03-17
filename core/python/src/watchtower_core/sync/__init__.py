@@ -1,12 +1,19 @@
-"""Public sync namespace for export-safe surfaces."""
+"""Public sync namespace for export-safe generic harness surfaces."""
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from watchtower_core.sync.harness import (
+    SyncHarness,
+    SyncRecord,
+    SyncResult,
+    SyncTargetSpec,
+)
+
+__all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
 
 
 def __getattr__(name: str) -> object:
     raise AttributeError(
-        "watchtower_core.sync is a guardrail namespace root and does not export "
-        "repo-specific sync services. Import from watchtower_core.repo_ops.sync."
+        "watchtower_core.sync exports only generic sync harness surfaces. "
+        "Repo-specific sync services still live under watchtower_core.repo_ops.sync."
     )

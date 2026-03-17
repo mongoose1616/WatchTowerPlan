@@ -226,6 +226,42 @@
       ]
     },
     {
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "title": "Plan Generic Sync Harness Export Foundation",
+      "summary": "Exports a reusable sync harness from watchtower_core.sync and refactors repo-local sync orchestration onto that generic layer so requirements.md and decisions.md no longer depend on a repo_ops-only sync coordinator.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T21:51:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/progress.md",
+      "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+      "slug": "plan_generic_sync_harness_export_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+        "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness",
+        "task.plan_generic_sync_harness_export_foundation.validate_sync_harness_export_and_guidance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_generic_sync_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T21:51:00Z",
+      "closure_reason": "Exported the reusable sync harness from watchtower_core.sync, refactored repo-local orchestration onto it, and aligned tests and package-boundary guidance to requirements.md and decisions.md.",
+      "related_paths": [
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/design_record.md",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/implementation_slice.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_governance_surface_resolver_helper",
       "title": "Plan Governance Surface Resolver Helper",
       "summary": "Adds the missing governance surface resolver helper so pack and core governed surfaces can be resolved through one typed query surface instead of scattered loader and registry logic.",

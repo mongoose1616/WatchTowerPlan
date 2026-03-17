@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_generic_sync_harness_export_foundation.validate_sync_harness_export_and_guidance",
+  "slug": "validate_sync_harness_export_and_guidance",
+  "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+  "title": "Validate sync harness export and guidance",
+  "summary": "Add tests and documentation proving watchtower_core.sync now publishes the reusable harness and remains aligned with requirements.md and decisions.md.",
+  "status": "completed",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T21:35:00Z",
+  "updated_at": "2026-03-17T21:50:00Z",
+  "dependency_task_ids": [
+    "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+    "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

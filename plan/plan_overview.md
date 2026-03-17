@@ -13,6 +13,7 @@
 - None.
 
 ## Recent Closeouts
+- `trace.plan_generic_sync_harness_export_foundation`: Plan Generic Sync Harness Export Foundation (`completed` at `2026-03-17T21:51:00Z`) - Exported the reusable sync harness from watchtower_core.sync, refactored repo-local orchestration onto it, and aligned tests and package-boundary guidance to requirements.md and decisions.md.
 - `trace.plan_artifact_family_registry_foundation`: Plan Artifact Family Registry Foundation (`completed` at `2026-03-17T21:23:00Z`) - Delivered the artifact family registry foundation, typed resolver, and alignment coverage for live plan artifact families.
 - `trace.plan_status_transition_and_relation_rule_registries`: Plan Status Transition and Relation Rule Registries (`completed` at `2026-03-17T20:53:00Z`) - Delivered the relation type registry and status transition rule surfaces.
 - `trace.plan_artifact_index_runtime_foundation`: Plan Artifact Index Runtime Foundation (`completed` at `2026-03-17T20:36:00Z`) - Implemented the live artifact index runtime, query surface, validator wiring, and guidance updates required by requirements.md and decisions.md.
@@ -22,4 +23,3 @@
 - `trace.plan_workflow_root_authority_split`: Plan Workflow Root Authority Split (`completed` at `2026-03-17T18:55:30Z`) - Delivered the split workflow routing tables, domain-owned workflow module roots, runtime index rebuilds, and human guidance cutover required by requirements.md and decisions.md.
 - `trace.plan_core_documentation_template_authority_foundation`: Plan Core Documentation Template Authority Foundation (`completed` at `2026-03-17T18:17:57Z`) - Delivered the core-owned documentation family registry, template catalog, reusable templates, and explicit validation coverage required by requirements.md and decisions.md.
 - `trace.plan_template_section_spec_enforcement_foundation`: Plan Template Section-Spec Enforcement Foundation (`completed` at `2026-03-17T18:04:42Z`) - Delivered governed section-spec schemas, aligned template contracts to requirements.md, and added fail-closed section-spec validation for plan template assets.
-- `trace.plan_documentation_family_and_template_catalog_foundation`: Plan Documentation Family And Template Catalog Foundation (`completed` at `2026-03-17T17:39:18Z`) - Delivered the documentation-family registry, template catalog, governed template assets, typed helpers, and validation coverage for current plan guidance and rendered surfaces.
