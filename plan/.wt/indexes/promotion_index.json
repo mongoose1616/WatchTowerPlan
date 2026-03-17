@@ -408,6 +408,33 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_workflow_root_authority_split.bootstrap_shell",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "initiative_title": "Plan Workflow Root Authority Split",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_workflow_root_authority_split",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_workflow_root_authority_split/initiative_brief.md",
+        "plan/initiatives/plan_workflow_root_authority_split/design_record.md",
+        "plan/initiatives/plan_workflow_root_authority_split/implementation_slice.md",
+        "plan/initiatives/plan_workflow_root_authority_split/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T18:55:30Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.watchtower_initial_implementation_bootstrap.bootstrap_shell",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",

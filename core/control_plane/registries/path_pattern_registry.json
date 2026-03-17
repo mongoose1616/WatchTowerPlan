@@ -58,7 +58,15 @@
     {
       "family_name": "workflow_module",
       "path_kind": "user_visible",
-      "path_pattern": "workflows/modules/*.md",
+      "path_pattern": "core/workflows/modules/*.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": true
+    },
+    {
+      "family_name": "workflow_module",
+      "path_kind": "user_visible",
+      "path_pattern": "plan/workflows/modules/*.md",
       "entity_shape": "file",
       "visibility": "user",
       "authoritative": true

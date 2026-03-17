@@ -27,14 +27,14 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/code_implementation.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/code_implementation.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -64,13 +64,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/code_review.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/code_review.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -96,13 +96,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -127,13 +127,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/clarification.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/clarification.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -162,41 +162,11 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/commit_closeout.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.decision_capture",
-      "task_type": "Decision Capture",
-      "trigger_keywords": [
-        "decision record",
-        "record decision",
-        "ADR",
-        "architecture decision",
-        "tradeoff record",
-        "rationale record"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.external_guidance_research",
-        "workflow.decision_capture",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/decision_capture.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/commit_closeout.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -228,14 +198,14 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/documentation_refresh.md",
-        "workflows/modules/documentation_implementation_reconciliation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/documentation_implementation_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -260,12 +230,12 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/documentation_generation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/documentation_generation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -288,13 +258,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/documentation_review.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/documentation_review.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -317,13 +287,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/documentation_refresh.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -347,47 +317,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/foundations_context_review.md",
-        "workflows/modules/documentation_refresh.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.github_task_sync",
-      "task_type": "GitHub Task Sync",
-      "trigger_keywords": [
-        "github task sync",
-        "sync to github",
-        "sync tasks to github",
-        "sync open tasks",
-        "sync open tasks to github",
-        "sync tasks to github issues",
-        "github issues",
-        "publish tasks to github",
-        "github issues sync",
-        "github project sync",
-        "github board sync",
-        "push local tasks to github"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.github_task_sync",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/github_task_sync.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -418,169 +354,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/governed_artifact_reconciliation.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.prd_generation",
-      "task_type": "PRD Generation",
-      "trigger_keywords": [
-        "PRD",
-        "product requirements",
-        "requirements doc",
-        "feature planning",
-        "scope feature",
-        "product planning"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.foundations_context_review",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.external_guidance_research",
-        "workflow.prd_generation",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/foundations_context_review.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/prd_generation.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.feature_design_planning",
-      "task_type": "Feature Design Planning",
-      "trigger_keywords": [
-        "feature design",
-        "technical design",
-        "solution design",
-        "design proposal",
-        "design spec",
-        "architecture proposal"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.foundations_context_review",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.external_guidance_research",
-        "workflow.feature_design_planning",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/foundations_context_review.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/feature_design_planning.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.implementation_planning",
-      "task_type": "Implementation Planning",
-      "trigger_keywords": [
-        "implementation plan",
-        "engineering plan",
-        "technical plan",
-        "break down PRD",
-        "work breakdown",
-        "execution plan"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.external_guidance_research",
-        "workflow.implementation_planning",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/implementation_planning.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.acceptance_and_evidence_reconciliation",
-      "task_type": "Acceptance and Evidence Reconciliation",
-      "trigger_keywords": [
-        "acceptance reconciliation",
-        "evidence reconciliation",
-        "reconcile acceptance",
-        "reconcile evidence"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.code_validation",
-        "workflow.traceability_reconciliation",
-        "workflow.acceptance_evidence_reconciliation",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/traceability_reconciliation.md",
-        "workflows/modules/acceptance_evidence_reconciliation.md",
-        "workflows/modules/task_handoff_review.md"
-      ]
-    },
-    {
-      "route_id": "route.initiative_closeout",
-      "task_type": "Initiative Closeout",
-      "trigger_keywords": [
-        "initiative closeout",
-        "close initiative",
-        "planning closeout",
-        "trace closeout",
-        "mark initiative complete",
-        "supersede initiative"
-      ],
-      "required_workflow_ids": [
-        "workflow.core",
-        "workflow.task_scope_definition",
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.code_validation",
-        "workflow.traceability_reconciliation",
-        "workflow.initiative_closeout",
-        "workflow.task_handoff_review"
-      ],
-      "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/traceability_reconciliation.md",
-        "workflows/modules/initiative_closeout.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -603,12 +383,12 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/reference_distillation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/reference_distillation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -641,14 +421,234 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/repository_inventory_review.md",
-        "workflows/modules/external_guidance_research.md",
-        "workflows/modules/repository_assessment.md",
-        "workflows/modules/repository_review.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/repository_inventory_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/repository_assessment.md",
+        "core/workflows/modules/repository_review.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.decision_capture",
+      "task_type": "Decision Capture",
+      "trigger_keywords": [
+        "decision record",
+        "record decision",
+        "ADR",
+        "architecture decision",
+        "tradeoff record",
+        "rationale record"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.decision_capture",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "plan/workflows/modules/decision_capture.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.prd_generation",
+      "task_type": "PRD Generation",
+      "trigger_keywords": [
+        "PRD",
+        "product requirements",
+        "requirements doc",
+        "feature planning",
+        "scope feature",
+        "product planning"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.foundations_context_review",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.prd_generation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "plan/workflows/modules/prd_generation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.feature_design_planning",
+      "task_type": "Feature Design Planning",
+      "trigger_keywords": [
+        "feature design",
+        "technical design",
+        "solution design",
+        "design proposal",
+        "design spec",
+        "architecture proposal"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.foundations_context_review",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.feature_design_planning",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "plan/workflows/modules/feature_design_planning.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.implementation_planning",
+      "task_type": "Implementation Planning",
+      "trigger_keywords": [
+        "implementation plan",
+        "engineering plan",
+        "technical plan",
+        "break down PRD",
+        "work breakdown",
+        "execution plan"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.implementation_planning",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "plan/workflows/modules/implementation_planning.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.acceptance_and_evidence_reconciliation",
+      "task_type": "Acceptance and Evidence Reconciliation",
+      "trigger_keywords": [
+        "acceptance reconciliation",
+        "evidence reconciliation",
+        "reconcile acceptance",
+        "reconcile evidence"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.acceptance_evidence_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_validation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.initiative_closeout",
+      "task_type": "Initiative Closeout",
+      "trigger_keywords": [
+        "initiative closeout",
+        "close initiative",
+        "planning closeout",
+        "trace closeout",
+        "mark initiative complete",
+        "supersede initiative"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.initiative_closeout",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_validation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "plan/workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.github_task_sync",
+      "task_type": "GitHub Task Sync",
+      "trigger_keywords": [
+        "github task sync",
+        "sync to github",
+        "sync tasks to github",
+        "sync open tasks",
+        "sync open tasks to github",
+        "sync tasks to github issues",
+        "github issues",
+        "publish tasks to github",
+        "github issues sync",
+        "github project sync",
+        "github board sync",
+        "push local tasks to github"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.github_task_sync",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "plan/workflows/modules/github_task_sync.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -688,12 +688,12 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/task_lifecycle_management.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -732,12 +732,12 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/task_phase_transition.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "plan/workflows/modules/task_phase_transition.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
@@ -761,13 +761,13 @@
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
-        "workflows/modules/core.md",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/current_state_inspection.md",
-        "workflows/modules/internal_context_review.md",
-        "workflows/modules/code_validation.md",
-        "workflows/modules/traceability_reconciliation.md",
-        "workflows/modules/task_handoff_review.md"
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/code_validation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
       ]
     }
   ]

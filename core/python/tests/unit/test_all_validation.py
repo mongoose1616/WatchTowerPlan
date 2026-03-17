@@ -259,8 +259,8 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     service = _service_with_targets(
         {
             "step.watchtower_plan.document_semantics": (
-                "workflows/modules/code_validation.md",
-                "workflows/modules/code_review.md",
+                "core/workflows/modules/code_validation.md",
+                "core/workflows/modules/code_review.md",
             )
         }
     )

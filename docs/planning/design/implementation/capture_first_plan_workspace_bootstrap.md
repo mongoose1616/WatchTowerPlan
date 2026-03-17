@@ -102,7 +102,7 @@ Breaks Capture-First Plan Workspace Bootstrap into a bounded implementation slic
 - Add negative coverage for incomplete initiative packages, missing project container bootstrap, stale rendered or aggregate surfaces, unconfirmed doc-to-machine proposals, blocking discrepancies, and attempts to enter execution before approval.
 - Prove one pack-wide initiative bootstrap and one project-scoped initiative bootstrap end to end through the harness, readiness validation, approval, and `ready_for_execution` transition.
 - Rebuild the touched planning and traceability surfaces with `watchtower-core sync` and verify coordination, planning, initiative, task, and other affected query paths against the new trace state.
-- Record the explicit history and retention reconciliation follow-up tranche in the planning package so the first milestone does not leave that gap implicit. The live follow-up initiative is [plan_legacy_history_retention_reconciliation](/home/j/WatchTowerPlan/plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md).
+- Record the explicit history and retention reconciliation follow-up tranche in the planning package so the first milestone does not leave that gap implicit. The live follow-up initiative is [plan_legacy_history_retention_reconciliation](/plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md).
 
 ## Rollout or Migration Plan
 - Introduce the bare `plan/**` roots first so the new authority can exist without inventing a temporary second storage root.

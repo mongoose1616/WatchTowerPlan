@@ -20,7 +20,7 @@
       "path": "AGENTS.md",
       "kind": "file",
       "surface_kind": "instruction",
-      "summary": "Defines the repository-wide wrapper instructions and points task routing to `workflows/ROUTING_TABLE.md`.",
+      "summary": "Defines the repository-wide wrapper instructions and routes work into `core/workflows/` and `plan/workflows/`.",
       "parent_path": ".",
       "maturity": "scaffold",
       "priority": "low",
@@ -3032,22 +3032,22 @@
     {
       "path": "core/workflows/ROUTING_TABLE.md",
       "kind": "file",
-      "surface_kind": "core_file",
-      "summary": "Thin router surface that points to the current canonical routing backend.",
+      "surface_kind": "routing_table",
+      "summary": "Defines the reusable-core task routes and shared workflow-module selection rules.",
       "parent_path": "core/workflows/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
     },
     {
       "path": "core/workflows/modules/README.md",
       "kind": "file",
-      "surface_kind": "core_file",
-      "summary": "Explains the current status of core-owned workflow-module migration.",
+      "surface_kind": "workflow_module",
+      "summary": "Explains the authoritative core workflow-module set.",
       "parent_path": "core/workflows/modules/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
     },
     {
       "path": "docs/",
@@ -5333,7 +5333,7 @@
       "path": "plan/workflows/",
       "kind": "directory",
       "surface_kind": "repository_surface",
-      "summary": "Holds the plan-domain human workflow entrypoint during workflow-root migration.",
+      "summary": "Holds the plan-domain workflow routing tables and plan-owned workflow modules.",
       "parent_path": "plan/",
       "maturity": "supporting",
       "priority": "medium",
@@ -5362,22 +5362,22 @@
     {
       "path": "plan/workflows/ROUTING_TABLE.md",
       "kind": "file",
-      "surface_kind": "repository_file",
-      "summary": "Thin router surface that points to the current canonical routing backend.",
+      "surface_kind": "routing_table",
+      "summary": "Defines plan-domain task routes and the required workflow modules for those routes.",
       "parent_path": "plan/workflows/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
     },
     {
       "path": "plan/workflows/modules/README.md",
       "kind": "file",
-      "surface_kind": "repository_file",
-      "summary": "Explains the current status of plan-owned workflow-module migration.",
+      "surface_kind": "workflow_module",
+      "summary": "Explains the authoritative plan-owned workflow-module set.",
       "parent_path": "plan/workflows/modules/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
     },
     {
       "path": "workflows/",
@@ -5410,12 +5410,12 @@
     {
       "path": "workflows/ROUTING_TABLE.md",
       "kind": "file",
-      "surface_kind": "routing_table",
-      "summary": "Defines task classification and the minimum workflow modules to load for each task type.",
+      "surface_kind": "routing_compatibility",
+      "summary": "Compatibility note pointing readers to the split workflow roots.",
       "parent_path": "workflows/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
       "aliases": [
         "routing table"
       ],
@@ -5432,7 +5432,7 @@
       "path": "workflows/modules/",
       "kind": "directory",
       "surface_kind": "workflow_family",
-      "summary": "Holds the task-specific workflow modules used after routing.",
+      "summary": "Compatibility copies retained for older links while core/workflows/ and plan/workflows/ own current workflow authority.",
       "parent_path": "workflows/",
       "maturity": "supporting",
       "priority": "medium",
@@ -5451,322 +5451,12 @@
     {
       "path": "workflows/modules/README.md",
       "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Describes the purpose of the workflow modules directory and the modules stored here.",
+      "surface_kind": "workflow_compatibility",
+      "summary": "Describes the purpose of the compatibility workflow modules directory.",
       "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/acceptance_evidence_reconciliation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for semantic reconciliation across acceptance contracts, evidence, validator references, and traceability.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/clarification.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for resolving ambiguity that blocks routing or downstream work.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/code_implementation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for implementing code changes.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/code_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for reviewing code changes.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/code_validation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for validating code changes.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/commit_closeout.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for preparing and creating repository-compliant Git commits.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/core.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Core workflow module that applies across routed tasks.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/current_state_inspection.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for inspecting the relevant current repository state before deeper task execution.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/decision_capture.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for recording durable decisions and their rationale.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/documentation_generation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for generating new documentation.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/documentation_implementation_reconciliation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for reconciling companion documentation and machine-readable lookup surfaces with the actual implementation.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/documentation_refresh.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for refreshing and updating existing documentation.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/documentation_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for reviewing documentation or standards before refresh or remediation work.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/external_guidance_research.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for consulting authoritative external guidance only when needed.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/feature_design_planning.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for turning a feature request or PRD into a review-ready technical design for implementation planning.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/foundations_context_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for loading repository foundation documents during planning, design, and foundations-aware review work.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/github_task_sync.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for pushing local-first task records to GitHub issues and optional project items while preserving local task authority.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/governed_artifact_reconciliation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for reconciling schema-backed governed artifacts with their companion schemas, examples, indexes, registries, and implementation-facing lookup surfaces.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/implementation_planning.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for turning a PRD into an implementation plan.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/initiative_closeout.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for applying terminal closeout state to traced initiatives and their mirrored initiative and family tracking surfaces.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/internal_context_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for identifying the internal standards, templates, workflows, and canonical docs that govern a task.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/prd_generation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for planning and generating a PRD.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/reference_distillation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for distilling external source material into stable local guidance.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/repository_assessment.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for assessing repository quality dimensions after inventory work is complete.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/repository_inventory_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for inventorying repository surfaces before deeper repository assessment.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/repository_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for synthesizing repository review findings and remediation guidance.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/task_handoff_review.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for handoff readiness, related-surface impacts, and follow-up recording.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/task_lifecycle_management.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for creating, updating, splitting, and closing local task records plus their derived tracking surfaces.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/task_phase_transition.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Workflow module for handing tasks across owners or phases while preserving explicit successor, dependency, and trace state.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/task_scope_definition.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for defining the objective, boundary, and success conditions of a routed task.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/modules/traceability_reconciliation.md",
-      "kind": "file",
-      "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for reconciling traced planning artifacts with their companion trackers, family indexes, and unified traceability joins.",
-      "parent_path": "workflows/modules/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "automation"
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
     }
   ]
 }

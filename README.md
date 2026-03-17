@@ -7,7 +7,7 @@
 | Path | Description |
 |---|---|
 | `README.md` | Describes the purpose of the repository root and the main entrypoints stored here. |
-| `AGENTS.md` | Defines the repository-wide wrapper instructions and points task routing to `workflows/ROUTING_TABLE.md`. |
+| `AGENTS.md` | Defines the repository-wide wrapper instructions and routes work into `core/workflows/` and `plan/workflows/`. |
 | `.github/` | Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template. |
 | `plan/` | Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers. |
 | `docs/` | Holds durable repository documentation, standards, references, and templates. |

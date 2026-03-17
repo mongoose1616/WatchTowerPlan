@@ -573,7 +573,8 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "workflows/modules/**"
+        "core/workflows/modules/**",
+        "plan/workflows/modules/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },

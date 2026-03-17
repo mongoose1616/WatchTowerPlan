@@ -13,7 +13,7 @@
 | `plan/docs/` | Holds the seeded durable plan-guidance root for future promoted guidance. |
 | `plan/initiatives/` | Holds pack-wide initiative containers for live work. |
 | `plan/projects/` | Holds project containers and project-scoped initiative roots. |
-| `plan/workflows/` | Holds the plan-domain human workflow entrypoint during workflow-root migration. |
+| `plan/workflows/` | Holds the plan-domain workflow routing tables and plan-owned workflow modules. |
 
 ## Notes
 - Human start-here: `plan/README.md`, then `plan/plan_overview.md`.
@@ -33,5 +33,5 @@
 - `plan/.wt/registries/project_surface_policy_registry.json` is the project-root contract for which machine artifacts, rendered views, and optional project-local subroots may exist under `plan/projects/<project_slug>/`.
 - `plan/.wt/indexes/promotion_index.json` and `plan/.wt/indexes/guidance_index.json` are the pack-level lookup surfaces for initiative-local promotion records and approved plan guidance.
 - Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
-- `plan/workflows/` is the human plan-domain workflow entrypoint, but the canonical routing backend remains `workflows/ROUTING_TABLE.md` and `workflows/modules/` until the workflow split lands.
+- `plan/workflows/ROUTING_TABLE.md` is the authoritative plan-domain routing table, and its routes may reference shared reusable modules under `core/workflows/modules/`.
 - Do not start new live work under `docs/planning/**`; the retained bootstrap trace there exists only until later cutover slices replace the old entrypoints.

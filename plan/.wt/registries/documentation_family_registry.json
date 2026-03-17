@@ -116,14 +116,13 @@
       ],
       "section_spec_schema_id": "urn:watchtower:schema:interfaces:plan:documentation:workflow-module-section-spec:v1",
       "allowed_roots": [
-        "workflows/modules",
         "plan/workflows/modules"
       ],
       "authorship_mode": "authored",
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "The repository root workflow modules remain authoritative during the current workflow-root migration, while plan/workflows carries the future plan-domain human entrypoint."
+      "notes": "Plan-domain workflow modules now live under plan/workflows/modules while shared reusable workflow modules live under core/workflows/modules."
     }
   ],
   "notes": "This registry governs the durable authored documentation families that the live plan workspace already depends on or will promote into during the remaining migration."

@@ -664,6 +664,52 @@
       ]
     },
     {
+      "task_id": "task.plan_workflow_root_authority_split.cut_over_human_instructions_and_workflow_guidance",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "initiative_title": "Plan Workflow Root Authority Split",
+      "title": "Cut over human instructions and workflow guidance",
+      "summary": "Update AGENTS, README, policy, registry, and standards surfaces so human routing no longer treats repo-root workflows/ as the authoritative backend.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/cut_over_human_instructions_and_workflow_guidance/task.json",
+      "updated_at": "2026-03-17T18:52:42Z",
+      "depends_on": [
+        "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain",
+        "task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots"
+      ]
+    },
+    {
+      "task_id": "task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "initiative_title": "Plan Workflow Root Authority Split",
+      "title": "Rebuild routing and workflow runtime around split roots",
+      "summary": "Update route preview, route index, workflow index, repository-path inventory, and validation target discovery so the machine runtime resolves core/workflows/ and plan/workflows/ as authoritative.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/rebuild_routing_and_workflow_runtime_around_split_roots/task.json",
+      "updated_at": "2026-03-17T18:52:42Z",
+      "depends_on": [
+        "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain"
+      ]
+    },
+    {
+      "task_id": "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "initiative_title": "Plan Workflow Root Authority Split",
+      "title": "Split workflow routing and module roots by domain",
+      "summary": "Move shared reusable workflow modules under core/workflows/ and plan-specific modules under plan/workflows/, then convert repo-root workflows/ into a thin compatibility surface.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/split_workflow_routing_and_module_roots_by_domain/task.json",
+      "updated_at": "2026-03-17T18:52:42Z"
+    },
+    {
       "task_id": "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",

@@ -5,68 +5,11 @@
   "status": "active",
   "entries": [
     {
-      "workflow_id": "workflow.acceptance_evidence_reconciliation",
-      "title": "Acceptance and Evidence Reconciliation Workflow",
-      "summary": "Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.",
-      "status": "active",
-      "doc_path": "workflows/modules/acceptance_evidence_reconciliation.md",
-      "phase_type": "reconciliation",
-      "task_family": "artifact_acceptance",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "primary_risks": [
-        "companion_drift",
-        "authority_conflict"
-      ],
-      "trigger_tags": [
-        "acceptance",
-        "evidence",
-        "reconciliation",
-        "reconcile",
-        "prd",
-        "ids",
-        "contracts",
-        "validation",
-        "validator",
-        "references",
-        "traceability",
-        "layer",
-        "one",
-        "traced",
-        "initiative",
-        "docs",
-        "standards",
-        "data",
-        "contract",
-        "standard",
-        "commands",
-        "core",
-        "python",
-        "watchtower",
-        "validate"
-      ],
-      "companion_workflow_ids": [
-        "workflow.traceability_reconciliation",
-        "workflow.code_validation",
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
-      ]
-    },
-    {
       "workflow_id": "workflow.clarification",
       "title": "Clarification Workflow",
       "summary": "Use this workflow to reduce the specific ambiguity, conflict, or missing input that is materially blocking the active task.",
       "status": "active",
-      "doc_path": "workflows/modules/clarification.md",
+      "doc_path": "core/workflows/modules/clarification.md",
       "phase_type": "scoping",
       "task_family": "scope_management",
       "uses_internal_references": false,
@@ -101,7 +44,7 @@
       "title": "Code Implementation Workflow",
       "summary": "Use this workflow to define the implementation approach and apply the requested code change while keeping the affected repository surfaces coherent.",
       "status": "active",
-      "doc_path": "workflows/modules/code_implementation.md",
+      "doc_path": "core/workflows/modules/code_implementation.md",
       "phase_type": "execution",
       "task_family": "engineering",
       "uses_internal_references": false,
@@ -139,7 +82,7 @@
       "title": "Code Review Workflow",
       "summary": "Use this workflow to evaluate a code change for correctness, regression risk, maintainability, standards alignment, and review completeness, then summarize evidence-backed findings clearly.",
       "status": "active",
-      "doc_path": "workflows/modules/code_review.md",
+      "doc_path": "core/workflows/modules/code_review.md",
       "phase_type": "review",
       "task_family": "engineering_review",
       "uses_internal_references": false,
@@ -178,7 +121,7 @@
       "title": "Code Validation Workflow",
       "summary": "Use this workflow to define, execute, and assess the validation needed for a code change or target surface.",
       "status": "active",
-      "doc_path": "workflows/modules/code_validation.md",
+      "doc_path": "core/workflows/modules/code_validation.md",
       "phase_type": "validation",
       "task_family": "engineering_validation",
       "uses_internal_references": false,
@@ -212,7 +155,7 @@
       "title": "Commit Closeout Workflow",
       "summary": "Use this workflow to evaluate commit readiness, prepare a repository-compliant commit message, and create the Git commit when requested.",
       "status": "active",
-      "doc_path": "workflows/modules/commit_closeout.md",
+      "doc_path": "core/workflows/modules/commit_closeout.md",
       "phase_type": "closeout",
       "task_family": "commit_management",
       "uses_internal_references": true,
@@ -273,7 +216,7 @@
       "title": "Core Workflow",
       "summary": "Use this workflow to load the minimum shared standards and instructions that apply across all routed workflow modules.",
       "status": "active",
-      "doc_path": "workflows/modules/core.md",
+      "doc_path": "core/workflows/modules/core.md",
       "phase_type": "shared",
       "task_family": "core_context",
       "uses_internal_references": false,
@@ -304,7 +247,7 @@
       "title": "Current-State Inspection Workflow",
       "summary": "Use this workflow to inspect the current repository, codebase, document set, or architecture surfaces relevant to the active task before recommendations, edits, or judgments are made.",
       "status": "active",
-      "doc_path": "workflows/modules/current_state_inspection.md",
+      "doc_path": "core/workflows/modules/current_state_inspection.md",
       "phase_type": "inspection",
       "task_family": "state_inspection",
       "uses_internal_references": false,
@@ -341,64 +284,11 @@
       ]
     },
     {
-      "workflow_id": "workflow.decision_capture",
-      "title": "Decision Capture Workflow",
-      "summary": "Use this workflow to analyze viable options and record a durable repository decision with rationale, status, and downstream impacts.",
-      "status": "active",
-      "doc_path": "workflows/modules/decision_capture.md",
-      "phase_type": "planning",
-      "task_family": "decision_management",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "primary_risks": [
-        "design_gap",
-        "execution_drift"
-      ],
-      "trigger_tags": [
-        "decision",
-        "capture",
-        "analyze",
-        "viable",
-        "options",
-        "record",
-        "durable",
-        "repository",
-        "with",
-        "rationale",
-        "status",
-        "downstream",
-        "impacts",
-        "docs",
-        "standards",
-        "governance",
-        "standard",
-        "documentation",
-        "templates",
-        "template",
-        "adr",
-        "tradeoff"
-      ],
-      "companion_workflow_ids": [
-        "workflow.traceability_reconciliation",
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/templates/decision_record_template.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/templates/decision_record_template.md"
-      ]
-    },
-    {
       "workflow_id": "workflow.documentation_generation",
       "title": "Documentation Generation Workflow",
       "summary": "Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one succinct standard, topic, or area.",
       "status": "active",
-      "doc_path": "workflows/modules/documentation_generation.md",
+      "doc_path": "core/workflows/modules/documentation_generation.md",
       "phase_type": "execution",
       "task_family": "documentation",
       "uses_internal_references": false,
@@ -439,7 +329,7 @@
       "title": "Documentation-Implementation Reconciliation Workflow",
       "summary": "Use this workflow to compare current CLI or implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.",
       "status": "active",
-      "doc_path": "workflows/modules/documentation_implementation_reconciliation.md",
+      "doc_path": "core/workflows/modules/documentation_implementation_reconciliation.md",
       "phase_type": "reconciliation",
       "task_family": "documentation",
       "uses_internal_references": false,
@@ -482,7 +372,7 @@
       "title": "Documentation Refresh Workflow",
       "summary": "Use this workflow to refresh and reconcile existing repository documentation or standards after the active scope and drift findings are known.",
       "status": "active",
-      "doc_path": "workflows/modules/documentation_refresh.md",
+      "doc_path": "core/workflows/modules/documentation_refresh.md",
       "phase_type": "execution",
       "task_family": "documentation",
       "uses_internal_references": false,
@@ -518,7 +408,7 @@
       "title": "Documentation Review Workflow",
       "summary": "Use this workflow to evaluate documentation or standards for accuracy, structure, operationalization, and cross-surface coherence, then summarize evidence-backed findings clearly.",
       "status": "active",
-      "doc_path": "workflows/modules/documentation_review.md",
+      "doc_path": "core/workflows/modules/documentation_review.md",
       "phase_type": "review",
       "task_family": "documentation_review",
       "uses_internal_references": false,
@@ -559,7 +449,7 @@
       "title": "External Guidance Research Workflow",
       "summary": "Use this workflow to consult authoritative external guidance only when internal repository guidance is incomplete or the active task depends on version-sensitive, domain-specific, regulatory, standards-driven, or vendor-controlled behavior.",
       "status": "active",
-      "doc_path": "workflows/modules/external_guidance_research.md",
+      "doc_path": "core/workflows/modules/external_guidance_research.md",
       "phase_type": "research",
       "task_family": "external_research",
       "uses_internal_references": true,
@@ -610,61 +500,11 @@
       ]
     },
     {
-      "workflow_id": "workflow.feature_design_planning",
-      "title": "Feature Design Planning Workflow",
-      "summary": "Use this workflow to define design options, recommend a technical design, and capture the guardrails that implementation planning must inherit.",
-      "status": "active",
-      "doc_path": "workflows/modules/feature_design_planning.md",
-      "phase_type": "planning",
-      "task_family": "design_planning",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "primary_risks": [
-        "design_gap",
-        "execution_drift"
-      ],
-      "trigger_tags": [
-        "feature",
-        "design",
-        "planning",
-        "define",
-        "options",
-        "recommend",
-        "technical",
-        "capture",
-        "guardrails",
-        "that",
-        "implementation",
-        "must",
-        "inherit",
-        "docs",
-        "standards",
-        "documentation",
-        "standard",
-        "templates",
-        "template",
-        "architecture",
-        "solution"
-      ],
-      "companion_workflow_ids": [
-        "workflow.implementation_planning",
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/templates/feature_design_template.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/templates/feature_design_template.md"
-      ]
-    },
-    {
       "workflow_id": "workflow.foundations_context_review",
       "title": "Foundations Context Review Workflow",
       "summary": "Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.",
       "status": "active",
-      "doc_path": "workflows/modules/foundations_context_review.md",
+      "doc_path": "core/workflows/modules/foundations_context_review.md",
       "phase_type": "inspection",
       "task_family": "foundations_review",
       "uses_internal_references": true,
@@ -726,90 +566,11 @@
       ]
     },
     {
-      "workflow_id": "workflow.github_task_sync",
-      "title": "GitHub Task Sync Workflow",
-      "summary": "Use this workflow to publish local-first task records to GitHub issues and optional project items while preserving local task files as the authoritative source of truth.",
-      "status": "active",
-      "doc_path": "workflows/modules/github_task_sync.md",
-      "phase_type": "execution",
-      "task_family": "github_integration",
-      "uses_internal_references": true,
-      "uses_external_references": true,
-      "primary_risks": [
-        "partial_update",
-        "behavior_regression"
-      ],
-      "trigger_tags": [
-        "github",
-        "task",
-        "sync",
-        "publish",
-        "local",
-        "first",
-        "records",
-        "issues",
-        "optional",
-        "project",
-        "items",
-        "while",
-        "preserving",
-        "files",
-        "authoritative",
-        "source",
-        "truth",
-        "docs",
-        "standards",
-        "governance",
-        "standard",
-        "tracking",
-        "references",
-        "collaboration",
-        "reference",
-        "commands",
-        "core",
-        "python",
-        "watchtower",
-        "tasks",
-        "workflows",
-        "modules",
-        "lifecycle",
-        "management"
-      ],
-      "companion_workflow_ids": [
-        "workflow.task_lifecycle_management",
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/governance/github_task_sync_standard.md",
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/references/github_collaboration_reference.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
-        "workflows/modules/task_lifecycle_management.md"
-      ],
-      "reference_doc_paths": [
-        "docs/references/github_collaboration_reference.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/github_task_sync_standard.md",
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/references/github_collaboration_reference.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
-        "workflows/modules/task_lifecycle_management.md"
-      ],
-      "external_reference_urls": [
-        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository",
-        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
-        "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
-        "https://docs.github.com/en/rest/issues/issues",
-        "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
-      ]
-    },
-    {
       "workflow_id": "workflow.governed_artifact_reconciliation",
       "title": "Governed Artifact Reconciliation Workflow",
       "summary": "Use this workflow to reconcile schema-backed governed artifacts with their companion schemas, examples, registries, indexes, loaders, validators, and lookup surfaces so artifact families stay internally coherent.",
       "status": "active",
-      "doc_path": "workflows/modules/governed_artifact_reconciliation.md",
+      "doc_path": "core/workflows/modules/governed_artifact_reconciliation.md",
       "phase_type": "reconciliation",
       "task_family": "artifact_governance",
       "uses_internal_references": true,
@@ -871,11 +632,543 @@
       ]
     },
     {
+      "workflow_id": "workflow.internal_context_review",
+      "title": "Internal Context Review Workflow",
+      "summary": "Use this workflow to identify the repository-specific standards, templates, workflows, ADRs, and canonical documents that should govern the active task before new local behavior is inferred.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/internal_context_review.md",
+      "phase_type": "inspection",
+      "task_family": "policy_alignment",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "trigger_tags": [
+        "internal",
+        "context",
+        "review",
+        "identify",
+        "repository",
+        "specific",
+        "standards",
+        "templates",
+        "workflows",
+        "adrs",
+        "canonical",
+        "documents",
+        "that",
+        "should",
+        "govern",
+        "active",
+        "task",
+        "before",
+        "new",
+        "local",
+        "behavior",
+        "inferred",
+        "docs",
+        "readme",
+        "policy"
+      ],
+      "companion_workflow_ids": [
+        "workflow.external_guidance_research",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/README.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.reference_distillation",
+      "title": "Reference Distillation Workflow",
+      "summary": "Use this workflow to extract durable local guidance from external source material and map it cleanly to repository needs.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/reference_distillation.md",
+      "phase_type": "research",
+      "task_family": "reference_distillation",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stale_external_guidance",
+        "source_misuse"
+      ],
+      "trigger_tags": [
+        "reference",
+        "distillation",
+        "extract",
+        "durable",
+        "local",
+        "guidance",
+        "external",
+        "source",
+        "material",
+        "map",
+        "cleanly",
+        "repository",
+        "needs",
+        "docs",
+        "standards",
+        "governance",
+        "standard",
+        "documentation",
+        "templates",
+        "template",
+        "distill"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/governance/reference_distillation_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/reference_distillation_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_assessment",
+      "title": "Repository Assessment Workflow",
+      "summary": "Use this workflow to assess an inventoried repository for coherence, authority alignment, freshness, maintainability, validation coverage, operational risk, and developer experience.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/repository_assessment.md",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "trigger_tags": [
+        "repository",
+        "assessment",
+        "assess",
+        "inventoried",
+        "coherence",
+        "authority",
+        "alignment",
+        "freshness",
+        "maintainability",
+        "validation",
+        "coverage",
+        "operational",
+        "risk",
+        "developer",
+        "experience",
+        "health",
+        "risks"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_inventory_review",
+      "title": "Repository Inventory Review Workflow",
+      "summary": "Use this workflow to inventory the repository's major surfaces, authority boundaries, execution paths, and review hotspots before deeper repository assessment begins.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/repository_inventory_review.md",
+      "phase_type": "inspection",
+      "task_family": "repository_review",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "trigger_tags": [
+        "repository",
+        "inventory",
+        "review",
+        "major",
+        "surfaces",
+        "authority",
+        "boundaries",
+        "execution",
+        "paths",
+        "hotspots",
+        "before",
+        "deeper",
+        "assessment",
+        "begins",
+        "structure",
+        "surface"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_assessment",
+        "workflow.repository_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_review",
+      "title": "Repository Review Workflow",
+      "summary": "Use this workflow to synthesize an existing repository review into evidence-backed findings, remediation guidance, and explicit stop-condition evidence.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/repository_review.md",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "trigger_tags": [
+        "repository",
+        "review",
+        "synthesize",
+        "existing",
+        "evidence",
+        "backed",
+        "findings",
+        "remediation",
+        "guidance",
+        "explicit",
+        "stop",
+        "condition",
+        "audit"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_assessment",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_handoff_review",
+      "title": "Task Handoff Review Workflow",
+      "summary": "Use this workflow to confirm that the active task output is coherent, handoff-ready, and accompanied by any needed related-surface updates, follow-up notes, or commit-closeout escalation.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/task_handoff_review.md",
+      "phase_type": "review",
+      "task_family": "handoff",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "trigger_tags": [
+        "task",
+        "handoff",
+        "review",
+        "confirm",
+        "that",
+        "active",
+        "output",
+        "coherent",
+        "ready",
+        "accompanied",
+        "any",
+        "needed",
+        "related",
+        "surface",
+        "updates",
+        "follow",
+        "notes",
+        "commit",
+        "closeout",
+        "escalation",
+        "followup"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_scope_definition",
+      "title": "Task Scope Definition Workflow",
+      "summary": "Use this workflow to define the task objective, scope boundary, and success conditions clearly enough that downstream workflow modules can execute without guessing.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/task_scope_definition.md",
+      "phase_type": "scoping",
+      "task_family": "scope_management",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "scope_drift",
+        "ambiguity_leak"
+      ],
+      "trigger_tags": [
+        "task",
+        "scope",
+        "definition",
+        "define",
+        "objective",
+        "boundary",
+        "success",
+        "conditions",
+        "clearly",
+        "enough",
+        "that",
+        "downstream",
+        "modules",
+        "can",
+        "execute",
+        "without",
+        "guessing"
+      ],
+      "companion_workflow_ids": [
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Workflow",
+      "summary": "Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.",
+      "status": "active",
+      "doc_path": "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+      "phase_type": "reconciliation",
+      "task_family": "artifact_acceptance",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "trigger_tags": [
+        "acceptance",
+        "evidence",
+        "reconciliation",
+        "reconcile",
+        "prd",
+        "ids",
+        "contracts",
+        "validation",
+        "validator",
+        "references",
+        "traceability",
+        "layer",
+        "one",
+        "traced",
+        "initiative",
+        "docs",
+        "standards",
+        "data",
+        "contract",
+        "standard",
+        "commands",
+        "core",
+        "python",
+        "watchtower",
+        "validate"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.decision_capture",
+      "title": "Decision Capture Workflow",
+      "summary": "Use this workflow to analyze viable options and record a durable repository decision with rationale, status, and downstream impacts.",
+      "status": "active",
+      "doc_path": "plan/workflows/modules/decision_capture.md",
+      "phase_type": "planning",
+      "task_family": "decision_management",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "trigger_tags": [
+        "decision",
+        "capture",
+        "analyze",
+        "viable",
+        "options",
+        "record",
+        "durable",
+        "repository",
+        "with",
+        "rationale",
+        "status",
+        "downstream",
+        "impacts",
+        "docs",
+        "standards",
+        "governance",
+        "standard",
+        "documentation",
+        "templates",
+        "template",
+        "adr",
+        "tradeoff"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.feature_design_planning",
+      "title": "Feature Design Planning Workflow",
+      "summary": "Use this workflow to define design options, recommend a technical design, and capture the guardrails that implementation planning must inherit.",
+      "status": "active",
+      "doc_path": "plan/workflows/modules/feature_design_planning.md",
+      "phase_type": "planning",
+      "task_family": "design_planning",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "trigger_tags": [
+        "feature",
+        "design",
+        "planning",
+        "define",
+        "options",
+        "recommend",
+        "technical",
+        "capture",
+        "guardrails",
+        "that",
+        "implementation",
+        "must",
+        "inherit",
+        "docs",
+        "standards",
+        "documentation",
+        "standard",
+        "templates",
+        "template",
+        "architecture",
+        "solution"
+      ],
+      "companion_workflow_ids": [
+        "workflow.implementation_planning",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.github_task_sync",
+      "title": "GitHub Task Sync Workflow",
+      "summary": "Use this workflow to publish local-first task records to GitHub issues and optional project items while preserving local task files as the authoritative source of truth.",
+      "status": "active",
+      "doc_path": "plan/workflows/modules/github_task_sync.md",
+      "phase_type": "execution",
+      "task_family": "github_integration",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "trigger_tags": [
+        "github",
+        "task",
+        "sync",
+        "publish",
+        "local",
+        "first",
+        "records",
+        "issues",
+        "optional",
+        "project",
+        "items",
+        "while",
+        "preserving",
+        "files",
+        "authoritative",
+        "source",
+        "truth",
+        "docs",
+        "standards",
+        "governance",
+        "standard",
+        "tracking",
+        "references",
+        "collaboration",
+        "reference",
+        "commands",
+        "core",
+        "python",
+        "watchtower",
+        "tasks",
+        "plan",
+        "workflows",
+        "modules",
+        "lifecycle",
+        "management"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_handoff_review"
+      ],
+      "related_paths": [
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "plan/workflows/modules/task_lifecycle_management.md"
+      ],
+      "reference_doc_paths": [
+        "docs/references/github_collaboration_reference.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "plan/workflows/modules/task_lifecycle_management.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository",
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
+        "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
+        "https://docs.github.com/en/rest/issues/issues",
+        "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
+      ]
+    },
+    {
       "workflow_id": "workflow.implementation_planning",
       "title": "Implementation Planning Workflow",
       "summary": "Use this workflow to turn approved planning inputs into an actionable implementation plan with a work breakdown, validation strategy, and delivery sequence.",
       "status": "active",
-      "doc_path": "workflows/modules/implementation_planning.md",
+      "doc_path": "plan/workflows/modules/implementation_planning.md",
       "phase_type": "planning",
       "task_family": "implementation_planning",
       "uses_internal_references": true,
@@ -925,7 +1218,7 @@
       "title": "Initiative Closeout Workflow",
       "summary": "Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index, initiative coordination view, and mirrored family trackers aligned.",
       "status": "active",
-      "doc_path": "workflows/modules/initiative_closeout.md",
+      "doc_path": "plan/workflows/modules/initiative_closeout.md",
       "phase_type": "closeout",
       "task_family": "initiative_closeout",
       "uses_internal_references": true,
@@ -984,63 +1277,11 @@
       ]
     },
     {
-      "workflow_id": "workflow.internal_context_review",
-      "title": "Internal Context Review Workflow",
-      "summary": "Use this workflow to identify the repository-specific standards, templates, workflows, ADRs, and canonical documents that should govern the active task before new local behavior is inferred.",
-      "status": "active",
-      "doc_path": "workflows/modules/internal_context_review.md",
-      "phase_type": "inspection",
-      "task_family": "policy_alignment",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "primary_risks": [
-        "stale_context",
-        "hidden_dependencies"
-      ],
-      "trigger_tags": [
-        "internal",
-        "context",
-        "review",
-        "identify",
-        "repository",
-        "specific",
-        "standards",
-        "templates",
-        "workflows",
-        "adrs",
-        "canonical",
-        "documents",
-        "that",
-        "should",
-        "govern",
-        "active",
-        "task",
-        "before",
-        "new",
-        "local",
-        "behavior",
-        "inferred",
-        "docs",
-        "readme",
-        "policy"
-      ],
-      "companion_workflow_ids": [
-        "workflow.external_guidance_research",
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/README.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/README.md"
-      ]
-    },
-    {
       "workflow_id": "workflow.prd_generation",
       "title": "PRD Generation Workflow",
       "summary": "Use this workflow to turn a scoped planning request into a review-ready product requirements document (PRD).",
       "status": "active",
-      "doc_path": "workflows/modules/prd_generation.md",
+      "doc_path": "plan/workflows/modules/prd_generation.md",
       "phase_type": "planning",
       "task_family": "product_planning",
       "uses_internal_references": true,
@@ -1081,212 +1322,11 @@
       ]
     },
     {
-      "workflow_id": "workflow.reference_distillation",
-      "title": "Reference Distillation Workflow",
-      "summary": "Use this workflow to extract durable local guidance from external source material and map it cleanly to repository needs.",
-      "status": "active",
-      "doc_path": "workflows/modules/reference_distillation.md",
-      "phase_type": "research",
-      "task_family": "reference_distillation",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "primary_risks": [
-        "stale_external_guidance",
-        "source_misuse"
-      ],
-      "trigger_tags": [
-        "reference",
-        "distillation",
-        "extract",
-        "durable",
-        "local",
-        "guidance",
-        "external",
-        "source",
-        "material",
-        "map",
-        "cleanly",
-        "repository",
-        "needs",
-        "docs",
-        "standards",
-        "governance",
-        "standard",
-        "documentation",
-        "templates",
-        "template",
-        "distill"
-      ],
-      "companion_workflow_ids": [
-        "workflow.task_handoff_review"
-      ],
-      "related_paths": [
-        "docs/standards/governance/reference_distillation_standard.md",
-        "docs/standards/documentation/reference_md_standard.md",
-        "docs/templates/reference_template.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/reference_distillation_standard.md",
-        "docs/standards/documentation/reference_md_standard.md",
-        "docs/templates/reference_template.md"
-      ]
-    },
-    {
-      "workflow_id": "workflow.repository_assessment",
-      "title": "Repository Assessment Workflow",
-      "summary": "Use this workflow to assess an inventoried repository for coherence, authority alignment, freshness, maintainability, validation coverage, operational risk, and developer experience.",
-      "status": "active",
-      "doc_path": "workflows/modules/repository_assessment.md",
-      "phase_type": "review",
-      "task_family": "repository_review",
-      "uses_internal_references": false,
-      "uses_external_references": false,
-      "primary_risks": [
-        "unprioritized_findings",
-        "release_misalignment"
-      ],
-      "trigger_tags": [
-        "repository",
-        "assessment",
-        "assess",
-        "inventoried",
-        "coherence",
-        "authority",
-        "alignment",
-        "freshness",
-        "maintainability",
-        "validation",
-        "coverage",
-        "operational",
-        "risk",
-        "developer",
-        "experience",
-        "health",
-        "risks"
-      ],
-      "companion_workflow_ids": [
-        "workflow.repository_inventory_review",
-        "workflow.repository_review",
-        "workflow.task_handoff_review"
-      ]
-    },
-    {
-      "workflow_id": "workflow.repository_inventory_review",
-      "title": "Repository Inventory Review Workflow",
-      "summary": "Use this workflow to inventory the repository's major surfaces, authority boundaries, execution paths, and review hotspots before deeper repository assessment begins.",
-      "status": "active",
-      "doc_path": "workflows/modules/repository_inventory_review.md",
-      "phase_type": "inspection",
-      "task_family": "repository_review",
-      "uses_internal_references": false,
-      "uses_external_references": false,
-      "primary_risks": [
-        "stale_context",
-        "hidden_dependencies"
-      ],
-      "trigger_tags": [
-        "repository",
-        "inventory",
-        "review",
-        "major",
-        "surfaces",
-        "authority",
-        "boundaries",
-        "execution",
-        "paths",
-        "hotspots",
-        "before",
-        "deeper",
-        "assessment",
-        "begins",
-        "structure",
-        "surface"
-      ],
-      "companion_workflow_ids": [
-        "workflow.repository_assessment",
-        "workflow.repository_review",
-        "workflow.task_handoff_review"
-      ]
-    },
-    {
-      "workflow_id": "workflow.repository_review",
-      "title": "Repository Review Workflow",
-      "summary": "Use this workflow to synthesize an existing repository review into evidence-backed findings, remediation guidance, and explicit stop-condition evidence.",
-      "status": "active",
-      "doc_path": "workflows/modules/repository_review.md",
-      "phase_type": "review",
-      "task_family": "repository_review",
-      "uses_internal_references": false,
-      "uses_external_references": false,
-      "primary_risks": [
-        "unprioritized_findings",
-        "release_misalignment"
-      ],
-      "trigger_tags": [
-        "repository",
-        "review",
-        "synthesize",
-        "existing",
-        "evidence",
-        "backed",
-        "findings",
-        "remediation",
-        "guidance",
-        "explicit",
-        "stop",
-        "condition",
-        "audit"
-      ],
-      "companion_workflow_ids": [
-        "workflow.repository_inventory_review",
-        "workflow.repository_assessment",
-        "workflow.task_handoff_review"
-      ]
-    },
-    {
-      "workflow_id": "workflow.task_handoff_review",
-      "title": "Task Handoff Review Workflow",
-      "summary": "Use this workflow to confirm that the active task output is coherent, handoff-ready, and accompanied by any needed related-surface updates, follow-up notes, or commit-closeout escalation.",
-      "status": "active",
-      "doc_path": "workflows/modules/task_handoff_review.md",
-      "phase_type": "review",
-      "task_family": "handoff",
-      "uses_internal_references": false,
-      "uses_external_references": false,
-      "primary_risks": [
-        "unprioritized_findings",
-        "release_misalignment"
-      ],
-      "trigger_tags": [
-        "task",
-        "handoff",
-        "review",
-        "confirm",
-        "that",
-        "active",
-        "output",
-        "coherent",
-        "ready",
-        "accompanied",
-        "any",
-        "needed",
-        "related",
-        "surface",
-        "updates",
-        "follow",
-        "notes",
-        "commit",
-        "closeout",
-        "escalation",
-        "followup"
-      ]
-    },
-    {
       "workflow_id": "workflow.task_lifecycle_management",
       "title": "Task Lifecycle Management Workflow",
       "summary": "Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, initiative coordination view, and traced planning joins aligned.",
       "status": "active",
-      "doc_path": "workflows/modules/task_lifecycle_management.md",
+      "doc_path": "plan/workflows/modules/task_lifecycle_management.md",
       "phase_type": "execution",
       "task_family": "task_management",
       "uses_internal_references": true,
@@ -1354,7 +1394,7 @@
       "title": "Task Phase Transition Workflow",
       "summary": "Use this workflow to hand a task from one owner, phase, or execution stage to the next, including explicit successor tasks, without losing context, dependencies, or trace links.",
       "status": "active",
-      "doc_path": "workflows/modules/task_phase_transition.md",
+      "doc_path": "plan/workflows/modules/task_phase_transition.md",
       "phase_type": "execution",
       "task_family": "task_management",
       "uses_internal_references": true,
@@ -1391,6 +1431,7 @@
         "traceability",
         "initiative",
         "closeout",
+        "plan",
         "workflows",
         "modules",
         "lifecycle",
@@ -1406,53 +1447,14 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
-        "workflows/modules/task_lifecycle_management.md"
+        "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
-        "workflows/modules/task_lifecycle_management.md"
-      ]
-    },
-    {
-      "workflow_id": "workflow.task_scope_definition",
-      "title": "Task Scope Definition Workflow",
-      "summary": "Use this workflow to define the task objective, scope boundary, and success conditions clearly enough that downstream workflow modules can execute without guessing.",
-      "status": "active",
-      "doc_path": "workflows/modules/task_scope_definition.md",
-      "phase_type": "scoping",
-      "task_family": "scope_management",
-      "uses_internal_references": false,
-      "uses_external_references": false,
-      "primary_risks": [
-        "scope_drift",
-        "ambiguity_leak"
-      ],
-      "trigger_tags": [
-        "task",
-        "scope",
-        "definition",
-        "define",
-        "objective",
-        "boundary",
-        "success",
-        "conditions",
-        "clearly",
-        "enough",
-        "that",
-        "downstream",
-        "modules",
-        "can",
-        "execute",
-        "without",
-        "guessing"
-      ],
-      "companion_workflow_ids": [
-        "workflow.current_state_inspection",
-        "workflow.internal_context_review",
-        "workflow.task_handoff_review"
+        "plan/workflows/modules/task_lifecycle_management.md"
       ]
     },
     {
@@ -1460,7 +1462,7 @@
       "title": "Traceability Reconciliation Workflow",
       "summary": "Use this workflow to reconcile traced planning and governance artifacts with their companion human trackers, initiative coordination views, family-specific indexes, and unified traceability joins so durable links do not drift silently.",
       "status": "active",
-      "doc_path": "workflows/modules/traceability_reconciliation.md",
+      "doc_path": "plan/workflows/modules/traceability_reconciliation.md",
       "phase_type": "reconciliation",
       "task_family": "traceability",
       "uses_internal_references": true,

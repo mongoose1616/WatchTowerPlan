@@ -190,14 +190,14 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
                         score=0.9,
                         matched_keywords=("review",),
                         required_workflow_ids=("workflow.repository_review",),
-                        required_workflow_paths=("workflows/modules/repository_review.md",),
+                        required_workflow_paths=("core/workflows/modules/repository_review.md",),
                     ),
                 ),
                 selected_workflows=(
                     SimpleNamespace(
                         workflow_id="workflow.repository_review",
                         title="Repository Review",
-                        doc_path="workflows/modules/repository_review.md",
+                        doc_path="core/workflows/modules/repository_review.md",
                         phase_type="assessment",
                         task_family="review",
                     ),

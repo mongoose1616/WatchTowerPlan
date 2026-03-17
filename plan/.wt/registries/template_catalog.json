@@ -143,7 +143,6 @@
       },
       "llm_guidance_mode": "advisory",
       "allowed_roots": [
-        "workflows/modules",
         "plan/workflows/modules"
       ]
     },

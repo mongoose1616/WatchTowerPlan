@@ -642,7 +642,7 @@ def test_control_plane_loader_reads_route_index() -> None:
     assert route_index.artifact_id == "index.routes"
     assert entry.task_type == "Code Review"
     assert "workflow.code_review" in entry.required_workflow_ids
-    assert "workflows/modules/code_review.md" in entry.required_workflow_paths
+    assert "core/workflows/modules/code_review.md" in entry.required_workflow_paths
 
 
 def test_control_plane_loader_reads_traceability_index() -> None:
@@ -713,7 +713,7 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
     assert "workflow" in standard.operationalization_modes
     assert ".github/" in standard.operationalization_paths
-    assert workflow.doc_path == "workflows/modules/github_task_sync.md"
+    assert workflow.doc_path == "plan/workflows/modules/github_task_sync.md"
     assert workflow.phase_type == "execution"
     assert workflow.task_family == "github_integration"
     assert workflow.uses_internal_references is True

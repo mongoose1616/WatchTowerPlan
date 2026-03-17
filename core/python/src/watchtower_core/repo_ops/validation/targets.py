@@ -24,7 +24,7 @@ from watchtower_core.repo_ops.sync.reference_index import (
     REFERENCE_EXCLUDED_NAMES,
 )
 from watchtower_core.repo_ops.sync.standard_index import STANDARD_DOC_ROOT, STANDARD_EXCLUDED_NAMES
-from watchtower_core.repo_ops.sync.workflow_index import WORKFLOW_DOC_ROOT, WORKFLOW_EXCLUDED_NAMES
+from watchtower_core.repo_ops.sync.workflow_index import WORKFLOW_DOC_ROOTS, WORKFLOW_EXCLUDED_NAMES
 from watchtower_core.repo_ops.task_documents import (
     TASK_CLOSED_ROOT,
     TASK_EXCLUDED_NAMES,
@@ -116,10 +116,10 @@ def document_semantics_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
         for path in sorted(standards_root.rglob("*.md"))
         if path.name not in STANDARD_EXCLUDED_NAMES
     )
-    workflows_root = repo_root / WORKFLOW_DOC_ROOT
     workflows = tuple(
         path.relative_to(repo_root).as_posix()
-        for path in sorted(workflows_root.glob("*.md"))
+        for workflow_root in WORKFLOW_DOC_ROOTS
+        for path in sorted((repo_root / workflow_root).glob("*.md"))
         if path.name not in WORKFLOW_EXCLUDED_NAMES
     )
     return (

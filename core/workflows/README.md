@@ -1,17 +1,17 @@
 # `core/workflows`
 
 ## Description
-`This directory is the human entrypoint for future core-owned workflow guidance. In the current tranche it exists as a governed router surface while the canonical workflow backend still lives at the repository root.`
+`This directory is the authoritative reusable-core workflow root. It holds shared routing guidance and reusable workflow modules for core implementation, review, validation, documentation, and repository-governance work.`
 
 ## Paths
 | Path | Description |
 |---|---|
 | `core/workflows/README.md` | Describes the purpose of the core workflow root and its current migration boundary. |
 | `core/workflows/AGENTS.md` | Defines local instructions for future core-owned workflow guidance. |
-| `core/workflows/ROUTING_TABLE.md` | Thin router surface that points to the current canonical routing backend. |
-| `core/workflows/modules/README.md` | Explains the current status of core-owned workflow-module migration. |
+| `core/workflows/ROUTING_TABLE.md` | Defines the reusable-core task routes and shared workflow-module selection rules. |
+| `core/workflows/modules/README.md` | Explains the authoritative core workflow-module set. |
 
 ## Notes
-- `requirements.md` and `decisions.md` remain authoritative while the workflow-root split is still incomplete.
-- The canonical routing backend remains `workflows/ROUTING_TABLE.md` plus `workflows/modules/` until a later slice explicitly moves that authority.
-- Treat this root as a deliberate human-surface contract, not as a duplicate backend.
+- `requirements.md` and `decisions.md` remain authoritative for the remaining workflow split details.
+- Shared reusable workflow modules live under `core/workflows/modules/`.
+- Plan-domain routing lives under `plan/workflows/` and may reference shared modules from this root.

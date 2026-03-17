@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "title": "Plan Workflow Root Authority Split",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T18:55:30Z",
+      "key_surface_path": "plan/initiatives/plan_workflow_root_authority_split/plan.md",
+      "closure_reason": "Delivered the split workflow routing tables, domain-owned workflow module roots, runtime index rebuilds, and human guidance cutover required by requirements.md and decisions.md."
+    },
+    {
       "trace_id": "trace.plan_core_documentation_template_authority_foundation",
       "title": "Plan Core Documentation Template Authority Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T17:13:00Z",
       "key_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md",
       "closure_reason": "Delivered the lifecycle-stage, review-status, and source-type registries, typed planning vocabulary helper, and runtime alignment coverage for plan workspace lifecycle semantics."
-    },
-    {
-      "trace_id": "trace.plan_governance_surface_resolver_helper",
-      "title": "Plan Governance Surface Resolver Helper",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T16:41:00Z",
-      "key_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/plan.md",
-      "closure_reason": "Delivered the governance surface resolver helper and unit coverage for pack-declared and governance-map surface resolution."
     }
   ]
 }

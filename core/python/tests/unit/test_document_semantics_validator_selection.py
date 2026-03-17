@@ -20,7 +20,7 @@ from watchtower_core.validation.errors import ValidationSelectionError
 def test_document_semantics_validation_auto_selects_workflow_validator() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
-    result = service.validate("workflows/modules/code_validation.md")
+    result = service.validate("core/workflows/modules/code_validation.md")
 
     assert result.passed is True
     assert result.validator_id == "validator.documentation.workflow_semantics"
@@ -72,7 +72,7 @@ def test_document_semantics_validation_rejects_heading_after_list_without_blank_
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    workflow_path = repo_root / "workflows/modules/code_validation.md"
+    workflow_path = repo_root / "core/workflows/modules/code_validation.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     workflow_path.write_text(
         dedent(
@@ -104,7 +104,7 @@ def test_document_semantics_validation_rejects_heading_after_list_without_blank_
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("workflows/modules/code_validation.md")
+    result = service.validate("core/workflows/modules/code_validation.md")
 
     assert result.passed is False
     assert result.validator_id == "validator.documentation.workflow_semantics"
@@ -116,7 +116,7 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    workflow_path = repo_root / "workflows/modules/example_workflow.md"
+    workflow_path = repo_root / "core/workflows/modules/example_workflow.md"
     missing_target = repo_root / "docs/references/missing_reference.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     workflow_path.write_text(
@@ -153,7 +153,7 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("workflows/modules/example_workflow.md")
+    result = service.validate("core/workflows/modules/example_workflow.md")
 
     assert result.passed is False
     assert result.issue_count == 1

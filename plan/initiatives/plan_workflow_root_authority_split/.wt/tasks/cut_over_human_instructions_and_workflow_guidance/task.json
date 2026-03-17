@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_workflow_root_authority_split.cut_over_human_instructions_and_workflow_guidance",
+  "slug": "cut_over_human_instructions_and_workflow_guidance",
+  "initiative_id": "initiative.plan_workflow_root_authority_split",
+  "title": "Cut over human instructions and workflow guidance",
+  "summary": "Update AGENTS, README, policy, registry, and standards surfaces so human routing no longer treats repo-root workflows/ as the authoritative backend.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T18:26:19Z",
+  "updated_at": "2026-03-17T18:52:42Z",
+  "dependency_task_ids": [
+    "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain",
+    "task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

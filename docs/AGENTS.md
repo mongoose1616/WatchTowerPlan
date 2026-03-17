@@ -12,7 +12,7 @@
 
 ## Routing
 - Read this file before working in `docs/**`.
-- Use [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md) for task classification and workflow-module selection.
+- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/core/workflows/ROUTING_TABLE.md) for generic documentation routes and [ROUTING_TABLE.md](/home/j/WatchTowerPlan/plan/workflows/ROUTING_TABLE.md) when the work is on live planning or plan-pack workflow surfaces.
 - Inherit repository routing from the root [AGENTS.md](/AGENTS.md).
 - Do not turn this file into a second routing table.
 
@@ -38,4 +38,4 @@
 ## Do Not
 - Do not reintroduce predecessor-repo framing into normal docs.
 - Do not turn documentation files into mixed-purpose catch-all notes.
-- Do not move workflow execution procedure out of `workflows/**` unless the document is itself a workflow module.
+- Do not move workflow execution procedure out of `core/workflows/**` or `plan/workflows/**` unless the document is itself a workflow module.

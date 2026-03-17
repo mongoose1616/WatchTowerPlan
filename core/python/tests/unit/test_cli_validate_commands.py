@@ -95,7 +95,7 @@ def test_validate_document_semantics_supports_json_output(capsys) -> None:
             "validate",
             "document-semantics",
             "--path",
-            "workflows/modules/code_validation.md",
+            "core/workflows/modules/code_validation.md",
             "--format",
             "json",
         ]

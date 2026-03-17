@@ -31,7 +31,7 @@ from watchtower_core.repo_ops.planning_documents import (
 from watchtower_core.repo_ops.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
-WORKFLOW_DOC_ROOT = "workflows/modules"
+WORKFLOW_DOC_ROOTS = ("core/workflows/modules", "plan/workflows/modules")
 WORKFLOW_EXCLUDED_NAMES = {"README.md"}
 WORKFLOW_REQUIRED_SECTIONS = (
     "Purpose",
@@ -46,8 +46,9 @@ WORKFLOW_ADDITIONAL_LOAD_SECTION = "Additional Files to Load"
 WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS = 5
 WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
     "AGENTS.md",
-    "workflows/ROUTING_TABLE.md",
-    "workflows/modules/core.md",
+    "core/workflows/ROUTING_TABLE.md",
+    "plan/workflows/ROUTING_TABLE.md",
+    "core/workflows/modules/core.md",
     "docs/standards/workflows/workflow_design_standard.md",
     "docs/standards/workflows/routing_and_context_loading_standard.md",
     "docs/standards/documentation/workflow_md_standard.md",
@@ -363,54 +364,65 @@ class WorkflowIndexSyncService:
         )
         entries: list[dict[str, object]] = []
 
-        workflow_root = self._repo_root / WORKFLOW_DOC_ROOT
-        for path in sorted(workflow_root.glob("*.md")):
-            if path.name in WORKFLOW_EXCLUDED_NAMES:
+        seen_workflow_ids: set[str] = set()
+        for workflow_root_relative in WORKFLOW_DOC_ROOTS:
+            workflow_root = self._repo_root / workflow_root_relative
+            if not workflow_root.exists():
                 continue
 
-            relative_path = path.relative_to(self._repo_root).as_posix()
-            workflow = load_workflow_document_with_reference_map(
-                self._loader,
-                relative_path,
-                metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
-                reference_urls_by_path=workflow_context.reference_urls_by_path,
-            )
-            current = existing_entries.get(workflow.workflow_id, {})
-            aliases = ordered_unique(_tuple_of_strings(current.get("aliases")))
-            tags = ordered_unique(_tuple_of_strings(current.get("tags")))
-            notes = _optional_string(current.get("notes"))
+            for path in sorted(workflow_root.glob("*.md")):
+                if path.name in WORKFLOW_EXCLUDED_NAMES:
+                    continue
 
-            entry: dict[str, object] = {
-                "workflow_id": workflow.workflow_id,
-                "title": workflow.title,
-                "summary": workflow.summary,
-                "status": "active",
-                "doc_path": workflow.relative_path,
-                "phase_type": workflow.phase_type,
-                "task_family": workflow.task_family,
-                "uses_internal_references": workflow.uses_internal_references,
-                "uses_external_references": workflow.uses_external_references,
-                "primary_risks": list(workflow.primary_risks),
-                "trigger_tags": list(workflow.trigger_tags),
-            }
-            if workflow.companion_workflow_ids:
-                entry["companion_workflow_ids"] = list(workflow.companion_workflow_ids)
-            if workflow.related_paths:
-                entry["related_paths"] = list(workflow.related_paths)
-            if workflow.reference_doc_paths:
-                entry["reference_doc_paths"] = list(workflow.reference_doc_paths)
-            if workflow.internal_reference_paths:
-                entry["internal_reference_paths"] = list(workflow.internal_reference_paths)
-            if workflow.external_reference_urls:
-                entry["external_reference_urls"] = list(workflow.external_reference_urls)
-            if aliases:
-                entry["aliases"] = list(aliases)
-            if tags:
-                entry["tags"] = list(tags)
-            if notes is not None:
-                entry["notes"] = notes
+                relative_path = path.relative_to(self._repo_root).as_posix()
+                workflow = load_workflow_document_with_reference_map(
+                    self._loader,
+                    relative_path,
+                    metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
+                    reference_urls_by_path=workflow_context.reference_urls_by_path,
+                )
+                if workflow.workflow_id in seen_workflow_ids:
+                    raise ValueError(
+                        f"Duplicate workflow_id {workflow.workflow_id} detected across split workflow roots."
+                    )
+                seen_workflow_ids.add(workflow.workflow_id)
 
-            entries.append(entry)
+                current = existing_entries.get(workflow.workflow_id, {})
+                aliases = ordered_unique(_tuple_of_strings(current.get("aliases")))
+                tags = ordered_unique(_tuple_of_strings(current.get("tags")))
+                notes = _optional_string(current.get("notes"))
+
+                entry: dict[str, object] = {
+                    "workflow_id": workflow.workflow_id,
+                    "title": workflow.title,
+                    "summary": workflow.summary,
+                    "status": "active",
+                    "doc_path": workflow.relative_path,
+                    "phase_type": workflow.phase_type,
+                    "task_family": workflow.task_family,
+                    "uses_internal_references": workflow.uses_internal_references,
+                    "uses_external_references": workflow.uses_external_references,
+                    "primary_risks": list(workflow.primary_risks),
+                    "trigger_tags": list(workflow.trigger_tags),
+                }
+                if workflow.companion_workflow_ids:
+                    entry["companion_workflow_ids"] = list(workflow.companion_workflow_ids)
+                if workflow.related_paths:
+                    entry["related_paths"] = list(workflow.related_paths)
+                if workflow.reference_doc_paths:
+                    entry["reference_doc_paths"] = list(workflow.reference_doc_paths)
+                if workflow.internal_reference_paths:
+                    entry["internal_reference_paths"] = list(workflow.internal_reference_paths)
+                if workflow.external_reference_urls:
+                    entry["external_reference_urls"] = list(workflow.external_reference_urls)
+                if aliases:
+                    entry["aliases"] = list(aliases)
+                if tags:
+                    entry["tags"] = list(tags)
+                if notes is not None:
+                    entry["notes"] = notes
+
+                entries.append(entry)
 
         self._validate_companion_links(entries)
 

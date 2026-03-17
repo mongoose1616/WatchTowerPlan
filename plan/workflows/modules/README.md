@@ -1,8 +1,8 @@
 # `plan/workflows/modules`
 
 ## Description
-`This directory reserves the future home for plan-owned workflow modules.`
+`This directory holds the authoritative plan-owned workflow modules for initiative, project, promotion, traceability, and plan-task procedures.`
 
 ## Notes
-- The canonical module set still lives under `workflows/modules/`.
-- Keep this directory as a thin router surface until a later slice moves plan-owned workflow modules here explicitly.
+- Shared reusable workflow modules still live under `core/workflows/modules/`.
+- Repo-root `workflows/modules/` is now a compatibility surface, not the authoritative source for these modules.

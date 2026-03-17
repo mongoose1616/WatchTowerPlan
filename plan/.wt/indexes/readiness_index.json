@@ -231,6 +231,21 @@
       "updated_at": "2026-03-17T15:35:00Z"
     },
     {
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "title": "Plan Workflow Root Authority Split",
+      "initiative_root": "plan/initiatives/plan_workflow_root_authority_split",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T18:55:30Z"
+    },
+    {
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "project_id": "project.watchtower",
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",

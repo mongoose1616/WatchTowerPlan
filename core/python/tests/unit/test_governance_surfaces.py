@@ -26,7 +26,7 @@ def test_governance_surface_resolver_resolves_governance_map_surface() -> None:
 
     resolution = resolver.resolve("routing_table")
 
-    assert resolution.path == "workflows/ROUTING_TABLE.md"
+    assert resolution.path == "core/workflows/ROUTING_TABLE.md"
     assert resolution.authoritative is True
     assert resolution.rebuildable is False
     assert resolution.declaration_sources == ("governance_surface_map",)

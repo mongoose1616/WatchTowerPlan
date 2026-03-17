@@ -1,17 +1,17 @@
 # `plan/workflows`
 
 ## Description
-`This directory is the human workflow entrypoint for the live plan domain. Use it to find the plan-side workflow starting points and migration notes for routed execution while the canonical routing table and workflow modules still live under the repository-root workflows tree.`
+`This directory is the authoritative workflow root for the live plan domain. Use it for initiative, project, promotion, traceability, and plan-specific task procedures, while reusing shared modules from core/workflows where appropriate.`
 
 ## Paths
 | Path | Description |
 |---|---|
 | `plan/workflows/README.md` | Describes the purpose of the plan workflow entrypoint and its current migration boundary. |
 | `plan/workflows/AGENTS.md` | Defines local instructions for plan-domain workflow guidance surfaces. |
-| `plan/workflows/ROUTING_TABLE.md` | Thin router surface that points to the current canonical routing backend. |
-| `plan/workflows/modules/README.md` | Explains the current status of plan-owned workflow-module migration. |
+| `plan/workflows/ROUTING_TABLE.md` | Defines plan-domain task routes and the required workflow modules for those routes. |
+| `plan/workflows/modules/README.md` | Explains the authoritative plan-owned workflow-module set. |
 
 ## Notes
 - Start here when the main question is how live plan work should be routed or narrated for humans.
-- The canonical routing backend remains [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) plus the modules under [workflows/modules](/home/j/WatchTowerPlan/workflows/modules) until a later slice completes the workflow-root split.
-- This directory is intentionally thin in the current cutover step: it publishes the plan-domain start-here surface, a local routing-table router, and a reserved modules root without duplicating the underlying workflow engine.
+- Shared reusable workflow modules remain under `core/workflows/modules/`.
+- Plan-specific routing and workflow modules are authoritative here.

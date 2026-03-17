@@ -10,9 +10,13 @@ from watchtower_core.adapters import parse_markdown_table
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 
-ROUTING_TABLE_DOCUMENT_PATH = "workflows/ROUTING_TABLE.md"
+ROUTING_TABLE_DOCUMENT_PATHS = (
+    "core/workflows/ROUTING_TABLE.md",
+    "plan/workflows/ROUTING_TABLE.md",
+)
 ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.json"
 _ROUTE_TABLE_HEADER = "| Task Type | Trigger Keywords (Examples) | Required Workflows |"
+_WORKFLOW_PATH_PATTERN = re.compile(r"^(?:core|plan)/workflows/modules/.+\.md$")
 
 
 def _route_id(task_type: str) -> str:
@@ -22,9 +26,9 @@ def _route_id(task_type: str) -> str:
 
 def _workflow_path(path: str) -> str:
     candidate = path.strip().strip("`")
-    if not candidate.startswith("modules/"):
+    if not _WORKFLOW_PATH_PATTERN.match(candidate):
         raise ValueError(f"Route index found unexpected workflow path entry: {path}")
-    return f"workflows/{candidate}"
+    return candidate
 
 
 def _workflow_id(workflow_path: str) -> str:
@@ -64,49 +68,60 @@ class RouteIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:
-        routing_markdown = (self._repo_root / ROUTING_TABLE_DOCUMENT_PATH).read_text(
-            encoding="utf-8"
-        )
-        rows = parse_markdown_table(_extract_route_table(routing_markdown))
         entries: list[dict[str, object]] = []
+        seen_route_ids: set[str] = set()
+        seen_task_types: set[str] = set()
 
-        for row in rows:
-            task_type = row["Task Type"].strip()
-            trigger_keywords = tuple(
-                keyword.strip()
-                for keyword in row["Trigger Keywords (Examples)"].split(",")
-                if keyword.strip()
+        for routing_table_path in ROUTING_TABLE_DOCUMENT_PATHS:
+            routing_markdown = (self._repo_root / routing_table_path).read_text(
+                encoding="utf-8"
             )
-            required_workflow_paths = tuple(
-                _workflow_path(item)
-                for item in row["Required Workflows"].split(",")
-                if item.strip()
-            )
-            required_workflow_ids = tuple(
-                _workflow_id(path) for path in required_workflow_paths
-            )
+            rows = parse_markdown_table(_extract_route_table(routing_markdown))
 
-            if not trigger_keywords:
-                raise ValueError(f"Route row is missing trigger keywords: {task_type}")
-            if not required_workflow_paths:
-                raise ValueError(f"Route row is missing required workflows: {task_type}")
+            for row in rows:
+                task_type = row["Task Type"].strip()
+                route_id = _route_id(task_type)
+                trigger_keywords = tuple(
+                    keyword.strip()
+                    for keyword in row["Trigger Keywords (Examples)"].split(",")
+                    if keyword.strip()
+                )
+                required_workflow_paths = tuple(
+                    _workflow_path(item)
+                    for item in row["Required Workflows"].split(",")
+                    if item.strip()
+                )
+                required_workflow_ids = tuple(
+                    _workflow_id(path) for path in required_workflow_paths
+                )
 
-            for workflow_path in required_workflow_paths:
-                if not (self._repo_root / workflow_path).exists():
+                if not trigger_keywords:
+                    raise ValueError(f"Route row is missing trigger keywords: {task_type}")
+                if not required_workflow_paths:
+                    raise ValueError(f"Route row is missing required workflows: {task_type}")
+                if route_id in seen_route_ids or task_type in seen_task_types:
                     raise ValueError(
-                        f"Route row points to a missing workflow module: {task_type} -> "
-                        f"{workflow_path}"
+                        f"Duplicate route entry detected while combining split routing tables: {task_type}"
                     )
+                seen_route_ids.add(route_id)
+                seen_task_types.add(task_type)
 
-            entries.append(
-                {
-                    "route_id": _route_id(task_type),
-                    "task_type": task_type,
-                    "trigger_keywords": list(trigger_keywords),
-                    "required_workflow_ids": list(required_workflow_ids),
-                    "required_workflow_paths": list(required_workflow_paths),
-                }
-            )
+                for workflow_path in required_workflow_paths:
+                    if not (self._repo_root / workflow_path).exists():
+                        raise ValueError(
+                            f"Route row points to a missing workflow module: {task_type} -> "
+                            f"{workflow_path}"
+                        )
+
+                entries.append(
+                    {
+                        "route_id": route_id,
+                        "task_type": task_type,
+                        "trigger_keywords": list(trigger_keywords),
+                        "required_workflow_ids": list(required_workflow_ids),
+                        "required_workflow_paths": list(required_workflow_paths),
+                    }
+                )
 
         document: dict[str, object] = {
             "$schema": "urn:watchtower:schema:artifacts:indexes:route-index:v1",

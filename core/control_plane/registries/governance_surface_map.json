@@ -43,14 +43,28 @@
     {
       "surface_name": "routing_table",
       "surface_kind": "routing_table",
-      "path": "workflows/ROUTING_TABLE.md",
+      "path": "core/workflows/ROUTING_TABLE.md",
+      "authority": "authoritative",
+      "visibility": "user"
+    },
+    {
+      "surface_name": "plan_routing_table",
+      "surface_kind": "routing_table",
+      "path": "plan/workflows/ROUTING_TABLE.md",
       "authority": "authoritative",
       "visibility": "user"
     },
     {
       "surface_name": "workflow_module_root",
       "surface_kind": "workflow_module_root",
-      "path": "workflows/modules/",
+      "path": "core/workflows/modules/",
+      "authority": "authoritative",
+      "visibility": "user"
+    },
+    {
+      "surface_name": "plan_workflow_module_root",
+      "surface_kind": "workflow_module_root",
+      "path": "plan/workflows/modules/",
       "authority": "authoritative",
       "visibility": "user"
     }

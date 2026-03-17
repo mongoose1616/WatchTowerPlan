@@ -12,7 +12,7 @@
 
 ## Routing
 - Read this file before creating or updating files in `docs/references/**`.
-- Inherit repository routing from [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md).
+- Inherit repository routing from the domain-owned routing tables under `core/workflows/` and `plan/workflows/`.
 - Do not turn this file into a second routing table.
 
 ## Local Rules

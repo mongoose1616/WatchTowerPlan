@@ -160,47 +160,49 @@ def test_governed_decision_docs_explain_applied_references() -> None:
 def test_workflow_modules_publish_task_specific_additional_load_files() -> None:
     allowed_root_relative_prefixes = (
         "/docs/",
-        "/workflows/",
         "/core/",
+        "/plan/",
         "/.github/",
         "/README.md",
         "/AGENTS.md",
     )
     disallowed_routing_baseline_targets = {
         "/AGENTS.md",
-        "/workflows/ROUTING_TABLE.md",
-        "/workflows/modules/core.md",
+        "/core/workflows/ROUTING_TABLE.md",
+        "/plan/workflows/ROUTING_TABLE.md",
+        "/core/workflows/modules/core.md",
         "/docs/standards/workflows/workflow_design_standard.md",
         "/docs/standards/workflows/routing_and_context_loading_standard.md",
         "/docs/standards/documentation/workflow_md_standard.md",
     }
-    for path in sorted((REPO_ROOT / "workflows/modules").glob("*.md")):
-        if path.name == "README.md":
-            continue
-        markdown = path.read_text(encoding="utf-8")
-        sections = {
-            title.strip(): body
-            for title, body in re.findall(
-                r"^## (.+?)\n(.*?)(?=^## |\Z)",
-                markdown,
-                flags=re.MULTILINE | re.DOTALL,
+    for directory in (REPO_ROOT / "core/workflows/modules", REPO_ROOT / "plan/workflows/modules"):
+        for path in sorted(directory.glob("*.md")):
+            if path.name == "README.md":
+                continue
+            markdown = path.read_text(encoding="utf-8")
+            sections = {
+                title.strip(): body
+                for title, body in re.findall(
+                    r"^## (.+?)\n(.*?)(?=^## |\Z)",
+                    markdown,
+                    flags=re.MULTILINE | re.DOTALL,
+                )
+            }
+            section = sections.get("Additional Files to Load")
+            if section is None:
+                continue
+            bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
+            assert bullets, f"missing workflow additional-load bullets: {path}"
+            assert len(bullets) <= 5, f"too many workflow additional-load bullets: {path}"
+            assert all(": " in bullet for bullet in bullets), (
+                f"unexplained workflow additional-load bullet: {path}"
             )
-        }
-        section = sections.get("Additional Files to Load")
-        if section is None:
-            continue
-        bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
-        assert bullets, f"missing workflow additional-load bullets: {path}"
-        assert len(bullets) <= 5, f"too many workflow additional-load bullets: {path}"
-        assert all(": " in bullet for bullet in bullets), (
-            f"unexplained workflow additional-load bullet: {path}"
-        )
-        targets = re.findall(r"\[[^\]]+\]\(([^)]+)\)", section)
-        assert targets, f"workflow additional-load section must publish markdown links: {path}"
-        assert all(
-            not target.startswith("/") or target.startswith(allowed_root_relative_prefixes)
-            for target in targets
-        ), f"workflow additional-load links must stay repo-native in {path}"
-        assert all(
-            target not in disallowed_routing_baseline_targets for target in targets
-        ), f"workflow additional-load section repeats routing-baseline files: {path}"
+            targets = re.findall(r"\[[^\]]+\]\(([^)]+)\)", section)
+            assert targets, f"workflow additional-load section must publish markdown links: {path}"
+            assert all(
+                not target.startswith("/") or target.startswith(allowed_root_relative_prefixes)
+                for target in targets
+            ), f"workflow additional-load links must stay repo-native in {path}"
+            assert all(
+                target not in disallowed_routing_baseline_targets for target in targets
+            ), f"workflow additional-load section repeats routing-baseline files: {path}"

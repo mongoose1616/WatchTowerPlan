@@ -66,7 +66,7 @@ def test_foundation_index_exposes_engineering_stack_reference_metadata() -> None
 
 
 def test_foundations_context_review_loads_foundation_review_and_discovery_routes() -> None:
-    workflow_path = REPO_ROOT / "workflows/modules/foundations_context_review.md"
+    workflow_path = REPO_ROOT / "core/workflows/modules/foundations_context_review.md"
     markdown = workflow_path.read_text(encoding="utf-8")
 
     assert "docs/foundations/repository_scope.md" in markdown
@@ -154,11 +154,11 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
         REPO_ROOT / "docs/foundations/repository_scope.md"
     ).read_text(encoding="utf-8")
 
-    assert "docs/planning/coordination_tracking.md" in root_readme
-    assert "docs/planning/coordination_tracking.md" in foundations_readme
+    assert "plan/plan_overview.md" in root_readme
+    assert "plan/plan_overview.md" in foundations_readme
     assert (
-        "[coordination_tracking.md]"
-        "(/docs/planning/coordination_tracking.md)"
+        "[plan_overview.md]"
+        "(/plan/plan_overview.md)"
     ) in repository_scope
     assert "SUMMARY.md" not in root_readme
     assert "SUMMARY.md" not in foundations_readme

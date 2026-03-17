@@ -75,10 +75,16 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         return "root_readme"
     if relative_path.endswith("AGENTS.md"):
         return "instruction"
-    if relative_path == "workflows/ROUTING_TABLE.md":
+    if relative_path in {"core/workflows/ROUTING_TABLE.md", "plan/workflows/ROUTING_TABLE.md"}:
         return "routing_table"
-    if relative_path.startswith("workflows/modules/"):
+    if relative_path.startswith("core/workflows/modules/") or relative_path.startswith(
+        "plan/workflows/modules/"
+    ):
         return "workflow_module" if kind == "file" else "workflow_family"
+    if relative_path == "workflows/ROUTING_TABLE.md":
+        return "routing_compatibility"
+    if relative_path.startswith("workflows/modules/"):
+        return "workflow_compatibility" if kind == "file" else "workflow_family"
     if relative_path.startswith("docs/commands/"):
         return "command_doc" if kind == "file" else "command_docs"
     if relative_path.startswith("docs/planning/prds/"):

@@ -50,7 +50,7 @@ def test_planning_module_reexports_split_typed_index_models() -> None:
                     "title": "Example Workflow",
                     "summary": "Exercises the stable model export surface.",
                     "status": "active",
-                    "doc_path": "workflows/modules/example.md",
+                    "doc_path": "core/workflows/modules/example.md",
                     "uses_internal_references": True,
                     "uses_external_references": False,
                 }

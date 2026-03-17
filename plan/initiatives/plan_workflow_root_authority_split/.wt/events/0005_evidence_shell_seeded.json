@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_workflow_root_authority_split.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.plan_workflow_root_authority_split",
+  "trace_id": "trace.plan_workflow_root_authority_split",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T18:26:19Z",
+  "summary": "Seeded the evidence shell.",
+  "related_paths": [
+    "plan/initiatives/plan_workflow_root_authority_split/initiative_brief.md",
+    "plan/initiatives/plan_workflow_root_authority_split/design_record.md",
+    "plan/initiatives/plan_workflow_root_authority_split/implementation_slice.md",
+    "plan/initiatives/plan_workflow_root_authority_split/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

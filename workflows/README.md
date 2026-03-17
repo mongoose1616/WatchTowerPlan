@@ -1,16 +1,16 @@
 # `workflows`
 
 ## Description
-`This directory contains the canonical routing backend and workflow modules used to execute repository tasks. Use ROUTING_TABLE.md to select the minimum required modules, then load the specific workflow documents from workflows/modules/. Routes may combine shared phase modules with narrower task-family modules so execution stays modular. Workflow modules remain available as repository building blocks, but they are active only when routing selects them or an active task explicitly merges them. During the current plan-authority migration, plan-domain humans should start at plan/workflows/README.md, while this root remains the authoritative backend source.`
+`This directory is now a thin compatibility surface for older root-level workflow references. Authoritative shared workflow routing lives under core/workflows/, and authoritative plan-domain workflow routing lives under plan/workflows/.`
 
 ## Paths
 | Path | Description |
 |---|---|
 | `workflows/README.md` | Describes the purpose of the workflows directory and the main workflow entrypoints stored here. |
-| `workflows/ROUTING_TABLE.md` | Defines task classification and the minimum workflow modules to load for each task type. |
-| `workflows/modules/` | Holds the task-specific workflow modules used after routing. |
+| `workflows/ROUTING_TABLE.md` | Compatibility note pointing readers to the split workflow roots. |
+| `workflows/modules/` | Compatibility copies retained for older links while core/workflows/ and plan/workflows/ own current workflow authority. |
 
 ## Notes
-- Human plan-domain workflow start-here: `plan/workflows/README.md`
-- Canonical routing backend: `workflows/ROUTING_TABLE.md` and `workflows/modules/`
-- Do not duplicate module bodies into `plan/workflows/` during the current cutover step.
+- Reusable shared workflow start-here: `core/workflows/README.md`
+- Plan-domain workflow start-here: `plan/workflows/README.md`
+- Do not treat this root as the authoritative routing backend for new work.

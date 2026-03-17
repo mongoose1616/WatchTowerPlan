@@ -556,6 +556,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "title": "Plan Workflow Root Authority Split",
+      "summary": "Moves workflow-routing and workflow-module authority out of repo-root workflows/ into core/workflows/ and plan/workflows/, with route and workflow indexes rebuilt from the split roots required by requirements.md and decisions.md.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T18:55:30Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_workflow_root_authority_split/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_workflow_root_authority_split/progress.md",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "slug": "plan_workflow_root_authority_split",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain",
+        "task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots",
+        "task.plan_workflow_root_authority_split.cut_over_human_instructions_and_workflow_guidance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_root_authority_split.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T18:55:30Z",
+      "closure_reason": "Delivered the split workflow routing tables, domain-owned workflow module roots, runtime index rebuilds, and human guidance cutover required by requirements.md and decisions.md.",
+      "related_paths": [
+        "plan/initiatives/plan_workflow_root_authority_split/initiative_brief.md",
+        "plan/initiatives/plan_workflow_root_authority_split/design_record.md",
+        "plan/initiatives/plan_workflow_root_authority_split/implementation_slice.md",
+        "plan/initiatives/plan_workflow_root_authority_split/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",
       "title": "WatchTower Initial Implementation Bootstrap",
       "summary": "Captures the first WatchTower project-scoped implementation package before execution starts.",

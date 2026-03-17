@@ -88,7 +88,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
     )
 
     result = validate_workflow_additional_load_section(
-        "workflows/modules/prd_generation.md",
+        "plan/workflows/modules/prd_generation.md",
         section,
         repo_root=REPO_ROOT,
     )
@@ -101,7 +101,7 @@ def test_validate_workflow_additional_load_section_rejects_routing_baseline_file
 
     with pytest.raises(ValueError, match="routing-baseline files"):
         validate_workflow_additional_load_section(
-            "workflows/modules/code_validation.md",
+            "core/workflows/modules/code_validation.md",
             section,
             repo_root=REPO_ROOT,
         )
@@ -115,7 +115,7 @@ def test_validate_workflow_additional_load_section_rejects_generic_workflow_stan
 
     with pytest.raises(ValueError, match="routing-baseline files"):
         validate_workflow_additional_load_section(
-            "workflows/modules/code_validation.md",
+            "core/workflows/modules/code_validation.md",
             section,
             repo_root=REPO_ROOT,
         )
@@ -124,18 +124,18 @@ def test_validate_workflow_additional_load_section_rejects_generic_workflow_stan
 def test_validate_workflow_additional_load_section_accepts_document_relative_files(
     tmp_path: Path,
 ) -> None:
-    workflow_path = tmp_path / "repo" / "workflows/modules/example_workflow.md"
+    workflow_path = tmp_path / "repo" / "core/workflows/modules/example_workflow.md"
     load_target = tmp_path / "repo" / "docs/references/example_reference.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     load_target.parent.mkdir(parents=True, exist_ok=True)
     load_target.write_text("# Example reference\n", encoding="utf-8")
     section = (
-        "- [example_reference.md](../../docs/references/example_reference.md): "
+        "- [example_reference.md](../../../docs/references/example_reference.md): "
         "task-specific governed reference.\n"
     )
 
     result = validate_workflow_additional_load_section(
-        "workflows/modules/example_workflow.md",
+        "core/workflows/modules/example_workflow.md",
         section,
         repo_root=tmp_path / "repo",
         source_path=workflow_path,
@@ -148,7 +148,7 @@ def test_workflow_index_sync_rejects_heading_after_list_without_blank_line(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    workflow_path = repo_root / "workflows/modules/code_validation.md"
+    workflow_path = repo_root / "core/workflows/modules/code_validation.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     workflow_path.write_text(
         dedent(

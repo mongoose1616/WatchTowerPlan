@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_workflow_root_authority_split.0008_ready_for_review_marked",
+  "initiative_id": "initiative.plan_workflow_root_authority_split",
+  "trace_id": "trace.plan_workflow_root_authority_split",
+  "sequence": 8,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T18:26:20Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {}
+}

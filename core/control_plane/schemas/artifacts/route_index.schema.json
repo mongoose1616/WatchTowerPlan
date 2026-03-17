@@ -63,7 +63,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^workflows/modules/.+\\.md$"
+        "pattern": "^(?:core|plan)/workflows/modules/.+\\.md$"
       }
     },
     "routeEntry": {

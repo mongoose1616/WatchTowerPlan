@@ -10,8 +10,8 @@
 
 ## Routing
 - Read this file after the repository root [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md) when working under `plan/**`.
-- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) to select the minimum workflow modules required for the task.
-- `plan/workflows/` is the human workflow start-here for the plan domain, but the canonical routing backend remains under `workflows/` during the current migration step.
+- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/plan/workflows/ROUTING_TABLE.md) to select plan-domain workflow modules.
+- Shared reusable modules referenced by plan routes live under `core/workflows/modules/`; plan-specific modules live under `plan/workflows/modules/`.
 - Do not turn this file into a second routing table.
 
 ## Local Rules

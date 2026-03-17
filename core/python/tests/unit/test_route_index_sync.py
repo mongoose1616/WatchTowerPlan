@@ -23,7 +23,7 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         entry["route_id"] == "route.repository_review"
         and entry["task_type"] == "Repository Review"
         and "workflow.repository_review" in entry["required_workflow_ids"]
-        and "workflows/modules/repository_review.md" in entry["required_workflow_paths"]
+        and "core/workflows/modules/repository_review.md" in entry["required_workflow_paths"]
         for entry in entries
     )
     assert any(
@@ -83,18 +83,19 @@ def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
     repo_root = tmp_path / "repo"
-    workflows_dir = repo_root / "workflows"
-    modules_dir = workflows_dir / "modules"
-    modules_dir.mkdir(parents=True)
-    (modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
-    (modules_dir / "task_scope_definition.md").write_text(
+    core_workflows_dir = repo_root / "core/workflows"
+    core_modules_dir = core_workflows_dir / "modules"
+    plan_workflows_dir = repo_root / "plan/workflows"
+    core_modules_dir.mkdir(parents=True)
+    (core_modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
+    (core_modules_dir / "task_scope_definition.md").write_text(
         "# Task Scope Definition\n",
         encoding="utf-8",
     )
-    (workflows_dir / "ROUTING_TABLE.md").write_text(
+    (core_workflows_dir / "ROUTING_TABLE.md").write_text(
         "\n".join(
             [
-                "# Routing Table",
+                "# Core Workflow Routing Table",
                 "",
                 "## Reconciliation Quick Guide",
                 "",
@@ -104,8 +105,22 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
                 "",
                 "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
                 "|---|---|---|",
-                "| Example Route | example task | `modules/core.md`, "
-                "`modules/task_scope_definition.md` |",
+                "| Example Route | example task | `core/workflows/modules/core.md`, "
+                "`core/workflows/modules/task_scope_definition.md` |",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    plan_workflows_dir.mkdir(parents=True)
+    (plan_workflows_dir / "ROUTING_TABLE.md").write_text(
+        "\n".join(
+            [
+                "# Plan Workflow Routing Table",
+                "",
+                "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
+                "|---|---|---|",
+                "| Plan Route | plan task | `core/workflows/modules/core.md` |",
             ]
         )
         + "\n",
@@ -127,8 +142,17 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
                 "workflow.task_scope_definition",
             ],
             "required_workflow_paths": [
-                "workflows/modules/core.md",
-                "workflows/modules/task_scope_definition.md",
+                "core/workflows/modules/core.md",
+                "core/workflows/modules/task_scope_definition.md",
+            ],
+        },
+        {
+            "route_id": "route.plan_route",
+            "task_type": "Plan Route",
+            "trigger_keywords": ["plan task"],
+            "required_workflow_ids": ["workflow.core"],
+            "required_workflow_paths": [
+                "core/workflows/modules/core.md",
             ],
         }
     ]

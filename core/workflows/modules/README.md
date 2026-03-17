@@ -1,8 +1,8 @@
 # `core/workflows/modules`
 
 ## Description
-`This directory reserves the future home for core-owned workflow modules.`
+`This directory holds the authoritative shared reusable workflow modules used by core implementation, review, validation, documentation, and repository-governance routes.`
 
 ## Notes
-- The canonical module set still lives under `workflows/modules/`.
-- Do not duplicate module bodies here until a later migration slice moves core-owned workflow authority into this root.
+- Plan-domain routes may reference modules from this root when the workflow is shared rather than plan-specific.
+- Repo-root `workflows/modules/` is now a compatibility surface, not the authoritative source for these modules.

@@ -50,7 +50,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^workflows/modules/.+\\.md$"
+      "pattern": "^(?:core|plan)/workflows/modules/.+\\.md$"
     },
     "referenceDocPathList": {
       "type": "array",

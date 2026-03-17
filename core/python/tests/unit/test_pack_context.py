@@ -33,7 +33,7 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     ).canonical_relative_path == (
         "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json"
     )
-    assert context.governance_surface_map.get("routing_table").path == "workflows/ROUTING_TABLE.md"
+    assert context.governance_surface_map.get("routing_table").path == "core/workflows/ROUTING_TABLE.md"
     assert context.status_registry.get("accepted").entry_status == "active"
     assert context.actor_registry.get("actor.codex").actor_type == "agent"
     assert "rendered_surface_registry" in context.registries

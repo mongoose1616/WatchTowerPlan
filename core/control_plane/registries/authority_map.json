@@ -167,9 +167,11 @@
       "artifact_kind": "route_index",
       "canonical_path": "core/control_plane/indexes/routes/route_index.json",
       "preferred_command": "watchtower-core route preview",
-      "preferred_human_path": "workflows/ROUTING_TABLE.md",
+      "preferred_human_path": "core/workflows/ROUTING_TABLE.md",
       "fallback_paths": [
-        "workflows/modules/",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "docs/commands/core_python/watchtower_core_route_preview.md"
       ],
       "aliases": [
@@ -177,7 +179,7 @@
         "task type routing",
         "module selection"
       ],
-      "notes": "Use this when you need the canonical routed workflow set for a request rather than browsing modules ad hoc."
+      "notes": "Use this when you need the canonical routed workflow set for a request rather than browsing compatibility workflow copies ad hoc."
     },
     {
       "question_id": "authority.governance.standards_lookup",
