@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_documentation_family_and_template_catalog_foundation.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+  "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:25:05Z",
+  "summary": "Seeded the evidence shell.",
+  "related_paths": [
+    "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/initiative_brief.md",
+    "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/design_record.md",
+    "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/implementation_slice.md",
+    "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

@@ -8,12 +8,14 @@ from pathlib import Path
 from watchtower_core.control_plane import ControlPlaneLoader, PackContext
 from watchtower_core.control_plane.models import (
     ArtifactFamilyRegistry,
+    DocumentationFamilyRegistry,
     HumanSurfacePolicyRegistry,
     LifecycleStageRegistry,
     ProjectSurfacePolicyRegistry,
     RetentionPolicyRegistry,
     ReviewStatusRegistry,
     SourceTypeRegistry,
+    TemplateCatalog,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -108,6 +110,22 @@ def test_plan_pack_context_loads_artifact_family_registry() -> None:
     registry = context.registries["artifact_family_registry"]
     assert isinstance(registry, ArtifactFamilyRegistry)
     assert registry.get("deferred_item_record").status_field == "status"
+
+
+def test_plan_pack_context_loads_documentation_family_and_template_catalog() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context("plan/.wt/manifests/pack_settings.json")
+
+    documentation_registry = context.registries["documentation_family_registry"]
+    template_catalog = context.registries["template_catalog"]
+
+    assert isinstance(documentation_registry, DocumentationFamilyRegistry)
+    assert documentation_registry.get("foundation").mirror_group_id == "mirror.foundations"
+    assert isinstance(template_catalog, TemplateCatalog)
+    assert template_catalog.get("template.plan.rendered.project.summary").surface_id == (
+        "rendered.project.summary"
+    )
 
 
 def test_plan_pack_context_loads_retention_policy_registry() -> None:

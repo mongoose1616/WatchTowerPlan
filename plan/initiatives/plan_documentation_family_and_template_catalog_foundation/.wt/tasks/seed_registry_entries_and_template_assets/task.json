@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_documentation_family_and_template_catalog_foundation.seed_registry_entries_and_template_assets",
+  "slug": "seed_registry_entries_and_template_assets",
+  "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+  "title": "Seed registry entries and governed template assets",
+  "summary": "Seed active documentation-family bindings, template catalog entries, and concrete template files for the current live plan surfaces.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T17:25:05Z",
+  "updated_at": "2026-03-17T17:39:18Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

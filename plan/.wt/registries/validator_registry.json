@@ -61,6 +61,34 @@
       ]
     },
     {
+      "id": "validator.plan.documentation_family_registry",
+      "title": "Plan Documentation Family Registry Validator",
+      "description": "Validates the plan-pack documentation-family registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_family_registry",
+      "applies_to": [
+        "plan/.wt/registries/documentation_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.template_catalog",
+      "title": "Plan Template Catalog Validator",
+      "description": "Validates the plan-pack template catalog.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "template_catalog",
+      "applies_to": [
+        "plan/.wt/registries/template_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:template-catalog:v1"
+      ]
+    },
+    {
       "id": "validator.plan.human_surface_policy_registry",
       "title": "Plan Human Surface Policy Validator",
       "description": "Validates the plan-pack human-surface placement policy registry.",

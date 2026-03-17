@@ -5,6 +5,26 @@
   "status": "active",
   "schemas": [
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1",
+      "title": "Documentation Family Registry",
+      "description": "Schema for the plan-pack documentation-family registry covering governed front-matter bindings, template bindings, allowed roots, and mirror rules.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "documentation_family_registry",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/documentation_family_registry.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:template-catalog:v1",
+      "title": "Template Catalog",
+      "description": "Schema for the plan-pack template catalog covering governed template assets, section requirements, and authoring guidance.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "template_catalog",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/template_catalog.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1",
       "title": "Human Surface Policy Registry",
       "description": "Schema for the plan-pack human-surface placement policy registry.",

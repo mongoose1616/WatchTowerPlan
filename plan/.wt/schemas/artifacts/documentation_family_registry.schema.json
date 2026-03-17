@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1",
+  "title": "Documentation Family Registry",
+  "description": "Schema for the plan-pack documentation-family registry covering front-matter bindings, template bindings, allowed roots, and mirror rules.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
+    },
+    "id": {
+      "const": "registry.documentation_family"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/familyEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "authorshipMode": {
+      "type": "string",
+      "enum": [
+        "authored",
+        "rendered"
+      ]
+    },
+    "equivalenceMode": {
+      "type": "string",
+      "enum": [
+        "byte_identical",
+        "content_equivalent",
+        "none"
+      ]
+    },
+    "mirrorUpdateMode": {
+      "type": "string",
+      "enum": [
+        "same_change_set",
+        "generated_copy",
+        "promotion_fan_out",
+        "none"
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "familyEntry": {
+      "type": "object",
+      "required": [
+        "family_id",
+        "entry_status",
+        "summary",
+        "front_matter_base_schema_id",
+        "front_matter_schema_id",
+        "template_ids",
+        "allowed_roots",
+        "authorship_mode",
+        "required_index_ids"
+      ],
+      "properties": {
+        "family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "front_matter_base_schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "front_matter_schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "template_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "section_spec_schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_roots": {
+          "$ref": "#/$defs/stringList"
+        },
+        "authorship_mode": {
+          "$ref": "#/$defs/authorshipMode"
+        },
+        "required_index_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "required_rendered_surface_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "mirror_group_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "required_mirror_roots": {
+          "$ref": "#/$defs/stringList"
+        },
+        "equivalence_mode": {
+          "$ref": "#/$defs/equivalenceMode"
+        },
+        "mirror_update_mode": {
+          "$ref": "#/$defs/mirrorUpdateMode"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

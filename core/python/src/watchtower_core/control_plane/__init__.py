@@ -4,6 +4,10 @@ from watchtower_core.control_plane.artifact_family import (
     ArtifactFamilyHelper,
     ArtifactFamilyIssue,
 )
+from watchtower_core.control_plane.documentation_family import (
+    DocumentationFamilyHelper,
+    DocumentationFamilyIssue,
+)
 from watchtower_core.control_plane.governance_surfaces import (
     GovernanceSurfaceResolution,
     GovernanceSurfaceResolver,
@@ -24,6 +28,10 @@ from watchtower_core.control_plane.retention_policy import (
     RetentionPolicyIssue,
 )
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
+from watchtower_core.control_plane.template_catalog import (
+    TemplateCatalogHelper,
+    TemplateCatalogIssue,
+)
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
@@ -37,6 +45,8 @@ __all__ = [
     "ArtifactFamilyHelper",
     "ArtifactFamilyIssue",
     "ControlPlaneLoader",
+    "DocumentationFamilyHelper",
+    "DocumentationFamilyIssue",
     "FileSystemArtifactIO",
     "GovernanceSurfaceResolution",
     "GovernanceSurfaceResolver",
@@ -50,5 +60,7 @@ __all__ = [
     "RetentionPolicyIssue",
     "SchemaStore",
     "SupplementalSchemaDocument",
+    "TemplateCatalogHelper",
+    "TemplateCatalogIssue",
     "WorkspaceConfig",
 ]

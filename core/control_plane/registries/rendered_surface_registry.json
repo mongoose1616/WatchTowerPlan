@@ -593,6 +593,167 @@
           "source_key": "updated_at"
         }
       ]
+    },
+    {
+      "surface_id": "rendered.plan.overview",
+      "title": "Plan Overview",
+      "output_path": "plan/plan_overview.md",
+      "sections": [
+        {
+          "section_id": "current_state",
+          "kind": "lines",
+          "source_key": "current_state"
+        },
+        {
+          "section_id": "active_initiatives",
+          "kind": "lines",
+          "source_key": "active_initiatives"
+        },
+        {
+          "section_id": "actionable_tasks",
+          "kind": "lines",
+          "source_key": "actionable_tasks"
+        },
+        {
+          "section_id": "recent_closeouts",
+          "kind": "lines",
+          "source_key": "recent_closeouts"
+        }
+      ],
+      "notes": "Plan-pack rendered overview surface derived from plan/.wt indexes and current initiative state."
+    },
+    {
+      "surface_id": "rendered.initiative.plan",
+      "title": "Initiative Plan",
+      "output_path": "plan/initiatives/{initiative_slug}/plan.md",
+      "sections": [
+        {
+          "section_id": "summary",
+          "kind": "lines",
+          "source_key": "summary"
+        },
+        {
+          "section_id": "identity",
+          "kind": "lines",
+          "source_key": "identity"
+        },
+        {
+          "section_id": "task_plan",
+          "kind": "lines",
+          "source_key": "task_plan"
+        },
+        {
+          "section_id": "deferred_items",
+          "kind": "lines",
+          "source_key": "deferred_items"
+        }
+      ],
+      "notes": "Initiative-local rendered plan surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.initiative.progress",
+      "title": "Initiative Progress",
+      "output_path": "plan/initiatives/{initiative_slug}/progress.md",
+      "sections": [
+        {
+          "section_id": "gate_state",
+          "kind": "lines",
+          "source_key": "gate_state"
+        },
+        {
+          "section_id": "task_status",
+          "kind": "lines",
+          "source_key": "task_status"
+        },
+        {
+          "section_id": "discrepancies",
+          "kind": "lines",
+          "source_key": "discrepancies"
+        }
+      ],
+      "notes": "Initiative-local rendered progress surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.initiative.summary",
+      "title": "Initiative Summary",
+      "output_path": "plan/initiatives/{initiative_slug}/summary.md",
+      "sections": [
+        {
+          "section_id": "lifecycle",
+          "kind": "lines",
+          "source_key": "lifecycle"
+        },
+        {
+          "section_id": "evidence",
+          "kind": "lines",
+          "source_key": "evidence"
+        },
+        {
+          "section_id": "closeout",
+          "kind": "lines",
+          "source_key": "closeout"
+        },
+        {
+          "section_id": "promotion",
+          "kind": "lines",
+          "source_key": "promotion"
+        }
+      ],
+      "notes": "Initiative-local rendered summary surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.project.project",
+      "title": "Project Surface",
+      "output_path": "plan/projects/{project_slug}/project.md",
+      "sections": [
+        {
+          "section_id": "summary",
+          "kind": "lines",
+          "source_key": "summary"
+        },
+        {
+          "section_id": "identity",
+          "kind": "lines",
+          "source_key": "identity"
+        },
+        {
+          "section_id": "linked_repositories",
+          "kind": "lines",
+          "source_key": "linked_repositories"
+        }
+      ],
+      "notes": "Rendered project identity surface derived from project machine state."
+    },
+    {
+      "surface_id": "rendered.project.repositories",
+      "title": "Project Repositories",
+      "output_path": "plan/projects/{project_slug}/repositories.md",
+      "sections": [
+        {
+          "section_id": "repository_map",
+          "kind": "lines",
+          "source_key": "repository_map"
+        }
+      ],
+      "notes": "Rendered project repository map derived from project_repository_map state."
+    },
+    {
+      "surface_id": "rendered.project.summary",
+      "title": "Project Summary",
+      "output_path": "plan/projects/{project_slug}/summary.md",
+      "sections": [
+        {
+          "section_id": "status",
+          "kind": "lines",
+          "source_key": "status"
+        },
+        {
+          "section_id": "child_initiatives",
+          "kind": "lines",
+          "source_key": "child_initiatives"
+        }
+      ],
+      "notes": "Rendered project summary surface derived from project and initiative indexes."
     }
   ]
 }

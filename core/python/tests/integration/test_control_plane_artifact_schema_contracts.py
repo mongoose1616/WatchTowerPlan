@@ -248,6 +248,83 @@ def test_plan_artifact_family_registry_covers_current_live_plan_families() -> No
         assert entry["derived_index_ids"], f"{family_id} is missing derived index participation"
 
 
+def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces() -> None:
+    pack_loader = ControlPlaneLoader(
+        REPO_ROOT,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+    core_loader = ControlPlaneLoader(REPO_ROOT)
+
+    documentation_registry = load_json_object(
+        REPO_ROOT / "plan/.wt/registries/documentation_family_registry.json"
+    )
+    template_catalog = load_json_object(REPO_ROOT / "plan/.wt/registries/template_catalog.json")
+    rendered_registry = load_json_object(
+        REPO_ROOT / "core/control_plane/registries/rendered_surface_registry.json"
+    )
+
+    plan_schema_ids = {record.schema_id for record in pack_loader.load_schema_catalog().records}
+    core_schema_ids = {record.schema_id for record in core_loader.load_schema_catalog().records}
+    families = {entry["family_id"]: entry for entry in documentation_registry["entries"]}
+    template_entries = {entry["template_id"]: entry for entry in template_catalog["entries"]}
+    rendered_surface_ids = {entry["surface_id"] for entry in rendered_registry["surfaces"]}
+
+    assert {
+        "foundation",
+        "standard",
+        "reference",
+        "decision_record",
+        "pattern",
+        "workflow",
+    }.issubset(families)
+    assert {
+        "template.plan.guidance.foundation",
+        "template.plan.guidance.standard",
+        "template.plan.guidance.reference",
+        "template.plan.guidance.decision_record",
+        "template.plan.guidance.pattern",
+        "template.plan.workflow.module",
+        "template.plan.rendered.plan_overview",
+        "template.plan.rendered.initiative.plan",
+        "template.plan.rendered.initiative.progress",
+        "template.plan.rendered.initiative.summary",
+        "template.plan.rendered.project.project",
+        "template.plan.rendered.project.repositories",
+        "template.plan.rendered.project.summary",
+    }.issubset(template_entries)
+    assert {
+        "rendered.plan.overview",
+        "rendered.initiative.plan",
+        "rendered.initiative.progress",
+        "rendered.initiative.summary",
+        "rendered.project.project",
+        "rendered.project.repositories",
+        "rendered.project.summary",
+    }.issubset(rendered_surface_ids)
+
+    assert "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1" in plan_schema_ids
+    assert "urn:watchtower:schema:artifacts:plan:template-catalog:v1" in plan_schema_ids
+    assert "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1" in core_schema_ids
+
+    for family_id, entry in families.items():
+        assert entry["front_matter_base_schema_id"] in core_schema_ids
+        assert entry["front_matter_schema_id"] in core_schema_ids
+        for template_id in entry["template_ids"]:
+            assert template_id in template_entries, (
+                f"{family_id} references missing template entry {template_id}"
+            )
+
+    for template_id, entry in template_entries.items():
+        template_path = REPO_ROOT / entry["template_path"]
+        assert template_path.is_file(), f"{template_id} points to a missing template file"
+        family_id = entry.get("family_id")
+        if isinstance(family_id, str):
+            assert family_id in families, f"{template_id} references unknown family {family_id}"
+        front_matter_schema_id = entry.get("front_matter_schema_id")
+        if isinstance(front_matter_schema_id, str):
+            assert front_matter_schema_id in core_schema_ids
+
+
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     initiative_index = load_json_object(

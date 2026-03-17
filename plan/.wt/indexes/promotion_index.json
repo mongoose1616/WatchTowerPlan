@@ -33,6 +33,33 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_documentation_family_and_template_catalog_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "initiative_title": "Plan Documentation Family And Template Catalog Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/initiative_brief.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/design_record.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/implementation_slice.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T17:39:18Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_duplicated_foundations_corpus_bootstrap.bootstrap_shell",
       "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
       "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",

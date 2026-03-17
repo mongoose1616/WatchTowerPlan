@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts.0001_created",
+  "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+  "task_id": "task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:25:05Z",
+  "summary": "Created task task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

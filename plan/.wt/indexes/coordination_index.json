@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T17:39:18Z",
+      "key_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md",
+      "closure_reason": "Delivered the documentation-family registry, template catalog, governed template assets, typed helpers, and validation coverage for current plan guidance and rendered surfaces."
+    },
+    {
       "trace_id": "trace.plan_project_surface_policy_registry",
       "title": "Plan Project Surface Policy Registry",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:26Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/plan.md",
       "closure_reason": "Delivered the local-first WatchTower work-item begin flow."
-    },
-    {
-      "trace_id": "trace.watchtower_next_work_selection",
-      "title": "WatchTower Next Work Selection",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:24Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
-      "closure_reason": "Delivered the local-first WatchTower next-work selection flow."
     }
   ]
 }

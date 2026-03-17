@@ -6,6 +6,126 @@
   "updated_at": "2026-03-17T21:23:00Z",
   "entries": [
     {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.coordination_index_index_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.initiative_index_index_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.plan_overview_surface_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/plan_overview.md.",
+      "source_paths": [
+        "plan/plan_overview.md"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.plan_surface_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md.",
+      "source_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.progress_surface_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_documentation_family_and_template_catalog_foundation/progress.md.",
+      "source_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/progress.md"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.readiness_index_index_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.summary_surface_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/plan_documentation_family_and_template_catalog_foundation/summary.md.",
+      "source_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/summary.md"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.task_index_index_drift",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/task_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "updated_at": "2026-03-17T17:43:02Z"
+    },
+    {
       "discrepancy_id": "discrepancy.plan_human_surface_policy_and_core_root_seeding.coordination_index_index_drift",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",

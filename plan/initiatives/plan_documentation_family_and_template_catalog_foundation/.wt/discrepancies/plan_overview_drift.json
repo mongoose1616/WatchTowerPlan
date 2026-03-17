@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.plan_documentation_family_and_template_catalog_foundation.plan_overview_surface_drift",
+  "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+  "category": "stale_rendered_surface",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Rendered surface drift detected for plan/plan_overview.md.",
+  "source_paths": [
+    "plan/plan_overview.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-17T17:42:49Z",
+  "updated_at": "2026-03-17T17:43:02Z"
+}

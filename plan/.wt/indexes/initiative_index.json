@@ -42,6 +42,43 @@
       ]
     },
     {
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Plan Documentation Family And Template Catalog Foundation",
+      "summary": "Adds the missing documentation-family registry and template catalog foundations for live plan guidance families and current rendered plan/project surfaces.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T17:43:02Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/progress.md",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "slug": "plan_documentation_family_and_template_catalog_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts",
+        "task.plan_documentation_family_and_template_catalog_foundation.seed_registry_entries_and_template_assets",
+        "task.plan_documentation_family_and_template_catalog_foundation.wire_helpers_and_validation_coverage"
+      ],
+      "evidence_ids": [
+        "evidence.plan_documentation_family_and_template_catalog_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T17:39:18Z",
+      "closure_reason": "Delivered the documentation-family registry, template catalog, governed template assets, typed helpers, and validation coverage for current plan guidance and rendered surfaces.",
+      "related_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/initiative_brief.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/design_record.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/implementation_slice.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/decision_notes.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
       "title": "Plan Duplicated Foundations Corpus Bootstrap",
       "summary": "Duplicates the current foundations corpus into core/docs/foundations and plan/docs/foundations so both roots carry the same guiding context required by requirements.md.",

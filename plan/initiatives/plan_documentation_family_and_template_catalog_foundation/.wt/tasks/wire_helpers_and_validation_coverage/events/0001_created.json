@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_documentation_family_and_template_catalog_foundation.wire_helpers_and_validation_coverage.0001_created",
+  "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+  "task_id": "task.plan_documentation_family_and_template_catalog_foundation.wire_helpers_and_validation_coverage",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T17:25:05Z",
+  "summary": "Created task task.plan_documentation_family_and_template_catalog_foundation.wire_helpers_and_validation_coverage during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

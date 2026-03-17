@@ -1,0 +1,559 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:template-catalog:v1",
+  "id": "registry.template_catalog",
+  "title": "Plan Template Catalog",
+  "status": "active",
+  "entries": [
+    {
+      "template_id": "template.plan.root.readme",
+      "surface_id": "surface.readme.root_navigation",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/roots/README.md",
+      "required_section_ids": [
+        "description",
+        "paths",
+        "notes"
+      ],
+      "optional_section_ids": [
+        "quick_start"
+      ],
+      "section_order": [
+        "description",
+        "quick_start",
+        "paths",
+        "notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create a thin navigation surface for one governed human root.",
+        "hard_requirements": [
+          "Keep the root focused on purpose, inventory, and routing instead of repeating deeper documentation.",
+          "Point to machine-readable authority surfaces when that helps operators or agents find the real source of truth."
+        ],
+        "advisory_notes": [
+          "Prefer one short paragraph for the description before the path table.",
+          "Keep notes concise and operational."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for README.md files at governed human roots.",
+      "allowed_roots": [
+        ".",
+        "core",
+        "plan",
+        "plan/docs",
+        "plan/initiatives",
+        "plan/projects",
+        "plan/workflows"
+      ]
+    },
+    {
+      "template_id": "template.plan.root.agents",
+      "surface_id": "surface.agents.local_instructions",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/roots/AGENTS.md",
+      "required_section_ids": [
+        "role",
+        "scope",
+        "routing",
+        "local_rules"
+      ],
+      "optional_section_ids": [
+        "do",
+        "do_not"
+      ],
+      "section_order": [
+        "role",
+        "scope",
+        "routing",
+        "local_rules",
+        "do",
+        "do_not"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create a narrow local instruction overlay that tightens behavior for one subtree.",
+        "hard_requirements": [
+          "Do not weaken broader repository safety or governance rules.",
+          "Keep routing guidance short and defer execution detail to workflow modules."
+        ],
+        "advisory_notes": [
+          "Only add sections that materially change agent behavior for the subtree.",
+          "Prefer rule bullets over narrative paragraphs."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for AGENTS.md files where agent behavior changes materially from the parent root.",
+      "allowed_roots": [
+        ".",
+        "core/python",
+        "docs",
+        "plan",
+        "plan/workflows"
+      ]
+    },
+    {
+      "template_id": "template.plan.workflow.module",
+      "family_id": "workflow",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/workflows/module.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
+      "required_section_ids": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "workflow",
+        "outputs",
+        "done_when"
+      ],
+      "optional_section_ids": [
+        "additional_files",
+        "data_structure"
+      ],
+      "section_order": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "additional_files",
+        "workflow",
+        "data_structure",
+        "outputs",
+        "done_when"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Capture a reusable workflow module with explicit task boundaries and outputs.",
+        "hard_requirements": [
+          "Write imperative workflow steps that can be executed in order.",
+          "State what the module is done when instead of relying on implied completion."
+        ],
+        "advisory_notes": [
+          "Keep the module narrow and composable with other routed modules.",
+          "Avoid duplicating repository-wide rules that already live in AGENTS.md."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "workflows/modules",
+        "plan/workflows/modules"
+      ]
+    },
+    {
+      "template_id": "template.plan.guidance.foundation",
+      "family_id": "foundation",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/guidance/foundation.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+      "required_section_ids": [
+        "audience",
+        "purpose",
+        "scope_boundary",
+        "guiding_principles",
+        "implications"
+      ],
+      "optional_section_ids": [
+        "related_surfaces",
+        "notes"
+      ],
+      "section_order": [
+        "audience",
+        "purpose",
+        "scope_boundary",
+        "guiding_principles",
+        "implications",
+        "related_surfaces",
+        "notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Create durable foundation guidance that defines a stable boundary or posture for the pack.",
+        "hard_requirements": [
+          "Preserve the governed front matter fields required by the family schema.",
+          "Keep the document durable and avoid embedding live execution state."
+        ],
+        "advisory_notes": [
+          "Use short direct prose before lists.",
+          "Call out boundaries and implications explicitly."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "core/docs/foundations",
+        "plan/docs/foundations"
+      ]
+    },
+    {
+      "template_id": "template.plan.guidance.standard",
+      "family_id": "standard",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/guidance/standard.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
+      "required_section_ids": [
+        "purpose",
+        "applicability",
+        "rules",
+        "validation"
+      ],
+      "optional_section_ids": [
+        "examples",
+        "notes"
+      ],
+      "section_order": [
+        "purpose",
+        "applicability",
+        "rules",
+        "validation",
+        "examples",
+        "notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Capture normative requirements that change operator or implementation behavior.",
+        "hard_requirements": [
+          "Write explicit required and prohibited rules.",
+          "State the validation or enforcement implication for material rules."
+        ],
+        "advisory_notes": [
+          "Prefer short rule bullets over narrative paragraphs in the rules section."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/docs/standards"
+      ]
+    },
+    {
+      "template_id": "template.plan.guidance.reference",
+      "family_id": "reference",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/guidance/reference.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
+      "required_section_ids": [
+        "subject_summary",
+        "usage_guidance",
+        "provenance",
+        "related_surfaces"
+      ],
+      "optional_section_ids": [
+        "notes"
+      ],
+      "section_order": [
+        "subject_summary",
+        "usage_guidance",
+        "provenance",
+        "related_surfaces",
+        "notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Capture curated reference material with enough provenance and usage guidance to keep it reusable.",
+        "hard_requirements": [
+          "Distinguish the source or provenance of the reference from local interpretation.",
+          "State how the reference should be used inside the repository."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/docs/references"
+      ]
+    },
+    {
+      "template_id": "template.plan.guidance.decision_record",
+      "family_id": "decision_record",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/guidance/decision_record.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
+      "required_section_ids": [
+        "context",
+        "decision",
+        "consequences",
+        "current_status"
+      ],
+      "optional_section_ids": [
+        "supersession_notes"
+      ],
+      "section_order": [
+        "context",
+        "decision",
+        "consequences",
+        "current_status",
+        "supersession_notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Promote one durable decision out of initiative work without losing the decision rationale.",
+        "hard_requirements": [
+          "State the decision itself explicitly instead of implying it through consequences.",
+          "Keep the current status or supersession state visible."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/docs/decisions"
+      ]
+    },
+    {
+      "template_id": "template.plan.guidance.pattern",
+      "family_id": "pattern",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "plan/.wt/templates/guidance/pattern.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1",
+      "required_section_ids": [
+        "scenario",
+        "recommended_structure",
+        "boundaries",
+        "usage_notes"
+      ],
+      "optional_section_ids": [
+        "example"
+      ],
+      "section_order": [
+        "scenario",
+        "recommended_structure",
+        "boundaries",
+        "usage_notes",
+        "example"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Capture a reusable pattern that others can apply without re-reading the source initiative.",
+        "hard_requirements": [
+          "State when the pattern applies and when it does not.",
+          "Include enough structure that the recommendation is reproducible."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/docs/patterns"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.plan_overview",
+      "surface_id": "rendered.plan.overview",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/pack/plan_overview.md",
+      "required_section_ids": [
+        "current_state",
+        "active_initiatives",
+        "actionable_tasks",
+        "recent_closeouts"
+      ],
+      "optional_section_ids": [
+        "navigation"
+      ],
+      "section_order": [
+        "current_state",
+        "active_initiatives",
+        "actionable_tasks",
+        "recent_closeouts",
+        "navigation"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the expected rendered shape for the pack-level overview built from machine state.",
+        "hard_requirements": [
+          "Keep the surface operational and current-state-focused.",
+          "Do not treat the rendered overview as the primary authority."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.initiative.plan",
+      "surface_id": "rendered.initiative.plan",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/initiatives/plan.md",
+      "required_section_ids": [
+        "summary",
+        "identity",
+        "task_plan",
+        "deferred_items"
+      ],
+      "optional_section_ids": [
+        "linked_outputs"
+      ],
+      "section_order": [
+        "summary",
+        "identity",
+        "task_plan",
+        "deferred_items",
+        "linked_outputs"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered initiative plan view built from initiative-local machine state.",
+        "hard_requirements": [
+          "Keep the task list aligned with initiative-local task state.",
+          "Keep deferred items explicit when they exist."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.initiative.progress",
+      "surface_id": "rendered.initiative.progress",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/initiatives/progress.md",
+      "required_section_ids": [
+        "gate_state",
+        "task_status",
+        "discrepancies"
+      ],
+      "optional_section_ids": [
+        "recent_events"
+      ],
+      "section_order": [
+        "gate_state",
+        "task_status",
+        "discrepancies",
+        "recent_events"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered initiative progress view built from readiness, task, and discrepancy state.",
+        "hard_requirements": [
+          "Call out blockers and discrepancy state explicitly.",
+          "Keep the progress view about current execution readiness, not durable narrative."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.initiative.summary",
+      "surface_id": "rendered.initiative.summary",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/initiatives/summary.md",
+      "required_section_ids": [
+        "lifecycle",
+        "evidence",
+        "closeout",
+        "promotion"
+      ],
+      "optional_section_ids": [
+        "unresolved_follow_ups"
+      ],
+      "section_order": [
+        "lifecycle",
+        "evidence",
+        "closeout",
+        "promotion",
+        "unresolved_follow_ups"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered initiative summary or closeout view built from machine state.",
+        "hard_requirements": [
+          "Keep lifecycle, evidence, closeout, and promotion state separate.",
+          "Do not hide unresolved follow-up obligations when they still exist."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/initiatives",
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.project.project",
+      "surface_id": "rendered.project.project",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/projects/project.md",
+      "required_section_ids": [
+        "summary",
+        "identity",
+        "linked_repositories"
+      ],
+      "optional_section_ids": [
+        "linked_initiatives"
+      ],
+      "section_order": [
+        "summary",
+        "identity",
+        "linked_repositories",
+        "linked_initiatives"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered project identity view built from project machine state.",
+        "hard_requirements": [
+          "Keep the project identity and linked repositories easy to scan.",
+          "Do not move project authority out of project.json or project_repository_map."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.project.repositories",
+      "surface_id": "rendered.project.repositories",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/projects/repositories.md",
+      "required_section_ids": [
+        "repository_map"
+      ],
+      "optional_section_ids": [
+        "ownership_notes"
+      ],
+      "section_order": [
+        "repository_map",
+        "ownership_notes"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered project repository map view built from project_repository_map state.",
+        "hard_requirements": [
+          "Keep planning and implementation repositories distinguishable.",
+          "Do not invent repository roles that are not present in the machine record."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/projects"
+      ]
+    },
+    {
+      "template_id": "template.plan.rendered.project.summary",
+      "surface_id": "rendered.project.summary",
+      "entry_status": "active",
+      "authorship_mode": "rendered",
+      "template_path": "plan/.wt/templates/projects/summary.md",
+      "required_section_ids": [
+        "status",
+        "child_initiatives"
+      ],
+      "optional_section_ids": [
+        "open_risks"
+      ],
+      "section_order": [
+        "status",
+        "child_initiatives",
+        "open_risks"
+      ],
+      "llm_guidance": {
+        "authoring_goal": "Describe the rendered project summary built from current project and initiative state.",
+        "hard_requirements": [
+          "Keep counts and child initiatives derived from machine state.",
+          "Do not collapse project health and child initiative state into one undifferentiated list."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "plan/projects"
+      ]
+    }
+  ],
+  "notes": "This catalog governs the current live pack and project rendered views plus the first durable authored guidance families needed for promotion into plan/docs."
+}

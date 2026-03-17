@@ -471,6 +471,19 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1",
+      "title": "Pattern Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed reusable pattern documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/pattern_front_matter.schema.json",
+      "aliases": [
+        "pattern metadata schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
       "title": "Standard Front Matter",
       "description": "Schema for parsed front matter metadata used by standards that adopt governed front matter.",

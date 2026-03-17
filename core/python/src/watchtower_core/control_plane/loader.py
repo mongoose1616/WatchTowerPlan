@@ -16,6 +16,7 @@ from watchtower_core.control_plane.models import (
     CoordinationIndex,
     DecisionIndex,
     DesignDocumentIndex,
+    DocumentationFamilyRegistry,
     FoundationIndex,
     GovernanceSurfaceMap,
     HumanSurfacePolicyRegistry,
@@ -37,6 +38,7 @@ from watchtower_core.control_plane.models import (
     StatusRegistry,
     SourceTypeRegistry,
     TaskIndex,
+    TemplateCatalog,
     TraceabilityIndex,
     TracePurgeRecord,
     ValidationEvidenceArtifact,
@@ -64,6 +66,8 @@ AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
+DOCUMENTATION_FAMILY_REGISTRY_PATH = "plan/.wt/registries/documentation_family_registry.json"
+TEMPLATE_CATALOG_PATH = "plan/.wt/registries/template_catalog.json"
 ARTIFACT_FAMILY_REGISTRY_PATH = "plan/.wt/registries/artifact_family_registry.json"
 LIFECYCLE_STAGE_REGISTRY_PATH = "plan/.wt/registries/lifecycle_stage_registry.json"
 REVIEW_STATUS_REGISTRY_PATH = "plan/.wt/registries/review_status_registry.json"
@@ -150,6 +154,8 @@ class ControlPlaneLoader:
         self._active_schema_catalog_path: str | None = None
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
+        self._active_documentation_family_registry_path: str | None = None
+        self._active_template_catalog_path: str | None = None
         self._active_artifact_family_registry_path: str | None = None
         self._active_lifecycle_stage_registry_path: str | None = None
         self._active_review_status_registry_path: str | None = None
@@ -210,6 +216,30 @@ class ControlPlaneLoader:
         )
         self._active_validation_suite_registry_path = (
             suite_registry_declaration.path if suite_registry_declaration is not None else None
+        )
+        documentation_family_registry_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "documentation_family_registry"
+            ),
+            None,
+        )
+        self._active_documentation_family_registry_path = (
+            documentation_family_registry_declaration.path
+            if documentation_family_registry_declaration is not None
+            else None
+        )
+        template_catalog_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "template_catalog"
+            ),
+            None,
+        )
+        self._active_template_catalog_path = (
+            template_catalog_declaration.path if template_catalog_declaration is not None else None
         )
         artifact_family_registry_declaration = next(
             (
@@ -469,6 +499,30 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             WORKFLOW_METADATA_REGISTRY_PATH,
             WorkflowMetadataRegistry.from_document,
+        )
+
+    def load_documentation_family_registry(
+        self,
+        relative_path: str = DOCUMENTATION_FAMILY_REGISTRY_PATH,
+    ) -> DocumentationFamilyRegistry:
+        """Load the current documentation-family registry."""
+
+        effective_path = self._current_documentation_family_registry_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            DocumentationFamilyRegistry.from_document,
+        )
+
+    def load_template_catalog(
+        self,
+        relative_path: str = TEMPLATE_CATALOG_PATH,
+    ) -> TemplateCatalog:
+        """Load the current template catalog."""
+
+        effective_path = self._current_template_catalog_path(relative_path)
+        return self._load_typed_document(
+            effective_path,
+            TemplateCatalog.from_document,
         )
 
     def load_artifact_family_registry(
@@ -761,6 +815,13 @@ class ControlPlaneLoader:
             )
         if surface_name == "workflow_metadata_registry":
             return self._load_typed_document(relative_path, WorkflowMetadataRegistry.from_document)
+        if surface_name == "documentation_family_registry":
+            return self._load_typed_document(
+                relative_path,
+                DocumentationFamilyRegistry.from_document,
+            )
+        if surface_name == "template_catalog":
+            return self._load_typed_document(relative_path, TemplateCatalog.from_document)
         if surface_name == "artifact_family_registry":
             return self._load_typed_document(
                 relative_path,
@@ -853,6 +914,10 @@ class ControlPlaneLoader:
             return self.load_rendered_surface_registry()
         if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
             return self.load_workflow_metadata_registry()
+        if relative_path == DOCUMENTATION_FAMILY_REGISTRY_PATH:
+            return self.load_documentation_family_registry()
+        if relative_path == TEMPLATE_CATALOG_PATH:
+            return self.load_template_catalog()
         if relative_path == ARTIFACT_FAMILY_REGISTRY_PATH:
             return self.load_artifact_family_registry()
         if relative_path == LIFECYCLE_STAGE_REGISTRY_PATH:
@@ -884,6 +949,16 @@ class ControlPlaneLoader:
             and relative_path == self._active_validation_suite_registry_path
         ):
             return self.load_validation_suite_registry()
+        if (
+            self._active_documentation_family_registry_path is not None
+            and relative_path == self._active_documentation_family_registry_path
+        ):
+            return self.load_documentation_family_registry(relative_path)
+        if (
+            self._active_template_catalog_path is not None
+            and relative_path == self._active_template_catalog_path
+        ):
+            return self.load_template_catalog(relative_path)
         if (
             self._active_artifact_family_registry_path is not None
             and relative_path == self._active_artifact_family_registry_path
@@ -979,6 +1054,26 @@ class ControlPlaneLoader:
         if self._active_validation_suite_registry_path is not None:
             return self._active_validation_suite_registry_path
         return VALIDATION_SUITE_REGISTRY_PATH
+
+    def _current_documentation_family_registry_path(self, relative_path: str) -> str:
+        """Return the documentation-family registry path active for this loader instance."""
+
+        if (
+            relative_path == DOCUMENTATION_FAMILY_REGISTRY_PATH
+            and self._active_documentation_family_registry_path is not None
+        ):
+            return self._active_documentation_family_registry_path
+        return relative_path
+
+    def _current_template_catalog_path(self, relative_path: str) -> str:
+        """Return the template-catalog path active for this loader instance."""
+
+        if (
+            relative_path == TEMPLATE_CATALOG_PATH
+            and self._active_template_catalog_path is not None
+        ):
+            return self._active_template_catalog_path
+        return relative_path
 
     def _current_artifact_family_registry_path(self, relative_path: str) -> str:
         """Return the artifact-family registry path active for this loader instance."""
