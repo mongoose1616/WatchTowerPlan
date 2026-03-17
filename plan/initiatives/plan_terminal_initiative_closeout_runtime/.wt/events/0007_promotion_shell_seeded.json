@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_terminal_initiative_closeout_runtime.0007_promotion_shell_seeded",
+  "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+  "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+  "sequence": 7,
+  "event_type": "promotion_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T10:15:00Z",
+  "summary": "Seeded the promotion shell.",
+  "related_paths": [
+    "plan/initiatives/plan_terminal_initiative_closeout_runtime/initiative_brief.md",
+    "plan/initiatives/plan_terminal_initiative_closeout_runtime/design_record.md",
+    "plan/initiatives/plan_terminal_initiative_closeout_runtime/implementation_slice.md",
+    "plan/initiatives/plan_terminal_initiative_closeout_runtime/decision_notes.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

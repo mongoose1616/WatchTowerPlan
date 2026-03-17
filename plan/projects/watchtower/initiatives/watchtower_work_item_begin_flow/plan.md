@@ -8,7 +8,7 @@ Adds a local-first begin command so operators can mark one WatchTower work item 
 - `trace_id`: `trace.watchtower_work_item_begin_flow`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

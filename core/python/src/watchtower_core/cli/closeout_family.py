@@ -14,6 +14,7 @@ def register_closeout_family(
     """Register the closeout command family."""
     from watchtower_core.cli.closeout_handlers import (
         _run_closeout_initiative,
+        _run_closeout_plan_initiative,
         _run_closeout_purge_trace,
     )
     from watchtower_core.cli.handler_common import _run_help
@@ -31,6 +32,8 @@ def register_closeout_family(
         epilog=examples(
             "uv run watchtower-core closeout initiative --trace-id trace.example "
             "--initiative-status completed --closure-reason \"Delivered and validated\"",
+            "uv run watchtower-core closeout plan-initiative --initiative-slug plan_workspace_bootstrap "
+            "--initiative-status completed --closure-reason \"Live plan slice delivered\" --write",
             "uv run watchtower-core closeout initiative --trace-id trace.example "
             "--initiative-status superseded --superseded-by-trace-id trace.replacement "
             "--closure-reason \"Replaced by the new initiative\" --format json",
@@ -113,6 +116,67 @@ def register_closeout_family(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     closeout_initiative_parser.set_defaults(handler=_run_closeout_initiative)
+
+    closeout_plan_initiative_parser = closeout_subparsers.add_parser(
+        "plan-initiative",
+        help="Set terminal closeout state for one live plan initiative package.",
+        description=dedent(
+            """
+            Set terminal closeout state for one pack-wide or project-scoped
+            live initiative package under `plan/**` and refresh the derived
+            plan indexes plus rendered views that surface active and recent
+            closeouts.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core closeout plan-initiative --initiative-slug plan_workspace_bootstrap "
+            "--initiative-status completed --closure-reason \"Delivered the live plan slice\"",
+            "uv run watchtower-core closeout plan-initiative --project-slug watchtower "
+            "--initiative-slug watchtower_work_item_notes --initiative-status completed "
+            "--closure-reason \"Implemented and validated work-item notes\" --write",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--initiative-slug",
+        required=True,
+        help="Initiative slug such as plan_workspace_bootstrap or watchtower_work_item_notes.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--project-slug",
+        help="Project slug when the initiative is project-scoped, such as watchtower.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--initiative-status",
+        required=True,
+        choices=("completed", "superseded", "cancelled"),
+        help="Terminal initiative status to record on the live plan package.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--closure-reason",
+        required=True,
+        help="Short human-readable reason for the closeout decision.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--superseded-by-trace-id",
+        help="Replacement trace identifier. Required when initiative-status is superseded.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--closed-at",
+        help="Explicit RFC 3339 UTC closeout timestamp. Defaults to the current UTC time.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Persist the updated closeout state and regenerated plan surfaces.",
+    )
+    closeout_plan_initiative_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    closeout_plan_initiative_parser.set_defaults(handler=_run_closeout_plan_initiative)
 
     closeout_purge_parser = closeout_subparsers.add_parser(
         "purge-trace",

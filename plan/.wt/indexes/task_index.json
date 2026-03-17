@@ -120,6 +120,51 @@
       ]
     },
     {
+      "task_id": "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
+      "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "initiative_title": "Plan Terminal Initiative Closeout Runtime",
+      "title": "Add terminal closeout mutations for live initiative packages",
+      "summary": "Implement pack-wide and project-scoped terminal closeout state transitions that finalize initiative, evidence, closeout, and promotion shells.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/add_terminal_closeout_mutations/task.json",
+      "updated_at": "2026-03-17T15:35:00Z"
+    },
+    {
+      "task_id": "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface",
+      "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "initiative_title": "Plan Terminal Initiative Closeout Runtime",
+      "title": "Expose terminal closeout through a maintained command surface",
+      "summary": "Add a CLI path and companion docs for closing live plan initiatives without manual JSON edits.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/expose_terminal_closeout_command_surface/task.json",
+      "updated_at": "2026-03-17T15:35:00Z",
+      "depends_on": [
+        "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations"
+      ]
+    },
+    {
+      "task_id": "task.plan_terminal_initiative_closeout_runtime.validate_terminal_closeout_and_clear_closing_initiatives",
+      "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "initiative_title": "Plan Terminal Initiative Closeout Runtime",
+      "title": "Validate terminal closeout and clear current closing initiatives",
+      "summary": "Add tests, rebuild validation, and use the new closeout path to move the current closing initiatives into terminal states.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/validate_terminal_closeout_and_clear_closing_initiatives/task.json",
+      "updated_at": "2026-03-17T15:35:00Z",
+      "depends_on": [
+        "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface"
+      ]
+    },
+    {
       "task_id": "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "trace_id": "trace.watchtower_initial_implementation_bootstrap",

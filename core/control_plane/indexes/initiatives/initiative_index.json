@@ -216,7 +216,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-17T09:39:54Z",
+      "updated_at": "2026-03-17T09:40:00Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",

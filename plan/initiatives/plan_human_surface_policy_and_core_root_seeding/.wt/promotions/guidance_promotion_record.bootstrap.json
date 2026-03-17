@@ -3,8 +3,8 @@
   "id": "promotion.plan_human_surface_policy_and_core_root_seeding.bootstrap_shell",
   "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T08:58:40Z",
+  "status": "candidate",
+  "updated_at": "2026-03-17T15:06:10Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",

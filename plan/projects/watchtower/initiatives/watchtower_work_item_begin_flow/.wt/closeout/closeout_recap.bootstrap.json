@@ -3,8 +3,8 @@
   "id": "closeout.watchtower_work_item_begin_flow.bootstrap_recap",
   "initiative_id": "initiative.watchtower_work_item_begin_flow",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T08:39:01Z",
+  "status": "completed",
+  "updated_at": "2026-03-17T15:06:26Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "acceptance.watchtower_work_item_begin_flow.bootstrap"
@@ -18,5 +18,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-17T15:06:26Z",
+  "closure_reason": "Delivered the local-first WatchTower work-item begin flow."
 }

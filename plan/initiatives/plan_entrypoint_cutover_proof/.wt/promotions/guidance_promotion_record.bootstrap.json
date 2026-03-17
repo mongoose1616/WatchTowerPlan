@@ -3,8 +3,8 @@
   "id": "promotion.plan_entrypoint_cutover_proof.bootstrap_shell",
   "initiative_id": "initiative.plan_entrypoint_cutover_proof",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T06:01:15Z",
+  "status": "candidate",
+  "updated_at": "2026-03-17T15:06:09Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/plan_entrypoint_cutover_proof/initiative_brief.md",

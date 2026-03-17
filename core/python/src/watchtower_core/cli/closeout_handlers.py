@@ -7,6 +7,7 @@ import argparse
 from watchtower_core.cli.handler_common import _emit_command_error, _print_payload
 from watchtower_core.closeout import InitiativeCloseoutService, TracePurgeService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops import InitiativePackageService
 
 
 def _run_closeout_initiative(args: argparse.Namespace) -> int:
@@ -122,4 +123,63 @@ def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
         print("Trace package was deleted and derived surfaces were refreshed.")
     else:
         print("Dry-run only. Use --write to delete the trace package and write the purge ledger.")
+    return 0
+
+
+def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
+    service = InitiativePackageService(ControlPlaneLoader())
+    try:
+        if args.project_slug:
+            result = service.close_project_scoped(
+                args.project_slug,
+                args.initiative_slug,
+                initiative_status=args.initiative_status,
+                closure_reason=args.closure_reason,
+                closed_at=args.closed_at,
+                superseded_by_trace_id=args.superseded_by_trace_id,
+                write=args.write,
+            )
+        else:
+            result = service.close_packwide(
+                args.initiative_slug,
+                initiative_status=args.initiative_status,
+                closure_reason=args.closure_reason,
+                closed_at=args.closed_at,
+                superseded_by_trace_id=args.superseded_by_trace_id,
+                write=args.write,
+            )
+    except ValueError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core closeout plan-initiative",
+            str(exc),
+            prefix="Closeout error",
+        )
+
+    payload = {
+        "command": "watchtower-core closeout plan-initiative",
+        "status": "ok",
+        "initiative_id": result.initiative_id,
+        "trace_id": result.trace_id,
+        "initiative_root": result.initiative_root,
+        "scope_type": result.scope_type,
+        "initiative_status": result.initiative_status,
+        "closed_at": result.closed_at,
+        "closure_reason": result.closure_reason,
+        "superseded_by_trace_id": result.superseded_by_trace_id,
+        "wrote": result.wrote,
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    print(f"Closed live plan initiative {result.trace_id} as {result.initiative_status}.")
+    print(f"Initiative Root: {result.initiative_root}")
+    print(f"Closed At: {result.closed_at}")
+    print(f"Reason: {result.closure_reason}")
+    if result.superseded_by_trace_id is not None:
+        print(f"Superseded By: {result.superseded_by_trace_id}")
+    if result.wrote:
+        print("Initiative state, local artifacts, and derived plan surfaces were updated.")
+    else:
+        print("Dry-run only. Use --write to persist the terminal closeout state.")
     return 0

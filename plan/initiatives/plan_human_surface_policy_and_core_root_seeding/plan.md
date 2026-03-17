@@ -7,7 +7,7 @@ Adds the governed human-surface policy contract, the helper and validation path 
 - `initiative_id`: `initiative.plan_human_surface_policy_and_core_root_seeding`
 - `trace_id`: `trace.plan_human_surface_policy_and_core_root_seeding`
 - `scope_type`: `pack_wide`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

@@ -3,8 +3,8 @@
   "id": "promotion.plan_legacy_history_retention_reconciliation.bootstrap_shell",
   "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T09:26:17Z",
+  "status": "candidate",
+  "updated_at": "2026-03-17T15:06:10Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",

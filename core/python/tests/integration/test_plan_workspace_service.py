@@ -115,6 +115,22 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
     )
 
 
+def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
+    for task_path in sorted((initiative_root / ".wt" / "tasks").glob("*/task.json")):
+        document = _load_json(task_path)
+        document["status"] = "completed"
+        document["updated_at"] = updated_at
+        task_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def _mark_initiative_closing(initiative_root: Path, *, updated_at: str) -> None:
+    state_path = initiative_root / ".wt" / "initiative.json"
+    document = _load_json(state_path)
+    document["lifecycle_stage"] = "closing"
+    document["updated_at"] = updated_at
+    state_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
 def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
     tmp_path: Path,
 ) -> None:
@@ -336,6 +352,107 @@ def test_plan_workspace_sync_includes_project_scoped_initiatives_in_pack_indexes
     )
     assert len(task_entries) == 2
     assert all(entry.project_id == "project.watchtower" for entry in task_entries)
+
+
+def test_plan_workspace_coordination_surfaces_recent_closeouts_after_terminal_closeout(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+    _bootstrap_project(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_alpha",
+            title="Workspace Alpha",
+            updated_at="2026-03-17T16:40:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_alpha",
+        "actor.repository_maintainer",
+        write=True,
+    )
+    package_service.bootstrap_project_scoped(
+        "watchtower",
+        InitiativeBootstrapParams(
+            trace_id="trace.watchtower_scope_flow",
+            title="WatchTower Scope Flow",
+            summary="Bootstraps one project-scoped initiative for closeout coverage.",
+            initiative_slug="watchtower_scope_flow",
+            task_specs=(
+                InitiativeTaskSpec(
+                    title="Seed WatchTower scope flow",
+                    summary="Creates one project-scoped initiative package.",
+                    slug="seed_watchtower_scope_flow",
+                ),
+            ),
+            updated_at="2026-03-17T16:45:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_project_scoped(
+        "watchtower",
+        "watchtower_scope_flow",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    _mark_tasks_completed(
+        repo_root / "plan" / "initiatives" / "workspace_alpha",
+        updated_at="2026-03-17T16:50:00Z",
+    )
+    _mark_initiative_closing(
+        repo_root / "plan" / "initiatives" / "workspace_alpha",
+        updated_at="2026-03-17T16:51:00Z",
+    )
+    _mark_tasks_completed(
+        repo_root / "plan" / "projects" / "watchtower" / "initiatives" / "watchtower_scope_flow",
+        updated_at="2026-03-17T16:50:00Z",
+    )
+    _mark_initiative_closing(
+        repo_root
+        / "plan"
+        / "projects"
+        / "watchtower"
+        / "initiatives"
+        / "watchtower_scope_flow",
+        updated_at="2026-03-17T16:51:00Z",
+    )
+    workspace_service.sync(write=True)
+    ProjectWorkspaceService(loader).sync(write=True)
+
+    package_service.close_packwide(
+        "workspace_alpha",
+        initiative_status="completed",
+        closure_reason="Delivered workspace alpha.",
+        closed_at="2026-03-17T16:55:00Z",
+        write=True,
+    )
+    package_service.close_project_scoped(
+        "watchtower",
+        "watchtower_scope_flow",
+        initiative_status="completed",
+        closure_reason="Delivered WatchTower scope flow.",
+        closed_at="2026-03-17T16:56:00Z",
+        write=True,
+    )
+
+    coordination_index = workspace_service.load_coordination_index()
+    assert coordination_index.active_initiative_count == 0
+    assert coordination_index.coordination_mode == "ready_for_bootstrap"
+    assert {entry.trace_id for entry in coordination_index.recent_closed_initiatives} == {
+        "trace.workspace_alpha",
+        "trace.watchtower_scope_flow",
+    }
+
+    plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
+    assert "## Recent Closeouts" in plan_overview
+    assert "Delivered workspace alpha." in plan_overview
+    assert "Delivered WatchTower scope flow." in plan_overview
 
 
 def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(

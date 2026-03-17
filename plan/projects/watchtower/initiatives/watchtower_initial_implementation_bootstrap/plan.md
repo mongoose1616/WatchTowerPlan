@@ -8,7 +8,7 @@ Captures the first WatchTower project-scoped implementation package before execu
 - `trace_id`: `trace.watchtower_initial_implementation_bootstrap`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

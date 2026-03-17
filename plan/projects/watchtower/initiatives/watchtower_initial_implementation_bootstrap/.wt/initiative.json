@@ -7,12 +7,12 @@
   "summary": "Captures the first WatchTower project-scoped implementation package before execution starts.",
   "scope_type": "project_scoped",
   "project_id": "project.watchtower",
-  "status": "active",
-  "lifecycle_stage": "closing",
+  "status": "completed",
+  "lifecycle_stage": "completed",
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-17T06:01:17Z",
-  "updated_at": "2026-03-17T06:46:56Z",
+  "updated_at": "2026-03-17T15:06:13Z",
   "task_ids": [
     "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
     "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate"
@@ -58,7 +58,7 @@
     "capture_complete": true,
     "machine_valid": true,
     "approval_status": "approved",
-    "ready_for_execution": true,
+    "ready_for_execution": false,
     "blocking_reasons": []
   },
   "approvals": [
@@ -77,5 +77,7 @@
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-17T06:24:45Z"
     }
-  ]
+  ],
+  "closed_at": "2026-03-17T15:06:13Z",
+  "closure_reason": "Delivered the first WatchTower implementation bootstrap package and boundary capture."
 }

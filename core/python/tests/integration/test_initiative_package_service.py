@@ -13,6 +13,7 @@ from watchtower_core.repo_ops.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.project_workspace import (
     ProjectBootstrapParams,
     ProjectRepositoryLinkSpec,
@@ -112,6 +113,22 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
         ),
         write=True,
     )
+
+
+def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
+    for task_path in sorted((initiative_root / ".wt" / "tasks").glob("*/task.json")):
+        document = _load_json(task_path)
+        document["status"] = "completed"
+        document["updated_at"] = updated_at
+        task_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def _mark_initiative_closing(initiative_root: Path, *, updated_at: str) -> None:
+    state_path = initiative_root / ".wt" / "initiative.json"
+    document = _load_json(state_path)
+    document["lifecycle_stage"] = "closing"
+    document["updated_at"] = updated_at
+    state_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
 def test_bootstrap_packwide_initiative_writes_full_package_and_stages_review(
@@ -355,6 +372,77 @@ def test_packwide_initiative_approval_requires_default_human_maintainer(
         "0009_ready_for_execution_approved.json",
         "0010_ready_for_execution_marked.json",
     ]
+
+
+def test_packwide_terminal_closeout_updates_local_artifacts_and_terminal_state(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    service = InitiativePackageService(loader)
+    service.bootstrap_packwide(_bootstrap_params(include_decision_notes=True), write=True)
+    service.approve_packwide(
+        INITIATIVE_SLUG,
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    initiative_root = _initiative_root(repo_root)
+    _mark_tasks_completed(
+        initiative_root,
+        updated_at="2026-03-17T15:45:00Z",
+    )
+    _mark_initiative_closing(
+        initiative_root,
+        updated_at="2026-03-17T15:46:00Z",
+    )
+    PlanWorkspaceService(loader).sync(write=True)
+
+    result = service.close_packwide(
+        INITIATIVE_SLUG,
+        initiative_status="completed",
+        closure_reason="Delivered the bounded closeout slice.",
+        closed_at="2026-03-17T15:50:00Z",
+        write=True,
+    )
+
+    assert result.wrote is True
+    assert result.initiative_status == "completed"
+    assert result.scope_type == "pack_wide"
+
+    state = _initiative_state(repo_root)
+    assert state["status"] == "completed"
+    assert state["lifecycle_stage"] == "completed"
+    assert state["closed_at"] == "2026-03-17T15:50:00Z"
+    assert state["closure_reason"] == "Delivered the bounded closeout slice."
+    assert state["gate_state"] == {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "approved",
+        "ready_for_execution": False,
+        "blocking_reasons": [],
+    }
+
+    evidence_document = _load_json(
+        initiative_root / ".wt" / "evidence" / "validation_bundle.bootstrap.json"
+    )
+    assert evidence_document["status"] == "completed"
+    closeout_document = _load_json(
+        initiative_root / ".wt" / "closeout" / "closeout_recap.bootstrap.json"
+    )
+    assert closeout_document["status"] == "completed"
+    assert closeout_document["terminal_state"] == "completed"
+    assert closeout_document["closed_at"] == "2026-03-17T15:50:00Z"
+    assert closeout_document["closure_reason"] == "Delivered the bounded closeout slice."
+    promotion_document = _load_json(
+        initiative_root / ".wt" / "promotions" / "guidance_promotion_record.bootstrap.json"
+    )
+    assert promotion_document["status"] == "candidate"
+
+    event_names = [
+        path.name for path in sorted((initiative_root / ".wt" / "events").glob("*.json"))
+    ]
+    assert event_names[-1] == "0011_completed.json"
 
 
 def test_project_scoped_bootstrap_requires_a_valid_project_container(

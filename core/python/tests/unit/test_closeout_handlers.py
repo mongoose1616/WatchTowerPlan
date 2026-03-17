@@ -10,6 +10,8 @@ from watchtower_core.cli import closeout_handlers
 def _args(**overrides: object) -> argparse.Namespace:
     defaults: dict[str, object] = {
         "trace_id": "trace.example",
+        "initiative_slug": "example_initiative",
+        "project_slug": None,
         "initiative_status": "completed",
         "closure_reason": "Closed for tests.",
         "superseded_by_trace_id": None,
@@ -140,6 +142,102 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
         payload["planning_catalog_output_path"]
         == "core/control_plane/indexes/planning/planning_catalog.json"
     )
+
+
+def test_closeout_plan_initiative_prints_human_summary(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def close_packwide(self, initiative_slug: str, **kwargs: object) -> SimpleNamespace:
+            assert initiative_slug == "example_initiative"
+            assert kwargs["write"] is True
+            return SimpleNamespace(
+                initiative_id="initiative.example_initiative",
+                trace_id="trace.example_initiative",
+                initiative_root="plan/initiatives/example_initiative",
+                scope_type="pack_wide",
+                initiative_status="completed",
+                closed_at="2026-03-10T23:59:59Z",
+                closure_reason="Closed for tests.",
+                superseded_by_trace_id=None,
+                wrote=True,
+            )
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+
+    result = closeout_handlers._run_closeout_plan_initiative(_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Closed live plan initiative trace.example_initiative as completed." in captured.out
+    assert "Initiative Root: plan/initiatives/example_initiative" in captured.out
+    assert "Initiative state, local artifacts, and derived plan surfaces were updated." in captured.out
+
+
+def test_closeout_plan_initiative_supports_json_success(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def close_project_scoped(
+            self,
+            project_slug: str,
+            initiative_slug: str,
+            **kwargs: object,
+        ) -> SimpleNamespace:
+            assert project_slug == "watchtower"
+            assert initiative_slug == "example_initiative"
+            return SimpleNamespace(
+                initiative_id="initiative.example_initiative",
+                trace_id="trace.example_initiative",
+                initiative_root="plan/projects/watchtower/initiatives/example_initiative",
+                scope_type="project_scoped",
+                initiative_status="completed",
+                closed_at="2026-03-10T23:59:59Z",
+                closure_reason="Closed for tests.",
+                superseded_by_trace_id=None,
+                wrote=False,
+            )
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+
+    result = closeout_handlers._run_closeout_plan_initiative(
+        _args(format="json", write=False, project_slug="watchtower")
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core closeout plan-initiative"
+    assert payload["scope_type"] == "project_scoped"
+    assert payload["initiative_root"] == "plan/projects/watchtower/initiatives/example_initiative"
+    assert payload["wrote"] is False
+
+
+def test_closeout_plan_initiative_supports_json_errors(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def close_packwide(self, initiative_slug: str, **kwargs: object) -> SimpleNamespace:
+            raise ValueError("open local tasks remain")
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+
+    result = closeout_handlers._run_closeout_plan_initiative(_args(format="json"))
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload == {
+        "command": "watchtower-core closeout plan-initiative",
+        "message": "open local tasks remain",
+        "status": "error",
+    }
 
 
 def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:

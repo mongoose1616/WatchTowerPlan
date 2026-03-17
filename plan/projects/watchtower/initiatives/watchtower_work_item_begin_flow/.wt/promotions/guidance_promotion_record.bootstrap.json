@@ -3,8 +3,8 @@
   "id": "promotion.watchtower_work_item_begin_flow.bootstrap_shell",
   "initiative_id": "initiative.watchtower_work_item_begin_flow",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T08:39:01Z",
+  "status": "candidate",
+  "updated_at": "2026-03-17T15:06:26Z",
   "candidates": [
     {
       "candidate_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/initiative_brief.md",

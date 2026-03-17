@@ -635,6 +635,21 @@ class PlanWorkspaceService:
             task_ids=tuple(initiative["task_ids"]),
             evidence_ids=tuple(initiative["evidence_ids"]),
             related_paths=tuple(record["path"] for record in initiative["authored_inputs"]),
+            closed_at=(
+                str(initiative["closed_at"])
+                if initiative.get("closed_at") is not None
+                else None
+            ),
+            closure_reason=(
+                str(initiative["closure_reason"])
+                if initiative.get("closure_reason") is not None
+                else None
+            ),
+            superseded_by_trace_id=(
+                str(initiative["superseded_by_trace_id"])
+                if initiative.get("superseded_by_trace_id") is not None
+                else None
+            ),
         )
 
     def _build_task_entries(
@@ -880,6 +895,18 @@ class PlanWorkspaceService:
             )
             for entry in coordination_document["entries"]
         ) or "- None."
+        recent_closeout_lines = "\n".join(
+            (
+                f"- `{entry['trace_id']}`: {entry['title']} "
+                f"(`{entry['initiative_status']}` at `{entry['closed_at']}`)"
+                + (
+                    f" - {entry['closure_reason']}"
+                    if entry.get("closure_reason")
+                    else ""
+                )
+            )
+            for entry in coordination_document.get("recent_closed_initiatives", ())
+        ) or "- None."
         return "\n".join(
             (
                 "# Plan Overview",
@@ -895,6 +922,9 @@ class PlanWorkspaceService:
                 "",
                 "## Actionable Tasks",
                 actionable_task_lines,
+                "",
+                "## Recent Closeouts",
+                recent_closeout_lines,
                 "",
             )
         )
@@ -974,6 +1004,23 @@ class PlanWorkspaceService:
                     f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
                     f"- `owner`: `{initiative['owner']}`",
                     f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+                    *(
+                        (f"- `closed_at`: `{initiative['closed_at']}`",)
+                        if initiative.get("closed_at") is not None
+                        else ()
+                    ),
+                    *(
+                        (f"- `closure_reason`: {initiative['closure_reason']}",)
+                        if initiative.get("closure_reason") is not None
+                        else ()
+                    ),
+                    *(
+                        (
+                            f"- `superseded_by_trace_id`: `{initiative['superseded_by_trace_id']}`",
+                        )
+                        if initiative.get("superseded_by_trace_id") is not None
+                        else ()
+                    ),
                     "",
                     "## Evidence",
                     "\n".join(

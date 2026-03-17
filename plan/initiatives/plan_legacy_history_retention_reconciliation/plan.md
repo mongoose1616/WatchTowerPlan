@@ -7,7 +7,7 @@ Encodes the transitional archive policy and clean-endstate purge rules for legac
 - `initiative_id`: `initiative.plan_legacy_history_retention_reconciliation`
 - `trace_id`: `trace.plan_legacy_history_retention_reconciliation`
 - `scope_type`: `pack_wide`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

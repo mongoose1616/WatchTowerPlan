@@ -6,12 +6,12 @@
   "title": "Plan Human Surface Policy and Core Root Seeding",
   "summary": "Adds the governed human-surface policy contract, the helper and validation path that resolve those rules, and the missing core-owned human roots that requirements.md declares as required.",
   "scope_type": "pack_wide",
-  "status": "active",
-  "lifecycle_stage": "closing",
+  "status": "completed",
+  "lifecycle_stage": "completed",
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-17T08:58:40Z",
-  "updated_at": "2026-03-17T09:23:00Z",
+  "updated_at": "2026-03-17T15:06:10Z",
   "task_ids": [
     "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
     "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
@@ -66,7 +66,7 @@
     "capture_complete": true,
     "machine_valid": true,
     "approval_status": "approved",
-    "ready_for_execution": true,
+    "ready_for_execution": false,
     "blocking_reasons": []
   },
   "approvals": [
@@ -80,5 +80,7 @@
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-17T08:59:39Z"
     }
-  ]
+  ],
+  "closed_at": "2026-03-17T15:06:10Z",
+  "closure_reason": "Delivered the governed human-surface policy and seeded the missing core human roots."
 }

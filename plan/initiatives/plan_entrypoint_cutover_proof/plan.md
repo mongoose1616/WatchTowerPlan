@@ -7,7 +7,7 @@ Proves the pack-wide capture-first flow for the plan authority cutover.
 - `initiative_id`: `initiative.plan_entrypoint_cutover_proof`
 - `trace_id`: `trace.plan_entrypoint_cutover_proof`
 - `scope_type`: `pack_wide`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

@@ -97,6 +97,21 @@ class InitiativePackageResult:
 
 
 @dataclass(frozen=True, slots=True)
+class InitiativeTerminalCloseoutResult:
+    """Output summary for one terminal live-initiative closeout mutation."""
+
+    initiative_id: str
+    trace_id: str
+    initiative_root: str
+    initiative_status: str
+    closed_at: str
+    closure_reason: str
+    scope_type: str
+    superseded_by_trace_id: str | None
+    wrote: bool
+
+
+@dataclass(frozen=True, slots=True)
 class _InitiativeLocation:
     """Resolved initiative placement information for one scope root."""
 
@@ -239,6 +254,49 @@ class InitiativePackageService:
             self._project_scoped_location_for_slug(project_slug, initiative_slug),
             approver_actor_id,
             write=write,
+        )
+
+    def close_packwide(
+        self,
+        initiative_slug: str,
+        *,
+        initiative_status: str,
+        closure_reason: str,
+        write: bool,
+        closed_at: str | None = None,
+        superseded_by_trace_id: str | None = None,
+    ) -> InitiativeTerminalCloseoutResult:
+        """Set terminal closeout state for one pack-wide live initiative package."""
+
+        return self._close_initiative(
+            self._packwide_location_for_slug(initiative_slug),
+            initiative_status=initiative_status,
+            closure_reason=closure_reason,
+            write=write,
+            closed_at=closed_at,
+            superseded_by_trace_id=superseded_by_trace_id,
+        )
+
+    def close_project_scoped(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+        *,
+        initiative_status: str,
+        closure_reason: str,
+        write: bool,
+        closed_at: str | None = None,
+        superseded_by_trace_id: str | None = None,
+    ) -> InitiativeTerminalCloseoutResult:
+        """Set terminal closeout state for one project-scoped live initiative package."""
+
+        return self._close_initiative(
+            self._project_scoped_location_for_slug(project_slug, initiative_slug),
+            initiative_status=initiative_status,
+            closure_reason=closure_reason,
+            write=write,
+            closed_at=closed_at,
+            superseded_by_trace_id=superseded_by_trace_id,
         )
 
     def _bootstrap_initiative(
@@ -713,6 +771,149 @@ class InitiativePackageService:
             review_status="approved",
             ready_for_execution=True,
             validation_passed=True,
+            wrote=write,
+        )
+
+    def _close_initiative(
+        self,
+        location: _InitiativeLocation,
+        *,
+        initiative_status: str,
+        closure_reason: str,
+        write: bool,
+        closed_at: str | None,
+        superseded_by_trace_id: str | None,
+    ) -> InitiativeTerminalCloseoutResult:
+        if initiative_status not in {"completed", "superseded", "cancelled"}:
+            raise ValueError(
+                "Terminal closeout requires initiative_status in completed, superseded, or cancelled."
+            )
+        if initiative_status == "superseded" and not superseded_by_trace_id:
+            raise ValueError(
+                "Superseded terminal closeout requires superseded_by_trace_id."
+            )
+        if initiative_status != "superseded" and superseded_by_trace_id is not None:
+            raise ValueError(
+                "superseded_by_trace_id is only valid when initiative_status is superseded."
+            )
+        initiative_state_path = self._initiative_path_for_location(location, ".wt/initiative.json")
+        initiative_document = self._load_json(initiative_state_path)
+        if superseded_by_trace_id == str(initiative_document["trace_id"]):
+            raise ValueError("An initiative cannot supersede itself.")
+        if superseded_by_trace_id is not None and not self._trace_id_exists(
+            superseded_by_trace_id
+        ):
+            raise ValueError(
+                f"Superseded-by trace_id does not exist in the live plan workspace: {superseded_by_trace_id}"
+            )
+        current_stage = str(initiative_document["lifecycle_stage"])
+        if current_stage in {"capture_incomplete", "ready_for_review"}:
+            raise ValueError(
+                "Terminal closeout requires an execution-ready or closing initiative package."
+            )
+        if current_stage in {"completed", "superseded", "cancelled"}:
+            raise ValueError(
+                f"Initiative package is already terminal: {current_stage}."
+            )
+
+        readiness = self._validate_initiative(
+            location,
+            write=False,
+            require_approved=False,
+        )
+        if not readiness.passed:
+            joined = "; ".join(readiness.issue_messages)
+            raise ValueError(
+                "Initiative package is not clean enough for terminal closeout: " + joined
+            )
+
+        open_task_ids = tuple(
+            str(task_document["task_id"])
+            for task_document in self._task_documents(location)
+            if str(task_document["status"]) not in {"completed", "cancelled"}
+        )
+        if open_task_ids:
+            joined = ", ".join(open_task_ids)
+            raise ValueError(
+                "Terminal closeout requires every initiative-local task to be completed or cancelled: "
+                + joined
+            )
+
+        closed_at_value = closed_at or utc_timestamp_now()
+        initiative_document["status"] = initiative_status
+        initiative_document["lifecycle_stage"] = initiative_status
+        initiative_document["review_status"] = "approved"
+        initiative_document["updated_at"] = closed_at_value
+        initiative_document["closed_at"] = closed_at_value
+        initiative_document["closure_reason"] = closure_reason
+        if superseded_by_trace_id is not None:
+            initiative_document["superseded_by_trace_id"] = superseded_by_trace_id
+        else:
+            initiative_document.pop("superseded_by_trace_id", None)
+        initiative_document["gate_state"] = {
+            "capture_complete": True,
+            "machine_valid": True,
+            "approval_status": str(initiative_document["gate_state"]["approval_status"]),
+            "ready_for_execution": False,
+            "blocking_reasons": [],
+        }
+
+        evidence_documents = self._artifact_documents(location, ".wt/evidence", "*.json")
+        closeout_documents = self._artifact_documents(location, ".wt/closeout", "*.json")
+        promotion_documents = self._artifact_documents(location, ".wt/promotions", "*.json")
+
+        if write:
+            if current_stage != "closing":
+                self._append_initiative_event(
+                    location=location,
+                    initiative_id=str(initiative_document["initiative_id"]),
+                    trace_id=str(initiative_document["trace_id"]),
+                    event_type="closing_started",
+                    summary="The initiative package entered closing before terminal closeout.",
+                    actor_id="actor.watchtower_core",
+                    recorded_at=closed_at_value,
+                )
+
+            self._loader.artifact_store.write_json_object(initiative_state_path, initiative_document)
+            for relative_path, document in evidence_documents:
+                document["status"] = "completed"
+                document["updated_at"] = closed_at_value
+                self._loader.artifact_store.write_json_object(relative_path, document)
+            for relative_path, document in closeout_documents:
+                document["status"] = "completed"
+                document["updated_at"] = closed_at_value
+                document["terminal_state"] = initiative_status
+                document["closed_at"] = closed_at_value
+                document["closure_reason"] = closure_reason
+                self._loader.artifact_store.write_json_object(relative_path, document)
+            for relative_path, document in promotion_documents:
+                current_status = str(document.get("status", "planned"))
+                if current_status == "planned":
+                    document["status"] = (
+                        "rejected" if initiative_status == "cancelled" else "candidate"
+                    )
+                document["updated_at"] = closed_at_value
+                self._loader.artifact_store.write_json_object(relative_path, document)
+            self._append_initiative_event(
+                location=location,
+                initiative_id=str(initiative_document["initiative_id"]),
+                trace_id=str(initiative_document["trace_id"]),
+                event_type=initiative_status,
+                summary=f"The initiative package reached terminal closeout as {initiative_status}.",
+                actor_id="actor.repository_maintainer",
+                recorded_at=closed_at_value,
+            )
+            self._sync_derived_surfaces(location)
+
+        return InitiativeTerminalCloseoutResult(
+            initiative_id=str(initiative_document["initiative_id"]),
+            trace_id=str(initiative_document["trace_id"]),
+            initiative_root=location.initiative_root_relative,
+            initiative_status=initiative_status,
+            closed_at=closed_at_value,
+            closure_reason=closure_reason,
+            scope_type=location.scope_type,
+            superseded_by_trace_id=superseded_by_trace_id,
             wrote=write,
         )
 
@@ -1352,6 +1553,40 @@ class InitiativePackageService:
         path = self._loader.repo_root / relative_path
         return json.loads(path.read_text(encoding="utf-8"))
 
+    def _task_documents(self, location: _InitiativeLocation) -> tuple[dict[str, object], ...]:
+        return tuple(
+            document
+            for _, document in self._artifact_documents(
+                location,
+                ".wt/tasks",
+                "task.json",
+                task_pattern=True,
+            )
+        )
+
+    def _artifact_documents(
+        self,
+        location: _InitiativeLocation,
+        suffix: str,
+        pattern: str,
+        *,
+        task_pattern: bool = False,
+    ) -> tuple[tuple[str, dict[str, object]], ...]:
+        root = self._loader.repo_root / self._initiative_path_for_location(location, suffix)
+        if not root.exists():
+            return ()
+        if task_pattern:
+            paths = sorted(root.glob("*/task.json"))
+        else:
+            paths = sorted(root.glob(pattern))
+        return tuple(
+            (
+                str(path.relative_to(self._loader.repo_root)),
+                json.loads(path.read_text(encoding="utf-8")),
+            )
+            for path in paths
+        )
+
     def _sha256_for_relative_path(self, relative_path: str) -> str:
         path = self._loader.repo_root / relative_path
         return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -1408,6 +1643,20 @@ class InitiativePackageService:
                     str(document.get("initiative_id")) == initiative_id
                     or str(document.get("trace_id")) == trace_id
                 ):
+                    return True
+        return False
+
+    def _trace_id_exists(self, trace_id: str) -> bool:
+        roots = [self._loader.repo_root / "plan" / "initiatives"]
+        projects_root = self._loader.repo_root / "plan" / "projects"
+        if projects_root.exists():
+            roots.extend(sorted(projects_root.glob("*/initiatives")))
+        for root in roots:
+            if not root.exists():
+                continue
+            for path in sorted(root.glob("*/.wt/initiative.json")):
+                document = json.loads(path.read_text(encoding="utf-8"))
+                if str(document.get("trace_id")) == trace_id:
                     return True
         return False
 

@@ -8,7 +8,7 @@ Adds one local-first status command so operators can see workspace readiness and
 - `trace_id`: `trace.watchtower_status_snapshot`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

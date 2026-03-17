@@ -4,7 +4,7 @@
 - `capture_complete`: `True`
 - `machine_valid`: `True`
 - `approval_status`: `approved`
-- `ready_for_execution`: `True`
+- `ready_for_execution`: `False`
 - `blocking_reasons`: `none`
 
 ## Task Status

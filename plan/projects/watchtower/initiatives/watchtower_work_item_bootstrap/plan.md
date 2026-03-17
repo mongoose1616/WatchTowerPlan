@@ -8,7 +8,7 @@ Adds a local-first work-item record flow so operators can start bounded work ins
 - `trace_id`: `trace.watchtower_work_item_bootstrap`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

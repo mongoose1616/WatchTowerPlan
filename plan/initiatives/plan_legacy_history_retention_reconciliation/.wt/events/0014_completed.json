@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_legacy_history_retention_reconciliation.0014_completed",
+  "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+  "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+  "sequence": 14,
+  "event_type": "completed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T15:06:10Z",
+  "summary": "The initiative package reached terminal closeout as completed.",
+  "payload": {}
+}

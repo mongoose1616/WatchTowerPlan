@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface.0001_created",
+  "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+  "task_id": "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T10:15:00Z",
+  "summary": "Created task task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  }
+}

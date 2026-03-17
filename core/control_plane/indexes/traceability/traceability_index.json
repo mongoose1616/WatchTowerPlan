@@ -216,7 +216,9 @@
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-17T09:39:54Z",
+      "updated_at": "2026-03-17T09:40:00Z",
+      "closed_at": "2026-03-17T09:39:54Z",
+      "closure_reason": "Delivered the capture-first plan workspace roots, initiative package runtime, rendered and query surfaces, project-scoped bootstrap flow, hard cutover proof, human-surface policy, and retention-policy follow-up tranche aligned to requirements.md and decisions.md.",
       "prd_ids": [
         "prd.capture_first_plan_workspace_bootstrap"
       ],
@@ -295,9 +297,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline refreshed at 2026-03-17T03:30:21Z after replacing the scaffolded bootstrap artifacts with the real requirements-driven planning package, accepted direction decision, and bounded execution backlog for the first capture-first tranche.",
-      "closed_at": "2026-03-17T09:39:54Z",
-      "closure_reason": "Delivered the capture-first plan workspace roots, initiative package runtime, rendered and query surfaces, project-scoped bootstrap flow, hard cutover proof, human-surface policy, and retention-policy follow-up tranche aligned to requirements.md and decisions.md."
+      "notes": "Planning baseline refreshed at 2026-03-17T03:30:21Z after replacing the scaffolded bootstrap artifacts with the real requirements-driven planning package, accepted direction decision, and bounded execution backlog for the first capture-first tranche."
     },
     {
       "trace_id": "trace.command_documentation_and_lookup",

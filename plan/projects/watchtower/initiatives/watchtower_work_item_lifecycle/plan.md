@@ -8,7 +8,7 @@ Adds local-first work-item inspection and completion flows so operators can see 
 - `trace_id`: `trace.watchtower_work_item_lifecycle`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

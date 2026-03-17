@@ -8,7 +8,7 @@ Adds local-first note capture on work items so operators can preserve thread con
 - `trace_id`: `trace.watchtower_work_item_notes`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

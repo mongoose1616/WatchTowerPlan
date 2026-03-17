@@ -6,12 +6,12 @@
   "title": "Plan Entrypoint Cutover Proof",
   "summary": "Proves the pack-wide capture-first flow for the plan authority cutover.",
   "scope_type": "pack_wide",
-  "status": "active",
-  "lifecycle_stage": "closing",
+  "status": "completed",
+  "lifecycle_stage": "completed",
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-17T06:01:15Z",
-  "updated_at": "2026-03-17T08:50:29Z",
+  "updated_at": "2026-03-17T15:06:09Z",
   "task_ids": [
     "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
     "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package"
@@ -65,7 +65,7 @@
     "capture_complete": true,
     "machine_valid": true,
     "approval_status": "approved",
-    "ready_for_execution": true,
+    "ready_for_execution": false,
     "blocking_reasons": []
   },
   "approvals": [
@@ -79,5 +79,7 @@
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-17T08:49:16Z"
     }
-  ]
+  ],
+  "closed_at": "2026-03-17T15:06:09Z",
+  "closure_reason": "Delivered the plan authority cutover proof and validated the live plan entrypoints."
 }

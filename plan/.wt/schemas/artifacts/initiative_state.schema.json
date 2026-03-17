@@ -99,6 +99,17 @@
       "type": "string",
       "format": "date-time"
     },
+    "closed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "closure_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "superseded_by_trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
     "task_ids": {
       "$ref": "#/$defs/nonEmptyIdList"
     },

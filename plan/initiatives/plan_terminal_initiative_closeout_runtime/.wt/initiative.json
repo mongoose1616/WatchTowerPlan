@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+  "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+  "slug": "plan_terminal_initiative_closeout_runtime",
+  "title": "Plan Terminal Initiative Closeout Runtime",
+  "summary": "Adds the live terminal closeout mutation path for pack-wide and project-scoped initiative packages so closing initiatives can move into completed, superseded, or cancelled and the coordination surfaces can show recent closeouts instead of stuck active work.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T10:15:00Z",
+  "updated_at": "2026-03-17T15:06:11Z",
+  "task_ids": [
+    "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
+    "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface",
+    "task.plan_terminal_initiative_closeout_runtime.validate_terminal_closeout_and_clear_closing_initiatives"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_terminal_initiative_closeout_runtime.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_terminal_initiative_closeout_runtime.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_terminal_initiative_closeout_runtime.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/initiative_brief.md",
+      "sha256": "96dba58a2296feb4e5382de3be4cb920729be780069aa63d8fa63a388b8c3576",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T10:15:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/design_record.md",
+      "sha256": "d08fba709fdb5fea254475ff7cd39ab1cd1fb838c6f6ec8bf39d4302e0647f8a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T10:15:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/implementation_slice.md",
+      "sha256": "386af165a30e0b1d37204c663323bd7807735c8fc4abed5717655af0fccd9e42",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T10:15:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/decision_notes.md",
+      "sha256": "6512daeaa0e70a2ddae2fd37746da5ce6f57512371c17e2a711eb70a73d251dc",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-17T10:15:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T14:48:33Z"
+    }
+  ],
+  "closed_at": "2026-03-17T15:06:11Z",
+  "closure_reason": "Delivered the live terminal closeout runtime, CLI surface, and recent-closeout coordination flow."
+}

@@ -3034,6 +3034,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_closeout_plan_initiative.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Live plan-initiative closeout page for terminally updating one initiative package under `plan/**`.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
       "kind": "file",
       "surface_kind": "command_doc",

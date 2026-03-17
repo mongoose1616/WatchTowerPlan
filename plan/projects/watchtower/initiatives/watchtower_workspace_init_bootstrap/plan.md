@@ -8,7 +8,7 @@ Adds a local-first workspace manifest and init flow so later WatchTower operator
 - `trace_id`: `trace.watchtower_workspace_init_bootstrap`
 - `scope_type`: `project_scoped`
 - `project_id`: `project.watchtower`
-- `lifecycle_stage`: `closing`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
 
 ## Task Plan

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_terminal_initiative_closeout_runtime.0012_closing_started",
+  "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+  "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T15:37:00Z",
+  "summary": "Closeout started after the terminal closeout runtime slice completed its bounded work.",
+  "payload": {}
+}

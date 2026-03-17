@@ -3,8 +3,8 @@
   "id": "closeout.plan_entrypoint_cutover_proof.bootstrap_recap",
   "initiative_id": "initiative.plan_entrypoint_cutover_proof",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-17T06:01:15Z",
+  "status": "completed",
+  "updated_at": "2026-03-17T15:06:09Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "acceptance.plan_entrypoint_cutover_proof.bootstrap"
@@ -18,5 +18,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-17T15:06:09Z",
+  "closure_reason": "Delivered the plan authority cutover proof and validated the live plan entrypoints."
 }
