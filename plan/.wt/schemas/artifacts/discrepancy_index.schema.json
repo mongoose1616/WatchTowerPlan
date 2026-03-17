@@ -68,6 +68,9 @@
         "initiative_id": {
           "$ref": "#/$defs/idPattern"
         },
+        "project_id": {
+          "$ref": "#/$defs/idPattern"
+        },
         "trace_id": {
           "$ref": "#/$defs/idPattern"
         },

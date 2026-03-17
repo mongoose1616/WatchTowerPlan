@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:project-index:v1",
+  "title": "Plan Project Index",
+  "description": "Schema for the pack-level project index built from project container state.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "updated_at", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:project-index:v1"
+    },
+    "id": {
+      "const": "index.projects"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/projectEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "slugPattern": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "projectEntry": {
+      "type": "object",
+      "required": [
+        "project_id",
+        "slug",
+        "title",
+        "summary",
+        "status",
+        "project_root",
+        "initiative_root",
+        "repository_count",
+        "active_initiative_count",
+        "blocked_initiative_count",
+        "linked_repository_roles",
+        "updated_at"
+      ],
+      "properties": {
+        "project_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "slug": {
+          "$ref": "#/$defs/slugPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "active", "completed", "superseded", "cancelled"]
+        },
+        "project_root": {
+          "type": "string",
+          "pattern": "^plan/projects/[a-z0-9]+(?:_[a-z0-9]+)*$"
+        },
+        "initiative_root": {
+          "type": "string",
+          "pattern": "^plan/projects/[a-z0-9]+(?:_[a-z0-9]+)*/initiatives$"
+        },
+        "repository_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_initiative_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked_initiative_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "linked_repository_roles": {
+          "$ref": "#/$defs/stringList"
+        },
+        "repository_locators": {
+          "$ref": "#/$defs/stringList"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

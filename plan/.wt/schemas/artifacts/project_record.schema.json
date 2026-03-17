@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
+  "title": "Project Record",
+  "description": "Schema for the authoritative current-state snapshot of one project container.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "project_id",
+    "slug",
+    "title",
+    "summary",
+    "status",
+    "linked_repository_refs",
+    "initiative_root",
+    "updated_at"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:project-record:v1"
+    },
+    "project_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "slug": {
+      "$ref": "#/$defs/slugPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "active",
+        "completed",
+        "superseded",
+        "cancelled"
+      ]
+    },
+    "linked_repository_refs": {
+      "$ref": "#/$defs/nonEmptyIdList"
+    },
+    "initiative_root": {
+      "type": "string",
+      "pattern": "^plan/projects/[a-z0-9]+(?:_[a-z0-9]+)*/initiatives$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "slugPattern": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "nonEmptyIdList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    }
+  }
+}

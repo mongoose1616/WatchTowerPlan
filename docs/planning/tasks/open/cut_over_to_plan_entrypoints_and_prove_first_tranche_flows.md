@@ -2,15 +2,15 @@
 id: task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006
 trace_id: trace.capture_first_plan_workspace_bootstrap
 title: Cut over to plan entrypoints and prove first-tranche flows
-summary: Completes the hard cutover for new work, proves one pack-wide and one
-  project-scoped flow, and records the history or retention follow-up tranche.
+summary: Completes the hard cutover for new work, proves one pack-wide and one project-scoped
+  flow, and records the history or retention follow-up tranche.
 type: task
 status: active
-task_status: backlog
+task_status: in_progress
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-17T03:30:21Z'
+updated_at: '2026-03-17T05:58:41Z'
 audience: shared
 authority: authoritative
 applies_to:

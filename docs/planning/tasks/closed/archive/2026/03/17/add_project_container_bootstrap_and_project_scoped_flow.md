@@ -6,11 +6,11 @@ summary: Introduces the full project bootstrap package and proves the project-sc
   initiative path.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-17T03:30:21Z'
+updated_at: '2026-03-17T05:58:26Z'
 audience: shared
 authority: authoritative
 applies_to:

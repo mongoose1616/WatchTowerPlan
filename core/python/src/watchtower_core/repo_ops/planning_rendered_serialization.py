@@ -91,6 +91,10 @@ def serialize_initiative_entry(
         "next_action": entry.next_action,
         "next_surface_path": entry.next_surface_path,
     }
+    _assign_scalar(payload, "initiative_id", entry.initiative_id, compact=compact)
+    _assign_scalar(payload, "slug", entry.slug, compact=compact)
+    _assign_scalar(payload, "scope_type", entry.scope_type, compact=compact)
+    _assign_scalar(payload, "project_id", entry.project_id, compact=compact)
     _assign_scalar(payload, "primary_owner", entry.primary_owner, compact=compact)
     _assign_sequence(payload, "active_owners", entry.active_owners, compact=compact)
     _assign_sequence(payload, "active_task_ids", entry.active_task_ids, compact=compact)

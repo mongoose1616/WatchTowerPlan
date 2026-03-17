@@ -9,6 +9,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
+from watchtower_core.repo_ops.project_workspace import ProjectWorkspaceService
 from watchtower_core.repo_ops.planning_scaffold_specs import trace_suffix
 from watchtower_core.repo_ops.task_lifecycle_support import slugify_file_stem
 from watchtower_core.utils.timestamps import utc_timestamp_now
@@ -94,6 +95,23 @@ class InitiativePackageResult:
     wrote: bool
 
 
+@dataclass(frozen=True, slots=True)
+class _InitiativeLocation:
+    """Resolved initiative placement information for one scope root."""
+
+    initiative_slug: str
+    initiative_root_relative: str
+    scope_type: str
+    project_slug: str | None = None
+    project_id: str | None = None
+
+    @property
+    def discrepancy_namespace(self) -> str:
+        if self.project_slug is None:
+            return self.initiative_slug
+        return f"{self.project_slug}.{self.initiative_slug}"
+
+
 class InitiativePackageService:
     """Manage pack-wide initiative packages under plan/initiatives/."""
 
@@ -108,12 +126,132 @@ class InitiativePackageService:
     ) -> InitiativePackageResult:
         """Create one pack-wide initiative package and stage it for review."""
 
+        return self._bootstrap_initiative(
+            self._packwide_location(params),
+            params,
+            write=write,
+        )
+
+    def bootstrap_project_scoped(
+        self,
+        project_slug: str,
+        params: InitiativeBootstrapParams,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
+        """Create one project-scoped initiative package beneath a bootstrapped project."""
+
+        return self._bootstrap_initiative(
+            self._project_scoped_location(project_slug, params),
+            params,
+            write=write,
+        )
+
+    def validate_packwide(
+        self,
+        initiative_slug: str,
+        *,
+        write: bool,
+        require_approved: bool = False,
+    ) -> InitiativeReadinessResult:
+        """Validate one pack-wide initiative package and refresh its gate state."""
+
+        return self._validate_initiative(
+            self._packwide_location_for_slug(initiative_slug),
+            write=write,
+            require_approved=require_approved,
+        )
+
+    def validate_project_scoped(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+        *,
+        write: bool,
+        require_approved: bool = False,
+    ) -> InitiativeReadinessResult:
+        """Validate one project-scoped initiative package and refresh its gate state."""
+
+        return self._validate_initiative(
+            self._project_scoped_location_for_slug(project_slug, initiative_slug),
+            write=write,
+            require_approved=require_approved,
+        )
+
+    def confirm_authored_inputs(
+        self,
+        initiative_slug: str,
+        approver_actor_id: str,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
+        """Confirm edited authored inputs into machine state."""
+
+        return self._confirm_authored_inputs(
+            self._packwide_location_for_slug(initiative_slug),
+            approver_actor_id,
+            write=write,
+        )
+
+    def confirm_project_scoped_inputs(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+        approver_actor_id: str,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
+        """Confirm edited authored inputs for one project-scoped initiative package."""
+
+        return self._confirm_authored_inputs(
+            self._project_scoped_location_for_slug(project_slug, initiative_slug),
+            approver_actor_id,
+            write=write,
+        )
+
+    def approve_packwide(
+        self,
+        initiative_slug: str,
+        approver_actor_id: str,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
+        """Approve one validated pack-wide initiative into ready_for_execution."""
+
+        return self._approve_initiative(
+            self._packwide_location_for_slug(initiative_slug),
+            approver_actor_id,
+            write=write,
+        )
+
+    def approve_project_scoped(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+        approver_actor_id: str,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
+        """Approve one validated project-scoped initiative into ready_for_execution."""
+
+        return self._approve_initiative(
+            self._project_scoped_location_for_slug(project_slug, initiative_slug),
+            approver_actor_id,
+            write=write,
+        )
+
+    def _bootstrap_initiative(
+        self,
+        location: _InitiativeLocation,
+        params: InitiativeBootstrapParams,
+        *,
+        write: bool,
+    ) -> InitiativePackageResult:
         task_specs = tuple(params.task_specs)
         if not task_specs:
             raise ValueError("Bootstrap requires at least one initiative task.")
 
-        updated_at = params.updated_at or utc_timestamp_now()
-        initiative_slug = params.initiative_slug or trace_suffix(params.trace_id)
+        initiative_slug = location.initiative_slug
         trace_id_suffix = trace_suffix(params.trace_id)
         if initiative_slug != trace_id_suffix:
             raise ValueError(
@@ -123,14 +261,29 @@ class InitiativePackageService:
         if initiative_id != f"initiative.{initiative_slug}":
             raise ValueError("initiative_id must use the canonical initiative.<slug> form.")
 
-        initiative_root = self._initiative_root(initiative_slug)
+        initiative_root = self._initiative_root(location)
         if initiative_root.exists():
             raise ValueError(
                 f"Initiative root already exists: {initiative_root.relative_to(self._loader.repo_root)}"
             )
+        if self._initiative_identity_exists(initiative_id, params.trace_id):
+            raise ValueError(
+                "initiative_id and trace_id must remain globally unique across pack-wide and project-scoped initiatives."
+            )
+        if location.scope_type == "project_scoped":
+            project_validation = ProjectWorkspaceService(self._loader).validate(
+                location.project_slug or "",
+                write=False,
+            )
+            if not project_validation.passed:
+                raise ValueError(
+                    "Project-scoped initiative bootstrap requires a valid project container: "
+                    + "; ".join(project_validation.issue_messages)
+                )
 
+        updated_at = params.updated_at or utc_timestamp_now()
         authored_documents = self._build_authored_documents(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             trace_id=params.trace_id,
             title=params.title,
@@ -142,39 +295,38 @@ class InitiativePackageService:
             authored_documents=authored_documents,
             updated_at=updated_at,
         )
-
         task_documents = self._build_task_documents(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             task_specs=task_specs,
             updated_at=updated_at,
         )
         deferred_documents = self._build_deferred_documents(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             deferred_items=params.deferred_items,
             updated_at=updated_at,
         )
         evidence_document = self._build_validation_bundle(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             trace_id=params.trace_id,
             updated_at=updated_at,
         )
         closeout_document = self._build_closeout_recap(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
-            evidence_id=evidence_document["id"],
+            evidence_id=str(evidence_document["id"]),
             updated_at=updated_at,
         )
         promotion_document = self._build_promotion_shell(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             authored_document_paths=tuple(authored_documents),
             updated_at=updated_at,
         )
         initiative_document = self._build_initiative_state(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             trace_id=params.trace_id,
             title=params.title,
@@ -189,7 +341,7 @@ class InitiativePackageService:
             updated_at=updated_at,
         )
         initiative_events = self._bootstrap_initiative_events(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_id=initiative_id,
             trace_id=params.trace_id,
             task_documents=task_documents,
@@ -201,7 +353,7 @@ class InitiativePackageService:
             return InitiativePackageResult(
                 initiative_id=initiative_id,
                 trace_id=params.trace_id,
-                initiative_root=str(initiative_root.relative_to(self._loader.repo_root)),
+                initiative_root=location.initiative_root_relative,
                 lifecycle_stage=str(initiative_document["lifecycle_stage"]),
                 review_status=str(initiative_document["review_status"]),
                 ready_for_execution=False,
@@ -213,44 +365,49 @@ class InitiativePackageService:
             target = self._loader.repo_root / relative_path
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(content, encoding="utf-8")
-
         for relative_path, document in task_documents.items():
             self._loader.artifact_store.write_json_object(relative_path, document)
         for relative_path, document in deferred_documents.items():
             self._loader.artifact_store.write_json_object(relative_path, document)
         self._loader.artifact_store.write_json_object(
-            self._initiative_path(initiative_slug, ".wt/evidence/validation_bundle.bootstrap.json"),
+            self._initiative_path_for_location(
+                location,
+                ".wt/evidence/validation_bundle.bootstrap.json",
+            ),
             evidence_document,
         )
         self._loader.artifact_store.write_json_object(
-            self._initiative_path(initiative_slug, ".wt/closeout/closeout_recap.bootstrap.json"),
+            self._initiative_path_for_location(
+                location,
+                ".wt/closeout/closeout_recap.bootstrap.json",
+            ),
             closeout_document,
         )
         self._loader.artifact_store.write_json_object(
-            self._initiative_path(
-                initiative_slug,
+            self._initiative_path_for_location(
+                location,
                 ".wt/promotions/guidance_promotion_record.bootstrap.json",
             ),
             promotion_document,
         )
         self._loader.artifact_store.write_json_object(
-            self._initiative_path(initiative_slug, ".wt/initiative.json"),
+            self._initiative_path_for_location(location, ".wt/initiative.json"),
             initiative_document,
         )
         for relative_path, document in initiative_events.items():
             self._loader.artifact_store.write_json_object(relative_path, document)
-        PlanWorkspaceService(self._loader).sync(write=True)
+        self._sync_derived_surfaces(location)
 
-        readiness = self.validate_packwide(
-            initiative_slug,
+        readiness = self._validate_initiative(
+            location,
             write=True,
             require_approved=False,
         )
-        state = self._load_json(self._initiative_path(initiative_slug, ".wt/initiative.json"))
+        state = self._load_json(self._initiative_path_for_location(location, ".wt/initiative.json"))
         return InitiativePackageResult(
             initiative_id=str(state["initiative_id"]),
             trace_id=str(state["trace_id"]),
-            initiative_root=str(initiative_root.relative_to(self._loader.repo_root)),
+            initiative_root=location.initiative_root_relative,
             lifecycle_stage=str(state["lifecycle_stage"]),
             review_status=str(state["review_status"]),
             ready_for_execution=bool(state["gate_state"]["ready_for_execution"]),
@@ -258,24 +415,21 @@ class InitiativePackageService:
             wrote=True,
         )
 
-    def validate_packwide(
+    def _validate_initiative(
         self,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         *,
         write: bool,
-        require_approved: bool = False,
+        require_approved: bool,
     ) -> InitiativeReadinessResult:
-        """Validate one pack-wide initiative package and refresh its gate state."""
-
-        initiative_state_path = self._initiative_path(initiative_slug, ".wt/initiative.json")
+        initiative_state_path = self._initiative_path_for_location(location, ".wt/initiative.json")
         initiative_document = self._load_json(initiative_state_path)
         initiative_id = str(initiative_document["initiative_id"])
         trace_id = str(initiative_document["trace_id"])
         previous_lifecycle_stage = str(initiative_document["lifecycle_stage"])
 
-        pack_loader = self._pack_loader()
-        validator = ArtifactValidationService(pack_loader)
-        artifact_paths = self._artifact_paths_for_initiative(initiative_slug)
+        validator = ArtifactValidationService(self._pack_loader())
+        artifact_paths = self._artifact_paths_for_location(location)
         artifact_results = tuple(validator.validate(relative_path) for relative_path in artifact_paths)
 
         issues: list[str] = []
@@ -288,31 +442,49 @@ class InitiativePackageService:
                 issues.append(
                     f"{result.target_path} failed {result.validator_id} with {result.issue_count} issue(s)."
                 )
+
+        if location.scope_type == "project_scoped":
+            project_validation = ProjectWorkspaceService(self._loader).validate(
+                location.project_slug or "",
+                write=False,
+            )
+            if not project_validation.passed:
+                issues.extend(project_validation.issue_messages)
+                blocking_reasons.append("project_bootstrap_invalid")
+
         authored_input_issues = self._authored_input_drift_issues(
-            initiative_slug=initiative_slug,
+            location=location,
             initiative_document=initiative_document,
         )
         issues.extend(issue.message for issue in authored_input_issues)
         if authored_input_issues:
             blocking_reasons.append("authored_input_drift")
-        derived_surface_issues = self._stale_derived_surface_issues(initiative_slug)
+
+        derived_surface_issues = self._stale_derived_surface_issues(location)
+        if location.scope_type == "project_scoped":
+            derived_surface_issues = tuple(
+                (
+                    *derived_surface_issues,
+                    *self._project_surface_issues(location),
+                )
+            )
         issues.extend(issue.message for issue in derived_surface_issues)
         if derived_surface_issues:
             blocking_reasons.append("stale_derived_surfaces")
 
-        deferred_issues = self._blocking_deferred_item_issues(initiative_slug)
+        deferred_issues = self._blocking_deferred_item_issues(location)
         issues.extend(deferred_issues)
         if deferred_issues:
             blocking_reasons.append("blocking_deferred_items")
 
         if write:
             self._sync_managed_discrepancies(
-                initiative_slug=initiative_slug,
+                location=location,
                 initiative_id=initiative_id,
                 discrepancy_issues=tuple((*authored_input_issues, *derived_surface_issues)),
                 updated_at=utc_timestamp_now(),
             )
-        open_discrepancies = self._open_discrepancy_documents(initiative_slug)
+        open_discrepancies = self._open_discrepancy_documents(location)
         if open_discrepancies:
             issues.extend(
                 f"Open discrepancy {document['discrepancy_id']} blocks readiness."
@@ -353,7 +525,8 @@ class InitiativePackageService:
             initiative_document["discrepancy_ids"] = list(discrepancy_ids)
             initiative_document["gate_state"] = {
                 "capture_complete": not any(
-                    reason in {"missing_artifacts", "blocking_deferred_items"}
+                    reason
+                    in {"missing_artifacts", "blocking_deferred_items", "project_bootstrap_invalid"}
                     for reason in blocking_reasons
                 ),
                 "machine_valid": not issues,
@@ -371,7 +544,7 @@ class InitiativePackageService:
                 and previous_lifecycle_stage != "ready_for_review"
             ):
                 self._append_initiative_event(
-                    initiative_slug=initiative_slug,
+                    location=location,
                     initiative_id=initiative_id,
                     trace_id=trace_id,
                     event_type="ready_for_review_marked",
@@ -379,12 +552,12 @@ class InitiativePackageService:
                     actor_id="actor.watchtower_core",
                     recorded_at=str(initiative_document["updated_at"]),
                 )
-            PlanWorkspaceService(self._loader).sync(write=True)
+            self._sync_derived_surfaces(location)
 
         return InitiativeReadinessResult(
             initiative_id=initiative_id,
             trace_id=trace_id,
-            initiative_root=self._initiative_root_relative(initiative_slug),
+            initiative_root=location.initiative_root_relative,
             passed=passed,
             lifecycle_stage=lifecycle_stage,
             issue_messages=tuple(issues),
@@ -394,17 +567,15 @@ class InitiativePackageService:
             wrote=write,
         )
 
-    def confirm_authored_inputs(
+    def _confirm_authored_inputs(
         self,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         approver_actor_id: str,
         *,
         write: bool,
     ) -> InitiativePackageResult:
-        """Confirm edited authored inputs into machine state."""
-
         self._assert_default_authorized_maintainer(approver_actor_id)
-        initiative_state_path = self._initiative_path(initiative_slug, ".wt/initiative.json")
+        initiative_state_path = self._initiative_path_for_location(location, ".wt/initiative.json")
         initiative_document = self._load_json(initiative_state_path)
         updated_at = utc_timestamp_now()
 
@@ -425,7 +596,7 @@ class InitiativePackageService:
         if write:
             self._loader.artifact_store.write_json_object(initiative_state_path, initiative_document)
             self._append_initiative_event(
-                initiative_slug=initiative_slug,
+                location=location,
                 initiative_id=str(initiative_document["initiative_id"]),
                 trace_id=str(initiative_document["trace_id"]),
                 event_type="authored_inputs_confirmed",
@@ -433,15 +604,15 @@ class InitiativePackageService:
                 actor_id=approver_actor_id,
                 recorded_at=updated_at,
             )
-            PlanWorkspaceService(self._loader).sync(write=True)
-            readiness = self.validate_packwide(
-                initiative_slug,
+            self._sync_derived_surfaces(location)
+            readiness = self._validate_initiative(
+                location,
                 write=True,
                 require_approved=False,
             )
         else:
-            readiness = self.validate_packwide(
-                initiative_slug,
+            readiness = self._validate_initiative(
+                location,
                 write=False,
                 require_approved=False,
             )
@@ -449,7 +620,7 @@ class InitiativePackageService:
         return InitiativePackageResult(
             initiative_id=str(refreshed_state["initiative_id"]),
             trace_id=str(refreshed_state["trace_id"]),
-            initiative_root=self._initiative_root_relative(initiative_slug),
+            initiative_root=location.initiative_root_relative,
             lifecycle_stage=str(refreshed_state["lifecycle_stage"]),
             review_status=str(refreshed_state["review_status"]),
             ready_for_execution=bool(refreshed_state["gate_state"]["ready_for_execution"]),
@@ -457,18 +628,16 @@ class InitiativePackageService:
             wrote=write,
         )
 
-    def approve_packwide(
+    def _approve_initiative(
         self,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         approver_actor_id: str,
         *,
         write: bool,
     ) -> InitiativePackageResult:
-        """Approve one validated pack-wide initiative into ready_for_execution."""
-
         self._assert_default_authorized_maintainer(approver_actor_id)
-        readiness = self.validate_packwide(
-            initiative_slug,
+        readiness = self._validate_initiative(
+            location,
             write=write,
             require_approved=False,
         )
@@ -476,7 +645,7 @@ class InitiativePackageService:
             joined = "; ".join(readiness.issue_messages)
             raise ValueError(f"Initiative package is not ready for approval: {joined}")
 
-        initiative_state_path = self._initiative_path(initiative_slug, ".wt/initiative.json")
+        initiative_state_path = self._initiative_path_for_location(location, ".wt/initiative.json")
         initiative_document = self._load_json(initiative_state_path)
         updated_at = utc_timestamp_now()
         initiative_document.setdefault("approvals", []).append(
@@ -499,7 +668,7 @@ class InitiativePackageService:
         if write:
             self._loader.artifact_store.write_json_object(initiative_state_path, initiative_document)
             self._append_initiative_event(
-                initiative_slug=initiative_slug,
+                location=location,
                 initiative_id=str(initiative_document["initiative_id"]),
                 trace_id=str(initiative_document["trace_id"]),
                 event_type="ready_for_execution_approved",
@@ -508,7 +677,7 @@ class InitiativePackageService:
                 recorded_at=updated_at,
             )
             self._append_initiative_event(
-                initiative_slug=initiative_slug,
+                location=location,
                 initiative_id=str(initiative_document["initiative_id"]),
                 trace_id=str(initiative_document["trace_id"]),
                 event_type="ready_for_execution_marked",
@@ -516,12 +685,12 @@ class InitiativePackageService:
                 actor_id="actor.watchtower_core",
                 recorded_at=updated_at,
             )
-            PlanWorkspaceService(self._loader).sync(write=True)
+            self._sync_derived_surfaces(location)
 
         return InitiativePackageResult(
             initiative_id=str(initiative_document["initiative_id"]),
             trace_id=str(initiative_document["trace_id"]),
-            initiative_root=self._initiative_root_relative(initiative_slug),
+            initiative_root=location.initiative_root_relative,
             lifecycle_stage="ready_for_execution",
             review_status="approved",
             ready_for_execution=True,
@@ -532,7 +701,7 @@ class InitiativePackageService:
     def _build_authored_documents(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         trace_id: str,
         title: str,
@@ -540,12 +709,13 @@ class InitiativePackageService:
         include_decision_notes: bool,
         task_specs: tuple[InitiativeTaskSpec, ...],
     ) -> dict[str, str]:
+        initiative_slug = location.initiative_slug
         task_lines = "\n".join(
             f"- `{task.task_id or f'task.{initiative_slug}.{task.slug or slugify_file_stem(task.title)}'}`: {task.summary}"
             for task in task_specs
         )
         documents = {
-            self._initiative_path(initiative_slug, "initiative_brief.md"): "\n".join(
+            self._initiative_path_for_location(location, "initiative_brief.md"): "\n".join(
                 (
                     f"# {title}",
                     "",
@@ -555,14 +725,19 @@ class InitiativePackageService:
                     "## Identity",
                     f"- `initiative_id`: `{initiative_id}`",
                     f"- `trace_id`: `{trace_id}`",
-                    f"- `scope_type`: `pack_wide`",
+                    f"- `scope_type`: `{location.scope_type}`",
+                    *(
+                        (f"- `project_id`: `{location.project_id}`",)
+                        if location.project_id is not None
+                        else ()
+                    ),
                     "",
                     "## Initial Task Set",
                     task_lines,
                     "",
                 )
             ),
-            self._initiative_path(initiative_slug, "design_record.md"): "\n".join(
+            self._initiative_path_for_location(location, "design_record.md"): "\n".join(
                 (
                     f"# {title} Design Record",
                     "",
@@ -570,13 +745,20 @@ class InitiativePackageService:
                     summary,
                     "",
                     "## Initial Design Boundary",
-                    "- The initiative package is machine-first and local to `plan/initiatives/<slug>/.wt/`.",
+                    f"- The initiative package is machine-first and local to `{location.initiative_root_relative}/.wt/`.",
                     "- Authored intake docs remain editable inputs but require explicit machine confirmation.",
                     "- Readiness must fail closed on missing capture, blocking deferred items, open discrepancies, or missing approval.",
+                    *(
+                        (
+                            "- The project container must stay valid and current before a project-scoped initiative may execute.",
+                        )
+                        if location.scope_type == "project_scoped"
+                        else ()
+                    ),
                     "",
                 )
             ),
-            self._initiative_path(initiative_slug, "implementation_slice.md"): "\n".join(
+            self._initiative_path_for_location(location, "implementation_slice.md"): "\n".join(
                 (
                     f"# {title} Implementation Slice",
                     "",
@@ -593,7 +775,7 @@ class InitiativePackageService:
             ),
         }
         if include_decision_notes:
-            documents[self._initiative_path(initiative_slug, "decision_notes.md")] = "\n".join(
+            documents[self._initiative_path_for_location(location, "decision_notes.md")] = "\n".join(
                 (
                     f"# {title} Decision Notes",
                     "",
@@ -628,16 +810,17 @@ class InitiativePackageService:
     def _build_task_documents(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         task_specs: tuple[InitiativeTaskSpec, ...],
         updated_at: str,
     ) -> dict[str, dict[str, object]]:
+        initiative_slug = location.initiative_slug
         documents: dict[str, dict[str, object]] = {}
         for spec in task_specs:
             task_slug = spec.slug or slugify_file_stem(spec.title)
             task_id = spec.task_id or f"task.{initiative_slug}.{task_slug}"
-            task_path = self._initiative_path(initiative_slug, f".wt/tasks/{task_slug}/task.json")
+            task_path = self._initiative_path_for_location(location, f".wt/tasks/{task_slug}/task.json")
             documents[task_path] = {
                 "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
                 "task_id": task_id,
@@ -656,8 +839,8 @@ class InitiativePackageService:
                 "related_ids": list(spec.related_ids),
             }
             documents[
-                self._initiative_path(
-                    initiative_slug,
+                self._initiative_path_for_location(
+                    location,
                     f".wt/tasks/{task_slug}/events/0001_created.json",
                 )
             ] = {
@@ -680,18 +863,19 @@ class InitiativePackageService:
     def _build_deferred_documents(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         deferred_items: tuple[DeferredItemSpec, ...],
         updated_at: str,
     ) -> dict[str, dict[str, object]]:
+        initiative_slug = location.initiative_slug
         documents: dict[str, dict[str, object]] = {}
         for spec in deferred_items:
             deferred_slug = spec.slug or slugify_file_stem(spec.summary)
             deferred_id = spec.deferred_item_id or f"deferred.{initiative_slug}.{deferred_slug}"
             documents[
-                self._initiative_path(
-                    initiative_slug,
+                self._initiative_path_for_location(
+                    location,
                     f".wt/deferred/{deferred_slug}.json",
                 )
             ] = {
@@ -714,11 +898,12 @@ class InitiativePackageService:
     def _build_validation_bundle(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         trace_id: str,
         updated_at: str,
     ) -> dict[str, object]:
+        initiative_slug = location.initiative_slug
         return {
             "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
             "id": f"evidence.{initiative_slug}.bootstrap_validation_bundle",
@@ -735,7 +920,7 @@ class InitiativePackageService:
                     "owner": "repository_maintainer",
                     "target_phase": "readiness",
                     "expected_output_paths": [
-                        self._initiative_path(initiative_slug, ".wt/initiative.json")
+                        self._initiative_path_for_location(location, ".wt/initiative.json")
                     ],
                 },
                 {
@@ -745,7 +930,7 @@ class InitiativePackageService:
                     "owner": "repository_maintainer",
                     "target_phase": "readiness",
                     "expected_output_paths": [
-                        self._initiative_path(initiative_slug, ".wt/discrepancies")
+                        self._initiative_path_for_location(location, ".wt/discrepancies")
                     ],
                 }
             ],
@@ -754,11 +939,12 @@ class InitiativePackageService:
     def _build_closeout_recap(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         evidence_id: str,
         updated_at: str,
     ) -> dict[str, object]:
+        initiative_slug = location.initiative_slug
         return {
             "$schema": "urn:watchtower:schema:artifacts:plan:closeout-recap:v1",
             "id": f"closeout.{initiative_slug}.bootstrap_recap",
@@ -777,11 +963,12 @@ class InitiativePackageService:
     def _build_promotion_shell(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         authored_document_paths: tuple[str, ...],
         updated_at: str,
     ) -> dict[str, object]:
+        initiative_slug = location.initiative_slug
         return {
             "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
             "id": f"promotion.{initiative_slug}.bootstrap_shell",
@@ -803,7 +990,7 @@ class InitiativePackageService:
     def _build_initiative_state(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         trace_id: str,
         title: str,
@@ -817,6 +1004,7 @@ class InitiativePackageService:
         promotion_id: str,
         updated_at: str,
     ) -> dict[str, object]:
+        initiative_slug = location.initiative_slug
         task_ids = [
             document["task_id"]
             for relative_path, document in task_documents.items()
@@ -830,7 +1018,8 @@ class InitiativePackageService:
             "slug": initiative_slug,
             "title": title,
             "summary": summary,
-            "scope_type": "pack_wide",
+            "scope_type": location.scope_type,
+            **({"project_id": location.project_id} if location.project_id is not None else {}),
             "status": "active",
             "lifecycle_stage": "capture_incomplete",
             "review_status": "pending",
@@ -857,16 +1046,24 @@ class InitiativePackageService:
     def _bootstrap_initiative_events(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         trace_id: str,
         task_documents: dict[str, dict[str, object]],
         updated_at: str,
         related_paths: tuple[str, ...],
     ) -> dict[str, dict[str, object]]:
+        initiative_slug = location.initiative_slug
         event_types = [
             ("created", "Created the initiative package root."),
-            ("scope_defined", "Recorded the initial pack-wide initiative scope."),
+            (
+                "scope_defined",
+                (
+                    "Recorded the initial project-scoped initiative scope."
+                    if location.scope_type == "project_scoped"
+                    else "Recorded the initial pack-wide initiative scope."
+                ),
+            ),
             ("authored_inputs_confirmed", "Confirmed the authored intake documents into machine state."),
             ("task_state_seeded", "Seeded the initial initiative-local task set."),
             ("evidence_shell_seeded", "Seeded the evidence shell."),
@@ -876,8 +1073,8 @@ class InitiativePackageService:
         events: dict[str, dict[str, object]] = {}
         for sequence, (event_type, summary) in enumerate(event_types, start=1):
             events[
-                self._initiative_path(
-                    initiative_slug,
+                self._initiative_path_for_location(
+                    location,
                     f".wt/events/{sequence:04d}_{event_type}.json",
                 )
             ] = {
@@ -903,8 +1100,8 @@ class InitiativePackageService:
             active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
 
-    def _artifact_paths_for_initiative(self, initiative_slug: str) -> tuple[str, ...]:
-        initiative_root = self._initiative_root(initiative_slug)
+    def _artifact_paths_for_location(self, location: _InitiativeLocation) -> tuple[str, ...]:
+        initiative_root = self._initiative_root(location)
         relative_paths: list[str] = []
         for path in sorted(initiative_root.rglob("*.json")):
             relative_paths.append(str(path.relative_to(self._loader.repo_root)))
@@ -913,7 +1110,7 @@ class InitiativePackageService:
     def _authored_input_drift_issues(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_document: dict[str, object],
     ) -> tuple[_DiscrepancyIssue, ...]:
         issues: list[_DiscrepancyIssue] = []
@@ -930,12 +1127,17 @@ class InitiativePackageService:
                             f"Authored input drift detected for {relative_path}; "
                             "machine confirmation is required."
                         ),
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{record['doc_kind']}_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{location.discrepancy_namespace}.{record['doc_kind']}_drift"
+                        ),
                     )
                 )
         return tuple(issues)
 
-    def _stale_derived_surface_issues(self, initiative_slug: str) -> tuple[_DiscrepancyIssue, ...]:
+    def _stale_derived_surface_issues(
+        self,
+        location: _InitiativeLocation,
+    ) -> tuple[_DiscrepancyIssue, ...]:
         return tuple(
             _DiscrepancyIssue(
                 category=issue.category,
@@ -944,11 +1146,37 @@ class InitiativePackageService:
                 message=issue.message,
                 discrepancy_id=issue.discrepancy_id,
             )
-            for issue in PlanWorkspaceService(self._loader).expected_surface_issues(initiative_slug)
+            for issue in PlanWorkspaceService(self._loader).expected_surface_issues(
+                location.initiative_root_relative
+            )
         )
 
-    def _blocking_deferred_item_issues(self, initiative_slug: str) -> tuple[str, ...]:
-        deferred_dir = self._loader.repo_root / self._initiative_path(initiative_slug, ".wt/deferred")
+    def _project_surface_issues(
+        self,
+        location: _InitiativeLocation,
+    ) -> tuple[_DiscrepancyIssue, ...]:
+        if location.project_slug is None:
+            return ()
+        return tuple(
+            _DiscrepancyIssue(
+                category=issue.category,
+                doc_kind=Path(issue.relative_path).stem,
+                relative_paths=(issue.relative_path,),
+                message=issue.message,
+                discrepancy_id=(
+                    f"discrepancy.{location.discrepancy_namespace}.{Path(issue.relative_path).stem}_project_drift"
+                ),
+            )
+            for issue in ProjectWorkspaceService(self._loader).expected_surface_issues(
+                location.project_slug
+            )
+        )
+
+    def _blocking_deferred_item_issues(self, location: _InitiativeLocation) -> tuple[str, ...]:
+        deferred_dir = self._loader.repo_root / self._initiative_path_for_location(
+            location,
+            ".wt/deferred",
+        )
         if not deferred_dir.exists():
             return ()
         issues: list[str] = []
@@ -962,10 +1190,10 @@ class InitiativePackageService:
 
     def _open_discrepancy_documents(
         self,
-        initiative_slug: str,
+        location: _InitiativeLocation,
     ) -> tuple[tuple[str, dict[str, object]], ...]:
-        discrepancy_dir = self._loader.repo_root / self._initiative_path(
-            initiative_slug,
+        discrepancy_dir = self._loader.repo_root / self._initiative_path_for_location(
+            location,
             ".wt/discrepancies",
         )
         if not discrepancy_dir.exists():
@@ -980,13 +1208,13 @@ class InitiativePackageService:
     def _sync_managed_discrepancies(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         discrepancy_issues: tuple[_DiscrepancyIssue, ...],
         updated_at: str,
     ) -> None:
-        discrepancy_dir = self._loader.repo_root / self._initiative_path(
-            initiative_slug,
+        discrepancy_dir = self._loader.repo_root / self._initiative_path_for_location(
+            location,
             ".wt/discrepancies",
         )
         discrepancy_dir.mkdir(parents=True, exist_ok=True)
@@ -1026,8 +1254,8 @@ class InitiativePackageService:
                 )
 
         for issue in issue_map.values():
-            relative_path = self._initiative_path(
-                initiative_slug,
+            relative_path = self._initiative_path_for_location(
+                location,
                 f".wt/discrepancies/{issue.doc_kind}_drift.json",
             )
             self._loader.artifact_store.write_json_object(
@@ -1051,7 +1279,7 @@ class InitiativePackageService:
     def _append_initiative_event(
         self,
         *,
-        initiative_slug: str,
+        location: _InitiativeLocation,
         initiative_id: str,
         trace_id: str,
         event_type: str,
@@ -1059,10 +1287,14 @@ class InitiativePackageService:
         actor_id: str,
         recorded_at: str,
     ) -> None:
-        events_dir = self._loader.repo_root / self._initiative_path(initiative_slug, ".wt/events")
+        initiative_slug = location.initiative_slug
+        events_dir = self._loader.repo_root / self._initiative_path_for_location(
+            location,
+            ".wt/events",
+        )
         sequence = len(tuple(events_dir.glob("*.json"))) + 1
-        relative_path = self._initiative_path(
-            initiative_slug,
+        relative_path = self._initiative_path_for_location(
+            location,
             f".wt/events/{sequence:04d}_{event_type}.json",
         )
         self._loader.artifact_store.write_json_object(
@@ -1096,14 +1328,65 @@ class InitiativePackageService:
         path = self._loader.repo_root / relative_path
         return hashlib.sha256(path.read_bytes()).hexdigest()
 
-    def _initiative_root(self, initiative_slug: str) -> Path:
-        return self._loader.repo_root / "plan" / "initiatives" / initiative_slug
+    def _packwide_location(self, params: InitiativeBootstrapParams) -> _InitiativeLocation:
+        initiative_slug = params.initiative_slug or trace_suffix(params.trace_id)
+        return self._packwide_location_for_slug(initiative_slug)
 
-    def _initiative_root_relative(self, initiative_slug: str) -> str:
-        return f"plan/initiatives/{initiative_slug}"
+    def _packwide_location_for_slug(self, initiative_slug: str) -> _InitiativeLocation:
+        return _InitiativeLocation(
+            initiative_slug=initiative_slug,
+            initiative_root_relative=f"plan/initiatives/{initiative_slug}",
+            scope_type="pack_wide",
+        )
 
-    def _initiative_path(self, initiative_slug: str, suffix: str) -> str:
-        return f"{self._initiative_root_relative(initiative_slug)}/{suffix}"
+    def _project_scoped_location(
+        self,
+        project_slug: str,
+        params: InitiativeBootstrapParams,
+    ) -> _InitiativeLocation:
+        initiative_slug = params.initiative_slug or trace_suffix(params.trace_id)
+        return self._project_scoped_location_for_slug(project_slug, initiative_slug)
+
+    def _project_scoped_location_for_slug(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+    ) -> _InitiativeLocation:
+        return _InitiativeLocation(
+            initiative_slug=initiative_slug,
+            initiative_root_relative=f"plan/projects/{project_slug}/initiatives/{initiative_slug}",
+            scope_type="project_scoped",
+            project_slug=project_slug,
+            project_id=f"project.{project_slug}",
+        )
+
+    def _initiative_root(self, location: _InitiativeLocation) -> Path:
+        return self._loader.repo_root / location.initiative_root_relative
+
+    def _initiative_path_for_location(self, location: _InitiativeLocation, suffix: str) -> str:
+        return f"{location.initiative_root_relative}/{suffix}"
+
+    def _initiative_identity_exists(self, initiative_id: str, trace_id: str) -> bool:
+        roots = [self._loader.repo_root / "plan" / "initiatives"]
+        projects_root = self._loader.repo_root / "plan" / "projects"
+        if projects_root.exists():
+            roots.extend(sorted(projects_root.glob("*/initiatives")))
+        for root in roots:
+            if not root.exists():
+                continue
+            for path in sorted(root.glob("*/.wt/initiative.json")):
+                document = json.loads(path.read_text(encoding="utf-8"))
+                if (
+                    str(document.get("initiative_id")) == initiative_id
+                    or str(document.get("trace_id")) == trace_id
+                ):
+                    return True
+        return False
+
+    def _sync_derived_surfaces(self, location: _InitiativeLocation) -> None:
+        if location.project_slug is not None:
+            ProjectWorkspaceService(self._loader).sync(write=True)
+        PlanWorkspaceService(self._loader).sync(write=True)
 
 
 @dataclass(frozen=True, slots=True)

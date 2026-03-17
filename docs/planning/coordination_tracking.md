@@ -5,19 +5,19 @@
 | --- | --- |
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
-| Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
-| Open First | [docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md](/docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md) |
+| Next | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
+| Open First | [docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) |
 | Companion Views | [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | [add_project_container_bootstrap_and_project_scoped_flow.md](/docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.capture_first_plan_workspace_bootstrap` | `execution` | repository_maintainer | [cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005](/docs/planning/tasks/open/add_project_container_bootstrap_and_project_scoped_flow.md) | `trace.capture_first_plan_workspace_bootstrap` | `backlog` | `high` | `repository_maintainer` |
+| [task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006](/docs/planning/tasks/open/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md) | `trace.capture_first_plan_workspace_bootstrap` | `in_progress` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +28,4 @@
 | `trace.rendered_surface_contract_enforcement` | `completed` | `2026-03-16T17:40:06Z` | [rendered_surface_contract_enforcement.md](/docs/planning/prds/rendered_surface_contract_enforcement.md) |
 | `trace.post_rewrite_core_cleanup_and_surface_reduction` | `completed` | `2026-03-16T07:50:26Z` | [post_rewrite_core_cleanup_and_surface_reduction.md](/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) |
 
-_Updated At: `2026-03-17T05:23:37Z`_
+_Updated At: `2026-03-17T05:58:41Z`_

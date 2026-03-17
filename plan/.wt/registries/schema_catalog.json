@@ -95,6 +95,26 @@
       "canonical_path": "plan/.wt/schemas/artifacts/guidance_promotion_record.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:project-record:v1",
+      "title": "Project Record",
+      "description": "Schema for the authoritative current-state snapshot of one project container.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "project_record",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/project_record.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1",
+      "title": "Project Repository Map",
+      "description": "Schema for the linked-repository contract attached to one project container.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "project_repository_map",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/project_repository_map.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
       "title": "Plan Task Summary Index",
       "description": "Schema for the plan-workspace task summary index.",
@@ -123,6 +143,16 @@
       "subject_kind": "plan_discrepancy_index",
       "version": "v1",
       "canonical_path": "plan/.wt/schemas/artifacts/discrepancy_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:project-index:v1",
+      "title": "Plan Project Index",
+      "description": "Schema for the plan-workspace project index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_project_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/project_index.schema.json"
     }
   ]
 }

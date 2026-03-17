@@ -14,5 +14,6 @@
 ## Notes
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
 - Use `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.
-- Rendered overview, initiative, and project views land in later tasks; this slice seeds only the live roots and tracked bootstrap state.
+- `plan/plan_overview.md` and the initiative-local rendered views are derived from the live machine state and must stay current with the indexes under `plan/.wt/indexes/`.
+- Project containers publish their own rendered `project.md`, `repositories.md`, and `summary.md` views after bootstrap, with pack-level project lookup stored in `plan/.wt/indexes/project_index.json`.
 - Do not start new live work under `docs/planning/**`; the retained bootstrap trace there exists only until later cutover slices replace the old entrypoints.

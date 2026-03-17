@@ -196,6 +196,34 @@
       ]
     },
     {
+      "id": "validator.plan.project_record",
+      "title": "Plan Project Record Validator",
+      "description": "Validates project-container current-state snapshots.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "project_record",
+      "applies_to": [
+        "plan/projects/**/.wt/project.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:project-record:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.project_repository_map",
+      "title": "Plan Project Repository Map Validator",
+      "description": "Validates linked-repository maps for project containers.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "project_repository_map",
+      "applies_to": [
+        "plan/projects/**/.wt/project_repository_map.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:project-repository-map:v1"
+      ]
+    },
+    {
       "id": "validator.plan.initiative_index",
       "title": "Plan Initiative Index Validator",
       "description": "Validates the plan-workspace initiative index.",
@@ -263,6 +291,20 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.project_index",
+      "title": "Plan Project Index Validator",
+      "description": "Validates the plan-workspace project index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_project_index",
+      "applies_to": [
+        "plan/.wt/indexes/project_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:project-index:v1"
       ]
     }
   ]

@@ -5,5 +5,6 @@
 
 ## Notes
 - Project containers live at `plan/projects/<project_slug>/`.
-- Each project-scoped initiative will later live at `plan/projects/<project_slug>/initiatives/<initiative_slug>/`.
-- Project bootstrap remains a later task; this slice seeds only the canonical root so project-scoped flows can land without inventing a parallel path.
+- Each project container owns `.wt/project.json`, `.wt/project_repository_map.json`, and the rendered `project.md`, `repositories.md`, and `summary.md` surfaces.
+- Each project-scoped initiative lives at `plan/projects/<project_slug>/initiatives/<initiative_slug>/`.
+- Project bootstrap must complete before any project-scoped initiative may be created under the container.

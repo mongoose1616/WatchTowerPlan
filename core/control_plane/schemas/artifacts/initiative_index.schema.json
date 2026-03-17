@@ -231,6 +231,23 @@
           "type": "string",
           "minLength": 1
         },
+        "initiative_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+        },
+        "scope_type": {
+          "type": "string",
+          "enum": [
+            "pack_wide",
+            "project_scoped"
+          ]
+        },
+        "project_id": {
+          "$ref": "#/$defs/idPattern"
+        },
         "primary_owner": {
           "type": "string",
           "minLength": 1

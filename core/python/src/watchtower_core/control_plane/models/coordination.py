@@ -51,6 +51,10 @@ class InitiativeIndexEntry:
     key_surface_path: str
     next_action: str
     next_surface_path: str
+    initiative_id: str | None = None
+    slug: str | None = None
+    scope_type: str | None = None
+    project_id: str | None = None
     primary_owner: str | None = None
     active_owners: tuple[str, ...] = ()
     active_task_ids: tuple[str, ...] = ()
@@ -86,6 +90,10 @@ class InitiativeIndexEntry:
             key_surface_path=document["key_surface_path"],
             next_action=document["next_action"],
             next_surface_path=document["next_surface_path"],
+            initiative_id=document.get("initiative_id"),
+            slug=document.get("slug"),
+            scope_type=document.get("scope_type"),
+            project_id=document.get("project_id"),
             primary_owner=document.get("primary_owner"),
             active_owners=tuple(document.get("active_owners", ())),
             active_task_ids=tuple(document.get("active_task_ids", ())),

@@ -13,6 +13,11 @@ from watchtower_core.repo_ops.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_core.repo_ops.project_workspace import (
+    ProjectBootstrapParams,
+    ProjectRepositoryLinkSpec,
+    ProjectWorkspaceService,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 INITIATIVE_SLUG = "unit_test_plan_workspace"
@@ -69,6 +74,30 @@ def _initiative_root(repo_root: Path) -> Path:
 
 def _initiative_state(repo_root: Path) -> dict[str, object]:
     return _load_json(_initiative_root(repo_root) / ".wt" / "initiative.json")
+
+
+def _bootstrap_project(loader: ControlPlaneLoader) -> None:
+    ProjectWorkspaceService(loader).bootstrap(
+        ProjectBootstrapParams(
+            project_slug="watchtower",
+            title="WatchTower",
+            summary="Operator-facing implementation target for project-scoped bootstrap tests.",
+            repository_links=(
+                ProjectRepositoryLinkSpec(
+                    repository_role="planning",
+                    repository_locator="/home/j/WatchTowerPlan",
+                    repository_kind="planning",
+                ),
+                ProjectRepositoryLinkSpec(
+                    repository_role="implementation",
+                    repository_locator="/home/j/WatchTower",
+                    repository_kind="implementation",
+                ),
+            ),
+            updated_at=UPDATED_AT,
+        ),
+        write=True,
+    )
 
 
 def test_bootstrap_packwide_initiative_writes_full_package_and_stages_review(
@@ -292,3 +321,106 @@ def test_packwide_initiative_approval_requires_default_human_maintainer(
         "0009_ready_for_execution_approved.json",
         "0010_ready_for_execution_marked.json",
     ]
+
+
+def test_project_scoped_bootstrap_requires_a_valid_project_container(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = InitiativePackageService(ControlPlaneLoader(repo_root))
+
+    with pytest.raises(
+        ValueError,
+        match="requires a valid project container",
+    ):
+        service.bootstrap_project_scoped(
+            "watchtower",
+            InitiativeBootstrapParams(
+                trace_id="trace.watchtower_runtime_bootstrap",
+                title="WatchTower Runtime Bootstrap",
+                summary="Bootstraps one project-scoped initiative package for WatchTower.",
+                initiative_slug="watchtower_runtime_bootstrap",
+                task_specs=(
+                    InitiativeTaskSpec(
+                        title="Seed WatchTower project initiative",
+                        summary="Creates the project-scoped initiative package.",
+                        slug="seed_watchtower_project_initiative",
+                    ),
+                ),
+                updated_at=UPDATED_AT,
+            ),
+            write=True,
+        )
+
+
+def test_project_scoped_initiative_bootstrap_and_approval_use_project_root(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    _bootstrap_project(loader)
+    service = InitiativePackageService(loader)
+
+    params = InitiativeBootstrapParams(
+        trace_id="trace.watchtower_runtime_bootstrap",
+        title="WatchTower Runtime Bootstrap",
+        summary="Bootstraps one project-scoped initiative package for WatchTower.",
+        initiative_slug="watchtower_runtime_bootstrap",
+        task_specs=(
+            InitiativeTaskSpec(
+                title="Seed WatchTower project initiative",
+                summary="Creates the project-scoped initiative package.",
+                slug="seed_watchtower_project_initiative",
+            ),
+            InitiativeTaskSpec(
+                title="Validate WatchTower project readiness gate",
+                summary="Confirms the project-scoped initiative gate behavior.",
+                slug="validate_watchtower_project_gate",
+            ),
+        ),
+        updated_at=UPDATED_AT,
+    )
+
+    result = service.bootstrap_project_scoped("watchtower", params, write=True)
+
+    assert result.wrote is True
+    assert result.validation_passed is True
+    assert result.initiative_root == "plan/projects/watchtower/initiatives/watchtower_runtime_bootstrap"
+
+    state = _load_json(
+        repo_root
+        / "plan"
+        / "projects"
+        / "watchtower"
+        / "initiatives"
+        / "watchtower_runtime_bootstrap"
+        / ".wt"
+        / "initiative.json"
+    )
+    assert state["scope_type"] == "project_scoped"
+    assert state["project_id"] == "project.watchtower"
+    assert state["review_status"] == "pending"
+
+    readiness = service.validate_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        write=False,
+    )
+    assert readiness.passed is True
+
+    approved = service.approve_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        "actor.repository_maintainer",
+        write=True,
+    )
+    assert approved.ready_for_execution is True
+    assert approved.validation_passed is True
+
+    final_readiness = service.validate_project_scoped(
+        "watchtower",
+        "watchtower_runtime_bootstrap",
+        write=False,
+        require_approved=True,
+    )
+    assert final_readiness.passed is True

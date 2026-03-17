@@ -124,11 +124,15 @@ def initiative_rendered_query_terms(entry: InitiativeIndexEntry) -> tuple[str, .
     """Return deterministic searchable terms for compact initiative rendered surfaces."""
     return (
         entry.trace_id,
+        entry.initiative_id or "",
+        entry.slug or "",
         entry.title,
         entry.summary,
         entry.artifact_status,
         entry.initiative_status,
         entry.current_phase,
+        entry.scope_type or "",
+        entry.project_id or "",
         entry.primary_owner or "",
         entry.key_surface_path,
         entry.next_action,

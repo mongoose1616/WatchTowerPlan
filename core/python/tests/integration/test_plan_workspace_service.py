@@ -23,6 +23,11 @@ from watchtower_core.repo_ops.plan_workspace import (
     PlanTaskSearchParams,
     PlanWorkspaceService,
 )
+from watchtower_core.repo_ops.project_workspace import (
+    ProjectBootstrapParams,
+    ProjectRepositoryLinkSpec,
+    ProjectWorkspaceService,
+)
 from watchtower_core.repo_ops.query.common import RenderedSearchFilters
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -70,6 +75,30 @@ def _bootstrap_params(
 
 def _load_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _bootstrap_project(loader: ControlPlaneLoader) -> None:
+    ProjectWorkspaceService(loader).bootstrap(
+        ProjectBootstrapParams(
+            project_slug="watchtower",
+            title="WatchTower",
+            summary="Operator-facing implementation target for project-scoped plan-workspace tests.",
+            repository_links=(
+                ProjectRepositoryLinkSpec(
+                    repository_role="planning",
+                    repository_locator="/home/j/WatchTowerPlan",
+                    repository_kind="planning",
+                ),
+                ProjectRepositoryLinkSpec(
+                    repository_role="implementation",
+                    repository_locator="/home/j/WatchTower",
+                    repository_kind="implementation",
+                ),
+            ),
+            updated_at="2026-03-17T16:20:00Z",
+        ),
+        write=True,
+    )
 
 
 def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
@@ -220,3 +249,76 @@ def test_plan_workspace_stale_surface_drift_blocks_readiness_until_explicit_rebu
     assert workspace_service.search_discrepancies(
         PlanDiscrepancySearchParams(status="open")
     ) == ()
+
+
+def test_plan_workspace_sync_includes_project_scoped_initiatives_in_pack_indexes(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+    _bootstrap_project(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_alpha",
+            title="Workspace Alpha",
+            updated_at="2026-03-17T16:30:00Z",
+        ),
+        write=True,
+    )
+    package_service.bootstrap_project_scoped(
+        "watchtower",
+        InitiativeBootstrapParams(
+            trace_id="trace.watchtower_scope_flow",
+            title="WatchTower Scope Flow",
+            summary="Bootstraps one project-scoped initiative for plan-workspace sync coverage.",
+            initiative_slug="watchtower_scope_flow",
+            task_specs=(
+                InitiativeTaskSpec(
+                    title="Seed WatchTower scope flow",
+                    summary="Creates one project-scoped initiative package.",
+                    slug="seed_watchtower_scope_flow",
+                ),
+                InitiativeTaskSpec(
+                    title="Validate WatchTower scope gate",
+                    summary="Confirms the project-scoped initiative appears in pack indexes.",
+                    slug="validate_watchtower_scope_gate",
+                ),
+            ),
+            updated_at="2026-03-17T16:35:00Z",
+        ),
+        write=True,
+    )
+
+    sync_result = workspace_service.sync(write=True)
+
+    assert sync_result.wrote is True
+    assert sync_result.initiative_count == 2
+    assert sync_result.task_count == 4
+    assert (repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/plan.md").exists()
+    assert (repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/progress.md").exists()
+    assert (repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/summary.md").exists()
+
+    initiative_entries = workspace_service.load_initiative_index().entries
+    project_entry = next(
+        entry for entry in initiative_entries if entry.trace_id == "trace.watchtower_scope_flow"
+    )
+    assert project_entry.scope_type == "project_scoped"
+    assert project_entry.project_id == "project.watchtower"
+    assert project_entry.key_surface_path == "plan/projects/watchtower/initiatives/watchtower_scope_flow/plan.md"
+
+    readiness_entry = next(
+        entry
+        for entry in workspace_service.load_readiness_entries()
+        if entry.trace_id == "trace.watchtower_scope_flow"
+    )
+    assert readiness_entry.project_id == "project.watchtower"
+    assert readiness_entry.scope_type == "project_scoped"
+
+    task_entries = workspace_service.search_tasks(
+        PlanTaskSearchParams(project_id="project.watchtower")
+    )
+    assert len(task_entries) == 2
+    assert all(entry.project_id == "project.watchtower" for entry in task_entries)

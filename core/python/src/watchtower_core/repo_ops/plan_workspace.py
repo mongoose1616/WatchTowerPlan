@@ -79,6 +79,7 @@ class PlanTaskIndexEntry:
 
     task_id: str
     initiative_id: str
+    project_id: str | None
     trace_id: str
     initiative_title: str
     title: str
@@ -97,6 +98,11 @@ class PlanTaskIndexEntry:
         return cls(
             task_id=str(document["task_id"]),
             initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
             trace_id=str(document["trace_id"]),
             initiative_title=str(document["initiative_title"]),
             title=str(document["title"]),
@@ -117,6 +123,7 @@ class PlanReadinessIndexEntry:
     """Machine-readable readiness-gate summary for one initiative package."""
 
     initiative_id: str
+    project_id: str | None
     trace_id: str
     title: str
     initiative_root: str
@@ -134,6 +141,11 @@ class PlanReadinessIndexEntry:
     def from_document(cls, document: dict[str, object]) -> PlanReadinessIndexEntry:
         return cls(
             initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
             trace_id=str(document["trace_id"]),
             title=str(document["title"]),
             initiative_root=str(document["initiative_root"]),
@@ -155,6 +167,7 @@ class PlanDiscrepancyIndexEntry:
 
     discrepancy_id: str
     initiative_id: str
+    project_id: str | None
     trace_id: str
     title: str
     category: str
@@ -170,6 +183,11 @@ class PlanDiscrepancyIndexEntry:
         return cls(
             discrepancy_id=str(document["discrepancy_id"]),
             initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
             trace_id=str(document["trace_id"]),
             title=str(document["title"]),
             category=str(document["category"]),
@@ -188,6 +206,7 @@ class PlanTaskSearchParams:
 
     query: str | None = None
     initiative_id: str | None = None
+    project_id: str | None = None
     trace_id: str | None = None
     status: str | None = None
     priority: str | None = None
@@ -202,6 +221,7 @@ class PlanReadinessSearchParams:
 
     query: str | None = None
     initiative_id: str | None = None
+    project_id: str | None = None
     trace_id: str | None = None
     lifecycle_stage: str | None = None
     review_status: str | None = None
@@ -216,6 +236,7 @@ class PlanDiscrepancySearchParams:
 
     query: str | None = None
     initiative_id: str | None = None
+    project_id: str | None = None
     trace_id: str | None = None
     category: str | None = None
     severity: str | None = None
@@ -253,7 +274,11 @@ class _PlanInitiativeSnapshot:
     evidence_documents: tuple[dict[str, object], ...]
     closeout_documents: tuple[dict[str, object], ...]
     promotion_documents: tuple[dict[str, object], ...]
+    initiative_slug: str
     initiative_root: str
+    project_slug: str | None
+    project_root: str | None
+    discrepancy_namespace: str
 
 
 class PlanWorkspaceService:
@@ -281,10 +306,18 @@ class PlanWorkspaceService:
             wrote=write,
         )
 
-    def expected_surface_issues(self, initiative_slug: str) -> tuple[DerivedSurfaceIssue, ...]:
+    def expected_surface_issues(self, initiative_root: str) -> tuple[DerivedSurfaceIssue, ...]:
         snapshots = self._load_initiative_snapshots()
         documents = self._build_documents(snapshots)
-        initiative_root = f"plan/initiatives/{initiative_slug}"
+        snapshot = next(
+            (candidate for candidate in snapshots if candidate.initiative_root == initiative_root),
+            None,
+        )
+        discrepancy_namespace = (
+            snapshot.discrepancy_namespace
+            if snapshot is not None
+            else Path(initiative_root).name
+        )
         expected_markdown = {
             PLAN_OVERVIEW_PATH: str(documents["plan_overview"]),
             f"{initiative_root}/plan.md": documents["initiative_views"].get(
@@ -316,7 +349,9 @@ class PlanWorkspaceService:
                         category="stale_rendered_surface",
                         relative_path=relative_path,
                         message=f"Required rendered surface is missing from the expected build: {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_surface_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
+                        ),
                     )
                 )
                 continue
@@ -327,7 +362,9 @@ class PlanWorkspaceService:
                         category="stale_rendered_surface",
                         relative_path=relative_path,
                         message=f"Required rendered surface is missing: {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_surface_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
+                        ),
                     )
                 )
                 continue
@@ -337,7 +374,9 @@ class PlanWorkspaceService:
                         category="stale_rendered_surface",
                         relative_path=relative_path,
                         message=f"Rendered surface drift detected for {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_surface_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
+                        ),
                     )
                 )
 
@@ -349,7 +388,9 @@ class PlanWorkspaceService:
                         category="stale_aggregate_index",
                         relative_path=relative_path,
                         message=f"Required aggregate index is missing: {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_index_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
+                        ),
                     )
                 )
                 continue
@@ -361,7 +402,9 @@ class PlanWorkspaceService:
                         category="stale_aggregate_index",
                         relative_path=relative_path,
                         message=f"Aggregate index is not valid JSON: {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_index_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
+                        ),
                     )
                 )
                 continue
@@ -371,7 +414,9 @@ class PlanWorkspaceService:
                         category="stale_aggregate_index",
                         relative_path=relative_path,
                         message=f"Aggregate index drift detected for {relative_path}.",
-                        discrepancy_id=f"discrepancy.{initiative_slug}.{Path(relative_path).stem}_index_drift",
+                        discrepancy_id=(
+                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_index_drift"
+                        ),
                     )
                 )
         return tuple(sorted(issues, key=lambda issue: (issue.category, issue.relative_path)))
@@ -574,6 +619,14 @@ class PlanWorkspaceService:
             key_surface_path=f"{snapshot.initiative_root}/plan.md",
             next_action=_next_action(snapshot, readiness),
             next_surface_path=_next_surface_path(snapshot, readiness),
+            initiative_id=str(initiative["initiative_id"]),
+            slug=str(initiative["slug"]),
+            scope_type=str(initiative["scope_type"]),
+            project_id=(
+                str(initiative["project_id"])
+                if initiative.get("project_id") is not None
+                else None
+            ),
             primary_owner=str(initiative["owner"]),
             active_owners=(str(initiative["owner"]),),
             active_task_ids=active_task_ids,
@@ -593,6 +646,11 @@ class PlanWorkspaceService:
             PlanTaskIndexEntry(
                 task_id=str(task["task_id"]),
                 initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
                 trace_id=str(initiative["trace_id"]),
                 initiative_title=str(initiative["title"]),
                 title=str(task["title"]),
@@ -614,6 +672,11 @@ class PlanWorkspaceService:
         gate_state = initiative["gate_state"]
         return PlanReadinessIndexEntry(
             initiative_id=str(initiative["initiative_id"]),
+            project_id=(
+                str(initiative["project_id"])
+                if initiative.get("project_id") is not None
+                else None
+            ),
             trace_id=str(initiative["trace_id"]),
             title=str(initiative["title"]),
             initiative_root=snapshot.initiative_root,
@@ -637,6 +700,11 @@ class PlanWorkspaceService:
             PlanDiscrepancyIndexEntry(
                 discrepancy_id=str(document["discrepancy_id"]),
                 initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
                 trace_id=str(initiative["trace_id"]),
                 title=str(initiative["title"]),
                 category=str(document["category"]),
@@ -806,7 +874,10 @@ class PlanWorkspaceService:
             for entry in coordination_document["actionable_tasks"]
         ) or "- None."
         initiative_lines = "\n".join(
-            f"- `{entry['trace_id']}`: {entry['title']} (`{entry['current_phase']}`)"
+            (
+                f"- `{entry['trace_id']}`: {entry['title']} "
+                f"(`{entry['current_phase']}` / `{entry.get('scope_type', 'pack_wide')}`)"
+            )
             for entry in coordination_document["entries"]
         ) or "- None."
         return "\n".join(
@@ -859,6 +930,12 @@ class PlanWorkspaceService:
                     "## Identity",
                     f"- `initiative_id`: `{initiative['initiative_id']}`",
                     f"- `trace_id`: `{initiative['trace_id']}`",
+                    f"- `scope_type`: `{initiative['scope_type']}`",
+                    *(
+                        (f"- `project_id`: `{initiative['project_id']}`",)
+                        if initiative.get("project_id") is not None
+                        else ()
+                    ),
                     f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
                     f"- `review_status`: `{initiative['review_status']}`",
                     "",
@@ -921,33 +998,75 @@ class PlanWorkspaceService:
         return documents
 
     def _load_initiative_snapshots(self) -> tuple[_PlanInitiativeSnapshot, ...]:
-        initiatives_root = self._loader.repo_root / "plan" / "initiatives"
-        if not initiatives_root.exists():
-            return ()
         snapshots: list[_PlanInitiativeSnapshot] = []
-        for initiative_path in sorted(initiatives_root.iterdir()):
-            if not initiative_path.is_dir():
-                continue
-            initiative_state_path = initiative_path / ".wt" / "initiative.json"
-            if not initiative_state_path.exists():
-                continue
-            initiative_document = json.loads(initiative_state_path.read_text(encoding="utf-8"))
-            snapshots.append(
-                _PlanInitiativeSnapshot(
-                    initiative_document=initiative_document,
-                    task_documents=self._load_json_documents(initiative_path / ".wt" / "tasks", "task.json"),
-                    deferred_documents=self._load_json_documents(initiative_path / ".wt" / "deferred", "*.json"),
-                    discrepancy_documents=self._load_json_documents(
-                        initiative_path / ".wt" / "discrepancies",
-                        "*.json",
-                    ),
-                    evidence_documents=self._load_json_documents(initiative_path / ".wt" / "evidence", "*.json"),
-                    closeout_documents=self._load_json_documents(initiative_path / ".wt" / "closeout", "*.json"),
-                    promotion_documents=self._load_json_documents(initiative_path / ".wt" / "promotions", "*.json"),
-                    initiative_root=str(initiative_path.relative_to(self._loader.repo_root)),
+        pack_initiatives_root = self._loader.repo_root / "plan" / "initiatives"
+        if pack_initiatives_root.exists():
+            for initiative_path in sorted(pack_initiatives_root.iterdir()):
+                snapshot = self._snapshot_for_initiative_path(
+                    initiative_path,
+                    project_slug=None,
                 )
-            )
+                if snapshot is not None:
+                    snapshots.append(snapshot)
+
+        projects_root = self._loader.repo_root / "plan" / "projects"
+        if projects_root.exists():
+            for project_path in sorted(projects_root.iterdir()):
+                if not project_path.is_dir():
+                    continue
+                project_slug = project_path.name
+                project_initiatives_root = project_path / "initiatives"
+                if not project_initiatives_root.exists():
+                    continue
+                for initiative_path in sorted(project_initiatives_root.iterdir()):
+                    snapshot = self._snapshot_for_initiative_path(
+                        initiative_path,
+                        project_slug=project_slug,
+                    )
+                    if snapshot is not None:
+                        snapshots.append(snapshot)
         return tuple(snapshots)
+
+    def _snapshot_for_initiative_path(
+        self,
+        initiative_path: Path,
+        *,
+        project_slug: str | None,
+    ) -> _PlanInitiativeSnapshot | None:
+        if not initiative_path.is_dir():
+            return None
+        initiative_state_path = initiative_path / ".wt" / "initiative.json"
+        if not initiative_state_path.exists():
+            return None
+        initiative_document = json.loads(initiative_state_path.read_text(encoding="utf-8"))
+        initiative_slug = initiative_path.name
+        project_root = (
+            f"plan/projects/{project_slug}"
+            if project_slug is not None
+            else None
+        )
+        discrepancy_namespace = (
+            f"{project_slug}.{initiative_slug}"
+            if project_slug is not None
+            else initiative_slug
+        )
+        return _PlanInitiativeSnapshot(
+            initiative_document=initiative_document,
+            task_documents=self._load_json_documents(initiative_path / ".wt" / "tasks", "task.json"),
+            deferred_documents=self._load_json_documents(initiative_path / ".wt" / "deferred", "*.json"),
+            discrepancy_documents=self._load_json_documents(
+                initiative_path / ".wt" / "discrepancies",
+                "*.json",
+            ),
+            evidence_documents=self._load_json_documents(initiative_path / ".wt" / "evidence", "*.json"),
+            closeout_documents=self._load_json_documents(initiative_path / ".wt" / "closeout", "*.json"),
+            promotion_documents=self._load_json_documents(initiative_path / ".wt" / "promotions", "*.json"),
+            initiative_slug=initiative_slug,
+            initiative_root=str(initiative_path.relative_to(self._loader.repo_root)),
+            project_slug=project_slug,
+            project_root=project_root,
+            discrepancy_namespace=discrepancy_namespace,
+        )
 
     def _load_json_documents(self, root: Path, pattern: str) -> tuple[dict[str, object], ...]:
         if not root.exists():
@@ -991,6 +1110,8 @@ class PlanWorkspaceService:
             "doc_path": entry.doc_path,
             "updated_at": entry.updated_at,
         }
+        if entry.project_id is not None:
+            payload["project_id"] = entry.project_id
         if entry.blocked_by:
             payload["blocked_by"] = list(entry.blocked_by)
         if entry.depends_on:
@@ -1002,6 +1123,7 @@ class PlanWorkspaceService:
     def _serialize_readiness_entry(self, entry: PlanReadinessIndexEntry) -> dict[str, object]:
         return {
             "initiative_id": entry.initiative_id,
+            **({"project_id": entry.project_id} if entry.project_id is not None else {}),
             "trace_id": entry.trace_id,
             "title": entry.title,
             "initiative_root": entry.initiative_root,
@@ -1020,6 +1142,7 @@ class PlanWorkspaceService:
         return {
             "discrepancy_id": entry.discrepancy_id,
             "initiative_id": entry.initiative_id,
+            **({"project_id": entry.project_id} if entry.project_id is not None else {}),
             "trace_id": entry.trace_id,
             "title": entry.title,
             "category": entry.category,
@@ -1095,6 +1218,7 @@ def _search_task_entries(
     params: PlanTaskSearchParams,
 ) -> tuple[PlanTaskIndexEntry, ...]:
     initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
     trace_id = normalize_optional_text(params.trace_id)
     status = normalize_optional_text(params.status)
     priority = normalize_optional_text(params.priority)
@@ -1102,6 +1226,8 @@ def _search_task_entries(
     matches: list[tuple[int, PlanTaskIndexEntry]] = []
     for entry in entries:
         if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
             continue
         if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
             continue
@@ -1118,6 +1244,7 @@ def _search_task_entries(
             (
                 entry.task_id,
                 entry.initiative_id,
+                entry.project_id or "",
                 entry.trace_id,
                 entry.initiative_title,
                 entry.title,
@@ -1153,12 +1280,15 @@ def _search_readiness_entries(
     params: PlanReadinessSearchParams,
 ) -> tuple[PlanReadinessIndexEntry, ...]:
     initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
     trace_id = normalize_optional_text(params.trace_id)
     lifecycle_stage = normalize_optional_text(params.lifecycle_stage)
     review_status = normalize_optional_text(params.review_status)
     matches: list[tuple[int, PlanReadinessIndexEntry]] = []
     for entry in entries:
         if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
             continue
         if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
             continue
@@ -1177,6 +1307,7 @@ def _search_readiness_entries(
             params.query,
             (
                 entry.initiative_id,
+                entry.project_id or "",
                 entry.trace_id,
                 entry.title,
                 entry.initiative_root,
@@ -1201,6 +1332,7 @@ def _search_discrepancy_entries(
     params: PlanDiscrepancySearchParams,
 ) -> tuple[PlanDiscrepancyIndexEntry, ...]:
     initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
     trace_id = normalize_optional_text(params.trace_id)
     category = normalize_optional_text(params.category)
     severity = normalize_optional_text(params.severity)
@@ -1208,6 +1340,8 @@ def _search_discrepancy_entries(
     matches: list[tuple[int, PlanDiscrepancyIndexEntry]] = []
     for entry in entries:
         if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
             continue
         if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
             continue
@@ -1224,6 +1358,7 @@ def _search_discrepancy_entries(
             (
                 entry.discrepancy_id,
                 entry.initiative_id,
+                entry.project_id or "",
                 entry.trace_id,
                 entry.title,
                 entry.category,

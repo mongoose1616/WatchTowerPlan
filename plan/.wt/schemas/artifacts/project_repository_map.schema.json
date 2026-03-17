@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1",
+  "title": "Project Repository Map",
+  "description": "Schema for the linked-repository contract attached to one project container.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "project_id",
+    "updated_at",
+    "repositories"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1"
+    },
+    "id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "project_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repositories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/repositoryRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "repositoryRecord": {
+      "type": "object",
+      "required": [
+        "repository_id",
+        "repository_role",
+        "repository_locator",
+        "repository_kind",
+        "owner",
+        "access",
+        "active"
+      ],
+      "properties": {
+        "repository_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "repository_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository_kind": {
+          "type": "string",
+          "enum": [
+            "planning",
+            "implementation",
+            "deployment",
+            "reference"
+          ]
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
