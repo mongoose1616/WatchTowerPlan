@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1",
+  "title": "Workflow Module Section Spec",
+  "description": "Schema for the normalized section projection used to validate the reusable workflow module template.",
+  "type": "object",
+  "required": [
+    "template_id",
+    "required_section_ids",
+    "optional_section_ids",
+    "section_order",
+    "template_heading_ids"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "template.core.workflow.module"
+    },
+    "required_section_ids": {
+      "const": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "workflow",
+        "outputs",
+        "done_when"
+      ]
+    },
+    "optional_section_ids": {
+      "const": [
+        "additional_files",
+        "data_structure"
+      ]
+    },
+    "section_order": {
+      "const": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "additional_files",
+        "workflow",
+        "data_structure",
+        "outputs",
+        "done_when"
+      ]
+    },
+    "template_heading_ids": {
+      "const": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "additional_files",
+        "workflow",
+        "data_structure",
+        "outputs",
+        "done_when"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

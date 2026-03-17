@@ -38,3 +38,20 @@ def test_documentation_family_helper_validates_allowed_roots() -> None:
     assert len(issues) == 1
     assert issues[0].issue_code == "root_not_allowed"
 
+
+def test_core_documentation_family_registry_loads_by_explicit_path() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    registry = loader.load_documentation_family_registry(
+        "core/control_plane/registries/documentation_family_registry.json"
+    )
+    helper = DocumentationFamilyHelper(registry)
+
+    foundation = helper.family("foundation")
+    workflow = helper.family("workflow")
+
+    assert foundation.template_ids == ("template.core.guidance.foundation",)
+    assert foundation.required_mirror_roots == (
+        "core/docs/foundations",
+        "plan/docs/foundations",
+    )
+    assert workflow.allowed_roots == ("core/workflows/modules",)

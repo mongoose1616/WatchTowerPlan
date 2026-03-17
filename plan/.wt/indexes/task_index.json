@@ -51,6 +51,52 @@
       ]
     },
     {
+      "task_id": "task.plan_core_documentation_template_authority_foundation.add_core_validation_coverage",
+      "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "initiative_title": "Plan Core Documentation Template Authority Foundation",
+      "title": "Add core validation coverage",
+      "summary": "Extend loader and tests so the core-owned documentation governance stack validates cleanly and resolves explicitly by path.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/add_core_validation_coverage/task.json",
+      "updated_at": "2026-03-17T18:17:57Z",
+      "depends_on": [
+        "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts",
+        "task.plan_core_documentation_template_authority_foundation.seed_core_registries_and_templates"
+      ]
+    },
+    {
+      "task_id": "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts",
+      "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "initiative_title": "Plan Core Documentation Template Authority Foundation",
+      "title": "Publish core documentation schema contracts",
+      "summary": "Add core-owned schema contracts for documentation family bindings, template catalog metadata, and core section-spec schemas.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/publish_core_documentation_schema_contracts/task.json",
+      "updated_at": "2026-03-17T18:17:57Z"
+    },
+    {
+      "task_id": "task.plan_core_documentation_template_authority_foundation.seed_core_registries_and_templates",
+      "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "initiative_title": "Plan Core Documentation Template Authority Foundation",
+      "title": "Seed core registries and templates",
+      "summary": "Create core control-plane documentation family bindings, template catalog entries, and reusable template files for core docs and workflows.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/seed_core_registries_and_templates/task.json",
+      "updated_at": "2026-03-17T18:17:57Z",
+      "depends_on": [
+        "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts"
+      ]
+    },
+    {
       "task_id": "task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts",
       "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
       "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",

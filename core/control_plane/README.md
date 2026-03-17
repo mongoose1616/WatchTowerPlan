@@ -14,6 +14,7 @@
 |---|---|
 | `core/control_plane/README.md` | Describes the purpose, boundaries, and main artifact families in the control-plane tree. |
 | `core/control_plane/schemas/` | JSON Schemas for governed core artifacts and external validation interfaces. |
+| `core/control_plane/templates/` | Governed reusable template assets for core-owned human surfaces and mirrored foundations. |
 | `core/control_plane/manifests/` | Authored startup and descriptive declarations owned by core. |
 | `core/control_plane/registries/` | Canonical lookup data and pack-startup registries owned by core. |
 | `core/control_plane/contracts/` | Versioned machine-readable contract families, currently the acceptance-contract set. |

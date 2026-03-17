@@ -68,3 +68,18 @@ def test_template_catalog_helper_reports_section_spec_mismatch(tmp_path: Path) -
     issues = helper.validate_contracts(tmp_path)
 
     assert any(issue.issue_code == "section_spec_mismatch" for issue in issues)
+
+
+def test_core_template_catalog_loads_by_explicit_path_and_validates_contracts() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    catalog = loader.load_template_catalog(
+        "core/control_plane/registries/template_catalog.json"
+    )
+    helper = TemplateCatalogHelper(catalog, schema_store=loader.schema_store)
+
+    entry = helper.template("template.core.workflow.module")
+
+    assert entry.section_spec_schema_id == (
+        "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1"
+    )
+    assert helper.validate_contracts(REPO_ROOT) == ()

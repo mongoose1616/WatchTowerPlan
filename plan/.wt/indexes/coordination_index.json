@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "title": "Plan Core Documentation Template Authority Foundation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T18:17:57Z",
+      "key_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/plan.md",
+      "closure_reason": "Delivered the core-owned documentation family registry, template catalog, reusable templates, and explicit validation coverage required by requirements.md and decisions.md."
+    },
+    {
       "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
       "title": "Plan Template Section-Spec Enforcement Foundation",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T16:41:00Z",
       "key_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/plan.md",
       "closure_reason": "Delivered the governance surface resolver helper and unit coverage for pack-declared and governance-map surface resolution."
-    },
-    {
-      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
-      "title": "Plan Duplicated Foundations Corpus Bootstrap",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:44:57Z",
-      "key_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/plan.md",
-      "closure_reason": "Duplicated the foundations corpus into core/docs and plan/docs and validated repository-path discovery for both mirrored roots."
     }
   ]
 }

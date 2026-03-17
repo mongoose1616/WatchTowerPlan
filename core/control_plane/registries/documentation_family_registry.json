@@ -1,0 +1,55 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:documentation-family-registry:v1",
+  "id": "registry.documentation_family",
+  "title": "Core Documentation Family Registry",
+  "status": "active",
+  "entries": [
+    {
+      "family_id": "foundation",
+      "entry_status": "active",
+      "summary": "Durable foundation guidance mirrored between core/docs and plan/docs.",
+      "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+      "template_ids": [
+        "template.core.guidance.foundation"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-section-spec:v1",
+      "allowed_roots": [
+        "core/docs/foundations",
+        "plan/docs/foundations"
+      ],
+      "authorship_mode": "authored",
+      "required_index_ids": [
+        "index.foundations"
+      ],
+      "mirror_group_id": "mirror.foundations",
+      "required_mirror_roots": [
+        "core/docs/foundations",
+        "plan/docs/foundations"
+      ],
+      "equivalence_mode": "byte_identical",
+      "mirror_update_mode": "same_change_set",
+      "notes": "The reusable-core foundation family remains one mirrored logical family even though plan also carries pack-local governance metadata."
+    },
+    {
+      "family_id": "workflow",
+      "entry_status": "active",
+      "summary": "Human-authored workflow modules published under core/workflows.",
+      "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
+      "template_ids": [
+        "template.core.workflow.module"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1",
+      "allowed_roots": [
+        "core/workflows/modules"
+      ],
+      "authorship_mode": "authored",
+      "required_index_ids": [
+        "index.workflows"
+      ],
+      "notes": "The repository-root workflows remain transitional, but reusable-core workflow guidance belongs under core/workflows."
+    }
+  ],
+  "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into the plan pack."
+}

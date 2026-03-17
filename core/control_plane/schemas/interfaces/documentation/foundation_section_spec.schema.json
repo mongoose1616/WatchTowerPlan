@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:foundation-section-spec:v1",
+  "title": "Foundation Section Spec",
+  "description": "Schema for the normalized section projection used to validate the reusable foundation template.",
+  "type": "object",
+  "required": [
+    "template_id",
+    "required_section_ids",
+    "optional_section_ids",
+    "section_order",
+    "template_heading_ids"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "template.core.guidance.foundation"
+    },
+    "required_section_ids": {
+      "const": [
+        "purpose_or_context",
+        "scope_boundary",
+        "guiding_principles_or_rules",
+        "implications_for_behavior"
+      ]
+    },
+    "optional_section_ids": {
+      "const": [
+        "related_surfaces",
+        "notes"
+      ]
+    },
+    "section_order": {
+      "const": [
+        "purpose_or_context",
+        "scope_boundary",
+        "guiding_principles_or_rules",
+        "implications_for_behavior",
+        "related_surfaces",
+        "notes"
+      ]
+    },
+    "template_heading_ids": {
+      "const": [
+        "purpose_or_context",
+        "scope_boundary",
+        "guiding_principles_or_rules",
+        "implications_for_behavior",
+        "related_surfaces",
+        "notes"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

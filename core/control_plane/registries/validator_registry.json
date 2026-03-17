@@ -439,6 +439,34 @@
       ]
     },
     {
+      "id": "validator.control_plane.documentation_family_registry",
+      "title": "Documentation Family Registry Validator",
+      "description": "Validates authored reusable-core documentation-family registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_family_registry",
+      "applies_to": [
+        "core/control_plane/registries/documentation_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:documentation-family-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.template_catalog",
+      "title": "Template Catalog Validator",
+      "description": "Validates authored reusable-core template catalog artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "template_catalog",
+      "applies_to": [
+        "core/control_plane/registries/template_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:template-catalog:v1"
+      ]
+    },
+    {
       "id": "validator.trace.acceptance_reconciliation",
       "title": "Acceptance Reconciliation Validator",
       "description": "Validates alignment across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",

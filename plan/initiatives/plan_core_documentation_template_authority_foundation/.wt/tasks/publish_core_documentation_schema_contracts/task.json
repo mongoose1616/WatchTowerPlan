@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts",
+  "slug": "publish_core_documentation_schema_contracts",
+  "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
+  "title": "Publish core documentation schema contracts",
+  "summary": "Add core-owned schema contracts for documentation family bindings, template catalog metadata, and core section-spec schemas.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T18:08:30Z",
+  "updated_at": "2026-03-17T18:17:57Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

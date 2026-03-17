@@ -1,0 +1,166 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:template-catalog:v1",
+  "id": "registry.template_catalog",
+  "title": "Core Template Catalog",
+  "status": "active",
+  "entries": [
+    {
+      "template_id": "template.core.root.readme",
+      "surface_id": "surface.readme.root_navigation",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/control_plane/templates/roots/README.md",
+      "required_section_ids": [
+        "root_purpose",
+        "contents_or_subtrees",
+        "navigation_hints",
+        "related_machine_surfaces"
+      ],
+      "optional_section_ids": [],
+      "section_order": [
+        "root_purpose",
+        "contents_or_subtrees",
+        "navigation_hints",
+        "related_machine_surfaces"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:root-readme-section-spec:v1",
+      "llm_guidance": {
+        "authoring_goal": "Create a thin navigation surface for one governed reusable-core root.",
+        "hard_requirements": [
+          "Keep the root focused on purpose, inventory, and routing instead of repeating deeper documentation.",
+          "Point to machine-readable authority surfaces when that helps operators or agents find the real source of truth."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for README.md files at governed reusable-core roots.",
+      "allowed_roots": [
+        "core",
+        "core/docs",
+        "core/workflows"
+      ]
+    },
+    {
+      "template_id": "template.core.root.agents",
+      "surface_id": "surface.agents.local_instructions",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/control_plane/templates/roots/AGENTS.md",
+      "required_section_ids": [
+        "role",
+        "scope",
+        "routing_or_behavior_differences",
+        "local_instructions",
+        "exclusions_or_constraints"
+      ],
+      "optional_section_ids": [
+        "do",
+        "do_not"
+      ],
+      "section_order": [
+        "role",
+        "scope",
+        "routing_or_behavior_differences",
+        "local_instructions",
+        "exclusions_or_constraints",
+        "do",
+        "do_not"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:root-agents-section-spec:v1",
+      "llm_guidance": {
+        "authoring_goal": "Create a narrow reusable-core instruction overlay for one governed root.",
+        "hard_requirements": [
+          "Do not weaken broader repository safety or governance rules.",
+          "Keep routing guidance short and defer execution detail to workflow modules."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "operator_notes": "Use for AGENTS.md files where agent behavior changes materially under reusable-core roots.",
+      "allowed_roots": [
+        "core/docs",
+        "core/workflows"
+      ]
+    },
+    {
+      "template_id": "template.core.workflow.module",
+      "family_id": "workflow",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/control_plane/templates/workflows/module.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
+      "required_section_ids": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "workflow",
+        "outputs",
+        "done_when"
+      ],
+      "optional_section_ids": [
+        "additional_files",
+        "data_structure"
+      ],
+      "section_order": [
+        "purpose",
+        "use_when",
+        "inputs",
+        "additional_files",
+        "workflow",
+        "data_structure",
+        "outputs",
+        "done_when"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1",
+      "llm_guidance": {
+        "authoring_goal": "Capture a reusable workflow module with explicit task boundaries and outputs.",
+        "hard_requirements": [
+          "Write imperative workflow steps that can be executed in order.",
+          "State what the module is done when instead of relying on implied completion."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "core/workflows/modules"
+      ]
+    },
+    {
+      "template_id": "template.core.guidance.foundation",
+      "family_id": "foundation",
+      "entry_status": "active",
+      "authorship_mode": "authored",
+      "template_path": "core/control_plane/templates/guidance/foundation.md",
+      "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+      "required_section_ids": [
+        "purpose_or_context",
+        "scope_boundary",
+        "guiding_principles_or_rules",
+        "implications_for_behavior"
+      ],
+      "optional_section_ids": [
+        "related_surfaces",
+        "notes"
+      ],
+      "section_order": [
+        "purpose_or_context",
+        "scope_boundary",
+        "guiding_principles_or_rules",
+        "implications_for_behavior",
+        "related_surfaces",
+        "notes"
+      ],
+      "section_spec_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-section-spec:v1",
+      "llm_guidance": {
+        "authoring_goal": "Create durable foundation guidance that defines a stable reusable-core boundary or posture.",
+        "hard_requirements": [
+          "Preserve the governed front matter fields required by the family schema.",
+          "Keep the document durable and avoid embedding live execution state."
+        ]
+      },
+      "llm_guidance_mode": "advisory",
+      "allowed_roots": [
+        "core/docs/foundations",
+        "plan/docs/foundations"
+      ]
+    }
+  ],
+  "notes": "This catalog governs the reusable-core template assets for core-owned roots and mirrored foundation guidance."
+}

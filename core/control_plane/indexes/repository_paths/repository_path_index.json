@@ -1925,6 +1925,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/documentation/foundation_section_spec.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Section rules for reusable mirrored foundation templates.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/documentation/front_matter_base.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1965,6 +1975,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/documentation/root_agents_section_spec.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Section rules for reusable AGENTS.md templates at governed human roots.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/documentation/root_readme_section_spec.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Section rules for reusable README.md templates at governed human roots.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1989,6 +2019,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Profile for workflow documents that adopt governed front matter.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/documentation/workflow_module_section_spec.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Section rules for reusable workflow module templates.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2092,6 +2132,16 @@
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/templates/",
+      "kind": "directory",
+      "surface_kind": "control_plane_family",
+      "summary": "Governed reusable template assets for core-owned human surfaces and mirrored foundations.",
+      "parent_path": "core/control_plane/",
+      "maturity": "supporting",
+      "priority": "medium",
       "audience_hint": "maintainer"
     },
     {
