@@ -783,13 +783,13 @@
       "title": "Capture-First Plan Workspace Bootstrap PRD",
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "artifact_status": "active",
-      "initiative_status": "active",
+      "initiative_status": "completed",
       "updated_at": "2026-03-17T09:40:00Z",
       "coordination": {
-        "current_phase": "closeout",
+        "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-        "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-        "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
         "open_task_count": 0,
         "blocked_task_count": 0
       },
@@ -1192,7 +1192,6 @@
         "core/control_plane/contracts/acceptance/capture_first_plan_workspace_bootstrap_acceptance.json",
         "core/control_plane/ledgers/validation_evidence/capture_first_plan_workspace_bootstrap_planning_baseline.json",
         "core/python/",
-        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",
@@ -1221,7 +1220,9 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline refreshed at 2026-03-17T03:30:21Z after replacing the scaffolded bootstrap artifacts with the real requirements-driven planning package, accepted direction decision, and bounded execution backlog for the first capture-first tranche."
+      "notes": "Planning baseline refreshed at 2026-03-17T03:30:21Z after replacing the scaffolded bootstrap artifacts with the real requirements-driven planning package, accepted direction decision, and bounded execution backlog for the first capture-first tranche.",
+      "closed_at": "2026-03-17T09:39:54Z",
+      "closure_reason": "Delivered the capture-first plan workspace roots, initiative package runtime, rendered and query surfaces, project-scoped bootstrap flow, hard cutover proof, human-surface policy, and retention-policy follow-up tranche aligned to requirements.md and decisions.md."
     },
     {
       "trace_id": "trace.command_documentation_and_lookup",

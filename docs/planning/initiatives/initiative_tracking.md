@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.capture_first_plan_workspace_bootstrap` | `closeout` | unassigned | `0` | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) | [watchtower_core_closeout_initiative.md](/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.capture_first_plan_workspace_bootstrap` | `completed` | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) | `2026-03-17T09:39:54Z` | Delivered the capture-first plan workspace roots, initiative package runtime, rendered and query surfaces, project-scoped bootstrap flow, hard cutover proof, human-surface policy, and retention-policy follow-up tranche aligned to requirements.md and decisions.md. |
 | `trace.plan_domain_pack_core_validation` | `completed` | [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) | `2026-03-16T21:41:48Z` | Delivered reusable-core pack-aware validation loading, suite orchestration, the plan fixture pack, and repo validation migration with clean sync, acceptance, validation, test, typecheck, and lint passes. |
 | `trace.transition_surface_retirement` | `completed` | [transition_surface_retirement.md](/docs/planning/prds/transition_surface_retirement.md) | `2026-03-16T19:39:28Z` | Retired the remaining transition facades, bridge modules, marker tests, stale current path references, and temporary audit leftovers; refreshed governed discovery surfaces; and reran clean acceptance, validation, test, typecheck, and lint passes. |
 | `trace.governed_filename_canonicalization` | `completed` | [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md) | `2026-03-16T18:17:19Z` | Delivered the versionless governed filename standard, renamed the canonical control-plane tree, enforced the no-compatibility filename policy, and validated the repo clean with no remaining active transition artifacts in scope. |
@@ -80,4 +79,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-17T09:40:00Z`_
+_Updated At: `2026-03-17T09:39:54Z`_

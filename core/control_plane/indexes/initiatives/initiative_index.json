@@ -214,14 +214,14 @@
       "title": "Capture-First Plan Workspace Bootstrap PRD",
       "summary": "Bootstraps the new plan workspace, initiative-local machine state, and strict capture-before-execution gating for pack-wide and project-scoped initiatives.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-17T09:40:00Z",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T09:39:54Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
       "prd_ids": [
         "prd.capture_first_plan_workspace_bootstrap"
       ],
@@ -258,6 +258,8 @@
       "evidence_ids": [
         "evidence.capture_first_plan_workspace_bootstrap.planning_baseline"
       ],
+      "closed_at": "2026-03-17T09:39:54Z",
+      "closure_reason": "Delivered the capture-first plan workspace roots, initiative package runtime, rendered and query surfaces, project-scoped bootstrap flow, hard cutover proof, human-surface policy, and retention-policy follow-up tranche aligned to requirements.md and decisions.md.",
       "related_paths": [
         "core/",
         "core/control_plane/",
