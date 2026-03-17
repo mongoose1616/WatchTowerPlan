@@ -11,11 +11,11 @@
       "initiative_title": "Plan Entrypoint Cutover Proof",
       "title": "Publish plan authority entrypoints",
       "summary": "Capture the pack-wide start-here surfaces for the new live plan authority.",
-      "status": "ready",
+      "status": "completed",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/publish_plan_authority_entrypoints/task.json",
-      "updated_at": "2026-03-17T06:08:09Z"
+      "updated_at": "2026-03-17T08:49:28Z"
     },
     {
       "task_id": "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package",
@@ -24,11 +24,11 @@
       "initiative_title": "Plan Entrypoint Cutover Proof",
       "title": "Validate pack-wide proof package",
       "summary": "Prove the pack-wide initiative can reach ready_for_execution cleanly.",
-      "status": "planned",
+      "status": "completed",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/validate_packwide_proof_package/task.json",
-      "updated_at": "2026-03-17T06:08:09Z",
+      "updated_at": "2026-03-17T08:49:33Z",
       "depends_on": [
         "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints"
       ]

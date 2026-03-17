@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_entrypoint_cutover_proof.0013_closing_started",
+  "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+  "trace_id": "trace.plan_entrypoint_cutover_proof",
+  "sequence": 13,
+  "event_type": "closing_started",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-17T08:49:33Z",
+  "summary": "The plan authority entrypoint cutover proof entered closing after the publish and validation tasks completed.",
+  "payload": {
+    "completed_task_ids": [
+      "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
+      "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package"
+    ],
+    "next_phase": "closeout"
+  }
+}

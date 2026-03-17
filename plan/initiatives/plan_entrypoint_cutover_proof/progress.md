@@ -8,8 +8,8 @@
 - `blocking_reasons`: `none`
 
 ## Task Status
-- `task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints`: `ready` (high)
-- `task.plan_entrypoint_cutover_proof.validate_packwide_proof_package`: `planned` (high)
+- `task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints`: `completed` (high)
+- `task.plan_entrypoint_cutover_proof.validate_packwide_proof_package`: `completed` (high)
 
 ## Discrepancies
 - None.

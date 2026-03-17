@@ -7,11 +7,11 @@
   "summary": "Proves the pack-wide capture-first flow for the plan authority cutover.",
   "scope_type": "pack_wide",
   "status": "active",
-  "lifecycle_stage": "ready_for_execution",
+  "lifecycle_stage": "closing",
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-17T06:01:15Z",
-  "updated_at": "2026-03-17T06:01:16Z",
+  "updated_at": "2026-03-17T08:50:29Z",
   "task_ids": [
     "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
     "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package"
@@ -31,33 +31,33 @@
     {
       "doc_kind": "initiative_brief",
       "path": "plan/initiatives/plan_entrypoint_cutover_proof/initiative_brief.md",
-      "sha256": "9f7ebffd6b4d13ed2d567e603d1a8dab3edca56443a34f186730bc7ff67a118b",
+      "sha256": "f2a6d42d86f29528962bf095203c8d3a9763e6c80703ee234e455cd0ba7cfe81",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-17T06:01:15Z",
+      "last_confirmed_at": "2026-03-17T08:49:16Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "design_record",
       "path": "plan/initiatives/plan_entrypoint_cutover_proof/design_record.md",
-      "sha256": "21e83af82fbd64431bdafd288c18a997e21206ad2930f2116aad89b962a647bb",
+      "sha256": "ed63df33384be2a5eb3c06eb378f2e68812aca3494cf6da0854cebb49b75dde3",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-17T06:01:15Z",
+      "last_confirmed_at": "2026-03-17T08:49:16Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "implementation_slice",
       "path": "plan/initiatives/plan_entrypoint_cutover_proof/implementation_slice.md",
-      "sha256": "9ef496b5764d143f5177c837685390d10de8eb9001d128ff479382f8e052be27",
+      "sha256": "db0bdc7bf3168f5921f0a66344587fc0edd31062c231ef8e48c53f3edd22b4b7",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-17T06:01:15Z",
+      "last_confirmed_at": "2026-03-17T08:49:16Z",
       "last_confirmed_by": "actor.repository_maintainer"
     },
     {
       "doc_kind": "decision_notes",
       "path": "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md",
-      "sha256": "fb80cb4c092fb486315414df668a576edd183141188961024a5cb0494e2f5df7",
+      "sha256": "d0a200bd3f201bff65e9c3258b81898ec918cc740dbc389897ac296fb26ec87f",
       "proposal_status": "confirmed",
-      "last_confirmed_at": "2026-03-17T06:01:15Z",
+      "last_confirmed_at": "2026-03-17T08:49:16Z",
       "last_confirmed_by": "actor.repository_maintainer"
     }
   ],
@@ -73,6 +73,11 @@
       "approval_kind": "ready_for_execution",
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-17T06:01:16Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-17T08:49:16Z"
     }
   ]
 }

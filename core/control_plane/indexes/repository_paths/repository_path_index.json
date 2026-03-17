@@ -4940,6 +4940,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers.",
+      "parent_path": ".",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/.wt/",
       "kind": "directory",
       "surface_kind": "repository_surface",
@@ -4948,6 +4958,16 @@
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"
+    },
+    {
+      "path": "plan/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines plan-domain instructions for live plan work and authority surfaces.",
+      "parent_path": "plan/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
     },
     {
       "path": "plan/README.md",
@@ -4970,11 +4990,51 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/plan_overview.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Renders the current pack-level plan status board from authoritative machine state.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/projects/",
       "kind": "directory",
       "surface_kind": "repository_surface",
       "summary": "Holds project containers and project-scoped initiative roots.",
       "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/workflows/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds the plan-domain human workflow entrypoint during workflow-root migration.",
+      "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/workflows/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines local instructions for plan-domain workflow guidance surfaces.",
+      "parent_path": "plan/workflows/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
+      "path": "plan/workflows/README.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Describes the purpose of the plan workflow entrypoint and its current migration boundary.",
+      "parent_path": "plan/workflows/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

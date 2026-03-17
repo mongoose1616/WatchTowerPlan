@@ -17,6 +17,7 @@
 ## Notes
 - Start with `docs/foundations/repository_scope.md` when the main question is whether work belongs in this repository or in future product implementation.
 - Start with `plan/plan_overview.md` when the main question is the current live human-readable planning state and next action.
+- Start with `plan/workflows/README.md` when the main question is the current live plan-domain workflow start-here surface.
 - Start with `plan/.wt/indexes/coordination_index.json` when the main question is the machine-readable live current-state view and next action.
 - Start with `docs/planning/coordination_tracking.md` when the main question is the traced planning backlog or the legacy docs-backed planning corpus rather than the new live `plan/**` authority.
 - Use `./.venv/bin/watchtower-core query coordination --format json` from `core/python/` when you need the docs-backed traced-planning coordination view without relying on `uv` on `PATH`.
