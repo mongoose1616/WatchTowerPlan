@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage",
+  "slug": "add_governance_surface_dependency_coverage",
+  "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+  "title": "Add governance surface dependency coverage",
+  "summary": "Add unit coverage proving the helper resolves both pack-declared and governance-map surfaces and reports dependent declared surfaces.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T16:36:58Z",
+  "updated_at": "2026-03-17T16:39:30Z",
+  "dependency_task_ids": [
+    "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

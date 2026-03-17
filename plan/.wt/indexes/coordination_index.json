@@ -47,6 +47,14 @@
       "closure_reason": "Delivered the machine-first project-context runtime helper, explicit project-context query surface, and validation proving project context loads separately from derived project views."
     },
     {
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "title": "Plan Governance Surface Resolver Helper",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-17T16:41:00Z",
+      "key_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/plan.md",
+      "closure_reason": "Delivered the governance surface resolver helper and unit coverage for pack-declared and governance-map surface resolution."
+    },
+    {
       "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
       "title": "Plan Duplicated Foundations Corpus Bootstrap",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-17T15:06:20Z",
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
       "closure_reason": "Delivered the local-first WatchTower status snapshot command."
-    },
-    {
-      "trace_id": "trace.watchtower_work_item_lifecycle",
-      "title": "WatchTower Work Item Lifecycle",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-17T15:06:18Z",
-      "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/plan.md",
-      "closure_reason": "Delivered the WatchTower work-item inspection and completion flows."
     }
   ]
 }

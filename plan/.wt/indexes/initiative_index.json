@@ -115,6 +115,42 @@
       ]
     },
     {
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "title": "Plan Governance Surface Resolver Helper",
+      "summary": "Adds the missing governance surface resolver helper so pack and core governed surfaces can be resolved through one typed query surface instead of scattered loader and registry logic.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T16:41:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/plan.md",
+      "next_action": "Keep initiative-local task state current before opening follow-up work.",
+      "next_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/progress.md",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "slug": "plan_governance_surface_resolver_helper",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper",
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage",
+        "task.plan_governance_surface_resolver_helper.validate_governance_surface_resolver_behavior"
+      ],
+      "evidence_ids": [
+        "evidence.plan_governance_surface_resolver_helper.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T16:41:00Z",
+      "closure_reason": "Delivered the governance surface resolver helper and unit coverage for pack-declared and governance-map surface resolution.",
+      "related_paths": [
+        "plan/initiatives/plan_governance_surface_resolver_helper/initiative_brief.md",
+        "plan/initiatives/plan_governance_surface_resolver_helper/design_record.md",
+        "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md"
+      ]
+    },
+    {
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
       "title": "Plan Human Surface Policy and Core Root Seeding",
       "summary": "Adds the governed human-surface policy contract, the helper and validation path that resolve those rules, and the missing core-owned human roots that requirements.md declares as required.",

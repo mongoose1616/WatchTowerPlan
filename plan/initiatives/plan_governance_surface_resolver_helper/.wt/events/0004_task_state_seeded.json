@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_governance_surface_resolver_helper.0004_task_state_seeded",
+  "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+  "trace_id": "trace.plan_governance_surface_resolver_helper",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T16:36:58Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "related_paths": [
+    "plan/initiatives/plan_governance_surface_resolver_helper/initiative_brief.md",
+    "plan/initiatives/plan_governance_surface_resolver_helper/design_record.md",
+    "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md"
+  ],
+  "payload": {
+    "task_count": 3
+  }
+}

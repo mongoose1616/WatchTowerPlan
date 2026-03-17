@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.plan_governance_surface_resolver_helper.bootstrap_shell",
+  "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+  "title": "Bootstrap Promotion Shell",
+  "status": "candidate",
+  "updated_at": "2026-03-17T16:41:00Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/plan_governance_surface_resolver_helper/initiative_brief.md",
+      "target_family": "reference",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_governance_surface_resolver_helper/design_record.md",
+      "target_family": "decision_record",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md",
+      "target_family": "reference",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+    }
+  ]
+}

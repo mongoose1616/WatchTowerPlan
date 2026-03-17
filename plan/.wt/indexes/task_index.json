@@ -126,6 +126,52 @@
       ]
     },
     {
+      "task_id": "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "initiative_title": "Plan Governance Surface Resolver Helper",
+      "title": "Add governance surface dependency coverage",
+      "summary": "Add unit coverage proving the helper resolves both pack-declared and governance-map surfaces and reports dependent declared surfaces.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_dependency_coverage/task.json",
+      "updated_at": "2026-03-17T16:39:30Z",
+      "depends_on": [
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper"
+      ]
+    },
+    {
+      "task_id": "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "initiative_title": "Plan Governance Surface Resolver Helper",
+      "title": "Add governance surface resolver helper",
+      "summary": "Implement a reusable-core helper that resolves governed surface path, authority, rebuildability, and declaration source.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_resolver_helper/task.json",
+      "updated_at": "2026-03-17T16:38:30Z"
+    },
+    {
+      "task_id": "task.plan_governance_surface_resolver_helper.validate_governance_surface_resolver_behavior",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "initiative_title": "Plan Governance Surface Resolver Helper",
+      "title": "Validate governance surface resolver behavior",
+      "summary": "Run targeted validation proving the helper stays aligned with requirements.md, decisions.md, and the active pack settings declarations.",
+      "status": "completed",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/validate_governance_surface_resolver_behavior/task.json",
+      "updated_at": "2026-03-17T16:40:30Z",
+      "depends_on": [
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper",
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage"
+      ]
+    },
+    {
       "task_id": "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",

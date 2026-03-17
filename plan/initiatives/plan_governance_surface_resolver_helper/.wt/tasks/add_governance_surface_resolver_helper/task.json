@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper",
+  "slug": "add_governance_surface_resolver_helper",
+  "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+  "title": "Add governance surface resolver helper",
+  "summary": "Implement a reusable-core helper that resolves governed surface path, authority, rebuildability, and declaration source.",
+  "status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T16:36:58Z",
+  "updated_at": "2026-03-17T16:38:30Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

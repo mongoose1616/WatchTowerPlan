@@ -87,6 +87,32 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_governance_surface_resolver_helper.bootstrap_shell",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "initiative_title": "Plan Governance Surface Resolver Helper",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_governance_surface_resolver_helper",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_governance_surface_resolver_helper/initiative_brief.md",
+        "plan/initiatives/plan_governance_surface_resolver_helper/design_record.md",
+        "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T16:41:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_human_surface_policy_and_core_root_seeding.bootstrap_shell",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",

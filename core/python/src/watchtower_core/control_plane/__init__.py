@@ -4,6 +4,10 @@ from watchtower_core.control_plane.artifact_family import (
     ArtifactFamilyHelper,
     ArtifactFamilyIssue,
 )
+from watchtower_core.control_plane.governance_surfaces import (
+    GovernanceSurfaceResolution,
+    GovernanceSurfaceResolver,
+)
 from watchtower_core.control_plane.human_surface_policy import (
     HumanSurfacePolicyHelper,
     HumanSurfacePolicyIssue,
@@ -29,6 +33,8 @@ __all__ = [
     "ArtifactFamilyIssue",
     "ControlPlaneLoader",
     "FileSystemArtifactIO",
+    "GovernanceSurfaceResolution",
+    "GovernanceSurfaceResolver",
     "HumanSurfacePolicyHelper",
     "HumanSurfacePolicyIssue",
     "PackContext",

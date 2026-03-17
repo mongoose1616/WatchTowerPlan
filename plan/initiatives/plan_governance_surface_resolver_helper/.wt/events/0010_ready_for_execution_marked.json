@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_governance_surface_resolver_helper.0010_ready_for_execution_marked",
+  "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+  "trace_id": "trace.plan_governance_surface_resolver_helper",
+  "sequence": 10,
+  "event_type": "ready_for_execution_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T16:39:06Z",
+  "summary": "The initiative package entered ready_for_execution after approval.",
+  "payload": {}
+}
