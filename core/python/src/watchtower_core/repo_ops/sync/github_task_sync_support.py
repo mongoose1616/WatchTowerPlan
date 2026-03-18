@@ -6,6 +6,7 @@ from os import environ
 from typing import Protocol
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.integrations.github import (
     GitHubApiError,
     GitHubClient,
@@ -13,7 +14,6 @@ from watchtower_core.integrations.github import (
     GitHubLabelSpec,
     GitHubProjectContext,
 )
-from watchtower_core.repo_ops.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_core.repo_ops.sync.task_index import TaskIndexSyncService
 from watchtower_core.repo_ops.sync.task_tracking import TaskTrackingSyncService
 from watchtower_core.repo_ops.sync.traceability import TraceabilityIndexSyncService
@@ -91,20 +91,75 @@ def select_task_documents(
 ) -> tuple[TaskDocument, ...]:
     """Resolve the filtered local task set for one sync run."""
 
-    entries = TaskQueryService(loader).search(
-        TaskSearchParams(
-            task_ids=params.task_ids,
-            trace_id=params.trace_id,
-            task_status=params.task_status,
-            priority=params.priority,
-            owner=params.owner,
-            task_kind=params.task_kind,
-            blocked_only=params.blocked_only,
-            blocked_by_task_id=params.blocked_by_task_id,
-            depends_on_task_id=params.depends_on_task_id,
-        )
+    selected_entries = _select_task_index_entries(loader, params)
+    selected_documents: list[TaskDocument] = []
+    seen_task_ids: dict[str, str] = {}
+    for entry in selected_entries:
+        existing_path = seen_task_ids.get(entry.task_id)
+        if existing_path is not None:
+            raise ValueError(
+                "Duplicate task ID in GitHub task sync selection: "
+                f"{entry.task_id} in {existing_path} and {entry.doc_path}"
+            )
+        seen_task_ids[entry.task_id] = entry.doc_path
+        selected_documents.append(load_task_document(loader, entry.doc_path))
+    return tuple(selected_documents)
+
+
+def _select_task_index_entries(
+    loader: ControlPlaneLoader,
+    params: GitHubTaskSyncParamsLike,
+) -> tuple[TaskIndexEntry, ...]:
+    """Resolve matching task-index entries for one GitHub sync run."""
+
+    entries = loader.load_task_index().entries
+    selected_task_ids = {task_id.casefold() for task_id in params.task_ids}
+    trace_id = params.trace_id.casefold() if params.trace_id is not None else None
+    task_status = params.task_status.casefold() if params.task_status is not None else None
+    priority = params.priority.casefold() if params.priority is not None else None
+    owner = params.owner.casefold() if params.owner is not None else None
+    task_kind = params.task_kind.casefold() if params.task_kind is not None else None
+    blocked_by_task_id = (
+        params.blocked_by_task_id.casefold()
+        if params.blocked_by_task_id is not None
+        else None
     )
-    return tuple(load_task_document(loader, entry.doc_path) for entry in entries)
+    depends_on_task_id = (
+        params.depends_on_task_id.casefold()
+        if params.depends_on_task_id is not None
+        else None
+    )
+
+    matches: list[TaskIndexEntry] = []
+    for entry in entries:
+        if selected_task_ids and entry.task_id.casefold() not in selected_task_ids:
+            continue
+        if trace_id is not None and (
+            entry.trace_id is None or entry.trace_id.casefold() != trace_id
+        ):
+            continue
+        if task_status is not None and entry.task_status.casefold() != task_status:
+            continue
+        if priority is not None and entry.priority.casefold() != priority:
+            continue
+        if owner is not None and entry.owner.casefold() != owner:
+            continue
+        if task_kind is not None and entry.task_kind.casefold() != task_kind:
+            continue
+
+        blocked_by_casefold = {value.casefold() for value in entry.blocked_by}
+        depends_on_casefold = {value.casefold() for value in entry.depends_on}
+        if params.blocked_only and not entry.blocked_by:
+            continue
+        if blocked_by_task_id is not None and blocked_by_task_id not in blocked_by_casefold:
+            continue
+        if depends_on_task_id is not None and depends_on_task_id not in depends_on_casefold:
+            continue
+
+        matches.append(entry)
+
+    matches.sort(key=lambda entry: entry.task_id)
+    return tuple(matches)
 
 
 def resolve_repository(task: TaskDocument, params: GitHubTaskSyncParamsLike) -> str | None:

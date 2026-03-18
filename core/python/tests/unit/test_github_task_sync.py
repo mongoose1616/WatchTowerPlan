@@ -46,6 +46,7 @@ def test_github_task_sync_dry_run_includes_managed_labels() -> None:
     assert result.wrote is False
     assert result.synced_task_count == 0
     assert len(result.records) == 1
+    assert result.records[0].doc_path == _github_task_path(REPO_ROOT)
     assert result.records[0].labels == (
         "source:watchtower",
         "kind:feature",
@@ -84,6 +85,49 @@ def test_github_task_sync_dry_run_reports_missing_repository() -> None:
     assert result.wrote is False
     assert result.records[0].success is False
     assert "No GitHub repository was resolved." in result.records[0].message
+
+
+def test_github_task_sync_targeted_selection_ignores_unrelated_invalid_task_documents(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    invalid_task = repo_root / "docs/planning/tasks/open/invalid_fixture.md"
+    invalid_task.write_text("# invalid without front matter\n", encoding="utf-8")
+    service = GitHubTaskSyncService(ControlPlaneLoader(repo_root))
+
+    result = service.sync(
+        GitHubTaskSyncParams(
+            task_ids=("task.local_task_tracking.github_sync.001",),
+            repository="owner/repo",
+        ),
+        write=False,
+    )
+
+    assert len(result.records) == 1
+    assert result.records[0].task_id == "task.local_task_tracking.github_sync.001"
+
+
+def test_github_task_sync_rejects_duplicate_task_ids_in_task_index(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.json"
+    task_index = json.loads(task_index_path.read_text(encoding="utf-8"))
+    matching_entry = next(
+        entry
+        for entry in task_index["entries"]
+        if entry["task_id"] == "task.local_task_tracking.github_sync.001"
+    )
+    task_index["entries"].append(dict(matching_entry))
+    task_index_path.write_text(f"{json.dumps(task_index, indent=2)}\n", encoding="utf-8")
+    service = GitHubTaskSyncService(ControlPlaneLoader(repo_root))
+
+    with pytest.raises(ValueError, match="Duplicate task ID in GitHub task sync selection"):
+        service.sync(
+            GitHubTaskSyncParams(
+                task_ids=("task.local_task_tracking.github_sync.001",),
+                repository="owner/repo",
+            ),
+            write=False,
+        )
 
 
 def test_github_task_sync_write_updates_local_bindings_and_indexes(tmp_path: Path) -> None:
