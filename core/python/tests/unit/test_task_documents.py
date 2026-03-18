@@ -62,3 +62,13 @@ def test_iter_task_documents_still_raises_for_non_missing_load_failures(
 
     with pytest.raises(ValueError, match="simulated validation failure"):
         task_documents_module.iter_task_documents(loader)
+
+
+def test_load_task_documents_by_id_indexes_documents_by_task_id(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+
+    documents_by_id = task_documents_module.load_task_documents_by_id(loader)
+
+    assert documents_by_id
+    assert all(document.task_id == task_id for task_id, document in documents_by_id.items())

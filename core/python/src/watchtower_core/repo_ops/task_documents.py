@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -191,6 +191,29 @@ def iter_task_documents(
             # Task lifecycle moves can relocate a task between discovery and load.
             continue
     return tuple(documents)
+
+
+def index_task_documents_by_id(
+    documents: Iterable[TaskDocument],
+) -> dict[str, TaskDocument]:
+    """Index task documents by task ID while rejecting duplicates."""
+
+    by_id: dict[str, TaskDocument] = {}
+    for document in documents:
+        existing = by_id.get(document.task_id)
+        if existing is not None:
+            raise ValueError(
+                "Duplicate task ID in current task corpus: "
+                f"{document.task_id} in {existing.relative_path} and {document.relative_path}"
+            )
+        by_id[document.task_id] = document
+    return by_id
+
+
+def load_task_documents_by_id(loader: ControlPlaneLoader) -> dict[str, TaskDocument]:
+    """Load the current authored task corpus keyed by stable task ID."""
+
+    return index_task_documents_by_id(iter_task_documents(loader))
 
 
 def _iter_task_markdown_paths(directory: Path, *, recursive: bool) -> tuple[Path, ...]:

@@ -11,7 +11,10 @@ from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.repo_ops.task_companion_path_repair import (
     repair_governed_task_path_references,
 )
-from watchtower_core.repo_ops.task_documents import iter_task_documents, write_task_document
+from watchtower_core.repo_ops.task_documents import (
+    load_task_documents_by_id,
+    write_task_document,
+)
 from watchtower_core.repo_ops.task_lifecycle_support import (
     TASK_KIND_CHOICES,
     TASK_PRIORITY_CHOICES,
@@ -28,7 +31,6 @@ from watchtower_core.repo_ops.task_lifecycle_support import (
     pick_choice,
     pick_string,
     render_bullets,
-    task_documents_by_id,
     task_relative_path,
     validate_references,
     validate_rendered_task,
@@ -129,7 +131,7 @@ class TaskLifecycleService:
         self._loader = loader
 
     def create(self, params: TaskCreateParams, *, write: bool) -> TaskMutationResult:
-        existing_documents = task_documents_by_id(iter_task_documents(self._loader))
+        existing_documents = load_task_documents_by_id(self._loader)
         task_id = normalize_required_string(params.task_id, label="task_id")
         if task_id in existing_documents:
             raise ValueError(f"Task ID already exists: {task_id}")
@@ -215,7 +217,7 @@ class TaskLifecycleService:
 
     def update(self, params: TaskUpdateParams, *, write: bool) -> TaskMutationResult:
         _validate_update_flags(params)
-        documents = task_documents_by_id(iter_task_documents(self._loader))
+        documents = load_task_documents_by_id(self._loader)
         document = load_existing_task(
             documents,
             normalize_required_string(params.task_id, label="task_id"),
