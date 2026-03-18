@@ -3,14 +3,76 @@
 from __future__ import annotations
 
 import argparse
-from collections.abc import Callable, Mapping
+from collections.abc import Callable
 from pathlib import Path
 from textwrap import dedent
-from typing import cast
+from typing import TypedDict, cast
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
+from watchtower_core.cli.sync_family_common import HandlerMap
 
-HandlerMap = Mapping[str, Callable[..., int]]
+
+class _MaterializedSyncCommandSpec(TypedDict):
+    name: str
+    handler: str
+    help: str
+    description: str
+    examples: tuple[str, ...]
+    write_help: str
+    output_dir_help: str
+
+
+_MATERIALIZED_SYNC_COMMAND_SPECS: tuple[_MaterializedSyncCommandSpec, ...] = (
+    {
+        "name": "all",
+        "handler": "all",
+        "help": "Rebuild all local derived indexes and trackers in dependency order.",
+        "description": """
+            Rebuild all local deterministic sync surfaces in one run.
+
+            This includes local index and tracker surfaces only. It does not call
+            hosted integrations such as GitHub task sync.
+            """,
+        "examples": (
+            "uv run watchtower-core sync all",
+            "uv run watchtower-core sync all --write",
+            "uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json",
+        ),
+        "write_help": "Write rebuilt artifacts and trackers to their canonical repository paths.",
+        "output_dir_help": (
+            "Optional explicit directory for materializing all rebuilt surfaces while "
+            "preserving their repo-relative paths."
+        ),
+    },
+    {
+        "name": "coordination",
+        "handler": "coordination",
+        "help": "Rebuild the deterministic coordination slice and compact human tracker.",
+        "description": """
+            Rebuild the deterministic coordination slice for task, traceability,
+            initiative, coordination-index, and compact coordination-tracking
+            surfaces in dependency order.
+
+            This is the focused rebuild path for local execution coordination
+            without refreshing unrelated reference, standards, or command docs.
+            """,
+        "examples": (
+            "uv run watchtower-core sync coordination",
+            "uv run watchtower-core sync coordination --write",
+            "uv run watchtower-core sync coordination --output-dir "
+            "/tmp/watchtower_coordination --format json",
+        ),
+        "write_help": "Write rebuilt coordination surfaces to their canonical repository paths.",
+        "output_dir_help": (
+            "Optional explicit directory for materializing the coordination slice while "
+            "preserving repo-relative paths."
+        ),
+    },
+)
 
 
 def build_sync_subparsers(
@@ -81,86 +143,26 @@ def register_special_sync_commands(
 ) -> None:
     """Register orchestration and integration sync commands."""
 
-    sync_all_parser = sync_subparsers.add_parser(
-        "all",
-        help="Rebuild all local derived indexes and trackers in dependency order.",
-        description=dedent(
-            """
-            Rebuild all local deterministic sync surfaces in one run.
-
-            This includes local index and tracker surfaces only. It does not call
-            hosted integrations such as GitHub task sync.
-            """
-        ).strip(),
-        epilog=examples(
-            "uv run watchtower-core sync all",
-            "uv run watchtower-core sync all --write",
-            "uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json",
-        ),
-        formatter_class=HelpFormatter,
-    )
-    sync_all_parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write rebuilt artifacts and trackers to their canonical repository paths.",
-    )
-    sync_all_parser.add_argument(
-        "--output-dir",
-        type=Path,
-        help=(
-            "Optional explicit directory for materializing all rebuilt surfaces while "
-            "preserving their repo-relative paths."
-        ),
-    )
-    sync_all_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
-    sync_all_parser.set_defaults(handler=handlers["all"])
-
-    sync_coordination_parser = sync_subparsers.add_parser(
-        "coordination",
-        help="Rebuild the deterministic coordination slice and compact human tracker.",
-        description=dedent(
-            """
-            Rebuild the deterministic coordination slice for task, traceability,
-            initiative, coordination-index, and compact coordination-tracking
-            surfaces in dependency order.
-
-            This is the focused rebuild path for local execution coordination
-            without refreshing unrelated reference, standards, or command docs.
-            """
-        ).strip(),
-        epilog=examples(
-            "uv run watchtower-core sync coordination",
-            "uv run watchtower-core sync coordination --write",
-            "uv run watchtower-core sync coordination --output-dir "
-            "/tmp/watchtower_coordination --format json",
-        ),
-        formatter_class=HelpFormatter,
-    )
-    sync_coordination_parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write rebuilt coordination surfaces to their canonical repository paths.",
-    )
-    sync_coordination_parser.add_argument(
-        "--output-dir",
-        type=Path,
-        help=(
-            "Optional explicit directory for materializing the coordination slice while "
-            "preserving repo-relative paths."
-        ),
-    )
-    sync_coordination_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
-    sync_coordination_parser.set_defaults(handler=handlers["coordination"])
+    for spec in _MATERIALIZED_SYNC_COMMAND_SPECS:
+        parser = sync_subparsers.add_parser(
+            spec["name"],
+            help=spec["help"],
+            description=dedent(spec["description"]).strip(),
+            epilog=examples(*spec["examples"]),
+            formatter_class=HelpFormatter,
+        )
+        parser.add_argument(
+            "--write",
+            action="store_true",
+            help=spec["write_help"],
+        )
+        parser.add_argument(
+            "--output-dir",
+            type=Path,
+            help=spec["output_dir_help"],
+        )
+        add_human_json_format_argument(parser)
+        parser.set_defaults(handler=handlers[spec["handler"]])
 
     sync_github_tasks_parser = sync_subparsers.add_parser(
         "github-tasks",
@@ -173,6 +175,9 @@ def register_special_sync_commands(
             Start with dry-run output first. Add `--write` to call the GitHub
             APIs, persist the returned foreign keys on the task documents, and
             rebuild the local task index, task tracker, and traceability index.
+
+            The dry-run command output is the authoritative preview for this
+            command's task-selection filters.
             """
         ).strip(),
         epilog=examples(
@@ -206,7 +211,7 @@ def register_special_sync_commands(
         "--task-id",
         action="append",
         default=[],
-        help="Exact task identifier filter. Repeat for multiple task IDs.",
+        help="Exact docs-backed task identifier filter. Repeat for multiple task IDs.",
     )
     sync_github_tasks_parser.add_argument("--trace-id", help="Exact trace filter.")
     sync_github_tasks_parser.add_argument("--task-status", help="Exact task-status filter.")
@@ -255,10 +260,5 @@ def register_special_sync_commands(
         default="GITHUB_TOKEN",
         help="Environment variable that holds the GitHub token used for write mode.",
     )
-    sync_github_tasks_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(sync_github_tasks_parser)
     sync_github_tasks_parser.set_defaults(handler=handlers["github_tasks"])

@@ -66,7 +66,9 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 
 ## Behavior and Outputs
 - The command is push-only in its first phase: local task records remain the source of truth.
+- Task selection resolves through the governed task index and then loads the matched authored task documents before planning or applying GitHub updates.
 - In dry-run mode, the command reports which tasks would create or update issues and project items without mutating GitHub or local files.
+- Dry-run `watchtower-core sync github-tasks ...` is the authoritative preview surface for this command's filter set.
 - In write mode, the command creates or updates GitHub issues, keeps a bounded managed label set aligned unless `--no-label-sync` is used, optionally updates project placement and status, persists GitHub foreign keys back onto the local task records, and rebuilds the task index, task tracker, and traceability index.
 - The synced issue body mirrors the local task metadata, summary, context, scope, done-when criteria, links, and a short local-authority note.
 - In `human` mode, the command prints one result block per selected task.
@@ -78,7 +80,8 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 | `watchtower-core sync task-index` | Rebuilds the machine-readable task index after local task metadata changes. |
 | `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker after local task metadata changes. |
 | `watchtower-core sync traceability-index` | Rebuilds traceability after traced task metadata changes. |
-| `watchtower-core query tasks` | Lets you inspect the local task selection before syncing it to GitHub. |
+| `watchtower-core query tasks` | Reads the separate plan-workspace task index; it does not control GitHub task sync selection. |
+| `watchtower-core task update` | Adjusts the authoritative local task metadata before the GitHub push step. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
@@ -87,4 +90,4 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 - `.github/`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-18T00:00:00Z`

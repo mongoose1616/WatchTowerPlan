@@ -59,6 +59,7 @@ uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cu
 - In `human` mode, the command prints matching task IDs, task statuses, priorities, titles, summaries, and optional dependency detail when requested.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and result records.
 - The command reads `plan/.wt/indexes/task_index.json` and exposes initiative ID, project ID when present, and dependency links from live initiative-local task state.
+- This command does not drive `watchtower-core sync github-tasks`; GitHub task sync uses its own dry-run preview over the governed task index and matched task documents.
 - If no entries match the requested filters, the command exits successfully and reports that no task entries matched.
 
 ## Related Commands
@@ -67,6 +68,7 @@ uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cu
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
 | `watchtower-core sync all` | Rebuilds the live task index and its rendered companions. |
 | `watchtower-core query trace` | Resolves a joined trace record when you already know the trace ID and want linked task IDs. |
+| `watchtower-core sync github-tasks` | Uses a different docs-backed selection path; run it without `--write` to preview GitHub sync matches. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
@@ -75,4 +77,4 @@ uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cu
 - `plan/.wt/indexes/task_index.json`
 
 ## Updated At
-- `2026-03-17T19:13:00Z`
+- `2026-03-18T00:00:00Z`
