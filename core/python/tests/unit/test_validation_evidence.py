@@ -28,12 +28,12 @@ def test_validation_evidence_recorder_builds_schema_valid_document() -> None:
 
     document, evidence_id, evidence_relative_path = recorder.build_document(
         result,
-        trace_id="trace.core_python_foundation",
+        trace_id="trace.governed_acceptance_example",
         subject_ids=("std.metadata.front_matter",),
     )
 
     loader.schema_store.validate_instance(document)
-    assert evidence_id.startswith("evidence.core_python_foundation.")
+    assert evidence_id.startswith("evidence.governed_acceptance_example.")
     assert evidence_relative_path.startswith("core/control_plane/ledgers/validation_evidence/")
     assert document["overall_result"] == "passed"
 
@@ -46,11 +46,11 @@ def test_validation_evidence_recorder_builds_updated_traceability_document() -> 
     recorder = ValidationEvidenceRecorder(loader)
     document, evidence_id, evidence_relative_path = recorder.build_document(
         result,
-        trace_id="trace.core_python_foundation",
+        trace_id="trace.governed_acceptance_example",
     )
 
     updated_traceability = recorder.build_updated_traceability_document(
-        trace_id="trace.core_python_foundation",
+        trace_id="trace.governed_acceptance_example",
         evidence_id=evidence_id,
         evidence_relative_path=evidence_relative_path,
         validator_id=result.validator_id,
@@ -64,7 +64,7 @@ def test_validation_evidence_recorder_builds_updated_traceability_document() -> 
     entry = next(
         item
         for item in entries
-        if item["trace_id"] == "trace.core_python_foundation"
+        if item["trace_id"] == "trace.governed_acceptance_example"
     )
     assert evidence_id in entry["evidence_ids"]
     assert result.validator_id in entry["validator_ids"]
@@ -82,7 +82,7 @@ def test_validation_evidence_recorder_writes_temp_outputs(tmp_path: Path) -> Non
 
     write_result = recorder.record(
         result,
-        trace_id="trace.core_python_foundation",
+        trace_id="trace.governed_acceptance_example",
         evidence_output=evidence_output,
         traceability_output=traceability_output,
     )
@@ -96,7 +96,7 @@ def test_validation_evidence_recorder_writes_temp_outputs(tmp_path: Path) -> Non
     trace_entry = next(
         item
         for item in written_traceability["entries"]
-        if item["trace_id"] == "trace.core_python_foundation"
+        if item["trace_id"] == "trace.governed_acceptance_example"
     )
     assert write_result.evidence_id in trace_entry["evidence_ids"]
 
@@ -106,7 +106,7 @@ def test_validation_evidence_recorder_publishes_current_run_updates_to_loader_st
 ) -> None:
     repo_root = _build_temp_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
-    trace_id = "trace.core_export_readiness_and_optimization"
+    trace_id = "trace.governed_acceptance_example"
     existing_trace_entry = loader.load_traceability_index().get(trace_id)
     existing_evidence_ids = tuple(
         artifact.evidence_id

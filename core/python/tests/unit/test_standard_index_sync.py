@@ -8,7 +8,7 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.sync import StandardIndexSyncService
+from watchtower_core.plan_runtime.sync import StandardIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -71,7 +71,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert {
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
-        "docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/engineering_design_principles.md",
         "docs/references/pep8_reference.md",
         "docs/references/pep257_reference.md",
         "docs/references/ruff_reference.md",
@@ -91,10 +91,10 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert {"sync", "query", "documentation", "schema", "artifact"}.issubset(
         set(foundation_entry.get("operationalization_modes", []))
     )
-    assert "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py" in (
+    assert "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "core/python/src/watchtower_core/repo_ops/query/foundations.py" in (
+    assert "core/python/src/watchtower_core/plan_runtime/query/foundations.py" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "docs/commands/core_python/watchtower_core_query_foundations.md" in (
@@ -112,20 +112,20 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     )
     foundation_doc_paths = sorted(
         path.relative_to(REPO_ROOT).as_posix()
-        for path in (REPO_ROOT / "docs" / "foundations").glob("*.md")
+        for path in (REPO_ROOT / "core" / "docs" / "foundations").glob("*.md")
         if path.name != "README.md"
     )
     published_foundation_doc_paths = sorted(
         path
         for path in foundation_doc_entry.get("operationalization_paths", [])
-        if path.startswith("docs/foundations/") and path.endswith(".md")
+        if path.startswith("core/docs/foundations/") and path.endswith(".md")
     )
     assert published_foundation_doc_paths == foundation_doc_paths
-    assert "docs/foundations/" not in foundation_doc_entry.get(
+    assert "core/docs/foundations/" not in foundation_doc_entry.get(
         "operationalization_paths",
         [],
     )
-    assert "docs/foundations/README.md" not in foundation_doc_entry.get(
+    assert "core/docs/foundations/README.md" not in foundation_doc_entry.get(
         "operationalization_paths",
         [],
     )
@@ -143,10 +143,6 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     planning_family_member_ids = {
         "std.data_contracts.coordination_index",
         "std.data_contracts.initiative_index",
-        "std.data_contracts.planning_catalog",
-        "std.data_contracts.prd_index",
-        "std.data_contracts.decision_index",
-        "std.data_contracts.design_document_index",
         "std.data_contracts.task_index",
         "std.data_contracts.traceability_index",
     }

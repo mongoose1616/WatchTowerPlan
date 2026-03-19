@@ -12,14 +12,14 @@ from tests.integration.fixture_repo_support import (
     materialize_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.initiative_packages import InitiativePackageService
-from watchtower_core.repo_ops.query import (
+from watchtower_core.plan_runtime.initiative_packages import InitiativePackageService
+from watchtower_core.plan_runtime.query import (
     InitiativeQueryService,
     TaskQueryService,
     TaskSearchParams,
 )
-from watchtower_core.repo_ops.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
-from watchtower_core.repo_ops.task_lifecycle import (
+from watchtower_core.plan_runtime.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_core.plan_runtime.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskUpdateParams,
@@ -110,7 +110,7 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
     assert {ready_task_id, blocked_task_id}.issubset(set(initiative_entry.active_task_ids))
     assert "ready task" in initiative_entry.next_action
 
-    task_tracking = (repo_root / "docs/planning/tasks/task_tracking.md").read_text(
+    task_tracking = (repo_root / "plan/tracking/task_tracking.md").read_text(
         encoding="utf-8"
     )
     assert ready_task_id in task_tracking
@@ -118,7 +118,7 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
     assert "plan/initiatives/task_workflow_e2e_foundation/.wt/tasks/" in task_tracking
 
     initiative_tracking = (
-        repo_root / "docs/planning/initiatives/initiative_tracking.md"
+        repo_root / "plan/tracking/initiative_tracking.md"
     ).read_text(encoding="utf-8")
     assert trace_id in initiative_tracking
 

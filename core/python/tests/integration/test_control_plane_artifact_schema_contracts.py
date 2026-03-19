@@ -24,18 +24,11 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
     target_roots = (
         REPO_ROOT / "core/control_plane/contracts/acceptance",
         REPO_ROOT / "core/control_plane/indexes/commands",
-        REPO_ROOT / "core/control_plane/indexes/coordination",
-        REPO_ROOT / "core/control_plane/indexes/decisions",
-        REPO_ROOT / "core/control_plane/indexes/design_documents",
         REPO_ROOT / "core/control_plane/indexes/foundations",
-        REPO_ROOT / "core/control_plane/indexes/initiatives",
-        REPO_ROOT / "core/control_plane/indexes/planning",
-        REPO_ROOT / "core/control_plane/indexes/prds",
         REPO_ROOT / "core/control_plane/indexes/references",
         REPO_ROOT / "core/control_plane/indexes/repository_paths",
         REPO_ROOT / "core/control_plane/indexes/routes",
         REPO_ROOT / "core/control_plane/indexes/standards",
-        REPO_ROOT / "core/control_plane/indexes/tasks",
         REPO_ROOT / "core/control_plane/indexes/traceability",
         REPO_ROOT / "core/control_plane/indexes/workflows",
         REPO_ROOT / "core/control_plane/ledgers/migrations",
@@ -410,9 +403,26 @@ def test_core_documentation_family_and_template_catalog_cover_core_surfaces() ->
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     initiative_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/initiatives/initiative_index.json"
+        REPO_ROOT / "plan/.wt/indexes/initiative_index.json"
     )
     invalid_index = deepcopy(initiative_index)
+    if not invalid_index["entries"]:
+        invalid_index["entries"] = [
+            {
+                "trace_id": "trace.example_initiative_contract",
+                "title": "Example Initiative Contract",
+                "summary": "Synthetic initiative entry for negative schema validation coverage.",
+                "artifact_status": "active",
+                "initiative_status": "active",
+                "current_phase": "execution",
+                "updated_at": "2026-03-19T12:00:00Z",
+                "open_task_count": 1,
+                "blocked_task_count": 0,
+                "key_surface_path": "plan/initiatives/example_initiative_contract/plan.md",
+                "next_action": "Continue execution.",
+                "next_surface_path": "plan/initiatives/example_initiative_contract/progress.md",
+            }
+        ]
     del invalid_index["entries"][0]["current_phase"]
 
     with pytest.raises(ValidationError):
@@ -422,7 +432,7 @@ def test_initiative_index_rejects_missing_current_phase() -> None:
 def test_coordination_index_rejects_missing_coordination_mode() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     coordination_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/coordination/coordination_index.json"
+        REPO_ROOT / "plan/.wt/indexes/coordination_index.json"
     )
     invalid_index = deepcopy(coordination_index)
     del invalid_index["coordination_mode"]
@@ -434,14 +444,8 @@ def test_coordination_index_rejects_missing_coordination_mode() -> None:
 def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
     markdown_roots = (
         REPO_ROOT / "docs/references",
-        REPO_ROOT / "docs/foundations",
+        REPO_ROOT / "core/docs/foundations",
         REPO_ROOT / "docs/standards",
-        REPO_ROOT / "docs/planning/prds",
-        REPO_ROOT / "docs/planning/decisions",
-        REPO_ROOT / "docs/planning/design/features",
-        REPO_ROOT / "docs/planning/design/implementation",
-        REPO_ROOT / "docs/planning/tasks/open",
-        REPO_ROOT / "docs/planning/tasks/closed",
     )
 
     for root in markdown_roots:
@@ -468,17 +472,6 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
                     assert not value.endswith("/"), (
                         f"{path} file applies_to path must not end in '/': {value}"
                     )
-
-def test_planning_catalog_rejects_missing_coordination_section() -> None:
-    store = SchemaStore.from_repo_root(REPO_ROOT)
-    planning_catalog = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/planning/planning_catalog.json"
-    )
-    invalid_catalog = deepcopy(planning_catalog)
-    del invalid_catalog["entries"][0]["coordination"]
-
-    with pytest.raises(ValidationError):
-        store.validate_instance(invalid_catalog)
 
 
 def test_route_index_rejects_missing_required_workflow_ids() -> None:
@@ -517,50 +510,6 @@ def test_governed_document_front_matter_profiles_validate() -> None:
             "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
         ),
         (
-            REPO_ROOT / "docs/planning/prds",
-            {
-                "README.md",
-                "prd_tracking.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1",
-        ),
-        (
-            REPO_ROOT / "docs/planning/decisions",
-            {
-                "README.md",
-                "decision_tracking.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
-        ),
-        (
-            REPO_ROOT / "docs/planning/design/features",
-            {
-                "README.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
-        ),
-        (
-            REPO_ROOT / "docs/planning/design/implementation",
-            {
-                "README.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
-        ),
-        (
-            REPO_ROOT / "docs/planning/tasks/open",
-            {
-                "README.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
-        ),
-        (
-            REPO_ROOT / "docs/planning/tasks/closed",
-            {
-                "README.md",
-            },
-            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
-        ),
-        (
             REPO_ROOT / "docs/standards",
             {
                 "README.md",
@@ -568,7 +517,7 @@ def test_governed_document_front_matter_profiles_validate() -> None:
             "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
         ),
         (
-            REPO_ROOT / "docs/foundations",
+            REPO_ROOT / "core/docs/foundations",
             {
                 "README.md",
             },
@@ -586,21 +535,21 @@ def test_governed_document_front_matter_profiles_validate() -> None:
 def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 
-    prd_front_matter = load_front_matter(
+    standard_front_matter = load_front_matter(
         REPO_ROOT
-        / "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md"
+        / "docs/standards/data_contracts/task_index_standard.md"
     )
-    prd_front_matter["updated_at"] = "2026-03-09T05:06:54-04:00"
+    standard_front_matter["updated_at"] = "2026-03-09T05:06:54-04:00"
     with pytest.raises(ValidationError):
         store.validate_instance(
-            prd_front_matter,
-            schema_id="urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1",
+            standard_front_matter,
+            schema_id="urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
         )
 
     validation_evidence = load_json_object(
         REPO_ROOT
         / "core/control_plane/ledgers/validation_evidence/"
-        "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json"
+        "governed_acceptance_example_validation_baseline.json"
     )
     validation_evidence["recorded_at"] = "2026-03-09T05:06:54+01:00"
     with pytest.raises(ValidationError):

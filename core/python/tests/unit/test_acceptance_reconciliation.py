@@ -5,8 +5,12 @@ from collections import Counter
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import (
+    materialize_acceptance_and_evidence_paths,
+    materialize_plan_pack,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.query import (
+from watchtower_core.plan_runtime.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
     ValidationEvidenceQueryService,
@@ -21,6 +25,8 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_acceptance_and_evidence_paths(repo_root)
     return repo_root
 
 
@@ -28,16 +34,18 @@ def test_query_acceptance_contracts_by_trace_id() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     results = AcceptanceContractQueryService(loader).search(
-        AcceptanceContractSearchParams(trace_id="trace.core_python_foundation")
+        AcceptanceContractSearchParams(
+            trace_id="trace.governed_acceptance_example"
+        )
     )
 
     assert len(results) == 1
-    assert results[0].contract_id == "contract.acceptance.core_python_foundation"
+    assert (
+        results[0].contract_id
+        == "contract.acceptance.governed_acceptance_example"
+    )
     assert {entry.acceptance_id for entry in results[0].entries} == {
-        "ac.core_python_foundation.001",
-        "ac.core_python_foundation.002",
-        "ac.core_python_foundation.003",
-        "ac.core_python_foundation.004",
+        "ac.governed_acceptance_example.001",
     }
 
 
@@ -45,20 +53,22 @@ def test_query_validation_evidence_by_acceptance_id() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     results = ValidationEvidenceQueryService(loader).search(
-        ValidationEvidenceSearchParams(acceptance_id="ac.core_python_foundation.003")
+        ValidationEvidenceSearchParams(
+            acceptance_id="ac.governed_acceptance_example.001"
+        )
     )
 
     assert len(results) == 1
     assert (
         results[0].evidence_id
-        == "evidence.core_python_foundation.traceability_baseline"
+        == "evidence.governed_acceptance_example.validation_baseline"
     )
 
 
 def test_acceptance_reconciliation_passes_for_current_trace() -> None:
     service = AcceptanceReconciliationService(ControlPlaneLoader(REPO_ROOT))
 
-    result = service.validate("trace.core_python_foundation")
+    result = service.validate("trace.governed_acceptance_example")
 
     assert result.passed is True
     assert result.validator_id == "validator.trace.acceptance_reconciliation"
@@ -83,7 +93,6 @@ def test_acceptance_reconciliation_reuses_snapshots_across_validate_calls(
 
     for name in (
         "load_traceability_index",
-        "load_prd_index",
         "load_acceptance_contracts",
         "load_validation_evidence_artifacts",
         "load_validator_registry",
@@ -99,14 +108,13 @@ def test_acceptance_reconciliation_reuses_snapshots_across_validate_calls(
 
         monkeypatch.setattr(loader, name, make_wrapper(name, original))
 
-    first = service.validate("trace.core_python_foundation")
-    second = service.validate("trace.core_python_foundation")
+    first = service.validate("trace.governed_acceptance_example")
+    second = service.validate("trace.governed_acceptance_example")
 
     assert first.passed is True
     assert second.passed is True
     assert counts == {
         "load_traceability_index": 1,
-        "load_prd_index": 1,
         "load_acceptance_contracts": 1,
         "load_validation_evidence_artifacts": 1,
         "load_validator_registry": 1,
@@ -119,26 +127,28 @@ def test_acceptance_reconciliation_reports_missing_repo_local_paths(
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
         repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
+        / "core/control_plane/contracts/acceptance/"
+        "governed_acceptance_example_acceptance.json"
     )
     evidence_path = (
         repo_root
         / "core/control_plane/ledgers/validation_evidence/"
-        "core_python_foundation_traceability_validation.json"
+        "governed_acceptance_example_validation_baseline.json"
     )
 
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
-    contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")
-    contract["entries"][0]["related_paths"] = ["docs/planning/tasks/open/missing_task.md"]
+    missing_task_path = "plan/initiatives/missing/.wt/tasks/missing/task.json"
+    contract["entries"][0]["validation_targets"].append(missing_task_path)
+    contract["entries"][0]["related_paths"] = [missing_task_path]
     contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
 
     evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
-    evidence["related_paths"] = ["docs/planning/tasks/open/missing_task.md"]
-    evidence["checks"][0]["subject_paths"].append("docs/planning/tasks/open/missing_task.md")
+    evidence["related_paths"] = [missing_task_path]
+    evidence["checks"][0]["subject_paths"].append(missing_task_path)
     evidence_path.write_text(f"{json.dumps(evidence, indent=2)}\n", encoding="utf-8")
 
     result = AcceptanceReconciliationService(ControlPlaneLoader(repo_root)).validate(
-        "trace.core_python_foundation"
+        "trace.governed_acceptance_example"
     )
 
     assert result.passed is False

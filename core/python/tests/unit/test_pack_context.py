@@ -180,8 +180,8 @@ def test_plan_pack_context_loads_retention_policy_registry() -> None:
 
     registry = context.registries["retention_policy_registry"]
     assert isinstance(registry, RetentionPolicyRegistry)
-    assert registry.get("policy.retention.legacy_docs_planning").current_disposition == (
-        "legacy_ignored"
+    assert registry.get("policy.retention.plan_promoted_guidance").current_disposition == (
+        "authoritative"
     )
 
 

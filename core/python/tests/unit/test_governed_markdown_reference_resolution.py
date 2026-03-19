@@ -6,11 +6,11 @@ from textwrap import dedent
 
 from watchtower_core.adapters import extract_repo_path_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.planning_documents import (
+from watchtower_core.plan_runtime.planning_documents import (
     PlanningDocument,
     collect_reference_indicators,
 )
-from watchtower_core.repo_ops.sync import FoundationIndexSyncService
+from watchtower_core.plan_runtime.sync import FoundationIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -134,12 +134,12 @@ def test_collect_reference_indicators_resolves_document_relative_paths(
     reference_path = repo_root / "docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
     document = PlanningDocument(
-        relative_path="docs/planning/prds/example.md",
+        relative_path="plan/initiatives/example/initiative_brief.md",
         front_matter={},
         sections={
             "References": (
-                "- [example_reference.md](../../references/example_reference.md)\n"
-                "- [README.md](../../README.md)"
+                "- [example_reference.md](../../../docs/references/example_reference.md)\n"
+                "- [README.md](../../../docs/README.md)"
             ),
         },
         metadata={},
@@ -169,7 +169,7 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
     _write_repo_file(repo_root / "docs/README.md")
     reference_path = repo_root / "docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
-    foundation_path = repo_root / "docs/foundations/example_foundation.md"
+    foundation_path = repo_root / "core/docs/foundations/example_foundation.md"
     foundation_path.parent.mkdir(parents=True, exist_ok=True)
     foundation_path.write_text(
         dedent(
@@ -192,8 +192,8 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
             # Example Foundation
 
             ## References
-            - [example_reference.md](../references/example_reference.md)
-            - [README.md](../README.md)
+            - [example_reference.md](../../../docs/references/example_reference.md)
+            - [README.md](../../../docs/README.md)
 
             ## Updated At
             - `2026-03-11T17:38:00Z`

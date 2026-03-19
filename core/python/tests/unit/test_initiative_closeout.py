@@ -7,23 +7,28 @@ from shutil import copytree
 import pytest
 
 from tests.integration.fixture_repo_support import (
+    bootstrap_packwide_initiative,
     materialize_acceptance_and_evidence_paths,
     materialize_plan_pack,
 )
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import (
-    PLANNING_CATALOG_PATH,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.repo_ops.plan_workspace import (
+from watchtower_core.plan_runtime.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
-from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
+from watchtower_core.plan_runtime.sync.coordination import CoordinationSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+CURRENT_ACCEPTANCE_PATH = (
+    "core/control_plane/contracts/acceptance/"
+    "governed_acceptance_example_acceptance.json"
+)
+CURRENT_TRACE_ID = "trace.governed_acceptance_example"
 
 
 def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
@@ -31,15 +36,13 @@ def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
-    for relative_path in (
-        "docs/planning",
-        "docs/planning/prds",
-        "docs/planning/decisions",
-        "docs/planning/design",
-        "docs/planning/initiatives",
-    ):
-        (repo_root / relative_path).mkdir(parents=True, exist_ok=True)
     materialize_acceptance_and_evidence_paths(repo_root)
+    bootstrap_packwide_initiative(
+        repo_root,
+        trace_id="trace.example_live_plan_closeout_fixture",
+        title="Example Live Plan Closeout Fixture",
+        summary="Seeds one live initiative package so closeout tests cover live-plan rejection and linked-task behavior without relying on retained repo history.",
+    )
     return repo_root
 
 
@@ -149,16 +152,11 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
 
     assert result.traceability_output_path is not None
     assert result.initiative_index_output_path is not None
-    assert result.planning_catalog_output_path is not None
     assert result.coordination_index_output_path is not None
     assert result.initiative_tracking_output_path is not None
     assert result.coordination_tracking_output_path is not None
-    assert result.prd_tracking_output_path is not None
-    assert result.decision_tracking_output_path is not None
-    assert result.design_tracking_output_path is not None
     assert shared_targets["targets"] == (
         "initiative-index",
-        "planning-catalog",
         "coordination-index",
         "initiative-tracking",
         "coordination-tracking",
@@ -191,18 +189,7 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
         and isinstance(entry.get("updated_at"), str)
     )
 
-    written_planning_catalog = _load_json(repo_root, PLANNING_CATALOG_PATH)
-    planning_entry = next(
-        entry
-        for entry in written_planning_catalog["entries"]
-        if entry["trace_id"] == fixture_trace_id
-    )
-    assert planning_entry["initiative_status"] == "completed"
-    coordination = planning_entry.get("coordination")
-    assert isinstance(coordination, dict)
-    assert coordination["current_phase"] == "closed"
-
-    coordination_tracking = (repo_root / "docs/planning/coordination_tracking.md").read_text(
+    coordination_tracking = (repo_root / "plan/tracking/coordination_tracking.md").read_text(
         encoding="utf-8"
     )
     assert (
@@ -339,32 +326,37 @@ def test_initiative_closeout_rejects_acceptance_issues_without_override(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_closeout_fixture_repo(tmp_path)
-    task_id = "task.core_python_foundation.closeout.001"
+    task_id = "task.governed_acceptance_example.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
-    target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
+    target = next(entry for entry in entries if entry["trace_id"] == CURRENT_TRACE_ID)
     target["initiative_status"] = "active"
     target["updated_at"] = "2026-03-10T23:10:00Z"
     target["task_ids"] = [task_id]
     target.pop("closed_at", None)
     target.pop("closure_reason", None)
     _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
-    _seed_terminal_task_for_trace(repo_root, "trace.core_python_foundation", task_id)
+    _seed_terminal_task_for_trace(repo_root, CURRENT_TRACE_ID, task_id)
 
-    contract_path = (
-        repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
-    )
+    contract_path = repo_root / CURRENT_ACCEPTANCE_PATH
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     contract["entries"] = contract["entries"][:1]
     contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+    evidence_path = (
+        repo_root
+        / "core/control_plane/ledgers/validation_evidence/"
+        "governed_acceptance_example_validation_baseline.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    evidence["checks"][0]["acceptance_ids"] = ["ac.missing_closeout_example.001"]
+    evidence_path.write_text(f"{json.dumps(evidence, indent=2)}\n", encoding="utf-8")
 
     service = InitiativeCloseoutService(ControlPlaneLoader(repo_root))
 
     try:
         service.close(
-            trace_id="trace.core_python_foundation",
+            trace_id=CURRENT_TRACE_ID,
             initiative_status="completed",
             closure_reason="Attempted closeout with unresolved acceptance drift.",
             write=False,
@@ -384,29 +376,34 @@ def test_initiative_closeout_allows_explicit_acceptance_issue_override(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_closeout_fixture_repo(tmp_path)
-    task_id = "task.core_python_foundation.closeout.001"
+    task_id = "task.governed_acceptance_example.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
-    target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
+    target = next(entry for entry in entries if entry["trace_id"] == CURRENT_TRACE_ID)
     target["initiative_status"] = "active"
     target["updated_at"] = "2026-03-10T23:10:00Z"
     target["task_ids"] = [task_id]
     target.pop("closed_at", None)
     target.pop("closure_reason", None)
     _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
-    _seed_terminal_task_for_trace(repo_root, "trace.core_python_foundation", task_id)
+    _seed_terminal_task_for_trace(repo_root, CURRENT_TRACE_ID, task_id)
 
-    contract_path = (
-        repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
-    )
+    contract_path = repo_root / CURRENT_ACCEPTANCE_PATH
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     contract["entries"] = contract["entries"][:1]
     contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+    evidence_path = (
+        repo_root
+        / "core/control_plane/ledgers/validation_evidence/"
+        "governed_acceptance_example_validation_baseline.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    evidence["checks"][0]["acceptance_ids"] = ["ac.missing_closeout_example.001"]
+    evidence_path.write_text(f"{json.dumps(evidence, indent=2)}\n", encoding="utf-8")
 
     result = InitiativeCloseoutService(ControlPlaneLoader(repo_root)).close(
-        trace_id="trace.core_python_foundation",
+        trace_id=CURRENT_TRACE_ID,
         initiative_status="completed",
         closure_reason=(
             "Explicitly allowed acceptance drift for cancellation-style "

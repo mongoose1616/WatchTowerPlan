@@ -38,9 +38,16 @@ def test_query_commands_reports_split_query_family_implementation_paths(capsys) 
     assert implementation_paths["command.watchtower_core.query.acceptance"] == (
         "core/python/src/watchtower_core/cli/query_records_family.py"
     )
-    assert implementation_paths["command.watchtower_core.query.planning"] == (
+    assert implementation_paths["command.watchtower_core.query.coordination"] == (
         "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
+    assert implementation_paths["command.watchtower_core.query.initiatives"] == (
+        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert implementation_paths["command.watchtower_core.query.tasks"] == (
+        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert "command.watchtower_core.query.planning" not in implementation_paths
 
 
 def test_query_references_supports_json_output(capsys) -> None:
@@ -98,7 +105,7 @@ def test_query_standards_respects_foundation_document_family_boundary(capsys) ->
             "query",
             "standards",
             "--operationalization-path",
-            "docs/foundations/repository_scope.md",
+            "core/docs/foundations/repository_scope.md",
         ],
     )
 
@@ -116,7 +123,7 @@ def test_query_standards_respects_foundation_document_family_boundary(capsys) ->
             "query",
             "standards",
             "--operationalization-path",
-            "docs/foundations/README.md",
+            "core/docs/foundations/README.md",
         ],
     )
 
@@ -326,14 +333,6 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
 ) -> None:
     cases = (
         (
-            "docs/planning/prds/reference_and_workflow_standards_alignment.md",
-            "std.documentation.prd_md",
-        ),
-        (
-            "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
-            "std.documentation.decision_record_md",
-        ),
-        (
             "docs/templates/documentation_template.md",
             "std.documentation.compact_document_authoring",
         ),
@@ -341,10 +340,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "docs/references/AGENTS.md",
             "std.documentation.agents_md",
         ),
-        (
-            "docs/planning/README.md",
-            "std.documentation.readme_md",
-        ),
+        ("plan/README.md", "std.documentation.readme_md"),
         (
             "docs/references/commonmark_reference.md",
             "std.documentation.reference_md",
@@ -354,7 +350,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.documentation.standard_md",
         ),
         (
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
             "std.data_contracts.acceptance_contract",
         ),
         (
@@ -366,11 +362,11 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.standard_index",
         ),
         (
-            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
             "std.data_contracts.foundation_index",
         ),
         (
-            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "core/python/src/watchtower_core/plan_runtime/query/foundations.py",
             "std.data_contracts.foundation_index",
         ),
         (
@@ -388,7 +384,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
         (
             (
                 "core/control_plane/ledgers/validation_evidence/"
-                "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json"
+                "governed_acceptance_example_validation_baseline.json"
             ),
             "std.data_contracts.validation_evidence",
         ),
@@ -459,5 +455,5 @@ def test_query_standards_supports_shared_family_tag_filters(capsys) -> None:
     assert payload["status"] == "ok"
     standard_ids = {entry["standard_id"] for entry in payload["results"]}
     assert "std.data_contracts.planning_index_family" in standard_ids
-    assert "std.data_contracts.prd_index" in standard_ids
-    assert "std.data_contracts.decision_index" in standard_ids
+    assert "std.data_contracts.coordination_index" in standard_ids
+    assert "std.data_contracts.task_index" in standard_ids

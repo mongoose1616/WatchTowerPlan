@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from watchtower_core.repo_ops.query.common import (
+from watchtower_core.plan_runtime.query.common import (
     RenderedSearchFilters,
     rendered_search_filters_from_params,
     search_rendered_entries,

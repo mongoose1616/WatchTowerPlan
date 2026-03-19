@@ -76,100 +76,26 @@ def _task_args(**overrides: object) -> argparse.Namespace:
     return argparse.Namespace(**defaults)
 
 
-def test_plan_scaffold_prints_document_when_requested(monkeypatch, capsys) -> None:
-    class FakeService:
-        def __init__(self, loader: object) -> None:
-            self.loader = loader
-
-        def scaffold(self, params: object, *, write: bool) -> SimpleNamespace:
-            assert write is False
-            return SimpleNamespace(
-                kind="prd",
-                document_id="prd.plan_example",
-                trace_id="trace.plan_example",
-                title="Plan Example",
-                summary="Plan summary.",
-                status="active",
-                doc_path="docs/planning/prds/plan_example.md",
-                content="# Body\n",
-                wrote=False,
-            )
-
-    monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(plan_handlers, "PlanningScaffoldService", FakeService)
-
-    result = plan_handlers._run_plan_scaffold(_plan_args(include_document=True))
-
-    captured = capsys.readouterr()
-    assert result == 0
-    assert "Prepared prd scaffold at docs/planning/prds/plan_example.md." in captured.out
-    assert "# Body" in captured.out
-
-
-def test_plan_bootstrap_requires_include_decision_for_decision_id(capsys) -> None:
-    result = plan_handlers._run_plan_bootstrap(
-        _plan_args(decision_id="decision.example", include_decision=False)
-    )
-
-    captured = capsys.readouterr()
-    assert result == 1
-    assert "Plan bootstrap error: --decision-id requires --include-decision." in captured.out
-
-
 def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
             self.loader = loader
 
-        def bootstrap(self, params: object, *, write: bool) -> SimpleNamespace:
+        def bootstrap_packwide(self, params: object, *, write: bool) -> SimpleNamespace:
+            assert write is False
             return SimpleNamespace(
-                documents=(
-                    SimpleNamespace(
-                        kind="prd",
-                        document_id="prd.plan_example",
-                        trace_id="trace.plan_example",
-                        title="Plan Example PRD",
-                        summary="Plan summary.",
-                        status="active",
-                        doc_path="docs/planning/prds/plan_example.md",
-                        content="# PRD\n",
-                    ),
-                ),
-                acceptance_contract=SimpleNamespace(
-                    contract_id="contract.acceptance.plan_example",
-                    trace_id="trace.plan_example",
-                    source_prd_id="prd.plan_example",
-                    title="Plan Example Acceptance Contract",
-                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.json",
-                    content='{"id":"contract.acceptance.plan_example"}\n',
-                    wrote=False,
-                ),
-                validation_evidence=SimpleNamespace(
-                    evidence_id="evidence.plan_example.planning_baseline",
-                    trace_id="trace.plan_example",
-                    title="Plan Example Planning Baseline Evidence",
-                    overall_result="passed",
-                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json",
-                    content='{"id":"evidence.plan_example.planning_baseline"}\n',
-                    wrote=False,
-                ),
-                task_result=SimpleNamespace(
-                    task_id="task.plan_example.bootstrap.001",
-                    title="Bootstrap planning chain",
-                    summary="Bootstrap summary.",
-                    task_status="planned",
-                    task_kind="governance",
-                    priority="medium",
-                    owner="repository_maintainer",
-                    doc_path="plan/initiatives/plan_example/.wt/tasks/bootstrap_planning_chain/task.json",
-                    wrote=False,
-                ),
+                initiative_id="initiative.plan_example",
+                trace_id="trace.plan_example",
+                initiative_root="plan/initiatives/plan_example",
+                lifecycle_stage="capture_incomplete",
+                review_status="pending",
+                ready_for_execution=False,
+                validation_passed=False,
                 wrote=False,
-                sync_refreshed=False,
             )
 
     monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(plan_handlers, "PlanningScaffoldService", FakeService)
+    monkeypatch.setattr(plan_handlers, "InitiativePackageService", FakeService)
 
     result = plan_handlers._run_plan_bootstrap(_plan_args(format="json"))
 
@@ -177,13 +103,10 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan bootstrap"
-    assert payload["document_count"] == 1
-    assert payload["acceptance_contract"]["contract_id"] == "contract.acceptance.plan_example"
-    assert (
-        payload["validation_evidence"]["evidence_id"]
-        == "evidence.plan_example.planning_baseline"
-    )
-    assert payload["task"]["task_id"] == "task.plan_example.bootstrap.001"
+    assert payload["initiative_id"] == "initiative.plan_example"
+    assert payload["initiative_root"] == "plan/initiatives/plan_example"
+    assert payload["lifecycle_stage"] == "capture_incomplete"
+    assert payload["ready_for_execution"] is False
 
 
 def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
@@ -191,72 +114,30 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
         def __init__(self, loader: object) -> None:
             self.loader = loader
 
-        def bootstrap(self, params: object, *, write: bool) -> SimpleNamespace:
+        def bootstrap_packwide(self, params: object, *, write: bool) -> SimpleNamespace:
+            assert write is True
             return SimpleNamespace(
-                documents=(
-                    SimpleNamespace(
-                        kind="prd",
-                        document_id="prd.plan_example",
-                        trace_id="trace.plan_example",
-                        title="Plan Example PRD",
-                        summary="Plan summary.",
-                        status="active",
-                        doc_path="docs/planning/prds/plan_example.md",
-                        content="# PRD\n",
-                    ),
-                ),
-                acceptance_contract=SimpleNamespace(
-                    contract_id="contract.acceptance.plan_example",
-                    trace_id="trace.plan_example",
-                    source_prd_id="prd.plan_example",
-                    title="Plan Example Acceptance Contract",
-                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.json",
-                    content='{"id":"contract.acceptance.plan_example"}\n',
-                    wrote=True,
-                ),
-                validation_evidence=SimpleNamespace(
-                    evidence_id="evidence.plan_example.planning_baseline",
-                    trace_id="trace.plan_example",
-                    title="Plan Example Planning Baseline Evidence",
-                    overall_result="passed",
-                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json",
-                    content='{"id":"evidence.plan_example.planning_baseline"}\n',
-                    wrote=True,
-                ),
-                task_result=SimpleNamespace(
-                    task_id="task.plan_example.bootstrap.001",
-                    title="Bootstrap planning chain",
-                    summary="Bootstrap summary.",
-                    task_status="planned",
-                    task_kind="governance",
-                    priority="medium",
-                    owner="repository_maintainer",
-                    doc_path="plan/initiatives/plan_example/.wt/tasks/bootstrap_planning_chain/task.json",
-                    wrote=True,
-                ),
+                initiative_id="initiative.plan_example",
+                trace_id="trace.plan_example",
+                initiative_root="plan/initiatives/plan_example",
+                lifecycle_stage="ready_for_review",
+                review_status="pending",
+                ready_for_execution=False,
+                validation_passed=True,
                 wrote=True,
-                sync_refreshed=True,
             )
 
     monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(plan_handlers, "PlanningScaffoldService", FakeService)
+    monkeypatch.setattr(plan_handlers, "InitiativePackageService", FakeService)
 
-    result = plan_handlers._run_plan_bootstrap(_plan_args(include_documents=True, write=True))
+    result = plan_handlers._run_plan_bootstrap(_plan_args(write=True))
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Wrote bootstrap chain with 1 planning documents" in captured.out
-    assert "- prd: docs/planning/prds/plan_example.md" in captured.out
-    assert (
-        "- acceptance_contract: "
-        "core/control_plane/contracts/acceptance/plan_example_acceptance.json"
-    ) in captured.out
-    assert (
-        "- validation_evidence: "
-        "core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.json"
-    ) in captured.out
-    assert "# PRD" in captured.out
-    assert "Derived planning surfaces were refreshed." in captured.out
+    assert "Bootstrapped live initiative package trace.plan_example." in captured.out
+    assert "Initiative Root: plan/initiatives/plan_example" in captured.out
+    assert "Lifecycle Stage: ready_for_review" in captured.out
+    assert "Initiative state and derived plan surfaces were updated." in captured.out
 
 
 def test_plan_confirm_inputs_supports_json_output(monkeypatch, capsys) -> None:
@@ -316,15 +197,13 @@ def test_plan_approve_uses_project_scoped_service_and_prints_summary(
             write: bool,
         ) -> SimpleNamespace:
             assert project_slug == "watchtower"
-            assert initiative_slug == "watchtower_work_item_notes"
+            assert initiative_slug == "example_project_initiative"
             assert actor_id == "actor.repository_maintainer"
             assert write is True
             return SimpleNamespace(
-                initiative_id="initiative.watchtower_work_item_notes",
-                trace_id="trace.watchtower_work_item_notes",
-                initiative_root=(
-                    "plan/projects/watchtower/initiatives/watchtower_work_item_notes"
-                ),
+                initiative_id="initiative.example_project_initiative",
+                trace_id="trace.example_project_initiative",
+                initiative_root="plan/projects/watchtower/initiatives/example_project_initiative",
                 lifecycle_stage="ready_for_execution",
                 review_status="approved",
                 ready_for_execution=True,
@@ -337,7 +216,7 @@ def test_plan_approve_uses_project_scoped_service_and_prints_summary(
 
     result = plan_handlers._run_plan_approve(
         _plan_args(
-            initiative_slug="watchtower_work_item_notes",
+            initiative_slug="example_project_initiative",
             project_slug="watchtower",
             write=True,
         )
@@ -345,27 +224,9 @@ def test_plan_approve_uses_project_scoped_service_and_prints_summary(
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Approved live initiative trace.watchtower_work_item_notes." in captured.out
+    assert "Approved live initiative trace.example_project_initiative." in captured.out
     assert "Lifecycle Stage: ready_for_execution" in captured.out
     assert "Ready For Execution: True" in captured.out
-
-
-def test_plan_scaffold_reports_errors(monkeypatch, capsys) -> None:
-    class FakeService:
-        def __init__(self, loader: object) -> None:
-            self.loader = loader
-
-        def scaffold(self, params: object, *, write: bool) -> SimpleNamespace:
-            raise ValueError("duplicate path")
-
-    monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(plan_handlers, "PlanningScaffoldService", FakeService)
-
-    result = plan_handlers._run_plan_scaffold(_plan_args())
-
-    captured = capsys.readouterr()
-    assert result == 1
-    assert "Plan scaffold error: duplicate path" in captured.out
 
 
 def test_task_create_prints_dry_run_summary(monkeypatch, capsys) -> None:

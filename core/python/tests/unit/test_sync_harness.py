@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.sync.command_index import (
+from watchtower_core.plan_runtime.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )

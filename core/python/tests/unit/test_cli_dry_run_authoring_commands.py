@@ -1,18 +1,41 @@
 from __future__ import annotations
 
+from pathlib import Path
+from shutil import copytree
+
+from tests.integration.fixture_repo_support import bootstrap_packwide_initiative, materialize_plan_pack
 from tests.unit.cli_command_helpers import run_json_command
 
+REPO_ROOT = Path(__file__).resolve().parents[4]
 
-def test_task_create_supports_json_output(capsys) -> None:
+
+def _build_task_preview_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core/python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
+    bootstrap_packwide_initiative(
+        repo_root,
+        trace_id="trace.example_cli_task_preview",
+        title="Example CLI Task Preview",
+        summary="Fixture initiative for dry-run task create coverage.",
+        approve=True,
+    )
+    return repo_root
+
+
+def test_task_create_supports_json_output(tmp_path: Path, monkeypatch, capsys) -> None:
+    repo_root = _build_task_preview_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
         [
             "task",
             "create",
             "--task-id",
-            "task.plan_task_authority_rendering_governance_recovery.cli_preview_json_output",
+            "task.example_cli_task_preview.cli_preview_json_output",
             "--trace-id",
-            "trace.plan_task_authority_rendering_governance_recovery",
+            "trace.example_cli_task_preview",
             "--title",
             "Preview the task command",
             "--summary",
@@ -35,34 +58,30 @@ def test_task_create_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
     assert (
         payload["task_id"]
-        == "task.plan_task_authority_rendering_governance_recovery.cli_preview_json_output"
+        == "task.example_cli_task_preview.cli_preview_json_output"
     )
     assert payload["wrote"] is False
     assert payload["changed"] is True
 
 
-def test_plan_scaffold_supports_json_output(capsys) -> None:
+def test_plan_bootstrap_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
         [
             "plan",
-            "scaffold",
-            "--kind",
-            "prd",
+            "bootstrap",
             "--trace-id",
             "trace.plan_cli_preview",
-            "--document-id",
-            "prd.plan_cli_preview",
             "--title",
-            "Plan CLI Preview PRD",
+            "Plan CLI Preview",
             "--summary",
-            "Previews the planning scaffold command without writing a file.",
+            "Previews the live initiative bootstrap command without writing.",
         ],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core plan scaffold"
+    assert payload["command"] == "watchtower-core plan bootstrap"
     assert payload["status"] == "ok"
-    assert payload["kind"] == "prd"
-    assert payload["document_id"] == "prd.plan_cli_preview"
+    assert payload["initiative_id"] == "initiative.plan_cli_preview"
+    assert payload["initiative_root"] == "plan/initiatives/plan_cli_preview"
     assert payload["wrote"] is False

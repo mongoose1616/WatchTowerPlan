@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import json
-import tempfile
 from pathlib import Path
 
-from tests.pack_fixture_support import REPO_ROOT, materialize_pack_validation_suite
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from watchtower_core.cli.main import main
 
 
@@ -68,7 +70,7 @@ def test_validate_front_matter_can_record_evidence_to_temp_outputs(tmp_path: Pat
             "docs/standards/metadata/front_matter_standard.md",
             "--record-evidence",
             "--trace-id",
-            "trace.core_python_foundation",
+            "trace.governed_acceptance_example",
             "--subject-id",
             "std.metadata.front_matter",
             "--evidence-output",
@@ -84,7 +86,7 @@ def test_validate_front_matter_can_record_evidence_to_temp_outputs(tmp_path: Pat
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["passed"] is True
-    assert payload["evidence"]["trace_id"] == "trace.core_python_foundation"
+    assert payload["evidence"]["trace_id"] == "trace.governed_acceptance_example"
     assert evidence_output.exists()
     assert traceability_output.exists()
 
@@ -116,7 +118,8 @@ def test_validate_artifact_supports_json_output(capsys) -> None:
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json",
             "--format",
             "json",
         ]
@@ -247,12 +250,13 @@ def test_validate_artifact_can_record_evidence_to_temp_outputs(tmp_path: Path, c
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json",
             "--record-evidence",
             "--trace-id",
-            "trace.core_python_foundation",
+            "trace.governed_acceptance_example",
             "--acceptance-id",
-            "ac.core_python_foundation.001",
+            "ac.governed_acceptance_example.001",
             "--evidence-output",
             str(evidence_output),
             "--traceability-output",
@@ -266,7 +270,10 @@ def test_validate_artifact_can_record_evidence_to_temp_outputs(tmp_path: Path, c
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["passed"] is True
-    assert payload["evidence"]["trace_id"] == "trace.core_python_foundation"
+    assert (
+        payload["evidence"]["trace_id"]
+        == "trace.governed_acceptance_example"
+    )
     assert evidence_output.exists()
     assert traceability_output.exists()
 
@@ -277,7 +284,7 @@ def test_validate_acceptance_supports_json_output(capsys) -> None:
             "validate",
             "acceptance",
             "--trace-id",
-            "trace.core_python_foundation",
+            "trace.governed_acceptance_example",
             "--format",
             "json",
         ]
@@ -349,24 +356,26 @@ def test_validate_suite_supports_json_output(capsys) -> None:
     assert any(summary["step_kind"] == "artifact" for summary in payload["step_summaries"])
 
 
-def test_validate_artifact_uses_pack_settings_path_to_select_pack_registry(capsys) -> None:
-    domain_packs_root = REPO_ROOT / "domain_packs"
-    domain_packs_root.mkdir(exist_ok=True)
-
-    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
-        surfaces = materialize_pack_validation_suite(Path(tmp_dir))
-        result = main(
-            [
-                "validate",
-                "artifact",
-                "--path",
-                surfaces["artifact_relative_path"],
-                "--pack-settings-path",
-                surfaces["pack_settings_path"],
-                "--format",
-                "json",
-            ]
-        )
+def test_validate_artifact_uses_pack_settings_path_to_select_pack_registry(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+    result = main(
+        [
+            "validate",
+            "artifact",
+            "--path",
+            surfaces["artifact_relative_path"],
+            "--pack-settings-path",
+            surfaces["pack_settings_path"],
+            "--format",
+            "json",
+        ]
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)

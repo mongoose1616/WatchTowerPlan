@@ -12,13 +12,13 @@ from tests.integration.fixture_repo_support import (
     materialize_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.query import (
+from watchtower_core.plan_runtime.query import (
     InitiativeQueryService,
     ReadinessQueryService,
     ReadinessSearchParams,
     TaskQueryService,
 )
-from watchtower_core.repo_ops.task_lifecycle import (
+from watchtower_core.plan_runtime.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskTransitionParams,
@@ -242,7 +242,7 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
                 "title": "Task Lifecycle Service Path Repair Acceptance Contract",
                 "status": "active",
                 "trace_id": trace_id,
-                "source_prd_id": "prd.task_lifecycle_service_path_repair",
+                "source_surface_path": created.doc_path,
                 "entries": [
                     {
                         "acceptance_id": "ac.task_lifecycle_service_path_repair.001",

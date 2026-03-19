@@ -5,9 +5,9 @@ from pathlib import Path
 from shutil import copytree
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-_PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "domain_packs" / "plan"
-_DEFAULT_FIXTURE_WT_ROOT = "domain_packs/plan/.wt"
-_PLAN_NOTE_VALIDATOR_ID = "validator.domain_packs.plan_note"
+_PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
+_DEFAULT_FIXTURE_WT_ROOT = "packs/plan/.wt"
+_PLAN_NOTE_VALIDATOR_ID = "validator.packs.plan_note"
 _PLAN_SUITE_ID = "suite.plan.validation_baseline"
 
 
@@ -68,12 +68,19 @@ def materialize_pack_validation_suite(
     return {
         "artifact_relative_path": f"{actual_wt_root}/work_items/plan_note.json",
         "pack_settings_path": f"{actual_wt_root}/pack_settings.json",
-        "schema_id": "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1",
-        "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/domain_packs/plan_note.schema.json",
+        "schema_id": "urn:watchtower:schema:interfaces:packs:plan-note:v1",
+        "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/plan_note.schema.json",
         "suite_id": _PLAN_SUITE_ID,
         "validation_suite_registry_path": validation_suite_registry_path,
         "validator_id": _PLAN_NOTE_VALIDATOR_ID,
     }
+
+
+def materialize_validation_repo_subset(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    return repo_root
 
 
 def _discover_repo_root(start: Path) -> Path:

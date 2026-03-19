@@ -81,7 +81,7 @@ def test_validation_evidence_recorder_writes_default_outputs_to_injected_workspa
 
     write_result = recorder.record(
         result,
-        trace_id="trace.core_export_readiness_and_optimization",
+        trace_id="trace.governed_acceptance_example",
     )
 
     evidence_output = Path(write_result.evidence_output_path)

@@ -5,14 +5,14 @@ from pathlib import Path
 from shutil import copytree, rmtree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.artifact_index import PLAN_ARTIFACT_INDEX_PATH
-from watchtower_core.repo_ops.initiative_packages import (
+from watchtower_core.plan_runtime.artifact_index import PLAN_ARTIFACT_INDEX_PATH
+from watchtower_core.plan_runtime.initiative_packages import (
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_core.repo_ops.project_context import load_project_context
-from watchtower_core.repo_ops.project_workspace import (
+from watchtower_core.plan_runtime.project_context import load_project_context
+from watchtower_core.plan_runtime.project_workspace import (
     PLAN_PROJECT_INDEX_PATH,
     PlanProjectSearchParams,
     ProjectBootstrapParams,

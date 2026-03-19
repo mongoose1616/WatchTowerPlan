@@ -23,7 +23,7 @@ def test_validate_suite_runs_plan_domain_pack_fixture_via_cli_json(
     capsys,
 ) -> None:
     repo_root = _copy_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "domain_packs" / "plan")
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(
@@ -58,8 +58,8 @@ def test_validate_suite_fails_closed_on_invalid_schema_reference_via_cli(
 ) -> None:
     repo_root = _copy_validation_repo_subset(tmp_path)
     surfaces = materialize_pack_validation_suite(
-        repo_root / "domain_packs" / "plan",
-        validator_schema_ids=("urn:watchtower:schema:interfaces:domain-packs:missing:v1",),
+        repo_root / "packs" / "plan",
+        validator_schema_ids=("urn:watchtower:schema:interfaces:packs:missing:v1",),
     )
     monkeypatch.chdir(repo_root / "core" / "python")
 
@@ -93,8 +93,8 @@ def test_validate_suite_fails_closed_on_invalid_validator_reference_via_cli(
 ) -> None:
     repo_root = _copy_validation_repo_subset(tmp_path)
     surfaces = materialize_pack_validation_suite(
-        repo_root / "domain_packs" / "plan",
-        suite_step_validator_id="validator.domain_packs.missing",
+        repo_root / "packs" / "plan",
+        suite_step_validator_id="validator.packs.missing",
     )
     monkeypatch.chdir(repo_root / "core" / "python")
 
@@ -126,7 +126,7 @@ def test_validate_suite_rejects_unknown_suite_id_via_cli(
     capsys,
 ) -> None:
     repo_root = _copy_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "domain_packs" / "plan")
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(

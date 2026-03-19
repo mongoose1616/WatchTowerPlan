@@ -8,8 +8,8 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.sync import WorkflowIndexSyncService
-from watchtower_core.repo_ops.sync.workflow_index import validate_workflow_additional_load_section
+from watchtower_core.plan_runtime.sync import WorkflowIndexSyncService
+from watchtower_core.plan_runtime.sync.workflow_index import validate_workflow_additional_load_section
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -83,8 +83,8 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
     section = (
-        "- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): "
-        "defines the required PRD structure for the output.\n"
+        "- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): "
+        "defines the compact authored-document structure for live initiative outputs.\n"
     )
 
     result = validate_workflow_additional_load_section(
@@ -93,7 +93,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
         repo_root=REPO_ROOT,
     )
 
-    assert result == ("docs/standards/documentation/prd_md_standard.md",)
+    assert result == ("docs/standards/documentation/compact_document_authoring_standard.md",)
 
 
 def test_validate_workflow_additional_load_section_rejects_routing_baseline_files() -> None:

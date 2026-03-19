@@ -6,7 +6,7 @@ from shutil import copytree
 
 from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.sync.coordination_tracking import (
+from watchtower_core.plan_runtime.sync.coordination_tracking import (
     ACTIONABLE_TASK_LIMIT,
     ACTIVE_INITIATIVE_LIMIT,
     RECENT_CLOSEOUT_LIMIT,
@@ -60,9 +60,23 @@ def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
                 "is_actionable": True,
             }
         ],
-        "prd_ids": ["prd.example"],
+        "source_surface_paths": ["plan/initiatives/example/initiative_brief.md"],
         "task_ids": ["task.example.001"],
         "notes": "Synthetic active-entry template for coordination tracking tests.",
+    }
+
+
+def _recent_closeout_template(document: dict[str, object]) -> dict[str, object]:
+    closeouts = document.get("recent_closed_initiatives")
+    if isinstance(closeouts, list) and closeouts:
+        return dict(closeouts[0])
+    return {
+        "trace_id": "trace.closed_example",
+        "title": "Closed Example Initiative",
+        "initiative_status": "completed",
+        "closed_at": "2026-03-10T19:00:00Z",
+        "closure_reason": "Synthetic closeout template for coordination tracking tests.",
+        "key_surface_path": "plan/initiatives/closed_example/summary.md",
     }
 
 
@@ -97,7 +111,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
     document = _load_coordination_index(repo_root)
 
     entry_template = _active_entry_template(document)
-    closeout_template = dict(document["recent_closed_initiatives"][0])
+    closeout_template = _recent_closeout_template(document)
 
     active_entries = []
     for index in range(ACTIVE_INITIATIVE_LIMIT + 2):

@@ -2,8 +2,29 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from shutil import copytree
 
+from tests.integration.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_plan_pack,
+)
 from watchtower_core.cli.main import main
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _build_live_plan_cli_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True, exist_ok=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
+    bootstrap_packwide_initiative(
+        repo_root,
+        trace_id="trace.example_cli_sync_live_counts",
+        title="Example CLI Sync Live Counts",
+        summary="Seeds one live initiative so CLI sync output tests assert non-zero live counts against a temp repo.",
+    )
+    return repo_root
 
 
 def test_sync_repository_paths_supports_json_output(capsys) -> None:
@@ -55,14 +76,13 @@ def test_sync_coordination_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["status"] == "ok"
-    assert payload["result_count"] == 8
+    assert payload["result_count"] == 7
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
     assert [entry["target"] for entry in payload["results"]] == [
         "task-index",
         "traceability-index",
         "initiative-index",
-        "planning-catalog",
         "coordination-index",
         "task-tracking",
         "initiative-tracking",
@@ -122,46 +142,13 @@ def test_sync_workflow_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
-def test_sync_prd_index_supports_json_output(capsys) -> None:
-    result = main(["sync", "prd-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync prd-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_decision_index_supports_json_output(capsys) -> None:
-    result = main(["sync", "decision-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync decision-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_design_document_index_supports_json_output(capsys) -> None:
-    result = main(["sync", "design-document-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync design-document-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_initiative_index_supports_json_output(capsys) -> None:
+def test_sync_initiative_index_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "initiative-index", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -174,7 +161,13 @@ def test_sync_initiative_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
-def test_sync_initiative_tracking_supports_json_output(capsys) -> None:
+def test_sync_initiative_tracking_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "initiative-tracking", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -187,7 +180,13 @@ def test_sync_initiative_tracking_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
-def test_sync_task_index_supports_json_output(capsys) -> None:
+def test_sync_task_index_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "task-index", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -200,7 +199,13 @@ def test_sync_task_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
-def test_sync_task_tracking_supports_json_output(capsys) -> None:
+def test_sync_task_tracking_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "task-tracking", "--format", "json"])
 
     captured = capsys.readouterr()
@@ -213,7 +218,13 @@ def test_sync_task_tracking_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
-def test_sync_github_tasks_supports_json_output(capsys) -> None:
+def test_sync_github_tasks_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(
         [
             "sync",
@@ -235,7 +246,13 @@ def test_sync_github_tasks_supports_json_output(capsys) -> None:
     assert "labels" in payload["results"][0]
 
 
-def test_sync_github_tasks_supports_disabling_label_sync(capsys) -> None:
+def test_sync_github_tasks_supports_disabling_label_sync(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = _build_live_plan_cli_repo(tmp_path)
+    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(
         [
             "sync",
@@ -312,7 +329,7 @@ def test_sync_all_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> No
     assert (
         output_dir / "core/control_plane/indexes/commands/command_index.json"
     ).exists()
-    assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
+    assert (output_dir / "plan/tracking/task_tracking.md").exists()
 
 
 def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> None:
@@ -335,9 +352,9 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     assert (
         output_dir / "plan/.wt/indexes/coordination_index.json"
     ).exists()
-    assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
-    assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
-    assert (output_dir / "docs/planning/coordination_tracking.md").exists()
+    assert (output_dir / "plan/tracking/task_tracking.md").exists()
+    assert (output_dir / "plan/tracking/initiative_tracking.md").exists()
+    assert (output_dir / "plan/tracking/coordination_tracking.md").exists()
 
 
 def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
@@ -379,52 +396,6 @@ def test_sync_foundation_index_can_write_to_explicit_output(tmp_path: Path, caps
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync foundation-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_prd_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "prd_index.json"
-
-    result = main(["sync", "prd-index", "--output", str(output_path), "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync prd-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_decision_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "decision_index.json"
-
-    result = main(["sync", "decision-index", "--output", str(output_path), "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync decision-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_design_document_index_can_write_to_explicit_output(
-    tmp_path: Path, capsys
-) -> None:
-    output_path = tmp_path / "design_document_index.json"
-
-    result = main(
-        ["sync", "design-document-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core sync design-document-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()

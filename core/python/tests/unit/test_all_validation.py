@@ -10,12 +10,16 @@ from typing import Any
 
 import pytest
 
+from tests.integration.fixture_repo_support import (
+    materialize_acceptance_and_evidence_paths,
+    materialize_plan_pack,
+)
 from watchtower_core.control_plane.loader import (
     VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
-from watchtower_core.repo_ops.validation.targets import (
+from watchtower_core.plan_runtime.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.plan_runtime.validation.targets import (
     WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
     resolve_watchtower_plan_suite_targets,
 )
@@ -30,6 +34,8 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_acceptance_and_evidence_paths(repo_root)
     return repo_root
 
 
@@ -55,76 +61,59 @@ def _service_with_targets(
     )
 
 
-def _write_invalid_decision_fixture(path: Path) -> None:
+def _write_invalid_standard_fixture(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         dedent(
             """\
             ---
-            trace_id: trace.validate_all_decision_semantics
-            id: decision.validate_all_decision_semantics
-            title: Validate All Decision Semantics
-            summary: Exercises aggregate validation for governed decision semantics.
-            type: decision_record
+            id: "std.documentation.validate_all_standard_semantics"
+            title: "Validate All Standard Semantics"
+            summary: "Exercises aggregate validation for governed standard semantics."
+            type: standard
             status: active
+            tags:
+              - "standard"
+              - "documentation"
+              - "example"
             owner: repository_maintainer
-            updated_at: '2026-03-11T17:05:00Z'
+            updated_at: "2026-03-11T17:05:00Z"
             audience: shared
-            authority: supporting
+            authority: authoritative
             ---
 
-            # Validate All Decision Semantics
-
-            ## Record Metadata
-            - `Trace ID`: `trace.validate_all_decision_semantics`
-            - `Decision ID`: `decision.validate_all_decision_semantics`
-            - `Record Status`: `active`
-            - `Decision Status`: `accepted`
-            - `Linked PRDs`: `None`
-            - `Linked Designs`: `None`
-            - `Linked Implementation Plans`: `None`
-            - `Updated At`: `2026-03-11T17:05:00Z`
+            # Validate All Standard Semantics
 
             ## Summary
-            Exercises aggregate validation for governed decision semantics.
+            Exercises aggregate validation for governed standard semantics.
 
-            ## Decision Statement
-            Keep the aggregate validator aligned with decision semantics.
+            ## Purpose
+            Keep the aggregate validator aligned with standard semantics.
 
-            ## Trigger or Source Request
+            ## Scope
+            - Applies to one invalid standard fixture.
+
+            ## Use When
             - Added to pin validate-all coverage.
 
-            ## Current Context and Constraints
-            - The fixture should fail only for the missing applied-reference section.
+            ## Related Standards and Sources
+            - [validate_all_standard_semantics.md](/docs/standards/documentation/validate_all_standard_semantics.md): keeps the fixture self-contained while exercising missing-section validation.
 
-            ## Affected Surfaces
-            - `docs/planning/decisions/validate_all_decision_semantics.md`
+            ## Operationalization
+            - `Modes`: `documentation`
+            - `Operational Surfaces`: `docs/standards/documentation/validate_all_standard_semantics.md`
 
-            ## Options Considered
-            ### Option 1
-            - Keep the fixture minimal.
-            - Strength.
-            - Tradeoff.
+            ## Validation
+            - Validate-all should surface the missing Guidance section directly.
 
-            ### Option 2
-            - Expand the fixture further.
-            - Strength.
-            - Tradeoff.
-
-            ## Chosen Outcome
-            Use the minimal invalid fixture.
-
-            ## Rationale and Tradeoffs
-            - Small fixture: isolates the aggregate validation regression.
-
-            ## Consequences and Follow-Up Impacts
-            - Validate-all should surface the decision-semantic failure directly.
-
-            ## Risks, Dependencies, and Assumptions
-            - The validator remains aligned with the governed decision rules.
+            ## Change Control
+            - Update the validator and fixture together if the required sections change.
 
             ## References
-            - docs/standards/governance/decision_capture_standard.md
+            - [validate_all_standard_semantics.md](/docs/standards/documentation/validate_all_standard_semantics.md)
+
+            ## Updated At
+            - `2026-03-11T17:05:00Z`
             """
         ),
         encoding="utf-8",
@@ -214,12 +203,12 @@ def test_validate_all_records_selection_errors_as_failed_results(
     assert result.records[0].result.issues[0].code == "validation_step_error"
 
 
-def test_validate_all_reports_missing_decision_applied_reference_section(
+def test_validate_all_reports_missing_standard_guidance_section(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    relative_path = "docs/planning/decisions/validate_all_decision_semantics.md"
-    _write_invalid_decision_fixture(repo_root / relative_path)
+    relative_path = "docs/standards/documentation/validate_all_standard_semantics.md"
+    _write_invalid_standard_fixture(repo_root / relative_path)
     service = _service_with_targets(
         {"step.watchtower_plan.document_semantics": (relative_path,)},
         repo_root,
@@ -231,12 +220,8 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
     assert result.failed_count == 1
     assert result.records[0].family == "document_semantics"
     assert result.records[0].target == relative_path
-    assert (
-        result.records[0].result.validator_id == "validator.documentation.decision_record_semantics"
-    )
-    assert "missing required sections: Applied References and Implications" in (
-        result.records[0].result.issues[0].message
-    )
+    assert result.records[0].result.validator_id == "validator.documentation.standard_semantics"
+    assert "missing required sections: Guidance" in result.records[0].result.issues[0].message
 
 
 def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
@@ -319,7 +304,6 @@ def test_validate_all_reuses_acceptance_reconciliation_snapshots(
 
     for name in (
         "load_traceability_index",
-        "load_prd_index",
         "load_acceptance_contracts",
         "load_validation_evidence_artifacts",
         "load_validator_registry",
@@ -343,7 +327,6 @@ def test_validate_all_reuses_acceptance_reconciliation_snapshots(
     assert result.passed is True
     assert counts == {
         "load_traceability_index": 1,
-        "load_prd_index": 1,
         "load_acceptance_contracts": 1,
         "load_validation_evidence_artifacts": 1,
         "load_validator_registry": 1,
@@ -356,17 +339,21 @@ def test_validate_all_reports_missing_repo_local_acceptance_paths(
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
-        repo_root / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
+        repo_root
+        / "core/control_plane/contracts/acceptance/"
+        "governed_acceptance_example_acceptance.json"
     )
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
-    contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")
+    contract["entries"][0]["validation_targets"].append(
+        "plan/initiatives/missing/.wt/tasks/missing/task.json"
+    )
     contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
 
     service = _service(repo_root)
     monkeypatch.setattr(
         service._acceptance,
         "acceptance_trace_ids",
-        lambda: ("trace.core_python_foundation",),
+        lambda: ("trace.governed_acceptance_example",),
     )
     result = service.run(included_families=("acceptance",))
 

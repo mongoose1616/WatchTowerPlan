@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 from pathlib import Path
+from shutil import copytree
 
 import pytest
 
@@ -17,17 +18,31 @@ def write_json(path: Path, document: dict[str, object]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
+def _copy_validation_repo_subset(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    return repo_root
+
+
+def _discover_repo_root(start: Path) -> Path:
+    candidate = start.resolve()
+    for parent in (candidate, *candidate.parents):
+        if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
+            return parent
+    raise ValueError(f"Could not discover repo root for fixture destination: {start}")
+
+
 def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
+    repo_root = _discover_repo_root(pack_root)
     control_plane_root = pack_root / ".wt"
-    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
-    schema_id = "urn:watchtower:schema:interfaces:domain-packs:artifact-pack-note:v1"
-    schema_relative_path = (
-        f"{relative_root}/schemas/interfaces/domain_packs/artifact_pack_note.schema.json"
-    )
-    validator_id = "validator.domain_packs.artifact_pack_note"
+    relative_root = control_plane_root.relative_to(repo_root).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:packs:artifact-pack-note:v1"
+    schema_relative_path = f"{relative_root}/schemas/interfaces/packs/artifact_pack_note.schema.json"
+    validator_id = "validator.packs.artifact_pack_note"
     artifact_relative_path = f"{relative_root}/work_items/artifact_pack_note.json"
     write_json(
-        REPO_ROOT / schema_relative_path,
+        repo_root / schema_relative_path,
         {
             "$id": schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -44,7 +59,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / f"{relative_root}/registries/schema_catalog.json",
+        repo_root / f"{relative_root}/registries/schema_catalog.json",
         {
             "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
             "id": "registry.schema_catalog",
@@ -65,7 +80,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / f"{relative_root}/registries/validator_registry.json",
+        repo_root / f"{relative_root}/registries/validator_registry.json",
         {
             "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
             "id": "registry.validators",
@@ -89,7 +104,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / artifact_relative_path,
+        repo_root / artifact_relative_path,
         {
             "$schema": schema_id,
             "kind": "artifact_pack_note",
@@ -98,7 +113,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
     )
     pack_settings_path = f"{relative_root}/pack_settings.json"
     write_json(
-        REPO_ROOT / pack_settings_path,
+        repo_root / pack_settings_path,
         {
             "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
             "surface_name": "pack_settings",
@@ -136,7 +151,8 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(
-        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
+        "core/control_plane/contracts/acceptance/"
+        "governed_acceptance_example_acceptance.json"
     )
 
     assert result.passed is True
@@ -233,20 +249,19 @@ def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: P
     assert any("work_item_id" in issue.message for issue in result.issues)
 
 
-def test_artifact_validation_uses_pack_declared_registry_when_loader_is_pack_aware() -> None:
-    domain_packs_root = REPO_ROOT / "domain_packs"
-    domain_packs_root.mkdir(exist_ok=True)
-
-    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
-        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
-        service = ArtifactValidationService(
-            ControlPlaneLoader(
-                REPO_ROOT,
-                active_pack_settings_path=surfaces["pack_settings_path"],
-            )
+def test_artifact_validation_uses_pack_declared_registry_when_loader_is_pack_aware(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_surfaces(repo_root / "packs" / "plan")
+    service = ArtifactValidationService(
+        ControlPlaneLoader(
+            repo_root,
+            active_pack_settings_path=surfaces["pack_settings_path"],
         )
+    )
 
-        result = service.validate(surfaces["artifact_relative_path"])
+    result = service.validate(surfaces["artifact_relative_path"])
 
     assert result.passed is True
     assert result.validator_id == surfaces["validator_id"]

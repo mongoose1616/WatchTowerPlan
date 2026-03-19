@@ -16,25 +16,25 @@
 | `core/python/tests/unit/test_cli_route_and_path_commands.py` | Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces. |
 | `core/python/tests/unit/test_cli_dry_run_authoring_commands.py` | Parser-level JSON contract tests for dry-run `task create` and `plan scaffold` behavior. |
 | `core/python/tests/unit/test_cli_knowledge_query_commands.py` | Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families. |
-| `core/python/tests/unit/test_cli_planning_query_commands.py` | Parser-level JSON contract tests for PRD, decision, design, task, initiative, coordination, authority, acceptance, evidence, and trace query families. |
+| `core/python/tests/unit/test_cli_planning_query_commands.py` | Parser-level JSON contract tests for task, initiative, coordination, authority, acceptance, evidence, trace, and project query families. |
 | `core/python/tests/unit/test_cli_sync_commands.py` | Parser-level JSON and output-path tests for the sync command family. |
 | `core/python/tests/unit/test_cli_validate_commands.py` | Parser-level JSON and evidence-recording tests for the validation command family. |
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
-| `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path rendering. |
+| `core/python/tests/unit/test_coordination_index_sync.py` | Unit tests for rebuilding the coordination index from live initiative and task state. |
 | `core/python/tests/unit/document_semantics_fixtures.py` | Shared temporary-repo and fixture writers for the focused document-semantics validation suites. |
 | `core/python/tests/unit/test_document_semantics_validator_selection.py` | Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules. |
 | `core/python/tests/unit/test_document_semantics_reference_rules.py` | Unit tests for governed reference-document semantic requirements and allowed maturity wording. |
 | `core/python/tests/unit/test_document_semantics_standard_rules.py` | Unit tests for standard-document link accounting and canonical path semantics. |
-| `core/python/tests/unit/test_document_semantics_planning_rules.py` | Unit tests for planning-document semantic requirements around applied references and heading spacing. |
-| `core/python/tests/unit/test_design_document_index_sync.py` | Unit tests for rebuilding the design-document index from governed design docs, including affected-surface and source-path relationship derivation. |
+| `core/python/tests/unit/test_documentation_family.py` | Unit tests for the documentation-family registry helper and mirror requirements. |
+| `core/python/tests/unit/test_rebuild_harness.py` | Unit tests for the reusable rebuild harness over governed indexes and rendered views. |
 | `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
 | `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
-| `core/python/tests/unit/test_planning_catalog_sync.py` | Unit tests for rebuilding the planning catalog and validating the deep planning query behavior against the governed artifact. |
+| `core/python/tests/unit/test_repository_paths_sync.py` | Unit tests for rebuilding the repository path index from README inventory surfaces. |
 | `core/python/tests/unit/test_rendered_search_common.py` | Unit tests for the shared rendered-surface search helper that planning, initiative, and coordination queries now share. |
-| `core/python/tests/unit/test_repo_ops_boundary.py` | Unit tests for the explicit repo-ops boundary and the absence of retired wrapper modules. |
-| `core/python/tests/unit/test_prd_index_sync.py` | Unit tests for rebuilding the PRD index from governed PRD documents. |
+| `core/python/tests/unit/test_plan_runtime_boundary.py` | Unit tests for the explicit plan-runtime boundary and the absence of retired wrapper modules. |
+| `core/python/tests/unit/test_template_catalog.py` | Unit tests for the governed template catalog and template lookup behavior. |
 | `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |
 | `core/python/tests/unit/test_standard_index_sync.py` | Unit tests for rebuilding the standard index from governed standards docs. |
 | `core/python/tests/unit/test_schema_store.py` | Unit tests for schema-catalog-backed schema resolution and validation. |

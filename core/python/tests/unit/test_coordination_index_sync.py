@@ -9,14 +9,14 @@ from tests.integration.fixture_repo_support import (
     materialize_plan_runtime_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.initiative_packages import InitiativeTaskSpec
-from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
-from watchtower_core.repo_ops.query.coordination import (
+from watchtower_core.plan_runtime.initiative_packages import InitiativeTaskSpec
+from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
+from watchtower_core.plan_runtime.query.coordination import (
     CoordinationQueryService,
     CoordinationSearchParams,
 )
-from watchtower_core.repo_ops.sync.coordination_index import CoordinationIndexSyncService
-from watchtower_core.repo_ops.task_lifecycle import TaskLifecycleService, TaskUpdateParams
+from watchtower_core.plan_runtime.sync.coordination_index import CoordinationIndexSyncService
+from watchtower_core.plan_runtime.task_lifecycle import TaskLifecycleService, TaskUpdateParams
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

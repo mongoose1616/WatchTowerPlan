@@ -6,34 +6,61 @@ import sys
 import pytest
 
 from watchtower_core.control_plane.models import (
+    FoundationIndex,
     HumanSurfacePolicyRegistry,
     PackSettings,
-    PrdIndex,
     RetentionPolicyRegistry,
     StatusRegistry,
+    TaskIndex,
     ValidationSuiteRegistry,
     WorkflowIndex,
 )
 
 
-def test_planning_module_reexports_split_typed_index_models() -> None:
-    prd_index = PrdIndex.from_document(
+def test_control_plane_models_export_live_index_models() -> None:
+    foundation_index = FoundationIndex.from_document(
         {
-            "$schema": "urn:example:prd-index",
-            "id": "index.prds",
-            "title": "Example PRD Index",
+            "$schema": "urn:example:foundation-index",
+            "id": "index.foundations",
+            "title": "Example Foundation Index",
             "status": "active",
             "entries": [
                 {
-                    "trace_id": "trace.example",
-                    "prd_id": "prd.example",
-                    "title": "Example PRD",
-                    "summary": "Exercises the stable model export surface.",
+                    "foundation_id": "foundation.example",
+                    "title": "Example Foundation",
+                    "summary": "Exercises the stable foundation model export surface.",
                     "status": "active",
-                    "doc_path": "docs/planning/prds/example.md",
+                    "audience": "shared",
+                    "authority": "authoritative",
+                    "doc_path": "core/docs/foundations/example.md",
                     "updated_at": "2026-03-13T18:03:07Z",
                     "uses_internal_references": False,
                     "uses_external_references": False,
+                }
+            ],
+        }
+    )
+    task_index = TaskIndex.from_document(
+        {
+            "$schema": "urn:example:task-index",
+            "id": "index.plan_tasks",
+            "title": "Example Task Index",
+            "status": "active",
+            "entries": [
+                {
+                    "task_id": "task.example",
+                    "initiative_id": "initiative.example",
+                    "trace_id": "trace.example",
+                    "initiative_title": "Example Initiative",
+                    "title": "Example Task",
+                    "summary": "Exercises the stable live task model export surface.",
+                    "status": "active",
+                    "task_status": "planned",
+                    "task_kind": "feature",
+                    "priority": "high",
+                    "owner": "repository_maintainer",
+                    "doc_path": "plan/initiatives/example/.wt/tasks/example/task.json",
+                    "updated_at": "2026-03-13T18:03:07Z",
                 }
             ],
         }
@@ -58,7 +85,8 @@ def test_planning_module_reexports_split_typed_index_models() -> None:
         }
     )
 
-    assert prd_index.get("prd.example").trace_id == "trace.example"
+    assert foundation_index.get("foundation.example").doc_path == "core/docs/foundations/example.md"
+    assert task_index.get("task.example").trace_id == "trace.example"
     assert workflow_index.get("workflow.example").workflow_id == "workflow.example"
     assert workflow_index.get("workflow.example").phase_type == "shared"
 
@@ -181,18 +209,18 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
             "entries": [
                 {
                     "policy_id": "policy.retention.example",
-                    "path_pattern": "docs/planning",
-                    "match_mode": "exact",
-                    "path_kind": "legacy_history_root",
-                    "phase_qualifier": "legacy_only",
+                    "path_pattern": "plan/initiatives/*",
+                    "match_mode": "glob",
+                    "path_kind": "initiative_archive_root",
+                    "phase_qualifier": "terminal_only",
                     "entry_status": "active",
-                    "current_disposition": "legacy_ignored",
+                    "current_disposition": "purge_when_eligible",
                     "clean_endstate_disposition": "purge_when_eligible",
                     "operational_visibility": "hidden",
                     "purge_gate": "promotion_before_deletion",
                     "governing_surfaces": ["retention_policy_registry"],
                     "clarifying_rule": "Example retention rule.",
-                    "surviving_authority_paths": ["plan/"],
+                    "surviving_authority_paths": ["plan/docs/", "core/control_plane/ledgers/purges/"],
                 }
             ],
         }
@@ -203,7 +231,17 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
     )
 
 
-def test_retired_planning_reexport_module_is_not_importable() -> None:
+def test_retired_planning_reexport_modules_are_not_importable() -> None:
+    catalog_module = "watchtower_core.control_plane.models." + "_".join(("planning", "catalog"))
+    documents_module = "watchtower_core.control_plane.models." + "_".join(
+        ("planning", "documents")
+    )
     sys.modules.pop("watchtower_core.control_plane.models.planning", None)
+    sys.modules.pop(catalog_module, None)
+    sys.modules.pop(documents_module, None)
     with pytest.raises(ModuleNotFoundError):
         importlib.import_module("watchtower_core.control_plane.models.planning")
+    with pytest.raises(ModuleNotFoundError):
+        importlib.import_module(catalog_module)
+    with pytest.raises(ModuleNotFoundError):
+        importlib.import_module(documents_module)

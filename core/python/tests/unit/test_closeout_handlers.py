@@ -47,14 +47,10 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
                 acceptance_issues_allowed=True,
                 wrote=True,
                 traceability_output_path="core/control_plane/indexes/traceability/traceability_index.json",
-                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.json",
-                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.json",
-                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.json",
-                initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
-                coordination_tracking_output_path="docs/planning/coordination_tracking.md",
-                prd_tracking_output_path="docs/planning/prds/prd_tracking.md",
-                decision_tracking_output_path="docs/planning/decisions/decision_tracking.md",
-                design_tracking_output_path="docs/planning/design/design_tracking.md",
+                initiative_index_output_path="plan/.wt/indexes/initiative_index.json",
+                coordination_index_output_path="plan/.wt/indexes/coordination_index.json",
+                initiative_tracking_output_path="plan/tracking/initiative_tracking.md",
+                coordination_tracking_output_path="plan/tracking/coordination_tracking.md",
             )
 
     monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
@@ -71,8 +67,7 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Open Tasks Left In Place: task.example.001" in captured.out
     assert "Acceptance Issues Left In Place: 2" in captured.out
     assert (
-        "Canonical traceability, initiative, planning catalog, coordination, "
-        "and planning trackers were updated."
+        "Canonical traceability, initiative, coordination, and live trackers were updated."
         in captured.out
     )
 
@@ -117,14 +112,10 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
                 acceptance_issues_allowed=False,
                 wrote=True,
                 traceability_output_path="core/control_plane/indexes/traceability/traceability_index.json",
-                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.json",
-                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.json",
-                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.json",
-                initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
-                coordination_tracking_output_path="docs/planning/coordination_tracking.md",
-                prd_tracking_output_path="docs/planning/prds/prd_tracking.md",
-                decision_tracking_output_path="docs/planning/decisions/decision_tracking.md",
-                design_tracking_output_path="docs/planning/design/design_tracking.md",
+                initiative_index_output_path="plan/.wt/indexes/initiative_index.json",
+                coordination_index_output_path="plan/.wt/indexes/coordination_index.json",
+                initiative_tracking_output_path="plan/tracking/initiative_tracking.md",
+                coordination_tracking_output_path="plan/tracking/coordination_tracking.md",
             )
 
     monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
@@ -138,10 +129,7 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
     assert payload["command"] == "watchtower-core closeout initiative"
     assert payload["acceptance_issue_count"] == 0
     assert payload["acceptance_issues_allowed"] is False
-    assert (
-        payload["planning_catalog_output_path"]
-        == "core/control_plane/indexes/planning/planning_catalog.json"
-    )
+    assert ("planning" + "_catalog_output_path") not in payload
 
 
 def test_closeout_plan_initiative_prints_human_summary(monkeypatch, capsys) -> None:
@@ -258,8 +246,8 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                 purged_at="2026-03-10T23:59:59Z",
                 wrote=True,
                 removed_paths=(
-                    "docs/planning/prds/example.md",
-                    "docs/planning/tasks/closed/archive/2026/03/10/example.md",
+                    "plan/initiatives/example/initiative_brief.md",
+                    "plan/initiatives/example/.wt/tasks/example/task.json",
                 ),
                 retained_authority_paths=(
                     "docs/standards/governance/example.md",
@@ -267,7 +255,7 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                 ),
                 purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.json",
-                refreshed_targets=("repository-paths", "planning-catalog", "coordination"),
+                refreshed_targets=("repository-paths", "traceability-index", "coordination"),
             )
 
     monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
@@ -324,7 +312,7 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
                 closure_reason="Closed for tests.",
                 purged_at="2026-03-10T23:59:59Z",
                 wrote=False,
-                removed_paths=("docs/planning/prds/example.md",),
+                removed_paths=("plan/initiatives/example/initiative_brief.md",),
                 retained_authority_paths=("docs/standards/governance/example.md",),
                 purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 purge_ledger_output_path=None,

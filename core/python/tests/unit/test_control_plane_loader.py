@@ -30,18 +30,32 @@ def write_json(path: Path, document: dict[str, object]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
+def _copy_validation_repo_subset(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    return repo_root
+
+
+def _discover_repo_root(start: Path) -> Path:
+    candidate = start.resolve()
+    for parent in (candidate, *candidate.parents):
+        if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
+            return parent
+    raise ValueError(f"Could not discover repo root for fixture destination: {start}")
+
+
 def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
+    repo_root = _discover_repo_root(pack_root)
     control_plane_root = pack_root / ".wt"
-    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
-    schema_id = "urn:watchtower:schema:interfaces:domain-packs:loader-pack-note:v1"
-    schema_relative_path = (
-        f"{relative_root}/schemas/interfaces/domain_packs/loader_pack_note.schema.json"
-    )
-    validator_id = "validator.domain_packs.loader_pack_note"
+    relative_root = control_plane_root.relative_to(repo_root).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:packs:loader-pack-note:v1"
+    schema_relative_path = f"{relative_root}/schemas/interfaces/packs/loader_pack_note.schema.json"
+    validator_id = "validator.packs.loader_pack_note"
     validator_registry_path = f"{relative_root}/registries/validator_registry.json"
     artifact_relative_path = f"{relative_root}/work_items/loader_pack_note.json"
     write_json(
-        REPO_ROOT / schema_relative_path,
+        repo_root / schema_relative_path,
         {
             "$id": schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -58,7 +72,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / f"{relative_root}/registries/schema_catalog.json",
+        repo_root / f"{relative_root}/registries/schema_catalog.json",
         {
             "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
             "id": "registry.schema_catalog",
@@ -79,7 +93,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / validator_registry_path,
+        repo_root / validator_registry_path,
         {
             "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
             "id": "registry.validators",
@@ -100,7 +114,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / artifact_relative_path,
+        repo_root / artifact_relative_path,
         {
             "$schema": schema_id,
             "kind": "loader_pack_note",
@@ -109,7 +123,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
     )
     pack_settings_path = f"{relative_root}/pack_settings.json"
     write_json(
-        REPO_ROOT / pack_settings_path,
+        repo_root / pack_settings_path,
         {
             "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
             "surface_name": "pack_settings",
@@ -190,38 +204,36 @@ def test_control_plane_loader_reuses_validator_registry_materialization(
     assert validator_registry_loads == 1
 
 
-def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog() -> None:
-    domain_packs_root = REPO_ROOT / "domain_packs"
-    domain_packs_root.mkdir(exist_ok=True)
+def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_surfaces(repo_root / "packs" / "plan")
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
+    )
 
-    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
-        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
-        loader = ControlPlaneLoader(
-            REPO_ROOT,
-            active_pack_settings_path=surfaces["pack_settings_path"],
-        )
-
-        pack_settings = loader.load_pack_settings()
-        pack_schema = loader.load_schema_catalog().get(surfaces["schema_id"])
+    pack_settings = loader.load_pack_settings()
+    pack_schema = loader.load_schema_catalog().get(surfaces["schema_id"])
 
     assert pack_settings.pack_id == "pack.loader_test"
     assert loader.active_pack_settings_path == surfaces["pack_settings_path"]
     assert pack_schema.canonical_relative_path == surfaces["schema_relative_path"]
 
 
-def test_control_plane_loader_active_pack_settings_read_pack_validator_registry() -> None:
-    domain_packs_root = REPO_ROOT / "domain_packs"
-    domain_packs_root.mkdir(exist_ok=True)
+def test_control_plane_loader_active_pack_settings_read_pack_validator_registry(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_surfaces(repo_root / "packs" / "plan")
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
+    )
 
-    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
-        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
-        loader = ControlPlaneLoader(
-            REPO_ROOT,
-            active_pack_settings_path=surfaces["pack_settings_path"],
-        )
-
-        registry = loader.load_validator_registry()
-        validator = registry.get(surfaces["validator_id"])
+    registry = loader.load_validator_registry()
+    validator = registry.get(surfaces["validator_id"])
 
     assert validator.engine == "json_schema"
     assert validator.schema_ids == (surfaces["schema_id"],)
@@ -331,9 +343,9 @@ def test_control_plane_loader_reads_authority_map() -> None:
     entry = authority_map.get("authority.planning.deep_trace_context")
 
     assert authority_map.artifact_id == "registry.authority_map"
-    assert entry.artifact_kind == "planning_catalog"
-    assert entry.preferred_command == "watchtower-core query planning"
-    assert "artifact_status" in entry.status_fields
+    assert entry.artifact_kind == "traceability_index"
+    assert entry.preferred_command == "watchtower-core query trace"
+    assert "status" in entry.status_fields
 
 
 def test_control_plane_loader_reads_rendered_surface_registry() -> None:
@@ -343,7 +355,7 @@ def test_control_plane_loader_reads_rendered_surface_registry() -> None:
     surface = registry.get("rendered.task_tracking")
 
     assert registry.artifact_id == "registry.rendered_surfaces"
-    assert surface.output_path == "docs/planning/tasks/task_tracking.md"
+    assert surface.output_path == "plan/tracking/task_tracking.md"
     assert surface.sections[-1].kind == "updated_at"
 
 
@@ -389,9 +401,6 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_authority = command_index.get("command.watchtower_core.query.authority")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
-    query_prds = command_index.get("command.watchtower_core.query.prds")
-    query_decisions = command_index.get("command.watchtower_core.query.decisions")
-    query_designs = command_index.get("command.watchtower_core.query.designs")
     query_trace = command_index.get("command.watchtower_core.query.trace")
     query_references = command_index.get("command.watchtower_core.query.references")
     route_group = command_index.get("command.watchtower_core.route")
@@ -525,30 +534,6 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_initiatives.implementation_path
         == "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
-    assert query_prds.parent_command_id == "command.watchtower_core.query"
-    assert query_prds.doc_path == "docs/commands/core_python/watchtower_core_query_prds.md"
-    assert (
-        query_prds.implementation_path
-        == "core/python/src/watchtower_core/cli/query_records_family.py"
-    )
-    assert query_decisions.parent_command_id == "command.watchtower_core.query"
-    assert (
-        query_decisions.doc_path
-        == "docs/commands/core_python/watchtower_core_query_decisions.md"
-    )
-    assert (
-        query_decisions.implementation_path
-        == "core/python/src/watchtower_core/cli/query_records_family.py"
-    )
-    assert query_designs.parent_command_id == "command.watchtower_core.query"
-    assert (
-        query_designs.doc_path
-        == "docs/commands/core_python/watchtower_core_query_designs.md"
-    )
-    assert (
-        query_designs.implementation_path
-        == "core/python/src/watchtower_core/cli/query_records_family.py"
-    )
     assert query_trace.parent_command_id == "command.watchtower_core.query"
     assert (
         query_trace.doc_path
@@ -671,10 +656,10 @@ def test_control_plane_loader_reads_traceability_index() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     traceability_index = loader.load_traceability_index()
-    trace = traceability_index.get("trace.core_python_foundation")
+    trace = traceability_index.get("trace.governed_acceptance_example")
 
-    assert trace.trace_id == "trace.core_python_foundation"
-    assert "design.features.schema_resolution_and_index_search" in trace.design_ids
+    assert trace.trace_id == "trace.governed_acceptance_example"
+    assert trace.source_surface_paths
 
 
 def test_control_plane_loader_reads_initiative_index() -> None:
@@ -683,53 +668,39 @@ def test_control_plane_loader_reads_initiative_index() -> None:
     initiative_index = loader.load_initiative_index()
     coordination_index = loader.load_coordination_index()
     artifact_index = loader.load_artifact_index()
-    entry = initiative_index.get("trace.core_python_foundation")
 
-    assert entry.trace_id == "trace.core_python_foundation"
+    assert initiative_index.artifact_id == "index.initiatives"
     assert coordination_index.artifact_id == "index.coordination"
     assert artifact_index.get("index.artifacts").artifact_family == "artifact_index"
-    assert entry.current_phase in {
-        "prd",
-        "design",
-        "implementation_planning",
-        "execution",
-        "validation",
-        "closeout",
-        "closed",
-    }
-    assert isinstance(entry.active_task_summaries, tuple)
-    assert entry.next_surface_path
-    assert entry.key_surface_path
+    for entry in initiative_index.entries:
+        assert entry.current_phase in {
+            "prd",
+            "design",
+            "implementation_planning",
+            "execution",
+            "validation",
+            "closeout",
+            "closed",
+        }
+        assert isinstance(entry.active_task_summaries, tuple)
+        assert entry.next_surface_path
+        assert entry.key_surface_path
 
 
-def test_control_plane_loader_reads_planning_indexes() -> None:
+def test_control_plane_loader_reads_governed_indexes() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
-    prd_index = loader.load_prd_index()
-    decision_index = loader.load_decision_index()
-    design_index = loader.load_design_document_index()
     foundation_index = loader.load_foundation_index()
     standard_index = loader.load_standard_index()
     workflow_index = loader.load_workflow_index()
+    task_index = loader.load_task_index()
 
-    prd = prd_index.get("prd.core_python_foundation")
-    decision = decision_index.get("decision.core_python_workspace_root")
-    design = design_index.get("design.features.python_validator_execution")
     foundation = foundation_index.get("foundation.engineering_design_principles")
     standard = standard_index.get("std.governance.github_collaboration")
     workflow = workflow_index.get("workflow.github_task_sync")
 
-    assert prd.trace_id == "trace.core_python_foundation"
-    assert "req.core_python_foundation.003" in prd.requirement_ids
-    assert decision.decision_status == "accepted"
-    assert "prd.core_python_foundation" in decision.linked_prd_ids
-    assert design.family == "feature_design"
-    assert design.trace_id == "trace.core_python_foundation"
     assert foundation.authority == "authoritative"
-    assert foundation.doc_path == "docs/foundations/engineering_design_principles.md"
-    assert prd.uses_internal_references is True
-    assert decision.uses_internal_references is True
-    assert design.uses_internal_references is True
+    assert foundation.doc_path == "core/docs/foundations/engineering_design_principles.md"
     assert standard.category == "governance"
     assert standard.owner == "repository_maintainer"
     assert ".github/" in standard.applies_to
@@ -748,6 +719,17 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
         "docs/standards/governance/github_task_sync_standard.md"
         in workflow.internal_reference_paths
     )
+    for task in task_index.entries:
+        assert task.doc_path.endswith("/task.json")
+        assert task.task_status in {
+            "planned",
+            "ready",
+            "in_progress",
+            "in_review",
+            "blocked",
+            "completed",
+            "cancelled",
+        }
 
 
 def test_control_plane_loader_accepts_supplemental_schema_documents() -> None:
@@ -851,7 +833,7 @@ def test_control_plane_loader_reads_foundation_index() -> None:
     foundation_index = loader.load_foundation_index()
     entry = foundation_index.get("foundation.engineering_design_principles")
 
-    assert entry.doc_path == "docs/foundations/engineering_design_principles.md"
+    assert entry.doc_path == "core/docs/foundations/engineering_design_principles.md"
     assert entry.authority == "authoritative"
     assert (
         "docs/standards/engineering/engineering_best_practices_standard.md"

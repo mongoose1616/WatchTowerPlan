@@ -20,13 +20,13 @@ def test_front_matter_validation_auto_selects_standard_validator() -> None:
     assert result.issue_count == 0
 
 
-def test_front_matter_validation_auto_selects_feature_design_validator() -> None:
+def test_front_matter_validation_auto_selects_foundation_validator() -> None:
     service = FrontMatterValidationService(ControlPlaneLoader(REPO_ROOT))
 
-    result = service.validate("docs/planning/design/features/python_validator_execution.md")
+    result = service.validate("core/docs/foundations/repository_scope.md")
 
     assert result.passed is True
-    assert result.validator_id == "validator.documentation.feature_design_front_matter"
+    assert result.validator_id == "validator.documentation.foundation_front_matter"
     assert result.issue_count == 0
 
 

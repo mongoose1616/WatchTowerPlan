@@ -16,21 +16,25 @@ def _helper() -> RetentionPolicyHelper:
     )
 
 
-def test_retention_policy_helper_matches_live_and_legacy_roots() -> None:
+def test_retention_policy_helper_matches_live_and_retained_roots() -> None:
     helper = _helper()
 
-    assert helper.policy_for_path("docs/planning").policy_id == (
-        "policy.retention.legacy_docs_planning"
+    assert helper.policy_for_path("plan/docs/foundations/repository_scope.md").policy_id == (
+        "policy.retention.plan_promoted_guidance"
     )
     assert helper.policy_for_path("plan/.wt/indexes/initiative_index.json").policy_id == (
         "policy.retention.plan_machine_authority"
     )
-    assert helper.policy_for_path(
-        "plan/initiatives/plan_entrypoint_cutover_proof/summary.md"
-    ).policy_id == "policy.retention.plan_packwide_initiative_archive"
-    assert helper.policy_for_path(
-        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/summary.md"
-    ).policy_id == "policy.retention.plan_project_initiative_archive"
+    assert (
+        helper.policy_for_path("plan/initiatives/example_packwide/summary.md").policy_id
+        == "policy.retention.plan_packwide_initiative_archive"
+    )
+    assert (
+        helper.policy_for_path(
+            "plan/projects/watchtower/initiatives/example_project/summary.md"
+        ).policy_id
+        == "policy.retention.plan_project_initiative_archive"
+    )
     assert helper.policy_for_path(
         "core/control_plane/ledgers/purges/"
     ).policy_id == "policy.retention.trace_purge_ledgers"
@@ -39,10 +43,11 @@ def test_retention_policy_helper_matches_live_and_legacy_roots() -> None:
 def test_retention_policy_helper_exposes_current_and_clean_endstate_dispositions() -> None:
     helper = _helper()
 
-    assert helper.current_disposition("docs/planning") == "legacy_ignored"
-    assert (
-        helper.clean_endstate_disposition("plan/initiatives/plan_entrypoint_cutover_proof")
-        == "purge_when_eligible"
+    assert helper.current_disposition("plan/initiatives/example_packwide") == (
+        "purge_when_eligible"
+    )
+    assert helper.clean_endstate_disposition("plan/initiatives/example_packwide") == (
+        "purge_when_eligible"
     )
 
 

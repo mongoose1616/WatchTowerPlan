@@ -13,7 +13,7 @@ from tests.unit.document_semantics_fixtures import (
     write_standard_fixture,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.validation import DocumentSemanticsValidationService
+from watchtower_core.plan_runtime.validation import DocumentSemanticsValidationService
 from watchtower_core.validation.errors import ValidationSelectionError
 
 

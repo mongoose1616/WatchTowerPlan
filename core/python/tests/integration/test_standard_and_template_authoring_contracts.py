@@ -4,33 +4,17 @@ import re
 
 from tests.integration.control_plane_artifact_helpers import FRONT_MATTER_PATTERN, REPO_ROOT
 from watchtower_core.adapters import extract_sections
-from watchtower_core.repo_ops.standards import parse_standard_operationalization
+from watchtower_core.plan_runtime.standards import parse_standard_operationalization
 
 
-def test_governed_standards_and_planning_docs_publish_references_sections() -> None:
+def test_governed_standards_and_foundations_publish_references_sections() -> None:
     governed_families = [
         (
             REPO_ROOT / "docs/standards",
             {"README.md"},
         ),
         (
-            REPO_ROOT / "docs/planning/design/features",
-            {"README.md"},
-        ),
-        (
-            REPO_ROOT / "docs/planning/design/implementation",
-            {"README.md"},
-        ),
-        (
-            REPO_ROOT / "docs/planning/prds",
-            {"README.md", "prd_tracking.md"},
-        ),
-        (
-            REPO_ROOT / "docs/planning/decisions",
-            {"README.md", "decision_tracking.md"},
-        ),
-        (
-            REPO_ROOT / "docs/foundations",
+            REPO_ROOT / "core/docs/foundations",
             {"README.md"},
         ),
     ]

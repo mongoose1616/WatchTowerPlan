@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from watchtower_core.repo_ops.sync.repository_paths import RepositoryPathIndexSyncService
+from watchtower_core.plan_runtime.sync.repository_paths import RepositoryPathIndexSyncService
 
 
 def test_repository_path_index_sync_filters_stale_related_paths(tmp_path: Path) -> None:

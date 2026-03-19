@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 from pathlib import Path
+from shutil import copytree
 
 import pytest
 from jsonschema import ValidationError
@@ -23,16 +24,30 @@ def write_json(path: Path, document: dict[str, object]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
+def _copy_validation_repo_subset(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    return repo_root
+
+
+def _discover_repo_root(start: Path) -> Path:
+    candidate = start.resolve()
+    for parent in (candidate, *candidate.parents):
+        if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
+            return parent
+    raise ValueError(f"Could not discover repo root for fixture destination: {start}")
+
+
 def materialize_additional_schema_catalog(pack_root: Path) -> dict[str, str]:
+    repo_root = _discover_repo_root(pack_root)
     control_plane_root = pack_root / ".wt"
-    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
-    schema_id = "urn:watchtower:schema:interfaces:domain-packs:schema-store-note:v1"
-    schema_relative_path = (
-        f"{relative_root}/schemas/interfaces/domain_packs/schema_store_note.schema.json"
-    )
+    relative_root = control_plane_root.relative_to(repo_root).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:packs:schema-store-note:v1"
+    schema_relative_path = f"{relative_root}/schemas/interfaces/packs/schema_store_note.schema.json"
     catalog_path = f"{relative_root}/registries/schema_catalog.json"
     write_json(
-        REPO_ROOT / schema_relative_path,
+        repo_root / schema_relative_path,
         {
             "$id": schema_id,
             "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -48,7 +63,7 @@ def materialize_additional_schema_catalog(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
-        REPO_ROOT / catalog_path,
+        repo_root / catalog_path,
         {
             "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
             "id": "registry.schema_catalog",
@@ -123,37 +138,27 @@ def test_schema_store_validates_inline_documentation_and_pack_interface_payloads
         ),
         (
             {
-                "trace_id": "trace.example.inline_task",
-                "id": "task.example.inline_task",
-                "title": "Inline Task",
-                "summary": "Inline task front matter payload.",
-                "type": "task",
+                "id": "std.example.inline_payload",
+                "title": "Inline Standard",
+                "summary": "Inline standard front matter payload.",
+                "type": "standard",
                 "status": "active",
-                "task_status": "ready",
-                "task_kind": "chore",
-                "priority": "high",
                 "owner": "repository_maintainer",
                 "updated_at": "2026-03-16T07:15:00Z",
                 "audience": "shared",
                 "authority": "authoritative",
-                "related_ids": ["trace.example.inline_task"],
             },
             {
-                "id": "task.example.inline_task",
-                "title": "Inline Task",
-                "summary": "Missing trace_id should fail when related_ids carries a trace.",
-                "type": "task",
+                "id": "std.example.inline_payload",
+                "title": "Inline Standard",
+                "summary": "Missing authority should fail for governed standards.",
+                "type": "standard",
                 "status": "active",
-                "task_status": "ready",
-                "task_kind": "chore",
-                "priority": "high",
                 "owner": "repository_maintainer",
                 "updated_at": "2026-03-16T07:15:00Z",
                 "audience": "shared",
-                "authority": "authoritative",
-                "related_ids": ["trace.example.inline_task"],
             },
-            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
+            "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
         ),
         (
             {
@@ -396,14 +401,11 @@ def test_schema_store_accepts_supplemental_schema_documents() -> None:
     assert store.supplemental_schema_ids == (schema_id,)
 
 
-def test_schema_store_merges_additional_schema_catalog_paths() -> None:
-    domain_packs_root = REPO_ROOT / "domain_packs"
-    domain_packs_root.mkdir(exist_ok=True)
-
-    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
-        catalog = materialize_additional_schema_catalog(Path(tmp_dir))
-        base_store = SchemaStore.from_repo_root(REPO_ROOT)
-        store = base_store.with_additional_catalog_paths((catalog["catalog_path"],))
+def test_schema_store_merges_additional_schema_catalog_paths(tmp_path: Path) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    catalog = materialize_additional_schema_catalog(repo_root / "packs" / "plan")
+    base_store = SchemaStore.from_repo_root(repo_root)
+    store = base_store.with_additional_catalog_paths((catalog["catalog_path"],))
 
     assert store.get_record(catalog["schema_id"]).canonical_relative_path == (
         catalog["schema_relative_path"]

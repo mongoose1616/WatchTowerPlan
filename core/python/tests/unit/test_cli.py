@@ -64,10 +64,6 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core route preview --request "
         "\"review code and commit\"" in captured.out
     )
-    assert (
-        "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
-        "--document-id prd.example --title \"Example PRD\"" in captured.out
-    )
     assert "uv run watchtower-core query coordination --format json" in captured.out
     assert (
         "uv run watchtower-core query artifacts --artifact-family initiative_state --format json"
@@ -78,17 +74,14 @@ def test_root_command_prints_help(capsys) -> None:
         in captured.out
     )
     assert "uv run watchtower-core query projects --slug watchtower --format json" in captured.out
-    assert (
-        "uv run watchtower-core query planning --trace-id trace.core_python_foundation"
-        in captured.out
-    )
     assert "uv run watchtower-core query authority --domain planning --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json"
         in captured.out
     )
     assert (
-        "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation"
+        "uv run watchtower-core query acceptance --trace-id "
+        "trace.governed_acceptance_example"
         in captured.out
     )
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
@@ -101,7 +94,6 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core sync foundation-index" in captured.out
     assert "uv run watchtower-core sync workflow-index" in captured.out
     assert "uv run watchtower-core sync coordination" in captured.out
-    assert "uv run watchtower-core sync planning-catalog" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync route-index" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
@@ -111,7 +103,8 @@ def test_root_command_prints_help(capsys) -> None:
         "docs/standards/documentation/workflow_md_standard.md" in captured.out
     )
     assert (
-        "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation"
+        "uv run watchtower-core validate acceptance --trace-id "
+        "trace.governed_acceptance_example"
         in captured.out
     )
     assert "watchtower-core validate artifact" in captured.out
@@ -130,21 +123,18 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "query discrepancies" in captured.out
     assert "query projects" in captured.out
     assert "query project-context" in captured.out
-    assert "query planning" in captured.out
     assert "query authority" in captured.out
     assert "query foundations" in captured.out
     assert "query workflows" in captured.out
     assert "query references" in captured.out
     assert "query standards" in captured.out
-    assert "query prds" in captured.out
-    assert "query decisions" in captured.out
-    assert "query designs" in captured.out
     assert "query acceptance" in captured.out
     assert "query evidence" in captured.out
     assert "query tasks" in captured.out
     assert "query initiatives" in captured.out
     assert (
-        "uv run watchtower-core query trace --trace-id trace.core_python_foundation"
+        "uv run watchtower-core query trace --trace-id "
+        "trace.governed_acceptance_example"
         in captured.out
     )
 
@@ -166,11 +156,10 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
     "command",
     (
         ["query", "coordination", "--help"],
-        ["query", "planning", "--help"],
         ["query", "initiatives", "--help"],
     ),
 )
-def test_query_planning_family_help_uses_live_phase_terms(
+def test_query_live_family_help_uses_live_phase_terms(
     command: list[str],
     capsys,
 ) -> None:
@@ -198,12 +187,10 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Scaffold compact governed planning documents" in captured.out
-    assert "scaffold" in captured.out
+    assert "Bootstrap live initiative packages" in captured.out
     assert "bootstrap" in captured.out
     assert "confirm-inputs" in captured.out
     assert "approve" in captured.out
-    assert "uv run watchtower-core plan scaffold --kind prd" in captured.out
 
 
 def test_task_group_prints_group_specific_help(capsys) -> None:
@@ -232,9 +219,6 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert "route-index" in captured.out
     assert "standard-index" in captured.out
     assert "workflow-index" in captured.out
-    assert "prd-index" in captured.out
-    assert "decision-index" in captured.out
-    assert "design-document-index" in captured.out
     assert "task-index" in captured.out
     assert "task-tracking" in captured.out
     assert "initiative-index" in captured.out

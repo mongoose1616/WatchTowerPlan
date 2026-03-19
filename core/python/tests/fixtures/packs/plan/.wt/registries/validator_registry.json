@@ -5,28 +5,28 @@
   "status": "active",
   "validators": [
     {
-      "id": "validator.domain_packs.plan_note",
+      "id": "validator.packs.plan_note",
       "title": "Plan Note Validator",
       "description": "Pack-local validator for plan note artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "plan_note",
       "applies_to": [
-        "domain_packs/plan/.wt/work_items/plan_note.json"
+        "packs/plan/.wt/work_items/plan_note.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1"
+        "urn:watchtower:schema:interfaces:packs:plan-note:v1"
       ]
     },
     {
-      "id": "validator.domain_packs.validation_suite_registry",
+      "id": "validator.packs.validation_suite_registry",
       "title": "Plan Validation Suite Registry Validator",
       "description": "Pack-local validator for the validation suite registry artifact.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "validation_suite_registry",
       "applies_to": [
-        "domain_packs/plan/.wt/registries/validation_suite_registry.json"
+        "packs/plan/.wt/registries/validation_suite_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"

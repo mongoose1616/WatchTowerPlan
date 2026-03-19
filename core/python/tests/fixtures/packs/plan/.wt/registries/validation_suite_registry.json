@@ -22,9 +22,9 @@
           "description": "Validate the pack-local plan note artifacts.",
           "step_kind": "artifact",
           "paths": [
-            "domain_packs/plan/.wt/work_items/plan_note.json"
+            "packs/plan/.wt/work_items/plan_note.json"
           ],
-          "validator_id": "validator.domain_packs.plan_note"
+          "validator_id": "validator.packs.plan_note"
         }
       ]
     }

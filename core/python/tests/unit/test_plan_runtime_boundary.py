@@ -11,9 +11,9 @@ import watchtower_core.routing as public_routing
 import watchtower_core.sync as public_sync
 import watchtower_core.validation as public_validation
 import watchtower_core.workflow_execution as public_workflow_execution
-from watchtower_core.repo_ops.query import CommandQueryService
-from watchtower_core.repo_ops.sync.command_index import CommandIndexSyncService
-from watchtower_core.repo_ops.validation import (
+from watchtower_core.plan_runtime.query import CommandQueryService
+from watchtower_core.plan_runtime.sync.command_index import CommandIndexSyncService
+from watchtower_core.plan_runtime.validation import (
     WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
     DocumentSemanticsValidationService,
     resolve_watchtower_plan_suite_targets,
@@ -23,7 +23,7 @@ from watchtower_core.validation.all import ValidationAllService
 PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
 
 
-def test_public_query_root_exports_generic_query_services_and_fails_closed_for_repo_local_queries() -> None:
+def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_runtime_queries() -> None:
     assert public_query.CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert public_query.RoutePreviewService.__module__ == "watchtower_core.query.routes"
     assert (
@@ -35,18 +35,18 @@ def test_public_query_root_exports_generic_query_services_and_fails_closed_for_r
         == "watchtower_core.query.artifact_families"
     )
 
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops.query"):
+    with pytest.raises(AttributeError, match="watchtower_core.plan_runtime.query"):
         _ = public_query.CoordinationQueryService
 
 
-def test_public_sync_root_fails_closed_with_repo_ops_guidance() -> None:
+def test_public_sync_root_fails_closed_with_plan_runtime_guidance() -> None:
     assert public_sync.SyncHarness.__module__ == "watchtower_core.sync.harness"
     assert public_sync.SyncTargetSpec.__module__ == "watchtower_core.sync.harness"
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops.sync"):
+    with pytest.raises(AttributeError, match="watchtower_core.plan_runtime.sync"):
         _ = public_sync.CommandIndexSyncService
 
 
-def test_public_rebuild_root_fails_closed_with_repo_ops_guidance() -> None:
+def test_public_rebuild_root_fails_closed_with_plan_runtime_guidance() -> None:
     assert public_rebuild.RebuildHarness.__module__ == "watchtower_core.rebuild.harness"
     assert public_rebuild.RebuildTargetSpec.__module__ == "watchtower_core.rebuild.harness"
     assert public_rebuild.RenderedViewBuilder.__module__ == "watchtower_core.rebuild.rendered_views"
@@ -54,11 +54,11 @@ def test_public_rebuild_root_fails_closed_with_repo_ops_guidance() -> None:
         public_rebuild.MarkdownReconciliationHelper.__module__
         == "watchtower_core.rebuild.rendered_views"
     )
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops"):
+    with pytest.raises(AttributeError, match="watchtower_core.plan_runtime"):
         _ = public_rebuild.PlanWorkspaceService
 
 
-def test_public_workflow_execution_root_fails_closed_with_repo_ops_guidance() -> None:
+def test_public_workflow_execution_root_fails_closed_with_plan_runtime_guidance() -> None:
     assert (
         public_workflow_execution.WorkflowExecutionHarness.__module__
         == "watchtower_core.workflow_execution.harness"
@@ -67,7 +67,7 @@ def test_public_workflow_execution_root_fails_closed_with_repo_ops_guidance() ->
         public_workflow_execution.WorkflowExecutionStep.__module__
         == "watchtower_core.workflow_execution.harness"
     )
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops"):
+    with pytest.raises(AttributeError, match="watchtower_core.plan_runtime"):
         _ = public_workflow_execution.InitiativePackageService
 
 
@@ -85,10 +85,10 @@ def test_public_routing_root_exports_reusable_routing_engine() -> None:
         _ = public_routing.UnknownRoutingSurface
 
 
-def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
+def test_public_validation_root_fails_closed_with_plan_runtime_guidance() -> None:
     with pytest.raises(AttributeError, match="watchtower_core.validation.all"):
         _ = public_validation.ValidationAllService
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops.validation"):
+    with pytest.raises(AttributeError, match="watchtower_core.plan_runtime.validation"):
         _ = public_validation.DocumentSemanticsValidationService
 
 
@@ -137,18 +137,18 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
         "watchtower_core.query.traceability",
         "watchtower_core.rebuild.plan_workspace",
         "watchtower_core.rebuild.project_workspace",
-        "watchtower_core.repo_ops.query.authority",
-        "watchtower_core.repo_ops.query.commands",
-        "watchtower_core.repo_ops.query.routes",
-        "watchtower_core.repo_ops.query.workflows",
+        "watchtower_core.plan_runtime.query.authority",
+        "watchtower_core.plan_runtime.query.commands",
+        "watchtower_core.plan_runtime.query.routes",
+        "watchtower_core.plan_runtime.query.workflows",
         "watchtower_core.sync.all",
         "watchtower_core.sync.command_index",
         "watchtower_core.sync.traceability",
         "watchtower_core.validation.document_semantics",
         "watchtower_core.validation.registry",
         "watchtower_core.workflow_execution.initiative_packages",
-        "watchtower_core.repo_ops.validation.all",
-        "watchtower_core.repo_ops.validation.registry",
+        "watchtower_core.plan_runtime.validation.all",
+        "watchtower_core.plan_runtime.validation.registry",
     ),
 )
 def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
@@ -157,16 +157,16 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
         importlib.import_module(module_name)
 
 
-def test_repo_ops_boundary_owners_remain_available() -> None:
+def test_plan_runtime_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
-    assert CommandIndexSyncService.__module__ == "watchtower_core.repo_ops.sync.command_index"
+    assert CommandIndexSyncService.__module__ == "watchtower_core.plan_runtime.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
     assert (
         DocumentSemanticsValidationService.__module__
-        == "watchtower_core.repo_ops.validation.document_semantics"
+        == "watchtower_core.plan_runtime.validation.document_semantics"
     )
     assert (
         resolve_watchtower_plan_suite_targets.__module__
-        == "watchtower_core.repo_ops.validation.targets"
+        == "watchtower_core.plan_runtime.validation.targets"
     )
     assert WATCHTOWER_PLAN_VALIDATION_SUITE_ID == "suite.watchtower_plan.validation_baseline"

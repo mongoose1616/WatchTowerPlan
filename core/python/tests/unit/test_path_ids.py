@@ -14,51 +14,41 @@ def test_plan_path_id_helper_slugifies_and_validates_canonical_slugs() -> None:
 
 
 def test_plan_path_id_helper_derives_trace_and_initiative_identity() -> None:
+    assert PlanPathIdHelper.trace_suffix("trace.example_path_helper") == "example_path_helper"
     assert (
-        PlanPathIdHelper.trace_suffix("trace.plan_path_and_id_helper_foundation")
-        == "plan_path_and_id_helper_foundation"
+        PlanPathIdHelper.initiative_slug(trace_id="trace.example_path_helper")
+        == "example_path_helper"
     )
     assert (
-        PlanPathIdHelper.initiative_slug(
-            trace_id="trace.plan_path_and_id_helper_foundation"
-        )
-        == "plan_path_and_id_helper_foundation"
-    )
-    assert (
-        PlanPathIdHelper.canonical_initiative_id("plan_path_and_id_helper_foundation")
-        == "initiative.plan_path_and_id_helper_foundation"
+        PlanPathIdHelper.canonical_initiative_id("example_path_helper")
+        == "initiative.example_path_helper"
     )
 
     with pytest.raises(ValueError, match="trace stem derived from trace_id"):
         PlanPathIdHelper.initiative_slug(
-            trace_id="trace.plan_path_and_id_helper_foundation",
+            trace_id="trace.example_path_helper",
             initiative_slug="different_slug",
         )
 
 
 def test_plan_path_id_helper_builds_packwide_and_project_scoped_locations() -> None:
-    packwide = PlanPathIdHelper.packwide_initiative_location(
-        trace_id="trace.plan_path_and_id_helper_foundation"
-    )
-    assert packwide.initiative_root_relative == (
-        "plan/initiatives/plan_path_and_id_helper_foundation"
-    )
+    packwide = PlanPathIdHelper.packwide_initiative_location(trace_id="trace.example_path_helper")
+    assert packwide.initiative_root_relative == "plan/initiatives/example_path_helper"
     assert packwide.relative_path(".wt/initiative.json") == (
-        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/initiative.json"
+        "plan/initiatives/example_path_helper/.wt/initiative.json"
     )
-    assert packwide.discrepancy_namespace == "plan_path_and_id_helper_foundation"
+    assert packwide.discrepancy_namespace == "example_path_helper"
 
     project_scoped = PlanPathIdHelper.project_scoped_initiative_location(
         "watchtower",
-        trace_id="trace.plan_path_and_id_helper_foundation",
+        trace_id="trace.example_path_helper",
     )
     assert project_scoped.project_id == "project.watchtower"
-    assert project_scoped.initiative_root_relative == (
-        "plan/projects/watchtower/initiatives/plan_path_and_id_helper_foundation"
+    assert (
+        project_scoped.initiative_root_relative
+        == "plan/projects/watchtower/initiatives/example_path_helper"
     )
-    assert project_scoped.discrepancy_namespace == (
-        "watchtower.plan_path_and_id_helper_foundation"
-    )
+    assert project_scoped.discrepancy_namespace == "watchtower.example_path_helper"
 
 
 def test_plan_path_id_helper_builds_canonical_companion_ids_and_project_paths() -> None:
@@ -71,24 +61,24 @@ def test_plan_path_id_helper_builds_canonical_companion_ids_and_project_paths() 
     )
     assert (
         PlanPathIdHelper.canonical_task_id(
-            "plan_path_and_id_helper_foundation",
+            "example_path_helper",
             "add_path_and_id_helper",
         )
-        == "task.plan_path_and_id_helper_foundation.add_path_and_id_helper"
+        == "task.example_path_helper.add_path_and_id_helper"
     )
     assert (
         PlanPathIdHelper.canonical_deferred_item_id(
-            "plan_path_and_id_helper_foundation",
+            "example_path_helper",
             "needs_scope_follow_up",
         )
-        == "deferred.plan_path_and_id_helper_foundation.needs_scope_follow_up"
+        == "deferred.example_path_helper.needs_scope_follow_up"
     )
     assert (
         PlanPathIdHelper.canonical_evidence_id(
-            "plan_path_and_id_helper_foundation",
+            "example_path_helper",
             "bootstrap_validation_bundle",
         )
-        == "evidence.plan_path_and_id_helper_foundation.bootstrap_validation_bundle"
+        == "evidence.example_path_helper.bootstrap_validation_bundle"
     )
     assert (
         PlanPathIdHelper.project_root_relative("watchtower") == "plan/projects/watchtower"

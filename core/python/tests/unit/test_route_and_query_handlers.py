@@ -160,18 +160,19 @@ def _initiative_entry(**overrides: object) -> SimpleNamespace:
         "updated_at": "2026-03-10T23:59:59Z",
         "open_task_count": 1,
         "blocked_task_count": 0,
-        "key_surface_path": "docs/planning/prds/example.md",
+        "key_surface_path": "plan/initiatives/example/initiative_brief.md",
         "next_action": "Start execution.",
-        "next_surface_path": "docs/planning/tasks/open/example.md",
+        "next_surface_path": "plan/initiatives/example/implementation_slice.md",
         "primary_owner": "repository_maintainer",
         "active_owners": ("repository_maintainer",),
         "active_task_ids": ("task.example.001",),
         "active_task_summaries": (_active_task_summary(),),
         "blocked_by_task_ids": (),
-        "prd_ids": ("prd.example",),
-        "decision_ids": (),
-        "design_ids": ("design.features.example",),
-        "plan_ids": ("design.implementation.example",),
+        "source_surface_paths": (
+            "plan/initiatives/example/initiative_brief.md",
+            "plan/initiatives/example/design_record.md",
+            "plan/initiatives/example/implementation_slice.md",
+        ),
         "task_ids": ("task.example.001",),
         "acceptance_ids": ("ac.example.001",),
         "acceptance_contract_ids": ("contract.acceptance.example",),
@@ -179,37 +180,12 @@ def _initiative_entry(**overrides: object) -> SimpleNamespace:
         "closed_at": None,
         "closure_reason": None,
         "superseded_by_trace_id": None,
-        "related_paths": ("docs/planning/prds/example.md",),
+        "related_paths": ("plan/initiatives/example/initiative_brief.md",),
         "tags": ("traceability",),
         "notes": "Example notes.",
     }
     defaults.update(overrides)
     return SimpleNamespace(**defaults)
-
-
-def _planning_entry(**overrides: object) -> SimpleNamespace:
-    defaults: dict[str, object] = {
-        "trace_id": "trace.example",
-        "title": "Example Planning Entry",
-        "summary": "Planning summary.",
-        "artifact_status": "active",
-        "initiative_status": "active",
-        "current_phase": "execution",
-        "updated_at": "2026-03-10T23:59:59Z",
-        "primary_owner": "repository_maintainer",
-        "active_owners": ("repository_maintainer",),
-        "coordination": SimpleNamespace(next_action="Start execution."),
-        "prds": (SimpleNamespace(),),
-        "decisions": (),
-        "design_documents": (SimpleNamespace(),),
-        "tasks": (SimpleNamespace(),),
-        "acceptance_contracts": (),
-        "validation_evidence": (),
-    }
-    defaults.update(overrides)
-    return SimpleNamespace(**defaults)
-
-
 def test_route_preview_prints_no_match_guidance(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
@@ -430,45 +406,6 @@ def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Found 1 initiative entry:" in captured.out
     assert "Owners: repository_maintainer" in captured.out
     assert "Task:" not in captured.out
-
-
-def test_query_planning_prints_human_summary_without_serializing_json_payload(
-    monkeypatch,
-    capsys,
-) -> None:
-    class FakeService:
-        def __init__(self, loader: object) -> None:
-            self.loader = loader
-
-        def search(self, params: object) -> tuple[SimpleNamespace, ...]:
-            return (_planning_entry(),)
-
-    monkeypatch.setattr(
-        query_coordination_rendered_handlers,
-        "ControlPlaneLoader",
-        lambda: object(),
-    )
-    monkeypatch.setattr(
-        query_coordination_rendered_handlers,
-        "PlanningCatalogQueryService",
-        FakeService,
-    )
-    monkeypatch.setattr(
-        query_coordination_rendered_handlers,
-        "serialize_planning_catalog_entry",
-        lambda entry, *, compact=False: (_ for _ in ()).throw(
-            AssertionError("serialize_planning_catalog_entry should not be called")
-        ),
-    )
-
-    result = query_coordination_rendered_handlers._run_query_planning(_query_args())
-
-    captured = capsys.readouterr()
-    assert result == 0
-    assert "Found 1 planning entry:" in captured.out
-    assert "Sections: prds=1 decisions=0 designs=1 tasks=1 contracts=0 evidence=0" in captured.out
-
-
 def test_query_initiatives_prints_empty_message(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
@@ -512,7 +449,7 @@ def test_query_coordination_supports_json_defaults(monkeypatch, capsys) -> None:
                     coordination_mode="active_work",
                     summary="Summary.",
                     recommended_next_action="Start execution.",
-                    recommended_surface_path="docs/planning/tasks/open/example.md",
+                    recommended_surface_path="plan/tracking/task_tracking.md",
                     active_initiative_count=1,
                     blocked_task_count=0,
                     actionable_task_count=1,
@@ -566,7 +503,7 @@ def test_query_coordination_prints_recent_closeouts_when_no_active_entries(
                     coordination_mode="ready_for_bootstrap",
                     summary="No active initiatives.",
                     recommended_next_action="Bootstrap a new initiative.",
-                    recommended_surface_path="docs/planning/coordination_tracking.md",
+                    recommended_surface_path="plan/tracking/coordination_tracking.md",
                     active_initiative_count=0,
                     blocked_task_count=0,
                     actionable_task_count=0,
@@ -609,7 +546,7 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
                     coordination_mode="active_work",
                     summary="Summary.",
                     recommended_next_action="Start execution.",
-                    recommended_surface_path="docs/planning/tasks/open/example.md",
+                    recommended_surface_path="plan/tracking/task_tracking.md",
                     active_initiative_count=1,
                     blocked_task_count=0,
                     actionable_task_count=1,
@@ -643,7 +580,7 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
     assert result == 0
     assert "Found 1 initiative entry:" in captured.out
     assert "Task: task.example.001 [planned, high, actionable]" in captured.out
-    assert "Open first: docs/planning/tasks/open/example.md" in captured.out
+    assert "Open first: plan/tracking/task_tracking.md" in captured.out
 
 
 def test_query_trace_reports_unknown_trace(monkeypatch, capsys) -> None:
@@ -681,17 +618,18 @@ def test_query_trace_prints_human_summary(monkeypatch, capsys) -> None:
         closed_at="2026-03-10T23:59:59Z",
         closure_reason="Completed for tests.",
         superseded_by_trace_id="trace.next",
-        prd_ids=("prd.example",),
-        decision_ids=("decision.example",),
-        design_ids=("design.features.example",),
-        plan_ids=("design.implementation.example",),
+        source_surface_paths=(
+            "plan/initiatives/example/initiative_brief.md",
+            "plan/initiatives/example/design_record.md",
+            "plan/initiatives/example/implementation_slice.md",
+        ),
         task_ids=("task.example.001",),
         requirement_ids=("req.example.001",),
         acceptance_ids=("ac.example.001",),
         acceptance_contract_ids=("contract.acceptance.example",),
         validator_ids=("validator.trace.acceptance_reconciliation",),
         evidence_ids=("evidence.example",),
-        related_paths=("docs/planning/prds/example.md",),
+        related_paths=("plan/initiatives/example/initiative_brief.md",),
         tags=("traceability",),
         notes="Example notes.",
     )

@@ -12,7 +12,7 @@ from watchtower_core.adapters.markdown import (
 from watchtower_core.cli.introspection import iter_command_parser_specs
 from watchtower_core.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.sync import CommandIndexSyncService
+from watchtower_core.plan_runtime.sync import CommandIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -64,8 +64,9 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.route" in spec_by_id
     assert "command.watchtower_core.route.preview" in spec_by_id
     assert "command.watchtower_core.plan" in spec_by_id
-    assert "command.watchtower_core.plan.scaffold" in spec_by_id
+    assert "command.watchtower_core.plan.approve" in spec_by_id
     assert "command.watchtower_core.plan.bootstrap" in spec_by_id
+    assert "command.watchtower_core.plan.confirm_inputs" in spec_by_id
     assert "command.watchtower_core.task" in spec_by_id
     assert "command.watchtower_core.task.create" in spec_by_id
     assert "command.watchtower_core.task.update" in spec_by_id
@@ -93,11 +94,15 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_core/cli/plan_family.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.plan.scaffold"].implementation_path
+        spec_by_id["command.watchtower_core.plan.approve"].implementation_path
         == "core/python/src/watchtower_core/cli/plan_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan.bootstrap"].implementation_path
+        == "core/python/src/watchtower_core/cli/plan_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.confirm_inputs"].implementation_path
         == "core/python/src/watchtower_core/cli/plan_family.py"
     )
     assert (
@@ -141,19 +146,43 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.query.prds"].implementation_path
+        spec_by_id["command.watchtower_core.query.acceptance"].implementation_path
         == "core/python/src/watchtower_core/cli/query_records_family.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.query.acceptance"].implementation_path
+        spec_by_id["command.watchtower_core.query.evidence"].implementation_path
         == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.artifacts"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.discrepancies"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.projects"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.readiness"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.coordination"].implementation_path
         == "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.query.planning"].implementation_path
+        spec_by_id["command.watchtower_core.query.authority"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.initiatives"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.tasks"].implementation_path
         == "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
     assert (
