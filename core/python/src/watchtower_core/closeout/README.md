@@ -14,4 +14,4 @@ Repo-local closeout helpers for traced initiatives and adjacent future closeout 
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/plan_runtime/README.md`
-- `docs/standards/governance/initiative_closeout_standard.md`
+- `plan/docs/standards/governance/initiative_closeout_standard.md`

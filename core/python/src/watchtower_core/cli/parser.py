@@ -64,7 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate document-semantics --path "
-            "docs/standards/documentation/workflow_md_standard.md",
+            "core/docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.governed_acceptance_example",
             "uv run watchtower-core validate artifact --path "

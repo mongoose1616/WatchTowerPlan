@@ -228,6 +228,7 @@ class GuidancePromotionService:
                 source_artifact_kind=candidate.source_artifact_kind,
                 target_family=candidate.target_family,
                 target_path=candidate.target_path,
+                mirror_target_paths=candidate.mirror_target_paths,
                 template_path=candidate.template_path,
                 updated_at=updated_at,
                 source_title=candidate.source_title,
@@ -367,6 +368,7 @@ class GuidancePromotionService:
                 or default_target_path(
                     initiative_slug=initiative_slug,
                     source_path=source_path,
+                    target_family=target_family,
                     target_root=policy.target_root,
                 )
             )
@@ -500,6 +502,7 @@ class GuidancePromotionService:
         source_artifact_kind: str,
         target_family: str,
         target_path: str,
+        mirror_target_paths: tuple[str, ...],
         template_path: Path,
         updated_at: str,
         source_title: str | None,
@@ -512,6 +515,7 @@ class GuidancePromotionService:
             source_artifact_kind=source_artifact_kind,
             target_family=target_family,
             target_path=target_path,
+            mirror_target_paths=mirror_target_paths,
             updated_at=updated_at,
             source_title=source_title,
             source_summary=source_summary,
@@ -531,6 +535,9 @@ class GuidancePromotionService:
             target_family=target_family,
             target_path=target_path,
             template_path=template_path,
+            document_title=str(front_matter["title"]),
+            document_summary=str(front_matter["summary"]),
+            updated_at=updated_at,
         )
         return f"---\n{render_front_matter(front_matter)}\n---\n\n{body}"
 
@@ -560,12 +567,15 @@ def default_target_path(
     *,
     initiative_slug: str,
     source_path: str,
+    target_family: str,
     target_root: str,
 ) -> str:
     """Return the default target path for one promoted guidance output."""
 
     source_stem = Path(source_path).stem
     filename = f"{initiative_slug}_{source_stem}.md"
+    if target_family == "standard" and Path(target_root).name == "standards":
+        return f"{target_root}/governance/{filename}"
     return f"{target_root}/{filename}"
 
 
@@ -605,6 +615,7 @@ def build_guidance_front_matter(
     source_artifact_kind: str,
     target_family: str,
     target_path: str,
+    mirror_target_paths: tuple[str, ...],
     updated_at: str,
     source_title: str | None,
     source_summary: str | None,
@@ -627,6 +638,7 @@ def build_guidance_front_matter(
         source_artifact_kind=source_artifact_kind,
         source_summary=source_summary,
     )
+    promoted_paths = list(dict.fromkeys((target_path, *mirror_target_paths)))
     front_matter: dict[str, Any] = {
         "trace_id": guidance_trace_id_for_target_path(target_path),
         "id": guidance_id_for_target_path(target_family, target_path),
@@ -639,7 +651,7 @@ def build_guidance_front_matter(
         "audience": "shared",
         "authority": _AUTHORITY_BY_FAMILY[target_family],
         "applies_to": [
-            target_path,
+            *promoted_paths,
             "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
             "plan/.wt/registries/promotion_policy_registry.json",
             "plan/.wt/indexes/guidance_index.json",
@@ -667,6 +679,9 @@ def render_guidance_body(
     target_family: str,
     target_path: str,
     template_path: Path,
+    document_title: str,
+    document_summary: str,
+    updated_at: str,
 ) -> str:
     """Render the markdown body for one promoted guidance output."""
 
@@ -676,7 +691,8 @@ def render_guidance_body(
     source_summary_line = source_summary or str(initiative_document["summary"])
     if target_family == "reference":
         return (
-            "# Subject Summary\n\n"
+            f"# {document_title}\n\n"
+            "## Subject Summary\n\n"
             f"This reference captures the durable operating model for governed guidance promotion. "
             f"{source_summary_line}\n\n"
             "## Usage Guidance\n\n"
@@ -695,7 +711,8 @@ def render_guidance_body(
         )
     if target_family == "decision_record":
         return (
-            "# Context\n\n"
+            f"# {document_title}\n\n"
+            "## Context\n\n"
             "This decision defines how validated initiative-local outputs become durable plan guidance. "
             f"{source_summary_line}\n\n"
             "## Decision\n\n"
@@ -711,7 +728,8 @@ def render_guidance_body(
         )
     if target_family == "pattern":
         return (
-            "# Scenario\n\n"
+            f"# {document_title}\n\n"
+            "## Scenario\n\n"
             "Use this pattern when one initiative-local authored input needs to become durable shared guidance without turning `plan/docs/` into a second live workspace. "
             f"{source_summary_line}\n\n"
             "## Recommended Structure\n\n"
@@ -729,28 +747,52 @@ def render_guidance_body(
         )
     if target_family == "standard":
         return (
-            "# Purpose\n\n"
-            "This standard captures the rule-bearing obligations for durable guidance promotion. "
-            f"{source_summary_line}\n\n"
-            "## Applicability\n\n"
-            "- Applies when initiative-local outputs are promoted into `plan/docs/**` guidance roots.\n"
-            "- Applies to both pack-wide and project-scoped initiatives when promotion records exist.\n\n"
-            "## Required or Prohibited Rules\n\n"
-            "- Require one governed promotion record with source, evidence, approval, and target-path metadata.\n"
-            "- Require target roots and mirror behavior to match the active promotion policy registry.\n"
-            "- Do not promote durable guidance directly into `plan/docs/**` without a recorded initiative-local promotion artifact.\n\n"
-            "## Enforcement or Validation Implications\n\n"
-            "- Promotion records and promoted docs must pass schema-backed validation.\n"
-            "- Guidance and promotion indexes must rebuild cleanly after promotion.\n\n"
-            "## Examples\n\n"
-            "- `plan/initiatives/example/implementation_slice.md` -> `plan/docs/patterns/example_implementation_slice.md`\n\n"
-            "## Notes\n\n"
-            "- Durable guidance should stand on its own after the source initiative package is closed and purged.\n"
-            "- Promotion indexes carry machine-readable provenance for the guidance family.\n"
+            f"# {document_title}\n\n"
+            "## Summary\n\n"
+            f"{document_summary}\n\n"
+            "## Purpose\n\n"
+            "Define the rule-bearing obligations for governed promotion of initiative-local authored inputs into durable plan guidance.\n\n"
+            "## Scope\n\n"
+            "- Applies to pack-wide and project-scoped initiatives that promote implementation slices or decision notes into durable plan-domain standards.\n"
+            "- Applies to the promotion runtime, policy registry, guidance index, promotion index, and the promoted standard documents written under `plan/docs/standards/**`.\n"
+            "- Does not replace the live initiative package as the execution workspace before promotion approval.\n\n"
+            "## Use When\n\n"
+            "- Promoting initiative-local authored inputs into durable plan-domain standards.\n"
+            "- Reviewing whether a promoted standard remains authoritative after the source initiative package is closed and purged.\n"
+            "- Auditing whether the machine-readable promotion policy and index surfaces still match the promoted standard outputs.\n\n"
+            "## Related Standards and Sources\n\n"
+            "- [standard_md_standard.md](/core/docs/standards/documentation/standard_md_standard.md): promoted standards under `plan/docs/standards/**` must satisfy the governed standard-document contract instead of using a reduced template-only shape.\n"
+            "- [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md): durable guidance must remain authoritative after initiative packages are eligible for purge.\n"
+            "- [guidance_promotion.py](/core/python/src/watchtower_core/plan_runtime/guidance_promotion.py): the promotion runtime must route outputs into governed roots and keep rendered documents aligned with the active validators.\n"
+            "- [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json): the promotion policy registry defines the sanctioned target family, root, review path, provenance, and mirror behavior.\n\n"
+            "## Guidance\n\n"
+            "- Require one governed promotion record with source, evidence, approval, and target-path metadata before durable promotion writes occur.\n"
+            "- Require promoted standards to land under a governed standards category path instead of directly under the `plan/docs/standards/` root.\n"
+            "- Require promoted standards to remain self-contained and validator-compliant so they can outlive the source initiative package cleanly.\n"
+            "- Do not promote durable standards directly into `plan/docs/**` without a recorded initiative-local promotion artifact and synchronized machine indexes.\n\n"
+            "## Operationalization\n\n"
+            f"- `Modes`: `documentation`; `sync`; `validation`\n"
+            f"- `Operational Surfaces`: `{target_path}`; `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`; `plan/.wt/registries/promotion_policy_registry.json`; `plan/.wt/indexes/guidance_index.json`; `plan/.wt/indexes/promotion_index.json`\n\n"
+            "## Validation\n\n"
+            "- Promotion records and promoted standard docs should pass schema-backed validation before closeout.\n"
+            "- Promoted standards should rebuild the guidance and promotion indexes cleanly in the same change set.\n"
+            "- Reviewers should reject promoted standards that bypass the governed category structure or fail the standard-document contract.\n\n"
+            "## Change Control\n\n"
+            "- Update this standard when promotion policy, durable target roots, or standard-document requirements change materially.\n"
+            "- Update the promotion runtime, promotion policy registry, guidance index, promotion index, and affected promoted docs in the same change set when this contract changes.\n\n"
+            "## References\n\n"
+            "- [standard_md_standard.md](/core/docs/standards/documentation/standard_md_standard.md)\n"
+            "- [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md)\n"
+            "- [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json)\n"
+            "- [guidance_index.json](/plan/.wt/indexes/guidance_index.json)\n"
+            "- [promotion_index.json](/plan/.wt/indexes/promotion_index.json)\n\n"
+            "## Updated At\n\n"
+            f"- `{updated_at}`\n"
         )
     if target_family == "foundation":
         return (
-            "# Purpose or Context\n\n"
+            f"# {document_title}\n\n"
+            "## Purpose or Context\n\n"
             "This foundation captures the durable boundary for promotion-authority separation. "
             f"{source_summary_line}\n\n"
             "## Scope Boundary\n\n"
@@ -766,7 +808,13 @@ def render_guidance_body(
             "- `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`\n"
             "- `plan/.wt/registries/promotion_policy_registry.json`\n\n"
             "## Notes\n\n"
-            "- Promotion and guidance indexes retain the machine-readable provenance for these mirrored foundations.\n"
+            "- Promotion and guidance indexes retain the machine-readable provenance for these mirrored foundations.\n\n"
+            "## References\n\n"
+            "- [foundation_md_standard.md](/core/docs/standards/documentation/foundation_md_standard.md)\n"
+            "- [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json)\n"
+            "- [guidance_index.json](/plan/.wt/indexes/guidance_index.json)\n\n"
+            "## Updated At\n\n"
+            f"- `{updated_at}`\n"
         )
     raise ValueError(f"Unsupported promotion target family: {target_family}")
 

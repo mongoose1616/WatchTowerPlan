@@ -44,7 +44,7 @@ def register_closeout_family(
             "--initiative-status superseded --superseded-by-trace-id trace.replacement "
             "--closure-reason \"Replaced by the new initiative\" --format json",
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path docs/standards/governance/example.md --write",
+            "--retained-authority-path plan/docs/standards/governance/example.md --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -187,7 +187,7 @@ def register_closeout_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path docs/standards/governance/example.md",
+            "--retained-authority-path plan/docs/standards/governance/example.md",
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
             "--retained-authority-path core/python/src/watchtower_core/plan_runtime/example.py "
             "--write --format json",

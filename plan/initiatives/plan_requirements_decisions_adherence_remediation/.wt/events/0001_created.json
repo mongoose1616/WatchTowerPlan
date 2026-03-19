@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_adherence_remediation.0001_created",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T15:58:30Z",
+  "summary": "Created the initiative package root.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+  "related_paths": [
+    "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+    "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+    "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+    "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md"
+  ]
+}

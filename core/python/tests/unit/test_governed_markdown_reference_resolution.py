@@ -81,9 +81,9 @@ def test_extract_repo_path_references_resolves_document_relative_links_with_sour
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
-    source_path = repo_root / "docs/standards/documentation/example_standard.md"
+    source_path = repo_root / "core/docs/standards/documentation/example_standard.md"
 
     result = extract_repo_path_references(
         "- [example_reference.md](../../references/example_reference.md): governed reference.",
@@ -91,32 +91,32 @@ def test_extract_repo_path_references_resolves_document_relative_links_with_sour
         source_path=source_path,
     )
 
-    assert result == ("docs/references/example_reference.md",)
+    assert result == ("core/docs/references/example_reference.md",)
 
 
 def test_extract_repo_path_references_resolves_repo_root_links(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
 
     result = extract_repo_path_references(
-        "- [example_reference.md](/docs/references/example_reference.md): governed reference.",
+        "- [example_reference.md](/core/docs/references/example_reference.md): governed reference.",
         repo_root,
     )
 
-    assert result == ("docs/references/example_reference.md",)
+    assert result == ("core/docs/references/example_reference.md",)
 
 
 def test_extract_repo_path_references_maps_legacy_checkout_absolute_links(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
     legacy_checkout = tmp_path / "legacy_checkout"
-    legacy_reference = legacy_checkout / "docs/references/example_reference.md"
+    legacy_reference = legacy_checkout / "core/docs/references/example_reference.md"
     _write_reference_fixture(legacy_reference)
 
     result = extract_repo_path_references(
@@ -124,27 +124,27 @@ def test_extract_repo_path_references_maps_legacy_checkout_absolute_links(
         repo_root,
     )
 
-    assert result == ("docs/references/example_reference.md",)
+    assert result == ("core/docs/references/example_reference.md",)
 
 
 def test_collect_reference_indicators_resolves_document_relative_paths(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
     document = PlanningDocument(
         relative_path="plan/initiatives/example/initiative_brief.md",
         front_matter={},
         sections={
             "References": (
-                "- [example_reference.md](../../../docs/references/example_reference.md)\n"
-                "- [README.md](../../../docs/README.md)"
+                "- [example_reference.md](../../../core/docs/references/example_reference.md)\n"
+                "- [README.md](../../../core/docs/README.md)"
             ),
         },
         metadata={},
     )
-    _write_repo_file(repo_root / "docs/README.md")
+    _write_repo_file(repo_root / "core/docs/README.md")
 
     uses_internal, uses_external, internal_paths, external_urls = collect_reference_indicators(
         document,
@@ -156,8 +156,8 @@ def test_collect_reference_indicators_resolves_document_relative_paths(
     assert uses_internal is True
     assert uses_external is False
     assert internal_paths == (
-        "docs/references/example_reference.md",
-        "docs/README.md",
+        "core/docs/references/example_reference.md",
+        "core/docs/README.md",
     )
     assert external_urls == ()
 
@@ -166,8 +166,8 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    _write_repo_file(repo_root / "docs/README.md")
-    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_repo_file(repo_root / "core/docs/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
     foundation_path = repo_root / "core/docs/foundations/example_foundation.md"
     foundation_path.parent.mkdir(parents=True, exist_ok=True)
@@ -192,8 +192,8 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
             # Example Foundation
 
             ## References
-            - [example_reference.md](../../../docs/references/example_reference.md)
-            - [README.md](../../../docs/README.md)
+            - [example_reference.md](../../../core/docs/references/example_reference.md)
+            - [README.md](../../../core/docs/README.md)
 
             ## Updated At
             - `2026-03-11T17:38:00Z`
@@ -209,8 +209,8 @@ def test_foundation_index_sync_extracts_document_relative_reference_paths(
     assert entry["foundation_id"] == "foundation.example"
     assert entry["uses_internal_references"] is True
     assert entry["uses_external_references"] is True
-    assert entry["reference_doc_paths"] == ["docs/references/example_reference.md"]
+    assert entry["reference_doc_paths"] == ["core/docs/references/example_reference.md"]
     assert entry["internal_reference_paths"] == [
-        "docs/references/example_reference.md",
-        "docs/README.md",
+        "core/docs/references/example_reference.md",
+        "core/docs/README.md",
     ]

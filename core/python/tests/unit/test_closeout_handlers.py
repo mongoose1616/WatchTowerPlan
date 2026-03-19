@@ -250,7 +250,7 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                     "plan/initiatives/example/.wt/tasks/example/task.json",
                 ),
                 retained_authority_paths=(
-                    "docs/standards/governance/example.md",
+                    "plan/docs/standards/governance/example.md",
                     "core/python/src/watchtower_core/closeout/purge_trace.py",
                 ),
                 purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
@@ -313,7 +313,7 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
                 purged_at="2026-03-10T23:59:59Z",
                 wrote=False,
                 removed_paths=("plan/initiatives/example/initiative_brief.md",),
-                retained_authority_paths=("docs/standards/governance/example.md",),
+                retained_authority_paths=("plan/docs/standards/governance/example.md",),
                 purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 purge_ledger_output_path=None,
                 refreshed_targets=(),

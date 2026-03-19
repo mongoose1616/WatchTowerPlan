@@ -74,7 +74,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^docs/references/.+\\.md$"
+        "pattern": "^core/docs/references/.+\\.md$"
       }
     },
     "markdownPathList": {

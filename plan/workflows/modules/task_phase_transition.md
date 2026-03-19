@@ -16,10 +16,10 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 - Current task tracker, task index, initiative view, and traceability surfaces when the transition affects traced work
 
 ## Additional Files to Load
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the authoritative task-state vocabulary and explicit dependency rules this workflow must preserve.
-- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): phase transitions must preserve upstream and downstream trace links rather than forcing later readers to infer them.
-- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): traced handoffs may change the initiative phase, active owner, or next-step projection that downstream contributors rely on.
-- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): terminal phase transitions may need closeout escalation when no open execution work remains.
+- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the authoritative task-state vocabulary and explicit dependency rules this workflow must preserve.
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): phase transitions must preserve upstream and downstream trace links rather than forcing later readers to infer them.
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): traced handoffs may change the initiative phase, active owner, or next-step projection that downstream contributors rely on.
+- [initiative_closeout_standard.md](/plan/docs/standards/governance/initiative_closeout_standard.md): terminal phase transitions may need closeout escalation when no open execution work remains.
 - [task_lifecycle_management.md](/plan/workflows/modules/task_lifecycle_management.md): source task updates and successor-task creation should stay aligned with the repository's normal task lifecycle rules.
 
 ## Workflow

@@ -9,7 +9,7 @@
       "title": "ADR Guidance Reference",
       "summary": "This document provides a working reference for architecture decision records as a durable decision-capture pattern.",
       "status": "active",
-      "doc_path": "docs/references/adr_guidance_reference.md",
+      "doc_path": "core/docs/references/adr_guidance_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -18,13 +18,13 @@
         "https://adr.github.io/"
       ],
       "cited_by_paths": [
-        "docs/standards/governance/decision_capture_standard.md"
+        "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/governance/decision_capture_standard.md"
+        "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "related_paths": [
-        "docs/standards/governance/decision_capture_standard.md"
+        "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "tags": [
         "reference",
@@ -36,7 +36,7 @@
       "title": "Agent Workflow Authoring Reference",
       "summary": "Working reference for writing workflow modules that are efficient, explicit, and load only the context an LLM or agent actually needs.",
       "status": "active",
-      "doc_path": "docs/references/agent_workflow_authoring_reference.md",
+      "doc_path": "core/docs/references/agent_workflow_authoring_reference.md",
       "updated_at": "2026-03-16T09:40:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -49,22 +49,22 @@
         "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/workflow_index_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "docs/standards/workflows/routing_and_context_loading_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "core/docs/standards/data_contracts/workflow_index_standard.md",
+        "core/docs/standards/documentation/workflow_md_standard.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/workflows/workflow_design_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/workflow_index_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "docs/standards/workflows/routing_and_context_loading_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "core/docs/standards/data_contracts/workflow_index_standard.md",
+        "core/docs/standards/documentation/workflow_md_standard.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/standards/workflows/workflow_design_standard.md"
       ],
       "related_paths": [
-        "docs/standards/documentation/workflow_md_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/workflows/routing_and_context_loading_standard.md",
-        "docs/templates/workflow_template.md",
+        "core/docs/standards/documentation/workflow_md_standard.md",
+        "core/docs/standards/workflows/workflow_design_standard.md",
+        "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "core/docs/templates/workflow_template.md",
         "core/workflows/modules/",
         "plan/workflows/modules/",
         "core/control_plane/indexes/workflows/workflow_index.json"
@@ -86,7 +86,7 @@
       "title": "check-jsonschema Reference",
       "summary": "This document provides a working reference for `check-jsonschema` as a schema-validation tool.",
       "status": "active",
-      "doc_path": "docs/references/check_jsonschema_reference.md",
+      "doc_path": "core/docs/references/check_jsonschema_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -95,13 +95,13 @@
         "https://check-jsonschema.readthedocs.io/en/latest/usage.html"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "tags": [
         "reference",
@@ -113,7 +113,7 @@
       "title": "CommonMark Reference",
       "summary": "This document provides a working reference for CommonMark as the Markdown compatibility baseline for repository documents.",
       "status": "active",
-      "doc_path": "docs/references/commonmark_reference.md",
+      "doc_path": "core/docs/references/commonmark_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -122,16 +122,16 @@
         "https://spec.commonmark.org/0.31.2/"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/documentation/documentation_semantics_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/documentation/documentation_semantics_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/documentation/documentation_semantics_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/documentation/documentation_semantics_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/templates/"
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/templates/"
       ],
       "tags": [
         "reference",
@@ -143,7 +143,7 @@
       "title": "Conventional Commits Reference",
       "summary": "This document provides a working reference for Conventional Commits as a parseable commit-message convention.",
       "status": "active",
-      "doc_path": "docs/references/conventional_commits_reference.md",
+      "doc_path": "core/docs/references/conventional_commits_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -152,14 +152,14 @@
         "https://www.conventionalcommits.org/en/v1.0.0/"
       ],
       "cited_by_paths": [
-        "core/workflows/modules/commit_closeout.md",
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/workflows/modules/commit_closeout.md"
       ],
       "applied_by_paths": [
         "core/workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "tags": [
         "reference",
@@ -171,7 +171,7 @@
       "title": "coverage.py Configuration Reference",
       "summary": "This document provides a working reference for `coverage.py` configuration.",
       "status": "active",
-      "doc_path": "docs/references/coverage_py_config_reference.md",
+      "doc_path": "core/docs/references/coverage_py_config_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -189,7 +189,7 @@
       "title": "CVSS v4.0 Reference",
       "summary": "This document provides a working reference for CVSS v4.0 as a vulnerability-severity scoring baseline.",
       "status": "active",
-      "doc_path": "docs/references/cvss_reference.md",
+      "doc_path": "core/docs/references/cvss_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -208,7 +208,7 @@
       "title": "CycloneDX 1.7 Reference",
       "summary": "This document provides a working reference for CycloneDX 1.7 as an SBOM and supply-chain inventory standard.",
       "status": "active",
-      "doc_path": "docs/references/cyclonedx_1_7_reference.md",
+      "doc_path": "core/docs/references/cyclonedx_1_7_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -230,7 +230,7 @@
       "title": "Diataxis Local Reference",
       "summary": "This document captures a local distilled reference for Diataxis so documentation in this repository can be written consistently without depending on external browsing during normal authoring work.",
       "status": "active",
-      "doc_path": "docs/references/diataxis_local_reference.md",
+      "doc_path": "core/docs/references/diataxis_local_reference.md",
       "updated_at": "2026-03-19T08:21:14Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -242,10 +242,10 @@
         "https://diataxis.fr/compass/"
       ],
       "cited_by_paths": [
-        "docs/standards/governance/reference_distillation_standard.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md"
       ],
       "related_paths": [
-        "docs/standards/governance/reference_distillation_standard.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md"
       ],
       "tags": [
         "reference",
@@ -257,7 +257,7 @@
       "title": "FIRST TLP 2.0 Reference",
       "summary": "This document provides a working reference for FIRST TLP 2.0 as an information-sharing sensitivity taxonomy.",
       "status": "active",
-      "doc_path": "docs/references/first_tlp_2_0_reference.md",
+      "doc_path": "core/docs/references/first_tlp_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -275,7 +275,7 @@
       "title": "Front Matter Reference",
       "summary": "Working reference for when and how to use front matter in repository documents.",
       "status": "active",
-      "doc_path": "docs/references/front_matter_reference.md",
+      "doc_path": "core/docs/references/front_matter_reference.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -286,13 +286,13 @@
         "https://gohugo.io/content-management/front-matter/"
       ],
       "cited_by_paths": [
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/metadata/front_matter_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/metadata/front_matter_standard.md"
       ],
       "related_paths": [
-        "docs/standards/metadata/front_matter_standard.md",
+        "core/docs/standards/metadata/front_matter_standard.md",
         "core/control_plane/schemas/interfaces/documentation/",
         "core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json"
       ],
@@ -310,7 +310,7 @@
       "title": "Git Commit Message Guidance Reference",
       "summary": "This document provides a working reference for general Git commit message quality guidance from cbea.ms.",
       "status": "active",
-      "doc_path": "docs/references/git_commit_message_guidance_reference.md",
+      "doc_path": "core/docs/references/git_commit_message_guidance_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -319,15 +319,15 @@
         "https://cbea.ms/git-commit/"
       ],
       "cited_by_paths": [
-        "core/workflows/modules/commit_closeout.md",
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/workflows/modules/commit_closeout.md"
       ],
       "applied_by_paths": [
-        "core/workflows/modules/commit_closeout.md",
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "tags": [
         "reference",
@@ -339,7 +339,7 @@
       "title": "GitHub Collaboration Reference",
       "summary": "This document provides a working reference for the GitHub collaboration surfaces that this repository uses for issue intake, pull request templates, project fields, issue sync, and hosted execution visibility.",
       "status": "active",
-      "doc_path": "docs/references/github_collaboration_reference.md",
+      "doc_path": "core/docs/references/github_collaboration_reference.md",
       "updated_at": "2026-03-19T20:15:00Z",
       "repository_status": "active_support",
       "uses_internal_references": true,
@@ -352,23 +352,23 @@
         "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
       ],
       "cited_by_paths": [
-        "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md",
+        "plan/docs/standards/governance/github_collaboration_standard.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
         "plan/workflows/modules/github_task_sync.md"
       ],
       "applied_by_paths": [
-        "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md",
+        "plan/docs/standards/governance/github_collaboration_standard.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
         "plan/workflows/modules/github_task_sync.md"
       ],
       "related_paths": [
         ".github/",
-        "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md",
+        "plan/docs/standards/governance/github_collaboration_standard.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
         "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
         ".github/README.md",
         "plan/workflows/modules/github_task_sync.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+        "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md"
       ],
       "aliases": [
         "github collaboration",
@@ -387,7 +387,7 @@
       "title": "Google-Style Docstrings Reference",
       "summary": "Working reference for structured Python docstrings in this repository.",
       "status": "active",
-      "doc_path": "docs/references/google_style_docstrings_reference.md",
+      "doc_path": "core/docs/references/google_style_docstrings_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -405,7 +405,7 @@
       "title": "in-toto v1.0 Reference",
       "summary": "This document provides a working reference for in-toto v1.0 as an attestation and supply-chain metadata framework.",
       "status": "active",
-      "doc_path": "docs/references/in_toto_reference.md",
+      "doc_path": "core/docs/references/in_toto_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -427,7 +427,7 @@
       "title": "JSON Schema 2020-12 Reference",
       "summary": "This document provides a working reference for JSON Schema Draft 2020-12 as a fail-closed schema validation baseline.",
       "status": "active",
-      "doc_path": "docs/references/json_schema_2020_12_reference.md",
+      "doc_path": "core/docs/references/json_schema_2020_12_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -437,13 +437,13 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/schema_standard.md",
+        "core/docs/standards/data_contracts/schema_standard.md",
         "core/control_plane/schemas/"
       ],
       "tags": [
@@ -456,7 +456,7 @@
       "title": "MITRE ATT&CK Reference",
       "summary": "This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for offensive-security knowledge.",
       "status": "active",
-      "doc_path": "docs/references/mitre_attack_reference.md",
+      "doc_path": "core/docs/references/mitre_attack_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -475,7 +475,7 @@
       "title": "mypy Reference",
       "summary": "Working reference for static type checking in repository Python code.",
       "status": "active",
-      "doc_path": "docs/references/mypy_reference.md",
+      "doc_path": "core/docs/references/mypy_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -488,16 +488,16 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
       "tags": [
@@ -510,7 +510,7 @@
       "title": "NDJSON Reference",
       "summary": "This document provides a working reference for NDJSON as a practical newline-delimited JSON stream format.",
       "status": "active",
-      "doc_path": "docs/references/ndjson_spec_reference.md",
+      "doc_path": "core/docs/references/ndjson_spec_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -519,13 +519,13 @@
         "https://github.com/ndjson/ndjson-spec"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "tags": [
         "reference",
@@ -537,7 +537,7 @@
       "title": "NIST AI 600-1 Reference",
       "summary": "This document provides a working reference for NIST AI 600-1, the Generative AI Profile for the AI RMF.",
       "status": "active",
-      "doc_path": "docs/references/nist_ai_600_1_reference.md",
+      "doc_path": "core/docs/references/nist_ai_600_1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -556,7 +556,7 @@
       "title": "NIST AI RMF 1.0 Reference",
       "summary": "This document provides a working reference for NIST AI RMF 1.0 as an AI governance and risk-management baseline.",
       "status": "active",
-      "doc_path": "docs/references/nist_ai_rmf_1_0_reference.md",
+      "doc_path": "core/docs/references/nist_ai_rmf_1_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -576,7 +576,7 @@
       "title": "NIST CSF 2.0 Reference",
       "summary": "This document provides a working reference for NIST CSF 2.0 as a cybersecurity governance and risk-management framework.",
       "status": "active",
-      "doc_path": "docs/references/nist_csf_2_0_reference.md",
+      "doc_path": "core/docs/references/nist_csf_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -595,7 +595,7 @@
       "title": "NIST SP 800-115 Reference",
       "summary": "This document provides a working reference for NIST SP 800-115 as a testing and assessment methodology baseline.",
       "status": "active",
-      "doc_path": "docs/references/nist_sp_800_115_reference.md",
+      "doc_path": "core/docs/references/nist_sp_800_115_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -613,7 +613,7 @@
       "title": "NIST SP 800-61 Rev. 3 Reference",
       "summary": "This document provides a working reference for NIST SP 800-61 Rev. 3 as an incident-response baseline.",
       "status": "active",
-      "doc_path": "docs/references/nist_sp_800_61_rev_3_reference.md",
+      "doc_path": "core/docs/references/nist_sp_800_61_rev_3_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -632,7 +632,7 @@
       "title": "NIST SSDF Reference",
       "summary": "This document provides a working reference for NIST SP 800-218, the Secure Software Development Framework (SSDF).",
       "status": "active",
-      "doc_path": "docs/references/nist_ssdf_reference.md",
+      "doc_path": "core/docs/references/nist_ssdf_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -651,7 +651,7 @@
       "title": "OPA and Rego Reference",
       "summary": "This document provides a working reference for Open Policy Agent and the Rego policy language.",
       "status": "active",
-      "doc_path": "docs/references/opa_rego_reference.md",
+      "doc_path": "core/docs/references/opa_rego_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -673,7 +673,7 @@
       "title": "OpenSSF Scorecard Reference",
       "summary": "This document provides a working reference for OpenSSF Scorecard as an external project-security posture assessment tool.",
       "status": "active",
-      "doc_path": "docs/references/openssf_scorecard_reference.md",
+      "doc_path": "core/docs/references/openssf_scorecard_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -691,7 +691,7 @@
       "title": "OpenTelemetry Reference",
       "summary": "This document provides a working reference for OpenTelemetry as an observability baseline.",
       "status": "active",
-      "doc_path": "docs/references/opentelemetry_reference.md",
+      "doc_path": "core/docs/references/opentelemetry_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -714,7 +714,7 @@
       "title": "OWASP ASVS 5.0 Reference",
       "summary": "This document provides a working reference for OWASP ASVS 5.0.0 as an application-security verification baseline.",
       "status": "active",
-      "doc_path": "docs/references/owasp_asvs_5_0_reference.md",
+      "doc_path": "core/docs/references/owasp_asvs_5_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -732,7 +732,7 @@
       "title": "OWASP GenAI Security Project Reference",
       "summary": "This document provides a working reference for the OWASP GenAI Security Project.",
       "status": "active",
-      "doc_path": "docs/references/owasp_genai_security_project_reference.md",
+      "doc_path": "core/docs/references/owasp_genai_security_project_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -751,7 +751,7 @@
       "title": "OWASP Logging Cheat Sheet Reference",
       "summary": "This document provides a working reference for the OWASP Logging Cheat Sheet as a security logging baseline.",
       "status": "active",
-      "doc_path": "docs/references/owasp_logging_cheat_sheet_reference.md",
+      "doc_path": "core/docs/references/owasp_logging_cheat_sheet_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -769,7 +769,7 @@
       "title": "OWASP SAMM 2.0 Reference",
       "summary": "This document provides a working reference for OWASP SAMM 2.0 as a software-security maturity model.",
       "status": "active",
-      "doc_path": "docs/references/owasp_samm_2_0_reference.md",
+      "doc_path": "core/docs/references/owasp_samm_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -787,7 +787,7 @@
       "title": "OWASP WSTG Reference",
       "summary": "This document provides a working reference for the OWASP Web Security Testing Guide.",
       "status": "active",
-      "doc_path": "docs/references/owasp_wstg_reference.md",
+      "doc_path": "core/docs/references/owasp_wstg_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -805,7 +805,7 @@
       "title": "PEP 257 Reference",
       "summary": "Working reference for Python docstring quality and consistency in this repository.",
       "status": "active",
-      "doc_path": "docs/references/pep257_reference.md",
+      "doc_path": "core/docs/references/pep257_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -814,13 +814,13 @@
         "https://peps.python.org/pep-0257/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "tags": [
         "reference",
@@ -832,7 +832,7 @@
       "title": "PEP 8 Reference",
       "summary": "Working reference for using PEP 8 as the readability baseline for Python code in this repository.",
       "status": "active",
-      "doc_path": "docs/references/pep8_reference.md",
+      "doc_path": "core/docs/references/pep8_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -841,13 +841,13 @@
         "https://peps.python.org/pep-0008/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
       ],
       "tags": [
         "reference",
@@ -859,7 +859,7 @@
       "title": "PTES Reference",
       "summary": "This document provides a working reference for PTES as a penetration-testing lifecycle baseline.",
       "status": "active",
-      "doc_path": "docs/references/ptes_reference.md",
+      "doc_path": "core/docs/references/ptes_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -878,7 +878,7 @@
       "title": "Pydantic Strict Mode Reference",
       "summary": "This document provides a working reference for Pydantic strict mode as a typed validation strategy.",
       "status": "active",
-      "doc_path": "docs/references/pydantic_strict_mode_reference.md",
+      "doc_path": "core/docs/references/pydantic_strict_mode_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -889,13 +889,13 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/schema_standard.md"
+        "core/docs/standards/data_contracts/schema_standard.md"
       ],
       "tags": [
         "reference",
@@ -907,7 +907,7 @@
       "title": "pyproject.toml Reference",
       "summary": "Working reference for centralizing Python project metadata and tool configuration in this repository.",
       "status": "active",
-      "doc_path": "docs/references/pyproject_toml_reference.md",
+      "doc_path": "core/docs/references/pyproject_toml_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -919,16 +919,16 @@
         "https://peps.python.org/pep-0621/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
       "tags": [
@@ -941,7 +941,7 @@
       "title": "pytest Reference",
       "summary": "Working reference for using pytest as the default Python test framework in this repository.",
       "status": "active",
-      "doc_path": "docs/references/pytest_reference.md",
+      "doc_path": "core/docs/references/pytest_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -954,16 +954,16 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
         "core/python/tests/"
       ],
@@ -977,7 +977,7 @@
       "title": "Python json Library Reference",
       "summary": "This document provides a working reference for Python's standard `json` library documentation.",
       "status": "active",
-      "doc_path": "docs/references/python_json_reference.md",
+      "doc_path": "core/docs/references/python_json_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -995,7 +995,7 @@
       "title": "Python Logging Reference",
       "summary": "This document provides a working reference for Python logging guidance and the logging cookbook.",
       "status": "active",
-      "doc_path": "docs/references/python_logging_reference.md",
+      "doc_path": "core/docs/references/python_logging_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1014,7 +1014,7 @@
       "title": "PYTHONPYCACHEPREFIX Reference",
       "summary": "This document provides a working reference for `PYTHONPYCACHEPREFIX` as a Python cache-placement control.",
       "status": "active",
-      "doc_path": "docs/references/python_pycacheprefix_reference.md",
+      "doc_path": "core/docs/references/python_pycacheprefix_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1032,7 +1032,7 @@
       "title": "Regal Reference",
       "summary": "This document provides a working reference for Regal as a linter and language server for Rego.",
       "status": "active",
-      "doc_path": "docs/references/regal_reference.md",
+      "doc_path": "core/docs/references/regal_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1050,7 +1050,7 @@
       "title": "RFC 3339 Timestamp Reference",
       "summary": "This document provides a working reference for RFC 3339 as a timestamp format baseline.",
       "status": "active",
-      "doc_path": "docs/references/rfc_3339_timestamp_reference.md",
+      "doc_path": "core/docs/references/rfc_3339_timestamp_reference.md",
       "updated_at": "2026-03-09T05:06:54Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1059,10 +1059,10 @@
         "https://www.rfc-editor.org/rfc/rfc3339"
       ],
       "cited_by_paths": [
-        "docs/standards/metadata/timestamp_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/metadata/timestamp_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "tags": [
         "reference",
@@ -1074,7 +1074,7 @@
       "title": "RFC 7464 JSON Text Sequences Reference",
       "summary": "This document provides a working reference for RFC 7464 as the standard for JSON text sequences.",
       "status": "active",
-      "doc_path": "docs/references/rfc_7464_json_text_sequences_reference.md",
+      "doc_path": "core/docs/references/rfc_7464_json_text_sequences_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1092,7 +1092,7 @@
       "title": "RFC 8259 JSON Reference",
       "summary": "This document provides a working reference for RFC 8259 as the baseline JSON specification.",
       "status": "active",
-      "doc_path": "docs/references/rfc_8259_json_reference.md",
+      "doc_path": "core/docs/references/rfc_8259_json_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1101,13 +1101,13 @@
         "https://www.rfc-editor.org/rfc/rfc8259"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/data_contracts/format_selection_standard.md",
         "core/control_plane/"
       ],
       "tags": [
@@ -1120,7 +1120,7 @@
       "title": "RFC 8785 JSON Canonicalization Reference",
       "summary": "This document provides a working reference for RFC 8785 and the JSON Canonicalization Scheme (JCS).",
       "status": "active",
-      "doc_path": "docs/references/rfc_8785_json_canonicalization_reference.md",
+      "doc_path": "core/docs/references/rfc_8785_json_canonicalization_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1138,7 +1138,7 @@
       "title": "RFC 9557 Timestamp Extensions Reference",
       "summary": "This document provides a working reference for RFC 9557 and its extension of RFC 3339 timestamps with additional information.",
       "status": "active",
-      "doc_path": "docs/references/rfc_9557_timestamp_extensions_reference.md",
+      "doc_path": "core/docs/references/rfc_9557_timestamp_extensions_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1147,10 +1147,10 @@
         "https://www.rfc-editor.org/info/rfc9557"
       ],
       "cited_by_paths": [
-        "docs/standards/metadata/timestamp_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/metadata/timestamp_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "tags": [
         "reference",
@@ -1162,7 +1162,7 @@
       "title": "RFC 9562 UUID Reference",
       "summary": "This document provides a working reference for RFC 9562 as the current UUID standard.",
       "status": "active",
-      "doc_path": "docs/references/rfc_9562_uuid_reference.md",
+      "doc_path": "core/docs/references/rfc_9562_uuid_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1171,13 +1171,13 @@
         "https://www.rfc-editor.org/info/rfc9562"
       ],
       "cited_by_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md"
+        "core/docs/standards/metadata/naming_and_ids_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md"
+        "core/docs/standards/metadata/naming_and_ids_standard.md"
       ],
       "related_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md"
+        "core/docs/standards/metadata/naming_and_ids_standard.md"
       ],
       "tags": [
         "reference",
@@ -1189,7 +1189,7 @@
       "title": "Ruff Reference",
       "summary": "Working reference for fast linting and code-quality checks in repository Python code.",
       "status": "active",
-      "doc_path": "docs/references/ruff_reference.md",
+      "doc_path": "core/docs/references/ruff_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1201,16 +1201,16 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
       "tags": [
@@ -1223,7 +1223,7 @@
       "title": "Semantic Versioning Reference",
       "summary": "This document provides a working reference for Semantic Versioning as a release-versioning convention.",
       "status": "active",
-      "doc_path": "docs/references/semver_reference.md",
+      "doc_path": "core/docs/references/semver_reference.md",
       "updated_at": "2026-03-19T08:21:14Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1232,15 +1232,15 @@
         "https://semver.org/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md",
-        "docs/standards/metadata/naming_and_ids_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md",
+        "core/docs/standards/metadata/naming_and_ids_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md"
+        "core/docs/standards/metadata/naming_and_ids_standard.md"
       ],
       "related_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md",
-        "docs/standards/engineering/git_commit_standard.md"
+        "core/docs/standards/metadata/naming_and_ids_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "tags": [
         "reference",
@@ -1252,7 +1252,7 @@
       "title": "SHA-256 Reference",
       "summary": "This document provides a working reference for SHA-256 as an integrity and checksum baseline.",
       "status": "active",
-      "doc_path": "docs/references/sha_256_reference.md",
+      "doc_path": "core/docs/references/sha_256_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1270,7 +1270,7 @@
       "title": "Sigstore Reference",
       "summary": "This document provides a working reference for Sigstore as a signing and verification ecosystem.",
       "status": "active",
-      "doc_path": "docs/references/sigstore_reference.md",
+      "doc_path": "core/docs/references/sigstore_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1291,7 +1291,7 @@
       "title": "SLSA 1.1 Reference",
       "summary": "This document provides a working reference for SLSA 1.1 as a supply-chain security baseline.",
       "status": "active",
-      "doc_path": "docs/references/slsa_1_1_reference.md",
+      "doc_path": "core/docs/references/slsa_1_1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1313,7 +1313,7 @@
       "title": "SQLite Backup Reference",
       "summary": "This document provides a working reference for SQLite backup guidance.",
       "status": "active",
-      "doc_path": "docs/references/sqlite_backup_reference.md",
+      "doc_path": "core/docs/references/sqlite_backup_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1331,7 +1331,7 @@
       "title": "SQLite FTS5 Reference",
       "summary": "This document provides a working reference for SQLite FTS5 full-text search.",
       "status": "active",
-      "doc_path": "docs/references/sqlite_fts5_reference.md",
+      "doc_path": "core/docs/references/sqlite_fts5_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1349,7 +1349,7 @@
       "title": "SQLite JSON1 Reference",
       "summary": "This document provides a working reference for SQLite JSON1 support.",
       "status": "active",
-      "doc_path": "docs/references/sqlite_json1_reference.md",
+      "doc_path": "core/docs/references/sqlite_json1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1367,7 +1367,7 @@
       "title": "SQLite PRAGMA Reference",
       "summary": "This document provides a working reference for SQLite PRAGMA settings and behavior.",
       "status": "active",
-      "doc_path": "docs/references/sqlite_pragma_reference.md",
+      "doc_path": "core/docs/references/sqlite_pragma_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1385,7 +1385,7 @@
       "title": "SQLite WAL Reference",
       "summary": "This document provides a working reference for SQLite write-ahead logging (WAL) mode.",
       "status": "active",
-      "doc_path": "docs/references/sqlite_wal_reference.md",
+      "doc_path": "core/docs/references/sqlite_wal_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1394,13 +1394,13 @@
         "https://www.sqlite.org/wal.html"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "tags": [
         "reference",
@@ -1412,7 +1412,7 @@
       "title": "src/ Layout Reference",
       "summary": "Working reference for the `src/` Python project layout in this repository.",
       "status": "active",
-      "doc_path": "docs/references/src_layout_reference.md",
+      "doc_path": "core/docs/references/src_layout_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1421,16 +1421,16 @@
         "https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/src/"
       ],
       "tags": [
@@ -1443,7 +1443,7 @@
       "title": "uv Reference",
       "summary": "This document provides a working reference for `uv` as a Python packaging, environment, and dependency-management tool.",
       "status": "active",
-      "doc_path": "docs/references/uv_reference.md",
+      "doc_path": "core/docs/references/uv_reference.md",
       "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1455,17 +1455,17 @@
       ],
       "cited_by_paths": [
         "core/docs/foundations/engineering_stack_direction.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
-        "docs/standards/engineering/python_code_design_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
         "core/python/uv.lock",
-        "docs/commands/core_python/watchtower_core_doctor.md"
+        "core/docs/commands/core_python/watchtower_core_doctor.md"
       ],
       "tags": [
         "reference",
@@ -1477,7 +1477,7 @@
       "title": "W3C Trace Context Reference",
       "summary": "This document provides a working reference for W3C Trace Context as a cross-system trace-correlation standard.",
       "status": "active",
-      "doc_path": "docs/references/w3c_trace_context_reference.md",
+      "doc_path": "core/docs/references/w3c_trace_context_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "candidate_future_guidance",
       "uses_internal_references": false,
@@ -1495,7 +1495,7 @@
       "title": "YAML 1.2.2 Reference",
       "summary": "This document provides a working reference for YAML 1.2.2 when repository metadata or configuration relies on YAML.",
       "status": "active",
-      "doc_path": "docs/references/yaml_1_2_2_reference.md",
+      "doc_path": "core/docs/references/yaml_1_2_2_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
@@ -1504,14 +1504,14 @@
         "https://yaml.org/spec/1.2.2/"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/metadata/front_matter_standard.md"
       ],
       "tags": [
         "reference",

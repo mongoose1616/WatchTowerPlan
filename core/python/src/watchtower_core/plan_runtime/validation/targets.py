@@ -15,7 +15,10 @@ from watchtower_core.plan_runtime.sync.reference_index import (
     REFERENCE_DOC_ROOT,
     REFERENCE_EXCLUDED_NAMES,
 )
-from watchtower_core.plan_runtime.sync.standard_index import STANDARD_DOC_ROOT, STANDARD_EXCLUDED_NAMES
+from watchtower_core.plan_runtime.sync.standard_index import (
+    STANDARD_DOC_ROOTS,
+    STANDARD_EXCLUDED_NAMES,
+)
 from watchtower_core.plan_runtime.sync.workflow_index import WORKFLOW_DOC_ROOTS, WORKFLOW_EXCLUDED_NAMES
 from watchtower_core.validation.context import PackValidationContext
 
@@ -42,10 +45,10 @@ def front_matter_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
     """Return repo-native front-matter validation targets."""
 
     repo_root = loader.repo_root
-    standards_root = repo_root / STANDARD_DOC_ROOT
     standards = tuple(
         path.relative_to(repo_root).as_posix()
-        for path in sorted(standards_root.rglob("*.md"))
+        for standards_root in STANDARD_DOC_ROOTS
+        for path in sorted((repo_root / standards_root).rglob("*.md"))
         if path.name not in STANDARD_EXCLUDED_NAMES
     )
     return (
@@ -67,10 +70,10 @@ def document_semantics_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
     """Return repo-native document-semantics validation targets."""
 
     repo_root = loader.repo_root
-    standards_root = repo_root / STANDARD_DOC_ROOT
     standards = tuple(
         path.relative_to(repo_root).as_posix()
-        for path in sorted(standards_root.rglob("*.md"))
+        for standards_root in STANDARD_DOC_ROOTS
+        for path in sorted((repo_root / standards_root).rglob("*.md"))
         if path.name not in STANDARD_EXCLUDED_NAMES
     )
     workflows = tuple(

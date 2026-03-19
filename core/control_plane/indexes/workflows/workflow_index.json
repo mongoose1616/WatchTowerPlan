@@ -176,12 +176,14 @@
         "create",
         "git",
         "requested",
+        "core",
         "docs",
         "references",
         "guidance",
         "reference",
         "conventional",
         "commits",
+        "plan",
         "standards",
         "governance",
         "task",
@@ -193,18 +195,18 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/references/git_commit_message_guidance_reference.md",
-        "docs/references/conventional_commits_reference.md",
-        "docs/standards/governance/task_handling_threshold_standard.md"
+        "core/docs/references/git_commit_message_guidance_reference.md",
+        "core/docs/references/conventional_commits_reference.md",
+        "plan/docs/standards/governance/task_handling_threshold_standard.md"
       ],
       "reference_doc_paths": [
-        "docs/references/git_commit_message_guidance_reference.md",
-        "docs/references/conventional_commits_reference.md"
+        "core/docs/references/git_commit_message_guidance_reference.md",
+        "core/docs/references/conventional_commits_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/references/git_commit_message_guidance_reference.md",
-        "docs/references/conventional_commits_reference.md",
-        "docs/standards/governance/task_handling_threshold_standard.md"
+        "core/docs/references/git_commit_message_guidance_reference.md",
+        "core/docs/references/conventional_commits_reference.md",
+        "plan/docs/standards/governance/task_handling_threshold_standard.md"
       ],
       "external_reference_urls": [
         "https://cbea.ms/git-commit/",
@@ -481,6 +483,7 @@
         "vendor",
         "controlled",
         "behavior",
+        "plan",
         "docs",
         "governance",
         "reference",
@@ -493,10 +496,10 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/reference_distillation_standard.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/reference_distillation_standard.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md"
       ]
     },
     {
@@ -603,13 +606,13 @@
         "stay",
         "internally",
         "coherent",
+        "core",
         "docs",
         "standards",
         "data",
         "contracts",
         "standard",
         "commands",
-        "core",
         "python",
         "watchtower",
         "validate",
@@ -622,14 +625,14 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "docs/commands/core_python/watchtower_core_sync_all.md"
+        "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "core/docs/commands/core_python/watchtower_core_sync_all.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "docs/commands/core_python/watchtower_core_sync_all.md"
+        "core/docs/standards/data_contracts/schema_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "core/docs/commands/core_python/watchtower_core_sync_all.md"
       ]
     },
     {
@@ -669,6 +672,7 @@
         "local",
         "behavior",
         "inferred",
+        "core",
         "docs",
         "readme",
         "policy"
@@ -678,10 +682,10 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/README.md"
+        "core/docs/standards/README.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/README.md"
+        "core/docs/standards/README.md"
       ]
     },
     {
@@ -712,10 +716,12 @@
         "cleanly",
         "repository",
         "needs",
+        "plan",
         "docs",
         "standards",
         "governance",
         "standard",
+        "core",
         "documentation",
         "templates",
         "template",
@@ -725,14 +731,14 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/reference_distillation_standard.md",
-        "docs/standards/documentation/reference_md_standard.md",
-        "docs/templates/reference_template.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/templates/reference_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/reference_distillation_standard.md",
-        "docs/standards/documentation/reference_md_standard.md",
-        "docs/templates/reference_template.md"
+        "plan/docs/standards/governance/reference_distillation_standard.md",
+        "core/docs/standards/documentation/reference_md_standard.md",
+        "core/docs/templates/reference_template.md"
       ]
     },
     {
@@ -954,13 +960,14 @@
         "layer",
         "one",
         "traced",
+        "plan",
         "docs",
         "standards",
         "data",
         "contract",
         "standard",
-        "commands",
         "core",
+        "commands",
         "python",
         "watchtower",
         "validate"
@@ -971,14 +978,14 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+        "plan/docs/standards/data_contracts/validation_evidence_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+        "plan/docs/standards/data_contracts/validation_evidence_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ]
     },
     {
@@ -1009,6 +1016,7 @@
         "status",
         "downstream",
         "impacts",
+        "plan",
         "docs",
         "standards",
         "governance",
@@ -1023,12 +1031,12 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
+        "plan/docs/standards/governance/decision_capture_standard.md",
         "requirements.md",
         "decisions.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
+        "plan/docs/standards/governance/decision_capture_standard.md",
         "requirements.md",
         "decisions.md"
       ]
@@ -1065,6 +1073,7 @@
         "slice",
         "requirements",
         "decisions",
+        "plan",
         "docs",
         "standards",
         "governance",
@@ -1080,12 +1089,12 @@
       "related_paths": [
         "requirements.md",
         "decisions.md",
-        "docs/standards/governance/decision_capture_standard.md"
+        "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "internal_reference_paths": [
         "requirements.md",
         "decisions.md",
-        "docs/standards/governance/decision_capture_standard.md"
+        "plan/docs/standards/governance/decision_capture_standard.md"
       ]
     },
     {
@@ -1127,11 +1136,11 @@
         "governance",
         "standard",
         "tracking",
+        "core",
         "references",
         "collaboration",
         "reference",
         "commands",
-        "core",
         "python",
         "watchtower",
         "tasks",
@@ -1145,20 +1154,20 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/github_task_sync_standard.md",
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/references/github_collaboration_reference.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "core/docs/references/github_collaboration_reference.md",
+        "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "reference_doc_paths": [
-        "docs/references/github_collaboration_reference.md"
+        "core/docs/references/github_collaboration_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/github_task_sync_standard.md",
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/references/github_collaboration_reference.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "core/docs/references/github_collaboration_reference.md",
+        "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "external_reference_urls": [
@@ -1201,14 +1210,14 @@
         "sequence",
         "requirements",
         "decisions",
+        "plan",
         "docs",
         "standards",
         "governance",
         "task",
         "tracking",
         "standard",
-        "execution",
-        "plan"
+        "execution"
       ],
       "companion_workflow_ids": [
         "workflow.feature_design_planning",
@@ -1217,12 +1226,12 @@
       "related_paths": [
         "requirements.md",
         "decisions.md",
-        "docs/standards/governance/task_tracking_standard.md"
+        "plan/docs/standards/governance/task_tracking_standard.md"
       ],
       "internal_reference_paths": [
         "requirements.md",
         "decisions.md",
-        "docs/standards/governance/task_tracking_standard.md"
+        "plan/docs/standards/governance/task_tracking_standard.md"
       ]
     },
     {
@@ -1259,13 +1268,14 @@
         "family",
         "trackers",
         "aligned",
+        "plan",
         "docs",
         "standards",
         "governance",
         "standard",
         "tracking",
-        "commands",
         "core",
+        "commands",
         "python",
         "watchtower",
         "supersede"
@@ -1276,16 +1286,16 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/initiative_closeout_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+        "plan/docs/standards/governance/initiative_closeout_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "core/docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/initiative_closeout_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+        "plan/docs/standards/governance/initiative_closeout_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "core/docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ]
     },
     {
@@ -1378,6 +1388,7 @@
         "companion",
         "trackers",
         "aligned",
+        "plan",
         "docs",
         "standards",
         "governance",
@@ -1394,16 +1405,16 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md"
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/data_contracts/task_index_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md"
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/data_contracts/task_index_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md"
       ]
     },
     {
@@ -1440,6 +1451,7 @@
         "dependencies",
         "trace",
         "links",
+        "plan",
         "docs",
         "standards",
         "governance",
@@ -1448,7 +1460,6 @@
         "traceability",
         "initiative",
         "closeout",
-        "plan",
         "workflows",
         "modules",
         "lifecycle",
@@ -1460,17 +1471,17 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/standards/governance/initiative_closeout_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/standards/governance/initiative_closeout_standard.md",
+        "plan/docs/standards/governance/task_tracking_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ]
     },
@@ -1514,6 +1525,7 @@
         "not",
         "drift",
         "silently",
+        "plan",
         "docs",
         "standards",
         "standard",
@@ -1521,8 +1533,8 @@
         "data",
         "contracts",
         "index",
-        "commands",
         "core",
+        "commands",
         "python",
         "watchtower",
         "sync",
@@ -1534,18 +1546,18 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/commands/core_python/watchtower_core_sync.md"
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/data_contracts/traceability_index_standard.md",
+        "plan/docs/standards/data_contracts/initiative_index_standard.md",
+        "core/docs/commands/core_python/watchtower_core_sync.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/commands/core_python/watchtower_core_sync.md"
+        "plan/docs/standards/governance/traceability_standard.md",
+        "plan/docs/standards/governance/initiative_tracking_standard.md",
+        "plan/docs/standards/data_contracts/traceability_index_standard.md",
+        "plan/docs/standards/data_contracts/initiative_index_standard.md",
+        "core/docs/commands/core_python/watchtower_core_sync.md"
       ]
     }
   ]

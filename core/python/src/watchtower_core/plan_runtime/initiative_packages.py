@@ -1249,6 +1249,7 @@ class InitiativePackageService:
             target_path = default_target_path(
                 initiative_slug=initiative_slug,
                 source_path=path,
+                target_family=target_family,
                 target_root=policy.target_root,
             )
             mirror_target_paths = (

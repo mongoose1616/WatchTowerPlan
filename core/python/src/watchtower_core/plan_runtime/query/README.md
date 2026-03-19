@@ -24,4 +24,4 @@ Authoritative repository query services for live plan indexes, promoted guidance
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/query/README.md`
-- `docs/commands/core_python/watchtower_core_query.md`
+- `core/docs/commands/core_python/watchtower_core_query.md`

@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_adherence_remediation.re_root_core_docs",
+  "slug": "re_root_command_reference_template_and_core_standard_docs",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "title": "Re-root command, reference, template, and core standard docs",
+  "summary": "Move shared command pages, references, templates, and core-owned standards from root docs into core/docs and update their governed roots.",
+  "status": "active",
+  "task_status": "in_progress",
+  "task_kind": "documentation",
+  "priority": "critical",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T15:59:32Z",
+  "updated_at": "2026-03-19T16:03:38Z",
+  "applies_to": [
+    "core/docs/",
+    "core/control_plane/",
+    "core/python/"
+  ],
+  "scope_items": [
+    "Move command docs into core/docs/commands/core_python.",
+    "Move shared references and templates into core/docs.",
+    "Move engineering, metadata, documentation, workflow, operations, and core-owned data-contract standards into core/docs/standards."
+  ],
+  "done_when_items": [
+    "No active governed family or runtime surface depends on root docs for shared/core documentation."
+  ]
+}

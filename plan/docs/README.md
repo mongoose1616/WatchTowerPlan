@@ -7,6 +7,7 @@
 | Path | Description |
 |---|---|
 | `plan/docs/README.md` | Describes the purpose of the plan docs root and its current migration boundary. |
+| `plan/docs/AGENTS.md` | Defines plan-guidance-specific instructions for the `plan/docs/**` subtree. |
 | `plan/docs/foundations/` | Holds the duplicated foundations corpus for plan-domain guidance roots. |
 | `plan/docs/decisions/` | Holds durable decision records promoted out of live initiative work. |
 | `plan/docs/patterns/` | Holds reusable patterns promoted from validated initiative outcomes. |

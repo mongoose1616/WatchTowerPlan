@@ -16,7 +16,7 @@ def test_validate_front_matter_supports_json_output(capsys) -> None:
             "validate",
             "front-matter",
             "--path",
-            "docs/standards/metadata/front_matter_standard.md",
+            "core/docs/standards/metadata/front_matter_standard.md",
             "--format",
             "json",
         ]
@@ -67,7 +67,7 @@ def test_validate_front_matter_can_record_evidence_to_temp_outputs(tmp_path: Pat
             "validate",
             "front-matter",
             "--path",
-            "docs/standards/metadata/front_matter_standard.md",
+            "core/docs/standards/metadata/front_matter_standard.md",
             "--record-evidence",
             "--trace-id",
             "trace.governed_acceptance_example",

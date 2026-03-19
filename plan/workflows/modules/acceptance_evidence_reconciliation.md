@@ -18,9 +18,9 @@ Use this workflow to reconcile initiative-local acceptance IDs, acceptance contr
 - Current validator registry
 
 ## Additional Files to Load
-- [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): defines the machine-readable acceptance boundary this workflow is reconciling.
-- [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): defines the evidence artifact shape and validation linkage this workflow should preserve.
-- [watchtower_core_validate_acceptance.md](/docs/commands/core_python/watchtower_core_validate_acceptance.md): documents the command surface used to run acceptance reconciliation deterministically.
+- [acceptance_contract_standard.md](/plan/docs/standards/data_contracts/acceptance_contract_standard.md): defines the machine-readable acceptance boundary this workflow is reconciling.
+- [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md): defines the evidence artifact shape and validation linkage this workflow should preserve.
+- [watchtower_core_validate_acceptance.md](/core/docs/commands/core_python/watchtower_core_validate_acceptance.md): documents the command surface used to run acceptance reconciliation deterministically.
 
 ## Workflow
 1. Resolve the trace boundary.

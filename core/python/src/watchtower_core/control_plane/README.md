@@ -15,7 +15,7 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 - `models/`: Typed artifact and contract models grouped by family, including the pack-facing contract surfaces used by `PackContext`, artifact indexes, and extraction-output envelopes.
 
 ## Related Surfaces
-- `docs/standards/engineering/python_code_design_standard.md`
+- `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/adapters/README.md`
 - `core/python/src/watchtower_core/plan_runtime/README.md`
 - `core/control_plane/README.md`

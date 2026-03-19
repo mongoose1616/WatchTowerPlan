@@ -435,7 +435,7 @@ def test_guidance_promotion_service_promotes_outputs_and_updates_indexes(
         "plan/docs/decisions/workspace_guidance_promotion_design_record.md",
         "plan/docs/patterns/workspace_guidance_promotion_implementation_slice.md",
         "plan/docs/references/workspace_guidance_promotion_initiative_brief.md",
-        "plan/docs/standards/workspace_guidance_promotion_decision_notes.md",
+        "plan/docs/standards/governance/workspace_guidance_promotion_decision_notes.md",
     }
     for relative_path in promoted_paths:
         front_matter = load_front_matter(repo_root / relative_path)

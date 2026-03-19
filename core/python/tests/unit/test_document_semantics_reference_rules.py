@@ -17,9 +17,9 @@ def test_document_semantics_validation_rejects_reference_without_canonical_upstr
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(
         reference_path,
         support_target=support_target,
@@ -27,7 +27,7 @@ def test_document_semantics_validation_rejects_reference_without_canonical_upstr
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/references/example_reference.md")
+    result = service.validate("core/docs/references/example_reference.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -38,9 +38,9 @@ def test_document_semantics_validation_rejects_reference_without_repository_stat
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     reference_path.parent.mkdir(parents=True, exist_ok=True)
     reference_path.write_text(
         dedent(
@@ -83,7 +83,7 @@ def test_document_semantics_validation_rejects_reference_without_repository_stat
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/references/example_reference.md")
+    result = service.validate("core/docs/references/example_reference.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -94,9 +94,9 @@ def test_document_semantics_validation_rejects_supporting_reference_without_curr
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(
         reference_path,
         support_target=support_target,
@@ -104,7 +104,7 @@ def test_document_semantics_validation_rejects_supporting_reference_without_curr
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/references/example_reference.md")
+    result = service.validate("core/docs/references/example_reference.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -115,9 +115,9 @@ def test_document_semantics_validation_accepts_candidate_reference_without_curre
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(
         reference_path,
         support_target=support_target,
@@ -129,7 +129,7 @@ def test_document_semantics_validation_accepts_candidate_reference_without_curre
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/references/example_reference.md")
+    result = service.validate("core/docs/references/example_reference.md")
 
     assert result.passed is True
     assert result.issue_count == 0
@@ -139,9 +139,9 @@ def test_document_semantics_validation_rejects_unapproved_reference_status_vocab
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(
         reference_path,
         support_target=support_target,
@@ -149,7 +149,7 @@ def test_document_semantics_validation_rejects_unapproved_reference_status_vocab
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/references/example_reference.md")
+    result = service.validate("core/docs/references/example_reference.md")
 
     assert result.passed is False
     assert result.issue_count == 1

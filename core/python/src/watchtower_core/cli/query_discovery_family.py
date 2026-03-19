@@ -65,7 +65,7 @@ def register_query_discovery_commands(
     query_paths_parser.add_argument("--tag", help="Exact tag filter.")
     query_paths_parser.add_argument(
         "--parent-path",
-        help="Exact parent-path filter such as docs/commands/core_python/.",
+        help="Exact parent-path filter such as core/docs/commands/core_python/.",
     )
     add_limit_argument(query_paths_parser)
     add_human_json_format_argument(query_paths_parser)

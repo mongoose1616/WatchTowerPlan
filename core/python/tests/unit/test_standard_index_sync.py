@@ -29,7 +29,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         and entry["uses_external_references"] is True
         and "workflow" in entry.get("operationalization_modes", [])
         and ".github/" in entry.get("operationalization_paths", [])
-        and "docs/references/github_collaboration_reference.md"
+        and "core/docs/references/github_collaboration_reference.md"
         in entry.get("reference_doc_paths", [])
         for entry in entries
     )
@@ -48,7 +48,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     reference_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.documentation.reference_md"
     )
-    assert "docs/references/*_reference.md" in reference_entry.get(
+    assert "core/docs/references/*_reference.md" in reference_entry.get(
         "operationalization_paths",
         [],
     )
@@ -56,27 +56,27 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     standard_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.documentation.standard_md"
     )
-    assert "docs/standards/*/*_standard.md" in standard_entry.get(
-        "operationalization_paths",
-        [],
-    )
+    assert {
+        "core/docs/standards/*/*_standard.md",
+        "plan/docs/standards/*/*_standard.md",
+    }.issubset(set(standard_entry.get("operationalization_paths", [])))
 
     python_code_design_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.engineering.python_code_design"
     )
     assert python_code_design_entry["doc_path"] == (
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
     )
     assert python_code_design_entry["uses_external_references"] is True
     assert {
-        "docs/standards/engineering/python_workspace_standard.md",
-        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/engineering_best_practices_standard.md",
         "core/docs/foundations/engineering_design_principles.md",
-        "docs/references/pep8_reference.md",
-        "docs/references/pep257_reference.md",
-        "docs/references/ruff_reference.md",
-        "docs/references/mypy_reference.md",
-        "docs/references/pytest_reference.md",
+        "core/docs/references/pep8_reference.md",
+        "core/docs/references/pep257_reference.md",
+        "core/docs/references/ruff_reference.md",
+        "core/docs/references/mypy_reference.md",
+        "core/docs/references/pytest_reference.md",
     }.issubset(set(python_code_design_entry.get("internal_reference_paths", [])))
     assert {
         "core/python/src/watchtower_core/",
@@ -97,10 +97,10 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert "core/python/src/watchtower_core/plan_runtime/query/foundations.py" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "core/control_plane/indexes/foundations/README.md" in (
@@ -136,7 +136,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         if entry["standard_id"] == "std.data_contracts.planning_index_family"
     )
     assert "planning_index_family" in planning_family_entry.get("tags", [])
-    assert "docs/commands/core_python/watchtower_core_query_standards.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_query_standards.md" in (
         planning_family_entry.get("operationalization_paths", [])
     )
 
@@ -230,10 +230,10 @@ def test_standard_index_sync_extracts_document_relative_reference_paths(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    _write_repo_file(repo_root / "docs/README.md")
-    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_repo_file(repo_root / "core/docs/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     standard_path.parent.mkdir(parents=True, exist_ok=True)
     standard_path.write_text(
         dedent(
@@ -277,7 +277,7 @@ def test_standard_index_sync_extracts_document_relative_reference_paths(
 
             ## Operationalization
             - `Modes`: `documentation`
-            - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+            - `Operational Surfaces`: `core/docs/standards/documentation/example_standard.md`
 
             ## Validation
             - Standard-index sync should preserve document-relative reference paths.
@@ -302,10 +302,10 @@ def test_standard_index_sync_extracts_document_relative_reference_paths(
     assert entry["standard_id"] == "std.documentation.example"
     assert entry["uses_internal_references"] is True
     assert entry["uses_external_references"] is True
-    assert entry["reference_doc_paths"] == ["docs/references/example_reference.md"]
+    assert entry["reference_doc_paths"] == ["core/docs/references/example_reference.md"]
     assert entry["internal_reference_paths"] == [
-        "docs/references/example_reference.md",
-        "docs/README.md",
+        "core/docs/references/example_reference.md",
+        "core/docs/README.md",
     ]
 
 
@@ -313,11 +313,12 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    _write_repo_file(repo_root / "docs/README.md")
+    _write_repo_file(repo_root / "core/docs/README.md")
     (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    (repo_root / "core/docs/commands").mkdir(parents=True, exist_ok=True)
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     standard_path.parent.mkdir(parents=True, exist_ok=True)
     standard_path.write_text(
         dedent(
@@ -361,7 +362,7 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
 
             ## Operationalization
             - `Modes`: `documentation`
-            - `Operational Surfaces`: `docs/commands`; `docs/commands/`
+            - `Operational Surfaces`: `docs/commands`; `core/docs/commands/`
 
             ## Validation
             - Standard-index sync should reject semantically duplicate directory paths.

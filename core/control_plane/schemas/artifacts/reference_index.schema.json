@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:reference-index:v1",
   "title": "Reference Index",
-  "description": "Machine-readable lookup index for governed reference documents stored under docs/references/.",
+  "description": "Machine-readable lookup index for governed reference documents stored under core/docs/references/.",
   "type": "object",
   "required": [
     "$schema",
@@ -49,7 +49,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^docs/references/.+\\.md$"
+      "pattern": "^core/docs/references/.+\\.md$"
     },
     "stringList": {
       "type": "array",

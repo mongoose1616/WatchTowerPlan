@@ -14,12 +14,12 @@ Use this workflow to analyze viable options and record a durable repository deci
 - Relevant PRD, feature design, implementation plan, review notes, or proposal materials
 - Current-state context summary
 - Internal standards and canonical references applied
-- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
+- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
 - External guidance notes when needed
 - Known options, constraints, assumptions, risks, and stakeholders
 
 ## Additional Files to Load
-- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
+- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
 - [requirements.md](/requirements.md): defines the active package boundary and the durable guidance surfaces that decisions must eventually promote into.
 - [decisions.md](/decisions.md): records the locked capture-first workspace decisions that should not be contradicted by new decision work.
 

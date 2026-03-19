@@ -9,7 +9,7 @@ from watchtower_core.cli.registry import COMMAND_GROUP_SPECS
 
 CLI_PARSER_PATH = "core/python/src/watchtower_core/cli/parser.py"
 CLI_MAIN_ENTRYPOINT = "watchtower_core.cli.main:main"
-COMMAND_DOC_ROOT = "docs/commands/core_python"
+COMMAND_DOC_ROOT = "core/docs/commands/core_python"
 COMMAND_GROUP_IMPLEMENTATION_PATHS = {
     spec.name: spec.implementation_path for spec in COMMAND_GROUP_SPECS
 }

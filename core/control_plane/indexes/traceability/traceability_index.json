@@ -14,8 +14,8 @@
       "closed_at": "2026-03-19T11:00:00Z",
       "closure_reason": "Published the durable generic acceptance and evidence example used by repository standards and command documentation.",
       "source_surface_paths": [
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/governance/traceability_standard.md"
+        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md"
       ],
       "requirement_ids": [
         "req.example_acceptance_contract.001"
@@ -36,16 +36,77 @@
         "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/governed_acceptance_example_validation_baseline.json",
-        "docs/commands/core_python/watchtower_core_query_acceptance.md",
-        "docs/commands/core_python/watchtower_core_query_evidence.md",
-        "docs/commands/core_python/watchtower_core_validate_acceptance.md",
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/governance/traceability_standard.md"
+        "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
+        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md"
       ],
       "tags": [
         "traceability"
       ],
       "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
+    },
+    {
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "title": "Requirements And Decisions Adherence Remediation",
+      "summary": "Retire the root docs tree, finish the initiative-package hard cutover, and restore rich machine-backed documentation surfaces.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-19T16:03:44Z",
+      "source_surface_paths": [
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.plan_requirements_decisions_adherence_remediation.bootstrap",
+        "task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract",
+        "task.plan_requirements_decisions_adherence_remediation.hard_rename_planning_terms",
+        "task.plan_requirements_decisions_adherence_remediation.harden_residue_guards",
+        "task.plan_requirements_decisions_adherence_remediation.re_root_core_docs",
+        "task.plan_requirements_decisions_adherence_remediation.re_root_plan_docs",
+        "task.plan_requirements_decisions_adherence_remediation.replace_planning_semantics",
+        "task.plan_requirements_decisions_adherence_remediation.restore_rich_rendering",
+        "task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one",
+        "task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two"
+      ],
+      "related_paths": [
+        ".github/",
+        "AGENTS.md",
+        "README.md",
+        "core/",
+        "core/control_plane/",
+        "core/docs/",
+        "core/python/",
+        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "plan/",
+        "plan/.wt/templates/pack/plan_overview.md",
+        "plan/docs/",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/initiative.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/bootstrap_requirements_and_decisions_adherence_remediation/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/enforce_the_six_section_plan_overview_contract/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/hard_cut_planning_terminology_and_phase_vocabulary/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/harden_residue_and_domain_packs_regression_guards/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/move_plan_domain_governance_and_standards_into_plan_docs/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/re_root_command_reference_template_and_core_standard_docs/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/replace_retired_planning_document_semantics/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/restore_rich_human_facing_rendering_and_navigation/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+        "plan/tracking/",
+        "plan/workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ]
     }
   ]
 }

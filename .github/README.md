@@ -13,4 +13,4 @@
 ## Notes
 - Treat the repo-local planning and task records as the authoritative source of truth.
 - Treat GitHub issue forms and pull requests as hosted collaboration and review surfaces.
-- Keep `.github/` aligned with [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md).
+- Keep `.github/` aligned with [github_collaboration_standard.md](/plan/docs/standards/governance/github_collaboration_standard.md).

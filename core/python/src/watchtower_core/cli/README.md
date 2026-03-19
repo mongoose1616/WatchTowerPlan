@@ -24,4 +24,4 @@ CLI parser construction, command-family registration, and handler wiring for `wa
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/plan_runtime/README.md`
-- `docs/commands/core_python/README.md`
+- `core/docs/commands/core_python/README.md`

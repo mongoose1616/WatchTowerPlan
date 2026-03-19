@@ -13,7 +13,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def test_front_matter_validation_auto_selects_standard_validator() -> None:
     service = FrontMatterValidationService(ControlPlaneLoader(REPO_ROOT))
 
-    result = service.validate("docs/standards/metadata/front_matter_standard.md")
+    result = service.validate("core/docs/standards/metadata/front_matter_standard.md")
 
     assert result.passed is True
     assert result.validator_id == "validator.documentation.standard_front_matter"
@@ -34,7 +34,7 @@ def test_front_matter_validation_rejects_unsupported_path_without_validator() ->
     service = FrontMatterValidationService(ControlPlaneLoader(REPO_ROOT))
 
     with pytest.raises(ValidationSelectionError):
-        service.validate("docs/commands/core_python/watchtower_core.md")
+        service.validate("core/docs/commands/core_python/watchtower_core.md")
 
 
 def test_front_matter_validation_reports_missing_front_matter(tmp_path: Path) -> None:

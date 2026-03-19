@@ -56,7 +56,6 @@
       ],
       "related_paths": [
         "AGENTS.md",
-        "docs/",
         "core/"
       ]
     },
@@ -241,7 +240,7 @@
         "lookup"
       ],
       "related_paths": [
-        "docs/commands/",
+        "core/docs/commands/",
         "core/control_plane/indexes/commands/command_index.json"
       ]
     },
@@ -1537,6 +1536,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines documentation-specific instructions for the `core/docs/**` subtree.",
+      "parent_path": "core/docs/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
       "path": "core/docs/README.md",
       "kind": "file",
       "surface_kind": "core_file",
@@ -1547,11 +1556,1055 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/",
+      "kind": "directory",
+      "surface_kind": "command_docs",
+      "summary": "Holds canonical CLI command pages.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
+      "aliases": [
+        "command docs",
+        "man pages"
+      ],
+      "tags": [
+        "commands",
+        "documentation"
+      ],
+      "related_paths": [
+        "core/docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ]
+    },
+    {
+      "path": "core/docs/commands/README.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Describes the purpose of the command-doc directory and its current command families.",
+      "parent_path": "core/docs/commands/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/",
+      "kind": "directory",
+      "surface_kind": "command_docs",
+      "summary": "Holds command pages for the core Python workspace and the watchtower-core CLI family.",
+      "parent_path": "core/docs/commands/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/README.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Describes the purpose of the core Python command-doc directory and the fastest ways to find command details.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable page for the root `watchtower-core` command and shared CLI behavior.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_closeout.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for closeout commands used to terminally update traced initiative state.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_closeout_plan_initiative.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Live plan-initiative closeout page for terminally updating one initiative package under `plan/**`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_doctor.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_plan.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for planning scaffold and bootstrap commands.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_plan_approve.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Approves one live initiative package into `ready_for_execution`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_plan_confirm_inputs.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Confirms reviewed initiative-authored inputs into machine state before approval.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for all governed query commands, including coordination, standards, references, and trace surfaces.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_artifacts.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_authority.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Canonical surface-discovery query page for planning and governance questions.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_closeouts.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live closeout recaps under `plan/.wt/indexes/closeout_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_commands.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Machine-readable lookup page for finding any other current command page without scanning the directory manually.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_coordination.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Machine start-here command page for active traced initiative coordination and next-step lookup.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_discrepancies.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_foundations.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query foundations by topic, related surface, authority, or downstream citation or application use.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_plan_evidence.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live initiative-local evidence bundles under `plan/.wt/indexes/evidence_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_project_context.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Loads the explicit machine-first runtime context for one project container under `plan/projects/**`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_projects.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for pack-level project lookup under `plan/.wt/indexes/project_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_readiness.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_query_reviews.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query page for live initiative and promotion review state under `plan/.wt/indexes/review_index.json`.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_route.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for advisory route preview commands.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_sync.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_task.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for task lifecycle commands that mutate initiative-local live task records in dry-run or write mode.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_validate.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for validation commands across artifacts, semantics, and repo-wide checks.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_validate_suite.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Runs one pack-declared validation suite through the reusable-core suite runtime.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/foundations/",
       "kind": "directory",
       "surface_kind": "documentation_family",
       "summary": "Holds the duplicated foundations corpus for core-owned guidance roots.",
       "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/",
+      "kind": "directory",
+      "surface_kind": "reference",
+      "summary": "Holds external references and local working-reference mappings.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
+      "aliases": [
+        "reference docs"
+      ],
+      "tags": [
+        "references"
+      ]
+    },
+    {
+      "path": "core/docs/references/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines directory-specific rules for authored external reference documents.",
+      "parent_path": "core/docs/references/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
+      "path": "core/docs/references/README.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Describes the purpose of the external references directory and the fastest ways to find topic-specific references.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/agent_workflow_authoring_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for efficient workflow-module authoring for agents and LLM-oriented tasks.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/json_schema_2020_12_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for the JSON Schema version used across governed machine-readable artifacts.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/mypy_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for static typing guidance used by the Python workspace.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/pytest_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for the canonical Python test runner used in the workspace baseline.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/ruff_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for linting and formatting policy used by the Python workspace.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/references/uv_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Working reference for the Python workspace package and environment toolchain.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds shared and core-owned standards.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the standards directory and its main standard families.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for schemas, structured artifacts, statuses, format selection, and the shared planning-index family baseline.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the data contracts standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/authority_map_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for the authored authority-map registry.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/command_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable command indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/format_selection_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how to choose the right data format for a planning-repo artifact.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/foundation_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable foundation indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/reference_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable reference indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/repository_path_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for generated repository path indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/route_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable route indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/schema_catalog_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for the authored schema catalog registry.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/schema_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines schema expectations for governed structured data.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/standard_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable standard indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/data_contracts/workflow_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable workflow indexes.",
+      "parent_path": "core/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for repository document families and Markdown surfaces.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the documentation standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/agents_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for AGENTS.md files.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/command_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for human-readable command pages.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/documentation_semantics_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the cross-family semantic guardrails for governed Markdown docs and workflow modules.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/foundation_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for governed foundation documents under `core/docs/foundations/`.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/readme_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for README.md files.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/reference_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for reference documents.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/routing_table_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for ROUTING_TABLE.md files.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/standard_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for governed standard and best-practice documents under `core/docs/standards/` and `plan/docs/standards/`.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/documentation/workflow_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for workflow documents.",
+      "parent_path": "core/docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for engineering practice and commit behavior.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the engineering standards directory and indexes the standards stored here.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/cli_help_text_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the minimum detail, examples, and usability expectations for repository CLI help text.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines repository-specific engineering best practices for implementation, validation, and synchronized human or machine updates.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/git_commit_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the repository-standard Git commit message policy for human and assistant contributors.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/git_workflow_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines repository-standard local git workflow behavior including branch naming, lifecycle, and sync expectations.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/python_code_design_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the authoritative Python code design philosophy, naming rules, and consolidation rules for `core/python/`.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/engineering/python_workspace_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard Python workspace layout, environment, and onboarding contract under core/python.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for front matter, naming, identifiers, and terminology.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the metadata standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/metadata/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/front_matter_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines standards for front matter structure and usage.",
+      "parent_path": "core/docs/standards/metadata/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/naming_and_ids_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines standards for naming patterns and identifiers.",
+      "parent_path": "core/docs/standards/metadata/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/terminology_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines standards for repository terminology and controlled language.",
+      "parent_path": "core/docs/standards/metadata/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/metadata/timestamp_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines standards for canonical timestamp field names and UTC timestamp formatting.",
+      "parent_path": "core/docs/standards/metadata/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/operations/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds operations standards used by the repository.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/operations/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the operations standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/operations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/operations/repository_maintenance_loop_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the recurring local maintenance loop for keeping docs, workflows, governed artifacts, and derived surfaces aligned.",
+      "parent_path": "core/docs/standards/operations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/validations/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds validation-related standards used by the repository.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/validations/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the validations standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/validations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/validations/repository_validation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the baseline validation expectations for repository changes across governed docs, governed artifacts, and the Python workspace.",
+      "parent_path": "core/docs/standards/validations/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/workflows/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for routing and workflow design behavior.",
+      "parent_path": "core/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/workflows/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the workflow standards directory and the standards stored here.",
+      "parent_path": "core/docs/standards/workflows/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for routing and context-loading behavior.",
+      "parent_path": "core/docs/standards/workflows/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/standards/workflows/workflow_design_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for workflow design.",
+      "parent_path": "core/docs/standards/workflows/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/",
+      "kind": "directory",
+      "surface_kind": "templates",
+      "summary": "Holds reusable templates for governed human-authored documents.",
+      "parent_path": "core/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
+      "tags": [
+        "templates"
+      ],
+      "related_paths": [
+        "core/docs/standards/documentation/"
+      ]
+    },
+    {
+      "path": "core/docs/templates/README.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Describes the purpose of the templates directory and the templates stored here.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/agent_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for an AGENTS.md file.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/command_reference_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a repository-native command page.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/documentation_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Fallback template for repository docs without a narrower family-specific scaffold.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/foundation_document_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a governed foundation document under `core/docs/foundations/`.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/readme_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a directory README.md file.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/reference_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for an external reference document.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/routing_table_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a routing table document.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/standard_document_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a governed standard or best-practice document under `core/docs/standards/` or `plan/docs/standards/`.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/workflow_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a workflow document.",
+      "parent_path": "core/docs/templates/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"
@@ -1579,7 +2632,7 @@
         "core/python/src/",
         "core/python/tests/",
         "core/python/pyproject.toml",
-        "docs/commands/core_python/",
+        "core/docs/commands/core_python/",
         "core/control_plane/"
       ]
     },
@@ -1613,7 +2666,7 @@
       "related_paths": [
         "AGENTS.md",
         "core/python/README.md",
-        "docs/standards/engineering/python_workspace_standard.md"
+        "core/docs/standards/engineering/python_workspace_standard.md"
       ]
     },
     {
@@ -2342,1346 +3395,6 @@
       "audience_hint": "automation"
     },
     {
-      "path": "docs/",
-      "kind": "directory",
-      "surface_kind": "documentation",
-      "summary": "Holds durable repository documentation, command pages, standards, references, and reusable templates.",
-      "parent_path": ".",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "tags": [
-        "docs",
-        "entrypoint"
-      ],
-      "related_paths": [
-        "docs/commands/",
-        "docs/references/",
-        "docs/standards/",
-        "docs/templates/"
-      ]
-    },
-    {
-      "path": "docs/AGENTS.md",
-      "kind": "file",
-      "surface_kind": "instruction",
-      "summary": "Defines documentation-specific instructions for the docs subtree.",
-      "parent_path": "docs/",
-      "maturity": "scaffold",
-      "priority": "low",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "docs/README.md",
-      "kind": "file",
-      "surface_kind": "documentation_file",
-      "summary": "Describes the purpose of the docs directory and the documentation surfaces stored here.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/",
-      "kind": "directory",
-      "surface_kind": "command_docs",
-      "summary": "Holds human-readable command pages for repository commands and subcommands.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "command docs",
-        "man pages"
-      ],
-      "tags": [
-        "commands",
-        "documentation"
-      ],
-      "related_paths": [
-        "docs/commands/core_python/",
-        "core/control_plane/indexes/commands/"
-      ]
-    },
-    {
-      "path": "docs/commands/README.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Describes the purpose of the command-doc directory and its current command families.",
-      "parent_path": "docs/commands/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/",
-      "kind": "directory",
-      "surface_kind": "command_docs",
-      "summary": "Holds command pages for the core Python workspace and the watchtower-core CLI family.",
-      "parent_path": "docs/commands/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/README.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Describes the purpose of the core Python command-doc directory and the fastest ways to find command details.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Human-readable page for the root `watchtower-core` command and shared CLI behavior.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_closeout.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for closeout commands used to terminally update traced initiative state.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_closeout_plan_initiative.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Live plan-initiative closeout page for terminally updating one initiative package under `plan/**`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_doctor.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_plan.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for planning scaffold and bootstrap commands.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_plan_approve.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Approves one live initiative package into `ready_for_execution`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_plan_confirm_inputs.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Confirms reviewed initiative-authored inputs into machine state before approval.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for all governed query commands, including coordination, standards, references, and trace surfaces.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_artifacts.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_authority.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Canonical surface-discovery query page for planning and governance questions.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_closeouts.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live closeout recaps under `plan/.wt/indexes/closeout_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_commands.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Machine-readable lookup page for finding any other current command page without scanning the directory manually.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_coordination.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Machine start-here command page for active traced initiative coordination and next-step lookup.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_discrepancies.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_foundations.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query foundations by topic, related surface, authority, or downstream citation or application use.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_plan_evidence.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative-local evidence bundles under `plan/.wt/indexes/evidence_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_project_context.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Loads the explicit machine-first runtime context for one project container under `plan/projects/**`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_projects.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for pack-level project lookup under `plan/.wt/indexes/project_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_readiness.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_query_reviews.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative and promotion review state under `plan/.wt/indexes/review_index.json`.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_route.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for advisory route preview commands.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_sync.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_task.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for task lifecycle commands that mutate initiative-local live task records in dry-run or write mode.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_validate.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for validation commands across artifacts, semantics, and repo-wide checks.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_validate_suite.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Runs one pack-declared validation suite through the reusable-core suite runtime.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/",
-      "kind": "directory",
-      "surface_kind": "reference",
-      "summary": "Holds external references and local working-reference mappings.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "reference docs"
-      ],
-      "tags": [
-        "references"
-      ],
-      "related_paths": [
-        "docs/standards/"
-      ]
-    },
-    {
-      "path": "docs/references/AGENTS.md",
-      "kind": "file",
-      "surface_kind": "instruction",
-      "summary": "Defines directory-specific rules for authored external reference documents.",
-      "parent_path": "docs/references/",
-      "maturity": "scaffold",
-      "priority": "low",
-      "audience_hint": "automation"
-    },
-    {
-      "path": "docs/references/README.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Describes the purpose of the external references directory and the fastest ways to find topic-specific references.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/agent_workflow_authoring_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for efficient workflow-module authoring for agents and LLM-oriented tasks.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/json_schema_2020_12_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for the JSON Schema version used across governed machine-readable artifacts.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/mypy_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for static typing guidance used by the Python workspace.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/pytest_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for the canonical Python test runner used in the workspace baseline.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/ruff_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for linting and formatting policy used by the Python workspace.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/references/uv_reference.md",
-      "kind": "file",
-      "surface_kind": "reference_doc",
-      "summary": "Working reference for the Python workspace package and environment toolchain.",
-      "parent_path": "docs/references/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds normative repository standards.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "repo standards"
-      ],
-      "tags": [
-        "standards",
-        "authority"
-      ],
-      "related_paths": [
-        "docs/standards/data_contracts/",
-        "docs/standards/documentation/",
-        "docs/standards/metadata/",
-        "docs/standards/workflows/"
-      ]
-    },
-    {
-      "path": "docs/standards/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the standards directory and its main standard families.",
-      "parent_path": "docs/standards/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for schemas, structured artifacts, statuses, format selection, and the shared planning-index family baseline.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the data contracts standards directory and the standards stored here.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/acceptance_contract_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable acceptance contracts.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/authority_map_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for the authored authority-map registry.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/command_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable command indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for the machine-readable coordination index.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/format_selection_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines how to choose the right data format for a planning-repo artifact.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/foundation_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable foundation indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for machine-readable initiative indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/planning_index_family_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the shared baseline for the planning-related derived index standards and the family-level discoverability contract.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/reference_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable reference indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/repository_path_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for generated repository path indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/route_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable route indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/schema_catalog_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for the authored schema catalog registry.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/schema_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines schema expectations for governed structured data.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/standard_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable standard indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/status_tracking_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines how status values should be represented and maintained.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/task_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for machine-readable task indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/traceability_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for the unified machine-readable traceability index.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/validation_evidence_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for durable validation-evidence records.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for machine-readable workflow indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for repository document families and Markdown surfaces.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the documentation standards directory and the standards stored here.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/agents_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for AGENTS.md files.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/command_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for human-readable command pages.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/compact_document_authoring_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/documentation_semantics_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the cross-family semantic guardrails for governed Markdown docs and workflow modules.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/foundation_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for governed foundation documents under `core/docs/foundations/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/readme_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for README.md files.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/reference_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for reference documents.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/routing_table_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for ROUTING_TABLE.md files.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/standard_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for governed standard and best-practice documents under `docs/standards/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/workflow_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for workflow documents.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for engineering practice and commit behavior.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the engineering standards directory and indexes the standards stored here.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/cli_help_text_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the minimum detail, examples, and usability expectations for repository CLI help text.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/engineering_best_practices_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines repository-specific engineering best practices for implementation, validation, and synchronized human or machine updates.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/git_commit_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the repository-standard Git commit message policy for human and assistant contributors.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/git_workflow_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines repository-standard local git workflow behavior including branch naming, lifecycle, and sync expectations.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/python_code_design_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the authoritative Python code design philosophy, naming rules, and consolidation rules for `core/python/`.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/engineering/python_workspace_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard Python workspace layout, environment, and onboarding contract under core/python.",
-      "parent_path": "docs/standards/engineering/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for long-lived governance and reference distillation behavior.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the governance standards directory and the standards stored here.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/coordination_tracking_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the compact human coordination tracker and the planning-root start-here experience.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/decision_capture_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/github_collaboration_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/github_task_sync_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the first push-only GitHub sync contract for local-first task records.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/initiative_closeout_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines initiative-level closeout state and its human and machine mirror surfaces.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/initiative_tracking_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the cross-family initiative coordination view and phase model built on top of traceability and task data.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/planning_retention_and_purge_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the promote-then-purge retention model for closed traced planning artifacts.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/reference_distillation_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines how external source material should be distilled into local references.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/rewrite_execution_control_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the parity contract, slice-control package, and checkpoint workflow for the structural rewrite program.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/rewrite_surface_classification_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the four-axis classification and retention-reason model for rewrite-controlled surfaces.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/task_handling_threshold_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/task_tracking_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the repository's local-first task tracking model and generated task companion surfaces.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/governance/traceability_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the repository baseline traceability model across PRDs, decisions, designs, and implementation plans.",
-      "parent_path": "docs/standards/governance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for front matter, naming, identifiers, and terminology.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the metadata standards directory and the standards stored here.",
-      "parent_path": "docs/standards/metadata/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/front_matter_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines standards for front matter structure and usage.",
-      "parent_path": "docs/standards/metadata/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/naming_and_ids_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines standards for naming patterns and identifiers.",
-      "parent_path": "docs/standards/metadata/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/terminology_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines standards for repository terminology and controlled language.",
-      "parent_path": "docs/standards/metadata/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/metadata/timestamp_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines standards for canonical timestamp field names and UTC timestamp formatting.",
-      "parent_path": "docs/standards/metadata/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/operations/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds operations standards used by the repository.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/operations/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the operations standards directory and the standards stored here.",
-      "parent_path": "docs/standards/operations/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/operations/repository_maintenance_loop_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the recurring local maintenance loop for keeping docs, workflows, governed artifacts, and derived surfaces aligned.",
-      "parent_path": "docs/standards/operations/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/validations/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds validation-related standards used by the repository.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/validations/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the validations standards directory and the standards stored here.",
-      "parent_path": "docs/standards/validations/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/validations/repository_validation_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the baseline validation expectations for repository changes across governed docs, governed artifacts, and the Python workspace.",
-      "parent_path": "docs/standards/validations/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/workflows/",
-      "kind": "directory",
-      "surface_kind": "standards",
-      "summary": "Holds standards for routing and workflow design behavior.",
-      "parent_path": "docs/standards/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/workflows/README.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the workflow standards directory and the standards stored here.",
-      "parent_path": "docs/standards/workflows/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/workflows/routing_and_context_loading_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for routing and context-loading behavior.",
-      "parent_path": "docs/standards/workflows/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/workflows/workflow_design_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for workflow design.",
-      "parent_path": "docs/standards/workflows/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/",
-      "kind": "directory",
-      "surface_kind": "templates",
-      "summary": "Holds reusable templates for repository documents.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "tags": [
-        "templates"
-      ],
-      "related_paths": [
-        "docs/standards/documentation/"
-      ]
-    },
-    {
-      "path": "docs/templates/README.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Describes the purpose of the templates directory and the templates stored here.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/agent_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for an AGENTS.md file.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/command_reference_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a repository-native command page.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/documentation_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Fallback template for repository docs without a narrower family-specific scaffold.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/foundation_document_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a governed foundation document under `core/docs/foundations/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/readme_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a directory README.md file.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/reference_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for an external reference document.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/routing_table_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a routing table document.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/standard_document_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a governed standard or best-practice document under `docs/standards/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/workflow_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a workflow document.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "plan/",
       "kind": "directory",
       "surface_kind": "plan_workspace",
@@ -3742,6 +3455,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/docs/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Defines plan-guidance-specific instructions for the `plan/docs/**` subtree.",
+      "parent_path": "plan/docs/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
       "path": "plan/docs/README.md",
       "kind": "file",
       "surface_kind": "plan_guidance",
@@ -3794,11 +3517,251 @@
     {
       "path": "plan/docs/standards/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "standards",
       "summary": "Holds durable operational standards promoted from initiative-local guidance.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
       "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable acceptance contracts.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/coordination_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the family-specific contract for the machine-readable coordination index.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/initiative_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the family-specific contract for machine-readable initiative indexes.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/planning_index_family_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the shared baseline for the planning-related derived index standards and the family-level discoverability contract.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/status_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how status values should be represented and maintained.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/task_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the family-specific contract for machine-readable task indexes.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/traceability_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the family-specific contract for the unified machine-readable traceability index.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/data_contracts/validation_evidence_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for durable validation-evidence records.",
+      "parent_path": "plan/docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/",
+      "kind": "directory",
+      "surface_kind": "standards",
+      "summary": "Holds standards for long-lived governance and reference distillation behavior.",
+      "parent_path": "plan/docs/standards/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/README.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Describes the purpose of the governance standards directory and the standards stored here.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/coordination_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the compact human coordination tracker and the planning-root start-here experience.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/decision_capture_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/github_collaboration_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/github_task_sync_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the first push-only GitHub sync contract for local-first task records.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/initiative_closeout_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines initiative-level closeout state and its human and machine mirror surfaces.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/initiative_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the cross-family initiative coordination view and phase model built on top of traceability and task data.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the promote-then-purge retention model for closed traced planning artifacts.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/reference_distillation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines how external source material should be distilled into local references.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/rewrite_execution_control_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the parity contract, slice-control package, and checkpoint workflow for the structural rewrite program.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the four-axis classification and retention-reason model for rewrite-controlled surfaces.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/task_handling_threshold_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/task_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the repository's local-first task tracking model and generated task companion surfaces.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/standards/governance/traceability_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the repository baseline traceability model across PRDs, decisions, designs, and implementation plans.",
+      "parent_path": "plan/docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
       "audience_hint": "shared"
     },
     {

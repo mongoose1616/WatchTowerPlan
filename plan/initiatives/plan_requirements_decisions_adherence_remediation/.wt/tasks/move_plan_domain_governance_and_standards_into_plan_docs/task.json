@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_adherence_remediation.re_root_plan_docs",
+  "slug": "move_plan_domain_governance_and_standards_into_plan_docs",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "title": "Move plan-domain governance and standards into plan/docs",
+  "summary": "Move plan-domain governance and plan-runtime standards under plan/docs and remove the root docs authority.",
+  "status": "active",
+  "task_status": "in_progress",
+  "task_kind": "governance",
+  "priority": "critical",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T15:59:35Z",
+  "updated_at": "2026-03-19T16:03:44Z",
+  "applies_to": [
+    "plan/docs/",
+    "AGENTS.md",
+    "README.md"
+  ],
+  "scope_items": [
+    "Move plan-domain governance standards into plan/docs/standards.",
+    "Retire root docs README and AGENTS guidance.",
+    "Update plan and root navigation to the new documentation boundary."
+  ],
+  "done_when_items": [
+    "Root docs is no longer an active documentation root and plan-domain durable guidance resolves under plan/docs."
+  ]
+}

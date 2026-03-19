@@ -19,12 +19,12 @@
 - When a command supports structured output, prefer `--format json` for agent or workflow use instead of scraping human-readable text.
 - Use the workspace-local environment at `core/python/.venv/`; do not create alternate virtual environments under `core/` or elsewhere in the repo.
 - Keep Python dependency and tool changes aligned across `pyproject.toml`, `uv.lock`, and [core/python/README.md](/core/python/README.md) in the same change set.
-- When Python command behavior changes, update the relevant command pages under [docs/commands/core_python](/docs/commands/core_python/), the command index, and the workspace README in the same change set.
+- When Python command behavior changes, update the relevant command pages under [core/docs/commands/core_python](/core/docs/commands/core_python/), the command index, and the workspace README in the same change set.
 - Keep authored schemas, registries, contracts, policies, and indexes in [core/control_plane](/core/control_plane), not in the Python workspace.
 
 ## Do
-- Use [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md) as the governing standard for workspace layout and tooling.
-- Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) as the governing standard for Python naming, module shape, typed boundaries, docstrings, and consolidation decisions.
+- Use [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md) as the governing standard for workspace layout and tooling.
+- Use [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md) as the governing standard for Python naming, module shape, typed boundaries, docstrings, and consolidation decisions.
 - Use [core/python/README.md](/core/python/README.md) as the quick-reference onboarding and command surface.
 - Use `uv run watchtower-core ...` or `uv run python -m watchtower_core...` for package-local execution.
 - Keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` clean under the stricter `mypy` override and `ruff` comprehension rules declared in `core/python/pyproject.toml`.

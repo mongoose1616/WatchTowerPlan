@@ -3,5 +3,200 @@
   "id": "index.plan_tasks",
   "title": "Plan Workspace Task Index",
   "status": "active",
-  "entries": []
+  "entries": [
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.bootstrap",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Bootstrap Requirements And Decisions Adherence Remediation",
+      "summary": "Bootstrap Requirements And Decisions Adherence Remediation live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/bootstrap_requirements_and_decisions_adherence_remediation/task.json",
+      "updated_at": "2026-03-19T16:03:31Z"
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Enforce the six-section plan overview contract",
+      "summary": "Make the six-section plan overview template authoritative across template catalog, registry, renderer, tests, and live output.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/enforce_the_six_section_plan_overview_contract/task.json",
+      "updated_at": "2026-03-19T15:59:39Z",
+      "applies_to": [
+        "plan/.wt/templates/pack/plan_overview.md",
+        "core/control_plane/",
+        "core/python/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.hard_rename_planning_terms",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Hard-cut planning terminology and phase vocabulary",
+      "summary": "Replace retired PRD/design/implementation-plan language and stale initiative phase names on active surfaces with the initiative-package model.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/hard_cut_planning_terminology_and_phase_vocabulary/task.json",
+      "updated_at": "2026-03-19T15:59:43Z",
+      "applies_to": [
+        "plan/workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.harden_residue_guards",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Harden residue and domain_packs regression guards",
+      "summary": "Add explicit tests and validation gates that block reintroduction of root docs, domain_packs, and retired planning-model residue.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/harden_residue_and_domain_packs_regression_guards/task.json",
+      "updated_at": "2026-03-19T16:00:35Z",
+      "applies_to": [
+        "core/python/tests/",
+        "core/control_plane/",
+        ".github/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.re_root_core_docs",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Re-root command, reference, template, and core standard docs",
+      "summary": "Move shared command pages, references, templates, and core-owned standards from root docs into core/docs and update their governed roots.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "documentation",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/re_root_command_reference_template_and_core_standard_docs/task.json",
+      "updated_at": "2026-03-19T16:03:38Z",
+      "applies_to": [
+        "core/docs/",
+        "core/control_plane/",
+        "core/python/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.re_root_plan_docs",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Move plan-domain governance and standards into plan/docs",
+      "summary": "Move plan-domain governance and plan-runtime standards under plan/docs and remove the root docs authority.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "governance",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/move_plan_domain_governance_and_standards_into_plan_docs/task.json",
+      "updated_at": "2026-03-19T16:03:44Z",
+      "applies_to": [
+        "plan/docs/",
+        "AGENTS.md",
+        "README.md"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.replace_planning_semantics",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Replace retired planning-document semantics",
+      "summary": "Remove the remaining PRD and implementation-plan semantic helpers and validate only the live initiative-package authored inputs.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/replace_retired_planning_document_semantics/task.json",
+      "updated_at": "2026-03-19T16:00:26Z",
+      "applies_to": [
+        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/validation/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.restore_rich_rendering",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Restore rich human-facing rendering and navigation",
+      "summary": "Recover the stronger markdown structure, browseable tables, and summary-plus-detail navigation while keeping machine indexes compact.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/restore_rich_human_facing_rendering_and_navigation/task.json",
+      "updated_at": "2026-03-19T16:00:30Z",
+      "applies_to": [
+        "plan/tracking/",
+        "core/docs/",
+        "plan/docs/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Run full assessment pass one",
+      "summary": "Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json",
+      "updated_at": "2026-03-19T16:00:40Z",
+      "applies_to": [
+        "core/",
+        "plan/",
+        ".github/"
+      ]
+    },
+    {
+      "task_id": "task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two",
+      "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+      "initiative_title": "Requirements And Decisions Adherence Remediation",
+      "title": "Run full assessment pass two",
+      "summary": "Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json",
+      "updated_at": "2026-03-19T16:00:45Z",
+      "applies_to": [
+        "core/",
+        "plan/",
+        ".github/"
+      ]
+    }
+  ]
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_adherence_remediation.enforce_the_six_section_plan_overview_contract.0001_created",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T15:59:39Z",
+  "summary": "Created live task task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/enforce_the_six_section_plan_overview_contract/task.json"
+  },
+  "task_id": "task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract"
+}

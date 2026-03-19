@@ -30,7 +30,7 @@ Residual WatchTowerPlan-specific orchestration that still depends on this reposi
 - Treat this namespace as transitional, keep shrinking it, and do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary is available.
 
 ## Related Surfaces
-- `docs/standards/engineering/python_code_design_standard.md`
+- `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/query/README.md`
 - `core/python/src/watchtower_core/sync/README.md`
 - `core/python/src/watchtower_core/rebuild/README.md`

@@ -24,10 +24,11 @@
 ## Local Rules
 - Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions and details until that contract is fully implemented.
 - Use existing standards, references, and helper docs only where they support or conform to [requirements.md](/requirements.md) and [decisions.md](/decisions.md); do not let them materially change what those two files decided.
-- If work is happening under [docs](/docs), also apply [docs/AGENTS.md](/docs/AGENTS.md).
+- If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
+- If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).
 - If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
-- Keep durable documentation in `docs/`, `core/docs/`, and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
+- Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
 - Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; use `core/control_plane/ledgers/purges/**` only when you need the machine purge history for removed traces.
 - Treat [core/control_plane](/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
 - Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
@@ -44,7 +45,8 @@
 - Follow the routed workflow modules for task execution.
 - Keep implementation choices aligned to [requirements.md](/requirements.md) and [decisions.md](/decisions.md) when companion guidance disagrees or is incomplete.
 - Use the nearest applicable [README.md](/README.md) as the quick reference before broader scans.
-- Apply [docs/AGENTS.md](/docs/AGENTS.md) when work falls under `docs/**`.
+- Apply [core/docs/AGENTS.md](/core/docs/AGENTS.md) when work falls under `core/docs/**`.
+- Apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md) when work falls under `plan/docs/**`.
 - Prefer structured command output such as `--format json` for agent or workflow use when a command supports it.
 - Use the live `plan/**` coordination index and rendered overview as the default repo-level planning entrypoints before opening deeper planning families.
 - Update adjacent indexes, trackers, examples, and validation surfaces when a governed document or control-plane artifact changes materially.
@@ -52,7 +54,7 @@
 ## Do Not
 - Do not bypass the domain-owned routing tables under [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) and [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
 - Do not treat older supporting standards, references, or legacy planning docs as authority when they conflict materially with [requirements.md](/requirements.md) or [decisions.md](/decisions.md).
-- Do not place durable documentation outside `docs/`, `core/docs/`, and `plan/docs/`, or workflow procedures outside `core/workflows/` and `plan/workflows/`.
+- Do not place durable documentation outside `core/docs/` and `plan/docs/`, or workflow procedures outside `core/workflows/` and `plan/workflows/`.
 - Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
 - Do not add parallel Python package roots or alternate virtual-environment conventions outside `core/python/`.
 - Do not leave companion machine-readable lookup or validation surfaces stale when their governing human or machine authority changed in the same task.

@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form for hosted intake. Before implementation merges, link or create the corresponding repo-local PRD, design, or task record.
+        Use this form for hosted intake. Before implementation merges, link or create the corresponding repo-local initiative package or task record.
   - type: input
     id: trace_id
     attributes:
@@ -63,7 +63,7 @@ body:
     attributes:
       label: Area
       description: Primary repo area or surface affected.
-      placeholder: core/python, docs/planning, core/control_plane
+      placeholder: core/python, plan/initiatives, core/control_plane
     validations:
       required: false
   - type: dropdown

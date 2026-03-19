@@ -51,7 +51,7 @@ def register_validate_family(
             "uv run watchtower-core validate suite --suite-id "
             "suite.watchtower_plan.validation_baseline --format json",
             "uv run watchtower-core validate front-matter --path "
-            "docs/references/front_matter_reference.md",
+            "core/docs/references/front_matter_reference.md",
             "uv run watchtower-core validate document-semantics --path "
             "core/workflows/modules/code_validation.md",
             "uv run watchtower-core validate artifact --path "
@@ -63,7 +63,7 @@ def register_validate_family(
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.governed_acceptance_example --format json",
             "uv run watchtower-core validate front-matter --path "
-            "docs/standards/metadata/front_matter_standard.md --format json",
+            "core/docs/standards/metadata/front_matter_standard.md --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -169,13 +169,13 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate front-matter --path "
-            "docs/references/front_matter_reference.md",
+            "core/docs/references/front_matter_reference.md",
             "uv run watchtower-core validate front-matter --path "
-            "docs/standards/metadata/front_matter_standard.md --format json",
+            "core/docs/standards/metadata/front_matter_standard.md --format json",
             "uv run watchtower-core validate front-matter --path /tmp/example.md "
             "--validator-id validator.documentation.standard_front_matter",
             "uv run watchtower-core validate front-matter --path "
-            "docs/standards/metadata/front_matter_standard.md --record-evidence "
+            "core/docs/standards/metadata/front_matter_standard.md --record-evidence "
             "--trace-id trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
@@ -212,7 +212,7 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate document-semantics --path "
-            "docs/standards/documentation/workflow_md_standard.md",
+            "core/docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate document-semantics --path "
             "core/workflows/modules/code_validation.md --format json",
             "uv run watchtower-core validate document-semantics --path "

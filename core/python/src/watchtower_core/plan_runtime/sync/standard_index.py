@@ -42,7 +42,10 @@ STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_in
 STANDARD_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
 )
-STANDARD_DOC_ROOT = "docs/standards"
+STANDARD_DOC_ROOTS = (
+    "core/docs/standards",
+    "plan/docs/standards",
+)
 STANDARD_EXCLUDED_NAMES = {"README.md"}
 
 
@@ -92,10 +95,19 @@ class StandardIndexSyncService:
         )
         entries: list[dict[str, object]] = []
 
-        standards_root = self._repo_root / STANDARD_DOC_ROOT
-        for path in sorted(standards_root.rglob("*.md")):
-            if path.name in STANDARD_EXCLUDED_NAMES:
-                continue
+        standard_documents: list[tuple[Path, int]] = []
+        for root in STANDARD_DOC_ROOTS:
+            standards_root = self._repo_root / root
+            root_depth = len(Path(root).parts)
+            for path in standards_root.rglob("*.md"):
+                if path.name in STANDARD_EXCLUDED_NAMES:
+                    continue
+                standard_documents.append((path, root_depth))
+
+        for path, root_depth in sorted(
+            standard_documents,
+            key=lambda item: item[0].relative_to(self._repo_root).as_posix(),
+        ):
 
             relative_path = path.relative_to(self._repo_root).as_posix()
             front_matter = load_front_matter(path)
@@ -173,7 +185,12 @@ class StandardIndexSyncService:
                 _tuple_of_strings(current.get("tags")),
             )
             notes = _optional_string(current.get("notes"))
-            category = Path(relative_path).parts[2]
+            path_parts = Path(relative_path).parts
+            if len(path_parts) <= root_depth:
+                raise ValueError(
+                    f"{relative_path} is not nested under a valid standards category directory."
+                )
+            category = path_parts[root_depth]
             owner = front_matter["owner"]
             entry: dict[str, object] = {
                 "standard_id": front_matter["id"],

@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-19T15:58:30Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/plan_requirements_decisions_adherence_remediation_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/plan_requirements_decisions_adherence_remediation_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/plan_requirements_decisions_adherence_remediation_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/plan_requirements_decisions_adherence_remediation_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

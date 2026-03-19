@@ -71,7 +71,7 @@
 - `uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync`
 - `uv run watchtower-core closeout plan-initiative --initiative-slug plan_example --initiative-status completed --closure-reason "Delivered and validated" --write`
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"`
-- `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md`
+- `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
 - `uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline --format json`
 - `uv run watchtower-core validate document-semantics --path core/workflows/modules/code_validation.md`
@@ -79,18 +79,18 @@
 - `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
 
 ## Command Docs
-- Start with [README.md](/docs/commands/core_python/README.md) for command-doc navigation.
-- Open [watchtower_core.md](/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
-- Open [watchtower_core_route.md](/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
-- Open [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md) when you need live initiative bootstrap or readiness-gate commands.
-- Open [watchtower_core_validate_suite.md](/docs/commands/core_python/watchtower_core_validate_suite.md) when you need the pack-declared suite runtime and `--pack-settings-path` behavior.
+- Start with [README.md](/core/docs/commands/core_python/README.md) for command-doc navigation.
+- Open [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
+- Open [watchtower_core_route.md](/core/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
+- Open [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md) when you need live initiative bootstrap or readiness-gate commands.
+- Open [watchtower_core_validate_suite.md](/core/docs/commands/core_python/watchtower_core_validate_suite.md) when you need the pack-declared suite runtime and `--pack-settings-path` behavior.
 - Use the group pages for deeper browsing:
-  - [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md)
-  - [watchtower_core_query.md](/docs/commands/core_python/watchtower_core_query.md)
-  - [watchtower_core_task.md](/docs/commands/core_python/watchtower_core_task.md)
-  - [watchtower_core_sync.md](/docs/commands/core_python/watchtower_core_sync.md)
-  - [watchtower_core_validate.md](/docs/commands/core_python/watchtower_core_validate.md)
-  - [watchtower_core_closeout.md](/docs/commands/core_python/watchtower_core_closeout.md)
+  - [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md)
+  - [watchtower_core_query.md](/core/docs/commands/core_python/watchtower_core_query.md)
+  - [watchtower_core_task.md](/core/docs/commands/core_python/watchtower_core_task.md)
+  - [watchtower_core_sync.md](/core/docs/commands/core_python/watchtower_core_sync.md)
+  - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
+  - [watchtower_core_closeout.md](/core/docs/commands/core_python/watchtower_core_closeout.md)
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 
 ### Commands Inside `./tools/dev_shell.sh`
@@ -152,7 +152,7 @@ Use the nested READMEs under `plan_runtime/`, `integrations/github/`, and the ne
 
 ## Agent Use
 - Read `core/python/AGENTS.md` before making changes under this workspace.
-- Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) as the authoritative guide for Python naming, module boundaries, typed interfaces, docstrings, and consolidation decisions.
+- Use [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md) as the authoritative guide for Python naming, module boundaries, typed interfaces, docstrings, and consolidation decisions.
 - Run Python package commands from `core/python/`.
 - Prefer `uv run` for tests, linting, typing, and CLI execution.
 - When a command supports structured output, prefer `--format json` for agent or workflow consumption instead of parsing human-readable text.

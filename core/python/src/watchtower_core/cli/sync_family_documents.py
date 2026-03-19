@@ -17,7 +17,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the command index from registry-backed CLI metadata.",
         "description": """
             Rebuild the command index from the registry-backed CLI parser
-            metadata while keeping the command pages under `docs/commands/`
+            metadata while keeping the command pages under `core/docs/commands/`
             as the human-readable companion surface.
 
             By default this is a dry run. Add `--write` to update the canonical
@@ -54,7 +54,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the reference index from governed reference docs.",
         "description": """
             Rebuild the reference index from the governed reference documents
-            under `docs/references/`.
+            under `core/docs/references/`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -89,7 +89,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the standard index from governed standards.",
         "description": """
             Rebuild the standard index from the governed standards under
-            `docs/standards/`.
+            `core/docs/standards/` and `plan/docs/standards/`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.

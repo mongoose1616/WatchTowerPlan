@@ -5,8 +5,8 @@
 
 ## Notes
 - Human family entrypoint: `core/docs/foundations/README.md`
-- Machine lookup entrypoint: `docs/commands/core_python/watchtower_core_query_foundations.md`
-- Rebuild entrypoint: `docs/commands/core_python/watchtower_core_sync_foundation_index.md`
+- Machine lookup entrypoint: `core/docs/commands/core_python/watchtower_core_query_foundations.md`
+- Rebuild entrypoint: `core/docs/commands/core_python/watchtower_core_sync_foundation_index.md`
 
 ## Files
 | Path | Description |

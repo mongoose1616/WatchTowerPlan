@@ -10,7 +10,8 @@
 | `AGENTS.md` | Defines the repository-wide wrapper instructions and routes work into `core/workflows/` and `plan/workflows/`. |
 | `.github/` | Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template. |
 | `plan/` | Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers. |
-| `docs/` | Holds durable repository documentation, command pages, standards, references, and reusable templates. |
+| `core/docs/` | Holds shared command docs, references, templates, shared standards, and the authored foundations source. |
+| `plan/docs/` | Holds durable plan-domain guidance plus the mirrored foundations family. |
 | `core/` | Holds shared implementation assets and the authored control-plane tree. |
 
 ## Notes

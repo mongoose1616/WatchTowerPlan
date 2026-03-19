@@ -18,9 +18,9 @@ def test_document_semantics_validation_accepts_existing_repo_local_markdown_link
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
-    related_target = repo_root / "docs/references/example_reference.md"
-    reference_target = repo_root / "docs/templates/supporting_template.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
+    reference_target = repo_root / "core/docs/templates/supporting_template.md"
     write_repo_file(related_target)
     write_repo_file(reference_target)
     write_standard_fixture(
@@ -30,7 +30,7 @@ def test_document_semantics_validation_accepts_existing_repo_local_markdown_link
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is True
     assert result.issue_count == 0
@@ -41,10 +41,10 @@ def test_document_semantics_validation_accepts_repo_relative_operationalization_
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
     write_repo_file(repo_root / "README.md")
-    write_repo_file(repo_root / "docs/README.md")
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
-    related_target = repo_root / "docs/references/example_reference.md"
-    reference_target = repo_root / "docs/templates/supporting_template.md"
+    write_repo_file(repo_root / "core/docs/README.md")
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
+    reference_target = repo_root / "core/docs/templates/supporting_template.md"
     write_repo_file(related_target)
     write_repo_file(reference_target)
     write_standard_fixture(
@@ -55,7 +55,7 @@ def test_document_semantics_validation_accepts_repo_relative_operationalization_
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is True
     assert result.issue_count == 0
@@ -65,11 +65,11 @@ def test_document_semantics_validation_accepts_local_reference_doc_in_related_so
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(reference_path, support_target=support_target)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     write_standard_reference_rule_fixture(
         standard_path,
         related_lines=(
@@ -86,7 +86,7 @@ def test_document_semantics_validation_accepts_local_reference_doc_in_related_so
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is True
     assert result.issue_count == 0
@@ -96,12 +96,12 @@ def test_document_semantics_validation_rejects_noncanonical_directory_operationa
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    related_target = repo_root / "docs/references/example_reference.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(related_target, support_target=support_target)
     (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     write_standard_fixture(
         standard_path,
         related_target=related_target,
@@ -110,7 +110,7 @@ def test_document_semantics_validation_rejects_noncanonical_directory_operationa
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -125,12 +125,12 @@ def test_document_semantics_validation_rejects_noncanonical_directory_applies_to
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    related_target = repo_root / "docs/references/example_reference.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(related_target, support_target=support_target)
     (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     standard_path.parent.mkdir(parents=True, exist_ok=True)
     standard_path.write_text(
         f"""\
@@ -174,7 +174,7 @@ Keep the fixture focused on applies_to path semantics.
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+- `Operational Surfaces`: `core/docs/standards/documentation/example_standard.md`
 
 ## Validation
 - Semantic validation should reject non-canonical directory applies_to values.
@@ -192,7 +192,7 @@ Keep the fixture focused on applies_to path semantics.
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -205,9 +205,9 @@ def test_document_semantics_validation_rejects_external_authority_without_local_
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
     write_repo_file(support_target)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     write_standard_reference_rule_fixture(
         standard_path,
         related_lines=(
@@ -217,22 +217,22 @@ def test_document_semantics_validation_rejects_external_authority_without_local_
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
     assert result.issue_count == 1
-    assert "governed local reference doc under docs/references/" in result.issues[0].message
+    assert "governed local reference doc under core/docs/references/" in result.issues[0].message
 
 
 def test_document_semantics_validation_rejects_filesystem_absolute_checkout_link(
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    support_target = repo_root / "docs" / "README.md"
-    related_target = repo_root / "docs/references/example_reference.md"
+    support_target = repo_root / "core" / "docs" / "README.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
     write_repo_file(support_target)
     write_repo_file(related_target)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     write_standard_reference_rule_fixture(
         standard_path,
         related_lines=(
@@ -243,7 +243,7 @@ def test_document_semantics_validation_rejects_filesystem_absolute_checkout_link
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
     assert result.issue_count == 1

@@ -24,5 +24,5 @@ Repository-local sync services for plan-pack derived indexes, rendered trackers,
 ## Related Surfaces
 - `core/python/src/watchtower_core/sync/README.md`
 - `core/python/src/watchtower_core/integrations/github/README.md`
-- `docs/standards/engineering/python_code_design_standard.md`
-- `docs/commands/core_python/watchtower_core_sync.md`
+- `core/docs/standards/engineering/python_code_design_standard.md`
+- `core/docs/commands/core_python/watchtower_core_sync.md`

@@ -38,7 +38,7 @@ REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
 )
-REFERENCE_DOC_ROOT = "docs/references"
+REFERENCE_DOC_ROOT = "core/docs/references"
 REFERENCE_EXCLUDED_NAMES = {"README.md", "AGENTS.md"}
 
 
@@ -276,7 +276,13 @@ CITATION_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str, 
         (),
     ),
     (
-        "docs/standards",
+        "core/docs/standards",
+        {"README.md"},
+        ("Related Standards and Sources", "References"),
+        ("Related Standards and Sources",),
+    ),
+    (
+        "plan/docs/standards",
         {"README.md"},
         ("Related Standards and Sources", "References"),
         ("Related Standards and Sources",),

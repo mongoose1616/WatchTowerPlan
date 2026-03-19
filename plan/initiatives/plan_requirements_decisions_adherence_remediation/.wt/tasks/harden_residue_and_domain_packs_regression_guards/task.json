@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_adherence_remediation.harden_residue_guards",
+  "slug": "harden_residue_and_domain_packs_regression_guards",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "title": "Harden residue and domain_packs regression guards",
+  "summary": "Add explicit tests and validation gates that block reintroduction of root docs, domain_packs, and retired planning-model residue.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T16:00:35Z",
+  "updated_at": "2026-03-19T16:00:35Z",
+  "applies_to": [
+    "core/python/tests/",
+    "core/control_plane/",
+    ".github/"
+  ],
+  "scope_items": [
+    "Add domain_packs non-creation regression coverage.",
+    "Add zero-tolerance residue checks for root docs and retired planning-model symbols on active surfaces.",
+    "Run two full post-cutover assessment passes and close any new findings."
+  ],
+  "done_when_items": [
+    "Validation fails closed if root docs, domain_packs, or retired active terminology reappear."
+  ]
+}

@@ -54,10 +54,10 @@ def register_query_family(
             "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
-            "docs/standards/documentation/workflow_md_standard.md",
+            "core/docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
-            "docs/references/github_collaboration_reference.md",
+            "core/docs/references/github_collaboration_reference.md",
             "uv run watchtower-core query initiatives --owner repository_maintainer",
             "uv run watchtower-core query acceptance --trace-id "
             "trace.governed_acceptance_example",

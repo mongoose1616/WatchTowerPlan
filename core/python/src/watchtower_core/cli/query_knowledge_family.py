@@ -41,9 +41,9 @@ def register_query_knowledge_commands(
         epilog=examples(
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query foundations --reference-path "
-            "docs/references/uv_reference.md --format json",
+            "core/docs/references/uv_reference.md --format json",
             "uv run watchtower-core query foundations --applied-by-path "
-            "docs/standards/engineering/engineering_best_practices_standard.md --format json",
+            "core/docs/standards/engineering/engineering_best_practices_standard.md --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -76,7 +76,7 @@ def register_query_knowledge_commands(
     )
     query_foundations_parser.add_argument(
         "--reference-path",
-        help="Exact governed reference-doc filter such as docs/references/uv_reference.md.",
+        help="Exact governed reference-doc filter such as core/docs/references/uv_reference.md.",
     )
     query_foundations_parser.add_argument(
         "--cited-by-path",
@@ -109,7 +109,7 @@ def register_query_knowledge_commands(
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query workflows --phase-type reconciliation",
             "uv run watchtower-core query workflows --reference-path "
-            "docs/references/github_collaboration_reference.md --format json",
+            "core/docs/references/github_collaboration_reference.md --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -140,14 +140,14 @@ def register_query_knowledge_commands(
         "--related-path",
         help=(
             "Exact repository-path filter such as "
-            "docs/standards/documentation/workflow_md_standard.md."
+            "core/docs/standards/documentation/workflow_md_standard.md."
         ),
     )
     query_workflows_parser.add_argument(
         "--reference-path",
         help=(
             "Exact governed reference-doc filter such as "
-            "docs/references/github_collaboration_reference.md."
+            "core/docs/references/github_collaboration_reference.md."
         ),
     )
     add_limit_argument(query_workflows_parser)
@@ -198,7 +198,7 @@ def register_query_knowledge_commands(
         "--related-path",
         help=(
             "Repository-path filter such as core/python/ or "
-            "docs/standards/engineering/. Directory paths ending in '/' "
+            "core/docs/standards/engineering/. Directory paths ending in '/' "
             "match descendant touchpoints."
         ),
     )
@@ -237,7 +237,7 @@ def register_query_knowledge_commands(
             "uv run watchtower-core query standards --category governance",
             "uv run watchtower-core query standards --operationalization-mode validation",
             "uv run watchtower-core query standards --reference-path "
-            "docs/references/github_collaboration_reference.md --format json",
+            "core/docs/references/github_collaboration_reference.md --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -263,7 +263,10 @@ def register_query_knowledge_commands(
     query_standards_parser.add_argument("--tag", help="Exact tag filter.")
     query_standards_parser.add_argument(
         "--applies-to",
-        help="Exact front-matter applies_to filter such as core/python/ or docs/standards/.",
+        help=(
+            "Exact front-matter applies_to filter such as core/python/, "
+            "core/docs/standards/engineering/, or plan/docs/standards/governance/."
+        ),
     )
     query_standards_parser.add_argument(
         "--related-path",
@@ -273,7 +276,7 @@ def register_query_knowledge_commands(
         "--reference-path",
         help=(
             "Exact governed reference-doc filter such as "
-            "docs/references/github_collaboration_reference.md."
+            "core/docs/references/github_collaboration_reference.md."
         ),
     )
     query_standards_parser.add_argument(

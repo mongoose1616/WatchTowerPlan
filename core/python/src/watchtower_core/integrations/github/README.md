@@ -14,4 +14,4 @@ GitHub API client support for task sync and other hosted collaboration flows.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/plan_runtime/sync/README.md`
-- `docs/standards/governance/github_task_sync_standard.md`
+- `plan/docs/standards/governance/github_task_sync_standard.md`

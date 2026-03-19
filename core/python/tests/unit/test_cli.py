@@ -100,7 +100,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
         "uv run watchtower-core validate document-semantics --path "
-        "docs/standards/documentation/workflow_md_standard.md" in captured.out
+        "core/docs/standards/documentation/workflow_md_standard.md" in captured.out
     )
     assert (
         "uv run watchtower-core validate acceptance --trace-id "
@@ -148,7 +148,7 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert (
         "uv run watchtower-core query foundations --reference-path "
-        "docs/references/uv_reference.md --format json"
+        "core/docs/references/uv_reference.md --format json"
     ) in captured.out
 
 

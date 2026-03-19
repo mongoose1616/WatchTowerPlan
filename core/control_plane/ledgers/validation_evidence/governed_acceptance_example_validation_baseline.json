@@ -7,8 +7,8 @@
   "overall_result": "passed",
   "recorded_at": "2026-03-19T11:00:00Z",
   "source_surface_paths": [
-    "docs/standards/data_contracts/acceptance_contract_standard.md",
-    "docs/standards/governance/traceability_standard.md"
+    "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+    "plan/docs/standards/governance/traceability_standard.md"
   ],
   "source_acceptance_contract_ids": [
     "contract.acceptance.governed_acceptance_example"
@@ -21,8 +21,8 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "docs/commands/core_python/watchtower_core_query_acceptance.md",
-        "docs/commands/core_python/watchtower_core_query_evidence.md"
+        "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md"
       ],
       "subject_ids": [
         "contract.acceptance.governed_acceptance_example",
@@ -37,9 +37,9 @@
   ],
   "related_paths": [
     "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
-    "docs/commands/core_python/watchtower_core_query_acceptance.md",
-    "docs/commands/core_python/watchtower_core_query_evidence.md",
-    "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+    "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+    "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+    "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
   ],
   "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
 }

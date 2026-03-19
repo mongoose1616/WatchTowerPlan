@@ -81,13 +81,15 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         "plan/workflows/modules/"
     ):
         return "workflow_module" if kind == "file" else "workflow_family"
-    if relative_path.startswith("docs/commands/"):
+    if relative_path.startswith("core/docs/commands/"):
         return "command_doc" if kind == "file" else "command_docs"
-    if relative_path.startswith("docs/references/"):
+    if relative_path.startswith("core/docs/references/"):
         return "reference_doc" if kind == "file" else "reference"
-    if relative_path.startswith("docs/standards/"):
+    if relative_path.startswith("core/docs/standards/") or relative_path.startswith(
+        "plan/docs/standards/"
+    ):
         return "standard_doc" if kind == "file" else "standards"
-    if relative_path.startswith("docs/templates/"):
+    if relative_path.startswith("core/docs/templates/"):
         return "template_doc" if kind == "file" else "templates"
     if relative_path.startswith("core/docs/foundations/"):
         return "foundation_doc" if kind == "file" else "documentation_family"
@@ -101,8 +103,6 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         return "plan_workspace_artifact" if kind == "file" else "plan_workspace"
     if relative_path.startswith("plan/"):
         return "plan_surface" if kind == "file" else "plan_workspace"
-    if relative_path.startswith("docs/"):
-        return "documentation" if kind == "directory" else "documentation_file"
     if relative_path == "core/python/":
         return "python_workspace"
     if relative_path.startswith("core/python/src/"):

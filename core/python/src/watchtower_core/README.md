@@ -28,7 +28,7 @@
 
 ## Related Surfaces
 - `core/python/README.md`
-- `docs/standards/engineering/python_code_design_standard.md`
+- `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/plan_runtime/README.md`
 - `requirements.md`
 - `decisions.md`

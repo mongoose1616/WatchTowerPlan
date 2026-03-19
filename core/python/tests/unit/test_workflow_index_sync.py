@@ -48,7 +48,7 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
         and "partial_update" in entry["primary_risks"]
         and "sync" in entry["trigger_tags"]
         and "workflow.task_lifecycle_management" in entry.get("companion_workflow_ids", [])
-        and "docs/standards/governance/github_task_sync_standard.md"
+        and "plan/docs/standards/governance/github_task_sync_standard.md"
         in entry.get("internal_reference_paths", [])
         for entry in entries
     )
@@ -83,7 +83,7 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
     section = (
-        "- [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): "
+        "- [compact_document_authoring_standard.md](/core/docs/standards/documentation/compact_document_authoring_standard.md): "
         "defines the compact authored-document structure for live initiative outputs.\n"
     )
 
@@ -93,7 +93,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
         repo_root=REPO_ROOT,
     )
 
-    assert result == ("docs/standards/documentation/compact_document_authoring_standard.md",)
+    assert result == ("core/docs/standards/documentation/compact_document_authoring_standard.md",)
 
 
 def test_validate_workflow_additional_load_section_rejects_routing_baseline_files() -> None:
@@ -109,7 +109,7 @@ def test_validate_workflow_additional_load_section_rejects_routing_baseline_file
 
 def test_validate_workflow_additional_load_section_rejects_generic_workflow_standards() -> None:
     section = (
-        "- [routing_and_context_loading_standard.md](/docs/standards/workflows/"
+        "- [routing_and_context_loading_standard.md](/core/docs/standards/workflows/"
         "routing_and_context_loading_standard.md): generic workflow baseline.\n"
     )
 
@@ -125,12 +125,12 @@ def test_validate_workflow_additional_load_section_accepts_document_relative_fil
     tmp_path: Path,
 ) -> None:
     workflow_path = tmp_path / "repo" / "core/workflows/modules/example_workflow.md"
-    load_target = tmp_path / "repo" / "docs/references/example_reference.md"
+    load_target = tmp_path / "repo" / "core/docs/references/example_reference.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     load_target.parent.mkdir(parents=True, exist_ok=True)
     load_target.write_text("# Example reference\n", encoding="utf-8")
     section = (
-        "- [example_reference.md](../../../docs/references/example_reference.md): "
+        "- [example_reference.md](../../../core/docs/references/example_reference.md): "
         "task-specific governed reference.\n"
     )
 
@@ -141,7 +141,7 @@ def test_validate_workflow_additional_load_section_accepts_document_relative_fil
         source_path=workflow_path,
     )
 
-    assert result == ("docs/references/example_reference.md",)
+    assert result == ("core/docs/references/example_reference.md",)
 
 
 def test_workflow_index_sync_rejects_heading_after_list_without_blank_line(

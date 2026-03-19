@@ -22,7 +22,7 @@ def _build_temp_repo(tmp_path: Path) -> Path:
 def test_validation_evidence_recorder_builds_schema_valid_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     result = FrontMatterValidationService(loader).validate(
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/metadata/front_matter_standard.md"
     )
     recorder = ValidationEvidenceRecorder(loader)
 
@@ -41,7 +41,7 @@ def test_validation_evidence_recorder_builds_schema_valid_document() -> None:
 def test_validation_evidence_recorder_builds_updated_traceability_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     result = FrontMatterValidationService(loader).validate(
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/metadata/front_matter_standard.md"
     )
     recorder = ValidationEvidenceRecorder(loader)
     document, evidence_id, evidence_relative_path = recorder.build_document(
@@ -74,7 +74,7 @@ def test_validation_evidence_recorder_builds_updated_traceability_document() -> 
 def test_validation_evidence_recorder_writes_temp_outputs(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     result = FrontMatterValidationService(loader).validate(
-        "docs/standards/metadata/front_matter_standard.md"
+        "core/docs/standards/metadata/front_matter_standard.md"
     )
     recorder = ValidationEvidenceRecorder(loader)
     evidence_output = tmp_path / "evidence.json"

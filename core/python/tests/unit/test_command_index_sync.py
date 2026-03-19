@@ -226,19 +226,19 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
     }
 
     assert (
-        implementation_by_doc["docs/commands/core_python/watchtower_core.md"]
+        implementation_by_doc["core/docs/commands/core_python/watchtower_core.md"]
         == "core/python/src/watchtower_core/cli/parser.py"
     )
     assert (
-        implementation_by_doc["docs/commands/core_python/watchtower_core_doctor.md"]
+        implementation_by_doc["core/docs/commands/core_python/watchtower_core_doctor.md"]
         == "core/python/src/watchtower_core/cli/doctor_family.py"
     )
     assert (
-        implementation_by_doc["docs/commands/core_python/watchtower_core_sync_command_index.md"]
+        implementation_by_doc["core/docs/commands/core_python/watchtower_core_sync_command_index.md"]
         == "core/python/src/watchtower_core/cli/sync_family.py"
     )
     assert (
-        implementation_by_doc["docs/commands/core_python/watchtower_core_validate_all.md"]
+        implementation_by_doc["core/docs/commands/core_python/watchtower_core_validate_all.md"]
         == "core/python/src/watchtower_core/cli/validate_family.py"
     )
 

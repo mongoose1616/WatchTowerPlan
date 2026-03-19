@@ -17,4 +17,4 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/plan_runtime/validation/README.md`
-- `docs/commands/core_python/watchtower_core_validate.md`
+- `core/docs/commands/core_python/watchtower_core_validate.md`

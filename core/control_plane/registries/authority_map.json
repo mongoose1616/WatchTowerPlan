@@ -39,7 +39,7 @@
       "artifact_kind": "traceability_index",
       "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
       "preferred_command": "watchtower-core query trace",
-      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_trace.md",
+      "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
         "status",
         "initiative_status",
@@ -91,7 +91,7 @@
       "artifact_kind": "traceability_index",
       "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
       "preferred_command": "watchtower-core query trace",
-      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_trace.md",
+      "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
         "status",
         "initiative_status"
@@ -194,7 +194,7 @@
       "artifact_kind": "artifact_index",
       "canonical_path": "plan/.wt/indexes/artifact_index.json",
       "preferred_command": "watchtower-core query artifacts",
-      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_artifacts.md",
+      "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_artifacts.md",
       "status_fields": [
         "status",
         "review_status"
@@ -227,7 +227,7 @@
       "fallback_paths": [
         "plan/projects/",
         "plan/.wt/indexes/coordination_index.json",
-        "docs/commands/core_python/watchtower_core_query_project_context.md"
+        "core/docs/commands/core_python/watchtower_core_query_project_context.md"
       ],
       "aliases": [
         "project lookup",
@@ -244,12 +244,12 @@
       "artifact_kind": "command_index",
       "canonical_path": "core/control_plane/indexes/commands/command_index.json",
       "preferred_command": "watchtower-core query commands",
-      "preferred_human_path": "docs/commands/core_python/README.md",
+      "preferred_human_path": "core/docs/commands/core_python/README.md",
       "status_fields": [
         "status"
       ],
       "fallback_paths": [
-        "docs/commands/core_python/watchtower_core_query.md",
+        "core/docs/commands/core_python/watchtower_core_query.md",
         "core/control_plane/indexes/repository_paths/repository_path_index.json"
       ],
       "aliases": [
@@ -272,7 +272,7 @@
         "plan/workflows/ROUTING_TABLE.md",
         "core/workflows/modules/",
         "plan/workflows/modules/",
-        "docs/commands/core_python/watchtower_core_route_preview.md"
+        "core/docs/commands/core_python/watchtower_core_route_preview.md"
       ],
       "aliases": [
         "workflow route",
@@ -289,14 +289,15 @@
       "artifact_kind": "standard_index",
       "canonical_path": "core/control_plane/indexes/standards/standard_index.json",
       "preferred_command": "watchtower-core query standards",
-      "preferred_human_path": "docs/standards/README.md",
+      "preferred_human_path": "core/docs/standards/README.md",
       "status_fields": [
         "status",
         "category"
       ],
       "fallback_paths": [
-        "docs/standards/",
-        "docs/references/"
+        "core/docs/standards/",
+        "plan/docs/standards/",
+        "core/docs/references/"
       ],
       "aliases": [
         "standard lookup",
@@ -339,7 +340,7 @@
       "preferred_command": "watchtower-core query paths",
       "preferred_human_path": "README.md",
       "fallback_paths": [
-        "docs/commands/core_python/README.md",
+        "core/docs/commands/core_python/README.md",
         "core/control_plane/indexes/commands/command_index.json"
       ],
       "aliases": [

@@ -16,7 +16,8 @@ applies_to:
   - "core/python/"
   - "core/workflows/modules/"
   - "plan/workflows/modules/"
-  - "docs/standards/"
+  - "core/docs/standards/"
+  - "plan/docs/standards/"
 aliases:
   - "design philosophy"
   - "repository design philosophy"

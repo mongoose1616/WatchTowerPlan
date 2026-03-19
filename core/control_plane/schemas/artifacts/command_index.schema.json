@@ -64,7 +64,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^docs/commands/.+\\.md$"
+      "pattern": "^core/docs/commands/.+\\.md$"
     },
     "stringList": {
       "type": "array",

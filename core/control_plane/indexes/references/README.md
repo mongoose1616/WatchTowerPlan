@@ -1,7 +1,7 @@
 # `core/control_plane/indexes/references`
 
 ## Description
-`This directory holds machine-readable reference indexes for the governed reference corpus under docs/references/. Use it for compact reference lookup, upstream authority discovery, deterministic repository-status maturity signaling, explicit local touchpoint mapping, and reverse citation tracking back into governed docs.`
+`This directory holds machine-readable reference indexes for the governed reference corpus under core/docs/references/. Use it for compact reference lookup, upstream authority discovery, deterministic repository-status maturity signaling, explicit local touchpoint mapping, and reverse citation tracking back into governed docs.`
 
 ## Files
 | Path | Description |

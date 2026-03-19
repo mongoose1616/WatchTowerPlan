@@ -1,0 +1,131 @@
+---
+id: "std.data_contracts.validation_evidence"
+title: "Validation Evidence Standard"
+summary: "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "validation_evidence"
+owner: "repository_maintainer"
+updated_at: "2026-03-19T08:21:14Z"
+audience: "shared"
+authority: "authoritative"
+---
+
+# Validation Evidence Standard
+
+## Summary
+This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.
+
+## Purpose
+- Provide durable machine-readable records of validation outcomes tied to traces, acceptance items, validators, and governed artifacts.
+- Keep validation history reviewable without turning runtime logs into long-lived control-plane state.
+- Establish the downstream half of the trace chain after initiative capture, design, implementation planning, and execution.
+
+## Scope
+- Applies to validation-evidence record artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
+- Covers placement, required fields, result vocabulary, and trace-link expectations.
+- Does not define validation rules or validator identity; those remain in standards and registries.
+- Does not define mutable runtime event streams or transient execution logs.
+
+## Use When
+- Recording durable evidence that acceptance, schema, or trace-related validation checks were performed.
+- Capturing a reviewable validation result that should remain linked to a traced initiative.
+- Reviewing whether a validation outcome belongs in a committed retained record or should remain transient runtime output.
+
+## Related Standards and Sources
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [acceptance_contract_standard.md](/plan/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/ledgers/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
+## Guidance
+- Store durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
+- Use JSON for published validation-evidence artifacts.
+- Treat validation evidence as retained historical output, not mutable current-state truth.
+- Every evidence artifact should publish:
+  - `trace_id`
+  - a stable `evidence_id`
+  - an `overall_result`
+  - `recorded_at`
+  - covered acceptance IDs when acceptance is in scope
+  - validator IDs or explicit check methods when known
+  - the subject paths or artifact IDs that were checked
+- Use validation-result vocabulary such as `passed`, `failed`, `warning`, and `not_applicable` for evidence results.
+- Do not reuse lifecycle-status fields to describe validation outcomes.
+- Prefer readable deterministic evidence IDs for durable committed evidence artifacts.
+- Use UUIDs only later if the repository starts storing high-volume generated run instances rather than a curated evidence record family.
+- Treat `related_paths` and check-level `subject_paths` as repo-local paths that should resolve on disk after the same change set lands.
+- When governed task or planning paths move, update affected evidence path fields in the same change set so durable evidence does not retain stale targets.
+
+## Structure or Data Model
+### Root artifact fields
+| Field | Requirement | Notes |
+|---|---|---|
+| `$schema` | Required | Use the published schema identifier for the validation-evidence artifact family. |
+| `id` | Required | Stable evidence artifact identifier. |
+| `title` | Required | Human-readable evidence title. |
+| `status` | Required | Lifecycle status of the evidence artifact record itself. |
+| `trace_id` | Required | Shared trace identifier. |
+| `overall_result` | Required | Overall validation outcome for the evidence artifact. |
+| `recorded_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ` for when the evidence was recorded. |
+| `source_surface_paths` | Optional | Source surfaces whose acceptance or planning state the evidence covers. |
+| `source_acceptance_contract_ids` | Optional | Acceptance contracts materially referenced by the evidence artifact. |
+| `checks` | Required | Array of validation check records. |
+| `related_paths` | Optional | Additional high-signal repository paths related to the evidence artifact. |
+| `notes` | Optional | Short artifact-level note. |
+
+### Check entry fields
+| Field | Requirement | Notes |
+|---|---|---|
+| `check_id` | Required | Stable identifier for the check record within the evidence artifact. |
+| `title` | Required | Human-readable check title. |
+| `result` | Required | Use the validation-result vocabulary. |
+| `subject_paths` | Optional | Concrete repository paths covered by the check. |
+| `subject_ids` | Optional | Artifact or planning IDs covered by the check. |
+| `validator_id` | Optional | Stable validator identifier when a cataloged validator ran. |
+| `acceptance_ids` | Optional | Acceptance items covered by the check. |
+| `notes` | Optional | Short explanation or outcome note. |
+
+## Process or Workflow
+1. Identify the traced initiative or artifact set being validated.
+2. Record the checks that matter durably for review, closeout, or audit.
+3. Link the evidence to the relevant trace, acceptance items, validators, and subject surfaces.
+4. Validate the evidence artifact against its published schema.
+5. Update the unified traceability index in the same change set when a new durable evidence artifact is added.
+
+## Examples
+- A traceability-baseline evidence record can show that source surfaces, acceptance-contract, and traceability-index links are present and valid.
+- A schema-backed check can record the validator ID and the subject artifact path it validated.
+- A transient local smoke test output does not belong in this retained record family unless it is being promoted to durable evidence.
+
+## Operationalization
+- `Modes`: `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `plan/initiatives/`; `plan/projects/`
+
+## Validation
+- Validation-evidence artifacts should validate against their published schema.
+- `validator_id` values should exist in the validator registry when present.
+- `acceptance_ids` should exist in the linked source acceptance contract or source planning input when present.
+- Reviewers should reject evidence artifacts that act like mutable logs, omit trace links, or blur validation outcome with lifecycle status.
+- Repo-local `related_paths` and `subject_paths` should resolve to live repository paths.
+
+## Change Control
+- Update this standard when the repository changes the durable evidence shape or result vocabulary materially.
+- Update the companion schema and live evidence artifacts in the same change set when this family changes structurally.
+- Update the unified traceability index in the same change set when durable evidence is added, renamed, or removed.
+
+## References
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
+- [README.md](/core/control_plane/ledgers/validation_evidence/README.md)
+
+## Notes
+- This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
+
+## Updated At
+- `2026-03-19T08:21:14Z`

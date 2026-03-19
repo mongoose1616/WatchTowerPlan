@@ -14,7 +14,7 @@ Use this workflow to identify the repository-specific standards, templates, work
 - Applicable standards, templates, workflows, ADRs, and canonical docs already known or likely relevant
 
 ## Additional Files to Load
-- [README.md](/docs/standards/README.md): identifies the governed standards corpus this workflow is expected to scan selectively instead of broad-loading the repository.
+- [README.md](/core/docs/standards/README.md): identifies the governed standards corpus this workflow is expected to scan selectively instead of broad-loading the repository.
 
 ## Workflow
 1. Gather the governing internal documents.

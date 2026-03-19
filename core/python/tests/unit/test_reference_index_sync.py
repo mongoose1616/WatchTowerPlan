@@ -28,7 +28,7 @@ def test_reference_index_sync_builds_schema_valid_document() -> None:
     )
     assert any(
         entry["reference_id"] == "ref.github_collaboration"
-        and "docs/standards/governance/github_collaboration_standard.md"
+        and "plan/docs/standards/governance/github_collaboration_standard.md"
         in entry.get("applied_by_paths", [])
         for entry in entries
     )
@@ -63,8 +63,8 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    _write_repo_file(repo_root / "docs/README.md")
-    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_repo_file(repo_root / "core/docs/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     reference_path.parent.mkdir(parents=True, exist_ok=True)
     reference_path.write_text(
         dedent(
@@ -113,7 +113,7 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
         encoding="utf-8",
     )
 
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     standard_path.parent.mkdir(parents=True, exist_ok=True)
     standard_path.write_text(
         dedent(
@@ -157,7 +157,7 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
 
             ## Operationalization
             - `Modes`: `documentation`
-            - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+            - `Operational Surfaces`: `core/docs/standards/documentation/example_standard.md`
 
             ## Validation
             - Reference-index sync should attribute document-relative applied references.
@@ -181,9 +181,9 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
     entry = document["entries"][0]
     assert entry["reference_id"] == "ref.example"
     assert entry["repository_status"] == "supporting_authority"
-    assert entry["related_paths"] == ["docs/README.md"]
+    assert entry["related_paths"] == ["core/docs/README.md"]
     assert entry["applied_by_paths"] == [
-        "docs/standards/documentation/example_standard.md"
+        "core/docs/standards/documentation/example_standard.md"
     ]
 
 
@@ -191,8 +191,8 @@ def test_reference_index_sync_does_not_count_readme_only_backlinks_as_internal_s
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
-    _write_repo_file(repo_root / "docs/references/README.md")
-    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_repo_file(repo_root / "core/docs/references/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
     reference_path.parent.mkdir(parents=True, exist_ok=True)
     reference_path.write_text(
         dedent(

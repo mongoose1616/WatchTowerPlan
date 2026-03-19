@@ -427,10 +427,10 @@ def test_control_plane_loader_reads_command_index() -> None:
         "core/python/src/watchtower_core/cli/parser.py"
     )
     assert doctor.parent_command_id == "command.watchtower_core"
-    assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
+    assert doctor.doc_path == "core/docs/commands/core_python/watchtower_core_doctor.md"
     assert doctor.implementation_path == "core/python/src/watchtower_core/cli/doctor_family.py"
     assert route_group.parent_command_id == "command.watchtower_core"
-    assert route_group.doc_path == "docs/commands/core_python/watchtower_core_route.md"
+    assert route_group.doc_path == "core/docs/commands/core_python/watchtower_core_route.md"
     assert (
         route_group.implementation_path
         == "core/python/src/watchtower_core/cli/route_family.py"
@@ -438,26 +438,26 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert route_preview.parent_command_id == "command.watchtower_core.route"
     assert (
         route_preview.doc_path
-        == "docs/commands/core_python/watchtower_core_route_preview.md"
+        == "core/docs/commands/core_python/watchtower_core_route_preview.md"
     )
     assert (
         route_preview.implementation_path
         == "core/python/src/watchtower_core/cli/route_family.py"
     )
     assert query_group.parent_command_id == "command.watchtower_core"
-    assert query_group.doc_path == "docs/commands/core_python/watchtower_core_query.md"
+    assert query_group.doc_path == "core/docs/commands/core_python/watchtower_core_query.md"
     assert query_group.implementation_path == "core/python/src/watchtower_core/cli/query_family.py"
     assert query_commands.parent_command_id == "command.watchtower_core.query"
     assert (
         query_commands.doc_path
-        == "docs/commands/core_python/watchtower_core_query_commands.md"
+        == "core/docs/commands/core_python/watchtower_core_query_commands.md"
     )
     assert (
         query_commands.implementation_path
         == "core/python/src/watchtower_core/cli/query_discovery_family.py"
     )
     assert query_paths.default_output_format == "human"
-    assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
+    assert query_paths.doc_path == "core/docs/commands/core_python/watchtower_core_query_paths.md"
     assert (
         query_paths.implementation_path
         == "core/python/src/watchtower_core/cli/query_discovery_family.py"
@@ -465,7 +465,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_foundations.parent_command_id == "command.watchtower_core.query"
     assert (
         query_foundations.doc_path
-        == "docs/commands/core_python/watchtower_core_query_foundations.md"
+        == "core/docs/commands/core_python/watchtower_core_query_foundations.md"
     )
     assert (
         query_foundations.implementation_path
@@ -474,7 +474,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_workflows.parent_command_id == "command.watchtower_core.query"
     assert (
         query_workflows.doc_path
-        == "docs/commands/core_python/watchtower_core_query_workflows.md"
+        == "core/docs/commands/core_python/watchtower_core_query_workflows.md"
     )
     assert (
         query_workflows.implementation_path
@@ -483,7 +483,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_standards.parent_command_id == "command.watchtower_core.query"
     assert (
         query_standards.doc_path
-        == "docs/commands/core_python/watchtower_core_query_standards.md"
+        == "core/docs/commands/core_python/watchtower_core_query_standards.md"
     )
     assert (
         query_standards.implementation_path
@@ -492,7 +492,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_coordination.parent_command_id == "command.watchtower_core.query"
     assert (
         query_coordination.doc_path
-        == "docs/commands/core_python/watchtower_core_query_coordination.md"
+        == "core/docs/commands/core_python/watchtower_core_query_coordination.md"
     )
     assert (
         query_coordination.implementation_path
@@ -501,7 +501,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_authority.parent_command_id == "command.watchtower_core.query"
     assert (
         query_authority.doc_path
-        == "docs/commands/core_python/watchtower_core_query_authority.md"
+        == "core/docs/commands/core_python/watchtower_core_query_authority.md"
     )
     assert (
         query_authority.implementation_path
@@ -510,7 +510,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (
         query_acceptance.doc_path
-        == "docs/commands/core_python/watchtower_core_query_acceptance.md"
+        == "core/docs/commands/core_python/watchtower_core_query_acceptance.md"
     )
     assert (
         query_acceptance.implementation_path
@@ -519,7 +519,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_evidence.parent_command_id == "command.watchtower_core.query"
     assert (
         query_evidence.doc_path
-        == "docs/commands/core_python/watchtower_core_query_evidence.md"
+        == "core/docs/commands/core_python/watchtower_core_query_evidence.md"
     )
     assert (
         query_evidence.implementation_path
@@ -528,7 +528,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_initiatives.parent_command_id == "command.watchtower_core.query"
     assert (
         query_initiatives.doc_path
-        == "docs/commands/core_python/watchtower_core_query_initiatives.md"
+        == "core/docs/commands/core_python/watchtower_core_query_initiatives.md"
     )
     assert (
         query_initiatives.implementation_path
@@ -537,7 +537,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_trace.parent_command_id == "command.watchtower_core.query"
     assert (
         query_trace.doc_path
-        == "docs/commands/core_python/watchtower_core_query_trace.md"
+        == "core/docs/commands/core_python/watchtower_core_query_trace.md"
     )
     assert (
         query_trace.implementation_path
@@ -546,7 +546,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert query_references.parent_command_id == "command.watchtower_core.query"
     assert (
         query_references.doc_path
-        == "docs/commands/core_python/watchtower_core_query_references.md"
+        == "core/docs/commands/core_python/watchtower_core_query_references.md"
     )
     assert (
         query_references.implementation_path
@@ -558,21 +558,21 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert sync_reference_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_reference_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_reference_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_reference_index.md"
     )
     sync_all = command_index.get("command.watchtower_core.sync.all")
     assert sync_all.parent_command_id == "command.watchtower_core.sync"
-    assert sync_all.doc_path == "docs/commands/core_python/watchtower_core_sync_all.md"
+    assert sync_all.doc_path == "core/docs/commands/core_python/watchtower_core_sync_all.md"
     assert sync_all.implementation_path == "core/python/src/watchtower_core/cli/sync_family.py"
     assert sync_coordination.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_coordination.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_coordination.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_coordination.md"
     )
     assert sync_route_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_route_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_route_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_route_index.md"
     )
     assert (
         sync_route_index.implementation_path
@@ -581,39 +581,39 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert sync_initiative_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_initiative_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_initiative_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_initiative_index.md"
     )
     assert sync_initiative_tracking.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_initiative_tracking.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_initiative_tracking.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_initiative_tracking.md"
     )
     assert sync_foundation_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_foundation_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_foundation_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md"
     )
     assert sync_standard_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_standard_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_standard_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_standard_index.md"
     )
     assert sync_workflow_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_workflow_index.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_workflow_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_workflow_index.md"
     )
     assert (
         sync_traceability.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_traceability_index.md"
     )
     assert sync_github_tasks.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_github_tasks.doc_path
-        == "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+        == "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md"
     )
     assert validate_all.parent_command_id == "command.watchtower_core.validate"
-    assert validate_all.doc_path == "docs/commands/core_python/watchtower_core_validate_all.md"
+    assert validate_all.doc_path == "core/docs/commands/core_python/watchtower_core_validate_all.md"
     assert (
         validate_all.implementation_path
         == "core/python/src/watchtower_core/cli/validate_family.py"
@@ -621,22 +621,22 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert validate_acceptance.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_acceptance.doc_path
-        == "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+        == "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
     )
     assert validate_front_matter.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_front_matter.doc_path
-        == "docs/commands/core_python/watchtower_core_validate_front_matter.md"
+        == "core/docs/commands/core_python/watchtower_core_validate_front_matter.md"
     )
     assert validate_document_semantics.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_document_semantics.doc_path
-        == "docs/commands/core_python/watchtower_core_validate_document_semantics.md"
+        == "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md"
     )
     assert validate_artifact.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_artifact.doc_path
-        == "docs/commands/core_python/watchtower_core_validate_artifact.md"
+        == "core/docs/commands/core_python/watchtower_core_validate_artifact.md"
     )
 
 
@@ -705,7 +705,7 @@ def test_control_plane_loader_reads_governed_indexes() -> None:
     assert standard.owner == "repository_maintainer"
     assert ".github/" in standard.applies_to
     assert standard.uses_external_references is True
-    assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
+    assert "core/docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
     assert "workflow" in standard.operationalization_modes
     assert ".github/" in standard.operationalization_paths
     assert workflow.doc_path == "plan/workflows/modules/github_task_sync.md"
@@ -716,7 +716,7 @@ def test_control_plane_loader_reads_governed_indexes() -> None:
     assert "sync" in workflow.trigger_tags
     assert "workflow.task_lifecycle_management" in workflow.companion_workflow_ids
     assert (
-        "docs/standards/governance/github_task_sync_standard.md"
+        "plan/docs/standards/governance/github_task_sync_standard.md"
         in workflow.internal_reference_paths
     )
     for task in task_index.entries:
@@ -818,11 +818,11 @@ def test_control_plane_loader_reads_reference_index() -> None:
     reference_index = loader.load_reference_index()
     entry = reference_index.get("ref.github_collaboration")
 
-    assert entry.doc_path == "docs/references/github_collaboration_reference.md"
+    assert entry.doc_path == "core/docs/references/github_collaboration_reference.md"
     assert entry.uses_external_references is True
     assert "https://docs.github.com/en/rest/issues/issues" in entry.canonical_upstream_urls
     assert (
-        "docs/standards/governance/github_collaboration_standard.md"
+        "plan/docs/standards/governance/github_collaboration_standard.md"
         in entry.applied_by_paths
     )
 
@@ -836,7 +836,7 @@ def test_control_plane_loader_reads_foundation_index() -> None:
     assert entry.doc_path == "core/docs/foundations/engineering_design_principles.md"
     assert entry.authority == "authoritative"
     assert (
-        "docs/standards/engineering/engineering_best_practices_standard.md"
+        "core/docs/standards/engineering/engineering_best_practices_standard.md"
         in entry.applied_by_paths
     )
 

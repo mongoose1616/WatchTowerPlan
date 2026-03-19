@@ -92,7 +92,7 @@
     {
       "family_name": "route_index",
       "path_kind": "rendered_view",
-      "path_pattern": "docs/commands/core_python/watchtower_core_route_preview.md",
+      "path_pattern": "core/docs/commands/core_python/watchtower_core_route_preview.md",
       "entity_shape": "file",
       "visibility": "user",
       "authoritative": false

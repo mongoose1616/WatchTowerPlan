@@ -16,10 +16,10 @@ Use this workflow to create, update, split, unblock, or close initiative-local l
 - Current live task, initiative, readiness, coordination, and traceability surfaces when the task is traced
 
 ## Additional Files to Load
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority model, canonical task-state vocabulary, and same-change rebuild expectations.
-- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable live task lookup surface that must stay aligned with task state.
-- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
-- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
+- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the live task authority model, canonical task-state vocabulary, and same-change rebuild expectations.
+- [task_index_standard.md](/plan/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable live task lookup surface that must stay aligned with task state.
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
+- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
 
 ## Workflow
 1. Confirm the task-management boundary.

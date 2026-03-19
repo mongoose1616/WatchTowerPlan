@@ -24,7 +24,7 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 ## Additional Files to Load
 - [requirements.md](/requirements.md): defines the capture-first execution gate and expected plan workspace structure.
 - [decisions.md](/decisions.md): locks the initiative and task lifecycle rules that implementation planning must respect.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation planning must hand off into.
+- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation planning must hand off into.
 
 ## Workflow
 1. Review the planning inputs.

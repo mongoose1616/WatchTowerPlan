@@ -443,9 +443,11 @@ def test_coordination_index_rejects_missing_coordination_mode() -> None:
 
 def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
     markdown_roots = (
-        REPO_ROOT / "docs/references",
+        REPO_ROOT / "core/docs/references",
         REPO_ROOT / "core/docs/foundations",
-        REPO_ROOT / "docs/standards",
+        REPO_ROOT / "plan/docs/foundations",
+        REPO_ROOT / "core/docs/standards",
+        REPO_ROOT / "plan/docs/standards",
     )
 
     for root in markdown_roots:
@@ -502,7 +504,7 @@ def test_governed_document_front_matter_profiles_validate() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     governed_families = [
         (
-            REPO_ROOT / "docs/references",
+            REPO_ROOT / "core/docs/references",
             {
                 "AGENTS.md",
                 "README.md",
@@ -510,7 +512,14 @@ def test_governed_document_front_matter_profiles_validate() -> None:
             "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
         ),
         (
-            REPO_ROOT / "docs/standards",
+            REPO_ROOT / "core/docs/standards",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
+        ),
+        (
+            REPO_ROOT / "plan/docs/standards",
             {
                 "README.md",
             },
@@ -518,6 +527,13 @@ def test_governed_document_front_matter_profiles_validate() -> None:
         ),
         (
             REPO_ROOT / "core/docs/foundations",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+        ),
+        (
+            REPO_ROOT / "plan/docs/foundations",
             {
                 "README.md",
             },
@@ -537,7 +553,7 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
 
     standard_front_matter = load_front_matter(
         REPO_ROOT
-        / "docs/standards/data_contracts/task_index_standard.md"
+        / "plan/docs/standards/data_contracts/task_index_standard.md"
     )
     standard_front_matter["updated_at"] = "2026-03-09T05:06:54-04:00"
     with pytest.raises(ValidationError):

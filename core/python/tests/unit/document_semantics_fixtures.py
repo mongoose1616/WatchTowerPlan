@@ -119,7 +119,7 @@ def write_standard_fixture(
     reference_target: Path,
     blank_line_before_guidance: bool = True,
     operationalization_surfaces: tuple[str, ...] = (
-        "docs/standards/documentation/example_standard.md",
+        "core/docs/standards/documentation/example_standard.md",
     ),
 ) -> None:
     """Write one standard fixture with configurable formatting and path coverage."""
@@ -235,7 +235,7 @@ def write_standard_reference_rule_fixture(
 
         ## Operationalization
         - `Modes`: `documentation`
-        - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+        - `Operational Surfaces`: `core/docs/standards/documentation/example_standard.md`
 
         ## Validation
         - Standard semantic validation should stay aligned with standard-index sync.

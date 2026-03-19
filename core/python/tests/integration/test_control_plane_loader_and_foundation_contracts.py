@@ -60,9 +60,9 @@ def test_foundation_index_exposes_engineering_stack_reference_metadata() -> None
     foundation = loader.load_foundation_index().get("foundation.engineering_stack_direction")
 
     assert foundation.uses_external_references is True
-    assert "docs/references/uv_reference.md" in foundation.reference_doc_paths
-    assert "docs/references/json_schema_2020_12_reference.md" in foundation.reference_doc_paths
-    assert "docs/references/pytest_reference.md" in foundation.reference_doc_paths
+    assert "core/docs/references/uv_reference.md" in foundation.reference_doc_paths
+    assert "core/docs/references/json_schema_2020_12_reference.md" in foundation.reference_doc_paths
+    assert "core/docs/references/pytest_reference.md" in foundation.reference_doc_paths
     assert foundation.external_reference_urls
 
 
@@ -92,50 +92,50 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
         REPO_ROOT / "core/control_plane/indexes/foundations/README.md"
     ).read_text(encoding="utf-8")
 
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
-    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
+    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
         foundations_readme
     )
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
     assert "core/docs/foundations/README.md" in foundation_index_readme
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_index_readme
     )
-    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
         foundation_index_readme
     )
 
 
 def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
-    markdown = (REPO_ROOT / "docs/commands/core_python/README.md").read_text(encoding="utf-8")
+    markdown = (REPO_ROOT / "core/docs/commands/core_python/README.md").read_text(encoding="utf-8")
 
-    assert "docs/commands/core_python/watchtower_core_query.md" in markdown
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "docs/commands/core_python/watchtower_core_sync.md" in markdown
-    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_query.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_sync.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
 
 
 def test_foundation_index_standard_operationalizes_foundation_family_surfaces() -> None:
     markdown = (
-        REPO_ROOT / "docs/standards/data_contracts/foundation_index_standard.md"
+        REPO_ROOT / "core/docs/standards/data_contracts/foundation_index_standard.md"
     ).read_text(encoding="utf-8")
 
     assert "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py" in markdown
     assert "core/python/src/watchtower_core/plan_runtime/query/foundations.py" in markdown
-    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
+    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 
 def test_foundation_document_standard_operationalizes_governed_docs_only() -> None:
     markdown = (
-        REPO_ROOT / "docs/standards/documentation/foundation_md_standard.md"
+        REPO_ROOT / "core/docs/standards/documentation/foundation_md_standard.md"
     ).read_text(encoding="utf-8")
     operationalization = extract_sections(markdown)["Operationalization"]
 
     expected_paths = sorted(
         path.relative_to(REPO_ROOT).as_posix()
-        for path in (REPO_ROOT / "docs" / "foundations").glob("*.md")
+        for path in (REPO_ROOT / "core" / "docs" / "foundations").glob("*.md")
         if path.name != "README.md"
     )
 
@@ -168,7 +168,7 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
 
 def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     query_docs = sorted(
-        (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_query_*.md")
+        (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_query_*.md")
     )
     reusable_core_query_docs = {
         "watchtower_core_query_authority.md",
@@ -183,7 +183,7 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
             assert "core/python/src/watchtower_core/query/" not in markdown, path
 
     sync_docs = sorted(
-        (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_sync_*.md")
+        (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_sync_*.md")
     )
     for path in sync_docs:
         markdown = path.read_text(encoding="utf-8")
@@ -192,10 +192,10 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
 
 def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     workspace_standard = (
-        REPO_ROOT / "docs/standards/engineering/python_workspace_standard.md"
+        REPO_ROOT / "core/docs/standards/engineering/python_workspace_standard.md"
     ).read_text(encoding="utf-8")
     python_code_design_standard = (
-        REPO_ROOT / "docs/standards/engineering/python_code_design_standard.md"
+        REPO_ROOT / "core/docs/standards/engineering/python_code_design_standard.md"
     ).read_text(encoding="utf-8")
     query_readme = (
         REPO_ROOT / "core/python/src/watchtower_core/query/README.md"
@@ -215,10 +215,10 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     workspace_agents = (REPO_ROOT / "core/python/AGENTS.md").read_text(encoding="utf-8")
     workspace_readme = (REPO_ROOT / "core/python/README.md").read_text(encoding="utf-8")
     best_practices_standard = (
-        REPO_ROOT / "docs/standards/engineering/engineering_best_practices_standard.md"
+        REPO_ROOT / "core/docs/standards/engineering/engineering_best_practices_standard.md"
     ).read_text(encoding="utf-8")
 
-    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_standard
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_standard
     assert "Keep package boundaries explicit:" in python_code_design_standard
     assert "`control_plane/` owns reusable loaders" in python_code_design_standard
     assert "`plan_runtime/` owns only residual repository-local orchestration" in (
@@ -241,32 +241,32 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "| `routing/` | `reusable_core` |" in package_readme
     assert "| `workflow_execution/` | `reusable_core` |" in package_readme
     assert "Residual WatchTowerPlan-specific orchestration" in package_readme
-    assert "docs/standards/engineering/python_code_design_standard.md" in package_readme
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in package_readme
     assert "Residual WatchTowerPlan-specific orchestration" in plan_runtime_readme
     assert "Repository-local sync services" in plan_runtime_sync_readme
     assert "Shrink Rules" in plan_runtime_sync_readme
     assert (
-        "docs/standards/engineering/python_code_design_standard.md"
+        "core/docs/standards/engineering/python_code_design_standard.md"
         in plan_runtime_sync_readme
     )
     assert "human_surface_policy.py" in control_plane_readme
     assert "retention_policy.py" in control_plane_readme
-    assert "docs/standards/engineering/python_code_design_standard.md" in control_plane_readme
-    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_agents
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in control_plane_readme
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_agents
     assert "core/python/src/watchtower_core/rebuild/README.md" in workspace_readme
     assert "core/python/src/watchtower_core/routing/README.md" in workspace_readme
     assert "core/python/src/watchtower_core/workflow_execution/README.md" in workspace_readme
-    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_readme
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_readme
     assert "core/python/src/watchtower_core/plan_runtime/query/" in best_practices_standard
-    assert "docs/standards/engineering/python_code_design_standard.md" in (
+    assert "core/docs/standards/engineering/python_code_design_standard.md" in (
         best_practices_standard
     )
 
     for relative_path in (
-        "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md",
-        "docs/references/github_collaboration_reference.md",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "plan/docs/standards/governance/github_collaboration_standard.md",
+        "plan/docs/standards/governance/github_task_sync_standard.md",
+        "core/docs/references/github_collaboration_reference.md",
+        "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md",
     ):
         markdown = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
         assert "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py" in markdown

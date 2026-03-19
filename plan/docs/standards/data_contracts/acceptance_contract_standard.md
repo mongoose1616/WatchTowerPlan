@@ -1,0 +1,123 @@
+---
+id: "std.data_contracts.acceptance_contract"
+title: "Acceptance Contract Standard"
+summary: "This standard defines machine-readable acceptance contracts stored under `core/control_plane/contracts/acceptance/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "acceptance_contract"
+owner: "repository_maintainer"
+updated_at: "2026-03-19T08:21:14Z"
+audience: "shared"
+authority: "authoritative"
+---
+
+# Acceptance Contract Standard
+
+## Summary
+This standard defines machine-readable acceptance contracts stored under `core/control_plane/contracts/acceptance/`.
+
+## Purpose
+- Provide a deterministic machine-readable acceptance surface derived from durable initiative acceptance criteria.
+- Let Python helpers, validators, and workflows load acceptance expectations without parsing initiative prose directly.
+- Keep human planning authority in initiative-local authored inputs while giving the control plane an explicit acceptance boundary.
+
+## Scope
+- Applies to acceptance contract artifacts stored under `core/control_plane/contracts/acceptance/`.
+- Covers placement, required fields, synchronization with initiative-authored acceptance inputs, and update expectations.
+- Does not replace initiative briefs or other durable guidance as the human source of truth for scope, goals, or rationale.
+- Does not define validation evidence or the unified traceability index.
+
+## Use When
+- An initiative package publishes durable acceptance criteria that need machine-readable loading.
+- Python or workflow automation needs a stable acceptance surface for validation or closeout.
+- Reviewing whether acceptance expectations are still only implicit in prose.
+
+## Related Standards and Sources
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [format_selection_standard.md](/core/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/contracts/acceptance/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
+## Guidance
+- Keep the human source of acceptance intent in the initiative brief or promoted durable guidance.
+- Use acceptance contracts as the machine-readable rendered surface of durable acceptance criteria.
+- Store published acceptance contracts under `core/control_plane/contracts/acceptance/`.
+- Use JSON for published acceptance contracts.
+- Use one contract per traced initiative or other durable change boundary.
+- Every contract should publish:
+  - `trace_id`
+  - a stable `contract_id`
+  - the source acceptance surface path in `source_surface_path`
+  - the durable `acceptance_id` values it covers
+  - concrete validation targets, related paths, or required validators when those are known
+- Prefer stable readable identifiers such as `contract.acceptance.governed_acceptance_example`.
+- Update the acceptance contract in the same change set when the source initiative input changes acceptance IDs or materially changes acceptance meaning.
+- Keep acceptance contracts focused on what must be accepted, not on recording historical validation results.
+- Treat `validation_targets` and `related_paths` as repo-local paths that should resolve on disk after the same change set lands.
+- When governed task or planning paths move, update affected acceptance-contract path fields in the same change set so acceptance validation stays deterministic.
+
+## Structure or Data Model
+### Root artifact fields
+| Field | Requirement | Notes |
+|---|---|---|
+| `$schema` | Required | Use the published schema identifier for the acceptance-contract artifact family. |
+| `id` | Required | Stable identifier for the acceptance contract artifact. |
+| `title` | Required | Human-readable contract title. |
+| `status` | Required | Use the governed lifecycle vocabulary. |
+| `trace_id` | Required | Shared trace identifier for the initiative. |
+| `source_surface_path` | Required | Stable repository-relative path to the source surface that owns the acceptance intent. |
+| `entries` | Required | Array of acceptance records. |
+
+### Acceptance entry fields
+| Field | Requirement | Notes |
+|---|---|---|
+| `acceptance_id` | Required | Stable acceptance identifier from the source acceptance surface. |
+| `summary` | Required | Concise machine-readable statement of the acceptance item. |
+| `source_requirement_ids` | Optional | Requirement IDs that materially justify the acceptance item. |
+| `required_validator_ids` | Optional | Validators expected to support or prove the acceptance item. |
+| `validation_targets` | Optional | Concrete repository surfaces or artifacts that should be checked. |
+| `related_paths` | Optional | High-signal paths relevant to the acceptance item. |
+| `notes` | Optional | Short contract-specific note. |
+
+## Process or Workflow
+1. Identify the initiative-authored or promoted source surface that publishes durable acceptance criteria.
+2. Materialize or update the acceptance contract under `core/control_plane/contracts/acceptance/`.
+3. Keep the contract aligned with the source `acceptance_id` values, upstream `trace_id`, and published `source_surface_path`.
+4. Validate the contract against its published schema.
+5. Update traceability surfaces and any affected evidence expectations in the same change set.
+
+## Examples
+- An initiative package that names `ac.governed_acceptance_example.001` should publish that same ID in the matching acceptance contract.
+- A validator-backed acceptance item can list the expected validator IDs instead of forcing downstream tooling to infer them from prose.
+- A temporary planning note with no durable acceptance IDs does not need an acceptance contract.
+
+## Operationalization
+- `Modes`: `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `plan/initiatives/`; `plan/projects/`
+
+## Validation
+- The acceptance contract should validate against its published artifact schema.
+- Every `acceptance_id` in the contract should exist in the source acceptance surface.
+- Reviewers should reject acceptance contracts that drift materially from the source acceptance surface or invent acceptance IDs not present upstream.
+- `trace_id`, `source_surface_path`, and related validator references should stay aligned with the planning and registry surfaces.
+- Repo-local `validation_targets` and `related_paths` should resolve to live repository paths.
+
+## Change Control
+- Update this standard when the repository changes how acceptance contracts are shaped or when acceptance becomes part of a broader contract family.
+- Update the companion schema and live acceptance contracts in the same change set when this family changes structurally.
+- Update the source initiative input, traceability surfaces, and related evidence expectations in the same change set when acceptance meaning changes materially.
+
+## References
+- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
+- [README.md](/core/control_plane/contracts/acceptance/README.md)
+
+## Notes
+- This family exists so Python and workflow automation can consume acceptance expectations consistently.
+- It should stay smaller and more structured than the source initiative prose.
+
+## Updated At
+- `2026-03-19T08:21:14Z`

@@ -21,7 +21,7 @@ Use this workflow to define design options, recommend a technical design, and ca
 ## Additional Files to Load
 - [requirements.md](/requirements.md): defines the live initiative package model and the intended planning-to-execution boundary.
 - [decisions.md](/decisions.md): locks the hard-cutover package shape and the execution-readiness gate.
-- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): use when the design flow needs a durable decision note rather than silent rationale.
+- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md): use when the design flow needs a durable decision note rather than silent rationale.
 
 ## Workflow
 1. Define design options and tradeoffs.

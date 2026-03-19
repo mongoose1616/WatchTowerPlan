@@ -14,7 +14,8 @@ authority: "authoritative"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
-  - "docs/standards/"
+  - "core/docs/standards/"
+  - "plan/docs/standards/"
 aliases:
   - "technology stack"
   - "stack direction"
@@ -37,15 +38,15 @@ Today the repository is still documentation-heavy, but it also has a substantive
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
-| Markdown | Primary human-facing authoring format | `docs/**`, `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
+| Markdown | Primary human-facing authoring format | `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
 | JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/ledgers/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
-| YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `docs/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
+| YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, and `plan/workflows/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
 | Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/pyproject.toml` and `core/python/uv.lock`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
 | Hatchling | Python build backend | `core/python/pyproject.toml` | Keeps packaging minimal and standard. |
 | pytest | Test runner baseline for Python code | `core/python/pyproject.toml`, `core/python/tests/**` | Standard test surface for the consolidated Python workspace. |
 
-- Durable documentation lives under `docs/`, `core/docs/`, and `plan/docs/` according to ownership.
+- Durable documentation lives under `core/docs/` and `plan/docs/` according to ownership.
 - Routed task behavior lives under `core/workflows/` and `plan/workflows/`.
 - Shared implementation assets live under `core/`.
 
@@ -86,18 +87,18 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [repository_scope.md](repository_scope.md)
 - [engineering_design_principles.md](engineering_design_principles.md)
 - [product_direction.md](product_direction.md)
-- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
-- [json_schema_2020_12_reference.md](/docs/references/json_schema_2020_12_reference.md)
-- [uv_reference.md](/docs/references/uv_reference.md)
-- [pytest_reference.md](/docs/references/pytest_reference.md)
-- [ruff_reference.md](/docs/references/ruff_reference.md)
-- [mypy_reference.md](/docs/references/mypy_reference.md)
-- [pydantic_strict_mode_reference.md](/docs/references/pydantic_strict_mode_reference.md)
-- [opa_rego_reference.md](/docs/references/opa_rego_reference.md)
-- [cyclonedx_1_7_reference.md](/docs/references/cyclonedx_1_7_reference.md)
-- [sigstore_reference.md](/docs/references/sigstore_reference.md)
-- [slsa_1_1_reference.md](/docs/references/slsa_1_1_reference.md)
-- [in_toto_reference.md](/docs/references/in_toto_reference.md)
+- [format_selection_standard.md](/core/docs/standards/data_contracts/format_selection_standard.md)
+- [json_schema_2020_12_reference.md](/core/docs/references/json_schema_2020_12_reference.md)
+- [uv_reference.md](/core/docs/references/uv_reference.md)
+- [pytest_reference.md](/core/docs/references/pytest_reference.md)
+- [ruff_reference.md](/core/docs/references/ruff_reference.md)
+- [mypy_reference.md](/core/docs/references/mypy_reference.md)
+- [pydantic_strict_mode_reference.md](/core/docs/references/pydantic_strict_mode_reference.md)
+- [opa_rego_reference.md](/core/docs/references/opa_rego_reference.md)
+- [cyclonedx_1_7_reference.md](/core/docs/references/cyclonedx_1_7_reference.md)
+- [sigstore_reference.md](/core/docs/references/sigstore_reference.md)
+- [slsa_1_1_reference.md](/core/docs/references/slsa_1_1_reference.md)
+- [in_toto_reference.md](/core/docs/references/in_toto_reference.md)
 
 ## Updated At
 - `2026-03-19T05:30:00Z`

@@ -30,7 +30,7 @@ def test_document_semantics_validation_auto_selects_workflow_validator() -> None
 def test_document_semantics_validation_auto_selects_standard_validator() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
-    result = service.validate("docs/standards/documentation/workflow_md_standard.md")
+    result = service.validate("core/docs/standards/documentation/workflow_md_standard.md")
 
     assert result.passed is True
     assert result.validator_id == "validator.documentation.standard_semantics"
@@ -41,16 +41,16 @@ def test_document_semantics_validation_rejects_unsupported_path_without_validato
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
     with pytest.raises(ValidationSelectionError):
-        service.validate("docs/commands/core_python/watchtower_core.md")
+        service.validate("core/docs/commands/core_python/watchtower_core.md")
 
 
 def test_document_semantics_validation_rejects_heading_after_list_without_blank_line(
     tmp_path: Path,
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
-    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
-    related_target = repo_root / "docs/references/example_reference.md"
-    reference_target = repo_root / "docs/templates/supporting_template.md"
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    related_target = repo_root / "core/docs/references/example_reference.md"
+    reference_target = repo_root / "core/docs/templates/supporting_template.md"
     write_repo_file(related_target)
     write_repo_file(reference_target)
     write_standard_fixture(
@@ -61,7 +61,7 @@ def test_document_semantics_validation_rejects_heading_after_list_without_blank_
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
-    result = service.validate("docs/standards/documentation/example_standard.md")
+    result = service.validate("core/docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
     assert result.issue_count == 1
@@ -117,7 +117,7 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
 ) -> None:
     repo_root = copy_control_plane_repo(tmp_path)
     workflow_path = repo_root / "core/workflows/modules/example_workflow.md"
-    missing_target = repo_root / "docs/references/missing_reference.md"
+    missing_target = repo_root / "core/docs/references/missing_reference.md"
     workflow_path.parent.mkdir(parents=True, exist_ok=True)
     workflow_path.write_text(
         dedent(

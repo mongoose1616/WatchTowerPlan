@@ -89,10 +89,10 @@ def collect_standard_reference_metadata(
         ),
     )
     reference_doc_paths = tuple(
-        value for value in internal_reference_paths if value.startswith("docs/references/")
+        value for value in internal_reference_paths if value.startswith("core/docs/references/")
     )
     applied_reference_doc_paths = tuple(
-        value for value in applied_reference_paths if value.startswith("docs/references/")
+        value for value in applied_reference_paths if value.startswith("core/docs/references/")
     )
 
     direct_external_urls = ordered_unique(
@@ -124,7 +124,7 @@ def collect_standard_reference_metadata(
     if direct_external_urls and not reference_doc_paths:
         raise ValueError(
             f"{relative_path} cites external authority directly but does not cite a "
-            "governed local reference doc under docs/references/."
+            "governed local reference doc under core/docs/references/."
         )
     return StandardReferenceMetadata(
         internal_reference_paths=internal_reference_paths,

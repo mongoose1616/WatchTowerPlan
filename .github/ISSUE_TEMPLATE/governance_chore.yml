@@ -37,7 +37,7 @@ body:
       label: Affected Surfaces
       description: Paths, commands, standards, or indexes likely to change.
       placeholder: |
-        docs/standards/governance/
+        plan/docs/standards/governance/
         core/workflows/ROUTING_TABLE.md
         plan/workflows/ROUTING_TABLE.md
         core/control_plane/indexes/

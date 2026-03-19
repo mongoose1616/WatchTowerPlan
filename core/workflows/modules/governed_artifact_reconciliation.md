@@ -19,9 +19,9 @@ Use this workflow to reconcile schema-backed governed artifacts with their compa
 - Known discrepancies, resolution constraints, or open questions
 
 ## Additional Files to Load
-- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): defines the schema-backed artifact constraints and same-change-set expectations this workflow should reconcile.
-- [watchtower_core_validate_artifact.md](/docs/commands/core_python/watchtower_core_validate_artifact.md): documents the command surface for schema-backed governed-artifact validation.
-- [watchtower_core_sync_all.md](/docs/commands/core_python/watchtower_core_sync_all.md): documents the broad rebuild path when multiple governed indexes or catalogs changed together.
+- [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): defines the schema-backed artifact constraints and same-change-set expectations this workflow should reconcile.
+- [watchtower_core_validate_artifact.md](/core/docs/commands/core_python/watchtower_core_validate_artifact.md): documents the command surface for schema-backed governed-artifact validation.
+- [watchtower_core_sync_all.md](/core/docs/commands/core_python/watchtower_core_sync_all.md): documents the broad rebuild path when multiple governed indexes or catalogs changed together.
 
 ## Workflow
 1. Define the artifact-family boundary.

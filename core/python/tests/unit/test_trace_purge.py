@@ -26,7 +26,7 @@ def _build_purge_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
-    (repo_root / "docs/standards/governance").mkdir(parents=True, exist_ok=True)
+    (repo_root / "plan/docs/standards/governance").mkdir(parents=True, exist_ok=True)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id="trace.example_live_purge_fixture",
@@ -59,7 +59,7 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     task_path = f"{initiative_root}/.wt/tasks/example_purge_cleanup/task.json"
     task_event_path = f"{initiative_root}/.wt/tasks/example_purge_cleanup/events/0001_created.json"
     initiative_state_path = f"{initiative_root}/.wt/initiative.json"
-    authority_path = "docs/standards/governance/example_retained_authority.md"
+    authority_path = "plan/docs/standards/governance/example_retained_authority.md"
     contract_path = "core/control_plane/contracts/acceptance/example_purge_acceptance.json"
     evidence_path = (
         "core/control_plane/ledgers/validation_evidence/"
@@ -336,7 +336,7 @@ def test_trace_purge_writes_ledger_and_deletes_package(tmp_path: Path) -> None:
         assert not (repo_root / relative_path).exists()
 
     assert not (repo_root / "plan/initiatives/example_purge").exists()
-    assert (repo_root / "docs/standards/governance/example_retained_authority.md").exists()
+    assert (repo_root / "plan/docs/standards/governance/example_retained_authority.md").exists()
 
     purge_ledger_path = (
         repo_root / "core/control_plane/ledgers/purges/example_purge_purge_record.json"
@@ -345,7 +345,7 @@ def test_trace_purge_writes_ledger_and_deletes_package(tmp_path: Path) -> None:
     purge_document = json.loads(purge_ledger_path.read_text(encoding="utf-8"))
     assert purge_document["trace_id"] == "trace.example_purge"
     assert purge_document["surviving_authority_paths"] == [
-        "docs/standards/governance/example_retained_authority.md"
+        "plan/docs/standards/governance/example_retained_authority.md"
     ]
 
 
@@ -354,7 +354,7 @@ def test_trace_purge_rejects_surviving_external_references(tmp_path: Path) -> No
     _configure_trace_fixture(repo_root)
     _write_text(
         repo_root,
-        "docs/standards/governance/blocking_reference.md",
+        "plan/docs/standards/governance/blocking_reference.md",
         "See plan/initiatives/example_purge/plan.md before deleting it.\n",
     )
 
@@ -370,7 +370,7 @@ def test_trace_purge_rejects_surviving_external_references(tmp_path: Path) -> No
     else:
         raise AssertionError("Expected purge guard to reject surviving external references.")
 
-    assert "docs/standards/governance/blocking_reference.md" in message
+    assert "plan/docs/standards/governance/blocking_reference.md" in message
 
 
 def test_trace_purge_prefers_explicit_authority_paths_over_defaults(tmp_path: Path) -> None:
@@ -384,13 +384,13 @@ def test_trace_purge_prefers_explicit_authority_paths_over_defaults(tmp_path: Pa
     result = service.purge(
         trace_id="trace.example_purge",
         retained_authority_paths=(
-            "docs/standards/governance/example_retained_authority.md",
+            "plan/docs/standards/governance/example_retained_authority.md",
         ),
         write=False,
     )
 
     assert result.retained_authority_paths == (
-        "docs/standards/governance/example_retained_authority.md",
+        "plan/docs/standards/governance/example_retained_authority.md",
     )
 
 
@@ -412,7 +412,7 @@ def test_trace_purge_rejects_duplicate_ledger_records(tmp_path: Path) -> None:
             "closure_reason": "Completed and ready for purge testing.",
             "summary": "Fixture duplicate ledger record.",
             "surviving_authority_paths": [
-                "docs/standards/governance/example_retained_authority.md"
+                "plan/docs/standards/governance/example_retained_authority.md"
             ],
             "purged_paths": [
                 "plan/initiatives/example_purge/plan.md"

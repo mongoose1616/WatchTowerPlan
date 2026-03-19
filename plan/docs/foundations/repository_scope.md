@@ -74,7 +74,7 @@ This document is authoritative for current repository ownership. It does not rep
 - Start with [README.md](/README.md) when the main need is root routing.
 - Start with [plan_overview.md](/plan/plan_overview.md) when the main need is current live work state, overall repository coherence, or the next active plan-domain action.
 - Start with [README.md](README.md) when the main need is the foundations corpus and the intended read order across these guiding documents.
-- Start with [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
+- Start with [watchtower_core_query_foundations.md](/core/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
 
 ## Boundaries That Must Hold
 

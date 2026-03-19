@@ -434,7 +434,7 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "docs/references/**"
+        "core/docs/references/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -458,7 +458,8 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "docs/standards/**"
+        "core/docs/standards/**",
+        "plan/docs/standards/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -483,7 +484,7 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "docs/references/**"
+        "core/docs/references/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
@@ -512,7 +513,8 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "docs/standards/**"
+        "core/docs/standards/**",
+        "plan/docs/standards/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"

@@ -202,7 +202,7 @@ def test_artifact_validation_rejects_unsupported_path_without_validator() -> Non
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
     with pytest.raises(ValidationSelectionError):
-        service.validate("docs/commands/core_python/watchtower_core.md")
+        service.validate("core/docs/commands/core_python/watchtower_core.md")
 
 
 def test_artifact_validation_reports_invalid_json(tmp_path: Path) -> None:

@@ -49,9 +49,9 @@ WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
     "core/workflows/ROUTING_TABLE.md",
     "plan/workflows/ROUTING_TABLE.md",
     "core/workflows/modules/core.md",
-    "docs/standards/workflows/workflow_design_standard.md",
-    "docs/standards/workflows/routing_and_context_loading_standard.md",
-    "docs/standards/documentation/workflow_md_standard.md",
+    "core/docs/standards/workflows/workflow_design_standard.md",
+    "core/docs/standards/workflows/routing_and_context_loading_standard.md",
+    "core/docs/standards/documentation/workflow_md_standard.md",
 }
 WORKFLOW_TRIGGER_TAG_STOPWORDS = {
     "a",
@@ -273,7 +273,7 @@ def load_workflow_document_with_reference_map(
 
     summary = extract_first_paragraph(sections["Purpose"])
     reference_doc_paths = tuple(
-        value for value in internal_reference_paths if value.startswith("docs/references/")
+        value for value in internal_reference_paths if value.startswith("core/docs/references/")
     )
 
     direct_external_urls: tuple[str, ...] = ()

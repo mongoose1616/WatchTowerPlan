@@ -14,4 +14,4 @@ Repo-local Markdown semantic validators plus WatchTowerPlan-specific validation-
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`
-- `docs/commands/core_python/watchtower_core_validate.md`
+- `core/docs/commands/core_python/watchtower_core_validate.md`

@@ -85,7 +85,7 @@ def test_query_foundations_supports_reference_path_filter(capsys) -> None:
             "query",
             "foundations",
             "--reference-path",
-            "docs/references/uv_reference.md",
+            "core/docs/references/uv_reference.md",
         ],
     )
 
@@ -212,7 +212,7 @@ def test_query_references_supports_reverse_citation_filters(capsys) -> None:
             "query",
             "references",
             "--applied-by-path",
-            "docs/standards/governance/github_collaboration_standard.md",
+            "plan/docs/standards/governance/github_collaboration_standard.md",
         ],
     )
 
@@ -266,7 +266,7 @@ def test_query_standards_supports_json_output(capsys) -> None:
             "query",
             "standards",
             "--reference-path",
-            "docs/references/github_collaboration_reference.md",
+            "core/docs/references/github_collaboration_reference.md",
         ],
     )
 
@@ -313,7 +313,7 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
             "query",
             "standards",
             "--operationalization-path",
-            "docs/templates/standard_document_template.md",
+            "core/docs/templates/standard_document_template.md",
         ],
     )
 
@@ -322,7 +322,7 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
     assert payload["status"] == "ok"
     assert any(
         entry["standard_id"] == "std.documentation.standard_md"
-        and "docs/templates/standard_document_template.md"
+        and "core/docs/templates/standard_document_template.md"
         in entry["operationalization_paths"]
         for entry in payload["results"]
     )
@@ -333,20 +333,20 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
 ) -> None:
     cases = (
         (
-            "docs/templates/documentation_template.md",
+            "core/docs/templates/documentation_template.md",
             "std.documentation.compact_document_authoring",
         ),
         (
-            "docs/references/AGENTS.md",
+            "core/docs/references/AGENTS.md",
             "std.documentation.agents_md",
         ),
         ("plan/README.md", "std.documentation.readme_md"),
         (
-            "docs/references/commonmark_reference.md",
+            "core/docs/references/commonmark_reference.md",
             "std.documentation.reference_md",
         ),
         (
-            "docs/standards/documentation/readme_md_standard.md",
+            "core/docs/standards/documentation/readme_md_standard.md",
             "std.documentation.standard_md",
         ),
         (
@@ -370,11 +370,11 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.foundation_index",
         ),
         (
-            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "core/docs/commands/core_python/watchtower_core_query_foundations.md",
             "std.data_contracts.foundation_index",
         ),
         (
-            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
             "std.data_contracts.foundation_index",
         ),
         (
@@ -420,9 +420,9 @@ def test_query_standards_supports_canonical_directory_path_filters(capsys) -> No
             "query",
             "standards",
             "--applies-to",
-            "docs/commands/",
+            "core/docs/commands/",
             "--related-path",
-            "docs/commands/",
+            "core/docs/commands/",
         ],
     )
 
@@ -431,8 +431,8 @@ def test_query_standards_supports_canonical_directory_path_filters(capsys) -> No
     assert payload["status"] == "ok"
     assert any(
         entry["standard_id"] == "std.engineering.cli_help_text"
-        and "docs/commands/" in entry["applies_to"]
-        and "docs/commands/" in entry["related_paths"]
+        and "core/docs/commands/" in entry["applies_to"]
+        and "core/docs/commands/" in entry["related_paths"]
         for entry in payload["results"]
     )
 

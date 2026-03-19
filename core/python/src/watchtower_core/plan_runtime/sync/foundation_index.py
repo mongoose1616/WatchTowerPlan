@@ -142,7 +142,7 @@ class FoundationIndexSyncService:
                 )
             )
             reference_doc_paths = tuple(
-                value for value in internal_reference_paths if value.startswith("docs/references/")
+                value for value in internal_reference_paths if value.startswith("core/docs/references/")
             )
             direct_external_urls = ordered_unique(extract_external_urls(sections["References"]))
             transitive_external_urls = ordered_unique(
