@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "pytest"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -34,6 +34,7 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 ## Related Standards and Sources
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
 - [src_layout_reference.md](/docs/references/src_layout_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 - [tests](/core/python/tests/)
@@ -65,6 +66,7 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 - [tests](/core/python/tests/)
@@ -81,6 +83,7 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 ## References
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
 - [src_layout_reference.md](/docs/references/src_layout_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 - [tests](/core/python/tests/)
@@ -88,8 +91,8 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 ## Notes
 - This reference supports future Python automation work and does not imply the repo already has a Python test suite.
 - If test policy becomes more formal, it should move into `docs/standards/engineering/`.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

@@ -12,7 +12,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -82,7 +82,7 @@ This slice is a documentation-completeness and retrieval-cohesion repair for the
 ## Recommended Design
 ### Architecture
 - `docs/foundations/engineering_stack_direction.md` becomes the corrected source authority for stack-direction references.
-- `workflows/modules/foundations_context_review.md` becomes the corrected review-context loader for foundations-aware work.
+- `core/workflows/modules/foundations_context_review.md` becomes the corrected review-context loader for foundations-aware work.
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py` and the companion command doc publish examples grounded in live corpus behavior.
 - `core/python/tests/**` add regression coverage for the refreshed reference-path lookup and help text.
 - `core/control_plane/indexes/foundations/foundation_index.json` is regenerated from the updated foundation source docs.
@@ -106,7 +106,7 @@ This slice is a documentation-completeness and retrieval-cohesion repair for the
 
 ## Affected Surfaces
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py

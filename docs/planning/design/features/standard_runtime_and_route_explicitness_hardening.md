@@ -15,7 +15,8 @@ applies_to:
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 ---
 
 # Standard, Runtime, and Route Explicitness Hardening Feature Design
@@ -111,7 +112,8 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/python/tests/
 - core/control_plane/schemas/artifacts/standard_index.schema.json
 - retired valid example index fixture standard_index.example.json

@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-17T22:37:00Z",
+  "updated_at": "2026-03-18T23:45:00Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -62,7 +62,8 @@
       "applies_to": [
         "core/control_plane/",
         "core/python/",
-        "workflows/modules/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "docs/standards/"
       ]
     },
@@ -105,7 +106,8 @@
       "applies_to": [
         "docs/planning/",
         "core/control_plane/",
-        "workflows/modules/"
+        "core/workflows/modules/",
+        "plan/workflows/modules/"
       ]
     },
     {
@@ -149,7 +151,8 @@
       "applies_to": [
         "docs/standards/",
         "core/control_plane/",
-        "workflows/modules/"
+        "core/workflows/modules/",
+        "plan/workflows/modules/"
       ]
     },
     {

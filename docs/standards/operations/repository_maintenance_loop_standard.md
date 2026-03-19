@@ -48,8 +48,8 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
 - [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): recurring upkeep should not let planning joins and derived trackers drift silently.
-- [repository_review.md](/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
+- [repository_review.md](/core/workflows/modules/repository_review.md): repository-review work is the natural workflow companion for this standard.
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): maintenance often includes concise doc refresh work rather than only new docs.
 
 ## Guidance
 - Keep recurring maintenance local-first and deterministic.
@@ -76,7 +76,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## Operationalization
 - `Modes`: `workflow`; `validation`; `documentation`
-- `Operational Surfaces`: `workflows/modules/repository_review.md`; `workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `docs/planning/coordination_tracking.md`
 
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.
@@ -88,8 +88,8 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - Update maintenance workflows, validation guidance, and review conventions in the same change set when this operating loop changes materially.
 
 ## References
-- [repository_review.md](/workflows/modules/repository_review.md)
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md)
+- [repository_review.md](/core/workflows/modules/repository_review.md)
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md)
 - [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md)
 - [README.md](/docs/README.md)
 

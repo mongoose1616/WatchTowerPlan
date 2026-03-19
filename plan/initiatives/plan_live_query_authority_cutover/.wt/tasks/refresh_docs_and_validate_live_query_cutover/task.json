@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_live_query_authority_cutover",
   "title": "Refresh docs and validate live query cutover",
   "summary": "Update command docs, authority guidance, and regression coverage so the public query surface matches the plan/.wt authority model.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_live_query_authority_cutover.add_readiness_discrepancy_and_project_query_commands"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

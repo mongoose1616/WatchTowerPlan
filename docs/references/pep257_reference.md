@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "pep257"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -29,7 +29,7 @@ Provide a concise baseline for docstring quality, especially for public interfac
 - `https://peps.python.org/pep-0257/` - verified 2026-03-09; PEP 257 – Docstring Conventions.
 
 ## Related Standards and Sources
-- No narrower repository standard or workflow cites this reference directly yet.
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -54,10 +54,14 @@ Provide a concise baseline for docstring quality, especially for public interfac
 
 ## Local Mapping in This Repository
 ### Current Repository Status
-- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ### Why It Matters Here
 - Use this reference as the baseline for when repository Python code needs docstrings at all.
+- The Python code design standard now uses this reference as the explicit baseline for concise public and non-obvious docstrings.
 - Pair it with [google_style_docstrings_reference.md](/docs/references/google_style_docstrings_reference.md) if the repo adopts a structured section format for richer docstrings.
 - If docstring requirements become mandatory for local Python code, define the precise rule under `docs/standards/engineering/**`.
 
@@ -67,12 +71,13 @@ Provide a concise baseline for docstring quality, especially for public interfac
 
 ## References
 - [README.md](/docs/references/README.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ## Notes
 - This reference supports future Python automation work but does not by itself mandate docstrings for every function in the repo.
 - If a local engineering standard is added, it should define which surfaces require docstrings and which do not.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

@@ -46,7 +46,7 @@
       "title": "The foundations review workflow covers the advertised companion context routes",
       "result": "passed",
       "subject_paths": [
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/foundations/customer_story.md",
         "docs/planning/coordination_tracking.md",
         "core/python/tests/integration/"
@@ -86,7 +86,7 @@
       "acceptance_ids": [
         "ac.foundations_entrypoint_coverage_alignment.003"
       ],
-      "notes": "Targeted pytest for test_control_plane_artifacts.py passed, watchtower-core validate document-semantics --path workflows/modules/foundations_context_review.md passed, watchtower-core sync all --write passed, watchtower-core validate all --skip-acceptance passed with 951/951, python -m mypy src passed for 182 source files, ruff check . passed, watchtower-core validate acceptance --trace-id trace.foundations_entrypoint_coverage_alignment passed, final watchtower-core validate all passed with 994/994, pytest -q passed, the post-closeout standards-lookup confirmation checked 6 touched surfaces with 0 missing standard matches, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
+      "notes": "Targeted pytest for test_control_plane_artifacts.py passed, watchtower-core validate document-semantics --path core/workflows/modules/foundations_context_review.md passed, watchtower-core sync all --write passed, watchtower-core validate all --skip-acceptance passed with 951/951, python -m mypy src passed for 182 source files, ruff check . passed, watchtower-core validate acceptance --trace-id trace.foundations_entrypoint_coverage_alignment passed, final watchtower-core validate all passed with 994/994, pytest -q passed, the post-closeout standards-lookup confirmation checked 6 touched surfaces with 0 missing standard matches, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
     }
   ],
   "related_paths": [

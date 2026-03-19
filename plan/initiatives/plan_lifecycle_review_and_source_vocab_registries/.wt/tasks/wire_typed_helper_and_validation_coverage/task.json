@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
   "title": "Wire typed helper and validation coverage",
   "summary": "Add typed loader support, a vocabulary helper, and tests proving the registries stay aligned with live schemas and runtime use.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

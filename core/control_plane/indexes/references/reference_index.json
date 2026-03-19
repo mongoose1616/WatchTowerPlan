@@ -65,7 +65,8 @@
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/templates/workflow_template.md",
-        "workflows/modules/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "core/control_plane/indexes/workflows/workflow_index.json"
       ],
       "aliases": [
@@ -479,7 +480,7 @@
       "summary": "Working reference for static type checking in repository Python code.",
       "status": "active",
       "doc_path": "docs/references/mypy_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -491,12 +492,15 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
@@ -806,12 +810,21 @@
       "summary": "Working reference for Python docstring quality and consistency in this repository.",
       "status": "active",
       "doc_path": "docs/references/pep257_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
-      "repository_status": "candidate_future_guidance",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-18T06:23:45Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://peps.python.org/pep-0257/"
+      ],
+      "cited_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
       ],
       "tags": [
         "reference",
@@ -824,12 +837,21 @@
       "summary": "Working reference for using PEP 8 as the readability baseline for Python code in this repository.",
       "status": "active",
       "doc_path": "docs/references/pep8_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
-      "repository_status": "candidate_future_guidance",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-18T06:23:45Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://peps.python.org/pep-0008/"
+      ],
+      "cited_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md"
       ],
       "tags": [
         "reference",
@@ -890,7 +912,7 @@
       "summary": "Working reference for centralizing Python project metadata and tool configuration in this repository.",
       "status": "active",
       "doc_path": "docs/references/pyproject_toml_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -901,12 +923,15 @@
         "https://peps.python.org/pep-0621/"
       ],
       "cited_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
@@ -921,7 +946,7 @@
       "summary": "Working reference for using pytest as the default Python test framework in this repository.",
       "status": "active",
       "doc_path": "docs/references/pytest_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -933,12 +958,15 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
         "core/python/tests/"
@@ -1166,7 +1194,7 @@
       "summary": "Working reference for fast linting and code-quality checks in repository Python code.",
       "status": "active",
       "doc_path": "docs/references/ruff_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1177,12 +1205,15 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml"
       ],
@@ -1386,7 +1417,7 @@
       "summary": "Working reference for the `src/` Python project layout in this repository.",
       "status": "active",
       "doc_path": "docs/references/src_layout_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1394,12 +1425,15 @@
         "https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/"
       ],
       "cited_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/src/"
       ],
@@ -1414,7 +1448,7 @@
       "summary": "This document provides a working reference for `uv` as a Python packaging, environment, and dependency-management tool.",
       "status": "active",
       "doc_path": "docs/references/uv_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-18T06:23:45Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1431,6 +1465,7 @@
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "related_paths": [
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
         "core/python/uv.lock",

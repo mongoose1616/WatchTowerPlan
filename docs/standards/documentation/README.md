@@ -20,5 +20,5 @@
 | `docs/standards/documentation/reference_md_standard.md` | Defines the standard for reference documents. |
 | `docs/standards/documentation/routing_table_md_standard.md` | Defines the standard for ROUTING_TABLE.md files. |
 | `docs/standards/documentation/standard_md_standard.md` | Defines the standard for governed standard and best-practice documents under `docs/standards/`. |
-| `docs/standards/documentation/task_md_standard.md` | Defines the standard for local task records under `docs/planning/tasks/`. |
+| `docs/standards/documentation/task_md_standard.md` | Defines the retained-history standard for legacy task Markdown under `docs/planning/tasks/`. |
 | `docs/standards/documentation/workflow_md_standard.md` | Defines the standard for workflow documents. |

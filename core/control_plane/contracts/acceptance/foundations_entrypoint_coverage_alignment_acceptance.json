@@ -30,7 +30,7 @@
         "req.foundations_entrypoint_coverage_alignment.002"
       ],
       "validation_targets": [
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/foundations/customer_story.md",
         "docs/planning/coordination_tracking.md"
       ],

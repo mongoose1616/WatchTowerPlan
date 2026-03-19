@@ -12,8 +12,8 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md
@@ -70,8 +70,8 @@ Breaks Refactor Umbrella Regression and Growth Control into a bounded implementa
   `core/python/tests/unit/test_closeout_handlers.py`;
   `core/python/tests/integration/test_task_workflow_end_to_end.py`
 - Companion workflow, standards, and command docs:
-  `workflows/modules/repository_review.md`;
-  `workflows/modules/initiative_closeout.md`;
+  `core/workflows/modules/repository_review.md`;
+  `plan/workflows/modules/initiative_closeout.md`;
   `docs/standards/governance/initiative_closeout_standard.md`;
   `docs/commands/core_python/watchtower_core_closeout.md`;
   `docs/commands/core_python/watchtower_core_closeout_initiative.md`
@@ -100,9 +100,9 @@ Breaks Refactor Umbrella Regression and Growth Control into a bounded implementa
 ## Findings Ledger
 | Finding | Severity | Status | Affected Surfaces | Verification Target |
 |---|---|---|---|---|
-| `finding.001` | `high` | `resolved` | umbrella refactor planning surfaces; `workflows/modules/repository_review.md`; recent refactor trace chain | One umbrella refactor matrix records the original audit findings, the completed follow-up traces, and the pass-series conclusions so same-theme review no longer depends on lost chat context or per-slice memory. |
+| `finding.001` | `high` | `resolved` | umbrella refactor planning surfaces; `core/workflows/modules/repository_review.md`; recent refactor trace chain | One umbrella refactor matrix records the original audit findings, the completed follow-up traces, and the pass-series conclusions so same-theme review no longer depends on lost chat context or per-slice memory. |
 | `finding.002` | `high` | `resolved` | `core/python/src/watchtower_core/closeout/initiative.py`; `core/python/src/watchtower_core/cli/closeout_handlers.py`; closeout docs and tests | Initiative closeout fails by default when acceptance reconciliation reports issues and only proceeds when an explicit override records the exception. |
-| `finding.003` | `medium` | `resolved` | `workflows/modules/initiative_closeout.md`; `docs/standards/governance/initiative_closeout_standard.md`; `docs/commands/core_python/watchtower_core_closeout*.md` | Runtime closeout behavior and authored operator guidance stay aligned on the acceptance gate and the exception path. |
+| `finding.003` | `medium` | `resolved` | `plan/workflows/modules/initiative_closeout.md`; `docs/standards/governance/initiative_closeout_standard.md`; `docs/commands/core_python/watchtower_core_closeout*.md` | Runtime closeout behavior and authored operator guidance stay aligned on the acceptance gate and the exception path. |
 
 ## Pass-Trace and Commit-History Review Conclusions
 - The `origin/initiative/core-export-readiness-and-optimization..HEAD` refactor pass series

@@ -16,7 +16,7 @@ authority: authoritative
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 related_ids:
@@ -31,7 +31,7 @@ related_ids:
 Update foundations family entrypoints and the foundations context review workflow to cover machine lookup plus the companion summary and customer-story routes.
 
 ## Scope
-- Refresh docs/foundations/README.md, docs/foundations/repository_scope.md, workflows/modules/foundations_context_review.md, and core/control_plane/indexes/foundations/README.md so the human and machine foundations routes stay coherent.
+- Refresh docs/foundations/README.md, docs/foundations/repository_scope.md, core/workflows/modules/foundations_context_review.md, and core/control_plane/indexes/foundations/README.md so the human and machine foundations routes stay coherent.
 
 ## Done When
 - Foundations family entrypoints and review workflow guidance explicitly cover machine lookup, summary-route review context, and future-state narrative context where needed.

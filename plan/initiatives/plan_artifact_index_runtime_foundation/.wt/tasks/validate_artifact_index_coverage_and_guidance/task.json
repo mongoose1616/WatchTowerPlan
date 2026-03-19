@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
   "title": "Validate artifact index coverage and guidance",
   "summary": "Add tests, validator wiring, and command guidance proving the live artifact index stays aligned with requirements.md and decisions.md.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "documentation",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

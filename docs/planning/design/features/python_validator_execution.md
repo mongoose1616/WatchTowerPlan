@@ -160,7 +160,7 @@ This document defines the feature-level technical design for a Python validation
 - Where should parsed front matter extraction live: inside the validation package or as a reusable control-plane adapter?
 
 ## References
-- [feature_design_planning.md](/workflows/modules/feature_design_planning.md)
+- [feature_design_planning.md](/plan/workflows/modules/feature_design_planning.md)
 - [validator_registry.json](/core/control_plane/registries/validator_registry.json)
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)

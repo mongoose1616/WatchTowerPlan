@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "src_layout"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -31,6 +31,7 @@ Provide a simple layout baseline that keeps import behavior closer to installed 
 ## Related Standards and Sources
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
 - [pytest_reference.md](/docs/references/pytest_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [src](/core/python/src/)
 
@@ -68,6 +69,7 @@ pyproject.toml
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [src](/core/python/src/)
 
@@ -83,14 +85,15 @@ pyproject.toml
 ## References
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
 - [pytest_reference.md](/docs/references/pytest_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [src](/core/python/src/)
 
 ## Notes
 - This reference matters only if the repo starts to contain reusable Python modules or packages.
 - A flat layout can still be acceptable for very small scripts or one-off utilities.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

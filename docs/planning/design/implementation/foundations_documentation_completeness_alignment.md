@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -59,7 +59,7 @@ Implement the confirmed documentation and workflow alignment fixes without chang
 
 ## Proposed Technical Approach
 - Edit `docs/foundations/engineering_stack_direction.md` to cite the governed local references for the technologies and standards it materially names.
-- Expand `workflows/modules/foundations_context_review.md` so its load guidance matches the authoritative foundations backbone for review work.
+- Expand `core/workflows/modules/foundations_context_review.md` so its load guidance matches the authoritative foundations backbone for review work.
 - Refresh `core/python/src/watchtower_core/cli/query_knowledge_family.py` and `docs/commands/core_python/watchtower_core_query_foundations.md` to use live examples and wording that match the current foundation corpus.
 - Add tests that prove the engineering stack foundation is queryable by a governed reference path and that CLI help advertises a live example path.
 
@@ -81,5 +81,5 @@ Implement the confirmed documentation and workflow alignment fixes without chang
 
 ## References
 - [foundation_index.json](/core/control_plane/indexes/foundations/foundation_index.json)
-- [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+- [foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)
 - [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md)

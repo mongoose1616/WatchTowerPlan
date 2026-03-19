@@ -3,8 +3,23 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-17T22:37:00Z",
+  "updated_at": "2026-03-18T23:45:00Z",
   "entries": [
+    {
+      "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "title": "Plan Actor Registry And Runtime Boundary Reconciliation",
+      "initiative_root": "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T23:51:18Z"
+    },
     {
       "initiative_id": "initiative.plan_artifact_family_registry_foundation",
       "trace_id": "trace.plan_artifact_family_registry_foundation",
@@ -34,6 +49,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T20:36:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_closeout_helper_boundary_alignment",
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "title": "Plan Closeout Helper Boundary Alignment",
+      "initiative_root": "plan/initiatives/plan_closeout_helper_boundary_alignment",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T03:07:00Z"
     },
     {
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
@@ -124,6 +154,36 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T21:35:44Z"
+    },
+    {
+      "initiative_id": "initiative.plan_evidence_bundle_helper_foundation",
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "title": "Plan Evidence Bundle Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_evidence_bundle_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T01:41:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_extraction_output_envelope_alignment",
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "title": "Plan Extraction Output Envelope Alignment",
+      "initiative_root": "plan/initiatives/plan_extraction_output_envelope_alignment",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T02:20:00Z"
     },
     {
       "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
@@ -231,6 +291,21 @@
       "updated_at": "2026-03-17T17:13:00Z"
     },
     {
+      "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+      "trace_id": "trace.plan_live_evidence_closeout_review_indexes_foundation",
+      "title": "Plan Live Evidence Closeout Review Indexes Foundation",
+      "initiative_root": "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T23:05:01Z"
+    },
+    {
       "initiative_id": "initiative.plan_live_query_authority_cutover",
       "trace_id": "trace.plan_live_query_authority_cutover",
       "title": "Plan Live Query Authority Cutover",
@@ -244,6 +319,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T19:38:14Z"
+    },
+    {
+      "initiative_id": "initiative.plan_path_and_id_helper_foundation",
+      "trace_id": "trace.plan_path_and_id_helper_foundation",
+      "title": "Plan Path And ID Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_path_and_id_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T23:40:59Z"
     },
     {
       "initiative_id": "initiative.plan_project_context_runtime_standardization",
@@ -291,6 +381,36 @@
       "updated_at": "2026-03-17T20:20:00Z"
     },
     {
+      "initiative_id": "initiative.plan_rebuild_harness_export_foundation",
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "title": "Plan Rebuild Harness Export Foundation",
+      "initiative_root": "plan/initiatives/plan_rebuild_harness_export_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T00:34:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "title": "Plan Rendered Surface Builder Alignment",
+      "initiative_root": "plan/initiatives/plan_rendered_surface_builder_alignment",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T02:44:00Z"
+    },
+    {
       "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
       "trace_id": "trace.plan_requirements_current_state_reconciliation",
       "title": "Plan Requirements Current State Reconciliation",
@@ -306,6 +426,36 @@
       "updated_at": "2026-03-17T22:30:20Z"
     },
     {
+      "initiative_id": "initiative.plan_routing_engine_export_foundation",
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "title": "Plan Routing Engine Export Foundation",
+      "initiative_root": "plan/initiatives/plan_routing_engine_export_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T23:58:50Z"
+    },
+    {
+      "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "title": "Plan Status Registry Domain Cleanup",
+      "initiative_root": "plan/initiatives/plan_status_registry_domain_cleanup",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T00:45:00Z"
+    },
+    {
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
       "title": "Plan Status Transition and Relation Rule Registries",
@@ -319,6 +469,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T20:53:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "title": "Plan Task Authority, Rendering, and Governance Recovery",
+      "initiative_root": "plan/initiatives/plan_task_authority_rendering_governance_recovery",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T23:45:00Z"
     },
     {
       "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
@@ -349,6 +514,51 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-17T15:35:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_terminology_helper_foundation",
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "title": "Plan Terminology Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_terminology_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T01:21:00Z"
+    },
+    {
+      "initiative_id": "initiative.plan_workflow_catalog_helper_foundation",
+      "trace_id": "trace.plan_workflow_catalog_helper_foundation",
+      "title": "Plan Workflow Catalog Helper Foundation",
+      "initiative_root": "plan/initiatives/plan_workflow_catalog_helper_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-17T23:55:35Z"
+    },
+    {
+      "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "title": "Plan Workflow Execution Harness Foundation",
+      "initiative_root": "plan/initiatives/plan_workflow_execution_harness_foundation",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-18T00:56:00Z"
     },
     {
       "initiative_id": "initiative.plan_workflow_root_authority_split",

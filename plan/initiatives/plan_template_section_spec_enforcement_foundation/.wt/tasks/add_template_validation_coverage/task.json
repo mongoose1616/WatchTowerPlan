@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
   "title": "Add template validation coverage",
   "summary": "Extend template helpers and tests so section-spec references and template headings fail closed on drift.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

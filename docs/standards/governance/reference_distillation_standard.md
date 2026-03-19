@@ -39,9 +39,9 @@ This standard defines how externally published source material is distilled into
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_template.md](/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
-- [reference_distillation.md](/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_generation.md](/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+- [reference_distillation.md](/core/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/core/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Prefer authoritative primary sources over secondhand summaries when the topic is standards-driven, version-sensitive, or materially affects repository behavior.
@@ -91,7 +91,7 @@ This standard defines how externally published source material is distilled into
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/documentation_refresh.md`; `workflows/modules/reference_distillation.md`; `workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
+- `Operational Surfaces`: `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/reference_distillation.md`; `core/workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
 
 ## Validation
 - The distilled artifact points to the canonical upstream source when the topic depends on external authority.
@@ -114,7 +114,7 @@ This standard defines how externally published source material is distilled into
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
 - [reference_template.md](/docs/templates/reference_template.md)
-- [reference_distillation.md](/workflows/modules/reference_distillation.md)
+- [reference_distillation.md](/core/workflows/modules/reference_distillation.md)
 - [diataxis_local_reference.md](/docs/references/diataxis_local_reference.md)
 
 ## Notes

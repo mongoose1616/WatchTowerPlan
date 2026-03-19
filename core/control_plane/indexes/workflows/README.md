@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/indexes/workflows/README.md` | Describes the purpose of the workflow-index directory and its current artifact. |
-| `core/control_plane/indexes/workflows/workflow_index.json` | Canonical machine-readable workflow index rebuilt from `workflows/modules/**`. |
+| `core/control_plane/indexes/workflows/workflow_index.json` | Canonical machine-readable workflow index rebuilt from `core/workflows/modules/**` and `plan/workflows/modules/**`. |

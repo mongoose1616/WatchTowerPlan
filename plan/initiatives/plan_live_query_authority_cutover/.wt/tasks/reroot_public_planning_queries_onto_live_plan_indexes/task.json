@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_live_query_authority_cutover",
   "title": "Reroot public planning queries onto live plan indexes",
   "summary": "Move the public coordination, initiatives, tasks, and authority query path from legacy docs-backed planning indexes to the authoritative plan/.wt indexes and rendered surfaces.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T19:14:00Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

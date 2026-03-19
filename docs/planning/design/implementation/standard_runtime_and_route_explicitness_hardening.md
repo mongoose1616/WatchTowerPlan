@@ -15,7 +15,8 @@ applies_to:
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 ---
 
 # Standard, Runtime, and Route Explicitness Hardening Implementation Plan

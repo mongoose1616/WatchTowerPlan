@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_event_stream_helper_foundation",
   "title": "Validate event stream helper and contracts",
   "summary": "Add tests proving seeded records, append behavior, replay ordering, and initiative package regressions stay aligned with requirements.md and decisions.md.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_event_stream_helper_foundation.refactor_initiative_package_event_writes_onto_helper"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

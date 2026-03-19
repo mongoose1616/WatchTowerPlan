@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_governance_surface_resolver_helper",
   "title": "Validate governance surface resolver behavior",
   "summary": "Run targeted validation proving the helper stays aligned with requirements.md, decisions.md, and the active pack settings declarations.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

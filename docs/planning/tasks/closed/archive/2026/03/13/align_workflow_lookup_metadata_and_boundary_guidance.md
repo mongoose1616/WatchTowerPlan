@@ -15,12 +15,13 @@ updated_at: '2026-03-13T21:37:07Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/workflow_metadata_registry.json
 - core/control_plane/indexes/workflows/workflow_index.json
 - docs/commands/core_python/watchtower_core_route_preview.md
 - docs/commands/core_python/watchtower_core_query_workflows.md
-- workflows/modules/
+- core/workflows/modules/
+- plan/workflows/modules/
 related_ids:
 - prd.workflow_route_boundary_discoverability_hardening
 - design.features.workflow_route_boundary_discoverability_hardening

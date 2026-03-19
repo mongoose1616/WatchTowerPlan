@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
   "title": "Publish lifecycle review and source registry schemas",
   "summary": "Add governed schema contracts for the lifecycle-stage, review-status, and source-type registries.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T17:08:30Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

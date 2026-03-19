@@ -12,7 +12,8 @@ authority: "authoritative"
 applies_to:
   - "docs/templates/"
   - "docs/planning/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
   - "core/python/src/watchtower_core/repo_ops/"
 aliases:
   - "template efficiency"

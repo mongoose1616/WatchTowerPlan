@@ -1,59 +1,62 @@
 # Task Lifecycle Management Workflow
 
 ## Purpose
-Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, initiative coordination view, and traced planning joins aligned.
+Use this workflow to create, update, split, unblock, or close initiative-local live task records while keeping the live task index, initiative coordination view, and human companion trackers aligned.
 
 ## Use When
 - Engineer-sized execution work needs a new tracked task or an existing task needs a material state change.
 - A task owner, task status, priority, blockers, dependencies, or linked planning surfaces need to be updated explicitly.
-- A task should move between `docs/planning/tasks/open/` and `docs/planning/tasks/closed/`.
-- Use this route when the main action is creating, updating, splitting, blocking, unblocking, or closing task records; use `task_phase_transition.md` when the main action is handing work to the next owner or phase.
+- The main action is creating, updating, splitting, blocking, unblocking, or closing live task records.
+- Use `task_phase_transition.md` when the main action is handing work to the next owner or phase rather than performing broader task management.
 
 ## Inputs
 - Scoped task-management request or active work item
-- Current local task corpus under `docs/planning/tasks/`
+- Current live task state under the relevant initiative root in `plan/**/.wt/tasks/**`
 - Any linked `trace_id`, planning IDs, repository paths, or existing blocker or dependency IDs
-- Current task tracker, task index, initiative tracker or index, and traceability surfaces when the task is traced
+- Current live task, initiative, readiness, coordination, and traceability surfaces when the task is traced
 
 ## Additional Files to Load
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the local task authority model, task-state vocabulary, and same-change rebuild expectations.
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the required task-record shape and placement rules.
-- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable companion surface that must stay aligned with task records.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority model, canonical task-state vocabulary, and same-change rebuild expectations.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the retained-history boundary for docs-backed task Markdown.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable live task lookup surface that must stay aligned with task state.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
 - [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
 
 ## Workflow
 1. Confirm the task-management boundary.
    - Decide whether the request needs one task update, one new task, a task split, or a terminal task close.
-   - Keep one task file per bounded work item instead of merging multiple unrelated execution concerns.
-2. Inspect current task and planning state.
-   - Check whether a matching task already exists and whether the work belongs to an existing `trace_id`.
-   - Resolve current owner, `task_status`, blockers, dependencies, related IDs, and path placement before editing anything.
-3. Create or update the authoritative task record.
+   - Keep one live task per bounded work item instead of merging multiple unrelated execution concerns.
+2. Inspect current live task and planning state.
+   - Check whether a matching task already exists and whether the work belongs to an existing initiative or trace.
+   - Resolve current owner, status, blockers, dependencies, related IDs, and initiative root before editing anything.
+   - If the requested task status would start real execution (`in_progress`, `in_review`, or `completed`), confirm the initiative package has already been approved into `ready_for_execution`.
+3. Create or update the authoritative live task record.
    - Assign or preserve the stable `task_id`, owner, task kind, priority, and linked planning IDs.
-   - Update `task_status`, `depends_on`, `blocked_by`, `related_ids`, and `applies_to` explicitly rather than burying execution state in prose.
-   - Place non-terminal tasks under `open/` and terminal tasks under `closed/`.
+   - Keep artifact `status` at the canonical live value `active` and update execution `task_status`, `depends_on`, `blocked_by`, `related_ids`, and `applies_to` explicitly rather than burying lifecycle state in prose.
+   - Keep the task under the same initiative-local `.wt/tasks/**` root; terminality is represented by `task_status`, not by moving docs-backed files.
+   - Do not start execution by task mutation before the initiative package is reviewed, approved, and `ready_for_execution`; use `watchtower-core plan confirm-inputs` and `watchtower-core plan approve` first when the package is still pre-execution.
 4. Refresh the derived task surfaces.
-   - Rebuild the human-readable task tracker and the machine-readable task index in the same change set.
-   - Refresh the traceability index when the task carries a `trace_id` or when its traced links changed materially.
-   - Refresh the initiative index and initiative tracker when the task carries a `trace_id` and the task change affects current phase, active ownership, blocker state, or next-step projection.
+   - Rebuild `plan/.wt/indexes/task_index.json` and the human-readable task tracker in the same change set.
+   - Refresh traceability, initiative, readiness, and coordination surfaces when the task change affects traced or execution-visible state.
 5. Validate the resulting lifecycle state.
-   - Check that task placement matches the task-status class and that referenced blocker or dependency IDs resolve.
+   - Check that referenced blocker or dependency IDs resolve.
    - Record the next expected action, follow-up, or handoff explicitly if the task is not terminal.
 
 ## Data Structure
-- Authoritative task record under `docs/planning/tasks/open/` or `docs/planning/tasks/closed/`
-- Derived task tracker and task index
+- Authoritative initiative-local `task.json` record under `plan/**/.wt/tasks/**`
+- Derived task tracker and live task index
 - Derived initiative coordination surfaces when the task belongs to a traced initiative
 - Optional traceability join updates when the task belongs to a traced initiative
 
 ## Outputs
-- Created or updated task record files
-- Updated `docs/planning/tasks/task_tracking.md` and `core/control_plane/indexes/tasks/task_index.json`
-- Updated `docs/planning/initiatives/initiative_tracking.md` and `core/control_plane/indexes/initiatives/initiative_index.json` when traced task state changed
-- Updated `core/control_plane/indexes/traceability/traceability_index.json` when traced task links changed materially
+- Created or updated live task record files
+- Updated `plan/.wt/indexes/task_index.json` and `docs/planning/tasks/task_tracking.md`
+- Updated `plan/.wt/indexes/initiative_index.json`, `plan/.wt/indexes/readiness_index.json`, and `plan/.wt/indexes/coordination_index.json` when traced task state changed
+- Updated initiative-local rendered `plan.md`, `progress.md`, or `summary.md` companions when the task change shifted visible execution state
+- Updated traceability and related companion surfaces when traced task links changed materially
+- Updated initiative lifecycle state and initiative events when the first execution task transitions the package from `ready_for_execution` into `in_progress`
 
 ## Done When
-- The authoritative task record reflects the intended lifecycle state clearly.
-- The derived task tracker, task index, and initiative view agree with the current task corpus.
+- The authoritative live task record reflects the intended lifecycle state clearly.
+- The live task index, human task tracker, and initiative/coordination views agree with the current task corpus.
 - Any traced task changes have an explicit traceability outcome or an explicit recorded exception.

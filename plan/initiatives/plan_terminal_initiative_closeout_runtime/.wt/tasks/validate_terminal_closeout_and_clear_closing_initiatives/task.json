@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
   "title": "Validate terminal closeout and clear current closing initiatives",
   "summary": "Add tests, rebuild validation, and use the new closeout path to move the current closing initiatives into terminal states.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

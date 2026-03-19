@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
   "title": "Build promotion and guidance index runtime",
   "summary": "Aggregate initiative-local promotion records and approved plan guidance into derived plan/.wt index surfaces.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

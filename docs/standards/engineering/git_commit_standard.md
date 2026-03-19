@@ -41,7 +41,7 @@ This standard defines the repository commit-message policy for human maintainers
 - [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
 - [git_commit_message_guidance_reference.md](/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [commit_closeout.md](/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
+- [commit_closeout.md](/core/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 ### Canonical Format and Quick Reference
@@ -167,7 +167,7 @@ workflow.
 
 ## Operationalization
 - `Modes`: `workflow`
-- `Operational Surfaces`: `workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`
 
 ## Validation
 - One logical change per commit. Refactors, fixes, and docs should be separate when practical.

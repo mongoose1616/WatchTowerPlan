@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
   "title": "Validate promotion and guidance lookup",
   "summary": "Add validation coverage proving the new promotion policy registry and aggregate indexes stay aligned with live promotion records and plan/docs guidance.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

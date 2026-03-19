@@ -875,7 +875,7 @@
       ],
       "related_paths": [
         "docs/foundations/",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -883,7 +883,8 @@
         "core/python/tests/",
         "docs/planning/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/ledgers/validation_evidence/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -926,9 +927,10 @@
       "related_paths": [
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "core/control_plane/indexes/foundations/README.md",
-        "core/python/tests/integration/"
+        "core/python/tests/integration/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -1723,12 +1725,14 @@
       ],
       "related_paths": [
         "core/python/src/watchtower_core/closeout/initiative.py",
-        "workflows/modules/repository_review.md",
-        "workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/repository_review.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/commands/core_python/watchtower_core_closeout.md",
         "docs/standards/governance/initiative_closeout_standard.md",
-        "docs/planning/"
+        "docs/planning/",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -2017,9 +2021,11 @@
         "design.implementation.route_preview_natural_request_matching"
       ],
       "related_paths": [
-        "workflows/ROUTING_TABLE.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py"
+        "core/python/src/watchtower_core/query/routes.py",
+        "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -2142,6 +2148,8 @@
         "core/control_plane/indexes/standards/standard_index.json",
         "core/python/src/watchtower_core/",
         "docs/commands/core_python/",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
@@ -2228,7 +2236,7 @@
       "related_paths": [
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/planning/prds/",
         "docs/planning/decisions/",
         "docs/planning/design/",
@@ -2236,7 +2244,8 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/",
-        "core/python/tests/unit/test_traceability_index_sync.py"
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -2244,7 +2253,7 @@
         "docs/planning/coordination_tracking.md",
         "README.md",
         "docs/foundations/README.md",
-        "workflows/modules/foundations_context_review.md"
+        "core/workflows/modules/foundations_context_review.md"
       ],
       "applied_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -2515,12 +2524,16 @@
         "docs/planning/",
         "core/control_plane/",
         "core/python/src/watchtower_core/",
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "core/control_plane/registries/",
         "core/control_plane/indexes/",
         "docs/commands/core_python/",
-        "core/python/src/watchtower_core/cli/"
+        "core/python/src/watchtower_core/cli/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -2557,14 +2570,18 @@
         "design.implementation.workflow_route_boundary_discoverability_hardening"
       ],
       "related_paths": [
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/python/src/watchtower_core/query/workflows.py",
         "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
-        "docs/commands/core_python/"
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
   "title": "Copy foundations corpus into both roots",
   "summary": "Duplicate the current foundations documents into both the core and plan docs roots without changing their shared guidance content.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
   "title": "Capture WatchTower implementation boundary",
   "summary": "Bootstrap /home/j/WatchTower with root guidance, a Python workspace, and a minimal operator-facing CLI shell.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
   "blocker_task_ids": [],
   "related_ids": [
     "project.watchtower"
-  ]
+  ],
+  "task_status": "completed"
 }

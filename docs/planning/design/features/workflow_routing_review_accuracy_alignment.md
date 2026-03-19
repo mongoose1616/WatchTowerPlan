@@ -35,7 +35,7 @@ Defines the technical design boundary for Workflow Routing Review Accuracy Align
 - Conduct an expansive internal review of workflow routing accuracy, route-boundary clarity, and foundations-aware audit coverage based on the latest workflow audit findings, then fix all verified issues end to end.
 
 ## Scope and Feature Boundary
-- Covers the deterministic route-preview matcher in `core/python/src/watchtower_core/repo_ops/query/routes.py`, the authored route rows in `workflows/ROUTING_TABLE.md`, the derived route index, the route-preview command docs, and the targeted workflow-module guidance needed for foundations-aware review work.
+- Covers the deterministic route-preview matcher in `core/python/src/watchtower_core/query/routes.py`, the authored route rows in `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, the derived route index, the route-preview command docs, and the targeted workflow-module guidance needed for foundations-aware review work.
 - Covers only the verified workflow-review gaps from the current audit sweep: audit-style code review, repository review, documentation-versus-implementation review, governed-artifact review, foundations-aware documentation alignment, and the reproduced boundary collisions between adjacent route pairs.
 - Excludes semantic routing, machine-learned scoring, autonomous workflow selection, or any redesign of the existing workflow modules beyond explicit recomposition through the routing table.
 
@@ -82,7 +82,7 @@ Defines the technical design boundary for Workflow Routing Review Accuracy Align
 - Add a bounded `Foundations Alignment Review` route that reuses the existing `foundations_context_review` and `documentation_refresh` modules for documentation-alignment prompts that explicitly mention repository foundations.
 
 ### Data and Interface Impacts
-- `workflows/ROUTING_TABLE.md` changes and therefore `core/control_plane/indexes/routes/route_index.json` must be regenerated.
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` changes and therefore `core/control_plane/indexes/routes/route_index.json` must be regenerated.
 - `watchtower-core route preview` behavior changes for the discussed prompt families, so command docs and regression tests must be updated in the same slice.
 - The workflow-module guidance for `foundations_context_review.md` should acknowledge review and documentation-alignment usage in addition to planning/design usage.
 

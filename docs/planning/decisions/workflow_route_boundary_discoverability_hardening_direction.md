@@ -11,10 +11,12 @@ updated_at: '2026-03-13T21:17:49Z'
 audience: shared
 authority: supporting
 applies_to:
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
-- core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
+- core/python/src/watchtower_core/query/routes.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
@@ -55,10 +57,12 @@ Accept a bounded workflow-discoverability hardening slice that sharpens determin
 - March 13, 2026 refactor audit: recommends clarifying route discrimination criteria and preserving the small explicit workflow family rather than collapsing it.
 
 ## Affected Surfaces
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
-- core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
+- core/python/src/watchtower_core/query/routes.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/

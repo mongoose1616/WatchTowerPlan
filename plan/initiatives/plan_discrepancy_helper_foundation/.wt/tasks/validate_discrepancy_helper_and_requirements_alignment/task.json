@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_discrepancy_helper_foundation",
   "title": "Validate discrepancy helper and requirements alignment",
   "summary": "Add coverage for discrepancy creation and resolution, then update touched requirements rows to current state.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

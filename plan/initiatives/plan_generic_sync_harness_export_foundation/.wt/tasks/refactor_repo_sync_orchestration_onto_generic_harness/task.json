@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
   "title": "Refactor repo sync orchestration onto generic harness",
   "summary": "Move all-sync and coordination-sync orchestration onto the generic sync harness without changing current sync target behavior.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

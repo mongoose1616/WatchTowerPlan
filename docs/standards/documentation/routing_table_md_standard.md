@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-18T05:44:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines the structure and expected content of `ROUTING_TABLE.md` a
 Keep routing deterministic, minimal, and easy to maintain by giving the repository one compact table that maps request types to the minimum required workflow modules.
 
 ## Scope
-- Applies to the canonical routing table file at `workflows/ROUTING_TABLE.md`.
+- Applies to the canonical routing table file at `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
 - Covers the table structure, row design, path conventions, and routing intent.
 - Does not define the detailed behavior of context loading beyond what is needed to structure the routing table itself.
 
@@ -61,7 +61,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/ROUTING_TABLE.md`; `docs/templates/routing_table_template.md`
+- `Operational Surfaces`: `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `docs/templates/routing_table_template.md`
 
 ## Validation
 - Every listed workflow must exist at the referenced path.
@@ -84,4 +84,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-18T05:44:52Z`

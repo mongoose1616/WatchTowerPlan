@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
   "title": "Publish retention-policy registry and loader support",
   "summary": "Add the retention_policy_registry schema, registry, typed model support, and helper methods for resolving current versus clean-endstate retention decisions.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T09:37:40Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

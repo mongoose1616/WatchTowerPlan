@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T09:38:00Z"
+updated_at: "2026-03-18T05:44:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines how workflow modules in this repository should be designed
 Keep workflow modules small, composable, and explicit so routed task execution stays predictable, reviewable, and aligned with the repository's governed operating model.
 
 ## Scope
-- Applies to workflow modules under `workflows/modules/**`.
+- Applies to workflow modules under `core/workflows/modules/**` and `plan/workflows/modules/**`.
 - Covers workflow-module objective, structure, boundary rules, and handoff expectations.
 - Does not define routing classification logic for `ROUTING_TABLE.md` or repository-wide wrapper behavior for `AGENTS.md`.
 
@@ -38,7 +38,8 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
 - [workflow_template.md](/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
-- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared workflow-routing surface that operationalizes or depends on this standard.
+- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md): plan-owned workflow-routing surface that operationalizes or depends on this standard.
 - [AGENTS.md](/AGENTS.md): companion repository surface this standard should stay aligned with.
 
 ## Inputs
@@ -64,7 +65,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Workflow modules may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
 - `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
 - `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
-- `Additional Files to Load` links should use repository-native Markdown targets such as `/docs/...`, `/workflows/...`, or another repo-relative path the current checkout can resolve.
+- `Additional Files to Load` links should use repository-native Markdown targets such as `/docs/...`, `/core/workflows/...`, `/plan/workflows/...`, or another repo-relative path the current checkout can resolve.
 - Filesystem-absolute targets such as `/home/...` or other machine-local checkout paths are invalid in workflow modules because they break clone, branch, and worktree portability.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
@@ -107,13 +108,13 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 7. Align the new or updated workflow with the routing table and any companion standards in the same change set when needed.
 
 ## Examples
-- A code-implementation workflow belongs in `workflows/modules/` because it defines execution behavior for implementing changes.
+- A code-implementation workflow belongs in `core/workflows/modules/` or `plan/workflows/modules/` because it defines execution behavior for implementing changes.
 - A routing rule does not belong in a workflow module because routing classification belongs in `ROUTING_TABLE.md`.
 - A repository-wide documentation policy does not belong in a workflow module because it belongs in `docs/standards/**`.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/`; `workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`; `AGENTS.md`
+- `Operational Surfaces`: `core/workflows/modules/`; `plan/workflows/modules/`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`; `AGENTS.md`
 
 ## Validation
 - A reviewer should be able to identify the workflow's single objective quickly.
@@ -137,7 +138,8 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
 - [workflow_template.md](/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md)
+- [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md)
+- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/AGENTS.md)
 
 ## Notes
@@ -146,4 +148,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-16T09:38:00Z`
+- `2026-03-18T05:44:52Z`

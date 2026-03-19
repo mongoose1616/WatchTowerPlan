@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T09:39:00Z"
+updated_at: "2026-03-18T05:44:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.
 
 ## Purpose
-Provide a compact lookup and governance surface for workflow modules and their task-specific extra context without forcing tools to rescan `workflows/modules/**` directly for every query, routing, or review task.
+Provide a compact lookup and governance surface for workflow modules and their task-specific extra context without forcing tools to rescan `core/workflows/modules/**` and `plan/workflows/modules/**` directly for every query, routing, or review task.
 
 ## Scope
 - Applies to machine-readable workflow index artifacts stored under `core/control_plane/indexes/workflows/`.
@@ -28,7 +28,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Does not replace the workflow modules themselves as the procedural authority.
 
 ## Use When
-- Adding or materially updating a workflow module under `workflows/modules/**`.
+- Adding or materially updating a workflow module under `core/workflows/modules/**` and `plan/workflows/modules/**`.
 - Building query or routing tooling that needs a compact view over workflow modules and their extra files to load.
 - Auditing whether workflows publish only the task-specific extra files that materially change execution.
 
@@ -47,7 +47,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Author workflow retrieval metadata under `core/control_plane/registries/` instead of hardcoding it in Python.
 - Use JSON for the published workflow-index artifact.
-- Every workflow index entry must point to an existing workflow module under `workflows/modules/`.
+- Every workflow index entry must point to an existing workflow module under `core/workflows/modules/` or `plan/workflows/modules/`.
 - Carry stable `workflow_id` values derived from the workflow module filename in the form `workflow.<module_name>`.
 - Publish retrieval metadata that helps routing and query tooling distinguish workflow phase, task family, common trigger terms, and companion workflows.
 - Capture whether the workflow explicitly publishes extra repo-local files to load and whether those files carry external authority transitively through governed local reference docs.
@@ -55,7 +55,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Derive workflow reference fields from the optional `Additional Files to Load` section rather than from generic routing-baseline boilerplate.
 - Derive workflow reference fields only from checkout-portable repo-native links; filesystem-absolute link targets are invalid workflow input because they are not stable across clones or worktrees.
 - When a workflow materially depends on external authority, prefer citing a local governed reference doc in `docs/references/**` rather than only raw external URLs.
-- Do not treat `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards as task-specific additional-load files.
+- Do not treat `AGENTS.md`, `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, `core/workflows/modules/core.md`, or the generic workflow standards as task-specific additional-load files.
 - Keep the workflow index aligned with the workflow corpus in the same change set.
 
 ## Structure or Data Model
@@ -93,12 +93,12 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `workflows/modules/`
+- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/workflows/modules/`; `plan/workflows/modules/`
 
 ## Validation
 - The workflow index should validate against its published artifact schema.
 - The companion workflow metadata registry should validate against its published artifact schema before rebuilding the workflow index.
-- Every `doc_path` should exist and point to a file under `workflows/modules/`.
+- Every `doc_path` should exist and point to a file under `core/workflows/modules/` or `plan/workflows/modules/`.
 - Every entry should have a stable `workflow_id`.
 - `phase_type`, `task_family`, and `trigger_tags` should stay retrieval-oriented and should not duplicate whole workflow prose blocks.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
@@ -120,4 +120,4 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-16T09:39:00Z`
+- `2026-03-18T05:44:52Z`

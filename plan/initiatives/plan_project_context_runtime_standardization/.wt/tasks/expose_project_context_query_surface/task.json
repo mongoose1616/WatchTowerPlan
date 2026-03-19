@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_project_context_runtime_standardization",
   "title": "Expose project context query surface",
   "summary": "Add a bounded CLI query path that loads pack context and project context explicitly for one project-scoped target.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

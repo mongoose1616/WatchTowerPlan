@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "ruff"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -33,6 +33,7 @@ Provide a simple quality gate for Python code so style drift, unused imports, an
 ## Related Standards and Sources
 - [pep8_reference.md](/docs/references/pep8_reference.md)
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
@@ -62,6 +63,7 @@ Provide a simple quality gate for Python code so style drift, unused imports, an
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
@@ -77,14 +79,15 @@ Provide a simple quality gate for Python code so style drift, unused imports, an
 ## References
 - [pep8_reference.md](/docs/references/pep8_reference.md)
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
 ## Notes
 - This reference is most useful once repository Python code is shared or maintained over time.
 - If a formal engineering standard is added later, it should define the approved rule set and exception policy.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

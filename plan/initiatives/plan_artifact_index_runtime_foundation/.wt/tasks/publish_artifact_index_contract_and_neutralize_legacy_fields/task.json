@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
   "title": "Publish artifact index contract and neutralize legacy fields",
   "summary": "Update the generic pack artifact-index contract, typed models, and validation so challenge-specific and platform-specific leakage is replaced by plan-safe provenance fields.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "governance",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T20:35:24Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

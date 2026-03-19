@@ -15,8 +15,9 @@ updated_at: '2026-03-13T21:37:07Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/ROUTING_TABLE.md
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/python/src/watchtower_core/query/routes.py
 - core/control_plane/indexes/routes/route_index.json
 related_ids:
 - prd.workflow_route_boundary_discoverability_hardening

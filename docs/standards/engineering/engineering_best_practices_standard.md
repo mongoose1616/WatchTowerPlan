@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T22:05:00Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -35,6 +35,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 
 ## Related Standards and Sources
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md): defines the Python-specific boundary, naming, and consolidation rules that refine this broader engineering baseline.
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -49,6 +50,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Prefer published indexes, registries, and contracts over hardcoded lookup tables when a governed control-plane surface already exists.
 - Keep CLI entrypoints thin. Put real behavior in package services and pass explicit arguments rather than hardcoding one-off values in commands.
 - Keep modules narrow and composable. Add a new module or service when that makes boundaries clearer instead of growing large mixed-purpose files.
+- Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) as the authority for Python naming, module shape, docstrings, typed boundaries, and consolidation rules instead of inventing per-feature conventions.
 - Prefer explicit `--format` arguments with `human` and `json` modes when a command serves both operators and agents.
 - Keep query helpers read-oriented and side-effect free. Keep derived-artifact rebuild or materialization logic in dedicated `sync/` surfaces.
 - Update human-readable and machine-readable companion surfaces in the same change set when one depends on the other. Examples include docs plus indexes, command pages plus command-index entries, and schemas plus examples and catalog records.
@@ -83,7 +85,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `docs/planning/`; `workflows/modules/core.md`
+- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `docs/planning/`; `core/workflows/modules/core.md`
 
 ## Validation
 - Code changes should run the narrowest meaningful automated checks for the touched surfaces, such as targeted `pytest`, schema validation, command smoke tests, or index validation.
@@ -93,11 +95,12 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 
 ## Change Control
 - Update this standard when the repository's engineering operating model changes materially.
-- Update related workspace, schema, command, or traceability standards in the same change set when the best-practices rules become more specific in one of those narrower areas.
+- Update related workspace, schema, command, traceability, or Python code-design standards in the same change set when the best-practices rules become more specific in one of those narrower areas.
 - Update local instruction surfaces when the default implementation or validation path for contributors changes materially.
 
 ## References
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 - [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md)
@@ -109,4 +112,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-18T06:23:45Z`

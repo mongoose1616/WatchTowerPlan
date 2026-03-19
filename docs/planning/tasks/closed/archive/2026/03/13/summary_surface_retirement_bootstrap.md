@@ -16,7 +16,7 @@ applies_to:
 - README.md
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/planning/prds/summary_surface_retirement.md
 - docs/planning/decisions/summary_surface_retirement_direction.md
 - docs/planning/design/features/summary_surface_retirement.md

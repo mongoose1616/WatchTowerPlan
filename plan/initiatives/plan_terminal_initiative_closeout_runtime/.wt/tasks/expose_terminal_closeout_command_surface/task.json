@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
   "title": "Expose terminal closeout through a maintained command surface",
   "summary": "Add a CLI path and companion docs for closing live plan initiatives without manual JSON edits.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

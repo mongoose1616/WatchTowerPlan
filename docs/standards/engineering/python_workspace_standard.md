@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T20:30:00Z"
+updated_at: "2026-03-18T06:44:55Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md): defines the Python module-boundary, naming, typing, docstring, and consolidation rules that fit within this workspace layout.
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [src_layout_reference.md](/docs/references/src_layout_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [pyproject_toml_reference.md](/docs/references/pyproject_toml_reference.md): local reference surface for the external or canonical guidance this standard depends on.
@@ -68,6 +69,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
+- Keep `repo_ops/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules.
+- Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) for Python naming, boundary, docstring, typing, and consolidation rules instead of re-encoding those choices in workspace-only guidance.
 
 ## Structure or Data Model
 ### Required workspace surfaces
@@ -91,7 +94,12 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
 | `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
-| `core/python/src/watchtower_core/repo_ops/` | WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior. |
+| `core/python/src/watchtower_core/rebuild/` | Export-safe rebuild harness plus registry-backed rendered-view building and markdown reconciliation. |
+| `core/python/src/watchtower_core/routing/` | Export-safe route-selection runtime over governed route and workflow indexes. |
+| `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
+| `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
+| `core/python/src/watchtower_core/closeout/` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
+| `core/python/src/watchtower_core/repo_ops/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -108,25 +116,28 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
 - A reusable-core query helper that searches governed command, workflow, authority, route, or artifact-family metadata belongs in `core/python/src/watchtower_core/query/`.
 - A repo-local query helper that searches live planning indexes, initiative packages, or docs-backed planning joins belongs in `core/python/src/watchtower_core/repo_ops/query/`.
+- A reusable route-selection engine belongs in `core/python/src/watchtower_core/routing/`.
+- A reusable rebuild helper for derived surfaces belongs in `core/python/src/watchtower_core/rebuild/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/`; `core/python/src/watchtower_core/repo_ops/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/control_plane/`; `core/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/`; `core/python/src/watchtower_core/repo_ops/sync/`; `core/python/src/watchtower_core/repo_ops/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
 
 ## Validation
 - `core/python/pyproject.toml` should parse and support local lockfile generation.
 - `core/python/uv.lock` should stay current with the declared dependency set.
 - `core/python/.venv/` should be reproducible from `uv sync --extra dev`.
 - Python source should be importable through the canonical package path.
+- Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
 - `uv run pytest`, `uv run ruff check .`, and `uv run mypy src` should be the default validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
 - Reviewers should reject parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/`.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
-- Update `core/README.md`, `core/python/README.md`, `core/python/AGENTS.md`, and the repository path index in the same change set when the Python workspace entrypoints change materially.
-- Update affected feature designs when the package boundaries for validators, query, or control-plane loading change materially.
+- Update `core/README.md`, `core/python/README.md`, `core/python/AGENTS.md`, [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md), and the repository path index in the same change set when the Python workspace entrypoints change materially.
+- Update affected feature designs when the package boundaries for validators, query, sync, rebuild, routing, workflow execution, or control-plane loading change materially.
 
 ## References
 - [src_layout_reference.md](/docs/references/src_layout_reference.md)
@@ -135,10 +146,11 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [pytest_reference.md](/docs/references/pytest_reference.md)
 - [ruff_reference.md](/docs/references/ruff_reference.md)
 - [mypy_reference.md](/docs/references/mypy_reference.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ## Notes
 - This standard intentionally keeps the Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
 ## Updated At
-- `2026-03-16T20:30:00Z`
+- `2026-03-18T06:44:55Z`

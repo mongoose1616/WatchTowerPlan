@@ -13,7 +13,7 @@ authority: supporting
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 ---
@@ -63,7 +63,7 @@ companions for the review contexts the foundations layer already advertises.
 ## Affected Surfaces
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 

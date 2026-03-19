@@ -93,7 +93,7 @@ Defines the phase-one refactor design for workflow route discrimination, compact
 - Recast planning and command umbrella docs as route-first entrypoints that point readers at coordination, CLI help, indexes, and leaf pages instead of re-enumerating the full catalog inline.
 
 ### Data and Interface Impacts
-- `workflows/ROUTING_TABLE.md`, `workflows/modules/*.md`, `core/control_plane/indexes/routes/route_index.json`, `core/control_plane/indexes/workflows/workflow_index.json`, and `core/control_plane/registries/workflow_metadata_registry.json` change together for the route-discrimination slice.
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, `core/workflows/modules/ and plan/workflows/modules/*.md`, `core/control_plane/indexes/routes/route_index.json`, `core/control_plane/indexes/workflows/workflow_index.json`, and `core/control_plane/registries/workflow_metadata_registry.json` change together for the route-discrimination slice.
 - `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`, `core/python/src/watchtower_core/repo_ops/query/coordination.py`, `core/python/src/watchtower_core/cli/`, coordination standards, coordination examples, and coordination-related tests change together for the compact-current-state slice.
 - `docs/planning/README.md`, `docs/planning/initiatives/README.md`, `docs/commands/core_python/watchtower_core.md`, `docs/commands/core_python/watchtower_core_query.md`, and `docs/commands/core_python/watchtower_core_sync.md` change together for the route-first entrypoint slice.
 

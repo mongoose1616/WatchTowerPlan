@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_work_item_bootstrap",
   "title": "Add WatchTower work-item start flow",
   "summary": "Add a CLI path that creates one local work-item record under the initialized workspace state root.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T07:35:53Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

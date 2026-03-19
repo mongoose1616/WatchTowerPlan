@@ -84,7 +84,7 @@ Defines the architecture for executable route preview, governed workflow metadat
 
 ## Recommended Design
 ### Architecture
-- Keep `workflows/ROUTING_TABLE.md` as the human routing authority.
+- Keep `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` as the human routing authority.
 - Add a derived `route_index` artifact for machine lookup over route rows.
 - Add an authored `workflow_metadata_registry` artifact for machine-owned workflow retrieval metadata currently duplicated in Python.
 - Add a `route` CLI family with a `preview` subcommand that consumes the route index and workflow index.
@@ -112,8 +112,8 @@ Defines the architecture for executable route preview, governed workflow metadat
 - Task lifecycle commands must fail closed on invalid task statuses, unresolved task IDs, duplicate task IDs, or mismatched open versus closed placement.
 
 ## Affected Surfaces
-- `workflows/ROUTING_TABLE.md`
-- `workflows/modules/`
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`
+- `core/workflows/modules/` and `plan/workflows/modules/`
 - `core/control_plane/registries/`
 - `core/control_plane/indexes/`
 - `core/control_plane/schemas/artifacts/`

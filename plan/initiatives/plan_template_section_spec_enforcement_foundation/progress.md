@@ -1,23 +1,43 @@
 # Plan Template Section-Spec Enforcement Foundation Progress
 
-## Gate State
-- `capture_complete`: `True`
-- `machine_valid`: `True`
+## Current Status
+- `lifecycle_stage`: `completed`
+- `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `False`
-- `blocking_reasons`: `none`
+- `updated_at`: `2026-03-17T18:06:15Z`
 
-## Task Status
-- `task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage`: `completed` (high)
-- `task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts`: `completed` (high)
-- `task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts`: `completed` (high)
+## Recent Events or Changes
+| Recorded At | Event | Actor | Summary |
+| --- | --- | --- | --- |
+| `2026-03-17T18:04:42Z` | `completed` | `actor.repository_maintainer` | The initiative package reached terminal closeout as completed. |
+| `2026-03-17T18:04:42Z` | `closing_started` | `actor.repository_maintainer` | The initiative entered closing after the section-spec schemas, template bindings, and validation coverage landed cleanly. |
+| `2026-03-17T18:04:42Z` | `execution_started` | `actor.repository_maintainer` | Implementation began for the template section-spec enforcement slice. |
+| `2026-03-17T17:51:13Z` | `ready_for_execution_marked` | `actor.watchtower_core` | The initiative package entered ready_for_execution after approval. |
+| `2026-03-17T17:51:13Z` | `ready_for_execution_approved` | `actor.repository_maintainer` | An authorized maintainer approved the initiative package for execution. |
 
-## Discrepancies
-- `discrepancy.plan_template_section_spec_enforcement_foundation.coordination_index_index_drift`: `resolved` / `stale_aggregate_index`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.initiative_index_index_drift`: `resolved` / `stale_aggregate_index`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.plan_surface_drift`: `resolved` / `stale_rendered_surface`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.plan_overview_surface_drift`: `resolved` / `stale_rendered_surface`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.progress_surface_drift`: `resolved` / `stale_rendered_surface`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.readiness_index_index_drift`: `resolved` / `stale_aggregate_index`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.summary_surface_drift`: `resolved` / `stale_rendered_surface`
-- `discrepancy.plan_template_section_spec_enforcement_foundation.task_index_index_drift`: `resolved` / `stale_aggregate_index`
+## Active Tasks
+_No active tasks._
+
+## Blockers
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.coordination_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.initiative_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.plan_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/initiatives/plan_template_section_spec_enforcement_foundation/plan.md.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.plan_overview_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/plan_overview.md.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.progress_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/initiatives/plan_template_section_spec_enforcement_foundation/progress.md.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.readiness_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.summary_surface_drift`: `high` `stale_rendered_surface` / `resolved`. Rendered surface drift detected for plan/initiatives/plan_template_section_spec_enforcement_foundation/summary.md.
+- Discrepancy `discrepancy.plan_template_section_spec_enforcement_foundation.task_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/task_index.json.
+- Task `task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage` depends on `task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts`, `task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts`.
+- Task `task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts` depends on `task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts`.
+
+## Next Actions
+- Finalize closeout, evidence, and promotion decisions.
+- Next surface: [summary.md](/plan/initiatives/plan_template_section_spec_enforcement_foundation/summary.md)
+
+## Evidence or Validation State
+- `machine_valid`: `True`
+- Evidence bundles: `1`
+- Acceptance contract refs: `0`
+- Trace-linked evidence refs: `0`
+- `evidence.plan_template_section_spec_enforcement_foundation.bootstrap_validation_bundle`: `completed`

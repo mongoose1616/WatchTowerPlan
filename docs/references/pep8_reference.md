@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "pep8"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -29,7 +29,7 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 - `https://peps.python.org/pep-0008/` - verified 2026-03-09; PEP 8 – Style Guide for Python Code.
 
 ## Related Standards and Sources
-- No narrower repository standard or workflow cites this reference directly yet.
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -54,10 +54,14 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 
 ## Local Mapping in This Repository
 ### Current Repository Status
-- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ### Why It Matters Here
 - Use this reference as the baseline readability guide for any Python automation or helper code added to the repo.
+- The Python code design standard now uses this reference as the explicit readability baseline for naming, imports, comments, and code layout.
 - Pair it with `Ruff`, `mypy`, and `pyproject.toml` references when shaping a fuller local engineering toolchain.
 - If the repo adopts explicit local deviations from PEP 8, define them under `docs/standards/engineering/**` rather than hiding them in ad hoc code review comments.
 
@@ -67,12 +71,13 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 
 ## References
 - [README.md](/docs/references/README.md)
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 
 ## Notes
 - This reference supports future Python automation work but does not by itself make PEP 8 mandatory everywhere.
 - If a repository engineering standard is written later, it should define any local deviations explicitly.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

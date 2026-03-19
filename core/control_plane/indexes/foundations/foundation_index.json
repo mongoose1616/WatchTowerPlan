@@ -68,8 +68,10 @@
       "related_paths": [
         "core/control_plane/",
         "core/python/",
-        "workflows/modules/",
-        "docs/standards/"
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
+        "docs/standards/",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -220,6 +222,7 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/governance/rewrite_execution_control_standard.md",
         "docs/standards/governance/rewrite_surface_classification_standard.md",
         "docs/standards/metadata/terminology_standard.md",
@@ -352,6 +355,7 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/governance/rewrite_execution_control_standard.md",
         "docs/standards/governance/rewrite_surface_classification_standard.md",
         "docs/standards/metadata/terminology_standard.md",
@@ -521,6 +525,8 @@
       "related_paths": [
         "docs/planning/",
         "core/control_plane/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "workflows/modules/"
       ],
       "internal_reference_paths": [
@@ -767,6 +773,8 @@
       "related_paths": [
         "docs/standards/",
         "core/control_plane/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "workflows/modules/"
       ],
       "internal_reference_paths": [

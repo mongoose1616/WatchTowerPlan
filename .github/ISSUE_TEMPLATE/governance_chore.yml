@@ -38,7 +38,8 @@ body:
       description: Paths, commands, standards, or indexes likely to change.
       placeholder: |
         docs/standards/governance/
-        workflows/ROUTING_TABLE.md
+        core/workflows/ROUTING_TABLE.md
+        plan/workflows/ROUTING_TABLE.md
         core/control_plane/indexes/
     validations:
       required: true

@@ -49,7 +49,7 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [acceptance_evidence_reconciliation.md](/workflows/modules/acceptance_evidence_reconciliation.md): workflow surface that operationalizes or depends on this standard.
+- [acceptance_evidence_reconciliation.md](/plan/workflows/modules/acceptance_evidence_reconciliation.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - Reconcile acceptance at the shared `trace_id` level.
@@ -99,7 +99,7 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 ## References
 - [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
 - [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
-- [acceptance_evidence_reconciliation.md](/workflows/modules/acceptance_evidence_reconciliation.md)
+- [acceptance_evidence_reconciliation.md](/plan/workflows/modules/acceptance_evidence_reconciliation.md)
 
 ## Updated At
 - `2026-03-11T06:00:00Z`

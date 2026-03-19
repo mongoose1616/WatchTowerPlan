@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
   "title": "Bind templates to section-spec contracts",
   "summary": "Update template catalog entries and related family bindings to reference the new section-spec schemas.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

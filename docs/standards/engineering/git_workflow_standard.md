@@ -15,7 +15,7 @@ authority: "authoritative"
 applies_to:
   - "docs/standards/engineering/git_commit_standard.md"
   - "docs/standards/governance/github_collaboration_standard.md"
-  - "workflows/modules/commit_closeout.md"
+  - "core/workflows/modules/commit_closeout.md"
 aliases:
   - "git workflow"
   - "branch naming"
@@ -103,7 +103,7 @@ This standard defines repository-standard local git workflow behavior, including
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`; `docs/planning/coordination_tracking.md`
 
 ## Validation
 - Reviewers should reject branch names that do not follow `<kind>/<slug>` or that encode mutable status or owner metadata.

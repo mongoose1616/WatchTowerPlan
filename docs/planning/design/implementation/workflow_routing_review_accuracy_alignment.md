@@ -55,8 +55,8 @@ Breaks Workflow Routing Review Accuracy Alignment into a bounded implementation 
 - Refresh the route index, workflow guidance, command docs, and regression tests together so the human routing surfaces and machine-readable route-preview outputs stay coherent.
 
 ## Work Breakdown
-1. Update the route-preview scoring helper in `core/python/src/watchtower_core/repo_ops/query/routes.py` and add or refresh unit coverage for the reproduced routing failures.
-2. Revise `workflows/ROUTING_TABLE.md`, regenerate `core/control_plane/indexes/routes/route_index.json`, and align the affected workflow and command docs with the new route behavior.
+1. Update the route-preview scoring helper in `core/python/src/watchtower_core/query/routes.py` and add or refresh unit coverage for the reproduced routing failures.
+2. Revise `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, regenerate `core/control_plane/indexes/routes/route_index.json`, and align the affected workflow and command docs with the new route behavior.
 3. Run the route-preview regression sweep, targeted tests, full validation, and a follow-up no-new-issues routing review pass before task and initiative closeout.
 
 ## Risks

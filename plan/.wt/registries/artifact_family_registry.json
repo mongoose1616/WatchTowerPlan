@@ -51,6 +51,7 @@
         "index.readiness",
         "index.plan_tasks",
         "index.plan_discrepancies",
+        "index.reviews",
         "index.promotions",
         "index.coordination"
       ],
@@ -159,7 +160,8 @@
       ],
       "renderable": true,
       "derived_index_ids": [
-        "index.initiatives"
+        "index.initiatives",
+        "index.evidence"
       ],
       "visibility": "mixed"
     },
@@ -184,6 +186,7 @@
       ],
       "derived_index_ids": [
         "index.initiatives",
+        "index.closeouts",
         "index.coordination"
       ],
       "visibility": "mixed"
@@ -227,7 +230,8 @@
       ],
       "renderable": false,
       "derived_index_ids": [
-        "index.promotions"
+        "index.promotions",
+        "index.reviews"
       ],
       "visibility": "mixed"
     },
@@ -348,6 +352,51 @@
       "renderable": false,
       "derived_index_ids": [
         "index.promotions"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "evidence_index",
+      "entry_status": "active",
+      "summary": "Pack-level evidence index built from initiative-local validation bundles.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:evidence-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/evidence_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.evidence"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "closeout_index",
+      "entry_status": "active",
+      "summary": "Pack-level closeout index built from initiative-local closeout recaps.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:closeout-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/closeout_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.closeouts"
+      ],
+      "visibility": "mixed"
+    },
+    {
+      "family_id": "review_index",
+      "entry_status": "active",
+      "summary": "Pack-level review index built from initiative review state and promotion approval state.",
+      "canonical_schema_id": "urn:watchtower:schema:artifacts:plan:review-index:v1",
+      "placement_roots": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "status_field": "none",
+      "renderable": false,
+      "derived_index_ids": [
+        "index.reviews"
       ],
       "visibility": "mixed"
     },

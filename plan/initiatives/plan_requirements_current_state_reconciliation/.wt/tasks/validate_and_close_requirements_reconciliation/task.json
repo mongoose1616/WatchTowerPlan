@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
   "title": "Validate and close requirements reconciliation",
   "summary": "Validate the updated requirements authority surface and close the bounded reconciliation slice.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

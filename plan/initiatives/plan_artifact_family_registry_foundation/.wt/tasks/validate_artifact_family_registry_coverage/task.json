@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_artifact_family_registry_foundation",
   "title": "Validate artifact family registry coverage",
   "summary": "Add validation coverage proving the artifact family registry stays aligned with current live plan artifact schemas and indexes.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

@@ -70,7 +70,8 @@
         "req.template_and_output_efficiency.004"
       ],
       "validation_targets": [
-        "workflows/modules/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "docs/planning/tasks/closed/archive/2026/03/10/template_output_efficiency_workflow_guidance.md"
       ],
       "related_paths": [

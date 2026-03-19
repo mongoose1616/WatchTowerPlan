@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
   "title": "Validate rule registry coverage",
   "summary": "Add validation coverage proving the new rule registries remain aligned with live plan artifact families.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

@@ -15,8 +15,8 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md

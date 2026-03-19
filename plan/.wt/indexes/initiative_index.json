@@ -5,6 +5,48 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "title": "Plan Actor Registry And Runtime Boundary Reconciliation",
+      "summary": "Adds a reusable actor-registry helper and reconciles requirements rows for reusable-core runtime boundaries that are already implemented.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T23:51:18Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/summary.md",
+      "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "slug": "plan_actor_registry_and_runtime_boundary_reconciliation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.add_actor_registry_helper",
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.refactor_live_approval_caller",
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.reconcile_runtime_boundary_requirements"
+      ],
+      "evidence_ids": [
+        "evidence.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T23:51:18Z",
+      "closure_reason": "Delivered reusable actor-registry enforcement and reconciled proven runtime-boundary requirements rows.",
+      "related_paths": [
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/design_record.md",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/implementation_slice.md",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/add_actor_registry_helper/task.json",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/reconcile_runtime_boundary_requirements/task.json",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/refactor_live_approval_caller/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_artifact_family_registry_foundation",
       "title": "Plan Artifact Family Registry Foundation",
       "summary": "Adds the missing artifact family registry so plan-pack artifact placement, status subsets, and derived index participation stop living only in path conventions and scattered code.",
@@ -15,8 +57,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/summary.md",
       "initiative_id": "initiative.plan_artifact_family_registry_foundation",
       "slug": "plan_artifact_family_registry_foundation",
       "scope_type": "pack_wide",
@@ -38,7 +80,13 @@
         "plan/initiatives/plan_artifact_family_registry_foundation/initiative_brief.md",
         "plan/initiatives/plan_artifact_family_registry_foundation/design_record.md",
         "plan/initiatives/plan_artifact_family_registry_foundation/implementation_slice.md",
-        "plan/initiatives/plan_artifact_family_registry_foundation/decision_notes.md"
+        "plan/initiatives/plan_artifact_family_registry_foundation/decision_notes.md",
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/publish_artifact_family_registry_schema/task.json",
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/seed_artifact_family_registry_entries/task.json",
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/validate_artifact_family_registry_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -52,8 +100,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/summary.md",
       "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
       "slug": "plan_artifact_index_runtime_foundation",
       "scope_type": "pack_wide",
@@ -75,7 +123,55 @@
         "plan/initiatives/plan_artifact_index_runtime_foundation/initiative_brief.md",
         "plan/initiatives/plan_artifact_index_runtime_foundation/design_record.md",
         "plan/initiatives/plan_artifact_index_runtime_foundation/implementation_slice.md",
-        "plan/initiatives/plan_artifact_index_runtime_foundation/decision_notes.md"
+        "plan/initiatives/plan_artifact_index_runtime_foundation/decision_notes.md",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/build_live_plan_artifact_index_and_query_surface/task.json",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/publish_artifact_index_contract_and_neutralize_legacy_fields/task.json",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/validate_artifact_index_coverage_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "title": "Plan Closeout Helper Boundary Alignment",
+      "summary": "Extracts initiative-package closeout coordination into watchtower_core.closeout and validates required evidence, closeout, and promotion artifact handling before terminal transitions.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T03:07:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_closeout_helper_boundary_alignment/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_closeout_helper_boundary_alignment/summary.md",
+      "initiative_id": "initiative.plan_closeout_helper_boundary_alignment",
+      "slug": "plan_closeout_helper_boundary_alignment",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_closeout_helper_boundary_alignment.add_initiative_package_closeout_helper",
+        "task.plan_closeout_helper_boundary_alignment.refactor_live_plan_closeout_onto_shared_helper",
+        "task.plan_closeout_helper_boundary_alignment.validate_closeout_boundary_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_closeout_helper_boundary_alignment.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T03:07:00Z",
+      "closure_reason": "Delivered the initiative-package closeout helper boundary and aligned the watchtower_core.closeout package to the live plan closeout flow.",
+      "related_paths": [
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/initiative_brief.md",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/design_record.md",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/implementation_slice.md",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/add_initiative_package_closeout_helper/task.json",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/refactor_live_plan_closeout_onto_shared_helper/task.json",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/validate_closeout_boundary_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -89,8 +185,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_core_documentation_template_authority_foundation/summary.md",
       "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
       "slug": "plan_core_documentation_template_authority_foundation",
       "scope_type": "pack_wide",
@@ -112,7 +208,13 @@
         "plan/initiatives/plan_core_documentation_template_authority_foundation/initiative_brief.md",
         "plan/initiatives/plan_core_documentation_template_authority_foundation/design_record.md",
         "plan/initiatives/plan_core_documentation_template_authority_foundation/implementation_slice.md",
-        "plan/initiatives/plan_core_documentation_template_authority_foundation/decision_notes.md"
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/decision_notes.md",
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/add_core_validation_coverage/task.json",
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/publish_core_documentation_schema_contracts/task.json",
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/seed_core_registries_and_templates/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -126,8 +228,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/summary.md",
       "initiative_id": "initiative.plan_discrepancy_helper_foundation",
       "slug": "plan_discrepancy_helper_foundation",
       "scope_type": "pack_wide",
@@ -149,7 +251,13 @@
         "plan/initiatives/plan_discrepancy_helper_foundation/initiative_brief.md",
         "plan/initiatives/plan_discrepancy_helper_foundation/design_record.md",
         "plan/initiatives/plan_discrepancy_helper_foundation/implementation_slice.md",
-        "plan/initiatives/plan_discrepancy_helper_foundation/decision_notes.md"
+        "plan/initiatives/plan_discrepancy_helper_foundation/decision_notes.md",
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/publish_discrepancy_helper_contracts/task.json",
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/refactor_live_plan_discrepancy_writes_onto_helper/task.json",
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/validate_discrepancy_helper_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -163,8 +271,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/summary.md",
       "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
       "slug": "plan_documentation_family_and_template_catalog_foundation",
       "scope_type": "pack_wide",
@@ -186,7 +294,13 @@
         "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/initiative_brief.md",
         "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/design_record.md",
         "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/implementation_slice.md",
-        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/decision_notes.md"
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/decision_notes.md",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/publish_documentation_and_template_schema_contracts/task.json",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/seed_registry_entries_and_template_assets/task.json",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/wire_helpers_and_validation_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -200,8 +314,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/summary.md",
       "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
       "slug": "plan_duplicated_foundations_corpus_bootstrap",
       "scope_type": "pack_wide",
@@ -223,7 +337,13 @@
         "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/initiative_brief.md",
         "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/design_record.md",
         "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/implementation_slice.md",
-        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/decision_notes.md"
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/decision_notes.md",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/copy_foundations_corpus_into_both_roots/task.json",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/seed_duplicated_foundations_roots/task.json",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/validate_duplicated_foundations_discovery/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -237,8 +357,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_entrypoint_cutover_proof/summary.md",
       "initiative_id": "initiative.plan_entrypoint_cutover_proof",
       "slug": "plan_entrypoint_cutover_proof",
       "scope_type": "pack_wide",
@@ -259,7 +379,12 @@
         "plan/initiatives/plan_entrypoint_cutover_proof/initiative_brief.md",
         "plan/initiatives/plan_entrypoint_cutover_proof/design_record.md",
         "plan/initiatives/plan_entrypoint_cutover_proof/implementation_slice.md",
-        "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md"
+        "plan/initiatives/plan_entrypoint_cutover_proof/decision_notes.md",
+        "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/publish_plan_authority_entrypoints/task.json",
+        "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/validate_packwide_proof_package/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -273,8 +398,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_event_stream_helper_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_event_stream_helper_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_event_stream_helper_foundation/summary.md",
       "initiative_id": "initiative.plan_event_stream_helper_foundation",
       "slug": "plan_event_stream_helper_foundation",
       "scope_type": "pack_wide",
@@ -296,7 +421,97 @@
         "plan/initiatives/plan_event_stream_helper_foundation/initiative_brief.md",
         "plan/initiatives/plan_event_stream_helper_foundation/design_record.md",
         "plan/initiatives/plan_event_stream_helper_foundation/implementation_slice.md",
-        "plan/initiatives/plan_event_stream_helper_foundation/decision_notes.md"
+        "plan/initiatives/plan_event_stream_helper_foundation/decision_notes.md",
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/publish_event_stream_helper_contracts/task.json",
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/refactor_initiative_package_event_writes_onto_helper/task.json",
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/validate_event_stream_helper_and_contracts/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "title": "Plan Evidence Bundle Helper Foundation",
+      "summary": "Broaden watchtower_core.evidence with a reusable evidence-bundle helper, then route live plan evidence bootstrap and indexing through that boundary.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T01:41:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_evidence_bundle_helper_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_evidence_bundle_helper_foundation/summary.md",
+      "initiative_id": "initiative.plan_evidence_bundle_helper_foundation",
+      "slug": "plan_evidence_bundle_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_evidence_bundle_helper_foundation.define_evidence_bundle_helper_contract",
+        "task.plan_evidence_bundle_helper_foundation.refactor_live_plan_evidence_callers",
+        "task.plan_evidence_bundle_helper_foundation.reconcile_evidence_requirements_and_docs"
+      ],
+      "evidence_ids": [
+        "evidence.plan_evidence_bundle_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T01:41:00Z",
+      "closure_reason": "Delivered reusable evidence bundle helpers and refactored live plan evidence callers onto the broadened evidence boundary.",
+      "related_paths": [
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/design_record.md",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/define_evidence_bundle_helper_contract/task.json",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/reconcile_evidence_requirements_and_docs/task.json",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/refactor_live_plan_evidence_callers/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "title": "Plan Extraction Output Envelope Alignment",
+      "summary": "Adds a typed extraction-output envelope helper and aligns guidance promotion with an explicit extraction stage instead of schema-only coverage.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T02:20:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_extraction_output_envelope_alignment/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_extraction_output_envelope_alignment/summary.md",
+      "initiative_id": "initiative.plan_extraction_output_envelope_alignment",
+      "slug": "plan_extraction_output_envelope_alignment",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_extraction_output_envelope_alignment.add_typed_extraction_output_helper",
+        "task.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage",
+        "task.plan_extraction_output_envelope_alignment.validate_extraction_output_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_extraction_output_envelope_alignment.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T02:20:00Z",
+      "closure_reason": "Delivered the typed extraction-output envelope helper and aligned guidance promotion with an explicit extraction stage.",
+      "related_paths": [
+        "plan/initiatives/plan_extraction_output_envelope_alignment/initiative_brief.md",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/design_record.md",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/implementation_slice.md",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/add_typed_extraction_output_helper/task.json",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/validate_extraction_output_alignment/task.json",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/wire_guidance_promotion_through_extraction_stage/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -310,8 +525,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/summary.md",
       "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
       "slug": "plan_generic_query_harness_export_foundation",
       "scope_type": "pack_wide",
@@ -333,7 +548,13 @@
         "plan/initiatives/plan_generic_query_harness_export_foundation/initiative_brief.md",
         "plan/initiatives/plan_generic_query_harness_export_foundation/design_record.md",
         "plan/initiatives/plan_generic_query_harness_export_foundation/implementation_slice.md",
-        "plan/initiatives/plan_generic_query_harness_export_foundation/decision_notes.md"
+        "plan/initiatives/plan_generic_query_harness_export_foundation/decision_notes.md",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/publish_generic_query_harness_contracts/task.json",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/refactor_repo_query_services_onto_public_query_surface/task.json",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/validate_query_harness_export_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -347,8 +568,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/summary.md",
       "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
       "slug": "plan_generic_sync_harness_export_foundation",
       "scope_type": "pack_wide",
@@ -369,7 +590,13 @@
       "related_paths": [
         "plan/initiatives/plan_generic_sync_harness_export_foundation/initiative_brief.md",
         "plan/initiatives/plan_generic_sync_harness_export_foundation/design_record.md",
-        "plan/initiatives/plan_generic_sync_harness_export_foundation/implementation_slice.md"
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/implementation_slice.md",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/publish_generic_sync_harness_contracts/task.json",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/refactor_repo_sync_orchestration_onto_generic_harness/task.json",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/validate_sync_harness_export_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -383,8 +610,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_governance_surface_resolver_helper/summary.md",
       "initiative_id": "initiative.plan_governance_surface_resolver_helper",
       "slug": "plan_governance_surface_resolver_helper",
       "scope_type": "pack_wide",
@@ -405,7 +632,13 @@
       "related_paths": [
         "plan/initiatives/plan_governance_surface_resolver_helper/initiative_brief.md",
         "plan/initiatives/plan_governance_surface_resolver_helper/design_record.md",
-        "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md"
+        "plan/initiatives/plan_governance_surface_resolver_helper/implementation_slice.md",
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_dependency_coverage/task.json",
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_resolver_helper/task.json",
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/validate_governance_surface_resolver_behavior/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -419,8 +652,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/summary.md",
       "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
       "slug": "plan_guidance_promotion_helper_foundation",
       "scope_type": "pack_wide",
@@ -442,7 +675,13 @@
         "plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md",
         "plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md",
         "plan/initiatives/plan_guidance_promotion_helper_foundation/implementation_slice.md",
-        "plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md"
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/implement_governed_guidance_promotion_flow/task.json",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/publish_promotion_helper_contracts/task.json",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/validate_promoted_guidance_extraction_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -456,8 +695,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/summary.md",
       "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
       "slug": "plan_human_surface_policy_and_core_root_seeding",
       "scope_type": "pack_wide",
@@ -479,7 +718,13 @@
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/initiative_brief.md",
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/design_record.md",
         "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/implementation_slice.md",
-        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md"
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/decision_notes.md",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/add_human_surface_policy_contract_and_helper/task.json",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/seed_missing_core_human_roots_and_router_surfaces/task.json",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/validate_human_surface_policy_and_root_compliance/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -493,8 +738,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md",
       "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
       "slug": "plan_legacy_history_retention_reconciliation",
       "scope_type": "pack_wide",
@@ -516,7 +761,13 @@
         "plan/initiatives/plan_legacy_history_retention_reconciliation/initiative_brief.md",
         "plan/initiatives/plan_legacy_history_retention_reconciliation/design_record.md",
         "plan/initiatives/plan_legacy_history_retention_reconciliation/implementation_slice.md",
-        "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md"
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/decision_notes.md",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/classify_legacy_history_and_transitional_archive_surfaces/task.json",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/publish_retention_policy_registry_and_loader_support/task.json",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/validate_retention_policy_alignment_and_follow_up_linkage/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -530,8 +781,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/summary.md",
       "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
       "slug": "plan_lifecycle_review_and_source_vocab_registries",
       "scope_type": "pack_wide",
@@ -552,7 +803,56 @@
       "related_paths": [
         "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/initiative_brief.md",
         "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/design_record.md",
-        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/implementation_slice.md"
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/implementation_slice.md",
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/publish_lifecycle_review_and_source_registry_schemas/task.json",
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/seed_lifecycle_review_and_source_vocab_entries/task.json",
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/wire_typed_helper_and_validation_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_live_evidence_closeout_review_indexes_foundation",
+      "title": "Plan Live Evidence Closeout Review Indexes Foundation",
+      "summary": "Adds the remaining live plan aggregate indexes for initiative-local evidence, closeout, and review state, while reconciling requirements.md so environment_context is no longer treated as a required clean-endstate contract.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T23:05:01Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/summary.md",
+      "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+      "slug": "plan_live_evidence_closeout_review_indexes_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_live_evidence_closeout_review_indexes_foundation.reconcile_environment_context_scope",
+        "task.plan_live_evidence_closeout_review_indexes_foundation.implement_live_indexes",
+        "task.plan_live_evidence_closeout_review_indexes_foundation.validate_rebuild_and_requirements_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_live_evidence_closeout_review_indexes_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T23:05:01Z",
+      "closure_reason": "Delivered live evidence, closeout, and review indexes and aligned requirements.md to defer environment_context.",
+      "related_paths": [
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/initiative_brief.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/design_record.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/implementation_slice.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/decision_notes.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/implement_live_indexes/task.json",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/reconcile_environment_context_scope/task.json",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/validate_rebuild_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -566,8 +866,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_live_query_authority_cutover/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_live_query_authority_cutover/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_live_query_authority_cutover/summary.md",
       "initiative_id": "initiative.plan_live_query_authority_cutover",
       "slug": "plan_live_query_authority_cutover",
       "scope_type": "pack_wide",
@@ -589,7 +889,55 @@
         "plan/initiatives/plan_live_query_authority_cutover/initiative_brief.md",
         "plan/initiatives/plan_live_query_authority_cutover/design_record.md",
         "plan/initiatives/plan_live_query_authority_cutover/implementation_slice.md",
-        "plan/initiatives/plan_live_query_authority_cutover/decision_notes.md"
+        "plan/initiatives/plan_live_query_authority_cutover/decision_notes.md",
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/add_readiness_discrepancy_and_project_query_commands/task.json",
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/refresh_docs_and_validate_live_query_cutover/task.json",
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/reroot_public_planning_queries_onto_live_plan_indexes/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_path_and_id_helper_foundation",
+      "title": "Plan Path And ID Helper Foundation",
+      "summary": "Adds reusable path and id helpers so plan initiative, project, task, and companion artifact naming stops living in scattered repo-local string conventions.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T23:40:59Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_path_and_id_helper_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_path_and_id_helper_foundation/summary.md",
+      "initiative_id": "initiative.plan_path_and_id_helper_foundation",
+      "slug": "plan_path_and_id_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_path_and_id_helper_foundation.add_path_and_id_helper",
+        "task.plan_path_and_id_helper_foundation.refactor_plan_runtime_callers",
+        "task.plan_path_and_id_helper_foundation.validate_helper_and_reconcile_requirements"
+      ],
+      "evidence_ids": [
+        "evidence.plan_path_and_id_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T23:40:59Z",
+      "closure_reason": "Delivered reusable path and id helper coverage for live plan callers.",
+      "related_paths": [
+        "plan/initiatives/plan_path_and_id_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_path_and_id_helper_foundation/design_record.md",
+        "plan/initiatives/plan_path_and_id_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/add_path_and_id_helper/task.json",
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/refactor_plan_runtime_callers/task.json",
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/validate_helper_and_reconcile_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -603,8 +951,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_project_context_runtime_standardization/summary.md",
       "initiative_id": "initiative.plan_project_context_runtime_standardization",
       "slug": "plan_project_context_runtime_standardization",
       "scope_type": "pack_wide",
@@ -626,7 +974,13 @@
         "plan/initiatives/plan_project_context_runtime_standardization/initiative_brief.md",
         "plan/initiatives/plan_project_context_runtime_standardization/design_record.md",
         "plan/initiatives/plan_project_context_runtime_standardization/implementation_slice.md",
-        "plan/initiatives/plan_project_context_runtime_standardization/decision_notes.md"
+        "plan/initiatives/plan_project_context_runtime_standardization/decision_notes.md",
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/expose_project_context_query_surface/task.json",
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/extract_project_context_runtime_helper/task.json",
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/validate_project_context_load_contract/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -640,8 +994,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_project_surface_policy_registry/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_project_surface_policy_registry/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_project_surface_policy_registry/summary.md",
       "initiative_id": "initiative.plan_project_surface_policy_registry",
       "slug": "plan_project_surface_policy_registry",
       "scope_type": "pack_wide",
@@ -662,7 +1016,13 @@
       "related_paths": [
         "plan/initiatives/plan_project_surface_policy_registry/initiative_brief.md",
         "plan/initiatives/plan_project_surface_policy_registry/design_record.md",
-        "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md"
+        "plan/initiatives/plan_project_surface_policy_registry/implementation_slice.md",
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/publish_project_surface_policy_registry_schema/task.json",
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/seed_project_surface_policy_entries/task.json",
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/wire_helper_and_project_validation/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -676,8 +1036,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/summary.md",
       "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
       "slug": "plan_promotion_policy_and_guidance_indexes",
       "scope_type": "pack_wide",
@@ -699,7 +1059,97 @@
         "plan/initiatives/plan_promotion_policy_and_guidance_indexes/initiative_brief.md",
         "plan/initiatives/plan_promotion_policy_and_guidance_indexes/design_record.md",
         "plan/initiatives/plan_promotion_policy_and_guidance_indexes/implementation_slice.md",
-        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/decision_notes.md"
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/decision_notes.md",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/build_promotion_and_guidance_index_runtime/task.json",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/publish_promotion_policy_schema_and_registry/task.json",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/validate_promotion_and_guidance_lookup/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "title": "Plan Rebuild Harness Export Foundation",
+      "summary": "Exports a reusable rebuild harness and routes the existing plan and project derived-surface rebuilds through the new boundary.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T00:34:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_rebuild_harness_export_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_rebuild_harness_export_foundation/summary.md",
+      "initiative_id": "initiative.plan_rebuild_harness_export_foundation",
+      "slug": "plan_rebuild_harness_export_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_rebuild_harness_export_foundation.define_rebuild_harness_contract",
+        "task.plan_rebuild_harness_export_foundation.refactor_plan_and_project_rebuild_callers",
+        "task.plan_rebuild_harness_export_foundation.validate_rebuild_boundary_and_requirements_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_rebuild_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T00:34:00Z",
+      "closure_reason": "Delivered the reusable rebuild harness boundary and routed plan and project derived-surface rebuild writes through it.",
+      "related_paths": [
+        "plan/initiatives/plan_rebuild_harness_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/design_record.md",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/implementation_slice.md",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/define_rebuild_harness_contract/task.json",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/refactor_plan_and_project_rebuild_callers/task.json",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/validate_rebuild_boundary_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "title": "Plan Rendered Surface Builder Alignment",
+      "summary": "Extracts a reusable rendered-view builder and markdown reconciliation helper, then routes live plan and project rendered surfaces through the registry-backed boundary.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T02:44:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_rendered_surface_builder_alignment/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_rendered_surface_builder_alignment/summary.md",
+      "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+      "slug": "plan_rendered_surface_builder_alignment",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_rendered_surface_builder_alignment.add_reusable_rendered_view_builder",
+        "task.plan_rendered_surface_builder_alignment.refactor_live_plan_and_project_surfaces_onto_rendered_helpers",
+        "task.plan_rendered_surface_builder_alignment.validate_rendered_surface_boundary_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.plan_rendered_surface_builder_alignment.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T02:44:00Z",
+      "closure_reason": "Delivered the registry-backed rendered-view builder and markdown reconciliation helpers for live plan and project surfaces.",
+      "related_paths": [
+        "plan/initiatives/plan_rendered_surface_builder_alignment/initiative_brief.md",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/design_record.md",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/implementation_slice.md",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/add_reusable_rendered_view_builder/task.json",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/refactor_live_plan_and_project_surfaces_onto_rendered_helpers/task.json",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/validate_rendered_surface_boundary_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -713,8 +1163,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/summary.md",
       "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
       "slug": "plan_requirements_current_state_reconciliation",
       "scope_type": "pack_wide",
@@ -735,7 +1185,97 @@
       "related_paths": [
         "plan/initiatives/plan_requirements_current_state_reconciliation/initiative_brief.md",
         "plan/initiatives/plan_requirements_current_state_reconciliation/design_record.md",
-        "plan/initiatives/plan_requirements_current_state_reconciliation/implementation_slice.md"
+        "plan/initiatives/plan_requirements_current_state_reconciliation/implementation_slice.md",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_helper_and_runtime_status_rows/task.json",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_live_workspace_and_interface_contract_rows/task.json",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/validate_and_close_requirements_reconciliation/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "title": "Plan Routing Engine Export Foundation",
+      "summary": "Publishes a reusable routing engine package so route selection is available through a stable runtime API instead of only query helpers and CLI handlers.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T23:58:50Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_routing_engine_export_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_routing_engine_export_foundation/summary.md",
+      "initiative_id": "initiative.plan_routing_engine_export_foundation",
+      "slug": "plan_routing_engine_export_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_routing_engine_export_foundation.add_reusable_routing_engine",
+        "task.plan_routing_engine_export_foundation.add_routing_engine_boundary_tests",
+        "task.plan_routing_engine_export_foundation.reconcile_routing_requirements"
+      ],
+      "evidence_ids": [
+        "evidence.plan_routing_engine_export_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T23:58:50Z",
+      "closure_reason": "Delivered the reusable routing engine package and aligned the routing requirements to the exported runtime boundary.",
+      "related_paths": [
+        "plan/initiatives/plan_routing_engine_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_routing_engine_export_foundation/design_record.md",
+        "plan/initiatives/plan_routing_engine_export_foundation/implementation_slice.md",
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/add_reusable_routing_engine/task.json",
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/add_routing_engine_boundary_tests/task.json",
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/reconcile_routing_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "title": "Plan Status Registry Domain Cleanup",
+      "summary": "Removes legacy challenge-specific status leakage from the shared status registry and reconciles the authoritative requirements notes to the current pack-facing interface state.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T00:45:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_status_registry_domain_cleanup/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_status_registry_domain_cleanup/summary.md",
+      "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+      "slug": "plan_status_registry_domain_cleanup",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_status_registry_domain_cleanup.generalize_shared_status_vocabulary",
+        "task.plan_status_registry_domain_cleanup.add_focused_status_registry_coverage",
+        "task.plan_status_registry_domain_cleanup.reconcile_requirements_notes"
+      ],
+      "evidence_ids": [
+        "evidence.plan_status_registry_domain_cleanup.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T00:45:00Z",
+      "closure_reason": "Removed legacy challenge-scoped leakage from the shared status registry and reconciled the requirements notes to the current pack-facing interface state.",
+      "related_paths": [
+        "plan/initiatives/plan_status_registry_domain_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_status_registry_domain_cleanup/design_record.md",
+        "plan/initiatives/plan_status_registry_domain_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/add_focused_status_registry_coverage/task.json",
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/generalize_shared_status_vocabulary/task.json",
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/reconcile_requirements_notes/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -749,8 +1289,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/summary.md",
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "slug": "plan_status_transition_and_relation_rule_registries",
       "scope_type": "pack_wide",
@@ -772,7 +1312,60 @@
         "plan/initiatives/plan_status_transition_and_relation_rule_registries/initiative_brief.md",
         "plan/initiatives/plan_status_transition_and_relation_rule_registries/design_record.md",
         "plan/initiatives/plan_status_transition_and_relation_rule_registries/implementation_slice.md",
-        "plan/initiatives/plan_status_transition_and_relation_rule_registries/decision_notes.md"
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/decision_notes.md",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/publish_rule_registry_schemas/task.json",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/seed_rule_registry_entries/task.json",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/validate_rule_registry_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "title": "Plan Task Authority, Rendering, and Governance Recovery",
+      "summary": "Cuts over live task authority, restores human-readable planning renders, rewrites governance guidance, and validates the repaired operational flows.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T23:45:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_task_authority_rendering_governance_recovery/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_task_authority_rendering_governance_recovery/summary.md",
+      "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+      "slug": "plan_task_authority_rendering_governance_recovery",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_task_authority_rendering_governance_recovery.cut_over_runtime_and_cli",
+        "task.plan_task_authority_rendering_governance_recovery.align_bootstrap_sync_and_fixtures",
+        "task.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown",
+        "task.plan_task_authority_rendering_governance_recovery.rewrite_governance_and_command_guidance",
+        "task.plan_task_authority_rendering_governance_recovery.validate_operational_flows"
+      ],
+      "evidence_ids": [
+        "evidence.plan_task_authority_rendering_governance_recovery.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T23:45:00Z",
+      "closure_reason": "Delivered the hard-cutover task-authority remediation, restored human renders, aligned governance guidance, and validated the repaired operational flows.",
+      "related_paths": [
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/initiative_brief.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/design_record.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/implementation_slice.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/decision_notes.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/align_bootstrap_sync_and_fixtures/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/cut_over_runtime_and_cli/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/restore_human_render_depth_and_markdown/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/rewrite_governance_and_command_guidance/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/validate_operational_flows/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -786,8 +1379,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_template_section_spec_enforcement_foundation/summary.md",
       "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
       "slug": "plan_template_section_spec_enforcement_foundation",
       "scope_type": "pack_wide",
@@ -809,7 +1402,13 @@
         "plan/initiatives/plan_template_section_spec_enforcement_foundation/initiative_brief.md",
         "plan/initiatives/plan_template_section_spec_enforcement_foundation/design_record.md",
         "plan/initiatives/plan_template_section_spec_enforcement_foundation/implementation_slice.md",
-        "plan/initiatives/plan_template_section_spec_enforcement_foundation/decision_notes.md"
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/decision_notes.md",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/add_template_validation_coverage/task.json",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/bind_templates_to_section_spec_contracts/task.json",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/publish_section_spec_schema_contracts/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -823,8 +1422,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_terminal_initiative_closeout_runtime/summary.md",
       "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
       "slug": "plan_terminal_initiative_closeout_runtime",
       "scope_type": "pack_wide",
@@ -846,7 +1445,139 @@
         "plan/initiatives/plan_terminal_initiative_closeout_runtime/initiative_brief.md",
         "plan/initiatives/plan_terminal_initiative_closeout_runtime/design_record.md",
         "plan/initiatives/plan_terminal_initiative_closeout_runtime/implementation_slice.md",
-        "plan/initiatives/plan_terminal_initiative_closeout_runtime/decision_notes.md"
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/decision_notes.md",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/add_terminal_closeout_mutations/task.json",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/expose_terminal_closeout_command_surface/task.json",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/validate_terminal_closeout_and_clear_closing_initiatives/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "title": "Plan Terminology Helper Foundation",
+      "summary": "Generalize the existing planning vocabulary seam into a reusable terminology helper with pack-local lookup, alias resolution, and deprecation awareness.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T01:21:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_terminology_helper_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_terminology_helper_foundation/summary.md",
+      "initiative_id": "initiative.plan_terminology_helper_foundation",
+      "slug": "plan_terminology_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_terminology_helper_foundation.define_terminology_helper_contract",
+        "task.plan_terminology_helper_foundation.refactor_callers_and_add_terminology_coverage",
+        "task.plan_terminology_helper_foundation.reconcile_terminology_requirements_and_docs"
+      ],
+      "evidence_ids": [
+        "evidence.plan_terminology_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T01:21:00Z",
+      "closure_reason": "Delivered the reusable terminology helper with deprecated alias resolution and refactored live plan vocabulary callers onto it.",
+      "related_paths": [
+        "plan/initiatives/plan_terminology_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_terminology_helper_foundation/design_record.md",
+        "plan/initiatives/plan_terminology_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/define_terminology_helper_contract/task.json",
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/reconcile_terminology_requirements_and_docs/task.json",
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/refactor_callers_and_add_terminology_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_workflow_catalog_helper_foundation",
+      "title": "Plan Workflow Catalog Helper Foundation",
+      "summary": "Adds a reusable workflow catalog helper that joins workflow metadata, companion workflow relationships, and route membership through one typed surface.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-17T23:55:35Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_workflow_catalog_helper_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_workflow_catalog_helper_foundation/summary.md",
+      "initiative_id": "initiative.plan_workflow_catalog_helper_foundation",
+      "slug": "plan_workflow_catalog_helper_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_workflow_catalog_helper_foundation.add_workflow_catalog_helper",
+        "task.plan_workflow_catalog_helper_foundation.add_workflow_catalog_tests",
+        "task.plan_workflow_catalog_helper_foundation.reconcile_workflow_helper_requirements"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_catalog_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-17T23:55:35Z",
+      "closure_reason": "Delivered the reusable workflow catalog helper over governed workflow metadata, companions, and route bindings.",
+      "related_paths": [
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/design_record.md",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/implementation_slice.md",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/add_workflow_catalog_helper/task.json",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/add_workflow_catalog_tests/task.json",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/reconcile_workflow_helper_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "title": "Plan Workflow Execution Harness Foundation",
+      "summary": "Adds a reusable workflow execution harness over routed workflow selection with mode checks, gate checks, runner callbacks, and event recording hooks.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-18T00:56:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_workflow_execution_harness_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_workflow_execution_harness_foundation/summary.md",
+      "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+      "slug": "plan_workflow_execution_harness_foundation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "task_ids": [
+        "task.plan_workflow_execution_harness_foundation.define_generic_workflow_execution_contract",
+        "task.plan_workflow_execution_harness_foundation.add_workflow_execution_boundary_coverage",
+        "task.plan_workflow_execution_harness_foundation.reconcile_requirements_and_package_docs"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_execution_harness_foundation.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-18T00:56:00Z",
+      "closure_reason": "Delivered the reusable workflow execution harness and aligned the public boundary requirements.",
+      "related_paths": [
+        "plan/initiatives/plan_workflow_execution_harness_foundation/initiative_brief.md",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/design_record.md",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/implementation_slice.md",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/add_workflow_execution_boundary_coverage/task.json",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/define_generic_workflow_execution_contract/task.json",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/reconcile_requirements_and_package_docs/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -860,8 +1591,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/plan_workflow_root_authority_split/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/plan_workflow_root_authority_split/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_workflow_root_authority_split/summary.md",
       "initiative_id": "initiative.plan_workflow_root_authority_split",
       "slug": "plan_workflow_root_authority_split",
       "scope_type": "pack_wide",
@@ -883,7 +1614,13 @@
         "plan/initiatives/plan_workflow_root_authority_split/initiative_brief.md",
         "plan/initiatives/plan_workflow_root_authority_split/design_record.md",
         "plan/initiatives/plan_workflow_root_authority_split/implementation_slice.md",
-        "plan/initiatives/plan_workflow_root_authority_split/decision_notes.md"
+        "plan/initiatives/plan_workflow_root_authority_split/decision_notes.md",
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/cut_over_human_instructions_and_workflow_guidance/task.json",
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/rebuild_routing_and_workflow_runtime_around_split_roots/task.json",
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/split_workflow_routing_and_module_roots_by_domain/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -897,8 +1634,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/summary.md",
       "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
       "slug": "watchtower_initial_implementation_bootstrap",
       "scope_type": "project_scoped",
@@ -919,7 +1656,12 @@
       "related_paths": [
         "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/design_record.md",
-        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/implementation_slice.md"
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/implementation_slice.md",
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/capture_watchtower_implementation_boundary/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/validate_watchtower_readiness_gate/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -933,8 +1675,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_next_work_selection/summary.md",
       "initiative_id": "initiative.watchtower_next_work_selection",
       "slug": "watchtower_next_work_selection",
       "scope_type": "project_scoped",
@@ -956,7 +1698,12 @@
         "plan/projects/watchtower/initiatives/watchtower_next_work_selection/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_next_work_selection/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_next_work_selection/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/add_watchtower_next_work_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/validate_watchtower_next_work_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -970,8 +1717,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_status_snapshot/summary.md",
       "initiative_id": "initiative.watchtower_status_snapshot",
       "slug": "watchtower_status_snapshot",
       "scope_type": "project_scoped",
@@ -993,7 +1740,12 @@
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_status_snapshot/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/add_watchtower_status_snapshot_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/validate_watchtower_status_snapshot_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -1007,8 +1759,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/summary.md",
       "initiative_id": "initiative.watchtower_work_item_begin_flow",
       "slug": "watchtower_work_item_begin_flow",
       "scope_type": "project_scoped",
@@ -1030,7 +1782,12 @@
         "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/add_watchtower_work_item_begin_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/validate_watchtower_work_item_begin_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -1044,8 +1801,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/summary.md",
       "initiative_id": "initiative.watchtower_work_item_bootstrap",
       "slug": "watchtower_work_item_bootstrap",
       "scope_type": "project_scoped",
@@ -1067,7 +1824,12 @@
         "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/add_watchtower_work_item_start_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/validate_watchtower_work_item_start_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -1081,8 +1843,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/summary.md",
       "initiative_id": "initiative.watchtower_work_item_lifecycle",
       "slug": "watchtower_work_item_lifecycle",
       "scope_type": "project_scoped",
@@ -1105,7 +1867,13 @@
         "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_completion_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_inspection_flows/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/validate_watchtower_work_item_lifecycle_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -1119,8 +1887,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_work_item_notes/summary.md",
       "initiative_id": "initiative.watchtower_work_item_notes",
       "slug": "watchtower_work_item_notes",
       "scope_type": "project_scoped",
@@ -1142,7 +1910,12 @@
         "plan/projects/watchtower/initiatives/watchtower_work_item_notes/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_notes/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_work_item_notes/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/add_watchtower_work_item_note_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/validate_watchtower_work_item_note_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     },
     {
@@ -1156,8 +1929,8 @@
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/plan.md",
-      "next_action": "Keep initiative-local task state current before opening follow-up work.",
-      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/progress.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/summary.md",
       "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
       "slug": "watchtower_workspace_init_bootstrap",
       "scope_type": "project_scoped",
@@ -1179,7 +1952,12 @@
         "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/initiative_brief.md",
         "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/design_record.md",
         "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/implementation_slice.md",
-        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/decision_notes.md"
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/decision_notes.md",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/add_watchtower_workspace_init_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/validate_watchtower_workspace_init_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
       ]
     }
   ]

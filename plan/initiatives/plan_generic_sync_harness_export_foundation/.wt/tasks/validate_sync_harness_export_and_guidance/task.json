@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
   "title": "Validate sync harness export and guidance",
   "summary": "Add tests and documentation proving watchtower_core.sync now publishes the reusable harness and remains aligned with requirements.md and decisions.md.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "documentation",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

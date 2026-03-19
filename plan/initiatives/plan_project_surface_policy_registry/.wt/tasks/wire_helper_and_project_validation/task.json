@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_project_surface_policy_registry",
   "title": "Wire helper and project validation",
   "summary": "Add typed loader support, a project surface policy helper, and validation coverage that uses the new registry.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

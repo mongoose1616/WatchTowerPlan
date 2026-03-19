@@ -27,7 +27,7 @@
         "README.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "core/python/tests/integration/",
         "docs/planning/coordination_tracking.md"
       ],
@@ -40,7 +40,7 @@
       "acceptance_ids": [
         "ac.summary_surface_retirement.001"
       ],
-      "notes": "The root README, foundations README, repository scope, and foundations review workflow now route review and remediation work through coordination tracking, the targeted integration regression passed, and workflow document-semantics validation passed on workflows/modules/foundations_context_review.md."
+      "notes": "The root README, foundations README, repository scope, and foundations review workflow now route review and remediation work through coordination tracking, the targeted integration regression passed, and workflow document-semantics validation passed on core/workflows/modules/foundations_context_review.md."
     },
     {
       "check_id": "check.summary_surface_retirement.summary_surface_removed",
@@ -93,7 +93,7 @@
       "acceptance_ids": [
         "ac.summary_surface_retirement.003"
       ],
-      "notes": "Targeted pytest for test_control_plane_artifacts.py passed, watchtower-core validate document-semantics --path workflows/modules/foundations_context_review.md passed, watchtower-core sync all --write passed twice, watchtower-core validate all --skip-acceptance passed with 965/965, python -m mypy src passed for 182 source files, ruff check . passed, acceptance reconciliation passed for trace.summary_surface_retirement, full pytest -q exposed one brittle traceability-sync unit-test assumption and passed after updating test_traceability_index_sync.py to tolerate task-index entries without trace_id, final watchtower-core validate all passed with 1009/1009, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
+      "notes": "Targeted pytest for test_control_plane_artifacts.py passed, watchtower-core validate document-semantics --path core/workflows/modules/foundations_context_review.md passed, watchtower-core sync all --write passed twice, watchtower-core validate all --skip-acceptance passed with 965/965, python -m mypy src passed for 182 source files, ruff check . passed, acceptance reconciliation passed for trace.summary_surface_retirement, full pytest -q exposed one brittle traceability-sync unit-test assumption and passed after updating test_traceability_index_sync.py to tolerate task-index entries without trace_id, final watchtower-core validate all passed with 1009/1009, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
     }
   ],
   "related_paths": [

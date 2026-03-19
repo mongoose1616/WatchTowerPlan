@@ -285,6 +285,36 @@
       "canonical_path": "plan/.wt/schemas/artifacts/discrepancy_index.schema.json"
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:evidence-index:v1",
+      "title": "Plan Evidence Index",
+      "description": "Schema for the plan-workspace evidence index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_evidence_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/evidence_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:closeout-index:v1",
+      "title": "Plan Closeout Index",
+      "description": "Schema for the plan-workspace closeout index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_closeout_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/closeout_index.schema.json"
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:plan:review-index:v1",
+      "title": "Plan Review Index",
+      "description": "Schema for the plan-workspace review index.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "plan_review_index",
+      "version": "v1",
+      "canonical_path": "plan/.wt/schemas/artifacts/review_index.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:plan:project-index:v1",
       "title": "Plan Project Index",
       "description": "Schema for the plan-workspace project index.",

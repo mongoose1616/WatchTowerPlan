@@ -10,9 +10,10 @@ updated_at: '2026-03-11T13:51:18Z'
 audience: shared
 authority: supporting
 applies_to:
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 ---
 
 # Route Preview Natural Request Matching Direction
@@ -48,9 +49,10 @@ Fix the reproduced route-preview miss by expanding governed route keywords for e
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): the report finding, route update, tests, and evidence should remain linked through one trace.
 
 ## Affected Surfaces
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 
 ## Options Considered

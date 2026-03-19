@@ -16,9 +16,6 @@
       "design_ids": [
         "design.features.acceptance_evidence_reconciliation"
       ],
-      "task_ids": [
-        "task.acceptance_evidence_reconciliation.followup.001"
-      ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/indexes/traceability/traceability_index.json",
@@ -26,9 +23,11 @@
         "core/control_plane/registries/validator_registry.json",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/workflows/ROUTING_TABLE.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/tasks/closed/archive/2026/03/10/acceptance_evidence_reconciliation_followup.md",
         "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "plan/workflows/modules/acceptance_evidence_reconciliation.md",
         "workflows/ROUTING_TABLE.md",
         "workflows/modules/acceptance_evidence_reconciliation.md"
       ],
@@ -61,11 +60,6 @@
       "plan_ids": [
         "design.implementation.acceptance_reconciliation_snapshot_reuse"
       ],
-      "task_ids": [
-        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
-        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
-        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003"
-      ],
       "requirement_ids": [
         "req.acceptance_reconciliation_snapshot_reuse.001",
         "req.acceptance_reconciliation_snapshot_reuse.002",
@@ -89,11 +83,8 @@
         "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.json",
-        "core/python/",
         "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
         "core/python/src/watchtower_core/repo_ops/query/evidence.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
@@ -103,7 +94,6 @@
         "core/python/tests/",
         "core/python/tests/unit/test_acceptance_reconciliation.py",
         "core/python/tests/unit/test_all_validation.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -142,12 +132,6 @@
       ],
       "plan_ids": [
         "design.implementation.active_first_planning_query_history_alignment"
-      ],
-      "task_ids": [
-        "task.active_first_planning_query_history_alignment.bootstrap.001",
-        "task.active_first_planning_query_history_alignment.navigation_docs_alignment.003",
-        "task.active_first_planning_query_history_alignment.query_default_behavior.002",
-        "task.active_first_planning_query_history_alignment.validation_closeout.004"
       ],
       "requirement_ids": [
         "req.active_first_planning_query_history_alignment.001",
@@ -231,15 +215,6 @@
       "plan_ids": [
         "design.implementation.capture_first_plan_workspace_bootstrap"
       ],
-      "task_ids": [
-        "task.capture_first_plan_workspace_bootstrap.bootstrap.001",
-        "task.capture_first_plan_workspace_bootstrap.cutover_proof_follow_up.006",
-        "task.capture_first_plan_workspace_bootstrap.history_retention_reconciliation.007",
-        "task.capture_first_plan_workspace_bootstrap.initiative_contracts_gate.003",
-        "task.capture_first_plan_workspace_bootstrap.packwide_views_queries.004",
-        "task.capture_first_plan_workspace_bootstrap.plan_workspace_seed.002",
-        "task.capture_first_plan_workspace_bootstrap.project_scoped_flow.005"
-      ],
       "requirement_ids": [
         "req.capture_first_plan_workspace_bootstrap.001",
         "req.capture_first_plan_workspace_bootstrap.002",
@@ -288,7 +263,6 @@
         "docs/planning/tasks/closed/archive/2026/03/17/add_project_container_bootstrap_and_project_scoped_flow.md",
         "docs/planning/tasks/closed/archive/2026/03/17/capture_first_plan_workspace_bootstrap_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/17/cut_over_to_plan_entrypoints_and_prove_first_tranche_flows.md",
-        "docs/planning/tasks/closed/archive/2026/03/17/reconcile_legacy_history_and_retention_with_clean_endstate.md",
         "docs/planning/tasks/closed/archive/2026/03/17/seed_plan_workspace_roots_and_stage1_bootstrap_record.md",
         "docs/planning/tasks/task_tracking.md",
         "requirements.md",
@@ -311,16 +285,12 @@
       "design_ids": [
         "design.features.command_documentation_and_lookup"
       ],
-      "task_ids": [
-        "task.command_documentation_and_lookup.followup.001"
-      ],
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.json",
         "core/control_plane/schemas/artifacts/command_index.schema.json",
         "core/python/src/watchtower_core/cli/",
         "docs/commands/",
         "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/tasks/closed/archive/2026/03/10/command_documentation_and_lookup_followup.md",
         "docs/standards/data_contracts/command_index_standard.md",
         "docs/standards/documentation/command_md_standard.md",
         "docs/templates/command_reference_template.md"
@@ -353,11 +323,6 @@
       "plan_ids": [
         "design.implementation.control_plane_example_validation_hardening"
       ],
-      "task_ids": [
-        "task.control_plane_example_validation_hardening.bootstrap.001",
-        "task.control_plane_example_validation_hardening.implementation.001",
-        "task.control_plane_example_validation_hardening.validation_closeout.002"
-      ],
       "requirement_ids": [
         "req.control_plane_example_validation_hardening.001",
         "req.control_plane_example_validation_hardening.002",
@@ -388,7 +353,6 @@
         "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/unit/",
         "core/python/tests/unit/test_all_validation.py",
         "core/python/tests/unit/test_schema_store.py",
         "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -400,7 +364,6 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/control_plane_example_validation_hardening.md",
         "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/",
         "docs/planning/tasks/closed/archive/2026/03/12/control_plane_example_validation_hardening_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/repair_governed_example_validation_coverage.md",
         "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_example_validation_hardening.md",
@@ -433,11 +396,6 @@
       "plan_ids": [
         "design.implementation.control_plane_loader_cache_reuse"
       ],
-      "task_ids": [
-        "task.control_plane_loader_cache_reuse.bootstrap.001",
-        "task.control_plane_loader_cache_reuse.loader_cache.002",
-        "task.control_plane_loader_cache_reuse.validation_closeout.003"
-      ],
       "requirement_ids": [
         "req.control_plane_loader_cache_reuse.001",
         "req.control_plane_loader_cache_reuse.002",
@@ -461,9 +419,7 @@
         "evidence.control_plane_loader_cache_reuse.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.json",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
@@ -471,7 +427,6 @@
         "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
         "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
         "core/python/src/watchtower_core/repo_ops/query/evidence.py",
-        "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/all.py",
@@ -481,7 +436,6 @@
         "core/python/tests/unit/test_all_validation.py",
         "core/python/tests/unit/test_control_plane_loader.py",
         "core/python/tests/unit/test_validation_evidence.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -521,11 +475,6 @@
       "plan_ids": [
         "design.implementation.coordination_projection_source_reuse"
       ],
-      "task_ids": [
-        "task.coordination_projection_source_reuse.bootstrap.001",
-        "task.coordination_projection_source_reuse.loader_override_reuse.002",
-        "task.coordination_projection_source_reuse.validation_closeout.003"
-      ],
       "requirement_ids": [
         "req.coordination_projection_source_reuse.001",
         "req.coordination_projection_source_reuse.002",
@@ -550,16 +499,13 @@
         "evidence.coordination_projection_source_reuse.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.json",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/planning/planning_catalog.json",
         "core/control_plane/indexes/tasks/task_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.json",
-        "core/python/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
@@ -571,7 +517,6 @@
         "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
         "core/python/tests/",
         "core/python/tests/unit/test_all_sync.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -607,12 +552,6 @@
       ],
       "plan_ids": [
         "design.implementation.core_export_hardening_execution"
-      ],
-      "task_ids": [
-        "task.core_export_hardening_followup.bootstrap.001",
-        "task.core_export_hardening_followup.command_metadata.001",
-        "task.core_export_hardening_followup.public_api_boundary.001",
-        "task.core_export_hardening_followup.sync_output_dir.001"
       ],
       "requirement_ids": [
         "req.core_export_hardening_followup.001",
@@ -667,7 +606,6 @@
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_hardening_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_public_api_boundary.md",
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_output_snapshots.md",
-        "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
@@ -692,15 +630,6 @@
       ],
       "plan_ids": [
         "design.implementation.core_export_readiness_execution"
-      ],
-      "task_ids": [
-        "task.core_export_readiness_and_optimization.bootstrap.001",
-        "task.core_export_readiness_and_optimization.command_registry.001",
-        "task.core_export_readiness_and_optimization.pack_interfaces.001",
-        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
-        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
-        "task.core_export_readiness_and_optimization.sync_validation_registries.001",
-        "task.core_export_readiness_and_optimization.workspace_injection.001"
       ],
       "requirement_ids": [
         "req.core_export_readiness_and_optimization.001",
@@ -731,25 +660,20 @@
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json",
         "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/command_index.json",
-        "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/repository_paths/repository_path_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/indexes/workflows/",
         "core/control_plane/indexes/workflows/workflow_index.json",
         "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.json",
-        "core/control_plane/registries/",
         "core/control_plane/schemas/interfaces/",
         "core/control_plane/schemas/interfaces/packs/",
         "core/python/",
         "core/python/src/watchtower_core/",
-        "core/python/src/watchtower_core/adapters/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/evidence/",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
-        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/",
@@ -770,7 +694,6 @@
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_retrieval_and_coordination.md",
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_validation_registries.md",
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_workspace_injection.md",
-        "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/engineering/",
@@ -804,9 +727,6 @@
       ],
       "plan_ids": [
         "design.implementation.control_plane_loaders_and_schema_store"
-      ],
-      "task_ids": [
-        "task.core_python_foundation.closeout.001"
       ],
       "requirement_ids": [
         "req.core_python_foundation.001",
@@ -843,7 +763,6 @@
         "core/control_plane/indexes/commands/command_index.json",
         "core/control_plane/indexes/decisions/decision_index.json",
         "core/control_plane/indexes/design_documents/design_document_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/prds/prd_index.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
@@ -868,7 +787,6 @@
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "docs/planning/prds/core_python_foundation.md",
-        "docs/planning/tasks/closed/archive/2026/03/10/core_python_foundation_closeout.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -908,12 +826,6 @@
       ],
       "plan_ids": [
         "design.implementation.core_split_compatibility_wrapper_retirement"
-      ],
-      "task_ids": [
-        "task.core_split_compatibility_wrapper_retirement.bootstrap.001",
-        "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
-        "task.core_split_compatibility_wrapper_retirement.validation_closeout.004",
-        "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
       ],
       "requirement_ids": [
         "req.core_split_compatibility_wrapper_retirement.001",
@@ -998,12 +910,6 @@
       "plan_ids": [
         "design.implementation.data_contract_example_operationalization_alignment"
       ],
-      "task_ids": [
-        "task.data_contract_example_operationalization_alignment.bootstrap.001",
-        "task.data_contract_example_operationalization_alignment.example_coverage.001",
-        "task.data_contract_example_operationalization_alignment.regression_hardening.001",
-        "task.data_contract_example_operationalization_alignment.validation_closeout.001"
-      ],
       "requirement_ids": [
         "req.data_contract_example_operationalization_alignment.001",
         "req.data_contract_example_operationalization_alignment.002",
@@ -1043,13 +949,11 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/data_contract_example_operationalization_alignment.md",
         "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/",
         "docs/planning/tasks/closed/archive/2026/03/12/add_regressions_for_data_contract_example_lookup_coverage.md",
         "docs/planning/tasks/closed/archive/2026/03/12/data_contract_example_operationalization_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/publish_data_contract_example_operationalization_coverage.md",
         "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_data_contract_example_operationalization_alignment.md",
         "docs/planning/tasks/task_tracking.md",
-        "docs/standards/data_contracts/",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/authority_map_standard.md",
         "docs/standards/data_contracts/command_index_standard.md",
@@ -1095,12 +999,6 @@
       ],
       "plan_ids": [
         "design.implementation.data_contract_index_family_baseline_alignment"
-      ],
-      "task_ids": [
-        "task.data_contract_index_family_baseline_alignment.bootstrap.001",
-        "task.data_contract_index_family_baseline_alignment.family_baseline.002",
-        "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003",
-        "task.data_contract_index_family_baseline_alignment.validation_closeout.004"
       ],
       "requirement_ids": [
         "req.data_contract_index_family_baseline_alignment.001",
@@ -1197,12 +1095,6 @@
       "plan_ids": [
         "design.implementation.decision_supersession_and_regression_evidence_alignment"
       ],
-      "task_ids": [
-        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
-        "task.decision_supersession_and_regression_evidence_alignment.regression_reference.002",
-        "task.decision_supersession_and_regression_evidence_alignment.supersession.001",
-        "task.decision_supersession_and_regression_evidence_alignment.validation.003"
-      ],
       "requirement_ids": [
         "req.decision_supersession_and_regression_evidence_alignment.001",
         "req.decision_supersession_and_regression_evidence_alignment.002",
@@ -1224,7 +1116,6 @@
         "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.json",
         "core/control_plane/schemas/artifacts/decision_index.schema.json",
         "core/python/src/watchtower_core/cli/query_records_handlers.py",
-        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/repo_ops/query/decisions.py",
         "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "docs/commands/core_python/watchtower_core_query_decisions.md",
@@ -1234,23 +1125,13 @@
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
-        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
-        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
-        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
-        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
-        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
-        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
-        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/prds/regression_duplication_and_overstep_review.md",
-        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
-        "docs/planning/prds/route_preview_natural_request_matching.md",
-        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/tasks/closed/archive/2026/03/13/add_explicit_decision_supersession_support.md",
         "docs/planning/tasks/closed/archive/2026/03/13/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/13/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
@@ -1288,10 +1169,6 @@
       "plan_ids": [
         "design.implementation.derived_projection_status_semantics"
       ],
-      "task_ids": [
-        "task.derived_projection_status_semantics.bootstrap.001",
-        "task.derived_projection_status_semantics.projection_contracts.001"
-      ],
       "requirement_ids": [
         "req.derived_projection_status_semantics.001",
         "req.derived_projection_status_semantics.002",
@@ -1318,7 +1195,6 @@
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/derived_projection_status_semantics_validation.json",
-        "core/control_plane/schemas/artifacts/",
         "core/control_plane/schemas/artifacts/coordination_index.schema.json",
         "core/control_plane/schemas/artifacts/initiative_index.schema.json",
         "core/python/",
@@ -1343,7 +1219,6 @@
         "docs/planning/prds/derived_projection_status_semantics_alignment.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/11/align_derived_initiative_projection_status_contracts.md",
-        "docs/planning/tasks/closed/archive/2026/03/11/derived_projection_status_semantics_alignment_bootstrap.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/data_contracts/coordination_index_standard.md",
@@ -1375,11 +1250,6 @@
       ],
       "plan_ids": [
         "design.implementation.design_document_index_relationship_alignment"
-      ],
-      "task_ids": [
-        "task.design_document_index_relationship_alignment.bootstrap.001",
-        "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
-        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001"
       ],
       "requirement_ids": [
         "req.design_document_index_relationship_alignment.001",
@@ -1462,12 +1332,6 @@
       "plan_ids": [
         "design.implementation.documentation_family_lookup_and_readme_template_alignment"
       ],
-      "task_ids": [
-        "task.documentation_family_lookup_and_readme_template_alignment.bootstrap.001",
-        "task.documentation_family_lookup_and_readme_template_alignment.operationalization_lookup.001",
-        "task.documentation_family_lookup_and_readme_template_alignment.readme_template_alignment.001",
-        "task.documentation_family_lookup_and_readme_template_alignment.validation_closeout.001"
-      ],
       "requirement_ids": [
         "req.documentation_family_lookup_and_readme_template_alignment.001",
         "req.documentation_family_lookup_and_readme_template_alignment.002",
@@ -1507,7 +1371,6 @@
         "docs/planning/design/implementation/documentation_family_lookup_and_readme_template_alignment.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md",
-        "docs/planning/tasks/",
         "docs/planning/tasks/closed/archive/2026/03/12/align_readme_template_with_governed_title_and_inventory_contract.md",
         "docs/planning/tasks/closed/archive/2026/03/12/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
@@ -1548,11 +1411,6 @@
       ],
       "plan_ids": [
         "design.implementation.documentation_surface_alignment_for_core_pack_model"
-      ],
-      "task_ids": [
-        "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001",
-        "task.documentation_surface_alignment_for_core_pack_model.refresh.002",
-        "task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003"
       ],
       "requirement_ids": [
         "req.documentation_surface_alignment_for_core_pack_model.001",
@@ -1621,13 +1479,6 @@
       "plan_ids": [
         "design.implementation.end_to_end_repo_rationalization_execution"
       ],
-      "task_ids": [
-        "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
-        "task.end_to_end_repo_review_and_rationalization.derived_metadata.001",
-        "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
-        "task.end_to_end_repo_review_and_rationalization.external_pack_validation.001",
-        "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001"
-      ],
       "requirement_ids": [
         "req.end_to_end_repo_review_and_rationalization.001",
         "req.end_to_end_repo_review_and_rationalization.002",
@@ -1654,7 +1505,6 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.json",
-        "core/control_plane/indexes/commands/",
         "core/control_plane/indexes/commands/command_index.json",
         "core/control_plane/indexes/coordination/",
         "core/control_plane/indexes/coordination/coordination_index.json",
@@ -1668,17 +1518,14 @@
         "core/python/src/watchtower_core/cli/query_family.py",
         "core/python/src/watchtower_core/cli/validate_family.py",
         "core/python/src/watchtower_core/cli/validation_handlers.py",
-        "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/schemas.py",
-        "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py",
         "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
-        "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/",
@@ -1700,7 +1547,6 @@
         "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
-        "docs/standards/documentation/",
         "workflows/"
       ],
       "tags": [
@@ -1728,11 +1574,6 @@
       ],
       "plan_ids": [
         "design.implementation.foundation_document_standard_boundary_alignment"
-      ],
-      "task_ids": [
-        "task.foundation_document_standard_boundary_alignment.bootstrap.001",
-        "task.foundation_document_standard_boundary_alignment.contract.001",
-        "task.foundation_document_standard_boundary_alignment.validation.001"
       ],
       "requirement_ids": [
         "req.foundation_document_standard_boundary_alignment.001",
@@ -1776,7 +1617,6 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
         "docs/planning/tasks/closed/archive/2026/03/12/align_foundation_document_standard_boundary_and_lookup_coverage.md",
-        "docs/planning/tasks/closed/archive/2026/03/12/foundation_document_standard_boundary_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_foundation_document_standard_boundary_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/foundation_md_standard.md",
@@ -1807,11 +1647,6 @@
       ],
       "plan_ids": [
         "design.implementation.foundation_index_family_contract_alignment"
-      ],
-      "task_ids": [
-        "task.foundation_index_family_contract_alignment.bootstrap.001",
-        "task.foundation_index_family_contract_alignment.documentation.001",
-        "task.foundation_index_family_contract_alignment.validation.001"
       ],
       "requirement_ids": [
         "req.foundation_index_family_contract_alignment.001",
@@ -1852,8 +1687,6 @@
         "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/foundation_index_family_contract_alignment.md",
-        "docs/planning/tasks/closed/archive/2026/03/12/align_foundation_index_family_standards_and_command_surfaces.md",
-        "docs/planning/tasks/closed/archive/2026/03/12/foundation_index_family_contract_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_foundation_index_family_contract_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/data_contracts/foundation_index_standard.md"
@@ -1883,11 +1716,6 @@
       ],
       "plan_ids": [
         "design.implementation.foundation_scope_and_entrypoint_realignment"
-      ],
-      "task_ids": [
-        "task.foundation_scope_and_entrypoint_realignment.bootstrap.001",
-        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001",
-        "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001"
       ],
       "requirement_ids": [
         "req.foundation_scope_and_entrypoint_realignment.001",
@@ -1939,7 +1767,6 @@
         "docs/planning/tasks/closed/archive/2026/03/11/foundation_scope_alignment.md",
         "docs/planning/tasks/closed/archive/2026/03/11/foundation_scope_and_entrypoint_realignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/11/root_entrypoint_contract.md",
-        "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/"
       ],
@@ -1968,11 +1795,6 @@
       ],
       "plan_ids": [
         "design.implementation.foundations_docs_boundary_alignment"
-      ],
-      "task_ids": [
-        "task.foundations_docs_boundary_alignment.bootstrap.001",
-        "task.foundations_docs_boundary_alignment.documentation.001",
-        "task.foundations_docs_boundary_alignment.validation.001"
       ],
       "requirement_ids": [
         "req.foundations_docs_boundary_alignment.001",
@@ -2005,12 +1827,11 @@
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/sync/README.md",
-        "core/python/tests/",
         "core/python/tests/integration/",
         "core/python/tests/integration/README.md",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli.py",
-        "docs/commands/core_python/",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/README.md",
         "docs/commands/core_python/watchtower_core_query.md",
         "docs/commands/core_python/watchtower_core_query_acceptance.md",
@@ -2051,18 +1872,13 @@
         "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/foundations_docs_boundary_alignment.md",
-        "docs/planning/tasks/closed/archive/2026/03/12/align_foundations_adjacent_command_and_standards_docs.md",
-        "docs/planning/tasks/closed/archive/2026/03/12/foundations_docs_boundary_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/validate_foundations_documentation_boundary_alignment.md",
         "docs/planning/tasks/task_tracking.md",
-        "docs/references/",
         "docs/references/github_collaboration_reference.md",
-        "docs/standards/",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md",
-        "workflows/modules/foundations_context_review.md"
+        "docs/standards/governance/github_task_sync_standard.md"
       ],
       "tags": [
         "traceability"
@@ -2089,11 +1905,6 @@
       ],
       "plan_ids": [
         "design.implementation.foundations_documentation_completeness_alignment"
-      ],
-      "task_ids": [
-        "task.foundations_documentation_completeness_alignment.bootstrap.001",
-        "task.foundations_documentation_completeness_alignment.implementation.002",
-        "task.foundations_documentation_completeness_alignment.validation.003"
       ],
       "requirement_ids": [
         "req.foundations_documentation_completeness_alignment.001",
@@ -2129,6 +1940,8 @@
         "core/python/tests/integration/",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/foundations/",
         "docs/foundations/README.md",
@@ -2158,7 +1971,7 @@
         "docs/references/slsa_1_1_reference.md",
         "docs/references/sqlite_fts5_reference.md",
         "docs/references/uv_reference.md",
-        "workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/modules/foundations_context_review.md"
       ],
       "tags": [
@@ -2187,11 +2000,6 @@
       "plan_ids": [
         "design.implementation.foundations_entrypoint_coverage_alignment"
       ],
-      "task_ids": [
-        "task.foundations_entrypoint_coverage_alignment.bootstrap.001",
-        "task.foundations_entrypoint_coverage_alignment.documentation.001",
-        "task.foundations_entrypoint_coverage_alignment.validation.001"
-      ],
       "requirement_ids": [
         "req.foundations_entrypoint_coverage_alignment.001",
         "req.foundations_entrypoint_coverage_alignment.002",
@@ -2216,6 +2024,7 @@
         "core/control_plane/indexes/foundations/README.md",
         "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.json",
         "core/python/tests/integration/",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "docs/foundations/README.md",
@@ -2228,7 +2037,6 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
         "docs/planning/tasks/closed/archive/2026/03/13/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
-        "docs/planning/tasks/closed/archive/2026/03/13/foundations_entrypoint_coverage_alignment_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_foundations_entrypoint_coverage_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "workflows/modules/foundations_context_review.md"
@@ -2250,16 +2058,12 @@
       "design_ids": [
         "design.features.github_collaboration_scaffolding"
       ],
-      "task_ids": [
-        "task.github_collaboration.followup.001"
-      ],
       "related_paths": [
         ".github/",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/tasks/",
-        "docs/planning/tasks/closed/archive/2026/03/10/github_collaboration_followup.md"
+        "docs/planning/tasks/"
       ],
       "tags": [
         "traceability"
@@ -2285,11 +2089,6 @@
       ],
       "plan_ids": [
         "design.implementation.governed_filename_canonicalization"
-      ],
-      "task_ids": [
-        "task.governed_filename_canonicalization.bootstrap.001",
-        "task.governed_filename_canonicalization.rename_and_repair.002",
-        "task.governed_filename_canonicalization.validation_and_closeout.003"
       ],
       "requirement_ids": [
         "req.governed_filename_canonicalization.001",
@@ -2355,9 +2154,6 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/governed_filename_canonicalization.md",
         "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/governed_filename_canonicalization_bootstrap.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/rename_governed_artifact_filenames_and_repair_consumers.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_governed_filename_canonicalization.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/data_contracts/schema_standard.md",
@@ -2389,12 +2185,6 @@
       ],
       "plan_ids": [
         "design.implementation.governed_front_matter_directory_canonicalization"
-      ],
-      "task_ids": [
-        "task.governed_front_matter_directory_canonicalization.bootstrap.001",
-        "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003",
-        "task.governed_front_matter_directory_canonicalization.enforcement.001",
-        "task.governed_front_matter_directory_canonicalization.normalization.002"
       ],
       "requirement_ids": [
         "req.governed_front_matter_directory_canonicalization.001",
@@ -2489,11 +2279,7 @@
       "design_ids": [
         "design.features.initiative_closeout_and_planning_trackers"
       ],
-      "task_ids": [
-        "task.initiative_closeout.followup.001"
-      ],
       "related_paths": [
-        "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/schemas/artifacts/traceability_index.schema.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -2503,9 +2289,7 @@
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/initiatives/",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/closed/archive/2026/03/10/initiative_closeout_followup.md"
+        "docs/planning/prds/prd_tracking.md"
       ],
       "tags": [
         "traceability"
@@ -2531,11 +2315,6 @@
       ],
       "plan_ids": [
         "design.implementation.internal_project_code_review_and_hardening"
-      ],
-      "task_ids": [
-        "task.internal_project_code_review_and_hardening.bootstrap.001",
-        "task.internal_project_code_review_and_hardening.closeout_planning_catalog_sync.001",
-        "task.internal_project_code_review_and_hardening.scaffold_coordination_sync.001"
       ],
       "requirement_ids": [
         "req.internal_project_code_review_and_hardening.001",
@@ -2569,7 +2348,6 @@
         "core/python/",
         "core/python/README.md",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
-        "core/python/src/watchtower_core/cli/plan_handlers.py",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
         "core/python/tests/unit/test_closeout_handlers.py",
@@ -2618,11 +2396,6 @@
       ],
       "plan_ids": [
         "design.implementation.internal_project_code_review_followup"
-      ],
-      "task_ids": [
-        "task.internal_project_code_review_followup.bootstrap.001",
-        "task.internal_project_code_review_followup.bootstrap_decision_scaffold_hardening.001",
-        "task.internal_project_code_review_followup.bootstrap_phase_semantics_alignment.001"
       ],
       "requirement_ids": [
         "req.internal_project_code_review_followup.001",
@@ -2707,11 +2480,6 @@
       ],
       "plan_ids": [
         "design.implementation.internal_project_review_and_hardening"
-      ],
-      "task_ids": [
-        "task.internal_project_review_and_hardening.bootstrap.001",
-        "task.internal_project_review_and_hardening.bootstrap_hardening.001",
-        "task.internal_project_review_and_hardening.projection_canonicalization.001"
       ],
       "requirement_ids": [
         "req.internal_project_review_and_hardening.001",
@@ -2803,11 +2571,6 @@
       ],
       "plan_ids": [
         "design.implementation.internal_project_standards_review_and_hardening"
-      ],
-      "task_ids": [
-        "task.internal_project_standards_review_and_hardening.bootstrap.001",
-        "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001",
-        "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001"
       ],
       "requirement_ids": [
         "req.internal_project_standards_review_and_hardening.001",
@@ -2903,11 +2666,6 @@
       "plan_ids": [
         "design.implementation.lazy_planning_query_payload_emission"
       ],
-      "task_ids": [
-        "task.lazy_planning_query_payload_emission.bootstrap.001",
-        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
-        "task.lazy_planning_query_payload_emission.validation_closeout.003"
-      ],
       "requirement_ids": [
         "req.lazy_planning_query_payload_emission.001",
         "req.lazy_planning_query_payload_emission.002",
@@ -2976,10 +2734,6 @@
         "design.features.github_task_push_sync",
         "design.features.local_task_tracking_and_github_sync"
       ],
-      "task_ids": [
-        "task.local_task_tracking.github_sync.001",
-        "task.local_task_tracking_foundation.001"
-      ],
       "related_paths": [
         "core/control_plane/indexes/tasks/task_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
@@ -2992,8 +2746,6 @@
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/tasks/",
-        "docs/planning/tasks/closed/archive/2026/03/09/github_task_sync.md",
-        "docs/planning/tasks/closed/archive/2026/03/09/local_task_tracking_foundation.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -3024,11 +2776,6 @@
       ],
       "plan_ids": [
         "design.implementation.machine_first_coordination_execution"
-      ],
-      "task_ids": [
-        "task.machine_first_coordination_surface.bootstrap.001",
-        "task.machine_first_coordination_surface.coordination_index.001",
-        "task.machine_first_coordination_surface.entrypoints.001"
       ],
       "requirement_ids": [
         "req.machine_first_coordination_surface.001",
@@ -3095,6 +2842,153 @@
       "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
     },
     {
+      "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "title": "Add actor registry helper",
+      "summary": "Publish a reusable helper for actor lookup and actor-type enforcement.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T23:50:45Z",
+      "task_ids": [
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.add_actor_registry_helper",
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.reconcile_runtime_boundary_requirements",
+        "task.plan_actor_registry_and_runtime_boundary_reconciliation.refactor_live_approval_caller"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/add_actor_registry_helper/task.json",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/reconcile_runtime_boundary_requirements/task.json",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/.wt/tasks/refactor_live_approval_caller/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "title": "Publish artifact family registry schema",
+      "summary": "Add the governed schema contract for the plan-pack artifact family registry.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T21:22:30Z",
+      "task_ids": [
+        "task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema",
+        "task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries",
+        "task.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/publish_artifact_family_registry_schema/task.json",
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/seed_artifact_family_registry_entries/task.json",
+        "plan/initiatives/plan_artifact_family_registry_foundation/.wt/tasks/validate_artifact_family_registry_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "title": "Build live plan artifact index and query surface",
+      "summary": "Build plan/.wt/artifact_index.json from live plan artifact families and expose it through a first-class query command.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T20:35:24Z",
+      "task_ids": [
+        "task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface",
+        "task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields",
+        "task.plan_artifact_index_runtime_foundation.validate_artifact_index_coverage_and_guidance"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/build_live_plan_artifact_index_and_query_surface/task.json",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/publish_artifact_index_contract_and_neutralize_legacy_fields/task.json",
+        "plan/initiatives/plan_artifact_index_runtime_foundation/.wt/tasks/validate_artifact_index_coverage_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "title": "Add initiative package closeout helper",
+      "summary": "Publish a reusable closeout helper for initiative-package artifact coordination under watchtower_core.closeout.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T03:06:00Z",
+      "task_ids": [
+        "task.plan_closeout_helper_boundary_alignment.add_initiative_package_closeout_helper",
+        "task.plan_closeout_helper_boundary_alignment.refactor_live_plan_closeout_onto_shared_helper",
+        "task.plan_closeout_helper_boundary_alignment.validate_closeout_boundary_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/add_initiative_package_closeout_helper/task.json",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/refactor_live_plan_closeout_onto_shared_helper/task.json",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/.wt/tasks/validate_closeout_boundary_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "title": "Add core validation coverage",
+      "summary": "Extend loader and tests so the core-owned documentation governance stack validates cleanly and resolves explicitly by path.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T18:17:57Z",
+      "task_ids": [
+        "task.plan_core_documentation_template_authority_foundation.add_core_validation_coverage",
+        "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts",
+        "task.plan_core_documentation_template_authority_foundation.seed_core_registries_and_templates"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/add_core_validation_coverage/task.json",
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/publish_core_documentation_schema_contracts/task.json",
+        "plan/initiatives/plan_core_documentation_template_authority_foundation/.wt/tasks/seed_core_registries_and_templates/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "title": "Publish discrepancy helper contracts",
+      "summary": "Add a reusable helper for governed discrepancy records, severity, and resolution behavior.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T21:50:12Z",
+      "task_ids": [
+        "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts",
+        "task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper",
+        "task.plan_discrepancy_helper_foundation.validate_discrepancy_helper_and_requirements_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/publish_discrepancy_helper_contracts/task.json",
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/refactor_live_plan_discrepancy_writes_onto_helper/task.json",
+        "plan/initiatives/plan_discrepancy_helper_foundation/.wt/tasks/validate_discrepancy_helper_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "title": "Publish documentation family and template catalog schemas",
+      "summary": "Add the governed schema contracts for the plan-owned documentation-family registry and template catalog.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T17:39:18Z",
+      "task_ids": [
+        "task.plan_documentation_family_and_template_catalog_foundation.publish_documentation_and_template_schema_contracts",
+        "task.plan_documentation_family_and_template_catalog_foundation.seed_registry_entries_and_template_assets",
+        "task.plan_documentation_family_and_template_catalog_foundation.wire_helpers_and_validation_coverage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/publish_documentation_and_template_schema_contracts/task.json",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/seed_registry_entries_and_template_assets/task.json",
+        "plan/initiatives/plan_documentation_family_and_template_catalog_foundation/.wt/tasks/wire_helpers_and_validation_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_domain_pack_core_validation",
       "title": "Plan Domain Pack Core Validation PRD",
       "summary": "Move validation into reusable core with pack-aware schema, validator, and suite loading, then prove it end to end with a plan domain-pack fixture.",
@@ -3114,14 +3008,6 @@
       ],
       "plan_ids": [
         "design.implementation.plan_domain_pack_core_validation"
-      ],
-      "task_ids": [
-        "task.plan_domain_pack_core_validation.bootstrap.001",
-        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-        "task.plan_domain_pack_core_validation.repo_migration.005",
-        "task.plan_domain_pack_core_validation.validation_closeout.006"
       ],
       "requirement_ids": [
         "req.plan_domain_pack_core_validation.001",
@@ -3147,12 +3033,10 @@
         "evidence.plan_domain_pack_core_validation.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/",
@@ -3174,7 +3058,6 @@
         "core/python/src/watchtower_core/validation/pack_contract.py",
         "core/python/src/watchtower_core/validation/suite.py",
         "core/python/tests/",
-        "core/python/tests/fixtures/",
         "core/python/tests/fixtures/domain_packs/plan/.wt/pack_settings.json",
         "core/python/tests/fixtures/domain_packs/plan/.wt/registries/schema_catalog.json",
         "core/python/tests/fixtures/domain_packs/plan/.wt/registries/validation_suite_registry.json",
@@ -3208,6 +3091,661 @@
       "notes": "Evidence refreshed for `trace.plan_domain_pack_core_validation` at 2026-03-16T21:41:48Z after pack-aware reusable-core validation loading, suite orchestration, the `plan` fixture-pack proof, repo-baseline migration, terminal task closeout, completed initiative closeout, and the final sync, acceptance, repository validation, pytest, mypy, and ruff passes all completed cleanly."
     },
     {
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "title": "Copy foundations corpus into both roots",
+      "summary": "Duplicate the current foundations documents into both the core and plan docs roots without changing their shared guidance content.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T19:21:00Z",
+      "task_ids": [
+        "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots",
+        "task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots",
+        "task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/copy_foundations_corpus_into_both_roots/task.json",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/seed_duplicated_foundations_roots/task.json",
+        "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/.wt/tasks/validate_duplicated_foundations_discovery/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_entrypoint_cutover_proof",
+      "title": "Publish plan authority entrypoints",
+      "summary": "Capture the pack-wide start-here surfaces for the new live plan authority.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T08:49:33Z",
+      "task_ids": [
+        "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints",
+        "task.plan_entrypoint_cutover_proof.validate_packwide_proof_package"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/publish_plan_authority_entrypoints/task.json",
+        "plan/initiatives/plan_entrypoint_cutover_proof/.wt/tasks/validate_packwide_proof_package/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_event_stream_helper_foundation",
+      "title": "Publish event stream helper contracts",
+      "summary": "Add a reusable helper for seeded event records, append-only event writes, and deterministic replay over plan pack initiative and task streams.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T21:34:34Z",
+      "task_ids": [
+        "task.plan_event_stream_helper_foundation.publish_event_stream_helper_contracts",
+        "task.plan_event_stream_helper_foundation.refactor_initiative_package_event_writes_onto_helper",
+        "task.plan_event_stream_helper_foundation.validate_event_stream_helper_and_contracts"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/publish_event_stream_helper_contracts/task.json",
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/refactor_initiative_package_event_writes_onto_helper/task.json",
+        "plan/initiatives/plan_event_stream_helper_foundation/.wt/tasks/validate_event_stream_helper_and_contracts/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "title": "Define reusable evidence bundle helper contract",
+      "summary": "Add typed evidence-bundle models and helper surfaces under watchtower_core.evidence.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T01:40:00Z",
+      "task_ids": [
+        "task.plan_evidence_bundle_helper_foundation.define_evidence_bundle_helper_contract",
+        "task.plan_evidence_bundle_helper_foundation.reconcile_evidence_requirements_and_docs",
+        "task.plan_evidence_bundle_helper_foundation.refactor_live_plan_evidence_callers"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/define_evidence_bundle_helper_contract/task.json",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/reconcile_evidence_requirements_and_docs/task.json",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/.wt/tasks/refactor_live_plan_evidence_callers/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "title": "Add typed extraction output envelope helper",
+      "summary": "Publish reusable typed models and helper methods for the pack-facing extraction output envelope contract.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T02:19:00Z",
+      "task_ids": [
+        "task.plan_extraction_output_envelope_alignment.add_typed_extraction_output_helper",
+        "task.plan_extraction_output_envelope_alignment.validate_extraction_output_alignment",
+        "task.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/add_typed_extraction_output_helper/task.json",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/validate_extraction_output_alignment/task.json",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/.wt/tasks/wire_guidance_promotion_through_extraction_stage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "title": "Publish generic query harness contracts",
+      "summary": "Add export-safe query modules, search parameter types, and reusable query services under watchtower_core.query.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T22:35:00Z",
+      "task_ids": [
+        "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts",
+        "task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface",
+        "task.plan_generic_query_harness_export_foundation.validate_query_harness_export_and_guidance"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/publish_generic_query_harness_contracts/task.json",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/refactor_repo_query_services_onto_public_query_surface/task.json",
+        "plan/initiatives/plan_generic_query_harness_export_foundation/.wt/tasks/validate_query_harness_export_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "title": "Publish generic sync harness contracts",
+      "summary": "Add the export-safe sync harness, shared result types, and reusable protocols under watchtower_core.sync.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T21:50:00Z",
+      "task_ids": [
+        "task.plan_generic_sync_harness_export_foundation.publish_generic_sync_harness_contracts",
+        "task.plan_generic_sync_harness_export_foundation.refactor_repo_sync_orchestration_onto_generic_harness",
+        "task.plan_generic_sync_harness_export_foundation.validate_sync_harness_export_and_guidance"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/publish_generic_sync_harness_contracts/task.json",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/refactor_repo_sync_orchestration_onto_generic_harness/task.json",
+        "plan/initiatives/plan_generic_sync_harness_export_foundation/.wt/tasks/validate_sync_harness_export_and_guidance/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "title": "Add governance surface dependency coverage",
+      "summary": "Add unit coverage proving the helper resolves both pack-declared and governance-map surfaces and reports dependent declared surfaces.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T16:40:30Z",
+      "task_ids": [
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage",
+        "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper",
+        "task.plan_governance_surface_resolver_helper.validate_governance_surface_resolver_behavior"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_dependency_coverage/task.json",
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/add_governance_surface_resolver_helper/task.json",
+        "plan/initiatives/plan_governance_surface_resolver_helper/.wt/tasks/validate_governance_surface_resolver_behavior/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "title": "Implement governed guidance promotion flow",
+      "summary": "Promote approved initiative outputs into plan/docs guidance roots with policy, template, and mirror enforcement.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T22:21:35Z",
+      "task_ids": [
+        "task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow",
+        "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts",
+        "task.plan_guidance_promotion_helper_foundation.validate_promoted_guidance_extraction_and_requirements_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/implement_governed_guidance_promotion_flow/task.json",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/publish_promotion_helper_contracts/task.json",
+        "plan/initiatives/plan_guidance_promotion_helper_foundation/.wt/tasks/validate_promoted_guidance_extraction_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "title": "Add human-surface policy contract and helper",
+      "summary": "Add the human_surface_policy_registry schema, registry, typed loader support, and a helper that resolves required, optional, and forbidden human surfaces by root.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T09:19:20Z",
+      "task_ids": [
+        "task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper",
+        "task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces",
+        "task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/add_human_surface_policy_contract_and_helper/task.json",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/seed_missing_core_human_roots_and_router_surfaces/task.json",
+        "plan/initiatives/plan_human_surface_policy_and_core_root_seeding/.wt/tasks/validate_human_surface_policy_and_root_compliance/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "title": "Classify legacy history and transitional archive surfaces",
+      "summary": "Encode the current and clean-endstate retention policy for docs/planning history, plan initiative archives, promoted guidance, and purge ledgers, and align adjacent entrypoint docs.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T09:40:00Z",
+      "task_ids": [
+        "task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces",
+        "task.plan_legacy_history_retention_reconciliation.publish_retention_policy_registry_and_loader_support",
+        "task.plan_legacy_history_retention_reconciliation.validate_retention_policy_alignment_and_follow_up_linkage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/classify_legacy_history_and_transitional_archive_surfaces/task.json",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/publish_retention_policy_registry_and_loader_support/task.json",
+        "plan/initiatives/plan_legacy_history_retention_reconciliation/.wt/tasks/validate_retention_policy_alignment_and_follow_up_linkage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "title": "Publish lifecycle review and source registry schemas",
+      "summary": "Add governed schema contracts for the lifecycle-stage, review-status, and source-type registries.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T17:10:30Z",
+      "task_ids": [
+        "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas",
+        "task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries",
+        "task.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/publish_lifecycle_review_and_source_registry_schemas/task.json",
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/seed_lifecycle_review_and_source_vocab_entries/task.json",
+        "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/.wt/tasks/wire_typed_helper_and_validation_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_live_evidence_closeout_review_indexes_foundation",
+      "title": "Implement live evidence closeout and review indexes",
+      "summary": "Add aggregate index contracts, rebuild logic, and query surfaces for initiative-local evidence, closeout, and review state.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T23:01:29Z",
+      "task_ids": [
+        "task.plan_live_evidence_closeout_review_indexes_foundation.implement_live_indexes",
+        "task.plan_live_evidence_closeout_review_indexes_foundation.reconcile_environment_context_scope",
+        "task.plan_live_evidence_closeout_review_indexes_foundation.validate_rebuild_and_requirements_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/implement_live_indexes/task.json",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/reconcile_environment_context_scope/task.json",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/.wt/tasks/validate_rebuild_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "title": "Add readiness discrepancy and project query commands",
+      "summary": "Expose the live readiness, discrepancy, and project index surfaces through first-class query commands and payloads.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T19:15:00Z",
+      "task_ids": [
+        "task.plan_live_query_authority_cutover.add_readiness_discrepancy_and_project_query_commands",
+        "task.plan_live_query_authority_cutover.refresh_docs_and_validate_live_query_cutover",
+        "task.plan_live_query_authority_cutover.reroot_public_planning_queries_onto_live_plan_indexes"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/add_readiness_discrepancy_and_project_query_commands/task.json",
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/refresh_docs_and_validate_live_query_cutover/task.json",
+        "plan/initiatives/plan_live_query_authority_cutover/.wt/tasks/reroot_public_planning_queries_onto_live_plan_indexes/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_path_and_id_helper_foundation",
+      "title": "Add reusable path and id helper",
+      "summary": "Implement a reusable-core helper for canonical slugs, ids, and plan-workspace root paths.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T23:40:27Z",
+      "task_ids": [
+        "task.plan_path_and_id_helper_foundation.add_path_and_id_helper",
+        "task.plan_path_and_id_helper_foundation.refactor_plan_runtime_callers",
+        "task.plan_path_and_id_helper_foundation.validate_helper_and_reconcile_requirements"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/add_path_and_id_helper/task.json",
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/refactor_plan_runtime_callers/task.json",
+        "plan/initiatives/plan_path_and_id_helper_foundation/.wt/tasks/validate_helper_and_reconcile_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "title": "Expose project context query surface",
+      "summary": "Add a bounded CLI query path that loads pack context and project context explicitly for one project-scoped target.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T18:56:00Z",
+      "task_ids": [
+        "task.plan_project_context_runtime_standardization.expose_project_context_query_surface",
+        "task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper",
+        "task.plan_project_context_runtime_standardization.validate_project_context_load_contract"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/expose_project_context_query_surface/task.json",
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/extract_project_context_runtime_helper/task.json",
+        "plan/initiatives/plan_project_context_runtime_standardization/.wt/tasks/validate_project_context_load_contract/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "title": "Publish project surface policy registry schema",
+      "summary": "Add the governed schema contract for the plan-owned project surface policy registry.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T17:26:30Z",
+      "task_ids": [
+        "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema",
+        "task.plan_project_surface_policy_registry.seed_project_surface_policy_entries",
+        "task.plan_project_surface_policy_registry.wire_helper_and_project_validation"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/publish_project_surface_policy_registry_schema/task.json",
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/seed_project_surface_policy_entries/task.json",
+        "plan/initiatives/plan_project_surface_policy_registry/.wt/tasks/wire_helper_and_project_validation/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "title": "Build promotion and guidance index runtime",
+      "summary": "Aggregate initiative-local promotion records and approved plan guidance into derived plan/.wt index surfaces.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T20:16:00Z",
+      "task_ids": [
+        "task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime",
+        "task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry",
+        "task.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/build_promotion_and_guidance_index_runtime/task.json",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/publish_promotion_policy_schema_and_registry/task.json",
+        "plan/initiatives/plan_promotion_policy_and_guidance_indexes/.wt/tasks/validate_promotion_and_guidance_lookup/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "title": "Define reusable rebuild harness contract",
+      "summary": "Add the export-safe rebuild target and result model under watchtower_core.rebuild.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T00:30:00Z",
+      "task_ids": [
+        "task.plan_rebuild_harness_export_foundation.define_rebuild_harness_contract",
+        "task.plan_rebuild_harness_export_foundation.refactor_plan_and_project_rebuild_callers",
+        "task.plan_rebuild_harness_export_foundation.validate_rebuild_boundary_and_requirements_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/define_rebuild_harness_contract/task.json",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/refactor_plan_and_project_rebuild_callers/task.json",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/.wt/tasks/validate_rebuild_boundary_and_requirements_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "title": "Add reusable rendered view builder",
+      "summary": "Publish a registry-backed rendered-view builder that resolves rendered surface definitions into deterministic markdown outputs.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T02:43:00Z",
+      "task_ids": [
+        "task.plan_rendered_surface_builder_alignment.add_reusable_rendered_view_builder",
+        "task.plan_rendered_surface_builder_alignment.refactor_live_plan_and_project_surfaces_onto_rendered_helpers",
+        "task.plan_rendered_surface_builder_alignment.validate_rendered_surface_boundary_alignment"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/add_reusable_rendered_view_builder/task.json",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/refactor_live_plan_and_project_surfaces_onto_rendered_helpers/task.json",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/.wt/tasks/validate_rendered_surface_boundary_alignment/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "title": "Reconcile helper and runtime status rows",
+      "summary": "Update reusable-helper and runtime-helper status rows that are stale in requirements.md.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T22:29:33Z",
+      "task_ids": [
+        "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows",
+        "task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows",
+        "task.plan_requirements_current_state_reconciliation.validate_and_close_requirements_reconciliation"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_helper_and_runtime_status_rows/task.json",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/reconcile_live_workspace_and_interface_contract_rows/task.json",
+        "plan/initiatives/plan_requirements_current_state_reconciliation/.wt/tasks/validate_and_close_requirements_reconciliation/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "title": "Add reusable routing engine",
+      "summary": "Publish a stable watchtower_core.routing package for route selection by request text or task type.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T23:58:24Z",
+      "task_ids": [
+        "task.plan_routing_engine_export_foundation.add_reusable_routing_engine",
+        "task.plan_routing_engine_export_foundation.add_routing_engine_boundary_tests",
+        "task.plan_routing_engine_export_foundation.reconcile_routing_requirements"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/add_reusable_routing_engine/task.json",
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/add_routing_engine_boundary_tests/task.json",
+        "plan/initiatives/plan_routing_engine_export_foundation/.wt/tasks/reconcile_routing_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "title": "Add focused status registry coverage",
+      "summary": "Lock the cleaned status-registry shape through targeted pack-context or loader coverage.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T00:43:00Z",
+      "task_ids": [
+        "task.plan_status_registry_domain_cleanup.add_focused_status_registry_coverage",
+        "task.plan_status_registry_domain_cleanup.generalize_shared_status_vocabulary",
+        "task.plan_status_registry_domain_cleanup.reconcile_requirements_notes"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/add_focused_status_registry_coverage/task.json",
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/generalize_shared_status_vocabulary/task.json",
+        "plan/initiatives/plan_status_registry_domain_cleanup/.wt/tasks/reconcile_requirements_notes/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "title": "Publish rule registry schemas",
+      "summary": "Add governed schema contracts for the status transition and relation type registries.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T20:49:00Z",
+      "task_ids": [
+        "task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas",
+        "task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries",
+        "task.plan_status_transition_and_relation_rule_registries.validate_rule_registry_coverage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/publish_rule_registry_schemas/task.json",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/seed_rule_registry_entries/task.json",
+        "plan/initiatives/plan_status_transition_and_relation_rule_registries/.wt/tasks/validate_rule_registry_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "title": "Align bootstrap, sync, and fixture flows",
+      "summary": "Repair planning bootstrap, sync consumers, GitHub preview, and reduced fixture repos to use live plan task state.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-18T23:45:00Z",
+      "closed_at": "2026-03-18T23:45:00Z",
+      "closure_reason": "Delivered the hard-cutover task-authority remediation, restored human renders, aligned governance guidance, and validated the repaired operational flows.",
+      "task_ids": [
+        "task.plan_task_authority_rendering_governance_recovery.align_bootstrap_sync_and_fixtures",
+        "task.plan_task_authority_rendering_governance_recovery.cut_over_runtime_and_cli",
+        "task.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown",
+        "task.plan_task_authority_rendering_governance_recovery.rewrite_governance_and_command_guidance",
+        "task.plan_task_authority_rendering_governance_recovery.validate_operational_flows"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/align_bootstrap_sync_and_fixtures/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/cut_over_runtime_and_cli/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/restore_human_render_depth_and_markdown/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/rewrite_governance_and_command_guidance/task.json",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/validate_operational_flows/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "title": "Add template validation coverage",
+      "summary": "Extend template helpers and tests so section-spec references and template headings fail closed on drift.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T18:04:42Z",
+      "task_ids": [
+        "task.plan_template_section_spec_enforcement_foundation.add_template_validation_coverage",
+        "task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts",
+        "task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/add_template_validation_coverage/task.json",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/bind_templates_to_section_spec_contracts/task.json",
+        "plan/initiatives/plan_template_section_spec_enforcement_foundation/.wt/tasks/publish_section_spec_schema_contracts/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "title": "Add terminal closeout mutations for live initiative packages",
+      "summary": "Implement pack-wide and project-scoped terminal closeout state transitions that finalize initiative, evidence, closeout, and promotion shells.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T15:35:00Z",
+      "task_ids": [
+        "task.plan_terminal_initiative_closeout_runtime.add_terminal_closeout_mutations",
+        "task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface",
+        "task.plan_terminal_initiative_closeout_runtime.validate_terminal_closeout_and_clear_closing_initiatives"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/add_terminal_closeout_mutations/task.json",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/expose_terminal_closeout_command_surface/task.json",
+        "plan/initiatives/plan_terminal_initiative_closeout_runtime/.wt/tasks/validate_terminal_closeout_and_clear_closing_initiatives/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "title": "Define reusable terminology helper contract",
+      "summary": "Add a reusable terminology helper for pack-local lifecycle, review, source, and task-status vocabulary lookup.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T01:20:00Z",
+      "task_ids": [
+        "task.plan_terminology_helper_foundation.define_terminology_helper_contract",
+        "task.plan_terminology_helper_foundation.reconcile_terminology_requirements_and_docs",
+        "task.plan_terminology_helper_foundation.refactor_callers_and_add_terminology_coverage"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/define_terminology_helper_contract/task.json",
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/reconcile_terminology_requirements_and_docs/task.json",
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/tasks/refactor_callers_and_add_terminology_coverage/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_workflow_catalog_helper_foundation",
+      "title": "Add workflow catalog helper",
+      "summary": "Publish a reusable helper that resolves workflow metadata, companions, and route bindings.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T23:54:50Z",
+      "task_ids": [
+        "task.plan_workflow_catalog_helper_foundation.add_workflow_catalog_helper",
+        "task.plan_workflow_catalog_helper_foundation.add_workflow_catalog_tests",
+        "task.plan_workflow_catalog_helper_foundation.reconcile_workflow_helper_requirements"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/add_workflow_catalog_helper/task.json",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/add_workflow_catalog_tests/task.json",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/.wt/tasks/reconcile_workflow_helper_requirements/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "title": "Add workflow execution boundary coverage",
+      "summary": "Lock the new execution seam through focused unit coverage and package-root boundary tests.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-18T00:55:00Z",
+      "task_ids": [
+        "task.plan_workflow_execution_harness_foundation.add_workflow_execution_boundary_coverage",
+        "task.plan_workflow_execution_harness_foundation.define_generic_workflow_execution_contract",
+        "task.plan_workflow_execution_harness_foundation.reconcile_requirements_and_package_docs"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/add_workflow_execution_boundary_coverage/task.json",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/define_generic_workflow_execution_contract/task.json",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/.wt/tasks/reconcile_requirements_and_package_docs/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "title": "Cut over human instructions and workflow guidance",
+      "summary": "Update AGENTS, README, policy, registry, and standards surfaces so human routing no longer treats repo-root workflows/ as the authoritative backend.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T18:52:42Z",
+      "task_ids": [
+        "task.plan_workflow_root_authority_split.cut_over_human_instructions_and_workflow_guidance",
+        "task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots",
+        "task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/cut_over_human_instructions_and_workflow_guidance/task.json",
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/rebuild_routing_and_workflow_runtime_around_split_roots/task.json",
+        "plan/initiatives/plan_workflow_root_authority_split/.wt/tasks/split_workflow_routing_and_module_roots_by_domain/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "title": "Planning Artifact Retention and Purge PRD",
       "summary": "Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.",
@@ -3227,13 +3765,6 @@
       ],
       "plan_ids": [
         "design.implementation.planning_artifact_retention_and_purge"
-      ],
-      "task_ids": [
-        "task.planning_artifact_retention_and_purge.bootstrap.001",
-        "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-        "task.planning_artifact_retention_and_purge.standard_alignment.002",
-        "task.planning_artifact_retention_and_purge.validation_closeout.005",
-        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
       ],
       "requirement_ids": [
         "req.planning_artifact_retention_and_purge.001",
@@ -3279,7 +3810,6 @@
         "core/control_plane/ledgers/validation_evidence/planning_artifact_retention_and_purge_planning_baseline.json",
         "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
         "core/python/",
-        "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/closeout_family.py",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
@@ -3310,8 +3840,6 @@
         "docs/planning/tasks/closed/archive/2026/03/16/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
         "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_artifact_retention_and_purge.md",
         "docs/planning/tasks/task_tracking.md",
-        "docs/standards/",
-        "docs/standards/governance/",
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
@@ -3345,12 +3873,6 @@
       "plan_ids": [
         "design.implementation.planning_authoring_hotspot_regression_hardening"
       ],
-      "task_ids": [
-        "task.planning_authoring_hotspot_regression_hardening.bootstrap.001",
-        "task.planning_authoring_hotspot_regression_hardening.scaffold_modularity.002",
-        "task.planning_authoring_hotspot_regression_hardening.task_companion_repair.003",
-        "task.planning_authoring_hotspot_regression_hardening.validation_closeout.004"
-      ],
       "requirement_ids": [
         "req.planning_authoring_hotspot_regression_hardening.001",
         "req.planning_authoring_hotspot_regression_hardening.002",
@@ -3377,11 +3899,9 @@
       ],
       "related_paths": [
         "core/control_plane/",
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.json",
         "core/control_plane/indexes/planning/planning_catalog.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.json",
         "core/python/",
         "core/python/src/watchtower_core/repo_ops/README.md",
@@ -3394,7 +3914,6 @@
         "core/python/src/watchtower_core/repo_ops/task_companion_path_repair.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
-        "core/python/tests/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
         "core/python/tests/integration/test_task_lifecycle_service.py",
         "core/python/tests/unit/test_plan_and_task_handlers.py",
@@ -3403,10 +3922,8 @@
         "core/python/tests/unit/test_task_companion_path_repair.py",
         "core/python/tests/unit/test_task_lifecycle.py",
         "docs/",
-        "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_plan.md",
         "docs/commands/core_python/watchtower_core_task.md",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
@@ -3448,11 +3965,6 @@
       ],
       "plan_ids": [
         "design.implementation.planning_authority_unification"
-      ],
-      "task_ids": [
-        "task.planning_authority_unification.authority_map.001",
-        "task.planning_authority_unification.bootstrap.001",
-        "task.planning_authority_unification.planning_catalog.001"
       ],
       "requirement_ids": [
         "req.planning_authority_unification.001",
@@ -3547,12 +4059,6 @@
       "plan_ids": [
         "design.implementation.planning_query_efficiency_and_handler_modularity"
       ],
-      "task_ids": [
-        "task.planning_query_efficiency_and_handler_modularity.bootstrap.001",
-        "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002",
-        "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001",
-        "task.planning_query_efficiency_and_handler_modularity.validation_and_closeout.003"
-      ],
       "requirement_ids": [
         "req.planning_query_efficiency_and_handler_modularity.001",
         "req.planning_query_efficiency_and_handler_modularity.002",
@@ -3594,7 +4100,6 @@
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-        "core/python/tests/unit/",
         "core/python/tests/unit/README.md",
         "core/python/tests/unit/test_cli.py",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
@@ -3652,12 +4157,6 @@
       "plan_ids": [
         "design.implementation.planning_semantics_and_decision_contract_alignment"
       ],
-      "task_ids": [
-        "task.planning_semantics_and_decision_contract_alignment.bootstrap.001",
-        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
-        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
-        "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001"
-      ],
       "requirement_ids": [
         "req.planning_semantics_and_decision_contract_alignment.001",
         "req.planning_semantics_and_decision_contract_alignment.002",
@@ -3681,7 +4180,6 @@
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.json",
-        "core/control_plane/indexes/",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/tasks/task_index.json",
@@ -3689,7 +4187,6 @@
         "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.json",
         "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
-        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
@@ -3699,9 +4196,7 @@
         "core/python/tests/integration/",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_decision_index_sync.py",
-        "core/python/tests/unit/test_design_document_index_sync.py",
         "core/python/tests/unit/test_workflow_index_sync.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -3750,17 +4245,6 @@
       "plan_ids": [
         "design.implementation.post_rewrite_core_cleanup_and_surface_reduction"
       ],
-      "task_ids": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.example_history_reconciliation.009",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.workspace_validation_contract.002"
-      ],
       "requirement_ids": [
         "req.post_rewrite_core_cleanup_and_surface_reduction.001",
         "req.post_rewrite_core_cleanup_and_surface_reduction.002",
@@ -3782,36 +4266,19 @@
         "evidence.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/",
-        "core/control_plane/contracts/",
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.json",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
-        "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json",
-        "core/control_plane/manifests/",
-        "core/control_plane/registries/",
-        "core/control_plane/registries/validator_registry.json",
-        "core/control_plane/schemas/artifacts/",
-        "core/python/",
         "core/python/src/watchtower_core/control_plane/",
-        "core/python/src/watchtower_core/control_plane/loader.py",
-        "core/python/src/watchtower_core/control_plane/pack_context.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/tests/",
-        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
-        "core/python/tests/unit/test_pack_context.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
-        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/prds/prd_tracking.md",
@@ -3825,7 +4292,6 @@
         "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
         "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
-        "docs/standards/data_contracts/",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "tags": [
@@ -3853,12 +4319,6 @@
       ],
       "plan_ids": [
         "design.implementation.preimplementation_repo_hardening_execution"
-      ],
-      "task_ids": [
-        "task.preimplementation_repo_review_and_hardening.bootstrap.001",
-        "task.preimplementation_repo_review_and_hardening.core_modularity.001",
-        "task.preimplementation_repo_review_and_hardening.machine_coordination.001",
-        "task.preimplementation_repo_review_and_hardening.readme_entrypoints.001"
       ],
       "requirement_ids": [
         "req.preimplementation_repo_review_and_hardening.001",
@@ -3952,12 +4412,6 @@
       "plan_ids": [
         "design.implementation.query_family_source_surface_alignment"
       ],
-      "task_ids": [
-        "task.query_family_source_surface_alignment.bootstrap.001",
-        "task.query_family_source_surface_alignment.command_doc_and_index_reconciliation.002",
-        "task.query_family_source_surface_alignment.introspection_mapping_hardening.001",
-        "task.query_family_source_surface_alignment.validation_and_confirmation.003"
-      ],
       "requirement_ids": [
         "req.query_family_source_surface_alignment.001",
         "req.query_family_source_surface_alignment.002",
@@ -3990,11 +4444,9 @@
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/introspection.py",
         "core/python/src/watchtower_core/cli/registry.py",
-        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
         "core/python/tests/unit/test_command_index_sync.py",
         "core/python/tests/unit/test_control_plane_loader.py",
-        "core/python/tests/unit/test_route_and_query_handlers.py",
         "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_query.md",
         "docs/commands/core_python/watchtower_core_query_acceptance.md",
@@ -4053,12 +4505,6 @@
       "plan_ids": [
         "design.implementation.refactor_review_and_hardening"
       ],
-      "task_ids": [
-        "task.refactor_review_and_hardening.bootstrap.001",
-        "task.refactor_review_and_hardening.current_state_surface_simplification.003",
-        "task.refactor_review_and_hardening.validation_closeout.004",
-        "task.refactor_review_and_hardening.workflow_route_discrimination.002"
-      ],
       "requirement_ids": [
         "req.refactor_review_and_hardening.001",
         "req.refactor_review_and_hardening.002",
@@ -4087,14 +4533,10 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.json",
         "core/control_plane/indexes/commands/command_index.json",
-        "core/control_plane/indexes/coordination/",
         "core/control_plane/indexes/coordination/coordination_index.json",
-        "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/control_plane/indexes/workflows/",
         "core/control_plane/indexes/workflows/workflow_index.json",
         "core/control_plane/ledgers/validation_evidence/refactor_review_and_hardening_planning_baseline.json",
-        "core/control_plane/registries/",
         "core/control_plane/registries/workflow_metadata_registry.json",
         "core/python/",
         "core/python/README.md",
@@ -4102,13 +4544,21 @@
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
-        "core/python/tests/",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "core/python/tests/unit/test_coordination_tracking_sync.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/test_workflow_index_sync.py",
+        "core/workflows/",
+        "core/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/code_review.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/documentation_review.md",
+        "core/workflows/modules/repository_assessment.md",
+        "core/workflows/modules/repository_inventory_review.md",
+        "core/workflows/modules/repository_review.md",
+        "core/workflows/modules/task_handoff_review.md",
         "docs/",
         "docs/commands/core_python/",
         "docs/commands/core_python/README.md",
@@ -4138,16 +4588,10 @@
         "docs/standards/",
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/governance/coordination_tracking_standard.md",
+        "plan/workflows/",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/",
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
-        "workflows/modules/code_review.md",
-        "workflows/modules/documentation_refresh.md",
-        "workflows/modules/documentation_review.md",
-        "workflows/modules/repository_assessment.md",
-        "workflows/modules/repository_inventory_review.md",
-        "workflows/modules/repository_review.md",
-        "workflows/modules/task_handoff_review.md"
+        "workflows/ROUTING_TABLE.md"
       ],
       "tags": [
         "traceability"
@@ -4174,12 +4618,6 @@
       ],
       "plan_ids": [
         "design.implementation.refactor_umbrella_regression_and_growth_control"
-      ],
-      "task_ids": [
-        "task.refactor_umbrella_regression_and_growth_control.audit_matrix.001",
-        "task.refactor_umbrella_regression_and_growth_control.bootstrap.001",
-        "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002",
-        "task.refactor_umbrella_regression_and_growth_control.validation_and_closeout.003"
       ],
       "requirement_ids": [
         "req.refactor_umbrella_regression_and_growth_control.001",
@@ -4214,9 +4652,9 @@
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/tests/integration/test_task_workflow_end_to_end.py",
-        "core/python/tests/unit/",
         "core/python/tests/unit/test_closeout_handlers.py",
         "core/python/tests/unit/test_initiative_closeout.py",
+        "core/workflows/modules/repository_review.md",
         "docs/commands/core_python/watchtower_core_closeout.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/planning/",
@@ -4228,12 +4666,12 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
-        "docs/planning/tasks/closed/archive/2026/03/13/harden_initiative_closeout_with_acceptance_reconciliation_gate.md",
         "docs/planning/tasks/closed/archive/2026/03/13/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
         "docs/planning/tasks/closed/archive/2026/03/13/refactor_umbrella_regression_and_growth_control_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/governance/initiative_closeout_standard.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "workflows/modules/initiative_closeout.md",
         "workflows/modules/repository_review.md"
       ],
@@ -4262,12 +4700,6 @@
       ],
       "plan_ids": [
         "design.implementation.reference_and_reserved_surface_maturity_signaling"
-      ],
-      "task_ids": [
-        "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
-        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
-        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
-        "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004"
       ],
       "requirement_ids": [
         "req.reference_and_reserved_surface_maturity_signaling.001",
@@ -4318,7 +4750,6 @@
         "core/python/src/watchtower_core/repo_ops/reference_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/tests/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_reference_index_sync.py",
@@ -4326,7 +4757,6 @@
         "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_query.md",
         "docs/commands/core_python/watchtower_core_query_references.md",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
@@ -4375,12 +4805,6 @@
       "plan_ids": [
         "design.implementation.reference_and_workflow_standards_alignment"
       ],
-      "task_ids": [
-        "task.reference_and_workflow_standards_alignment.bootstrap.001",
-        "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
-        "task.reference_and_workflow_standards_alignment.validation_closeout.001",
-        "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001"
-      ],
       "requirement_ids": [
         "req.reference_and_workflow_standards_alignment.001",
         "req.reference_and_workflow_standards_alignment.002",
@@ -4404,7 +4828,6 @@
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.json",
-        "core/control_plane/indexes/",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/tasks/task_index.json",
@@ -4416,7 +4839,6 @@
         "core/python/tests/integration/",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_workflow_index_sync.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -4463,11 +4885,6 @@
       "plan_ids": [
         "design.implementation.reference_resolution_reuse_hardening"
       ],
-      "task_ids": [
-        "task.reference_resolution_reuse_hardening.bootstrap.001",
-        "task.reference_resolution_reuse_hardening.shared_resolution_reuse.001",
-        "task.reference_resolution_reuse_hardening.validation_closeout.002"
-      ],
       "requirement_ids": [
         "req.reference_resolution_reuse_hardening.001",
         "req.reference_resolution_reuse_hardening.002",
@@ -4491,15 +4908,12 @@
         "evidence.reference_resolution_reuse_hardening.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.json",
         "core/control_plane/indexes/foundations/foundation_index.json",
         "core/control_plane/indexes/references/reference_index.json",
         "core/control_plane/indexes/standards/standard_index.json",
         "core/control_plane/indexes/workflows/workflow_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.json",
-        "core/python/",
         "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/sync/all.py",
@@ -4512,7 +4926,6 @@
         "core/python/tests/",
         "core/python/tests/unit/test_all_sync.py",
         "core/python/tests/unit/test_all_validation.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -4552,11 +4965,6 @@
       "plan_ids": [
         "design.implementation.regression_duplication_and_overstep_review"
       ],
-      "task_ids": [
-        "task.regression_duplication_and_overstep_review.bootstrap.001",
-        "task.regression_duplication_and_overstep_review.remediation.002",
-        "task.regression_duplication_and_overstep_review.validation.003"
-      ],
       "requirement_ids": [
         "req.regression_duplication_and_overstep_review.001",
         "req.regression_duplication_and_overstep_review.002",
@@ -4583,14 +4991,11 @@
       ],
       "related_paths": [
         "core/control_plane/",
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/regression_duplication_and_overstep_review_acceptance.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/regression_duplication_and_overstep_review_planning_baseline.json",
         "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
         "core/python/",
-        "core/python/src/watchtower_core/repo_ops/",
         "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
@@ -4600,7 +5005,6 @@
         "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
-        "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/acceptance.py",
         "core/python/tests/integration/test_task_lifecycle_service.py",
         "core/python/tests/unit/test_acceptance_reconciliation.py",
@@ -4665,11 +5069,6 @@
       "plan_ids": [
         "design.implementation.rendered_surface_contract_enforcement"
       ],
-      "task_ids": [
-        "task.rendered_surface_contract_enforcement.bootstrap.001",
-        "task.rendered_surface_contract_enforcement.rendered_registry_and_runtime_alignment.002",
-        "task.rendered_surface_contract_enforcement.validation_and_closeout.003"
-      ],
       "requirement_ids": [
         "req.rendered_surface_contract_enforcement.001",
         "req.rendered_surface_contract_enforcement.002",
@@ -4713,7 +5112,6 @@
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/rendered_surface_registry.schema.json",
         "core/python/",
-        "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/adapters/rendered_markdown.py",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/README.md",
@@ -4788,12 +5186,6 @@
       "plan_ids": [
         "design.implementation.repo_local_hotspot_modularity"
       ],
-      "task_ids": [
-        "task.repo_local_hotspot_modularity.bootstrap.001",
-        "task.repo_local_hotspot_modularity.github_integration.001",
-        "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
-        "task.repo_local_hotspot_modularity.sync_traceability.001"
-      ],
       "requirement_ids": [
         "req.repo_local_hotspot_modularity.001",
         "req.repo_local_hotspot_modularity.002",
@@ -4852,7 +5244,6 @@
         "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
-        "core/python/tests/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
         "core/python/tests/integration/test_task_lifecycle_service.py",
         "core/python/tests/integration/test_task_workflow_end_to_end.py",
@@ -4908,10 +5299,6 @@
       "plan_ids": [
         "design.implementation.route_preview_natural_request_matching"
       ],
-      "task_ids": [
-        "task.route_preview_natural_request_matching.bootstrap.001",
-        "task.route_preview_natural_request_matching.hardening.001"
-      ],
       "requirement_ids": [
         "req.route_preview_natural_request_matching.001",
         "req.route_preview_natural_request_matching.002",
@@ -4942,9 +5329,11 @@
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.json",
         "core/python/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_route_index_sync.py",
+        "core/workflows/",
+        "core/workflows/ROUTING_TABLE.md",
         "docs/",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "docs/planning/coordination_tracking.md",
@@ -4960,6 +5349,8 @@
         "docs/planning/tasks/closed/archive/2026/03/11/bootstrap_the_route_preview_natural_request_matching_trace.md",
         "docs/planning/tasks/closed/archive/2026/03/11/harden_route_preview_for_natural_maintenance_requests.md",
         "docs/planning/tasks/task_tracking.md",
+        "plan/workflows/",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/",
         "workflows/ROUTING_TABLE.md"
       ],
@@ -4988,11 +5379,6 @@
       ],
       "plan_ids": [
         "design.implementation.standard_authoring_surface_alignment"
-      ],
-      "task_ids": [
-        "task.standard_authoring_surface_alignment.bootstrap.001",
-        "task.standard_authoring_surface_alignment.lookup_alignment.001",
-        "task.standard_authoring_surface_alignment.template_contract.001"
       ],
       "requirement_ids": [
         "req.standard_authoring_surface_alignment.001",
@@ -5070,11 +5456,6 @@
       "plan_ids": [
         "design.implementation.standard_operationalization_directory_canonicalization"
       ],
-      "task_ids": [
-        "task.standard_operationalization_directory_canonicalization.bootstrap.001",
-        "task.standard_operationalization_directory_canonicalization.implementation.001",
-        "task.standard_operationalization_directory_canonicalization.validation_closeout.001"
-      ],
       "requirement_ids": [
         "req.standard_operationalization_directory_canonicalization.001",
         "req.standard_operationalization_directory_canonicalization.002",
@@ -5112,7 +5493,6 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
-        "docs/planning/tasks/",
         "docs/planning/tasks/closed/archive/2026/03/12/canonicalize_standard_operationalization_directory_paths.md",
         "docs/planning/tasks/closed/archive/2026/03/12/standard_operationalization_directory_canonicalization_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standard_operationalization_directory_canonicalization.md",
@@ -5146,12 +5526,6 @@
       ],
       "plan_ids": [
         "design.implementation.standard_runtime_and_route_explicitness"
-      ],
-      "task_ids": [
-        "task.standard_runtime_and_route_explicitness.bootstrap.001",
-        "task.standard_runtime_and_route_explicitness.route_preview_hardening.001",
-        "task.standard_runtime_and_route_explicitness.runtime_package_docs.001",
-        "task.standard_runtime_and_route_explicitness.standard_operationalization.001"
       ],
       "requirement_ids": [
         "req.standard_runtime_and_route_explicitness.001",
@@ -5190,8 +5564,8 @@
         "core/python/src/watchtower_core/control_plane/README.md",
         "core/python/src/watchtower_core/integrations/github/README.md",
         "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/query/routes.py",
         "core/python/src/watchtower_core/repo_ops/README.md",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/sync/README.md",
@@ -5201,6 +5575,7 @@
         "core/python/tests/unit/test_route_and_query_handlers.py",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/test_standard_index_sync.py",
+        "core/workflows/ROUTING_TABLE.md",
         "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/commands/core_python/watchtower_core_route_preview.md",
@@ -5220,6 +5595,7 @@
         "docs/planning/tasks/closed/archive/2026/03/11/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/ROUTING_TABLE.md"
       ],
       "tags": [
@@ -5248,12 +5624,6 @@
       "plan_ids": [
         "design.implementation.standards_lookup_and_generic_template_alignment"
       ],
-      "task_ids": [
-        "task.standards_lookup_and_generic_template_alignment.bootstrap.001",
-        "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001",
-        "task.standards_lookup_and_generic_template_alignment.lookup_resolution.001",
-        "task.standards_lookup_and_generic_template_alignment.validation_closeout.001"
-      ],
       "requirement_ids": [
         "req.standards_lookup_and_generic_template_alignment.001",
         "req.standards_lookup_and_generic_template_alignment.002",
@@ -5277,7 +5647,6 @@
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.json",
-        "core/control_plane/indexes/",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/tasks/task_index.json",
@@ -5288,7 +5657,6 @@
         "core/python/tests/integration/",
         "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_standards.md",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -5341,25 +5709,6 @@
         "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
         "design.implementation.structural_rewrite_phase4_shared_projection_entry",
         "design.implementation.structural_rewrite_program"
-      ],
-      "task_ids": [
-        "task.structural_rewrite_program.artifact_role_registry_pilot.004",
-        "task.structural_rewrite_program.artifact_role_registry_pilot_review.005",
-        "task.structural_rewrite_program.bootstrap.001",
-        "task.structural_rewrite_program.phase0_phase1_package.002",
-        "task.structural_rewrite_program.phase2_entry_review.003",
-        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007",
-        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
-        "task.structural_rewrite_program.phase3_entry_review.006",
-        "task.structural_rewrite_program.phase4_closeout_coordination_entry_review.012",
-        "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013",
-        "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014",
-        "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
-        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016",
-        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_review.017",
-        "task.structural_rewrite_program.phase4_entry_review.009",
-        "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
-        "task.structural_rewrite_program.phase4_planning_projection_snapshot_review.011"
       ],
       "requirement_ids": [
         "req.structural_rewrite_program.001",
@@ -5477,7 +5826,6 @@
         "core/python/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
-        "core/python/src/watchtower_core/cli/introspection.py",
         "core/python/src/watchtower_core/cli/parser.py",
         "core/python/src/watchtower_core/cli/registry.py",
         "core/python/src/watchtower_core/closeout/",
@@ -5589,11 +5937,6 @@
       "plan_ids": [
         "design.implementation.summary_surface_retirement"
       ],
-      "task_ids": [
-        "task.summary_surface_retirement.bootstrap.001",
-        "task.summary_surface_retirement.retire_summary.001",
-        "task.summary_surface_retirement.validation.002"
-      ],
       "requirement_ids": [
         "req.summary_surface_retirement.001",
         "req.summary_surface_retirement.002",
@@ -5625,6 +5968,7 @@
         "core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.json",
         "core/python/tests/integration/",
         "core/python/tests/unit/test_traceability_index_sync.py",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
@@ -5674,11 +6018,6 @@
       "plan_ids": [
         "design.implementation.task_query_dependency_lookup_hardening"
       ],
-      "task_ids": [
-        "task.task_query_dependency_lookup_hardening.bootstrap.001",
-        "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002",
-        "task.task_query_dependency_lookup_hardening.validation_closeout.003"
-      ],
       "requirement_ids": [
         "req.task_query_dependency_lookup_hardening.001",
         "req.task_query_dependency_lookup_hardening.002",
@@ -5702,9 +6041,7 @@
         "evidence.task_query_dependency_lookup_hardening.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.json",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/control_plane/loader.py",
@@ -5715,7 +6052,6 @@
         "core/python/tests/",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -5754,11 +6090,6 @@
       ],
       "plan_ids": [
         "design.implementation.task_sync_disappearing_file_resilience"
-      ],
-      "task_ids": [
-        "task.task_sync_disappearing_file_resilience.bootstrap.001",
-        "task.task_sync_disappearing_file_resilience.implementation.001",
-        "task.task_sync_disappearing_file_resilience.validation_closeout.002"
       ],
       "requirement_ids": [
         "req.task_sync_disappearing_file_resilience.001",
@@ -5827,12 +6158,6 @@
       "plan_ids": [
         "design.implementation.template_and_output_efficiency_execution"
       ],
-      "task_ids": [
-        "task.template_and_output_efficiency.bootstrap.001",
-        "task.template_and_output_efficiency.compact_authoring.001",
-        "task.template_and_output_efficiency.tracker_compaction.001",
-        "task.template_and_output_efficiency.workflow_guidance.001"
-      ],
       "requirement_ids": [
         "req.template_and_output_efficiency.001",
         "req.template_and_output_efficiency.002",
@@ -5866,6 +6191,7 @@
         "core/python/src/watchtower_core/repo_ops/task_documents.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
+        "core/workflows/modules/",
         "docs/",
         "docs/planning/",
         "docs/planning/decisions/decision_tracking.md",
@@ -5885,6 +6211,7 @@
         "docs/standards/governance/",
         "docs/standards/workflows/",
         "docs/templates/",
+        "plan/workflows/modules/",
         "workflows/modules/"
       ],
       "tags": [
@@ -5912,11 +6239,6 @@
       ],
       "plan_ids": [
         "design.implementation.transition_surface_retirement"
-      ],
-      "task_ids": [
-        "task.transition_surface_retirement.bootstrap.001",
-        "task.transition_surface_retirement.implementation.002",
-        "task.transition_surface_retirement.validation_closeout.003"
       ],
       "requirement_ids": [
         "req.transition_surface_retirement.001",
@@ -6008,12 +6330,6 @@
       "plan_ids": [
         "design.implementation.typed_query_surface_modularity_hardening"
       ],
-      "task_ids": [
-        "task.typed_query_surface_modularity_hardening.bootstrap.001",
-        "task.typed_query_surface_modularity_hardening.model_modularity.002",
-        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003",
-        "task.typed_query_surface_modularity_hardening.validation_closeout.004"
-      ],
       "requirement_ids": [
         "req.typed_query_surface_modularity_hardening.001",
         "req.typed_query_surface_modularity_hardening.002",
@@ -6103,13 +6419,6 @@
       "plan_ids": [
         "design.implementation.unit_test_hardening_and_rebalancing"
       ],
-      "task_ids": [
-        "task.unit_test_hardening_and_rebalancing.bootstrap.001",
-        "task.unit_test_hardening_and_rebalancing.cli_lifecycle_coverage.001",
-        "task.unit_test_hardening_and_rebalancing.github_coverage.001",
-        "task.unit_test_hardening_and_rebalancing.orchestration_hardening.001",
-        "task.unit_test_hardening_and_rebalancing.suite_rebalance.001"
-      ],
       "requirement_ids": [
         "req.unit_test_hardening_and_rebalancing.001",
         "req.unit_test_hardening_and_rebalancing.002",
@@ -6148,7 +6457,6 @@
         "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/integrations/github/client.py",
-        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/sync/all.py",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
@@ -6203,13 +6511,6 @@
       ],
       "plan_ids": [
         "design.implementation.validated_core_pack_data_shape_convergence"
-      ],
-      "task_ids": [
-        "task.validated_core_pack_data_shape_convergence.bootstrap.001",
-        "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
-        "task.validated_core_pack_data_shape_convergence.pack_models.003",
-        "task.validated_core_pack_data_shape_convergence.runtime_manifest.002",
-        "task.validated_core_pack_data_shape_convergence.validation_closeout.005"
       ],
       "requirement_ids": [
         "req.validated_core_pack_data_shape_convergence.001",
@@ -6293,12 +6594,6 @@
       "plan_ids": [
         "design.implementation.validation_test_hotspot_rebalancing"
       ],
-      "task_ids": [
-        "task.validation_test_hotspot_rebalancing.bootstrap.001",
-        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
-        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
-        "task.validation_test_hotspot_rebalancing.validation_closeout.004"
-      ],
       "requirement_ids": [
         "req.validation_test_hotspot_rebalancing.001",
         "req.validation_test_hotspot_rebalancing.002",
@@ -6323,10 +6618,8 @@
         "evidence.validation_test_hotspot_rebalancing.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/validation_handlers.py",
@@ -6373,6 +6666,160 @@
       "notes": "Validation evidence refreshed at 2026-03-13T19:19:06Z after the integration and document-semantics hotspot splits, README-driven repository-path rebuild, the reopened loop that repaired the adjacent `fixture_repo_support` import regression, the acceptance-evidence reconciliation repair, and the final clean validation or confirmation reruns on the closed trace."
     },
     {
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "title": "Capture WatchTower implementation boundary",
+      "summary": "Bootstrap /home/j/WatchTower with root guidance, a Python workspace, and a minimal operator-facing CLI shell.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T06:42:14Z",
+      "task_ids": [
+        "task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary",
+        "task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/capture_watchtower_implementation_boundary/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/.wt/tasks/validate_watchtower_readiness_gate/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_next_work_selection",
+      "title": "Add WatchTower next-work flow",
+      "summary": "Add a CLI path that selects one unfinished local work item and returns a compact resume snapshot.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T08:33:00Z",
+      "task_ids": [
+        "task.watchtower_next_work_selection.add_watchtower_next_work_flow",
+        "task.watchtower_next_work_selection.validate_watchtower_next_work_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/add_watchtower_next_work_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_next_work_selection/.wt/tasks/validate_watchtower_next_work_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_status_snapshot",
+      "title": "Add WatchTower status snapshot flow",
+      "summary": "Add a top-level CLI path that reports workspace state and summarized work-item counts from the local .watchtower store.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T07:56:52Z",
+      "task_ids": [
+        "task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow",
+        "task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/add_watchtower_status_snapshot_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_status_snapshot/.wt/tasks/validate_watchtower_status_snapshot_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "title": "Add WatchTower work-item begin flow",
+      "summary": "Add a CLI path that marks one local work item in progress and persists active-work metadata.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T08:41:29Z",
+      "task_ids": [
+        "task.watchtower_work_item_begin_flow.add_watchtower_work_item_begin_flow",
+        "task.watchtower_work_item_begin_flow.validate_watchtower_work_item_begin_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/add_watchtower_work_item_begin_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow/.wt/tasks/validate_watchtower_work_item_begin_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "title": "Add WatchTower work-item start flow",
+      "summary": "Add a CLI path that creates one local work-item record under the initialized workspace state root.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T07:35:55Z",
+      "task_ids": [
+        "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow",
+        "task.watchtower_work_item_bootstrap.validate_watchtower_work_item_start_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/add_watchtower_work_item_start_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap/.wt/tasks/validate_watchtower_work_item_start_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "title": "Add WatchTower work-item completion flow",
+      "summary": "Add a CLI path that marks one local work item completed and records its closeout metadata.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T07:47:10Z",
+      "task_ids": [
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow",
+        "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows",
+        "task.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_completion_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/add_watchtower_work_item_inspection_flows/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/.wt/tasks/validate_watchtower_work_item_lifecycle_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_work_item_notes",
+      "title": "Add WatchTower work-item note flow",
+      "summary": "Add a CLI path that appends one timestamped note to an existing local work-item record.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T08:20:10Z",
+      "task_ids": [
+        "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow",
+        "task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/add_watchtower_work_item_note_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_work_item_notes/.wt/tasks/validate_watchtower_work_item_note_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "title": "Add WatchTower workspace init flow",
+      "summary": "Add a CLI init path that writes a local workspace manifest and establishes the managed state root.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-17T07:30:35Z",
+      "task_ids": [
+        "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow",
+        "task.watchtower_workspace_init_bootstrap.validate_watchtower_workspace_init_flow"
+      ],
+      "related_paths": [
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/add_watchtower_workspace_init_flow/task.json",
+        "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/.wt/tasks/validate_watchtower_workspace_init_flow/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "title": "Workflow Route Boundary Discoverability Hardening PRD",
       "summary": "Harden workflow route preview and workflow lookup so realistic reconciliation and handoff requests resolve to the right adjacent workflow boundaries without low-signal route leakage.",
@@ -6392,12 +6839,6 @@
       ],
       "plan_ids": [
         "design.implementation.workflow_route_boundary_discoverability_hardening"
-      ],
-      "task_ids": [
-        "task.workflow_route_boundary_discoverability_hardening.bootstrap.001",
-        "task.workflow_route_boundary_discoverability_hardening.route_preview_discrimination.002",
-        "task.workflow_route_boundary_discoverability_hardening.validation_closeout.004",
-        "task.workflow_route_boundary_discoverability_hardening.workflow_lookup_alignment.003"
       ],
       "requirement_ids": [
         "req.workflow_route_boundary_discoverability_hardening.001",
@@ -6424,23 +6865,26 @@
         "evidence.workflow_route_boundary_discoverability_hardening.planning_baseline"
       ],
       "related_paths": [
-        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.json",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/routes/route_index.json",
         "core/control_plane/indexes/workflows/",
         "core/control_plane/indexes/workflows/workflow_index.json",
-        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.json",
         "core/control_plane/registries/",
         "core/control_plane/registries/workflow_metadata_registry.json",
         "core/python/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/python/src/watchtower_core/query/workflows.py",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
         "core/python/tests/unit/test_cli_route_and_path_commands.py",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/test_workflow_index_sync.py",
+        "core/workflows/",
+        "core/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "core/workflows/modules/documentation_implementation_reconciliation.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
         "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_query_workflows.md",
         "docs/commands/core_python/watchtower_core_route_preview.md",
@@ -6458,14 +6902,15 @@
         "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
         "docs/planning/tasks/closed/archive/2026/03/13/workflow_route_boundary_discoverability_hardening_bootstrap.md",
         "docs/planning/tasks/task_tracking.md",
+        "plan/workflows/",
+        "plan/workflows/ROUTING_TABLE.md",
+        "plan/workflows/modules/",
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "plan/workflows/modules/task_phase_transition.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
         "workflows/",
         "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
-        "workflows/modules/documentation_implementation_reconciliation.md",
-        "workflows/modules/governed_artifact_reconciliation.md",
-        "workflows/modules/task_lifecycle_management.md",
-        "workflows/modules/task_phase_transition.md",
-        "workflows/modules/traceability_reconciliation.md"
+        "workflows/modules/"
       ],
       "tags": [
         "traceability"
@@ -6492,11 +6937,6 @@
       ],
       "plan_ids": [
         "design.implementation.workflow_routing_review_accuracy_alignment"
-      ],
-      "task_ids": [
-        "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
-        "task.workflow_routing_review_accuracy_alignment.implementation.001",
-        "task.workflow_routing_review_accuracy_alignment.validation_closeout.002"
       ],
       "requirement_ids": [
         "req.workflow_routing_review_accuracy_alignment.001",
@@ -6526,8 +6966,10 @@
         "core/control_plane/indexes/routes/route_index.json",
         "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.json",
         "core/python/src/watchtower_core/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "core/python/tests/unit/test_route_index_sync.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "docs/planning/coordination_tracking.md",
@@ -6545,9 +6987,9 @@
         "docs/planning/tasks/closed/archive/2026/03/12/workflow_routing_review_accuracy_alignment_bootstrap.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/",
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/foundations_context_review.md"
+        "workflows/ROUTING_TABLE.md"
       ],
       "tags": [
         "traceability"
@@ -6574,13 +7016,6 @@
       ],
       "plan_ids": [
         "design.implementation.workflow_system_operationalization_execution"
-      ],
-      "task_ids": [
-        "task.workflow_system_operationalization.bootstrap.001",
-        "task.workflow_system_operationalization.planning_scaffolds.001",
-        "task.workflow_system_operationalization.reconciliation_guidance.001",
-        "task.workflow_system_operationalization.route_preview_and_metadata.001",
-        "task.workflow_system_operationalization.task_cli.001"
       ],
       "requirement_ids": [
         "req.workflow_system_operationalization.001",
@@ -6619,6 +7054,8 @@
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/repo_ops/",
         "core/python/tests/",
+        "core/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
         "docs/commands/core_python/",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -6637,8 +7074,9 @@
         "docs/planning/tasks/task_tracking.md",
         "docs/references/",
         "docs/standards/",
-        "docs/standards/workflows/",
         "docs/templates/",
+        "plan/workflows/ROUTING_TABLE.md",
+        "plan/workflows/modules/",
         "workflows/",
         "workflows/ROUTING_TABLE.md",
         "workflows/modules/"

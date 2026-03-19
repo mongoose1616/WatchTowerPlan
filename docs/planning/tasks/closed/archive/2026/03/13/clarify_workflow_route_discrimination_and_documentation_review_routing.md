@@ -15,8 +15,10 @@ updated_at: '2026-03-13T14:38:36Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
 - core/control_plane/registries/

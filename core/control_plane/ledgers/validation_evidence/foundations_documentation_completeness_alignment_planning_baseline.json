@@ -54,7 +54,7 @@
       "title": "Foundations review workflow loads the authoritative backbone",
       "result": "passed",
       "subject_paths": [
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/foundations/README.md",
         "core/python/tests/integration/"
       ],

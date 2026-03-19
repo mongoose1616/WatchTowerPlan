@@ -54,7 +54,7 @@
       "subject_paths": [
         "workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_route_index_sync.py"
       ],

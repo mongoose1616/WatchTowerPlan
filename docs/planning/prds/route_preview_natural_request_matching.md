@@ -10,9 +10,10 @@ updated_at: '2026-03-11T13:51:18Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 ---
 

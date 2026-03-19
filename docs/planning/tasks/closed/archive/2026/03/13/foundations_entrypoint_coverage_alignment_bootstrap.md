@@ -16,7 +16,7 @@ authority: authoritative
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 related_ids:

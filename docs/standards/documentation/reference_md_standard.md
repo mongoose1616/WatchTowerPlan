@@ -37,8 +37,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_template.md](/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
-- [documentation_generation.md](/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/core/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
 - A reference document should optimize for fast lookup, stable terminology, and clear local application.
@@ -91,7 +91,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `docs/references/*_reference.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
+- `Operational Surfaces`: `docs/references/*_reference.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
 
 ## Validation
 - The document should be easy to scan as a lookup artifact.
@@ -115,8 +115,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 ## References
 - [reference_template.md](/docs/templates/reference_template.md)
 - [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md)
-- [documentation_generation.md](/workflows/modules/documentation_generation.md)
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md)
+- [documentation_generation.md](/core/workflows/modules/documentation_generation.md)
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md)
 
 ## Notes
 - A good reference document helps the reader find stable facts quickly.

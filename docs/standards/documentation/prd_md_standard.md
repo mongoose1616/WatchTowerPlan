@@ -35,7 +35,7 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 ## Related Standards and Sources
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_generation.md](/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
+- [prd_generation.md](/plan/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
 - [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [product_direction.md](/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
 - [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
@@ -89,7 +89,7 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/prd_generation.md`; `docs/templates/prd_template.md`; `docs/planning/prds/`; `docs/planning/prds/README.md`
+- `Operational Surfaces`: `plan/workflows/modules/prd_generation.md`; `docs/templates/prd_template.md`; `docs/planning/prds/`; `docs/planning/prds/README.md`
 
 ## Validation
 - The PRD should make the problem, scope, and intended outcomes understandable without verbal backfill.
@@ -111,7 +111,7 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
 - [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md)
 - [prd_template.md](/docs/templates/prd_template.md)
-- [prd_generation.md](/workflows/modules/prd_generation.md)
+- [prd_generation.md](/plan/workflows/modules/prd_generation.md)
 - [product_direction.md](/docs/foundations/product_direction.md)
 - [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
 

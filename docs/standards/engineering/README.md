@@ -11,4 +11,5 @@
 | `docs/standards/engineering/engineering_best_practices_standard.md` | Defines repository-specific engineering best practices for implementation, validation, and synchronized human or machine updates. |
 | `docs/standards/engineering/git_commit_standard.md` | Defines the repository-standard Git commit message policy for human and assistant contributors. |
 | `docs/standards/engineering/git_workflow_standard.md` | Defines repository-standard local git workflow behavior including branch naming, lifecycle, and sync expectations. |
+| `docs/standards/engineering/python_code_design_standard.md` | Defines the authoritative Python code design philosophy, naming rules, and consolidation rules for `core/python/`. |
 | `docs/standards/engineering/python_workspace_standard.md` | Defines the standard Python workspace layout, environment, and onboarding contract under core/python. |

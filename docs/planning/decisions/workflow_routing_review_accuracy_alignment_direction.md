@@ -80,7 +80,7 @@ Option 2 is accepted.
 - A dedicated foundations-aware review route keeps `Documentation Refresh` narrow while still making the missing foundations-alignment workflow combination explicit and reusable.
 
 ## Consequences and Follow-Up Impacts
-- `workflows/ROUTING_TABLE.md` will change, which requires route-index regeneration and updated route-preview regression coverage.
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` will change, which requires route-index regeneration and updated route-preview regression coverage.
 - The foundations context workflow guidance will expand beyond planning/design phrasing so the new review route is explicitly supported.
 - Route-preview command docs must describe the changed review behavior and the new foundations-aware route outcome.
 

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_event_stream_helper_foundation",
   "title": "Refactor initiative package event writes onto helper",
   "summary": "Move initiative and task event creation in initiative_packages.py onto the reusable helper without changing current event contracts.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_event_stream_helper_foundation.publish_event_stream_helper_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

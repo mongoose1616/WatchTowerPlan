@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
   "title": "Validate duplicated foundations discovery",
   "summary": "Refresh derived indexes and confirm the duplicated foundations roots are discoverable without breaking current guidance lookup.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

@@ -16,15 +16,18 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "workflows/modules/acceptance_evidence_reconciliation.md",
-        "workflows/ROUTING_TABLE.md",
+        "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/registries/validator_registry.json",
         "core/python/src/watchtower_core/query/",
-        "core/python/src/watchtower_core/validation/acceptance.py"
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "workflows/modules/acceptance_evidence_reconciliation.md",
+        "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -36,8 +39,8 @@
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
-        "workflows/modules/traceability_reconciliation.md",
-        "workflows/modules/governed_artifact_reconciliation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "tags": [
@@ -190,12 +193,14 @@
         "docs/templates/",
         "docs/standards/documentation/",
         "docs/standards/governance/",
-        "workflows/modules/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
         "core/python/src/watchtower_core/repo_ops/task_documents.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
-        "core/python/src/watchtower_core/repo_ops/"
+        "core/python/src/watchtower_core/repo_ops/",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -209,7 +214,7 @@
         "docs/templates/README.md",
         "docs/templates/prd_template.md",
         "docs/templates/decision_record_template.md",
-        "workflows/modules/documentation_generation.md"
+        "core/workflows/modules/documentation_generation.md"
       ]
     },
     {
@@ -854,7 +859,7 @@
       "related_paths": [
         "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
         "docs/foundations/",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -862,7 +867,8 @@
         "core/python/tests/",
         "docs/planning/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/ledgers/validation_evidence/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -892,9 +898,10 @@
         "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "core/control_plane/indexes/foundations/README.md",
-        "core/python/tests/integration/"
+        "core/python/tests/integration/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -914,14 +921,17 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "updated_at": "2026-03-16T04:05:50Z",
+      "updated_at": "2026-03-18T23:58:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
         ".github/",
-        "docs/planning/tasks/",
+        "plan/initiatives/",
+        "plan/projects/",
+        "docs/planning/tasks/task_tracking.md",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "docs/planning/tasks/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -946,21 +956,27 @@
       "trace_id": "trace.local_task_tracking",
       "family": "feature_design",
       "title": "GitHub Task Push Sync",
-      "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+      "summary": "Defines the first push-only sync from initiative-local live task records to GitHub issues and optional project items while preserving local task authority.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_task_push_sync.md",
-      "updated_at": "2026-03-16T04:05:50Z",
+      "updated_at": "2026-03-18T23:58:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
-        "docs/planning/tasks/",
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/indexes/task_index.json",
+        "docs/planning/tasks/task_tracking.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
-        "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
-        "core/control_plane/schemas/artifacts/task_index.schema.json",
+        "plan/.wt/schemas/artifacts/task_state.schema.json",
+        "plan/.wt/schemas/artifacts/task_summary_index.schema.json",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "docs/planning/tasks/",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
+        "core/control_plane/schemas/artifacts/task_index.schema.json",
         "core/control_plane/indexes/tasks/task_index.json"
       ],
       "internal_reference_paths": [
@@ -972,7 +988,6 @@
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
-        "docs/templates/task_template.md",
         "docs/references/github_collaboration_reference.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md"
       ],
@@ -1252,22 +1267,29 @@
       "trace_id": "trace.local_task_tracking",
       "family": "feature_design",
       "title": "Local Task Tracking and GitHub Sync Design",
-      "summary": "Defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.",
+      "summary": "Defines the feature-level design for initiative-local live task state, a generated task tracker, a generated task index, and later GitHub sync support.",
       "status": "active",
       "doc_path": "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-18T23:58:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/planning/tasks/",
+        "plan/initiatives/",
+        "plan/projects/",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
+        "plan/.wt/schemas/artifacts/task_state.schema.json",
+        "plan/.wt/schemas/artifacts/task_summary_index.schema.json",
+        "plan/.wt/indexes/task_index.json",
+        "docs/planning/tasks/task_tracking.md",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "docs/planning/tasks/",
         "docs/templates/task_template.md",
         "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
         "core/control_plane/schemas/artifacts/task_index.schema.json",
         "core/control_plane/indexes/tasks/task_index.json",
-        "core/control_plane/indexes/traceability/traceability_index.json",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/"
       ],
@@ -1280,7 +1302,6 @@
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
-        "docs/templates/task_template.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md"
       ]
     },
@@ -1623,7 +1644,7 @@
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/validator_registry.schema.json",
-        "workflows/modules/feature_design_planning.md"
+        "plan/workflows/modules/feature_design_planning.md"
       ],
       "tags": [
         "design",
@@ -1703,12 +1724,14 @@
       "related_paths": [
         "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
-        "workflows/modules/repository_review.md",
-        "workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/repository_review.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/commands/core_python/watchtower_core_closeout.md",
         "docs/standards/governance/initiative_closeout_standard.md",
-        "docs/planning/"
+        "docs/planning/",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -1717,7 +1740,7 @@
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
-        "workflows/modules/repository_review.md"
+        "core/workflows/modules/repository_review.md"
       ]
     },
     {
@@ -1920,10 +1943,12 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
-        "workflows/ROUTING_TABLE.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "docs/commands/core_python/watchtower_core_route_preview.md"
+        "core/python/src/watchtower_core/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -2055,6 +2080,8 @@
         "core/control_plane/indexes/standards/standard_index.json",
         "core/python/src/watchtower_core/",
         "docs/commands/core_python/",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
@@ -2168,7 +2195,7 @@
         "docs/planning/design/implementation/summary_surface_retirement.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/planning/prds/",
         "docs/planning/decisions/",
         "docs/planning/design/",
@@ -2176,7 +2203,8 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/",
-        "core/python/tests/unit/test_traceability_index_sync.py"
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -2187,7 +2215,7 @@
         "README.md",
         "docs/planning/coordination_tracking.md",
         "docs/foundations/README.md",
-        "workflows/modules/foundations_context_review.md"
+        "core/workflows/modules/foundations_context_review.md"
       ]
     },
     {
@@ -2412,14 +2440,18 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/python/src/watchtower_core/query/workflows.py",
         "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
-        "docs/commands/core_python/"
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -2444,8 +2476,10 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "core/control_plane/registries/",
         "core/control_plane/indexes/",
         "core/control_plane/schemas/artifacts/",
@@ -2458,7 +2492,9 @@
         "workflows/",
         "docs/planning/",
         "core/control_plane/",
-        "core/python/src/watchtower_core/"
+        "core/python/src/watchtower_core/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -3213,7 +3249,7 @@
       ],
       "related_paths": [
         "docs/foundations/",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -3221,14 +3257,15 @@
         "core/python/tests/",
         "docs/planning/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/ledgers/validation_evidence/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/control_plane/indexes/foundations/foundation_index.json",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md"
       ]
     },
@@ -3250,9 +3287,10 @@
       "related_paths": [
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "core/control_plane/indexes/foundations/README.md",
-        "core/python/tests/integration/"
+        "core/python/tests/integration/",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
@@ -3794,12 +3832,14 @@
       ],
       "related_paths": [
         "core/python/src/watchtower_core/closeout/initiative.py",
-        "workflows/modules/repository_review.md",
-        "workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/repository_review.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/commands/core_python/watchtower_core_closeout.md",
         "docs/standards/governance/initiative_closeout_standard.md",
-        "docs/planning/"
+        "docs/planning/",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -4019,10 +4059,12 @@
         "docs/planning/prds/route_preview_natural_request_matching.md"
       ],
       "related_paths": [
-        "workflows/ROUTING_TABLE.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "docs/commands/core_python/watchtower_core_route_preview.md"
+        "core/python/src/watchtower_core/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -4112,6 +4154,8 @@
         "core/control_plane/indexes/standards/standard_index.json",
         "core/python/src/watchtower_core/",
         "docs/commands/core_python/",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
@@ -4549,7 +4593,7 @@
       "related_paths": [
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/planning/prds/",
         "docs/planning/decisions/",
         "docs/planning/design/",
@@ -4557,7 +4601,8 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/",
-        "core/python/tests/unit/test_traceability_index_sync.py"
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "workflows/modules/foundations_context_review.md"
       ],
       "internal_reference_paths": [
         "docs/planning/README.md",
@@ -4567,7 +4612,7 @@
         "docs/planning/coordination_tracking.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md"
+        "core/workflows/modules/foundations_context_review.md"
       ]
     },
     {
@@ -4642,9 +4687,11 @@
       ],
       "related_paths": [
         "docs/templates/",
-        "workflows/modules/",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
         "core/python/src/watchtower_core/repo_ops/",
-        "core/python/tests/"
+        "core/python/tests/",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
@@ -4825,14 +4872,18 @@
         "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md"
       ],
       "related_paths": [
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/",
+        "plan/workflows/modules/",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/python/src/watchtower_core/query/workflows.py",
         "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
-        "docs/commands/core_python/"
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
       ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",

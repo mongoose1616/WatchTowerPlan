@@ -14,7 +14,8 @@ authority: "authoritative"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
   - "docs/standards/"
 aliases:
   - "design philosophy"

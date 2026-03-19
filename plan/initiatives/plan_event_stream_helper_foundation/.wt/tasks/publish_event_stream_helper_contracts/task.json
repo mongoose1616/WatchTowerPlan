@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_event_stream_helper_foundation",
   "title": "Publish event stream helper contracts",
   "summary": "Add a reusable helper for seeded event records, append-only event writes, and deterministic replay over plan pack initiative and task streams.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T21:34:34Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

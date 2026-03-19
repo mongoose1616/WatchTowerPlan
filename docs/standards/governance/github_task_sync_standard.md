@@ -1,7 +1,7 @@
 ---
 id: "std.governance.github_task_sync"
 title: "GitHub Task Sync Standard"
-summary: "This standard defines the repository's first GitHub task sync contract for pushing local task records to GitHub issues and optional project items without making GitHub the source of truth."
+summary: "This standard defines the repository's GitHub task sync contract for mirroring initiative-local live task records to GitHub without making GitHub the source of truth."
 type: "standard"
 status: "active"
 tags:
@@ -9,11 +9,12 @@ tags:
   - "governance"
   - "github_sync"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T22:05:00Z"
+updated_at: "2026-03-18T14:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/tasks/"
+  - "plan/initiatives/"
+  - "plan/projects/"
   - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github task sync"
@@ -24,21 +25,21 @@ aliases:
 # GitHub Task Sync Standard
 
 ## Summary
-This standard defines the repository's first GitHub task sync contract for pushing local task records to GitHub issues and optional project items without making GitHub the source of truth.
+This standard defines the repository's GitHub task sync contract for pushing initiative-local live task records to GitHub issues and optional project items without making GitHub the source of truth.
 
 ## Purpose
 - Keep the repository local-first while still supporting a hosted execution surface for multi-engineer coordination.
-- Standardize how local task metadata maps to GitHub issues and project status.
-- Prevent local task identity from collapsing into GitHub issue numbers or project item IDs.
+- Standardize how live task metadata maps to GitHub issues and project status.
+- Prevent live task identity from collapsing into GitHub issue numbers or project item IDs.
 
 ## Scope
-- Applies to push sync from task records under `docs/planning/tasks/` to GitHub issues and optional GitHub Projects v2 items.
-- Applies to the GitHub foreign-key metadata persisted on task documents and in the derived task index.
+- Applies to push sync from initiative-local live task records under `plan/**/.wt/tasks/**` to GitHub issues and optional GitHub Projects v2 items.
+- Applies to the GitHub foreign-key metadata persisted on live task records and in the derived task index.
 - Covers the local-versus-remote authority boundary, required foreign keys, and the first project-status mapping.
 - Does not define two-way reconciliation or GitHub as an authoritative planning surface.
 
 ## Use When
-- A local task needs to appear on GitHub for shared execution visibility.
+- A live task needs to appear on GitHub for shared execution visibility.
 - Multiple engineers or agents need a hosted issue or board view while the repo remains the durable source of truth.
 - Reviewing whether a proposed sync change would let GitHub override local task state.
 
@@ -53,12 +54,12 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
-- Treat local task records as the authoritative source of truth.
+- Treat initiative-local live task records as the authoritative source of truth.
 - Treat GitHub issue numbers, node IDs, repositories, and project item IDs as foreign keys only.
 - The first GitHub sync phase is push-only:
-  - local task records create or update GitHub issues
-  - local task records optionally add those issues to one GitHub Project v2
-  - GitHub should not rewrite local task state automatically
+  - live task records create or update GitHub issues
+  - live task records optionally add those issues to one GitHub Project v2
+  - GitHub should not rewrite live task state automatically
 - Use GitHub comments for discussion rather than editing the managed issue body directly.
 - Keep the local `task_id` stable even after GitHub foreign keys are added.
 - Persist these GitHub task fields when they become known:
@@ -70,7 +71,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
   - `github_project_number`
   - `github_project_item_id`
   - `github_synced_at`
-- Do not require GitHub metadata for unsynced local tasks.
+- Do not require GitHub metadata for unsynced live tasks.
 - Keep `updated_at` for task-content updates and use `github_synced_at` for the last successful remote sync timestamp.
 - Manage a small bounded GitHub label set for synced issues:
   - `source:watchtower`
@@ -78,17 +79,17 @@ This standard defines the repository's first GitHub task sync contract for pushi
   - `status:<task_status>`
   - `priority:<priority>`
   - `blocked` when the local task currently declares blockers
-- Map local task execution state to GitHub issue state like this:
-  - `backlog`, `ready`, `in_progress`, `blocked`, `in_review` -> open issue
-  - `done` -> closed issue with state reason `completed`
+- Map live task execution state to GitHub issue state like this:
+  - `planned`, `ready`, `in_progress`, `blocked`, `in_review` -> open issue
+  - `completed` -> closed issue with state reason `completed`
   - `cancelled` -> closed issue with state reason `not_planned`
-- When also syncing to GitHub Projects v2, use a single-select status field whose options match the local task-status vocabulary:
-  - `Backlog`
+- When also syncing to GitHub Projects v2, use a single-select status field whose options match the live task-status vocabulary:
+  - `Planned`
   - `Ready`
   - `In Progress`
   - `Blocked`
   - `In Review`
-  - `Done`
+  - `Completed`
   - `Cancelled`
 - Do not silently rebind an already-synced task to a different GitHub repository or project without an explicit operator action.
 - Use a stable issue body structure that mirrors:
@@ -104,7 +105,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 ### Local-to-GitHub authority boundary
 | Surface | Role |
 |---|---|
-| Task Markdown record | Authoritative task source |
+| Initiative-local task record | Authoritative task source |
 | GitHub Issue | Hosted execution mirror |
 | GitHub Project item | Hosted board placement |
 | Task index | Local machine-readable lookup including GitHub foreign keys |
@@ -126,28 +127,28 @@ This standard defines the repository's first GitHub task sync contract for pushi
 |---|---|
 | `source:watchtower` | Issue is managed by the repo-local sync flow |
 | `kind:<task_kind>` | Mirrors the local task kind |
-| `status:<task_status>` | Mirrors the local task-status value |
+| `status:<task_status>` | Mirrors the live task-status value |
 | `priority:<priority>` | Mirrors the local task priority |
 | `blocked` | Mirrors the presence of blocker IDs on the local task |
 
 ## Process or Workflow
-1. Select the local task records that should be published to GitHub.
+1. Select the live task records that should be published to GitHub.
 2. Resolve the target repository and optional project boundary explicitly.
-3. Create or update the GitHub issue from the local task record.
+3. Create or update the GitHub issue from the live task record.
 4. Optionally add or update the GitHub Project item and mapped status field.
 5. Upsert the managed GitHub labels when label sync is enabled.
-6. Persist returned GitHub foreign keys back onto the local task record.
-7. Rebuild the task index, task tracker, and traceability index in the same change set when local task metadata changed.
+6. Persist returned GitHub foreign keys back onto the live task record.
+7. Rebuild the task index, task tracker, and traceability index in the same change set when live task metadata changed.
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`
-- `Operational Surfaces`: `docs/planning/tasks/`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `docs/planning/design/features/local_task_tracking_and_github_sync.md`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `docs/planning/design/features/local_task_tracking_and_github_sync.md`
 
 ## Validation
-- Task records with `github_issue_number` should also carry `github_repository`.
-- Task records with `github_project_item_id` should also carry the project owner, owner type, and project number.
-- The task index should preserve the same GitHub foreign keys published in the task documents.
-- Reviewers should reject any sync flow that lets GitHub replace the local `task_id` or local task-status source of truth.
+- Live task records with `github_issue_number` should also carry `github_repository`.
+- Live task records with `github_project_item_id` should also carry the project owner, owner type, and project number.
+- The task index should preserve the same GitHub foreign keys published in the live task records.
+- Reviewers should reject any sync flow that lets GitHub replace the local `task_id` or live task-status source of truth.
 - All GitHub sync timestamps should use UTC RFC 3339 timestamps with a trailing `Z`.
 - The managed GitHub labels should remain bounded and deterministic rather than becoming free-form tags.
 
@@ -163,4 +164,4 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-18T14:00:00Z`

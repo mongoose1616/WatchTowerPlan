@@ -14,7 +14,7 @@ applies_to:
 - README.md
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/planning/prds/
 - docs/planning/decisions/
 - docs/planning/design/
@@ -107,4 +107,4 @@ Retire SUMMARY.md as a root surface, remove its dedicated restoration artifacts,
 - [coordination_tracking.md](/docs/planning/coordination_tracking.md)
 - [docs/foundations/README.md](/docs/foundations/README.md)
 - [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+- [core/workflows/modules/foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)

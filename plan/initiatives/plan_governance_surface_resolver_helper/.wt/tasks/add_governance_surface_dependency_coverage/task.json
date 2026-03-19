@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_governance_surface_resolver_helper",
   "title": "Add governance surface dependency coverage",
   "summary": "Add unit coverage proving the helper resolves both pack-declared and governance-map surfaces and reports dependent declared surfaces.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

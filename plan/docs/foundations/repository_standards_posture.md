@@ -14,7 +14,8 @@ authority: "authoritative"
 applies_to:
   - "docs/standards/"
   - "core/control_plane/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
 aliases:
   - "standards"
   - "standards posture"

@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "pyproject_toml"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-18T06:23:45Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -32,6 +32,7 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - `https://peps.python.org/pep-0621/` - verified 2026-03-09; PEP 621 – Storing project metadata in pyproject.toml.
 
 ## Related Standards and Sources
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
@@ -62,6 +63,7 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
@@ -75,14 +77,15 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
+- [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md)
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 
 ## Notes
 - This reference is intentionally practical rather than exhaustive.
 - If the repo never adopts Python tooling, this reference remains optional background material.
-- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-18T06:23:45Z`

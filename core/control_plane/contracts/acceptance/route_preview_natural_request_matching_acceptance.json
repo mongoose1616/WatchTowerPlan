@@ -38,9 +38,10 @@
         "req.route_preview_natural_request_matching.003"
       ],
       "validation_targets": [
-        "workflows/ROUTING_TABLE.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/"
       ]
@@ -55,7 +56,8 @@
         "validator.control_plane.traceability_index"
       ],
       "validation_targets": [
-        "workflows/ROUTING_TABLE.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/control_plane/indexes/traceability/traceability_index.json"
@@ -75,7 +77,8 @@
         "core/python/",
         "core/control_plane/",
         "docs/",
-        "workflows/"
+        "core/workflows/",
+        "plan/workflows/"
       ]
     }
   ]

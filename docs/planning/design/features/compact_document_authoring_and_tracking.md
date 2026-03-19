@@ -12,7 +12,8 @@ authority: "authoritative"
 applies_to:
   - "docs/templates/"
   - "docs/standards/documentation/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
   - "core/python/src/watchtower_core/repo_ops/"
 aliases:
   - "compact authoring design"
@@ -107,7 +108,7 @@ Defines the design for making authored templates and generated planning trackers
 - `docs/templates/`
 - `docs/standards/documentation/`
 - `docs/standards/governance/`
-- `workflows/modules/`
+- `core/workflows/modules/` and `plan/workflows/modules/`
 - `core/python/src/watchtower_core/repo_ops/planning_documents.py`
 - `core/python/src/watchtower_core/repo_ops/task_documents.py`
 - `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
@@ -141,7 +142,7 @@ Defines the design for making authored templates and generated planning trackers
 - [docs/templates/README.md](/docs/templates/README.md)
 - [prd_template.md](/docs/templates/prd_template.md)
 - [decision_record_template.md](/docs/templates/decision_record_template.md)
-- [documentation_generation.md](/workflows/modules/documentation_generation.md)
+- [documentation_generation.md](/core/workflows/modules/documentation_generation.md)
 
 ## Updated At
 - `2026-03-10T16:00:54Z`

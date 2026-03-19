@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_work_item_notes",
   "title": "Validate WatchTower work-item note flow",
   "summary": "Cover note capture with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.watchtower_work_item_notes.add_watchtower_work_item_note_flow"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

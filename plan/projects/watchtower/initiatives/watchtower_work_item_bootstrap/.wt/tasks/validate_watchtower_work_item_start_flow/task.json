@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_work_item_bootstrap",
   "title": "Validate WatchTower work-item start flow",
   "summary": "Cover workspace-required work-item creation with CLI tests and exercise the flow against the initialized WatchTower repo.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.watchtower_work_item_bootstrap.add_watchtower_work_item_start_flow"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
   "title": "Add core validation coverage",
   "summary": "Extend loader and tests so the core-owned documentation governance stack validates cleanly and resolves explicitly by path.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_core_documentation_template_authority_foundation.seed_core_registries_and_templates"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

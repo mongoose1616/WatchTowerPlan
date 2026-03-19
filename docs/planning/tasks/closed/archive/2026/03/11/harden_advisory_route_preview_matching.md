@@ -14,7 +14,7 @@ updated_at: '2026-03-11T04:46:44Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 - core/python/tests/unit/test_route_index_sync.py
 related_ids:

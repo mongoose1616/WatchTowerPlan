@@ -4,9 +4,9 @@
 | Field | Value |
 | --- | --- |
 | Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/docs/planning/README.md) |
+| Summary | No active plan-workspace initiatives exist. |
+| Next | Bootstrap a new initiative package before starting execution. |
+| Open First | [plan/plan_overview.md](/plan/plan_overview.md) |
 | Companion Views | [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
-| `trace.capture_first_plan_workspace_bootstrap` | `completed` | `2026-03-17T09:39:54Z` | [capture_first_plan_workspace_bootstrap.md](/docs/planning/prds/capture_first_plan_workspace_bootstrap.md) |
-| `trace.plan_domain_pack_core_validation` | `completed` | `2026-03-16T21:41:48Z` | [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) |
-| `trace.transition_surface_retirement` | `completed` | `2026-03-16T19:39:28Z` | [transition_surface_retirement.md](/docs/planning/prds/transition_surface_retirement.md) |
-| `trace.governed_filename_canonicalization` | `completed` | `2026-03-16T18:17:19Z` | [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md) |
-| `trace.rendered_surface_contract_enforcement` | `completed` | `2026-03-16T17:40:06Z` | [rendered_surface_contract_enforcement.md](/docs/planning/prds/rendered_surface_contract_enforcement.md) |
+| `trace.plan_task_authority_rendering_governance_recovery` | `completed` | `2026-03-18T23:45:00Z` | [plan.md](/plan/initiatives/plan_task_authority_rendering_governance_recovery/plan.md) |
+| `trace.plan_closeout_helper_boundary_alignment` | `completed` | `2026-03-18T03:07:00Z` | [plan.md](/plan/initiatives/plan_closeout_helper_boundary_alignment/plan.md) |
+| `trace.plan_rendered_surface_builder_alignment` | `completed` | `2026-03-18T02:44:00Z` | [plan.md](/plan/initiatives/plan_rendered_surface_builder_alignment/plan.md) |
+| `trace.plan_extraction_output_envelope_alignment` | `completed` | `2026-03-18T02:20:00Z` | [plan.md](/plan/initiatives/plan_extraction_output_envelope_alignment/plan.md) |
+| `trace.plan_evidence_bundle_helper_foundation` | `completed` | `2026-03-18T01:41:00Z` | [plan.md](/plan/initiatives/plan_evidence_bundle_helper_foundation/plan.md) |
 
-_Updated At: `2026-03-17T09:40:00Z`_
+_Updated At: `2026-03-18T23:45:00Z`_

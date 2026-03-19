@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T23:19:00Z"
+updated_at: "2026-03-18T05:44:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines the document-level structure and boundary rules for workfl
 Keep workflow files predictable, easy to scan, and easy to route to by standardizing their required headings, ordering, and file-level scope.
 
 ## Scope
-- Applies to workflow Markdown files that define task execution behavior, especially files under `workflows/modules/**`.
+- Applies to workflow Markdown files that define task execution behavior, especially files under `core/workflows/modules/**` and `plan/workflows/modules/**`.
 - Covers file-level structure, heading conventions, section ordering, and what belongs in the document body.
 - Does not define routing classification logic for `ROUTING_TABLE.md`.
 - Does not replace the deeper behavioral rules in the workflow design standard.
@@ -40,10 +40,11 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules explicit, narrow, and efficient for LLM or agent use.
 - [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
 - [workflow_template.md](/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
-- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md): shared workflow-routing surface that operationalizes or depends on this standard.
+- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md): plan-owned workflow-routing surface that operationalizes or depends on this standard.
 
 ## Guidance
-- Workflow files should live under `workflows/modules/` unless a narrower repository standard defines another workflow surface.
+- Workflow files should live under `core/workflows/modules/` or `plan/workflows/modules/` unless a narrower repository standard defines another workflow surface.
 - Each file should define one workflow with one primary execution concern.
 - The document title should clearly name the workflow and include `Workflow`.
 - Use these exact H2 section headings in this order:
@@ -66,7 +67,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Additional Files to Load` bullets should use `source: execution implication` form so the local effect of each file is explicit.
 - `Additional Files to Load` should stay short, normally `1` to `5` bullets.
 - `Additional Files to Load` should not repeat repo-wide baseline surfaces such
-  as `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or
+  as `AGENTS.md`, the authoritative routing tables, `core/workflows/modules/core.md`, or
   generic workflow standards such as
   `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, and
   `workflow_md_standard.md`.
@@ -95,7 +96,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/`; `workflows/modules/core.md`; `workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`
+- `Operational Surfaces`: `core/workflows/modules/`; `plan/workflows/modules/`; `core/workflows/modules/core.md`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`
 
 ## Validation
 - The file should be recognizable as a workflow module from its title and required headings alone.
@@ -120,7 +121,8 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
 - [workflow_index_standard.md](/docs/standards/data_contracts/workflow_index_standard.md)
 - [workflow_template.md](/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md)
+- [core/workflows/ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md)
+- [plan/workflows/ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/AGENTS.md)
 - [documentation_semantics_standard.md](/docs/standards/documentation/documentation_semantics_standard.md)
 
@@ -129,4 +131,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-11T23:19:00Z`
+- `2026-03-18T05:44:52Z`

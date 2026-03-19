@@ -448,6 +448,48 @@
       ]
     },
     {
+      "id": "validator.plan.evidence_index",
+      "title": "Plan Evidence Index Validator",
+      "description": "Validates the plan-workspace evidence index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_evidence_index",
+      "applies_to": [
+        "plan/.wt/indexes/evidence_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:evidence-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.closeout_index",
+      "title": "Plan Closeout Index Validator",
+      "description": "Validates the plan-workspace closeout index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_closeout_index",
+      "applies_to": [
+        "plan/.wt/indexes/closeout_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:closeout-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.review_index",
+      "title": "Plan Review Index Validator",
+      "description": "Validates the plan-workspace review index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_review_index",
+      "applies_to": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:review-index:v1"
+      ]
+    },
+    {
       "id": "validator.plan.promotion_index",
       "title": "Plan Promotion Index Validator",
       "description": "Validates the plan-workspace promotion index.",

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
   "title": "Validate WatchTower workspace init flow",
   "summary": "Exercise the generated workspace manifest through CLI tests and update doctor to surface the initialized workspace state.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

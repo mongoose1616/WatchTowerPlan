@@ -15,7 +15,8 @@ applies_to:
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 ---
 
 # Standard, Runtime, and Route Explicitness Hardening Direction Decision
@@ -56,7 +57,8 @@ Close the still-valid report-set gaps by adding authored operationalization meta
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/python/tests/
 
 ## Options Considered

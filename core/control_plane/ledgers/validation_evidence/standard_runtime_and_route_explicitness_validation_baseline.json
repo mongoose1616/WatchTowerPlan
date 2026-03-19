@@ -86,7 +86,7 @@
       "title": "Route preview matches realistic maintenance requests deterministically",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/",

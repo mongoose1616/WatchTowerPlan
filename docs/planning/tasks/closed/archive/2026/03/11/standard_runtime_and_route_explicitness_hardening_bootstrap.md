@@ -18,7 +18,8 @@ applies_to:
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/src/watchtower_core/
 - docs/commands/core_python/
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 related_ids:
 - prd.standard_runtime_and_route_explicitness
 - design.features.standard_runtime_and_route_explicitness

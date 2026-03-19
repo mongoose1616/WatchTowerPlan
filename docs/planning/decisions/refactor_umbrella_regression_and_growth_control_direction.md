@@ -12,8 +12,8 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md
@@ -62,8 +62,8 @@ explicit override records the exception.
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md
@@ -123,4 +123,4 @@ documentation updates that keep same-theme review work under one continuing trac
 ## References
 - REFACTOR.md
 - docs/standards/governance/initiative_closeout_standard.md
-- workflows/modules/repository_review.md
+- core/workflows/modules/repository_review.md

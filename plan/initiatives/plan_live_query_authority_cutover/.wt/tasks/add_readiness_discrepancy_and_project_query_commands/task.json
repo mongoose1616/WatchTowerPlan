@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_live_query_authority_cutover",
   "title": "Add readiness discrepancy and project query commands",
   "summary": "Expose the live readiness, discrepancy, and project index surfaces through first-class query commands and payloads.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_live_query_authority_cutover.reroot_public_planning_queries_onto_live_plan_indexes"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

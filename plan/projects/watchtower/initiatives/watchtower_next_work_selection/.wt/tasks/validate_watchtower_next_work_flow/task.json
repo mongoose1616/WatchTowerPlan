@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_next_work_selection",
   "title": "Validate WatchTower next-work flow",
   "summary": "Cover next-work selection with CLI tests, exercise it against the initialized WatchTower repo, and refresh repo guidance.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.watchtower_next_work_selection.add_watchtower_next_work_flow"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

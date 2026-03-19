@@ -10,9 +10,10 @@ updated_at: '2026-03-11T13:51:18Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 ---
 
@@ -76,7 +77,7 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - Rebuild the derived route index and align route-preview docs plus tests to the exact report-review maintenance request.
 
 ### Data and Interface Impacts
-- `workflows/ROUTING_TABLE.md` changes the authored keyword examples for two routed task types.
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` changes the authored keyword examples for two routed task types.
 - `core/control_plane/indexes/routes/route_index.json` changes through sync and becomes the machine-readable expression of the new cues.
 - `watchtower-core route preview` docs and tests change to protect the exact reproduced request.
 
@@ -91,9 +92,10 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - If the authored routing surface and the derived route index drift, sync and validation should expose that mismatch in the same change set.
 
 ## Affected Surfaces
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 - core/python/tests/unit/test_route_index_sync.py
 - core/python/tests/unit/

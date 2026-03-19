@@ -13,7 +13,8 @@ updated_at: "2026-03-10T16:34:28Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
   - "docs/templates/"
   - "docs/standards/workflows/"
 related_ids:

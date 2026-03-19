@@ -37,11 +37,12 @@
         "req.foundations_documentation_completeness_alignment.001"
       ],
       "validation_targets": [
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/foundations/README.md"
       ],
       "related_paths": [
-        "workflows/ROUTING_TABLE.md"
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md"
       ],
       "notes": "The workflow guidance should stay aligned with the foundations README and should not omit repository scope or standards posture for review tasks."
     },

@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-17T22:37:00Z",
+  "updated_at": "2026-03-18T23:45:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -15,84 +15,84 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
-      "trace_id": "trace.plan_generic_query_harness_export_foundation",
-      "title": "Plan Generic Query Harness Export Foundation",
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "title": "Plan Task Authority, Rendering, and Governance Recovery",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T22:37:00Z",
-      "key_surface_path": "plan/initiatives/plan_generic_query_harness_export_foundation/plan.md",
-      "closure_reason": "Exported reusable generic query services from watchtower_core.query, refactored the shared repo query wrappers onto that boundary, and aligned requirements.md, package docs, and boundary tests to the new contract."
+      "closed_at": "2026-03-18T23:45:00Z",
+      "key_surface_path": "plan/initiatives/plan_task_authority_rendering_governance_recovery/plan.md",
+      "closure_reason": "Delivered the hard-cutover task-authority remediation, restored human renders, aligned governance guidance, and validated the repaired operational flows."
     },
     {
-      "trace_id": "trace.plan_requirements_current_state_reconciliation",
-      "title": "Plan Requirements Current State Reconciliation",
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "title": "Plan Closeout Helper Boundary Alignment",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T22:30:20Z",
-      "key_surface_path": "plan/initiatives/plan_requirements_current_state_reconciliation/plan.md",
-      "closure_reason": "Aligned requirements.md status tables to the implemented plan/** and helper surfaces so the authoritative contract reflects the true remaining gaps."
+      "closed_at": "2026-03-18T03:07:00Z",
+      "key_surface_path": "plan/initiatives/plan_closeout_helper_boundary_alignment/plan.md",
+      "closure_reason": "Delivered the initiative-package closeout helper boundary and aligned the watchtower_core.closeout package to the live plan closeout flow."
     },
     {
-      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
-      "title": "Plan Guidance Promotion Helper Foundation",
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "title": "Plan Rendered Surface Builder Alignment",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T22:23:02Z",
-      "key_surface_path": "plan/initiatives/plan_guidance_promotion_helper_foundation/plan.md",
-      "closure_reason": "Delivered typed promotion-policy loading, governed guidance promotion runtime, and durable plan/docs promotion outputs."
+      "closed_at": "2026-03-18T02:44:00Z",
+      "key_surface_path": "plan/initiatives/plan_rendered_surface_builder_alignment/plan.md",
+      "closure_reason": "Delivered the registry-backed rendered-view builder and markdown reconciliation helpers for live plan and project surfaces."
     },
     {
-      "trace_id": "trace.plan_discrepancy_helper_foundation",
-      "title": "Plan Discrepancy Helper Foundation",
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "title": "Plan Extraction Output Envelope Alignment",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T21:51:03Z",
-      "key_surface_path": "plan/initiatives/plan_discrepancy_helper_foundation/plan.md",
-      "closure_reason": "Delivered reusable discrepancy helper and live plan discrepancy refactor."
+      "closed_at": "2026-03-18T02:20:00Z",
+      "key_surface_path": "plan/initiatives/plan_extraction_output_envelope_alignment/plan.md",
+      "closure_reason": "Delivered the typed extraction-output envelope helper and aligned guidance promotion with an explicit extraction stage."
     },
     {
-      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
-      "title": "Plan Generic Sync Harness Export Foundation",
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "title": "Plan Evidence Bundle Helper Foundation",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T21:51:00Z",
-      "key_surface_path": "plan/initiatives/plan_generic_sync_harness_export_foundation/plan.md",
-      "closure_reason": "Exported the reusable sync harness from watchtower_core.sync, refactored repo-local orchestration onto it, and aligned tests and package-boundary guidance to requirements.md and decisions.md."
+      "closed_at": "2026-03-18T01:41:00Z",
+      "key_surface_path": "plan/initiatives/plan_evidence_bundle_helper_foundation/plan.md",
+      "closure_reason": "Delivered reusable evidence bundle helpers and refactored live plan evidence callers onto the broadened evidence boundary."
     },
     {
-      "trace_id": "trace.plan_event_stream_helper_foundation",
-      "title": "Plan Event Stream Helper Foundation",
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "title": "Plan Terminology Helper Foundation",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T21:35:44Z",
-      "key_surface_path": "plan/initiatives/plan_event_stream_helper_foundation/plan.md",
-      "closure_reason": "Delivered reusable event stream helper and initiative package refactor."
+      "closed_at": "2026-03-18T01:21:00Z",
+      "key_surface_path": "plan/initiatives/plan_terminology_helper_foundation/plan.md",
+      "closure_reason": "Delivered the reusable terminology helper with deprecated alias resolution and refactored live plan vocabulary callers onto it."
     },
     {
-      "trace_id": "trace.plan_artifact_family_registry_foundation",
-      "title": "Plan Artifact Family Registry Foundation",
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "title": "Plan Workflow Execution Harness Foundation",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T21:23:00Z",
-      "key_surface_path": "plan/initiatives/plan_artifact_family_registry_foundation/plan.md",
-      "closure_reason": "Delivered the artifact family registry foundation, typed resolver, and alignment coverage for live plan artifact families."
+      "closed_at": "2026-03-18T00:56:00Z",
+      "key_surface_path": "plan/initiatives/plan_workflow_execution_harness_foundation/plan.md",
+      "closure_reason": "Delivered the reusable workflow execution harness and aligned the public boundary requirements."
     },
     {
-      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
-      "title": "Plan Status Transition and Relation Rule Registries",
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "title": "Plan Status Registry Domain Cleanup",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T20:53:00Z",
-      "key_surface_path": "plan/initiatives/plan_status_transition_and_relation_rule_registries/plan.md",
-      "closure_reason": "Delivered the relation type registry and status transition rule surfaces."
+      "closed_at": "2026-03-18T00:45:00Z",
+      "key_surface_path": "plan/initiatives/plan_status_registry_domain_cleanup/plan.md",
+      "closure_reason": "Removed legacy challenge-scoped leakage from the shared status registry and reconciled the requirements notes to the current pack-facing interface state."
     },
     {
-      "trace_id": "trace.plan_artifact_index_runtime_foundation",
-      "title": "Plan Artifact Index Runtime Foundation",
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "title": "Plan Rebuild Harness Export Foundation",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T20:36:00Z",
-      "key_surface_path": "plan/initiatives/plan_artifact_index_runtime_foundation/plan.md",
-      "closure_reason": "Implemented the live artifact index runtime, query surface, validator wiring, and guidance updates required by requirements.md and decisions.md."
+      "closed_at": "2026-03-18T00:34:00Z",
+      "key_surface_path": "plan/initiatives/plan_rebuild_harness_export_foundation/plan.md",
+      "closure_reason": "Delivered the reusable rebuild harness boundary and routed plan and project derived-surface rebuild writes through it."
     },
     {
-      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
-      "title": "Plan Promotion Policy and Guidance Indexes",
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "title": "Plan Routing Engine Export Foundation",
       "initiative_status": "completed",
-      "closed_at": "2026-03-17T20:20:00Z",
-      "key_surface_path": "plan/initiatives/plan_promotion_policy_and_guidance_indexes/plan.md",
-      "closure_reason": "Delivered the promotion policy registry and plan guidance lookup indexes."
+      "closed_at": "2026-03-17T23:58:50Z",
+      "key_surface_path": "plan/initiatives/plan_routing_engine_export_foundation/plan.md",
+      "closure_reason": "Delivered the reusable routing engine package and aligned the routing requirements to the exported runtime boundary."
     }
   ]
 }

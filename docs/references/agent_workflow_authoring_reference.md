@@ -18,7 +18,8 @@ applies_to:
   - "docs/standards/workflows/workflow_design_standard.md"
   - "docs/standards/workflows/routing_and_context_loading_standard.md"
   - "docs/templates/workflow_template.md"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
 aliases:
   - "llm_workflow_authoring"
   - "agent_context_loading"
@@ -65,7 +66,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 ### Preferred Workflow-Authoring Decisions
 | Question | Preferred Answer | Why |
 |---|---|---|
-| Where does default context live? | `AGENTS.md`, `ROUTING_TABLE.md`, and `workflows/modules/core.md` | Keeps the baseline stable and avoids repeating it in every workflow module. |
+| Where does default context live? | `AGENTS.md`, the authoritative routing tables, and `core/workflows/modules/core.md` | Keeps the baseline stable and avoids repeating it in every workflow module. |
 | How should extra context be surfaced? | Optional `Additional Files to Load` bullets | Makes the next files to open explicit without turning every module into a bibliography. |
 | What form should each extra-context bullet use? | `source: execution implication` | Tells the reader or agent why the file matters, not just that it exists. |
 | What should the extra-context section point to? | Repo-local files, especially standards, templates, command docs, and local references | Keeps execution deterministic and aligned with governed repository surfaces. |
@@ -74,7 +75,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 | How should `Data Structure` and `Outputs` be written? | As terse internal workflow scaffolding | Prevents them from turning into prompts for extra low-value artifact prose. |
 
 ### Anti-Patterns
-- Repeating `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards in every workflow module.
+- Repeating `AGENTS.md`, the authoritative routing tables, `core/workflows/modules/core.md`, or the generic workflow standards in every workflow module.
 - Listing files without explaining the local execution consequence of each source.
 - Using raw external URLs in workflow modules when a local reference doc can carry the same authority.
 - Using filesystem-absolute checkout paths such as `/home/...` in workflow-module links.
@@ -91,7 +92,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 
 ### What Good Additional Load Hints Look Like
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
-- [task_lifecycle_management.md](/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
+- [task_lifecycle_management.md](/plan/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
 
 ### What Poor Additional Load Hints Look Like
 - `AGENTS.md`: already part of the routing baseline, so repeating it does not tell the agent what extra file to open.
@@ -117,7 +118,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 
 ## Process or Workflow
 1. Define the workflow's single execution concern first.
-2. Assume the routing baseline already provides `AGENTS.md`, `ROUTING_TABLE.md`, and `workflows/modules/core.md`.
+2. Assume the routing baseline already provides `AGENTS.md`, `core/workflows/ROUTING_TABLE.md`, `plan/workflows/ROUTING_TABLE.md`, and `core/workflows/modules/core.md`.
 3. Add `Additional Files to Load` only when the module truly needs extra repo-local files beyond that baseline.
 4. Keep each additional-load bullet short and explicit in `source: execution implication` form.
 5. Prefer citing governed local reference docs when external authority materially affects the workflow.
@@ -140,7 +141,8 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 
 ## Tooling and Automation
 - `uv run watchtower-core sync workflow-index`
-- `uv run watchtower-core validate document-semantics --path workflows/modules/<module>.md`
+- `uv run watchtower-core validate document-semantics --path core/workflows/modules/<module>.md`
+- `uv run watchtower-core validate document-semantics --path plan/workflows/modules/<module>.md`
 - `uv run watchtower-core query workflows --query <topic>`
 
 ## Notes

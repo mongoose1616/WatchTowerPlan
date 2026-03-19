@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
   "title": "Seed core registries and templates",
   "summary": "Create core control-plane documentation family bindings, template catalog entries, and reusable template files for core docs and workflows.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

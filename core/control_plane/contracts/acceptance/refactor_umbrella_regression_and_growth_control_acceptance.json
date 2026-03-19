@@ -71,8 +71,8 @@
         "req.refactor_umbrella_regression_and_growth_control.004"
       ],
       "validation_targets": [
-        "workflows/modules/repository_review.md",
-        "workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/repository_review.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "docs/standards/governance/initiative_closeout_standard.md"
       ],
       "related_paths": [

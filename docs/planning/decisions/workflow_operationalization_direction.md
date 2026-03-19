@@ -52,8 +52,8 @@ The workflow-system follow-up confirmed that the earlier lifecycle issues were a
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task Markdown remains authoritative even when commands mutate structured fields.
 
 ## Affected Surfaces
-- `workflows/ROUTING_TABLE.md`
-- `workflows/modules/`
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`
+- `core/workflows/modules/` and `plan/workflows/modules/`
 - `core/control_plane/registries/`
 - `core/control_plane/indexes/`
 - `docs/commands/core_python/`

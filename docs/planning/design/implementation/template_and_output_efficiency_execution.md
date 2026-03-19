@@ -11,7 +11,8 @@ audience: "shared"
 authority: "supporting"
 applies_to:
   - "docs/templates/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
   - "core/python/src/watchtower_core/repo_ops/"
   - "core/python/tests/"
 aliases:

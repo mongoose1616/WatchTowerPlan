@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-18T05:44:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -52,8 +52,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | Canonical Term | Meaning in This Repository | Notes |
 |---|---|---|
 | `control plane` | The canonical, versioned, machine-readable authority under `core/control_plane/` | Not mutable runtime state. |
-| `workflow module` | A task-execution document under `workflows/modules/**` | Loaded through routing rather than used as a broad narrative doc. |
-| `routing table` | The canonical workflow-selection surface at `workflows/ROUTING_TABLE.md` | Handles classification, not execution steps. |
+| `workflow module` | A task-execution document under `core/workflows/modules/**` and `plan/workflows/modules/**` | Loaded through routing rather than used as a broad narrative doc. |
+| `routing table` | The canonical workflow-selection surface at `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` | Handles classification, not execution steps. |
 | `standard` | A normative repository rule under `docs/standards/**` | Higher authority than references or templates. |
 | `reference` | A supporting lookup document, usually grounded in external source material | Not the same as local policy. |
 | `template` | An authoring scaffold for a recurring document shape | Convenience surface, not authority. |
@@ -71,7 +71,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`
-- `Operational Surfaces`: `core/control_plane/`; `workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`
 
 ## Validation
 - Durable docs and governed artifacts should not use competing terms as if they were equal canonical names.
@@ -96,4 +96,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-18T05:44:52Z`

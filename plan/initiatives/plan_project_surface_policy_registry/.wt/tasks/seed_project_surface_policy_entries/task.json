@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_project_surface_policy_registry",
   "title": "Seed project surface policy entries",
   "summary": "Seed active policy entries covering required machine artifacts, rendered project views, and allowed optional project-local roots.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

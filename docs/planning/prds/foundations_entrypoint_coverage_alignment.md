@@ -14,7 +14,7 @@ authority: authoritative
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 ---
@@ -38,7 +38,7 @@ Align foundations family entrypoints and the foundations context review workflow
   [coordination_tracking.md](/docs/planning/coordination_tracking.md)
   and future-state readers to
   [customer_story.md](/docs/foundations/customer_story.md),
-  but [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+  but [foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)
   does not load either surface for the review contexts where the family README
   says they matter.
 - The foundations family also under-documents its machine entrypoints:
@@ -86,7 +86,7 @@ Align foundations family entrypoints and the foundations context review workflow
   [watchtower_core_sync_foundation_index.md](/docs/commands/core_python/watchtower_core_sync_foundation_index.md)
   where machine lookup or rebuild is the right next step.
 - `ac.foundations_entrypoint_coverage_alignment.002`:
-  [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+  [foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)
   loads [customer_story.md](/docs/foundations/customer_story.md)
   and [coordination_tracking.md](/docs/planning/coordination_tracking.md)
   for the review contexts already described by the foundations layer and

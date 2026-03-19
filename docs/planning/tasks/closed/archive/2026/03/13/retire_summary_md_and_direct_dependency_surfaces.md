@@ -18,7 +18,7 @@ applies_to:
 - README.md
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/planning/prds/
 - docs/planning/decisions/
 - docs/planning/design/

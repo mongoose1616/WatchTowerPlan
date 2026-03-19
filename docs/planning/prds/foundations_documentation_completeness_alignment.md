@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -45,7 +45,7 @@ The governed foundations corpus is structurally valid, but it is not fully cohes
 
 Three concrete gaps currently reduce documentation completeness:
 
-1. `workflows/modules/foundations_context_review.md` under-specifies the authoritative foundation set for foundations-aware review work. Its `Additional Files to Load` section lists only engineering design principles and product direction even though the workflow purpose explicitly covers current repository scope, standards posture, and technology direction.
+1. `core/workflows/modules/foundations_context_review.md` under-specifies the authoritative foundation set for foundations-aware review work. Its `Additional Files to Load` section lists only engineering design principles and product direction even though the workflow purpose explicitly covers current repository scope, standards posture, and technology direction.
 2. `watchtower-core query foundations` publishes at least one stale example. The documented and help-text example `--audience maintainers` currently returns zero results because the live foundations corpus only publishes `shared` audience entries.
 3. `docs/foundations/engineering_stack_direction.md` materially discusses repository-chosen or candidate external technologies and standards, but it cites no governed local reference docs for them. As a result the live foundation index cannot expose the reference relationships or external authority metadata for that foundation entry.
 
@@ -69,7 +69,7 @@ These gaps make the foundations layer less complete for humans and less useful f
 
 ## Acceptance Criteria
 - `ac.foundations_documentation_completeness_alignment.001`: The traced planning chain, decision record, acceptance contract, evidence ledger, and closed task set all reconcile for `trace.foundations_documentation_completeness_alignment`.
-- `ac.foundations_documentation_completeness_alignment.002`: `workflows/modules/foundations_context_review.md` explicitly loads the authoritative foundation set needed for foundations-aware review, and the guidance remains aligned with `docs/foundations/README.md`.
+- `ac.foundations_documentation_completeness_alignment.002`: `core/workflows/modules/foundations_context_review.md` explicitly loads the authoritative foundation set needed for foundations-aware review, and the guidance remains aligned with `docs/foundations/README.md`.
 - `ac.foundations_documentation_completeness_alignment.003`: `docs/foundations/engineering_stack_direction.md` cites governed local reference docs for its material external technologies and the rebuilt `foundation_index.json` records non-empty `reference_doc_paths` and `external_reference_urls` for `foundation.engineering_stack_direction`.
 - `ac.foundations_documentation_completeness_alignment.004`: The CLI help and command doc for `watchtower-core query foundations` publish live examples that return real results against the current foundation corpus, with targeted regression coverage for the refreshed lookup path.
 - `ac.foundations_documentation_completeness_alignment.005`: Targeted and full validation pass, and two post-fix review passes find no additional actionable issues in the touched foundations/documentation/query area.
@@ -83,4 +83,4 @@ These gaps make the foundations layer less complete for humans and less useful f
 - [README.md](/docs/foundations/README.md)
 - [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
 - [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md)
-- [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+- [foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)

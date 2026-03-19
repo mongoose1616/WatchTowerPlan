@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
   "title": "Reconcile live workspace and interface contract rows",
   "summary": "Update plan root, initiative/project workspace, and pack-facing contract rows that are already implemented.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_requirements_current_state_reconciliation.reconcile_helper_and_runtime_status_rows"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

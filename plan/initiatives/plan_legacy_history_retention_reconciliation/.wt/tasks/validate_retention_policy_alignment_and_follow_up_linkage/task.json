@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
   "title": "Validate retention policy alignment and follow-up linkage",
   "summary": "Add focused tests and close the legacy follow-up task once the new plan initiative and policy artifacts are linked from the capture-first bootstrap package.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "validation",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

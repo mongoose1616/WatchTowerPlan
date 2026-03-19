@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Plan-pack settings load root for the Stage 1 capture-first workspace bootstrap.",
-  "updated_at": "2026-03-17T20:03:23Z",
+  "updated_at": "2026-03-17T22:39:20Z",
   "pack_id": "pack.plan",
   "surfaces": [
     {
@@ -88,6 +88,9 @@
         "task_index",
         "readiness_index",
         "discrepancy_index",
+        "evidence_index",
+        "closeout_index",
+        "review_index",
         "promotion_index",
         "guidance_index",
         "project_index",

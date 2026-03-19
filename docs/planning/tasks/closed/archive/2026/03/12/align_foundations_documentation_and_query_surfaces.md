@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/foundations/engineering_stack_direction.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/tests/

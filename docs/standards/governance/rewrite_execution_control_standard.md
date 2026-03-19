@@ -10,12 +10,12 @@ tags:
   - "rewrite"
   - "phase_control"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T15:30:00Z"
+updated_at: "2026-03-18T21:12:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/design/implementation/"
-  - "docs/planning/tasks/"
+  - "plan/"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/migrations/"
   - "core/control_plane/ledgers/validation_evidence/"
@@ -97,7 +97,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 | Acceptance contract | `core/control_plane/contracts/acceptance/` | Machine-readable parity and entry-condition contract. |
 | Migration record | `core/control_plane/ledgers/migrations/` | Machine-readable state-transition record for the slice. |
 | Validation evidence | `core/control_plane/ledgers/validation_evidence/` | Durable proof of baseline, parity, and validation outcomes. |
-| Active gate task | `docs/planning/tasks/open/` | Explicit execution and review ownership for the current checkpoint. |
+| Active gate task | `plan/**/.wt/tasks/<task_slug>/task.json` | Explicit execution and review ownership for the current checkpoint. |
 
 ### Public planning parity boundary
 | Planning Question | Canonical Surface That Must Stay Stable |
@@ -128,7 +128,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 | Archive vocabulary drift | Do not introduce a new archive taxonomy or lifecycle state as an execution shortcut. |
 
 ## Process or Workflow
-1. Start the rewrite slice from the active checkpoint document and gate task.
+1. Start the rewrite slice from the active checkpoint document and live gate task.
 2. Confirm that the acceptance contract still captures the public parity and entry conditions for the proposed slice.
 3. Publish or update the human checkpoint document with authored truth, derived outputs, parity method, and rollback notes.
 4. Publish or update the migration record and validation-evidence artifact for the same slice.
@@ -137,7 +137,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/`; `docs/planning/tasks/open/`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
+- `Operational Surfaces`: `docs/planning/design/implementation/`; `plan/**/.wt/tasks/`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
 
 ## Validation
 - Rewrite checkpoints should not rely on prose-only approval.
@@ -157,4 +157,4 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - [authority_map.json](/core/control_plane/registries/authority_map.json)
 
 ## Updated At
-- `2026-03-15T15:30:00Z`
+- `2026-03-18T21:12:00Z`

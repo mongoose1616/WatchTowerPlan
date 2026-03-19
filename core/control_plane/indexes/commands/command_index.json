@@ -29,7 +29,7 @@
     {
       "command_id": "command.watchtower_core.closeout",
       "command": "watchtower-core closeout",
-      "summary": "Apply terminal initiative state to traced planning surfaces or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
+      "summary": "Apply terminal initiative state to live `plan/**` initiative packages, close retained traced initiatives when historical trace state must be finalized, or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -149,7 +149,7 @@
     {
       "command_id": "command.watchtower_core.plan",
       "command": "watchtower-core plan",
-      "summary": "Scaffold compact governed planning documents from the current repository conventions.",
+      "summary": "Scaffold compact governed planning documents, bootstrap live initiative packages, and advance initiative readiness through the captured-input and approval gates.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -165,6 +165,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.plan.approve",
+      "command": "watchtower-core plan approve",
+      "summary": "Approve one validated live initiative package into ready_for_execution so task transitions can begin real execution without violating the hard no-start gate.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_plan_approve.md",
+      "synopsis": "uv run watchtower-core plan approve [-h] --initiative-slug INITIATIVE_SLUG [--project-slug PROJECT_SLUG] [--actor-id ACTOR_ID] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "approve"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.plan.bootstrap",
       "command": "watchtower-core plan bootstrap",
       "summary": "Scaffold a compact traced planning chain for one new initiative.",
@@ -172,7 +196,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
-      "synopsis": "uv run watchtower-core plan bootstrap [-h] --trace-id TRACE_ID --title TITLE --summary SUMMARY [--owner OWNER] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--include-decision] [--decision-id DECISION_ID] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--task-id TASK_ID] [--task-owner TASK_OWNER] [--task-kind {feature,bug,chore,documentation,governance,research}] [--task-priority {critical,high,medium,low}] [--updated-at UPDATED_AT] [--include-documents] [--write] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core plan bootstrap [-h] --trace-id TRACE_ID --title TITLE --summary SUMMARY [--owner OWNER] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--include-decision] [--decision-id DECISION_ID] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--task-id TASK_ID] [--task-owner TASK_OWNER] [--task-kind {feature,bug,chore,documentation,governance,research,validation}] [--task-priority {critical,high,medium,low}] [--updated-at UPDATED_AT] [--include-documents] [--write] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.plan",
@@ -186,6 +210,31 @@
         "cli",
         "plan",
         "bootstrap"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.confirm_inputs",
+      "command": "watchtower-core plan confirm-inputs",
+      "summary": "Confirm the current initiative-authored inputs into machine state after review so the readiness gate reflects the latest captured package before execution approval.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_plan_confirm_inputs.md",
+      "synopsis": "uv run watchtower-core plan confirm-inputs [-h] --initiative-slug INITIATIVE_SLUG [--project-slug PROJECT_SLUG] [--actor-id ACTOR_ID] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "confirm",
+        "inputs"
       ]
     },
     {
@@ -305,6 +354,30 @@
         "cli",
         "query",
         "authority"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.closeouts",
+      "command": "watchtower-core query closeouts",
+      "summary": "Search the live closeout index for initiative-local closeout contracts and terminal recap state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_closeouts.md",
+      "synopsis": "uv run watchtower-core query closeouts [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--terminal-state TERMINAL_STATE] [--promotion-review-required {true,false}] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "closeouts"
       ]
     },
     {
@@ -532,6 +605,31 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.plan_evidence",
+      "command": "watchtower-core query plan-evidence",
+      "summary": "Search the live evidence index for initiative-local validation bundles captured under the plan workspace.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_plan_evidence.md",
+      "synopsis": "uv run watchtower-core query plan-evidence [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--owner OWNER] [--target-phase TARGET_PHASE] [--validation-type VALIDATION_TYPE] [--acceptance-label ACCEPTANCE_LABEL] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "plan",
+        "evidence"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.planning",
       "command": "watchtower-core query planning",
       "summary": "Search the canonical planning catalog for deep trace-linked planning context with explicit status semantics.",
@@ -674,6 +772,30 @@
         "cli",
         "query",
         "references"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.reviews",
+      "command": "watchtower-core query reviews",
+      "summary": "Search the live review index for initiative review state and promotion approval state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_reviews.md",
+      "synopsis": "uv run watchtower-core query reviews [-h] [--query QUERY] [--subject-kind SUBJECT_KIND] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--review-state REVIEW_STATE] [--ready-for-execution {true,false}] [--review-ref REVIEW_REF] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "reviews"
       ]
     },
     {
@@ -1247,7 +1369,7 @@
     {
       "command_id": "command.watchtower_core.sync.route_index",
       "command": "watchtower-core sync route-index",
-      "summary": "Rebuild the route index from `workflows/ROUTING_TABLE.md`.",
+      "summary": "Rebuild the route index from `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1297,7 +1419,7 @@
     {
       "command_id": "command.watchtower_core.sync.task_index",
       "command": "watchtower-core sync task-index",
-      "summary": "Rebuild the task index from the governed task documents under `docs/planning/tasks/`.",
+      "summary": "Rebuild the live plan task index from initiative-local task state under `plan/**/.wt/tasks/**`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1322,7 +1444,7 @@
     {
       "command_id": "command.watchtower_core.sync.task_tracking",
       "command": "watchtower-core sync task-tracking",
-      "summary": "Rebuild the human-readable task tracker from the governed task documents under `docs/planning/tasks/`.",
+      "summary": "Rebuild the human-readable task tracker from initiative-local live task state under `plan/**/.wt/tasks/**`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1372,7 +1494,7 @@
     {
       "command_id": "command.watchtower_core.sync.workflow_index",
       "command": "watchtower-core sync workflow-index",
-      "summary": "Rebuild the workflow index from the workflow modules under `workflows/modules/`.",
+      "summary": "Rebuild the workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1397,7 +1519,7 @@
     {
       "command_id": "command.watchtower_core.task",
       "command": "watchtower-core task",
-      "summary": "Create, update, and transition governed local task records while keeping task documents authoritative and refreshing the derived coordination slice on write.",
+      "summary": "Create, update, and transition initiative-local live task records under `plan/**/.wt/tasks/**` while refreshing the derived plan-workspace and coordination surfaces on write.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1415,12 +1537,12 @@
     {
       "command_id": "command.watchtower_core.task.create",
       "command": "watchtower-core task create",
-      "summary": "Create one governed local task document from compact structured inputs.",
+      "summary": "Create one initiative-local live task record from compact structured inputs.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_task_create.md",
-      "synopsis": "uv run watchtower-core task create [-h] --task-id TASK_ID [--trace-id TRACE_ID] --title TITLE --summary SUMMARY --task-kind {feature,bug,chore,documentation,governance,research} --priority {critical,high,medium,low} --owner OWNER [--task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled}] --scope SCOPE --done-when DONE_WHEN [--applies-to APPLIES_TO] [--related-id RELATED_ID] [--depends-on DEPENDS_ON] [--blocked-by BLOCKED_BY] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core task create [-h] --task-id TASK_ID [--trace-id TRACE_ID] --title TITLE --summary SUMMARY --task-kind {feature,bug,chore,documentation,governance,research,validation} --priority {critical,high,medium,low} --owner OWNER [--task-status {planned,ready,in_progress,blocked,in_review,completed,cancelled}] --scope SCOPE --done-when DONE_WHEN [--applies-to APPLIES_TO] [--related-id RELATED_ID] [--depends-on DEPENDS_ON] [--blocked-by BLOCKED_BY] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.task",
@@ -1439,12 +1561,12 @@
     {
       "command_id": "command.watchtower_core.task.transition",
       "command": "watchtower-core task transition",
-      "summary": "Apply a bounded handoff-style transition to one task by updating the task status, owner, or blocker state while preserving task-document authority.",
+      "summary": "Apply a bounded handoff-style transition to one task by updating the task status, owner, or blocker state while preserving initiative-local live task authority.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_task_transition.md",
-      "synopsis": "uv run watchtower-core task transition [-h] --task-id TASK_ID --task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled} [--next-owner NEXT_OWNER] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core task transition [-h] --task-id TASK_ID --task-status {planned,ready,in_progress,blocked,in_review,completed,cancelled} [--next-owner NEXT_OWNER] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.task",
@@ -1463,12 +1585,12 @@
     {
       "command_id": "command.watchtower_core.task.update",
       "command": "watchtower-core task update",
-      "summary": "Update one governed task document without hand-editing front matter.",
+      "summary": "Update one initiative-local live task record without hand-editing the underlying task JSON.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_task_update.md",
-      "synopsis": "uv run watchtower-core task update [-h] --task-id TASK_ID [--trace-id TRACE_ID] [--clear-trace-id] [--title TITLE] [--summary SUMMARY] [--task-kind {feature,bug,chore,documentation,governance,research}] [--priority {critical,high,medium,low}] [--owner OWNER] [--task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled}] [--scope SCOPE] [--done-when DONE_WHEN] [--applies-to APPLIES_TO] [--clear-applies-to] [--related-id RELATED_ID] [--clear-related-ids] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core task update [-h] --task-id TASK_ID [--title TITLE] [--summary SUMMARY] [--task-kind {feature,bug,chore,documentation,governance,research,validation}] [--priority {critical,high,medium,low}] [--owner OWNER] [--task-status {planned,ready,in_progress,blocked,in_review,completed,cancelled}] [--scope SCOPE] [--done-when DONE_WHEN] [--applies-to APPLIES_TO] [--clear-applies-to] [--related-id RELATED_ID] [--clear-related-ids] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.task",

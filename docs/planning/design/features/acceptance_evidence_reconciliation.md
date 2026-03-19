@@ -91,7 +91,7 @@ This document defines the feature-level design for the acceptance and evidence r
 - Keep `traceability_reconciliation.md` responsible for cross-family planning links and keep `governed_artifact_reconciliation.md` responsible for schema-backed artifact coherence; the acceptance-and-evidence module sits between them and closes the semantic coverage gap.
 
 ### Data and Interface Impacts
-- Workflow module under `workflows/modules/acceptance_evidence_reconciliation.md`.
+- Workflow module under `plan/workflows/modules/acceptance_evidence_reconciliation.md`.
 - Routing-table guidance for loading that module when acceptance or evidence drift becomes the main risk.
 - Governance standard for pass or fail expectations around acceptance coverage and evidence sufficiency.
 - Python query and validation helpers that materialize acceptance and evidence views explicitly.
@@ -110,8 +110,8 @@ This document defines the feature-level design for the acceptance and evidence r
 - Validator expectations must not be inferred only from prose when a machine-readable contract or evidence surface already exists.
 
 ## Affected Surfaces
-- `workflows/modules/acceptance_evidence_reconciliation.md`
-- `workflows/ROUTING_TABLE.md`
+- `plan/workflows/modules/acceptance_evidence_reconciliation.md`
+- `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`
 - `docs/standards/governance/acceptance_evidence_reconciliation_standard.md`
 - `core/control_plane/contracts/acceptance/`
 - `core/control_plane/ledgers/validation_evidence/`
@@ -145,8 +145,8 @@ This document defines the feature-level design for the acceptance and evidence r
 - Should future semantic acceptance validation also write durable evidence directly, or should evidence remain a separately curated follow-on step?
 
 ## References
-- [traceability_reconciliation.md](/workflows/modules/traceability_reconciliation.md)
-- [governed_artifact_reconciliation.md](/workflows/modules/governed_artifact_reconciliation.md)
+- [traceability_reconciliation.md](/plan/workflows/modules/traceability_reconciliation.md)
+- [governed_artifact_reconciliation.md](/core/workflows/modules/governed_artifact_reconciliation.md)
 - [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md)
 - [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md)
 - [traceability_index.json](/core/control_plane/indexes/traceability/traceability_index.json)

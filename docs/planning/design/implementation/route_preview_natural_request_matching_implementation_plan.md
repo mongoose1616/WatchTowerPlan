@@ -10,9 +10,10 @@ updated_at: '2026-03-11T13:51:18Z'
 audience: shared
 authority: supporting
 applies_to:
-- workflows/ROUTING_TABLE.md
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
 - core/control_plane/indexes/routes/route_index.json
-- core/python/src/watchtower_core/repo_ops/query/routes.py
+- core/python/src/watchtower_core/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 ---
 
@@ -52,7 +53,7 @@ Break the natural maintenance-request route matching fix into one bounded implem
 - The trace should close in one implementation slice rather than reopening a broader workflow initiative.
 
 ## Proposed Technical Approach
-- Add bounded single-token intent cues to the affected route rows in `workflows/ROUTING_TABLE.md`.
+- Add bounded single-token intent cues to the affected route rows in `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
 - Rebuild the route index, update route-preview docs, and retarget the regression tests to the exact report-review maintenance request.
 - Publish acceptance evidence, rerun validation, close the task, and close the initiative.
 

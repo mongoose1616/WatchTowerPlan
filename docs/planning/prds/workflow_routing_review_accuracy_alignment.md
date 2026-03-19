@@ -48,7 +48,7 @@ The result is a route-preview layer that stays deterministic for explicit task t
 
 ## Non-Goals
 - Building an autonomous planner, semantic router, embedding-based matcher, or probabilistic classification layer.
-- Changing the advisory status of route preview relative to `AGENTS.md`, `workflows/ROUTING_TABLE.md`, and the workflow modules.
+- Changing the advisory status of route preview relative to `AGENTS.md`, `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`, and the workflow modules.
 - Redesigning the workflow-module library when the existing modules can be recomposed to cover the missing review path.
 
 ## Requirements

@@ -3,8 +3,44 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-17T22:37:00Z",
+  "updated_at": "2026-03-18T23:45:00Z",
   "entries": [
+    {
+      "promotion_id": "promotion.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_shell",
+      "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "initiative_title": "Plan Actor Registry And Runtime Boundary Reconciliation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/initiative_brief.md",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/design_record.md",
+        "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T23:51:18Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_actor_registry_and_runtime_boundary_reconciliation_design_record.md",
+        "plan/docs/patterns/plan_actor_registry_and_runtime_boundary_reconciliation_implementation_slice.md",
+        "plan/docs/references/plan_actor_registry_and_runtime_boundary_reconciliation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
     {
       "promotion_id": "promotion.plan_artifact_family_registry_foundation.bootstrap_shell",
       "initiative_id": "initiative.plan_artifact_family_registry_foundation",
@@ -55,6 +91,42 @@
         "repository_maintainer_review"
       ],
       "updated_at": "2026-03-17T20:36:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_closeout_helper_boundary_alignment.bootstrap_shell",
+      "initiative_id": "initiative.plan_closeout_helper_boundary_alignment",
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "initiative_title": "Plan Closeout Helper Boundary Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_closeout_helper_boundary_alignment",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/initiative_brief.md",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/design_record.md",
+        "plan/initiatives/plan_closeout_helper_boundary_alignment/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T03:07:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_closeout_helper_boundary_alignment_design_record.md",
+        "plan/docs/patterns/plan_closeout_helper_boundary_alignment_implementation_slice.md",
+        "plan/docs/references/plan_closeout_helper_boundary_alignment_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_closeout_helper_boundary_alignment.bootstrap_validation_bundle"
+      ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."
       ]
@@ -217,6 +289,78 @@
         "repository_maintainer_review"
       ],
       "updated_at": "2026-03-17T21:35:44Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_evidence_bundle_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_evidence_bundle_helper_foundation",
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "initiative_title": "Plan Evidence Bundle Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_evidence_bundle_helper_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/design_record.md",
+        "plan/initiatives/plan_evidence_bundle_helper_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T01:41:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_evidence_bundle_helper_foundation_design_record.md",
+        "plan/docs/patterns/plan_evidence_bundle_helper_foundation_implementation_slice.md",
+        "plan/docs/references/plan_evidence_bundle_helper_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_evidence_bundle_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_extraction_output_envelope_alignment.bootstrap_shell",
+      "initiative_id": "initiative.plan_extraction_output_envelope_alignment",
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "initiative_title": "Plan Extraction Output Envelope Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_extraction_output_envelope_alignment",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_extraction_output_envelope_alignment/initiative_brief.md",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/design_record.md",
+        "plan/initiatives/plan_extraction_output_envelope_alignment/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T02:20:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_extraction_output_envelope_alignment_design_record.md",
+        "plan/docs/patterns/plan_extraction_output_envelope_alignment_implementation_slice.md",
+        "plan/docs/references/plan_extraction_output_envelope_alignment_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_extraction_output_envelope_alignment.bootstrap_validation_bundle"
+      ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."
       ]
@@ -420,6 +564,45 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_live_evidence_closeout_review_indexes_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+      "trace_id": "trace.plan_live_evidence_closeout_review_indexes_foundation",
+      "initiative_title": "Plan Live Evidence Closeout Review Indexes Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/initiative_brief.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/design_record.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/implementation_slice.md",
+        "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T23:05:01Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_live_evidence_closeout_review_indexes_foundation_design_record.md",
+        "plan/docs/patterns/plan_live_evidence_closeout_review_indexes_foundation_implementation_slice.md",
+        "plan/docs/references/plan_live_evidence_closeout_review_indexes_foundation_initiative_brief.md",
+        "plan/docs/standards/plan_live_evidence_closeout_review_indexes_foundation_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_live_evidence_closeout_review_indexes_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_live_query_authority_cutover.bootstrap_shell",
       "initiative_id": "initiative.plan_live_query_authority_cutover",
       "trace_id": "trace.plan_live_query_authority_cutover",
@@ -442,6 +625,42 @@
         "repository_maintainer_review"
       ],
       "updated_at": "2026-03-17T19:38:14Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_path_and_id_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_path_and_id_helper_foundation",
+      "trace_id": "trace.plan_path_and_id_helper_foundation",
+      "initiative_title": "Plan Path And ID Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_path_and_id_helper_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_path_and_id_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_path_and_id_helper_foundation/design_record.md",
+        "plan/initiatives/plan_path_and_id_helper_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T23:40:59Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_path_and_id_helper_foundation_design_record.md",
+        "plan/docs/patterns/plan_path_and_id_helper_foundation_implementation_slice.md",
+        "plan/docs/references/plan_path_and_id_helper_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_path_and_id_helper_foundation.bootstrap_validation_bundle"
+      ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."
       ]
@@ -527,6 +746,78 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_rebuild_harness_export_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_rebuild_harness_export_foundation",
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "initiative_title": "Plan Rebuild Harness Export Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_rebuild_harness_export_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_rebuild_harness_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/design_record.md",
+        "plan/initiatives/plan_rebuild_harness_export_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T00:34:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_rebuild_harness_export_foundation_design_record.md",
+        "plan/docs/patterns/plan_rebuild_harness_export_foundation_implementation_slice.md",
+        "plan/docs/references/plan_rebuild_harness_export_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_rebuild_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_rendered_surface_builder_alignment.bootstrap_shell",
+      "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "initiative_title": "Plan Rendered Surface Builder Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_rendered_surface_builder_alignment",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_rendered_surface_builder_alignment/initiative_brief.md",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/design_record.md",
+        "plan/initiatives/plan_rendered_surface_builder_alignment/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T02:44:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_rendered_surface_builder_alignment_design_record.md",
+        "plan/docs/patterns/plan_rendered_surface_builder_alignment_implementation_slice.md",
+        "plan/docs/references/plan_rendered_surface_builder_alignment_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_rendered_surface_builder_alignment.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_requirements_current_state_reconciliation.bootstrap_shell",
       "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
       "trace_id": "trace.plan_requirements_current_state_reconciliation",
@@ -563,6 +854,78 @@
       ]
     },
     {
+      "promotion_id": "promotion.plan_routing_engine_export_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_routing_engine_export_foundation",
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "initiative_title": "Plan Routing Engine Export Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_routing_engine_export_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_routing_engine_export_foundation/initiative_brief.md",
+        "plan/initiatives/plan_routing_engine_export_foundation/design_record.md",
+        "plan/initiatives/plan_routing_engine_export_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T23:58:50Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_routing_engine_export_foundation_design_record.md",
+        "plan/docs/patterns/plan_routing_engine_export_foundation_implementation_slice.md",
+        "plan/docs/references/plan_routing_engine_export_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_routing_engine_export_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_status_registry_domain_cleanup.bootstrap_shell",
+      "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "initiative_title": "Plan Status Registry Domain Cleanup",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_status_registry_domain_cleanup",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_status_registry_domain_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_status_registry_domain_cleanup/design_record.md",
+        "plan/initiatives/plan_status_registry_domain_cleanup/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T00:45:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_status_registry_domain_cleanup_design_record.md",
+        "plan/docs/patterns/plan_status_registry_domain_cleanup_implementation_slice.md",
+        "plan/docs/references/plan_status_registry_domain_cleanup_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_status_registry_domain_cleanup.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.plan_status_transition_and_relation_rule_registries.bootstrap_shell",
       "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
       "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
@@ -585,6 +948,45 @@
         "repository_maintainer_review"
       ],
       "updated_at": "2026-03-17T20:53:00Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_task_authority_rendering_governance_recovery.bootstrap_shell",
+      "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "initiative_title": "Plan Task Authority, Rendering, and Governance Recovery",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_task_authority_rendering_governance_recovery",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/initiative_brief.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/design_record.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/implementation_slice.md",
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T23:45:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_task_authority_rendering_governance_recovery_design_record.md",
+        "plan/docs/patterns/plan_task_authority_rendering_governance_recovery_implementation_slice.md",
+        "plan/docs/references/plan_task_authority_rendering_governance_recovery_initiative_brief.md",
+        "plan/docs/standards/plan_task_authority_rendering_governance_recovery_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_task_authority_rendering_governance_recovery.bootstrap_validation_bundle"
+      ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."
       ]
@@ -639,6 +1041,114 @@
         "repository_maintainer_review"
       ],
       "updated_at": "2026-03-17T15:06:11Z",
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_terminology_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_terminology_helper_foundation",
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "initiative_title": "Plan Terminology Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_terminology_helper_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_terminology_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_terminology_helper_foundation/design_record.md",
+        "plan/initiatives/plan_terminology_helper_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T01:21:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_terminology_helper_foundation_design_record.md",
+        "plan/docs/patterns/plan_terminology_helper_foundation_implementation_slice.md",
+        "plan/docs/references/plan_terminology_helper_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_terminology_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_workflow_catalog_helper_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_workflow_catalog_helper_foundation",
+      "trace_id": "trace.plan_workflow_catalog_helper_foundation",
+      "initiative_title": "Plan Workflow Catalog Helper Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_workflow_catalog_helper_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/initiative_brief.md",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/design_record.md",
+        "plan/initiatives/plan_workflow_catalog_helper_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-17T23:55:35Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_workflow_catalog_helper_foundation_design_record.md",
+        "plan/docs/patterns/plan_workflow_catalog_helper_foundation_implementation_slice.md",
+        "plan/docs/references/plan_workflow_catalog_helper_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_workflow_catalog_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_workflow_execution_harness_foundation.bootstrap_shell",
+      "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "initiative_title": "Plan Workflow Execution Harness Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/plan_workflow_execution_harness_foundation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/plan_workflow_execution_harness_foundation/initiative_brief.md",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/design_record.md",
+        "plan/initiatives/plan_workflow_execution_harness_foundation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-18T00:56:00Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_workflow_execution_harness_foundation_design_record.md",
+        "plan/docs/patterns/plan_workflow_execution_harness_foundation_implementation_slice.md",
+        "plan/docs/references/plan_workflow_execution_harness_foundation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_workflow_execution_harness_foundation.bootstrap_validation_bundle"
+      ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."
       ]

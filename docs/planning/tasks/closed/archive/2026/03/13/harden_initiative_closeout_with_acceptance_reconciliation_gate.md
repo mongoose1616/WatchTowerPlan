@@ -21,7 +21,7 @@ applies_to:
 - core/python/tests/integration/test_task_workflow_end_to_end.py
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
-- workflows/modules/initiative_closeout.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md
 related_ids:
 - prd.refactor_umbrella_regression_and_growth_control

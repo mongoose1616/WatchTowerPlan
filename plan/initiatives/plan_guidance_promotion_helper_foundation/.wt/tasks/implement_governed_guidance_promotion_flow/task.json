@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
   "title": "Implement governed guidance promotion flow",
   "summary": "Promote approved initiative outputs into plan/docs guidance roots with policy, template, and mirror enforcement.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_guidance_promotion_helper_foundation.publish_promotion_helper_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

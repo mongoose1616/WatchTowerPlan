@@ -55,7 +55,7 @@
       "title": "Route-preview scoring and curated trigger rows stay deterministic across the reproduced review prompts",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/query/routes.py",
         "workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
         "core/python/tests/unit/test_route_index_sync.py"
@@ -74,7 +74,7 @@
       "result": "passed",
       "subject_paths": [
         "workflows/ROUTING_TABLE.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "core/control_plane/indexes/routes/route_index.json",

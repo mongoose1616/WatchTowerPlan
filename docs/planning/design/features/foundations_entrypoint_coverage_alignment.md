@@ -13,7 +13,7 @@ authority: authoritative
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 ---
@@ -99,7 +99,7 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 ### Data and Interface Impacts
 - No schema or runtime interface changes.
 - Human guidance changes affect `docs/foundations/**` and
-  `workflows/modules/foundations_context_review.md`.
+  `core/workflows/modules/foundations_context_review.md`.
 - Integration coverage expands to fail closed on the repaired foundations
   family routes.
 
@@ -122,7 +122,7 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 ## Affected Surfaces
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 

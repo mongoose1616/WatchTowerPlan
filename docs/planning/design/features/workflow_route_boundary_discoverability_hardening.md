@@ -11,10 +11,12 @@ updated_at: '2026-03-13T21:17:49Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
-- core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
+- core/python/src/watchtower_core/query/routes.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
@@ -99,10 +101,12 @@ Defines the technical design boundary for Workflow Route Boundary Discoverabilit
 - The implementation must fail closed on missing workflow-index entries or invalid derived route or workflow artifacts just as it does today.
 
 ## Affected Surfaces
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
-- core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
+- core/python/src/watchtower_core/query/routes.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/

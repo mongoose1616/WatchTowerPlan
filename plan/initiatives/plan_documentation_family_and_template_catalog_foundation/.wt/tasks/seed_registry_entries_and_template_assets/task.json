@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
   "title": "Seed registry entries and governed template assets",
   "summary": "Seed active documentation-family bindings, template catalog entries, and concrete template files for the current live plan surfaces.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -13,5 +13,6 @@
   "updated_at": "2026-03-17T17:39:18Z",
   "dependency_task_ids": [],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

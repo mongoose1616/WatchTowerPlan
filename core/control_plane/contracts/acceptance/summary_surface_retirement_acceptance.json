@@ -16,7 +16,7 @@
         "README.md",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/modules/foundations_context_review.md",
         "core/python/tests/integration/"
       ],
       "related_paths": [

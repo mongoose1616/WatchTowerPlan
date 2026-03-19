@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
   "title": "Validate query harness export and guidance",
   "summary": "Add boundary tests and package guidance proving watchtower_core.query now exports reusable generic query services aligned to requirements.md and decisions.md.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

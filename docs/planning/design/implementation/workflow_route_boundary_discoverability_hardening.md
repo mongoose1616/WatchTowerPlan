@@ -11,10 +11,12 @@ updated_at: '2026-03-13T21:40:13Z'
 audience: shared
 authority: supporting
 applies_to:
-- workflows/ROUTING_TABLE.md
-- workflows/modules/
-- core/python/src/watchtower_core/repo_ops/query/routes.py
-- core/python/src/watchtower_core/repo_ops/query/workflows.py
+- core/workflows/ROUTING_TABLE.md
+- plan/workflows/ROUTING_TABLE.md
+- core/workflows/modules/
+- plan/workflows/modules/
+- core/python/src/watchtower_core/query/routes.py
+- core/python/src/watchtower_core/query/workflows.py
 - core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
@@ -41,8 +43,8 @@ Breaks Workflow Route Boundary Discoverability Hardening into a bounded implemen
 - Address the remaining workflow discoverability and route-boundary drift identified by the March 13, 2026 refactor audit.
 
 ## Scope Summary
-- Route-preview scoring and selection behavior in `core/python/src/watchtower_core/repo_ops/query/routes.py`.
-- Workflow lookup discoverability in `core/python/src/watchtower_core/repo_ops/query/workflows.py` plus the authored workflow metadata or derived workflow index surfaces that support it.
+- Route-preview scoring and selection behavior in `core/python/src/watchtower_core/query/routes.py`.
+- Workflow lookup discoverability in `core/python/src/watchtower_core/query/workflows.py` plus the authored workflow metadata or derived workflow index surfaces that support it.
 - Authored route examples, workflow metadata trigger tags, command docs, targeted tests, and companion route or workflow indexes.
 - Exclude workflow-family consolidation, unrelated query-service rewrites, and any schema changes that are not directly required by this workflow-boundary slice.
 
@@ -66,9 +68,9 @@ Breaks Workflow Route Boundary Discoverability Hardening into a bounded implemen
 ## Coverage Map
 | Coverage Area | Surfaces | Review Focus |
 |---|---|---|
-| Route preview runtime | `core/python/src/watchtower_core/repo_ops/query/routes.py`; `core/python/src/watchtower_core/cli/route_handlers.py` | token normalization, realistic prompt matching, dominant-route filtering, advisory warnings |
-| Workflow lookup runtime | `core/python/src/watchtower_core/repo_ops/query/workflows.py`; `core/python/src/watchtower_core/repo_ops/query/common.py` | realistic workflow discovery, trigger-tag use, bounded search behavior |
-| Authored route guidance | `workflows/ROUTING_TABLE.md`; `workflows/modules/documentation_implementation_reconciliation.md`; `workflows/modules/governed_artifact_reconciliation.md`; `workflows/modules/traceability_reconciliation.md`; `workflows/modules/task_lifecycle_management.md`; `workflows/modules/task_phase_transition.md` | adjacent-route discrimination, realistic example phrasing, preserved workflow boundaries |
+| Route preview runtime | `core/python/src/watchtower_core/query/routes.py`; `core/python/src/watchtower_core/cli/route_handlers.py` | token normalization, realistic prompt matching, dominant-route filtering, advisory warnings |
+| Workflow lookup runtime | `core/python/src/watchtower_core/query/workflows.py`; `core/python/src/watchtower_core/repo_ops/query/common.py` | realistic workflow discovery, trigger-tag use, bounded search behavior |
+| Authored route guidance | `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`; `core/workflows/modules/documentation_implementation_reconciliation.md`; `core/workflows/modules/governed_artifact_reconciliation.md`; `plan/workflows/modules/traceability_reconciliation.md`; `plan/workflows/modules/task_lifecycle_management.md`; `plan/workflows/modules/task_phase_transition.md` | adjacent-route discrimination, realistic example phrasing, preserved workflow boundaries |
 | Governed workflow metadata | `core/control_plane/registries/workflow_metadata_registry.json`; `core/control_plane/indexes/routes/route_index.json`; `core/control_plane/indexes/workflows/workflow_index.json` | trigger-term publication, derived-index alignment, same-change sync integrity |
 | Companion docs and query entrypoints | `docs/commands/core_python/watchtower_core_route_preview.md`; `docs/commands/core_python/watchtower_core_query_workflows.md` | adjacent-route guidance, realistic examples, route-vs-query lookup usage |
 | Regression and validation surfaces | `core/python/tests/unit/test_cli_route_and_path_commands.py`; `core/python/tests/unit/test_cli_knowledge_query_commands.py`; `core/python/tests/unit/test_route_index_sync.py`; `core/python/tests/unit/test_workflow_index_sync.py` | realistic reconciliation prompts, handoff leakage regression, workflow-query discoverability, derived-surface sync coverage |
@@ -76,8 +78,8 @@ Breaks Workflow Route Boundary Discoverability Hardening into a bounded implemen
 ## Findings Ledger
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |
 |---|---|---|---|---|
-| `finding.workflow_route_boundary_discoverability_hardening.001` | `high` | `resolved` | `core/python/src/watchtower_core/repo_ops/query/routes.py`; `workflows/ROUTING_TABLE.md`; `core/control_plane/indexes/routes/route_index.json` | `route preview --request "reconcile command docs with current cli behavior" --format json` now returns only `Documentation-Implementation Reconciliation`, and `route preview --request "reconcile schema-backed indexes examples and validators for one artifact family" --format json` now returns only `Governed Artifact Reconciliation` |
-| `finding.workflow_route_boundary_discoverability_hardening.002` | `medium` | `resolved` | `core/python/src/watchtower_core/repo_ops/query/routes.py`; `core/python/src/watchtower_core/cli/route_handlers.py`; `workflows/ROUTING_TABLE.md`; `docs/commands/core_python/watchtower_core_route_preview.md` | the adversarial successor-task prompts `move task to validation and create successor tasks` and `hand off this task from implementation to validation and create successor tasks` now return only `Task Phase Transition`, while `Code Validation` and `Task Lifecycle Management` no longer leak into the result set |
+| `finding.workflow_route_boundary_discoverability_hardening.001` | `high` | `resolved` | `core/python/src/watchtower_core/query/routes.py`; `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`; `core/control_plane/indexes/routes/route_index.json` | `route preview --request "reconcile command docs with current cli behavior" --format json` now returns only `Documentation-Implementation Reconciliation`, and `route preview --request "reconcile schema-backed indexes examples and validators for one artifact family" --format json` now returns only `Governed Artifact Reconciliation` |
+| `finding.workflow_route_boundary_discoverability_hardening.002` | `medium` | `resolved` | `core/python/src/watchtower_core/query/routes.py`; `core/python/src/watchtower_core/cli/route_handlers.py`; `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`; `docs/commands/core_python/watchtower_core_route_preview.md` | the adversarial successor-task prompts `move task to validation and create successor tasks` and `hand off this task from implementation to validation and create successor tasks` now return only `Task Phase Transition`, while `Code Validation` and `Task Lifecycle Management` no longer leak into the result set |
 | `finding.workflow_route_boundary_discoverability_hardening.003` | `medium` | `resolved` | `core/control_plane/registries/workflow_metadata_registry.json`; `core/control_plane/indexes/workflows/workflow_index.json`; `docs/commands/core_python/watchtower_core_query_workflows.md` | `query workflows --query "current cli behavior" --format json` now resolves `workflow.documentation_implementation_reconciliation`, and `query workflows --query "successor tasks" --format json` now resolves `workflow.task_phase_transition` |
 | `finding.workflow_route_boundary_discoverability_hardening.004` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.json`; `core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.json`; `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md` | the acceptance contract and planning-baseline evidence ledger were expanded from the bootstrap-only state to cover all five PRD acceptance IDs before the final acceptance-aware validation loop |
 

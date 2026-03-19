@@ -14,7 +14,8 @@ updated_at: '2026-03-10T23:23:39Z'
 audience: shared
 authority: authoritative
 applies_to:
-- workflows/modules/
+- core/workflows/modules/
+- plan/workflows/modules/
 - docs/standards/workflows/
 - docs/references/
 related_ids:

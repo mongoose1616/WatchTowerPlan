@@ -13,7 +13,7 @@ authority: supporting
 applies_to:
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
 - core/python/tests/integration/
 ---
@@ -65,7 +65,7 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
    [repository_scope.md](/docs/foundations/repository_scope.md),
    and [core/control_plane/indexes/foundations/README.md](/core/control_plane/indexes/foundations/README.md)
    so the human and machine foundations entrypoints cross-reference correctly.
-2. Update [foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+2. Update [foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)
    so it loads `customer_story.md` and
    `docs/planning/coordination_tracking.md` for the relevant review contexts
    and points reviewers to `watchtower-core query foundations` for

@@ -13,7 +13,7 @@ applies_to:
 - README.md
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/planning/prds/
 - docs/planning/decisions/
 - docs/planning/design/
@@ -66,7 +66,7 @@ the touched entrypoint and validation surfaces.
 - README.md
 - docs/foundations/README.md
 - docs/foundations/repository_scope.md
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/planning/prds/
 - docs/planning/decisions/
 - docs/planning/design/
@@ -128,4 +128,4 @@ Apply option 2.
 - [coordination_tracking.md](/docs/planning/coordination_tracking.md)
 - [docs/foundations/README.md](/docs/foundations/README.md)
 - [docs/foundations/repository_scope.md](/docs/foundations/repository_scope.md)
-- [workflows/modules/foundations_context_review.md](/workflows/modules/foundations_context_review.md)
+- [core/workflows/modules/foundations_context_review.md](/core/workflows/modules/foundations_context_review.md)

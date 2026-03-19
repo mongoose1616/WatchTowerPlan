@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
   "title": "Refactor repo query services onto public query surface",
   "summary": "Move generic repo-local query implementations onto the reusable-core query surface without moving plan-live query services out of repo_ops.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_generic_query_harness_export_foundation.publish_generic_query_harness_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

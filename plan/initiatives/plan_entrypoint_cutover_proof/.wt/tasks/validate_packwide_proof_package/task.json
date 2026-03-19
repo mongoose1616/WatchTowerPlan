@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_entrypoint_cutover_proof",
   "title": "Validate pack-wide proof package",
   "summary": "Prove the pack-wide initiative can reach ready_for_execution cleanly.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

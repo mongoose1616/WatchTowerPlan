@@ -12,8 +12,8 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md
@@ -86,7 +86,7 @@ Defines the technical design boundary for Refactor Umbrella Regression and Growt
   stay synchronized with PRD acceptance IDs.
 - `docs/standards/data_contracts/validation_evidence_standard.md`: evidence artifacts must stay
   synchronized with trace, validator, and acceptance coverage.
-- `workflows/modules/repository_review.md`: themed review loops must preserve one continuing
+- `core/workflows/modules/repository_review.md`: themed review loops must preserve one continuing
   findings ledger until the scope is actually exhausted.
 
 ## Design Goals and Constraints
@@ -153,8 +153,8 @@ Defines the technical design boundary for Refactor Umbrella Regression and Growt
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/closeout/initiative.py
-- workflows/modules/repository_review.md
-- workflows/modules/initiative_closeout.md
+- core/workflows/modules/repository_review.md
+- plan/workflows/modules/initiative_closeout.md
 - docs/commands/core_python/watchtower_core_closeout_initiative.md
 - docs/commands/core_python/watchtower_core_closeout.md
 - docs/standards/governance/initiative_closeout_standard.md

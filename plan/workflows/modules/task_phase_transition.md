@@ -29,6 +29,7 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 2. Inspect the current handoff state.
    - Review current `task_status`, owner, blockers, dependencies, `related_ids`, and task notes.
    - Check whether downstream planning, validation, or closeout surfaces depend on the transition being explicit.
+   - If the handoff would start real execution, verify the initiative package has already been confirmed and approved into `ready_for_execution`.
 3. Update the source and successor task records.
    - Mark the source task as handed off, complete, cancelled, or still active as appropriate to the real execution boundary.
    - Create or update successor tasks when the next phase needs its own bounded owner, scope, or done-when criteria.
@@ -40,6 +41,7 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 5. Validate the handoff and escalation state.
    - Confirm the next responsible phase or owner is explicit and that no blockers or successor relationships became orphaned.
    - If the transition appears to finish the traced initiative, recommend or merge initiative closeout rather than leaving the terminal state implicit.
+   - If the transition is the first real execution step, ensure the initiative lifecycle advances from `ready_for_execution` into `in_progress` rather than leaving the package in a pre-execution review posture.
 
 ## Data Structure
 - Source task state before and after transition

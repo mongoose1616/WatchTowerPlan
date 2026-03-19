@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_project_context_runtime_standardization",
   "title": "Validate project context load contract",
   "summary": "Add integration and command coverage proving separate project-context loading and scope-aware query behavior.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.plan_project_context_runtime_standardization.expose_project_context_query_surface"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

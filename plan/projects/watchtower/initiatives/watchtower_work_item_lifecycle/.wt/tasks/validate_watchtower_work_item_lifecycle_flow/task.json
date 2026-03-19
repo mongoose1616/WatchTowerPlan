@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_work_item_lifecycle",
   "title": "Validate WatchTower work-item lifecycle flow",
   "summary": "Cover work-item inspection and completion with CLI tests, exercise the commands against the initialized WatchTower repo, and refresh repo guidance.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -16,5 +16,6 @@
     "task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

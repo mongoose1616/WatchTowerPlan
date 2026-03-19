@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -58,7 +58,7 @@ Repair foundations documentation completeness by updating the authoritative foun
 
 ## Affected Surfaces
 - docs/foundations/
-- workflows/modules/foundations_context_review.md
+- core/workflows/modules/foundations_context_review.md
 - docs/commands/core_python/watchtower_core_query_foundations.md
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py

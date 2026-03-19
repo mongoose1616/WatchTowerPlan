@@ -10,7 +10,7 @@ tags:
   - "rewrite"
   - "surface_classification"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T02:37:25Z"
+updated_at: "2026-03-18T21:12:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -48,7 +48,7 @@ This standard defines the four-axis classification and retention-reason model th
 ## Related Standards and Sources
 - [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): lifecycle status must stay within the shared `draft` or `active` or `deprecated` vocabulary.
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): retained historical planning records should use existing `authority: historical` signaling instead of new lifecycle words.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task history already has a family-native placement model through `open/` and `closed/`.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): live execution state is initiative-local under `plan/**/.wt/tasks/**`, while retained historical task Markdown remains under `docs/planning/tasks/**`.
 - [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): canonical planning-authority answers must remain explicit when classification work touches discoverability.
 - [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): compatibility shims stay temporary by default, but only after current consumers and boundary value are made explicit.
 - [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): history and compatibility work must preserve one clear canonical answer per question.
@@ -88,7 +88,7 @@ This standard defines the four-axis classification and retention-reason model th
   - `historical_context`
   - `migration_window`
 - Treat `status: deprecated` plus `authority: historical` as the default in-place history model for retained planning records.
-- Treat `docs/planning/tasks/open/` and `docs/planning/tasks/closed/` as the current family-native history model for task movement.
+- Treat `docs/planning/tasks/**` as retained historical task material, not as the current live task movement model.
 - Prefer deletion after proof only when consumer maps, discoverability checks, and rollback expectations show no active dependency remains.
 - No rewrite slice may move or delete a surface until:
   - its four-axis classification is published
@@ -141,7 +141,7 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `docs/planning/tasks/`; `core/control_plane/registries/authority_map.json`
+- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `plan/**/.wt/tasks/`; `docs/planning/tasks/`; `core/control_plane/registries/authority_map.json`
 
 ## Validation
 - Rewrite reviews should reject proposals that classify a surface with fewer than four axes.
@@ -161,4 +161,4 @@ This standard defines the four-axis classification and retention-reason model th
 - [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
 
 ## Updated At
-- `2026-03-14T02:37:25Z`
+- `2026-03-18T21:12:00Z`

@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
   "title": "Validate WatchTower readiness gate",
   "summary": "Validate the bootstrap repo and keep the WatchTower project-scoped package execution-ready after the first slice lands.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -17,5 +17,6 @@
   "blocker_task_ids": [],
   "related_ids": [
     "project.watchtower"
-  ]
+  ],
+  "task_status": "completed"
 }

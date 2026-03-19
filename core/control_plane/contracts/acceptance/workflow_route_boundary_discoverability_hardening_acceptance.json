@@ -41,8 +41,9 @@
         "req.workflow_route_boundary_discoverability_hardening.003"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "workflows/ROUTING_TABLE.md",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/python/tests/unit/test_cli_route_and_path_commands.py",
@@ -50,8 +51,8 @@
       ],
       "related_paths": [
         "docs/planning/tasks/closed/archive/2026/03/13/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
-        "workflows/modules/task_lifecycle_management.md",
-        "workflows/modules/task_phase_transition.md"
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "plan/workflows/modules/task_phase_transition.md"
       ],
       "notes": "Covers the deterministic scorer hardening, the authored route-trigger expansion, and the successor-boundary filter that keeps phase-transition handoff prompts on the intended route."
     },
@@ -70,8 +71,8 @@
       ],
       "related_paths": [
         "docs/planning/tasks/closed/archive/2026/03/13/align_workflow_lookup_metadata_and_boundary_guidance.md",
-        "workflows/modules/documentation_implementation_reconciliation.md",
-        "workflows/modules/task_phase_transition.md"
+        "core/workflows/modules/documentation_implementation_reconciliation.md",
+        "plan/workflows/modules/task_phase_transition.md"
       ],
       "notes": "Covers the workflow metadata trigger-term refresh and the workflow-query guidance that now reinforce the same boundaries exposed by route preview."
     },
@@ -82,12 +83,13 @@
         "req.workflow_route_boundary_discoverability_hardening.005"
       ],
       "validation_targets": [
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/documentation_implementation_reconciliation.md",
-        "workflows/modules/governed_artifact_reconciliation.md",
-        "workflows/modules/traceability_reconciliation.md",
-        "workflows/modules/task_lifecycle_management.md",
-        "workflows/modules/task_phase_transition.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/documentation_implementation_reconciliation.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
+        "plan/workflows/modules/task_lifecycle_management.md",
+        "plan/workflows/modules/task_phase_transition.md",
         "core/control_plane/registries/workflow_metadata_registry.json",
         "core/control_plane/indexes/routes/route_index.json",
         "core/control_plane/indexes/workflows/workflow_index.json",
@@ -107,7 +109,8 @@
       ],
       "validation_targets": [
         "core/python/",
-        "workflows/",
+        "core/workflows/",
+        "plan/workflows/",
         "docs/commands/core_python/",
         "docs/planning/",
         "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.json",

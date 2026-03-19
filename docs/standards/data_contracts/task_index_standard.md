@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.task_index"
 title: "Task Index Standard"
-summary: "This standard defines the role, structure, and boundary rules for machine-readable task indexes stored under core/control_plane/indexes/tasks/."
+summary: "This standard defines the role, structure, and boundary rules for the live plan task index stored under plan/.wt/indexes/."
 type: "standard"
 status: "active"
 tags:
@@ -10,53 +10,47 @@ tags:
   - "task_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T15:30:00Z"
+updated_at: "2026-03-18T14:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "core/control_plane/indexes/tasks/task_index.json"
+  - "plan/.wt/indexes/task_index.json"
 aliases:
   - "task index"
-  - "task board index"
+  - "live task index"
 ---
 
 # Task Index Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for machine-readable task indexes stored under `core/control_plane/indexes/tasks/`.
+This standard defines the role, structure, and boundary rules for the live plan task index stored under `plan/.wt/indexes/`.
 
 ## Purpose
-Provide a compact machine-readable lookup surface for local tasks so Python tooling, agents, and future sync workflows can query task state without parsing every Markdown task file directly.
+Provide one machine-readable lookup surface for live initiative-local task state so tooling, agents, and sync workflows can query current task execution without scanning every initiative directory directly.
 
 ## Scope
-- Applies to machine-readable task index artifacts stored under `core/control_plane/indexes/tasks/`.
-- Covers placement, entry shape, derived-source rules, and the relationship between task records, the human tracker, and the task index.
-- Does not replace the task Markdown records as the local task source of truth.
+- Applies to `plan/.wt/indexes/task_index.json`.
+- Covers entry shape, source-of-truth rules, and the relationship between initiative-local task state, human trackers, and task lookup.
+- Does not replace initiative-local `task.json` state as the live task source of truth.
 
 ## Use When
-- Adding or updating local task records.
-- Rebuilding task lookup data after task changes.
-- Reviewing whether task metadata belongs in the task index or only in task prose.
+- Adding or updating live initiative-local tasks.
+- Rebuilding task lookup data after live task changes.
+- Reviewing whether task metadata belongs in the task index or only in the initiative-local task record.
 
 ## Related Standards and Sources
 - [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this task-family standard narrows.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed-task entries can disappear from the current index because the full trace was purged.
-- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority boundary and companion human tracker expectations.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the retained-history boundary for docs-backed task Markdown.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): constrains trace-linked task expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): constrains schema and validation behavior for the artifact family.
 
 ## Guidance
-- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
-- Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.
-- Keep the task tracker and task index derived from those records.
-- Every task-index entry must point to an existing task document while the task's parent trace remains retained in the planning corpus.
-- Keep optional GitHub identifiers as foreign-key metadata only; do not make them the local task identity.
-- Keep task execution state in `task_status` and artifact lifecycle state in `status`.
-- Update the task index in the same change set whenever task records change materially.
-- Remove task-index entries instead of leaving dead `doc_path` values behind when an explicit trace purge removes the retained task package.
+- Keep the authoritative task content in initiative-local `task.json` records under `plan/**/.wt/tasks/**`.
+- Keep the human task tracker and task index derived from that live task state.
+- Every task-index entry must point to an existing initiative-local `task.json` path.
+- Keep live task execution state in the entry `status` field and use the canonical live task vocabulary.
+- Update the task index in the same change set whenever live task records change materially.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -72,65 +66,53 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 | Field | Requirement | Notes |
 |---|---|---|
 | `task_id` | Required | Stable machine-usable task identifier. |
+| `initiative_id` | Required | Stable live initiative identifier. |
+| `project_id` | Optional | Present when the task belongs to a project-scoped initiative. |
+| `trace_id` | Required | Shared initiative trace identifier. |
+| `initiative_title` | Required | Human-readable initiative title. |
 | `title` | Required | Stable task title. |
 | `summary` | Required | Short execution summary. |
-| `status` | Required | Task-record lifecycle state, usually `active`. |
-| `task_status` | Required | Current execution state such as `backlog` or `in_progress`. |
+| `status` | Required | Current live execution state such as `planned` or `completed`. |
 | `task_kind` | Required | Bounded task category such as `feature` or `bug`. |
 | `priority` | Required | Task priority. |
 | `owner` | Required | Responsible maintainer or role. |
-| `doc_path` | Required | Repository-relative task document path. |
+| `doc_path` | Required | Repository-relative live task record path ending in `task.json`. |
 | `updated_at` | Required | Last meaningful task update in UTC. |
-| `trace_id` | Optional | Shared traceability identifier when the task participates in a traced initiative. |
 | `blocked_by` | Optional | Task IDs that block the current task. |
 | `depends_on` | Optional | Task IDs the current task depends on. |
 | `related_ids` | Optional | Stable IDs for PRDs, decisions, designs, plans, or other governed surfaces. |
-| `applies_to` | Optional | Paths or concepts the task touches directly. |
-| `github_repository` | Optional | GitHub repository in `owner/name` form for the mirrored issue. |
-| `github_issue_number` | Optional | Future GitHub issue foreign key. |
-| `github_issue_node_id` | Optional | Future GitHub GraphQL issue foreign key. |
-| `github_project_owner` | Optional | GitHub project owner login for a synced project item. |
-| `github_project_owner_type` | Optional | `user` or `organization` for a synced project item. |
-| `github_project_number` | Optional | GitHub project number for a synced project item. |
-| `github_project_item_id` | Optional | Future GitHub project-item foreign key. |
-| `github_synced_at` | Optional | Last successful GitHub sync timestamp in UTC. |
-| `tags` | Optional | Small query labels. |
-| `notes` | Optional | Short operator note. |
 
 ## Process or Workflow
-1. Create or update one or more local task records under `docs/planning/tasks/`.
-2. Rebuild the task tracker and task index from those task records.
-3. Validate that every task-index entry points to an existing task record and that task-status values match the allowed vocabulary.
-4. Rebuild the traceability index when traced tasks changed.
+1. Create or update one or more initiative-local live task records.
+2. Rebuild `plan/.wt/indexes/task_index.json` from that live task state.
+3. Refresh companion human trackers and coordination surfaces in the same change set.
+4. Validate that every task-index entry points to an existing live task record and that status values match the allowed vocabulary.
 5. Validate the task index artifact against its published schema before treating the change as complete.
 
 ## Examples
-- A backlog task for GitHub sync should appear as a non-terminal task entry with `task_status` set to `backlog`.
-- A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/archive/` while its parent trace remains retained.
-- A purged trace should no longer leave orphaned closed-task entries in the current task index.
-- A task can carry a local `task_id` plus a future `github_issue_number` without changing its stable local identity.
+- A newly created task should appear with `status` set to `planned` and a `doc_path` beneath one initiative-local `.wt/tasks/` root.
+- A completed task should remain in the index with `status` set to `completed` and the same initiative-local `doc_path`.
+- A project-scoped task should carry both `initiative_id` and `project_id`.
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
+- `Operational Surfaces`: `plan/.wt/indexes/task_index.json`; `plan/initiatives/`; `plan/projects/`; `docs/planning/tasks/task_tracking.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:
-- Every `doc_path` should exist and point to a task document under `docs/planning/tasks/`.
-- A task-index entry under `docs/planning/tasks/open/` should not use `done` or `cancelled`.
-- A task-index entry under `docs/planning/tasks/closed/**` should use only `done` or `cancelled`.
+- Every `doc_path` should exist and point to a live initiative-local `task.json`.
+- Every entry `status` should use the canonical live task vocabulary.
 - `blocked_by` and `depends_on` references should point to existing task IDs in the current index.
 
 ## Change Control
 - In addition to the shared planning-index-family change-control contract:
-- Update this standard when the repository changes how tasks are indexed or queried.
-- Update the task tracker, traceability rendered surface, and coordination rendered surface in the same change set when task-index changes alter execution visibility materially.
+- Update this standard when the repository changes how live tasks are indexed or queried.
+- Update the task tracker, task-tracking standard, and coordination surfaces in the same change set when task-index changes alter execution visibility materially.
 
 ## References
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 - [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
-- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
-- [README.md](/core/control_plane/indexes/tasks/README.md)
+- [README.md](/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-15T15:30:00Z`
+- `2026-03-18T14:00:00Z`

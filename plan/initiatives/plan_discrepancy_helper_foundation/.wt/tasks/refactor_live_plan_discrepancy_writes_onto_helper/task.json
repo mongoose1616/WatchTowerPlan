@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_discrepancy_helper_foundation",
   "title": "Refactor live plan discrepancy writes onto helper",
   "summary": "Move initiative package and plan workspace discrepancy creation and reconciliation onto the reusable helper.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_discrepancy_helper_foundation.publish_discrepancy_helper_contracts"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

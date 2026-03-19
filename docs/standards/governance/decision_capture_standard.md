@@ -44,9 +44,9 @@ This standard defines how durable repository decisions should be recorded so rat
 - [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when closed decision traces can be removed after their durable policy survives elsewhere.
-- [decision_capture.md](/workflows/modules/decision_capture.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_generation.md](/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
-- [documentation_refresh.md](/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+- [decision_capture.md](/plan/workflows/modules/decision_capture.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/core/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/core/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 - [adr_guidance_reference.md](/docs/references/adr_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
@@ -102,7 +102,7 @@ This standard defines how durable repository decisions should be recorded so rat
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/decision_capture.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/documentation_generation.md`; `docs/planning/decisions/`
+- `Operational Surfaces`: `plan/workflows/modules/decision_capture.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `docs/planning/decisions/`
 
 ## Validation
 - The record captures one decision cleanly.
@@ -123,7 +123,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Update the decision-record document standard and decision index surfaces in the same change set when durable-decision storage or indexing rules change.
 
 ## References
-- [decision_capture.md](/workflows/modules/decision_capture.md)
+- [decision_capture.md](/plan/workflows/modules/decision_capture.md)
 - [adr_guidance_reference.md](/docs/references/adr_guidance_reference.md)
 - [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 - [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)

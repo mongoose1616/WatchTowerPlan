@@ -14,7 +14,8 @@ authority: "authoritative"
 applies_to:
   - "docs/planning/"
   - "core/control_plane/"
-  - "workflows/modules/"
+  - "core/workflows/modules/"
+  - "plan/workflows/modules/"
 aliases:
   - "product"
   - "product shape"

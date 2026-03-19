@@ -5,7 +5,7 @@
   "initiative_id": "initiative.watchtower_work_item_lifecycle",
   "title": "Add WatchTower work-item completion flow",
   "summary": "Add a CLI path that marks one local work item completed and records its closeout metadata.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

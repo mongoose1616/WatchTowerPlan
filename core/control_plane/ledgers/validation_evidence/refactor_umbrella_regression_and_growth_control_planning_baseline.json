@@ -88,8 +88,8 @@
       "title": "Workflow and standards guidance align on umbrella review discipline and closeout gating",
       "result": "passed",
       "subject_paths": [
-        "workflows/modules/repository_review.md",
-        "workflows/modules/initiative_closeout.md",
+        "core/workflows/modules/repository_review.md",
+        "plan/workflows/modules/initiative_closeout.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/commands/core_python/watchtower_core_closeout.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md"

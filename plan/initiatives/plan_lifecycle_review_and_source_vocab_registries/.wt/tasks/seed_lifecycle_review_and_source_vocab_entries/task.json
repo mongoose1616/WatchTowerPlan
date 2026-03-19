@@ -5,7 +5,7 @@
   "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
   "title": "Seed lifecycle review and source vocab entries",
   "summary": "Seed active registry entries aligned to current plan-workspace lifecycle stages, review states, and provenance categories.",
-  "status": "completed",
+  "status": "active",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
@@ -15,5 +15,6 @@
     "task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas"
   ],
   "blocker_task_ids": [],
-  "related_ids": []
+  "related_ids": [],
+  "task_status": "completed"
 }

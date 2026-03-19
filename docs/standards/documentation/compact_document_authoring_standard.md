@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.compact_document_authoring"
 title: "Compact Document Authoring Standard"
-summary: "This standard defines the repository rule that authored human-readable documents should default to the smallest useful shape that still preserves reviewability and machine-readable authority."
+summary: "This standard defines the repository rule that authored documents should stay concise without sacrificing the depth, structure, or markdown quality needed for real human review."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "compact_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T05:45:00Z"
+updated_at: "2026-03-18T14:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -17,10 +17,10 @@ authority: "authoritative"
 # Compact Document Authoring Standard
 
 ## Summary
-This standard defines the repository rule that authored human-readable documents should default to the smallest useful shape that still preserves reviewability and machine-readable authority.
+This standard defines the repository rule that authored human-readable documents should stay concise by default without flattening away the sections, tables, and historical detail humans need to review the repository effectively.
 
 ## Purpose
-Reduce low-value boilerplate in authored documents and generated human-readable outputs so maintainers and agents spend more context on real project decisions.
+Reduce low-value boilerplate in authored documents and generated human-readable outputs so maintainers and agents spend more context on real project decisions, while preserving high-signal rendered depth where humans materially benefit from it.
 
 ## Scope
 - Applies to repository-authored templates under `docs/templates/`.
@@ -36,8 +36,8 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 ## Related Standards and Sources
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): compact authoring must preserve governed front matter where the document family requires machine-readable metadata.
 - [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections, but their execution guidance should still prefer proportional repository output.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): human task tracking remains derived from authoritative task records and can therefore stay compact.
-- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains a compact start-here view rather than a second planning authority layer.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): human task tracking remains derived from authoritative task records, but still needs browseable active and terminal tables.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains derived, but should not collapse away terminal rows that humans actually need to inspect.
 
 ## Guidance
 - Default every authored template to the smallest section set that usually carries non-derivable value.
@@ -46,8 +46,10 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Prefer concise required sections over long placeholder inventories of optional sections.
 - Treat front matter as the primary machine surface for stable identity, lifecycle state, ownership, and timestamps when the document family uses governed front matter.
 - A body `Updated At` section is optional when the family already carries `updated_at` in front matter and `Updated At` in record metadata.
-- Generated human-readable trackers should prefer dense tables and brief zero-state text over placeholder `None` rows or repeated footer prose.
-- Generated human-readable planning trackers should default to active-first or actionable-first slices and route exhaustive closed history to explicit query paths or canonical family directories when those lookup surfaces already exist.
+- Generated human-readable trackers should prefer dense tables, clear headings, and brief zero-state text over placeholder `None` rows or repeated footer prose.
+- Summary-first entrypoints are acceptable only when richer companion trackers still expose the underlying terminal and historical rows that humans need for review.
+- Do not replace browseable terminal history with count-only summaries when the generated surface can render the rows directly.
+- Use tables and section structure deliberately so generated Markdown remains readable as a document, not just as a thin wrapper around machine output.
 - Remove sections, bullets, or notes that restate obvious context without helping review, routing, or execution.
 
 ## Operationalization
@@ -57,7 +59,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 ## Validation
 - Reviewers should reject templates that normalize low-value optional sections into every new document.
 - Reviewers should reject workflow guidance that encourages meta drafting records in repository artifacts when those records do not materially help the project.
-- Generated human-readable outputs should stay scan-first and should not become the dense machine authority surface.
+- Generated human-readable outputs should stay scan-first, but reviewers should reject output that becomes too shallow to support real human review.
 
 ## Change Control
 - Update this standard together with affected templates, family-specific documentation standards, workflow guidance, and sync renderers when compact-authoring rules change materially.
@@ -72,4 +74,4 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
 
 ## Updated At
-- `2026-03-15T05:45:00Z`
+- `2026-03-18T14:00:00Z`

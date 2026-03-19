@@ -39,8 +39,9 @@
         "req.workflow_routing_review_accuracy_alignment.004"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "workflows/ROUTING_TABLE.md",
+        "core/python/src/watchtower_core/query/routes.py",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
         "core/control_plane/indexes/routes/route_index.json",
         "core/python/tests/unit/test_route_index_sync.py"
       ],
@@ -58,8 +59,9 @@
         "req.workflow_routing_review_accuracy_alignment.005"
       ],
       "validation_targets": [
-        "workflows/ROUTING_TABLE.md",
-        "workflows/modules/foundations_context_review.md",
+        "core/workflows/ROUTING_TABLE.md",
+        "plan/workflows/ROUTING_TABLE.md",
+        "core/workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/control_plane/indexes/routes/route_index.json",
         "core/python/tests/unit/test_route_index_sync.py"
