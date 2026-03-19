@@ -17,14 +17,56 @@ def examples(*lines: str) -> str:
     return "Examples:\n" + "\n".join(f"  {line}" for line in lines)
 
 
-def add_common_validation_arguments(parser: argparse.ArgumentParser) -> None:
-    """Add shared validation command arguments."""
+HUMAN_JSON_CHOICES = ("human", "json")
+TRI_STATE_BOOL_CHOICES = ("true", "false")
+
+
+def add_human_json_format_argument(parser: argparse.ArgumentParser) -> None:
+    """Add one standard human-or-json output selector."""
     parser.add_argument(
         "--format",
-        choices=("human", "json"),
+        choices=HUMAN_JSON_CHOICES,
         default="human",
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
+
+
+def add_limit_argument(
+    parser: argparse.ArgumentParser,
+    *,
+    default: int = 10,
+) -> None:
+    """Add one standard bounded result-limit argument."""
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=default,
+        help="Maximum number of results to return.",
+    )
+
+
+def add_query_argument(
+    parser: argparse.ArgumentParser,
+    *,
+    help_text: str,
+) -> None:
+    """Add one free-text query selector."""
+    parser.add_argument("--query", help=help_text)
+
+
+def add_tri_state_bool_argument(
+    parser: argparse.ArgumentParser,
+    flag: str,
+    *,
+    help_text: str,
+) -> None:
+    """Add one tri-state boolean selector that accepts true/false or omission."""
+    parser.add_argument(flag, choices=TRI_STATE_BOOL_CHOICES, help=help_text)
+
+
+def add_common_validation_arguments(parser: argparse.ArgumentParser) -> None:
+    """Add shared validation command arguments."""
+    add_human_json_format_argument(parser)
     parser.add_argument(
         "--record-evidence",
         action="store_true",
@@ -100,9 +142,4 @@ def add_common_sync_arguments(parser: argparse.ArgumentParser) -> None:
         action="store_true",
         help="Include the generated document in json output for inspection or downstream tooling.",
     )
-    parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(parser)

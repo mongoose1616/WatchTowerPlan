@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown",
+  "slug": "restore_human_render_depth_and_markdown",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "title": "Restore human tracker depth and markdown structure",
+  "summary": "Recover rich human-facing rendered tracker output and Markdown structure using selective patterns from main.",
+  "status": "active",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T15:41:06Z",
+  "updated_at": "2026-03-18T23:42:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

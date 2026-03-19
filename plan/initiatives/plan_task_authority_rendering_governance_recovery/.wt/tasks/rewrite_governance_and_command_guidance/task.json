@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_task_authority_rendering_governance_recovery.rewrite_governance_and_command_guidance",
+  "slug": "rewrite_governance_and_command_guidance",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "title": "Rewrite governance and command guidance",
+  "summary": "Update AGENTS layers, workflow modules, standards, READMEs, and command docs to the live authority model and restored human renders.",
+  "status": "active",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T15:41:06Z",
+  "updated_at": "2026-03-18T23:43:00Z",
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

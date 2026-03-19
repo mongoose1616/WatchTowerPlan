@@ -24,7 +24,7 @@ CLOSEOUT_INITIATIVE_COMMAND_DOC = (
 )
 DESIGN_DIRECTORY = "docs/planning/design/features/"
 IMPLEMENTATION_PLAN_DIRECTORY = "docs/planning/design/implementation/"
-TASK_OPEN_DIRECTORY = "docs/planning/tasks/open/"
+TASK_OPEN_DIRECTORY = "plan/initiatives/"
 
 
 @dataclass(frozen=True, slots=True)
@@ -246,7 +246,7 @@ def _next_step(
                 ),
                 next_task_path,
             )
-        if any(entry.task_status in {"backlog", "ready"} for entry in active_tasks):
+        if any(entry.task_status in {"planned", "ready"} for entry in active_tasks):
             return (
                 (
                     "Start or continue the active task set and keep the "

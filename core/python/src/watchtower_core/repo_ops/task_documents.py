@@ -1,4 +1,4 @@
-"""Repo-specific helpers for governed local task documents."""
+"""Repo-specific helpers for retained historical task documents."""
 
 from __future__ import annotations
 
@@ -60,7 +60,7 @@ TASK_FRONT_MATTER_KEY_ORDER = (
 
 @dataclass(frozen=True, slots=True)
 class TaskDocument:
-    """Parsed and validated local task document."""
+    """Parsed and validated retained historical task document."""
 
     relative_path: str
     front_matter: dict[str, Any]
@@ -176,7 +176,7 @@ class TaskDocument:
 def iter_task_documents(
     loader: ControlPlaneLoader,
 ) -> tuple[TaskDocument, ...]:
-    """Return all governed task documents in deterministic path order."""
+    """Return all retained historical task documents in deterministic path order."""
     documents: list[TaskDocument] = []
     for path in (
         *_iter_task_markdown_paths(loader.repo_root / TASK_OPEN_ROOT, recursive=False),
@@ -211,7 +211,7 @@ def index_task_documents_by_id(
 
 
 def load_task_documents_by_id(loader: ControlPlaneLoader) -> dict[str, TaskDocument]:
-    """Load the current authored task corpus keyed by stable task ID."""
+    """Load the retained historical task corpus keyed by stable task ID."""
 
     return index_task_documents_by_id(iter_task_documents(loader))
 

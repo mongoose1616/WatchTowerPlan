@@ -5,7 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.repo_ops.plan_workspace import PlanTaskIndexEntry, PlanWorkspaceService
+from watchtower_core.repo_ops.plan_workspace import PLAN_PACK_SETTINGS_PATH
 from watchtower_core.repo_ops.query.common import query_score
 
 
@@ -31,6 +33,10 @@ class TaskQueryService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._plan_workspace = PlanWorkspaceService(loader)
+        self._terminology = TerminologyHelper.from_loader(
+            loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
         self._reverse_dependency_map: dict[str, tuple[PlanTaskIndexEntry, ...]] | None = None
 
     def search(self, params: TaskSearchParams) -> tuple[PlanTaskIndexEntry, ...]:
@@ -38,7 +44,11 @@ class TaskQueryService:
         entries = self._plan_workspace.load_task_entries()
         selected_task_ids = {task_id.casefold() for task_id in params.task_ids}
         trace_id = params.trace_id.casefold() if params.trace_id is not None else None
-        task_status = params.task_status.casefold() if params.task_status is not None else None
+        task_status = (
+            self._terminology.canonical_value("plan_task_status", params.task_status).casefold()
+            if params.task_status is not None
+            else None
+        )
         priority = params.priority.casefold() if params.priority is not None else None
         owner = params.owner.casefold() if params.owner is not None else None
         task_kind = params.task_kind.casefold() if params.task_kind is not None else None
@@ -59,7 +69,7 @@ class TaskQueryService:
                 continue
             if trace_id is not None and entry.trace_id.casefold() != trace_id:
                 continue
-            if task_status is not None and entry.status.casefold() != task_status:
+            if task_status is not None and entry.task_status.casefold() != task_status:
                 continue
             if priority is not None and entry.priority.casefold() != priority:
                 continue
@@ -89,6 +99,7 @@ class TaskQueryService:
                     entry.title,
                     entry.summary,
                     entry.status,
+                    entry.task_status,
                     entry.priority,
                     entry.owner,
                     entry.task_kind,

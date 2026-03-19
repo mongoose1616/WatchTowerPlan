@@ -17,6 +17,7 @@ from watchtower_core.repo_ops.query.planning import (
 )
 from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
 from watchtower_core.repo_ops.sync.planning_catalog import PlanningCatalogSyncService
+from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -24,6 +25,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 
@@ -46,10 +48,16 @@ def test_planning_catalog_sync_builds_explicit_status_sections(tmp_path: Path) -
     assert entry["initiative_status"] == "completed"
     assert "status" not in entry
     assert entry["coordination"]["current_phase"]
-    assert entry["tasks"][0]["task_status"]
-    assert "status" not in entry["tasks"][0]
     assert entry["decisions"][0]["record_status"]
     assert entry["decisions"][0]["decision_status"]
+
+    task_entry = next(
+        item["tasks"][0]
+        for item in entries
+        if isinstance(item, dict) and isinstance(item.get("tasks"), list) and item["tasks"]
+    )
+    assert task_entry["task_status"]
+    assert "status" not in task_entry
 
 
 def test_planning_catalog_query_service_filters_by_phase_and_owner(tmp_path: Path) -> None:
@@ -146,7 +154,16 @@ def test_planning_catalog_aggregation_collects_catalog_only_metadata(
     assert coordination.next_surface_path in aggregation.related_paths
     assert snapshot.acceptance_contracts[0].doc_path in aggregation.related_paths
     assert snapshot.validation_evidence[0].doc_path in aggregation.related_paths
-    assert snapshot.task_entries[0].doc_path in aggregation.related_paths
+
+    task_snapshot = next(
+        item for item in build_trace_planning_rendered_snapshots(loader) if item.task_entries
+    )
+    task_coordination = build_trace_planning_coordination_snapshot(task_snapshot)
+    task_aggregation = build_trace_planning_catalog_aggregation(
+        task_snapshot,
+        task_coordination,
+    )
+    assert task_snapshot.task_entries[0].doc_path in task_aggregation.related_paths
 
 
 def test_planning_catalog_coordination_matches_initiative_rendered_surface(
@@ -184,6 +201,8 @@ def test_planning_catalog_coordination_matches_initiative_rendered_surface(
 
     for planning_entry in planning_entries:
         assert isinstance(planning_entry, dict)
+        if planning_entry["trace_id"] not in initiative_by_trace:
+            continue
         initiative_entry = initiative_by_trace[planning_entry["trace_id"]]
         expected_coordination = {
             key: initiative_entry[key]

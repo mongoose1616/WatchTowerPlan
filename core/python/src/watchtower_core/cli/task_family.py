@@ -5,7 +5,11 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
 
 
 def register_task_family(subparsers: argparse._SubParsersAction) -> None:
@@ -24,16 +28,16 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
 
     task_parser = subparsers.add_parser(
         "task",
-        help="Create, update, and transition governed local task records.",
+        help="Create, update, and transition initiative-local live task records.",
         description=dedent(
             """
-            Create, update, and transition governed local task records while
-            keeping task documents authoritative and refreshing the derived
-            coordination slice on write.
+            Create, update, and transition initiative-local live task records
+            under `plan/**/.wt/tasks/**` while refreshing the derived
+            plan-workspace and coordination surfaces on write.
 
             These commands are dry-run by default. Add `--write` to persist the
-            task change and rebuild the dependent task, traceability,
-            initiative, and coordination surfaces.
+            task change and rebuild the dependent live indexes, rendered views,
+            and coordination surfaces.
             """
         ).strip(),
         epilog=examples(
@@ -44,7 +48,7 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
             "uv run watchtower-core task update --task-id task.example.001 "
             "--task-status in_progress --owner implementation_engineer --format json",
             "uv run watchtower-core task transition --task-id task.example.001 "
-            "--task-status done --write",
+            "--task-status completed --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -57,15 +61,15 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
 
     create_parser = task_subparsers.add_parser(
         "create",
-        help="Create one governed local task document.",
+        help="Create one initiative-local live task record.",
         description=dedent(
             """
-            Create one governed local task document from compact structured
-            inputs.
+            Create one initiative-local live task record from compact
+            structured inputs.
 
-            The task document stays authoritative. On write, the coordination
-            slice is refreshed so task, traceability, initiative, and
-            coordination views stay aligned.
+            The live task state stays authoritative. On write, the plan
+            workspace and coordination surfaces are refreshed so task,
+            readiness, initiative, and overview views stay aligned.
             """
         ).strip(),
         epilog=examples(
@@ -106,7 +110,7 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
     create_parser.add_argument(
         "--task-status",
         choices=TASK_STATUS_CHOICES,
-        default="backlog",
+        default="planned",
         help="Initial task execution status.",
     )
     create_parser.add_argument(
@@ -156,26 +160,21 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
     create_parser.add_argument(
         "--write",
         action="store_true",
-        help="Write the task document and refresh the coordination slice.",
+        help="Write the live task record and refresh the derived plan surfaces.",
     )
-    create_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(create_parser)
     create_parser.set_defaults(handler=_run_task_create)
 
     update_parser = task_subparsers.add_parser(
         "update",
-        help="Apply structured field updates to one governed task document.",
+        help="Apply structured field updates to one live task record.",
         description=dedent(
             """
-            Update one governed task document without hand-editing front matter.
+            Update one initiative-local live task record without hand-editing
+            the underlying task JSON.
 
             Replacement list flags overwrite the current values. Use the
-            matching clear flag when you want to remove a list field or
-            `trace_id`.
+            matching clear flag when you want to remove a list field.
             """
         ).strip(),
         epilog=examples(
@@ -189,12 +188,6 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
         formatter_class=HelpFormatter,
     )
     update_parser.add_argument("--task-id", required=True, help="Stable task identifier.")
-    update_parser.add_argument("--trace-id", help="Replacement trace identifier.")
-    update_parser.add_argument(
-        "--clear-trace-id",
-        action="store_true",
-        help="Remove the current trace identifier.",
-    )
     update_parser.add_argument("--title", help="Replacement task title.")
     update_parser.add_argument("--summary", help="Replacement task summary.")
     update_parser.add_argument(
@@ -270,24 +263,15 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
         help="Remove the current blocker list.",
     )
     update_parser.add_argument(
-        "--file-stem",
-        help="Optional replacement filename stem. The task ID stays authoritative.",
-    )
-    update_parser.add_argument(
         "--updated-at",
         help="Optional explicit RFC 3339 UTC timestamp. Defaults to now when changes occur.",
     )
     update_parser.add_argument(
         "--write",
         action="store_true",
-        help="Write the updated task document and refresh the coordination slice.",
+        help="Write the updated live task record and refresh the derived plan surfaces.",
     )
-    update_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(update_parser)
     update_parser.set_defaults(handler=_run_task_update)
 
     transition_parser = task_subparsers.add_parser(
@@ -296,15 +280,15 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
         description=dedent(
             """
             Apply a bounded handoff-style transition to one task by updating the
-            task status, owner, or blocker state while preserving task-document
-            authority.
+            task status, owner, or blocker state while preserving
+            initiative-local live task authority.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core task transition --task-id task.example.001 "
             "--task-status in_review --next-owner validation_engineer",
             "uv run watchtower-core task transition --task-id task.example.001 "
-            "--task-status done --clear-blocked-by --clear-depends-on --write",
+            "--task-status completed --clear-blocked-by --clear-depends-on --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -339,22 +323,13 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
         help="Remove the current blocker list.",
     )
     transition_parser.add_argument(
-        "--file-stem",
-        help="Optional replacement filename stem when the transition also moves the file.",
-    )
-    transition_parser.add_argument(
         "--updated-at",
         help="Optional explicit RFC 3339 UTC timestamp. Defaults to now when changes occur.",
     )
     transition_parser.add_argument(
         "--write",
         action="store_true",
-        help="Write the transitioned task document and refresh the coordination slice.",
+        help="Write the transitioned live task record and refresh the derived plan surfaces.",
     )
-    transition_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(transition_parser)
     transition_parser.set_defaults(handler=_run_task_transition)

@@ -6,8 +6,12 @@ from shutil import copytree
 
 import pytest
 
-from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
+from tests.integration.fixture_repo_support import (
+    materialize_governed_applies_to_targets,
+    materialize_plan_runtime_pack,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.planning_scaffolds import (
     PlanBootstrapParams,
     PlanningScaffoldService,
@@ -22,6 +26,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "docs" / "planning", repo_root / "docs" / "planning")
+    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
     (repo_root / "core" / "python").mkdir(parents=True)
     materialize_governed_applies_to_targets(repo_root)
     return repo_root
@@ -95,7 +100,10 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
             "unit_test_bootstrap_planning_baseline.json"
         )
     ).exists()
-    assert (repo_root / "docs/planning/tasks/open/unit_test_bootstrap_bootstrap.md").exists()
+    assert (
+        repo_root
+        / "plan/initiatives/unit_test_bootstrap/.wt/tasks/unit_test_bootstrap_bootstrap/task.json"
+    ).exists()
 
     feature_design_text = (
         repo_root / "docs/planning/design/features/unit_test_bootstrap.md"
@@ -114,9 +122,7 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
     assert "## Applied References and Implications" in decision_text
 
     initiative_index = json.loads(
-        (repo_root / "core/control_plane/indexes/initiatives/initiative_index.json").read_text(
-            encoding="utf-8"
-        )
+        (repo_root / "plan/.wt/indexes/initiative_index.json").read_text(encoding="utf-8")
     )
     assert any(
         entry["trace_id"] == "trace.unit_test_bootstrap"
@@ -172,7 +178,7 @@ def test_plan_scaffold_write_refreshes_coordination_for_existing_trace(tmp_path:
     trace_entry = loader.load_traceability_index().get(trace_id)
     assert decision_id in trace_entry.decision_ids
 
-    initiative_entry = loader.load_initiative_index().get(trace_id)
+    initiative_entry = PlanWorkspaceService(loader).load_initiative_index().get(trace_id)
     assert decision_id in initiative_entry.decision_ids
     assert (
         "docs/planning/decisions/unit_test_scaffold_existing_followup_decision.md"
@@ -209,7 +215,6 @@ def test_plan_bootstrap_canonicalizes_directory_applies_to_paths(tmp_path: Path)
         "docs/planning/design/features/unit_test_bootstrap_applies_to.md",
         "docs/planning/design/implementation/unit_test_bootstrap_applies_to.md",
         "docs/planning/decisions/unit_test_bootstrap_applies_to_direction.md",
-        "docs/planning/tasks/open/unit_test_bootstrap_applies_to_bootstrap.md",
     ):
         written_text = (repo_root / doc_path).read_text(encoding="utf-8")
         assert "- docs/planning/" in written_text

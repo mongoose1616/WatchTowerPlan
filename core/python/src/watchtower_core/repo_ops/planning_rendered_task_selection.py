@@ -6,12 +6,12 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.models import InitiativeActiveTaskSummary, TaskIndexEntry
 
-TERMINAL_TASK_STATUSES = {"done", "cancelled"}
+TERMINAL_TASK_STATUSES = {"completed", "cancelled"}
 TASK_STATUS_ORDER = {
     "ready": 0,
     "in_progress": 1,
     "in_review": 2,
-    "backlog": 3,
+    "planned": 3,
     "blocked": 4,
 }
 PRIORITY_ORDER = {

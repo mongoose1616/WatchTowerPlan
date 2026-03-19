@@ -45,18 +45,39 @@
           ]
         },
         {
-          "section_id": "terminal_history",
-          "title": "Terminal History",
-          "kind": "bullet_summary",
-          "source_key": "terminal_counts",
+          "section_id": "terminal_prds",
+          "title": "Terminal PRDs",
+          "kind": "table",
+          "source_key": "terminal_prds",
           "empty_message": "_No terminal PRD traces._",
-          "label_field": "label",
-          "count_field": "count"
-        },
-        {
-          "section_id": "terminal_history_notes",
-          "kind": "lines",
-          "source_key": "terminal_history_notes"
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "PRD",
+              "field": "prd_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Linked Designs and Plans",
+              "field": "linked_designs_and_plans",
+              "formatter": "markdown"
+            }
+          ]
         },
         {
           "section_id": "updated_at",
@@ -106,18 +127,39 @@
           ]
         },
         {
-          "section_id": "terminal_history",
-          "title": "Terminal History",
-          "kind": "bullet_summary",
-          "source_key": "terminal_counts",
+          "section_id": "terminal_decisions",
+          "title": "Terminal Decisions",
+          "kind": "table",
+          "source_key": "terminal_decisions",
           "empty_message": "_No terminal decision traces._",
-          "label_field": "label",
-          "count_field": "count"
-        },
-        {
-          "section_id": "terminal_history_notes",
-          "kind": "lines",
-          "source_key": "terminal_history_notes"
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Decision",
+              "field": "decision_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Outcome",
+              "field": "decision_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            }
+          ]
         },
         {
           "section_id": "updated_at",
@@ -214,18 +256,86 @@
           ]
         },
         {
-          "section_id": "terminal_history",
-          "title": "Terminal History",
-          "kind": "bullet_summary",
-          "source_key": "terminal_counts",
-          "empty_message": "_No terminal design traces._",
-          "label_field": "label",
-          "count_field": "count"
+          "section_id": "terminal_feature_designs",
+          "title": "Terminal Feature Designs",
+          "kind": "table",
+          "source_key": "terminal_feature_designs",
+          "empty_message": "_No terminal feature designs._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Design",
+              "field": "document_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Linked Plans",
+              "field": "linked_plans",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Notes",
+              "field": "notes",
+              "formatter": "plain",
+              "enabled_when_key": "include_feature_design_notes"
+            }
+          ]
         },
         {
-          "section_id": "terminal_history_notes",
-          "kind": "lines",
-          "source_key": "terminal_history_notes"
+          "section_id": "terminal_implementation_plans",
+          "title": "Terminal Implementation Plans",
+          "kind": "table",
+          "source_key": "terminal_implementation_plans",
+          "empty_message": "_No terminal implementation plans._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Plan",
+              "field": "document_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Sources",
+              "field": "sources",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Notes",
+              "field": "notes",
+              "formatter": "plain",
+              "enabled_when_key": "include_implementation_plan_notes"
+            }
+          ]
         },
         {
           "section_id": "updated_at",
@@ -296,16 +406,11 @@
           "count_field": "count"
         },
         {
-          "section_id": "closed_task_notes",
-          "kind": "lines",
-          "source_key": "closed_task_notes"
-        },
-        {
-          "section_id": "recently_closed_tasks",
-          "title": "Recently Closed Tasks",
+          "section_id": "closed_tasks",
+          "title": "Closed Tasks",
           "kind": "table",
-          "source_key": "recently_closed_tasks",
-          "empty_message": "_No recently closed tasks._",
+          "source_key": "closed_tasks",
+          "empty_message": "_No closed tasks._",
           "columns": [
             {
               "header": "Task",
@@ -372,6 +477,11 @@
               "formatter": "code"
             },
             {
+              "header": "Title",
+              "field": "title",
+              "formatter": "plain"
+            },
+            {
               "header": "Phase",
               "field": "current_phase",
               "formatter": "code"
@@ -401,6 +511,11 @@
               "label_field": "next_label"
             },
             {
+              "header": "Active Tasks",
+              "field": "active_tasks",
+              "formatter": "markdown"
+            },
+            {
               "header": "Action",
               "field": "next_action",
               "formatter": "plain"
@@ -418,6 +533,11 @@
               "header": "Trace ID",
               "field": "trace_id",
               "formatter": "code"
+            },
+            {
+              "header": "Title",
+              "field": "title",
+              "formatter": "plain"
             },
             {
               "header": "Status",
@@ -628,24 +748,87 @@
       "output_path": "plan/initiatives/{initiative_slug}/plan.md",
       "sections": [
         {
-          "section_id": "summary",
+          "section_id": "initiative_identity",
+          "title": "Initiative Identity",
           "kind": "lines",
-          "source_key": "summary"
+          "source_key": "initiative_identity"
         },
         {
-          "section_id": "identity",
+          "section_id": "scope_and_non_goals",
+          "title": "Scope and Non-Goals",
           "kind": "lines",
-          "source_key": "identity"
+          "source_key": "scope_and_non_goals"
         },
         {
-          "section_id": "task_plan",
+          "section_id": "objectives",
+          "title": "Objectives",
           "kind": "lines",
-          "source_key": "task_plan"
+          "source_key": "objectives"
         },
         {
-          "section_id": "deferred_items",
+          "section_id": "planned_slices_or_workstreams",
+          "title": "Planned Slices or Workstreams",
+          "kind": "table",
+          "source_key": "planned_slices_or_workstreams",
+          "empty_message": "_No planned slices or tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_planned_slice_blocked_by"
+            },
+            {
+              "header": "Depends On",
+              "field": "depends_on",
+              "formatter": "plain",
+              "enabled_when_key": "include_planned_slice_depends_on"
+            }
+          ]
+        },
+        {
+          "section_id": "dependencies_and_risks",
+          "title": "Dependencies and Risks",
           "kind": "lines",
-          "source_key": "deferred_items"
+          "source_key": "dependencies_and_risks"
+        },
+        {
+          "section_id": "validation_or_completion_gates",
+          "title": "Validation or Completion Gates",
+          "kind": "lines",
+          "source_key": "validation_or_completion_gates"
+        },
+        {
+          "section_id": "linked_outputs",
+          "title": "Linked Outputs",
+          "kind": "lines",
+          "source_key": "linked_outputs"
         }
       ],
       "notes": "Initiative-local rendered plan surface for both pack-wide and project-scoped initiative roots."
@@ -656,19 +839,104 @@
       "output_path": "plan/initiatives/{initiative_slug}/progress.md",
       "sections": [
         {
-          "section_id": "gate_state",
+          "section_id": "current_status",
+          "title": "Current Status",
           "kind": "lines",
-          "source_key": "gate_state"
+          "source_key": "current_status"
         },
         {
-          "section_id": "task_status",
-          "kind": "lines",
-          "source_key": "task_status"
+          "section_id": "recent_events_or_changes",
+          "title": "Recent Events or Changes",
+          "kind": "table",
+          "source_key": "recent_events_or_changes",
+          "empty_message": "_No recent initiative events._",
+          "columns": [
+            {
+              "header": "Recorded At",
+              "field": "recorded_at",
+              "formatter": "code"
+            },
+            {
+              "header": "Event",
+              "field": "event_type",
+              "formatter": "code"
+            },
+            {
+              "header": "Actor",
+              "field": "actor_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            }
+          ]
         },
         {
-          "section_id": "discrepancies",
+          "section_id": "active_tasks",
+          "title": "Active Tasks",
+          "kind": "table",
+          "source_key": "active_tasks",
+          "empty_message": "_No active tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_active_task_blocked_by"
+            },
+            {
+              "header": "Depends On",
+              "field": "depends_on",
+              "formatter": "plain",
+              "enabled_when_key": "include_active_task_depends_on"
+            }
+          ]
+        },
+        {
+          "section_id": "blockers",
+          "title": "Blockers",
           "kind": "lines",
-          "source_key": "discrepancies"
+          "source_key": "blockers"
+        },
+        {
+          "section_id": "next_actions",
+          "title": "Next Actions",
+          "kind": "lines",
+          "source_key": "next_actions"
+        },
+        {
+          "section_id": "evidence_or_validation_state",
+          "title": "Evidence or Validation State",
+          "kind": "lines",
+          "source_key": "evidence_or_validation_state"
         }
       ],
       "notes": "Initiative-local rendered progress surface for both pack-wide and project-scoped initiative roots."
@@ -679,24 +947,40 @@
       "output_path": "plan/initiatives/{initiative_slug}/summary.md",
       "sections": [
         {
-          "section_id": "lifecycle",
+          "section_id": "outcome_summary",
+          "title": "Outcome Summary",
           "kind": "lines",
-          "source_key": "lifecycle"
+          "source_key": "outcome_summary"
         },
         {
-          "section_id": "evidence",
+          "section_id": "delivered_outputs",
+          "title": "Delivered Outputs",
           "kind": "lines",
-          "source_key": "evidence"
+          "source_key": "delivered_outputs"
         },
         {
-          "section_id": "closeout",
+          "section_id": "promoted_guidance",
+          "title": "Promoted Guidance",
           "kind": "lines",
-          "source_key": "closeout"
+          "source_key": "promoted_guidance"
         },
         {
-          "section_id": "promotion",
+          "section_id": "evidence_references",
+          "title": "Evidence References",
           "kind": "lines",
-          "source_key": "promotion"
+          "source_key": "evidence_references"
+        },
+        {
+          "section_id": "unresolved_follow_ups",
+          "title": "Unresolved Follow-Ups",
+          "kind": "lines",
+          "source_key": "unresolved_follow_ups"
+        },
+        {
+          "section_id": "closeout_state",
+          "title": "Closeout State",
+          "kind": "lines",
+          "source_key": "closeout_state"
         }
       ],
       "notes": "Initiative-local rendered summary surface for both pack-wide and project-scoped initiative roots."

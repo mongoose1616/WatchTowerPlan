@@ -147,6 +147,102 @@ class ValidationEvidenceArtifact:
 
 
 @dataclass(frozen=True, slots=True)
+class EvidenceBundleEntry:
+    """Evidence-bundle entry describing one expected validation or review output."""
+
+    entry_id: str
+    acceptance_label: str
+    validation_type: str
+    owner: str
+    target_phase: str
+    expected_output_paths: tuple[str, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> EvidenceBundleEntry:
+        return cls(
+            entry_id=document["entry_id"],
+            acceptance_label=document["acceptance_label"],
+            validation_type=document["validation_type"],
+            owner=document["owner"],
+            target_phase=document["target_phase"],
+            expected_output_paths=tuple(document["expected_output_paths"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class EvidenceBundleArtifact:
+    """Typed evidence-bundle artifact for initiative-local validation bundles."""
+
+    schema_id: str
+    evidence_id: str
+    initiative_id: str
+    trace_id: str
+    title: str
+    status: str
+    updated_at: str
+    entries: tuple[EvidenceBundleEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> EvidenceBundleArtifact:
+        return cls(
+            schema_id=document["$schema"],
+            evidence_id=document["id"],
+            initiative_id=document["initiative_id"],
+            trace_id=document["trace_id"],
+            title=document["title"],
+            status=document["status"],
+            updated_at=document["updated_at"],
+            entries=tuple(
+                EvidenceBundleEntry.from_document(entry) for entry in document["entries"]
+            ),
+        )
+
+    @property
+    def entry_count(self) -> int:
+        """Return the number of bundle entries."""
+
+        return len(self.entries)
+
+    @property
+    def acceptance_labels(self) -> tuple[str, ...]:
+        """Return the unique acceptance labels covered by the bundle."""
+
+        return tuple(sorted({entry.acceptance_label for entry in self.entries}))
+
+    @property
+    def validation_types(self) -> tuple[str, ...]:
+        """Return the unique validation or review types covered by the bundle."""
+
+        return tuple(sorted({entry.validation_type for entry in self.entries}))
+
+    @property
+    def owners(self) -> tuple[str, ...]:
+        """Return the unique owners responsible for the bundle entries."""
+
+        return tuple(sorted({entry.owner for entry in self.entries}))
+
+    @property
+    def target_phases(self) -> tuple[str, ...]:
+        """Return the unique target phases covered by the bundle."""
+
+        return tuple(sorted({entry.target_phase for entry in self.entries}))
+
+    @property
+    def expected_output_paths(self) -> tuple[str, ...]:
+        """Return the unique expected output paths referenced by the bundle."""
+
+        return tuple(
+            sorted(
+                {
+                    path
+                    for entry in self.entries
+                    for path in entry.expected_output_paths
+                }
+            )
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class TracePurgeRecord:
     """Typed trace-purge ledger artifact."""
 

@@ -20,6 +20,8 @@ from watchtower_core.control_plane.models import (
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
+from watchtower_core.repo_ops.plan_task_state import task_event_directory
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.sync.all import AllSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
@@ -28,7 +30,7 @@ TRACE_PURGE_RECORD_SCHEMA_ID = "urn:watchtower:schema:artifacts:ledgers:trace-pu
 TERMINAL_INITIATIVE_STATUSES = frozenset(
     {"completed", "superseded", "cancelled", "abandoned"}
 )
-TERMINAL_TASK_STATUSES = frozenset({"done", "cancelled"})
+TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
 TRACE_LOCAL_ROOTS = (
     "docs/planning/prds/",
     "docs/planning/decisions/",
@@ -38,6 +40,11 @@ TRACE_LOCAL_ROOTS = (
     "docs/planning/tasks/closed/archive/",
     "core/control_plane/contracts/acceptance/",
     "core/control_plane/ledgers/validation_evidence/",
+)
+TRACE_PACKAGE_PRUNE_ROOTS = (
+    *TRACE_LOCAL_ROOTS,
+    "plan/initiatives/",
+    "plan/projects/",
 )
 DERIVED_REFERENCE_CARRIER_ROOTS = ("core/control_plane/indexes/",)
 DERIVED_REFERENCE_CARRIER_PATHS = frozenset(
@@ -232,10 +239,10 @@ class TracePurgeService:
             raise ValueError(f"Unknown trace ID: {trace_id}") from exc
 
     def _open_task_ids(self, trace_id: str) -> tuple[str, ...]:
-        task_index = self._loader.load_task_index()
+        task_index = PlanWorkspaceService(self._loader).load_task_entries()
         candidate_entries = {
             entry.task_id: entry
-            for entry in task_index.entries
+            for entry in task_index
             if entry.trace_id == trace_id
         }
         if not candidate_entries:
@@ -269,10 +276,21 @@ class TracePurgeService:
                 trace_id,
             )
         )
-        package_paths.update(
-            entry.doc_path
-            for entry in self._entries_for_trace(self._loader.load_task_index().entries, trace_id)
+        task_entries = tuple(
+            entry
+            for entry in PlanWorkspaceService(self._loader).load_task_entries()
+            if entry.trace_id == trace_id
         )
+        package_paths.update(entry.doc_path for entry in task_entries)
+        for entry in task_entries:
+            event_root = self._loader.resolve_path(task_event_directory(entry.doc_path))
+            if not event_root.exists():
+                continue
+            package_paths.update(
+                path.relative_to(self._repo_root).as_posix()
+                for path in sorted(event_root.glob("*.json"))
+                if path.is_file()
+            )
         package_paths.update(
             artifact.doc_path
             for artifact in self._entries_for_trace(
@@ -330,9 +348,10 @@ class TracePurgeService:
                 add(relative_path)
         else:
             for relative_path in trace_entry.related_paths:
-                if _is_trace_local_path(relative_path):
+                normalized = _normalize_repo_relative_path(relative_path)
+                if normalized in package_paths or _is_trace_local_path(normalized):
                     continue
-                add(relative_path)
+                add(normalized)
 
         return tuple(sorted(resolved))
 
@@ -407,7 +426,7 @@ class TracePurgeService:
 
     def _prune_empty_ancestors(self, path: Path) -> None:
         prune_roots = tuple(
-            self._loader.resolve_path(root.rstrip("/")) for root in TRACE_LOCAL_ROOTS
+            self._loader.resolve_path(root.rstrip("/")) for root in TRACE_PACKAGE_PRUNE_ROOTS
         )
         current = path.parent
         while any(current != root and _is_within(current, root) for root in prune_roots):

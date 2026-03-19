@@ -6,7 +6,6 @@ from os import environ
 from typing import Protocol
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.integrations.github import (
     GitHubApiError,
     GitHubClient,
@@ -15,18 +14,19 @@ from watchtower_core.integrations.github import (
     GitHubProjectContext,
 )
 from watchtower_core.repo_ops.sync.task_index import TaskIndexSyncService
-from watchtower_core.repo_ops.sync.task_tracking import TaskTrackingSyncService
-from watchtower_core.repo_ops.sync.traceability import TraceabilityIndexSyncService
-from watchtower_core.repo_ops.task_documents import TaskDocument, load_task_document
+from watchtower_core.repo_ops.plan_task_state import PlanTaskStateDocument, load_task_document
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
+from watchtower_core.repo_ops.query.tasks import TaskQueryService, TaskSearchParams
+from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.utils import utc_timestamp_now
 
 PROJECT_STATUS_BY_TASK_STATUS = {
-    "backlog": "Backlog",
+    "planned": "Planned",
     "ready": "Ready",
     "in_progress": "In Progress",
     "blocked": "Blocked",
     "in_review": "In Review",
-    "done": "Done",
+    "completed": "Completed",
     "cancelled": "Cancelled",
 }
 
@@ -88,11 +88,23 @@ class GitHubTaskSyncParamsLike(Protocol):
 def select_task_documents(
     loader: ControlPlaneLoader,
     params: GitHubTaskSyncParamsLike,
-) -> tuple[TaskDocument, ...]:
+) -> tuple[PlanTaskStateDocument, ...]:
     """Resolve the filtered local task set for one sync run."""
 
-    selected_entries = _select_task_index_entries(loader, params)
-    selected_documents: list[TaskDocument] = []
+    selected_entries = TaskQueryService(loader).search(
+        TaskSearchParams(
+            task_ids=params.task_ids,
+            trace_id=params.trace_id,
+            task_status=params.task_status,
+            priority=params.priority,
+            owner=params.owner,
+            task_kind=params.task_kind,
+            blocked_only=params.blocked_only,
+            blocked_by_task_id=params.blocked_by_task_id,
+            depends_on_task_id=params.depends_on_task_id,
+        )
+    )
+    selected_documents: list[PlanTaskStateDocument] = []
     seen_task_ids: dict[str, str] = {}
     for entry in selected_entries:
         existing_path = seen_task_ids.get(entry.task_id)
@@ -106,63 +118,7 @@ def select_task_documents(
     return tuple(selected_documents)
 
 
-def _select_task_index_entries(
-    loader: ControlPlaneLoader,
-    params: GitHubTaskSyncParamsLike,
-) -> tuple[TaskIndexEntry, ...]:
-    """Resolve matching task-index entries for one GitHub sync run."""
-
-    entries = loader.load_task_index().entries
-    selected_task_ids = {task_id.casefold() for task_id in params.task_ids}
-    trace_id = params.trace_id.casefold() if params.trace_id is not None else None
-    task_status = params.task_status.casefold() if params.task_status is not None else None
-    priority = params.priority.casefold() if params.priority is not None else None
-    owner = params.owner.casefold() if params.owner is not None else None
-    task_kind = params.task_kind.casefold() if params.task_kind is not None else None
-    blocked_by_task_id = (
-        params.blocked_by_task_id.casefold()
-        if params.blocked_by_task_id is not None
-        else None
-    )
-    depends_on_task_id = (
-        params.depends_on_task_id.casefold()
-        if params.depends_on_task_id is not None
-        else None
-    )
-
-    matches: list[TaskIndexEntry] = []
-    for entry in entries:
-        if selected_task_ids and entry.task_id.casefold() not in selected_task_ids:
-            continue
-        if trace_id is not None and (
-            entry.trace_id is None or entry.trace_id.casefold() != trace_id
-        ):
-            continue
-        if task_status is not None and entry.task_status.casefold() != task_status:
-            continue
-        if priority is not None and entry.priority.casefold() != priority:
-            continue
-        if owner is not None and entry.owner.casefold() != owner:
-            continue
-        if task_kind is not None and entry.task_kind.casefold() != task_kind:
-            continue
-
-        blocked_by_casefold = {value.casefold() for value in entry.blocked_by}
-        depends_on_casefold = {value.casefold() for value in entry.depends_on}
-        if params.blocked_only and not entry.blocked_by:
-            continue
-        if blocked_by_task_id is not None and blocked_by_task_id not in blocked_by_casefold:
-            continue
-        if depends_on_task_id is not None and depends_on_task_id not in depends_on_casefold:
-            continue
-
-        matches.append(entry)
-
-    matches.sort(key=lambda entry: entry.task_id)
-    return tuple(matches)
-
-
-def resolve_repository(task: TaskDocument, params: GitHubTaskSyncParamsLike) -> str | None:
+def resolve_repository(task: PlanTaskStateDocument, params: GitHubTaskSyncParamsLike) -> str | None:
     """Resolve the target repository from params, task metadata, or env."""
 
     if params.repository is not None:
@@ -176,7 +132,7 @@ def resolve_repository(task: TaskDocument, params: GitHubTaskSyncParamsLike) -> 
 
 
 def validate_existing_bindings(
-    task: TaskDocument,
+    task: PlanTaskStateDocument,
     params: GitHubTaskSyncParamsLike,
     repository: str,
 ) -> None:
@@ -235,7 +191,7 @@ def load_project_context(
 
 def sync_issue(
     client: GitHubClient,
-    task: TaskDocument,
+    task: PlanTaskStateDocument,
     *,
     repository: str,
     labels: tuple[GitHubLabelSpec, ...],
@@ -269,7 +225,7 @@ def sync_issue(
 
 def sync_project(
     client: GitHubClient,
-    task: TaskDocument,
+    task: PlanTaskStateDocument,
     *,
     issue_node_id: str,
     project_context: GitHubProjectContext | None,
@@ -293,22 +249,24 @@ def sync_project(
     return item_id
 
 
-def task_front_matter_updates(
+def task_state_updates(
     *,
-    task: TaskDocument,
+    task: PlanTaskStateDocument,
     repository: str,
     issue_number: int,
     issue_node_id: str,
     project_context: GitHubProjectContext | None,
     project_item_id: str | None,
 ) -> dict[str, object]:
-    """Build the task front-matter updates persisted after a write sync."""
+    """Build the live task-state updates persisted after a write sync."""
 
+    synced_at = utc_timestamp_now()
     updates: dict[str, object] = {
         "github_repository": repository,
         "github_issue_number": issue_number,
         "github_issue_node_id": issue_node_id,
-        "github_synced_at": utc_timestamp_now(),
+        "github_synced_at": synced_at,
+        "updated_at": synced_at,
     }
     if project_context is not None and project_item_id is not None:
         updates["github_project_owner"] = project_context.owner
@@ -326,14 +284,14 @@ def task_front_matter_updates(
 def issue_state(task_status: str) -> tuple[str, str | None]:
     """Map local task state to GitHub issue state and close reason."""
 
-    if task_status == "done":
+    if task_status == "completed":
         return "closed", "completed"
     if task_status == "cancelled":
         return "closed", "not_planned"
     return "open", None
 
 
-def project_action(task: TaskDocument, params: GitHubTaskSyncParamsLike) -> str | None:
+def project_action(task: PlanTaskStateDocument, params: GitHubTaskSyncParamsLike) -> str | None:
     """Describe the project action the sync would perform for one task."""
 
     if params.project_number is None:
@@ -343,7 +301,7 @@ def project_action(task: TaskDocument, params: GitHubTaskSyncParamsLike) -> str 
     return "update_project_status"
 
 
-def issue_labels(task: TaskDocument) -> tuple[GitHubLabelSpec, ...]:
+def issue_labels(task: PlanTaskStateDocument) -> tuple[GitHubLabelSpec, ...]:
     """Build the managed label set mirrored from local task metadata."""
 
     names: list[str] = [
@@ -352,7 +310,7 @@ def issue_labels(task: TaskDocument) -> tuple[GitHubLabelSpec, ...]:
         f"status:{task.task_status}",
         f"priority:{task.priority}",
     ]
-    if task.list_values("blocked_by"):
+    if task.blocked_by:
         names.append("blocked")
 
     labels: list[GitHubLabelSpec] = []
@@ -391,12 +349,12 @@ def label_description(name: str) -> str:
     return "Managed label from the local WatchTower task sync flow."
 
 
-def issue_body(task: TaskDocument, *, repository: str) -> str:
-    """Render the GitHub issue body mirrored from the local task document."""
+def issue_body(task: PlanTaskStateDocument, *, repository: str) -> str:
+    """Render the GitHub issue body mirrored from the live local task state."""
 
     lines = [
         "> This issue is managed from the local WatchTower task record.",
-        "> Treat the local task document as the source of truth and use",
+        "> Treat the initiative-local task record as the source of truth and use",
         "> GitHub comments for discussion rather than editing this body directly.",
         "",
         "## Task Metadata",
@@ -410,52 +368,49 @@ def issue_body(task: TaskDocument, *, repository: str) -> str:
     ]
     if task.trace_id is not None:
         lines.append(f"- Trace ID: `{task.trace_id}`")
-    if task.list_values("related_ids"):
-        lines.append(f"- Related IDs: `{'; '.join(task.list_values('related_ids'))}`")
-    if task.list_values("depends_on"):
-        lines.append(f"- Depends On: `{'; '.join(task.list_values('depends_on'))}`")
-    if task.list_values("blocked_by"):
-        lines.append(f"- Blocked By: `{'; '.join(task.list_values('blocked_by'))}`")
+    if task.related_ids:
+        lines.append(f"- Related IDs: `{'; '.join(task.related_ids)}`")
+    if task.depends_on:
+        lines.append(f"- Depends On: `{'; '.join(task.depends_on)}`")
+    if task.blocked_by:
+        lines.append(f"- Blocked By: `{'; '.join(task.blocked_by)}`")
+    if task.applies_to:
+        lines.append(f"- Applies To: `{'; '.join(task.applies_to)}`")
     lines.extend(
         [
             "",
             "## Summary",
-            task.sections["Summary"],
-            "",
-            "## Context",
-            task.sections["Context"],
+            task.summary,
             "",
             "## Scope",
-            task.sections["Scope"],
+            _render_bullets(task.scope_items, empty_message="- No scoped items recorded."),
             "",
             "## Done When",
-            task.sections["Done When"],
-            "",
-            "## Links",
-            task.sections["Links"],
+            _render_bullets(
+                task.done_when_items,
+                empty_message="- No completion criteria recorded.",
+            ),
             "",
             "## Sync Notes",
-            "- Managed fields are mirrored from the repository-local task document.",
-            "- Close or reprioritize the task from the local task record first when possible.",
+            "- Managed fields are mirrored from the repository-local task state.",
+            "- Close or reprioritize the task from the local task state first when possible.",
             (
                 "- If this issue becomes materially different from the local task, "
                 "reconcile it in git."
             ),
         ]
     )
-    if "Notes" in task.sections and task.sections["Notes"]:
-        lines.extend(["", "## Notes", task.sections["Notes"]])
     return "\n".join(lines).strip()
 
 
 def rebuild_derived_surfaces(loader: ControlPlaneLoader) -> None:
     """Refresh the task and traceability mirrors after a write sync."""
 
-    task_index_service = TaskIndexSyncService(loader)
-    task_index_service.write_document(task_index_service.build_document())
+    PlanWorkspaceService(loader).sync(write=True)
+    CoordinationSyncService(loader).run(write=True)
 
-    task_tracking_service = TaskTrackingSyncService(loader)
-    task_tracking_service.write_document(task_tracking_service.build_document())
 
-    traceability_service = TraceabilityIndexSyncService(loader)
-    traceability_service.write_document(traceability_service.build_document())
+def _render_bullets(items: tuple[str, ...], *, empty_message: str) -> str:
+    if not items:
+        return empty_message
+    return "\n".join(f"- {item}" for item in items)

@@ -9,7 +9,6 @@ from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.sync.all import AllSyncResult, AllSyncService
 from watchtower_core.repo_ops.sync.registry import (
     COORDINATION_SYNC_GROUP,
-    SyncTargetSpec,
     sync_target_specs_for_group,
 )
 

@@ -4,6 +4,7 @@ import json
 import tempfile
 from copy import deepcopy
 from pathlib import Path
+from shutil import copytree
 
 import pytest
 
@@ -300,6 +301,27 @@ def test_control_plane_loader_document_override_invalidates_cached_parent_direct
 
     assert refreshed_contracts is not original_contracts
     assert refreshed_contract.title == "Updated Acceptance Contract Title"
+
+
+def test_control_plane_loader_derive_does_not_reuse_stale_typed_caches(
+    tmp_path: Path,
+) -> None:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+
+    loader = ControlPlaneLoader(repo_root)
+    original_registry = loader.load_validator_registry()
+    registry_path = repo_root / VALIDATOR_REGISTRY_PATH
+    updated_document = json.loads(registry_path.read_text(encoding="utf-8"))
+    updated_document["title"] = "Updated Validator Registry Title"
+    registry_path.write_text(f"{json.dumps(updated_document, indent=2)}\n", encoding="utf-8")
+
+    derived = loader.derive()
+    refreshed_registry = derived.load_validator_registry()
+
+    assert original_registry.title != "Updated Validator Registry Title"
+    assert refreshed_registry.title == "Updated Validator Registry Title"
 
 
 def test_control_plane_loader_reads_authority_map() -> None:

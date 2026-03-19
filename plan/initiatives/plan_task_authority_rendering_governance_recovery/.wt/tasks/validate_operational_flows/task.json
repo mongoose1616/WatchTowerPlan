@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_task_authority_rendering_governance_recovery.validate_operational_flows",
+  "slug": "validate_operational_flows",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "title": "Validate pack-wide and project-scoped operational flows",
+  "summary": "Run end-to-end operational scenarios, close the valid report issues, and record any remaining standards gaps with evidence.",
+  "status": "active",
+  "task_kind": "governance",
+  "priority": "critical",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T15:41:06Z",
+  "updated_at": "2026-03-18T23:44:00Z",
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

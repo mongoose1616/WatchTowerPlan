@@ -14,6 +14,7 @@ from watchtower_core.control_plane.models import (
     TaskIndexEntry,
     ValidationEvidenceArtifact,
 )
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 
 
 class _TraceLinkedEntry(Protocol):
@@ -67,7 +68,9 @@ def build_trace_planning_rendered_source_assembly(
         design_entries_by_trace=_group_by_trace(
             loader.load_design_document_index().entries
         ),
-        task_entries_by_trace=_group_by_trace(loader.load_task_index().entries),
+        task_entries_by_trace=_group_by_trace(
+            PlanWorkspaceService(loader).load_task_entries()
+        ),
         acceptance_contracts_by_trace=_group_by_trace(
             loader.load_acceptance_contracts()
         ),

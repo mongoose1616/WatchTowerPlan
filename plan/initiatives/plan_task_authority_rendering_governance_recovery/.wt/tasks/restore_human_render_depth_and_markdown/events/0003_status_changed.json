@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown.0003_status_changed",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "sequence": 3,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T23:42:00Z",
+  "summary": "Changed task.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown status from in_progress to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/restore_human_render_depth_and_markdown/task.json"
+  },
+  "task_id": "task.plan_task_authority_rendering_governance_recovery.restore_human_render_depth_and_markdown"
+}
