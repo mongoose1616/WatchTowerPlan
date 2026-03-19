@@ -6,12 +6,14 @@ summary: "Defines the hosted GitHub intake, pull request, and project-field scaf
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T04:05:50Z"
+updated_at: "2026-03-18T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - ".github/"
-  - "docs/planning/tasks/"
+  - "plan/initiatives/"
+  - "plan/projects/"
+  - "docs/planning/tasks/task_tracking.md"
   - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github collaboration scaffolding"
@@ -27,7 +29,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-16T04:05:50Z`
+- `Updated At`: `2026-03-18T23:58:00Z`
 
 ## Summary
 This document defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.
@@ -54,7 +56,7 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 ## Internal Standards and Canonical References Applied
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): GitHub should remain a hosted collaboration layer that complements repo-local authority instead of replacing it.
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): issue labels, mirrored status, and project fields need to stay aligned with the sync contract.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): hosted intake and PR review still need clear links back to local task records.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): hosted intake and PR review still need clear links back to initiative-local live task records.
 - [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): `.github/`, sync code, and companion docs should be updated together.
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared local summary of the hosted collaboration surfaces and APIs.
 
@@ -64,13 +66,13 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields): shaped the bounded GitHub Project field model.
 
 ## Design Goals and Constraints
-- Keep GitHub useful for humans without letting it silently outrank repo-local task and planning surfaces.
+- Keep GitHub useful for humans without letting it silently outrank repo-local planning docs and initiative-local live task state.
 - Make intake and PR review consistent enough that engineers do not invent their own ad hoc issue or PR formats.
 - Keep GitHub Project configuration bounded and aligned with the repo-local status vocabulary.
 
 ## Options Considered
 ### Option 1: Minimal hosted scaffolding plus repo-local authority
-- Add issue forms, a PR template, and a bounded Project field model while keeping PRDs, designs, tasks, and traceability authoritative in the repo.
+- Add issue forms, a PR template, and a bounded Project field model while keeping PRDs, designs, initiative-local live tasks, and traceability authoritative in the repo.
 - Preserves the repo's deterministic planning and control-plane model.
 - Requires engineers to learn the boundary between intake and authoritative planning surfaces.
 
@@ -96,14 +98,16 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 
 ### Execution Flow
 1. A human opens a GitHub issue through a structured issue form.
-2. Triage determines whether a repo-local PRD, design, or task record already exists or must be created.
+2. Triage determines whether a repo-local PRD, design, or initiative-local task record already exists or must be created.
 3. Active work happens against the repo-local artifact, with optional GitHub sync for hosted visibility.
 4. Pull requests use the standard template to publish the `trace_id`, local task IDs, validation record, and governed-surface updates.
 5. If the work is mirrored to GitHub issues or a project, the synced issue labels and project status stay bounded and deterministic.
 
 ## Affected Surfaces
 - `.github/`
-- `docs/planning/tasks/`
+- `plan/initiatives/`
+- `plan/projects/`
+- `docs/planning/tasks/task_tracking.md`
 - `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 - `docs/commands/core_python/watchtower_core_sync_github_tasks.md`
 
@@ -134,4 +138,4 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
 
 ## Updated At
-- `2026-03-16T04:05:50Z`
+- `2026-03-18T23:58:00Z`

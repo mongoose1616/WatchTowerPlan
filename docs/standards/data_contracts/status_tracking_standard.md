@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "status_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-18T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -81,7 +81,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `core/control_plane/indexes/coordination/coordination_index.json`; `core/control_plane/indexes/tasks/task_index.json`
+- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `plan/.wt/indexes/coordination_index.json`; `plan/.wt/indexes/task_index.json`
 
 ## Validation
 - Governed artifacts that expose lifecycle status should use only `draft`, `active`, or `deprecated`.
@@ -104,4 +104,4 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - If the repository later needs validation-result vocabularies or execution-state vocabularies, those should be separate standards.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-18T23:58:00Z`

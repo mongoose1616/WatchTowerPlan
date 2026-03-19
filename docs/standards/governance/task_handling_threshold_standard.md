@@ -9,14 +9,15 @@ tags:
   - "governance"
   - "task_threshold"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-18T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/tasks/"
-  - "workflows/modules/task_scope_definition.md"
-  - "workflows/modules/task_handoff_review.md"
-  - "workflows/modules/commit_closeout.md"
+  - "plan/initiatives/"
+  - "plan/projects/"
+  - "core/workflows/modules/task_scope_definition.md"
+  - "core/workflows/modules/task_handoff_review.md"
+  - "core/workflows/modules/commit_closeout.md"
 aliases:
   - "task threshold"
   - "durable task requirement"
@@ -35,7 +36,7 @@ This standard defines when repository work must create, update, transition, or e
 
 ## Scope
 - Applies to routed work that changes repository artifacts, code, standards, workflows, planning docs, or governed control-plane surfaces.
-- Applies to local task records, handoff review, and commit closeout expectations.
+- Applies to initiative-local live task records, handoff review, and commit closeout expectations.
 - Does not require a durable task for every trivial one-shot change.
 
 ## Use When
@@ -48,9 +49,9 @@ This standard defines when repository work must create, update, transition, or e
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced work should keep task handling explicit rather than relying on prose-only history.
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): non-trivial changes need trace, task, or explicit no-task metadata in commit history.
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md): hosted pull-request metadata should mirror the local task-handling outcome when GitHub is used.
-- [task_scope_definition.md](/workflows/modules/task_scope_definition.md): routed work should decide task-handling outcome early instead of improvising it at closeout.
-- [task_handoff_review.md](/workflows/modules/task_handoff_review.md): handoff review must surface missing task handling when the threshold was crossed.
-- [commit_closeout.md](/workflows/modules/commit_closeout.md): commit closeout should preserve the task-handling outcome in durable metadata.
+- [task_scope_definition.md](/core/workflows/modules/task_scope_definition.md): routed work should decide task-handling outcome early instead of improvising it at closeout.
+- [task_handoff_review.md](/core/workflows/modules/task_handoff_review.md): handoff review must surface missing task handling when the threshold was crossed.
+- [commit_closeout.md](/core/workflows/modules/commit_closeout.md): commit closeout should preserve the task-handling outcome in durable metadata.
 
 ## Guidance
 - Create, update, transition, or close a durable local task when any of these are true:
@@ -86,7 +87,7 @@ This standard defines when repository work must create, update, transition, or e
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `docs/planning/tasks/`; `workflows/modules/commit_closeout.md`; `workflows/modules/task_handoff_review.md`; `workflows/modules/task_scope_definition.md`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/workflows/modules/commit_closeout.md`; `core/workflows/modules/task_handoff_review.md`; `core/workflows/modules/task_scope_definition.md`
 
 ## Validation
 - Reviewers should reject non-trivial work whose task-handling outcome is implicit.
@@ -105,4 +106,4 @@ This standard defines when repository work must create, update, transition, or e
 - [README.md](/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-18T23:58:00Z`

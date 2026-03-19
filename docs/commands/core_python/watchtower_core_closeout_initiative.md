@@ -7,9 +7,9 @@ trackers that reflect that state. It also validates trace-level acceptance recon
 default before terminal closeout.
 
 ## Use When
-- A traced initiative is complete, superseded, cancelled, or abandoned.
+- A retained traced initiative under `docs/planning/**` is complete, superseded, cancelled, or abandoned.
 - You need the traceability index, initiative view, planning-catalog, coordination surfaces, and family trackers to agree on the current initiative outcome.
-- You want to dry-run the closeout record before mutating canonical planning surfaces.
+- You want to dry-run the retained trace closeout record before mutating canonical planning surfaces.
 
 ## Command
 | Field | Value |
@@ -50,6 +50,8 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate canonical planning surfaces.
+- This command is not the normal live closeout path for `plan/**` initiative packages; use `watchtower-core closeout plan-initiative` for the live plan workspace.
+- If the requested `trace_id` still belongs to a live `plan/**` initiative package, the command fails closed and tells the operator which `watchtower-core closeout plan-initiative` invocation to use instead.
 - By default the command validates PRD acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
 - In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, planning catalog, coordination index, initiative tracker, coordination tracker, and PRD, decision, and design trackers that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
@@ -81,4 +83,4 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - `core/python/src/watchtower_core/closeout/initiative.py`
 
 ## Updated At
-- `2026-03-17T10:30:00Z`
+- `2026-03-18T23:58:00Z`

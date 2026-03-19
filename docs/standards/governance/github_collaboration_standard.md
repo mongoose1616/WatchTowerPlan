@@ -9,12 +9,14 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T22:05:00Z"
+updated_at: "2026-03-18T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - ".github/"
-  - "docs/planning/tasks/"
+  - "plan/initiatives/"
+  - "plan/projects/"
+  - "docs/planning/tasks/task_tracking.md"
   - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github collaboration"
@@ -53,7 +55,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
-- Keep repo-local PRDs, decisions, designs, tasks, contracts, evidence, and traceability surfaces authoritative.
+- Keep repo-local PRDs, decisions, designs, initiative-local live task state, contracts, evidence, and traceability surfaces authoritative.
 - Keep local branch naming and local history maintenance under [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md) instead of redefining them in hosted collaboration rules.
 - Use GitHub issue forms for structured intake only.
 - Before merge, accepted GitHub work should link or create the corresponding repo-local planning or task artifact.
@@ -77,12 +79,12 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 | GitHub issues | Hosted execution mirror or discussion surface |
 | GitHub pull requests | Hosted code-review and merge surface |
 | GitHub Project | Hosted portfolio or board view |
-| Repo-local planning and task docs | Authoritative durable planning and execution source |
+| Repo-local planning docs and initiative-local live task state | Authoritative durable planning and execution source |
 
 ### Recommended GitHub Project fields
 | Field | Type | Notes |
 |---|---|---|
-| `Status` | Single select | Use `Backlog`, `Ready`, `In Progress`, `Blocked`, `In Review`, `Done`, `Cancelled`. |
+| `Status` | Single select | Use `Planned`, `Ready`, `In Progress`, `Blocked`, `In Review`, `Completed`, `Cancelled`. |
 | `Priority` | Single select | Use `Critical`, `High`, `Medium`, `Low` if the team needs a hosted priority view. |
 | `Owner` | Text or assignee mirror | Mirrors the repo-local task owner when helpful. |
 | `Trace ID` | Text | Stable trace link back to the planning corpus. |
@@ -92,14 +94,14 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Process or Workflow
 1. Capture hosted intake through an issue form when the work does not yet have a repo-local artifact.
-2. Triage the issue and decide whether to link or create a repo-local PRD, design, or task record.
+2. Triage the issue and decide whether to link or create a repo-local PRD, design, or initiative-local task record.
 3. Use pull requests to reference the relevant `trace_id`, local task IDs, and validation results.
 4. If GitHub task sync is in use, let the repo-local task record push the mirrored issue and project metadata outward.
 5. Keep repo-local status and GitHub-hosted state aligned instead of letting them drift independently.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `sync`
-- `Operational Surfaces`: `.github/`; `docs/planning/tasks/`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `.github/README.md`
+- `Operational Surfaces`: `.github/`; `plan/initiatives/`; `plan/projects/`; `docs/planning/tasks/task_tracking.md`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `.github/README.md`
 
 ## Validation
 - GitHub issue forms should ask for enough information to create or link the corresponding repo-local artifact.
@@ -119,4 +121,4 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [README.md](/.github/README.md)
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-18T23:58:00Z`

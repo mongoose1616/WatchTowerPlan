@@ -1,13 +1,14 @@
 # `watchtower-core closeout`
 
 ## Summary
-This command group applies terminal initiative state to traced planning surfaces and also
-provides the governed purge path for eligible closed trace packages.
+This command group closes live initiative packages under `plan/**`, closes retained traced
+planning initiatives when historical trace state must be finalized, and provides the governed
+purge path for eligible closed trace packages.
 
 ## Use When
 - You want help for one of the closeout operations without opening the implementation code first.
-- You need to mark one traced initiative as completed, superseded, cancelled, or abandoned.
 - You need to mark one live initiative package under `plan/**` as completed, superseded, or cancelled.
+- You need to mark one retained traced initiative as completed, superseded, cancelled, or abandoned.
 - You want a governed closeout or purge path that updates both machine-readable and human-readable planning mirrors.
 
 ## Command
@@ -36,12 +37,12 @@ uv run watchtower-core closeout --help
 
 ```sh
 cd core/python
-uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"
+uv run watchtower-core closeout plan-initiative --initiative-slug plan_terminal_initiative_closeout_runtime --initiative-status completed --closure-reason "Delivered the live closeout runtime" --write
 ```
 
 ```sh
 cd core/python
-./.venv/bin/watchtower-core closeout plan-initiative --initiative-slug plan_terminal_initiative_closeout_runtime --initiative-status completed --closure-reason "Delivered the live closeout runtime" --write
+uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"
 ```
 
 ```sh
@@ -51,15 +52,15 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints closeout-specific help and exits successfully.
-- `initiative` validates acceptance reconciliation by default, applies terminal initiative state to the traceability index, and regenerates the mirrored initiative, coordination, and family tracking surfaces in write mode.
 - `plan-initiative` closes one live initiative package under `plan/**`, finalizes initiative-local evidence and closeout artifacts, and refreshes the live plan coordination and rendered surfaces in write mode.
+- `initiative` validates acceptance reconciliation by default, applies terminal initiative state to the retained traced planning corpus, rejects live `plan/**` trace IDs, and regenerates the mirrored initiative, coordination, and family tracking surfaces in write mode.
 - `purge-trace` validates terminal-state, open-task, acceptance, duplicate-ledger, and surviving-reference preconditions before it removes one closed trace package and writes the minimal purge ledger entry.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core closeout initiative` | Applies terminal closeout state for one traced initiative. |
 | `watchtower-core closeout plan-initiative` | Applies terminal closeout state for one live initiative package under `plan/**`. |
+| `watchtower-core closeout initiative` | Applies terminal closeout state for one retained traced initiative under `docs/planning/**`. |
 | `watchtower-core closeout purge-trace` | Purges one eligible closed trace package after retention checks pass. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that closeout now enforces by default. |
 | `watchtower-core query initiatives` | Reads the initiative view that the closeout command also refreshes in write mode. |
@@ -76,4 +77,4 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 - `core/python/src/watchtower_core/closeout/`
 
 ## Updated At
-- `2026-03-17T10:30:00Z`
+- `2026-03-18T23:58:00Z`

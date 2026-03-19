@@ -2,16 +2,17 @@
 trace_id: "trace.local_task_tracking"
 id: "design.features.github_task_push_sync"
 title: "GitHub Task Push Sync"
-summary: "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority."
+summary: "Defines the first push-only sync from initiative-local live task records to GitHub issues and optional project items while preserving local task authority."
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T04:05:50Z"
+updated_at: "2026-03-18T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/task_index.json"
+  - "plan/initiatives/"
+  - "plan/projects/"
+  - "plan/.wt/indexes/task_index.json"
   - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github task push sync"
@@ -27,10 +28,10 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-16T04:05:50Z`
+- `Updated At`: `2026-03-18T23:58:00Z`
 
 ## Summary
-This document defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.
+This document defines the first push-only sync from initiative-local live task records to GitHub issues and optional project items while preserving local task authority.
 
 ## Source Request
 - User request to support a local-first task system that can later sync to GitHub.
@@ -44,7 +45,7 @@ This document defines the first push-only sync from local task records to GitHub
 - Does not implement two-way GitHub reconciliation.
 
 ## Current-State Context
-- The repository already has local task records, a generated task tracker, and a generated task index.
+- The repository already has initiative-local live task records, a generated task tracker, and a generated task index.
 - The task family already reserves optional GitHub foreign-key fields.
 - There is no live GitHub sync implementation yet, and no current way to publish local task state to a hosted board.
 
@@ -55,15 +56,14 @@ This document defines the first push-only sync from local task records to GitHub
 - [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): local task Markdown records must stay the authoritative task source.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): initiative-local live task state must stay the authoritative task source.
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): push-only sync, foreign-key persistence, and hosted status mapping must stay deterministic.
 - [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): synced GitHub metadata has to land in the machine-readable task index.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): synced tasks still need stable `trace_id` joins back to planning and evidence surfaces.
-- [task_template.md](/docs/templates/task_template.md): local task records need a consistent document shape so sync can render them predictably.
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared summary of the issue and project API assumptions.
 
 ## Design Goals and Constraints
-- Keep local task files authoritative.
+- Keep initiative-local live task records authoritative.
 - Keep the sync contract push-only in the first phase.
 - Persist enough foreign-key metadata that repeated sync is deterministic.
 - Rebuild local derived task surfaces automatically after successful sync writes.
@@ -87,13 +87,13 @@ This document defines the first push-only sync from local task records to GitHub
 
 ## Recommended Design
 ### Architecture
-- Keep task Markdown records as the source of truth.
-- Use a push-only Python sync command to create or update GitHub issues from those task records.
+- Keep initiative-local live task records as the source of truth.
+- Use a push-only Python sync command to create or update GitHub issues from those live task records.
 - Optionally add the synced issue to one GitHub Project v2 and update the single-select status field.
-- Persist GitHub foreign keys back onto the task records and rebuild the derived task index, task tracker, and traceability index in the same write flow.
+- Persist GitHub foreign keys back onto the live task records and rebuild the derived task index, task tracker, and traceability index in the same write flow.
 
 ### Data and Interface Impacts
-- Extend the task front matter and task index with repository, project, and sync timestamp fields.
+- Extend the live task state and task index with repository, project, and sync timestamp fields.
 - Add a modular GitHub integration client under `core/python/src/watchtower_core/integrations/github/`.
 - Add a narrow `watchtower-core sync github-tasks` command with explicit task filters and target arguments.
 
@@ -112,12 +112,15 @@ This document defines the first push-only sync from local task records to GitHub
 - Remote sync failure for one task should not silently claim success for the full selection.
 
 ## Affected Surfaces
-- `docs/planning/tasks/`
+- `plan/initiatives/`
+- `plan/projects/`
+- `plan/.wt/indexes/task_index.json`
+- `docs/planning/tasks/task_tracking.md`
 - `docs/standards/governance/github_task_sync_standard.md`
 - `docs/standards/governance/task_tracking_standard.md`
 - `docs/standards/data_contracts/task_index_standard.md`
-- `core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json`
-- `core/control_plane/schemas/artifacts/task_index.schema.json`
+- `plan/.wt/schemas/artifacts/task_state.schema.json`
+- `plan/.wt/schemas/artifacts/task_summary_index.schema.json`
 - `core/python/src/watchtower_core/integrations/github/`
 - `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 
@@ -132,7 +135,7 @@ This document defines the first push-only sync from local task records to GitHub
 - Regenerate local derived task surfaces automatically after task metadata changes.
 
 ## Dependencies
-- Existing task-document parsing and validation in `core/python/src/watchtower_core/repo_ops/task_documents.py`.
+- Existing live task-state parsing and validation in `core/python/src/watchtower_core/repo_ops/plan_task_state.py`.
 - Existing task index and traceability sync flows.
 - GitHub Issues REST API and GitHub Project GraphQL surfaces.
 
@@ -156,4 +159,4 @@ This document defines the first push-only sync from local task records to GitHub
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-16T04:05:50Z`
+- `2026-03-18T23:58:00Z`

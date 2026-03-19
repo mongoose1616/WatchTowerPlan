@@ -21,7 +21,7 @@ work and recent closeouts.
 ## Synopsis
 ```sh
 cd core/python
-./.venv/bin/watchtower-core closeout plan-initiative --initiative-slug <initiative_slug> [--project-slug <project_slug>] --initiative-status <completed|superseded|cancelled> --closure-reason <reason> [--superseded-by-trace-id <trace_id>] [--closed-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core closeout plan-initiative --initiative-slug <initiative_slug> [--project-slug <project_slug>] --initiative-status <completed|superseded|cancelled> --closure-reason <reason> [--superseded-by-trace-id <trace_id>] [--closed-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,12 +38,12 @@ cd core/python
 ## Examples
 ```sh
 cd core/python
-./.venv/bin/watchtower-core closeout plan-initiative --initiative-slug plan_terminal_initiative_closeout_runtime --initiative-status completed --closure-reason "Delivered the live closeout runtime" --write
+uv run watchtower-core closeout plan-initiative --initiative-slug plan_terminal_initiative_closeout_runtime --initiative-status completed --closure-reason "Delivered the live closeout runtime" --write
 ```
 
 ```sh
 cd core/python
-./.venv/bin/watchtower-core closeout plan-initiative --project-slug watchtower --initiative-slug watchtower_work_item_notes --initiative-status completed --closure-reason "Implemented and validated work-item notes" --format json
+uv run watchtower-core closeout plan-initiative --project-slug watchtower --initiative-slug watchtower_work_item_notes --initiative-status completed --closure-reason "Implemented and validated work-item notes" --format json
 ```
 
 ## Behavior and Outputs
@@ -67,6 +67,7 @@ cd core/python
 - `core/python/src/watchtower_core/cli/closeout_family.py`
 - `core/python/src/watchtower_core/cli/closeout_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/initiative_packages.py`
+- `core/python/src/watchtower_core/closeout/initiative_package.py`
 
 ## Updated At
 - `2026-03-17T10:30:00Z`
