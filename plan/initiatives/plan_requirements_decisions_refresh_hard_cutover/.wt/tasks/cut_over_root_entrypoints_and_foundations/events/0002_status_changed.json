@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations.0002_status_changed",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T05:10:14Z",
+  "summary": "Changed task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/cut_over_root_entrypoints_and_foundations/task.json"
+  },
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations"
+}

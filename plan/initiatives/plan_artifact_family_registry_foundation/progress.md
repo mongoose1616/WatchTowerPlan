@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_artifact_family_registry_foundation.validate_artifact_family_registry_coverage` depends on `task.plan_artifact_family_registry_foundation.publish_artifact_family_registry_schema`, `task.plan_artifact_family_registry_foundation.seed_artifact_family_registry_entries`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_artifact_family_registry_foundation/summary.md)
 
 ## Evidence or Validation State

@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_path_and_id_helper_foundation.validate_helper_and_reconcile_requirements` depends on `task.plan_path_and_id_helper_foundation.refactor_plan_runtime_callers`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_path_and_id_helper_foundation/summary.md)
 
 ## Evidence or Validation State

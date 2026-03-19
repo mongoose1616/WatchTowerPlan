@@ -33,7 +33,7 @@ _No active tasks._
 - Task `task.watchtower_initial_implementation_bootstrap.validate_watchtower_readiness_gate` depends on `task.watchtower_initial_implementation_bootstrap.capture_watchtower_implementation_boundary`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap/summary.md)
 
 ## Evidence or Validation State

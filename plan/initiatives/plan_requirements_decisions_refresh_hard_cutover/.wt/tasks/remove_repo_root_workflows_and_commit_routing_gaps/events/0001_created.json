@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps.0001_created",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T05:06:58Z",
+  "summary": "Created live task task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json"
+  },
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps"
+}

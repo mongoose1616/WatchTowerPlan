@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_guidance_promotion_helper_foundation.validate_promoted_guidance_extraction_and_requirements_alignment` depends on `task.plan_guidance_promotion_helper_foundation.implement_governed_guidance_promotion_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_guidance_promotion_helper_foundation/summary.md)
 
 ## Evidence or Validation State

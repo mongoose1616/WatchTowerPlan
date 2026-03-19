@@ -28,7 +28,7 @@ _No active tasks._
 - Task `task.plan_artifact_index_runtime_foundation.validate_artifact_index_coverage_and_guidance` depends on `task.plan_artifact_index_runtime_foundation.publish_artifact_index_contract_and_neutralize_legacy_fields`, `task.plan_artifact_index_runtime_foundation.build_live_plan_artifact_index_and_query_surface`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_artifact_index_runtime_foundation/summary.md)
 
 ## Evidence or Validation State

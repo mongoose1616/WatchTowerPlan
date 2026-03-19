@@ -12,20 +12,17 @@
       "audience": "shared",
       "authority": "supporting",
       "doc_path": "docs/foundations/customer_story.md",
-      "updated_at": "2026-03-16T06:28:00Z",
-      "uses_internal_references": true,
+      "updated_at": "2026-03-19T05:30:00Z",
+      "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
+        "core/docs/foundations/",
+        "plan/docs/foundations/",
+        "plan/",
         "docs/foundations/",
         "docs/planning/"
       ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/engineering_design_principles.md"
-      ],
       "cited_by_paths": [
-        "docs/foundations/product_direction.md",
         "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
@@ -62,8 +59,8 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-16T06:28:00Z",
-      "uses_internal_references": true,
+      "updated_at": "2026-03-19T05:30:00Z",
+      "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "core/control_plane/",
@@ -73,18 +70,7 @@
         "docs/standards/",
         "workflows/modules/"
       ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/foundations/engineering_stack_direction.md"
-      ],
       "cited_by_paths": [
-        "docs/foundations/customer_story.md",
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
         "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
         "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
         "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",
@@ -379,7 +365,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -401,9 +387,6 @@
         "docs/references/in_toto_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/references/json_schema_2020_12_reference.md",
         "docs/references/uv_reference.md",
@@ -446,8 +429,6 @@
         "https://in-toto.io/docs/specs/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md",
         "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
         "docs/planning/decisions/foundations_docs_boundary_alignment_direction.md",
         "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
@@ -519,28 +500,18 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/product_direction.md",
-      "updated_at": "2026-03-16T06:28:00Z",
-      "uses_internal_references": true,
+      "updated_at": "2026-03-19T05:30:00Z",
+      "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
-        "docs/planning/",
+        "plan/",
         "core/control_plane/",
         "core/workflows/modules/",
         "plan/workflows/modules/",
+        "docs/planning/",
         "workflows/modules/"
       ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/foundations/customer_story.md"
-      ],
       "cited_by_paths": [
-        "docs/foundations/customer_story.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
         "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
         "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
         "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
@@ -655,24 +626,20 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-16T06:28:00Z",
-      "uses_internal_references": true,
+      "updated_at": "2026-03-19T05:30:00Z",
+      "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
+        "core/docs/foundations/",
+        "plan/docs/foundations/",
+        "core/workflows/",
+        "plan/workflows/",
+        "plan/",
+        "core/",
         "docs/",
-        "workflows/",
-        "core/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md"
+        "workflows/"
       ],
       "cited_by_paths": [
-        "docs/foundations/customer_story.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/repository_standards_posture.md",
         "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",
         "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
         "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
@@ -767,8 +734,8 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-16T06:28:00Z",
-      "uses_internal_references": true,
+      "updated_at": "2026-03-19T05:30:00Z",
+      "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "docs/standards/",
@@ -777,15 +744,7 @@
         "plan/workflows/modules/",
         "workflows/modules/"
       ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/engineering_stack_direction.md"
-      ],
       "cited_by_paths": [
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
         "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
         "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
         "docs/planning/decisions/capture_first_plan_workspace_bootstrap_direction.md",

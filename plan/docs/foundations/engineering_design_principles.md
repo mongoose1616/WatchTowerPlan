@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "design_philosophy"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T05:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -40,7 +40,7 @@ Core is the part of the system that has to be boring in the best possible way. I
 - Keep core local-first and deterministic.
 - Validate manifests, registries, indexes, and contracts in a schema-first, fail-closed way.
 - Preserve clear source-of-truth boundaries between runtime state, rule-bearing surfaces such as standards or authority registries, reference material, and human-readable outputs.
-- Keep reusable surfaces distinct from repo-specific `repo_ops` behavior so current repository maintenance rules do not quietly leak into future consumers.
+- Keep reusable surfaces distinct from repo-local plan-runtime behavior so current repository maintenance rules do not quietly leak into future consumers.
 - Treat compatibility shims as temporary migration aids, not permanent public-boundary growth.
 - Concentrate infrastructure complexity inside the control plane, helper runtime, validation tools, and recovery or release surfaces.
 - Treat Python and other implementation code as helper or harness layers that improve LLM and agent efficiency, control, and validation.
@@ -79,10 +79,10 @@ Future domain packs are where the broader WatchTower product becomes useful to o
 - Do not let pack-local hidden state become operator-authored truth.
 
 ## References
-- [repository_scope.md](/docs/foundations/repository_scope.md)
-- [product_direction.md](/docs/foundations/product_direction.md)
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
+- [repository_scope.md](repository_scope.md)
+- [product_direction.md](product_direction.md)
+- [repository_standards_posture.md](repository_standards_posture.md)
+- [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T05:30:00Z`

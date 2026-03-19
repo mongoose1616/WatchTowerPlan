@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_live_evidence_closeout_review_indexes_foundation.validate_rebuild_and_requirements_alignment` depends on `task.plan_live_evidence_closeout_review_indexes_foundation.implement_live_indexes`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation/summary.md)
 
 ## Evidence or Validation State

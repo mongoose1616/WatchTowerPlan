@@ -30,7 +30,7 @@ _No active tasks._
 - Discrepancy `discrepancy.plan_documentation_family_and_template_catalog_foundation.task_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/task_index.json.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_documentation_family_and_template_catalog_foundation/summary.md)
 
 ## Evidence or Validation State

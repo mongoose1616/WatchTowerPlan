@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_requirements_current_state_reconciliation.validate_and_close_requirements_reconciliation` depends on `task.plan_requirements_current_state_reconciliation.reconcile_live_workspace_and_interface_contract_rows`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_requirements_current_state_reconciliation/summary.md)
 
 ## Evidence or Validation State

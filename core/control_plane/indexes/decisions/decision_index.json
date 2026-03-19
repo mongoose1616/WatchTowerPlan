@@ -2001,6 +2001,27 @@
       ]
     },
     {
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "decision_id": "decision.plan_requirements_decisions_refresh_hard_cutover_direction",
+      "title": "Requirements And Decisions Hard Cutover Refresh Direction Decision",
+      "summary": "Records the initial direction decision for Requirements And Decisions Hard Cutover Refresh.",
+      "record_status": "active",
+      "decision_status": "proposed",
+      "doc_path": "docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md",
+      "updated_at": "2026-03-19T05:02:11Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "linked_design_ids": [
+        "design.features.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.plan_requirements_decisions_refresh_hard_cutover"
+      ]
+    },
+    {
       "trace_id": "trace.route_preview_natural_request_matching",
       "decision_id": "decision.route_preview_natural_request_matching_direction",
       "title": "Route Preview Natural Request Matching Direction",

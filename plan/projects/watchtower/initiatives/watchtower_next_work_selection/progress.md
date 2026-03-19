@@ -23,7 +23,7 @@ _No active tasks._
 - Task `task.watchtower_next_work_selection.validate_watchtower_next_work_flow` depends on `task.watchtower_next_work_selection.add_watchtower_next_work_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_next_work_selection/summary.md)
 
 ## Evidence or Validation State

@@ -23,7 +23,7 @@ _No active tasks._
 - Task `task.plan_entrypoint_cutover_proof.validate_packwide_proof_package` depends on `task.plan_entrypoint_cutover_proof.publish_plan_authority_entrypoints`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_entrypoint_cutover_proof/summary.md)
 
 ## Evidence or Validation State

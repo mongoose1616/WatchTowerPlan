@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.plan_requirements_decisions_refresh_hard_cutover` | Requirements And Decisions Hard Cutover Refresh | `execution` | repository_maintainer | `6` | [plan.md](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/plan.md) | [plan.md](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/plan.md) | [task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_domain_packs_fixture_path/task.json) (`planned`) <br> [task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_repo_ops_namespace/task.json) (`planned`) <br> [task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json) (`in_progress`) <br> [task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/retire_legacy_planning_corpus_and_indexes/task.json) (`planned`) <br> [task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_one/task.json) (`planned`) <br> [task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_two/task.json) (`planned`) | Start the highest-priority ready task from the initiative package. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -53,4 +55,4 @@ _No active initiatives._
 | `trace.plan_human_surface_policy_and_core_root_seeding` | Plan Human Surface Policy and Core Root Seeding | `completed` | [plan.md](/plan/initiatives/plan_human_surface_policy_and_core_root_seeding/plan.md) | `2026-03-17T15:06:10Z` | Delivered the governed human-surface policy and seeded the missing core human roots. |
 | `trace.plan_entrypoint_cutover_proof` | Plan Entrypoint Cutover Proof | `completed` | [plan.md](/plan/initiatives/plan_entrypoint_cutover_proof/plan.md) | `2026-03-17T15:06:09Z` | Delivered the plan authority cutover proof and validated the live plan entrypoints. |
 
-_Updated At: `2026-03-18T23:45:00Z`_
+_Updated At: `2026-03-19T05:19:21Z`_

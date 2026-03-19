@@ -23,7 +23,7 @@ _No active tasks._
 - No current blockers, dependencies, or open discrepancy risks are recorded.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_status_registry_domain_cleanup/summary.md)
 
 ## Evidence or Validation State

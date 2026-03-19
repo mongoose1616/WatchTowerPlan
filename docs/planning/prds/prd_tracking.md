@@ -1,7 +1,9 @@
 # PRD Tracking
 
 ## Active PRDs
-_No active PRDs. Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse or `watchtower-core query prds --trace-id <trace_id>` for one known trace._
+| Trace ID | PRD | Status | Summary | Linked Designs and Plans |
+| --- | --- | --- | --- | --- |
+| `trace.plan_requirements_decisions_refresh_hard_cutover` | [prd.plan_requirements_decisions_refresh_hard_cutover](/docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md) | `active` | Tracks the hard-cutover refresh that retires legacy planning history, workflow compatibility roots, repo_ops, and domain_packs while aligning the repo to requirements.md and decisions.md. | design.features.plan_requirements_decisions_refresh_hard_cutover; design.implementation.plan_requirements_decisions_refresh_hard_cutover |
 
 ## Terminal PRDs
 | Trace ID | PRD | Status | Summary | Linked Designs and Plans |
@@ -74,4 +76,4 @@ _No active PRDs. Use `watchtower-core query initiatives --initiative-status <sta
 | `trace.workflow_routing_review_accuracy_alignment` | [prd.workflow_routing_review_accuracy_alignment](/docs/planning/prds/workflow_routing_review_accuracy_alignment.md) | `completed` | Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries. | design.features.workflow_routing_review_accuracy_alignment; design.implementation.workflow_routing_review_accuracy_alignment |
 | `trace.workflow_system_operationalization` | [prd.workflow_system_operationalization](/docs/planning/prds/workflow_system_operationalization.md) | `completed` | Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins. | design.features.workflow_routing_and_authoring; design.implementation.workflow_system_operationalization_execution |
 
-_Updated At: `2026-03-17T03:30:21Z`_
+_Updated At: `2026-03-19T05:02:11Z`_

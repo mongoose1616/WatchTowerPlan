@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+  "slug": "eliminate_domain_packs_fixture_path",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "title": "Eliminate domain_packs fixture path",
+  "summary": "Rework fixture materialization, examples, and guards so tests use temp pack roots and never recreate repo-root domain_packs/.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T05:06:15Z",
+  "updated_at": "2026-03-19T05:06:15Z",
+  "applies_to": [
+    "core/python/tests/"
+  ],
+  "scope_items": [
+    "Remove domain_packs from fixture and validation flows."
+  ],
+  "done_when_items": [
+    "Tests, examples, and schema patterns use temp pack roots only and a regression check prevents recreating domain_packs/."
+  ]
+}

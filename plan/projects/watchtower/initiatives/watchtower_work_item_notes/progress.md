@@ -23,7 +23,7 @@ _No active tasks._
 - Task `task.watchtower_work_item_notes.validate_watchtower_work_item_note_flow` depends on `task.watchtower_work_item_notes.add_watchtower_work_item_note_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_work_item_notes/summary.md)
 
 ## Evidence or Validation State

@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_event_stream_helper_foundation.validate_event_stream_helper_and_contracts` depends on `task.plan_event_stream_helper_foundation.refactor_initiative_package_event_writes_onto_helper`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_event_stream_helper_foundation/summary.md)
 
 ## Evidence or Validation State

@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.plan_requirements_decisions_refresh_hard_cutover",
+  "title": "Requirements And Decisions Hard Cutover Refresh Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+  "source_prd_id": "prd.plan_requirements_decisions_refresh_hard_cutover",
+  "entries": [
+    {
+      "acceptance_id": "ac.plan_requirements_decisions_refresh_hard_cutover.001",
+      "summary": "The bootstrap flow publishes the initial PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence, and bootstrap task for the trace.",
+      "source_requirement_ids": [
+        "req.plan_requirements_decisions_refresh_hard_cutover.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/requirements_and_decisions_hard_cutover_refresh_bootstrap/task.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Bootstrap baseline contract prepared at 2026-03-19T05:02:11Z for trace.plan_requirements_decisions_refresh_hard_cutover."
+    }
+  ]
+}

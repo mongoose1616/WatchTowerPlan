@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_human_surface_policy_and_core_root_seeding.validate_human_surface_policy_and_root_compliance` depends on `task.plan_human_surface_policy_and_core_root_seeding.add_human_surface_policy_contract_and_helper`, `task.plan_human_surface_policy_and_core_root_seeding.seed_missing_core_human_roots_and_router_surfaces`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_human_surface_policy_and_core_root_seeding/summary.md)
 
 ## Evidence or Validation State

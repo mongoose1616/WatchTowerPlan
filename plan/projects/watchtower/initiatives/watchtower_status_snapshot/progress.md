@@ -23,7 +23,7 @@ _No active tasks._
 - Task `task.watchtower_status_snapshot.validate_watchtower_status_snapshot_flow` depends on `task.watchtower_status_snapshot.add_watchtower_status_snapshot_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_status_snapshot/summary.md)
 
 ## Evidence or Validation State

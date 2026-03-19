@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_terminal_initiative_closeout_runtime.validate_terminal_closeout_and_clear_closing_initiatives` depends on `task.plan_terminal_initiative_closeout_runtime.expose_terminal_closeout_command_surface`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_terminal_initiative_closeout_runtime/summary.md)
 
 ## Evidence or Validation State

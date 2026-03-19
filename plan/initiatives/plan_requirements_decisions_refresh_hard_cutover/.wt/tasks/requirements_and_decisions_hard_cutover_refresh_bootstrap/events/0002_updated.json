@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_refresh_hard_cutover.requirements_and_decisions_hard_cutover_refresh_bootstrap.0002_updated",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "sequence": 2,
+  "event_type": "updated",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T05:02:11Z",
+  "summary": "Updated live task task.plan_requirements_decisions_refresh_hard_cutover.bootstrap.001.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/requirements_and_decisions_hard_cutover_refresh_bootstrap/task.json"
+  },
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.bootstrap.001"
+}

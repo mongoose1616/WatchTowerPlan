@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-18T23:45:00Z",
+  "updated_at": "2026-03-19T05:19:21Z",
   "entries": [
     {
       "promotion_id": "promotion.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_shell",
@@ -848,6 +848,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.plan_requirements_decisions_refresh_hard_cutover.bootstrap_shell",
+      "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "initiative_title": "Requirements And Decisions Hard Cutover Refresh",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/initiative_brief.md",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/design_record.md",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/implementation_slice.md",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-19T05:02:11Z",
+      "target_paths": [
+        "plan/docs/decisions/plan_requirements_decisions_refresh_hard_cutover_design_record.md",
+        "plan/docs/patterns/plan_requirements_decisions_refresh_hard_cutover_implementation_slice.md",
+        "plan/docs/references/plan_requirements_decisions_refresh_hard_cutover_initiative_brief.md",
+        "plan/docs/standards/plan_requirements_decisions_refresh_hard_cutover_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.plan_requirements_decisions_refresh_hard_cutover.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

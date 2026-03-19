@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_refresh_hard_cutover.0008_ready_for_review_marked",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "sequence": 8,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T05:02:21Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover"
+}

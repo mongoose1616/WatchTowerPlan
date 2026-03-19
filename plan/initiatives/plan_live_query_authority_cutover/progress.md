@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_live_query_authority_cutover.refresh_docs_and_validate_live_query_cutover` depends on `task.plan_live_query_authority_cutover.reroot_public_planning_queries_onto_live_plan_indexes`, `task.plan_live_query_authority_cutover.add_readiness_discrepancy_and_project_query_commands`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_live_query_authority_cutover/summary.md)
 
 ## Evidence or Validation State

@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.watchtower_work_item_lifecycle.validate_watchtower_work_item_lifecycle_flow` depends on `task.watchtower_work_item_lifecycle.add_watchtower_work_item_inspection_flows`, `task.watchtower_work_item_lifecycle.add_watchtower_work_item_completion_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle/summary.md)
 
 ## Evidence or Validation State

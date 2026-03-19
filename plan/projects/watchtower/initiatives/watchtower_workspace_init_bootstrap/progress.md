@@ -23,7 +23,7 @@ _No active tasks._
 - Task `task.watchtower_workspace_init_bootstrap.validate_watchtower_workspace_init_flow` depends on `task.watchtower_workspace_init_bootstrap.add_watchtower_workspace_init_flow`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap/summary.md)
 
 ## Evidence or Validation State

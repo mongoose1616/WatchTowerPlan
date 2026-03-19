@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_project_context_runtime_standardization.validate_project_context_load_contract` depends on `task.plan_project_context_runtime_standardization.extract_project_context_runtime_helper`, `task.plan_project_context_runtime_standardization.expose_project_context_query_surface`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_project_context_runtime_standardization/summary.md)
 
 ## Evidence or Validation State

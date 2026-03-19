@@ -1,7 +1,7 @@
-# `plan/docs/foundations`
+# `foundations`
 
 ## Description
-`This directory contains the duplicated foundations corpus for the plan docs root. Use it for the durable scope, design-philosophy, standards-context, technology-direction, product-direction, and future-state narrative materials that shape the rest of the repository. This corpus must stay aligned with core/docs/foundations/.`
+`This directory contains the shared WatchTowerPlan foundations corpus. core/docs/foundations/ is the authored source and plan/docs/foundations/ is the required byte-identical mirror. Update the authored copy in core and refresh the mirror in the same change set.`
 
 ## Audience Routes
 
@@ -23,25 +23,31 @@
 
 | Path | Role |
 |---|---|
-| `plan/docs/foundations/repository_scope.md` | Canonical current-repository charter and ownership boundary. |
-| `plan/docs/foundations/engineering_design_principles.md` | Canonical design-philosophy baseline for the repository and its operating model. |
-| `plan/docs/foundations/repository_standards_posture.md` | Canonical standards-posture baseline for governed behavior and authority rules. |
-| `plan/docs/foundations/engineering_stack_direction.md` | Canonical technology-direction baseline for current implementation choices. |
-| `plan/docs/foundations/product_direction.md` | Canonical future-product shape baseline that must be read through the current repository boundary. |
+| `repository_scope.md` | Canonical current-repository charter and ownership boundary. |
+| `engineering_design_principles.md` | Canonical design-philosophy baseline for the repository and its operating model. |
+| `repository_standards_posture.md` | Canonical standards-posture baseline for governed behavior and authority rules. |
+| `engineering_stack_direction.md` | Canonical technology-direction baseline for current implementation choices. |
+| `product_direction.md` | Canonical future-product shape baseline that must be read through the current repository boundary. |
 
 ## Supporting Future-State Context
 
 | Path | Role |
 |---|---|
-| `plan/docs/foundations/customer_story.md` | Supporting future-state product narrative and operator story. |
+| `customer_story.md` | Supporting future-state product narrative and operator story. |
+
+## Mirror Rule
+
+- `core/docs/foundations/` is the authored source.
+- `plan/docs/foundations/` must remain byte-identical to the authored source.
+- `docs/foundations/` is a retained compatibility path during the hard cutover and should not receive independent authored changes.
 
 ## Paths
 | Path | Description |
 |---|---|
-| `plan/docs/foundations/README.md` | Describes the purpose of the duplicated plan foundations directory and the intended read order across its documents. |
-| `plan/docs/foundations/repository_scope.md` | Defines the authoritative current repository charter and ownership boundary. |
-| `plan/docs/foundations/engineering_design_principles.md` | Defines the governing engineering design principles and operating model for the repository. |
-| `plan/docs/foundations/product_direction.md` | Defines the future WatchTower product direction, layer boundaries, and first-wave scope. |
-| `plan/docs/foundations/customer_story.md` | Provides supporting future-state product story, user problem, and intended operator experience. |
-| `plan/docs/foundations/repository_standards_posture.md` | Explains the repository-wide standards posture and authority model. |
-| `plan/docs/foundations/engineering_stack_direction.md` | Defines the current technology-direction baseline and selection rules for the repository. |
+| `README.md` | Describes the purpose of the foundations directory and the intended read order across its documents. |
+| `repository_scope.md` | Defines the authoritative current repository charter and ownership boundary. |
+| `engineering_design_principles.md` | Defines the governing engineering design principles and operating model for the repository. |
+| `product_direction.md` | Defines the future WatchTower product direction, layer boundaries, and first-wave scope. |
+| `customer_story.md` | Provides supporting future-state product story, user problem, and intended operator experience. |
+| `repository_standards_posture.md` | Explains the repository-wide standards posture and authority model. |
+| `engineering_stack_direction.md` | Defines the current technology-direction baseline and selection rules for the repository. |

@@ -9,13 +9,17 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T05:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "README.md"
-  - "docs/"
-  - "workflows/"
+  - "AGENTS.md"
+  - "core/docs/foundations/"
+  - "plan/docs/foundations/"
+  - "core/workflows/"
+  - "plan/workflows/"
+  - "plan/"
   - "core/"
 aliases:
   - "repository scope"
@@ -35,18 +39,19 @@ This document defines what `WatchTowerPlan` owns today. Use it as the authoritat
 
 ## Purpose
 
-`WatchTowerPlan` is the reusable core and first internal planning-and-implementation pack workspace for WatchTower. It owns the reusable substrate, machine-readable control plane, workflow-routing model, standards corpus, and the traced planning system that prepare the project for later product implementation.
+`WatchTowerPlan` is the reusable core and first internal plan-domain workspace for WatchTower. It owns the reusable substrate, machine-readable control plane, split workflow-routing model, authored shared foundations, mirrored plan foundations, and the live plan system that prepare the project for later product implementation.
 
 This document is authoritative for current repository ownership. It does not replace future product direction. It defines the boundary that future product direction must respect while work remains in this repo.
 
 ## This Repository Owns Today
 
 - The shared governed core substrate under `core/control_plane/` and `core/python/`.
-- The first internal planning-and-implementation pack that currently lives in `docs/planning/` and `core/python/src/watchtower_core/repo_ops/`.
-- Repository-native workflow routing, execution modules, standards, references, templates, and planning surfaces.
+- The live plan-domain workspace under `plan/`, including `plan/.wt/`, pack-wide initiatives, project-scoped initiatives, and plan-domain workflow surfaces.
+- The authored shared foundations under `core/docs/foundations/` and the required mirrored copy under `plan/docs/foundations/`.
+- Repository-native workflow routing, execution modules, standards, references, templates, and plan-facing rendered surfaces.
 - Machine-readable authority for schemas, startup manifests, registries, contracts, indexes, supporting fixtures, and retained validation or purge records.
-- Export-ready reusable runtime behavior and repo-specific `repo_ops` behavior, with the boundary between them kept explicit.
-- Documentation and planning work required to keep the core coherent, validated, and ready for future consumption by other packs.
+- Export-ready reusable runtime behavior plus any still-residual repo-local plan-runtime behavior until the remaining cleanup slices remove it.
+- Documentation, promotion, and planning work required to keep the core coherent, validated, and ready for future consumption by other packs.
 
 ## This Repository Does Not Own Yet
 
@@ -58,8 +63,8 @@ This document is authoritative for current repository ownership. It does not rep
 
 ## Relationship to Future WatchTower Product Work
 
-- [product_direction.md](/docs/foundations/product_direction.md) defines the intended future WatchTower product shape.
-- [customer_story.md](/docs/foundations/customer_story.md) provides supporting future-state narrative.
+- [product_direction.md](product_direction.md) defines the intended future WatchTower product shape.
+- [customer_story.md](customer_story.md) provides supporting future-state narrative.
 - Those documents remain important because they shape planning and design decisions in this repo.
 - They are not the authority for present repository ownership. This document is.
 
@@ -68,19 +73,22 @@ This document is authoritative for current repository ownership. It does not rep
 - Start here when the question is whether work belongs in `WatchTowerPlan`.
 - Start with [README.md](/README.md) when the main need is root routing.
 - Start with [plan_overview.md](/plan/plan_overview.md) when the main need is current live work state, overall repository coherence, or the next active plan-domain action.
-- Start with [coordination_tracking.md](/docs/planning/coordination_tracking.md) when the main need is the traced planning corpus, retained backlog context, or the docs-backed bootstrap history.
+- Start with [README.md](README.md) when the main need is the foundations corpus and the intended read order across these guiding documents.
+- Use `docs/planning/**` only when the main need is retained legacy planning context that has not yet been promoted or purged.
 - Start with [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
 
 ## Boundaries That Must Hold
 
 - Root entrypoints remain routers, not large repository handbooks.
 - Shared core surfaces stay domain-agnostic.
+- Live plan execution state stays under `plan/**`, not under `docs/planning/**`.
+- Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
 - Repo-specific behavior stays explicit instead of leaking into reusable surfaces.
 
 ## References
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](engineering_design_principles.md)
+- [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T05:30:00Z`

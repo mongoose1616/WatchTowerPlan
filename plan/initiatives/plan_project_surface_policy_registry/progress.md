@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_project_surface_policy_registry.wire_helper_and_project_validation` depends on `task.plan_project_surface_policy_registry.publish_project_surface_policy_registry_schema`, `task.plan_project_surface_policy_registry.seed_project_surface_policy_entries`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_project_surface_policy_registry/summary.md)
 
 ## Evidence or Validation State

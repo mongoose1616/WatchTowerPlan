@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations",
+  "slug": "cut_over_root_entrypoints_and_foundations",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "title": "Cut over root entrypoints and foundations",
+  "summary": "Rewrite root and foundation authority surfaces around core/docs, plan/docs mirrors, and split workflow roots.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T05:04:49Z",
+  "updated_at": "2026-03-19T05:19:21Z",
+  "applies_to": [
+    "README.md"
+  ],
+  "scope_items": [
+    "Replace stale root and foundation ownership guidance."
+  ],
+  "done_when_items": [
+    "Root guidance and mirrored foundations describe the post-cutover authority model with no stale docs/foundations or repo-root workflow ownership."
+  ]
+}

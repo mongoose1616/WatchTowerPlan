@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-18T23:45:00Z",
+  "updated_at": "2026-03-19T05:19:21Z",
   "entries": [
     {
       "review_subject_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
@@ -508,6 +508,24 @@
       "updated_at": "2026-03-17T22:30:20Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "initiative_title": "Requirements And Decisions Hard Cutover Refresh",
+      "title": "Requirements And Decisions Hard Cutover Refresh",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.plan_requirements_decisions_refresh_hard_cutover.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-19T05:19:21Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
     },
     {
       "review_subject_id": "initiative.plan_routing_engine_export_foundation",
@@ -1288,6 +1306,22 @@
         "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-17T22:30:20Z"
+    },
+    {
+      "review_subject_id": "promotion.plan_requirements_decisions_refresh_hard_cutover.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "initiative_title": "Requirements And Decisions Hard Cutover Refresh",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.plan_requirements_decisions_refresh_hard_cutover.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-19T05:02:11Z"
     },
     {
       "review_subject_id": "promotion.plan_routing_engine_export_foundation.bootstrap_shell",

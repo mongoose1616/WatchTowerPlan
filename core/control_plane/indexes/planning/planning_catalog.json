@@ -6046,7 +6046,7 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-16T04:05:50Z",
+      "updated_at": "2026-03-18T23:58:00Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
@@ -6063,7 +6063,7 @@
           "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-          "updated_at": "2026-03-16T04:05:50Z"
+          "updated_at": "2026-03-18T23:58:00Z"
         }
       ],
       "design_ids": [
@@ -6074,7 +6074,10 @@
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/tasks/"
+        "docs/planning/tasks/",
+        "docs/planning/tasks/task_tracking.md",
+        "plan/initiatives/",
+        "plan/projects/"
       ],
       "tags": [
         "feature_design",
@@ -8002,10 +8005,10 @@
     {
       "trace_id": "trace.local_task_tracking",
       "title": "GitHub Task Push Sync",
-      "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+      "summary": "Defines the first push-only sync from initiative-local live task records to GitHub issues and optional project items while preserving local task authority.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-16T04:05:50Z",
+      "updated_at": "2026-03-18T23:58:00Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/design/features/github_task_push_sync.md",
@@ -8019,19 +8022,19 @@
           "document_id": "design.features.github_task_push_sync",
           "family": "feature_design",
           "title": "GitHub Task Push Sync",
-          "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+          "summary": "Defines the first push-only sync from initiative-local live task records to GitHub issues and optional project items while preserving local task authority.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/github_task_push_sync.md",
-          "updated_at": "2026-03-16T04:05:50Z"
+          "updated_at": "2026-03-18T23:58:00Z"
         },
         {
           "document_id": "design.features.local_task_tracking_and_github_sync",
           "family": "feature_design",
           "title": "Local Task Tracking and GitHub Sync Design",
-          "summary": "Defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.",
+          "summary": "Defines the feature-level design for initiative-local live task state, a generated task tracker, a generated task index, and later GitHub sync support.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-          "updated_at": "2026-03-10T02:30:31Z"
+          "updated_at": "2026-03-18T23:58:00Z"
         }
       ],
       "design_ids": [
@@ -8046,15 +8049,22 @@
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/sync/",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/tasks/",
+        "docs/planning/tasks/task_tracking.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
-        "docs/templates/task_template.md"
+        "docs/templates/task_template.md",
+        "plan/.wt/indexes/task_index.json",
+        "plan/.wt/schemas/artifacts/task_state.schema.json",
+        "plan/.wt/schemas/artifacts/task_summary_index.schema.json",
+        "plan/initiatives/",
+        "plan/projects/"
       ],
       "tags": [
         "feature_design",
@@ -10643,6 +10653,435 @@
         "feature",
         "traceability"
       ]
+    },
+    {
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "title": "Requirements And Decisions Hard Cutover Refresh PRD",
+      "summary": "Tracks the hard-cutover refresh that retires legacy planning history, workflow compatibility roots, repo_ops, and domain_packs while aligning the repo to requirements.md and decisions.md.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-19T05:19:21Z",
+      "coordination": {
+        "current_phase": "execution",
+        "key_surface_path": "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md",
+        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+        "next_surface_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json",
+        "open_task_count": 6,
+        "blocked_task_count": 2,
+        "primary_owner": "repository_maintainer",
+        "active_owners": [
+          "repository_maintainer"
+        ],
+        "active_task_ids": [
+          "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+          "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+          "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+          "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+          "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one",
+          "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_two"
+        ],
+        "active_task_summaries": [
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+            "title": "Remove repo-root workflows and commit routing gaps",
+            "task_status": "in_progress",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json",
+            "is_actionable": true
+          },
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+            "title": "Eliminate repo_ops namespace",
+            "task_status": "planned",
+            "priority": "critical",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_repo_ops_namespace/task.json",
+            "is_actionable": true
+          },
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+            "title": "Retire legacy planning corpus and indexes",
+            "task_status": "planned",
+            "priority": "critical",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/retire_legacy_planning_corpus_and_indexes/task.json",
+            "is_actionable": true
+          },
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+            "title": "Eliminate domain_packs fixture path",
+            "task_status": "planned",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_domain_packs_fixture_path/task.json",
+            "is_actionable": true
+          },
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one",
+            "title": "Run assessment pass one",
+            "task_status": "planned",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_one/task.json",
+            "is_actionable": false,
+            "depends_on": [
+              "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations",
+              "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+              "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps"
+            ]
+          },
+          {
+            "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_two",
+            "title": "Run assessment pass two",
+            "task_status": "planned",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_two/task.json",
+            "is_actionable": false,
+            "depends_on": [
+              "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+              "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+              "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one"
+            ]
+          }
+        ],
+        "blocked_by_task_ids": [
+          "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+          "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+          "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+          "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+          "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one"
+        ]
+      },
+      "prds": [
+        {
+          "prd_id": "prd.plan_requirements_decisions_refresh_hard_cutover",
+          "title": "Requirements And Decisions Hard Cutover Refresh PRD",
+          "summary": "Tracks the hard-cutover refresh that retires legacy planning history, workflow compatibility roots, repo_ops, and domain_packs while aligning the repo to requirements.md and decisions.md.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md",
+          "updated_at": "2026-03-19T05:02:11Z",
+          "requirement_ids": [
+            "req.plan_requirements_decisions_refresh_hard_cutover.001"
+          ],
+          "acceptance_ids": [
+            "ac.plan_requirements_decisions_refresh_hard_cutover.001"
+          ],
+          "linked_decision_ids": [
+            "decision.plan_requirements_decisions_refresh_hard_cutover_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.plan_requirements_decisions_refresh_hard_cutover"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.plan_requirements_decisions_refresh_hard_cutover"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.plan_requirements_decisions_refresh_hard_cutover_direction",
+          "title": "Requirements And Decisions Hard Cutover Refresh Direction Decision",
+          "summary": "Records the initial direction decision for Requirements And Decisions Hard Cutover Refresh.",
+          "record_status": "active",
+          "decision_status": "proposed",
+          "doc_path": "docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md",
+          "updated_at": "2026-03-19T05:02:11Z",
+          "linked_prd_ids": [
+            "prd.plan_requirements_decisions_refresh_hard_cutover"
+          ],
+          "linked_design_ids": [
+            "design.features.plan_requirements_decisions_refresh_hard_cutover"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.plan_requirements_decisions_refresh_hard_cutover"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.plan_requirements_decisions_refresh_hard_cutover",
+          "family": "feature_design",
+          "title": "Requirements And Decisions Hard Cutover Refresh Feature Design",
+          "summary": "Defines the technical design boundary for Requirements And Decisions Hard Cutover Refresh.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+          "updated_at": "2026-03-19T05:02:11Z"
+        },
+        {
+          "document_id": "design.implementation.plan_requirements_decisions_refresh_hard_cutover",
+          "family": "implementation_plan",
+          "title": "Requirements And Decisions Hard Cutover Refresh Implementation Plan",
+          "summary": "Breaks Requirements And Decisions Hard Cutover Refresh into a bounded implementation slice.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md",
+          "updated_at": "2026-03-19T05:02:11Z",
+          "source_paths": [
+            "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+            "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.bootstrap.001",
+          "title": "Bootstrap Requirements And Decisions Hard Cutover Refresh planning chain",
+          "summary": "Bootstraps the initial planning chain for Requirements And Decisions Hard Cutover Refresh.",
+          "artifact_status": "active",
+          "task_status": "completed",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/requirements_and_decisions_hard_cutover_refresh_bootstrap/task.json",
+          "updated_at": "2026-03-19T05:19:20Z",
+          "related_ids": [
+            "prd.plan_requirements_decisions_refresh_hard_cutover",
+            "design.features.plan_requirements_decisions_refresh_hard_cutover",
+            "design.implementation.plan_requirements_decisions_refresh_hard_cutover",
+            "decision.plan_requirements_decisions_refresh_hard_cutover_direction",
+            "contract.acceptance.plan_requirements_decisions_refresh_hard_cutover"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations",
+          "title": "Cut over root entrypoints and foundations",
+          "summary": "Rewrite root and foundation authority surfaces around core/docs, plan/docs mirrors, and split workflow roots.",
+          "artifact_status": "active",
+          "task_status": "completed",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/cut_over_root_entrypoints_and_foundations/task.json",
+          "updated_at": "2026-03-19T05:19:21Z",
+          "applies_to": [
+            "README.md"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+          "title": "Eliminate domain_packs fixture path",
+          "summary": "Rework fixture materialization, examples, and guards so tests use temp pack roots and never recreate repo-root domain_packs/.",
+          "artifact_status": "active",
+          "task_status": "planned",
+          "task_kind": "validation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_domain_packs_fixture_path/task.json",
+          "updated_at": "2026-03-19T05:06:15Z",
+          "applies_to": [
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+          "title": "Eliminate repo_ops namespace",
+          "summary": "Redistribute surviving repo_ops behavior into explicit runtime packages and remove the catch-all namespace.",
+          "artifact_status": "active",
+          "task_status": "planned",
+          "task_kind": "feature",
+          "priority": "critical",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_repo_ops_namespace/task.json",
+          "updated_at": "2026-03-19T05:07:04Z",
+          "related_ids": [
+            "decision.plan_requirements_decisions_refresh_hard_cutover_direction"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+          "title": "Remove repo-root workflows and commit routing gaps",
+          "summary": "Delete the compatibility workflows tree after repointing every route, workflow reference, and closeout instruction to core/workflows or plan/workflows.",
+          "artifact_status": "active",
+          "task_status": "in_progress",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json",
+          "updated_at": "2026-03-19T05:19:20Z",
+          "applies_to": [
+            "workflows/"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+          "title": "Retire legacy planning corpus and indexes",
+          "summary": "Move human tracking under plan/, promote or distill durable guidance, and delete docs/planning-backed indexes and trackers.",
+          "artifact_status": "active",
+          "task_status": "planned",
+          "task_kind": "governance",
+          "priority": "critical",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/retire_legacy_planning_corpus_and_indexes/task.json",
+          "updated_at": "2026-03-19T05:05:32Z",
+          "applies_to": [
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one",
+          "title": "Run assessment pass one",
+          "summary": "Run the first full repository assessment after the initial cutover slices and fix any newly found gaps.",
+          "artifact_status": "active",
+          "task_status": "planned",
+          "task_kind": "validation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_one/task.json",
+          "updated_at": "2026-03-19T05:08:14Z",
+          "depends_on": [
+            "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations",
+            "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+            "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps"
+          ],
+          "related_ids": [
+            "decision.plan_requirements_decisions_refresh_hard_cutover_direction"
+          ]
+        },
+        {
+          "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_two",
+          "title": "Run assessment pass two",
+          "summary": "Repeat the full repository assessment after the purge and runtime refactor and close any remaining gaps.",
+          "artifact_status": "active",
+          "task_status": "planned",
+          "task_kind": "validation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_two/task.json",
+          "updated_at": "2026-03-19T05:09:10Z",
+          "depends_on": [
+            "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+            "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+            "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one"
+          ],
+          "related_ids": [
+            "decision.plan_requirements_decisions_refresh_hard_cutover_direction"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.plan_requirements_decisions_refresh_hard_cutover",
+          "title": "Requirements And Decisions Hard Cutover Refresh Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.plan_requirements_decisions_refresh_hard_cutover",
+          "doc_path": "core/control_plane/contracts/acceptance/plan_requirements_decisions_refresh_hard_cutover_acceptance.json",
+          "acceptance_ids": [
+            "ac.plan_requirements_decisions_refresh_hard_cutover.001"
+          ],
+          "validation_targets": [
+            "docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md",
+            "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+            "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md",
+            "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md",
+            "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/requirements_and_decisions_hard_cutover_refresh_bootstrap/task.json"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.plan_requirements_decisions_refresh_hard_cutover.planning_baseline",
+          "title": "Requirements And Decisions Hard Cutover Refresh Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-19T05:02:11Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/plan_requirements_decisions_refresh_hard_cutover_planning_baseline.json",
+          "check_ids": [
+            "check.plan_requirements_decisions_refresh_hard_cutover.planning_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.plan_requirements_decisions_refresh_hard_cutover.001"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/plan_requirements_decisions_refresh_hard_cutover_acceptance.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "decision_ids": [
+        "decision.plan_requirements_decisions_refresh_hard_cutover_direction"
+      ],
+      "design_ids": [
+        "design.features.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "plan_ids": [
+        "design.implementation.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "task_ids": [
+        "task.plan_requirements_decisions_refresh_hard_cutover.bootstrap.001",
+        "task.plan_requirements_decisions_refresh_hard_cutover.cut_over_root_entrypoints_and_foundations",
+        "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_domain_packs_fixture_path",
+        "task.plan_requirements_decisions_refresh_hard_cutover.eliminate_repo_ops_namespace",
+        "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+        "task.plan_requirements_decisions_refresh_hard_cutover.retire_legacy_planning_corpus_and_indexes",
+        "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_one",
+        "task.plan_requirements_decisions_refresh_hard_cutover.run_assessment_pass_two"
+      ],
+      "requirement_ids": [
+        "req.plan_requirements_decisions_refresh_hard_cutover.001"
+      ],
+      "acceptance_ids": [
+        "ac.plan_requirements_decisions_refresh_hard_cutover.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.plan_requirements_decisions_refresh_hard_cutover"
+      ],
+      "evidence_ids": [
+        "evidence.plan_requirements_decisions_refresh_hard_cutover.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "README.md",
+        "core/control_plane/contracts/acceptance/plan_requirements_decisions_refresh_hard_cutover_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/plan_requirements_decisions_refresh_hard_cutover_planning_baseline.json",
+        "core/python/tests/",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/tasks/task_tracking.md",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/cut_over_root_entrypoints_and_foundations/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_domain_packs_fixture_path/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/eliminate_repo_ops_namespace/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/remove_repo_root_workflows_and_commit_routing_gaps/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/requirements_and_decisions_hard_cutover_refresh_bootstrap/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/retire_legacy_planning_corpus_and_indexes/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_one/task.json",
+        "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/.wt/tasks/run_assessment_pass_two/task.json",
+        "workflows/"
+      ],
+      "tags": [
+        "documentation",
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability",
+        "validation"
+      ],
+      "notes": "Planning baseline evidence prepared at 2026-03-19T05:02:11Z for trace.plan_requirements_decisions_refresh_hard_cutover."
     },
     {
       "trace_id": "trace.plan_routing_engine_export_foundation",

@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_duplicated_foundations_corpus_bootstrap.validate_duplicated_foundations_discovery` depends on `task.plan_duplicated_foundations_corpus_bootstrap.seed_duplicated_foundations_roots`, `task.plan_duplicated_foundations_corpus_bootstrap.copy_foundations_corpus_into_both_roots`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_duplicated_foundations_corpus_bootstrap/summary.md)
 
 ## Evidence or Validation State

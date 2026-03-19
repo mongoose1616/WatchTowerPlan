@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.remove_repo_root_workflows_and_commit_routing_gaps",
+  "slug": "remove_repo_root_workflows_and_commit_routing_gaps",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "title": "Remove repo-root workflows and commit routing gaps",
+  "summary": "Delete the compatibility workflows tree after repointing every route, workflow reference, and closeout instruction to core/workflows or plan/workflows.",
+  "status": "active",
+  "task_status": "in_progress",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T05:06:58Z",
+  "updated_at": "2026-03-19T05:19:20Z",
+  "applies_to": [
+    "workflows/"
+  ],
+  "scope_items": [
+    "Remove repo-root workflows and ensure commit closeout is the canonical commit workflow path."
+  ],
+  "done_when_items": [
+    "No repo-tracked workflow guidance depends on workflows/ and mutating routed flows explicitly defer commit behavior to commit_closeout.md."
+  ]
+}

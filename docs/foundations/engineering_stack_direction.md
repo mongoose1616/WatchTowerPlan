@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T05:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -37,7 +37,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
-| Markdown | Primary human-facing authoring format | `docs/**`, `workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
+| Markdown | Primary human-facing authoring format | `docs/**`, `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
 | JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/ledgers/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
 | YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `docs/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
@@ -45,8 +45,8 @@ Today the repository is still documentation-heavy, but it also has a substantive
 | Hatchling | Python build backend | `core/python/pyproject.toml` | Keeps packaging minimal and standard. |
 | pytest | Test runner baseline for Python code | `core/python/pyproject.toml`, `core/python/tests/**` | Standard test surface for the consolidated Python workspace. |
 
-- Durable documentation lives under `docs/`.
-- Routed task behavior lives under `workflows/`.
+- Durable documentation lives under `docs/`, `core/docs/`, and `plan/docs/` according to ownership.
+- Routed task behavior lives under `core/workflows/` and `plan/workflows/`.
 - Shared implementation assets live under `core/`.
 
 ## Preferred Building Blocks
@@ -83,9 +83,9 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - Reject tools that blur authority boundaries or make failure modes harder to inspect.
 
 ## References
-- [repository_scope.md](/docs/foundations/repository_scope.md)
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/docs/foundations/product_direction.md)
+- [repository_scope.md](repository_scope.md)
+- [engineering_design_principles.md](engineering_design_principles.md)
+- [product_direction.md](product_direction.md)
 - [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
 - [json_schema_2020_12_reference.md](/docs/references/json_schema_2020_12_reference.md)
 - [uv_reference.md](/docs/references/uv_reference.md)
@@ -100,4 +100,4 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [in_toto_reference.md](/docs/references/in_toto_reference.md)
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T05:30:00Z`

@@ -1931,6 +1931,21 @@
       ]
     },
     {
+      "document_id": "design.features.plan_requirements_decisions_refresh_hard_cutover",
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "family": "feature_design",
+      "title": "Requirements And Decisions Hard Cutover Refresh Feature Design",
+      "summary": "Defines the technical design boundary for Requirements And Decisions Hard Cutover Refresh.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+      "updated_at": "2026-03-19T05:02:11Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md"
+      ]
+    },
+    {
       "document_id": "design.features.route_preview_natural_request_matching",
       "trace_id": "trace.route_preview_natural_request_matching",
       "family": "feature_design",
@@ -4041,6 +4056,22 @@
         "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
         "docs/planning/design/implementation/core_export_hardening_execution.md",
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.plan_requirements_decisions_refresh_hard_cutover",
+      "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+      "family": "implementation_plan",
+      "title": "Requirements And Decisions Hard Cutover Refresh Implementation Plan",
+      "summary": "Breaks Requirements And Decisions Hard Cutover Refresh into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/requirements_and_decisions_hard_cutover_refresh.md",
+      "updated_at": "2026-03-19T05:02:11Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/requirements_and_decisions_hard_cutover_refresh.md",
+        "docs/planning/prds/requirements_and_decisions_hard_cutover_refresh.md"
       ]
     },
     {

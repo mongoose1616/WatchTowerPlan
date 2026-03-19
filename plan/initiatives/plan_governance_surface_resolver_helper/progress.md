@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_governance_surface_resolver_helper.validate_governance_surface_resolver_behavior` depends on `task.plan_governance_surface_resolver_helper.add_governance_surface_resolver_helper`, `task.plan_governance_surface_resolver_helper.add_governance_surface_dependency_coverage`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_governance_surface_resolver_helper/summary.md)
 
 ## Evidence or Validation State

@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_core_documentation_template_authority_foundation.seed_core_registries_and_templates` depends on `task.plan_core_documentation_template_authority_foundation.publish_core_documentation_schema_contracts`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_core_documentation_template_authority_foundation/summary.md)
 
 ## Evidence or Validation State

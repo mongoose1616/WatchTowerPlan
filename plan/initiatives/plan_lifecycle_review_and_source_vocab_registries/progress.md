@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_lifecycle_review_and_source_vocab_registries.wire_typed_helper_and_validation_coverage` depends on `task.plan_lifecycle_review_and_source_vocab_registries.publish_lifecycle_review_and_source_registry_schemas`, `task.plan_lifecycle_review_and_source_vocab_registries.seed_lifecycle_review_and_source_vocab_entries`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_lifecycle_review_and_source_vocab_registries/summary.md)
 
 ## Evidence or Validation State

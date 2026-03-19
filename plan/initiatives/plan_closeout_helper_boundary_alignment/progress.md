@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_closeout_helper_boundary_alignment.validate_closeout_boundary_alignment` depends on `task.plan_closeout_helper_boundary_alignment.refactor_live_plan_closeout_onto_shared_helper`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_closeout_helper_boundary_alignment/summary.md)
 
 ## Evidence or Validation State

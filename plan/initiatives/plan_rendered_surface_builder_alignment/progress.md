@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_rendered_surface_builder_alignment.validate_rendered_surface_boundary_alignment` depends on `task.plan_rendered_surface_builder_alignment.refactor_live_plan_and_project_surfaces_onto_rendered_helpers`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_rendered_surface_builder_alignment/summary.md)
 
 ## Evidence or Validation State

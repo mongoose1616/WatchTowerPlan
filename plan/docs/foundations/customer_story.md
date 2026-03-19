@@ -8,12 +8,13 @@ tags:
   - "foundation"
   - "product_narrative"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T05:30:00Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
-  - "docs/foundations/"
-  - "docs/planning/"
+  - "core/docs/foundations/"
+  - "plan/docs/foundations/"
+  - "plan/"
 aliases:
   - "customer story"
   - "product narrative brochure"
@@ -23,7 +24,7 @@ aliases:
 
 # Customer Story
 
-This document is supporting future-state product narrative. It is useful when shaping future WatchTower experience, but it is not the authority for current repository ownership. For that, use [repository_scope.md](/docs/foundations/repository_scope.md). For future product structure, use [product_direction.md](/docs/foundations/product_direction.md).
+This document is supporting future-state product narrative. It is useful when shaping future WatchTower experience, but it is not the authority for current repository ownership. For that, use [repository_scope.md](repository_scope.md). For future product structure, use [product_direction.md](product_direction.md).
 
 ## Audience
 
@@ -99,9 +100,9 @@ Trust in the future product should come from visible properties:
 - This narrative should not be read as proof that the product implementation already lives in this repo.
 
 ## References
-- [repository_scope.md](/docs/foundations/repository_scope.md)
-- [product_direction.md](/docs/foundations/product_direction.md)
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [repository_scope.md](repository_scope.md)
+- [product_direction.md](product_direction.md)
+- [engineering_design_principles.md](engineering_design_principles.md)
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T05:30:00Z`

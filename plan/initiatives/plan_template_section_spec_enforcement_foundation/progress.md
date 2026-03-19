@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_template_section_spec_enforcement_foundation.bind_templates_to_section_spec_contracts` depends on `task.plan_template_section_spec_enforcement_foundation.publish_section_spec_schema_contracts`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_template_section_spec_enforcement_foundation/summary.md)
 
 ## Evidence or Validation State

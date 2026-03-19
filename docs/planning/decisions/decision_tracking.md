@@ -1,7 +1,9 @@
 # Decision Tracking
 
 ## Active Decisions
-_No active decisions. Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse or `watchtower-core query decisions --trace-id <trace_id>` for one known trace._
+| Trace ID | Decision | Status | Outcome | Summary |
+| --- | --- | --- | --- | --- |
+| `trace.plan_requirements_decisions_refresh_hard_cutover` | [decision.plan_requirements_decisions_refresh_hard_cutover_direction](/docs/planning/decisions/requirements_and_decisions_hard_cutover_refresh_direction.md) | `active` | `proposed` | Records the initial direction decision for Requirements And Decisions Hard Cutover Refresh. |
 
 ## Terminal Decisions
 | Trace ID | Decision | Status | Outcome | Summary |
@@ -69,4 +71,4 @@ _No active decisions. Use `watchtower-core query initiatives --initiative-status
 | `trace.workflow_route_boundary_discoverability_hardening` | [decision.workflow_route_boundary_discoverability_hardening_direction](/docs/planning/decisions/workflow_route_boundary_discoverability_hardening_direction.md) | `completed` | `accepted` | Records the initial direction decision for Workflow Route Boundary Discoverability Hardening. |
 | `trace.workflow_routing_review_accuracy_alignment` | [decision.workflow_routing_review_accuracy_alignment.direction](/docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Workflow Routing Review Accuracy Alignment. |
 
-_Updated At: `2026-03-17T03:30:21Z`_
+_Updated At: `2026-03-19T05:02:11Z`_

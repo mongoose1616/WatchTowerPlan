@@ -32,7 +32,7 @@ _No active tasks._
 - Task `task.plan_legacy_history_retention_reconciliation.validate_retention_policy_alignment_and_follow_up_linkage` depends on `task.plan_legacy_history_retention_reconciliation.publish_retention_policy_registry_and_loader_support`, `task.plan_legacy_history_retention_reconciliation.classify_legacy_history_and_transitional_archive_surfaces`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_legacy_history_retention_reconciliation/summary.md)
 
 ## Evidence or Validation State

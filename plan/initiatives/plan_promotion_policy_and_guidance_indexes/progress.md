@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_promotion_policy_and_guidance_indexes.validate_promotion_and_guidance_lookup` depends on `task.plan_promotion_policy_and_guidance_indexes.publish_promotion_policy_schema_and_registry`, `task.plan_promotion_policy_and_guidance_indexes.build_promotion_and_guidance_index_runtime`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_promotion_policy_and_guidance_indexes/summary.md)
 
 ## Evidence or Validation State

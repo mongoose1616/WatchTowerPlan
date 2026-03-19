@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_refresh_hard_cutover.0007_promotion_shell_seeded",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "sequence": 7,
+  "event_type": "promotion_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T05:02:11Z",
+  "summary": "Seeded the promotion shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.plan_requirements_decisions_refresh_hard_cutover",
+  "related_paths": [
+    "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/initiative_brief.md",
+    "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/design_record.md",
+    "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/implementation_slice.md",
+    "plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/decision_notes.md"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_requirements_decisions_refresh_hard_cutover.bootstrap.001",
+  "slug": "requirements_and_decisions_hard_cutover_refresh_bootstrap",
+  "initiative_id": "initiative.plan_requirements_decisions_refresh_hard_cutover",
+  "title": "Bootstrap Requirements And Decisions Hard Cutover Refresh planning chain",
+  "summary": "Bootstraps the initial planning chain for Requirements And Decisions Hard Cutover Refresh.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T05:02:11Z",
+  "updated_at": "2026-03-19T05:19:20Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [
+    "prd.plan_requirements_decisions_refresh_hard_cutover",
+    "design.features.plan_requirements_decisions_refresh_hard_cutover",
+    "design.implementation.plan_requirements_decisions_refresh_hard_cutover",
+    "decision.plan_requirements_decisions_refresh_hard_cutover_direction",
+    "contract.acceptance.plan_requirements_decisions_refresh_hard_cutover"
+  ],
+  "scope_items": [
+    "Publish the initial PRD, feature design, and implementation plan chain.",
+    "Publish the matching acceptance contract and planning-baseline evidence.",
+    "Establish the first tracked task for the initiative."
+  ],
+  "done_when_items": [
+    "The planning chain exists under canonical planning paths.",
+    "The acceptance contract and planning-baseline evidence exist under canonical control-plane paths.",
+    "The bootstrap task is visible through the derived coordination surfaces."
+  ]
+}

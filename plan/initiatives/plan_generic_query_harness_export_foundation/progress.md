@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_generic_query_harness_export_foundation.validate_query_harness_export_and_guidance` depends on `task.plan_generic_query_harness_export_foundation.refactor_repo_query_services_onto_public_query_surface`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_generic_query_harness_export_foundation/summary.md)
 
 ## Evidence or Validation State

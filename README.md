@@ -1,7 +1,7 @@
 # `.`
 
 ## Description
-`This repository is the reusable WatchTower core plus the first internal planning-and-implementation pack workspace. Use the root as the entrypoint for repository scope, routing, current-state orientation, and top-level review. Keep the root thin: durable documentation belongs in docs/, workflow routing and task procedures belong in workflows/, and shared implementation assets belong in core/.`
+`This repository is the reusable WatchTower core plus the first internal plan-domain workspace. Use the root only for repository scope, routing, current-state orientation, and top-level review. Keep the root thin: live plan state belongs under plan/, shared implementation assets belong under core/, authored shared foundations live under core/docs/foundations/, and the mirrored plan-facing foundations view lives under plan/docs/foundations/.`
 
 ## Paths
 | Path | Description |
@@ -10,17 +10,19 @@
 | `AGENTS.md` | Defines the repository-wide wrapper instructions and routes work into `core/workflows/` and `plan/workflows/`. |
 | `.github/` | Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template. |
 | `plan/` | Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers. |
-| `docs/` | Holds durable repository documentation, standards, references, and templates. |
-| `workflows/` | Holds the routing table and task-execution workflow modules. |
+| `docs/` | Holds durable repository documentation, command pages, standards, references, templates, and retained legacy planning material pending promotion or purge. |
 | `core/` | Holds shared implementation assets and the authored control-plane tree. |
 
 ## Notes
-- Current repository scope: `docs/foundations/repository_scope.md`
+- Current repository scope: `core/docs/foundations/repository_scope.md`
 - Authoritative implementation contract until the migration is complete: `requirements.md` and `decisions.md`.
 - Treat standards, references, and older supporting docs as secondary guidance that must conform to those two files.
 - Human current-state start-here: `plan/README.md`, then `plan/plan_overview.md`
+- Shared workflow start-here: `core/workflows/README.md`
 - Human plan workflow start-here: `plan/workflows/README.md`
+- Authored foundations start-here: `core/docs/foundations/README.md`
+- Mirrored plan foundations start-here: `plan/docs/foundations/README.md`
 - Machine current-state start-here: `plan/.wt/indexes/coordination_index.json`
 - Machine project lookup start-here: `plan/.wt/indexes/project_index.json`
 - Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core query authority --domain planning --format json`
-- Use `docs/planning/**` after the live `plan/**` surfaces point you to the deeper traced planning artifacts you need.
+- `docs/planning/**` is retained legacy planning history pending promotion or purge. Do not start new live work there.

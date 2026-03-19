@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_workflow_root_authority_split.rebuild_routing_and_workflow_runtime_around_split_roots` depends on `task.plan_workflow_root_authority_split.split_workflow_routing_and_module_roots_by_domain`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_workflow_root_authority_split/summary.md)
 
 ## Evidence or Validation State

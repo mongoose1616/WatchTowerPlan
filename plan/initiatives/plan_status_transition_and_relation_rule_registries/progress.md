@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_status_transition_and_relation_rule_registries.validate_rule_registry_coverage` depends on `task.plan_status_transition_and_relation_rule_registries.publish_rule_registry_schemas`, `task.plan_status_transition_and_relation_rule_registries.seed_rule_registry_entries`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_status_transition_and_relation_rule_registries/summary.md)
 
 ## Evidence or Validation State

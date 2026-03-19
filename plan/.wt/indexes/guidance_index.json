@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-18T23:45:00Z",
+  "updated_at": "2026-03-19T05:30:00Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -32,7 +32,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/customer_story.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "supporting",
       "tags": [
@@ -40,8 +40,9 @@
         "product_narrative"
       ],
       "applies_to": [
-        "docs/foundations/",
-        "docs/planning/"
+        "core/docs/foundations/",
+        "plan/docs/foundations/",
+        "plan/"
       ]
     },
     {
@@ -52,7 +53,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -75,7 +76,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -96,7 +97,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -104,7 +105,7 @@
         "product"
       ],
       "applies_to": [
-        "docs/planning/",
+        "plan/",
         "core/control_plane/",
         "core/workflows/modules/",
         "plan/workflows/modules/"
@@ -118,7 +119,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -128,8 +129,12 @@
       ],
       "applies_to": [
         "README.md",
-        "docs/",
-        "workflows/",
+        "AGENTS.md",
+        "core/docs/foundations/",
+        "plan/docs/foundations/",
+        "core/workflows/",
+        "plan/workflows/",
+        "plan/",
         "core/"
       ]
     },
@@ -141,7 +146,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T05:30:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

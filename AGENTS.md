@@ -27,14 +27,14 @@
 - If work is happening under [docs](/docs), also apply [docs/AGENTS.md](/docs/AGENTS.md).
 - If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
-- Keep durable documentation in `docs/`, domain workflow routing and task procedures in `core/workflows/` or `plan/workflows/`, and shared implementation assets in `core/`.
-- Treat [docs/planning](/docs/planning/README.md) as the human planning corpus. Keep PRDs, designs, implementation plans, and durable decisions linked there rather than scattering planning state across unrelated docs.
+- Keep durable documentation in `docs/`, `core/docs/`, and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
+- Treat [docs/planning](/docs/planning/README.md) as retained legacy planning history pending promotion or purge, not as a normal live-work surface. Do not add new live tasks, PRDs, designs, implementation slices, or durable decisions there.
 - Treat [core/control_plane](/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
 - Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
 - When the main question is live planning state, next work, or repo coordination, start with `plan/.wt/indexes/coordination_index.json` and the derived `plan/plan_overview.md`.
-- Use `docs/planning/**` when the main need is the traced planning corpus, historical PRD or design context, or the richer human companion trackers derived from live `plan/**` state. Do not treat docs-backed task families as the live implementation backlog.
+- Use `docs/planning/**` only when the main need is retained historical context that has not yet been promoted or purged, and do not treat docs-backed task families as live authority.
 - During any non-documentation workflow, if a documentation gap is discovered, update adjacent docs in the same change when needed for coherence, otherwise load the minimum documentation workflow needed to close the gap or record explicit follow-up work if it is deferred.
 - When code, commands, schemas, or governed artifacts may have drifted from companion docs or machine-readable lookup surfaces, use the documentation-implementation reconciliation workflow or record why no explicit reconciliation pass was needed.
 - When traced planning or governance artifacts may have drifted from their companion trackers, family-specific indexes, or unified traceability joins, use the traceability reconciliation workflow or record why no explicit reconciliation pass was needed.
@@ -52,7 +52,7 @@
 ## Do Not
 - Do not bypass the domain-owned routing tables under [core/workflows/ROUTING_TABLE.md](/home/j/WatchTowerPlan/core/workflows/ROUTING_TABLE.md) and [plan/workflows/ROUTING_TABLE.md](/home/j/WatchTowerPlan/plan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
 - Do not treat older supporting standards, references, or legacy planning docs as authority when they conflict materially with [requirements.md](/requirements.md) or [decisions.md](/decisions.md).
-- Do not place durable documentation outside `docs/` or workflow procedures outside `core/workflows/` and `plan/workflows/`.
+- Do not place durable documentation outside `docs/`, `core/docs/`, and `plan/docs/`, or workflow procedures outside `core/workflows/` and `plan/workflows/`.
 - Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
 - Do not add parallel Python package roots or alternate virtual-environment conventions outside `core/python/`.
 - Do not leave companion machine-readable lookup or validation surfaces stale when their governing human or machine authority changed in the same task.

@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_discrepancy_helper_foundation.validate_discrepancy_helper_and_requirements_alignment` depends on `task.plan_discrepancy_helper_foundation.refactor_live_plan_discrepancy_writes_onto_helper`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_discrepancy_helper_foundation/summary.md)
 
 ## Evidence or Validation State

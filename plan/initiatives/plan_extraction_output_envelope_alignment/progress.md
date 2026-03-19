@@ -24,7 +24,7 @@ _No active tasks._
 - Task `task.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage` depends on `task.plan_extraction_output_envelope_alignment.add_typed_extraction_output_helper`.
 
 ## Next Actions
-- Finalize closeout, evidence, and promotion decisions.
+- No further default action. Initiative is completed.
 - Next surface: [summary.md](/plan/initiatives/plan_extraction_output_envelope_alignment/summary.md)
 
 ## Evidence or Validation State
