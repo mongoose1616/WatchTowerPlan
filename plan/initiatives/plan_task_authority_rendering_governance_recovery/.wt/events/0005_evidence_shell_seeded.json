@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_task_authority_rendering_governance_recovery.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T15:41:06Z",
+  "summary": "Seeded the evidence shell.",
+  "payload": {
+    "task_count": 5
+  },
+  "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+  "related_paths": [
+    "plan/initiatives/plan_task_authority_rendering_governance_recovery/initiative_brief.md",
+    "plan/initiatives/plan_task_authority_rendering_governance_recovery/design_record.md",
+    "plan/initiatives/plan_task_authority_rendering_governance_recovery/implementation_slice.md",
+    "plan/initiatives/plan_task_authority_rendering_governance_recovery/decision_notes.md"
+  ]
+}

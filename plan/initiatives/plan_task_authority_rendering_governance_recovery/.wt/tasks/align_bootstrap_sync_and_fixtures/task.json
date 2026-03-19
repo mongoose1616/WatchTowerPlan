@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_task_authority_rendering_governance_recovery.align_bootstrap_sync_and_fixtures",
+  "slug": "align_bootstrap_sync_and_fixtures",
+  "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+  "title": "Align bootstrap, sync, and fixture flows",
+  "summary": "Repair planning bootstrap, sync consumers, GitHub preview, and reduced fixture repos to use live plan task state.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "critical",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T15:41:06Z",
+  "updated_at": "2026-03-18T23:41:00Z",
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}
