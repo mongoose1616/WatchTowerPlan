@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
   "title": "Retention Policy Registry",
-  "description": "Schema for the plan-pack retention-policy registry covering legacy history, transitional archives, and clean-endstate purge rules.",
+  "description": "Schema for the plan-pack retention-policy registry covering live authority, purge-eligible closed initiative packages, and minimal surviving purge ledgers.",
   "type": "object",
   "required": [
     "$schema",
@@ -58,7 +58,6 @@
     "pathKind": {
       "type": "string",
       "enum": [
-        "legacy_history_root",
         "initiative_archive_root",
         "guidance_root",
         "machine_root",
@@ -69,8 +68,7 @@
       "type": "string",
       "enum": [
         "always",
-        "terminal_only",
-        "legacy_only"
+        "terminal_only"
       ]
     },
     "entryStatus": {
@@ -85,8 +83,6 @@
       "type": "string",
       "enum": [
         "authoritative",
-        "transitional_archive",
-        "legacy_ignored",
         "purge_when_eligible",
         "minimal_ledger"
       ]
