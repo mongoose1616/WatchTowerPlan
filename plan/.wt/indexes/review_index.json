@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-19T16:03:44Z",
+  "updated_at": "2026-03-19T18:39:56Z",
   "entries": [
     {
       "review_subject_id": "initiative.plan_requirements_decisions_adherence_remediation",
@@ -19,9 +19,9 @@
       "evidence_refs": [
         "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-19T16:03:44Z",
-      "lifecycle_stage": "in_progress",
-      "ready_for_execution": true
+      "updated_at": "2026-03-19T18:39:56Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
     },
     {
       "review_subject_id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",
@@ -37,7 +37,7 @@
       "evidence_refs": [
         "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-19T15:58:30Z"
+      "updated_at": "2026-03-19T18:39:56Z"
     }
   ]
 }

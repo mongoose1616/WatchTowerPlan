@@ -10,7 +10,7 @@ This remediation is a hard cutover. Root `docs/**` is retired completely, active
 - Keep duplication narrow: only the mirrored foundations corpus is mandatory by default.
 - Treat the six-section `plan_overview.md` contract as authoritative.
 - Replace active initiative projection phases with `capture`, `execution`, `closeout`, and `closed`.
-- Remove the remaining PRD / feature-design / implementation-plan semantic layer instead of carrying renamed compatibility helpers.
+- Remove the remaining pre-cutover planning-document semantic layer instead of carrying renamed compatibility helpers.
 
 ## Why
 - The current hybrid state keeps reintroducing authority confusion and documentation sprawl.

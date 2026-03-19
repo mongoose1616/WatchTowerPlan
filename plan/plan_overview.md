@@ -1,16 +1,27 @@
 # Plan Overview
 
-## Current State
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
-- `recommended_surface_path`: `plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md`
+## Plan Domain Summary
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
-## Active Initiatives
-- `trace.plan_requirements_decisions_adherence_remediation`: Requirements And Decisions Adherence Remediation (`execution` / `pack_wide`)
-
-## Actionable Tasks
+## Active Pack-Wide Initiatives
 - None.
 
-## Recent Closeouts
+## Active Project Initiatives
 - None.
+
+## Blocked or Attention-Needed Items
+- None.
+
+## Recent Completions or Changes
+- `trace.plan_requirements_decisions_adherence_remediation`: Requirements And Decisions Adherence Remediation (`completed` at `2026-03-19T18:39:56Z`) - Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository.
+
+## Navigation Links
+- [initiative_tracking.md](/plan/tracking/initiative_tracking.md)
+- [task_tracking.md](/plan/tracking/task_tracking.md)
+- [coordination_tracking.md](/plan/tracking/coordination_tracking.md)
+- [README.md](/plan/docs/README.md)
+- [README.md](/core/docs/README.md)
+- [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)

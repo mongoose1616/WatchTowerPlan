@@ -4,7 +4,7 @@
   "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
   "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
+  "status": "candidate",
   "approval_state": "pending",
   "review_refs": [
     "repository_maintainer_review"
@@ -12,7 +12,7 @@
   "evidence_refs": [
     "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle"
   ],
-  "updated_at": "2026-03-19T15:58:30Z",
+  "updated_at": "2026-03-19T18:39:56Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",

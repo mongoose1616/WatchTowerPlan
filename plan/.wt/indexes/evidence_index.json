@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-19T16:03:44Z",
+  "updated_at": "2026-03-19T18:39:56Z",
   "entries": [
     {
       "evidence_id": "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle",
@@ -11,7 +11,7 @@
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
       "initiative_title": "Requirements And Decisions Adherence Remediation",
       "title": "Bootstrap Validation Bundle",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/plan_requirements_decisions_adherence_remediation",
       "entry_count": 2,
       "acceptance_labels": [
@@ -32,7 +32,7 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/discrepancies",
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/initiative.json"
       ],
-      "updated_at": "2026-03-19T15:58:30Z"
+      "updated_at": "2026-03-19T18:39:56Z"
     }
   ]
 }

@@ -14,10 +14,10 @@ Retire the root docs tree, finish the initiative-package hard cutover, and resto
    - Align the rendered-surface registry, runtime renderer, tests, and live output to the six-section template and section schema.
    - Add fail-closed parity validation between templates, registries, and renderer payloads.
 4. Finish the terminology and phase cutover.
-   - Replace active PRD / feature-design / implementation-plan language with initiative brief / design record / implementation slice.
-   - Replace `implementation_planning` and related stale phase terminology with `capture`, `execution`, `closeout`, and `closed`.
+   - Replace active retired planning-model language with initiative brief / design record / implementation slice terminology.
+   - Replace stale phase terminology with `capture`, `execution`, `closeout`, and `closed`.
 5. Replace retired planning semantics.
-   - Remove the helper layer that still models PRDs and implementation plans as active documentation families.
+   - Remove the helper layer that still models retired planning documents as active documentation families.
    - Validate only the live initiative-package authored inputs.
 6. Restore rich human rendering and harden guards.
    - Recover stronger Markdown structure, tables, and navigation from `main` where it fits the new model.

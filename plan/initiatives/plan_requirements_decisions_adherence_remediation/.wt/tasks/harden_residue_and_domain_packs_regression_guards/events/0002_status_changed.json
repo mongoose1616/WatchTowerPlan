@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_requirements_decisions_adherence_remediation.harden_residue_and_domain_packs_regression_guards.0002_status_changed",
+  "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T17:55:22Z",
+  "summary": "Changed task.plan_requirements_decisions_adherence_remediation.harden_residue_guards status from planned to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/harden_residue_and_domain_packs_regression_guards/task.json"
+  },
+  "task_id": "task.plan_requirements_decisions_adherence_remediation.harden_residue_guards"
+}

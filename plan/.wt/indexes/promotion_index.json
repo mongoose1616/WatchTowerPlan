@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-19T16:03:44Z",
+  "updated_at": "2026-03-19T18:39:56Z",
   "entries": [
     {
       "promotion_id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",
@@ -11,7 +11,7 @@
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
       "initiative_title": "Requirements And Decisions Adherence Remediation",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/plan_requirements_decisions_adherence_remediation",
       "candidate_count": 4,
       "candidate_paths": [
@@ -29,12 +29,12 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-19T15:58:30Z",
+      "updated_at": "2026-03-19T18:39:56Z",
       "target_paths": [
         "plan/docs/decisions/plan_requirements_decisions_adherence_remediation_design_record.md",
         "plan/docs/patterns/plan_requirements_decisions_adherence_remediation_implementation_slice.md",
         "plan/docs/references/plan_requirements_decisions_adherence_remediation_initiative_brief.md",
-        "plan/docs/standards/plan_requirements_decisions_adherence_remediation_decision_notes.md"
+        "plan/docs/standards/governance/plan_requirements_decisions_adherence_remediation_decision_notes.md"
       ],
       "approval_state": "pending",
       "evidence_refs": [

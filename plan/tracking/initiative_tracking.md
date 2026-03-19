@@ -1,11 +1,11 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `execution` | repository_maintainer | `9` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | [task.plan_requirements_decisions_adherence_remediation.enforce_plan_overview_contract](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/enforce_the_six_section_plan_overview_contract/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.hard_rename_planning_terms](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/hard_cut_planning_terminology_and_phase_vocabulary/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.harden_residue_guards](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/harden_residue_and_domain_packs_regression_guards/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.re_root_plan_docs](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/move_plan_domain_governance_and_standards_into_plan_docs/task.json) (`in_progress`) <br> [task.plan_requirements_decisions_adherence_remediation.re_root_core_docs](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/re_root_command_reference_template_and_core_standard_docs/task.json) (`in_progress`) <br> [task.plan_requirements_decisions_adherence_remediation.replace_planning_semantics](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/replace_retired_planning_document_semantics/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.restore_rich_rendering](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/restore_rich_human_facing_rendering_and_navigation/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) (`planned`) <br> [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) (`planned`) | Start the highest-priority ready task from the initiative package. |
+_No active initiatives._
 
 ## Closed Initiatives
-_No closed initiatives._
+| Trace ID | Title | Status | Key | Closed At | Reason |
+| --- | --- | --- | --- | --- | --- |
+| `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-19T16:03:44Z`_
+_Updated At: `2026-03-19T18:39:56Z`_

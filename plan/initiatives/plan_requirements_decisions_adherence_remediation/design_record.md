@@ -17,7 +17,7 @@ Retire the root docs tree, finish the initiative-package hard cutover, and resto
 - Keep machine indexes compact and move human richness into rendered Markdown and authored doc structure rather than expanding index payloads.
 - Treat the six-section `plan_overview.md` template and section schema as authoritative, then align the renderer, rendered-surface registry, tests, and fail-closed validation around them.
 - Replace the stale initiative projection phase vocabulary with `capture`, `execution`, `closeout`, and `closed`.
-- Retire the remaining PRD / feature-design / implementation-plan semantic layer instead of renaming it in place.
+- Retire the remaining pre-cutover planning-document semantic layer instead of renaming it in place.
 
 ## Authority Boundaries
 - Root `docs/**` is removed from active authority.
@@ -29,7 +29,7 @@ Retire the root docs tree, finish the initiative-package hard cutover, and resto
 ## Applied Implications
 - Command docs, standards, references, templates, validators, indexes, README navigation, authority maps, query help, and tests must move in the same change sets as the root move.
 - Workflow routes and metadata must stop advertising retired planning terminology because those names influence both routing and user-visible command discovery.
-- Runtime helpers that still assume `docs/**` roots or PRD-style families must move or be removed as part of the cutover, not left behind as dead compatibility code.
+- Runtime helpers that still assume `docs/**` roots or retired planning-document families must move or be removed as part of the cutover, not left behind as dead compatibility code.
 - The implementation must preserve rich human tables and navigation patterns from `main` only where they fit the new roots and machine-backed plan model.
 
 ## Risks
