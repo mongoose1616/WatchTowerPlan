@@ -3,7 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
+from tests.integration.fixture_repo_support import (
+    materialize_governed_applies_to_targets,
+    materialize_plan_pack,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.planning_scaffolds import (
     PlanBootstrapParams,
@@ -28,6 +31,7 @@ def _copy_repo_subset(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
     copytree(REPO_ROOT / "docs", repo_root / "docs")
+    materialize_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     return repo_root
 
@@ -78,10 +82,18 @@ def test_plan_bootstrap_write_creates_traced_chain_and_bootstrap_task(tmp_path: 
     assert result.acceptance_contract.wrote is True
     assert result.validation_evidence.wrote is True
     assert result.task_result.wrote is True
+    assert (
+        result.task_result.doc_path
+        == "plan/initiatives/planning_scaffold_bootstrap_preview/.wt/tasks/"
+        "planning_scaffold_bootstrap_preview_bootstrap/task.json"
+    )
     assert (repo_root / result.task_result.doc_path).exists()
     assert all((repo_root / document.doc_path).exists() for document in result.documents)
     assert (repo_root / result.acceptance_contract.doc_path).exists()
     assert (repo_root / result.validation_evidence.doc_path).exists()
+    assert (
+        repo_root / "plan" / "initiatives" / "planning_scaffold_bootstrap_preview" / ".wt"
+    ).exists()
     decision_text = (
         repo_root / "docs/planning/decisions/planning_scaffold_bootstrap_preview_direction.md"
     ).read_text(encoding="utf-8")

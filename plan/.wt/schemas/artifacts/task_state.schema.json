@@ -12,6 +12,7 @@
     "title",
     "summary",
     "status",
+    "task_status",
     "task_kind",
     "priority",
     "owner",
@@ -40,6 +41,14 @@
       "minLength": 1
     },
     "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "task_status": {
       "type": "string",
       "enum": [
         "planned",
@@ -84,6 +93,47 @@
     },
     "related_ids": {
       "$ref": "#/$defs/idList"
+    },
+    "applies_to": {
+      "$ref": "#/$defs/stringList"
+    },
+    "scope_items": {
+      "$ref": "#/$defs/stringList"
+    },
+    "done_when_items": {
+      "$ref": "#/$defs/stringList"
+    },
+    "github_repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_issue_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "github_issue_node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_project_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_project_owner_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_project_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "github_project_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_synced_at": {
+      "type": "string",
+      "format": "date-time"
     }
   },
   "additionalProperties": false,
@@ -101,6 +151,14 @@
       "uniqueItems": true,
       "items": {
         "$ref": "#/$defs/idPattern"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
       }
     }
   }

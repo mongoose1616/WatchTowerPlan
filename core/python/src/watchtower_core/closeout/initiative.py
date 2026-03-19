@@ -8,7 +8,8 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.control_plane.models import TaskIndexEntry
+from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.sync.all import AllSyncRecord
 from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
@@ -18,7 +19,7 @@ from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
 
 TERMINAL_INITIATIVE_STATUSES = {"completed", "superseded", "cancelled", "abandoned"}
-TERMINAL_TASK_STATUSES = {"done", "cancelled"}
+TERMINAL_TASK_STATUSES = {"completed", "cancelled"}
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,6 +83,14 @@ class InitiativeCloseoutService:
         if initiative_status != "superseded" and superseded_by_trace_id is not None:
             raise ValueError(
                 "superseded_by_trace_id is only valid when initiative_status is superseded."
+            )
+        live_plan_entry = self._live_plan_initiative_entry(trace_id)
+        if live_plan_entry is not None:
+            raise ValueError(
+                f"Trace {trace_id} belongs to the live `plan/**` initiative package "
+                f"{live_plan_entry.key_surface_path}. Use "
+                f"`{self._plan_closeout_command(live_plan_entry)}` instead of "
+                "`watchtower-core closeout initiative`."
             )
 
         document = self._load_current_document()
@@ -232,14 +241,36 @@ class InitiativeCloseoutService:
                 return entry
         raise ValueError(f"Unknown trace ID: {trace_id}")
 
+    def _live_plan_initiative_entry(self, trace_id: str) -> InitiativeIndexEntry | None:
+        try:
+            entries = PlanWorkspaceService(self._loader).load_initiative_index().entries
+        except (FileNotFoundError, KeyError, ValueError):
+            return None
+        for entry in entries:
+            if entry.trace_id == trace_id:
+                return entry
+        return None
+
+    @staticmethod
+    def _plan_closeout_command(entry: InitiativeIndexEntry) -> str:
+        initiative_slug = entry.slug
+        if initiative_slug is None and entry.initiative_id is not None:
+            initiative_slug = entry.initiative_id.removeprefix("initiative.")
+        command = ["watchtower-core closeout plan-initiative"]
+        if entry.project_id is not None:
+            command.append(f"--project-slug {entry.project_id.removeprefix('project.')}")
+        if initiative_slug is not None:
+            command.append(f"--initiative-slug {initiative_slug}")
+        return " ".join(command)
+
     def _open_task_ids(self, trace_id: str) -> tuple[str, ...]:
         try:
             trace_entry = self._loader.load_traceability_index().get(trace_id)
         except KeyError as exc:
             raise ValueError(f"Unknown trace ID: {trace_id}") from exc
 
-        task_index = self._loader.load_task_index()
-        task_entries_by_id = {entry.task_id: entry for entry in task_index.entries}
+        task_entries = PlanWorkspaceService(self._loader).load_task_entries()
+        task_entries_by_id = {entry.task_id: entry for entry in task_entries}
         candidate_entries: dict[str, TaskIndexEntry] = {}
         missing_task_ids: list[str] = []
 
@@ -257,7 +288,7 @@ class InitiativeCloseoutService:
                 "Rebuild traceability and task surfaces before closeout."
             )
 
-        for task_entry in task_index.entries:
+        for task_entry in task_entries:
             if task_entry.trace_id == trace_id:
                 candidate_entries[task_entry.task_id] = task_entry
 

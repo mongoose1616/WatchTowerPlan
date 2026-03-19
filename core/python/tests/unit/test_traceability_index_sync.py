@@ -4,7 +4,9 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.plan_workspace import PLAN_TASK_INDEX_PATH
 from watchtower_core.repo_ops.sync import TraceabilityIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -42,6 +44,7 @@ def test_traceability_index_sync_writes_temp_output(tmp_path: Path) -> None:
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 
@@ -88,7 +91,7 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
     traceability_path = (
         repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
     )
-    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.json"
+    task_index_path = repo_root / PLAN_TASK_INDEX_PATH
 
     traceability_document = json.loads(traceability_path.read_text(encoding="utf-8"))
     trace_entries = traceability_document["entries"]
@@ -106,11 +109,27 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
     task_index_document = json.loads(task_index_path.read_text(encoding="utf-8"))
     task_entries = task_index_document["entries"]
     assert isinstance(task_entries, list)
-    target_task = next(entry for entry in task_entries if entry.get("trace_id") == trace_id)
-    target_task["status"] = "active"
-    target_task["task_status"] = "ready"
-    target_task["doc_path"] = "docs/planning/tasks/open/machine_first_coordination_surface.md"
-    target_task["updated_at"] = "2026-03-10T23:59:59Z"
+    target_task = dict(task_entries[0])
+    target_task.update(
+        {
+            "initiative_id": "initiative.machine_first_coordination_surface",
+            "trace_id": trace_id,
+            "initiative_title": "Machine First Coordination Surface",
+            "title": "Reopened machine-first coordination follow-up",
+            "summary": "Reopens the trace when a ready task reappears.",
+            "status": "active",
+            "task_status": "ready",
+            "task_kind": "governance",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": (
+        "plan/initiatives/machine_first_coordination_surface/.wt/tasks/"
+        "follow_up_ready/task.json"
+            ),
+            "updated_at": "2026-03-10T23:59:59Z",
+        }
+    )
+    task_index_document["entries"] = [target_task]
     task_index_path.write_text(
         f"{json.dumps(task_index_document, indent=2)}\n",
         encoding="utf-8",

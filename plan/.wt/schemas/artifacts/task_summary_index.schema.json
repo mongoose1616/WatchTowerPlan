@@ -51,9 +51,21 @@
         "$ref": "#/$defs/taskIdPattern"
       }
     },
+    "stringList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "priority": {
       "type": "string",
       "enum": ["critical", "high", "medium", "low"]
+    },
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
     },
     "taskStatus": {
       "type": "string",
@@ -62,6 +74,10 @@
     "taskKind": {
       "type": "string",
       "minLength": 1
+    },
+    "githubRepository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+\\/[A-Za-z0-9_.-]+$"
     },
     "taskEntry": {
       "type": "object",
@@ -73,6 +89,7 @@
         "title",
         "summary",
         "status",
+        "task_status",
         "task_kind",
         "priority",
         "owner",
@@ -105,6 +122,9 @@
           "minLength": 1
         },
         "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "task_status": {
           "$ref": "#/$defs/taskStatus"
         },
         "task_kind": {
@@ -133,6 +153,40 @@
         },
         "related_ids": {
           "$ref": "#/$defs/idList"
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
+        },
+        "github_repository": {
+          "$ref": "#/$defs/githubRepository"
+        },
+        "github_issue_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "github_issue_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_project_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_project_owner_type": {
+          "type": "string",
+          "enum": ["user", "organization"]
+        },
+        "github_project_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "github_project_item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_synced_at": {
+          "type": "string",
+          "format": "date-time"
         }
       },
       "additionalProperties": false

@@ -3,13 +3,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
+from watchtower_core.control_plane.event_stream import (
+    EventStreamDescriptor,
+    EventStreamHelper,
+    EventStreamWriteRequest,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import (
     GitHubApiError,
     GitHubClient,
     GitHubProjectContext,
 )
+from watchtower_core.repo_ops.plan_task_state import PlanTaskStateDocument, update_task_document
+from watchtower_core.repo_ops.plan_workspace import PLAN_PACK_SETTINGS_PATH
 from watchtower_core.repo_ops.sync.github_task_sync_support import (
     issue_labels,
     load_project_context,
@@ -19,11 +27,8 @@ from watchtower_core.repo_ops.sync.github_task_sync_support import (
     select_task_documents,
     sync_issue,
     sync_project,
-    task_front_matter_updates,
+    task_state_updates,
     validate_existing_bindings,
-)
-from watchtower_core.repo_ops.task_documents import (
-    update_task_document_front_matter,
 )
 
 
@@ -181,19 +186,28 @@ class GitHubTaskSyncService:
                     issue_node_id=issue_ref.node_id,
                     project_context=project_context,
                 )
-                changed = update_task_document_front_matter(
+                updates = task_state_updates(
+                    task=task,
+                    repository=repository,
+                    issue_number=issue_ref.number,
+                    issue_node_id=issue_ref.node_id,
+                    project_context=project_context,
+                    project_item_id=project_item_id,
+                )
+                changed = update_task_document(
                     self._loader,
                     task.relative_path,
-                    updates=task_front_matter_updates(
+                    updates=updates,
+                )
+                if changed:
+                    _append_github_sync_event(
+                        self._loader,
                         task=task,
                         repository=repository,
                         issue_number=issue_ref.number,
-                        issue_node_id=issue_ref.node_id,
-                        project_context=project_context,
                         project_item_id=project_item_id,
-                    ),
-                )
-                if changed:
+                        recorded_at=str(updates["github_synced_at"]),
+                    )
                     local_change_count += 1
                 synced_task_count += 1
                 records.append(
@@ -247,3 +261,37 @@ class GitHubTaskSyncService:
             rebuilt_task_tracking=rebuilt_task_tracking,
             rebuilt_traceability_index=rebuilt_traceability_index,
         )
+
+
+def _append_github_sync_event(
+    loader: ControlPlaneLoader,
+    *,
+    task: PlanTaskStateDocument,
+    repository: str,
+    issue_number: int,
+    project_item_id: str | None,
+    recorded_at: str,
+) -> None:
+    helper = EventStreamHelper.from_loader(
+        loader,
+        pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+    )
+    helper.append_event(
+        EventStreamDescriptor.task(
+            relative_dir=str(Path(task.relative_path).parent / "events"),
+            event_id_prefix=f"event.{Path(task.initiative_root).name}.{task.slug}",
+            initiative_id=task.initiative_id,
+            task_id=task.task_id,
+        ),
+        EventStreamWriteRequest(
+            event_type="github_synced",
+            actor_id="actor.watchtower_core",
+            recorded_at=recorded_at,
+            summary=f"Synchronized {task.task_id} to GitHub.",
+            payload={
+                "repository": repository,
+                "issue_number": issue_number,
+                **({"project_item_id": project_item_id} if project_item_id is not None else {}),
+            },
+        ),
+    )

@@ -5,11 +5,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.adapters import render_rendered_surface
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.adapters import render_repo_link
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.sync.initiative_index import PHASE_ORDER
-from watchtower_core.repo_ops.sync.tracking_common import latest_timestamp
+from watchtower_core.repo_ops.sync.tracking_common import (
+    RenderedTrackingSyncService,
+    latest_updated_at_for_entries,
+)
 
 INITIATIVE_TRACKING_DOCUMENT_PATH = "docs/planning/initiatives/initiative_tracking.md"
 INITIATIVE_TRACKING_SURFACE_ID = "rendered.initiative_tracking"
@@ -25,19 +27,14 @@ class InitiativeTrackingBuildResult:
     closed_count: int
 
 
-class InitiativeTrackingSyncService:
+class InitiativeTrackingSyncService(RenderedTrackingSyncService):
     """Build and write the human-readable initiative tracker from the initiative index."""
 
-    def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._loader = loader
-        self._repo_root = loader.repo_root
-
-    @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> InitiativeTrackingSyncService:
-        return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+    DOCUMENT_PATH = INITIATIVE_TRACKING_DOCUMENT_PATH
+    SURFACE_ID = INITIATIVE_TRACKING_SURFACE_ID
 
     def build_document(self) -> InitiativeTrackingBuildResult:
-        initiative_index = self._loader.load_initiative_index()
+        initiative_index = PlanWorkspaceService(self._loader).load_initiative_index()
         active_entries = tuple(
             sorted(
                 (
@@ -59,15 +56,12 @@ class InitiativeTrackingSyncService:
                 reverse=True,
             )
         )
-        surface = self._loader.load_rendered_surface_registry().get(
-            INITIATIVE_TRACKING_SURFACE_ID
-        )
-        content = render_rendered_surface(
-            surface,
+        content = self._render_tracking_document(
             {
                 "active_initiatives": tuple(
                     {
                         "trace_id": entry.trace_id,
+                        "title": entry.title,
                         "current_phase": entry.current_phase,
                         "owners": (
                             ", ".join(entry.active_owners)
@@ -84,6 +78,14 @@ class InitiativeTrackingSyncService:
                         "key_label": Path(entry.key_surface_path).name,
                         "next_surface_path": entry.next_surface_path,
                         "next_label": Path(entry.next_surface_path).name,
+                        "active_tasks": " <br> ".join(
+                            (
+                                f"{render_repo_link(task.doc_path, label=task.task_id)} "
+                                f"(`{task.task_status}`)"
+                            )
+                            for task in entry.active_task_summaries
+                        )
+                        or "-",
                         "next_action": entry.next_action,
                     }
                     for entry in active_entries
@@ -91,6 +93,7 @@ class InitiativeTrackingSyncService:
                 "closed_initiatives": tuple(
                     {
                         "trace_id": entry.trace_id,
+                        "title": entry.title,
                         "initiative_status": entry.initiative_status,
                         "key_surface_path": entry.key_surface_path,
                         "key_label": Path(entry.key_surface_path).name,
@@ -99,9 +102,7 @@ class InitiativeTrackingSyncService:
                     }
                     for entry in closed_entries
                 ),
-                "updated_at": latest_timestamp(
-                    tuple(entry.updated_at for entry in initiative_index.entries)
-                ),
+                "updated_at": latest_updated_at_for_entries(initiative_index.entries),
             },
         )
         return InitiativeTrackingBuildResult(
@@ -110,13 +111,3 @@ class InitiativeTrackingSyncService:
             active_count=len(active_entries),
             closed_count=len(closed_entries),
         )
-
-    def write_document(
-        self,
-        result: InitiativeTrackingBuildResult,
-        destination: Path | None = None,
-    ) -> Path:
-        """Write the generated initiative tracker to disk."""
-        target = destination or (self._repo_root / INITIATIVE_TRACKING_DOCUMENT_PATH)
-        target.write_text(result.content, encoding="utf-8")
-        return target

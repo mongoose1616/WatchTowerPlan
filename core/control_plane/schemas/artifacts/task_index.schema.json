@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
   "title": "Task Index",
-  "description": "Machine-readable tracking index for local task records stored under docs/planning/tasks/.",
+  "description": "Machine-readable tracking index for initiative-local task state stored under plan/**/.wt/tasks/.",
   "type": "object",
   "required": [
     "$schema",
@@ -46,12 +46,12 @@
     "taskStatus": {
       "type": "string",
       "enum": [
-        "backlog",
+        "planned",
         "ready",
         "in_progress",
         "blocked",
         "in_review",
-        "done",
+        "completed",
         "cancelled"
       ]
     },
@@ -63,7 +63,8 @@
         "chore",
         "documentation",
         "governance",
-        "research"
+        "research",
+        "validation"
       ]
     },
     "priority": {
@@ -89,7 +90,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^docs/planning/tasks/(open|closed)/.+\\.md$"
+      "pattern": "^plan/(initiatives|projects/.+/initiatives)/.+/\\.wt/tasks/.+/task\\.json$"
     },
     "taskIdList": {
       "type": "array",
@@ -221,52 +222,6 @@
         }
       },
       "allOf": [
-        {
-          "if": {
-            "properties": {
-              "doc_path": {
-                "pattern": "^docs/planning/tasks/open/.+\\.md$"
-              }
-            },
-            "required": [
-              "doc_path"
-            ]
-          },
-          "then": {
-            "properties": {
-              "task_status": {
-                "not": {
-                  "enum": [
-                    "done",
-                    "cancelled"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "doc_path": {
-                "pattern": "^docs/planning/tasks/closed/.+\\.md$"
-              }
-            },
-            "required": [
-              "doc_path"
-            ]
-          },
-          "then": {
-            "properties": {
-              "task_status": {
-                "enum": [
-                  "done",
-                  "cancelled"
-                ]
-              }
-            }
-          }
-        },
         {
           "if": {
             "required": [

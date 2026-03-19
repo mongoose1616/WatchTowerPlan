@@ -8,6 +8,10 @@ from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.plan_workspace import (
+    PLAN_PACK_SETTINGS_PATH,
+    PLAN_TASK_INDEX_PATH,
+)
 from watchtower_core.repo_ops.sync.traceability_support import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceAccumulator,
@@ -25,7 +29,7 @@ DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.json"
 DESIGN_DOCUMENT_INDEX_PATH = (
     "core/control_plane/indexes/design_documents/design_document_index.json"
 )
-TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.json"
+TASK_INDEX_PATH = PLAN_TASK_INDEX_PATH
 ACCEPTANCE_CONTRACT_DIRECTORY = "core/control_plane/contracts/acceptance"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 
@@ -35,6 +39,7 @@ class TraceabilityIndexSyncService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._plan_loader = loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
         self._repo_root = loader.repo_root
 
     @classmethod
@@ -175,7 +180,7 @@ class TraceabilityIndexSyncService:
             )
 
     def _merge_task_index(self, accumulators: dict[str, TraceAccumulator]) -> None:
-        document = self._loader.load_validated_document(TASK_INDEX_PATH)
+        document = self._plan_loader.load_validated_document(TASK_INDEX_PATH)
         for entry in load_entries(document, label=TASK_INDEX_PATH):
             trace_id_value = entry.get("trace_id")
             if not isinstance(trace_id_value, str) or not trace_id_value:

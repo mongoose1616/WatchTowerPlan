@@ -10,8 +10,8 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
     ActorRegistry,
-    ArtifactIndex,
     ArtifactFamilyRegistry,
+    ArtifactIndex,
     AuthorityMap,
     CommandIndex,
     CoordinationIndex,
@@ -26,19 +26,19 @@ from watchtower_core.control_plane.models import (
     PackSettings,
     PathPatternRegistry,
     PlanningCatalog,
-    PromotionPolicyRegistry,
     PrdIndex,
-    ReferenceIndex,
-    RetentionPolicyRegistry,
-    RenderedSurfaceRegistry,
     ProjectSurfacePolicyRegistry,
-    ReviewStatusRegistry,
+    PromotionPolicyRegistry,
+    ReferenceIndex,
+    RenderedSurfaceRegistry,
     RepositoryPathIndex,
+    RetentionPolicyRegistry,
+    ReviewStatusRegistry,
     RouteIndex,
     SchemaCatalog,
+    SourceTypeRegistry,
     StandardIndex,
     StatusRegistry,
-    SourceTypeRegistry,
     TaskIndex,
     TemplateCatalog,
     TraceabilityIndex,
@@ -108,6 +108,7 @@ ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 TRACE_PURGE_LEDGER_DIRECTORY = "core/control_plane/ledgers/purges"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 TArtifact = TypeVar("TArtifact")
+_KEEP_ACTIVE_PACK_SETTINGS = object()
 
 
 class ControlPlaneLoader:
@@ -184,6 +185,34 @@ class ControlPlaneLoader:
         self._typed_directory_cache: dict[str, object] = {}
         if active_pack_settings_path is not None:
             self._activate_pack_settings(active_pack_settings_path)
+
+    def derive(
+        self,
+        *,
+        artifact_source: ArtifactSource | None = None,
+        artifact_store: ArtifactStore | None = None,
+        active_pack_settings_path: str | None | object = _KEEP_ACTIVE_PACK_SETTINGS,
+    ) -> ControlPlaneLoader:
+        """Return a sibling loader that preserves current-run validated overrides."""
+
+        effective_pack_settings_path = (
+            self.active_pack_settings_path
+            if active_pack_settings_path is _KEEP_ACTIVE_PACK_SETTINGS
+            else active_pack_settings_path
+        )
+        derived = ControlPlaneLoader(
+            workspace_config=self.workspace_config,
+            schema_store=self.schema_store,
+            artifact_source=artifact_source or self.artifact_source,
+            artifact_store=artifact_store or self.artifact_store,
+            active_pack_settings_path=effective_pack_settings_path,
+        )
+        derived._validated_document_overrides = dict(self._validated_document_overrides)
+        derived._validated_directory_overrides = {
+            relative_directory: tuple(documents)
+            for relative_directory, documents in self._validated_directory_overrides.items()
+        }
+        return derived
 
     def _activate_pack_settings(self, pack_settings_path: str) -> None:
         """Configure pack-aware validation surfaces for one active pack settings path."""
@@ -782,12 +811,9 @@ class ControlPlaneLoader:
         cached = self._validated_directory_cache.get(relative_directory)
         if cached is not None:
             return cached
-        documents_by_path: dict[str, dict[str, Any]] = {
-            relative_path: document
-            for relative_path, document in self.artifact_source.iter_json_objects(
-                relative_directory
-            )
-        }
+        documents_by_path: dict[str, dict[str, Any]] = dict(
+            self.artifact_source.iter_json_objects(relative_directory)
+        )
         for relative_path, document in self._validated_document_overrides.items():
             if _is_direct_child_of_directory(relative_directory, relative_path):
                 documents_by_path[relative_path] = document

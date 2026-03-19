@@ -10,6 +10,9 @@ from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTracking
 from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.repo_ops.sync.task_tracking import TaskTrackingSyncService
 from watchtower_core.repo_ops.sync.tracking_common import (
+    active_entries_for_trace_status,
+    latest_updated_at_for_entries,
+    terminal_count_rows_for_entries,
     terminal_initiative_status_counts_for_trace_ids,
 )
 
@@ -83,22 +86,22 @@ def test_generated_tracking_outputs_use_active_first_sections_and_history_hints(
     task_content = TaskTrackingSyncService(loader).build_document().content
 
     assert "## Active PRDs" in prd_content
-    assert "## Terminal History" in prd_content
-    assert "query planning --trace-id <trace_id>" in prd_content
+    assert "## Terminal PRDs" in prd_content
+    assert "query prds --trace-id <trace_id>" in prd_content
 
     assert "## Active Decisions" in decision_content
-    assert "## Terminal History" in decision_content
+    assert "## Terminal Decisions" in decision_content
     assert "query decisions --trace-id <trace_id>" in decision_content
 
     assert "## Active Feature Designs" in design_content
     assert "## Active Implementation Plans" in design_content
-    assert "## Terminal History" in design_content
+    assert "## Terminal Feature Designs" in design_content
+    assert "## Terminal Implementation Plans" in design_content
     assert "query designs --trace-id <trace_id>" in design_content
+    assert "query designs --family implementation_plan --trace-id <trace_id>" in design_content
 
     assert "## Closed Task Summary" in task_content
-    assert "## Recently Closed Tasks" in task_content
-    assert "query tasks --task-status done" in task_content
-    assert "query tasks --task-status cancelled" in task_content
+    assert "## Closed Tasks" in task_content
 
 
 def test_terminal_history_summary_counts_unique_traces() -> None:
@@ -119,3 +122,20 @@ def test_terminal_history_summary_counts_unique_traces() -> None:
     )
 
     assert counts == (("completed", 2), ("cancelled", 1))
+
+
+def test_tracking_common_helpers_shape_active_entries_terminal_rows_and_updated_at() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    prd_entries = tuple(loader.load_prd_index().entries)
+    trace_statuses = {
+        prd_entries[0].trace_id: "completed",
+        prd_entries[1].trace_id: "active",
+    }
+
+    active_entries = active_entries_for_trace_status(prd_entries[:2], trace_statuses)
+    terminal_rows = terminal_count_rows_for_entries(prd_entries[:2], trace_statuses)
+    updated_at = latest_updated_at_for_entries(prd_entries[:2])
+
+    assert tuple(entry.trace_id for entry in active_entries) == (prd_entries[1].trace_id,)
+    assert terminal_rows == ({"label": "completed", "count": 1},)
+    assert updated_at == max(prd_entries[0].updated_at, prd_entries[1].updated_at)

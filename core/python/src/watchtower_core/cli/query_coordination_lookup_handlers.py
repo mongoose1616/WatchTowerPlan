@@ -5,9 +5,13 @@ from __future__ import annotations
 import argparse
 
 from watchtower_core.cli.handler_common import (
+    _emit_collection_query_results,
     _emit_command_error,
-    _print_payload,
+    _emit_detail_result,
+    _parse_optional_bool_arg,
+    _run_value_error_operation,
     _task_dependency_payload,
+    _task_filter_kwargs,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
@@ -19,6 +23,12 @@ from watchtower_core.repo_ops.query import (
     AuthorityMapSearchParams,
     DiscrepancyQueryService,
     DiscrepancySearchParams,
+    PlanCloseoutQueryService,
+    PlanCloseoutSearchParams,
+    PlanEvidenceQueryService,
+    PlanEvidenceSearchParams,
+    PlanReviewQueryService,
+    PlanReviewSearchParams,
     ProjectQueryService,
     ProjectSearchParams,
     ReadinessQueryService,
@@ -27,6 +37,10 @@ from watchtower_core.repo_ops.query import (
     TaskSearchParams,
     TraceabilityQueryService,
 )
+
+
+def _without_none_values(payload: dict[str, object]) -> dict[str, object]:
+    return {key: value for key, value in payload.items() if value is not None}
 
 
 def _run_query_authority(args: argparse.Namespace) -> int:
@@ -40,30 +54,15 @@ def _run_query_authority(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query authority",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_authority_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    if not entries:
-        print("No authority-map entries matched the requested filters.")
-        return 0
-
-    print(f"Found {len(entries)} authority entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        print(f"- {entry.question_id} [{entry.domain} -> {entry.artifact_kind}]")
-        print(f"  {entry.question}")
-        print(f"  Canonical: {entry.canonical_path}")
-        print(f"  Command: {entry.preferred_command}")
-        if entry.preferred_human_path is not None:
-            print(f"  Human: {entry.preferred_human_path}")
-        if entry.status_fields:
-            print(f"  Status fields: {', '.join(entry.status_fields)}")
-    return 0
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query authority",
+        entries=entries,
+        noun="authority",
+        empty_message="No authority-map entries matched the requested filters.",
+        payload_results_factory=lambda: [_authority_entry_payload(entry) for entry in entries],
+        render_entry=_print_authority_entry,
+    )
 
 
 def _run_query_artifacts(args: argparse.Namespace) -> int:
@@ -77,47 +76,21 @@ def _run_query_artifacts(args: argparse.Namespace) -> int:
             source_context=args.source_context,
             source_channel=args.source_channel,
             status=args.status,
-            authoritative=(
-                None if args.authoritative is None else args.authoritative == "true"
-            ),
-            derived=None if args.derived is None else args.derived == "true",
-            hidden=None if args.hidden is None else args.hidden == "true",
+            authoritative=_parse_optional_bool_arg(args.authoritative),
+            derived=_parse_optional_bool_arg(args.derived),
+            hidden=_parse_optional_bool_arg(args.hidden),
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query artifacts",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_artifact_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    if not entries:
-        print("No artifact entries matched the requested filters.")
-        return 0
-
-    print(f"Found {len(entries)} artifact entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        print(f"- {entry.artifact_id} [{entry.artifact_family}, {entry.status}]")
-        if entry.title is not None:
-            print(f"  {entry.title}")
-        if entry.summary is not None:
-            print(f"  {entry.summary}")
-        print(f"  Path: {entry.path}")
-        if entry.context_ids:
-            print(f"  Context IDs: {', '.join(entry.context_ids)}")
-        if entry.source_context is not None or entry.source_channel is not None:
-            print(
-                "  Source: "
-                f"{entry.source_context or '-'} / {entry.source_channel or '-'}"
-            )
-        print(
-            "  Authority: "
-            f"authoritative={entry.authoritative} derived={entry.derived} hidden={entry.hidden}"
-        )
-    return 0
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query artifacts",
+        entries=entries,
+        noun="artifact",
+        empty_message="No artifact entries matched the requested filters.",
+        payload_results_factory=lambda: [_artifact_entry_payload(entry) for entry in entries],
+        render_entry=_print_artifact_entry,
+    )
 
 
 def _run_query_tasks(args: argparse.Namespace) -> int:
@@ -126,15 +99,7 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
     entries = service.search(
         TaskSearchParams(
             query=args.query,
-            task_ids=tuple(args.task_id),
-            trace_id=args.trace_id,
-            task_status=args.task_status,
-            priority=args.priority,
-            owner=args.owner,
-            task_kind=args.task_kind,
-            blocked_only=args.blocked_only,
-            blocked_by_task_id=args.blocked_by,
-            depends_on_task_id=args.depends_on,
+            **_task_filter_kwargs(args),
             limit=args.limit,
         )
     )
@@ -143,11 +108,13 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
         if args.include_dependency_details
         else {}
     )
-    payload = {
-        "command": "watchtower-core query tasks",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query tasks",
+        entries=entries,
+        noun="task",
+        empty_message="No task entries matched the requested filters.",
+        payload_results_factory=lambda: [
             _task_entry_payload(
                 entry,
                 service=service,
@@ -156,41 +123,17 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
             )
             for entry in entries
         ],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    if not entries:
-        print("No task entries matched the requested filters.")
-        return 0
-
-    print(f"Found {len(entries)} task entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        task_status = getattr(entry, "status", getattr(entry, "task_status", "unknown"))
-        print(f"- {entry.task_id} [{task_status}, {entry.priority}]")
-        print(f"  {entry.title}")
-        print(f"  {entry.summary}")
-        if args.include_dependency_details:
-            if entry.blocked_by:
-                print(f"  Blocked by: {', '.join(entry.blocked_by)}")
-            if entry.depends_on:
-                print(f"  Depends on: {', '.join(entry.depends_on)}")
-            reverse_links = reverse_dependencies.get(entry.task_id, ())
-            if reverse_links:
-                print(
-                    "  Reverse dependencies: "
-                    + ", ".join(task.task_id for task in reverse_links)
-                )
-    return 0
+        render_entry=lambda entry: _print_task_entry(
+            entry,
+            include_dependency_details=args.include_dependency_details,
+            reverse_dependencies=reverse_dependencies,
+        ),
+    )
 
 
 def _run_query_readiness(args: argparse.Namespace) -> int:
     service = ReadinessQueryService(ControlPlaneLoader())
-    ready_for_execution = (
-        None
-        if args.ready_for_execution is None
-        else args.ready_for_execution == "true"
-    )
+    ready_for_execution = _parse_optional_bool_arg(args.ready_for_execution)
     entries = service.search(
         ReadinessSearchParams(
             query=args.query,
@@ -204,38 +147,15 @@ def _run_query_readiness(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query readiness",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_readiness_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    if not entries:
-        print("No readiness entries matched the requested filters.")
-        return 0
-
-    print(f"Found {len(entries)} readiness entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        readiness_state = "ready" if entry.ready_for_execution else "not_ready"
-        print(
-            f"- {entry.trace_id} [{entry.lifecycle_stage}, {entry.review_status}, {readiness_state}]"
-        )
-        print(f"  {entry.title}")
-        if entry.project_id is not None:
-            print(f"  Project: {entry.project_id}")
-        print(
-            "  Capture/Machine/Approval: "
-            f"{'complete' if entry.capture_complete else 'incomplete'}, "
-            f"{'valid' if entry.machine_valid else 'invalid'}, "
-            f"{entry.approval_status}"
-        )
-        if entry.blocking_reasons:
-            print(f"  Blocking reasons: {', '.join(entry.blocking_reasons)}")
-        print(f"  Root: {entry.initiative_root}")
-    return 0
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query readiness",
+        entries=entries,
+        noun="readiness",
+        empty_message="No readiness entries matched the requested filters.",
+        payload_results_factory=lambda: [_readiness_entry_payload(entry) for entry in entries],
+        render_entry=_print_readiness_entry,
+    )
 
 
 def _run_query_discrepancies(args: argparse.Namespace) -> int:
@@ -253,31 +173,95 @@ def _run_query_discrepancies(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query discrepancies",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_discrepancy_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query discrepancies",
+        entries=entries,
+        noun="discrepancy",
+        empty_message="No discrepancy entries matched the requested filters.",
+        payload_results_factory=lambda: [_discrepancy_entry_payload(entry) for entry in entries],
+        render_entry=_print_discrepancy_entry,
+    )
 
-    if not entries:
-        print("No discrepancy entries matched the requested filters.")
-        return 0
 
-    print(f"Found {len(entries)} discrepancy entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        print(
-            f"- {entry.discrepancy_id} "
-            f"[{entry.severity}, {entry.gate_effect}, {entry.status}]"
+def _run_query_plan_evidence(args: argparse.Namespace) -> int:
+    service = PlanEvidenceQueryService(ControlPlaneLoader())
+    entries = service.search(
+        PlanEvidenceSearchParams(
+            query=args.query,
+            initiative_id=args.initiative_id,
+            project_id=args.project_id,
+            trace_id=args.trace_id,
+            status=args.status,
+            owner=args.owner,
+            target_phase=args.target_phase,
+            validation_type=args.validation_type,
+            acceptance_label=args.acceptance_label,
+            limit=args.limit,
         )
-        print(f"  {entry.title}")
-        print(f"  {entry.summary}")
-        print(f"  Category: {entry.category}")
-        if entry.source_paths:
-            print(f"  Sources: {', '.join(entry.source_paths)}")
-    return 0
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query plan-evidence",
+        entries=entries,
+        noun="plan evidence",
+        empty_message="No plan evidence entries matched the requested filters.",
+        payload_results_factory=lambda: [_plan_evidence_entry_payload(entry) for entry in entries],
+        render_entry=_print_plan_evidence_entry,
+    )
+
+
+def _run_query_closeouts(args: argparse.Namespace) -> int:
+    service = PlanCloseoutQueryService(ControlPlaneLoader())
+    promotion_review_required = _parse_optional_bool_arg(args.promotion_review_required)
+    entries = service.search(
+        PlanCloseoutSearchParams(
+            query=args.query,
+            initiative_id=args.initiative_id,
+            project_id=args.project_id,
+            trace_id=args.trace_id,
+            status=args.status,
+            terminal_state=args.terminal_state,
+            promotion_review_required=promotion_review_required,
+            limit=args.limit,
+        )
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query closeouts",
+        entries=entries,
+        noun="closeout",
+        empty_message="No closeout entries matched the requested filters.",
+        payload_results_factory=lambda: [_closeout_entry_payload(entry) for entry in entries],
+        render_entry=_print_closeout_entry,
+    )
+
+
+def _run_query_reviews(args: argparse.Namespace) -> int:
+    service = PlanReviewQueryService(ControlPlaneLoader())
+    ready_for_execution = _parse_optional_bool_arg(args.ready_for_execution)
+    entries = service.search(
+        PlanReviewSearchParams(
+            query=args.query,
+            subject_kind=args.subject_kind,
+            initiative_id=args.initiative_id,
+            project_id=args.project_id,
+            trace_id=args.trace_id,
+            review_state=args.review_state,
+            ready_for_execution=ready_for_execution,
+            review_ref=args.review_ref,
+            limit=args.limit,
+        )
+    )
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query reviews",
+        entries=entries,
+        noun="review",
+        empty_message="No review entries matched the requested filters.",
+        payload_results_factory=lambda: [_review_entry_payload(entry) for entry in entries],
+        render_entry=_print_review_entry,
+    )
 
 
 def _run_query_projects(args: argparse.Namespace) -> int:
@@ -292,34 +276,15 @@ def _run_query_projects(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query projects",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_project_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    if not entries:
-        print("No project entries matched the requested filters.")
-        return 0
-
-    print(f"Found {len(entries)} project entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        print(f"- {entry.project_id} [{entry.status}]")
-        print(f"  {entry.title}")
-        print(f"  {entry.summary}")
-        print(
-            "  Initiatives: "
-            f"active={entry.active_initiative_count} blocked={entry.blocked_initiative_count}"
-        )
-        print(
-            "  Repositories: "
-            f"{entry.repository_count} via {', '.join(entry.linked_repository_roles)}"
-        )
-        print(f"  Root: {entry.project_root}")
-    return 0
+    return _emit_collection_query_results(
+        args,
+        command_name="watchtower-core query projects",
+        entries=entries,
+        noun="project",
+        empty_message="No project entries matched the requested filters.",
+        payload_results_factory=lambda: [_project_entry_payload(entry) for entry in entries],
+        render_entry=_print_project_entry,
+    )
 
 
 def _run_query_trace(args: argparse.Namespace) -> int:
@@ -361,44 +326,46 @@ def _run_query_trace(args: argparse.Namespace) -> int:
             "notes": entry.notes,
         },
     }
-    if _print_payload(args, payload) == 0:
-        return 0
+    def _render_human() -> None:
+        print(f"{entry.trace_id}: {entry.title}")
+        print(entry.summary)
+        print(f"Initiative Status: {entry.initiative_status}")
+        if entry.closed_at is not None:
+            print(f"Closed At: {entry.closed_at}")
+        if entry.closure_reason is not None:
+            print(f"Closure Reason: {entry.closure_reason}")
+        if entry.superseded_by_trace_id is not None:
+            print(f"Superseded By: {entry.superseded_by_trace_id}")
+        if entry.prd_ids:
+            print(f"PRDs: {', '.join(entry.prd_ids)}")
+        if entry.decision_ids:
+            print(f"Decisions: {', '.join(entry.decision_ids)}")
+        if entry.design_ids:
+            print(f"Designs: {', '.join(entry.design_ids)}")
+        if entry.plan_ids:
+            print(f"Plans: {', '.join(entry.plan_ids)}")
+        if entry.task_ids:
+            print(f"Tasks: {', '.join(entry.task_ids)}")
+        if entry.acceptance_contract_ids:
+            print(f"Acceptance Contracts: {', '.join(entry.acceptance_contract_ids)}")
+        if entry.evidence_ids:
+            print(f"Evidence: {', '.join(entry.evidence_ids)}")
 
-    print(f"{entry.trace_id}: {entry.title}")
-    print(entry.summary)
-    print(f"Initiative Status: {entry.initiative_status}")
-    if entry.closed_at is not None:
-        print(f"Closed At: {entry.closed_at}")
-    if entry.closure_reason is not None:
-        print(f"Closure Reason: {entry.closure_reason}")
-    if entry.superseded_by_trace_id is not None:
-        print(f"Superseded By: {entry.superseded_by_trace_id}")
-    if entry.prd_ids:
-        print(f"PRDs: {', '.join(entry.prd_ids)}")
-    if entry.decision_ids:
-        print(f"Decisions: {', '.join(entry.decision_ids)}")
-    if entry.design_ids:
-        print(f"Designs: {', '.join(entry.design_ids)}")
-    if entry.plan_ids:
-        print(f"Plans: {', '.join(entry.plan_ids)}")
-    if entry.task_ids:
-        print(f"Tasks: {', '.join(entry.task_ids)}")
-    if entry.acceptance_contract_ids:
-        print(f"Acceptance Contracts: {', '.join(entry.acceptance_contract_ids)}")
-    if entry.evidence_ids:
-        print(f"Evidence: {', '.join(entry.evidence_ids)}")
-    return 0
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
 
 
 def _run_query_project_context(args: argparse.Namespace) -> int:
-    try:
-        context = load_project_context(ControlPlaneLoader(), args.project_slug)
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core query project-context",
-            str(exc),
-        )
+    context = _run_value_error_operation(
+        args,
+        command_name="watchtower-core query project-context",
+        operation=lambda: load_project_context(ControlPlaneLoader(), args.project_slug),
+    )
+    if context is None:
+        return 1
 
     payload = {
         "command": "watchtower-core query project-context",
@@ -429,28 +396,31 @@ def _run_query_project_context(args: argparse.Namespace) -> int:
             ],
         },
     }
-    if _print_payload(args, payload) == 0:
-        return 0
+    def _render_human() -> None:
+        print(f"{context.project_id}: {context.title} [{context.status}]")
+        print(context.summary)
+        print(
+            "Pack Context: "
+            f"{context.pack_context.pack_settings.pack_id} via "
+            f"{context.pack_context.pack_settings_path}"
+        )
+        print(f"Project Root: {context.project_root}")
+        print(f"Initiative Root: {context.initiative_root}")
+        if context.repository_links:
+            print("Repositories:")
+            for link in context.repository_links:
+                state = "active" if link.active else "inactive"
+                print(
+                    "- "
+                    f"{link.repository_role}: {link.repository_locator} "
+                    f"[{link.repository_kind}, {state}]"
+                )
 
-    print(f"{context.project_id}: {context.title} [{context.status}]")
-    print(context.summary)
-    print(
-        "Pack Context: "
-        f"{context.pack_context.pack_settings.pack_id} via "
-        f"{context.pack_context.pack_settings_path}"
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
     )
-    print(f"Project Root: {context.project_root}")
-    print(f"Initiative Root: {context.initiative_root}")
-    if context.repository_links:
-        print("Repositories:")
-        for link in context.repository_links:
-            state = "active" if link.active else "inactive"
-            print(
-                "- "
-                f"{link.repository_role}: {link.repository_locator} "
-                f"[{link.repository_kind}, {state}]"
-            )
-    return 0
 
 
 def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
@@ -470,6 +440,34 @@ def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
     }
 
 
+def _print_authority_entry(entry: AuthorityMapEntry) -> None:
+    print(f"- {entry.question_id} [{entry.domain} -> {entry.artifact_kind}]")
+    print(f"  {entry.question}")
+    print(f"  Canonical: {entry.canonical_path}")
+    print(f"  Command: {entry.preferred_command}")
+    if entry.preferred_human_path is not None:
+        print(f"  Human: {entry.preferred_human_path}")
+    if entry.status_fields:
+        print(f"  Status fields: {', '.join(entry.status_fields)}")
+
+
+def _print_artifact_entry(entry: ArtifactIndexEntry) -> None:
+    print(f"- {entry.artifact_id} [{entry.artifact_family}, {entry.status}]")
+    if entry.title is not None:
+        print(f"  {entry.title}")
+    if entry.summary is not None:
+        print(f"  {entry.summary}")
+    print(f"  Path: {entry.path}")
+    if entry.context_ids:
+        print(f"  Context IDs: {', '.join(entry.context_ids)}")
+    if entry.source_context is not None or entry.source_channel is not None:
+        print(f"  Source: {entry.source_context or '-'} / {entry.source_channel or '-'}")
+    print(
+        "  Authority: "
+        f"authoritative={entry.authoritative} derived={entry.derived} hidden={entry.hidden}"
+    )
+
+
 def _task_entry_payload(
     entry: object,
     *,
@@ -477,7 +475,8 @@ def _task_entry_payload(
     reverse_dependencies: dict[str, tuple[object, ...]],
     include_dependency_details: bool,
 ) -> dict[str, object]:
-    status = getattr(entry, "status", getattr(entry, "task_status", None))
+    artifact_status = getattr(entry, "status", None)
+    task_status = getattr(entry, "task_status", artifact_status)
     payload: dict[str, object] = {
         "task_id": entry.task_id,
         "initiative_id": getattr(entry, "initiative_id", None),
@@ -486,8 +485,8 @@ def _task_entry_payload(
         "initiative_title": getattr(entry, "initiative_title", None),
         "title": entry.title,
         "summary": entry.summary,
-        "status": status,
-        "task_status": status,
+        "status": artifact_status,
+        "task_status": task_status,
         "task_kind": getattr(entry, "task_kind", None),
         "priority": entry.priority,
         "owner": entry.owner,
@@ -510,7 +509,27 @@ def _task_entry_payload(
             _task_dependency_payload(task)
             for task in reverse_dependencies.get(entry.task_id, ())
         ]
-    return {key: value for key, value in payload.items() if value is not None}
+    return _without_none_values(payload)
+
+
+def _print_task_entry(
+    entry: object,
+    *,
+    include_dependency_details: bool,
+    reverse_dependencies: dict[str, tuple[object, ...]],
+) -> None:
+    task_status = getattr(entry, "task_status", getattr(entry, "status", "unknown"))
+    print(f"- {entry.task_id} [{task_status}, {entry.priority}]")
+    print(f"  {entry.title}")
+    print(f"  {entry.summary}")
+    if include_dependency_details:
+        if entry.blocked_by:
+            print(f"  Blocked by: {', '.join(entry.blocked_by)}")
+        if entry.depends_on:
+            print(f"  Depends on: {', '.join(entry.depends_on)}")
+        reverse_links = reverse_dependencies.get(entry.task_id, ())
+        if reverse_links:
+            print("  Reverse dependencies: " + ", ".join(task.task_id for task in reverse_links))
 
 
 def _readiness_entry_payload(entry: object) -> dict[str, object]:
@@ -530,7 +549,26 @@ def _readiness_entry_payload(entry: object) -> dict[str, object]:
         "blocking_reasons": list(entry.blocking_reasons),
         "updated_at": entry.updated_at,
     }
-    return {key: value for key, value in payload.items() if value is not None}
+    return _without_none_values(payload)
+
+
+def _print_readiness_entry(entry: object) -> None:
+    readiness_state = "ready" if entry.ready_for_execution else "not_ready"
+    print(
+        f"- {entry.trace_id} [{entry.lifecycle_stage}, {entry.review_status}, {readiness_state}]"
+    )
+    print(f"  {entry.title}")
+    if entry.project_id is not None:
+        print(f"  Project: {entry.project_id}")
+    print(
+        "  Capture/Machine/Approval: "
+        f"{'complete' if entry.capture_complete else 'incomplete'}, "
+        f"{'valid' if entry.machine_valid else 'invalid'}, "
+        f"{entry.approval_status}"
+    )
+    if entry.blocking_reasons:
+        print(f"  Blocking reasons: {', '.join(entry.blocking_reasons)}")
+    print(f"  Root: {entry.initiative_root}")
 
 
 def _discrepancy_entry_payload(entry: object) -> dict[str, object]:
@@ -548,7 +586,112 @@ def _discrepancy_entry_payload(entry: object) -> dict[str, object]:
         "source_paths": list(entry.source_paths),
         "updated_at": entry.updated_at,
     }
-    return {key: value for key, value in payload.items() if value is not None}
+    return _without_none_values(payload)
+
+
+def _print_discrepancy_entry(entry: object) -> None:
+    print(f"- {entry.discrepancy_id} [{entry.severity}, {entry.gate_effect}, {entry.status}]")
+    print(f"  {entry.title}")
+    print(f"  {entry.summary}")
+    print(f"  Category: {entry.category}")
+    if entry.source_paths:
+        print(f"  Sources: {', '.join(entry.source_paths)}")
+
+
+def _plan_evidence_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "evidence_id": entry.evidence_id,
+        "initiative_id": entry.initiative_id,
+        "project_id": entry.project_id,
+        "trace_id": entry.trace_id,
+        "initiative_title": entry.initiative_title,
+        "title": entry.title,
+        "status": entry.status,
+        "initiative_root": entry.initiative_root,
+        "entry_count": entry.entry_count,
+        "acceptance_labels": list(entry.acceptance_labels),
+        "validation_types": list(entry.validation_types),
+        "owners": list(entry.owners),
+        "target_phases": list(entry.target_phases),
+        "expected_output_paths": list(entry.expected_output_paths),
+        "updated_at": entry.updated_at,
+    }
+    return _without_none_values(payload)
+
+
+def _print_plan_evidence_entry(entry: object) -> None:
+    print(f"- {entry.evidence_id} [{entry.status}, {entry.entry_count} checks]")
+    print(f"  {entry.initiative_title}")
+    print(f"  Validation types: {', '.join(entry.validation_types)}")
+    print(f"  Owners: {', '.join(entry.owners)}")
+    print(f"  Target phases: {', '.join(entry.target_phases)}")
+
+
+def _closeout_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "closeout_id": entry.closeout_id,
+        "initiative_id": entry.initiative_id,
+        "project_id": entry.project_id,
+        "trace_id": entry.trace_id,
+        "initiative_title": entry.initiative_title,
+        "title": entry.title,
+        "status": entry.status,
+        "initiative_root": entry.initiative_root,
+        "expected_outcome": entry.expected_outcome,
+        "acceptance_ids": list(entry.acceptance_ids),
+        "evidence_ids": list(entry.evidence_ids),
+        "follow_up_handling": entry.follow_up_handling,
+        "promotion_review_required": entry.promotion_review_required,
+        "terminal_state_options": list(entry.terminal_state_options),
+        "terminal_state": entry.terminal_state,
+        "updated_at": entry.updated_at,
+    }
+    return _without_none_values(payload)
+
+
+def _print_closeout_entry(entry: object) -> None:
+    terminal_state = entry.terminal_state or "-"
+    print(f"- {entry.closeout_id} [{entry.status}, terminal={terminal_state}]")
+    print(f"  {entry.initiative_title}")
+    print(f"  Expected outcome: {entry.expected_outcome}")
+    print(
+        "  Promotion review: "
+        f"{'required' if entry.promotion_review_required else 'not required'}"
+    )
+
+
+def _review_entry_payload(entry: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "review_subject_id": entry.review_subject_id,
+        "subject_kind": entry.subject_kind,
+        "initiative_id": entry.initiative_id,
+        "project_id": entry.project_id,
+        "trace_id": entry.trace_id,
+        "initiative_title": entry.initiative_title,
+        "title": entry.title,
+        "review_state": entry.review_state,
+        "review_refs": list(entry.review_refs),
+        "evidence_refs": list(entry.evidence_refs),
+        "updated_at": entry.updated_at,
+        "lifecycle_stage": entry.lifecycle_stage,
+        "ready_for_execution": entry.ready_for_execution,
+    }
+    return _without_none_values(payload)
+
+
+def _print_review_entry(entry: object) -> None:
+    readiness = (
+        "-"
+        if entry.ready_for_execution is None
+        else ("ready" if entry.ready_for_execution else "not_ready")
+    )
+    print(
+        f"- {entry.review_subject_id} "
+        f"[{entry.subject_kind}, {entry.review_state}, readiness={readiness}]"
+    )
+    print(f"  {entry.title}")
+    if entry.review_refs:
+        print(f"  Review refs: {', '.join(entry.review_refs)}")
 
 
 def _project_entry_payload(entry: object) -> dict[str, object]:
@@ -567,7 +710,22 @@ def _project_entry_payload(entry: object) -> dict[str, object]:
         "repository_locators": list(entry.repository_locators),
         "updated_at": entry.updated_at,
     }
-    return {key: value for key, value in payload.items() if value is not None}
+    return _without_none_values(payload)
+
+
+def _print_project_entry(entry: object) -> None:
+    print(f"- {entry.project_id} [{entry.status}]")
+    print(f"  {entry.title}")
+    print(f"  {entry.summary}")
+    print(
+        "  Initiatives: "
+        f"active={entry.active_initiative_count} blocked={entry.blocked_initiative_count}"
+    )
+    print(
+        "  Repositories: "
+        f"{entry.repository_count} via {', '.join(entry.linked_repository_roles)}"
+    )
+    print(f"  Root: {entry.project_root}")
 
 
 def _artifact_entry_payload(entry: ArtifactIndexEntry) -> dict[str, object]:

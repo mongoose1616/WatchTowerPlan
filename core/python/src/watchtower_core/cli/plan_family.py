@@ -5,13 +5,22 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
 
 
 def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
     """Register the plan command family and its subcommands."""
     from watchtower_core.cli.handler_common import _run_help
-    from watchtower_core.cli.plan_handlers import _run_plan_bootstrap, _run_plan_scaffold
+    from watchtower_core.cli.plan_handlers import (
+        _run_plan_approve,
+        _run_plan_bootstrap,
+        _run_plan_confirm_inputs,
+        _run_plan_scaffold,
+    )
     from watchtower_core.repo_ops.planning_scaffolds import PLAN_KIND_CHOICES
     from watchtower_core.repo_ops.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
@@ -20,8 +29,9 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         help="Scaffold compact governed planning documents and initiative bootstrap chains.",
         description=dedent(
             """
-            Scaffold compact governed planning documents from the current
-            repository conventions.
+            Scaffold compact governed planning documents, bootstrap live
+            initiative packages, and advance initiative readiness through the
+            captured-input and approval gates.
 
             These commands are dry-run by default. Add `--write` to persist the
             scaffolded documents and refresh the derived planning surfaces.
@@ -34,6 +44,7 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
             "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\" "
             "--include-decision --write",
+            "uv run watchtower-core plan approve --initiative-slug example_initiative --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -164,12 +175,7 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         action="store_true",
         help="Write the scaffolded document and refresh derived planning surfaces.",
     )
-    scaffold_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(scaffold_parser)
     scaffold_parser.set_defaults(handler=_run_plan_scaffold)
 
     bootstrap_parser = plan_subparsers.add_parser(
@@ -276,10 +282,83 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         action="store_true",
         help="Write the scaffold chain and refresh derived planning surfaces.",
     )
-    bootstrap_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(bootstrap_parser)
     bootstrap_parser.set_defaults(handler=_run_plan_bootstrap)
+
+    confirm_inputs_parser = plan_subparsers.add_parser(
+        "confirm-inputs",
+        help="Confirm authored initiative inputs into machine state.",
+        description=dedent(
+            """
+            Confirm the current initiative-authored inputs into machine state
+            after review so the readiness gate reflects the latest captured
+            package before execution approval.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core plan confirm-inputs --initiative-slug example_initiative",
+            "uv run watchtower-core plan confirm-inputs --project-slug watchtower "
+            "--initiative-slug watchtower_work_item_notes --write --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    confirm_inputs_parser.add_argument(
+        "--initiative-slug",
+        required=True,
+        help="Initiative slug such as example_initiative or watchtower_work_item_notes.",
+    )
+    confirm_inputs_parser.add_argument(
+        "--project-slug",
+        help="Project slug when the initiative is project-scoped, such as watchtower.",
+    )
+    confirm_inputs_parser.add_argument(
+        "--actor-id",
+        default="actor.repository_maintainer",
+        help="Approver actor identifier used for the confirmation event.",
+    )
+    confirm_inputs_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Persist the confirmation state and refresh derived plan surfaces.",
+    )
+    add_human_json_format_argument(confirm_inputs_parser)
+    confirm_inputs_parser.set_defaults(handler=_run_plan_confirm_inputs)
+
+    approve_parser = plan_subparsers.add_parser(
+        "approve",
+        help="Approve one live initiative package for execution.",
+        description=dedent(
+            """
+            Approve one validated live initiative package into
+            ready_for_execution so task transitions can begin real execution
+            without violating the hard no-start gate.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core plan approve --initiative-slug example_initiative",
+            "uv run watchtower-core plan approve --project-slug watchtower "
+            "--initiative-slug watchtower_work_item_notes --write --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    approve_parser.add_argument(
+        "--initiative-slug",
+        required=True,
+        help="Initiative slug such as example_initiative or watchtower_work_item_notes.",
+    )
+    approve_parser.add_argument(
+        "--project-slug",
+        help="Project slug when the initiative is project-scoped, such as watchtower.",
+    )
+    approve_parser.add_argument(
+        "--actor-id",
+        default="actor.repository_maintainer",
+        help="Approver actor identifier used for the approval event.",
+    )
+    approve_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Persist the approval state and refresh derived plan surfaces.",
+    )
+    add_human_json_format_argument(approve_parser)
+    approve_parser.set_defaults(handler=_run_plan_approve)

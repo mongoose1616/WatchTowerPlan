@@ -6,17 +6,22 @@ from shutil import copytree
 
 import pytest
 
-from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
+from tests.integration.fixture_repo_support import (
+    materialize_governed_applies_to_targets,
+    materialize_plan_pack,
+)
 from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
 from watchtower_core.control_plane.loader import (
-    COORDINATION_INDEX_PATH,
     DECISION_INDEX_PATH,
     DESIGN_DOCUMENT_INDEX_PATH,
-    INITIATIVE_INDEX_PATH,
     PRD_INDEX_PATH,
-    TASK_INDEX_PATH,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
+)
+from watchtower_core.repo_ops.plan_workspace import (
+    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
+    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
+    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
 from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
 from watchtower_core.repo_ops.sync.coordination_tracking import CoordinationTrackingSyncService
@@ -35,8 +40,18 @@ def _build_coordination_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "docs" / "planning", repo_root / "docs" / "planning")
     (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     return repo_root
+
+
+def _first_live_initiative_trace_id(repo_root: Path) -> str:
+    for path in sorted((repo_root / "plan").rglob("initiative.json")):
+        if "/.wt/" not in path.as_posix():
+            continue
+        document = json.loads(path.read_text(encoding="utf-8"))
+        return str(document["trace_id"])
+    raise AssertionError("Expected at least one live initiative package in the fixture repo.")
 
 
 def test_all_sync_runs_in_dry_run_mode() -> None:
@@ -157,7 +172,7 @@ def test_coordination_sync_reuses_stable_rendered_sources(
         DECISION_INDEX_PATH: 1,
         DESIGN_DOCUMENT_INDEX_PATH: 1,
         TASK_INDEX_PATH: 0,
-        TRACEABILITY_INDEX_PATH: 0,
+        TRACEABILITY_INDEX_PATH: 1,
         INITIATIVE_INDEX_PATH: 0,
         COORDINATION_INDEX_PATH: 0,
     }
@@ -168,10 +183,11 @@ def test_coordination_sync_dry_run_uses_generated_dependency_artifacts(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_coordination_fixture_repo(tmp_path)
+    trace_id = _first_live_initiative_trace_id(repo_root)
     initiative_index_path = repo_root / INITIATIVE_INDEX_PATH
     initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
     for entry in initiative_index["entries"]:
-        if entry["trace_id"] == "trace.core_export_hardening_followup":
+        if entry["trace_id"] == trace_id:
             entry["next_action"] = "STALE SNAPSHOT MARKER"
             break
     initiative_index_path.write_text(
@@ -221,7 +237,7 @@ def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
     assert result.wrote is True
     assert (output_dir / "core/control_plane/indexes/commands/command_index.json").exists()
     assert (output_dir / "core/control_plane/indexes/foundations/foundation_index.json").exists()
-    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.json").exists()
+    assert (output_dir / "plan/.wt/indexes/initiative_index.json").exists()
     assert (output_dir / "docs/planning/prds/prd_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
 
@@ -234,15 +250,13 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
     result = service.run(output_dir=output_dir)
 
     assert result.wrote is True
-    assert (output_dir / "core/control_plane/indexes/tasks/task_index.json").exists()
+    assert (output_dir / "plan/.wt/indexes/task_index.json").exists()
     assert (
         output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
     ).exists()
-    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.json").exists()
+    assert (output_dir / "plan/.wt/indexes/initiative_index.json").exists()
     assert (output_dir / "core/control_plane/indexes/planning/planning_catalog.json").exists()
-    assert (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
-    ).exists()
+    assert (output_dir / "plan/.wt/indexes/coordination_index.json").exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
     assert (output_dir / "docs/planning/coordination_tracking.md").exists()
@@ -250,12 +264,11 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
 
 def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_path: Path) -> None:
     repo_root = _build_coordination_fixture_repo(tmp_path)
-    initiative_index_path = (
-        repo_root / "core/control_plane/indexes/initiatives/initiative_index.json"
-    )
+    trace_id = _first_live_initiative_trace_id(repo_root)
+    initiative_index_path = repo_root / INITIATIVE_INDEX_PATH
     initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
     for entry in initiative_index["entries"]:
-        if entry["trace_id"] == "trace.core_export_hardening_followup":
+        if entry["trace_id"] == trace_id:
             entry["next_action"] = "STALE SNAPSHOT MARKER"
             break
     initiative_index_path.write_text(
@@ -271,14 +284,12 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
 
     tracker_path = output_dir / "docs/planning/initiatives/initiative_tracking.md"
     tracker_text = tracker_path.read_text(encoding="utf-8")
-    coordination_index_path = (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
-    )
+    coordination_index_path = output_dir / COORDINATION_INDEX_PATH
     coordination_text = coordination_index_path.read_text(encoding="utf-8")
     coordination_tracking_path = output_dir / "docs/planning/coordination_tracking.md"
     coordination_tracking_text = coordination_tracking_path.read_text(encoding="utf-8")
     assert result.wrote is True
-    assert "trace.core_export_hardening_followup" in tracker_text
+    assert trace_id in tracker_text
     assert "STALE SNAPSHOT MARKER" not in tracker_text
     assert "STALE SNAPSHOT MARKER" not in coordination_text
     assert "STALE SNAPSHOT MARKER" not in coordination_tracking_text

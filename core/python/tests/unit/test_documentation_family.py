@@ -31,7 +31,8 @@ def test_documentation_family_helper_exposes_foundation_mirror_contract() -> Non
 def test_documentation_family_helper_validates_allowed_roots() -> None:
     helper = _helper()
 
-    assert helper.allowed_in_root("workflow", "workflows/modules") is True
+    assert helper.allowed_in_root("workflow", "plan/workflows/modules") is True
+    assert helper.allowed_in_root("workflow", "workflows/modules") is False
 
     issues = helper.validate_root("reference", "plan/docs/foundations")
 

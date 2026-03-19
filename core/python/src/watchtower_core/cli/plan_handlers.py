@@ -4,8 +4,16 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _emit_command_error, _print_payload
+from watchtower_core.cli.handler_common import (
+    _emit_command_error,
+    _emit_detail_result,
+    _run_value_error_operation,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.initiative_packages import (
+    InitiativePackageResult,
+    InitiativePackageService,
+)
 from watchtower_core.repo_ops.planning_scaffolds import (
     PlanBootstrapParams,
     PlanBootstrapResult,
@@ -17,8 +25,11 @@ from watchtower_core.repo_ops.planning_scaffolds import (
 
 def _run_plan_scaffold(args: argparse.Namespace) -> int:
     service = PlanningScaffoldService(ControlPlaneLoader())
-    try:
-        result = service.scaffold(
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core plan scaffold",
+        prefix="Plan scaffold error",
+        operation=lambda: service.scaffold(
             PlanScaffoldParams(
                 kind=args.kind,
                 trace_id=args.trace_id,
@@ -40,14 +51,10 @@ def _run_plan_scaffold(args: argparse.Namespace) -> int:
                 updated_at=args.updated_at,
             ),
             write=args.write,
-        )
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core plan scaffold",
-            str(exc),
-            prefix="Plan scaffold error",
-        )
+        ),
+    )
+    if result is None:
+        return 1
     return _emit_scaffold_result(
         args,
         command_name="watchtower-core plan scaffold",
@@ -66,8 +73,11 @@ def _run_plan_bootstrap(args: argparse.Namespace) -> int:
         )
 
     service = PlanningScaffoldService(ControlPlaneLoader())
-    try:
-        result = service.bootstrap(
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core plan bootstrap",
+        prefix="Plan bootstrap error",
+        operation=lambda: service.bootstrap(
             PlanBootstrapParams(
                 trace_id=args.trace_id,
                 title=args.title,
@@ -87,19 +97,79 @@ def _run_plan_bootstrap(args: argparse.Namespace) -> int:
                 updated_at=args.updated_at,
             ),
             write=args.write,
-        )
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core plan bootstrap",
-            str(exc),
-            prefix="Plan bootstrap error",
-        )
+        ),
+    )
+    if result is None:
+        return 1
     return _emit_bootstrap_result(
         args,
         command_name="watchtower-core plan bootstrap",
         result=result,
         include_documents=args.include_documents,
+    )
+
+
+def _run_plan_confirm_inputs(args: argparse.Namespace) -> int:
+    service = InitiativePackageService(ControlPlaneLoader())
+    command_name = "watchtower-core plan confirm-inputs"
+    result = _run_value_error_operation(
+        args,
+        command_name=command_name,
+        prefix="Plan confirm-inputs error",
+        operation=lambda: (
+            service.confirm_project_scoped_inputs(
+                args.project_slug,
+                args.initiative_slug,
+                args.actor_id,
+                write=args.write,
+            )
+            if args.project_slug
+            else service.confirm_authored_inputs(
+                args.initiative_slug,
+                args.actor_id,
+                write=args.write,
+            )
+        ),
+    )
+    if result is None:
+        return 1
+    return _emit_initiative_package_result(
+        args,
+        command_name=command_name,
+        action_summary="Confirmed authored inputs",
+        result=result,
+    )
+
+
+def _run_plan_approve(args: argparse.Namespace) -> int:
+    service = InitiativePackageService(ControlPlaneLoader())
+    command_name = "watchtower-core plan approve"
+    result = _run_value_error_operation(
+        args,
+        command_name=command_name,
+        prefix="Plan approve error",
+        operation=lambda: (
+            service.approve_project_scoped(
+                args.project_slug,
+                args.initiative_slug,
+                args.actor_id,
+                write=args.write,
+            )
+            if args.project_slug
+            else service.approve_packwide(
+                args.initiative_slug,
+                args.actor_id,
+                write=args.write,
+            )
+        ),
+    )
+    if result is None:
+        return 1
+    return _emit_initiative_package_result(
+        args,
+        command_name=command_name,
+        action_summary="Approved live initiative",
+        result=result,
     )
 
 
@@ -124,21 +194,28 @@ def _emit_scaffold_result(
     }
     if include_document:
         payload["document"] = result.content
-    if _print_payload(args, payload) == 0:
-        return 0
 
-    action = "Wrote" if result.wrote else "Prepared"
-    print(f"{action} {result.kind} scaffold at {result.doc_path}.")
-    print(f"Document ID: {result.document_id}")
-    if include_document:
-        print("")
-        print(result.content.rstrip())
-        return 0
-    if result.wrote:
-        print("Derived planning surfaces were refreshed.")
-    else:
-        print("Dry-run only. Use --write to persist or --include-document to inspect the scaffold.")
-    return 0
+    def _render_human() -> None:
+        action = "Wrote" if result.wrote else "Prepared"
+        print(f"{action} {result.kind} scaffold at {result.doc_path}.")
+        print(f"Document ID: {result.document_id}")
+        if include_document:
+            print("")
+            print(result.content.rstrip())
+            return
+        if result.wrote:
+            print("Derived planning surfaces were refreshed.")
+        else:
+            print(
+                "Dry-run only. Use --write to persist or "
+                "--include-document to inspect the scaffold."
+            )
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
 
 
 def _emit_bootstrap_result(
@@ -205,33 +282,77 @@ def _emit_bootstrap_result(
             "wrote": result.task_result.wrote,
         },
     }
-    if _print_payload(args, payload) == 0:
-        return 0
 
-    action = "Wrote" if result.wrote else "Prepared"
-    print(
-        f"{action} bootstrap chain with {len(result.documents)} planning documents and "
-        f"task {result.task_result.task_id}."
-    )
-    for document in result.documents:
-        print(f"- {document.kind}: {document.doc_path}")
+    def _render_human() -> None:
+        action = "Wrote" if result.wrote else "Prepared"
+        print(
+            f"{action} bootstrap chain with {len(result.documents)} planning documents and "
+            f"task {result.task_result.task_id}."
+        )
+        for document in result.documents:
+            print(f"- {document.kind}: {document.doc_path}")
+            if include_documents:
+                print("")
+                print(document.content.rstrip())
+                print("")
+        print(f"- acceptance_contract: {result.acceptance_contract.doc_path}")
         if include_documents:
             print("")
-            print(document.content.rstrip())
+            print(result.acceptance_contract.content.rstrip())
             print("")
-    print(f"- acceptance_contract: {result.acceptance_contract.doc_path}")
-    if include_documents:
-        print("")
-        print(result.acceptance_contract.content.rstrip())
-        print("")
-    print(f"- validation_evidence: {result.validation_evidence.doc_path}")
-    if include_documents:
-        print("")
-        print(result.validation_evidence.content.rstrip())
-        print("")
-    print(f"- task: {result.task_result.doc_path}")
-    if result.wrote:
-        print("Derived planning surfaces were refreshed.")
-    else:
-        print("Dry-run only. Use --write to persist or --include-documents to inspect content.")
-    return 0
+        print(f"- validation_evidence: {result.validation_evidence.doc_path}")
+        if include_documents:
+            print("")
+            print(result.validation_evidence.content.rstrip())
+            print("")
+        print(f"- task: {result.task_result.doc_path}")
+        if result.wrote:
+            print("Derived planning surfaces were refreshed.")
+        else:
+            print(
+                "Dry-run only. Use --write to persist or --include-documents to inspect content."
+            )
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
+
+
+def _emit_initiative_package_result(
+    args: argparse.Namespace,
+    *,
+    command_name: str,
+    action_summary: str,
+    result: InitiativePackageResult,
+) -> int:
+    payload = {
+        "command": command_name,
+        "status": "ok",
+        "initiative_id": result.initiative_id,
+        "trace_id": result.trace_id,
+        "initiative_root": result.initiative_root,
+        "lifecycle_stage": result.lifecycle_stage,
+        "review_status": result.review_status,
+        "ready_for_execution": result.ready_for_execution,
+        "validation_passed": result.validation_passed,
+        "wrote": result.wrote,
+    }
+
+    def _render_human() -> None:
+        print(f"{action_summary} {result.trace_id}.")
+        print(f"Initiative Root: {result.initiative_root}")
+        print(f"Lifecycle Stage: {result.lifecycle_stage}")
+        print(f"Review Status: {result.review_status}")
+        print(f"Ready For Execution: {result.ready_for_execution}")
+        if result.wrote:
+            print("Initiative state and derived plan surfaces were updated.")
+        else:
+            print("Dry-run only. Use --write to persist the updated initiative state.")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )

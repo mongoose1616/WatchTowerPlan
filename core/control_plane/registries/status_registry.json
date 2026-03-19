@@ -3,7 +3,7 @@
   "surface_name": "status_registry",
   "contract_version": "v1",
   "description": "Global status vocabulary for pack-facing validation and enforcement.",
-  "updated_at": "2026-03-16T05:15:00Z",
+  "updated_at": "2026-03-18T00:40:00Z",
   "statuses": [
     {
       "value": "active",
@@ -13,27 +13,17 @@
     {
       "value": "blocked",
       "entry_status": "active",
-      "summary": "Cannot proceed until an external blocker is resolved.",
-      "allowed_families": [
-        "challenge",
-        "task"
-      ]
+      "summary": "Cannot proceed until an external blocker is resolved."
     },
     {
-      "value": "solved",
+      "value": "completed",
       "entry_status": "active",
-      "summary": "Work reached the intended solution outcome.",
-      "allowed_families": [
-        "challenge"
-      ]
+      "summary": "Work reached its intended terminal outcome."
     },
     {
-      "value": "unresolved",
+      "value": "cancelled",
       "entry_status": "active",
-      "summary": "Work ended without a satisfactory resolution.",
-      "allowed_families": [
-        "challenge"
-      ]
+      "summary": "Work ended before completing its intended outcome."
     },
     {
       "value": "closed",

@@ -4,16 +4,17 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import materialize_plan_pack
 from watchtower_core.closeout import TracePurgeService
 from watchtower_core.control_plane.loader import (
     DECISION_INDEX_PATH,
     DESIGN_DOCUMENT_INDEX_PATH,
     PRD_INDEX_PATH,
-    TASK_INDEX_PATH,
     TRACE_PURGE_LEDGER_DIRECTORY,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.repo_ops.plan_workspace import PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH
 from watchtower_core.repo_ops.sync.all import AllSyncRecord, AllSyncResult
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -23,12 +24,12 @@ def _build_purge_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
     for relative_path in (
         "docs/planning/prds",
         "docs/planning/decisions",
         "docs/planning/design/features",
         "docs/planning/design/implementation",
-        "docs/planning/tasks/closed/archive/2026/03/10",
         "docs/standards/governance",
     ):
         (repo_root / relative_path).mkdir(parents=True, exist_ok=True)
@@ -67,7 +68,9 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     decision_path = "docs/planning/decisions/example_purge_direction.md"
     feature_design_path = "docs/planning/design/features/example_purge.md"
     implementation_plan_path = "docs/planning/design/implementation/example_purge.md"
-    task_path = "docs/planning/tasks/closed/archive/2026/03/10/example_purge_cleanup.md"
+    task_path = (
+        "plan/initiatives/example_purge/.wt/tasks/example_purge_cleanup/task.json"
+    )
     authority_path = "docs/standards/governance/example_retained_authority.md"
     contract_path = (
         "core/control_plane/contracts/acceptance/example_purge_acceptance.json"
@@ -82,9 +85,31 @@ def _configure_trace_fixture(repo_root: Path) -> None:
         decision_path,
         feature_design_path,
         implementation_plan_path,
-        task_path,
     ):
         _write_text(repo_root, relative_path, f"# {relative_path}\n")
+    _write_json(
+        repo_root,
+        task_path,
+        {
+            "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+            "task_id": task_id,
+            "slug": "example_purge_cleanup",
+            "initiative_id": "initiative.example_purge",
+            "title": "Example purge cleanup task",
+            "summary": "Fixture closed task for purge tests.",
+            "status": "active",
+            "task_status": "completed",
+            "task_kind": "governance",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "created_at": "2026-03-10T20:20:00Z",
+            "updated_at": "2026-03-10T20:20:00Z",
+            "related_ids": [prd_id, decision_id],
+            "applies_to": [prd_path],
+            "scope_items": ["Remove the trace package."],
+            "done_when_items": ["The fixture task is terminal."],
+        },
+    )
     _write_text(repo_root, authority_path, "# Example retained authority\n")
 
     prd_index = _load_json(repo_root, PRD_INDEX_PATH)
@@ -171,18 +196,19 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     task_entry.update(
         {
             "task_id": task_id,
+            "initiative_id": "initiative.example_purge",
             "trace_id": trace_id,
+            "initiative_title": "Example Purge Initiative",
             "title": "Example purge cleanup task",
             "summary": "Fixture closed task for purge tests.",
             "status": "active",
-            "task_status": "done",
+            "task_status": "completed",
             "task_kind": "governance",
             "priority": "high",
             "owner": "repository_maintainer",
             "doc_path": task_path,
             "updated_at": "2026-03-10T20:20:00Z",
             "related_ids": [prd_id, decision_id],
-            "applies_to": [prd_path],
         }
     )
     task_index["entries"] = [task_entry]

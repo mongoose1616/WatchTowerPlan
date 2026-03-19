@@ -68,12 +68,12 @@
     "taskStatus": {
       "type": "string",
       "enum": [
-        "backlog",
+        "planned",
         "ready",
         "in_progress",
         "blocked",
         "in_review",
-        "done",
+        "completed",
         "cancelled"
       ]
     },

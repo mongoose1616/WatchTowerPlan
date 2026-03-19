@@ -4,15 +4,22 @@ import json
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_acceptance_and_evidence_paths
+import pytest
+
+from tests.integration.fixture_repo_support import (
+    materialize_acceptance_and_evidence_paths,
+    materialize_plan_pack,
+)
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import (
-    COORDINATION_INDEX_PATH,
-    INITIATIVE_INDEX_PATH,
     PLANNING_CATALOG_PATH,
-    TASK_INDEX_PATH,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
+)
+from watchtower_core.repo_ops.plan_workspace import (
+    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
+    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
+    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
 from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 
@@ -23,6 +30,7 @@ def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
+    materialize_plan_pack(repo_root, REPO_ROOT)
     for relative_path in (
         "docs/planning",
         "docs/planning/prds",
@@ -46,6 +54,26 @@ def _write_json(repo_root: Path, relative_path: str, document: dict[str, object]
     )
 
 
+def _seed_terminal_task_for_trace(repo_root: Path, trace_id: str, task_id: str) -> None:
+    task_index_document = _load_json(repo_root, TASK_INDEX_PATH)
+    task_entries = task_index_document["entries"]
+    assert isinstance(task_entries, list)
+    seeded_task = dict(task_entries[0])
+    seeded_task.update(
+        {
+            "task_id": task_id,
+            "trace_id": trace_id,
+            "title": "Acceptance closeout fixture task",
+            "summary": "Seeds a terminal task entry for closeout validation.",
+            "status": "active",
+            "task_status": "completed",
+            "updated_at": "2026-03-10T23:10:00Z",
+        }
+    )
+    task_index_document["entries"] = [seeded_task]
+    _write_json(repo_root, TASK_INDEX_PATH, task_index_document)
+
+
 def test_initiative_closeout_updates_effective_timestamps_and_coordination_outputs(
     monkeypatch,
     tmp_path: Path,
@@ -54,18 +82,33 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
+    initiative_index_document = _load_json(repo_root, INITIATIVE_INDEX_PATH)
+    initiative_entries = initiative_index_document["entries"]
+    assert isinstance(initiative_entries, list)
+    initiative_trace_ids = {
+        entry["trace_id"]
+        for entry in initiative_entries
+        if isinstance(entry, dict) and isinstance(entry.get("trace_id"), str)
+    }
     target = next(
         entry
         for entry in entries
-        if entry["trace_id"] == "trace.end_to_end_repo_review_and_rationalization"
+        if entry["trace_id"] not in initiative_trace_ids
     )
+    fixture_trace_id = target["trace_id"]
     target["initiative_status"] = "active"
     target["updated_at"] = "2026-03-10T19:43:34Z"
+    target["task_ids"] = [f"task.{fixture_trace_id.removeprefix('trace.')}.closeout.001"]
     target.pop("closed_at", None)
     target.pop("closure_reason", None)
     (repo_root / TRACEABILITY_INDEX_PATH).write_text(
         f"{json.dumps(traceability_document, indent=2)}\n",
         encoding="utf-8",
+    )
+    _seed_terminal_task_for_trace(
+        repo_root,
+        fixture_trace_id,
+        f"task.{fixture_trace_id.removeprefix('trace.')}.closeout.001",
     )
 
     closed_at = "2026-03-10T23:59:59Z"
@@ -95,12 +138,13 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
         wrapped_run_closeout_shared_outputs,
     )
     result = service.close(
-        trace_id="trace.end_to_end_repo_review_and_rationalization",
+        trace_id=fixture_trace_id,
         initiative_status="completed",
         closure_reason="Closed for regression coverage.",
         closed_at=closed_at,
         write=True,
         allow_open_tasks=True,
+        allow_acceptance_issues=True,
     )
 
     assert result.traceability_output_path is not None
@@ -124,23 +168,22 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
     written_trace_entry = next(
         entry
         for entry in written_traceability["entries"]
-        if entry["trace_id"] == "trace.end_to_end_repo_review_and_rationalization"
+        if entry["trace_id"] == fixture_trace_id
     )
     assert written_trace_entry["updated_at"] == closed_at
     assert written_trace_entry["closed_at"] == closed_at
 
     written_initiative_index = _load_json(repo_root, INITIATIVE_INDEX_PATH)
-    initiative_entry = next(
-        entry
-        for entry in written_initiative_index["entries"]
-        if entry["trace_id"] == "trace.end_to_end_repo_review_and_rationalization"
-    )
-    assert initiative_entry["updated_at"] == closed_at
-    assert initiative_entry["closed_at"] == closed_at
-
-    written_coordination_index = _load_json(repo_root, COORDINATION_INDEX_PATH)
     initiative_entries = written_initiative_index["entries"]
     assert isinstance(initiative_entries, list)
+    assert not any(
+        entry["trace_id"] == fixture_trace_id
+        for entry in initiative_entries
+        if isinstance(entry, dict)
+        and isinstance(entry.get("trace_id"), str)
+    )
+
+    written_coordination_index = _load_json(repo_root, COORDINATION_INDEX_PATH)
     assert written_coordination_index["updated_at"] == max(
         entry["updated_at"]
         for entry in initiative_entries
@@ -152,7 +195,7 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
     planning_entry = next(
         entry
         for entry in written_planning_catalog["entries"]
-        if entry["trace_id"] == "trace.end_to_end_repo_review_and_rationalization"
+        if entry["trace_id"] == fixture_trace_id
     )
     assert planning_entry["initiative_status"] == "completed"
     coordination = planning_entry.get("coordination")
@@ -199,7 +242,10 @@ def test_initiative_closeout_rejects_open_tasks_without_override(tmp_path: Path)
     target_task["trace_id"] = trace_id
     target_task["status"] = "active"
     target_task["task_status"] = "ready"
-    target_task["doc_path"] = "docs/planning/tasks/open/example_open_closeout.md"
+    target_task["doc_path"] = (
+        "plan/initiatives/plan_task_authority_rendering_governance_recovery/.wt/tasks/"
+        "align_bootstrap_sync_and_fixtures/task.json"
+    )
     target_task["updated_at"] = "2026-03-10T23:10:00Z"
     _write_json(repo_root, TASK_INDEX_PATH, task_index_document)
 
@@ -219,6 +265,35 @@ def test_initiative_closeout_rejects_open_tasks_without_override(tmp_path: Path)
 
     assert task_id in message
     assert "--allow-open-tasks" in message
+
+
+def test_initiative_closeout_rejects_live_plan_trace_ids(tmp_path: Path) -> None:
+    repo_root = _build_closeout_fixture_repo(tmp_path)
+    initiative_index_document = _load_json(repo_root, INITIATIVE_INDEX_PATH)
+    initiative_entries = initiative_index_document["entries"]
+    assert isinstance(initiative_entries, list)
+    target_entry = next(
+        entry
+        for entry in initiative_entries
+        if isinstance(entry, dict)
+        and isinstance(entry.get("trace_id"), str)
+        and isinstance(entry.get("slug"), str)
+    )
+
+    service = InitiativeCloseoutService(ControlPlaneLoader(repo_root))
+
+    with pytest.raises(ValueError) as exc_info:
+        service.close(
+            trace_id=target_entry["trace_id"],
+            initiative_status="completed",
+            closure_reason="Should fail for live plan initiatives.",
+            write=False,
+        )
+
+    message = str(exc_info.value)
+    assert "live `plan/**` initiative package" in message
+    assert "watchtower-core closeout plan-initiative" in message
+    assert f"--initiative-slug {target_entry['slug']}" in message
 
 
 def test_initiative_closeout_rejects_missing_linked_tasks_in_task_index(tmp_path: Path) -> None:
@@ -264,15 +339,18 @@ def test_initiative_closeout_rejects_acceptance_issues_without_override(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_closeout_fixture_repo(tmp_path)
+    task_id = "task.core_python_foundation.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
     target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
     target["initiative_status"] = "active"
     target["updated_at"] = "2026-03-10T23:10:00Z"
+    target["task_ids"] = [task_id]
     target.pop("closed_at", None)
     target.pop("closure_reason", None)
     _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
+    _seed_terminal_task_for_trace(repo_root, "trace.core_python_foundation", task_id)
 
     contract_path = (
         repo_root
@@ -306,15 +384,18 @@ def test_initiative_closeout_allows_explicit_acceptance_issue_override(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_closeout_fixture_repo(tmp_path)
+    task_id = "task.core_python_foundation.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
     target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
     target["initiative_status"] = "active"
     target["updated_at"] = "2026-03-10T23:10:00Z"
+    target["task_ids"] = [task_id]
     target.pop("closed_at", None)
     target.pop("closure_reason", None)
     _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
+    _seed_terminal_task_for_trace(repo_root, "trace.core_python_foundation", task_id)
 
     contract_path = (
         repo_root

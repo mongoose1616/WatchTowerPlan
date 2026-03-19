@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _emit_command_error, _print_payload
+from watchtower_core.cli.handler_common import (
+    _emit_detail_result,
+    _run_value_error_operation,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.task_lifecycle import (
     TaskCreateParams,
@@ -17,8 +20,11 @@ from watchtower_core.repo_ops.task_lifecycle import (
 
 def _run_task_create(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    try:
-        result = service.create(
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core task create",
+        prefix="Task create error",
+        operation=lambda: service.create(
             TaskCreateParams(
                 task_id=args.task_id,
                 trace_id=args.trace_id,
@@ -38,25 +44,22 @@ def _run_task_create(args: argparse.Namespace) -> int:
                 updated_at=args.updated_at,
             ),
             write=args.write,
-        )
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core task create",
-            str(exc),
-            prefix="Task create error",
-        )
+        ),
+    )
+    if result is None:
+        return 1
     return _emit_task_result(args, command_name="watchtower-core task create", result=result)
 
 
 def _run_task_update(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    try:
-        result = service.update(
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core task update",
+        prefix="Task update error",
+        operation=lambda: service.update(
             TaskUpdateParams(
                 task_id=args.task_id,
-                trace_id=args.trace_id,
-                clear_trace_id=args.clear_trace_id,
                 title=args.title,
                 summary=args.summary,
                 task_kind=args.task_kind,
@@ -73,25 +76,23 @@ def _run_task_update(args: argparse.Namespace) -> int:
                 clear_depends_on=args.clear_depends_on,
                 blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
                 clear_blocked_by=args.clear_blocked_by,
-                file_stem=args.file_stem,
                 updated_at=args.updated_at,
             ),
             write=args.write,
-        )
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core task update",
-            str(exc),
-            prefix="Task update error",
-        )
+        ),
+    )
+    if result is None:
+        return 1
     return _emit_task_result(args, command_name="watchtower-core task update", result=result)
 
 
 def _run_task_transition(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    try:
-        result = service.transition(
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core task transition",
+        prefix="Task transition error",
+        operation=lambda: service.transition(
             TaskTransitionParams(
                 task_id=args.task_id,
                 task_status=args.task_status,
@@ -100,18 +101,13 @@ def _run_task_transition(args: argparse.Namespace) -> int:
                 clear_depends_on=args.clear_depends_on,
                 blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
                 clear_blocked_by=args.clear_blocked_by,
-                file_stem=args.file_stem,
                 updated_at=args.updated_at,
             ),
             write=args.write,
-        )
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core task transition",
-            str(exc),
-            prefix="Task transition error",
-        )
+        ),
+    )
+    if result is None:
+        return 1
     return _emit_task_result(args, command_name="watchtower-core task transition", result=result)
 
 
@@ -141,24 +137,30 @@ def _emit_task_result(
         "coordination_refreshed": result.coordination_refreshed,
         "closeout_recommended": result.closeout_recommended,
     }
-    if _print_payload(args, payload) == 0:
-        return 0
 
-    if not result.changed:
-        print(f"No task changes detected for {result.task_id}.")
-        print("Use additional flags to change task metadata or body content.")
-        return 0
+    def _render_human() -> None:
+        if not result.changed:
+            print(f"No task changes detected for {result.task_id}.")
+            print("Use additional flags to change task metadata or body content.")
+            return
 
-    action = "Wrote" if result.wrote else "Prepared"
-    print(f"{action} task {result.task_id} at {result.doc_path}.")
-    print(f"Status: {result.task_status}")
-    print(f"Owner: {result.owner}")
-    if result.moved and result.previous_doc_path is not None:
-        print(f"Moved From: {result.previous_doc_path}")
-    if result.closeout_recommended and result.trace_id is not None:
-        print(f"Closeout Recommended: {result.trace_id}")
-    if result.wrote:
-        print("Coordination surfaces were refreshed.")
-    else:
-        print("Dry-run only. Use --write to persist the task change and refresh coordination.")
-    return 0
+        action = "Wrote" if result.wrote else "Prepared"
+        print(f"{action} task {result.task_id} at {result.doc_path}.")
+        print(f"Status: {result.task_status}")
+        print(f"Owner: {result.owner}")
+        if result.moved and result.previous_doc_path is not None:
+            print(f"Moved From: {result.previous_doc_path}")
+        if result.closeout_recommended and result.trace_id is not None:
+            print(f"Closeout Recommended: {result.trace_id}")
+        if result.wrote:
+            print("Coordination surfaces were refreshed.")
+        else:
+            print(
+                "Dry-run only. Use --write to persist the task change and refresh coordination."
+            )
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )

@@ -3,12 +3,19 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
+from watchtower_core.adapters import render_repo_link
 from watchtower_core.adapters.front_matter import FrontMatterParseError, load_front_matter
-from watchtower_core.control_plane import DiscrepancyIssue, PlanningVocabularyHelper
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane import DiscrepancyIssue
+from watchtower_core.control_plane.loader import (
+    ACCEPTANCE_CONTRACTS_DIRECTORY,
+    ControlPlaneLoader,
+    VALIDATION_EVIDENCE_DIRECTORY,
+)
 from watchtower_core.control_plane.models import (
     CoordinationIndex,
     CoordinationRecentInitiativeSummary,
@@ -16,10 +23,21 @@ from watchtower_core.control_plane.models import (
     InitiativeActiveTaskSummary,
     InitiativeIndex,
     InitiativeIndexEntry,
+    TraceabilityEntry,
+)
+from watchtower_core.control_plane.terminology import TerminologyHelper
+from watchtower_core.evidence import EvidenceBundleHelper
+from watchtower_core.rebuild import (
+    MarkdownReconciliationHelper,
+    RebuildHarness,
+    RebuildOutput,
+    RebuildTargetSpec,
+    RenderedViewBuilder,
+    RenderedViewSpec,
 )
 from watchtower_core.repo_ops.artifact_index import (
-    ArtifactIndexService,
     PLAN_ARTIFACT_INDEX_PATH,
+    ArtifactIndexService,
 )
 from watchtower_core.repo_ops.planning_rendered_serialization import serialize_initiative_entry
 from watchtower_core.repo_ops.query.common import (
@@ -37,20 +55,18 @@ PLAN_INITIATIVE_INDEX_PATH = "plan/.wt/indexes/initiative_index.json"
 PLAN_TASK_INDEX_PATH = "plan/.wt/indexes/task_index.json"
 PLAN_READINESS_INDEX_PATH = "plan/.wt/indexes/readiness_index.json"
 PLAN_DISCREPANCY_INDEX_PATH = "plan/.wt/indexes/discrepancy_index.json"
+PLAN_EVIDENCE_INDEX_PATH = "plan/.wt/indexes/evidence_index.json"
+PLAN_CLOSEOUT_INDEX_PATH = "plan/.wt/indexes/closeout_index.json"
+PLAN_REVIEW_INDEX_PATH = "plan/.wt/indexes/review_index.json"
 PLAN_PROMOTION_INDEX_PATH = "plan/.wt/indexes/promotion_index.json"
 PLAN_GUIDANCE_INDEX_PATH = "plan/.wt/indexes/guidance_index.json"
 PLAN_COORDINATION_INDEX_PATH = "plan/.wt/indexes/coordination_index.json"
 PLAN_OVERVIEW_PATH = "plan/plan_overview.md"
+PLAN_OVERVIEW_SURFACE_ID = "rendered.plan.overview"
+INITIATIVE_PLAN_SURFACE_ID = "rendered.initiative.plan"
+INITIATIVE_PROGRESS_SURFACE_ID = "rendered.initiative.progress"
+INITIATIVE_SUMMARY_SURFACE_ID = "rendered.initiative.summary"
 
-_TASK_STATUS_MAP = {
-    "planned": "backlog",
-    "ready": "ready",
-    "in_progress": "in_progress",
-    "in_review": "in_review",
-    "blocked": "blocked",
-    "completed": "done",
-    "cancelled": "cancelled",
-}
 _TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
 _PRIORITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 _PHASE_ORDER = {
@@ -58,15 +74,6 @@ _PHASE_ORDER = {
     "execution": 1,
     "closeout": 2,
     "closed": 3,
-}
-_TASK_STATUS_ORDER = {
-    "ready": 0,
-    "in_progress": 1,
-    "in_review": 2,
-    "backlog": 3,
-    "blocked": 4,
-    "done": 5,
-    "cancelled": 6,
 }
 
 
@@ -82,6 +89,7 @@ class PlanTaskIndexEntry:
     title: str
     summary: str
     status: str
+    task_status: str
     task_kind: str
     priority: str
     owner: str
@@ -90,6 +98,15 @@ class PlanTaskIndexEntry:
     blocked_by: tuple[str, ...] = ()
     depends_on: tuple[str, ...] = ()
     related_ids: tuple[str, ...] = ()
+    applies_to: tuple[str, ...] = ()
+    github_repository: str | None = None
+    github_issue_number: int | None = None
+    github_issue_node_id: str | None = None
+    github_project_owner: str | None = None
+    github_project_owner_type: str | None = None
+    github_project_number: int | None = None
+    github_project_item_id: str | None = None
+    github_synced_at: str | None = None
 
     @classmethod
     def from_document(cls, document: dict[str, object]) -> PlanTaskIndexEntry:
@@ -106,6 +123,7 @@ class PlanTaskIndexEntry:
             title=str(document["title"]),
             summary=str(document["summary"]),
             status=str(document["status"]),
+            task_status=str(document["task_status"]),
             task_kind=str(document.get("task_kind", "feature")),
             priority=str(document["priority"]),
             owner=str(document["owner"]),
@@ -114,6 +132,47 @@ class PlanTaskIndexEntry:
             blocked_by=tuple(document.get("blocked_by", ())),
             depends_on=tuple(document.get("depends_on", ())),
             related_ids=tuple(document.get("related_ids", ())),
+            applies_to=tuple(document.get("applies_to", ())),
+            github_repository=(
+                str(document["github_repository"])
+                if document.get("github_repository") is not None
+                else None
+            ),
+            github_issue_number=(
+                int(document["github_issue_number"])
+                if document.get("github_issue_number") is not None
+                else None
+            ),
+            github_issue_node_id=(
+                str(document["github_issue_node_id"])
+                if document.get("github_issue_node_id") is not None
+                else None
+            ),
+            github_project_owner=(
+                str(document["github_project_owner"])
+                if document.get("github_project_owner") is not None
+                else None
+            ),
+            github_project_owner_type=(
+                str(document["github_project_owner_type"])
+                if document.get("github_project_owner_type") is not None
+                else None
+            ),
+            github_project_number=(
+                int(document["github_project_number"])
+                if document.get("github_project_number") is not None
+                else None
+            ),
+            github_project_item_id=(
+                str(document["github_project_item_id"])
+                if document.get("github_project_item_id") is not None
+                else None
+            ),
+            github_synced_at=(
+                str(document["github_synced_at"])
+                if document.get("github_synced_at") is not None
+                else None
+            ),
         )
 
 
@@ -196,6 +255,151 @@ class PlanDiscrepancyIndexEntry:
             summary=str(document["summary"]),
             source_paths=tuple(document.get("source_paths", ())),
             updated_at=str(document["updated_at"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PlanEvidenceIndexEntry:
+    """Machine-readable evidence summary entry for one initiative-local validation bundle."""
+
+    evidence_id: str
+    initiative_id: str
+    project_id: str | None
+    trace_id: str
+    initiative_title: str
+    title: str
+    status: str
+    initiative_root: str
+    entry_count: int
+    acceptance_labels: tuple[str, ...]
+    validation_types: tuple[str, ...]
+    owners: tuple[str, ...]
+    target_phases: tuple[str, ...]
+    expected_output_paths: tuple[str, ...]
+    updated_at: str
+
+    @classmethod
+    def from_document(cls, document: dict[str, object]) -> PlanEvidenceIndexEntry:
+        return cls(
+            evidence_id=str(document["evidence_id"]),
+            initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
+            trace_id=str(document["trace_id"]),
+            initiative_title=str(document["initiative_title"]),
+            title=str(document["title"]),
+            status=str(document["status"]),
+            initiative_root=str(document["initiative_root"]),
+            entry_count=int(document["entry_count"]),
+            acceptance_labels=tuple(document["acceptance_labels"]),
+            validation_types=tuple(document["validation_types"]),
+            owners=tuple(document["owners"]),
+            target_phases=tuple(document["target_phases"]),
+            expected_output_paths=tuple(document["expected_output_paths"]),
+            updated_at=str(document["updated_at"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PlanCloseoutIndexEntry:
+    """Machine-readable closeout summary entry for one initiative-local closeout recap."""
+
+    closeout_id: str
+    initiative_id: str
+    project_id: str | None
+    trace_id: str
+    initiative_title: str
+    title: str
+    status: str
+    initiative_root: str
+    expected_outcome: str
+    acceptance_ids: tuple[str, ...]
+    evidence_ids: tuple[str, ...]
+    follow_up_handling: str
+    promotion_review_required: bool
+    terminal_state_options: tuple[str, ...]
+    terminal_state: str | None
+    updated_at: str
+
+    @classmethod
+    def from_document(cls, document: dict[str, object]) -> PlanCloseoutIndexEntry:
+        return cls(
+            closeout_id=str(document["closeout_id"]),
+            initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
+            trace_id=str(document["trace_id"]),
+            initiative_title=str(document["initiative_title"]),
+            title=str(document["title"]),
+            status=str(document["status"]),
+            initiative_root=str(document["initiative_root"]),
+            expected_outcome=str(document["expected_outcome"]),
+            acceptance_ids=tuple(document["acceptance_ids"]),
+            evidence_ids=tuple(document["evidence_ids"]),
+            follow_up_handling=str(document["follow_up_handling"]),
+            promotion_review_required=bool(document["promotion_review_required"]),
+            terminal_state_options=tuple(document["terminal_state_options"]),
+            terminal_state=(
+                str(document["terminal_state"])
+                if document.get("terminal_state") is not None
+                else None
+            ),
+            updated_at=str(document["updated_at"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PlanReviewIndexEntry:
+    """Machine-readable review summary entry for live initiative and promotion review state."""
+
+    review_subject_id: str
+    subject_kind: str
+    initiative_id: str
+    project_id: str | None
+    trace_id: str
+    initiative_title: str
+    title: str
+    review_state: str
+    review_refs: tuple[str, ...]
+    evidence_refs: tuple[str, ...]
+    updated_at: str
+    lifecycle_stage: str | None = None
+    ready_for_execution: bool | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, object]) -> PlanReviewIndexEntry:
+        return cls(
+            review_subject_id=str(document["review_subject_id"]),
+            subject_kind=str(document["subject_kind"]),
+            initiative_id=str(document["initiative_id"]),
+            project_id=(
+                str(document["project_id"])
+                if document.get("project_id") is not None
+                else None
+            ),
+            trace_id=str(document["trace_id"]),
+            initiative_title=str(document["initiative_title"]),
+            title=str(document["title"]),
+            review_state=str(document["review_state"]),
+            review_refs=tuple(document.get("review_refs", ())),
+            evidence_refs=tuple(document.get("evidence_refs", ())),
+            updated_at=str(document["updated_at"]),
+            lifecycle_stage=(
+                str(document["lifecycle_stage"])
+                if document.get("lifecycle_stage") is not None
+                else None
+            ),
+            ready_for_execution=(
+                bool(document["ready_for_execution"])
+                if document.get("ready_for_execution") is not None
+                else None
+            ),
         )
 
 
@@ -347,6 +551,51 @@ class PlanDiscrepancySearchParams:
 
 
 @dataclass(frozen=True, slots=True)
+class PlanEvidenceSearchParams:
+    """Structured evidence lookup filters for live initiative-local validation bundles."""
+
+    query: str | None = None
+    initiative_id: str | None = None
+    project_id: str | None = None
+    trace_id: str | None = None
+    status: str | None = None
+    owner: str | None = None
+    target_phase: str | None = None
+    validation_type: str | None = None
+    acceptance_label: str | None = None
+    limit: int | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class PlanCloseoutSearchParams:
+    """Structured closeout lookup filters for live initiative-local closeout recaps."""
+
+    query: str | None = None
+    initiative_id: str | None = None
+    project_id: str | None = None
+    trace_id: str | None = None
+    status: str | None = None
+    terminal_state: str | None = None
+    promotion_review_required: bool | None = None
+    limit: int | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class PlanReviewSearchParams:
+    """Structured review lookup filters for live initiative and promotion review state."""
+
+    query: str | None = None
+    subject_kind: str | None = None
+    initiative_id: str | None = None
+    project_id: str | None = None
+    trace_id: str | None = None
+    review_state: str | None = None
+    ready_for_execution: bool | None = None
+    review_ref: str | None = None
+    limit: int | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class PlanWorkspaceSyncResult:
     """Summary of one plan-workspace rebuild run."""
 
@@ -360,6 +609,7 @@ class PlanWorkspaceSyncResult:
 class _PlanInitiativeSnapshot:
     initiative_document: dict[str, object]
     task_documents: tuple[dict[str, object], ...]
+    event_documents: tuple[dict[str, object], ...]
     deferred_documents: tuple[dict[str, object], ...]
     discrepancy_documents: tuple[dict[str, object], ...]
     evidence_documents: tuple[dict[str, object], ...]
@@ -370,6 +620,8 @@ class _PlanInitiativeSnapshot:
     project_slug: str | None
     project_root: str | None
     discrepancy_namespace: str
+    acceptance_contract_ids: tuple[str, ...]
+    trace_evidence_ids: tuple[str, ...]
 
 
 class PlanWorkspaceService:
@@ -377,10 +629,14 @@ class PlanWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._vocabulary = PlanningVocabularyHelper.from_loader(
+        self._evidence_bundles = EvidenceBundleHelper(self._pack_loader())
+        self._vocabulary = TerminologyHelper.from_loader(
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
+        self._rendered_views = RenderedViewBuilder(loader)
+        self._markdown_reconciliation = MarkdownReconciliationHelper(loader)
+        self._traceability_entries_by_trace: dict[str, TraceabilityEntry] | None = None
 
     def sync(self, *, write: bool) -> PlanWorkspaceSyncResult:
         snapshots = self._load_initiative_snapshots()
@@ -391,28 +647,29 @@ class PlanWorkspaceService:
                 PLAN_TASK_INDEX_PATH: documents["task_index"],
                 PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
                 PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+                PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
+                PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
+                PLAN_REVIEW_INDEX_PATH: documents["review_index"],
                 PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
                 PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
                 PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
             }
         )
-        if write:
-            self._write_json(PLAN_INITIATIVE_INDEX_PATH, documents["initiative_index"])
-            self._write_json(PLAN_TASK_INDEX_PATH, documents["task_index"])
-            self._write_json(PLAN_READINESS_INDEX_PATH, documents["readiness_index"])
-            self._write_json(PLAN_DISCREPANCY_INDEX_PATH, documents["discrepancy_index"])
-            self._write_json(PLAN_PROMOTION_INDEX_PATH, documents["promotion_index"])
-            self._write_json(PLAN_GUIDANCE_INDEX_PATH, documents["guidance_index"])
-            self._write_json(PLAN_COORDINATION_INDEX_PATH, documents["coordination_index"])
-            self._write_json(PLAN_ARTIFACT_INDEX_PATH, artifact_document)
-            self._write_markdown(PLAN_OVERVIEW_PATH, str(documents["plan_overview"]))
-            for relative_path, content in documents["initiative_views"].items():
-                self._write_markdown(relative_path, content)
+        rebuild_outputs = self._build_rebuild_outputs(documents, artifact_document)
+        rebuild_result = RebuildHarness(self._loader).run_specs(
+            (
+                RebuildTargetSpec(
+                    target="plan-workspace",
+                    build_outputs=lambda _loader: rebuild_outputs,
+                ),
+            ),
+            write=write,
+        )
         return PlanWorkspaceSyncResult(
             initiative_count=len(snapshots),
             task_count=len(documents["task_index"]["entries"]),
             discrepancy_count=len(documents["discrepancy_index"]["entries"]),
-            wrote=write,
+            wrote=rebuild_result.wrote,
         )
 
     def expected_surface_issues(self, initiative_root: str) -> tuple[DiscrepancyIssue, ...]:
@@ -447,6 +704,9 @@ class PlanWorkspaceService:
             PLAN_TASK_INDEX_PATH: documents["task_index"],
             PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
             PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+            PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
+            PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
+            PLAN_REVIEW_INDEX_PATH: documents["review_index"],
             PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
             PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
             PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
@@ -456,6 +716,9 @@ class PlanWorkspaceService:
                     PLAN_TASK_INDEX_PATH: documents["task_index"],
                     PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
                     PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
+                    PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
+                    PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
+                    PLAN_REVIEW_INDEX_PATH: documents["review_index"],
                     PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
                     PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
                     PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
@@ -464,49 +727,22 @@ class PlanWorkspaceService:
         }
 
         issues: list[DiscrepancyIssue] = []
-        for relative_path, expected in expected_markdown.items():
-            if not expected:
-                issues.append(
-                    DiscrepancyIssue(
-                        record_slug=f"{Path(relative_path).stem}_surface_drift",
-                        category="stale_rendered_surface",
-                        summary=(
-                            "Required rendered surface is missing from the expected build: "
-                            f"{relative_path}."
-                        ),
-                        source_paths=(relative_path,),
-                        discrepancy_id=(
-                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
-                        ),
-                    )
+        for issue in self._markdown_reconciliation.expected_issues(expected_markdown):
+            relative_path = issue.relative_output_path
+            issues.append(
+                DiscrepancyIssue(
+                    record_slug=f"{Path(relative_path).stem}_surface_drift",
+                    category="stale_rendered_surface",
+                    summary=_plan_markdown_issue_summary(
+                        issue.issue_code,
+                        relative_path,
+                    ),
+                    source_paths=(relative_path,),
+                    discrepancy_id=(
+                        f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
+                    ),
                 )
-                continue
-            candidate = self._loader.repo_root / relative_path
-            if not candidate.exists():
-                issues.append(
-                    DiscrepancyIssue(
-                        record_slug=f"{Path(relative_path).stem}_surface_drift",
-                        category="stale_rendered_surface",
-                        summary=f"Required rendered surface is missing: {relative_path}.",
-                        source_paths=(relative_path,),
-                        discrepancy_id=(
-                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
-                        ),
-                    )
-                )
-                continue
-            if candidate.read_text(encoding="utf-8") != expected:
-                issues.append(
-                    DiscrepancyIssue(
-                        record_slug=f"{Path(relative_path).stem}_surface_drift",
-                        category="stale_rendered_surface",
-                        summary=f"Rendered surface drift detected for {relative_path}.",
-                        source_paths=(relative_path,),
-                        discrepancy_id=(
-                            f"discrepancy.{discrepancy_namespace}.{Path(relative_path).stem}_surface_drift"
-                        ),
-                    )
-                )
+            )
 
         for relative_path, expected in expected_json.items():
             candidate = self._loader.repo_root / relative_path
@@ -563,6 +799,15 @@ class PlanWorkspaceService:
     def load_coordination_index(self) -> CoordinationIndex:
         return CoordinationIndex.from_document(self._load_plan_json(PLAN_COORDINATION_INDEX_PATH))
 
+    def build_initiative_index_document(self) -> dict[str, object]:
+        return self._build_documents(self._load_initiative_snapshots())["initiative_index"]
+
+    def build_coordination_index_document(self) -> dict[str, object]:
+        return self._build_documents(self._load_initiative_snapshots())["coordination_index"]
+
+    def build_task_index_document(self) -> dict[str, object]:
+        return self._build_documents(self._load_initiative_snapshots())["task_index"]
+
     def load_task_entries(self) -> tuple[PlanTaskIndexEntry, ...]:
         document = self._load_plan_json(PLAN_TASK_INDEX_PATH)
         return tuple(PlanTaskIndexEntry.from_document(entry) for entry in document["entries"])
@@ -574,6 +819,18 @@ class PlanWorkspaceService:
     def load_discrepancy_entries(self) -> tuple[PlanDiscrepancyIndexEntry, ...]:
         document = self._load_plan_json(PLAN_DISCREPANCY_INDEX_PATH)
         return tuple(PlanDiscrepancyIndexEntry.from_document(entry) for entry in document["entries"])
+
+    def load_evidence_entries(self) -> tuple[PlanEvidenceIndexEntry, ...]:
+        document = self._load_plan_json(PLAN_EVIDENCE_INDEX_PATH)
+        return tuple(PlanEvidenceIndexEntry.from_document(entry) for entry in document["entries"])
+
+    def load_closeout_entries(self) -> tuple[PlanCloseoutIndexEntry, ...]:
+        document = self._load_plan_json(PLAN_CLOSEOUT_INDEX_PATH)
+        return tuple(PlanCloseoutIndexEntry.from_document(entry) for entry in document["entries"])
+
+    def load_review_entries(self) -> tuple[PlanReviewIndexEntry, ...]:
+        document = self._load_plan_json(PLAN_REVIEW_INDEX_PATH)
+        return tuple(PlanReviewIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_promotion_entries(self) -> tuple[PlanPromotionIndexEntry, ...]:
         document = self._load_plan_json(PLAN_PROMOTION_INDEX_PATH)
@@ -634,6 +891,24 @@ class PlanWorkspaceService:
     ) -> tuple[PlanDiscrepancyIndexEntry, ...]:
         return _search_discrepancy_entries(self.load_discrepancy_entries(), params)
 
+    def search_evidence(
+        self,
+        params: PlanEvidenceSearchParams,
+    ) -> tuple[PlanEvidenceIndexEntry, ...]:
+        return _search_evidence_entries(self.load_evidence_entries(), params)
+
+    def search_closeouts(
+        self,
+        params: PlanCloseoutSearchParams,
+    ) -> tuple[PlanCloseoutIndexEntry, ...]:
+        return _search_closeout_entries(self.load_closeout_entries(), params)
+
+    def search_reviews(
+        self,
+        params: PlanReviewSearchParams,
+    ) -> tuple[PlanReviewIndexEntry, ...]:
+        return _search_review_entries(self.load_review_entries(), params)
+
     def _build_documents(
         self,
         snapshots: tuple[_PlanInitiativeSnapshot, ...],
@@ -671,6 +946,36 @@ class PlanWorkspaceService:
                     for entry in self._build_discrepancy_entries(snapshot)
                 ),
                 key=lambda entry: entry.discrepancy_id,
+            )
+        )
+        evidence_entries = tuple(
+            sorted(
+                (
+                    entry
+                    for snapshot in snapshots
+                    for entry in self._build_evidence_entries(snapshot)
+                ),
+                key=lambda entry: entry.evidence_id,
+            )
+        )
+        closeout_entries = tuple(
+            sorted(
+                (
+                    entry
+                    for snapshot in snapshots
+                    for entry in self._build_closeout_entries(snapshot)
+                ),
+                key=lambda entry: entry.closeout_id,
+            )
+        )
+        review_entries = tuple(
+            sorted(
+                (
+                    entry
+                    for snapshot in snapshots
+                    for entry in self._build_review_entries(snapshot)
+                ),
+                key=lambda entry: (entry.subject_kind, entry.review_subject_id),
             )
         )
         promotion_entries = tuple(
@@ -724,6 +1029,36 @@ class PlanWorkspaceService:
             ),
             "entries": [self._serialize_discrepancy_entry(entry) for entry in discrepancy_entries],
         }
+        evidence_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:evidence-index:v1",
+            "id": "index.evidence",
+            "title": "Plan Workspace Evidence Index",
+            "status": "active",
+            "updated_at": _latest_timestamp(
+                [*(entry.updated_at for entry in evidence_entries), workspace_updated_at]
+            ),
+            "entries": [self._serialize_evidence_entry(entry) for entry in evidence_entries],
+        }
+        closeout_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:closeout-index:v1",
+            "id": "index.closeouts",
+            "title": "Plan Workspace Closeout Index",
+            "status": "active",
+            "updated_at": _latest_timestamp(
+                [*(entry.updated_at for entry in closeout_entries), workspace_updated_at]
+            ),
+            "entries": [self._serialize_closeout_entry(entry) for entry in closeout_entries],
+        }
+        review_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:review-index:v1",
+            "id": "index.reviews",
+            "title": "Plan Workspace Review Index",
+            "status": "active",
+            "updated_at": _latest_timestamp(
+                [*(entry.updated_at for entry in review_entries), workspace_updated_at]
+            ),
+            "entries": [self._serialize_review_entry(entry) for entry in review_entries],
+        }
         promotion_index = {
             "$schema": "urn:watchtower:schema:artifacts:plan:promotion-index:v1",
             "id": "index.promotions",
@@ -752,6 +1087,9 @@ class PlanWorkspaceService:
             task_index,
             readiness_index,
             discrepancy_index,
+            evidence_index,
+            closeout_index,
+            review_index,
             promotion_index,
             guidance_index,
         ):
@@ -763,6 +1101,9 @@ class PlanWorkspaceService:
             "task_index": task_index,
             "readiness_index": readiness_index,
             "discrepancy_index": discrepancy_index,
+            "evidence_index": evidence_index,
+            "closeout_index": closeout_index,
+            "review_index": review_index,
             "promotion_index": promotion_index,
             "guidance_index": guidance_index,
             "plan_overview": self._render_plan_overview(coordination_index),
@@ -771,10 +1112,12 @@ class PlanWorkspaceService:
 
     def _build_initiative_entry(self, snapshot: _PlanInitiativeSnapshot) -> InitiativeIndexEntry:
         initiative = snapshot.initiative_document
+        trace_id = str(initiative["trace_id"])
+        traceability_entry = self._traceability_entry(trace_id)
         active_task_summaries = tuple(
             self._build_active_task_summary(snapshot, task_document)
             for task_document in snapshot.task_documents
-            if str(task_document["status"]) not in _TERMINAL_TASK_STATUSES
+            if str(task_document["task_status"]) not in _TERMINAL_TASK_STATUSES
         )
         active_task_ids = tuple(task.task_id for task in active_task_summaries)
         blocked_by_task_ids = tuple(
@@ -786,15 +1129,19 @@ class PlanWorkspaceService:
                 }
             )
         )
-        lifecycle_stage = str(initiative["lifecycle_stage"])
         readiness = self._build_readiness_entry(snapshot)
+        current_phase = _current_phase_for_snapshot(
+            initiative=initiative,
+            active_task_summaries=active_task_summaries,
+            vocabulary=self._vocabulary,
+        )
         return InitiativeIndexEntry(
-            trace_id=str(initiative["trace_id"]),
+            trace_id=trace_id,
             title=str(initiative["title"]),
             summary=str(initiative["summary"]),
             artifact_status="active",
             initiative_status=_initiative_status(initiative, self._vocabulary),
-            current_phase=_current_phase_for_lifecycle(lifecycle_stage, self._vocabulary),
+            current_phase=current_phase,
             updated_at=_snapshot_updated_at(snapshot),
             open_task_count=len(active_task_summaries),
             blocked_task_count=sum(
@@ -816,9 +1163,44 @@ class PlanWorkspaceService:
             active_task_ids=active_task_ids,
             active_task_summaries=active_task_summaries,
             blocked_by_task_ids=blocked_by_task_ids,
+            prd_ids=traceability_entry.prd_ids if traceability_entry is not None else (),
+            decision_ids=(
+                traceability_entry.decision_ids if traceability_entry is not None else ()
+            ),
+            design_ids=traceability_entry.design_ids if traceability_entry is not None else (),
+            plan_ids=traceability_entry.plan_ids if traceability_entry is not None else (),
             task_ids=tuple(initiative["task_ids"]),
-            evidence_ids=tuple(initiative["evidence_ids"]),
-            related_paths=tuple(record["path"] for record in initiative["authored_inputs"]),
+            acceptance_ids=(
+                traceability_entry.acceptance_ids
+                if traceability_entry is not None
+                else ()
+            ),
+            acceptance_contract_ids=snapshot.acceptance_contract_ids,
+            evidence_ids=_ordered_unique_strings(
+                (
+                    *initiative["evidence_ids"],
+                    *snapshot.trace_evidence_ids,
+                    *(
+                        traceability_entry.evidence_ids
+                        if traceability_entry is not None
+                        else ()
+                    ),
+                )
+            ),
+            related_paths=_ordered_unique_strings(
+                (
+                    *(
+                        str(record["path"])
+                        for record in initiative["authored_inputs"]
+                        if isinstance(record, dict) and isinstance(record.get("path"), str)
+                    ),
+                    *(
+                        traceability_entry.related_paths
+                        if traceability_entry is not None
+                        else ()
+                    ),
+                )
+            ),
             closed_at=(
                 str(initiative["closed_at"])
                 if initiative.get("closed_at") is not None
@@ -834,7 +1216,16 @@ class PlanWorkspaceService:
                 if initiative.get("superseded_by_trace_id") is not None
                 else None
             ),
+            tags=traceability_entry.tags if traceability_entry is not None else (),
+            notes=traceability_entry.notes if traceability_entry is not None else None,
         )
+
+    def _traceability_entry(self, trace_id: str) -> TraceabilityEntry | None:
+        if self._traceability_entries_by_trace is None:
+            self._traceability_entries_by_trace = {
+                entry.trace_id: entry for entry in self._loader.load_traceability_index().entries
+            }
+        return self._traceability_entries_by_trace.get(trace_id)
 
     def _build_task_entries(
         self,
@@ -855,6 +1246,7 @@ class PlanWorkspaceService:
                 title=str(task["title"]),
                 summary=str(task["summary"]),
                 status=str(task["status"]),
+                task_status=str(task["task_status"]),
                 task_kind=str(task.get("task_kind", "feature")),
                 priority=str(task["priority"]),
                 owner=str(task["owner"]),
@@ -863,6 +1255,47 @@ class PlanWorkspaceService:
                 blocked_by=tuple(task.get("blocker_task_ids", ())),
                 depends_on=tuple(task.get("dependency_task_ids", ())),
                 related_ids=tuple(task.get("related_ids", ())),
+                applies_to=tuple(task.get("applies_to", ())),
+                github_repository=(
+                    str(task["github_repository"])
+                    if task.get("github_repository") is not None
+                    else None
+                ),
+                github_issue_number=(
+                    int(task["github_issue_number"])
+                    if task.get("github_issue_number") is not None
+                    else None
+                ),
+                github_issue_node_id=(
+                    str(task["github_issue_node_id"])
+                    if task.get("github_issue_node_id") is not None
+                    else None
+                ),
+                github_project_owner=(
+                    str(task["github_project_owner"])
+                    if task.get("github_project_owner") is not None
+                    else None
+                ),
+                github_project_owner_type=(
+                    str(task["github_project_owner_type"])
+                    if task.get("github_project_owner_type") is not None
+                    else None
+                ),
+                github_project_number=(
+                    int(task["github_project_number"])
+                    if task.get("github_project_number") is not None
+                    else None
+                ),
+                github_project_item_id=(
+                    str(task["github_project_item_id"])
+                    if task.get("github_project_item_id") is not None
+                    else None
+                ),
+                github_synced_at=(
+                    str(task["github_synced_at"])
+                    if task.get("github_synced_at") is not None
+                    else None
+                ),
             )
             for task in snapshot.task_documents
         )
@@ -917,6 +1350,139 @@ class PlanWorkspaceService:
             )
             for document in snapshot.discrepancy_documents
         )
+
+    def _build_evidence_entries(
+        self,
+        snapshot: _PlanInitiativeSnapshot,
+    ) -> tuple[PlanEvidenceIndexEntry, ...]:
+        initiative = snapshot.initiative_document
+        return tuple(
+            PlanEvidenceIndexEntry(
+                evidence_id=artifact.evidence_id,
+                initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
+                trace_id=str(initiative["trace_id"]),
+                initiative_title=str(initiative["title"]),
+                title=artifact.title,
+                status=artifact.status,
+                initiative_root=snapshot.initiative_root,
+                entry_count=artifact.entry_count,
+                acceptance_labels=artifact.acceptance_labels,
+                validation_types=artifact.validation_types,
+                owners=artifact.owners,
+                target_phases=artifact.target_phases,
+                expected_output_paths=artifact.expected_output_paths,
+                updated_at=artifact.updated_at,
+            )
+            for artifact in (
+                self._evidence_bundles.artifact_from_document(document)
+                for document in snapshot.evidence_documents
+            )
+        )
+
+    def _build_closeout_entries(
+        self,
+        snapshot: _PlanInitiativeSnapshot,
+    ) -> tuple[PlanCloseoutIndexEntry, ...]:
+        initiative = snapshot.initiative_document
+        return tuple(
+            PlanCloseoutIndexEntry(
+                closeout_id=str(document["id"]),
+                initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
+                trace_id=str(initiative["trace_id"]),
+                initiative_title=str(initiative["title"]),
+                title=str(document["title"]),
+                status=str(document["status"]),
+                initiative_root=snapshot.initiative_root,
+                expected_outcome=str(document["expected_outcome"]),
+                acceptance_ids=tuple(document["acceptance_ids"]),
+                evidence_ids=tuple(document["evidence_ids"]),
+                follow_up_handling=str(document["follow_up_handling"]),
+                promotion_review_required=bool(document["promotion_review_required"]),
+                terminal_state_options=tuple(document["terminal_state_options"]),
+                terminal_state=(
+                    str(document["terminal_state"])
+                    if document.get("terminal_state") is not None
+                    else None
+                ),
+                updated_at=str(document["updated_at"]),
+            )
+            for document in snapshot.closeout_documents
+        )
+
+    def _build_review_entries(
+        self,
+        snapshot: _PlanInitiativeSnapshot,
+    ) -> tuple[PlanReviewIndexEntry, ...]:
+        initiative = snapshot.initiative_document
+        initiative_entry = PlanReviewIndexEntry(
+            review_subject_id=str(initiative["initiative_id"]),
+            subject_kind="initiative",
+            initiative_id=str(initiative["initiative_id"]),
+            project_id=(
+                str(initiative["project_id"])
+                if initiative.get("project_id") is not None
+                else None
+            ),
+            trace_id=str(initiative["trace_id"]),
+            initiative_title=str(initiative["title"]),
+            title=str(initiative["title"]),
+            review_state=str(initiative["review_status"]),
+            review_refs=_ordered_unique_strings(
+                approval["actor_id"] for approval in initiative.get("approvals", ())
+            ),
+            evidence_refs=_ordered_unique_strings(initiative.get("evidence_ids", ())),
+            updated_at=str(initiative["updated_at"]),
+            lifecycle_stage=str(initiative["lifecycle_stage"]),
+            ready_for_execution=bool(initiative["gate_state"]["ready_for_execution"]),
+        )
+        promotion_entries = tuple(
+            PlanReviewIndexEntry(
+                review_subject_id=str(document["id"]),
+                subject_kind="promotion",
+                initiative_id=str(initiative["initiative_id"]),
+                project_id=(
+                    str(initiative["project_id"])
+                    if initiative.get("project_id") is not None
+                    else None
+                ),
+                trace_id=str(initiative["trace_id"]),
+                initiative_title=str(initiative["title"]),
+                title=str(document["title"]),
+                review_state=str(document.get("approval_state", "pending")),
+                review_refs=_ordered_unique_strings(
+                    str(value)
+                    for value in (
+                        document.get("review_refs")
+                        or [
+                            candidate["review_path"]
+                            for candidate in document.get("candidates", ())
+                            if isinstance(candidate, dict)
+                            and candidate.get("review_path") is not None
+                        ]
+                    )
+                ),
+                evidence_refs=_ordered_unique_strings(
+                    str(value)
+                    for value in (
+                        document.get("evidence_refs")
+                        or initiative.get("evidence_ids", ())
+                    )
+                ),
+                updated_at=str(document["updated_at"]),
+            )
+            for document in snapshot.promotion_documents
+        )
+        return (initiative_entry, *promotion_entries)
 
     def _build_promotion_entries(
         self,
@@ -1087,7 +1653,7 @@ class PlanWorkspaceService:
             if _task_status_for_id(snapshot.task_documents, str(blocker))
             not in _TERMINAL_TASK_STATUSES
         )
-        local_status = str(task_document["status"])
+        local_status = str(task_document["task_status"])
         is_actionable = (
             local_status == "ready"
             and not unresolved_dependencies
@@ -1096,7 +1662,7 @@ class PlanWorkspaceService:
         return InitiativeActiveTaskSummary(
             task_id=str(task_document["task_id"]),
             title=str(task_document["title"]),
-            task_status=_TASK_STATUS_MAP[local_status],
+            task_status=self._vocabulary.surface_task_status(local_status),
             priority=str(task_document["priority"]),
             owner=str(task_document["owner"]),
             doc_path=f"{snapshot.initiative_root}/.wt/tasks/{task_document['slug']}/task.json",
@@ -1133,7 +1699,7 @@ class PlanWorkspaceService:
                     if task.is_actionable
                 ),
                 key=lambda item: (
-                    _TASK_STATUS_ORDER.get(item.task_status, 99),
+                    _task_status_order(item.task_status),
                     _PRIORITY_ORDER.get(item.priority, 99),
                     item.trace_id,
                     item.task_id,
@@ -1230,50 +1796,68 @@ class PlanWorkspaceService:
         return document
 
     def _render_plan_overview(self, coordination_document: dict[str, object]) -> str:
-        actionable_task_lines = "\n".join(
-            f"- `{entry['task_id']}` ({entry['priority']}) in `{entry['trace_id']}` -> `{entry['doc_path']}`"
-            for entry in coordination_document["actionable_tasks"]
-        ) or "- None."
-        initiative_lines = "\n".join(
-            (
-                f"- `{entry['trace_id']}`: {entry['title']} "
-                f"(`{entry['current_phase']}` / `{entry.get('scope_type', 'pack_wide')}`)"
-            )
-            for entry in coordination_document["entries"]
-        ) or "- None."
-        recent_closeout_lines = "\n".join(
-            (
-                f"- `{entry['trace_id']}`: {entry['title']} "
-                f"(`{entry['initiative_status']}` at `{entry['closed_at']}`)"
-                + (
-                    f" - {entry['closure_reason']}"
-                    if entry.get("closure_reason")
-                    else ""
-                )
-            )
-            for entry in coordination_document.get("recent_closed_initiatives", ())
-        ) or "- None."
-        return "\n".join(
-            (
-                "# Plan Overview",
-                "",
-                "## Current State",
-                f"- `coordination_mode`: `{coordination_document['coordination_mode']}`",
-                f"- `summary`: {coordination_document['summary']}",
-                f"- `recommended_next_action`: {coordination_document['recommended_next_action']}",
-                f"- `recommended_surface_path`: `{coordination_document['recommended_surface_path']}`",
-                "",
-                "## Active Initiatives",
-                initiative_lines,
-                "",
-                "## Actionable Tasks",
-                actionable_task_lines,
-                "",
-                "## Recent Closeouts",
-                recent_closeout_lines,
-                "",
+        result = self._rendered_views.build_view(
+            RenderedViewSpec(
+                surface_id=PLAN_OVERVIEW_SURFACE_ID,
+                data={
+                    "current_state": (
+                        "## Current State",
+                        f"- `coordination_mode`: `{coordination_document['coordination_mode']}`",
+                        f"- `summary`: {coordination_document['summary']}",
+                        f"- `recommended_next_action`: {coordination_document['recommended_next_action']}",
+                        f"- `recommended_surface_path`: `{coordination_document['recommended_surface_path']}`",
+                    ),
+                    "active_initiatives": (
+                        "## Active Initiatives",
+                        (
+                            "\n".join(
+                                (
+                                    f"- `{entry['trace_id']}`: {entry['title']} "
+                                    f"(`{entry['current_phase']}` / "
+                                    f"`{entry.get('scope_type', 'pack_wide')}`)"
+                                )
+                                for entry in coordination_document["entries"]
+                            )
+                            or "- None."
+                        ),
+                    ),
+                    "actionable_tasks": (
+                        "## Actionable Tasks",
+                        (
+                            "\n".join(
+                                f"- `{entry['task_id']}` ({entry['priority']}) in "
+                                f"`{entry['trace_id']}` -> `{entry['doc_path']}`"
+                                for entry in coordination_document["actionable_tasks"]
+                            )
+                            or "- None."
+                        ),
+                    ),
+                    "recent_closeouts": (
+                        "## Recent Closeouts",
+                        (
+                            "\n".join(
+                                (
+                                    f"- `{entry['trace_id']}`: {entry['title']} "
+                                    f"(`{entry['initiative_status']}` at `{entry['closed_at']}`)"
+                                    + (
+                                        f" - {entry['closure_reason']}"
+                                        if entry.get("closure_reason")
+                                        else ""
+                                    )
+                                )
+                                for entry in coordination_document.get(
+                                    "recent_closed_initiatives",
+                                    (),
+                                )
+                            )
+                            or "- None."
+                        ),
+                    ),
+                },
             )
         )
+        assert result.relative_output_path == PLAN_OVERVIEW_PATH
+        return result.content
 
     def _render_initiative_views(
         self,
@@ -1283,121 +1867,156 @@ class PlanWorkspaceService:
         for snapshot in snapshots:
             initiative = snapshot.initiative_document
             readiness = self._build_readiness_entry(snapshot)
-            task_lines = "\n".join(
-                f"- `{task['task_id']}`: `{task['status']}` ({task['priority']})"
-                for task in snapshot.task_documents
+            task_rows = _initiative_task_rows(snapshot, self._vocabulary)
+            active_task_rows = tuple(
+                row
+                for row in task_rows
+                if row["task_status"] not in _TERMINAL_TASK_STATUSES
             )
-            deferred_lines = "\n".join(
-                f"- `{document['deferred_item_id']}`: `{document['status']}`"
-                for document in snapshot.deferred_documents
-            ) or "- None."
-            discrepancy_lines = "\n".join(
-                f"- `{document['discrepancy_id']}`: `{document['status']}` / `{document['category']}`"
-                for document in snapshot.discrepancy_documents
-            ) or "- None."
+            include_task_blocked_by = any(
+                row["blocked_by"] not in {None, "-"}
+                for row in (*task_rows, *active_task_rows)
+            )
+            include_task_depends_on = any(
+                row["depends_on"] not in {None, "-"}
+                for row in (*task_rows, *active_task_rows)
+            )
+            dependency_and_risk_lines = _initiative_dependency_and_risk_lines(
+                snapshot,
+                readiness=readiness,
+            )
+            next_surface_path = _next_surface_path(snapshot, readiness)
             root = snapshot.initiative_root
-            documents[f"{root}/plan.md"] = "\n".join(
+            rendered_views = self._rendered_views.build_views(
                 (
-                    f"# {initiative['title']} Plan",
-                    "",
-                    "## Summary",
-                    str(initiative["summary"]),
-                    "",
-                    "## Identity",
-                    f"- `initiative_id`: `{initiative['initiative_id']}`",
-                    f"- `trace_id`: `{initiative['trace_id']}`",
-                    f"- `scope_type`: `{initiative['scope_type']}`",
-                    *(
-                        (f"- `project_id`: `{initiative['project_id']}`",)
-                        if initiative.get("project_id") is not None
-                        else ()
+                    RenderedViewSpec(
+                        surface_id=INITIATIVE_PLAN_SURFACE_ID,
+                        relative_output_path=f"{root}/plan.md",
+                        title=f"{initiative['title']} Plan",
+                        data={
+                            "initiative_identity": (
+                                f"- `initiative_id`: `{initiative['initiative_id']}`",
+                                f"- `trace_id`: `{initiative['trace_id']}`",
+                                f"- `scope_type`: `{initiative['scope_type']}`",
+                                *(
+                                    (f"- `project_id`: `{initiative['project_id']}`",)
+                                    if initiative.get("project_id") is not None
+                                    else ()
+                                ),
+                                f"- `owner`: `{initiative['owner']}`",
+                                f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
+                                f"- `review_status`: `{initiative['review_status']}`",
+                                f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+                            ),
+                            "scope_and_non_goals": (
+                                str(initiative["summary"]),
+                                f"- Scope type: `{initiative['scope_type']}`.",
+                                *(
+                                    (
+                                        "- Deferred or explicitly out-of-scope items:",
+                                        *(
+                                            f"- `{document['deferred_item_id']}`: {document['summary']} "
+                                            f"(`{document['status']}`)"
+                                            for document in snapshot.deferred_documents
+                                        ),
+                                    )
+                                    if snapshot.deferred_documents
+                                    else (
+                                        "- No explicit non-goals or deferred scope items are recorded.",
+                                    )
+                                ),
+                            ),
+                            "objectives": _initiative_objective_lines(snapshot),
+                            "planned_slices_or_workstreams": task_rows,
+                            "include_planned_slice_blocked_by": include_task_blocked_by,
+                            "include_planned_slice_depends_on": include_task_depends_on,
+                            "dependencies_and_risks": dependency_and_risk_lines,
+                            "validation_or_completion_gates": _initiative_gate_lines(
+                                snapshot,
+                                readiness=readiness,
+                            ),
+                            "linked_outputs": _initiative_linked_output_lines(snapshot),
+                        },
                     ),
-                    f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
-                    f"- `review_status`: `{initiative['review_status']}`",
-                    "",
-                    "## Task Plan",
-                    task_lines or "- None.",
-                    "",
-                    "## Deferred Items",
-                    deferred_lines,
-                    "",
+                    RenderedViewSpec(
+                        surface_id=INITIATIVE_PROGRESS_SURFACE_ID,
+                        relative_output_path=f"{root}/progress.md",
+                        title=f"{initiative['title']} Progress",
+                        data={
+                            "current_status": (
+                                f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
+                                f"- `review_status`: `{initiative['review_status']}`",
+                                f"- `approval_status`: `{readiness.approval_status}`",
+                                f"- `ready_for_execution`: `{readiness.ready_for_execution}`",
+                                f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+                            ),
+                            "recent_events_or_changes": _initiative_event_rows(snapshot),
+                            "active_tasks": active_task_rows,
+                            "include_active_task_blocked_by": include_task_blocked_by,
+                            "include_active_task_depends_on": include_task_depends_on,
+                            "blockers": dependency_and_risk_lines,
+                            "next_actions": (
+                                f"- {_next_action(snapshot, readiness, self._vocabulary)}",
+                                f"- Next surface: {render_repo_link(next_surface_path, label=Path(next_surface_path).name)}",
+                            ),
+                            "evidence_or_validation_state": _initiative_evidence_validation_lines(
+                                snapshot,
+                                readiness=readiness,
+                            ),
+                        },
+                    ),
+                    RenderedViewSpec(
+                        surface_id=INITIATIVE_SUMMARY_SURFACE_ID,
+                        relative_output_path=f"{root}/summary.md",
+                        title=f"{initiative['title']} Summary",
+                        data={
+                            "outcome_summary": (
+                                str(initiative["summary"]),
+                                f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
+                                *(
+                                    (f"- `closed_at`: `{initiative['closed_at']}`",)
+                                    if initiative.get("closed_at") is not None
+                                    else ()
+                                ),
+                                *(
+                                    (f"- `closure_reason`: {initiative['closure_reason']}",)
+                                    if initiative.get("closure_reason") is not None
+                                    else ()
+                                ),
+                                *(
+                                    (
+                                        f"- `superseded_by_trace_id`: "
+                                        f"`{initiative['superseded_by_trace_id']}`",
+                                    )
+                                    if initiative.get("superseded_by_trace_id") is not None
+                                    else ()
+                                ),
+                            ),
+                            "delivered_outputs": _initiative_delivered_output_lines(snapshot),
+                            "promoted_guidance": _initiative_promotion_lines(snapshot),
+                            "evidence_references": _initiative_evidence_reference_lines(snapshot),
+                            "unresolved_follow_ups": _initiative_unresolved_follow_up_lines(
+                                snapshot
+                            ),
+                            "closeout_state": _initiative_closeout_lines(snapshot),
+                        },
+                    ),
                 )
             )
-            documents[f"{root}/progress.md"] = "\n".join(
-                (
-                    f"# {initiative['title']} Progress",
-                    "",
-                    "## Gate State",
-                    f"- `capture_complete`: `{readiness.capture_complete}`",
-                    f"- `machine_valid`: `{readiness.machine_valid}`",
-                    f"- `approval_status`: `{readiness.approval_status}`",
-                    f"- `ready_for_execution`: `{readiness.ready_for_execution}`",
-                    f"- `blocking_reasons`: `{', '.join(readiness.blocking_reasons) if readiness.blocking_reasons else 'none'}`",
-                    "",
-                    "## Task Status",
-                    task_lines or "- None.",
-                    "",
-                    "## Discrepancies",
-                    discrepancy_lines,
-                    "",
-                )
-            )
-            documents[f"{root}/summary.md"] = "\n".join(
-                (
-                    f"# {initiative['title']} Summary",
-                    "",
-                    "## Lifecycle",
-                    f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
-                    f"- `owner`: `{initiative['owner']}`",
-                    f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
-                    *(
-                        (f"- `closed_at`: `{initiative['closed_at']}`",)
-                        if initiative.get("closed_at") is not None
-                        else ()
-                    ),
-                    *(
-                        (f"- `closure_reason`: {initiative['closure_reason']}",)
-                        if initiative.get("closure_reason") is not None
-                        else ()
-                    ),
-                    *(
-                        (
-                            f"- `superseded_by_trace_id`: `{initiative['superseded_by_trace_id']}`",
-                        )
-                        if initiative.get("superseded_by_trace_id") is not None
-                        else ()
-                    ),
-                    "",
-                    "## Evidence",
-                    "\n".join(
-                        f"- `{document['id']}`: `{document['status']}`"
-                        for document in snapshot.evidence_documents
-                    ) or "- None.",
-                    "",
-                    "## Closeout",
-                    "\n".join(
-                        f"- `{document['id']}`: `{document['status']}`"
-                        for document in snapshot.closeout_documents
-                    ) or "- None.",
-                    "",
-                    "## Promotion",
-                    "\n".join(
-                        f"- `{document['id']}`: `{document['status']}`"
-                        for document in snapshot.promotion_documents
-                    ) or "- None.",
-                    "",
-                )
-            )
+            for result in rendered_views:
+                documents[result.relative_output_path] = result.content
         return documents
 
     def _load_initiative_snapshots(self) -> tuple[_PlanInitiativeSnapshot, ...]:
         snapshots: list[_PlanInitiativeSnapshot] = []
+        trace_artifact_refs = self._load_trace_artifact_refs()
         pack_initiatives_root = self._loader.repo_root / "plan" / "initiatives"
         if pack_initiatives_root.exists():
             for initiative_path in sorted(pack_initiatives_root.iterdir()):
                 snapshot = self._snapshot_for_initiative_path(
                     initiative_path,
                     project_slug=None,
+                    trace_artifact_refs=trace_artifact_refs,
                 )
                 if snapshot is not None:
                     snapshots.append(snapshot)
@@ -1415,6 +2034,7 @@ class PlanWorkspaceService:
                     snapshot = self._snapshot_for_initiative_path(
                         initiative_path,
                         project_slug=project_slug,
+                        trace_artifact_refs=trace_artifact_refs,
                     )
                     if snapshot is not None:
                         snapshots.append(snapshot)
@@ -1425,6 +2045,7 @@ class PlanWorkspaceService:
         initiative_path: Path,
         *,
         project_slug: str | None,
+        trace_artifact_refs: dict[str, tuple[tuple[str, ...], tuple[str, ...]]],
     ) -> _PlanInitiativeSnapshot | None:
         if not initiative_path.is_dir():
             return None
@@ -1432,6 +2053,10 @@ class PlanWorkspaceService:
         if not initiative_state_path.exists():
             return None
         initiative_document = json.loads(initiative_state_path.read_text(encoding="utf-8"))
+        acceptance_contract_ids, trace_evidence_ids = trace_artifact_refs.get(
+            str(initiative_document["trace_id"]),
+            ((), ()),
+        )
         initiative_slug = initiative_path.name
         project_root = (
             f"plan/projects/{project_slug}"
@@ -1446,6 +2071,7 @@ class PlanWorkspaceService:
         return _PlanInitiativeSnapshot(
             initiative_document=initiative_document,
             task_documents=self._load_json_documents(initiative_path / ".wt" / "tasks", "task.json"),
+            event_documents=self._load_json_documents(initiative_path / ".wt" / "events", "*.json"),
             deferred_documents=self._load_json_documents(initiative_path / ".wt" / "deferred", "*.json"),
             discrepancy_documents=self._load_json_documents(
                 initiative_path / ".wt" / "discrepancies",
@@ -1459,7 +2085,42 @@ class PlanWorkspaceService:
             project_slug=project_slug,
             project_root=project_root,
             discrepancy_namespace=discrepancy_namespace,
+            acceptance_contract_ids=acceptance_contract_ids,
+            trace_evidence_ids=trace_evidence_ids,
         )
+
+    def _load_trace_artifact_refs(
+        self,
+    ) -> dict[str, tuple[tuple[str, ...], tuple[str, ...]]]:
+        fresh_loader = ControlPlaneLoader(self._loader.repo_root)
+        refs: dict[str, dict[str, list[str]]] = {}
+        for _relative_path, document in fresh_loader.iter_validated_documents_with_paths_under(
+            ACCEPTANCE_CONTRACTS_DIRECTORY
+        ):
+            trace_id = str(document.get("trace_id", "")).strip()
+            artifact_id = str(document.get("id", "")).strip()
+            if not trace_id or not artifact_id:
+                continue
+            refs.setdefault(trace_id, {"acceptance_contract_ids": [], "evidence_ids": []})[
+                "acceptance_contract_ids"
+            ].append(artifact_id)
+        for _relative_path, document in fresh_loader.iter_validated_documents_with_paths_under(
+            VALIDATION_EVIDENCE_DIRECTORY
+        ):
+            trace_id = str(document.get("trace_id", "")).strip()
+            artifact_id = str(document.get("id", "")).strip()
+            if not trace_id or not artifact_id:
+                continue
+            refs.setdefault(trace_id, {"acceptance_contract_ids": [], "evidence_ids": []})[
+                "evidence_ids"
+            ].append(artifact_id)
+        return {
+            trace_id: (
+                _ordered_unique_strings(values["acceptance_contract_ids"]),
+                _ordered_unique_strings(values["evidence_ids"]),
+            )
+            for trace_id, values in refs.items()
+        }
 
     def _load_json_documents(self, root: Path, pattern: str) -> tuple[dict[str, object], ...]:
         if not root.exists():
@@ -1471,23 +2132,114 @@ class PlanWorkspaceService:
         return tuple(json.loads(path.read_text(encoding="utf-8")) for path in paths)
 
     def _pack_loader(self) -> ControlPlaneLoader:
-        return ControlPlaneLoader(
-            self._loader.repo_root,
-            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-        )
+        return self._loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
 
     def _load_plan_json(self, relative_path: str) -> dict[str, object]:
         document = self._pack_loader().load_validated_document(relative_path)
         assert isinstance(document, dict)
         return document
 
-    def _write_json(self, relative_path: str, document: dict[str, object]) -> None:
-        self._loader.artifact_store.write_json_object(relative_path, document)
-
-    def _write_markdown(self, relative_path: str, content: str) -> None:
-        path = self._loader.repo_root / relative_path
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(f"{content.rstrip()}\n", encoding="utf-8")
+    def _build_rebuild_outputs(
+        self,
+        documents: dict[str, object],
+        artifact_document: dict[str, object],
+    ) -> tuple[RebuildOutput, ...]:
+        initiative_views = documents["initiative_views"]
+        assert isinstance(initiative_views, dict)
+        outputs = (
+            RebuildOutput(
+                relative_output_path=PLAN_INITIATIVE_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["initiative_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_TASK_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["task_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_READINESS_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["readiness_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_DISCREPANCY_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["discrepancy_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_EVIDENCE_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["evidence_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_CLOSEOUT_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["closeout_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_REVIEW_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["review_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_PROMOTION_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["promotion_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_GUIDANCE_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["guidance_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_COORDINATION_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["coordination_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_ARTIFACT_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=artifact_document,
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_OVERVIEW_PATH,
+                artifact_kind="rendered_view",
+                output_format="markdown",
+                content=_markdown_content(documents["plan_overview"]),
+            ),
+        )
+        return outputs + tuple(
+            RebuildOutput(
+                relative_output_path=relative_path,
+                artifact_kind="rendered_view",
+                output_format="markdown",
+                content=_markdown_content(content),
+            )
+            for relative_path, content in sorted(initiative_views.items())
+        )
 
     def _serialize_task_entry(self, entry: PlanTaskIndexEntry) -> dict[str, object]:
         payload: dict[str, object] = {
@@ -1498,6 +2250,7 @@ class PlanWorkspaceService:
             "title": entry.title,
             "summary": entry.summary,
             "status": entry.status,
+            "task_status": entry.task_status,
             "task_kind": entry.task_kind,
             "priority": entry.priority,
             "owner": entry.owner,
@@ -1512,6 +2265,24 @@ class PlanWorkspaceService:
             payload["depends_on"] = list(entry.depends_on)
         if entry.related_ids:
             payload["related_ids"] = list(entry.related_ids)
+        if entry.applies_to:
+            payload["applies_to"] = list(entry.applies_to)
+        if entry.github_repository is not None:
+            payload["github_repository"] = entry.github_repository
+        if entry.github_issue_number is not None:
+            payload["github_issue_number"] = entry.github_issue_number
+        if entry.github_issue_node_id is not None:
+            payload["github_issue_node_id"] = entry.github_issue_node_id
+        if entry.github_project_owner is not None:
+            payload["github_project_owner"] = entry.github_project_owner
+        if entry.github_project_owner_type is not None:
+            payload["github_project_owner_type"] = entry.github_project_owner_type
+        if entry.github_project_number is not None:
+            payload["github_project_number"] = entry.github_project_number
+        if entry.github_project_item_id is not None:
+            payload["github_project_item_id"] = entry.github_project_item_id
+        if entry.github_synced_at is not None:
+            payload["github_synced_at"] = entry.github_synced_at
         return payload
 
     def _serialize_readiness_entry(self, entry: PlanReadinessIndexEntry) -> dict[str, object]:
@@ -1547,6 +2318,71 @@ class PlanWorkspaceService:
             "source_paths": list(entry.source_paths),
             "updated_at": entry.updated_at,
         }
+
+    def _serialize_evidence_entry(self, entry: PlanEvidenceIndexEntry) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "evidence_id": entry.evidence_id,
+            "initiative_id": entry.initiative_id,
+            "trace_id": entry.trace_id,
+            "initiative_title": entry.initiative_title,
+            "title": entry.title,
+            "status": entry.status,
+            "initiative_root": entry.initiative_root,
+            "entry_count": entry.entry_count,
+            "acceptance_labels": list(entry.acceptance_labels),
+            "validation_types": list(entry.validation_types),
+            "owners": list(entry.owners),
+            "target_phases": list(entry.target_phases),
+            "expected_output_paths": list(entry.expected_output_paths),
+            "updated_at": entry.updated_at,
+        }
+        if entry.project_id is not None:
+            payload["project_id"] = entry.project_id
+        return payload
+
+    def _serialize_closeout_entry(self, entry: PlanCloseoutIndexEntry) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "closeout_id": entry.closeout_id,
+            "initiative_id": entry.initiative_id,
+            "trace_id": entry.trace_id,
+            "initiative_title": entry.initiative_title,
+            "title": entry.title,
+            "status": entry.status,
+            "initiative_root": entry.initiative_root,
+            "expected_outcome": entry.expected_outcome,
+            "acceptance_ids": list(entry.acceptance_ids),
+            "evidence_ids": list(entry.evidence_ids),
+            "follow_up_handling": entry.follow_up_handling,
+            "promotion_review_required": entry.promotion_review_required,
+            "terminal_state_options": list(entry.terminal_state_options),
+            "updated_at": entry.updated_at,
+        }
+        if entry.project_id is not None:
+            payload["project_id"] = entry.project_id
+        if entry.terminal_state is not None:
+            payload["terminal_state"] = entry.terminal_state
+        return payload
+
+    def _serialize_review_entry(self, entry: PlanReviewIndexEntry) -> dict[str, object]:
+        payload: dict[str, object] = {
+            "review_subject_id": entry.review_subject_id,
+            "subject_kind": entry.subject_kind,
+            "initiative_id": entry.initiative_id,
+            "trace_id": entry.trace_id,
+            "initiative_title": entry.initiative_title,
+            "title": entry.title,
+            "review_state": entry.review_state,
+            "review_refs": list(entry.review_refs),
+            "evidence_refs": list(entry.evidence_refs),
+            "updated_at": entry.updated_at,
+        }
+        if entry.project_id is not None:
+            payload["project_id"] = entry.project_id
+        if entry.lifecycle_stage is not None:
+            payload["lifecycle_stage"] = entry.lifecycle_stage
+        if entry.ready_for_execution is not None:
+            payload["ready_for_execution"] = entry.ready_for_execution
+        return payload
 
     def _serialize_promotion_entry(self, entry: PlanPromotionIndexEntry) -> dict[str, object]:
         payload: dict[str, object] = {
@@ -1605,13 +2441,13 @@ def _task_status_for_id(
 ) -> str | None:
     for task_document in task_documents:
         if task_document["task_id"] == task_id:
-            return str(task_document["status"])
+            return str(task_document["task_status"])
     return None
 
 
 def _initiative_status(
     document: dict[str, object],
-    vocabulary: PlanningVocabularyHelper,
+    vocabulary: TerminologyHelper,
 ) -> str:
     lifecycle_stage = str(document["lifecycle_stage"])
     if vocabulary.is_terminal_lifecycle(lifecycle_stage):
@@ -1621,18 +2457,41 @@ def _initiative_status(
 
 def _current_phase_for_lifecycle(
     lifecycle_stage: str,
-    vocabulary: PlanningVocabularyHelper,
+    vocabulary: TerminologyHelper,
 ) -> str:
     return vocabulary.current_phase_for_lifecycle(lifecycle_stage)
+
+
+def _current_phase_for_snapshot(
+    initiative: dict[str, object],
+    active_task_summaries: tuple[InitiativeActiveTaskSummary, ...],
+    vocabulary: TerminologyHelper,
+) -> str:
+    lifecycle_stage = str(initiative["lifecycle_stage"])
+    if (
+        not active_task_summaries
+        and initiative.get("status") == "active"
+        and not vocabulary.is_terminal_lifecycle(lifecycle_stage)
+    ):
+        return "closeout"
+    return _current_phase_for_lifecycle(lifecycle_stage, vocabulary)
 
 
 def _next_action(
     snapshot: _PlanInitiativeSnapshot,
     readiness: PlanReadinessIndexEntry,
-    vocabulary: PlanningVocabularyHelper,
+    vocabulary: TerminologyHelper,
 ) -> str:
+    lifecycle_stage = str(snapshot.initiative_document["lifecycle_stage"])
+    if vocabulary.is_terminal_lifecycle(lifecycle_stage):
+        return f"No further default action. Initiative is {lifecycle_stage}."
     if readiness.blocking_reasons:
         return "Resolve blocking reasons and rebuild derived surfaces before execution."
+    if not any(
+        str(task_document["task_status"]) not in _TERMINAL_TASK_STATUSES
+        for task_document in snapshot.task_documents
+    ):
+        return "Finalize closeout, evidence, and promotion decisions."
     if snapshot.initiative_document["lifecycle_stage"] == "closing":
         return "Finalize closeout, evidence, and promotion decisions."
     if not vocabulary.allows_execution(readiness.review_status) and not readiness.ready_for_execution:
@@ -1646,8 +2505,19 @@ def _next_surface_path(
     snapshot: _PlanInitiativeSnapshot,
     readiness: PlanReadinessIndexEntry,
 ) -> str:
+    if str(snapshot.initiative_document["lifecycle_stage"]) in {
+        "completed",
+        "superseded",
+        "cancelled",
+    }:
+        return f"{snapshot.initiative_root}/summary.md"
     if readiness.blocking_reasons:
         return f"{snapshot.initiative_root}/progress.md"
+    if not any(
+        str(task_document["task_status"]) not in _TERMINAL_TASK_STATUSES
+        for task_document in snapshot.task_documents
+    ):
+        return f"{snapshot.initiative_root}/summary.md"
     if snapshot.initiative_document["lifecycle_stage"] == "closing":
         return f"{snapshot.initiative_root}/summary.md"
     if readiness.ready_for_execution:
@@ -1701,7 +2571,7 @@ def _search_task_entries(
             continue
         if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
             continue
-        if status is not None and normalize_text(entry.status) != status:
+        if status is not None and normalize_text(entry.task_status) != status:
             continue
         if priority is not None and normalize_text(entry.priority) != priority:
             continue
@@ -1719,7 +2589,7 @@ def _search_task_entries(
                 entry.initiative_title,
                 entry.title,
                 entry.summary,
-                entry.status,
+                entry.task_status,
                 entry.priority,
                 entry.owner,
                 entry.doc_path,
@@ -1734,7 +2604,7 @@ def _search_task_entries(
     matches.sort(
         key=lambda item: (
             -item[0],
-            _TASK_STATUS_ORDER.get(item[1].status, 99),
+            _task_status_order(item[1].task_status),
             _PRIORITY_ORDER.get(item[1].priority, 99),
             item[1].task_id,
         )
@@ -1743,6 +2613,22 @@ def _search_task_entries(
     if params.limit is not None:
         selected = selected[: params.limit]
     return tuple(selected)
+
+
+@lru_cache(maxsize=1)
+def _plan_terminology() -> TerminologyHelper:
+    """Return one cached terminology helper for module-level query helpers."""
+
+    return TerminologyHelper.from_loader(
+        ControlPlaneLoader(),
+        pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+    )
+
+
+def _task_status_order(task_status: str) -> int:
+    """Return the stable sort order for plan task index statuses."""
+
+    return _plan_terminology().task_status_order(task_status)
 
 
 def _search_readiness_entries(
@@ -1847,3 +2733,490 @@ def _search_discrepancy_entries(
     if params.limit is not None:
         selected = selected[: params.limit]
     return tuple(selected)
+
+
+def _search_evidence_entries(
+    entries: tuple[PlanEvidenceIndexEntry, ...],
+    params: PlanEvidenceSearchParams,
+) -> tuple[PlanEvidenceIndexEntry, ...]:
+    initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
+    trace_id = normalize_optional_text(params.trace_id)
+    status = normalize_optional_text(params.status)
+    owner = normalize_optional_text(params.owner)
+    target_phase = normalize_optional_text(params.target_phase)
+    validation_type = normalize_optional_text(params.validation_type)
+    acceptance_label = normalize_optional_text(params.acceptance_label)
+    matches: list[tuple[int, PlanEvidenceIndexEntry]] = []
+    for entry in entries:
+        if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
+            continue
+        if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
+            continue
+        if status is not None and normalize_text(entry.status) != status:
+            continue
+        if owner is not None and owner not in {normalize_text(value) for value in entry.owners}:
+            continue
+        if (
+            target_phase is not None
+            and target_phase not in {normalize_text(value) for value in entry.target_phases}
+        ):
+            continue
+        if (
+            validation_type is not None
+            and validation_type not in {normalize_text(value) for value in entry.validation_types}
+        ):
+            continue
+        if (
+            acceptance_label is not None
+            and acceptance_label not in {normalize_text(value) for value in entry.acceptance_labels}
+        ):
+            continue
+        score = query_score(
+            params.query,
+            (
+                entry.evidence_id,
+                entry.initiative_id,
+                entry.project_id or "",
+                entry.trace_id,
+                entry.initiative_title,
+                entry.title,
+                entry.status,
+                *entry.acceptance_labels,
+                *entry.validation_types,
+                *entry.owners,
+                *entry.target_phases,
+                *entry.expected_output_paths,
+            ),
+        )
+        if score is None:
+            continue
+        matches.append((score, entry))
+    matches.sort(key=lambda item: (-item[0], item[1].evidence_id))
+    selected = [entry for _, entry in matches]
+    if params.limit is not None:
+        selected = selected[: params.limit]
+    return tuple(selected)
+
+
+def _search_closeout_entries(
+    entries: tuple[PlanCloseoutIndexEntry, ...],
+    params: PlanCloseoutSearchParams,
+) -> tuple[PlanCloseoutIndexEntry, ...]:
+    initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
+    trace_id = normalize_optional_text(params.trace_id)
+    status = normalize_optional_text(params.status)
+    terminal_state = normalize_optional_text(params.terminal_state)
+    matches: list[tuple[int, PlanCloseoutIndexEntry]] = []
+    for entry in entries:
+        if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
+            continue
+        if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
+            continue
+        if status is not None and normalize_text(entry.status) != status:
+            continue
+        if terminal_state is not None and normalize_text(entry.terminal_state or "") != terminal_state:
+            continue
+        if (
+            params.promotion_review_required is not None
+            and entry.promotion_review_required != params.promotion_review_required
+        ):
+            continue
+        score = query_score(
+            params.query,
+            (
+                entry.closeout_id,
+                entry.initiative_id,
+                entry.project_id or "",
+                entry.trace_id,
+                entry.initiative_title,
+                entry.title,
+                entry.status,
+                entry.expected_outcome,
+                entry.follow_up_handling,
+                *entry.acceptance_ids,
+                *entry.evidence_ids,
+                *entry.terminal_state_options,
+            ),
+        )
+        if score is None:
+            continue
+        matches.append((score, entry))
+    matches.sort(key=lambda item: (-item[0], item[1].closeout_id))
+    selected = [entry for _, entry in matches]
+    if params.limit is not None:
+        selected = selected[: params.limit]
+    return tuple(selected)
+
+
+def _search_review_entries(
+    entries: tuple[PlanReviewIndexEntry, ...],
+    params: PlanReviewSearchParams,
+) -> tuple[PlanReviewIndexEntry, ...]:
+    subject_kind = normalize_optional_text(params.subject_kind)
+    initiative_id = normalize_optional_text(params.initiative_id)
+    project_id = normalize_optional_text(params.project_id)
+    trace_id = normalize_optional_text(params.trace_id)
+    review_state = normalize_optional_text(params.review_state)
+    review_ref = normalize_optional_text(params.review_ref)
+    matches: list[tuple[int, PlanReviewIndexEntry]] = []
+    for entry in entries:
+        if subject_kind is not None and normalize_text(entry.subject_kind) != subject_kind:
+            continue
+        if initiative_id is not None and normalize_text(entry.initiative_id) != initiative_id:
+            continue
+        if project_id is not None and normalize_text(entry.project_id or "") != project_id:
+            continue
+        if trace_id is not None and normalize_text(entry.trace_id) != trace_id:
+            continue
+        if review_state is not None and normalize_text(entry.review_state) != review_state:
+            continue
+        if (
+            params.ready_for_execution is not None
+            and entry.ready_for_execution != params.ready_for_execution
+        ):
+            continue
+        if review_ref is not None and review_ref not in {
+            normalize_text(value) for value in entry.review_refs
+        }:
+            continue
+        score = query_score(
+            params.query,
+            (
+                entry.review_subject_id,
+                entry.subject_kind,
+                entry.initiative_id,
+                entry.project_id or "",
+                entry.trace_id,
+                entry.initiative_title,
+                entry.title,
+                entry.review_state,
+                entry.lifecycle_stage or "",
+                *entry.review_refs,
+                *entry.evidence_refs,
+            ),
+        )
+        if score is None:
+            continue
+        matches.append((score, entry))
+    matches.sort(key=lambda item: (-item[0], item[1].review_subject_id))
+    selected = [entry for _, entry in matches]
+    if params.limit is not None:
+        selected = selected[: params.limit]
+    return tuple(selected)
+
+
+def _json_document(value: object) -> dict[str, object]:
+    assert isinstance(value, dict)
+    return value
+
+
+def _initiative_task_rows(
+    snapshot: _PlanInitiativeSnapshot,
+    vocabulary: TerminologyHelper,
+) -> tuple[dict[str, str], ...]:
+    rows: list[dict[str, str]] = []
+    sorted_tasks = sorted(
+        snapshot.task_documents,
+        key=lambda task_document: (
+            _task_status_order(str(task_document["task_status"])),
+            _PRIORITY_ORDER.get(str(task_document["priority"]), 99),
+            str(task_document["task_id"]),
+        ),
+    )
+    for task_document in sorted_tasks:
+        rows.append(
+            {
+                "task_id": str(task_document["task_id"]),
+                "doc_path": (
+                    f"{snapshot.initiative_root}/.wt/tasks/{task_document['slug']}/task.json"
+                ),
+                "task_status": vocabulary.surface_task_status(str(task_document["task_status"])),
+                "priority": str(task_document["priority"]),
+                "owner": str(task_document["owner"]),
+                "summary": str(task_document["summary"]),
+                "blocked_by": _joined_or_dash(task_document.get("blocker_task_ids", ())),
+                "depends_on": _joined_or_dash(task_document.get("dependency_task_ids", ())),
+            }
+        )
+    return tuple(rows)
+
+
+def _initiative_objective_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    objectives = _ordered_unique_strings(
+        f"{task_document['title']}: {task_document['summary']}"
+        for task_document in snapshot.task_documents
+    )
+    if not objectives:
+        return ("- No explicit objectives are currently recorded.",)
+    return tuple(f"- {objective}" for objective in objectives)
+
+
+def _initiative_dependency_and_risk_lines(
+    snapshot: _PlanInitiativeSnapshot,
+    *,
+    readiness: PlanReadinessIndexEntry,
+) -> tuple[str, ...]:
+    lines: list[str] = []
+    for reason in readiness.blocking_reasons:
+        lines.append(f"- Readiness blocker: `{reason}`.")
+    for document in snapshot.discrepancy_documents:
+        lines.append(
+            f"- Discrepancy `{document['discrepancy_id']}`: `{document['severity']}` "
+            f"`{document['category']}` / `{document['status']}`. {document['summary']}"
+        )
+    for task_document in snapshot.task_documents:
+        blocked_by = tuple(str(value) for value in task_document.get("blocker_task_ids", ()))
+        depends_on = tuple(str(value) for value in task_document.get("dependency_task_ids", ()))
+        if not blocked_by and not depends_on:
+            continue
+        relation_bits: list[str] = []
+        if blocked_by:
+            relation_bits.append("blocked by " + ", ".join(f"`{value}`" for value in blocked_by))
+        if depends_on:
+            relation_bits.append("depends on " + ", ".join(f"`{value}`" for value in depends_on))
+        lines.append(
+            f"- Task `{task_document['task_id']}` "
+            + " and ".join(relation_bits)
+            + "."
+        )
+    if not lines:
+        return ("- No current blockers, dependencies, or open discrepancy risks are recorded.",)
+    return tuple(lines)
+
+
+def _initiative_gate_lines(
+    snapshot: _PlanInitiativeSnapshot,
+    *,
+    readiness: PlanReadinessIndexEntry,
+) -> tuple[str, ...]:
+    return (
+        f"- `capture_complete`: `{readiness.capture_complete}`",
+        f"- `machine_valid`: `{readiness.machine_valid}`",
+        f"- `approval_status`: `{readiness.approval_status}`",
+        f"- `ready_for_execution`: `{readiness.ready_for_execution}`",
+        "- `blocking_reasons`: `"
+        + (", ".join(readiness.blocking_reasons) if readiness.blocking_reasons else "none")
+        + "`",
+        f"- Task count: `{len(snapshot.task_documents)}`",
+        f"- Evidence bundle count: `{len(snapshot.evidence_documents)}`",
+        f"- Closeout shell count: `{len(snapshot.closeout_documents)}`",
+        f"- Promotion shell count: `{len(snapshot.promotion_documents)}`",
+        f"- Acceptance contract refs: `{len(snapshot.acceptance_contract_ids)}`",
+    )
+
+
+def _initiative_linked_output_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    initiative = snapshot.initiative_document
+    lines: list[str] = []
+    for authored_input in initiative.get("authored_inputs", ()):
+        if not isinstance(authored_input, dict):
+            continue
+        path = authored_input.get("path")
+        if not isinstance(path, str) or not path:
+            continue
+        lines.append(
+            f"- Authored input: {render_repo_link(path, label=Path(path).name)}"
+        )
+    lines.extend(
+        (
+            f"- Rendered plan: {render_repo_link(f'{snapshot.initiative_root}/plan.md', label='plan.md')}",
+            f"- Rendered progress: {render_repo_link(f'{snapshot.initiative_root}/progress.md', label='progress.md')}",
+            f"- Rendered summary: {render_repo_link(f'{snapshot.initiative_root}/summary.md', label='summary.md')}",
+        )
+    )
+    if snapshot.project_root is not None:
+        lines.extend(
+            (
+                f"- Project surface: {render_repo_link(f'{snapshot.project_root}/project.md', label='project.md')}",
+                f"- Project repositories: {render_repo_link(f'{snapshot.project_root}/repositories.md', label='repositories.md')}",
+                f"- Project summary: {render_repo_link(f'{snapshot.project_root}/summary.md', label='summary.md')}",
+            )
+        )
+    if not lines:
+        return ("- No linked outputs are currently recorded.",)
+    return tuple(lines)
+
+
+def _initiative_event_rows(
+    snapshot: _PlanInitiativeSnapshot,
+    *,
+    limit: int = 5,
+) -> tuple[dict[str, str], ...]:
+    rows: list[dict[str, str]] = []
+    sorted_events = sorted(
+        snapshot.event_documents,
+        key=lambda document: (
+            int(document.get("sequence", 0)),
+            str(document.get("recorded_at", "")),
+        ),
+        reverse=True,
+    )
+    for document in sorted_events[:limit]:
+        rows.append(
+            {
+                "recorded_at": str(document.get("recorded_at", "-")),
+                "event_type": str(document.get("event_type", "-")),
+                "actor_id": str(document.get("actor_id", "-")),
+                "summary": str(document.get("summary", "-")),
+            }
+        )
+    return tuple(rows)
+
+
+def _initiative_evidence_validation_lines(
+    snapshot: _PlanInitiativeSnapshot,
+    *,
+    readiness: PlanReadinessIndexEntry,
+) -> tuple[str, ...]:
+    lines = [
+        f"- `machine_valid`: `{readiness.machine_valid}`",
+        f"- Evidence bundles: `{len(snapshot.evidence_documents)}`",
+        f"- Acceptance contract refs: `{len(snapshot.acceptance_contract_ids)}`",
+        f"- Trace-linked evidence refs: `{len(snapshot.trace_evidence_ids)}`",
+    ]
+    for document in snapshot.evidence_documents:
+        lines.append(f"- `{document['id']}`: `{document['status']}`")
+    return tuple(lines)
+
+
+def _initiative_delivered_output_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    lines = list(_initiative_linked_output_lines(snapshot))
+    completed_tasks = [
+        task_document
+        for task_document in snapshot.task_documents
+        if str(task_document["task_status"]) in _TERMINAL_TASK_STATUSES
+    ]
+    if completed_tasks:
+        lines.extend(
+            f"- Terminal task `{task_document['task_id']}`: `{task_document['task_status']}`"
+            for task_document in completed_tasks
+        )
+    else:
+        lines.append("- No terminal task outputs are recorded yet.")
+    return tuple(lines)
+
+
+def _initiative_promotion_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    if not snapshot.promotion_documents:
+        return ("- No promotion candidates are currently recorded.",)
+    lines: list[str] = []
+    for document in snapshot.promotion_documents:
+        lines.append(
+            f"- `{document['id']}`: `{document['status']}` / approval `{document.get('approval_state', 'pending')}`"
+        )
+        for candidate in document.get("candidates", ()):
+            if not isinstance(candidate, dict):
+                continue
+            target_path = candidate.get("target_path")
+            if isinstance(target_path, str) and target_path:
+                lines.append(
+                    f"- Candidate target: {render_repo_link(target_path, label=Path(target_path).name)}"
+                )
+    return tuple(lines)
+
+
+def _initiative_evidence_reference_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    lines: list[str] = []
+    for document in snapshot.evidence_documents:
+        lines.append(f"- `{document['id']}`: `{document['status']}`")
+    for evidence_id in snapshot.trace_evidence_ids:
+        lines.append(f"- Trace evidence ref: `{evidence_id}`")
+    for acceptance_id in snapshot.acceptance_contract_ids:
+        lines.append(f"- Acceptance contract ref: `{acceptance_id}`")
+    if not lines:
+        return ("- No evidence or acceptance references are currently recorded.",)
+    return tuple(lines)
+
+
+def _initiative_unresolved_follow_up_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    lines: list[str] = []
+    for task_document in snapshot.task_documents:
+        if str(task_document["task_status"]) in _TERMINAL_TASK_STATUSES:
+            continue
+        lines.append(
+            f"- Open task `{task_document['task_id']}`: `{task_document['task_status']}`"
+        )
+    for document in snapshot.deferred_documents:
+        lines.append(
+            f"- Deferred item `{document['deferred_item_id']}`: `{document['status']}`"
+        )
+    for document in snapshot.discrepancy_documents:
+        if str(document.get("status")) == "resolved":
+            continue
+        lines.append(
+            f"- Open discrepancy `{document['discrepancy_id']}`: `{document['severity']}` `{document['category']}`"
+        )
+    if not lines:
+        return ("- No unresolved follow-up items remain.",)
+    return tuple(lines)
+
+
+def _initiative_closeout_lines(
+    snapshot: _PlanInitiativeSnapshot,
+) -> tuple[str, ...]:
+    initiative = snapshot.initiative_document
+    lines: list[str] = [
+        f"- `lifecycle_stage`: `{initiative['lifecycle_stage']}`",
+        f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+    ]
+    for document in snapshot.closeout_documents:
+        lines.append(f"- `{document['id']}`: `{document['status']}`")
+    if initiative.get("closed_at") is not None:
+        lines.append(f"- `closed_at`: `{initiative['closed_at']}`")
+    if initiative.get("closure_reason") is not None:
+        lines.append(f"- `closure_reason`: {initiative['closure_reason']}")
+    if initiative.get("superseded_by_trace_id") is not None:
+        lines.append(
+            f"- `superseded_by_trace_id`: `{initiative['superseded_by_trace_id']}`"
+        )
+    return tuple(lines)
+
+
+def _plan_markdown_issue_summary(issue_code: str, relative_path: str) -> str:
+    if issue_code == "missing_expected_content":
+        return f"Required rendered surface is missing from the expected build: {relative_path}."
+    if issue_code == "missing_output":
+        return f"Required rendered surface is missing: {relative_path}."
+    return f"Rendered surface drift detected for {relative_path}."
+
+
+def _markdown_content(value: object) -> str:
+    assert isinstance(value, str)
+    return value
+
+
+def _ordered_unique_strings(values: Iterable[object]) -> tuple[str, ...]:
+    ordered: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        text = str(value)
+        if text in seen:
+            continue
+        seen.add(text)
+        ordered.append(text)
+    return tuple(ordered)
+
+
+def _joined_or_dash(values: object) -> str:
+    if not isinstance(values, Iterable) or isinstance(values, (str, bytes)):
+        return "-"
+    items = [str(value) for value in values if str(value)]
+    return ", ".join(items) if items else "-"
