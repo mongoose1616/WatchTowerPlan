@@ -17,7 +17,6 @@ Use this workflow to create, update, split, unblock, or close initiative-local l
 
 ## Additional Files to Load
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority model, canonical task-state vocabulary, and same-change rebuild expectations.
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the retained-history boundary for docs-backed task Markdown.
 - [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable live task lookup surface that must stay aligned with task state.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
 - [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
@@ -50,7 +49,7 @@ Use this workflow to create, update, split, unblock, or close initiative-local l
 
 ## Outputs
 - Created or updated live task record files
-- Updated `plan/.wt/indexes/task_index.json` and `docs/planning/tasks/task_tracking.md`
+- Updated `plan/.wt/indexes/task_index.json` and `plan/tracking/task_tracking.md`
 - Updated `plan/.wt/indexes/initiative_index.json`, `plan/.wt/indexes/readiness_index.json`, and `plan/.wt/indexes/coordination_index.json` when traced task state changed
 - Updated initiative-local rendered `plan.md`, `progress.md`, or `summary.md` companions when the task change shifted visible execution state
 - Updated traceability and related companion surfaces when traced task links changed materially

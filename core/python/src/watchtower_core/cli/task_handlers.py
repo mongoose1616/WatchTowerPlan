@@ -9,7 +9,7 @@ from watchtower_core.cli.handler_common import (
     _run_value_error_operation,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.task_lifecycle import (
+from watchtower_core.plan_runtime.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskMutationResult,

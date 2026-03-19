@@ -29,7 +29,6 @@ from watchtower_core.cli.query_coordination_lookup_handlers import (
 from watchtower_core.cli.query_coordination_rendered_handlers import (
     _run_query_coordination,
     _run_query_initiatives,
-    _run_query_planning,
 )
 
 
@@ -597,7 +596,7 @@ def register_query_coordination_commands(
             "uv run watchtower-core query coordination",
             "uv run watchtower-core query coordination --blocked-only --format json",
             "uv run watchtower-core query coordination --initiative-status completed "
-            "--trace-id trace.core_python_foundation",
+            "--trace-id trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
     )
@@ -610,7 +609,7 @@ def register_query_coordination_commands(
     )
     query_coordination_parser.add_argument(
         "--trace-id",
-        help="Exact trace filter such as trace.core_python_foundation.",
+        help="Exact trace filter such as trace.governed_acceptance_example.",
     )
     query_coordination_parser.add_argument(
         "--initiative-status",
@@ -678,64 +677,10 @@ def register_query_coordination_commands(
     )
     query_authority_parser.add_argument(
         "--artifact-kind",
-        help="Exact canonical artifact-kind filter such as planning_catalog or route_index.",
+        help="Exact canonical artifact-kind filter such as coordination_index or route_index.",
     )
     _add_output_arguments(query_authority_parser)
     query_authority_parser.set_defaults(handler=_run_query_authority)
-
-    query_planning_parser = query_subparsers.add_parser(
-        "planning",
-        help="Search the canonical planning catalog.",
-        description=dedent(
-            """
-            Search the canonical planning catalog for deep trace-linked planning
-            context with explicit status semantics.
-
-            Use this after `coordination` identifies the active trace you want,
-            or when you need one machine-readable record that joins PRDs,
-            decisions, design docs, tasks, acceptance contracts, validation
-            evidence, and per-trace coordination state. When invoked as a
-            filterless browse command, it defaults to active initiatives only;
-            use `--initiative-status` or a known `--trace-id` for explicit
-            history lookup.
-            """
-        ).strip(),
-        epilog=examples(
-            "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query planning --initiative-status active --format json",
-            "uv run watchtower-core query planning --current-phase execution "
-            "--owner repository_maintainer",
-        ),
-        formatter_class=HelpFormatter,
-    )
-    add_query_argument(
-        query_planning_parser,
-        help_text=(
-            "Free-text query over planning-catalog fields such as trace ID, titles, "
-            "status fields, linked IDs, next action, and related paths."
-        ),
-    )
-    query_planning_parser.add_argument(
-        "--trace-id",
-        help="Exact trace filter such as trace.core_python_foundation.",
-    )
-    query_planning_parser.add_argument(
-        "--initiative-status",
-        help=(
-            "Exact initiative-status filter such as active, completed, or superseded. "
-            "When omitted for filterless browse, the command defaults to active."
-        ),
-    )
-    query_planning_parser.add_argument(
-        "--current-phase",
-        help="Exact current-phase filter such as execution or closed.",
-    )
-    query_planning_parser.add_argument(
-        "--owner",
-        help="Exact owner filter against the current active owners for the trace.",
-    )
-    _add_output_arguments(query_planning_parser)
-    query_planning_parser.set_defaults(handler=_run_query_planning)
 
     query_initiatives_parser = query_subparsers.add_parser(
         "initiatives",
@@ -755,7 +700,8 @@ def register_query_coordination_commands(
         epilog=examples(
             "uv run watchtower-core query initiatives --current-phase execution",
             "uv run watchtower-core query initiatives --blocked-only --format json",
-            "uv run watchtower-core query initiatives --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query initiatives --trace-id "
+            "trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
     )
@@ -768,7 +714,7 @@ def register_query_coordination_commands(
     )
     query_initiatives_parser.add_argument(
         "--trace-id",
-        help="Exact trace filter such as trace.core_python_foundation.",
+        help="Exact trace filter such as trace.governed_acceptance_example.",
     )
     query_initiatives_parser.add_argument(
         "--initiative-status",
@@ -808,16 +754,17 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
             "uv run watchtower-core query trace --trace-id "
-            "trace.core_python_foundation --format json",
+            "trace.governed_acceptance_example",
+            "uv run watchtower-core query trace --trace-id "
+            "trace.governed_acceptance_example --format json",
         ),
         formatter_class=HelpFormatter,
     )
     query_trace_parser.add_argument(
         "--trace-id",
         required=True,
-        help="Stable trace identifier such as trace.core_python_foundation.",
+        help="Stable trace identifier such as trace.governed_acceptance_example.",
     )
     add_human_json_format_argument(query_trace_parser)
     query_trace_parser.set_defaults(handler=_run_query_trace)

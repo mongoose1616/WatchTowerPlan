@@ -5,4 +5,4 @@
 
 ## Notes
 - Shared reusable workflow modules still live under `core/workflows/modules/`.
-- Repo-root `workflows/modules/` is only a compatibility surface; authoritative plan-owned modules live here under `plan/workflows/modules/`.
+- Repo-root workflow modules were removed during the hard cutover; authoritative plan-owned modules live here under `plan/workflows/modules/`.

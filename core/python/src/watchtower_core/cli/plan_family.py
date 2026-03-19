@@ -1,4 +1,4 @@
-"""Planning scaffold command-family registration."""
+"""Live initiative-package command-family registration."""
 
 from __future__ import annotations
 
@@ -19,28 +19,22 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         _run_plan_approve,
         _run_plan_bootstrap,
         _run_plan_confirm_inputs,
-        _run_plan_scaffold,
     )
-    from watchtower_core.repo_ops.planning_scaffolds import PLAN_KIND_CHOICES
-    from watchtower_core.repo_ops.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
+    from watchtower_core.plan_runtime.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
     plan_parser = subparsers.add_parser(
         "plan",
-        help="Scaffold compact governed planning documents and initiative bootstrap chains.",
+        help="Bootstrap live initiative packages and advance readiness gates.",
         description=dedent(
             """
-            Scaffold compact governed planning documents, bootstrap live
-            initiative packages, and advance initiative readiness through the
-            captured-input and approval gates.
+            Bootstrap live initiative packages and advance initiative readiness
+            through the captured-input and approval gates.
 
             These commands are dry-run by default. Add `--write` to persist the
-            scaffolded documents and refresh the derived planning surfaces.
+            initiative-state change and refresh the derived plan surfaces.
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
-            "--document-id prd.example --title \"Example PRD\" "
-            "--summary \"Frames the example initiative.\" --format json",
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
             "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\" "
             "--include-decision --write",
@@ -55,139 +49,17 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
     )
     plan_parser.set_defaults(handler=_run_help, help_parser=plan_parser)
 
-    scaffold_parser = plan_subparsers.add_parser(
-        "scaffold",
-        help="Scaffold one PRD, feature design, implementation plan, or decision record.",
-        description=dedent(
-            """
-            Scaffold one compact governed planning document using the current
-            repository planning shape.
-
-            Optional sections are omitted by default. The scaffold emits one
-            compact placeholder per required section when richer inputs are not
-            provided.
-            """
-        ).strip(),
-        epilog=examples(
-            "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
-            "--document-id prd.example --title \"Example PRD\" "
-            "--summary \"Frames the example initiative.\"",
-            "uv run watchtower-core plan scaffold --kind feature-design --trace-id trace.example "
-            "--document-id design.features.example --title \"Example Feature Design\" "
-            "--summary \"Defines the example design boundary.\" "
-            "--linked-prd prd.example --reference docs/planning/prds/example.md "
-            "--include-document --format json",
-        ),
-        formatter_class=HelpFormatter,
-    )
-    scaffold_parser.add_argument(
-        "--kind",
-        required=True,
-        choices=PLAN_KIND_CHOICES,
-        help="Planning document family to scaffold.",
-    )
-    scaffold_parser.add_argument("--trace-id", required=True, help="Stable trace identifier.")
-    scaffold_parser.add_argument("--document-id", required=True, help="Stable document identifier.")
-    scaffold_parser.add_argument("--title", required=True, help="Human-readable document title.")
-    scaffold_parser.add_argument(
-        "--summary",
-        required=True,
-        help="One-line document summary used in trackers and indexes.",
-    )
-    scaffold_parser.add_argument(
-        "--owner",
-        default="repository_maintainer",
-        help="Document owner recorded in front matter.",
-    )
-    scaffold_parser.add_argument(
-        "--status",
-        help="Optional explicit document status. Defaults depend on the selected kind.",
-    )
-    scaffold_parser.add_argument(
-        "--applies-to",
-        action="append",
-        default=[],
-        help="Optional applied path or concept. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--alias",
-        action="append",
-        default=[],
-        help="Optional retrieval alias. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--file-stem",
-        help="Optional output filename stem. Defaults to a slug derived from the title.",
-    )
-    scaffold_parser.add_argument(
-        "--linked-prd",
-        action="append",
-        default=[],
-        help="Optional linked PRD ID. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--linked-decision",
-        action="append",
-        default=[],
-        help="Optional linked decision ID. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--linked-design",
-        action="append",
-        default=[],
-        help="Optional linked design ID. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--linked-plan",
-        action="append",
-        default=[],
-        help="Optional linked implementation-plan ID. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--linked-acceptance",
-        action="append",
-        default=[],
-        help="Optional linked acceptance-contract ID. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--source-request",
-        action="append",
-        default=[],
-        help="Optional source request or driver. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--reference",
-        action="append",
-        default=[],
-        help="Optional companion reference or source. Repeat for multiple values.",
-    )
-    scaffold_parser.add_argument(
-        "--updated-at",
-        help="Optional explicit RFC 3339 UTC timestamp. Defaults to now.",
-    )
-    scaffold_parser.add_argument(
-        "--include-document",
-        action="store_true",
-        help="Include the rendered document content in the command output.",
-    )
-    scaffold_parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write the scaffolded document and refresh derived planning surfaces.",
-    )
-    add_human_json_format_argument(scaffold_parser)
-    scaffold_parser.set_defaults(handler=_run_plan_scaffold)
-
     bootstrap_parser = plan_subparsers.add_parser(
         "bootstrap",
-        help="Scaffold the initial PRD, design, plan, and bootstrap-task chain for one trace.",
+        help="Bootstrap one live initiative package and its initial bootstrap task.",
         description=dedent(
             """
-            Scaffold a compact traced planning chain for one new initiative.
+            Bootstrap one live initiative package rooted under `plan/**`.
 
-            The bootstrap flow creates a PRD, feature design, implementation
-            plan, and one bootstrap task. Add `--include-decision` when you
-            want a first decision record in the same chain.
+            The bootstrap flow seeds the initiative-authored inputs,
+            initiative-local machine state, evidence and closeout shells, and
+            one bootstrap task. Add `--include-decision` when you want
+            `decision_notes.md` in the initial package.
             """
         ).strip(),
         epilog=examples(
@@ -195,58 +67,37 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
             "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\"",
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
             "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\" "
-            "--include-decision --task-priority high --include-documents --format json",
+            "--include-decision --task-priority high --write --format json",
+            "uv run watchtower-core plan bootstrap --project-slug watchtower "
+            "--trace-id trace.watchtower.example --title \"WatchTower Initiative\" "
+            "--summary \"Bootstraps a project-scoped initiative.\" --write",
         ),
         formatter_class=HelpFormatter,
     )
     bootstrap_parser.add_argument("--trace-id", required=True, help="Stable trace identifier.")
+    bootstrap_parser.add_argument(
+        "--initiative-slug",
+        help="Optional initiative slug. Defaults to a slug derived from the trace ID.",
+    )
+    bootstrap_parser.add_argument(
+        "--project-slug",
+        help="Optional project slug for project-scoped initiative bootstrap.",
+    )
     bootstrap_parser.add_argument("--title", required=True, help="Initiative title root.")
     bootstrap_parser.add_argument(
         "--summary",
         required=True,
-        help="One-line initiative summary applied to the scaffold chain.",
+        help="One-line initiative summary applied to the live package.",
     )
     bootstrap_parser.add_argument(
         "--owner",
         default="repository_maintainer",
-        help="Planning-document owner recorded in front matter.",
-    )
-    bootstrap_parser.add_argument(
-        "--applies-to",
-        action="append",
-        default=[],
-        help="Optional applied path or concept. Repeat for multiple values.",
-    )
-    bootstrap_parser.add_argument(
-        "--alias",
-        action="append",
-        default=[],
-        help="Optional retrieval alias. Repeat for multiple values.",
-    )
-    bootstrap_parser.add_argument(
-        "--file-stem",
-        help="Optional shared filename stem for the scaffolded planning documents.",
+        help="Initiative owner recorded in authored inputs and task state.",
     )
     bootstrap_parser.add_argument(
         "--include-decision",
         action="store_true",
-        help="Also create an initial decision record in the bootstrap chain.",
-    )
-    bootstrap_parser.add_argument(
-        "--decision-id",
-        help="Optional explicit decision ID when --include-decision is used.",
-    )
-    bootstrap_parser.add_argument(
-        "--source-request",
-        action="append",
-        default=[],
-        help="Optional source request or driver. Repeat for multiple values.",
-    )
-    bootstrap_parser.add_argument(
-        "--reference",
-        action="append",
-        default=[],
-        help="Optional companion reference or source. Repeat for multiple values.",
+        help="Also create `decision_notes.md` in the initial package.",
     )
     bootstrap_parser.add_argument(
         "--task-id",
@@ -273,14 +124,9 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         help="Optional explicit RFC 3339 UTC timestamp. Defaults to now.",
     )
     bootstrap_parser.add_argument(
-        "--include-documents",
-        action="store_true",
-        help="Include rendered document content in the command output.",
-    )
-    bootstrap_parser.add_argument(
         "--write",
         action="store_true",
-        help="Write the scaffold chain and refresh derived planning surfaces.",
+        help="Write the initiative package and refresh derived plan surfaces.",
     )
     add_human_json_format_argument(bootstrap_parser)
     bootstrap_parser.set_defaults(handler=_run_plan_bootstrap)

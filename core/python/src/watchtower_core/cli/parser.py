@@ -26,23 +26,21 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core route preview --request \"review code and commit\"",
-            "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
-            "--document-id prd.example --title \"Example PRD\" "
-            "--summary \"Frames the example initiative.\" --format json",
+            "uv run watchtower-core plan bootstrap --trace-id trace.example "
+            "--title \"Example Initiative\" "
+            "--summary \"Bootstraps the example initiative.\" --format json",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query artifacts --artifact-family initiative_state --format json",
             "uv run watchtower-core query readiness --ready-for-execution true --format json",
             "uv run watchtower-core query projects --slug watchtower --format json",
-            "uv run watchtower-core query planning --trace-id trace.core_python_foundation "
-            "--format json",
             "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",
             "uv run watchtower-core query standards --category governance --format json",
-            "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query acceptance --trace-id "
+            "trace.governed_acceptance_example",
             "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core task transition --task-id task.example.001 "
@@ -51,14 +49,12 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync coordination",
             "uv run watchtower-core sync foundation-index",
-            "uv run watchtower-core sync planning-catalog",
             "uv run watchtower-core sync route-index",
             "uv run watchtower-core sync initiative-index",
             "uv run watchtower-core sync initiative-tracking",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync workflow-index",
-            "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
             "uv run watchtower-core sync github-tasks --repo owner/repo",
@@ -69,9 +65,11 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate document-semantics --path "
             "docs/standards/documentation/workflow_md_standard.md",
-            "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
+            "uv run watchtower-core validate acceptance --trace-id "
+            "trace.governed_acceptance_example",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json",
         ),
         formatter_class=HelpFormatter,
     )

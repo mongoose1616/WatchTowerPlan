@@ -21,7 +21,7 @@ def register_query_family(
     """Register the query command family and its subcommands."""
     query_parser = subparsers.add_parser(
         "query",
-        help="Search governed indexes for paths, commands, planning docs, tasks, and traces.",
+        help="Search governed indexes for paths, commands, live plan state, and traces.",
         description=dedent(
             """
             Search the governed lookup surfaces without opening the raw JSON
@@ -34,12 +34,11 @@ def register_query_family(
             plan artifact catalog, `readiness` for execution-gate state,
             `discrepancies` for blocking drift or mismatch records, `projects`
             for pack-level project lookup, `project-context` for one fully loaded
-            project container, `planning` for the canonical deep planning join
-            after coordination, `authority` for canonical planning and governance
+            project container, `authority` for canonical planning and governance
             surface lookup, `foundations` for the intent-layer foundation corpus,
             `workflows` for workflow-module lookup, `references` for the reference
-            library, `standards` for governed repository standards, `prds`,
-            `decisions`, `designs`, `acceptance`, and `evidence`, and `trace`
+            library, `standards` for governed repository standards, `acceptance`,
+            and `evidence`, and `trace`
             when you already know the trace identifier you want.
             """
         ).strip(),
@@ -52,7 +51,6 @@ def register_query_family(
             "uv run watchtower-core query discrepancies --blocking-only --format json",
             "uv run watchtower-core query projects --slug watchtower --format json",
             "uv run watchtower-core query project-context --project-slug watchtower --format json",
-            "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
             "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
@@ -60,15 +58,15 @@ def register_query_family(
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "docs/references/github_collaboration_reference.md",
-            "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query initiatives --owner repository_maintainer",
-            "uv run watchtower-core query decisions --decision-status accepted",
-            "uv run watchtower-core query designs --family implementation_plan",
-            "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query evidence --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query acceptance --trace-id "
+            "trace.governed_acceptance_example",
+            "uv run watchtower-core query evidence --trace-id "
+            "trace.governed_acceptance_example",
             "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
-            "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query trace --trace-id "
+            "trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
     )

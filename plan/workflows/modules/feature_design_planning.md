@@ -1,7 +1,7 @@
 # Feature Design Planning Workflow
 
 ## Purpose
-Use this workflow to define design options, recommend a technical design, and capture the guardrails that implementation planning must inherit.
+Use this workflow to define design options, recommend a technical design, and capture the guardrails that `design_record.md` must pass to `implementation_slice.md`.
 
 ## Use When
 - A feature is defined well enough to start technical design but not yet ready for direct implementation.
@@ -10,7 +10,7 @@ Use this workflow to define design options, recommend a technical design, and ca
 
 ## Inputs
 - Scoped feature-design brief
-- Feature request, PRD, issue, or planning brief
+- Feature request, initiative brief, issue, or planning brief
 - Current-state context summary
 - Foundation-context brief
 - Internal standards and canonical references applied
@@ -19,8 +19,9 @@ Use this workflow to define design options, recommend a technical design, and ca
 - Known risks, assumptions, or open questions
 
 ## Additional Files to Load
-- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): defines the required feature-design structure and applied-reference capture for the output.
-- [feature_design_template.md](/docs/templates/feature_design_template.md): provides the drafting shape for the review-ready design artifact.
+- [requirements.md](/requirements.md): defines the live initiative package model and the intended planning-to-execution boundary.
+- [decisions.md](/decisions.md): locks the hard-cutover package shape and the execution-readiness gate.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): use when the design flow needs a durable decision note rather than silent rationale.
 
 ## Workflow
 1. Define design options and tradeoffs.
@@ -44,13 +45,13 @@ Use this workflow to define design options, recommend a technical design, and ca
 - Design guardrails, risks, and optional handoff notes when needed
 
 ## Outputs
-- A review-ready feature design
+- A review-ready `design_record.md`
 - A recommended technical approach for the feature
 - Implementation-planning handoff detail only when it adds non-obvious value
 
 ## Done When
 - The feature has a clear recommended technical design.
-- The design remains aligned with the repository foundations in `docs/foundations/`.
+- The design remains aligned with the repository foundations in `core/docs/foundations/`.
 - The design reflects applicable internal standards, canonical references, and existing repository patterns.
 - Major tradeoffs, dependencies, constraints, and implementation guardrails are documented.
 - The output is ready for implementation planning without itself becoming an execution plan or task breakdown.

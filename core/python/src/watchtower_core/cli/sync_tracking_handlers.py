@@ -62,66 +62,10 @@ def _run_tracking_sync(
     )
 
 
-def _run_sync_prd_tracking(args: argparse.Namespace) -> int:
-    return _run_tracking_sync(
-        args,
-        module_name="watchtower_core.repo_ops.sync.prd_tracking",
-        class_name="PrdTrackingSyncService",
-        command_name="watchtower-core sync prd-tracking",
-        payload_counts_factory=lambda result: {"prd_count": result.prd_count},
-        wrote_message_factory=lambda result, destination: (
-            f"Rebuilt PRD tracking with {result.prd_count} entries and wrote it to {destination}."
-        ),
-        dry_run_message_factory=lambda result: (
-            f"Rebuilt PRD tracking with {result.prd_count} entries in dry-run mode."
-        ),
-    )
-
-
-def _run_sync_decision_tracking(args: argparse.Namespace) -> int:
-    return _run_tracking_sync(
-        args,
-        module_name="watchtower_core.repo_ops.sync.decision_tracking",
-        class_name="DecisionTrackingSyncService",
-        command_name="watchtower-core sync decision-tracking",
-        payload_counts_factory=lambda result: {"decision_count": result.decision_count},
-        wrote_message_factory=lambda result, destination: (
-            "Rebuilt decision tracking with "
-            f"{result.decision_count} entries and wrote it to {destination}."
-        ),
-        dry_run_message_factory=lambda result: (
-            f"Rebuilt decision tracking with {result.decision_count} entries in dry-run mode."
-        ),
-    )
-
-
-def _run_sync_design_tracking(args: argparse.Namespace) -> int:
-    return _run_tracking_sync(
-        args,
-        module_name="watchtower_core.repo_ops.sync.design_tracking",
-        class_name="DesignTrackingSyncService",
-        command_name="watchtower-core sync design-tracking",
-        payload_counts_factory=lambda result: {
-            "feature_design_count": result.feature_design_count,
-            "implementation_plan_count": result.implementation_plan_count,
-        },
-        wrote_message_factory=lambda result, destination: (
-            "Rebuilt design tracking with "
-            f"{result.feature_design_count + result.implementation_plan_count} "
-            f"documents and wrote it to {destination}."
-        ),
-        dry_run_message_factory=lambda result: (
-            "Rebuilt design tracking with "
-            f"{result.feature_design_count + result.implementation_plan_count} "
-            "documents in dry-run mode."
-        ),
-    )
-
-
 def _run_sync_initiative_tracking(args: argparse.Namespace) -> int:
     return _run_tracking_sync(
         args,
-        module_name="watchtower_core.repo_ops.sync.initiative_tracking",
+        module_name="watchtower_core.plan_runtime.sync.initiative_tracking",
         class_name="InitiativeTrackingSyncService",
         command_name="watchtower-core sync initiative-tracking",
         payload_counts_factory=lambda result: {
@@ -143,7 +87,7 @@ def _run_sync_initiative_tracking(args: argparse.Namespace) -> int:
 def _run_sync_task_tracking(args: argparse.Namespace) -> int:
     return _run_tracking_sync(
         args,
-        module_name="watchtower_core.repo_ops.sync.task_tracking",
+        module_name="watchtower_core.plan_runtime.sync.task_tracking",
         class_name="TaskTrackingSyncService",
         command_name="watchtower-core sync task-tracking",
         payload_counts_factory=lambda result: {
@@ -161,9 +105,6 @@ def _run_sync_task_tracking(args: argparse.Namespace) -> int:
 
 
 TRACKING_SYNC_HANDLERS = {
-    "prd_tracking": _run_sync_prd_tracking,
-    "decision_tracking": _run_sync_decision_tracking,
-    "design_tracking": _run_sync_design_tracking,
     "initiative_tracking": _run_sync_initiative_tracking,
     "task_tracking": _run_sync_task_tracking,
 }

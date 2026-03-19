@@ -13,5 +13,5 @@ GitHub API client support for task sync and other hosted collaboration flows.
 - `client_project_support.py` and `models.py`: Project-query parsing, response helpers, and shared GitHub integration types.
 
 ## Related Surfaces
-- `core/python/src/watchtower_core/repo_ops/sync/README.md`
+- `core/python/src/watchtower_core/plan_runtime/sync/README.md`
 - `docs/standards/governance/github_task_sync_standard.md`

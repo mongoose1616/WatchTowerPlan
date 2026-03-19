@@ -18,7 +18,7 @@ from watchtower_core.cli.query_knowledge_handlers import (
     _run_query_standards,
     _run_query_workflows,
 )
-from watchtower_core.repo_ops.reference_semantics import REFERENCE_REPOSITORY_STATUS_VALUES
+from watchtower_core.plan_runtime.reference_semantics import REFERENCE_REPOSITORY_STATUS_VALUES
 
 
 def register_query_knowledge_commands(
@@ -284,7 +284,7 @@ def register_query_knowledge_commands(
         "--operationalization-path",
         help=(
             "Repository-path filter for one operationalizing surface such as "
-            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py. "
+            "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py. "
             "Exact file paths match directly, indexed directory paths match "
             "their concrete descendants, and indexed glob patterns match "
             "concrete files such as nested README.md or AGENTS.md surfaces."

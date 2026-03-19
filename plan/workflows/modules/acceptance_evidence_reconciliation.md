@@ -1,17 +1,17 @@
 # Acceptance and Evidence Reconciliation Workflow
 
 ## Purpose
-Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.
+Use this workflow to reconcile initiative-local acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.
 
 ## Use When
-- A task changes PRD acceptance criteria, acceptance contracts, validation evidence, or traceability joins.
+- A task changes initiative-brief acceptance criteria, promoted acceptance guidance, acceptance contracts, validation evidence, or traceability joins.
 - A trace needs an explicit acceptance-coverage review before closeout or handoff.
 - Reviewers need a reusable semantic check rather than only schema validation.
 - Choose this route when one trace's acceptance intent, coverage, or evidence linkage is the main question rather than general planning or artifact-family drift.
 
 ## Inputs
 - Target `trace_id`
-- Current PRD acceptance IDs
+- Current initiative acceptance IDs
 - Current acceptance contract
 - Current validation evidence artifacts
 - Current traceability entry
@@ -24,9 +24,9 @@ Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validat
 
 ## Workflow
 1. Resolve the trace boundary.
-   - Identify the trace, owning PRD, acceptance contract, evidence artifacts, and traceability entry.
+   - Identify the trace, owning initiative package or promoted guidance, acceptance contract, evidence artifacts, and traceability entry.
 2. Compare acceptance intent and machine boundaries.
-   - Compare PRD acceptance IDs to the acceptance contract and traceability entry.
+   - Compare initiative acceptance IDs to the acceptance contract and traceability entry.
 3. Check validator and evidence linkage.
    - Verify required validator IDs exist.
    - Verify evidence references known acceptance IDs and validator IDs.
@@ -38,7 +38,7 @@ Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validat
 
 ## Data Structure
 - Trace identifier
-- PRD acceptance IDs
+- Initiative acceptance IDs
 - Acceptance-contract acceptance IDs
 - Traceability acceptance and evidence joins
 - Evidence coverage map
@@ -49,5 +49,5 @@ Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validat
 - A semantic validation result from `watchtower-core validate acceptance` when Python is available.
 
 ## Done When
-- PRD, contract, evidence, validator, and traceability surfaces agree for the target trace.
+- Initiative inputs, contract, evidence, validator, and traceability surfaces agree for the target trace.
 - Any remaining acceptance gap is explicit rather than implied.

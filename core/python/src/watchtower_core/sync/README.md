@@ -13,5 +13,6 @@ Export-safe sync namespace that publishes the reusable generic sync harness whil
 - `harness.py`: Shared sync target contracts, result models, overlay-aware runtime loader, and dependency-ordered orchestration helpers.
 
 ## Related Surfaces
-- `core/python/src/watchtower_core/repo_ops/sync/README.md`
-- `docs/planning/design/features/core_export_ready_architecture.md`
+- `core/python/src/watchtower_core/plan_runtime/sync/README.md`
+- `requirements.md`
+- `decisions.md`

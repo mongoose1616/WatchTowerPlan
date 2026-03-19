@@ -18,11 +18,10 @@
   ],
   "source_paths": [
     "requirements.md",
+    "decisions.md",
     "plan/.wt/manifests/pack_settings.json",
-    "docs/planning/prds/capture_first_plan_workspace_bootstrap.md",
-    "docs/planning/design/features/capture_first_plan_workspace_bootstrap.md",
-    "docs/planning/design/implementation/capture_first_plan_workspace_bootstrap.md",
-    "docs/planning/tasks/open/seed_plan_workspace_roots_and_stage1_bootstrap_record.md"
+    "plan/README.md",
+    "plan/plan_overview.md"
   ],
   "notes": "Stage 1 seeds plan-pack machine authority inside WatchTowerPlan so later tasks can bootstrap WatchTower-targeted implementation from plan/** rather than from docs-backed live planning."
 }

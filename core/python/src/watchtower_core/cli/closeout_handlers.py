@@ -10,7 +10,7 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.closeout import InitiativeCloseoutService, TracePurgeService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops import InitiativePackageService
+from watchtower_core.plan_runtime import InitiativePackageService
 
 
 def _run_closeout_initiative(args: argparse.Namespace) -> int:
@@ -47,13 +47,9 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         "wrote": result.wrote,
         "traceability_output_path": result.traceability_output_path,
         "initiative_index_output_path": result.initiative_index_output_path,
-        "planning_catalog_output_path": result.planning_catalog_output_path,
         "coordination_index_output_path": result.coordination_index_output_path,
         "initiative_tracking_output_path": result.initiative_tracking_output_path,
         "coordination_tracking_output_path": result.coordination_tracking_output_path,
-        "prd_tracking_output_path": result.prd_tracking_output_path,
-        "decision_tracking_output_path": result.decision_tracking_output_path,
-        "design_tracking_output_path": result.design_tracking_output_path,
     }
 
     def _render_human() -> None:
@@ -68,8 +64,8 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
             print(f"Acceptance Issues Left In Place: {result.acceptance_issue_count}")
         if result.wrote:
             print(
-                "Canonical traceability, initiative, planning catalog, coordination, "
-                "and planning trackers were updated."
+                "Canonical traceability, initiative, coordination, and live trackers "
+                "were updated."
             )
         else:
             print("Dry-run only. Use --write to persist the closeout state.")

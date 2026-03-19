@@ -20,8 +20,8 @@ Use this workflow to analyze viable options and record a durable repository deci
 
 ## Additional Files to Load
 - [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
-- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): defines the required decision-record structure and applied-reference capture.
-- [decision_record_template.md](/docs/templates/decision_record_template.md): provides the drafting shape for the final decision document.
+- [requirements.md](/requirements.md): defines the active package boundary and the durable guidance surfaces that decisions must eventually promote into.
+- [decisions.md](/decisions.md): records the locked capture-first workspace decisions that should not be contradicted by new decision work.
 
 ## Workflow
 1. Define the viable options and tradeoffs.
@@ -46,7 +46,7 @@ Use this workflow to analyze viable options and record a durable repository deci
 - Optional dependencies, risks, and open questions when they remain material
 
 ## Outputs
-- A durable decision record or decision recommendation
+- A durable decision note or promoted decision update
 - A clear statement of the outcome, rationale, and status
 - Affected artifacts and follow-up only when they are material to the decision
 

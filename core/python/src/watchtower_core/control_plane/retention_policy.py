@@ -114,7 +114,6 @@ def _specificity_key(entry: RetentionPolicyEntry) -> tuple[int, int]:
 
 def _relevant_roots(repo_root: Path) -> tuple[str, ...]:
     roots: set[str] = {
-        "docs/planning",
         "plan/.wt",
         "plan/docs",
         "core/control_plane/ledgers/purges",

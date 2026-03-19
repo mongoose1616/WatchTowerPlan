@@ -15,8 +15,8 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
-from watchtower_core.repo_ops.project_context import load_project_context
-from watchtower_core.repo_ops.query import (
+from watchtower_core.plan_runtime.project_context import load_project_context
+from watchtower_core.plan_runtime.query import (
     ArtifactQueryService,
     ArtifactSearchParams,
     AuthorityMapQueryService,
@@ -311,10 +311,7 @@ def _run_query_trace(args: argparse.Namespace) -> int:
             "closed_at": entry.closed_at,
             "closure_reason": entry.closure_reason,
             "superseded_by_trace_id": entry.superseded_by_trace_id,
-            "prd_ids": list(entry.prd_ids),
-            "decision_ids": list(entry.decision_ids),
-            "design_ids": list(entry.design_ids),
-            "plan_ids": list(entry.plan_ids),
+            "source_surface_paths": list(entry.source_surface_paths),
             "task_ids": list(entry.task_ids),
             "requirement_ids": list(entry.requirement_ids),
             "acceptance_ids": list(entry.acceptance_ids),
@@ -336,14 +333,8 @@ def _run_query_trace(args: argparse.Namespace) -> int:
             print(f"Closure Reason: {entry.closure_reason}")
         if entry.superseded_by_trace_id is not None:
             print(f"Superseded By: {entry.superseded_by_trace_id}")
-        if entry.prd_ids:
-            print(f"PRDs: {', '.join(entry.prd_ids)}")
-        if entry.decision_ids:
-            print(f"Decisions: {', '.join(entry.decision_ids)}")
-        if entry.design_ids:
-            print(f"Designs: {', '.join(entry.design_ids)}")
-        if entry.plan_ids:
-            print(f"Plans: {', '.join(entry.plan_ids)}")
+        if entry.source_surface_paths:
+            print(f"Source Surfaces: {', '.join(entry.source_surface_paths)}")
         if entry.task_ids:
             print(f"Tasks: {', '.join(entry.task_ids)}")
         if entry.acceptance_contract_ids:

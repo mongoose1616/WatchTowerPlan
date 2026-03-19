@@ -6,7 +6,7 @@ import argparse
 
 from watchtower_core.cli.handler_common import _emit_detail_result
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
+from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
 
 
 def _run_doctor(args: argparse.Namespace) -> int:

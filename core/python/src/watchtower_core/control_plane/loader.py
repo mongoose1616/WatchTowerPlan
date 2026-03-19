@@ -15,8 +15,6 @@ from watchtower_core.control_plane.models import (
     AuthorityMap,
     CommandIndex,
     CoordinationIndex,
-    DecisionIndex,
-    DesignDocumentIndex,
     DocumentationFamilyRegistry,
     FoundationIndex,
     GovernanceSurfaceMap,
@@ -25,8 +23,6 @@ from watchtower_core.control_plane.models import (
     LifecycleStageRegistry,
     PackSettings,
     PathPatternRegistry,
-    PlanningCatalog,
-    PrdIndex,
     ProjectSurfacePolicyRegistry,
     PromotionPolicyRegistry,
     ReferenceIndex,
@@ -92,18 +88,12 @@ COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.json"
 ROUTE_INDEX_PATH = "core/control_plane/indexes/routes/route_index.json"
 REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.json"
 FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.json"
-INITIATIVE_INDEX_PATH = "core/control_plane/indexes/initiatives/initiative_index.json"
-COORDINATION_INDEX_PATH = "core/control_plane/indexes/coordination/coordination_index.json"
+INITIATIVE_INDEX_PATH = "plan/.wt/indexes/initiative_index.json"
+COORDINATION_INDEX_PATH = "plan/.wt/indexes/coordination_index.json"
 STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.json"
 WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
-PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.json"
-DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.json"
-DESIGN_DOCUMENT_INDEX_PATH = (
-    "core/control_plane/indexes/design_documents/design_document_index.json"
-)
-TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.json"
+TASK_INDEX_PATH = "plan/.wt/indexes/task_index.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.json"
-PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 TRACE_PURGE_LEDGER_DIRECTORY = "core/control_plane/ledgers/purges"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
@@ -755,24 +745,6 @@ class ControlPlaneLoader:
             WorkflowIndex.from_document,
         )
 
-    def load_prd_index(self) -> PrdIndex:
-        """Load the current PRD index."""
-        return self._load_typed_document(PRD_INDEX_PATH, PrdIndex.from_document)
-
-    def load_decision_index(self) -> DecisionIndex:
-        """Load the current decision index."""
-        return self._load_typed_document(
-            DECISION_INDEX_PATH,
-            DecisionIndex.from_document,
-        )
-
-    def load_design_document_index(self) -> DesignDocumentIndex:
-        """Load the current design-document index."""
-        return self._load_typed_document(
-            DESIGN_DOCUMENT_INDEX_PATH,
-            DesignDocumentIndex.from_document,
-        )
-
     def load_task_index(self) -> TaskIndex:
         """Load the current task index."""
         return self._load_typed_document(TASK_INDEX_PATH, TaskIndex.from_document)
@@ -782,13 +754,6 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             TRACEABILITY_INDEX_PATH,
             TraceabilityIndex.from_document,
-        )
-
-    def load_planning_catalog(self) -> PlanningCatalog:
-        """Load the current canonical planning catalog."""
-        return self._load_typed_document(
-            PLANNING_CATALOG_PATH,
-            PlanningCatalog.from_document,
         )
 
     def iter_validated_documents_under(self, relative_directory: str) -> tuple[dict[str, Any], ...]:
@@ -972,18 +937,10 @@ class ControlPlaneLoader:
             return self._load_typed_document(relative_path, StandardIndex.from_document)
         if surface_name == "workflow_index":
             return self._load_typed_document(relative_path, WorkflowIndex.from_document)
-        if surface_name == "prd_index":
-            return self._load_typed_document(relative_path, PrdIndex.from_document)
-        if surface_name == "decision_index":
-            return self._load_typed_document(relative_path, DecisionIndex.from_document)
-        if surface_name == "design_document_index":
-            return self._load_typed_document(relative_path, DesignDocumentIndex.from_document)
         if surface_name == "task_index":
             return self._load_typed_document(relative_path, TaskIndex.from_document)
         if surface_name == "traceability_index":
             return self._load_typed_document(relative_path, TraceabilityIndex.from_document)
-        if surface_name == "planning_catalog":
-            return self._load_typed_document(relative_path, PlanningCatalog.from_document)
         return self.load_known_surface(relative_path)
 
     def load_known_surface(self, relative_path: str) -> object:
@@ -1121,18 +1078,10 @@ class ControlPlaneLoader:
             return self.load_standard_index()
         if relative_path == WORKFLOW_INDEX_PATH:
             return self.load_workflow_index()
-        if relative_path == PRD_INDEX_PATH:
-            return self.load_prd_index()
-        if relative_path == DECISION_INDEX_PATH:
-            return self.load_decision_index()
-        if relative_path == DESIGN_DOCUMENT_INDEX_PATH:
-            return self.load_design_document_index()
         if relative_path == TASK_INDEX_PATH:
             return self.load_task_index()
         if relative_path == TRACEABILITY_INDEX_PATH:
             return self.load_traceability_index()
-        if relative_path == PLANNING_CATALOG_PATH:
-            return self.load_planning_catalog()
         return self.load_validated_document(relative_path)
 
     def _current_pack_settings_path(self, relative_path: str) -> str:

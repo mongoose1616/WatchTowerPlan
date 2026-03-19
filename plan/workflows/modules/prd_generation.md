@@ -1,7 +1,7 @@
 # PRD Generation Workflow
 
 ## Purpose
-Use this workflow to turn a scoped planning request into a review-ready product requirements document (PRD).
+Use this workflow to turn a scoped planning request into a review-ready initiative brief that defines the package before design and implementation begin.
 
 ## Use When
 - A new feature or initiative needs alignment before implementation.
@@ -9,7 +9,7 @@ Use this workflow to turn a scoped planning request into a review-ready product 
 - Stakeholders need a written document to review or approve.
 
 ## Inputs
-- Scoped PRD brief
+- Scoped initiative-brief request
 - Problem statement
 - Target users
 - Business goal
@@ -23,8 +23,9 @@ Use this workflow to turn a scoped planning request into a review-ready product 
 - Open questions
 
 ## Additional Files to Load
-- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): defines the required PRD structure and validation bar for the output.
-- [prd_template.md](/docs/templates/prd_template.md): gives the starting shape for drafting the PRD once scope and requirements are clear.
+- [requirements.md](/requirements.md): defines the hard-cutover capture-first package model and the required initiative-local intake surfaces.
+- [decisions.md](/decisions.md): locks the initiative package shape, readiness gate, and hard-cutover authority boundaries.
+- [README.md](/plan/docs/foundations/README.md): routes the author to the mirrored foundations corpus that should shape the brief.
 
 ## Workflow
 1. Define scope.
@@ -41,8 +42,8 @@ Use this workflow to turn a scoped planning request into a review-ready product 
    - Do not force user stories, metrics, or rollout notes when the PRD can stay simpler without losing review value.
 4. Plan delivery.
    - Record dependencies, risks, milestones or phases, and unresolved questions only when they affect review or later planning.
-5. Draft the PRD.
-   - Convert the planning notes into the leanest PRD shape allowed by the PRD standard.
+5. Draft the initiative brief.
+   - Convert the planning notes into the leanest intake brief shape allowed by the current package contract.
    - Remove ambiguity and vague language.
    - Keep requirements testable.
 
@@ -54,13 +55,13 @@ Use this workflow to turn a scoped planning request into a review-ready product 
 - Optional actors, scenarios, metrics, or open questions only when material
 
 ## Outputs
-- A review-ready PRD draft
+- A review-ready `initiative_brief.md` draft
 - Explicit unresolved questions only when they remain
 
 ## Done When
 - The problem, goals, scope, and requirements are documented.
-- The PRD remains aligned with the repository foundations in `docs/foundations/`.
-- The PRD reflects applicable internal standards, canonical references, and existing planning patterns.
+- The initiative brief remains aligned with the repository foundations in `core/docs/foundations/`.
+- The initiative brief reflects applicable internal standards, canonical references, and existing planning patterns.
 - Success metrics and acceptance criteria are defined.
 - Risks, dependencies, and open questions are visible.
-- The PRD does not carry low-value planning filler that the current scope does not need.
+- The initiative brief does not carry low-value planning filler that the current scope does not need.

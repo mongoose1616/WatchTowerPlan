@@ -60,10 +60,7 @@ class InitiativeIndexEntry:
     active_task_ids: tuple[str, ...] = ()
     active_task_summaries: tuple[InitiativeActiveTaskSummary, ...] = ()
     blocked_by_task_ids: tuple[str, ...] = ()
-    prd_ids: tuple[str, ...] = ()
-    decision_ids: tuple[str, ...] = ()
-    design_ids: tuple[str, ...] = ()
-    plan_ids: tuple[str, ...] = ()
+    source_surface_paths: tuple[str, ...] = ()
     task_ids: tuple[str, ...] = ()
     acceptance_ids: tuple[str, ...] = ()
     acceptance_contract_ids: tuple[str, ...] = ()
@@ -102,10 +99,7 @@ class InitiativeIndexEntry:
                 for entry in document.get("active_task_summaries", ())
             ),
             blocked_by_task_ids=tuple(document.get("blocked_by_task_ids", ())),
-            prd_ids=tuple(document.get("prd_ids", ())),
-            decision_ids=tuple(document.get("decision_ids", ())),
-            design_ids=tuple(document.get("design_ids", ())),
-            plan_ids=tuple(document.get("plan_ids", ())),
+            source_surface_paths=tuple(document.get("source_surface_paths", ())),
             task_ids=tuple(document.get("task_ids", ())),
             acceptance_ids=tuple(document.get("acceptance_ids", ())),
             acceptance_contract_ids=tuple(document.get("acceptance_contract_ids", ())),
@@ -153,6 +147,8 @@ class TaskIndexEntry:
     """Task-index entry."""
 
     task_id: str
+    initiative_id: str
+    initiative_title: str
     title: str
     summary: str
     status: str
@@ -162,6 +158,7 @@ class TaskIndexEntry:
     owner: str
     doc_path: str
     updated_at: str
+    project_id: str | None = None
     trace_id: str | None = None
     blocked_by: tuple[str, ...] = ()
     depends_on: tuple[str, ...] = ()
@@ -182,6 +179,9 @@ class TaskIndexEntry:
     def from_document(cls, document: dict[str, Any]) -> TaskIndexEntry:
         return cls(
             task_id=document["task_id"],
+            initiative_id=document["initiative_id"],
+            initiative_title=document["initiative_title"],
+            project_id=document.get("project_id"),
             trace_id=document.get("trace_id"),
             title=document["title"],
             summary=document["summary"],
@@ -363,10 +363,7 @@ class TraceabilityEntry:
     closed_at: str | None = None
     closure_reason: str | None = None
     superseded_by_trace_id: str | None = None
-    prd_ids: tuple[str, ...] = ()
-    decision_ids: tuple[str, ...] = ()
-    design_ids: tuple[str, ...] = ()
-    plan_ids: tuple[str, ...] = ()
+    source_surface_paths: tuple[str, ...] = ()
     task_ids: tuple[str, ...] = ()
     requirement_ids: tuple[str, ...] = ()
     acceptance_ids: tuple[str, ...] = ()
@@ -389,10 +386,7 @@ class TraceabilityEntry:
             closed_at=document.get("closed_at"),
             closure_reason=document.get("closure_reason"),
             superseded_by_trace_id=document.get("superseded_by_trace_id"),
-            prd_ids=tuple(document.get("prd_ids", ())),
-            decision_ids=tuple(document.get("decision_ids", ())),
-            design_ids=tuple(document.get("design_ids", ())),
-            plan_ids=tuple(document.get("plan_ids", ())),
+            source_surface_paths=tuple(document.get("source_surface_paths", ())),
             task_ids=tuple(document.get("task_ids", ())),
             requirement_ids=tuple(document.get("requirement_ids", ())),
             acceptance_ids=tuple(document.get("acceptance_ids", ())),

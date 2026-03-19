@@ -76,7 +76,7 @@ def register_closeout_family(
     closeout_initiative_parser.add_argument(
         "--trace-id",
         required=True,
-        help="Stable trace identifier such as trace.core_python_foundation.",
+        help="Stable trace identifier such as trace.governed_acceptance_example.",
     )
     closeout_initiative_parser.add_argument(
         "--initiative-status",
@@ -189,7 +189,7 @@ def register_closeout_family(
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
             "--retained-authority-path docs/standards/governance/example.md",
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path core/python/src/watchtower_core/repo_ops/example.py "
+            "--retained-authority-path core/python/src/watchtower_core/plan_runtime/example.py "
             "--write --format json",
         ),
         formatter_class=HelpFormatter,
@@ -197,7 +197,7 @@ def register_closeout_family(
     closeout_purge_parser.add_argument(
         "--trace-id",
         required=True,
-        help="Stable trace identifier such as trace.core_python_foundation.",
+        help="Stable trace identifier such as trace.governed_acceptance_example.",
     )
     closeout_purge_parser.add_argument(
         "--retained-authority-path",

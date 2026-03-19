@@ -8,7 +8,6 @@ from typing import Protocol
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
-    PrdIndexEntry,
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
@@ -25,12 +24,11 @@ class _TraceLinked(Protocol):
 
 
 class AcceptanceReconciliationService:
-    """Validate one trace across PRD acceptance IDs, contracts, evidence, and traceability."""
+    """Validate one trace across initiative acceptance inputs, contracts, evidence, and traceability."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._trace_entries_by_id: dict[str, TraceabilityEntry] | None = None
-        self._prd_entries_by_trace: dict[str, tuple[PrdIndexEntry, ...]] | None = None
         self._contracts_by_trace: dict[str, tuple[AcceptanceContract, ...]] | None = None
         self._evidence_by_trace: dict[str, tuple[ValidationEvidenceArtifact, ...]] | None = None
         self._validator_ids: frozenset[str] | None = None
@@ -54,9 +52,6 @@ class AcceptanceReconciliationService:
                 or trace_entry.evidence_ids
             ):
                 add(trace_entry.trace_id)
-        for trace_id, prd_entries in self._prd_entries_by_trace_snapshot().items():
-            if any(entry.acceptance_ids for entry in prd_entries):
-                add(trace_id)
         for trace_id in self._contracts_by_trace_snapshot():
             add(trace_id)
         for trace_id in self._evidence_by_trace_snapshot():
@@ -67,7 +62,6 @@ class AcceptanceReconciliationService:
         """Return semantic reconciliation results for one trace."""
         issues: list[ValidationIssue] = []
         trace_entry = self._load_trace_entry(trace_id, issues)
-        prds = self._prd_entries_by_trace_snapshot().get(trace_id, ())
         contracts = self._contracts_by_trace_snapshot().get(trace_id, ())
         evidence_artifacts = self._evidence_by_trace_snapshot().get(trace_id, ())
         validator_ids = self._validator_ids_snapshot()
@@ -77,18 +71,6 @@ class AcceptanceReconciliationService:
             if contracts
             else "core/control_plane/contracts/acceptance/"
         )
-
-        if len(prds) != 1:
-            issues.append(
-                ValidationIssue(
-                    code="trace_prd_count_invalid",
-                    message=(
-                        f"Trace {trace_id} should resolve to exactly one PRD index entry, "
-                        f"found {len(prds)}."
-                    ),
-                    location="prd_index",
-                )
-            )
 
         if len(contracts) != 1:
             issues.append(
@@ -102,7 +84,7 @@ class AcceptanceReconciliationService:
                 )
             )
 
-        if trace_entry is None or not prds or not contracts:
+        if trace_entry is None or not contracts:
             return ValidationResult(
                 validator_id=ACCEPTANCE_RECONCILIATION_VALIDATOR_ID,
                 target_path=target_path,
@@ -112,54 +94,38 @@ class AcceptanceReconciliationService:
                 issues=tuple(issues),
             )
 
-        prd = prds[0]
         contract = contracts[0]
-        prd_acceptance_ids = set(prd.acceptance_ids)
         contract_acceptance_ids = {entry.acceptance_id for entry in contract.entries}
         trace_acceptance_ids = set(trace_entry.acceptance_ids)
         trace_contract_ids = set(trace_entry.acceptance_contract_ids)
         trace_evidence_ids = set(trace_entry.evidence_ids)
 
-        if contract.source_prd_id != prd.prd_id:
+        if contract.source_surface_path not in trace_entry.source_surface_paths:
             issues.append(
                 ValidationIssue(
-                    code="acceptance_contract_source_prd_mismatch",
+                    code="acceptance_contract_source_surface_missing_in_traceability",
                     message=(
                         f"Acceptance contract {contract.contract_id} points to "
-                        f"{contract.source_prd_id}, not {prd.prd_id}."
+                        f"{contract.source_surface_path}, but traceability for {trace_id} "
+                        "does not publish that source surface path."
                     ),
-                    location="acceptance_contract.source_prd_id",
+                    location="traceability.source_surface_paths",
                 )
             )
 
         self._compare_id_sets(
             issues,
-            expected=prd_acceptance_ids,
-            actual=contract_acceptance_ids,
-            missing_code="acceptance_ids_missing_in_contract",
-            extra_code="acceptance_ids_extra_in_contract",
-            missing_location="acceptance_contract.entries",
-            extra_location="acceptance_contract.entries",
-            missing_message_prefix=(
-                "Acceptance IDs published by the PRD are missing from the acceptance contract"
-            ),
-            extra_message_prefix=(
-                "Acceptance IDs published by the acceptance contract are not present in the PRD"
-            ),
-        )
-        self._compare_id_sets(
-            issues,
-            expected=prd_acceptance_ids,
+            expected=contract_acceptance_ids,
             actual=trace_acceptance_ids,
             missing_code="acceptance_ids_missing_in_traceability",
             extra_code="acceptance_ids_extra_in_traceability",
             missing_location="traceability.acceptance_ids",
             extra_location="traceability.acceptance_ids",
             missing_message_prefix=(
-                "Acceptance IDs published by the PRD are missing from traceability"
+                "Acceptance IDs published by the acceptance contract are missing from traceability"
             ),
             extra_message_prefix=(
-                "Acceptance IDs published by traceability are not present in the PRD"
+                "Acceptance IDs published by traceability are not present in the acceptance contract"
             ),
         )
 
@@ -241,7 +207,7 @@ class AcceptanceReconciliationService:
                     ),
                 )
                 for acceptance_id in check.acceptance_ids:
-                    if acceptance_id not in prd_acceptance_ids:
+                    if acceptance_id not in contract_acceptance_ids:
                         issues.append(
                             ValidationIssue(
                                 code="evidence_acceptance_id_unknown",
@@ -360,13 +326,6 @@ class AcceptanceReconciliationService:
                 for entry in self._loader.load_traceability_index().entries
             }
         return self._trace_entries_by_id
-
-    def _prd_entries_by_trace_snapshot(self) -> dict[str, tuple[PrdIndexEntry, ...]]:
-        if self._prd_entries_by_trace is None:
-            self._prd_entries_by_trace = _group_by_trace(
-                self._loader.load_prd_index().entries
-            )
-        return self._prd_entries_by_trace
 
     def _contracts_by_trace_snapshot(
         self,

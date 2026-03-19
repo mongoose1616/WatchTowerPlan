@@ -40,7 +40,7 @@ class AcceptanceContract:
     title: str
     status: str
     trace_id: str
-    source_prd_id: str
+    source_surface_path: str
     doc_path: str
     entries: tuple[AcceptanceContractItem, ...]
 
@@ -60,7 +60,7 @@ class AcceptanceContract:
             title=document["title"],
             status=document["status"],
             trace_id=document["trace_id"],
-            source_prd_id=document["source_prd_id"],
+            source_surface_path=document["source_surface_path"],
             doc_path=doc_path,
             entries=entries,
         )
@@ -106,10 +106,7 @@ class ValidationEvidenceArtifact:
     recorded_at: str
     doc_path: str
     checks: tuple[ValidationEvidenceCheck, ...]
-    source_prd_ids: tuple[str, ...] = ()
-    source_decision_ids: tuple[str, ...] = ()
-    source_design_ids: tuple[str, ...] = ()
-    source_plan_ids: tuple[str, ...] = ()
+    source_surface_paths: tuple[str, ...] = ()
     source_acceptance_contract_ids: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
     notes: str | None = None
@@ -134,10 +131,7 @@ class ValidationEvidenceArtifact:
             recorded_at=document["recorded_at"],
             doc_path=doc_path,
             checks=checks,
-            source_prd_ids=tuple(document.get("source_prd_ids", ())),
-            source_decision_ids=tuple(document.get("source_decision_ids", ())),
-            source_design_ids=tuple(document.get("source_design_ids", ())),
-            source_plan_ids=tuple(document.get("source_plan_ids", ())),
+            source_surface_paths=tuple(document.get("source_surface_paths", ())),
             source_acceptance_contract_ids=tuple(
                 document.get("source_acceptance_contract_ids", ())
             ),

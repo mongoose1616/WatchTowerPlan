@@ -106,14 +106,8 @@ class ValidationEvidenceRecorder:
             "related_paths": [result.target_path, evidence_relative_path],
         }
 
-        if trace_entry.prd_ids:
-            document["source_prd_ids"] = list(trace_entry.prd_ids)
-        if trace_entry.decision_ids:
-            document["source_decision_ids"] = list(trace_entry.decision_ids)
-        if trace_entry.design_ids:
-            document["source_design_ids"] = list(trace_entry.design_ids)
-        if trace_entry.plan_ids:
-            document["source_plan_ids"] = list(trace_entry.plan_ids)
+        if trace_entry.source_surface_paths:
+            document["source_surface_paths"] = list(trace_entry.source_surface_paths)
         if trace_entry.acceptance_contract_ids:
             document["source_acceptance_contract_ids"] = list(
                 trace_entry.acceptance_contract_ids

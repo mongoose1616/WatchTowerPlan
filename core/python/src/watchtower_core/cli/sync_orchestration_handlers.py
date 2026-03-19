@@ -68,7 +68,7 @@ def _run_multi_target_sync(
 def _run_sync_all(args: argparse.Namespace) -> int:
     return _run_multi_target_sync(
         args,
-        module_name="watchtower_core.repo_ops.sync.all",
+        module_name="watchtower_core.plan_runtime.sync.all",
         class_name="AllSyncService",
         command_name="watchtower-core sync all",
         human_label="sync all",
@@ -78,7 +78,7 @@ def _run_sync_all(args: argparse.Namespace) -> int:
 def _run_sync_coordination(args: argparse.Namespace) -> int:
     return _run_multi_target_sync(
         args,
-        module_name="watchtower_core.repo_ops.sync.coordination",
+        module_name="watchtower_core.plan_runtime.sync.coordination",
         class_name="CoordinationSyncService",
         command_name="watchtower-core sync coordination",
         human_label="sync coordination",
@@ -87,11 +87,11 @@ def _run_sync_coordination(args: argparse.Namespace) -> int:
 
 def _run_sync_github_tasks(args: argparse.Namespace) -> int:
     params_class = _load_sync_class(
-        "watchtower_core.repo_ops.sync.github_tasks",
+        "watchtower_core.plan_runtime.sync.github_tasks",
         "GitHubTaskSyncParams",
     )
     service = _load_sync_class(
-        "watchtower_core.repo_ops.sync.github_tasks",
+        "watchtower_core.plan_runtime.sync.github_tasks",
         "GitHubTaskSyncService",
     )(ControlPlaneLoader())
     result = service.sync(

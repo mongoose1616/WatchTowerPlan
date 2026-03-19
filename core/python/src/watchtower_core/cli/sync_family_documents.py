@@ -36,7 +36,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the foundation index from governed foundation docs.",
         "description": """
             Rebuild the foundation index from the governed foundation documents
-            under `docs/foundations/`.
+            under `core/docs/foundations/`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -46,25 +46,6 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
             "uv run watchtower-core sync foundation-index --write",
             "uv run watchtower-core sync foundation-index --output "
             "/tmp/foundation_index.json --format json",
-        ),
-    },
-    {
-        "name": "planning-catalog",
-        "handler": "planning_catalog",
-        "help": "Rebuild the canonical planning catalog from trace-linked sources.",
-        "description": """
-            Rebuild the canonical planning catalog from traceability, initiative,
-            planning-document, task, acceptance-contract, and validation-evidence
-            sources.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            artifact or `--output` to materialize the rebuilt document elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync planning-catalog",
-            "uv run watchtower-core sync planning-catalog --write",
-            "uv run watchtower-core sync planning-catalog --output "
-            "/tmp/planning_catalog.json --format json",
         ),
     },
     {
@@ -136,59 +117,6 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
             "uv run watchtower-core sync workflow-index --write",
             "uv run watchtower-core sync workflow-index --output "
             "/tmp/workflow_index.json --format json",
-        ),
-    },
-    {
-        "name": "prd-index",
-        "handler": "prd_index",
-        "help": "Rebuild the PRD index from governed PRD documents.",
-        "description": """
-            Rebuild the PRD index from the governed PRD documents under
-            `docs/planning/prds/`.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            artifact or `--output` to materialize the rebuilt document elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync prd-index",
-            "uv run watchtower-core sync prd-index --write",
-            "uv run watchtower-core sync prd-index --output /tmp/prd_index.json --format json",
-        ),
-    },
-    {
-        "name": "decision-index",
-        "handler": "decision_index",
-        "help": "Rebuild the decision index from governed decision records.",
-        "description": """
-            Rebuild the decision index from the governed decision records under
-            `docs/planning/decisions/`.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            artifact or `--output` to materialize the rebuilt document elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync decision-index",
-            "uv run watchtower-core sync decision-index --write",
-            "uv run watchtower-core sync decision-index --output "
-            "/tmp/decision_index.json --format json",
-        ),
-    },
-    {
-        "name": "design-document-index",
-        "handler": "design_document_index",
-        "help": "Rebuild the design-document index from governed design docs.",
-        "description": """
-            Rebuild the design-document index from the governed design documents
-            under `docs/planning/design/`.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            artifact or `--output` to materialize the rebuilt document elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync design-document-index",
-            "uv run watchtower-core sync design-document-index --write",
-            "uv run watchtower-core sync design-document-index --output "
-            "/tmp/design_document_index.json --format json",
         ),
     },
     {

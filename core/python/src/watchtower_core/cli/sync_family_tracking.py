@@ -12,60 +12,6 @@ from watchtower_core.cli.sync_family_common import (
 
 _TRACKING_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
     {
-        "name": "prd-tracking",
-        "handler": "prd_tracking",
-        "help": "Rebuild the human-readable PRD tracker from the PRD index.",
-        "description": """
-            Rebuild the human-readable PRD tracker from the governed PRD index
-            and the initiative-closeout state stored in traceability.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            tracker or `--output` to materialize it elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync prd-tracking",
-            "uv run watchtower-core sync prd-tracking --write",
-            "uv run watchtower-core sync prd-tracking --output /tmp/prd_tracking.md --format json",
-        ),
-    },
-    {
-        "name": "decision-tracking",
-        "handler": "decision_tracking",
-        "help": "Rebuild the human-readable decision tracker from the decision index.",
-        "description": """
-            Rebuild the human-readable decision tracker from the governed
-            decision index and the initiative-closeout state stored in
-            traceability.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            tracker or `--output` to materialize it elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync decision-tracking",
-            "uv run watchtower-core sync decision-tracking --write",
-            "uv run watchtower-core sync decision-tracking --output "
-            "/tmp/decision_tracking.md --format json",
-        ),
-    },
-    {
-        "name": "design-tracking",
-        "handler": "design_tracking",
-        "help": "Rebuild the human-readable design tracker from the design index.",
-        "description": """
-            Rebuild the human-readable design tracker from the governed design
-            index and the initiative-closeout state stored in traceability.
-
-            By default this is a dry run. Add `--write` to update the canonical
-            tracker or `--output` to materialize it elsewhere.
-            """,
-        "examples": (
-            "uv run watchtower-core sync design-tracking",
-            "uv run watchtower-core sync design-tracking --write",
-            "uv run watchtower-core sync design-tracking --output "
-            "/tmp/design_tracking.md --format json",
-        ),
-    },
-    {
         "name": "initiative-tracking",
         "handler": "initiative_tracking",
         "help": "Rebuild the human-readable initiative tracker from the initiative index.",

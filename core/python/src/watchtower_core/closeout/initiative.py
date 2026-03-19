@@ -9,12 +9,9 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
-from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
-from watchtower_core.repo_ops.sync.all import AllSyncRecord
-from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
-from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
-from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
-from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
+from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
+from watchtower_core.plan_runtime.sync.all import AllSyncRecord
+from watchtower_core.plan_runtime.sync.coordination import CoordinationSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
 
@@ -37,22 +34,9 @@ class InitiativeCloseoutResult:
     wrote: bool
     traceability_output_path: str | None
     initiative_index_output_path: str | None
-    planning_catalog_output_path: str | None
     coordination_index_output_path: str | None
     initiative_tracking_output_path: str | None
     coordination_tracking_output_path: str | None
-    prd_tracking_output_path: str | None
-    decision_tracking_output_path: str | None
-    design_tracking_output_path: str | None
-
-
-@dataclass(frozen=True, slots=True)
-class _CloseoutTrackingOutputs:
-    """Private output bundle for the remaining closeout-local tracker refresh step."""
-
-    prd_tracking_output_path: str
-    decision_tracking_output_path: str
-    design_tracking_output_path: str
 
 
 class InitiativeCloseoutService:
@@ -136,13 +120,9 @@ class InitiativeCloseoutService:
 
         traceability_output_path: str | None = None
         initiative_index_output_path: str | None = None
-        planning_catalog_output_path: str | None = None
         coordination_index_output_path: str | None = None
         initiative_tracking_output_path: str | None = None
         coordination_tracking_output_path: str | None = None
-        prd_tracking_output_path: str | None = None
-        decision_tracking_output_path: str | None = None
-        design_tracking_output_path: str | None = None
         if write:
             traceability_path = self._loader.artifact_store.write_json_object(
                 TRACEABILITY_INDEX_PATH,
@@ -161,10 +141,6 @@ class InitiativeCloseoutService:
                 coordination_records,
                 "initiative-index",
             )
-            planning_catalog_output_path = _required_output_path(
-                coordination_records,
-                "planning-catalog",
-            )
             coordination_index_output_path = _required_output_path(
                 coordination_records,
                 "coordination-index",
@@ -177,10 +153,6 @@ class InitiativeCloseoutService:
                 coordination_records,
                 "coordination-tracking",
             )
-            tracker_outputs = self._run_closeout_tracking_refresh_boundary()
-            prd_tracking_output_path = tracker_outputs.prd_tracking_output_path
-            decision_tracking_output_path = tracker_outputs.decision_tracking_output_path
-            design_tracking_output_path = tracker_outputs.design_tracking_output_path
 
         return InitiativeCloseoutResult(
             trace_id=trace_id,
@@ -194,33 +166,9 @@ class InitiativeCloseoutService:
             wrote=write,
             traceability_output_path=traceability_output_path,
             initiative_index_output_path=initiative_index_output_path,
-            planning_catalog_output_path=planning_catalog_output_path,
             coordination_index_output_path=coordination_index_output_path,
             initiative_tracking_output_path=initiative_tracking_output_path,
             coordination_tracking_output_path=coordination_tracking_output_path,
-            prd_tracking_output_path=prd_tracking_output_path,
-            decision_tracking_output_path=decision_tracking_output_path,
-            design_tracking_output_path=design_tracking_output_path,
-        )
-
-    def _run_closeout_tracking_refresh_boundary(self) -> _CloseoutTrackingOutputs:
-        prd_tracking_service = PrdTrackingSyncService(self._loader)
-        decision_tracking_service = DecisionTrackingSyncService(self._loader)
-        design_tracking_service = DesignTrackingSyncService(self._loader)
-        return _CloseoutTrackingOutputs(
-            prd_tracking_output_path=str(
-                prd_tracking_service.write_document(prd_tracking_service.build_document())
-            ),
-            decision_tracking_output_path=str(
-                decision_tracking_service.write_document(
-                    decision_tracking_service.build_document()
-                )
-            ),
-            design_tracking_output_path=str(
-                design_tracking_service.write_document(
-                    design_tracking_service.build_document()
-                )
-            ),
         )
 
     def _load_current_document(self) -> dict[str, object]:

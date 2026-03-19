@@ -5,28 +5,6 @@
   "status": "active",
   "entries": [
     {
-      "policy_id": "policy.retention.legacy_docs_planning",
-      "path_pattern": "docs/planning",
-      "match_mode": "exact",
-      "path_kind": "legacy_history_root",
-      "phase_qualifier": "legacy_only",
-      "entry_status": "active",
-      "current_disposition": "legacy_ignored",
-      "clean_endstate_disposition": "purge_when_eligible",
-      "operational_visibility": "hidden",
-      "purge_gate": "promotion_before_deletion",
-      "governing_surfaces": [
-        "retention_policy_registry",
-        "human_surface_policy_registry"
-      ],
-      "clarifying_rule": "The frozen docs/planning corpus remains outside the live operational model during hard cutover and is only retained until its durable authority is promoted or explicitly purged.",
-      "surviving_authority_paths": [
-        "plan/",
-        "plan/.wt/registries/retention_policy_registry.json",
-        "core/control_plane/ledgers/purges/"
-      ]
-    },
-    {
       "policy_id": "policy.retention.plan_machine_authority",
       "path_pattern": "plan/.wt",
       "match_mode": "exact",
@@ -76,7 +54,7 @@
       "path_kind": "initiative_archive_root",
       "phase_qualifier": "terminal_only",
       "entry_status": "active",
-      "current_disposition": "transitional_archive",
+      "current_disposition": "purge_when_eligible",
       "clean_endstate_disposition": "purge_when_eligible",
       "operational_visibility": "hidden",
       "purge_gate": "promotion_before_deletion",
@@ -85,13 +63,12 @@
         "closeout_recap",
         "guidance_promotion_record"
       ],
-      "clarifying_rule": "Whole-package archive for closed pack-wide initiative roots is allowed only as a transitional policy and must collapse to promoted guidance plus minimal surviving records in the clean endstate.",
+      "clarifying_rule": "Closed pack-wide initiative packages are purge-eligible as soon as required guidance promotion and minimal surviving machine records are complete.",
       "surviving_authority_paths": [
         "plan/docs/",
         "plan/.wt/registries/retention_policy_registry.json",
         "core/control_plane/ledgers/purges/"
-      ],
-      "notes": "This encodes the Q24 plus Q31 compromise from decisions.md: archive whole package for now, but do not treat that archive as the long-term operating model."
+      ]
     },
     {
       "policy_id": "policy.retention.plan_project_initiative_archive",
@@ -100,7 +77,7 @@
       "path_kind": "initiative_archive_root",
       "phase_qualifier": "terminal_only",
       "entry_status": "active",
-      "current_disposition": "transitional_archive",
+      "current_disposition": "purge_when_eligible",
       "clean_endstate_disposition": "purge_when_eligible",
       "operational_visibility": "hidden",
       "purge_gate": "promotion_before_deletion",
@@ -109,7 +86,7 @@
         "closeout_recap",
         "guidance_promotion_record"
       ],
-      "clarifying_rule": "Whole-package archive for closed project-scoped initiative roots is transitional only and must not become permanent history in the clean endstate.",
+      "clarifying_rule": "Closed project-scoped initiative packages are purge-eligible as soon as required guidance promotion and minimal surviving machine records are complete.",
       "surviving_authority_paths": [
         "plan/docs/",
         "plan/.wt/registries/retention_policy_registry.json",
@@ -137,5 +114,5 @@
       ]
     }
   ],
-  "notes": "The registry makes the transitional archive rule and the legacy-history hard-cutover rule explicit in live plan authority. It does not reopen docs/planning as operational authority."
+  "notes": "The registry governs the surviving live plan authority, promoted guidance, purge-eligible closed initiative packages, and the minimal purge ledgers that remain after hard cutover cleanup."
 }

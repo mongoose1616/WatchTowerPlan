@@ -23,5 +23,5 @@ CLI parser construction, command-family registration, and handler wiring for `wa
 | `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py` | Handles the authority, task, and trace lookup subcommands plus their direct payload formatting. |
 
 ## Related Surfaces
-- `core/python/src/watchtower_core/repo_ops/README.md`
+- `core/python/src/watchtower_core/plan_runtime/README.md`
 - `docs/commands/core_python/README.md`

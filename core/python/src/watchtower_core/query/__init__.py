@@ -42,14 +42,10 @@ _REPO_OPS_EXPORTS = {
     "AcceptanceContractQueryService",
     "ArtifactQueryService",
     "CoordinationQueryService",
-    "DecisionQueryService",
-    "DesignDocumentQueryService",
     "DiscrepancyQueryService",
     "ValidationEvidenceQueryService",
     "FoundationQueryService",
     "InitiativeQueryService",
-    "PlanningCatalogQueryService",
-    "PrdQueryService",
     "ProjectQueryService",
     "ReadinessQueryService",
     "ReferenceQueryService",
@@ -66,6 +62,6 @@ __getattr__ = lazy_module_getattr(
         _REPO_OPS_EXPORTS,
         "watchtower_core.query exposes only reusable generic query services. "
         "Import live planning or repo-local query services from "
-        "watchtower_core.repo_ops.query.",
+        "watchtower_core.plan_runtime.query.",
     ),
 )

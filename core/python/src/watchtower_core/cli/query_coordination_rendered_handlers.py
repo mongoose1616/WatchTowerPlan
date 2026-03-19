@@ -1,4 +1,4 @@
-"""Runtime handlers for coordination, initiative, and planning query commands."""
+"""Runtime handlers for coordination and initiative query commands."""
 
 from __future__ import annotations
 
@@ -9,19 +9,14 @@ from watchtower_core.cli.handler_common import (
     _print_payload_factory,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningCatalogEntry
-from watchtower_core.repo_ops.planning_rendered_serialization import (
-    serialize_initiative_entry,
-    serialize_planning_catalog_entry,
-)
-from watchtower_core.repo_ops.query import (
+from watchtower_core.control_plane.models import InitiativeIndexEntry
+from watchtower_core.plan_runtime.planning_rendered_serialization import serialize_initiative_entry
+from watchtower_core.plan_runtime.query import (
     CoordinationQueryResult,
     CoordinationQueryService,
     CoordinationSearchParams,
     InitiativeQueryService,
     InitiativeSearchParams,
-    PlanningCatalogQueryService,
-    PlanningCatalogSearchParams,
 )
 
 
@@ -101,48 +96,8 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
     return 0
 
 
-def _run_query_planning(args: argparse.Namespace) -> int:
-    default_initiative_status = (
-        "active" if _should_default_active_browse(args, include_blocked_only=False) else None
-    )
-    initiative_status = args.initiative_status or default_initiative_status
-    service = PlanningCatalogQueryService(ControlPlaneLoader())
-    entries = service.search(
-        PlanningCatalogSearchParams(
-            query=args.query,
-            trace_id=args.trace_id,
-            initiative_status=initiative_status,
-            current_phase=args.current_phase,
-            owner=args.owner,
-            limit=args.limit,
-        )
-    )
-    return _emit_collection_query_results(
-        args,
-        command_name="watchtower-core query planning",
-        entries=entries,
-        noun="planning",
-        empty_message=_history_browse_empty_message(
-            "planning-catalog entries",
-            default_initiative_status=default_initiative_status,
-            include_trace_hint=True,
-        ),
-        payload_results_factory=lambda: [_planning_entry_payload(entry) for entry in entries],
-        render_entry=_print_planning_entry_summary,
-        extra_payload=(
-            {"default_initiative_status": default_initiative_status}
-            if default_initiative_status is not None
-            else None
-        ),
-    )
-
-
 def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
     return serialize_initiative_entry(entry, compact=False)
-
-
-def _planning_entry_payload(entry: PlanningCatalogEntry) -> dict[str, object]:
-    return serialize_planning_catalog_entry(entry, compact=False)
 
 
 def _should_default_active_browse(
@@ -280,25 +235,6 @@ def _print_initiative_entry_summary(
             print(f"    {task.title}")
     print(f"  Next: {entry.next_action}")
     print(f"  Open first: {entry.next_surface_path}")
-
-
-def _print_planning_entry_summary(entry: PlanningCatalogEntry) -> None:
-    print(
-        f"- {entry.trace_id} "
-        f"[{entry.current_phase}, {entry.initiative_status}, {entry.artifact_status}]"
-    )
-    print(f"  {entry.title}")
-    print(f"  Owners: {_owner_text(entry.primary_owner, entry.active_owners)}")
-    print(f"  Next: {entry.coordination.next_action}")
-    print(
-        "  Sections: "
-        f"prds={len(entry.prds)} decisions={len(entry.decisions)} "
-        f"designs={len(entry.design_documents)} tasks={len(entry.tasks)} "
-        f"contracts={len(entry.acceptance_contracts)} "
-        f"evidence={len(entry.validation_evidence)}"
-    )
-
-
 def _owner_text(primary_owner: str | None, active_owners: tuple[str, ...]) -> str:
     if primary_owner:
         return primary_owner

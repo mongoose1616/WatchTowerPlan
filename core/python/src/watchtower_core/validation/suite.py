@@ -21,7 +21,7 @@ from watchtower_core.validation.models import (
 from watchtower_core.validation.pack_contract import PackContractValidationService
 
 if TYPE_CHECKING:
-    from watchtower_core.repo_ops.validation.document_semantics import (
+    from watchtower_core.plan_runtime.validation.document_semantics import (
         DocumentSemanticsValidationService,
     )
 
@@ -292,7 +292,7 @@ class ValidationSuiteService:
 def _default_document_semantics_factory(
     loader: ControlPlaneLoader,
 ) -> DocumentSemanticsValidationService:
-    from watchtower_core.repo_ops.validation.document_semantics import (
+    from watchtower_core.plan_runtime.validation.document_semantics import (
         DocumentSemanticsValidationService,
     )
 

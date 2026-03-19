@@ -55,12 +55,13 @@ def register_validate_family(
             "uv run watchtower-core validate document-semantics --path "
             "core/workflows/modules/code_validation.md",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/indexes/traceability/traceability_index.json "
             "--format json",
             "uv run watchtower-core validate acceptance --trace-id "
-            "trace.core_python_foundation --format json",
+            "trace.governed_acceptance_example --format json",
             "uv run watchtower-core validate front-matter --path "
             "docs/standards/metadata/front_matter_standard.md --format json",
         ),
@@ -137,7 +138,7 @@ def register_validate_family(
             "suite.watchtower_plan.validation_baseline",
             "uv run watchtower-core validate suite --suite-id "
             "suite.plan.validation_baseline --pack-settings-path "
-            "domain_packs/plan/.wt/pack_settings.json --format json",
+            "packs/plan/.wt/pack_settings.json --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -175,7 +176,7 @@ def register_validate_family(
             "--validator-id validator.documentation.standard_front_matter",
             "uv run watchtower-core validate front-matter --path "
             "docs/standards/metadata/front_matter_standard.md --record-evidence "
-            "--trace-id trace.core_python_foundation",
+            "--trace-id trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
     )
@@ -251,7 +252,8 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/indexes/traceability/traceability_index.json "
             "--format json",
@@ -263,8 +265,10 @@ def register_validate_family(
             "uv run watchtower-core validate artifact --path /tmp/pack_note.json "
             "--supplemental-schema-path /tmp/pack_schemas --format json",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json "
-            "--record-evidence --trace-id trace.core_python_foundation",
+            "core/control_plane/contracts/acceptance/"
+            "governed_acceptance_example_acceptance.json "
+            "--record-evidence --trace-id "
+            "trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
     )
@@ -303,28 +307,29 @@ def register_validate_family(
 
     validate_acceptance_parser = validate_subparsers.add_parser(
         "acceptance",
-        help="Validate one trace across PRD acceptance, contracts, evidence, and traceability.",
+        help="Validate one trace across acceptance contracts, evidence, and traceability.",
         description=dedent(
             """
-            Validate one traced initiative across PRD acceptance IDs,
+            Validate one traced initiative across trace-level acceptance IDs,
             acceptance contracts, validation evidence, validator references,
-            and the traceability index.
+            source-surface links, and the traceability index.
 
             Use this when you need semantic acceptance reconciliation rather
             than only schema validation.
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate acceptance --trace-id "
-            "trace.core_python_foundation --format json",
+            "trace.governed_acceptance_example",
+            "uv run watchtower-core validate acceptance --trace-id "
+            "trace.governed_acceptance_example --format json",
         ),
         formatter_class=HelpFormatter,
     )
     validate_acceptance_parser.add_argument(
         "--trace-id",
         required=True,
-        help="Stable trace identifier such as trace.core_python_foundation.",
+        help="Stable trace identifier such as trace.governed_acceptance_example.",
     )
     add_human_json_format_argument(validate_acceptance_parser)
     validate_acceptance_parser.set_defaults(handler=_run_validate_acceptance)

@@ -13,16 +13,13 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
-    DecisionIndexEntry,
-    DesignDocumentIndexEntry,
-    PrdIndexEntry,
     TaskIndexEntry,
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
-from watchtower_core.repo_ops.plan_task_state import task_event_directory
-from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
-from watchtower_core.repo_ops.sync.all import AllSyncService
+from watchtower_core.plan_runtime.plan_task_state import task_event_directory
+from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
+from watchtower_core.plan_runtime.sync.all import AllSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
 
@@ -32,32 +29,27 @@ TERMINAL_INITIATIVE_STATUSES = frozenset(
 )
 TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
 TRACE_LOCAL_ROOTS = (
-    "docs/planning/prds/",
-    "docs/planning/decisions/",
-    "docs/planning/design/features/",
-    "docs/planning/design/implementation/",
-    "docs/planning/tasks/open/",
-    "docs/planning/tasks/closed/archive/",
+    "plan/initiatives/",
+    "plan/projects/",
     "core/control_plane/contracts/acceptance/",
     "core/control_plane/ledgers/validation_evidence/",
 )
 TRACE_PACKAGE_PRUNE_ROOTS = (
     *TRACE_LOCAL_ROOTS,
-    "plan/initiatives/",
-    "plan/projects/",
 )
-DERIVED_REFERENCE_CARRIER_ROOTS = ("core/control_plane/indexes/",)
+DERIVED_REFERENCE_CARRIER_ROOTS = (
+    "core/control_plane/indexes/",
+    "plan/.wt/indexes/",
+)
 DERIVED_REFERENCE_CARRIER_PATHS = frozenset(
     {
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "docs/planning/tasks/task_tracking.md",
+        "plan/plan_overview.md",
+        "plan/tracking/coordination_tracking.md",
+        "plan/tracking/initiative_tracking.md",
+        "plan/tracking/task_tracking.md",
     }
 )
-DEFAULT_REFERENCE_SCAN_ROOTS = (".github", "core", "docs", "workflows")
+DEFAULT_REFERENCE_SCAN_ROOTS = (".github", "core", "docs", "plan", "workflows")
 SCANNABLE_TEXT_EXTENSIONS = frozenset(
     {".json", ".md", ".py", ".toml", ".yaml", ".yml", ".txt", ".sh", ".lock"}
 )
@@ -258,24 +250,15 @@ class TracePurgeService:
     def _package_paths(self, trace_id: str) -> tuple[str, ...]:
         package_paths: set[str] = set()
 
-        package_paths.update(
-            entry.doc_path
-            for entry in self._entries_for_trace(self._loader.load_prd_index().entries, trace_id)
-        )
-        package_paths.update(
-            entry.doc_path
-            for entry in self._entries_for_trace(
-                self._loader.load_decision_index().entries,
-                trace_id,
-            )
-        )
-        package_paths.update(
-            entry.doc_path
-            for entry in self._entries_for_trace(
-                self._loader.load_design_document_index().entries,
-                trace_id,
-            )
-        )
+        initiative_root = self._initiative_root_for_trace(trace_id)
+        if initiative_root is not None:
+            initiative_root_path = self._loader.resolve_path(initiative_root)
+            if initiative_root_path.exists():
+                package_paths.update(
+                    path.relative_to(self._repo_root).as_posix()
+                    for path in sorted(initiative_root_path.rglob("*"))
+                    if path.is_file()
+                )
         task_entries = tuple(
             entry
             for entry in PlanWorkspaceService(self._loader).load_task_entries()
@@ -308,6 +291,16 @@ class TracePurgeService:
 
         return tuple(sorted(package_paths))
 
+    def _initiative_root_for_trace(self, trace_id: str) -> str | None:
+        try:
+            entry = self._loader.load_initiative_index().get(trace_id)
+        except KeyError:
+            return None
+        key_surface = PurePosixPath(entry.key_surface_path)
+        if key_surface.name not in {"plan.md", "progress.md", "summary.md"}:
+            return None
+        return key_surface.parent.as_posix()
+
     def _resolve_retained_authority_paths(
         self,
         *,
@@ -330,8 +323,6 @@ class TracePurgeService:
             if _is_derived_reference_carrier(normalized):
                 return
             if normalized in {
-                "docs/planning/",
-                "docs/planning",
                 "core/control_plane/",
                 "core/control_plane",
             }:
@@ -393,13 +384,8 @@ class TracePurgeService:
         package_paths: tuple[str, ...],
     ) -> tuple[str, ...]:
         search_tokens = {
-            trace_entry.trace_id,
-            *trace_entry.prd_ids,
-            *trace_entry.decision_ids,
-            *trace_entry.design_ids,
-            *trace_entry.plan_ids,
+            *trace_entry.source_surface_paths,
             *trace_entry.task_ids,
-            *trace_entry.requirement_ids,
             *trace_entry.acceptance_ids,
             *trace_entry.acceptance_contract_ids,
             *trace_entry.evidence_ids,
@@ -409,6 +395,8 @@ class TracePurgeService:
         for path in _iter_reference_scan_files(self._repo_root):
             relative_path = path.relative_to(self._repo_root).as_posix()
             if relative_path in package_paths or _is_derived_reference_carrier(relative_path):
+                continue
+            if not path.exists():
                 continue
             text = path.read_text(encoding="utf-8", errors="ignore")
             if any(token and token in text for token in search_tokens):
@@ -423,6 +411,7 @@ class TracePurgeService:
                 raise ValueError(f"Package path disappeared before purge: {relative_path}")
             path.unlink()
             self._prune_empty_ancestors(path)
+        self._prune_empty_package_roots(package_paths)
 
     def _prune_empty_ancestors(self, path: Path) -> None:
         prune_roots = tuple(
@@ -436,12 +425,36 @@ class TracePurgeService:
                 break
             current = current.parent
 
+    def _prune_empty_package_roots(self, package_paths: tuple[str, ...]) -> None:
+        package_roots = sorted(
+            {
+                self._loader.resolve_path(relative_root)
+                for relative_path in package_paths
+                if (relative_root := _package_root_for_path(relative_path)) is not None
+            },
+            key=lambda path: len(path.parts),
+            reverse=True,
+        )
+        for root in package_roots:
+            if not root.exists():
+                continue
+            for candidate in sorted(
+                (path for path in root.rglob("*") if path.is_dir()),
+                key=lambda path: len(path.parts),
+                reverse=True,
+            ):
+                try:
+                    candidate.rmdir()
+                except OSError:
+                    continue
+            try:
+                root.rmdir()
+            except OSError:
+                continue
+
     @staticmethod
     def _entries_for_trace[
-        TEntry: PrdIndexEntry
-        | DecisionIndexEntry
-        | DesignDocumentIndexEntry
-        | TaskIndexEntry
+        TEntry: TaskIndexEntry
         | AcceptanceContract
         | ValidationEvidenceArtifact
     ](
@@ -469,6 +482,19 @@ def _is_trace_local_path(relative_path: str) -> bool:
         normalized == root.rstrip("/") or normalized.startswith(root)
         for root in TRACE_LOCAL_ROOTS
     )
+
+
+def _package_root_for_path(relative_path: str) -> str | None:
+    normalized = relative_path.rstrip("/")
+    if normalized.startswith("plan/initiatives/"):
+        parts = normalized.split("/")
+        if len(parts) >= 3:
+            return "/".join(parts[:3])
+    if normalized.startswith("plan/projects/"):
+        parts = normalized.split("/")
+        if len(parts) >= 5 and parts[3] == "initiatives":
+            return "/".join(parts[:5])
+    return None
 
 
 def _is_derived_reference_carrier(relative_path: str) -> bool:

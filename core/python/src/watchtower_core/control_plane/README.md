@@ -17,5 +17,5 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 ## Related Surfaces
 - `docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/adapters/README.md`
-- `core/python/src/watchtower_core/repo_ops/README.md`
+- `core/python/src/watchtower_core/plan_runtime/README.md`
 - `core/control_plane/README.md`

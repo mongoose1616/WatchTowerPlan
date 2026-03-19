@@ -1,17 +1,17 @@
 # Implementation Planning Workflow
 
 ## Purpose
-Use this workflow to turn approved planning inputs into an actionable implementation plan with a work breakdown, validation strategy, and delivery sequence.
+Use this workflow to turn approved initiative inputs into an actionable `implementation_slice.md` with a work breakdown, validation strategy, and delivery sequence.
 
 ## Use When
-- A PRD and feature design are approved or mostly complete and engineering planning needs to begin.
+- An initiative brief and design record are approved or mostly complete and engineering planning needs to begin.
 - The team needs technical scope, sequencing, and dependencies before implementation.
 - Work must be broken into concrete tasks, milestones, or workstreams.
 
 ## Inputs
 - Scoped implementation-planning brief
-- Approved or draft PRD
-- Approved or draft feature design, technical design, or architecture proposal
+- Approved or draft initiative brief
+- Approved or draft design record, technical design, or architecture proposal
 - Current-state context summary
 - Internal standards and canonical references applied
 - External guidance notes when needed
@@ -22,12 +22,13 @@ Use this workflow to turn approved planning inputs into an actionable implementa
 - Open questions
 
 ## Additional Files to Load
-- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): defines the required plan structure, validation expectations, and handoff sections for the output.
-- [implementation_plan_template.md](/docs/templates/implementation_plan_template.md): provides the drafting shape for the execution-ready implementation plan.
+- [requirements.md](/requirements.md): defines the capture-first execution gate and expected plan workspace structure.
+- [decisions.md](/decisions.md): locks the initiative and task lifecycle rules that implementation planning must respect.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation planning must hand off into.
 
 ## Workflow
 1. Review the planning inputs.
-   - Extract goals, scope, non-goals, requirements, acceptance criteria, and design constraints from the PRD and design inputs.
+   - Extract goals, scope, non-goals, requirements, acceptance criteria, and design constraints from the initiative brief and design inputs.
    - Identify missing details, ambiguity, and conflicts across the planning inputs.
    - Flag anything that blocks implementation planning.
 2. Define the implementation approach.
@@ -55,12 +56,12 @@ Use this workflow to turn approved planning inputs into an actionable implementa
 - Risks and optional dependencies, rollout notes, or open questions when material
 
 ## Outputs
-- A review-ready implementation plan
-- An execution-oriented work breakdown tied to the design or PRD
+- A review-ready `implementation_slice.md`
+- An execution-oriented work breakdown tied to the design or initiative brief
 - Explicit dependencies, risks, and unresolved questions only when they remain material
 
 ## Done When
-- The PRD and approved design inputs have been translated into actionable engineering work.
+- The initiative brief and approved design inputs have been translated into actionable engineering work.
 - The plan reflects applicable internal standards, canonical references, and existing repository patterns.
 - Dependencies, sequencing, and validation are documented.
 - Risks, assumptions, and open questions are visible.
