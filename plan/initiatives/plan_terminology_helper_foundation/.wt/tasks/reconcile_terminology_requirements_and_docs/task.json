@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_terminology_helper_foundation.reconcile_terminology_requirements_and_docs",
+  "slug": "reconcile_terminology_requirements_and_docs",
+  "initiative_id": "initiative.plan_terminology_helper_foundation",
+  "title": "Reconcile terminology requirements and package docs",
+  "summary": "Update the authoritative requirements and control-plane package docs to reflect the terminology helper boundary.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T01:05:00Z",
+  "updated_at": "2026-03-18T01:20:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

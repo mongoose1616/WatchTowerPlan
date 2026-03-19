@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync.coordination_tracking import (
     ACTIONABLE_TASK_LIMIT,
@@ -18,12 +19,13 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 
 
 def _load_coordination_index(repo_root: Path) -> dict[str, object]:
-    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.json"
+    path = repo_root / "plan/.wt/indexes/coordination_index.json"
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -41,9 +43,9 @@ def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
         "updated_at": "2026-03-10T19:00:00Z",
         "open_task_count": 1,
         "blocked_task_count": 0,
-        "key_surface_path": "docs/planning/prds/example.md",
+        "key_surface_path": "plan/initiatives/example/plan.md",
         "next_action": "Continue the example task set.",
-        "next_surface_path": "docs/planning/tasks/open/example.md",
+        "next_surface_path": "plan/initiatives/example/plan.md",
         "primary_owner": "repository_maintainer",
         "active_owners": ["repository_maintainer"],
         "active_task_ids": ["task.example.001"],
@@ -54,7 +56,7 @@ def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
                 "task_status": "ready",
                 "priority": "high",
                 "owner": "repository_maintainer",
-                "doc_path": "docs/planning/tasks/open/example.md",
+                "doc_path": "plan/initiatives/example/.wt/tasks/example/task.json",
                 "is_actionable": True,
             }
         ],
@@ -65,7 +67,7 @@ def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
 
 
 def _write_coordination_index(repo_root: Path, document: dict[str, object]) -> None:
-    path = repo_root / "core/control_plane/indexes/coordination/coordination_index.json"
+    path = repo_root / "plan/.wt/indexes/coordination_index.json"
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
@@ -104,7 +106,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
         entry["initiative_status"] = "active"
         entry["current_phase"] = "execution"
         entry["next_action"] = f"Continue task set {index}."
-        entry["next_surface_path"] = f"docs/planning/tasks/open/example_{index}.md"
+        entry["next_surface_path"] = f"plan/initiatives/example_{index}/plan.md"
         entry["open_task_count"] = 1
         entry["active_owners"] = ["repository_maintainer"]
         entry["active_task_ids"] = [f"task.example_{index}.001"]
@@ -115,7 +117,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
                 "task_status": "ready",
                 "priority": "high",
                 "owner": "repository_maintainer",
-                "doc_path": f"docs/planning/tasks/open/example_{index}.md",
+                "doc_path": f"plan/initiatives/example_{index}/.wt/tasks/example/task.json",
                 "is_actionable": True,
             }
         ]
@@ -133,7 +135,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
             "task_status": "ready",
             "priority": "high",
             "owner": "repository_maintainer",
-            "doc_path": f"docs/planning/tasks/open/example_{index}.md",
+            "doc_path": f"plan/initiatives/example_{index}/.wt/tasks/example/task.json",
             "is_actionable": True,
         }
         actionable_tasks.append(task)

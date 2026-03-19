@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_routing_engine_export_foundation.add_routing_engine_boundary_tests",
+  "slug": "add_routing_engine_boundary_tests",
+  "initiative_id": "initiative.plan_routing_engine_export_foundation",
+  "title": "Add routing engine boundary tests",
+  "summary": "Prove the exported routing engine selects governed routes and remains distinct from CLI wiring.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T23:56:21Z",
+  "updated_at": "2026-03-17T23:58:24Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _print_payload
+from watchtower_core.cli.handler_common import _emit_detail_result
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.repo_ops.query.routes import RoutePreviewService
+from watchtower_core.query.routes import RoutePreviewService
 
 
 def _run_route_preview(args: argparse.Namespace) -> int:
@@ -41,29 +41,35 @@ def _run_route_preview(args: argparse.Namespace) -> int:
         ],
         "warnings": list(result.warnings),
     }
-    if _print_payload(args, payload) == 0:
-        return 0
 
-    if not result.selected_routes:
-        print("No route matched the request text strongly enough.")
-        print(
-            "Use --task-type for an explicit route or refine the request "
-            "using routing-table terms."
-        )
-        return 0
+    def _render_human() -> None:
+        if not result.selected_routes:
+            print("No route matched the request text strongly enough.")
+            print(
+                "Use --task-type for an explicit route or refine the request "
+                "using routing-table terms."
+            )
+            return
 
-    print("Selected routes:")
-    for match in result.selected_routes:
-        matched = ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
-        print(f"- {match.task_type} [{match.route_id}] score={match.score} matched={matched}")
+        print("Selected routes:")
+        for match in result.selected_routes:
+            matched = (
+                ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
+            )
+            print(f"- {match.task_type} [{match.route_id}] score={match.score} matched={matched}")
 
-    print("Active workflow modules:")
-    for workflow in result.selected_workflows:
-        print(
-            f"- {workflow.workflow_id} [{workflow.phase_type}, {workflow.task_family}] "
-            f"{workflow.doc_path}"
-        )
+        print("Active workflow modules:")
+        for workflow in result.selected_workflows:
+            print(
+                f"- {workflow.workflow_id} [{workflow.phase_type}, {workflow.task_family}] "
+                f"{workflow.doc_path}"
+            )
 
-    for warning in result.warnings:
-        print(f"Warning: {warning}")
-    return 0
+        for warning in result.warnings:
+            print(f"Warning: {warning}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )

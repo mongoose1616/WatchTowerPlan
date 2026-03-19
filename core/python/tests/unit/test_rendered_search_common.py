@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from watchtower_core.repo_ops.query.common import (
     RenderedSearchFilters,
+    rendered_search_filters_from_params,
     search_rendered_entries,
 )
 
@@ -17,6 +18,40 @@ class _FakeRenderedEntry:
     primary_owner: str | None = "repository_maintainer"
     active_owners: tuple[str, ...] = ("repository_maintainer",)
     blocked_task_count: int = 0
+
+
+@dataclass(frozen=True, slots=True)
+class _FakeRenderedParams:
+    query: str | None = None
+    trace_id: str | None = None
+    initiative_status: str | None = None
+    current_phase: str | None = None
+    owner: str | None = None
+    limit: int | None = None
+
+
+def test_rendered_search_filters_from_params_maps_shared_fields() -> None:
+    params = _FakeRenderedParams(
+        query="alpha",
+        trace_id="trace.alpha",
+        initiative_status="active",
+        current_phase="execution",
+        owner="repository_maintainer",
+        limit=5,
+    )
+
+    assert rendered_search_filters_from_params(
+        params,
+        blocked_only=True,
+    ) == RenderedSearchFilters(
+        query="alpha",
+        trace_id="trace.alpha",
+        initiative_status="active",
+        current_phase="execution",
+        owner="repository_maintainer",
+        blocked_only=True,
+        limit=5,
+    )
 
 
 def test_rendered_search_applies_shared_structured_filters() -> None:

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_closeout_helper_boundary_alignment.validate_closeout_boundary_alignment",
+  "slug": "validate_closeout_boundary_alignment",
+  "initiative_id": "initiative.plan_closeout_helper_boundary_alignment",
+  "title": "Validate closeout boundary alignment",
+  "summary": "Add focused closeout coverage and reconcile the closeout requirements rows to the implemented package boundary.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T03:05:00Z",
+  "updated_at": "2026-03-18T03:06:00Z",
+  "dependency_task_ids": [
+    "task.plan_closeout_helper_boundary_alignment.refactor_live_plan_closeout_onto_shared_helper"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

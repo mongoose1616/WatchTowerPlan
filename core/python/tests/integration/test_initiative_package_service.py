@@ -118,7 +118,8 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
     for task_path in sorted((initiative_root / ".wt" / "tasks").glob("*/task.json")):
         document = _load_json(task_path)
-        document["status"] = "completed"
+        document["status"] = "active"
+        document["task_status"] = "completed"
         document["updated_at"] = updated_at
         task_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
@@ -318,7 +319,10 @@ def test_machine_root_human_surface_policy_blocks_stray_readme(
 
     assert readiness.passed is False
     assert "machine_root_policy" in readiness.blocking_reasons
-    assert any("Forbidden human surface is present" in message for message in readiness.issue_messages)
+    assert any(
+        "Forbidden human surface is present" in message
+        for message in readiness.issue_messages
+    )
 
 
 def test_packwide_initiative_approval_requires_default_human_maintainer(
@@ -365,7 +369,8 @@ def test_packwide_initiative_approval_requires_default_human_maintainer(
     ]
 
     event_names = [
-        path.name for path in sorted((_initiative_root(repo_root) / ".wt" / "events").glob("*.json"))
+        path.name
+        for path in sorted((_initiative_root(repo_root) / ".wt" / "events").glob("*.json"))
     ]
     assert event_names.count("0008_ready_for_review_marked.json") == 1
     assert event_names[-2:] == [
@@ -507,7 +512,10 @@ def test_project_scoped_initiative_bootstrap_and_approval_use_project_root(
 
     assert result.wrote is True
     assert result.validation_passed is True
-    assert result.initiative_root == "plan/projects/watchtower/initiatives/watchtower_runtime_bootstrap"
+    assert (
+        result.initiative_root
+        == "plan/projects/watchtower/initiatives/watchtower_runtime_bootstrap"
+    )
 
     state = _load_json(
         repo_root
@@ -578,13 +586,36 @@ def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_
         write=True,
     )
 
-    state_path = (
+    initiative_root = (
         repo_root
         / "plan"
         / "projects"
         / "watchtower"
         / "initiatives"
         / "watchtower_runtime_bootstrap"
+    )
+    events_root = initiative_root / ".wt" / "events"
+    execution_started_path = events_root / "0011_execution_started.json"
+    execution_started_path.write_text(
+        f"{json.dumps({
+            '$schema': 'urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1',
+            'event_id': 'event.watchtower_runtime_bootstrap.0011_execution_started',
+            'initiative_id': 'initiative.watchtower_runtime_bootstrap',
+            'trace_id': 'trace.watchtower_runtime_bootstrap',
+            'sequence': 11,
+            'event_type': 'execution_started',
+            'actor_id': 'actor.repository_maintainer',
+            'recorded_at': '2026-03-17T17:10:00Z',
+            'summary': 'Execution started for the WatchTower project-scoped initiative.',
+            'payload': {
+                'task_id': 'task.watchtower_runtime_bootstrap.seed_watchtower_project_initiative'
+            },
+        }, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    state_path = (
+        initiative_root
         / ".wt"
         / "initiative.json"
     )
@@ -670,7 +701,9 @@ def test_project_scoped_validation_restores_in_progress_after_transient_block(
             'actor_id': 'actor.repository_maintainer',
             'recorded_at': '2026-03-17T17:10:00Z',
             'summary': 'Execution started for the WatchTower project-scoped initiative.',
-            'payload': {'task_id': 'task.watchtower_runtime_bootstrap.seed_watchtower_project_initiative'},
+            'payload': {
+                'task_id': 'task.watchtower_runtime_bootstrap.seed_watchtower_project_initiative'
+            },
         }, indent=2)}\n",
         encoding="utf-8",
     )

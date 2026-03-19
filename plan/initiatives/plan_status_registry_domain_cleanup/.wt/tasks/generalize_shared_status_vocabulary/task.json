@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_status_registry_domain_cleanup.generalize_shared_status_vocabulary",
+  "slug": "generalize_shared_status_vocabulary",
+  "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+  "title": "Generalize shared status vocabulary",
+  "summary": "Replace the legacy challenge-scoped blocked and terminal status entries with plan-domain-neutral status vocabulary.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T00:36:00Z",
+  "updated_at": "2026-03-18T00:43:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

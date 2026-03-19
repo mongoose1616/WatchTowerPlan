@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `artifacts`, `readiness`, `discrepancies`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
+- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `artifacts`, `readiness`, `discrepancies`, `plan-evidence`, `closeouts`, `reviews`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
 - `-h`, `--help`: Show the query-group help text.
 - Pass filters, limits, and output-mode flags to the selected leaf command.
 
@@ -78,12 +78,15 @@ uv run watchtower-core query authority --domain planning --format json
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `plan/.wt/indexes/coordination_index.json` as the live plan-workspace machine start-here path for current planning state and next action.
 - Use `plan/.wt/indexes/artifact_index.json` when the question spans multiple live plan artifact families or you need canonical machine artifact paths and context metadata.
-- Use `plan/.wt/indexes/readiness_index.json` for execution-gate lookup, `plan/.wt/indexes/discrepancy_index.json` for blocking drift, and `plan/.wt/indexes/project_index.json` for project-container browse.
+- Use `plan/.wt/indexes/readiness_index.json` for execution-gate lookup, `plan/.wt/indexes/discrepancy_index.json` for blocking drift, `plan/.wt/indexes/evidence_index.json` for live validation bundles, `plan/.wt/indexes/closeout_index.json` for closeout recaps, `plan/.wt/indexes/review_index.json` for review state, and `plan/.wt/indexes/project_index.json` for project-container browse.
 - Use `project-context` when the operation is project-scoped and you need the validated project record, initiative root, and linked repositories on top of always-loaded `pack_context`.
 - Use `coordination` when you need the live machine start-here planning payload.
 - Use `artifacts` when you need cross-family live plan artifact lookup without opening raw JSON manually.
 - Use `readiness` when the question is whether an initiative package may start or resume execution.
 - Use `discrepancies` when you need mismatch, drift, or stale-surface records without opening one initiative directly.
+- Use `plan-evidence` when you need the live initiative-local validation-bundle contract rather than durable validation evidence under `core/control_plane/ledgers/`.
+- Use `closeouts` when you need the current closeout recap contract or terminal closeout summary for one live initiative.
+- Use `reviews` when you need initiative review and promotion approval state on one joined machine surface.
 - Use `projects` when you need project lookup without loading the full project context payload.
 - Filterless `planning` and `initiatives` browse calls now default to `initiative_status=active`; pass explicit `--initiative-status` for terminal history and `--trace-id` when you already know the closed trace.
 - Use `planning` after coordination when you need the canonical deep machine-readable record for one trace.
@@ -100,6 +103,9 @@ uv run watchtower-core query authority --domain planning --format json
 | `watchtower-core query artifacts` | Cross-family machine artifact lookup surface for live `plan/**` state. |
 | `watchtower-core query readiness` | Live readiness-gate lookup surface for initiative execution state. |
 | `watchtower-core query discrepancies` | Live mismatch and drift lookup surface for plan discrepancies. |
+| `watchtower-core query plan-evidence` | Live initiative-local evidence-bundle lookup surface. |
+| `watchtower-core query closeouts` | Live initiative-local closeout recap lookup surface. |
+| `watchtower-core query reviews` | Live initiative and promotion review-state lookup surface. |
 | `watchtower-core query projects` | Live project-container browse surface. |
 | `watchtower-core query project-context` | Explicit project-scoped runtime context load on top of pack context. |
 | `watchtower-core query planning` | Canonical deep planning join for one trace. |
@@ -117,4 +123,4 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/repo_ops/project_context.py`
 
 ## Updated At
-- `2026-03-17T20:03:23Z`
+- `2026-03-17T22:39:20Z`

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_routing_engine_export_foundation.0012_closing_started",
+  "initiative_id": "initiative.plan_routing_engine_export_foundation",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T23:58:50Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.plan_routing_engine_export_foundation"
+}

@@ -5,6 +5,12 @@ from __future__ import annotations
 from watchtower_core.adapters import render_front_matter
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.front_matter_paths import normalize_governed_applies_to_values
+from watchtower_core.repo_ops.initiative_packages import (
+    InitiativeBootstrapParams,
+    InitiativePackageService,
+    InitiativeTaskSpec,
+)
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.planning_bootstrap_support import (
     build_acceptance_contract_artifact,
     build_bootstrap_identifiers,
@@ -48,6 +54,7 @@ from watchtower_core.repo_ops.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskMutationResult,
+    TaskUpdateParams,
 )
 from watchtower_core.utils import utc_timestamp_now
 
@@ -94,7 +101,10 @@ class PlanningScaffoldService:
             related_ids=tuple(document.document_id for document in rendered_documents)
             + (identifiers.contract_id,),
         )
-        preview_task_result = self._bootstrap_task_result(bootstrap_task_params, write=False)
+        preview_task_result = self._bootstrap_task_preview(
+            bootstrap_task_params,
+            initiative_slug=identifiers.trace_id_suffix,
+        )
         acceptance_contract_document, acceptance_contract_preview = (
             build_acceptance_contract_artifact(
                 self._loader,
@@ -119,6 +129,29 @@ class PlanningScaffoldService:
 
         task_result = preview_task_result
         if write:
+            InitiativePackageService(self._loader).bootstrap_packwide(
+                InitiativeBootstrapParams(
+                    trace_id=params.trace_id,
+                    title=params.title,
+                    summary=params.summary,
+                    initiative_slug=identifiers.trace_id_suffix,
+                    task_specs=(
+                        InitiativeTaskSpec(
+                            title=bootstrap_task_params.title,
+                            summary=bootstrap_task_params.summary,
+                            slug=_bootstrap_task_slug(bootstrap_task_params),
+                            task_id=bootstrap_task_params.task_id,
+                            task_kind=bootstrap_task_params.task_kind,
+                            priority=bootstrap_task_params.priority,
+                            owner=bootstrap_task_params.owner,
+                            related_ids=bootstrap_task_params.related_ids,
+                        ),
+                    ),
+                    include_decision_notes=params.include_decision,
+                    updated_at=updated_at,
+                ),
+                write=True,
+            )
             for rendered in rendered_documents:
                 self._write_rendered_document(rendered)
             refresh_bootstrap_document_surfaces(
@@ -129,12 +162,27 @@ class PlanningScaffoldService:
                 acceptance_contract_preview.doc_path,
                 acceptance_contract_document,
             )
-            task_result = self._bootstrap_task_result(bootstrap_task_params, write=True)
+            task_result = TaskLifecycleService(self._loader).update(
+                TaskUpdateParams(
+                    task_id=bootstrap_task_params.task_id,
+                    task_kind=bootstrap_task_params.task_kind,
+                    priority=bootstrap_task_params.priority,
+                    owner=bootstrap_task_params.owner,
+                    applies_to=bootstrap_task_params.applies_to,
+                    related_ids=bootstrap_task_params.related_ids,
+                    scope_items=bootstrap_task_params.scope_items,
+                    done_when_items=bootstrap_task_params.done_when_items,
+                    updated_at=bootstrap_task_params.updated_at,
+                ),
+                write=True,
+            )
             self._write_json_artifact(
                 validation_evidence_preview.doc_path,
                 validation_evidence_document,
             )
-            CoordinationSyncService(self._loader).run(write=True)
+            refresh_loader = ControlPlaneLoader(self._loader.repo_root)
+            PlanWorkspaceService(refresh_loader).sync(write=True)
+            CoordinationSyncService(refresh_loader).run(write=True)
 
         return PlanBootstrapResult(
             documents=tuple(
@@ -223,13 +271,33 @@ class PlanningScaffoldService:
         validate_rendered_document(self._loader, rendered)
         return rendered
 
-    def _bootstrap_task_result(
+    def _bootstrap_task_preview(
         self,
         task_params: TaskCreateParams,
         *,
-        write: bool,
+        initiative_slug: str,
     ) -> TaskMutationResult:
-        return TaskLifecycleService(self._loader).create(task_params, write=write)
+        return TaskMutationResult(
+            task_id=task_params.task_id,
+            title=task_params.title,
+            summary=task_params.summary,
+            trace_id=task_params.trace_id,
+            task_status=task_params.task_status,
+            task_kind=task_params.task_kind,
+            priority=task_params.priority,
+            owner=task_params.owner,
+            updated_at=task_params.updated_at or utc_timestamp_now(),
+            doc_path=(
+                f"plan/initiatives/{initiative_slug}/.wt/tasks/"
+                f"{_bootstrap_task_slug(task_params)}/task.json"
+            ),
+            previous_doc_path=None,
+            moved=False,
+            changed=True,
+            wrote=False,
+            coordination_refreshed=False,
+            closeout_recommended=False,
+        )
 
     def _write_rendered_document(self, rendered: RenderedDocument) -> None:
         path = self._loader.repo_root / rendered.doc_path
@@ -253,7 +321,8 @@ class PlanningScaffoldService:
             return True
         except KeyError:
             return any(
-                entry.trace_id == trace_id for entry in self._loader.load_task_index().entries
+                entry.trace_id == trace_id
+                for entry in PlanWorkspaceService(self._loader).load_task_entries()
             )
 
 
@@ -305,3 +374,7 @@ def _validation_evidence_result_from_preview(
         content=preview.content,
         wrote=wrote,
     )
+
+
+def _bootstrap_task_slug(task_params: TaskCreateParams) -> str:
+    return slugify_file_stem(task_params.file_stem or task_params.title)

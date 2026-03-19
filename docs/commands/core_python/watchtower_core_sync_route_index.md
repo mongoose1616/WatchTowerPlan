@@ -1,10 +1,10 @@
 # `watchtower-core sync route-index`
 
 ## Summary
-This command rebuilds the governed route index from the canonical routing table under `workflows/ROUTING_TABLE.md`.
+This command rebuilds the governed route index from the canonical routing table under `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
 
 ## Use When
-- You changed `AGENTS.md` routing guidance or `workflows/ROUTING_TABLE.md` and need the machine-readable route surface to match.
+- You changed `AGENTS.md` routing guidance or either authoritative routing table under `core/workflows/` or `plan/workflows/` and need the machine-readable route surface to match.
 - You added or removed a routed task type.
 - You want to inspect the rebuilt route index in dry-run mode before writing it to the canonical control-plane path.
 
@@ -46,7 +46,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 ```
 
 ## Behavior and Outputs
-- The command reads `workflows/ROUTING_TABLE.md` and rebuilds the machine-readable route index deterministically.
+- The command reads `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md` and rebuilds the machine-readable route index deterministically.
 - The command fails closed when a route row points to a missing workflow module or omits required routing data.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many route entries were rebuilt.
@@ -62,7 +62,8 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/cli/sync_handlers.py`
+- `core/python/src/watchtower_core/cli/sync_family_documents.py`
+- `core/python/src/watchtower_core/cli/sync_document_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/sync/route_index.py`
 - `core/control_plane/indexes/routes/route_index.json`
 

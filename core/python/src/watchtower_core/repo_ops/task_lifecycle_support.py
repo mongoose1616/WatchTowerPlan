@@ -9,6 +9,7 @@ from pathlib import PurePosixPath
 
 from watchtower_core.adapters import extract_first_paragraph, extract_updated_at_from_section
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.repo_ops.task_documents import (
     TASK_CLOSED_ARCHIVE_ROOT,
     TASK_CLOSED_ROOT,
@@ -20,33 +21,26 @@ from watchtower_core.repo_ops.task_documents import (
 )
 
 TASK_STATUS_CHOICES = (
-    "backlog",
+    "planned",
     "ready",
     "in_progress",
     "blocked",
     "in_review",
-    "done",
+    "completed",
     "cancelled",
 )
-TASK_KIND_CHOICES = ("feature", "bug", "chore", "documentation", "governance", "research")
+TASK_KIND_CHOICES = (
+    "feature",
+    "bug",
+    "chore",
+    "documentation",
+    "governance",
+    "research",
+    "validation",
+)
 TASK_PRIORITY_CHOICES = ("critical", "high", "medium", "low")
 _TASK_SECTION_ORDER = ("Summary", "Scope", "Done When")
 _FILE_STEM_PATTERN = re.compile(r"[^a-z0-9]+")
-
-
-def task_documents_by_id(documents: Iterable[TaskDocument]) -> dict[str, TaskDocument]:
-    """Index task documents by task ID while rejecting duplicates."""
-
-    by_id: dict[str, TaskDocument] = {}
-    for document in documents:
-        existing = by_id.get(document.task_id)
-        if existing is not None:
-            raise ValueError(
-                "Duplicate task ID in current task corpus: "
-                f"{document.task_id} in {existing.relative_path} and {document.relative_path}"
-            )
-        by_id[document.task_id] = document
-    return by_id
 
 
 def load_existing_task(
@@ -376,7 +370,4 @@ def optional_front_matter_value(front_matter: dict[str, object], key: str) -> st
 def slugify_file_stem(value: str) -> str:
     """Normalize one task title or file stem into a repo-safe filename."""
 
-    normalized = _FILE_STEM_PATTERN.sub("_", value.casefold()).strip("_")
-    if not normalized:
-        raise ValueError("Task file stem resolved to an empty value.")
-    return normalized
+    return PlanPathIdHelper.slugify(value, label="task file stem")

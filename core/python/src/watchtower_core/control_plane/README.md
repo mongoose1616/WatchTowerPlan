@@ -1,30 +1,21 @@
 # `watchtower_core.control_plane`
 
 ## Summary
-Workspace-aware artifact loading, schema validation, typed models, PackContext loading, and filesystem abstraction for governed control-plane data.
+Reusable control-plane helpers for governed pack/runtime loading, policy and family resolution, typed artifact models, and workspace-aware filesystem access.
 
 ## Boundary
 - `Classification`: `reusable_core`
-- `Supported Imports`: `watchtower_core.control_plane` and explicit submodules such as `loader`, `schemas`, and `workspace`.
+- `Supported Imports`: `watchtower_core.control_plane` and explicit helper or model submodules such as `loader`, `pack_context`, `governance_surfaces`, `terminology`, `template_catalog`, `schemas`, and `workspace`.
 - `Non-Goals`: Repo-local planning semantics, Markdown document rules, or task orchestration policy.
 
 ## Key Surfaces
-- `loader.py`: High-level governed artifact loader, including generic typed loading and pack-settings-driven context loading.
-- `pack_context.py`: PackContext materialization from pack settings and declared governed surfaces.
-- `artifact_family.py`: Pack-local artifact-family resolution for placement, status, visibility, and renderability rules.
-- `documentation_family.py`: Pack-local documentation-family resolution for governed authored guidance families, allowed roots, and mirror rules.
-- `discrepancy.py`: Governed discrepancy-record helpers for drift detection, reconciliation, and open-record loading.
-- `event_stream.py`: Append-only event stream helpers for governed initiative and task event records.
-- `planning_vocabulary.py`: Pack-local lifecycle, review, and provenance vocabulary resolution for plan-runtime helpers.
-- `promotion_policy.py`: Pack-local promotion-policy resolution for governed initiative-to-guidance extraction rules.
-- `project_surface_policy.py`: Pack-local project-root surface policy resolution for required machine and rendered project surfaces.
-- `template_catalog.py`: Pack-local template-catalog resolution for governed template assets, section-spec contracts, and fail-closed template-heading validation.
-- `governance_surfaces.py`: Cross-surface resolution helper for governed surface path, authority, rebuildability, and declared dependencies.
-- `schemas.py`: Schema store and supplemental-schema registration.
-- `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.
-- `models/`: Typed artifact models grouped by artifact family, including the pack-facing contract surfaces used by PackContext.
+- Load and workspace helpers: `loader.py`, `pack_context.py`, `workspace.py`, `paths.py`, `errors.py`, and `schemas.py` provide governed artifact loading, workspace configuration, filesystem abstraction, and schema-store support.
+- Policy and family helpers: `artifact_family.py`, `documentation_family.py`, `promotion_policy.py`, `project_surface_policy.py`, `human_surface_policy.py`, and `retention_policy.py` resolve governed family and policy decisions from machine-readable authority.
+- Runtime lookup helpers: `actors.py`, `discrepancy.py`, `event_stream.py`, `extraction_output.py`, `governance_surfaces.py`, `path_ids.py`, `template_catalog.py`, `terminology.py`, and `workflow_catalog.py` expose reusable pack-runtime helpers without importing repo-local orchestration.
+- `models/`: Typed artifact and contract models grouped by family, including the pack-facing contract surfaces used by `PackContext`, artifact indexes, and extraction-output envelopes.
 
 ## Related Surfaces
+- `docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/adapters/README.md`
 - `core/python/src/watchtower_core/repo_ops/README.md`
 - `core/control_plane/README.md`

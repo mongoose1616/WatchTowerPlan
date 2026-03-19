@@ -328,12 +328,12 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["wrote"] is True
     assert payload["output_dir"] == str(output_dir.resolve())
-    assert (output_dir / "core/control_plane/indexes/tasks/task_index.json").exists()
+    assert (output_dir / "plan/.wt/indexes/task_index.json").exists()
     assert (
         output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
     ).exists()
     assert (
-        output_dir / "core/control_plane/indexes/coordination/coordination_index.json"
+        output_dir / "plan/.wt/indexes/coordination_index.json"
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()

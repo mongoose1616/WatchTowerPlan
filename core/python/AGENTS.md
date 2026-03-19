@@ -24,8 +24,10 @@
 
 ## Do
 - Use [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md) as the governing standard for workspace layout and tooling.
+- Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) as the governing standard for Python naming, module shape, typed boundaries, docstrings, and consolidation decisions.
 - Use [core/python/README.md](/core/python/README.md) as the quick-reference onboarding and command surface.
 - Use `uv run watchtower-core ...` or `uv run python -m watchtower_core...` for package-local execution.
+- Keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` clean under the stricter `mypy` override and `ruff` comprehension rules declared in `core/python/pyproject.toml`.
 
 ## Do Not
 - Do not install Python packages globally for repository work when the workspace can manage them locally.

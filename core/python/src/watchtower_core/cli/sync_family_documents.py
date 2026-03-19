@@ -3,24 +3,14 @@
 from __future__ import annotations
 
 import argparse
-from collections.abc import Callable, Mapping
-from textwrap import dedent
-from typing import TypedDict
 
-from watchtower_core.cli.common import HelpFormatter, add_common_sync_arguments, examples
+from watchtower_core.cli.sync_family_common import (
+    HandlerMap,
+    SyncCommandSpec,
+    register_spec_sync_commands,
+)
 
-HandlerMap = Mapping[str, Callable[..., int]]
-
-
-class _DocumentCommandSpec(TypedDict):
-    name: str
-    handler: str
-    help: str
-    description: str
-    examples: tuple[str, ...]
-
-
-_DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
+_DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
     {
         "name": "command-index",
         "handler": "command_index",
@@ -100,7 +90,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
         "handler": "route_index",
         "help": "Rebuild the route index from the canonical routing table.",
         "description": """
-            Rebuild the route index from `workflows/ROUTING_TABLE.md`.
+            Rebuild the route index from `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -136,7 +126,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
         "help": "Rebuild the workflow index from governed workflow modules.",
         "description": """
             Rebuild the workflow index from the workflow modules under
-            `workflows/modules/`.
+            `core/workflows/modules/` and `plan/workflows/modules/`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -222,10 +212,10 @@ _DOCUMENT_COMMAND_SPECS: tuple[_DocumentCommandSpec, ...] = (
     {
         "name": "task-index",
         "handler": "task_index",
-        "help": "Rebuild the task index from governed task records.",
+        "help": "Rebuild the live plan task index from initiative-local task state.",
         "description": """
-            Rebuild the task index from the governed task documents under
-            `docs/planning/tasks/`.
+            Rebuild the live plan task index from initiative-local task state
+            under `plan/**/.wt/tasks/**`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -280,13 +270,8 @@ def register_document_sync_commands(
 ) -> None:
     """Register the document-oriented sync commands."""
 
-    for spec in _DOCUMENT_COMMAND_SPECS:
-        parser = sync_subparsers.add_parser(
-            spec["name"],
-            help=spec["help"],
-            description=dedent(spec["description"]).strip(),
-            epilog=examples(*spec["examples"]),
-            formatter_class=HelpFormatter,
-        )
-        add_common_sync_arguments(parser)
-        parser.set_defaults(handler=handlers[spec["handler"]])
+    register_spec_sync_commands(
+        sync_subparsers,
+        handlers=handlers,
+        specs=_DOCUMENT_COMMAND_SPECS,
+    )

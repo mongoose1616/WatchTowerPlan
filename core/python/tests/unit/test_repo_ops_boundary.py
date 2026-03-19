@@ -4,10 +4,14 @@ from pathlib import Path
 
 import pytest
 
+import watchtower_core.evidence as public_evidence
 import watchtower_core.query as public_query
+import watchtower_core.rebuild as public_rebuild
+import watchtower_core.routing as public_routing
 import watchtower_core.sync as public_sync
 import watchtower_core.validation as public_validation
-from watchtower_core.repo_ops.query.commands import CommandQueryService
+import watchtower_core.workflow_execution as public_workflow_execution
+from watchtower_core.repo_ops.query import CommandQueryService
 from watchtower_core.repo_ops.sync.command_index import CommandIndexSyncService
 from watchtower_core.repo_ops.validation import (
     WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
@@ -42,6 +46,45 @@ def test_public_sync_root_fails_closed_with_repo_ops_guidance() -> None:
         _ = public_sync.CommandIndexSyncService
 
 
+def test_public_rebuild_root_fails_closed_with_repo_ops_guidance() -> None:
+    assert public_rebuild.RebuildHarness.__module__ == "watchtower_core.rebuild.harness"
+    assert public_rebuild.RebuildTargetSpec.__module__ == "watchtower_core.rebuild.harness"
+    assert public_rebuild.RenderedViewBuilder.__module__ == "watchtower_core.rebuild.rendered_views"
+    assert (
+        public_rebuild.MarkdownReconciliationHelper.__module__
+        == "watchtower_core.rebuild.rendered_views"
+    )
+    with pytest.raises(AttributeError, match="watchtower_core.repo_ops"):
+        _ = public_rebuild.PlanWorkspaceService
+
+
+def test_public_workflow_execution_root_fails_closed_with_repo_ops_guidance() -> None:
+    assert (
+        public_workflow_execution.WorkflowExecutionHarness.__module__
+        == "watchtower_core.workflow_execution.harness"
+    )
+    assert (
+        public_workflow_execution.WorkflowExecutionStep.__module__
+        == "watchtower_core.workflow_execution.harness"
+    )
+    with pytest.raises(AttributeError, match="watchtower_core.repo_ops"):
+        _ = public_workflow_execution.InitiativePackageService
+
+
+def test_public_evidence_root_exports_reusable_evidence_surfaces() -> None:
+    assert public_evidence.ValidationEvidenceRecorder.__module__ == (
+        "watchtower_core.evidence.validation_evidence"
+    )
+    assert public_evidence.EvidenceBundleHelper.__module__ == "watchtower_core.evidence.bundles"
+
+
+def test_public_routing_root_exports_reusable_routing_engine() -> None:
+    assert public_routing.RoutingEngine.__module__ == "watchtower_core.routing.engine"
+    assert public_routing.RoutePreviewResult.__module__ == "watchtower_core.query.routes"
+    with pytest.raises(AttributeError, match="watchtower_core.routing exports only"):
+        _ = public_routing.UnknownRoutingSurface
+
+
 def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
     with pytest.raises(AttributeError, match="watchtower_core.validation.all"):
         _ = public_validation.ValidationAllService
@@ -49,7 +92,7 @@ def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
         _ = public_validation.DocumentSemanticsValidationService
 
 
-def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
+def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
         "__init__.py",
         "artifact_families.py",
@@ -64,20 +107,46 @@ def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -
         "__init__.py",
         "harness.py",
     ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "rebuild").glob("*.py")) == [
+        "__init__.py",
+        "harness.py",
+        "rendered_views.py",
+    ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "workflow_execution").glob("*.py")) == [
+        "__init__.py",
+        "harness.py",
+    ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "evidence").glob("*.py")) == [
+        "__init__.py",
+        "bundles.py",
+        "validation_evidence.py",
+    ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "routing").glob("*.py")) == [
+        "__init__.py",
+        "engine.py",
+    ]
 
 
 @pytest.mark.parametrize(
     "module_name",
     (
+        "watchtower_core.control_plane.planning_vocabulary",
         "watchtower_core.query.coordination",
         "watchtower_core.query.foundations",
         "watchtower_core.query.planning",
         "watchtower_core.query.traceability",
+        "watchtower_core.rebuild.plan_workspace",
+        "watchtower_core.rebuild.project_workspace",
+        "watchtower_core.repo_ops.query.authority",
+        "watchtower_core.repo_ops.query.commands",
+        "watchtower_core.repo_ops.query.routes",
+        "watchtower_core.repo_ops.query.workflows",
         "watchtower_core.sync.all",
         "watchtower_core.sync.command_index",
         "watchtower_core.sync.traceability",
         "watchtower_core.validation.document_semantics",
         "watchtower_core.validation.registry",
+        "watchtower_core.workflow_execution.initiative_packages",
         "watchtower_core.repo_ops.validation.all",
         "watchtower_core.repo_ops.validation.registry",
     ),

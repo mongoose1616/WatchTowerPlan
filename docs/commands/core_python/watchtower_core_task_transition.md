@@ -1,12 +1,12 @@
 # `watchtower-core task transition`
 
 ## Summary
-This command applies a bounded handoff-style status, owner, or blocker transition to one governed local task record and refreshes the coordination slice in write mode.
+This command applies a bounded handoff-style status, owner, or blocker transition to one initiative-local live task record and refreshes derived plan-workspace surfaces in write mode.
 
 ## Use When
 - You are handing a task from one phase or owner to the next.
 - You want a narrower mutation surface than `task update` for status, owner, or blocker transitions.
-- You want dry-run preview before mutating the canonical task document.
+- You want dry-run preview before mutating the canonical live task record.
 
 ## Command
 | Field | Value |
@@ -19,7 +19,7 @@ This command applies a bounded handoff-style status, owner, or blocker transitio
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id <task_id> --task-status <status> [--next-owner <owner>] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--file-stem <stem>] [--updated-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core task transition --task-id <task_id> --task-status <status> [--next-owner <owner>] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -30,9 +30,8 @@ uv run watchtower-core task transition --task-id <task_id> --task-status <status
 - `--clear-depends-on`: Remove the current dependency list.
 - `--blocked-by <task_id>`: Replacement blocker task ID. Repeat for multiple values.
 - `--clear-blocked-by`: Remove the current blocker list.
-- `--file-stem <stem>`: Optional replacement filename stem when the transition also moves the file.
 - `--updated-at <timestamp>`: Optional explicit RFC 3339 UTC timestamp. Defaults to now when changes occur.
-- `--write`: Persist the transitioned task document and refresh the coordination slice.
+- `--write`: Persist the transitioned live task record and refresh the derived plan surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
@@ -44,14 +43,16 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status done --clear-blocked-by --clear-depends-on --write
+uv run watchtower-core task transition --task-id task.example.001 --task-status completed --clear-blocked-by --clear-depends-on --write
 ```
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate files.
 - The command is a narrower handoff wrapper over the same governed task lifecycle service that powers `task update`.
-- Write mode moves the task document between `open/` and the dated `closed/archive/` tree automatically when the new task status changes terminality.
-- When write mode moves the task document, the command also repairs matching repo-local task-path references in governed acceptance contracts and validation evidence before coordination refreshes.
+- Execution-starting statuses such as `in_progress`, `in_review`, and `completed` require the initiative package to have already been approved into `ready_for_execution`.
+- The task stays at the same initiative-local `task.json` path; terminality is represented by `task_status`, not path movement.
+- The first execution-starting transition records an `execution_started` initiative event and advances the live initiative package into `in_progress`.
+- In write mode, the command refreshes the live task, initiative, readiness, artifact, and coordination surfaces plus companion rendered views.
 - In `human` mode, the command prints the resulting task path, status, owner, and write outcome.
 - In `json` mode, the command prints one JSON object with the resulting task metadata, path outcome, write state, and `closeout_recommended` hint.
 
@@ -60,9 +61,10 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 |---|---|
 | `watchtower-core task` | Parent command group for task lifecycle operations. |
 | `watchtower-core task update` | Use when the transition also requires broader field or body edits. |
+| `watchtower-core plan approve` | Required before handoff transitions can start real execution. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
-| `watchtower-core closeout initiative` | Use when the transition leaves a traced initiative with only terminal task state. |
+| `watchtower-core closeout plan-initiative` | Use when the transition leaves a live `plan/**` initiative package with only terminal task state. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/task_family.py`
@@ -70,4 +72,4 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-18T20:35:00Z`

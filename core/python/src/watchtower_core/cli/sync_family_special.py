@@ -173,8 +173,8 @@ def register_special_sync_commands(
             model.
 
             Start with dry-run output first. Add `--write` to call the GitHub
-            APIs, persist the returned foreign keys on the task documents, and
-            rebuild the local task index, task tracker, and traceability index.
+            APIs, persist the returned foreign keys on the live task records,
+            and rebuild the live task indexes plus companion human trackers.
 
             The dry-run command output is the authoritative preview for this
             command's task-selection filters.
@@ -211,7 +211,7 @@ def register_special_sync_commands(
         "--task-id",
         action="append",
         default=[],
-        help="Exact docs-backed task identifier filter. Repeat for multiple task IDs.",
+        help="Exact live task identifier filter. Repeat for multiple task IDs.",
     )
     sync_github_tasks_parser.add_argument("--trace-id", help="Exact trace filter.")
     sync_github_tasks_parser.add_argument("--task-status", help="Exact task-status filter.")

@@ -1,0 +1,1167 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:closeout-index:v1",
+  "id": "index.closeouts",
+  "title": "Plan Workspace Closeout Index",
+  "status": "active",
+  "updated_at": "2026-03-18T23:45:00Z",
+  "entries": [
+    {
+      "closeout_id": "closeout.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_recap",
+      "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+      "initiative_title": "Plan Actor Registry And Runtime Boundary Reconciliation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_actor_registry_and_runtime_boundary_reconciliation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T23:51:18Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_artifact_family_registry_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_artifact_family_registry_foundation",
+      "trace_id": "trace.plan_artifact_family_registry_foundation",
+      "initiative_title": "Plan Artifact Family Registry Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_artifact_family_registry_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_artifact_family_registry_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_artifact_family_registry_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T21:23:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_artifact_index_runtime_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_artifact_index_runtime_foundation",
+      "trace_id": "trace.plan_artifact_index_runtime_foundation",
+      "initiative_title": "Plan Artifact Index Runtime Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_artifact_index_runtime_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_artifact_index_runtime_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_artifact_index_runtime_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T20:36:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_closeout_helper_boundary_alignment.bootstrap_recap",
+      "initiative_id": "initiative.plan_closeout_helper_boundary_alignment",
+      "trace_id": "trace.plan_closeout_helper_boundary_alignment",
+      "initiative_title": "Plan Closeout Helper Boundary Alignment",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_closeout_helper_boundary_alignment",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_closeout_helper_boundary_alignment.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_closeout_helper_boundary_alignment.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T03:07:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_core_documentation_template_authority_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_core_documentation_template_authority_foundation",
+      "trace_id": "trace.plan_core_documentation_template_authority_foundation",
+      "initiative_title": "Plan Core Documentation Template Authority Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_core_documentation_template_authority_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_core_documentation_template_authority_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_core_documentation_template_authority_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T18:17:57Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_discrepancy_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_discrepancy_helper_foundation",
+      "trace_id": "trace.plan_discrepancy_helper_foundation",
+      "initiative_title": "Plan Discrepancy Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_discrepancy_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_discrepancy_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_discrepancy_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T21:51:03Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_documentation_family_and_template_catalog_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_documentation_family_and_template_catalog_foundation",
+      "trace_id": "trace.plan_documentation_family_and_template_catalog_foundation",
+      "initiative_title": "Plan Documentation Family And Template Catalog Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_documentation_family_and_template_catalog_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_documentation_family_and_template_catalog_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_documentation_family_and_template_catalog_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T17:39:18Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_duplicated_foundations_corpus_bootstrap.bootstrap_recap",
+      "initiative_id": "initiative.plan_duplicated_foundations_corpus_bootstrap",
+      "trace_id": "trace.plan_duplicated_foundations_corpus_bootstrap",
+      "initiative_title": "Plan Duplicated Foundations Corpus Bootstrap",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_duplicated_foundations_corpus_bootstrap",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_duplicated_foundations_corpus_bootstrap.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_duplicated_foundations_corpus_bootstrap.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:44:57Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_entrypoint_cutover_proof.bootstrap_recap",
+      "initiative_id": "initiative.plan_entrypoint_cutover_proof",
+      "trace_id": "trace.plan_entrypoint_cutover_proof",
+      "initiative_title": "Plan Entrypoint Cutover Proof",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_entrypoint_cutover_proof",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_entrypoint_cutover_proof.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_entrypoint_cutover_proof.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:09Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_event_stream_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_event_stream_helper_foundation",
+      "trace_id": "trace.plan_event_stream_helper_foundation",
+      "initiative_title": "Plan Event Stream Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_event_stream_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_event_stream_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_event_stream_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T21:35:44Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_evidence_bundle_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_evidence_bundle_helper_foundation",
+      "trace_id": "trace.plan_evidence_bundle_helper_foundation",
+      "initiative_title": "Plan Evidence Bundle Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_evidence_bundle_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_evidence_bundle_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_evidence_bundle_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T01:41:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_extraction_output_envelope_alignment.bootstrap_recap",
+      "initiative_id": "initiative.plan_extraction_output_envelope_alignment",
+      "trace_id": "trace.plan_extraction_output_envelope_alignment",
+      "initiative_title": "Plan Extraction Output Envelope Alignment",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_extraction_output_envelope_alignment",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_extraction_output_envelope_alignment.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_extraction_output_envelope_alignment.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T02:20:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_generic_query_harness_export_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_generic_query_harness_export_foundation",
+      "trace_id": "trace.plan_generic_query_harness_export_foundation",
+      "initiative_title": "Plan Generic Query Harness Export Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_generic_query_harness_export_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_generic_query_harness_export_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_generic_query_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T22:37:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_generic_sync_harness_export_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_generic_sync_harness_export_foundation",
+      "trace_id": "trace.plan_generic_sync_harness_export_foundation",
+      "initiative_title": "Plan Generic Sync Harness Export Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_generic_sync_harness_export_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_generic_sync_harness_export_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_generic_sync_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T21:51:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_governance_surface_resolver_helper.bootstrap_recap",
+      "initiative_id": "initiative.plan_governance_surface_resolver_helper",
+      "trace_id": "trace.plan_governance_surface_resolver_helper",
+      "initiative_title": "Plan Governance Surface Resolver Helper",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_governance_surface_resolver_helper",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_governance_surface_resolver_helper.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_governance_surface_resolver_helper.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T16:41:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_guidance_promotion_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_guidance_promotion_helper_foundation",
+      "trace_id": "trace.plan_guidance_promotion_helper_foundation",
+      "initiative_title": "Plan Guidance Promotion Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_guidance_promotion_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_guidance_promotion_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T22:23:02Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_human_surface_policy_and_core_root_seeding.bootstrap_recap",
+      "initiative_id": "initiative.plan_human_surface_policy_and_core_root_seeding",
+      "trace_id": "trace.plan_human_surface_policy_and_core_root_seeding",
+      "initiative_title": "Plan Human Surface Policy and Core Root Seeding",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_human_surface_policy_and_core_root_seeding",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_human_surface_policy_and_core_root_seeding.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_human_surface_policy_and_core_root_seeding.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:10Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_legacy_history_retention_reconciliation.bootstrap_recap",
+      "initiative_id": "initiative.plan_legacy_history_retention_reconciliation",
+      "trace_id": "trace.plan_legacy_history_retention_reconciliation",
+      "initiative_title": "Plan Legacy History and Retention Reconciliation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_legacy_history_retention_reconciliation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_legacy_history_retention_reconciliation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_legacy_history_retention_reconciliation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:10Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_lifecycle_review_and_source_vocab_registries.bootstrap_recap",
+      "initiative_id": "initiative.plan_lifecycle_review_and_source_vocab_registries",
+      "trace_id": "trace.plan_lifecycle_review_and_source_vocab_registries",
+      "initiative_title": "Plan Lifecycle Review And Source Vocab Registries",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_lifecycle_review_and_source_vocab_registries",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_lifecycle_review_and_source_vocab_registries.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_lifecycle_review_and_source_vocab_registries.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T17:13:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_live_evidence_closeout_review_indexes_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+      "trace_id": "trace.plan_live_evidence_closeout_review_indexes_foundation",
+      "initiative_title": "Plan Live Evidence Closeout Review Indexes Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_live_evidence_closeout_review_indexes_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_live_evidence_closeout_review_indexes_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_live_evidence_closeout_review_indexes_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T23:05:01Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_live_query_authority_cutover.bootstrap_recap",
+      "initiative_id": "initiative.plan_live_query_authority_cutover",
+      "trace_id": "trace.plan_live_query_authority_cutover",
+      "initiative_title": "Plan Live Query Authority Cutover",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_live_query_authority_cutover",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_live_query_authority_cutover.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_live_query_authority_cutover.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T19:38:14Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_path_and_id_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_path_and_id_helper_foundation",
+      "trace_id": "trace.plan_path_and_id_helper_foundation",
+      "initiative_title": "Plan Path And ID Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_path_and_id_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_path_and_id_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_path_and_id_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T23:40:59Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_project_context_runtime_standardization.bootstrap_recap",
+      "initiative_id": "initiative.plan_project_context_runtime_standardization",
+      "trace_id": "trace.plan_project_context_runtime_standardization",
+      "initiative_title": "Plan Project Context Runtime Standardization",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_project_context_runtime_standardization",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_project_context_runtime_standardization.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_project_context_runtime_standardization.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T18:58:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_project_surface_policy_registry.bootstrap_recap",
+      "initiative_id": "initiative.plan_project_surface_policy_registry",
+      "trace_id": "trace.plan_project_surface_policy_registry",
+      "initiative_title": "Plan Project Surface Policy Registry",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_project_surface_policy_registry",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_project_surface_policy_registry.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_project_surface_policy_registry.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T17:28:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_promotion_policy_and_guidance_indexes.bootstrap_recap",
+      "initiative_id": "initiative.plan_promotion_policy_and_guidance_indexes",
+      "trace_id": "trace.plan_promotion_policy_and_guidance_indexes",
+      "initiative_title": "Plan Promotion Policy and Guidance Indexes",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_promotion_policy_and_guidance_indexes",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_promotion_policy_and_guidance_indexes.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_promotion_policy_and_guidance_indexes.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T20:20:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_rebuild_harness_export_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_rebuild_harness_export_foundation",
+      "trace_id": "trace.plan_rebuild_harness_export_foundation",
+      "initiative_title": "Plan Rebuild Harness Export Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_rebuild_harness_export_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_rebuild_harness_export_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_rebuild_harness_export_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T00:34:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_rendered_surface_builder_alignment.bootstrap_recap",
+      "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+      "trace_id": "trace.plan_rendered_surface_builder_alignment",
+      "initiative_title": "Plan Rendered Surface Builder Alignment",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_rendered_surface_builder_alignment",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_rendered_surface_builder_alignment.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_rendered_surface_builder_alignment.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T02:44:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_requirements_current_state_reconciliation.bootstrap_recap",
+      "initiative_id": "initiative.plan_requirements_current_state_reconciliation",
+      "trace_id": "trace.plan_requirements_current_state_reconciliation",
+      "initiative_title": "Plan Requirements Current State Reconciliation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_requirements_current_state_reconciliation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_requirements_current_state_reconciliation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_requirements_current_state_reconciliation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T22:30:20Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_routing_engine_export_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_routing_engine_export_foundation",
+      "trace_id": "trace.plan_routing_engine_export_foundation",
+      "initiative_title": "Plan Routing Engine Export Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_routing_engine_export_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_routing_engine_export_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_routing_engine_export_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T23:58:50Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_status_registry_domain_cleanup.bootstrap_recap",
+      "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+      "trace_id": "trace.plan_status_registry_domain_cleanup",
+      "initiative_title": "Plan Status Registry Domain Cleanup",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_status_registry_domain_cleanup",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_status_registry_domain_cleanup.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_status_registry_domain_cleanup.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T00:45:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_status_transition_and_relation_rule_registries.bootstrap_recap",
+      "initiative_id": "initiative.plan_status_transition_and_relation_rule_registries",
+      "trace_id": "trace.plan_status_transition_and_relation_rule_registries",
+      "initiative_title": "Plan Status Transition and Relation Rule Registries",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_status_transition_and_relation_rule_registries",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_status_transition_and_relation_rule_registries.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_status_transition_and_relation_rule_registries.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T20:53:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_task_authority_rendering_governance_recovery.bootstrap_recap",
+      "initiative_id": "initiative.plan_task_authority_rendering_governance_recovery",
+      "trace_id": "trace.plan_task_authority_rendering_governance_recovery",
+      "initiative_title": "Plan Task Authority, Rendering, and Governance Recovery",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_task_authority_rendering_governance_recovery",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_task_authority_rendering_governance_recovery.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_task_authority_rendering_governance_recovery.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T23:45:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_template_section_spec_enforcement_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_template_section_spec_enforcement_foundation",
+      "trace_id": "trace.plan_template_section_spec_enforcement_foundation",
+      "initiative_title": "Plan Template Section-Spec Enforcement Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_template_section_spec_enforcement_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_template_section_spec_enforcement_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_template_section_spec_enforcement_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T18:04:42Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_terminal_initiative_closeout_runtime.bootstrap_recap",
+      "initiative_id": "initiative.plan_terminal_initiative_closeout_runtime",
+      "trace_id": "trace.plan_terminal_initiative_closeout_runtime",
+      "initiative_title": "Plan Terminal Initiative Closeout Runtime",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_terminal_initiative_closeout_runtime",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_terminal_initiative_closeout_runtime.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_terminal_initiative_closeout_runtime.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:11Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_terminology_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_terminology_helper_foundation",
+      "trace_id": "trace.plan_terminology_helper_foundation",
+      "initiative_title": "Plan Terminology Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_terminology_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_terminology_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_terminology_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T01:21:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_workflow_catalog_helper_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_workflow_catalog_helper_foundation",
+      "trace_id": "trace.plan_workflow_catalog_helper_foundation",
+      "initiative_title": "Plan Workflow Catalog Helper Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_workflow_catalog_helper_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_workflow_catalog_helper_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_catalog_helper_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T23:55:35Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_workflow_execution_harness_foundation.bootstrap_recap",
+      "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+      "trace_id": "trace.plan_workflow_execution_harness_foundation",
+      "initiative_title": "Plan Workflow Execution Harness Foundation",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_workflow_execution_harness_foundation",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_workflow_execution_harness_foundation.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_execution_harness_foundation.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-18T00:56:00Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_workflow_root_authority_split.bootstrap_recap",
+      "initiative_id": "initiative.plan_workflow_root_authority_split",
+      "trace_id": "trace.plan_workflow_root_authority_split",
+      "initiative_title": "Plan Workflow Root Authority Split",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_workflow_root_authority_split",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_workflow_root_authority_split.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_workflow_root_authority_split.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T18:55:30Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_initial_implementation_bootstrap.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_initial_implementation_bootstrap",
+      "trace_id": "trace.watchtower_initial_implementation_bootstrap",
+      "initiative_title": "WatchTower Initial Implementation Bootstrap",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_initial_implementation_bootstrap",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_initial_implementation_bootstrap.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_initial_implementation_bootstrap.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:13Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_next_work_selection.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_next_work_selection",
+      "trace_id": "trace.watchtower_next_work_selection",
+      "initiative_title": "WatchTower Next Work Selection",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_next_work_selection",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_next_work_selection.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_next_work_selection.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:24Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_status_snapshot.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_status_snapshot",
+      "trace_id": "trace.watchtower_status_snapshot",
+      "initiative_title": "WatchTower Status Snapshot",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_status_snapshot",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_status_snapshot.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_status_snapshot.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:20Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_work_item_begin_flow.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_work_item_begin_flow",
+      "trace_id": "trace.watchtower_work_item_begin_flow",
+      "initiative_title": "WatchTower Work Item Begin Flow",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_begin_flow",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_work_item_begin_flow.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_begin_flow.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:26Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_work_item_bootstrap.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_work_item_bootstrap",
+      "trace_id": "trace.watchtower_work_item_bootstrap",
+      "initiative_title": "WatchTower Work Item Bootstrap",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_bootstrap",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_work_item_bootstrap.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_bootstrap.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:17Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_work_item_lifecycle.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_work_item_lifecycle",
+      "trace_id": "trace.watchtower_work_item_lifecycle",
+      "initiative_title": "WatchTower Work Item Lifecycle",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_lifecycle",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_work_item_lifecycle.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_lifecycle.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:18Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_work_item_notes.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_work_item_notes",
+      "trace_id": "trace.watchtower_work_item_notes",
+      "initiative_title": "WatchTower Work Item Notes",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_work_item_notes",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_work_item_notes.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_work_item_notes.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:22Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.watchtower_workspace_init_bootstrap.bootstrap_recap",
+      "initiative_id": "initiative.watchtower_workspace_init_bootstrap",
+      "trace_id": "trace.watchtower_workspace_init_bootstrap",
+      "initiative_title": "WatchTower Workspace Init Bootstrap",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/projects/watchtower/initiatives/watchtower_workspace_init_bootstrap",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.watchtower_workspace_init_bootstrap.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.watchtower_workspace_init_bootstrap.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-17T15:06:15Z",
+      "project_id": "project.watchtower",
+      "terminal_state": "completed"
+    }
+  ]
+}

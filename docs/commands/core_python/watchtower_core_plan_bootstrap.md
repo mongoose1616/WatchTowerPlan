@@ -60,6 +60,7 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 - The bootstrap flow creates a PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence artifact, and one bootstrap task. Add `--include-decision` to include a first decision record in the same chain.
 - Bootstrap-generated decision records now include the governed `Applied References and Implications` section with explained placeholder bullets, so the shared scaffold output is immediately compatible with repository decision semantics.
 - Document IDs are derived from the trace suffix and the bootstrap task defaults to `task.<trace_suffix>.bootstrap.001` unless overridden.
+- In write mode, the command seeds the live initiative package into the pre-execution review path. Use `watchtower-core plan confirm-inputs` and `watchtower-core plan approve` before transitioning tasks into execution-starting statuses such as `in_progress`, `in_review`, or `completed`.
 - In write mode, the command writes the scaffold chain, the acceptance contract, the planning-baseline evidence artifact, and refreshes derived planning, task, initiative, traceability, and coordination surfaces.
 - While the bootstrap task is the only active task for the trace, initiative and planning rendered surfaces keep the trace in `implementation_planning`; the phase moves to `execution` only after non-bootstrap active work exists.
 - In `json` mode, the command prints one JSON object with the scaffolded planning documents, acceptance contract, validation evidence, and bootstrap task outcome.
@@ -69,9 +70,11 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 |---|---|
 | `watchtower-core plan` | Parent command group for planning scaffold operations. |
 | `watchtower-core plan scaffold` | Creates one planning document at a time when full bootstrap is not needed. |
+| `watchtower-core plan confirm-inputs` | Records reviewed initiative-authored inputs before readiness approval. |
+| `watchtower-core plan approve` | Approves the live initiative package into `ready_for_execution`. |
 | `watchtower-core task` | Manages the bootstrap task or any follow-up tasks created after the chain exists. |
 | `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
-| `watchtower-core closeout initiative` | Use after the bootstrap task and its successors are terminal. |
+| `watchtower-core closeout plan-initiative` | Use after the bootstrap task and its successors are terminal on the live `plan/**` initiative package. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
@@ -79,4 +82,4 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 - `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`
 
 ## Updated At
-- `2026-03-11T15:11:22Z`
+- `2026-03-18T20:35:00Z`

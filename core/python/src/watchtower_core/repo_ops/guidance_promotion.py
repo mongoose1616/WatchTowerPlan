@@ -11,10 +11,14 @@ from typing import Any
 from watchtower_core.adapters.front_matter import render_front_matter
 from watchtower_core.control_plane import (
     DocumentationFamilyHelper,
+    ExtractionCandidateKnowledgeSpec,
+    ExtractionObservationSpec,
+    ExtractionOutputEnvelopeHelper,
     PromotionPolicyHelper,
     TemplateCatalogHelper,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import ExtractionOutputEnvelopeArtifact
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
@@ -74,6 +78,23 @@ class GuidancePromotionResult:
     updated_at: str
     wrote: bool
     outputs: tuple[GuidancePromotionOutput, ...]
+    extraction_envelopes: tuple[ExtractionOutputEnvelopeArtifact, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class _ResolvedPromotionCandidate:
+    source_path: str
+    source_artifact_kind: str
+    target_family: str
+    target_path: str
+    guidance_id: str
+    review_path: str
+    provenance_expectation: str
+    mirror_update_mode: str
+    mirror_target_paths: tuple[str, ...]
+    template_path: Path
+    source_title: str | None = None
+    source_summary: str | None = None
 
 
 class GuidancePromotionService:
@@ -93,6 +114,39 @@ class GuidancePromotionService:
         self._template_helper = TemplateCatalogHelper.from_loader(
             self._pack_loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        self._extraction_helper = ExtractionOutputEnvelopeHelper(self._pack_loader)
+        self._pack_settings = self._pack_loader.load_pack_settings()
+
+    def extract_packwide(
+        self,
+        initiative_slug: str,
+        *,
+        promotion_record_filename: str = PROMOTION_RECORD_FILENAME,
+        updated_at: str | None = None,
+    ) -> tuple[ExtractionOutputEnvelopeArtifact, ...]:
+        """Build validated extraction envelopes for one pack-wide initiative."""
+
+        return self._extract(
+            initiative_root=Path("plan/initiatives") / initiative_slug,
+            promotion_record_filename=promotion_record_filename,
+            updated_at=updated_at or utc_timestamp_now(),
+        )
+
+    def extract_project_scoped(
+        self,
+        project_slug: str,
+        initiative_slug: str,
+        *,
+        promotion_record_filename: str = PROMOTION_RECORD_FILENAME,
+        updated_at: str | None = None,
+    ) -> tuple[ExtractionOutputEnvelopeArtifact, ...]:
+        """Build validated extraction envelopes for one project-scoped initiative."""
+
+        return self._extract(
+            initiative_root=Path("plan/projects") / project_slug / "initiatives" / initiative_slug,
+            promotion_record_filename=promotion_record_filename,
+            updated_at=updated_at or utc_timestamp_now(),
         )
 
     def promote_packwide(
@@ -143,98 +197,66 @@ class GuidancePromotionService:
         updated_at: str,
         write: bool,
     ) -> GuidancePromotionResult:
-        state_relative_path = (initiative_root / ".wt/initiative.json").as_posix()
-        promotion_relative_path = (initiative_root / ".wt/promotions" / promotion_record_filename).as_posix()
-        initiative_document = _load_json(self._loader.repo_root / state_relative_path)
-        promotion_document = _load_json(self._loader.repo_root / promotion_relative_path)
+        (
+            initiative_document,
+            promotion_document,
+            promotion_relative_path,
+        ) = self._load_promotion_inputs(
+            initiative_root=initiative_root,
+            promotion_record_filename=promotion_record_filename,
+        )
+        resolved_candidates = self._resolve_candidates(
+            initiative_document=initiative_document,
+            promotion_document=promotion_document,
+        )
+        extraction_envelopes = self._build_extraction_envelopes(
+            initiative_document=initiative_document,
+            promotion_document=promotion_document,
+            candidates=resolved_candidates,
+            updated_at=updated_at,
+        )
 
         outputs: list[GuidancePromotionOutput] = []
         rendered_documents: list[tuple[str, str]] = []
         updated_candidates: list[dict[str, Any]] = []
 
-        for candidate in promotion_document["candidates"]:
-            source_path = str(candidate["candidate_path"])
-            source_artifact_kind = str(
-                candidate.get("source_artifact_kind")
-                or source_artifact_kind_for_path(source_path)
-            )
-            target_family = str(candidate["target_family"])
-            policy = self._policy_helper.resolve(
-                source_artifact_kind=source_artifact_kind,
-                target_family=target_family,
-            )
-            template = self._template_helper.template(_TEMPLATE_ID_BY_FAMILY[target_family])
-            family = self._documentation_helper.family(target_family)
-            if target_family not in _TEMPLATE_ID_BY_FAMILY:
-                raise ValueError(f"Unsupported promotion target family: {target_family}")
-            if policy.target_root not in family.allowed_roots:
-                raise ValueError(
-                    f"Promotion policy {policy.policy_id} targets disallowed root {policy.target_root}."
-                )
-            target_path = str(candidate.get("target_path") or default_target_path(
-                initiative_slug=str(initiative_document["slug"]),
-                source_path=source_path,
-                target_root=policy.target_root,
-            ))
-            if not target_path.startswith(f"{policy.target_root}/"):
-                raise ValueError(
-                    f"Promotion target path {target_path} must live under policy root {policy.target_root}."
-                )
-
-            mirror_target_paths = tuple(
-                candidate.get("mirror_target_paths")
-                or default_mirror_target_paths(
-                    target_path=target_path,
-                    target_root=policy.target_root,
-                    mirror_roots=policy.mirror_roots,
-                )
-            )
-            if policy.mirror_update_mode == "none" and mirror_target_paths:
-                raise ValueError(
-                    f"Promotion candidate {source_path} declares mirror targets without a mirror policy."
-                )
-            if policy.mirror_update_mode != "none" and not mirror_target_paths:
-                raise ValueError(
-                    f"Promotion candidate {source_path} requires mirror target paths."
-                )
-
+        for candidate in resolved_candidates:
             rendered = self._render_guidance_document(
                 initiative_document=initiative_document,
                 promotion_document=promotion_document,
-                source_path=source_path,
-                source_artifact_kind=source_artifact_kind,
-                target_family=target_family,
-                target_path=target_path,
-                template_path=self._loader.repo_root / template.template_path,
+                source_path=candidate.source_path,
+                source_artifact_kind=candidate.source_artifact_kind,
+                target_family=candidate.target_family,
+                target_path=candidate.target_path,
+                template_path=candidate.template_path,
                 updated_at=updated_at,
+                source_title=candidate.source_title,
+                source_summary=candidate.source_summary,
             )
-            rendered_documents.append((target_path, rendered))
-            for mirror_target_path in mirror_target_paths:
+            rendered_documents.append((candidate.target_path, rendered))
+            for mirror_target_path in candidate.mirror_target_paths:
                 rendered_documents.append((mirror_target_path, rendered))
 
             outputs.append(
                 GuidancePromotionOutput(
-                    source_path=source_path,
-                    source_artifact_kind=source_artifact_kind,
-                    target_family=target_family,
-                    target_path=target_path,
-                    guidance_id=guidance_id_for_target_path(target_family, target_path),
-                    mirror_target_paths=mirror_target_paths,
+                    source_path=candidate.source_path,
+                    source_artifact_kind=candidate.source_artifact_kind,
+                    target_family=candidate.target_family,
+                    target_path=candidate.target_path,
+                    guidance_id=candidate.guidance_id,
+                    mirror_target_paths=candidate.mirror_target_paths,
                 )
             )
             updated_candidates.append(
                 {
-                    "candidate_path": source_path,
-                    "source_artifact_kind": source_artifact_kind,
-                    "target_family": target_family,
-                    "target_path": target_path,
-                    "review_path": str(candidate.get("review_path") or policy.required_review_path),
-                    "provenance_expectation": str(
-                        candidate.get("provenance_expectation")
-                        or "Promotions must cite the source initiative id, trace id, and evidence bundle id."
-                    ),
-                    "mirror_update_mode": policy.mirror_update_mode,
-                    "mirror_target_paths": list(mirror_target_paths),
+                    "candidate_path": candidate.source_path,
+                    "source_artifact_kind": candidate.source_artifact_kind,
+                    "target_family": candidate.target_family,
+                    "target_path": candidate.target_path,
+                    "review_path": candidate.review_path,
+                    "provenance_expectation": candidate.provenance_expectation,
+                    "mirror_update_mode": candidate.mirror_update_mode,
+                    "mirror_target_paths": list(candidate.mirror_target_paths),
                 }
             )
 
@@ -277,7 +299,197 @@ class GuidancePromotionService:
             updated_at=updated_at,
             wrote=write,
             outputs=tuple(outputs),
+            extraction_envelopes=extraction_envelopes,
         )
+
+    def _extract(
+        self,
+        *,
+        initiative_root: Path,
+        promotion_record_filename: str,
+        updated_at: str,
+    ) -> tuple[ExtractionOutputEnvelopeArtifact, ...]:
+        initiative_document, promotion_document, _ = self._load_promotion_inputs(
+            initiative_root=initiative_root,
+            promotion_record_filename=promotion_record_filename,
+        )
+        resolved_candidates = self._resolve_candidates(
+            initiative_document=initiative_document,
+            promotion_document=promotion_document,
+        )
+        return self._build_extraction_envelopes(
+            initiative_document=initiative_document,
+            promotion_document=promotion_document,
+            candidates=resolved_candidates,
+            updated_at=updated_at,
+        )
+
+    def _load_promotion_inputs(
+        self,
+        *,
+        initiative_root: Path,
+        promotion_record_filename: str,
+    ) -> tuple[dict[str, Any], dict[str, Any], str]:
+        state_relative_path = (initiative_root / ".wt/initiative.json").as_posix()
+        promotion_relative_path = (initiative_root / ".wt/promotions" / promotion_record_filename).as_posix()
+        initiative_document = _load_json(self._loader.repo_root / state_relative_path)
+        promotion_document = _load_json(self._loader.repo_root / promotion_relative_path)
+        return initiative_document, promotion_document, promotion_relative_path
+
+    def _resolve_candidates(
+        self,
+        *,
+        initiative_document: dict[str, Any],
+        promotion_document: dict[str, Any],
+    ) -> tuple[_ResolvedPromotionCandidate, ...]:
+        resolved: list[_ResolvedPromotionCandidate] = []
+        initiative_slug = str(initiative_document["slug"])
+        for candidate in promotion_document["candidates"]:
+            source_path = str(candidate["candidate_path"])
+            source_artifact_kind = str(
+                candidate.get("source_artifact_kind")
+                or source_artifact_kind_for_path(source_path)
+            )
+            target_family = str(candidate["target_family"])
+            policy = self._policy_helper.resolve(
+                source_artifact_kind=source_artifact_kind,
+                target_family=target_family,
+            )
+            if target_family not in _TEMPLATE_ID_BY_FAMILY:
+                raise ValueError(f"Unsupported promotion target family: {target_family}")
+            family = self._documentation_helper.family(target_family)
+            if policy.target_root not in family.allowed_roots:
+                raise ValueError(
+                    f"Promotion policy {policy.policy_id} targets disallowed root {policy.target_root}."
+                )
+            target_path = str(
+                candidate.get("target_path")
+                or default_target_path(
+                    initiative_slug=initiative_slug,
+                    source_path=source_path,
+                    target_root=policy.target_root,
+                )
+            )
+            if not target_path.startswith(f"{policy.target_root}/"):
+                raise ValueError(
+                    f"Promotion target path {target_path} must live under policy root {policy.target_root}."
+                )
+            mirror_target_paths = tuple(
+                candidate.get("mirror_target_paths")
+                or default_mirror_target_paths(
+                    target_path=target_path,
+                    target_root=policy.target_root,
+                    mirror_roots=policy.mirror_roots,
+                )
+            )
+            if policy.mirror_update_mode == "none" and mirror_target_paths:
+                raise ValueError(
+                    f"Promotion candidate {source_path} declares mirror targets without a mirror policy."
+                )
+            if policy.mirror_update_mode != "none" and not mirror_target_paths:
+                raise ValueError(
+                    f"Promotion candidate {source_path} requires mirror target paths."
+                )
+            template = self._template_helper.template(_TEMPLATE_ID_BY_FAMILY[target_family])
+            source_file = self._loader.repo_root / source_path
+            resolved.append(
+                _ResolvedPromotionCandidate(
+                    source_path=source_path,
+                    source_artifact_kind=source_artifact_kind,
+                    target_family=target_family,
+                    target_path=target_path,
+                    guidance_id=guidance_id_for_target_path(target_family, target_path),
+                    review_path=str(candidate.get("review_path") or policy.required_review_path),
+                    provenance_expectation=str(
+                        candidate.get("provenance_expectation")
+                        or "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+                    ),
+                    mirror_update_mode=policy.mirror_update_mode,
+                    mirror_target_paths=mirror_target_paths,
+                    template_path=self._loader.repo_root / template.template_path,
+                    source_title=extract_markdown_title(source_file),
+                    source_summary=extract_markdown_summary(source_file),
+                )
+            )
+        return tuple(resolved)
+
+    def _build_extraction_envelopes(
+        self,
+        *,
+        initiative_document: dict[str, Any],
+        promotion_document: dict[str, Any],
+        candidates: tuple[_ResolvedPromotionCandidate, ...],
+        updated_at: str,
+    ) -> tuple[ExtractionOutputEnvelopeArtifact, ...]:
+        initiative_slug = str(initiative_document["slug"])
+        initiative_title = str(initiative_document["title"])
+        initiative_summary = str(initiative_document["summary"])
+        evidence_ids = tuple(str(value) for value in initiative_document.get("evidence_ids", ()))
+        extraction_envelopes: list[ExtractionOutputEnvelopeArtifact] = []
+        for candidate in candidates:
+            source_label = candidate.source_title or readable_source_artifact_kind(
+                candidate.source_artifact_kind
+            ).title()
+            source_summary_line = candidate.source_summary or initiative_summary
+            document = self._extraction_helper.build_document(
+                envelope_id=_extraction_envelope_id(initiative_slug, candidate.source_path),
+                title=f"Extraction Envelope: {source_label}",
+                summary=(
+                    f"Structured extraction output for {candidate.source_path} before "
+                    f"promotion into the {candidate.target_family} family. {source_summary_line}"
+                ),
+                status="active",
+                pack_id=self._pack_settings.pack_id,
+                work_item_id=str(promotion_document["id"]),
+                trace_id=str(initiative_document["trace_id"]),
+                source_note_id=_source_note_id(initiative_slug, candidate.source_path),
+                workflow_run_id=_workflow_run_id(initiative_slug),
+                extraction_method="governed_guidance_promotion",
+                created_at=updated_at,
+                observations=(
+                    ExtractionObservationSpec(
+                        observation_id=_observation_id(initiative_slug, candidate.source_path),
+                        summary=(
+                            f"{candidate.source_path} is eligible for governed promotion into "
+                            f"{candidate.target_family} at {candidate.target_path}."
+                        ),
+                        tags=(candidate.source_artifact_kind, candidate.target_family),
+                    ),
+                ),
+                candidate_knowledge=(
+                    ExtractionCandidateKnowledgeSpec(
+                        candidate_id=_knowledge_candidate_id(initiative_slug, candidate.source_path),
+                        title=guidance_title(
+                            initiative_title=initiative_title,
+                            target_family=candidate.target_family,
+                            source_artifact_kind=candidate.source_artifact_kind,
+                            source_title=candidate.source_title,
+                        ),
+                        summary=guidance_summary(
+                            initiative_title=initiative_title,
+                            initiative_summary=initiative_summary,
+                            target_family=candidate.target_family,
+                            source_artifact_kind=candidate.source_artifact_kind,
+                            source_summary=candidate.source_summary,
+                        ),
+                        knowledge_family=candidate.target_family,
+                        evidence_artifact_ids=evidence_ids,
+                        tags=(
+                            "promoted_guidance",
+                            candidate.source_artifact_kind,
+                            candidate.target_family,
+                        ),
+                    ),
+                ),
+                notes=(
+                    f"Promotion record {promotion_document['id']} keeps the review path "
+                    f"{candidate.review_path} and target path {candidate.target_path} authoritative."
+                ),
+            )
+            extraction_envelopes.append(
+                self._extraction_helper.artifact_from_document(document)
+            )
+        return tuple(extraction_envelopes)
 
     def _render_guidance_document(
         self,
@@ -290,9 +502,9 @@ class GuidancePromotionService:
         target_path: str,
         template_path: Path,
         updated_at: str,
+        source_title: str | None,
+        source_summary: str | None,
     ) -> str:
-        source_title = extract_markdown_title(self._loader.repo_root / source_path)
-        source_summary = extract_markdown_summary(self._loader.repo_root / source_path)
         front_matter = build_guidance_front_matter(
             initiative_document=initiative_document,
             promotion_document=promotion_document,
@@ -627,15 +839,34 @@ def guidance_summary(
     )
 
 
+def _extraction_envelope_id(initiative_slug: str, source_path: str) -> str:
+    stem = Path(source_path).stem
+    return f"envelope.{initiative_slug}.{stem}"
+
+
+def _knowledge_candidate_id(initiative_slug: str, source_path: str) -> str:
+    stem = Path(source_path).stem
+    return f"candidate.{initiative_slug}.{stem}"
+
+
+def _observation_id(initiative_slug: str, source_path: str) -> str:
+    stem = Path(source_path).stem
+    return f"observation.{initiative_slug}.{stem}"
+
+
+def _source_note_id(initiative_slug: str, source_path: str) -> str:
+    stem = Path(source_path).stem
+    return f"note.{initiative_slug}.{stem}"
+
+
+def _workflow_run_id(initiative_slug: str) -> str:
+    return f"run.{initiative_slug}.guidance_promotion"
+
+
 def _plan_pack_loader(loader: ControlPlaneLoader) -> ControlPlaneLoader:
     if loader.active_pack_settings_path == PLAN_PACK_SETTINGS_PATH:
         return loader
-    return ControlPlaneLoader(
-        workspace_config=loader.workspace_config,
-        artifact_source=loader.artifact_source,
-        artifact_store=loader.artifact_store,
-        active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-    )
+    return loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
 
 
 def _load_json(path: Path) -> dict[str, Any]:

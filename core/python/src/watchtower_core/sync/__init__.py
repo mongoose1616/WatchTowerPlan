@@ -8,12 +8,11 @@ from watchtower_core.sync.harness import (
     SyncResult,
     SyncTargetSpec,
 )
+from watchtower_core.utils.module_exports import fail_closed_package_getattr
 
 __all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
 
-
-def __getattr__(name: str) -> object:
-    raise AttributeError(
-        "watchtower_core.sync exports only generic sync harness surfaces. "
-        "Repo-specific sync services still live under watchtower_core.repo_ops.sync."
-    )
+__getattr__ = fail_closed_package_getattr(
+    "watchtower_core.sync exports only generic sync harness surfaces. "
+    "Repo-specific sync services still live under watchtower_core.repo_ops.sync."
+)

@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
-import re
 
 from jsonschema import ValidationError
 
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
-from watchtower_core.control_plane.schemas import SchemaStore
 from watchtower_core.control_plane.models import TemplateCatalog, TemplateCatalogEntry
+from watchtower_core.control_plane.schemas import SchemaStore
 
 
 @dataclass(frozen=True, slots=True)

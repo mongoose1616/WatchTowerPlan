@@ -6,7 +6,7 @@ import argparse
 from importlib import import_module
 from typing import Any
 
-from watchtower_core.cli.handler_common import _print_payload
+from watchtower_core.cli.handler_common import _emit_detail_result, _task_filter_kwargs
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 
@@ -14,14 +14,18 @@ def _load_sync_class(module_name: str, class_name: str) -> Any:
     return getattr(import_module(module_name), class_name)
 
 
-def _run_sync_all(args: argparse.Namespace) -> int:
-    service = _load_sync_class(
-        "watchtower_core.repo_ops.sync.all",
-        "AllSyncService",
-    ).from_repo_root()
+def _run_multi_target_sync(
+    args: argparse.Namespace,
+    *,
+    module_name: str,
+    class_name: str,
+    command_name: str,
+    human_label: str,
+) -> int:
+    service = _load_sync_class(module_name, class_name).from_repo_root()
     result = service.run(write=args.write, output_dir=args.output_dir)
     payload = {
-        "command": "watchtower-core sync all",
+        "command": command_name,
         "status": "ok",
         "result_count": len(result.records),
         "wrote": result.wrote,
@@ -39,67 +43,46 @@ def _run_sync_all(args: argparse.Namespace) -> int:
             for record in result.records
         ],
     }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    mode = (
-        f"output-dir mode at {result.output_dir}"
-        if result.output_dir is not None
-        else ("write mode" if result.wrote else "dry-run mode")
-    )
-    print(f"Ran sync all across {len(result.records)} targets in {mode}.")
-    for record in result.records:
-        print(
-            f"- {record.target} [{record.artifact_kind}] "
-            f"record_count={record.record_count}"
+    def _render_human() -> None:
+        mode = (
+            f"output-dir mode at {result.output_dir}"
+            if result.output_dir is not None
+            else ("write mode" if result.wrote else "dry-run mode")
         )
-        if record.output_path is not None:
-            print(f"  Wrote to {record.output_path}")
-    return 0
+        print(f"Ran {human_label} across {len(result.records)} targets in {mode}.")
+        for record in result.records:
+            print(
+                f"- {record.target} [{record.artifact_kind}] "
+                f"record_count={record.record_count}"
+            )
+            if record.output_path is not None:
+                print(f"  Wrote to {record.output_path}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
+
+
+def _run_sync_all(args: argparse.Namespace) -> int:
+    return _run_multi_target_sync(
+        args,
+        module_name="watchtower_core.repo_ops.sync.all",
+        class_name="AllSyncService",
+        command_name="watchtower-core sync all",
+        human_label="sync all",
+    )
 
 
 def _run_sync_coordination(args: argparse.Namespace) -> int:
-    service = _load_sync_class(
-        "watchtower_core.repo_ops.sync.coordination",
-        "CoordinationSyncService",
-    ).from_repo_root()
-    result = service.run(write=args.write, output_dir=args.output_dir)
-    payload = {
-        "command": "watchtower-core sync coordination",
-        "status": "ok",
-        "result_count": len(result.records),
-        "wrote": result.wrote,
-        "output_dir": result.output_dir,
-        "results": [
-            {
-                "target": record.target,
-                "artifact_kind": record.artifact_kind,
-                "relative_output_path": record.relative_output_path,
-                "output_path": record.output_path,
-                "wrote": record.wrote,
-                "record_count": record.record_count,
-                "details": record.details,
-            }
-            for record in result.records
-        ],
-    }
-    if _print_payload(args, payload) == 0:
-        return 0
-
-    mode = (
-        f"output-dir mode at {result.output_dir}"
-        if result.output_dir is not None
-        else ("write mode" if result.wrote else "dry-run mode")
+    return _run_multi_target_sync(
+        args,
+        module_name="watchtower_core.repo_ops.sync.coordination",
+        class_name="CoordinationSyncService",
+        command_name="watchtower-core sync coordination",
+        human_label="sync coordination",
     )
-    print(f"Ran sync coordination across {len(result.records)} targets in {mode}.")
-    for record in result.records:
-        print(
-            f"- {record.target} [{record.artifact_kind}] "
-            f"record_count={record.record_count}"
-        )
-        if record.output_path is not None:
-            print(f"  Wrote to {record.output_path}")
-    return 0
 
 
 def _run_sync_github_tasks(args: argparse.Namespace) -> int:
@@ -113,15 +96,7 @@ def _run_sync_github_tasks(args: argparse.Namespace) -> int:
     )(ControlPlaneLoader())
     result = service.sync(
         params_class(
-            task_ids=tuple(args.task_id),
-            trace_id=args.trace_id,
-            task_status=args.task_status,
-            priority=args.priority,
-            owner=args.owner,
-            task_kind=args.task_kind,
-            blocked_only=args.blocked_only,
-            blocked_by_task_id=args.blocked_by,
-            depends_on_task_id=args.depends_on,
+            **_task_filter_kwargs(args),
             repository=args.repo,
             project_owner=args.project_owner,
             project_owner_type=args.project_owner_type,
@@ -161,21 +136,32 @@ def _run_sync_github_tasks(args: argparse.Namespace) -> int:
         ],
     }
     exit_code = 0 if payload["status"] == "ok" else 1
-    if _print_payload(args, payload) == 0:
-        return exit_code
+    def _render_human() -> None:
+        if not result.records:
+            print("No task entries matched the requested sync filters.")
+            return
+        for record in result.records:
+            state = "ok" if record.success else "error"
+            print(f"- {record.task_id} [{state}]")
+            print(f"  Issue action: {record.issue_action}")
+            if record.project_action is not None:
+                print(f"  Project action: {record.project_action}")
+            if record.labels:
+                print(f"  Labels: {', '.join(record.labels)}")
+            if record.github_issue_url is not None:
+                print(f"  GitHub Issue: {record.github_issue_url}")
+            print(f"  {record.message}")
 
-    if not result.records:
-        print("No task entries matched the requested sync filters.")
-        return 0
-    for record in result.records:
-        state = "ok" if record.success else "error"
-        print(f"- {record.task_id} [{state}]")
-        print(f"  Issue action: {record.issue_action}")
-        if record.project_action is not None:
-            print(f"  Project action: {record.project_action}")
-        if record.labels:
-            print(f"  Labels: {', '.join(record.labels)}")
-        if record.github_issue_url is not None:
-            print(f"  GitHub Issue: {record.github_issue_url}")
-        print(f"  {record.message}")
-    return exit_code
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+        exit_code=exit_code,
+    )
+
+
+ORCHESTRATION_SYNC_HANDLERS = {
+    "all": _run_sync_all,
+    "coordination": _run_sync_coordination,
+    "github_tasks": _run_sync_github_tasks,
+}

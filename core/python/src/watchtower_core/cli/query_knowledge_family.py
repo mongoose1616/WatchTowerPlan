@@ -5,7 +5,13 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    add_limit_argument,
+    add_query_argument,
+    examples,
+)
 from watchtower_core.cli.query_knowledge_handlers import (
     _run_query_foundations,
     _run_query_references,
@@ -41,9 +47,9 @@ def register_query_knowledge_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_foundations_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_foundations_parser,
+        help_text=(
             "Free-text query over indexed foundation fields such as ID, title, "
             "summary, aliases, and related paths."
         ),
@@ -63,7 +69,10 @@ def register_query_knowledge_commands(
     query_foundations_parser.add_argument("--tag", help="Exact tag filter.")
     query_foundations_parser.add_argument(
         "--related-path",
-        help="Exact repository-path filter such as core/python/ or workflows/modules/.",
+        help=(
+            "Exact repository-path filter such as core/python/, "
+            "core/workflows/modules/, or plan/workflows/modules/."
+        ),
     )
     query_foundations_parser.add_argument(
         "--reference-path",
@@ -80,18 +89,8 @@ def register_query_knowledge_commands(
             "in an applied-reference section."
         ),
     )
-    query_foundations_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_foundations_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_foundations_parser)
+    add_human_json_format_argument(query_foundations_parser)
     query_foundations_parser.set_defaults(handler=_run_query_foundations)
 
     query_workflows_parser = query_subparsers.add_parser(
@@ -114,9 +113,9 @@ def register_query_knowledge_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_workflows_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_workflows_parser,
+        help_text=(
             "Free-text query over indexed workflow fields such as workflow ID, "
             "title, summary, related paths, and references."
         ),
@@ -151,18 +150,8 @@ def register_query_knowledge_commands(
             "docs/references/github_collaboration_reference.md."
         ),
     )
-    query_workflows_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_workflows_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_workflows_parser)
+    add_human_json_format_argument(query_workflows_parser)
     query_workflows_parser.set_defaults(handler=_run_query_workflows)
 
     query_references_parser = query_subparsers.add_parser(
@@ -185,9 +174,9 @@ def register_query_knowledge_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_references_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_references_parser,
+        help_text=(
             "Free-text query over indexed reference fields such as reference ID, "
             "title, summary, upstream URLs, related paths, aliases, and tags."
         ),
@@ -228,18 +217,8 @@ def register_query_knowledge_commands(
             "applied-reference section."
         ),
     )
-    query_references_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_references_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_references_parser)
+    add_human_json_format_argument(query_references_parser)
     query_references_parser.set_defaults(handler=_run_query_references)
 
     query_standards_parser = query_subparsers.add_parser(
@@ -262,9 +241,9 @@ def register_query_knowledge_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_standards_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_standards_parser,
+        help_text=(
             "Free-text query over indexed standard fields such as ID, title, "
             "summary, category, references, and related paths."
         ),
@@ -311,16 +290,6 @@ def register_query_knowledge_commands(
             "concrete files such as nested README.md or AGENTS.md surfaces."
         ),
     )
-    query_standards_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_standards_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_standards_parser)
+    add_human_json_format_argument(query_standards_parser)
     query_standards_parser.set_defaults(handler=_run_query_standards)

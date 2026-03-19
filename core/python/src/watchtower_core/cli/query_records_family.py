@@ -5,7 +5,13 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    add_limit_argument,
+    add_query_argument,
+    examples,
+)
 from watchtower_core.cli.query_records_handlers import (
     _run_query_acceptance,
     _run_query_decisions,
@@ -37,9 +43,9 @@ def register_query_record_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_prds_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_prds_parser,
+        help_text=(
             "Free-text query over indexed PRD fields such as IDs, title, "
             "summary, tags, and linked surfaces."
         ),
@@ -60,18 +66,8 @@ def register_query_record_commands(
         "--acceptance-id",
         help="Exact acceptance-ID filter such as ac.core_python_foundation.002.",
     )
-    query_prds_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_prds_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_prds_parser)
+    add_human_json_format_argument(query_prds_parser)
     query_prds_parser.set_defaults(handler=_run_query_prds)
 
     query_decisions_parser = query_subparsers.add_parser(
@@ -92,9 +88,9 @@ def register_query_record_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_decisions_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_decisions_parser,
+        help_text=(
             "Free-text query over indexed decision fields such as IDs, title, "
             "summary, tags, and linked surfaces."
         ),
@@ -115,18 +111,8 @@ def register_query_record_commands(
         "--linked-prd-id",
         help="Exact linked PRD filter such as prd.core_python_foundation.",
     )
-    query_decisions_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_decisions_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_decisions_parser)
+    add_human_json_format_argument(query_decisions_parser)
     query_decisions_parser.set_defaults(handler=_run_query_decisions)
 
     query_designs_parser = query_subparsers.add_parser(
@@ -148,9 +134,9 @@ def register_query_record_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_designs_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_designs_parser,
+        help_text=(
             "Free-text query over indexed design fields such as IDs, title, "
             "summary, tags, and linked paths."
         ),
@@ -167,18 +153,8 @@ def register_query_record_commands(
         "--tag",
         help="Exact tag filter.",
     )
-    query_designs_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_designs_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_designs_parser)
+    add_human_json_format_argument(query_designs_parser)
     query_designs_parser.set_defaults(handler=_run_query_designs)
 
     query_acceptance_parser = query_subparsers.add_parser(
@@ -212,12 +188,7 @@ def register_query_record_commands(
         "--acceptance-id",
         help="Exact acceptance-ID filter such as ac.core_python_foundation.002.",
     )
-    query_acceptance_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(query_acceptance_parser)
     query_acceptance_parser.set_defaults(handler=_run_query_acceptance)
 
     query_evidence_parser = query_subparsers.add_parser(
@@ -255,10 +226,5 @@ def register_query_record_commands(
         "--validator-id",
         help="Exact validator-ID filter such as validator.control_plane.traceability_index.",
     )
-    query_evidence_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(query_evidence_parser)
     query_evidence_parser.set_defaults(handler=_run_query_evidence)

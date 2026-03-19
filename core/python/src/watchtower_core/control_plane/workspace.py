@@ -147,10 +147,9 @@ class OverlayArtifactSource:
 
     def iter_json_objects(self, relative_directory: str) -> tuple[tuple[str, dict[str, Any]], ...]:
         """Iterate direct JSON children with overlay paths taking precedence."""
-        merged: dict[str, dict[str, Any]] = {
-            logical_path: document
-            for logical_path, document in self.fallback.iter_json_objects(relative_directory)
-        }
+        merged: dict[str, dict[str, Any]] = dict(
+            self.fallback.iter_json_objects(relative_directory)
+        )
         for logical_path, document in self.primary.iter_json_objects(relative_directory):
             merged[logical_path] = document
         return tuple((logical_path, merged[logical_path]) for logical_path in sorted(merged))

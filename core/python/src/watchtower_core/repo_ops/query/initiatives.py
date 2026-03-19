@@ -8,8 +8,8 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
 from watchtower_core.repo_ops.query.common import (
-    RenderedSearchFilters,
     initiative_rendered_query_terms,
+    rendered_search_filters_from_params,
     search_rendered_entries,
 )
 
@@ -37,14 +37,9 @@ class InitiativeQueryService:
         """Return initiative entries matching the requested filters."""
         return search_rendered_entries(
             self._plan_workspace.load_initiative_index().entries,
-            RenderedSearchFilters(
-                query=params.query,
-                trace_id=params.trace_id,
-                initiative_status=params.initiative_status,
-                current_phase=params.current_phase,
-                owner=params.owner,
+            rendered_search_filters_from_params(
+                params,
                 blocked_only=params.blocked_only,
-                limit=params.limit,
             ),
             query_fields=initiative_rendered_query_terms,
             sort_key=lambda entry: entry.trace_id,

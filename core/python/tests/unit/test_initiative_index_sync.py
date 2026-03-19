@@ -4,12 +4,18 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     DesignDocumentIndexEntry,
     PrdIndexEntry,
     TaskIndexEntry,
     TraceabilityEntry,
+)
+from watchtower_core.repo_ops.initiative_packages import (
+    InitiativeBootstrapParams,
+    InitiativePackageService,
+    InitiativeTaskSpec,
 )
 from watchtower_core.repo_ops.planning_rendered_policy import (
     _determine_current_phase,
@@ -29,6 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 
@@ -212,56 +219,53 @@ def test_non_bootstrap_active_tasks_still_project_execution_phase() -> None:
     assert phase == "execution"
 
 
-def test_initiative_index_allows_validation_phase_without_active_tasks(
+def test_initiative_index_treats_live_initiative_with_only_terminal_tasks_as_closeout(
     tmp_path: Path,
 ) -> None:
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     trace_id = "trace.core_python_foundation"
-    traceability_path = (
-        repo_root / "core/control_plane/indexes/traceability/traceability_index.json"
-    )
-    task_index_path = repo_root / "core/control_plane/indexes/tasks/task_index.json"
-
-    traceability_document = json.loads(traceability_path.read_text(encoding="utf-8"))
-    trace_entries = traceability_document["entries"]
-    assert isinstance(trace_entries, list)
-    trace_entry = next(entry for entry in trace_entries if entry["trace_id"] == trace_id)
-    trace_entry["initiative_status"] = "active"
-    trace_entry["updated_at"] = "2026-03-11T06:21:01Z"
-    trace_entry.pop("closed_at", None)
-    trace_entry.pop("closure_reason", None)
-    trace_entry.pop("superseded_by_trace_id", None)
-    trace_entry.pop("evidence_ids", None)
-    traceability_path.write_text(
-        f"{json.dumps(traceability_document, indent=2)}\n",
-        encoding="utf-8",
-    )
-
-    task_index_document = json.loads(task_index_path.read_text(encoding="utf-8"))
-    task_entries = task_index_document["entries"]
-    assert isinstance(task_entries, list)
-    for entry in task_entries:
-        if entry.get("trace_id") != trace_id:
-            continue
-        entry["status"] = "active"
-        entry["task_status"] = "done"
-    task_index_path.write_text(
-        f"{json.dumps(task_index_document, indent=2)}\n",
-        encoding="utf-8",
-    )
-
     loader = ControlPlaneLoader(repo_root)
+    InitiativePackageService(loader).bootstrap_packwide(
+        InitiativeBootstrapParams(
+            trace_id=trace_id,
+            initiative_slug="core_python_foundation",
+            title="Core Python Foundation",
+            summary="Exercises live initiative closeout-phase derivation with no active tasks.",
+            updated_at="2026-03-11T06:21:01Z",
+            task_specs=(
+                InitiativeTaskSpec(
+                    task_id="task.core_python_foundation.seed_contracts",
+                    slug="seed_contracts",
+                    title="Seed initiative contracts",
+                    summary="Creates the initiative-local machine package.",
+                ),
+                InitiativeTaskSpec(
+                    task_id="task.core_python_foundation.validate_gate",
+                    slug="validate_gate",
+                    title="Validate readiness gate",
+                    summary="Confirms the readiness gate shape.",
+                ),
+            ),
+        ),
+        write=True,
+    )
+
+    initiative_root = repo_root / "plan/initiatives/core_python_foundation/.wt/tasks"
+    for task_path in sorted(initiative_root.glob("*/task.json")):
+        task_document = json.loads(task_path.read_text(encoding="utf-8"))
+        task_document["status"] = "active"
+        task_document["task_status"] = "completed"
+        task_document["updated_at"] = "2026-03-11T06:21:01Z"
+        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
     rebuilt = InitiativeIndexSyncService(loader).build_document()
 
     rebuilt_entries = rebuilt["entries"]
     assert isinstance(rebuilt_entries, list)
     initiative_entry = next(entry for entry in rebuilt_entries if entry["trace_id"] == trace_id)
     assert initiative_entry["initiative_status"] == "active"
-    assert initiative_entry["current_phase"] == "validation"
+    assert initiative_entry["current_phase"] == "closeout"
     assert initiative_entry["open_task_count"] == 0
     assert "active_task_ids" not in initiative_entry
     assert "active_task_summaries" not in initiative_entry
-    assert (
-        initiative_entry["next_surface_path"]
-        == "docs/commands/core_python/watchtower_core_validate_acceptance.md"
-    )
+    assert initiative_entry["next_surface_path"] == "plan/initiatives/core_python_foundation/summary.md"

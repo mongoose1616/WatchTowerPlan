@@ -5,9 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.adapters import render_rendered_surface, render_repo_link
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.adapters import render_repo_link
+from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
+from watchtower_core.repo_ops.sync.tracking_common import RenderedTrackingSyncService
 
 COORDINATION_TRACKING_DOCUMENT_PATH = "docs/planning/coordination_tracking.md"
 INITIATIVE_TRACKING_DOCUMENT_PATH = "docs/planning/initiatives/initiative_tracking.md"
@@ -29,19 +29,14 @@ class CoordinationTrackingBuildResult:
     recent_closed_count: int
 
 
-class CoordinationTrackingSyncService:
+class CoordinationTrackingSyncService(RenderedTrackingSyncService):
     """Build and write the human-readable coordination tracker."""
 
-    def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._loader = loader
-        self._repo_root = loader.repo_root
-
-    @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> CoordinationTrackingSyncService:
-        return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
+    DOCUMENT_PATH = COORDINATION_TRACKING_DOCUMENT_PATH
+    SURFACE_ID = COORDINATION_TRACKING_SURFACE_ID
 
     def build_document(self) -> CoordinationTrackingBuildResult:
-        coordination_index = self._loader.load_coordination_index()
+        coordination_index = PlanWorkspaceService(self._loader).load_coordination_index()
         active_entries = tuple(
             entry
             for entry in coordination_index.entries
@@ -52,11 +47,7 @@ class CoordinationTrackingSyncService:
         recent_closed_preview = coordination_index.recent_closed_initiatives[
             :RECENT_CLOSEOUT_LIMIT
         ]
-        surface = self._loader.load_rendered_surface_registry().get(
-            COORDINATION_TRACKING_SURFACE_ID
-        )
-        content = render_rendered_surface(
-            surface,
+        content = self._render_tracking_document(
             {
                 "current_state": (
                     {
@@ -158,13 +149,3 @@ class CoordinationTrackingSyncService:
             actionable_task_count=coordination_index.actionable_task_count,
             recent_closed_count=len(coordination_index.recent_closed_initiatives),
         )
-
-    def write_document(
-        self,
-        result: CoordinationTrackingBuildResult,
-        destination: Path | None = None,
-    ) -> Path:
-        """Write the generated coordination tracker to disk."""
-        target = destination or (self._repo_root / COORDINATION_TRACKING_DOCUMENT_PATH)
-        target.write_text(result.content, encoding="utf-8")
-        return target

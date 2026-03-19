@@ -7,11 +7,7 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
 from watchtower_core.repo_ops.plan_workspace import PlanWorkspaceService
-from watchtower_core.repo_ops.query.common import (
-    RenderedSearchFilters,
-    initiative_rendered_query_terms,
-    search_rendered_entries,
-)
+from watchtower_core.repo_ops.query.common import rendered_search_filters_from_params
 from watchtower_core.repo_ops.query.initiatives import (
     InitiativeQueryService,
     InitiativeSearchParams,
@@ -44,14 +40,9 @@ class CoordinationQueryService:
                 entries=self._initiative_service.search(params),
             )
         entries = self._plan_workspace.search_coordination(
-            RenderedSearchFilters(
-                query=params.query,
-                trace_id=params.trace_id,
-                initiative_status=params.initiative_status,
-                current_phase=params.current_phase,
-                owner=params.owner,
+            rendered_search_filters_from_params(
+                params,
                 blocked_only=params.blocked_only,
-                limit=params.limit,
             )
         )
         return CoordinationQueryResult(index=index, entries=entries)

@@ -10,7 +10,9 @@ def test_task_create_supports_json_output(capsys) -> None:
             "task",
             "create",
             "--task-id",
-            "task.cli_preview.example.001",
+            "task.plan_task_authority_rendering_governance_recovery.cli_preview_json_output",
+            "--trace-id",
+            "trace.plan_task_authority_rendering_governance_recovery",
             "--title",
             "Preview the task command",
             "--summary",
@@ -31,7 +33,10 @@ def test_task_create_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core task create"
     assert payload["status"] == "ok"
-    assert payload["task_id"] == "task.cli_preview.example.001"
+    assert (
+        payload["task_id"]
+        == "task.plan_task_authority_rendering_governance_recovery.cli_preview_json_output"
+    )
     assert payload["wrote"] is False
     assert payload["changed"] is True
 

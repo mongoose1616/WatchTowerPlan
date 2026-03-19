@@ -9,6 +9,7 @@ import pytest
 from watchtower_core.adapters.front_matter import load_front_matter
 from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_core.repo_ops.guidance_promotion import GuidancePromotionService
 from watchtower_core.repo_ops.initiative_packages import (
     DeferredItemSpec,
@@ -16,18 +17,23 @@ from watchtower_core.repo_ops.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_core.repo_ops.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_core.repo_ops.plan_workspace import (
+    PLAN_CLOSEOUT_INDEX_PATH,
     PLAN_COORDINATION_INDEX_PATH,
+    PLAN_DISCREPANCY_INDEX_PATH,
+    PLAN_EVIDENCE_INDEX_PATH,
     PLAN_GUIDANCE_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_OVERVIEW_PATH,
     PLAN_PROMOTION_INDEX_PATH,
     PLAN_READINESS_INDEX_PATH,
+    PLAN_REVIEW_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
-    PLAN_DISCREPANCY_INDEX_PATH,
+    PlanCloseoutSearchParams,
     PlanDiscrepancySearchParams,
+    PlanEvidenceSearchParams,
     PlanReadinessSearchParams,
+    PlanReviewSearchParams,
     PlanTaskSearchParams,
     PlanWorkspaceService,
 )
@@ -130,7 +136,8 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
     for task_path in sorted((initiative_root / ".wt" / "tasks").glob("*/task.json")):
         document = _load_json(task_path)
-        document["status"] = "completed"
+        document["status"] = "active"
+        document["task_status"] = "completed"
         document["updated_at"] = updated_at
         task_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
@@ -189,6 +196,9 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
         PLAN_TASK_INDEX_PATH,
         PLAN_READINESS_INDEX_PATH,
         PLAN_DISCREPANCY_INDEX_PATH,
+        PLAN_EVIDENCE_INDEX_PATH,
+        PLAN_CLOSEOUT_INDEX_PATH,
+        PLAN_REVIEW_INDEX_PATH,
         PLAN_PROMOTION_INDEX_PATH,
         PLAN_GUIDANCE_INDEX_PATH,
         PLAN_COORDINATION_INDEX_PATH,
@@ -202,6 +212,17 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
         "plan/initiatives/workspace_beta/summary.md",
     ):
         assert (repo_root / relative_path).exists()
+
+    plan_view = (repo_root / "plan/initiatives/workspace_alpha/plan.md").read_text(
+        encoding="utf-8"
+    )
+    assert "## Planned Slices or Workstreams" in plan_view
+    assert "`planned`" in plan_view
+    progress_view = (repo_root / "plan/initiatives/workspace_alpha/progress.md").read_text(
+        encoding="utf-8"
+    )
+    assert "## Recent Events or Changes" in progress_view
+    assert "## Active Tasks" in progress_view
 
     initiative_index = workspace_service.load_initiative_index()
     assert len(initiative_index.entries) == 2
@@ -254,6 +275,28 @@ def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
         PlanDiscrepancySearchParams(limit=5)
     )
     assert discrepancy_entries == ()
+
+    evidence_entries = workspace_service.search_evidence(
+        PlanEvidenceSearchParams(status="planned", owner="repository_maintainer")
+    )
+    assert len(evidence_entries) == 2
+    assert {entry.trace_id for entry in evidence_entries} == {
+        "trace.workspace_alpha",
+        "trace.workspace_beta",
+    }
+    assert all(entry.target_phases == ("readiness",) for entry in evidence_entries)
+
+    closeout_entries = workspace_service.search_closeouts(
+        PlanCloseoutSearchParams(promotion_review_required=True)
+    )
+    assert len(closeout_entries) == 2
+    assert all(entry.status == "planned" for entry in closeout_entries)
+
+    review_entries = workspace_service.search_reviews(
+        PlanReviewSearchParams(review_state="pending")
+    )
+    assert len(review_entries) == 4
+    assert {entry.subject_kind for entry in review_entries} == {"initiative", "promotion"}
 
     plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
     assert "Workspace Alpha" in plan_overview
@@ -311,6 +354,9 @@ def test_plan_workspace_sync_builds_promotion_and_guidance_indexes_and_validates
     validator = ArtifactValidationService(loader)
     for relative_path in (
         "plan/.wt/registries/promotion_policy_registry.json",
+        PLAN_EVIDENCE_INDEX_PATH,
+        PLAN_CLOSEOUT_INDEX_PATH,
+        PLAN_REVIEW_INDEX_PATH,
         PLAN_PROMOTION_INDEX_PATH,
         PLAN_GUIDANCE_INDEX_PATH,
     ):
@@ -340,6 +386,10 @@ def test_guidance_promotion_service_promotes_outputs_and_updates_indexes(
         write=True,
     )
 
+    extraction_envelopes = promotion_service.extract_packwide(
+        "workspace_guidance_promotion",
+        updated_at="2026-03-17T16:12:30Z",
+    )
     result = promotion_service.promote_packwide(
         "workspace_guidance_promotion",
         updated_at="2026-03-17T16:13:00Z",
@@ -349,6 +399,30 @@ def test_guidance_promotion_service_promotes_outputs_and_updates_indexes(
 
     assert result.status == "promoted"
     assert result.wrote is True
+    assert len(extraction_envelopes) == 4
+    assert len(result.extraction_envelopes) == 4
+    assert {envelope.work_item_id for envelope in extraction_envelopes} == {
+        "promotion.workspace_guidance_promotion.bootstrap_shell"
+    }
+    assert {
+        family
+        for envelope in extraction_envelopes
+        for family in envelope.knowledge_families
+    } == {
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard",
+    }
+    assert {
+        envelope.source_note_id
+        for envelope in result.extraction_envelopes
+    } == {
+        "note.workspace_guidance_promotion.decision_notes",
+        "note.workspace_guidance_promotion.design_record",
+        "note.workspace_guidance_promotion.implementation_slice",
+        "note.workspace_guidance_promotion.initiative_brief",
+    }
     assert {output.target_family for output in result.outputs} == {
         "decision_record",
         "pattern",
@@ -734,8 +808,9 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
 
     task_path = repo_root / "plan/initiatives/workspace_delta/.wt/tasks/seed_contracts/task.json"
     task_document = _load_json(task_path)
-    task_document["status"] = "ready"
-    task_document["updated_at"] = "2026-03-17T23:30:00Z"
+    task_document["status"] = "active"
+    task_document["task_status"] = "ready"
+    task_document["updated_at"] = "2099-03-17T23:30:00Z"
     task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
 
     workspace_service.sync(write=True)
@@ -746,7 +821,7 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
         for entry in initiative_index["entries"]
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
-    assert initiative_entry["updated_at"] == "2026-03-17T23:30:00Z"
+    assert initiative_entry["updated_at"] == "2099-03-17T23:30:00Z"
     assert initiative_entry["active_task_summaries"][0]["task_status"] == "ready"
 
     readiness_index = _load_json(repo_root / PLAN_READINESS_INDEX_PATH)
@@ -755,16 +830,16 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
         for entry in readiness_index["entries"]
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
-    assert readiness_entry["updated_at"] == "2026-03-17T23:30:00Z"
+    assert readiness_entry["updated_at"] == "2099-03-17T23:30:00Z"
 
     coordination_index = _load_json(repo_root / PLAN_COORDINATION_INDEX_PATH)
-    assert coordination_index["updated_at"] == "2026-03-17T23:30:00Z"
+    assert coordination_index["updated_at"] == "2099-03-17T23:30:00Z"
     assert coordination_index["actionable_task_count"] == 1
 
     summary_view = (
         repo_root / "plan/initiatives/workspace_delta/summary.md"
     ).read_text(encoding="utf-8")
-    assert "`updated_at`: `2026-03-17T23:30:00Z`" in summary_view
+    assert "`updated_at`: `2099-03-17T23:30:00Z`" in summary_view
 
 
 def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
@@ -793,7 +868,8 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
     for slug in ("seed_contracts", "validate_gate"):
         task_path = initiative_root / "tasks" / slug / "task.json"
         task_document = _load_json(task_path)
-        task_document["status"] = "completed"
+        task_document["status"] = "active"
+        task_document["task_status"] = "completed"
         task_document["updated_at"] = "2026-03-17T17:10:00Z"
         task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
 
@@ -825,6 +901,54 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
     )
 
 
+def test_plan_workspace_sync_treats_task_complete_ready_initiatives_as_closeout(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_zeta",
+            title="Workspace Zeta",
+            updated_at="2026-03-17T17:20:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_zeta",
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    initiative_root = repo_root / "plan/initiatives/workspace_zeta/.wt"
+    for slug in ("seed_contracts", "validate_gate"):
+        task_path = initiative_root / "tasks" / slug / "task.json"
+        task_document = _load_json(task_path)
+        task_document["status"] = "active"
+        task_document["task_status"] = "completed"
+        task_document["updated_at"] = "2026-03-17T17:25:00Z"
+        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
+    sync_result = workspace_service.sync(write=True)
+
+    assert sync_result.wrote is True
+
+    initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
+    initiative_entry = next(
+        entry
+        for entry in initiative_index["entries"]
+        if entry["initiative_id"] == "initiative.workspace_zeta"
+    )
+    assert initiative_entry["initiative_status"] == "active"
+    assert initiative_entry["current_phase"] == "closeout"
+    assert initiative_entry["open_task_count"] == 0
+    assert initiative_entry["next_action"] == "Finalize closeout, evidence, and promotion decisions."
+    assert initiative_entry["next_surface_path"] == "plan/initiatives/workspace_zeta/summary.md"
+
+
 def test_validate_packwide_preserves_closing_lifecycle_while_rebuilding_stale_surfaces(
     tmp_path: Path,
 ) -> None:
@@ -852,7 +976,8 @@ def test_validate_packwide_preserves_closing_lifecycle_while_rebuilding_stale_su
     for slug in ("seed_contracts", "validate_gate"):
         task_path = initiative_root / "tasks" / slug / "task.json"
         task_document = _load_json(task_path)
-        task_document["status"] = "completed"
+        task_document["status"] = "active"
+        task_document["task_status"] = "completed"
         task_document["updated_at"] = "2026-03-17T17:25:00Z"
         task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
 

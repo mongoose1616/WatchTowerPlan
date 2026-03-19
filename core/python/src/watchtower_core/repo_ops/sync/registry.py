@@ -82,7 +82,7 @@ from watchtower_core.repo_ops.sync.workflow_index import (
     WORKFLOW_INDEX_ARTIFACT_PATH,
     WorkflowIndexSyncService,
 )
-from watchtower_core.sync.harness import SyncTargetSpec
+from watchtower_core.sync.harness import SyncTargetMode, SyncTargetSpec
 
 SyncTargetGroup = Literal["coordination"]
 COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"

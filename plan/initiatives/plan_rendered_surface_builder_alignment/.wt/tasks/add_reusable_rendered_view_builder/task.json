@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_rendered_surface_builder_alignment.add_reusable_rendered_view_builder",
+  "slug": "add_reusable_rendered_view_builder",
+  "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+  "title": "Add reusable rendered view builder",
+  "summary": "Publish a registry-backed rendered-view builder that resolves rendered surface definitions into deterministic markdown outputs.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T02:30:00Z",
+  "updated_at": "2026-03-18T02:43:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

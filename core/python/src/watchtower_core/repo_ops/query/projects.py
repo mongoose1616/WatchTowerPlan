@@ -7,9 +7,12 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.project_workspace import (
     PlanProjectIndexEntry,
-    PlanProjectSearchParams,
     ProjectWorkspaceService,
 )
+from watchtower_core.repo_ops.project_workspace import (
+    PlanProjectSearchParams as WorkspacePlanProjectSearchParams,
+)
+from watchtower_core.repo_ops.query.common import DataclassSearchAdapter
 
 
 @dataclass(frozen=True, slots=True)
@@ -24,23 +27,18 @@ class ProjectSearchParams:
     limit: int | None = None
 
 
-class ProjectQueryService:
+class ProjectQueryService(
+    DataclassSearchAdapter[
+        ProjectSearchParams,
+        WorkspacePlanProjectSearchParams,
+        PlanProjectIndexEntry,
+    ]
+):
     """Search the live plan project index."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._project_workspace = ProjectWorkspaceService(loader)
-
-    def search(self, params: ProjectSearchParams) -> tuple[PlanProjectIndexEntry, ...]:
-        """Return project entries matching the requested filters."""
-
-        return self._project_workspace.search_projects(
-            PlanProjectSearchParams(
-                query=params.query,
-                project_id=params.project_id,
-                slug=params.slug,
-                status=params.status,
-                repository_role=params.repository_role,
-                limit=params.limit,
-            )
+        project_workspace = ProjectWorkspaceService(loader)
+        super().__init__(
+            target_type=WorkspacePlanProjectSearchParams,
+            search=project_workspace.search_projects,
         )
-

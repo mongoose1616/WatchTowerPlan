@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_workflow_execution_harness_foundation.add_workflow_execution_boundary_coverage",
+  "slug": "add_workflow_execution_boundary_coverage",
+  "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+  "title": "Add workflow execution boundary coverage",
+  "summary": "Lock the new execution seam through focused unit coverage and package-root boundary tests.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T00:47:00Z",
+  "updated_at": "2026-03-18T00:55:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

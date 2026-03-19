@@ -5,7 +5,11 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
 
 
 def register_route_family(subparsers: argparse._SubParsersAction) -> None:
@@ -67,10 +71,5 @@ def register_route_family(subparsers: argparse._SubParsersAction) -> None:
         "--task-type",
         help="Exact task type from the governed route index.",
     )
-    preview_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(preview_parser)
     preview_parser.set_defaults(handler=_run_route_preview)

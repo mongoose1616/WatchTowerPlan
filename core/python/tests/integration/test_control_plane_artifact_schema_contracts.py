@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
 from jsonschema import ValidationError
@@ -133,7 +134,7 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
     )
     task_states = _allowed_states_for(
         REPO_ROOT / "plan/.wt/schemas/artifacts/task_state.schema.json",
-        "status",
+        "task_status",
     )
     validation_bundle_states = _allowed_states_for(
         REPO_ROOT / "plan/.wt/schemas/artifacts/validation_bundle.schema.json",
@@ -156,7 +157,9 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
         "status",
     )
     configured_lifecycle_states = {
-        entry["value"] for entry in lifecycle_registry["entries"] if entry["entry_status"] == "active"
+        entry["value"]
+        for entry in lifecycle_registry["entries"]
+        if entry["entry_status"] == "active"
     }
     configured_review_states = {
         entry["value"] for entry in review_registry["entries"] if entry["entry_status"] == "active"
@@ -305,11 +308,23 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
         "rendered.project.summary",
     }.issubset(rendered_surface_ids)
 
-    assert "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1" in plan_schema_ids
+    assert (
+        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
+        in plan_schema_ids
+    )
     assert "urn:watchtower:schema:artifacts:plan:template-catalog:v1" in plan_schema_ids
-    assert "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1" in core_schema_ids
-    assert "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1" in plan_schema_ids
-    assert "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1" in plan_schema_ids
+    assert (
+        "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1"
+        in core_schema_ids
+    )
+    assert (
+        "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1"
+        in plan_schema_ids
+    )
+    assert (
+        "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1"
+        in plan_schema_ids
+    )
 
     for family_id, entry in families.items():
         assert entry["front_matter_base_schema_id"] in core_schema_ids
@@ -366,9 +381,12 @@ def test_core_documentation_family_and_template_catalog_cover_core_surfaces() ->
     assert "urn:watchtower:schema:artifacts:documentation-family-registry:v1" in schema_ids
     assert "urn:watchtower:schema:artifacts:template-catalog:v1" in schema_ids
     assert "urn:watchtower:schema:interfaces:documentation:foundation-section-spec:v1" in schema_ids
-    assert "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1" in schema_ids
+    assert (
+        "urn:watchtower:schema:interfaces:documentation:workflow-module-section-spec:v1"
+        in schema_ids
+    )
 
-    for family_id, entry in families.items():
+    for _family_id, entry in families.items():
         assert entry["front_matter_base_schema_id"] in schema_ids
         assert entry["front_matter_schema_id"] in schema_ids
         assert entry["section_spec_schema_id"] in schema_ids

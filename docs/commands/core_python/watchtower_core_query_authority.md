@@ -73,7 +73,7 @@ uv run watchtower-core query authority --artifact-kind route_index
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/authority.py`
+- `core/python/src/watchtower_core/query/authority.py`
 - `core/control_plane/registries/authority_map.json`
 
 ## Updated At

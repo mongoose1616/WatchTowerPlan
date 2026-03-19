@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _print_payload_factory
+from watchtower_core.cli.handler_common import (
+    _emit_collection_query_results,
+    _print_payload_factory,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningCatalogEntry
 from watchtower_core.repo_ops.planning_rendered_serialization import (
@@ -94,26 +97,7 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
         f"initiative entr{'y' if len(result.entries) == 1 else 'ies'}:"
     )
     for entry in result.entries:
-        owner_text = entry.primary_owner or (
-            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
-        )
-        print(f"- {entry.trace_id} [{entry.current_phase}, {entry.initiative_status}]")
-        print(f"  {entry.title}")
-        print(f"  Owners: {owner_text}")
-        print(
-            f"  Open tasks: {entry.open_task_count} "
-            f"(blocked={entry.blocked_task_count})"
-        )
-        if entry.active_task_summaries:
-            for task in entry.active_task_summaries:
-                state = "actionable" if task.is_actionable else "blocked"
-                print(
-                    f"  Task: {task.task_id} "
-                    f"[{task.task_status}, {task.priority}, {state}]"
-                )
-                print(f"    {task.title}")
-        print(f"  Next: {entry.next_action}")
-        print(f"  Open first: {entry.next_surface_path}")
+        _print_initiative_entry_summary(entry, show_task_summaries=True)
     return 0
 
 
@@ -133,45 +117,24 @@ def _run_query_planning(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    if _print_payload_factory(
+    return _emit_collection_query_results(
         args,
-        lambda: _planning_query_payload(
-            entries=entries,
+        command_name="watchtower-core query planning",
+        entries=entries,
+        noun="planning",
+        empty_message=_history_browse_empty_message(
+            "planning-catalog entries",
             default_initiative_status=default_initiative_status,
+            include_trace_hint=True,
         ),
-    ) == 0:
-        return 0
-
-    if not entries:
-        print(
-            _history_browse_empty_message(
-                "planning-catalog entries",
-                default_initiative_status=default_initiative_status,
-                include_trace_hint=True,
-            )
-        )
-        return 0
-
-    print(f"Found {len(entries)} planning entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        owner_text = entry.primary_owner or (
-            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
-        )
-        print(
-            f"- {entry.trace_id} "
-            f"[{entry.current_phase}, {entry.initiative_status}, {entry.artifact_status}]"
-        )
-        print(f"  {entry.title}")
-        print(f"  Owners: {owner_text}")
-        print(f"  Next: {entry.coordination.next_action}")
-        print(
-            "  Sections: "
-            f"prds={len(entry.prds)} decisions={len(entry.decisions)} "
-            f"designs={len(entry.design_documents)} tasks={len(entry.tasks)} "
-            f"contracts={len(entry.acceptance_contracts)} "
-            f"evidence={len(entry.validation_evidence)}"
-        )
-    return 0
+        payload_results_factory=lambda: [_planning_entry_payload(entry) for entry in entries],
+        render_entry=_print_planning_entry_summary,
+        extra_payload=(
+            {"default_initiative_status": default_initiative_status}
+            if default_initiative_status is not None
+            else None
+        ),
+    )
 
 
 def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
@@ -180,22 +143,6 @@ def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
 
 def _planning_entry_payload(entry: PlanningCatalogEntry) -> dict[str, object]:
     return serialize_planning_catalog_entry(entry, compact=False)
-
-
-def _planning_query_payload(
-    *,
-    entries: tuple[PlanningCatalogEntry, ...],
-    default_initiative_status: str | None,
-) -> dict[str, object]:
-    payload: dict[str, object] = {
-        "command": "watchtower-core query planning",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_planning_entry_payload(entry) for entry in entries],
-    }
-    if default_initiative_status is not None:
-        payload["default_initiative_status"] = default_initiative_status
-    return payload
 
 
 def _should_default_active_browse(
@@ -247,60 +194,23 @@ def _emit_initiative_query_results(
     show_task_summaries: bool,
     default_initiative_status: str | None = None,
 ) -> int:
-    if _print_payload_factory(
+    return _emit_collection_query_results(
         args,
-        lambda: _initiative_query_payload(
-            command_name=command_name,
-            entries=entries,
-            default_initiative_status=default_initiative_status,
+        command_name=command_name,
+        entries=entries,
+        noun="initiative",
+        empty_message=empty_message,
+        payload_results_factory=lambda: [_initiative_entry_payload(entry) for entry in entries],
+        render_entry=lambda entry: _print_initiative_entry_summary(
+            entry,
+            show_task_summaries=show_task_summaries,
         ),
-    ) == 0:
-        return 0
-
-    if not entries:
-        print(empty_message)
-        return 0
-
-    print(f"Found {len(entries)} initiative entr{'y' if len(entries) == 1 else 'ies'}:")
-    for entry in entries:
-        owner_text = entry.primary_owner or (
-            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
-        )
-        print(f"- {entry.trace_id} [{entry.current_phase}, {entry.initiative_status}]")
-        print(f"  {entry.title}")
-        print(f"  Owners: {owner_text}")
-        print(
-            f"  Open tasks: {entry.open_task_count} "
-            f"(blocked={entry.blocked_task_count})"
-        )
-        if show_task_summaries and entry.active_task_summaries:
-            for task in entry.active_task_summaries:
-                state = "actionable" if task.is_actionable else "blocked"
-                print(
-                    f"  Task: {task.task_id} "
-                    f"[{task.task_status}, {task.priority}, {state}]"
-                )
-                print(f"    {task.title}")
-        print(f"  Next: {entry.next_action}")
-        print(f"  Open first: {entry.next_surface_path}")
-    return 0
-
-
-def _initiative_query_payload(
-    *,
-    command_name: str,
-    entries: tuple[InitiativeIndexEntry, ...],
-    default_initiative_status: str | None,
-) -> dict[str, object]:
-    payload: dict[str, object] = {
-        "command": command_name,
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_initiative_entry_payload(entry) for entry in entries],
-    }
-    if default_initiative_status is not None:
-        payload["default_initiative_status"] = default_initiative_status
-    return payload
+        extra_payload=(
+            {"default_initiative_status": default_initiative_status}
+            if default_initiative_status is not None
+            else None
+        ),
+    )
 
 
 def _coordination_payload(
@@ -352,3 +262,46 @@ def _coordination_payload(
     if include_default_status:
         payload["default_initiative_status"] = initiative_status
     return payload
+
+
+def _print_initiative_entry_summary(
+    entry: InitiativeIndexEntry,
+    *,
+    show_task_summaries: bool,
+) -> None:
+    print(f"- {entry.trace_id} [{entry.current_phase}, {entry.initiative_status}]")
+    print(f"  {entry.title}")
+    print(f"  Owners: {_owner_text(entry.primary_owner, entry.active_owners)}")
+    print(f"  Open tasks: {entry.open_task_count} (blocked={entry.blocked_task_count})")
+    if show_task_summaries and entry.active_task_summaries:
+        for task in entry.active_task_summaries:
+            state = "actionable" if task.is_actionable else "blocked"
+            print(f"  Task: {task.task_id} [{task.task_status}, {task.priority}, {state}]")
+            print(f"    {task.title}")
+    print(f"  Next: {entry.next_action}")
+    print(f"  Open first: {entry.next_surface_path}")
+
+
+def _print_planning_entry_summary(entry: PlanningCatalogEntry) -> None:
+    print(
+        f"- {entry.trace_id} "
+        f"[{entry.current_phase}, {entry.initiative_status}, {entry.artifact_status}]"
+    )
+    print(f"  {entry.title}")
+    print(f"  Owners: {_owner_text(entry.primary_owner, entry.active_owners)}")
+    print(f"  Next: {entry.coordination.next_action}")
+    print(
+        "  Sections: "
+        f"prds={len(entry.prds)} decisions={len(entry.decisions)} "
+        f"designs={len(entry.design_documents)} tasks={len(entry.tasks)} "
+        f"contracts={len(entry.acceptance_contracts)} "
+        f"evidence={len(entry.validation_evidence)}"
+    )
+
+
+def _owner_text(primary_owner: str | None, active_owners: tuple[str, ...]) -> str:
+    if primary_owner:
+        return primary_owner
+    if active_owners:
+        return ", ".join(active_owners)
+    return "unassigned"

@@ -1,12 +1,9 @@
-"""Control-plane loaders and resolvers for authored core artifacts."""
+"""Reusable control-plane helpers and typed pack-runtime models."""
 
+from watchtower_core.control_plane.actors import ActorRegistryHelper, ActorRegistryIssue
 from watchtower_core.control_plane.artifact_family import (
     ArtifactFamilyHelper,
     ArtifactFamilyIssue,
-)
-from watchtower_core.control_plane.documentation_family import (
-    DocumentationFamilyHelper,
-    DocumentationFamilyIssue,
 )
 from watchtower_core.control_plane.discrepancy import (
     DISCREPANCY_RECORD_SCHEMA_ID,
@@ -14,10 +11,21 @@ from watchtower_core.control_plane.discrepancy import (
     DiscrepancyHelper,
     DiscrepancyIssue,
 )
+from watchtower_core.control_plane.documentation_family import (
+    DocumentationFamilyHelper,
+    DocumentationFamilyIssue,
+)
 from watchtower_core.control_plane.event_stream import (
     EventStreamDescriptor,
     EventStreamHelper,
     EventStreamWriteRequest,
+)
+from watchtower_core.control_plane.extraction_output import (
+    EXTRACTION_OUTPUT_ENVELOPE_SCHEMA_ID,
+    ExtractionCandidateKnowledgeSpec,
+    ExtractionObservationSpec,
+    ExtractionOutputEnvelopeHelper,
+    ExtractionOutputEnvelopeWriteResult,
 )
 from watchtower_core.control_plane.governance_surfaces import (
     GovernanceSurfaceResolution,
@@ -29,14 +37,14 @@ from watchtower_core.control_plane.human_surface_policy import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
-from watchtower_core.control_plane.planning_vocabulary import PlanningVocabularyHelper
-from watchtower_core.control_plane.promotion_policy import (
-    PromotionPolicyHelper,
-    PromotionPolicyIssue,
-)
+from watchtower_core.control_plane.path_ids import PlanInitiativeLocation, PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import (
     ProjectSurfacePolicyHelper,
     ProjectSurfacePolicyIssue,
+)
+from watchtower_core.control_plane.promotion_policy import (
+    PromotionPolicyHelper,
+    PromotionPolicyIssue,
 )
 from watchtower_core.control_plane.retention_policy import (
     RetentionPolicyHelper,
@@ -47,6 +55,16 @@ from watchtower_core.control_plane.template_catalog import (
     TemplateCatalogHelper,
     TemplateCatalogIssue,
 )
+from watchtower_core.control_plane.terminology import (
+    PlanningVocabularyHelper,
+    TerminologyHelper,
+    TerminologyResolution,
+    TerminologyTerm,
+)
+from watchtower_core.control_plane.workflow_catalog import (
+    WorkflowCatalogHelper,
+    WorkflowCatalogSnapshot,
+)
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
@@ -55,6 +73,8 @@ from watchtower_core.control_plane.workspace import (
 )
 
 __all__ = [
+    "ActorRegistryHelper",
+    "ActorRegistryIssue",
     "ArtifactSource",
     "ArtifactStore",
     "ArtifactFamilyHelper",
@@ -63,18 +83,25 @@ __all__ = [
     "DISCREPANCY_RECORD_SCHEMA_ID",
     "DocumentationFamilyHelper",
     "DocumentationFamilyIssue",
+    "EXTRACTION_OUTPUT_ENVELOPE_SCHEMA_ID",
     "DiscrepancyDescriptor",
     "DiscrepancyHelper",
     "DiscrepancyIssue",
     "EventStreamDescriptor",
     "EventStreamHelper",
     "EventStreamWriteRequest",
+    "ExtractionCandidateKnowledgeSpec",
+    "ExtractionObservationSpec",
+    "ExtractionOutputEnvelopeHelper",
+    "ExtractionOutputEnvelopeWriteResult",
     "FileSystemArtifactIO",
     "GovernanceSurfaceResolution",
     "GovernanceSurfaceResolver",
     "HumanSurfacePolicyHelper",
     "HumanSurfacePolicyIssue",
     "PackContext",
+    "PlanInitiativeLocation",
+    "PlanPathIdHelper",
     "PlanningVocabularyHelper",
     "PromotionPolicyHelper",
     "PromotionPolicyIssue",
@@ -86,5 +113,10 @@ __all__ = [
     "SupplementalSchemaDocument",
     "TemplateCatalogHelper",
     "TemplateCatalogIssue",
+    "TerminologyHelper",
+    "TerminologyResolution",
+    "TerminologyTerm",
+    "WorkflowCatalogHelper",
+    "WorkflowCatalogSnapshot",
     "WorkspaceConfig",
 ]

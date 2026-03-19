@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:plan:closeout-index:v1",
+  "title": "Plan Closeout Index",
+  "description": "Schema for the plan-workspace closeout index built from initiative-local closeout recaps.",
+  "type": "object",
+  "required": ["$schema", "id", "title", "status", "updated_at", "entries"],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:plan:closeout-index:v1"
+    },
+    "id": {
+      "const": "index.closeouts"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/closeoutEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "terminalStateList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["completed", "superseded", "cancelled"]
+      }
+    },
+    "closeoutEntry": {
+      "type": "object",
+      "required": [
+        "closeout_id",
+        "initiative_id",
+        "trace_id",
+        "initiative_title",
+        "title",
+        "status",
+        "initiative_root",
+        "expected_outcome",
+        "acceptance_ids",
+        "evidence_ids",
+        "follow_up_handling",
+        "promotion_review_required",
+        "terminal_state_options",
+        "updated_at"
+      ],
+      "properties": {
+        "closeout_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "initiative_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "project_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "initiative_title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "active", "completed"]
+        },
+        "initiative_root": {
+          "type": "string",
+          "pattern": "^plan/(initiatives|projects/.+/initiatives)/.+$"
+        },
+        "expected_outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "follow_up_handling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promotion_review_required": {
+          "type": "boolean"
+        },
+        "terminal_state_options": {
+          "$ref": "#/$defs/terminalStateList"
+        },
+        "terminal_state": {
+          "type": "string",
+          "enum": ["completed", "superseded", "cancelled"]
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

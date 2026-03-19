@@ -8,6 +8,7 @@ from textwrap import dedent
 from watchtower_core.cli.common import (
     HelpFormatter,
     add_common_validation_arguments,
+    add_human_json_format_argument,
     add_pack_settings_argument,
     examples,
 )
@@ -52,7 +53,7 @@ def register_validate_family(
             "uv run watchtower-core validate front-matter --path "
             "docs/references/front_matter_reference.md",
             "uv run watchtower-core validate document-semantics --path "
-            "workflows/modules/code_validation.md",
+            "core/workflows/modules/code_validation.md",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "uv run watchtower-core validate artifact --path "
@@ -115,12 +116,7 @@ def register_validate_family(
         action="store_true",
         help="Skip trace-level acceptance reconciliation checks.",
     )
-    validate_all_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(validate_all_parser)
     validate_all_parser.set_defaults(handler=_run_validate_all)
 
     validate_suite_parser = validate_subparsers.add_parser(
@@ -154,12 +150,7 @@ def register_validate_family(
         ),
     )
     add_pack_settings_argument(validate_suite_parser)
-    validate_suite_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(validate_suite_parser)
     validate_suite_parser.set_defaults(handler=_run_validate_suite)
 
     validate_front_matter_parser = validate_subparsers.add_parser(
@@ -222,7 +213,7 @@ def register_validate_family(
             "uv run watchtower-core validate document-semantics --path "
             "docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate document-semantics --path "
-            "workflows/modules/code_validation.md --format json",
+            "core/workflows/modules/code_validation.md --format json",
             "uv run watchtower-core validate document-semantics --path "
             "/tmp/example.md --validator-id validator.documentation.standard_semantics",
         ),
@@ -335,10 +326,5 @@ def register_validate_family(
         required=True,
         help="Stable trace identifier such as trace.core_python_foundation.",
     )
-    validate_acceptance_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(validate_acceptance_parser)
     validate_acceptance_parser.set_defaults(handler=_run_validate_acceptance)

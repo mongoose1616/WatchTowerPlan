@@ -1,0 +1,78 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+  "trace_id": "trace.plan_status_registry_domain_cleanup",
+  "slug": "plan_status_registry_domain_cleanup",
+  "title": "Plan Status Registry Domain Cleanup",
+  "summary": "Removes legacy challenge-specific status leakage from the shared status registry and reconciles the authoritative requirements notes to the current pack-facing interface state.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T00:36:00Z",
+  "updated_at": "2026-03-18T00:45:00Z",
+  "task_ids": [
+    "task.plan_status_registry_domain_cleanup.generalize_shared_status_vocabulary",
+    "task.plan_status_registry_domain_cleanup.add_focused_status_registry_coverage",
+    "task.plan_status_registry_domain_cleanup.reconcile_requirements_notes"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_status_registry_domain_cleanup.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_status_registry_domain_cleanup.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_status_registry_domain_cleanup.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_status_registry_domain_cleanup/initiative_brief.md",
+      "sha256": "24d2a0b3cd080ff2fc0a63ee6cdacc1fa2c5f2b50b41a843dd1eab49d9c2a2f1",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:28:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_status_registry_domain_cleanup/design_record.md",
+      "sha256": "1e5dff97adbf5a0da43f2e99ae035fc1209687248ac90eb951255e6046ab4683",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:28:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_status_registry_domain_cleanup/implementation_slice.md",
+      "sha256": "043ea4f38f44741e79d85b24d77c8a012482c9f984a43e2ae0bbd059ff2dbca3",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:28:31Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-18T00:28:31Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-18T00:28:43Z"
+    }
+  ],
+  "closed_at": "2026-03-18T00:45:00Z",
+  "closure_reason": "Removed legacy challenge-scoped leakage from the shared status registry and reconciled the requirements notes to the current pack-facing interface state."
+}

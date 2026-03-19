@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_live_evidence_closeout_review_indexes_foundation.reconcile_environment_context_scope",
+  "slug": "reconcile_environment_context_scope",
+  "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+  "title": "Reconcile environment-context scope in authoritative requirements",
+  "summary": "Remove environment_context from the required clean-endstate surfaces and align supporting requirements rows.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T22:35:46Z",
+  "updated_at": "2026-03-17T23:01:29Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

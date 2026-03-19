@@ -11,6 +11,9 @@ def _plan_args(**overrides: object) -> argparse.Namespace:
     defaults: dict[str, object] = {
         "kind": "prd",
         "trace_id": "trace.plan_example",
+        "initiative_slug": "plan_example",
+        "project_slug": None,
+        "actor_id": "actor.repository_maintainer",
         "document_id": "prd.plan_example",
         "title": "Plan Example",
         "summary": "Plan summary.",
@@ -52,7 +55,7 @@ def _task_args(**overrides: object) -> argparse.Namespace:
         "task_kind": "feature",
         "priority": "high",
         "owner": "repository_maintainer",
-        "task_status": "backlog",
+        "task_status": "planned",
         "scope": ["Do the work."],
         "done_when": ["It is done."],
         "applies_to": [],
@@ -154,11 +157,11 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
                     task_id="task.plan_example.bootstrap.001",
                     title="Bootstrap planning chain",
                     summary="Bootstrap summary.",
-                    task_status="backlog",
+                    task_status="planned",
                     task_kind="governance",
                     priority="medium",
                     owner="repository_maintainer",
-                    doc_path="docs/planning/tasks/open/plan_bootstrap.md",
+                    doc_path="plan/initiatives/plan_example/.wt/tasks/bootstrap_planning_chain/task.json",
                     wrote=False,
                 ),
                 wrote=False,
@@ -224,11 +227,11 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
                     task_id="task.plan_example.bootstrap.001",
                     title="Bootstrap planning chain",
                     summary="Bootstrap summary.",
-                    task_status="backlog",
+                    task_status="planned",
                     task_kind="governance",
                     priority="medium",
                     owner="repository_maintainer",
-                    doc_path="docs/planning/tasks/open/plan_bootstrap.md",
+                    doc_path="plan/initiatives/plan_example/.wt/tasks/bootstrap_planning_chain/task.json",
                     wrote=True,
                 ),
                 wrote=True,
@@ -254,6 +257,97 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
     ) in captured.out
     assert "# PRD" in captured.out
     assert "Derived planning surfaces were refreshed." in captured.out
+
+
+def test_plan_confirm_inputs_supports_json_output(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def confirm_authored_inputs(
+            self,
+            initiative_slug: str,
+            actor_id: str,
+            *,
+            write: bool,
+        ) -> SimpleNamespace:
+            assert initiative_slug == "plan_example"
+            assert actor_id == "actor.repository_maintainer"
+            assert write is False
+            return SimpleNamespace(
+                initiative_id="initiative.plan_example",
+                trace_id="trace.plan_example",
+                initiative_root="plan/initiatives/plan_example",
+                lifecycle_stage="ready_for_review",
+                review_status="pending",
+                ready_for_execution=False,
+                validation_passed=True,
+                wrote=False,
+            )
+
+    monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_handlers, "InitiativePackageService", FakeService)
+
+    result = plan_handlers._run_plan_confirm_inputs(_plan_args(format="json"))
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan confirm-inputs"
+    assert payload["initiative_id"] == "initiative.plan_example"
+    assert payload["trace_id"] == "trace.plan_example"
+    assert payload["ready_for_execution"] is False
+
+
+def test_plan_approve_uses_project_scoped_service_and_prints_summary(
+    monkeypatch,
+    capsys,
+) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def approve_project_scoped(
+            self,
+            project_slug: str,
+            initiative_slug: str,
+            actor_id: str,
+            *,
+            write: bool,
+        ) -> SimpleNamespace:
+            assert project_slug == "watchtower"
+            assert initiative_slug == "watchtower_work_item_notes"
+            assert actor_id == "actor.repository_maintainer"
+            assert write is True
+            return SimpleNamespace(
+                initiative_id="initiative.watchtower_work_item_notes",
+                trace_id="trace.watchtower_work_item_notes",
+                initiative_root=(
+                    "plan/projects/watchtower/initiatives/watchtower_work_item_notes"
+                ),
+                lifecycle_stage="ready_for_execution",
+                review_status="approved",
+                ready_for_execution=True,
+                validation_passed=True,
+                wrote=True,
+            )
+
+    monkeypatch.setattr(plan_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_handlers, "InitiativePackageService", FakeService)
+
+    result = plan_handlers._run_plan_approve(
+        _plan_args(
+            initiative_slug="watchtower_work_item_notes",
+            project_slug="watchtower",
+            write=True,
+        )
+    )
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Approved live initiative trace.watchtower_work_item_notes." in captured.out
+    assert "Lifecycle Stage: ready_for_execution" in captured.out
+    assert "Ready For Execution: True" in captured.out
 
 
 def test_plan_scaffold_reports_errors(monkeypatch, capsys) -> None:
@@ -285,12 +379,12 @@ def test_task_create_prints_dry_run_summary(monkeypatch, capsys) -> None:
                 title="Example task",
                 summary="Task summary.",
                 trace_id="trace.example",
-                task_status="backlog",
+                task_status="planned",
                 task_kind="feature",
                 priority="high",
                 owner="repository_maintainer",
                 updated_at="2026-03-10T23:59:59Z",
-                doc_path="docs/planning/tasks/open/example.md",
+                doc_path="plan/initiatives/example/.wt/tasks/example/task.json",
                 previous_doc_path=None,
                 moved=False,
                 changed=True,
@@ -306,7 +400,10 @@ def test_task_create_prints_dry_run_summary(monkeypatch, capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Prepared task task.example.001 at docs/planning/tasks/open/example.md." in captured.out
+    assert (
+        "Prepared task task.example.001 at plan/initiatives/example/.wt/tasks/example/task.json."
+        in captured.out
+    )
     assert (
         "Dry-run only. Use --write to persist the task change and refresh coordination."
         in captured.out
@@ -324,14 +421,14 @@ def test_task_transition_prints_move_and_closeout_guidance(monkeypatch, capsys) 
                 title="Example task",
                 summary="Task summary.",
                 trace_id="trace.example",
-                task_status="done",
+                task_status="completed",
                 task_kind="feature",
                 priority="high",
                 owner="repository_maintainer",
                 updated_at="2026-03-10T23:59:59Z",
-                doc_path="docs/planning/tasks/closed/archive/2026/03/10/example.md",
-                previous_doc_path="docs/planning/tasks/open/example.md",
-                moved=True,
+                doc_path="plan/initiatives/example/.wt/tasks/example/task.json",
+                previous_doc_path=None,
+                moved=False,
                 changed=True,
                 wrote=True,
                 coordination_refreshed=True,
@@ -341,11 +438,10 @@ def test_task_transition_prints_move_and_closeout_guidance(monkeypatch, capsys) 
     monkeypatch.setattr(task_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(task_handlers, "TaskLifecycleService", FakeService)
 
-    result = task_handlers._run_task_transition(_task_args(task_status="done", write=True))
+    result = task_handlers._run_task_transition(_task_args(task_status="completed", write=True))
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Moved From: docs/planning/tasks/open/example.md" in captured.out
     assert "Closeout Recommended: trace.example" in captured.out
     assert "Coordination surfaces were refreshed." in captured.out
 
@@ -361,12 +457,12 @@ def test_task_update_prints_no_change_message(monkeypatch, capsys) -> None:
                 title="Example task",
                 summary="Task summary.",
                 trace_id="trace.example",
-                task_status="backlog",
+                task_status="planned",
                 task_kind="feature",
                 priority="high",
                 owner="repository_maintainer",
                 updated_at="2026-03-10T23:59:59Z",
-                doc_path="docs/planning/tasks/open/example.md",
+                doc_path="plan/initiatives/example/.wt/tasks/example/task.json",
                 previous_doc_path=None,
                 moved=False,
                 changed=False,
@@ -397,7 +493,7 @@ def test_task_transition_supports_json_error_output(monkeypatch, capsys) -> None
     monkeypatch.setattr(task_handlers, "TaskLifecycleService", FakeService)
 
     result = task_handlers._run_task_transition(
-        _task_args(task_status="done", format="json")
+        _task_args(task_status="completed", format="json")
     )
 
     captured = capsys.readouterr()

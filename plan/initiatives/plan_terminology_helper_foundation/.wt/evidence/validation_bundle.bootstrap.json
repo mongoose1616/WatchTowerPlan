@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.plan_terminology_helper_foundation.bootstrap_validation_bundle",
+  "initiative_id": "initiative.plan_terminology_helper_foundation",
+  "trace_id": "trace.plan_terminology_helper_foundation",
+  "title": "Bootstrap Validation Bundle",
+  "status": "completed",
+  "updated_at": "2026-03-18T01:21:00Z",
+  "entries": [
+    {
+      "entry_id": "entry.plan_terminology_helper_foundation.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.plan_terminology_helper_foundation.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/plan_terminology_helper_foundation/.wt/discrepancies"
+      ]
+    }
+  ]
+}

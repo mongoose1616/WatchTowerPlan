@@ -60,7 +60,7 @@ uv run watchtower-core validate front-matter --path docs/references/front_matter
 
 ```sh
 cd core/python
-uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md
+uv run watchtower-core validate document-semantics --path core/workflows/modules/code_validation.md
 ```
 
 ```sh

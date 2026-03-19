@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_workflow_execution_harness_foundation.define_generic_workflow_execution_contract",
+  "slug": "define_generic_workflow_execution_contract",
+  "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+  "title": "Define generic workflow execution contract",
+  "summary": "Add the export-safe workflow execution models and harness under watchtower_core.workflow_execution.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T00:47:00Z",
+  "updated_at": "2026-03-18T00:55:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

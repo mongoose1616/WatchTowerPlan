@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_actor_registry_and_runtime_boundary_reconciliation.0002_scope_defined",
+  "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+  "sequence": 2,
+  "event_type": "scope_defined",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-17T23:45:40Z",
+  "summary": "Recorded the initial pack-wide initiative scope.",
+  "payload": {
+    "task_count": 3
+  },
+  "trace_id": "trace.plan_actor_registry_and_runtime_boundary_reconciliation",
+  "related_paths": [
+    "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/initiative_brief.md",
+    "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/design_record.md",
+    "plan/initiatives/plan_actor_registry_and_runtime_boundary_reconciliation/implementation_slice.md"
+  ]
+}

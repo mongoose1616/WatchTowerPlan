@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import argparse
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from importlib import import_module
 from pathlib import Path
-from typing import Any, Protocol, cast
+from typing import Any, Protocol, TypedDict, cast
 
-from watchtower_core.cli.handler_common import _print_payload, _resolve_output_path
+from watchtower_core.cli.handler_common import _emit_detail_result, _resolve_output_path
 
 
 class _DocumentSyncService(Protocol):
@@ -23,177 +23,134 @@ class _DocumentSyncService(Protocol):
         """Write the artifact document."""
 
 
+class _DocumentHandlerSpec(TypedDict):
+    handler_key: str
+    export_name: str
+    module_name: str
+    class_name: str
+    command_name: str
+    artifact_label: str
+
+
+_DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
+    {
+        "handler_key": "repository_paths",
+        "export_name": "_run_sync_repository_paths",
+        "module_name": "watchtower_core.repo_ops.sync.repository_paths",
+        "class_name": "RepositoryPathIndexSyncService",
+        "command_name": "watchtower-core sync repository-paths",
+        "artifact_label": "repository path index",
+    },
+    {
+        "handler_key": "command_index",
+        "export_name": "_run_sync_command_index",
+        "module_name": "watchtower_core.repo_ops.sync.command_index",
+        "class_name": "CommandIndexSyncService",
+        "command_name": "watchtower-core sync command-index",
+        "artifact_label": "command index",
+    },
+    {
+        "handler_key": "reference_index",
+        "export_name": "_run_sync_reference_index",
+        "module_name": "watchtower_core.repo_ops.sync.reference_index",
+        "class_name": "ReferenceIndexSyncService",
+        "command_name": "watchtower-core sync reference-index",
+        "artifact_label": "reference index",
+    },
+    {
+        "handler_key": "route_index",
+        "export_name": "_run_sync_route_index",
+        "module_name": "watchtower_core.repo_ops.sync.route_index",
+        "class_name": "RouteIndexSyncService",
+        "command_name": "watchtower-core sync route-index",
+        "artifact_label": "route index",
+    },
+    {
+        "handler_key": "foundation_index",
+        "export_name": "_run_sync_foundation_index",
+        "module_name": "watchtower_core.repo_ops.sync.foundation_index",
+        "class_name": "FoundationIndexSyncService",
+        "command_name": "watchtower-core sync foundation-index",
+        "artifact_label": "foundation index",
+    },
+    {
+        "handler_key": "standard_index",
+        "export_name": "_run_sync_standard_index",
+        "module_name": "watchtower_core.repo_ops.sync.standard_index",
+        "class_name": "StandardIndexSyncService",
+        "command_name": "watchtower-core sync standard-index",
+        "artifact_label": "standard index",
+    },
+    {
+        "handler_key": "prd_index",
+        "export_name": "_run_sync_prd_index",
+        "module_name": "watchtower_core.repo_ops.sync.prd_index",
+        "class_name": "PrdIndexSyncService",
+        "command_name": "watchtower-core sync prd-index",
+        "artifact_label": "PRD index",
+    },
+    {
+        "handler_key": "decision_index",
+        "export_name": "_run_sync_decision_index",
+        "module_name": "watchtower_core.repo_ops.sync.decision_index",
+        "class_name": "DecisionIndexSyncService",
+        "command_name": "watchtower-core sync decision-index",
+        "artifact_label": "decision index",
+    },
+    {
+        "handler_key": "design_document_index",
+        "export_name": "_run_sync_design_document_index",
+        "module_name": "watchtower_core.repo_ops.sync.design_document_index",
+        "class_name": "DesignDocumentIndexSyncService",
+        "command_name": "watchtower-core sync design-document-index",
+        "artifact_label": "design-document index",
+    },
+    {
+        "handler_key": "initiative_index",
+        "export_name": "_run_sync_initiative_index",
+        "module_name": "watchtower_core.repo_ops.sync.initiative_index",
+        "class_name": "InitiativeIndexSyncService",
+        "command_name": "watchtower-core sync initiative-index",
+        "artifact_label": "initiative index",
+    },
+    {
+        "handler_key": "planning_catalog",
+        "export_name": "_run_sync_planning_catalog",
+        "module_name": "watchtower_core.repo_ops.sync.planning_catalog",
+        "class_name": "PlanningCatalogSyncService",
+        "command_name": "watchtower-core sync planning-catalog",
+        "artifact_label": "planning catalog",
+    },
+    {
+        "handler_key": "task_index",
+        "export_name": "_run_sync_task_index",
+        "module_name": "watchtower_core.repo_ops.sync.task_index",
+        "class_name": "TaskIndexSyncService",
+        "command_name": "watchtower-core sync task-index",
+        "artifact_label": "task index",
+    },
+    {
+        "handler_key": "traceability_index",
+        "export_name": "_run_sync_traceability_index",
+        "module_name": "watchtower_core.repo_ops.sync.traceability",
+        "class_name": "TraceabilityIndexSyncService",
+        "command_name": "watchtower-core sync traceability-index",
+        "artifact_label": "traceability index",
+    },
+    {
+        "handler_key": "workflow_index",
+        "export_name": "_run_sync_workflow_index",
+        "module_name": "watchtower_core.repo_ops.sync.workflow_index",
+        "class_name": "WorkflowIndexSyncService",
+        "command_name": "watchtower-core sync workflow-index",
+        "artifact_label": "workflow index",
+    },
+)
+
+
 def _load_document_sync_service(module_name: str, class_name: str) -> _DocumentSyncService:
     service_class = getattr(import_module(module_name), class_name)
     return cast(_DocumentSyncService, service_class.from_repo_root())
-
-
-def _run_sync_repository_paths(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync repository-paths",
-        artifact_label="repository path index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.repository_paths",
-            "RepositoryPathIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_command_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync command-index",
-        artifact_label="command index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.command_index",
-            "CommandIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_reference_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync reference-index",
-        artifact_label="reference index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.reference_index",
-            "ReferenceIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_route_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync route-index",
-        artifact_label="route index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.route_index",
-            "RouteIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_foundation_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync foundation-index",
-        artifact_label="foundation index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.foundation_index",
-            "FoundationIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_standard_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync standard-index",
-        artifact_label="standard index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.standard_index",
-            "StandardIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_prd_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync prd-index",
-        artifact_label="PRD index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.prd_index",
-            "PrdIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_decision_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync decision-index",
-        artifact_label="decision index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.decision_index",
-            "DecisionIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_design_document_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync design-document-index",
-        artifact_label="design-document index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.design_document_index",
-            "DesignDocumentIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_initiative_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync initiative-index",
-        artifact_label="initiative index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.initiative_index",
-            "InitiativeIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_planning_catalog(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync planning-catalog",
-        artifact_label="planning catalog",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.planning_catalog",
-            "PlanningCatalogSyncService",
-        ),
-    )
-
-
-def _run_sync_task_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync task-index",
-        artifact_label="task index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.task_index",
-            "TaskIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_traceability_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync traceability-index",
-        artifact_label="traceability index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.traceability",
-            "TraceabilityIndexSyncService",
-        ),
-    )
-
-
-def _run_sync_workflow_index(args: argparse.Namespace) -> int:
-    return _run_sync_document_command(
-        args,
-        command_name="watchtower-core sync workflow-index",
-        artifact_label="workflow index",
-        service=_load_document_sync_service(
-            "watchtower_core.repo_ops.sync.workflow_index",
-            "WorkflowIndexSyncService",
-        ),
-    )
 
 
 def _run_sync_document_command(
@@ -225,13 +182,50 @@ def _run_sync_document_command(
     }
     if args.include_document:
         payload["document"] = document
-    if _print_payload(args, payload) == 0:
-        return 0
+    def _render_human() -> None:
+        if wrote:
+            print(f"Rebuilt {artifact_label} with {entry_count} entries and wrote it to {destination}.")
+            return
 
-    if wrote:
-        print(f"Rebuilt {artifact_label} with {entry_count} entries and wrote it to {destination}.")
-        return 0
+        print(f"Rebuilt {artifact_label} with {entry_count} entries in dry-run mode.")
+        print("Use --write to update the canonical artifact or --output <path> to write elsewhere.")
 
-    print(f"Rebuilt {artifact_label} with {entry_count} entries in dry-run mode.")
-    print("Use --write to update the canonical artifact or --output <path> to write elsewhere.")
-    return 0
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
+
+
+def _build_document_sync_handler(
+    spec: _DocumentHandlerSpec,
+) -> Callable[[argparse.Namespace], int]:
+    def _handler(args: argparse.Namespace) -> int:
+        return _run_sync_document_command(
+            args,
+            command_name=spec["command_name"],
+            artifact_label=spec["artifact_label"],
+            service=_load_document_sync_service(spec["module_name"], spec["class_name"]),
+        )
+
+    _handler.__name__ = spec["export_name"]
+    return _handler
+
+
+DOCUMENT_SYNC_HANDLERS: dict[str, Callable[[argparse.Namespace], int]] = {
+    spec["handler_key"]: _build_document_sync_handler(spec)
+    for spec in _DOCUMENT_SYNC_HANDLER_SPECS
+}
+
+globals().update(
+    {
+        spec["export_name"]: DOCUMENT_SYNC_HANDLERS[spec["handler_key"]]
+        for spec in _DOCUMENT_SYNC_HANDLER_SPECS
+    }
+)
+
+__all__ = [
+    "DOCUMENT_SYNC_HANDLERS",
+    "_run_sync_document_command",
+    *[spec["export_name"] for spec in _DOCUMENT_SYNC_HANDLER_SPECS],
+]

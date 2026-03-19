@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_rebuild_harness_export_foundation.validate_rebuild_boundary_and_requirements_alignment",
+  "slug": "validate_rebuild_boundary_and_requirements_alignment",
+  "initiative_id": "initiative.plan_rebuild_harness_export_foundation",
+  "title": "Validate rebuild boundary and requirements alignment",
+  "summary": "Add focused tests, boundary coverage, and update the authoritative requirements rows for the rebuild export.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T23:59:30Z",
+  "updated_at": "2026-03-18T00:30:00Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

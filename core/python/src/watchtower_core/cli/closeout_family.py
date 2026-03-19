@@ -5,7 +5,11 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
 
 
 def register_closeout_family(
@@ -21,19 +25,21 @@ def register_closeout_family(
 
     closeout_parser = subparsers.add_parser(
         "closeout",
-        help="Close traced initiatives or purge eligible closed trace packages.",
+        help="Close live or retained initiatives, or purge eligible closed trace packages.",
         description=dedent(
             """
-            Apply terminal initiative state to traced planning surfaces or
-            purge one eligible closed trace package after validating the
-            repository's retention and reference-safety rules.
+            Apply terminal initiative state to live `plan/**` initiative
+            packages, close retained traced initiatives when historical trace
+            state must be finalized, or purge one eligible closed trace
+            package after validating the repository's retention and
+            reference-safety rules.
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core closeout initiative --trace-id trace.example "
-            "--initiative-status completed --closure-reason \"Delivered and validated\"",
             "uv run watchtower-core closeout plan-initiative --initiative-slug plan_workspace_bootstrap "
             "--initiative-status completed --closure-reason \"Live plan slice delivered\" --write",
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status completed --closure-reason \"Closed the retained traced planning package\"",
             "uv run watchtower-core closeout initiative --trace-id trace.example "
             "--initiative-status superseded --superseded-by-trace-id trace.replacement "
             "--closure-reason \"Replaced by the new initiative\" --format json",
@@ -109,12 +115,7 @@ def register_closeout_family(
         action="store_true",
         help="Write the updated closeout state and regenerated trackers to their canonical paths.",
     )
-    closeout_initiative_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(closeout_initiative_parser)
     closeout_initiative_parser.set_defaults(handler=_run_closeout_initiative)
 
     closeout_plan_initiative_parser = closeout_subparsers.add_parser(
@@ -170,12 +171,7 @@ def register_closeout_family(
         action="store_true",
         help="Persist the updated closeout state and regenerated plan surfaces.",
     )
-    closeout_plan_initiative_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(closeout_plan_initiative_parser)
     closeout_plan_initiative_parser.set_defaults(handler=_run_closeout_plan_initiative)
 
     closeout_purge_parser = closeout_subparsers.add_parser(
@@ -221,10 +217,5 @@ def register_closeout_family(
         action="store_true",
         help="Delete the trace package, write the purge ledger, and refresh derived surfaces.",
     )
-    closeout_purge_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(closeout_purge_parser)
     closeout_purge_parser.set_defaults(handler=_run_closeout_purge_trace)

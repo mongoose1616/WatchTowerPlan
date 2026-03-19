@@ -132,6 +132,7 @@ class SchemaStore:
         schema_documents: dict[str, dict[str, Any]],
         registry: Registry,
         supplemental_schema_ids: tuple[str, ...] = (),
+        additional_catalog_paths: tuple[str, ...] = (),
     ) -> None:
         self.workspace_config = workspace_config
         self.repo_root = workspace_config.repo_root
@@ -140,6 +141,7 @@ class SchemaStore:
         self._schema_documents = schema_documents
         self._registry = registry
         self.supplemental_schema_ids = supplemental_schema_ids
+        self.additional_catalog_paths = additional_catalog_paths
 
     @classmethod
     def from_repo_root(
@@ -217,6 +219,7 @@ class SchemaStore:
             schema_documents=schema_documents,
             registry=registry,
             supplemental_schema_ids=tuple(supplemental_schema_ids),
+            additional_catalog_paths=(),
         )
 
     def with_additional_catalog_paths(
@@ -227,7 +230,13 @@ class SchemaStore:
 
         unique_paths = tuple(
             dict.fromkeys(
-                path for path in catalog_paths if path and path != SCHEMA_CATALOG_ARTIFACT_PATH
+                path
+                for path in catalog_paths
+                if (
+                    path
+                    and path != SCHEMA_CATALOG_ARTIFACT_PATH
+                    and path not in self.additional_catalog_paths
+                )
             )
         )
         if not unique_paths:
@@ -281,6 +290,10 @@ class SchemaStore:
             schema_documents=schema_documents,
             registry=registry,
             supplemental_schema_ids=self.supplemental_schema_ids,
+            additional_catalog_paths=(
+                *self.additional_catalog_paths,
+                *unique_paths,
+            ),
         )
 
     def get_record(self, schema_id: str) -> SchemaCatalogRecord:

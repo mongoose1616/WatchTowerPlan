@@ -65,7 +65,11 @@ class DocumentationFamilyHelper:
         normalized_root = _normalize_root(relative_root)
         return normalized_root in self.family(family_id).allowed_roots
 
-    def validate_root(self, family_id: str, relative_root: str) -> tuple[DocumentationFamilyIssue, ...]:
+    def validate_root(
+        self,
+        family_id: str,
+        relative_root: str,
+    ) -> tuple[DocumentationFamilyIssue, ...]:
         """Validate one family-root pairing against the registry."""
 
         normalized_root = _normalize_root(relative_root)
@@ -90,7 +94,8 @@ class DocumentationFamilyHelper:
                     relative_root=normalized_root,
                     message=(
                         f"Documentation family {family_id} participates in mirror group "
-                        f"{entry.mirror_group_id} but {normalized_root} is not one of the declared required mirror roots."
+                        f"{entry.mirror_group_id} but {normalized_root} is not one of "
+                        "the declared required mirror roots."
                     ),
                 )
             )

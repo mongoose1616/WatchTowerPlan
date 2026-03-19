@@ -6,6 +6,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Literal, Protocol
 
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.repo_ops.planning_documents import (
     DECISION_REQUIRED_EXPLAINED_SECTIONS,
     DECISION_REQUIRED_SECTIONS,
@@ -77,10 +78,7 @@ class PlanningScaffoldSpec:
 def trace_suffix(trace_id: str) -> str:
     """Return the trace suffix used for derived IDs."""
 
-    normalized = trace_id.strip()
-    if not normalized:
-        raise ValueError("trace_id must be a non-empty string.")
-    return normalized.removeprefix("trace.")
+    return PlanPathIdHelper.trace_suffix(trace_id)
 
 
 def scaffold_spec_for_kind(kind: PlanKind) -> PlanningScaffoldSpec:

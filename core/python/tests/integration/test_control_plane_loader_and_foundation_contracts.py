@@ -168,13 +168,21 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
     assert "SUMMARY.md" not in repository_scope
 
 
-def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> None:
+def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     query_docs = sorted(
         (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_query_*.md")
     )
+    reusable_core_query_docs = {
+        "watchtower_core_query_authority.md",
+        "watchtower_core_query_commands.md",
+        "watchtower_core_query_workflows.md",
+    }
     for path in query_docs:
         markdown = path.read_text(encoding="utf-8")
-        assert "core/python/src/watchtower_core/query/" not in markdown, path
+        if path.name in reusable_core_query_docs:
+            assert "core/python/src/watchtower_core/query/" in markdown, path
+        else:
+            assert "core/python/src/watchtower_core/query/" not in markdown, path
 
     sync_docs = sorted(
         (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_sync_*.md")
@@ -184,9 +192,12 @@ def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> No
         assert "core/python/src/watchtower_core/sync/" not in markdown, path
 
 
-def test_workspace_and_github_docs_publish_current_query_and_sync_boundary_model() -> None:
+def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     workspace_standard = (
         REPO_ROOT / "docs/standards/engineering/python_workspace_standard.md"
+    ).read_text(encoding="utf-8")
+    python_code_design_standard = (
+        REPO_ROOT / "docs/standards/engineering/python_code_design_standard.md"
     ).read_text(encoding="utf-8")
     query_readme = (
         REPO_ROOT / "core/python/src/watchtower_core/query/README.md"
@@ -194,19 +205,57 @@ def test_workspace_and_github_docs_publish_current_query_and_sync_boundary_model
     package_readme = (
         REPO_ROOT / "core/python/src/watchtower_core/README.md"
     ).read_text(encoding="utf-8")
+    repo_ops_readme = (
+        REPO_ROOT / "core/python/src/watchtower_core/repo_ops/README.md"
+    ).read_text(encoding="utf-8")
+    control_plane_readme = (
+        REPO_ROOT / "core/python/src/watchtower_core/control_plane/README.md"
+    ).read_text(encoding="utf-8")
+    workspace_agents = (REPO_ROOT / "core/python/AGENTS.md").read_text(encoding="utf-8")
+    workspace_readme = (REPO_ROOT / "core/python/README.md").read_text(encoding="utf-8")
     best_practices_standard = (
         REPO_ROOT / "docs/standards/engineering/engineering_best_practices_standard.md"
     ).read_text(encoding="utf-8")
 
+    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_standard
+    assert "Keep package boundaries explicit:" in python_code_design_standard
+    assert "`control_plane/` owns reusable loaders" in python_code_design_standard
+    assert "`repo_ops/` owns only residual repository-local orchestration" in (
+        python_code_design_standard
+    )
     assert "core/python/src/watchtower_core/repo_ops/query/" in workspace_standard
     assert "core/python/src/watchtower_core/query/" in workspace_standard
     assert "core/python/src/watchtower_core/repo_ops/sync/" in workspace_standard
+    assert "core/python/src/watchtower_core/rebuild/" in workspace_standard
+    assert "core/python/src/watchtower_core/routing/" in workspace_standard
+    assert "core/python/src/watchtower_core/workflow_execution/" in workspace_standard
     assert "Export-safe generic query services" in workspace_standard
     assert "Export-safe generic sync harness and target contracts" in workspace_standard
     assert "A reusable-core query helper" in workspace_standard
+    assert "repo_ops/" in workspace_standard
+    assert "Residual WatchTowerPlan-specific" in workspace_standard
     assert "Classification`: `reusable_core`" in query_readme
     assert "| `query/` | `reusable_core` |" in package_readme
+    assert "| `rebuild/` | `reusable_core` |" in package_readme
+    assert "| `routing/` | `reusable_core` |" in package_readme
+    assert "| `workflow_execution/` | `reusable_core` |" in package_readme
+    assert "Residual WatchTowerPlan-specific orchestration" in package_readme
+    assert "docs/standards/engineering/python_code_design_standard.md" in package_readme
+    assert "Residual WatchTowerPlan-specific orchestration" in repo_ops_readme
+    assert "Shrink Rules" in repo_ops_readme
+    assert "docs/standards/engineering/python_code_design_standard.md" in repo_ops_readme
+    assert "human_surface_policy.py" in control_plane_readme
+    assert "retention_policy.py" in control_plane_readme
+    assert "docs/standards/engineering/python_code_design_standard.md" in control_plane_readme
+    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_agents
+    assert "core/python/src/watchtower_core/rebuild/README.md" in workspace_readme
+    assert "core/python/src/watchtower_core/routing/README.md" in workspace_readme
+    assert "core/python/src/watchtower_core/workflow_execution/README.md" in workspace_readme
+    assert "docs/standards/engineering/python_code_design_standard.md" in workspace_readme
     assert "core/python/src/watchtower_core/repo_ops/query/" in best_practices_standard
+    assert "docs/standards/engineering/python_code_design_standard.md" in (
+        best_practices_standard
+    )
 
     for relative_path in (
         "docs/standards/governance/github_collaboration_standard.md",

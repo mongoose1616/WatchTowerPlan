@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from importlib import import_module
-from typing import Any
+from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
     "AcceptanceReconciliationService",
@@ -48,19 +47,19 @@ _SUBMODULE_ONLY_EXPORTS = {
     "VALIDATION_ALL_FAMILIES": "watchtower_core.validation.all",
 }
 
-
-def __getattr__(name: str) -> Any:
-    if name in _REPO_OPS_EXPORTS:
-        raise AttributeError(
+__getattr__ = lazy_module_getattr(
+    module_name=__name__,
+    export_modules=_EXPORT_MODULES,
+    blocked_messages=(
+        dict.fromkeys(
+            _REPO_OPS_EXPORTS,
             "watchtower_core.validation exposes only reusable validation services. "
-            "Import repo-local document semantics from watchtower_core.repo_ops.validation."
+            "Import repo-local document semantics from watchtower_core.repo_ops.validation.",
         )
-    if name in _SUBMODULE_ONLY_EXPORTS:
-        raise AttributeError(
+        | dict.fromkeys(
+            _SUBMODULE_ONLY_EXPORTS,
             "watchtower_core.validation keeps aggregate validate-all helpers out of the "
-            "package root. Import them from watchtower_core.validation.all."
+            "package root. Import them from watchtower_core.validation.all.",
         )
-    module_name = _EXPORT_MODULES.get(name)
-    if module_name is None:
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-    return getattr(import_module(module_name), name)
+    ),
+)

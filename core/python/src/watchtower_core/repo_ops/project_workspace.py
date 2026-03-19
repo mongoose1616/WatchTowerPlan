@@ -6,12 +6,21 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.control_plane import PlanningVocabularyHelper
+from watchtower_core.control_plane import TerminologyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
+from watchtower_core.rebuild import (
+    MarkdownReconciliationHelper,
+    RebuildHarness,
+    RebuildOutput,
+    RebuildTargetSpec,
+    RenderedViewBuilder,
+    RenderedViewSpec,
+)
 from watchtower_core.repo_ops.artifact_index import (
-    ArtifactIndexService,
     PLAN_ARTIFACT_INDEX_PATH,
+    ArtifactIndexService,
 )
 from watchtower_core.repo_ops.project_context import (
     PLAN_PACK_SETTINGS_PATH,
@@ -28,6 +37,9 @@ from watchtower_core.utils.timestamps import utc_timestamp_now
 from watchtower_core.validation import ValidationResult
 
 PLAN_PROJECT_INDEX_PATH = "plan/.wt/indexes/project_index.json"
+PROJECT_SURFACE_ID = "rendered.project.project"
+PROJECT_REPOSITORIES_SURFACE_ID = "rendered.project.repositories"
+PROJECT_SUMMARY_SURFACE_ID = "rendered.project.summary"
 
 _ACTIVE_PROJECT_STATUSES = frozenset({"active", "planned"})
 
@@ -161,7 +173,7 @@ class ProjectWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._vocabulary = PlanningVocabularyHelper.from_loader(
+        self._vocabulary = TerminologyHelper.from_loader(
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
@@ -169,6 +181,8 @@ class ProjectWorkspaceService:
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
+        self._rendered_views = RenderedViewBuilder(loader)
+        self._markdown_reconciliation = MarkdownReconciliationHelper(loader)
 
     def bootstrap(
         self,
@@ -183,8 +197,8 @@ class ProjectWorkspaceService:
 
         updated_at = params.updated_at or utc_timestamp_now()
         project_slug = params.project_slug
-        project_id = params.project_id or f"project.{project_slug}"
-        if project_id != f"project.{project_slug}":
+        project_id = params.project_id or PlanPathIdHelper.canonical_project_id(project_slug)
+        if project_id != PlanPathIdHelper.canonical_project_id(project_slug):
             raise ValueError("project_id must use the canonical project.<slug> form.")
 
         project_root = self._project_root(project_slug)
@@ -196,7 +210,10 @@ class ProjectWorkspaceService:
         repository_entries = []
         repository_refs = []
         for spec in params.repository_links:
-            repository_id = spec.repository_id or f"repository.{project_slug}.{spec.repository_role}"
+            repository_id = spec.repository_id or PlanPathIdHelper.canonical_repository_id(
+                project_slug,
+                spec.repository_role,
+            )
             repository_refs.append(repository_id)
             repository_entries.append(
                 {
@@ -218,7 +235,9 @@ class ProjectWorkspaceService:
             "summary": params.summary,
             "status": params.status,
             "linked_repository_refs": repository_refs,
-            "initiative_root": self._project_initiative_root_relative(project_slug),
+            "initiative_root": PlanPathIdHelper.project_initiatives_root_relative(
+                project_slug
+            ),
             "updated_at": updated_at,
         }
         repository_map_document = {
@@ -295,21 +314,20 @@ class ProjectWorkspaceService:
                 PLAN_PROJECT_INDEX_PATH: documents["project_index"],
             }
         )
-        if write:
-            self._loader.artifact_store.write_json_object(
-                PLAN_PROJECT_INDEX_PATH,
-                documents["project_index"],
-            )
-            self._loader.artifact_store.write_json_object(
-                PLAN_ARTIFACT_INDEX_PATH,
-                artifact_index_document,
-            )
-            for relative_path, content in documents["project_views"].items():
-                self._write_markdown(relative_path, content)
+        rebuild_outputs = self._build_rebuild_outputs(documents, artifact_index_document)
+        rebuild_result = RebuildHarness(self._loader).run_specs(
+            (
+                RebuildTargetSpec(
+                    target="project-workspace",
+                    build_outputs=lambda _loader: rebuild_outputs,
+                ),
+            ),
+            write=write,
+        )
         return ProjectWorkspaceSyncResult(
             project_count=len(snapshots),
             initiative_count=sum(len(snapshot.child_initiatives) for snapshot in snapshots),
-            wrote=write,
+            wrote=rebuild_result.wrote,
         )
 
     def load_project_entries(self) -> tuple[PlanProjectIndexEntry, ...]:
@@ -354,34 +372,17 @@ class ProjectWorkspaceService:
         }
 
         issues: list[DerivedProjectSurfaceIssue] = []
-        for relative_path, expected in expected_markdown.items():
-            if not expected:
-                issues.append(
-                    DerivedProjectSurfaceIssue(
-                        category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Required project rendered surface is missing from the expected build: {relative_path}.",
-                    )
+        for issue in self._markdown_reconciliation.expected_issues(expected_markdown):
+            issues.append(
+                DerivedProjectSurfaceIssue(
+                    category="stale_rendered_surface",
+                    relative_path=issue.relative_output_path,
+                    message=_project_markdown_issue_message(
+                        issue.issue_code,
+                        issue.relative_output_path,
+                    ),
                 )
-                continue
-            candidate = self._loader.repo_root / relative_path
-            if not candidate.exists():
-                issues.append(
-                    DerivedProjectSurfaceIssue(
-                        category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Required project rendered surface is missing: {relative_path}.",
-                    )
-                )
-                continue
-            if candidate.read_text(encoding="utf-8") != expected:
-                issues.append(
-                    DerivedProjectSurfaceIssue(
-                        category="stale_rendered_surface",
-                        relative_path=relative_path,
-                        message=f"Project rendered surface drift detected for {relative_path}.",
-                    )
-                )
+            )
 
         for relative_path, expected in expected_json.items():
             candidate = self._loader.repo_root / relative_path
@@ -507,50 +508,64 @@ class ProjectWorkspaceService:
                 if str(initiative["lifecycle_stage"]) == "blocked"
                 or bool(initiative.get("gate_state", {}).get("blocking_reasons"))
             )
-            root = snapshot.project_root
-            documents[f"{root}/project.md"] = "\n".join(
+            rendered_views = self._rendered_views.build_views(
                 (
-                    f"# {project['title']} Project",
-                    "",
-                    "## Summary",
-                    str(project["summary"]),
-                    "",
-                    "## Identity",
-                    f"- `project_id`: `{project['project_id']}`",
-                    f"- `slug`: `{project['slug']}`",
-                    f"- `status`: `{project['status']}`",
-                    f"- `initiative_root`: `{snapshot.initiative_root}`",
-                    "",
-                    "## Linked Repositories",
-                    repository_lines,
-                    "",
+                    RenderedViewSpec(
+                        surface_id=PROJECT_SURFACE_ID,
+                        path_params={"project_slug": str(project["slug"])},
+                        title=f"{project['title']} Project",
+                        data={
+                            "summary": (
+                                "## Summary",
+                                str(project["summary"]),
+                            ),
+                            "identity": (
+                                "## Identity",
+                                f"- `project_id`: `{project['project_id']}`",
+                                f"- `slug`: `{project['slug']}`",
+                                f"- `status`: `{project['status']}`",
+                                f"- `initiative_root`: `{snapshot.initiative_root}`",
+                            ),
+                            "linked_repositories": (
+                                "## Linked Repositories",
+                                repository_lines,
+                            ),
+                        },
+                    ),
+                    RenderedViewSpec(
+                        surface_id=PROJECT_REPOSITORIES_SURFACE_ID,
+                        path_params={"project_slug": str(project["slug"])},
+                        title=f"{project['title']} Repositories",
+                        data={
+                            "repository_map": (
+                                "## Repository Map",
+                                repository_lines,
+                            ),
+                        },
+                    ),
+                    RenderedViewSpec(
+                        surface_id=PROJECT_SUMMARY_SURFACE_ID,
+                        path_params={"project_slug": str(project["slug"])},
+                        title=f"{project['title']} Summary",
+                        data={
+                            "status": (
+                                "## Status",
+                                f"- `status`: `{project['status']}`",
+                                f"- `repository_count`: `{len(repositories)}`",
+                                f"- `active_initiative_count`: `{active_initiative_count}`",
+                                f"- `blocked_initiative_count`: `{blocked_initiative_count}`",
+                                f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+                            ),
+                            "child_initiatives": (
+                                "## Child Initiatives",
+                                initiative_lines,
+                            ),
+                        },
+                    ),
                 )
             )
-            documents[f"{root}/repositories.md"] = "\n".join(
-                (
-                    f"# {project['title']} Repositories",
-                    "",
-                    "## Repository Map",
-                    repository_lines,
-                    "",
-                )
-            )
-            documents[f"{root}/summary.md"] = "\n".join(
-                (
-                    f"# {project['title']} Summary",
-                    "",
-                    "## Status",
-                    f"- `status`: `{project['status']}`",
-                    f"- `repository_count`: `{len(repositories)}`",
-                    f"- `active_initiative_count`: `{active_initiative_count}`",
-                    f"- `blocked_initiative_count`: `{blocked_initiative_count}`",
-                    f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
-                    "",
-                    "## Child Initiatives",
-                    initiative_lines,
-                    "",
-                )
-            )
+            for result in rendered_views:
+                documents[result.relative_output_path] = result.content
         return documents
 
     def _load_project_snapshots(self) -> tuple[_ProjectSnapshot, ...]:
@@ -604,27 +619,55 @@ class ProjectWorkspaceService:
         return payload
 
     def _pack_loader(self) -> ControlPlaneLoader:
-        return ControlPlaneLoader(
-            self._loader.repo_root,
-            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-        )
+        return self._loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
 
-    def _write_markdown(self, relative_path: str, content: str) -> None:
-        path = self._loader.repo_root / relative_path
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(f"{content.rstrip()}\n", encoding="utf-8")
+    def _build_rebuild_outputs(
+        self,
+        documents: dict[str, object],
+        artifact_index_document: dict[str, object],
+    ) -> tuple[RebuildOutput, ...]:
+        project_views = documents["project_views"]
+        assert isinstance(project_views, dict)
+        outputs = (
+            RebuildOutput(
+                relative_output_path=PLAN_PROJECT_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=_json_document(documents["project_index"]),
+                validated=True,
+            ),
+            RebuildOutput(
+                relative_output_path=PLAN_ARTIFACT_INDEX_PATH,
+                artifact_kind="index",
+                output_format="json",
+                content=artifact_index_document,
+                validated=True,
+            ),
+        )
+        return outputs + tuple(
+            RebuildOutput(
+                relative_output_path=relative_path,
+                artifact_kind="rendered_view",
+                output_format="markdown",
+                content=_markdown_content(content),
+            )
+            for relative_path, content in sorted(project_views.items())
+        )
 
     def _project_root(self, project_slug: str) -> Path:
         return self._loader.repo_root / "plan" / "projects" / project_slug
 
     def _project_root_relative(self, project_slug: str) -> str:
-        return f"plan/projects/{project_slug}"
+        return PlanPathIdHelper.project_root_relative(project_slug)
 
     def _project_initiative_root_relative(self, project_slug: str) -> str:
-        return f"{self._project_root_relative(project_slug)}/initiatives"
+        return PlanPathIdHelper.project_initiatives_root_relative(project_slug)
 
     def _project_path(self, project_slug: str, suffix: str) -> str:
-        return f"{self._project_root_relative(project_slug)}/{suffix}"
+        return PlanPathIdHelper.join_relative(
+            self._project_root_relative(project_slug),
+            suffix,
+        )
 
 
 def _latest_timestamp(values: object) -> str:
@@ -645,6 +688,27 @@ def _document_updated_at(document: dict[str, object]) -> str:
     if isinstance(created_at, str) and created_at:
         return created_at
     return ""
+
+
+def _json_document(value: object) -> dict[str, object]:
+    assert isinstance(value, dict)
+    return value
+
+
+def _project_markdown_issue_message(issue_code: str, relative_path: str) -> str:
+    if issue_code == "missing_expected_content":
+        return (
+            "Required project rendered surface is missing from the expected build: "
+            f"{relative_path}."
+        )
+    if issue_code == "missing_output":
+        return f"Required project rendered surface is missing: {relative_path}."
+    return f"Project rendered surface drift detected for {relative_path}."
+
+
+def _markdown_content(value: object) -> str:
+    assert isinstance(value, str)
+    return value
 
 
 def _search_project_entries(

@@ -46,7 +46,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core task transition --task-id task.example.001 "
-            "--task-status done --format json",
+            "--task-status completed --format json",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync coordination",
@@ -62,8 +62,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
             "uv run watchtower-core sync github-tasks --repo owner/repo",
-            "uv run watchtower-core closeout initiative --trace-id trace.example "
-            "--initiative-status completed --closure-reason \"Delivered and validated\"",
+            "uv run watchtower-core closeout plan-initiative --initiative-slug plan_example "
+            "--initiative-status completed --closure-reason \"Delivered and validated\" --write",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core validate all --skip-acceptance",

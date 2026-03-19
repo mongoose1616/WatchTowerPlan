@@ -61,10 +61,34 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         [],
     )
 
+    python_code_design_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.engineering.python_code_design"
+    )
+    assert python_code_design_entry["doc_path"] == (
+        "docs/standards/engineering/python_code_design_standard.md"
+    )
+    assert python_code_design_entry["uses_external_references"] is True
+    assert {
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/references/pep8_reference.md",
+        "docs/references/pep257_reference.md",
+        "docs/references/ruff_reference.md",
+        "docs/references/mypy_reference.md",
+        "docs/references/pytest_reference.md",
+    }.issubset(set(python_code_design_entry.get("internal_reference_paths", [])))
+    assert {
+        "core/python/src/watchtower_core/",
+        "core/python/tests/",
+        "core/python/AGENTS.md",
+        "core/python/README.md",
+    }.issubset(set(python_code_design_entry.get("operationalization_paths", [])))
+
     foundation_entry = next(
         entry for entry in entries if entry["standard_id"] == "std.data_contracts.foundation_index"
     )
-    assert set(("sync", "query", "documentation", "schema", "artifact")).issubset(
+    assert {"sync", "query", "documentation", "schema", "artifact"}.issubset(
         set(foundation_entry.get("operationalization_modes", []))
     )
     assert "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py" in (

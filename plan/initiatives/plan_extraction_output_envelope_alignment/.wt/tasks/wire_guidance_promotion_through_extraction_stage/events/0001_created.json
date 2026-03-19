@@ -1,0 +1,15 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage.0001_created",
+  "initiative_id": "initiative.plan_extraction_output_envelope_alignment",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T02:05:00Z",
+  "summary": "Created task task.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage during initiative bootstrap.",
+  "payload": {
+    "status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.plan_extraction_output_envelope_alignment.wire_guidance_promotion_through_extraction_stage"
+}

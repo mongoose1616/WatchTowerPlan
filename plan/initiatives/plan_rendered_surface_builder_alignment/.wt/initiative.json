@@ -1,0 +1,73 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+  "trace_id": "trace.plan_rendered_surface_builder_alignment",
+  "slug": "plan_rendered_surface_builder_alignment",
+  "title": "Plan Rendered Surface Builder Alignment",
+  "summary": "Extracts a reusable rendered-view builder and markdown reconciliation helper, then routes live plan and project rendered surfaces through the registry-backed boundary.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T02:30:00Z",
+  "updated_at": "2026-03-18T02:44:00Z",
+  "task_ids": [
+    "task.plan_rendered_surface_builder_alignment.add_reusable_rendered_view_builder",
+    "task.plan_rendered_surface_builder_alignment.refactor_live_plan_and_project_surfaces_onto_rendered_helpers",
+    "task.plan_rendered_surface_builder_alignment.validate_rendered_surface_boundary_alignment"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_rendered_surface_builder_alignment.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_rendered_surface_builder_alignment.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_rendered_surface_builder_alignment.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_rendered_surface_builder_alignment/initiative_brief.md",
+      "sha256": "9d83cfb053fff3c6655e2fe29a6fb568367edd7619a23a49d1b9590d3ec3efc0",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T02:30:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_rendered_surface_builder_alignment/design_record.md",
+      "sha256": "8c83eaa8b2704798c0d9b2a4c20a8bdfc670fef84e69cd7eba9ab3f1e84460b2",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T02:30:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_rendered_surface_builder_alignment/implementation_slice.md",
+      "sha256": "db236ecd835e002ba23c55aebde517c305729b6facd30cc5a02d27911b3db805",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T02:30:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-18T01:47:39Z"
+    }
+  ],
+  "closed_at": "2026-03-18T02:44:00Z",
+  "closure_reason": "Delivered the registry-backed rendered-view builder and markdown reconciliation helpers for live plan and project surfaces."
+}

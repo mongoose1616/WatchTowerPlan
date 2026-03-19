@@ -5,7 +5,13 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    add_limit_argument,
+    add_query_argument,
+    examples,
+)
 from watchtower_core.cli.query_discovery_handlers import (
     _run_query_commands,
     _run_query_paths,
@@ -33,9 +39,12 @@ def register_query_discovery_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_paths_parser.add_argument(
-        "--query",
-        help="Free-text query over indexed path fields such as path, summary, aliases, and tags.",
+    add_query_argument(
+        query_paths_parser,
+        help_text=(
+            "Free-text query over indexed path fields such as path, summary, aliases, and "
+            "tags."
+        ),
     )
     query_paths_parser.add_argument(
         "--surface-kind",
@@ -58,18 +67,8 @@ def register_query_discovery_commands(
         "--parent-path",
         help="Exact parent-path filter such as docs/commands/core_python/.",
     )
-    query_paths_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_paths_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_paths_parser)
+    add_human_json_format_argument(query_paths_parser)
     query_paths_parser.set_defaults(handler=_run_query_paths)
 
     query_commands_parser = query_subparsers.add_parser(
@@ -90,9 +89,9 @@ def register_query_discovery_commands(
         ),
         formatter_class=HelpFormatter,
     )
-    query_commands_parser.add_argument(
-        "--query",
-        help=(
+    add_query_argument(
+        query_commands_parser,
+        help_text=(
             "Free-text query over indexed command fields such as command name, "
             "summary, synopsis, or aliases."
         ),
@@ -102,16 +101,6 @@ def register_query_discovery_commands(
         help="Exact command-kind filter such as root_command or subcommand.",
     )
     query_commands_parser.add_argument("--tag", help="Exact tag filter.")
-    query_commands_parser.add_argument(
-        "--limit",
-        type=int,
-        default=10,
-        help="Maximum number of results to return.",
-    )
-    query_commands_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_limit_argument(query_commands_parser)
+    add_human_json_format_argument(query_commands_parser)
     query_commands_parser.set_defaults(handler=_run_query_commands)

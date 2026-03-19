@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
 
@@ -111,9 +111,9 @@ def validate_project_machine_state(
 ) -> ProjectMachineValidationResult:
     """Validate the machine-authoritative project surfaces needed for context load."""
 
-    project_root = loader.repo_root / "plan" / "projects" / project_slug
-    project_root_relative = f"plan/projects/{project_slug}"
-    project_id = f"project.{project_slug}"
+    project_root_relative = PlanPathIdHelper.project_root_relative(project_slug)
+    project_root = loader.repo_root / project_root_relative
+    project_id = PlanPathIdHelper.canonical_project_id(project_slug)
     issues: list[str] = []
     project_document: dict[str, object] | None = None
     repository_map_document: dict[str, object] | None = None
@@ -151,7 +151,7 @@ def validate_project_machine_state(
         surface_kinds=("machine_root", "machine_artifact", "initiative_container"),
     )
     issues.extend(issue.message for issue in policy_issues)
-    initiative_root = f"{project_root_relative}/initiatives"
+    initiative_root = PlanPathIdHelper.project_initiatives_root_relative(project_slug)
 
     if not issues:
         project_document = _load_json(loader, f"{project_root_relative}/.wt/project.json")
@@ -196,12 +196,10 @@ def validate_project_machine_state(
 
 
 def _pack_loader(loader: ControlPlaneLoader, pack_settings_path: str) -> ControlPlaneLoader:
-    return ControlPlaneLoader(
-        loader.repo_root,
-        active_pack_settings_path=pack_settings_path,
-    )
+    return loader.derive(active_pack_settings_path=pack_settings_path)
 
 
 def _load_json(loader: ControlPlaneLoader, relative_path: str) -> dict[str, object]:
-    path = loader.repo_root / relative_path
-    return json.loads(path.read_text(encoding="utf-8"))
+    document = loader.load_json_object(relative_path)
+    assert isinstance(document, dict)
+    return document

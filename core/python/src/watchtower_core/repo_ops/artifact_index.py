@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 from watchtower_core.control_plane.artifact_family import ArtifactFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -232,10 +231,7 @@ class ArtifactIndexService:
         return entry
 
     def _pack_loader(self) -> ControlPlaneLoader:
-        return ControlPlaneLoader(
-            self._loader.repo_root,
-            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-        )
+        return self._loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
 
 
 def search_artifact_entries(

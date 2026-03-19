@@ -69,7 +69,7 @@ def _task_entry(**overrides: object) -> SimpleNamespace:
         "trace_id": "trace.example",
         "title": "Example task",
         "summary": "Task summary.",
-        "status": "planned",
+        "status": "active",
         "task_status": "planned",
         "task_kind": "feature",
         "priority": "high",
@@ -269,9 +269,9 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
     assert "Warning: Prefer a bounded scope." in captured.out
 
 def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
-    blocker = _task_entry(task_id="task.blocker.001", title="Blocker", task_status="done")
-    dependency = _task_entry(task_id="task.depends.001", title="Dependency", task_status="done")
-    reverse = _task_entry(task_id="task.reverse.001", title="Reverse", task_status="backlog")
+    blocker = _task_entry(task_id="task.blocker.001", title="Blocker", task_status="completed")
+    dependency = _task_entry(task_id="task.depends.001", title="Dependency", task_status="completed")
+    reverse = _task_entry(task_id="task.reverse.001", title="Reverse", task_status="planned")
 
     class FakeService:
         def __init__(self, loader: object) -> None:
@@ -304,6 +304,18 @@ def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
     assert "Found 1 task entry:" in captured.out
     assert "Blocked by: task.blocker.001" in captured.out
     assert "Reverse dependencies: task.reverse.001" in captured.out
+
+
+def test_task_entry_payload_keeps_artifact_and_workflow_statuses_distinct() -> None:
+    payload = query_coordination_lookup_handlers._task_entry_payload(
+        _task_entry(),
+        service=SimpleNamespace(),
+        reverse_dependencies={},
+        include_dependency_details=False,
+    )
+
+    assert payload["status"] == "active"
+    assert payload["task_status"] == "planned"
 
 
 def test_query_tasks_skips_dependency_detail_work_when_not_requested(monkeypatch, capsys) -> None:

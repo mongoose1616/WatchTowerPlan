@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PlanningCatalogEntry
 from watchtower_core.repo_ops.query.common import (
-    RenderedSearchFilters,
     planning_catalog_rendered_query_terms,
+    rendered_search_filters_from_params,
     search_rendered_entries,
 )
 
@@ -39,14 +39,7 @@ class PlanningCatalogQueryService:
         catalog = self._loader.load_planning_catalog()
         return search_rendered_entries(
             catalog.entries,
-            RenderedSearchFilters(
-                query=params.query,
-                trace_id=params.trace_id,
-                initiative_status=params.initiative_status,
-                current_phase=params.current_phase,
-                owner=params.owner,
-                limit=params.limit,
-            ),
+            rendered_search_filters_from_params(params),
             query_fields=planning_catalog_rendered_query_terms,
             sort_key=lambda entry: entry.trace_id,
             trace_id=lambda entry: entry.trace_id,

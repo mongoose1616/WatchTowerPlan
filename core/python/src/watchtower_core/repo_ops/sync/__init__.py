@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from importlib import import_module
-from typing import Any
+from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
     "AllSyncResult",
@@ -109,9 +108,7 @@ _EXPORT_MODULES = {
     "WorkflowIndexSyncService": "watchtower_core.repo_ops.sync.workflow_index",
 }
 
-
-def __getattr__(name: str) -> Any:
-    module_name = _EXPORT_MODULES.get(name)
-    if module_name is None:
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-    return getattr(import_module(module_name), name)
+__getattr__ = lazy_module_getattr(
+    module_name=__name__,
+    export_modules=_EXPORT_MODULES,
+)

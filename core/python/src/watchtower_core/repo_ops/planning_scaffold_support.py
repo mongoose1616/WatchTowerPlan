@@ -8,6 +8,7 @@ from dataclasses import dataclass
 
 from watchtower_core.adapters import extract_first_paragraph, extract_metadata_bullets
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
 )
@@ -131,10 +132,7 @@ def ordered_front_matter(front_matter: dict[str, object]) -> dict[str, object]:
 def slugify_file_stem(value: str) -> str:
     """Normalize a title or stem into a repo-safe file stem."""
 
-    normalized = _FILE_STEM_PATTERN.sub("_", value.casefold()).strip("_")
-    if not normalized:
-        raise ValueError("Document file stem resolved to an empty value.")
-    return normalized
+    return PlanPathIdHelper.slugify(value, label="document file stem")
 
 
 def scaffold_type_for_kind(kind: PlanKind) -> str:

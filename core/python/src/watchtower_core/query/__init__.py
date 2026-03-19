@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from importlib import import_module
-from typing import Any
+from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
     "ArtifactFamilyPathResolution",
@@ -60,14 +59,13 @@ _REPO_OPS_EXPORTS = {
     "TraceabilityQueryService",
 }
 
-def __getattr__(name: str) -> Any:
-    if name in _REPO_OPS_EXPORTS:
-        raise AttributeError(
-            "watchtower_core.query exposes only reusable generic query services. "
-            "Import live planning or repo-local query services from "
-            "watchtower_core.repo_ops.query."
-        )
-    module_name = _EXPORT_MODULES.get(name)
-    if module_name is None:
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-    return getattr(import_module(module_name), name)
+__getattr__ = lazy_module_getattr(
+    module_name=__name__,
+    export_modules=_EXPORT_MODULES,
+    blocked_messages=dict.fromkeys(
+        _REPO_OPS_EXPORTS,
+        "watchtower_core.query exposes only reusable generic query services. "
+        "Import live planning or repo-local query services from "
+        "watchtower_core.repo_ops.query.",
+    ),
+)

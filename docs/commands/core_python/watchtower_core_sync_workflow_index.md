@@ -1,7 +1,7 @@
 # `watchtower-core sync workflow-index`
 
 ## Summary
-This command rebuilds the governed workflow index from the workflow modules under `workflows/modules/`.
+This command rebuilds the governed workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.
 
 ## Use When
 - You changed a workflow module and need the machine-readable workflow index to reflect the current workflow corpus.
@@ -46,7 +46,7 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.json --f
 ```
 
 ## Behavior and Outputs
-- The command reads workflow modules under `workflows/modules/` and rebuilds the machine-readable workflow index deterministically.
+- The command reads workflow modules under `core/workflows/modules/` and `plan/workflows/modules/` and rebuilds the machine-readable workflow index deterministically.
 - The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, and governed local-reference usage.
 - Workflow modules that publish `Additional Files to Load` must keep it task-specific, repo-local, checkout-portable, and free of generic routing-baseline boilerplate.
 - Workflow modules that use filesystem-absolute checkout paths instead of repository-native links are rejected during rebuild because those paths do not survive clone or worktree changes.
@@ -66,6 +66,8 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.json --f
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
+- `core/python/src/watchtower_core/cli/sync_family_documents.py`
+- `core/python/src/watchtower_core/cli/sync_document_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/sync/workflow_index.py`
 - `core/control_plane/indexes/workflows/workflow_index.json`
 

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_live_evidence_closeout_review_indexes_foundation.implement_live_indexes",
+  "slug": "implement_live_indexes",
+  "initiative_id": "initiative.plan_live_evidence_closeout_review_indexes_foundation",
+  "title": "Implement live evidence closeout and review indexes",
+  "summary": "Add aggregate index contracts, rebuild logic, and query surfaces for initiative-local evidence, closeout, and review state.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T22:35:46Z",
+  "updated_at": "2026-03-17T23:01:29Z",
+  "dependency_task_ids": [
+    "task.plan_live_evidence_closeout_review_indexes_foundation.reconcile_environment_context_scope"
+  ],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

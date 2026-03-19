@@ -5,7 +5,11 @@ from __future__ import annotations
 import argparse
 from textwrap import dedent
 
-from watchtower_core.cli.common import HelpFormatter, examples
+from watchtower_core.cli.common import (
+    HelpFormatter,
+    add_human_json_format_argument,
+    examples,
+)
 
 
 def register_doctor_family(
@@ -33,10 +37,5 @@ def register_doctor_family(
         ),
         formatter_class=HelpFormatter,
     )
-    doctor_parser.add_argument(
-        "--format",
-        choices=("human", "json"),
-        default="human",
-        help="Output format. Use json for scripts, workflows, or agent calls.",
-    )
+    add_human_json_format_argument(doctor_parser)
     doctor_parser.set_defaults(handler=_run_doctor)

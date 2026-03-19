@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Iterable
-from dataclasses import dataclass
-from typing import Any
+from dataclasses import asdict, dataclass
+from typing import Any, Protocol
 
 from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningCatalogEntry
 from watchtower_core.query.common import normalize_optional_text, normalize_text, query_score
@@ -21,6 +21,54 @@ class RenderedSearchFilters:
     owner: str | None = None
     blocked_only: bool = False
     limit: int | None = None
+
+
+class RenderedSearchParamsLike(Protocol):
+    """Common rendered-search parameter shape used across repo-local queries."""
+
+    query: str | None
+    trace_id: str | None
+    initiative_status: str | None
+    current_phase: str | None
+    owner: str | None
+    limit: int | None
+
+
+class DataclassSearchAdapter[ParamsT, TargetParamsT, EntryT]:
+    """Translate one query dataclass into the adjacent workspace search boundary."""
+
+    def __init__(
+        self,
+        *,
+        target_type: type[TargetParamsT],
+        search: Callable[[TargetParamsT], tuple[EntryT, ...]],
+    ) -> None:
+        self._target_type = target_type
+        self._search = search
+
+    def search(self, params: ParamsT) -> tuple[EntryT, ...]:
+        """Delegate one query through a differently typed workspace search contract."""
+
+        return self._search(self._target_type(**asdict(params)))
+
+
+def rendered_search_filters_from_params(
+    params: RenderedSearchParamsLike,
+    *,
+    blocked_only: bool = False,
+) -> RenderedSearchFilters:
+    """Build one rendered-search filter set from a shared params contract."""
+
+    return RenderedSearchFilters(
+        query=params.query,
+        trace_id=params.trace_id,
+        initiative_status=params.initiative_status,
+        current_phase=params.current_phase,
+        owner=params.owner,
+        blocked_only=blocked_only,
+        limit=params.limit,
+    )
+
 
 def search_rendered_entries[EntryT](
     entries: Iterable[EntryT],

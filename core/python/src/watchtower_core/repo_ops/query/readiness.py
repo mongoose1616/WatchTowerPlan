@@ -10,6 +10,7 @@ from watchtower_core.repo_ops.plan_workspace import (
     PlanReadinessSearchParams,
     PlanWorkspaceService,
 )
+from watchtower_core.repo_ops.query.common import DataclassSearchAdapter
 
 
 @dataclass(frozen=True, slots=True)
@@ -27,26 +28,18 @@ class ReadinessSearchParams:
     limit: int | None = None
 
 
-class ReadinessQueryService:
+class ReadinessQueryService(
+    DataclassSearchAdapter[
+        ReadinessSearchParams,
+        PlanReadinessSearchParams,
+        PlanReadinessIndexEntry,
+    ]
+):
     """Search the live plan readiness index."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._plan_workspace = PlanWorkspaceService(loader)
-
-    def search(self, params: ReadinessSearchParams) -> tuple[PlanReadinessIndexEntry, ...]:
-        """Return readiness entries matching the requested filters."""
-
-        return self._plan_workspace.search_readiness(
-            PlanReadinessSearchParams(
-                query=params.query,
-                initiative_id=params.initiative_id,
-                project_id=params.project_id,
-                trace_id=params.trace_id,
-                lifecycle_stage=params.lifecycle_stage,
-                review_status=params.review_status,
-                ready_for_execution=params.ready_for_execution,
-                blocked_only=params.blocked_only,
-                limit=params.limit,
-            )
+        plan_workspace = PlanWorkspaceService(loader)
+        super().__init__(
+            target_type=PlanReadinessSearchParams,
+            search=plan_workspace.search_readiness,
         )
-

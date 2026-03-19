@@ -57,7 +57,7 @@ uv run watchtower-core query commands --tag query --format json
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_discovery_family.py`
 - `core/python/src/watchtower_core/cli/query_discovery_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/commands.py`
+- `core/python/src/watchtower_core/query/commands.py`
 - `core/control_plane/indexes/commands/command_index.json`
 
 ## Updated At

@@ -84,7 +84,7 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/workflows.py`
+- `core/python/src/watchtower_core/query/workflows.py`
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At

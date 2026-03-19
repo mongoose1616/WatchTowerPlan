@@ -1,12 +1,12 @@
 # `watchtower-core task update`
 
 ## Summary
-This command applies structured field or body updates to one governed local task record and refreshes the coordination slice in write mode.
+This command applies structured field updates to one initiative-local live task record and refreshes derived plan-workspace surfaces in write mode.
 
 ## Use When
-- You need to change task metadata, scope, completion criteria, blockers, dependencies, or path placement without hand-editing front matter.
-- You want to move a task between `open/` and the dated closed-task archive based on terminal or non-terminal status.
-- You want dry-run preview before mutating the canonical task document.
+- You need to change task metadata, scope, completion criteria, blockers, or dependencies without hand-editing task JSON.
+- You want to update one live task in place rather than moving docs-backed task files around.
+- You want dry-run preview before mutating the canonical live task record.
 
 ## Command
 | Field | Value |
@@ -19,13 +19,11 @@ This command applies structured field or body updates to one governed local task
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id <task_id> [--trace-id <trace_id> | --clear-trace-id] [--title <title>] [--summary <summary>] [--task-kind <kind>] [--priority <priority>] [--owner <owner>] [--task-status <status>] [--scope <item>] [--done-when <item>] [--applies-to <path_or_concept> | --clear-applies-to] [--related-id <id> | --clear-related-ids] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--file-stem <stem>] [--updated-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core task update --task-id <task_id> [--title <title>] [--summary <summary>] [--task-kind <kind>] [--priority <priority>] [--owner <owner>] [--task-status <status>] [--scope <item>] [--done-when <item>] [--applies-to <path_or_concept> | --clear-applies-to] [--related-id <id> | --clear-related-ids] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--task-id <task_id>`: Stable task identifier to update.
-- `--trace-id <trace_id>`: Replacement trace identifier.
-- `--clear-trace-id`: Remove the current trace identifier.
 - `--title <title>`: Replacement task title.
 - `--summary <summary>`: Replacement task summary.
 - `--task-kind <feature|bug|chore|documentation|governance|research>`: Replacement governed task kind.
@@ -42,9 +40,8 @@ uv run watchtower-core task update --task-id <task_id> [--trace-id <trace_id> | 
 - `--clear-depends-on`: Remove the current dependency list.
 - `--blocked-by <task_id>`: Replacement blocker task ID. Repeat for multiple values.
 - `--clear-blocked-by`: Remove the current blocker list.
-- `--file-stem <stem>`: Optional replacement filename stem. The task ID remains authoritative.
 - `--updated-at <timestamp>`: Optional explicit RFC 3339 UTC timestamp. Defaults to now when changes occur.
-- `--write`: Persist the updated task document and refresh the coordination slice.
+- `--write`: Persist the updated live task record and refresh the derived plan surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
@@ -66,11 +63,12 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate files.
-- Replacement list flags overwrite the current value set. Use the matching clear flag when you want to remove a list field or `trace_id`.
+- Replacement list flags overwrite the current value set. Use the matching clear flag when you want to remove a list field.
 - The command rejects path collisions, invalid task-state vocabulary, conflicting replacement and clear flags, and unresolved blocker or dependency task IDs.
 - If `related_ids` include any `trace.*` value, the resulting task must keep the matching `trace_id`.
-- If the resulting task status changes terminality, write mode moves the task document between `docs/planning/tasks/open/` and the dated `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/` tree.
-- When write mode moves the task document, the command also repairs matching repo-local task-path references in governed acceptance contracts and validation evidence before coordination refreshes.
+- Execution-starting statuses such as `in_progress`, `in_review`, and `completed` require the initiative package to have already been approved into `ready_for_execution`.
+- Live task updates stay under the same initiative-local `task.json` path; terminality is represented by `task_status`, not by moving files between open and closed docs directories.
+- In write mode, the command refreshes the live task, initiative, readiness, artifact, and coordination surfaces plus companion rendered views.
 - In `json` mode, the command prints one JSON object with the resulting task metadata, path outcome, write state, and `closeout_recommended` hint.
 
 ## Related Commands
@@ -79,6 +77,7 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 | `watchtower-core task` | Parent command group for task lifecycle operations. |
 | `watchtower-core task create` | Creates the original task record. |
 | `watchtower-core task transition` | Applies a narrower handoff-style update when full field updates are not needed. |
+| `watchtower-core plan approve` | Required before status updates can start real execution on a live initiative package. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
@@ -88,4 +87,4 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-18T20:35:00Z`

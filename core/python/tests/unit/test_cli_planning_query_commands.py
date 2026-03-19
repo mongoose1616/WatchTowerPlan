@@ -105,10 +105,18 @@ def test_query_tasks_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query tasks"
     assert payload["status"] == "ok"
-    assert any(
-        entry["task_id"] == ACTIVE_TASK_ID
-        for entry in payload["results"]
-    )
+    entry = next(entry for entry in payload["results"] if entry["task_id"] == ACTIVE_TASK_ID)
+    assert entry["status"] == "active"
+    assert entry["task_status"] in {
+        "planned",
+        "ready",
+        "in_progress",
+        "in_review",
+        "blocked",
+        "completed",
+        "cancelled",
+    }
+    assert entry["task_status"] != "active"
     assert all(entry["trace_id"] == ACTIVE_TRACE_ID for entry in payload["results"])
 
 

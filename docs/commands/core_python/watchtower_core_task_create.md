@@ -1,12 +1,12 @@
 # `watchtower-core task create`
 
 ## Summary
-This command creates one governed local task document from compact structured inputs and refreshes the coordination slice in write mode.
+This command creates one initiative-local live task record from compact structured inputs and refreshes derived plan-workspace surfaces in write mode.
 
 ## Use When
-- You need a new bounded local task record without hand-editing front matter.
+- You need a new bounded live task record without hand-editing initiative-local task JSON.
 - You want the task tracker, task index, traceability, initiative, and coordination surfaces to stay aligned when the new task is written.
-- You want dry-run preview before creating the canonical task document.
+- You want dry-run preview before creating the canonical live task record.
 
 ## Command
 | Field | Value |
@@ -32,14 +32,14 @@ uv run watchtower-core task create --task-id <task_id> --title <title> --summary
 - `--scope <item>`: Scope item. Repeat for multiple values.
 - `--done-when <item>`: Completion condition. Repeat for multiple values.
 - `--trace-id <trace_id>`: Optional linked trace identifier.
-- `--task-status <status>`: Initial task status. Defaults to `backlog`.
+- `--task-status <status>`: Initial task status. Defaults to `planned`.
 - `--applies-to <path_or_concept>`: Optional applied surface or concept. Repeat for multiple values.
 - `--related-id <id>`: Optional related planning or governance ID. Repeat for multiple values.
 - `--depends-on <task_id>`: Optional dependency task ID. Repeat for multiple values.
 - `--blocked-by <task_id>`: Optional blocker task ID. Repeat for multiple values.
 - `--file-stem <stem>`: Optional filename stem. Defaults to a slug derived from the title.
 - `--updated-at <timestamp>`: Optional explicit RFC 3339 UTC timestamp. Defaults to now.
-- `--write`: Persist the task document and refresh the coordination slice.
+- `--write`: Persist the live task record and refresh the derived plan surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
@@ -58,7 +58,8 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 - By default the command runs in dry-run mode and does not create or modify files.
 - The command rejects duplicate task IDs, path collisions, invalid task-state vocabulary, and unresolved blocker or dependency task IDs.
 - If any `--related-id` value is a `trace.*` identifier, `--trace-id` becomes required and must match that traced linkage.
-- In write mode, the command writes one Markdown task record under `docs/planning/tasks/open/` for non-terminal work or under the dated `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/` tree for terminal work, then refreshes the deterministic coordination slice.
+- Initial execution-starting statuses such as `in_progress`, `in_review`, and `completed` require the initiative package to have already been approved into `ready_for_execution`.
+- In write mode, the command writes one `task.json` record under the matched initiative root in `plan/initiatives/**/.wt/tasks/**/` or `plan/projects/**/initiatives/**/.wt/tasks/**/`, then refreshes the live plan indexes and rendered views.
 - In `human` mode, the command prints the target task path, resulting task status, owner, and whether write mode refreshed coordination.
 - In `json` mode, the command prints one JSON object with the task metadata, path outcome, write state, and a `closeout_recommended` hint when the resulting traced task set is fully terminal.
 
@@ -68,6 +69,7 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 | `watchtower-core task` | Parent command group for task lifecycle operations. |
 | `watchtower-core task update` | Applies later structured updates to the created task. |
 | `watchtower-core task transition` | Applies a narrower handoff-style update to the created task. |
+| `watchtower-core plan approve` | Required before a new task can be created directly in an execution-starting state. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
@@ -77,4 +79,4 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-18T20:35:00Z`

@@ -1,10 +1,10 @@
 # `watchtower-core sync task-tracking`
 
 ## Summary
-This command rebuilds the human-readable task tracker from the governed local task documents under `docs/planning/tasks/`.
+This command rebuilds the human-readable task tracker from initiative-local live task state under `plan/**/.wt/tasks/**`.
 
 ## Use When
-- You changed one or more task records and need the human-readable task board to match the current task corpus.
+- You changed one or more live task records and need the human-readable task board to match current initiative-local task state.
 - You want to inspect task counts in dry-run mode before writing the canonical tracker.
 - You want a deterministic way to refresh the local task board without hand-editing the tracker.
 
@@ -46,20 +46,20 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 ```
 
 ## Behavior and Outputs
-- The command reads the governed task documents under `docs/planning/tasks/` and rebuilds the human-readable task tracker deterministically.
-- The tracker groups tasks into open tasks, a compact closed-task summary, and a small recent-closeout preview instead of inlining the full closed archive corpus.
+- The command reads initiative-local live task state under `plan/**/.wt/tasks/**` and rebuilds the human-readable task tracker deterministically.
+- The tracker renders active and terminal task tables from live task state so humans can browse current work and completed outcomes without opening raw task JSON.
 - By default the command runs in dry-run mode and does not mutate the canonical tracker.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many tasks were summarized.
 - In `json` mode, the command prints one JSON object with the command name, status, task counts, write flag, and output path when one was written.
 - If `--include-document` is used, the JSON payload includes the rebuilt tracker content.
-- The command exits with status code `0` when the rebuild succeeds and non-zero if the source task documents are invalid.
+- The command exits with status code `0` when the rebuild succeeds and non-zero if the source live task records are invalid.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync task-index` | Rebuilds the machine-readable task index from the same task sources. |
-| `watchtower-core query tasks` | Reads the task index that reflects the same task source records. |
+| `watchtower-core sync task-index` | Rebuilds the machine-readable task index from the same live task sources. |
+| `watchtower-core query tasks` | Reads the task index that reflects the same live task records. |
 | `docs/planning/tasks/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface

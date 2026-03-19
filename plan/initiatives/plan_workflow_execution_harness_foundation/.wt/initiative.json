@@ -1,0 +1,78 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_workflow_execution_harness_foundation",
+  "trace_id": "trace.plan_workflow_execution_harness_foundation",
+  "slug": "plan_workflow_execution_harness_foundation",
+  "title": "Plan Workflow Execution Harness Foundation",
+  "summary": "Adds a reusable workflow execution harness over routed workflow selection with mode checks, gate checks, runner callbacks, and event recording hooks.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-18T00:47:00Z",
+  "updated_at": "2026-03-18T00:56:00Z",
+  "task_ids": [
+    "task.plan_workflow_execution_harness_foundation.define_generic_workflow_execution_contract",
+    "task.plan_workflow_execution_harness_foundation.add_workflow_execution_boundary_coverage",
+    "task.plan_workflow_execution_harness_foundation.reconcile_requirements_and_package_docs"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_workflow_execution_harness_foundation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_workflow_execution_harness_foundation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_workflow_execution_harness_foundation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_workflow_execution_harness_foundation/initiative_brief.md",
+      "sha256": "a10768c1f528530aff2e33ab7f0d5a3bd9f350cb0a849352cc93bf165e9100de",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:35:07Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_workflow_execution_harness_foundation/design_record.md",
+      "sha256": "c25951c626cd9ef3d131078815ac5674c781c3a4d1ada45493e65235fb64f883",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:35:07Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_workflow_execution_harness_foundation/implementation_slice.md",
+      "sha256": "ff102276e6a925cbc590e85133bd63d1cd0c7db1e37e83f69d7501cf6d642c8f",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-18T00:35:07Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-18T00:35:07Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-18T00:35:19Z"
+    }
+  ],
+  "closed_at": "2026-03-18T00:56:00Z",
+  "closure_reason": "Delivered the reusable workflow execution harness and aligned the public boundary requirements."
+}

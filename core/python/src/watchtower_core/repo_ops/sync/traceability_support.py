@@ -290,7 +290,7 @@ class TraceAccumulator:
             self._timestamps.add(closed_at)
 
     def mark_task_state(self, *, task_status: str) -> None:
-        if task_status not in {"done", "cancelled"}:
+        if task_status not in {"completed", "cancelled"}:
             self._has_active_tasks = True
 
     def reopen_completed_initiative_if_needed(self) -> None:

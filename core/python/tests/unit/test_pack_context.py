@@ -11,8 +11,8 @@ from watchtower_core.control_plane.models import (
     DocumentationFamilyRegistry,
     HumanSurfacePolicyRegistry,
     LifecycleStageRegistry,
-    PromotionPolicyRegistry,
     ProjectSurfacePolicyRegistry,
+    PromotionPolicyRegistry,
     RetentionPolicyRegistry,
     ReviewStatusRegistry,
     SourceTypeRegistry,
@@ -56,6 +56,16 @@ def test_pack_context_exposes_loaded_surfaces_by_name() -> None:
     surface = context.get_surface("path_pattern_registry")
 
     assert surface is context.path_pattern_registry
+
+
+def test_pack_context_loads_cleaned_shared_status_vocabulary() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    context = loader.load_pack_context()
+
+    assert context.status_registry.get("blocked").allowed_families == ()
+    assert context.status_registry.get("completed").entry_status == "active"
+    assert context.status_registry.get("cancelled").entry_status == "active"
 
 
 def test_pack_context_loads_required_surface_from_relocated_declared_path() -> None:

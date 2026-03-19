@@ -10,6 +10,7 @@ from watchtower_core.repo_ops.plan_workspace import (
     PlanDiscrepancySearchParams,
     PlanWorkspaceService,
 )
+from watchtower_core.repo_ops.query.common import DataclassSearchAdapter
 
 
 @dataclass(frozen=True, slots=True)
@@ -27,29 +28,18 @@ class DiscrepancySearchParams:
     limit: int | None = None
 
 
-class DiscrepancyQueryService:
+class DiscrepancyQueryService(
+    DataclassSearchAdapter[
+        DiscrepancySearchParams,
+        PlanDiscrepancySearchParams,
+        PlanDiscrepancyIndexEntry,
+    ]
+):
     """Search the live plan discrepancy index."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
-        self._plan_workspace = PlanWorkspaceService(loader)
-
-    def search(
-        self,
-        params: DiscrepancySearchParams,
-    ) -> tuple[PlanDiscrepancyIndexEntry, ...]:
-        """Return discrepancy entries matching the requested filters."""
-
-        return self._plan_workspace.search_discrepancies(
-            PlanDiscrepancySearchParams(
-                query=params.query,
-                initiative_id=params.initiative_id,
-                project_id=params.project_id,
-                trace_id=params.trace_id,
-                category=params.category,
-                severity=params.severity,
-                status=params.status,
-                blocking_only=params.blocking_only,
-                limit=params.limit,
-            )
+        plan_workspace = PlanWorkspaceService(loader)
+        super().__init__(
+            target_type=PlanDiscrepancySearchParams,
+            search=plan_workspace.search_discrepancies,
         )
-

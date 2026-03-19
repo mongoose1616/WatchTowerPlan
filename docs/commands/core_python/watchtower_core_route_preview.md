@@ -101,7 +101,7 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 ## Source Surface
 - `core/python/src/watchtower_core/cli/route_family.py`
 - `core/python/src/watchtower_core/cli/route_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/routes.py`
+- `core/python/src/watchtower_core/query/routes.py`
 - `core/control_plane/indexes/routes/route_index.json`
 
 ## Updated At

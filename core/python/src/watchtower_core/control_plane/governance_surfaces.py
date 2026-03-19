@@ -5,7 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
-from watchtower_core.control_plane.models import GovernanceSurfaceMap, PackSettings, PackSurfaceDeclaration
+from watchtower_core.control_plane.models import (
+    GovernanceSurfaceMap,
+    PackSettings,
+    PackSurfaceDeclaration,
+)
 
 
 @dataclass(frozen=True, slots=True)

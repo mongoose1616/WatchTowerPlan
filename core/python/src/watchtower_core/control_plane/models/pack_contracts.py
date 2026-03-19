@@ -283,6 +283,134 @@ class ActorRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class ExtractionObservation:
+    """One observation recorded in a structured extraction-output envelope."""
+
+    observation_id: str
+    summary: str
+    tags: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ExtractionObservation:
+        return cls(
+            observation_id=document["observation_id"],
+            summary=document["summary"],
+            tags=_tuple_of_strings(document, "tags"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ExtractionCandidateKnowledge:
+    """One candidate durable-knowledge entry extracted from source material."""
+
+    candidate_id: str
+    title: str
+    summary: str
+    knowledge_family: str
+    evidence_artifact_ids: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ExtractionCandidateKnowledge:
+        return cls(
+            candidate_id=document["candidate_id"],
+            title=document["title"],
+            summary=document["summary"],
+            knowledge_family=document["knowledge_family"],
+            evidence_artifact_ids=_tuple_of_strings(document, "evidence_artifact_ids"),
+            tags=_tuple_of_strings(document, "tags"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ExtractionOutputEnvelopeArtifact:
+    """Typed extraction-output envelope artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    summary: str
+    status: str
+    pack_id: str
+    work_item_id: str
+    trace_id: str
+    source_note_id: str
+    workflow_run_id: str
+    extraction_method: str
+    created_at: str
+    observations: tuple[ExtractionObservation, ...]
+    candidate_knowledge: tuple[ExtractionCandidateKnowledge, ...]
+    artifact_manifest_id: str | None = None
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ExtractionOutputEnvelopeArtifact:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            pack_id=document["pack_id"],
+            work_item_id=document["work_item_id"],
+            trace_id=document["trace_id"],
+            source_note_id=document["source_note_id"],
+            workflow_run_id=document["workflow_run_id"],
+            extraction_method=document["extraction_method"],
+            created_at=document["created_at"],
+            observations=tuple(
+                ExtractionObservation.from_document(entry)
+                for entry in document["observations"]
+            ),
+            candidate_knowledge=tuple(
+                ExtractionCandidateKnowledge.from_document(entry)
+                for entry in document["candidate_knowledge"]
+            ),
+            artifact_manifest_id=document.get("artifact_manifest_id"),
+            notes=document.get("notes"),
+        )
+
+    @property
+    def observation_count(self) -> int:
+        """Return the number of captured observations."""
+
+        return len(self.observations)
+
+    @property
+    def knowledge_count(self) -> int:
+        """Return the number of candidate durable-knowledge entries."""
+
+        return len(self.candidate_knowledge)
+
+    @property
+    def knowledge_families(self) -> tuple[str, ...]:
+        """Return the unique candidate knowledge families covered by the envelope."""
+
+        return tuple(
+            sorted(
+                {
+                    entry.knowledge_family
+                    for entry in self.candidate_knowledge
+                }
+            )
+        )
+
+    @property
+    def evidence_artifact_ids(self) -> tuple[str, ...]:
+        """Return the unique evidence artifact references cited by the envelope."""
+
+        return tuple(
+            sorted(
+                {
+                    artifact_id
+                    for entry in self.candidate_knowledge
+                    for artifact_id in entry.evidence_artifact_ids
+                }
+            )
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class ArtifactIndexEntry:
     """Typed artifact-index entry."""
 

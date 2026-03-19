@@ -73,7 +73,10 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core query artifacts --artifact-family initiative_state --format json"
         in captured.out
     )
-    assert "uv run watchtower-core query readiness --ready-for-execution true --format json" in captured.out
+    assert (
+        "uv run watchtower-core query readiness --ready-for-execution true --format json"
+        in captured.out
+    )
     assert "uv run watchtower-core query projects --slug watchtower --format json" in captured.out
     assert (
         "uv run watchtower-core query planning --trace-id trace.core_python_foundation"
@@ -92,7 +95,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core query workflows --query validation" in captured.out
     assert (
         "uv run watchtower-core task transition --task-id task.example.001 "
-        "--task-status done --format json" in captured.out
+        "--task-status completed --format json" in captured.out
     )
     assert "uv run watchtower-core sync standard-index" in captured.out
     assert "uv run watchtower-core sync foundation-index" in captured.out
@@ -198,6 +201,8 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
     assert "Scaffold compact governed planning documents" in captured.out
     assert "scaffold" in captured.out
     assert "bootstrap" in captured.out
+    assert "confirm-inputs" in captured.out
+    assert "approve" in captured.out
     assert "uv run watchtower-core plan scaffold --kind prd" in captured.out
 
 
@@ -206,7 +211,7 @@ def test_task_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Create, update, and transition governed local task records" in captured.out
+    assert "Create, update, and transition initiative-local live task records" in captured.out
     assert "create" in captured.out
     assert "update" in captured.out
     assert "transition" in captured.out
@@ -261,7 +266,8 @@ def test_closeout_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Apply terminal initiative state to traced planning surfaces" in captured.out
+    assert "Apply terminal initiative state to live `plan/**` initiative" in captured.out
+    assert "plan-initiative" in captured.out
     assert "initiative" in captured.out
     assert "purge-trace" in captured.out
     assert "uv run watchtower-core closeout purge-trace" in captured.out

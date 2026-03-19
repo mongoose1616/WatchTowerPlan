@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_rendered_surface_builder_alignment.0011_closing_started",
+  "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+  "sequence": 11,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T02:44:00Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.plan_rendered_surface_builder_alignment"
+}

@@ -3,24 +3,14 @@
 from __future__ import annotations
 
 import argparse
-from collections.abc import Callable, Mapping
-from textwrap import dedent
-from typing import TypedDict
 
-from watchtower_core.cli.common import HelpFormatter, add_common_sync_arguments, examples
+from watchtower_core.cli.sync_family_common import (
+    HandlerMap,
+    SyncCommandSpec,
+    register_spec_sync_commands,
+)
 
-HandlerMap = Mapping[str, Callable[..., int]]
-
-
-class _TrackingCommandSpec(TypedDict):
-    name: str
-    handler: str
-    help: str
-    description: str
-    examples: tuple[str, ...]
-
-
-_TRACKING_COMMAND_SPECS: tuple[_TrackingCommandSpec, ...] = (
+_TRACKING_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
     {
         "name": "prd-tracking",
         "handler": "prd_tracking",
@@ -96,10 +86,10 @@ _TRACKING_COMMAND_SPECS: tuple[_TrackingCommandSpec, ...] = (
     {
         "name": "task-tracking",
         "handler": "task_tracking",
-        "help": "Rebuild the human-readable task tracker from governed task records.",
+        "help": "Rebuild the human-readable task tracker from live initiative-local task state.",
         "description": """
-            Rebuild the human-readable task tracker from the governed task
-            documents under `docs/planning/tasks/`.
+            Rebuild the human-readable task tracker from initiative-local live
+            task state under `plan/**/.wt/tasks/**`.
 
             By default this is a dry run. Add `--write` to update the canonical
             tracker or `--output` to materialize it elsewhere.
@@ -120,13 +110,8 @@ def register_tracking_sync_commands(
 ) -> None:
     """Register the tracker-oriented sync commands."""
 
-    for spec in _TRACKING_COMMAND_SPECS:
-        parser = sync_subparsers.add_parser(
-            spec["name"],
-            help=spec["help"],
-            description=dedent(spec["description"]).strip(),
-            epilog=examples(*spec["examples"]),
-            formatter_class=HelpFormatter,
-        )
-        add_common_sync_arguments(parser)
-        parser.set_defaults(handler=handlers[spec["handler"]])
+    register_spec_sync_commands(
+        sync_subparsers,
+        handlers=handlers,
+        specs=_TRACKING_COMMAND_SPECS,
+    )

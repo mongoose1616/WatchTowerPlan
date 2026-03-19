@@ -1,12 +1,12 @@
 # `watchtower-core task`
 
 ## Summary
-This command group creates, updates, and transitions governed local task records while keeping task documents authoritative and refreshing the coordination slice in write mode.
+This command group creates, updates, and transitions initiative-local live task records under `plan/**/.wt/tasks/**` while refreshing derived plan-workspace surfaces in write mode.
 
 ## Use When
-- You want help for the governed local task lifecycle without hand-editing front matter.
+- You want help for the live task lifecycle without hand-editing initiative-local task state.
 - You need to create one new task, apply structured field updates, or perform a bounded handoff-style transition.
-- You want dry-run preview before mutating the canonical task corpus and its derived coordination mirrors.
+- You want dry-run preview before mutating live task state and its derived plan-workspace mirrors.
 
 ## Command
 | Field | Value |
@@ -25,7 +25,7 @@ uv run watchtower-core task <task_command> [args]
 ## Arguments and Options
 - `<task_command>`: Choose `create`, `update`, or `transition`.
 - `-h`, `--help`: Show the command help text.
-- Task mutations are dry-run by default. Pass `--write` to the selected leaf command to persist the task change and refresh the coordination slice.
+- Task mutations are dry-run by default. Pass `--write` to the selected leaf command to persist the task change and refresh the derived plan surfaces.
 
 ## Examples
 ```sh
@@ -45,28 +45,31 @@ uv run watchtower-core task update --task-id task.example.001 --task-status in_p
 
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status done --write
+uv run watchtower-core task transition --task-id task.example.001 --task-status completed --write
 ```
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints task-specific help and exits successfully.
-- The command group keeps task Markdown files under `docs/planning/tasks/` as the authoritative source of truth.
-- `create` materializes a new governed task document from compact structured inputs.
-- `update` applies bounded front-matter or body-section changes without manual editing.
+- The command group keeps initiative-local `task.json` records under `plan/**/.wt/tasks/**` as the authoritative live task surface.
+- `create` materializes one new live task record under the matching initiative root.
+- `update` applies bounded field changes without manual JSON editing.
 - `transition` is a narrower handoff-oriented wrapper for status, owner, and blocker changes.
 - If a task links to any `trace.*` value through `related_ids`, the task must also publish the matching `trace_id`.
-- When write mode moves a task between `open/` and the dated `closed/archive/` tree, the lifecycle service also repairs matching repo-local paths in governed acceptance contracts and validation evidence before it refreshes coordination.
-- In write mode, all leaf commands refresh the deterministic coordination slice so task, traceability, initiative, and coordination views stay aligned.
+- Task statuses that start or imply real execution (`in_progress`, `in_review`, `completed`) require the initiative package to have already been approved into `ready_for_execution`.
+- Live task updates do not move between docs-backed open and closed directories. Terminal state is represented directly in the initiative-local task record.
+- The first execution-starting task transition moves an approved initiative package from `ready_for_execution` into `in_progress` and records an `execution_started` initiative event.
+- In write mode, all leaf commands refresh the live task, initiative, readiness, artifact, and coordination surfaces plus their companion rendered views.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core task create` | Creates one governed local task document. |
-| `watchtower-core task update` | Applies structured field or body updates to one task. |
+| `watchtower-core task create` | Creates one initiative-local live task record. |
+| `watchtower-core task update` | Applies structured field updates to one live task record. |
 | `watchtower-core task transition` | Applies a handoff-style status or ownership transition. |
+| `watchtower-core plan approve` | Required before task transitions can begin real execution on a live initiative package. |
 | `watchtower-core query tasks` | Reads the task index refreshed by task write operations. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that task write operations refresh. |
-| `watchtower-core closeout initiative` | Use after task transitions leave a traced initiative with only terminal task state. |
+| `watchtower-core closeout plan-initiative` | Use after task transitions leave a live `plan/**` initiative package with only terminal task state. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/task_family.py`
@@ -74,4 +77,4 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-18T20:35:00Z`

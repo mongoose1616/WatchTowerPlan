@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_status_registry_domain_cleanup.0012_closing_started",
+  "initiative_id": "initiative.plan_status_registry_domain_cleanup",
+  "sequence": 12,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T00:45:00Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.plan_status_registry_domain_cleanup"
+}

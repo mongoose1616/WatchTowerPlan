@@ -7,8 +7,9 @@ from collections.abc import Callable
 
 from watchtower_core.cli.handler_common import (
     _emit_command_error,
-    _print_payload,
+    _emit_detail_result,
     _resolve_output_path,
+    _run_value_error_operation,
 )
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
@@ -85,8 +86,11 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
     evidence_write = None
     if args.record_evidence:
         recorder = ValidationEvidenceRecorder(loader)
-        try:
-            evidence_write = recorder.record(
+        evidence_write = _run_value_error_operation(
+            args,
+            command_name=command_name,
+            prefix="Validation error",
+            operation=lambda: recorder.record(
                 result,
                 trace_id=args.trace_id,
                 evidence_id=args.evidence_id,
@@ -94,22 +98,25 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
                 acceptance_ids=tuple(args.acceptance_id),
                 evidence_output=_resolve_output_path(args.evidence_output),
                 traceability_output=_resolve_output_path(args.traceability_output),
-            )
-        except ValueError as exc:
-            return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+            ),
+        )
+        if evidence_write is None:
+            return 1
 
     result_payload = _build_validation_payload(
         command_name=command_name,
         result=result,
         evidence_write=evidence_write,
     )
-    if _print_payload(args, result_payload) == 0:
-        return 0 if result.passed else 1
-
-    return _print_validation_summary(
-        result,
-        evidence_write=evidence_write,
-        success_message="Artifact validated successfully.",
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: result_payload,
+        render_human=lambda: _print_validation_summary(
+            result,
+            evidence_write=evidence_write,
+            success_message="Artifact validated successfully.",
+        ),
+        exit_code=0 if result.passed else 1,
     )
 
 
@@ -134,28 +141,32 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 
     payload = _build_suite_validation_payload(result)
     exit_code = 0 if result.passed else 1
-    if _print_payload(args, payload) == 0:
-        return exit_code
-
-    print(
-        "Ran validation suite "
-        f"{result.suite_id} across {result.total_count} targets: "
-        f"{result.passed_count} passed, {result.failed_count} failed."
-    )
-    for summary in result.step_summaries:
+    def _render_human() -> None:
         print(
-            f"- {summary.step_id} ({summary.step_kind}): total={summary.total_count}, "
-            f"passed={summary.passed_count}, failed={summary.failed_count}"
+            "Ran validation suite "
+            f"{result.suite_id} across {result.total_count} targets: "
+            f"{result.passed_count} passed, {result.failed_count} failed."
         )
-    if result.failed_count:
-        print("Failed targets:")
-        for record in result.records:
-            if record.result.passed:
-                continue
-            print(f"- {record.step_id}: {record.target}")
-            if record.result.issues:
-                print(f"  {record.result.issues[0].message}")
-    return exit_code
+        for summary in result.step_summaries:
+            print(
+                f"- {summary.step_id} ({summary.step_kind}): total={summary.total_count}, "
+                f"passed={summary.passed_count}, failed={summary.failed_count}"
+            )
+        if result.failed_count:
+            print("Failed targets:")
+            for record in result.records:
+                if record.result.passed:
+                    continue
+                print(f"- {record.step_id}: {record.target}")
+                if record.result.issues:
+                    print(f"  {record.result.issues[0].message}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+        exit_code=exit_code,
+    )
 
 
 def _run_validate_all(args: argparse.Namespace) -> int:
@@ -177,15 +188,14 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
         suite_target_resolver=resolve_watchtower_plan_suite_targets,
     )
-    try:
-        result = service.run(included_families=included_families)
-    except ValueError as exc:
-        return _emit_command_error(
-            args,
-            "watchtower-core validate all",
-            str(exc),
-            prefix="Validation error",
-        )
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core validate all",
+        prefix="Validation error",
+        operation=lambda: service.run(included_families=included_families),
+    )
+    if result is None:
+        return 1
 
     payload = {
         "command": "watchtower-core validate all",
@@ -228,28 +238,32 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         ],
     }
     exit_code = 0 if result.passed else 1
-    if _print_payload(args, payload) == 0:
-        return exit_code
-
-    print(
-        "Ran validate all across "
-        f"{result.total_count} targets: {result.passed_count} passed, "
-        f"{result.failed_count} failed."
-    )
-    for summary in result.family_summaries:
+    def _render_human() -> None:
         print(
-            f"- {summary.family}: total={summary.total_count}, "
-            f"passed={summary.passed_count}, failed={summary.failed_count}"
+            "Ran validate all across "
+            f"{result.total_count} targets: {result.passed_count} passed, "
+            f"{result.failed_count} failed."
         )
-    if result.failed_count:
-        print("Failed targets:")
-        for record in result.records:
-            if record.result.passed:
-                continue
-            print(f"- {record.family}: {record.target}")
-            if record.result.issues:
-                print(f"  {record.result.issues[0].message}")
-    return exit_code
+        for summary in result.family_summaries:
+            print(
+                f"- {summary.family}: total={summary.total_count}, "
+                f"passed={summary.passed_count}, failed={summary.failed_count}"
+            )
+        if result.failed_count:
+            print("Failed targets:")
+            for record in result.records:
+                if record.result.passed:
+                    continue
+                print(f"- {record.family}: {record.target}")
+                if record.result.issues:
+                    print(f"  {record.result.issues[0].message}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+        exit_code=exit_code,
+    )
 
 
 def _run_validate_acceptance(args: argparse.Namespace) -> int:
@@ -260,13 +274,15 @@ def _run_validate_acceptance(args: argparse.Namespace) -> int:
         evidence_write=None,
     )
     exit_code = 0 if result.passed else 1
-    if _print_payload(args, payload) == 0:
-        return exit_code
-
-    return _print_validation_summary(
-        result,
-        evidence_write=None,
-        success_message="Acceptance reconciliation passed.",
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=lambda: _print_validation_summary(
+            result,
+            evidence_write=None,
+            success_message="Acceptance reconciliation passed.",
+        ),
+        exit_code=exit_code,
     )
 
 
@@ -291,8 +307,11 @@ def _run_validation_command(
     evidence_write = None
     if args.record_evidence:
         recorder = ValidationEvidenceRecorder(loader)
-        try:
-            evidence_write = recorder.record(
+        evidence_write = _run_value_error_operation(
+            args,
+            command_name=command_name,
+            prefix="Validation error",
+            operation=lambda: recorder.record(
                 result,
                 trace_id=args.trace_id,
                 evidence_id=args.evidence_id,
@@ -300,22 +319,25 @@ def _run_validation_command(
                 acceptance_ids=tuple(args.acceptance_id),
                 evidence_output=_resolve_output_path(args.evidence_output),
                 traceability_output=_resolve_output_path(args.traceability_output),
-            )
-        except ValueError as exc:
-            return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+            ),
+        )
+        if evidence_write is None:
+            return 1
 
     result_payload = _build_validation_payload(
         command_name=command_name,
         result=result,
         evidence_write=evidence_write,
     )
-    if _print_payload(args, result_payload) == 0:
-        return 0 if result.passed else 1
-
-    return _print_validation_summary(
-        result,
-        evidence_write=evidence_write,
-        success_message=success_message,
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: result_payload,
+        render_human=lambda: _print_validation_summary(
+            result,
+            evidence_write=evidence_write,
+            success_message=success_message,
+        ),
+        exit_code=0 if result.passed else 1,
     )
 
 

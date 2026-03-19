@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from importlib import import_module
-from typing import Any
+from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
     "AcceptanceContractQueryService",
@@ -17,12 +16,16 @@ __all__ = [
     "CoordinationQueryResult",
     "CoordinationQueryService",
     "CoordinationSearchParams",
+    "PlanCloseoutQueryService",
+    "PlanCloseoutSearchParams",
     "DiscrepancyQueryService",
     "DiscrepancySearchParams",
     "DecisionQueryService",
     "DecisionSearchParams",
     "DesignDocumentQueryService",
     "DesignDocumentSearchParams",
+    "PlanEvidenceQueryService",
+    "PlanEvidenceSearchParams",
     "ValidationEvidenceQueryService",
     "ValidationEvidenceSearchParams",
     "FoundationQueryService",
@@ -41,6 +44,8 @@ __all__ = [
     "ReferenceSearchParams",
     "RepositoryPathQueryService",
     "RepositoryPathSearchParams",
+    "PlanReviewQueryService",
+    "PlanReviewSearchParams",
     "StandardQueryService",
     "StandardSearchParams",
     "TaskQueryService",
@@ -55,19 +60,23 @@ _EXPORT_MODULES = {
     "AcceptanceContractSearchParams": "watchtower_core.repo_ops.query.acceptance",
     "ArtifactQueryService": "watchtower_core.repo_ops.query.artifacts",
     "ArtifactSearchParams": "watchtower_core.repo_ops.query.artifacts",
-    "AuthorityMapQueryService": "watchtower_core.repo_ops.query.authority",
-    "AuthorityMapSearchParams": "watchtower_core.repo_ops.query.authority",
-    "CommandQueryService": "watchtower_core.repo_ops.query.commands",
-    "CommandSearchParams": "watchtower_core.repo_ops.query.commands",
+    "AuthorityMapQueryService": "watchtower_core.query.authority",
+    "AuthorityMapSearchParams": "watchtower_core.query.authority",
+    "CommandQueryService": "watchtower_core.query.commands",
+    "CommandSearchParams": "watchtower_core.query.commands",
     "CoordinationQueryResult": "watchtower_core.repo_ops.query.coordination",
     "CoordinationQueryService": "watchtower_core.repo_ops.query.coordination",
     "CoordinationSearchParams": "watchtower_core.repo_ops.query.coordination",
+    "PlanCloseoutQueryService": "watchtower_core.repo_ops.query.closeouts",
+    "PlanCloseoutSearchParams": "watchtower_core.repo_ops.query.closeouts",
     "DecisionQueryService": "watchtower_core.repo_ops.query.decisions",
     "DecisionSearchParams": "watchtower_core.repo_ops.query.decisions",
     "DiscrepancyQueryService": "watchtower_core.repo_ops.query.discrepancies",
     "DiscrepancySearchParams": "watchtower_core.repo_ops.query.discrepancies",
     "DesignDocumentQueryService": "watchtower_core.repo_ops.query.designs",
     "DesignDocumentSearchParams": "watchtower_core.repo_ops.query.designs",
+    "PlanEvidenceQueryService": "watchtower_core.repo_ops.query.plan_evidence",
+    "PlanEvidenceSearchParams": "watchtower_core.repo_ops.query.plan_evidence",
     "ValidationEvidenceQueryService": "watchtower_core.repo_ops.query.evidence",
     "ValidationEvidenceSearchParams": "watchtower_core.repo_ops.query.evidence",
     "FoundationQueryService": "watchtower_core.repo_ops.query.foundations",
@@ -86,18 +95,18 @@ _EXPORT_MODULES = {
     "ReferenceSearchParams": "watchtower_core.repo_ops.query.references",
     "RepositoryPathQueryService": "watchtower_core.repo_ops.query.repository",
     "RepositoryPathSearchParams": "watchtower_core.repo_ops.query.repository",
+    "PlanReviewQueryService": "watchtower_core.repo_ops.query.reviews",
+    "PlanReviewSearchParams": "watchtower_core.repo_ops.query.reviews",
     "StandardQueryService": "watchtower_core.repo_ops.query.standards",
     "StandardSearchParams": "watchtower_core.repo_ops.query.standards",
     "TaskQueryService": "watchtower_core.repo_ops.query.tasks",
     "TaskSearchParams": "watchtower_core.repo_ops.query.tasks",
     "TraceabilityQueryService": "watchtower_core.repo_ops.query.traceability",
-    "WorkflowQueryService": "watchtower_core.repo_ops.query.workflows",
-    "WorkflowSearchParams": "watchtower_core.repo_ops.query.workflows",
+    "WorkflowQueryService": "watchtower_core.query.workflows",
+    "WorkflowSearchParams": "watchtower_core.query.workflows",
 }
 
-
-def __getattr__(name: str) -> Any:
-    module_name = _EXPORT_MODULES.get(name)
-    if module_name is None:
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-    return getattr(import_module(module_name), name)
+__getattr__ = lazy_module_getattr(
+    module_name=__name__,
+    export_modules=_EXPORT_MODULES,
+)

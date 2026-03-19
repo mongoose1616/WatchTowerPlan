@@ -40,7 +40,7 @@ uv run watchtower-core validate document-semantics --path <path> [--validator-id
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md
+uv run watchtower-core validate document-semantics --path core/workflows/modules/code_validation.md
 ```
 
 ```sh

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.plan_rendered_surface_builder_alignment.0010_ready_for_execution_marked",
+  "initiative_id": "initiative.plan_rendered_surface_builder_alignment",
+  "sequence": 10,
+  "event_type": "ready_for_execution_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-18T01:47:39Z",
+  "summary": "The initiative package entered ready_for_execution after approval.",
+  "payload": {},
+  "trace_id": "trace.plan_rendered_surface_builder_alignment"
+}

@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import json
-from pathlib import Path
-from typing import Any
+from dataclasses import dataclass
+from typing import Any, cast
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 
@@ -190,7 +189,7 @@ class DiscrepancyHelper:
 
     def _load_record(self, relative_path: str) -> dict[str, Any]:
         path = self._loader.repo_root / relative_path
-        document = json.loads(path.read_text(encoding="utf-8"))
+        document = cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
         self._loader.schema_store.validate_instance(
             document,
             schema_id=DISCREPANCY_RECORD_SCHEMA_ID,

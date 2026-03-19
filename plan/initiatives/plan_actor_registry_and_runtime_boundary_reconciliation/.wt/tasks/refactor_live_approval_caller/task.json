@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_actor_registry_and_runtime_boundary_reconciliation.refactor_live_approval_caller",
+  "slug": "refactor_live_approval_caller",
+  "initiative_id": "initiative.plan_actor_registry_and_runtime_boundary_reconciliation",
+  "title": "Refactor live approval caller",
+  "summary": "Move initiative approval maintainer checks onto the reusable actor helper.",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-17T23:45:40Z",
+  "updated_at": "2026-03-17T23:50:45Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": [],
+  "task_status": "completed"
+}

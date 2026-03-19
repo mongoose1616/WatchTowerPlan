@@ -22,10 +22,13 @@ from watchtower_core.repo_ops.sync.registry import SYNC_TARGET_SPECS, SyncTarget
 from watchtower_core.sync.harness import (
     ReferenceAwareSyncService,
     SyncHarness,
+)
+from watchtower_core.sync.harness import (
     SyncRecord as AllSyncRecord,
+)
+from watchtower_core.sync.harness import (
     SyncResult as AllSyncResult,
 )
-
 
 REFERENCE_RESOLUTION_TARGETS = frozenset(
     {"reference-index", "foundation-index", "standard-index", "workflow-index"}
@@ -137,3 +140,6 @@ class AllSyncService(SyncHarness):
             return None
         reference_state = cast(_AllSyncSharedState, shared_state)
         return reference_state.shared_reference_index_document
+
+
+__all__ = ["AllSyncRecord", "AllSyncResult", "AllSyncService"]
