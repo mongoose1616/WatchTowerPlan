@@ -13,5 +13,5 @@
 | `.github/ISSUE_TEMPLATE/governance_chore.yml` | Hosted intake form for repository standards, docs, control-plane, or workflow maintenance. |
 
 ## Notes
-- These forms are for hosted intake, not for replacing repo-local PRDs, decisions, designs, or tasks.
-- Before implementation merges, link or create the matching repo-local planning or task artifact.
+- These forms are for hosted intake, not for replacing repo-local initiative packages, decision notes, design records, implementation slices, or tasks.
+- Before implementation merges, link or create the matching repo-local initiative artifact or task record.

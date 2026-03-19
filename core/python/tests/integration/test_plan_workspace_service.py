@@ -779,7 +779,7 @@ def test_plan_workspace_coordination_surfaces_recent_closeouts_after_terminal_cl
     )
 
     plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
-    assert "## Recent Closeouts" in plan_overview
+    assert "## Recent Completions or Changes" in plan_overview
     assert "Delivered workspace alpha." in plan_overview
     assert "Delivered WatchTower scope flow." in plan_overview
 

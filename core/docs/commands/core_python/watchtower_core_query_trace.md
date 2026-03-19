@@ -5,7 +5,7 @@ This command resolves one governed traceability record by trace ID so engineers 
 
 ## Use When
 - You already know the trace ID you want to inspect.
-- You want one joined record instead of opening PRD, decision, design, and evidence surfaces separately.
+- You want one joined record instead of opening initiative, decision, design, implementation, and evidence surfaces separately.
 - You want structured traceability lookup output for a workflow, script, or agent.
 
 ## Command
@@ -40,7 +40,7 @@ uv run watchtower-core query trace --trace-id trace.governed_acceptance_example 
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints the trace ID, title, summary, initiative status, closeout metadata when present, and any linked PRD, decision, design, plan, task, acceptance-contract, or evidence IDs present in the record.
+- In `human` mode, the command prints the trace ID, title, summary, initiative status, closeout metadata when present, and any linked initiative, decision, design, implementation, task, acceptance-contract, or evidence IDs present in the record.
 - In `json` mode, the command prints one JSON object with the command name, status, and the resolved trace record.
 - This command stays the durable trace-linked source join for the live initiative model and its surviving governed records.
 - If the trace ID is unknown, the command exits with status code `1` and reports the missing ID.

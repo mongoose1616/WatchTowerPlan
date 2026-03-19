@@ -1,4 +1,4 @@
-# Implementation Planning Workflow
+# Implementation Slice Planning Workflow
 
 ## Purpose
 Use this workflow to turn approved initiative inputs into an actionable `implementation_slice.md` with a work breakdown, validation strategy, and delivery sequence.
@@ -9,7 +9,7 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 - Work must be broken into concrete tasks, milestones, or workstreams.
 
 ## Inputs
-- Scoped implementation-planning brief
+- Scoped implementation-slice planning brief
 - Approved or draft initiative brief
 - Approved or draft design record, technical design, or architecture proposal
 - Current-state context summary
@@ -23,14 +23,14 @@ Use this workflow to turn approved initiative inputs into an actionable `impleme
 
 ## Additional Files to Load
 - [requirements.md](/requirements.md): defines the capture-first execution gate and expected plan workspace structure.
-- [decisions.md](/decisions.md): locks the initiative and task lifecycle rules that implementation planning must respect.
-- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation planning must hand off into.
+- [decisions.md](/decisions.md): locks the initiative and task lifecycle rules that implementation-slice planning must respect.
+- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): defines the live task authority that implementation-slice planning must hand off into.
 
 ## Workflow
 1. Review the planning inputs.
    - Extract goals, scope, non-goals, requirements, acceptance criteria, and design constraints from the initiative brief and design inputs.
    - Identify missing details, ambiguity, and conflicts across the planning inputs.
-   - Flag anything that blocks implementation planning.
+   - Flag anything that blocks implementation-slice planning.
 2. Define the implementation approach.
    - Translate the approved design into an execution-oriented implementation approach.
    - Identify which parts of the system will change first and how the work should be staged.

@@ -486,17 +486,51 @@ class ProjectWorkspaceService:
         for snapshot in snapshots:
             project = snapshot.project_document
             repositories = tuple(snapshot.repository_map_document["repositories"])
-            initiative_lines = "\n".join(
+            active_initiatives = tuple(
+                initiative
+                for initiative in snapshot.child_initiatives
+                if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
+            )
+            blocked_initiatives = tuple(
+                initiative
+                for initiative in active_initiatives
+                if str(initiative["lifecycle_stage"]) == "blocked"
+                or bool(initiative.get("gate_state", {}).get("blocking_reasons"))
+            )
+            initiative_lines = tuple(
                 f"- `{initiative['initiative_id']}`: `{initiative['lifecycle_stage']}` / `{initiative['review_status']}`"
                 for initiative in snapshot.child_initiatives
-            ) or "- None."
-            repository_lines = "\n".join(
+            ) or ("- None.",)
+            active_initiative_lines = tuple(
+                f"- `{initiative['initiative_id']}`: `{initiative['lifecycle_stage']}` / `{initiative['review_status']}`"
+                for initiative in active_initiatives
+            ) or ("- No active child initiatives.",)
+            repository_summary_lines = tuple(
+                f"- `{entry['repository_role']}`: `{entry['repository_kind']}`"
+                for entry in repositories
+            ) or ("- None.",)
+            repository_location_lines = tuple(
+                f"- `{entry['repository_role']}`: `{entry['repository_locator']}`"
+                for entry in repositories
+            ) or ("- None.",)
+            ownership_lines = tuple(
                 (
-                    f"- `{entry['repository_role']}` / `{entry['repository_kind']}`:"
-                    f" `{entry['repository_locator']}` (`active={entry['active']}`)"
+                    f"- `{entry['repository_role']}`: owner `{entry['owner']}` / "
+                    f"access `{entry['access']}`"
                 )
                 for entry in repositories
-            ) or "- None."
+            ) or ("- None.",)
+            boundary_lines = tuple(
+                (
+                    f"- `{entry['repository_role']}`: `{entry['repository_kind']}` "
+                    "responsibility"
+                )
+                for entry in repositories
+            ) or ("- None.",)
+            active_flag_lines = tuple(
+                f"- `{entry['repository_role']}`: `active={entry['active']}`"
+                for entry in repositories
+            ) or ("- None.",)
             active_initiative_count = sum(
                 1
                 for initiative in snapshot.child_initiatives
@@ -515,20 +549,37 @@ class ProjectWorkspaceService:
                         path_params={"project_slug": str(project["slug"])},
                         title=f"{project['title']} Project",
                         data={
-                            "summary": (
-                                "## Summary",
-                                str(project["summary"]),
-                            ),
-                            "identity": (
-                                "## Identity",
+                            "project_identity": (
+                                "## Project Identity",
                                 f"- `project_id`: `{project['project_id']}`",
                                 f"- `slug`: `{project['slug']}`",
                                 f"- `status`: `{project['status']}`",
                                 f"- `initiative_root`: `{snapshot.initiative_root}`",
                             ),
+                            "purpose_and_scope": (
+                                "## Purpose and Scope",
+                                str(project["summary"]),
+                                "- Planning role: own the project container and its initiative root.",
+                            ),
+                            "current_state": (
+                                "## Current State",
+                                f"- `repository_count`: `{len(repositories)}`",
+                                f"- `active_initiative_count`: `{active_initiative_count}`",
+                                f"- `blocked_initiative_count`: `{blocked_initiative_count}`",
+                                f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
+                            ),
+                            "linked_initiatives": (
+                                "## Linked Initiatives",
+                                *active_initiative_lines,
+                            ),
                             "linked_repositories": (
                                 "## Linked Repositories",
-                                repository_lines,
+                                *repository_location_lines,
+                            ),
+                            "key_references_or_docs": (
+                                "## Key References or Docs",
+                                f"- [repositories.md](/plan/projects/{project['slug']}/repositories.md)",
+                                f"- [summary.md](/plan/projects/{project['slug']}/summary.md)",
                             ),
                         },
                     ),
@@ -537,9 +588,25 @@ class ProjectWorkspaceService:
                         path_params={"project_slug": str(project["slug"])},
                         title=f"{project['title']} Repositories",
                         data={
-                            "repository_map": (
-                                "## Repository Map",
-                                repository_lines,
+                            "repository_role_summary": (
+                                "## Repository Role Summary",
+                                *repository_summary_lines,
+                            ),
+                            "repository_locations": (
+                                "## Repository Locations",
+                                *repository_location_lines,
+                            ),
+                            "ownership_or_access_notes": (
+                                "## Ownership or Access Notes",
+                                *ownership_lines,
+                            ),
+                            "implementation_vs_planning_boundary": (
+                                "## Implementation vs Planning Boundary",
+                                *boundary_lines,
+                            ),
+                            "active_flags": (
+                                "## Active Flags",
+                                *active_flag_lines,
                             ),
                         },
                     ),
@@ -548,17 +615,36 @@ class ProjectWorkspaceService:
                         path_params={"project_slug": str(project["slug"])},
                         title=f"{project['title']} Summary",
                         data={
-                            "status": (
-                                "## Status",
-                                f"- `status`: `{project['status']}`",
-                                f"- `repository_count`: `{len(repositories)}`",
+                            "project_delivery_summary": (
+                                "## Project Delivery Summary",
+                                str(project["summary"]),
                                 f"- `active_initiative_count`: `{active_initiative_count}`",
+                                f"- `repository_count`: `{len(repositories)}`",
+                            ),
+                            "current_health": (
+                                "## Current Health",
+                                f"- `status`: `{project['status']}`",
                                 f"- `blocked_initiative_count`: `{blocked_initiative_count}`",
                                 f"- `updated_at`: `{_snapshot_updated_at(snapshot)}`",
                             ),
-                            "child_initiatives": (
-                                "## Child Initiatives",
-                                initiative_lines,
+                            "open_risks": (
+                                "## Open Risks",
+                                *(
+                                    tuple(
+                                        f"- `{initiative['initiative_id']}` is blocked or waiting on follow-up."
+                                        for initiative in blocked_initiatives
+                                    )
+                                    or ("- No active blocked initiatives.",)
+                                ),
+                            ),
+                            "next_milestones_or_follow_ups": (
+                                "## Next Milestones or Follow-Ups",
+                                *active_initiative_lines,
+                            ),
+                            "promotion_or_guidance_impacts": (
+                                "## Promotion or Guidance Impacts",
+                                "- No project-level promoted guidance recorded.",
+                                *initiative_lines,
                             ),
                         },
                     ),

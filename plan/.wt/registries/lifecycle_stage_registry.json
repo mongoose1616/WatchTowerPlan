@@ -9,7 +9,7 @@
       "value": "capture_incomplete",
       "entry_status": "active",
       "summary": "The initiative package exists, but required capture is still incomplete.",
-      "current_phase": "implementation_planning",
+      "current_phase": "capture",
       "terminal": false,
       "allowed_families": [
         "initiative_state"
@@ -20,7 +20,7 @@
       "value": "ready_for_review",
       "entry_status": "active",
       "summary": "Required capture passed validation and is waiting for approval review.",
-      "current_phase": "implementation_planning",
+      "current_phase": "capture",
       "terminal": false,
       "allowed_families": [
         "initiative_state"
@@ -31,7 +31,7 @@
       "value": "ready_for_execution",
       "entry_status": "active",
       "summary": "The initiative package is approved and may begin execution.",
-      "current_phase": "implementation_planning",
+      "current_phase": "capture",
       "terminal": false,
       "allowed_families": [
         "initiative_state"

@@ -62,17 +62,17 @@ This standard defines the repository commit-message policy for human maintainers
 ### Allowed Types
 | Type | Use When | Semantic Version Effect | Example |
 |---|---|---|---|
-| `feat` | Adds a new user-facing capability or workflow behavior | MINOR bump | `feat(workflows): add feature design planning route` |
+| `feat` | Adds a new user-facing capability or workflow behavior | MINOR bump | `feat(workflows): add design record planning route` |
 | `fix` | Resolves a bug or regression visible to contributors or consumers | PATCH bump | `fix(routing_table): route design requests correctly` |
 | `docs` | Documentation-only updates | None | `docs(workflows): clarify documentation gap handling` |
 | `style` | Formatting or lint-only work | None | `style(templates): normalize markdown spacing` |
-| `refactor` | Internal restructuring without behavior change | None | `refactor(workflows): separate design from implementation planning` |
+| `refactor` | Internal restructuring without behavior change | None | `refactor(workflows): separate design review from implementation slice planning` |
 | `perf` | Performance-centric change | PATCH bump | `perf(retrieval): reduce redundant reference scans` |
 | `test` | Adds or modifies tests only | None | `test(validators): cover workflow routing checks` |
 | `build` | Build tooling or dependency updates | None | `build(tooling): add commit message hook setup` |
 | `ci` | Local quality-automation changes such as hooks, gate scripts, or guard workflows | None | `ci(local_qa): enforce commit message checks` |
 | `chore` | Maintenance tasks that do not alter runtime behavior | None | `chore(repo): prune stale planning notes` |
-| `revert` | Reverts a previous commit | Mirrors reverted change | `revert: feat(workflows): add feature design planning route` |
+| `revert` | Reverts a previous commit | Mirrors reverted change | `revert: feat(workflows): add design record planning route` |
 
 *Guidance: Prefer the core rows for clarity. Use extended types only when they describe intent more precisely than `chore`.*
 
@@ -116,11 +116,11 @@ This standard defines the repository commit-message policy for human maintainers
 
 **Example**
 ```text
-feat(workflows)!: require feature design before implementation planning
+feat(workflows)!: require design record approval before implementation slice planning
 
-BREAKING CHANGE: Implementation planning now expects an approved
-feature design or technical design as input. Existing planning flows
-must add a design handoff before using the implementation planning
+BREAKING CHANGE: Implementation slice planning now expects an approved
+design record or technical design as input. Existing planning flows
+must add a design handoff before using implementation slice planning
 workflow.
 ```
 
@@ -182,23 +182,23 @@ workflow.
 ```text
 fix(routing_table): route design requests correctly
 
-Correct the feature design keywords so design-planning requests load
+Correct the design record keywords so design-planning requests load
 the dedicated workflow instead of falling through to implementation
-planning.
+slice planning.
 
 Closes: #42
 ```
 
 ### Scenario B: New Feature with Breaking Change
 ```text
-feat(workflows)!: require feature design before implementation planning
+feat(workflows)!: require design record approval before implementation slice planning
 
 Introduce a dedicated design handoff so major feature work is reviewed
-as a technical design before it becomes an execution plan.
+as a design record before it becomes an implementation slice.
 
-BREAKING CHANGE: Implementation planning now expects an approved
-feature design or technical design as input. Existing planning flows
-must add a design handoff before using the implementation planning
+BREAKING CHANGE: Implementation slice planning now expects an approved
+design record or technical design as input. Existing planning flows
+must add a design handoff before using implementation slice planning
 workflow.
 
 Refs: #57

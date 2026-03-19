@@ -4,7 +4,7 @@
 Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.
 
 ## Use When
-- A PRD, feature design, or related planning artifact should be aligned with `core/docs/foundations/`.
+- An initiative brief, design record, or related planning artifact should be aligned with `core/docs/foundations/`.
 - A review or documentation-alignment task explicitly asks whether guidance stays cohesive with repository foundations or scope posture.
 - A planning task depends on explicit product, standards, or technology-direction context.
 - A task needs a short record of which foundation documents materially shaped the output.

@@ -351,6 +351,22 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
     assert helper.validate_contracts(REPO_ROOT) == ()
 
 
+def test_rendered_surface_registry_matches_active_template_section_contracts() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    helper = TemplateCatalogHelper.from_loader(loader)
+    rendered_registry = load_json_object(
+        REPO_ROOT / "core/control_plane/registries/rendered_surface_registry.json"
+    )
+
+    for surface in rendered_registry["surfaces"]:
+        template_entries = helper.templates_for_surface(surface["surface_id"])
+        if not template_entries:
+            continue
+        assert len(template_entries) == 1
+        surface_section_ids = tuple(section["section_id"] for section in surface["sections"])
+        assert surface_section_ids == template_entries[0].section_order
+
+
 def test_core_documentation_family_and_template_catalog_cover_core_surfaces() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 

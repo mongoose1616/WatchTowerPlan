@@ -24,11 +24,11 @@ aliases:
 # Initiative Tracking Standard
 
 ## Summary
-This standard defines the repository's live initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout through `plan/.wt` machine authority plus richer human companion trackers.
+This standard defines the repository's live initiative tracking model so one trace can be followed from initiative capture through design, execution, validation, and closeout through `plan/.wt` machine authority plus richer human companion trackers.
 
 ## Purpose
 - Give humans one family-specific initiative view for "what is this initiative, who owns it, what phase is it in, what is next, and what already closed?"
-- Preserve the artifact-family split for PRDs, decisions, designs, plans, and tasks instead of collapsing everything into one mixed tracker.
+- Preserve the artifact-family split for initiative briefs, decision notes, design records, implementation slices, and tasks instead of collapsing everything into one mixed tracker.
 - Publish one machine-readable initiative surface under `plan/.wt/indexes/initiative_index.json` so coordination and family workflows do not reconstruct phase and ownership by hand.
 - Keep the human initiative tracker rich enough for real browsing instead of collapsing terminal history into count-only summaries.
 
@@ -36,10 +36,10 @@ This standard defines the repository's live initiative tracking model so one tra
 - Applies to the human-readable initiative tracker under `plan/tracking/initiative_tracking.md`.
 - Applies to the machine-readable initiative index under `plan/.wt/indexes/initiative_index.json`.
 - Covers initiative phase vocabulary, owner rendering rules, next-step rendering, and the authority boundary between initiative views and their source artifacts.
-- Does not replace PRDs, decisions, designs, plans, task records, or the unified traceability index.
+- Does not replace initiative briefs, decision notes, design records, implementation slices, task records, or the unified traceability index.
 
 ## Use When
-- A user needs to understand what happens after a PRD is created.
+- A user needs to understand what happens after an initiative package is captured.
 - Reviewing who is actively working on a traced initiative and what phase it is currently in.
 - Building query or sync tooling that needs one joined initiative view instead of several family-specific indexes.
 
@@ -75,7 +75,7 @@ This standard defines the repository's live initiative tracking model so one tra
   - what the next expected step is
   - which surface the next contributor should open
 - Use only these initiative phase values:
-  - `implementation_planning`
+  - `capture`
   - `execution`
   - `closeout`
   - `closed`

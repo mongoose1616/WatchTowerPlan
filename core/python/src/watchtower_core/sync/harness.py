@@ -281,13 +281,9 @@ class SyncHarness:
         details: dict[str, int] = {}
         for attr in (
             "coordination_entry_count",
-            "prd_count",
-            "decision_count",
             "task_count",
             "open_count",
             "closed_count",
-            "feature_design_count",
-            "implementation_plan_count",
             "active_initiative_count",
             "actionable_task_count",
             "recent_closed_count",

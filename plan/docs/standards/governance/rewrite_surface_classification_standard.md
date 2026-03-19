@@ -153,7 +153,7 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Change Control
 - Update this standard when the rewrite program changes its controlled classification or retention-reason vocabulary.
-- Update the structural rewrite implementation plan, checkpoint surfaces, and any same-change history or compatibility classifications when this standard changes materially.
+- Update the structural rewrite implementation slice, checkpoint surfaces, and any same-change history or compatibility classifications when this standard changes materially.
 
 ## References
 - [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md)

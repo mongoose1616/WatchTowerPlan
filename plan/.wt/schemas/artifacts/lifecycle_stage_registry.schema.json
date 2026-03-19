@@ -56,7 +56,7 @@
     "currentPhase": {
       "type": "string",
       "enum": [
-        "implementation_planning",
+        "capture",
         "execution",
         "closeout",
         "closed"

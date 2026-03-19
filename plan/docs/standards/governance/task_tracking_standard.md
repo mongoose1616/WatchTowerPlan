@@ -39,7 +39,7 @@ This standard defines the repository's hard-cutover live task tracking model so 
 - Applies to the derived machine-readable task index under `plan/.wt/indexes/task_index.json`.
 - Applies to the derived human-readable task tracker under `plan/tracking/task_tracking.md`.
 - Covers task execution status, live authority, human companion rendering, and GitHub-sync authority boundaries.
-- Does not replace PRDs, design docs, decisions, initiative state, or the broader traceability model.
+- Does not replace initiative-authored inputs, design records, decision notes, initiative state, or the broader traceability model.
 
 ## Use When
 - Capturing engineer-sized work items that need active ownership and status tracking.

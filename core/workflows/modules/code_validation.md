@@ -11,7 +11,7 @@ Use this workflow to define, execute, and assess the validation needed for a cod
 ## Inputs
 - Scoped validation brief
 - Code changes or repository state to validate
-- Relevant PRD, implementation plan, issue, or acceptance criteria
+- Relevant initiative brief, implementation slice, issue, or acceptance criteria
 - Current-state context summary
 - Internal standards and canonical references applied
 - External guidance notes when needed

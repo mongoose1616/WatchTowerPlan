@@ -70,7 +70,7 @@ INITIATIVE_SUMMARY_SURFACE_ID = "rendered.initiative.summary"
 _TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
 _PRIORITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 _PHASE_ORDER = {
-    "implementation_planning": 0,
+    "capture": 0,
     "execution": 1,
     "closeout": 2,
     "closed": 3,
@@ -806,7 +806,26 @@ class PlanWorkspaceService:
         return self._build_documents(self._load_initiative_snapshots())["coordination_index"]
 
     def build_task_index_document(self) -> dict[str, object]:
-        return self._build_documents(self._load_initiative_snapshots())["task_index"]
+        snapshots = self._load_initiative_snapshots()
+        task_entries = tuple(
+            sorted(
+                (
+                    entry
+                    for snapshot in snapshots
+                    for entry in self._build_task_entries(snapshot)
+                ),
+                key=lambda entry: entry.task_id,
+            )
+        )
+        task_index = {
+            "$schema": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
+            "id": "index.plan_tasks",
+            "title": "Plan Workspace Task Index",
+            "status": "active",
+            "entries": [self._serialize_task_entry(entry) for entry in task_entries],
+        }
+        self._pack_loader().schema_store.validate_instance(task_index)
+        return task_index
 
     def load_task_entries(self) -> tuple[PlanTaskIndexEntry, ...]:
         document = self._load_plan_json(PLAN_TASK_INDEX_PATH)
@@ -1815,19 +1834,48 @@ class PlanWorkspaceService:
         return document
 
     def _render_plan_overview(self, coordination_document: dict[str, object]) -> str:
+        pack_wide_entries = tuple(
+            entry
+            for entry in coordination_document["entries"]
+            if entry.get("scope_type", "pack_wide") == "pack_wide"
+        )
+        project_entries = tuple(
+            entry
+            for entry in coordination_document["entries"]
+            if entry.get("scope_type", "pack_wide") != "pack_wide"
+        )
+        blocked_or_attention_items = [
+            (
+                f"- Blocked initiative `{entry['trace_id']}`: {entry['title']}"
+                if entry.get("blocked_task_count", 0)
+                else ""
+            )
+            for entry in coordination_document["entries"]
+        ]
+        blocked_or_attention_items.extend(
+            f"- Actionable task `{entry['task_id']}` ({entry['priority']}) in "
+            f"`{entry['trace_id']}` -> `{entry['doc_path']}`"
+            for entry in coordination_document["actionable_tasks"]
+        )
+        navigation_links = (
+            "- [initiative_tracking.md](/plan/tracking/initiative_tracking.md)",
+            "- [task_tracking.md](/plan/tracking/task_tracking.md)",
+            "- [coordination_tracking.md](/plan/tracking/coordination_tracking.md)",
+            "- [README.md](/plan/docs/README.md)",
+            "- [README.md](/core/docs/README.md)",
+            "- [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)",
+        )
         result = self._rendered_views.build_view(
             RenderedViewSpec(
                 surface_id=PLAN_OVERVIEW_SURFACE_ID,
                 data={
-                    "current_state": (
-                        "## Current State",
+                    "plan_domain_summary": (
                         f"- `coordination_mode`: `{coordination_document['coordination_mode']}`",
                         f"- `summary`: {coordination_document['summary']}",
                         f"- `recommended_next_action`: {coordination_document['recommended_next_action']}",
                         f"- `recommended_surface_path`: `{coordination_document['recommended_surface_path']}`",
                     ),
-                    "active_initiatives": (
-                        "## Active Initiatives",
+                    "active_pack_wide_initiatives": (
                         (
                             "\n".join(
                                 (
@@ -1835,24 +1883,28 @@ class PlanWorkspaceService:
                                     f"(`{entry['current_phase']}` / "
                                     f"`{entry.get('scope_type', 'pack_wide')}`)"
                                 )
-                                for entry in coordination_document["entries"]
+                                for entry in pack_wide_entries
                             )
                             or "- None."
                         ),
                     ),
-                    "actionable_tasks": (
-                        "## Actionable Tasks",
+                    "active_project_initiatives": (
                         (
                             "\n".join(
-                                f"- `{entry['task_id']}` ({entry['priority']}) in "
-                                f"`{entry['trace_id']}` -> `{entry['doc_path']}`"
-                                for entry in coordination_document["actionable_tasks"]
+                                (
+                                    f"- `{entry['trace_id']}`: {entry['title']} "
+                                    f"(`{entry['current_phase']}` / "
+                                    f"`{entry.get('scope_type', 'project_scoped')}`)"
+                                )
+                                for entry in project_entries
                             )
                             or "- None."
                         ),
                     ),
-                    "recent_closeouts": (
-                        "## Recent Closeouts",
+                    "blocked_or_attention_needed_items": (
+                        tuple(item for item in blocked_or_attention_items if item) or ("- None.",)
+                    ),
+                    "recent_completions_or_changes": (
                         (
                             "\n".join(
                                 (
@@ -1872,6 +1924,7 @@ class PlanWorkspaceService:
                             or "- None."
                         ),
                     ),
+                    "navigation_links": navigation_links,
                 },
             )
         )

@@ -64,7 +64,7 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 
 ## Examples
 - Front matter on a governed reference document should use `updated_at: "2026-03-09T05:23:35Z"`.
-- A PRD, decision index, or traceability index entry should carry `updated_at` in the same UTC form.
+- An initiative index, decision index, or traceability index entry should carry `updated_at` in the same UTC form.
 - A validation-evidence artifact should use `recorded_at` rather than `updated_at` when the timestamp describes when the evidence was captured.
 - A future generated export could carry both `updated_at` and `generated_at` if those two meanings differ materially.
 

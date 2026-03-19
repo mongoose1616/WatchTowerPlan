@@ -71,9 +71,9 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 | Primary Drift Boundary | Preferred Route | Typical Surfaces |
 |---|---|---|
 | Implementation behavior versus companion docs or lookup surfaces | `Documentation-Implementation Reconciliation` | code, tests, CLI help, command pages, README files, examples, lookup indexes |
-| Traced planning or governance artifacts versus trackers, initiative views, family indexes, or trace joins | `Traceability Reconciliation` | PRDs, designs, plans, decisions, task or initiative trackers, traceability and initiative indexes |
+| Traced planning or governance artifacts versus trackers, initiative views, family indexes, or trace joins | `Traceability Reconciliation` | initiative briefs, design records, implementation slices, decision notes, task or initiative trackers, traceability and initiative indexes |
 | Schema-backed artifact families versus schemas, examples, registries, indexes, loaders, or validators | `Governed Artifact Reconciliation` | contracts, schemas, registries, catalogs, examples, validators, loader assumptions |
-| One trace's acceptance intent versus its acceptance contract, evidence, validator linkage, or trace coverage | `Acceptance and Evidence Reconciliation` | PRD acceptance IDs, acceptance contracts, validation evidence, validator registry, traceability coverage |
+| One trace's acceptance intent versus its acceptance contract, evidence, validator linkage, or trace coverage | `Acceptance and Evidence Reconciliation` | initiative acceptance IDs, acceptance contracts, validation evidence, validator registry, traceability coverage |
 
 ## Process or Workflow
 1. Read `AGENTS.md`.

@@ -6,8 +6,8 @@ from textwrap import dedent
 
 from watchtower_core.adapters import extract_repo_path_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.planning_documents import (
-    PlanningDocument,
+from watchtower_core.plan_runtime.governed_documents import (
+    GovernedDocument,
     collect_reference_indicators,
 )
 from watchtower_core.plan_runtime.sync import FoundationIndexSyncService
@@ -133,7 +133,7 @@ def test_collect_reference_indicators_resolves_document_relative_paths(
     repo_root = _copy_control_plane_repo(tmp_path)
     reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
-    document = PlanningDocument(
+    document = GovernedDocument(
         relative_path="plan/initiatives/example/initiative_brief.md",
         front_matter={},
         sections={

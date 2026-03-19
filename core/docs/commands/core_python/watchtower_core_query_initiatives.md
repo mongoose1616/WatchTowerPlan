@@ -26,7 +26,7 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 - `--query <text>`: Free-text query over indexed initiative fields such as trace ID, title, summary, owner, next action, and linked artifact IDs.
 - `--trace-id <trace_id>`: Exact trace filter such as `trace.plan_live_query_authority_cutover`.
 - `--initiative-status <status>`: Exact initiative-status filter such as `active`, `completed`, or `superseded`. When omitted for filterless browse, the command defaults to `active`.
-- `--current-phase <phase>`: Exact current-phase filter such as `implementation_planning`, `execution`, `closeout`, or `closed`.
+- `--current-phase <phase>`: Exact current-phase filter such as `capture`, `execution`, `closeout`, or `closed`.
 - `--owner <owner>`: Exact active-owner filter such as `repository_maintainer`.
 - `--blocked-only`: Return only initiatives with one or more currently blocked active tasks.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.

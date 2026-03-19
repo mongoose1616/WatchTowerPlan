@@ -1,12 +1,12 @@
 # `watchtower-core plan bootstrap`
 
 ## Summary
-This command scaffolds a compact traced PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence artifact, and bootstrap task chain, with an optional decision record, and refreshes derived planning surfaces in write mode.
+This command bootstraps one live initiative package under `plan/**`, including authored package inputs, initiative-local machine state, an acceptance contract, a planning-baseline evidence artifact, and one bootstrap task.
 
 ## Use When
-- You want to start a new traced planning chain without hand-authoring each planning artifact from scratch.
-- You need the initial PRD, design, plan, acceptance contract, evidence artifact, and bootstrap task to share one trace and coherent derived planning surfaces.
-- You want dry-run preview before writing the scaffold chain to canonical planning paths.
+- You want to start a new traced initiative package without hand-authoring each package surface from scratch.
+- You need the initial initiative-authored inputs, acceptance contract, evidence artifact, and bootstrap task to share one trace and coherent derived planning surfaces.
+- You want dry-run preview before writing the package to canonical `plan/**` paths.
 
 ## Command
 | Field | Value |
@@ -19,28 +19,23 @@ This command scaffolds a compact traced PRD, feature design, implementation plan
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core plan bootstrap --trace-id <trace_id> --title <title> --summary <summary> [--owner <owner>] [--applies-to <path_or_concept>] [--alias <alias>] [--file-stem <stem>] [--include-decision] [--decision-id <id>] [--source-request <text>] [--reference <source>] [--task-id <task_id>] [--task-owner <owner>] [--task-kind <kind>] [--task-priority <priority>] [--updated-at <timestamp>] [--include-documents] [--write] [--format <human|json>]
+uv run watchtower-core plan bootstrap --trace-id <trace_id> [--initiative-slug <initiative_slug>] [--project-slug <project_slug>] --title <title> --summary <summary> [--owner <owner>] [--include-decision] [--task-id <task_id>] [--task-owner <owner>] [--task-kind <kind>] [--task-priority <priority>] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--trace-id <trace_id>`: Stable trace identifier for the full chain.
-- `--title <title>`: Initiative title root used to derive document titles.
-- `--summary <summary>`: One-line initiative summary applied to the scaffold chain.
-- `--owner <owner>`: Planning-document owner recorded in front matter. Defaults to `repository_maintainer`.
-- `--applies-to <path_or_concept>`: Optional applied path or concept. Repeat for multiple values.
-- `--alias <alias>`: Optional retrieval alias. Repeat for multiple values.
-- `--file-stem <stem>`: Optional shared filename stem for the scaffolded planning documents.
-- `--include-decision`: Also create an initial decision record in the bootstrap chain.
-- `--decision-id <id>`: Optional explicit decision ID when `--include-decision` is used.
-- `--source-request <text>`: Optional source request or driver. Repeat for multiple values.
-- `--reference <source>`: Optional companion reference or source. Repeat for multiple values.
+- `--initiative-slug <initiative_slug>`: Optional initiative slug. Defaults to a slug derived from the trace ID.
+- `--project-slug <project_slug>`: Optional project slug for project-scoped initiative bootstrap.
+- `--title <title>`: Initiative title root used to derive the authored package titles.
+- `--summary <summary>`: One-line initiative summary applied to the live package.
+- `--owner <owner>`: Initiative owner recorded in authored inputs and task state. Defaults to `repository_maintainer`.
+- `--include-decision`: Also create `decision_notes.md` in the initial package.
 - `--task-id <task_id>`: Optional explicit bootstrap task ID. Defaults to `task.<trace_suffix>.bootstrap.001`.
 - `--task-owner <owner>`: Optional bootstrap task owner. Defaults to `--owner`.
-- `--task-kind <feature|bug|chore|documentation|governance|research>`: Bootstrap task kind. Defaults to `governance`.
+- `--task-kind <feature|bug|chore|documentation|governance|research|validation>`: Bootstrap task kind. Defaults to `governance`.
 - `--task-priority <critical|high|medium|low>`: Bootstrap task priority. Defaults to `medium`.
 - `--updated-at <timestamp>`: Optional explicit RFC 3339 UTC timestamp. Defaults to now.
-- `--include-documents`: Include rendered document content in the command output.
-- `--write`: Persist the scaffold chain, acceptance contract, evidence artifact, and refresh derived planning surfaces.
+- `--write`: Persist the initiative package, acceptance contract, evidence artifact, and refresh derived plan surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
@@ -52,24 +47,27 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 
 ```sh
 cd core/python
-uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example Initiative" --summary "Bootstraps the example initiative." --include-decision --task-priority high --include-documents --format json
+uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example Initiative" --summary "Bootstraps the example initiative." --include-decision --task-priority high --write --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core plan bootstrap --project-slug watchtower --trace-id trace.watchtower.example --title "WatchTower Initiative" --summary "Bootstraps a project-scoped initiative." --write
 ```
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not create files.
-- The bootstrap flow creates a PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence artifact, and one bootstrap task. Add `--include-decision` to include a first decision record in the same chain.
-- Bootstrap-generated decision records now include the governed `Applied References and Implications` section with explained placeholder bullets, so the shared scaffold output is immediately compatible with repository decision semantics.
-- Document IDs are derived from the trace suffix and the bootstrap task defaults to `task.<trace_suffix>.bootstrap.001` unless overridden.
+- The bootstrap flow creates `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, the optional `decision_notes.md`, an acceptance contract, a planning-baseline evidence artifact, and one bootstrap task.
+- Document titles and IDs are derived from the trace suffix and the bootstrap task defaults to `task.<trace_suffix>.bootstrap.001` unless overridden.
 - In write mode, the command seeds the live initiative package into the pre-execution review path. Use `watchtower-core plan confirm-inputs` and `watchtower-core plan approve` before transitioning tasks into execution-starting statuses such as `in_progress`, `in_review`, or `completed`.
-- In write mode, the command writes the scaffold chain, the acceptance contract, the planning-baseline evidence artifact, and refreshes derived planning, task, initiative, traceability, and coordination surfaces.
-- While the bootstrap task is the only active task for the trace, initiative and planning rendered surfaces keep the trace in `implementation_planning`; the phase moves to `execution` only after non-bootstrap active work exists.
-- In `json` mode, the command prints one JSON object with the scaffolded planning documents, acceptance contract, validation evidence, and bootstrap task outcome.
+- In write mode, the command writes the initiative package, the acceptance contract, the planning-baseline evidence artifact, and refreshes derived task, initiative, traceability, and coordination surfaces.
+- While the bootstrap task is the only active task for the trace, initiative rendered surfaces keep the trace in `capture`; the phase moves to `execution` only after non-bootstrap active work exists.
+- In `json` mode, the command prints one JSON object with the initiative package outcome, acceptance contract, validation evidence, and bootstrap task result.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core plan` | Parent command group for planning scaffold operations. |
-| `watchtower-core plan scaffold` | Creates one planning document at a time when full bootstrap is not needed. |
+| `watchtower-core plan` | Parent command group for live initiative-package bootstrap and readiness operations. |
 | `watchtower-core plan confirm-inputs` | Records reviewed initiative-authored inputs before readiness approval. |
 | `watchtower-core plan approve` | Approves the live initiative package into `ready_for_execution`. |
 | `watchtower-core task` | Manages the bootstrap task or any follow-up tasks created after the chain exists. |
@@ -79,7 +77,7 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/planning_scaffolds.py`
+- `core/python/src/watchtower_core/plan_runtime/initiative_packages.py`
 
 ## Updated At
-- `2026-03-18T20:35:00Z`
+- `2026-03-19T21:35:00Z`

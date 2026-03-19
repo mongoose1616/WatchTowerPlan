@@ -65,23 +65,23 @@ This standard defines the repository's baseline traceability model so initiative
 - Use the initiative index and initiative tracker as derived coordination rendered surfaces over the traceability layer plus current planning and task state.
 - Use the authority map when you need to resolve whether traceability or another planning surface is canonical for a recurring lookup question.
 - Keep family-specific human trackers active-first by default. Route terminal trace browsing to explicit initiative or trace query surfaces instead of inlining the full closed trace corpus in every tracker.
-- Do not treat retained closed trace packages as the enduring source of current policy when equivalent standards, current planning documents, or machine-readable authority surfaces already exist.
+- Do not treat retained closed trace packages as the enduring source of current policy when equivalent standards, current initiative-package authored docs, or machine-readable authority surfaces already exist.
 - If a closed trace is later purged under the planning retention standard, remove stale canonical references to its trace-local paths and keep only the surviving authority surfaces plus the minimal purge record.
 - Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Treat initiative closeout metadata as a meaningful traceability change; when terminal closeout is recorded, effective `updated_at` should be at least `closed_at`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
-- An initiative brief should publish:
+- An initiative package should publish:
   - a shared `trace_id`
-  - a stable `prd_id`
+  - a stable `initiative_id`
   - stable requirement identifiers where the requirement list is durable
   - stable acceptance identifiers where acceptance criteria are durable
 - A decision note should publish:
   - a shared `trace_id`
   - a stable `decision_id`
   - a decision-outcome status such as `proposed`, `accepted`, `deferred`, `rejected`, or `superseded`
-  - explicit links to affected PRDs, designs, plans, or repository paths when they exist
+  - explicit links to affected initiative briefs, design records, implementation slices, or repository paths when they exist
 - Design records and implementation slices should preserve their upstream links rather than forcing later readers to infer them from prose.
-- Acceptance contracts should preserve source `acceptance_id` values from the PRD rather than inventing alternate identifiers.
+- Acceptance contracts should preserve source `acceptance_id` values from the initiative acceptance source rather than inventing alternate identifiers.
 - Validation-evidence artifacts should publish the validators, acceptance items, and subject surfaces they cover when those are known.
 - Task records should publish `trace_id` when they belong to a traced initiative and should preserve task-to-task dependencies explicitly.
 - Active traced initiatives should not remain active without linked task records.
@@ -94,25 +94,23 @@ This standard defines the repository's baseline traceability model so initiative
 | Identifier Kind | Expected Prefix | Example |
 |---|---|---|
 | Shared trace | `trace.` | `trace.governed_acceptance_example` |
-| PRD | `prd.` | `prd.traceability_baseline` |
+| Initiative package | `initiative.` | `initiative.traceability_baseline` |
 | Requirement | `req.` | `req.traceability_baseline.001` |
 | Acceptance criterion | `ac.` | `ac.traceability_baseline.001` |
 | Decision | `decision.` | `decision.traceability_storage_model` |
 | Task | `task.` | `task.local_task_tracking_foundation.001` |
-| Feature design | `design.features.` | `design.features.schema_resolution_and_index_search` |
-| Implementation plan | `design.implementation.` | `design.implementation.control_plane_loaders_and_schema_store` |
 | Acceptance contract | `contract.acceptance.` | `contract.acceptance.governed_acceptance_example` |
 | Validation evidence | `evidence.` | `evidence.governed_acceptance_example.validation_baseline` |
 
 ### Required baseline trace links
 | Artifact Family | Minimum Trace Links |
 |---|---|
-| PRD | `trace_id` plus linked decisions, designs, or plans when they exist |
-| Decision record | `trace_id` plus linked PRDs, designs, plans, or affected paths when they exist |
-| Feature design | `trace_id`, source request, and linked implementation plans when they exist |
-| Implementation plan | `trace_id` plus source designs, PRDs, or decisions that justify the plan |
+| Initiative package | `trace_id` plus linked decisions, design records, or implementation slices when they exist |
+| Decision note | `trace_id` plus linked initiative briefs, design records, implementation slices, or affected paths when they exist |
+| Design record | `trace_id`, source request, and linked implementation slices when they exist |
+| Implementation slice | `trace_id` plus source design records, initiative briefs, or decisions that justify the slice |
 | Task record | `trace_id` for traced initiatives, explicit task `id`, and linked planning IDs or task dependencies when they exist |
-| Acceptance contract | `trace_id`, source `prd_id`, and preserved `acceptance_id` values |
+| Acceptance contract | `trace_id`, source initiative identity, and preserved `acceptance_id` values |
 | Validation evidence | `trace_id`, covered validators or check methods, and covered acceptance or artifact surfaces |
 | Unified traceability index | `trace_id` plus joined upstream and downstream artifact identifiers |
 

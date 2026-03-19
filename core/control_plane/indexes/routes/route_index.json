@@ -462,15 +462,16 @@
       ]
     },
     {
-      "route_id": "route.prd_generation",
-      "task_type": "PRD Generation",
+      "route_id": "route.initiative_brief_authoring",
+      "task_type": "Initiative Brief Authoring",
       "trigger_keywords": [
-        "PRD",
-        "product requirements",
-        "requirements doc",
-        "feature planning",
-        "scope feature",
-        "product planning"
+        "initiative brief",
+        "capture initiative",
+        "scope initiative",
+        "intake brief",
+        "requirements capture",
+        "package brief",
+        "planning brief"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -479,7 +480,7 @@
         "workflow.current_state_inspection",
         "workflow.internal_context_review",
         "workflow.external_guidance_research",
-        "workflow.prd_generation",
+        "workflow.initiative_brief_authoring",
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
@@ -489,19 +490,19 @@
         "core/workflows/modules/current_state_inspection.md",
         "core/workflows/modules/internal_context_review.md",
         "core/workflows/modules/external_guidance_research.md",
-        "plan/workflows/modules/prd_generation.md",
+        "plan/workflows/modules/initiative_brief_authoring.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
-      "route_id": "route.feature_design_planning",
-      "task_type": "Feature Design Planning",
+      "route_id": "route.design_record_planning",
+      "task_type": "Design Record Planning",
       "trigger_keywords": [
-        "feature design",
+        "design record",
         "technical design",
         "solution design",
         "design proposal",
-        "design spec",
+        "design brief",
         "architecture proposal"
       ],
       "required_workflow_ids": [
@@ -511,7 +512,7 @@
         "workflow.current_state_inspection",
         "workflow.internal_context_review",
         "workflow.external_guidance_research",
-        "workflow.feature_design_planning",
+        "workflow.design_record_planning",
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
@@ -521,20 +522,20 @@
         "core/workflows/modules/current_state_inspection.md",
         "core/workflows/modules/internal_context_review.md",
         "core/workflows/modules/external_guidance_research.md",
-        "plan/workflows/modules/feature_design_planning.md",
+        "plan/workflows/modules/design_record_planning.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },
     {
-      "route_id": "route.implementation_planning",
-      "task_type": "Implementation Planning",
+      "route_id": "route.implementation_slice_planning",
+      "task_type": "Implementation Slice Planning",
       "trigger_keywords": [
-        "implementation plan",
-        "engineering plan",
-        "technical plan",
-        "break down PRD",
+        "implementation slice",
+        "execution slice",
+        "engineering slice",
         "work breakdown",
-        "execution plan"
+        "execution planning",
+        "delivery sequencing"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -542,7 +543,7 @@
         "workflow.current_state_inspection",
         "workflow.internal_context_review",
         "workflow.external_guidance_research",
-        "workflow.implementation_planning",
+        "workflow.implementation_slice_planning",
         "workflow.task_handoff_review"
       ],
       "required_workflow_paths": [
@@ -551,7 +552,7 @@
         "core/workflows/modules/current_state_inspection.md",
         "core/workflows/modules/internal_context_review.md",
         "core/workflows/modules/external_guidance_research.md",
-        "plan/workflows/modules/implementation_planning.md",
+        "plan/workflows/modules/implementation_slice_planning.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },

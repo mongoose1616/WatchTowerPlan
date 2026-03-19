@@ -7,7 +7,7 @@ guards pass.
 
 ## Use When
 - A traced initiative is already terminal and its trace-local planning package is ready to leave the repository.
-- You need a governed purge path instead of ad hoc deletion of closed PRDs, tasks, contracts, and evidence.
+- You need a governed purge path instead of ad hoc deletion of closed initiative-package artifacts, tasks, contracts, and evidence.
 - You want a dry-run check that surviving canonical surfaces no longer depend on the trace before removing it.
 
 ## Command
@@ -46,7 +46,7 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate the repository.
 - The command refuses purge attempts when the target trace is not terminal, still has open tasks, still has acceptance-reconciliation drift, already has a purge record, or is still referenced by surviving canonical surfaces.
-- The purge boundary is trace-scoped: the command removes trace-local PRD, decision, design, task, acceptance-contract, and validation-evidence artifacts together rather than allowing partial family cleanup.
+- The purge boundary is trace-scoped: the command removes trace-local initiative-package artifacts, decision notes, design records, implementation slices, tasks, acceptance contracts, and validation evidence together rather than allowing partial family cleanup.
 - If `--retained-authority-path` is omitted, the implementation falls back to surviving non-package `related_paths` already published by the trace and records those in the purge record when they remain valid.
 - In write mode, the command deletes the trace package, writes one purge record under `core/control_plane/ledgers/purges/`, and then runs the full derived-surface refresh path.
 - In `human` mode, the command prints the purge timestamp, removed-path count, purge-record path, retained-authority paths, and whether it wrote the change.

@@ -35,10 +35,7 @@
         "standard",
         "pattern",
         "workflow",
-        "prd",
         "decision_record",
-        "feature_design",
-        "implementation_plan",
         "task"
       ],
       "description": "Governed document family."

@@ -241,7 +241,7 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         ): {"Repository Review", "Task Lifecycle Management", "Code Validation"},
         "build check": {"Code Validation"},
         "stale command docs": {"Documentation-Implementation Reconciliation"},
-        "implementation plan": {"Implementation Planning"},
+        "implementation slice": {"Implementation Slice Planning"},
         "initiative closeout": {"Initiative Closeout"},
         "hand off task": {"Task Phase Transition"},
         "Hand off this task from implementation to validation and create successor tasks.": {

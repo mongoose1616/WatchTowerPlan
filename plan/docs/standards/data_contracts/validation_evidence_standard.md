@@ -22,7 +22,7 @@ This standard defines committed validation-evidence records stored under `core/c
 ## Purpose
 - Provide durable machine-readable records of validation outcomes tied to traces, acceptance items, validators, and governed artifacts.
 - Keep validation history reviewable without turning runtime logs into long-lived control-plane state.
-- Establish the downstream half of the trace chain after initiative capture, design, implementation planning, and execution.
+- Establish the downstream half of the trace chain after initiative capture, design, implementation sequencing, and execution.
 
 ## Scope
 - Applies to validation-evidence record artifacts stored under `core/control_plane/ledgers/validation_evidence/`.

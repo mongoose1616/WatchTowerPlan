@@ -50,7 +50,7 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 | Command | Relationship |
 |---|---|
 | `watchtower-core query acceptance` | Lets you inspect the acceptance contract that the evidence should cover. |
-| `watchtower-core validate acceptance` | Performs semantic reconciliation across PRD acceptance, contracts, evidence, and traceability. |
+| `watchtower-core validate acceptance` | Performs semantic reconciliation across initiative acceptance, contracts, evidence, and traceability. |
 | `watchtower-core query trace` | Shows the joined traceability record that should list the same evidence IDs. |
 
 ## Source Surface

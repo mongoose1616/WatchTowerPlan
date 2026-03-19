@@ -621,7 +621,7 @@ def register_query_coordination_commands(
     query_coordination_parser.add_argument(
         "--current-phase",
         help=(
-            "Exact current-phase filter such as implementation_planning, "
+            "Exact current-phase filter such as capture, "
             "execution, closeout, or closed."
         ),
     )
@@ -726,7 +726,7 @@ def register_query_coordination_commands(
     query_initiatives_parser.add_argument(
         "--current-phase",
         help=(
-            "Exact current-phase filter such as implementation_planning, "
+            "Exact current-phase filter such as capture, "
             "execution, closeout, or closed."
         ),
     )
@@ -750,7 +750,7 @@ def register_query_coordination_commands(
             Resolve one traceability record by its stable trace identifier.
 
             Use this when you already know the trace you want and need the
-            linked PRD, decision, design, plan, task, validator, or evidence IDs.
+            linked initiative, decision, design, implementation, task, validator, or evidence IDs.
             """
         ).strip(),
         epilog=examples(

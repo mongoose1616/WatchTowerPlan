@@ -51,7 +51,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/markdown_semantics.py`; `core/python/src/watchtower_core/plan_runtime/planning_documents.py`; `core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py`; `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validator_registry.json`
+- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/markdown_semantics.py`; `core/python/src/watchtower_core/plan_runtime/governed_documents.py`; `core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py`; `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validator_registry.json`
 
 ## Validation
 - `watchtower-core validate document-semantics` should fail when a repo-local Markdown link target does not exist.

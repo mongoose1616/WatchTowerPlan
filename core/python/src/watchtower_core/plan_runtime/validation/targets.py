@@ -6,7 +6,7 @@ from collections.abc import Callable
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition
-from watchtower_core.plan_runtime.planning_documents import iter_markdown_documents
+from watchtower_core.plan_runtime.governed_documents import iter_markdown_documents
 from watchtower_core.plan_runtime.sync.foundation_index import (
     FOUNDATION_DOC_ROOT,
     FOUNDATION_EXCLUDED_NAMES,

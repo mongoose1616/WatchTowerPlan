@@ -100,13 +100,13 @@ def test_document_semantics_validation_rejects_noncanonical_directory_operationa
     write_repo_file(support_target)
     related_target = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(related_target, support_target=support_target)
-    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
+    (repo_root / "core/docs/commands").mkdir(parents=True, exist_ok=True)
     standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     write_standard_fixture(
         standard_path,
         related_target=related_target,
         reference_target=support_target,
-        operationalization_surfaces=("docs/commands",),
+        operationalization_surfaces=("core/docs/commands",),
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
@@ -129,7 +129,7 @@ def test_document_semantics_validation_rejects_noncanonical_directory_applies_to
     write_repo_file(support_target)
     related_target = repo_root / "core/docs/references/example_reference.md"
     write_reference_fixture(related_target, support_target=support_target)
-    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
+    (repo_root / "core/docs/commands").mkdir(parents=True, exist_ok=True)
     standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
     standard_path.parent.mkdir(parents=True, exist_ok=True)
     standard_path.write_text(
@@ -149,7 +149,7 @@ updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/commands"
+  - "core/docs/commands"
 ---
 
 # Example Standard

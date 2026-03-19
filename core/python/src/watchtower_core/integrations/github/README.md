@@ -6,7 +6,7 @@ GitHub API client support for task sync and other hosted collaboration flows.
 ## Boundary
 - `Classification`: `boundary_layer`
 - `Supported Imports`: `watchtower_core.integrations.github.client`
-- `Non-Goals`: Repo-local task-mirror policy or planning-document authority rules.
+- `Non-Goals`: Repo-local task-mirror policy or initiative-package document authority rules.
 
 ## Key Surfaces
 - `client.py`: GitHub REST and GraphQL client entry surface used by task sync.

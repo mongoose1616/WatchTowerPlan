@@ -1,20 +1,20 @@
-# PRD Generation Workflow
+# Initiative Brief Authoring Workflow
 
 ## Purpose
-Use this workflow to turn a scoped planning request into a review-ready initiative brief that defines the package before design and implementation begin.
+Use this workflow to turn a scoped planning request into a review-ready `initiative_brief.md` that defines the package before design and execution begin.
 
 ## Use When
-- A new feature or initiative needs alignment before implementation.
+- A new initiative or scoped change needs authoritative intake before design and execution.
 - Scope is still fuzzy and needs structure.
 - Stakeholders need a written document to review or approve.
 
 ## Inputs
-- Scoped initiative-brief request
+- Scoped initiative-intake request
 - Problem statement
 - Target users
 - Business goal
 - Foundation-context brief
-- Current-state context summary when the PRD depends on an existing repository or product surface
+- Current-state context summary when the initiative brief depends on an existing repository or product surface
 - Internal standards and canonical references applied
 - External guidance notes when needed
 - Constraints
@@ -28,10 +28,10 @@ Use this workflow to turn a scoped planning request into a review-ready initiati
 - [README.md](/plan/docs/foundations/README.md): routes the author to the mirrored foundations corpus that should shape the brief.
 
 ## Workflow
-1. Define scope.
+1. Define scope and capture boundary.
    - List what is in scope.
    - List what is out of scope.
-   - Use the current-state context when the PRD extends, replaces, or depends on an existing repository or product surface.
+   - Use the current-state context when the initiative brief extends, replaces, or depends on an existing repository or product surface.
    - Record assumptions and constraints.
 2. Define success.
    - Write the primary goal.
@@ -39,7 +39,7 @@ Use this workflow to turn a scoped planning request into a review-ready initiati
    - Note failure conditions or risks.
 3. Gather requirements.
    - Capture the requirements, scenarios, and acceptance criteria that materially reduce ambiguity for the current scope.
-   - Do not force user stories, metrics, or rollout notes when the PRD can stay simpler without losing review value.
+   - Do not force user stories, metrics, or rollout notes when the initiative brief can stay simpler without losing review value.
 4. Plan delivery.
    - Record dependencies, risks, milestones or phases, and unresolved questions only when they affect review or later planning.
 5. Draft the initiative brief.

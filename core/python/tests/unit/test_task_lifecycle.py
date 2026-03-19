@@ -143,7 +143,7 @@ def test_task_update_writes_in_place_and_clears_optional_fields(tmp_path: Path) 
             scope_items=("Create the task.",),
             done_when_items=("The task exists.",),
             applies_to=("core/python/tests/unit",),
-            related_ids=("prd.unit_test_hardening_and_rebalancing",),
+            related_ids=("initiative.unit_test_hardening_and_rebalancing",),
             file_stem="lifecycle_task",
             updated_at="2026-03-10T23:59:59Z",
         ),

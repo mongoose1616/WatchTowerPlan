@@ -88,7 +88,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
     )
 
     result = validate_workflow_additional_load_section(
-        "plan/workflows/modules/prd_generation.md",
+        "plan/workflows/modules/initiative_brief_authoring.md",
         section,
         repo_root=REPO_ROOT,
     )

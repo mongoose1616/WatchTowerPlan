@@ -41,7 +41,7 @@ def register_validate_family(
             Markdown metadata, `document-semantics` for governed
             document-shape and applied-reference rules, `artifact` for
             schema-backed JSON contracts, indexes, ledgers, and similar
-            machine-readable artifacts, and `acceptance` for semantic reconciliation across PRDs,
+            machine-readable artifacts, and `acceptance` for semantic reconciliation across initiative-authored inputs,
             acceptance contracts, validation evidence, and traceability.
             """
         ).strip(),

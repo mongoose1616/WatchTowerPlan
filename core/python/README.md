@@ -61,7 +61,7 @@
 - `uv run watchtower-core task transition --task-id task.example.001 --task-status completed --format json`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
-- `uv run watchtower-core query initiatives --current-phase implementation_planning`
+- `uv run watchtower-core query initiatives --current-phase capture`
 - `uv run watchtower-core sync all`
 - `uv run watchtower-core sync coordination`
 - `uv run watchtower-core sync route-index`
@@ -112,8 +112,8 @@
 - `uv run watchtower-core query artifacts --format json` exposes the cross-family live artifact lookup under `plan/.wt/indexes/artifact_index.json`.
 - `uv run watchtower-core query readiness --format json`, `query discrepancies --format json`, and `query projects --format json` expose the live readiness, discrepancy, and project indexes under `plan/.wt/indexes/`.
 - Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
-- The PRD, design, decision, initiative, and task tracking sync commands rebuild summary-first human trackers with companion terminal-history tables. Use the paired `query` commands when you need exact filtered machine lookup.
-- `uv run watchtower-core plan bootstrap --include-decision --write ...` now emits a governed-valid decision scaffold with `Applied References and Implications`, seeds a live initiative package in pre-execution review, and leaves bootstrap-only traces in `implementation_planning` until non-bootstrap active work exists.
+- The decision, design, implementation, initiative, and task tracking sync commands rebuild summary-first human trackers with companion terminal-history tables. Use the paired `query` commands when you need exact filtered machine lookup.
+- `uv run watchtower-core plan bootstrap --include-decision --write ...` seeds a live initiative package in pre-execution review and leaves bootstrap-only traces in `capture` until non-bootstrap active work exists.
 - `uv run watchtower-core plan confirm-inputs --write ...` records maintainer confirmation of the current initiative-authored inputs before execution approval.
 - `uv run watchtower-core plan approve --write ...` is the explicit live readiness gate that moves one initiative package into `ready_for_execution` before execution-status task transitions are allowed.
 - `uv run watchtower-core closeout plan-initiative --write ...` is the default live closeout path for `plan/**` initiative packages and refreshes the initiative-local artifacts plus the pack and project coordination surfaces in the same slice.

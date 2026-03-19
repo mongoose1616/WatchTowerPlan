@@ -31,5 +31,5 @@
 
 ## Do Not
 - Do not recreate live initiative or task state under `plan/docs/**`.
-- Do not use retired PRD, feature-design, or implementation-plan terminology on active surfaces when the initiative-package terms apply.
+- Do not use retired planning-model terminology on active surfaces when the initiative-package terms apply.
 - Do not turn promoted guidance into a second execution workspace.

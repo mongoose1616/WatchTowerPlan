@@ -80,7 +80,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 | `updated_at` | Required | Last meaningful task update in UTC. |
 | `blocked_by` | Optional | Task IDs that block the current task. |
 | `depends_on` | Optional | Task IDs the current task depends on. |
-| `related_ids` | Optional | Stable IDs for PRDs, decisions, designs, plans, or other governed surfaces. |
+| `related_ids` | Optional | Stable IDs for initiative artifacts, decisions, design records, implementation slices, or other governed surfaces. |
 
 ## Process or Workflow
 1. Create or update one or more initiative-local live task records.

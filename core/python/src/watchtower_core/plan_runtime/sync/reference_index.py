@@ -25,7 +25,7 @@ from watchtower_core.plan_runtime.front_matter_paths import (
 from watchtower_core.plan_runtime.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
-from watchtower_core.plan_runtime.planning_documents import (
+from watchtower_core.plan_runtime.governed_documents import (
     ordered_unique,
     validate_required_section_order,
 )

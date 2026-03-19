@@ -413,7 +413,7 @@
     {
       "id": "validator.trace.acceptance_reconciliation",
       "title": "Acceptance Reconciliation Validator",
-      "description": "Validates alignment across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",
+      "description": "Validates alignment across initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",
       "status": "active",
       "engine": "python",
       "artifact_kind": "acceptance_reconciliation",

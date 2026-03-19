@@ -56,11 +56,8 @@
     "currentPhase": {
       "type": "string",
       "enum": [
-        "prd",
-        "design",
-        "implementation_planning",
+        "capture",
         "execution",
-        "validation",
         "closeout",
         "closed"
       ]
@@ -335,7 +332,6 @@
               "current_phase": {
                 "not": {
                   "enum": [
-                    "validation",
                     "closeout"
                   ]
                 }

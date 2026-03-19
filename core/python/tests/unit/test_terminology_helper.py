@@ -20,7 +20,7 @@ def _helper() -> TerminologyHelper:
 def test_terminology_helper_resolves_registry_backed_terms() -> None:
     helper = _helper()
 
-    assert helper.current_phase_for_lifecycle("capture_incomplete") == "implementation_planning"
+    assert helper.current_phase_for_lifecycle("capture_incomplete") == "capture"
     assert helper.is_terminal_lifecycle("completed") is True
     assert helper.allows_execution("approved") is True
     assert helper.source_class_for("external_reference") == "external_reference"

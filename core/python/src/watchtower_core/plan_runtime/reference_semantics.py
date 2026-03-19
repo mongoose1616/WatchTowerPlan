@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.adapters import extract_repo_path_references, extract_subsections
-from watchtower_core.plan_runtime.planning_documents import validate_required_section_order
+from watchtower_core.plan_runtime.governed_documents import validate_required_section_order
 
 REFERENCE_LOCAL_MAPPING_SECTION = "Local Mapping in This Repository"
 REFERENCE_CURRENT_REPOSITORY_STATUS_SUBSECTION = "Current Repository Status"

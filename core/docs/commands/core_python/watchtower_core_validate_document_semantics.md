@@ -7,7 +7,7 @@ This command validates one governed Markdown document against repo-native semant
 - You want to validate governed document structure beyond front matter alone.
 - You want broken repo-local Markdown links to fail before closeout.
 - You need a structured semantic validation result for a workflow, script, or agent.
-- You want to confirm that a workflow, standard, foundation doc, PRD, decision, or design doc still satisfies its document standard.
+- You want to confirm that a workflow, standard, foundation doc, decision note, design record, or other governed guidance document still satisfies its document standard.
 
 ## Command
 | Field | Value |

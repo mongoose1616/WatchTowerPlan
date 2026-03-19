@@ -4,7 +4,7 @@
 This command rebuilds the governed traceability index from the published planning indexes, acceptance contracts, and validation-evidence artifacts.
 
 ## Use When
-- You changed a PRD, decision, design, acceptance contract, or validation-evidence artifact and need the unified traceability join surface to match.
+- You changed an initiative-authored input, decision note, design record, implementation slice, acceptance contract, or validation-evidence artifact and need the unified traceability join surface to match.
 - You want to inspect the rebuilt traceability index in dry-run mode before writing it to the canonical control-plane path.
 - You want a controlled way to regenerate one joined index without rebuilding unrelated artifacts.
 
@@ -46,7 +46,7 @@ uv run watchtower-core sync traceability-index --output /tmp/traceability_index.
 ```
 
 ## Behavior and Outputs
-- The command reads the governed PRD, decision, and design indexes plus the acceptance-contract and validation-evidence artifacts, then rebuilds the unified traceability index deterministically.
+- The command reads the governed initiative, decision, design, implementation, acceptance-contract, and validation-evidence sources, then rebuilds the unified traceability index deterministically.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many trace records were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -57,9 +57,9 @@ uv run watchtower-core sync traceability-index --output /tmp/traceability_index.
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync prd-index` | Rebuilds one of the planning-index source surfaces that this command reads. |
-| `watchtower-core sync decision-index` | Rebuilds one of the planning-index source surfaces that this command reads. |
-| `watchtower-core sync design-document-index` | Rebuilds one of the planning-index source surfaces that this command reads. |
+| `watchtower-core sync initiative-index` | Rebuilds one of the primary machine-readable planning surfaces that this command depends on. |
+| `watchtower-core sync task-index` | Rebuilds one of the task-backed coordination surfaces that contributes to traced initiative state. |
+| `watchtower-core sync all` | Rebuilds all governed planning surfaces when you want the full deterministic slice instead of only traceability. |
 | `watchtower-core query trace` | Reads the traceability index that this command rebuilds. |
 | `watchtower-core validate artifact` | Validates the traceability index and related governed JSON artifacts. |
 

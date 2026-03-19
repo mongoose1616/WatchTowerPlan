@@ -60,7 +60,7 @@ def test_rendered_search_applies_shared_structured_filters() -> None:
         _FakeRenderedEntry(
             trace_id="trace.beta",
             title="Beta planning trace",
-            current_phase="validation",
+            current_phase="capture",
         ),
         _FakeRenderedEntry(
             trace_id="trace.gamma",

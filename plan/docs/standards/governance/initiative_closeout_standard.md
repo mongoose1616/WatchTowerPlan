@@ -36,7 +36,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Applies to initiative-level closeout fields stored on traceability index entries.
 - Applies to the live human tracking surfaces and derived initiative coordination views that mirror initiative closeout status.
 - Covers closeout status values, required closeout fields, and the baseline closeout workflow boundary.
-- Does not redefine artifact lifecycle status for PRDs, decisions, designs, or plans.
+- Does not redefine artifact lifecycle status for initiative briefs, decision notes, design records, or implementation slices.
 
 ## Use When
 - A traced initiative is complete, superseded, cancelled, or abandoned.
@@ -69,7 +69,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - `superseded` must also record `superseded_by_trace_id`.
 - Prefer closing or explicitly deferring open tasks before terminal initiative closeout.
 - If a terminal closeout is recorded while open tasks remain, the exception should be explicit in the operator workflow or command invocation.
-- Prefer reconciling PRD acceptance IDs, acceptance contracts, validation evidence, and traceability before terminal initiative closeout when those surfaces exist for the trace.
+- Prefer reconciling initiative acceptance IDs, acceptance contracts, validation evidence, and traceability before terminal initiative closeout when those surfaces exist for the trace.
 - If a terminal closeout proceeds with known acceptance-reconciliation issues, the exception should be explicit in the operator workflow or command invocation rather than implied by a successful closeout alone.
 - When terminal closeout metadata changes the traceability entry, `updated_at` should advance to the effective closeout timestamp.
 - Mirror initiative closeout status into the derived initiative index, coordination surfaces, and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.

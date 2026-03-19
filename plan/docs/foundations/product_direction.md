@@ -29,7 +29,7 @@ This document defines the intended future WatchTower product shape. For current 
 ## Audience
 
 - Primary audience: Product owners and engineering leads defining the future product shape, boundary, and first-wave delivery model.
-- Secondary audience: Designers and maintainers who need the governing future-product frame behind workflows, packs, and implementation planning.
+- Secondary audience: Designers and maintainers who need the governing future-product frame behind workflows, packs, and implementation sequencing.
 - Not written for: Contributors looking only for current repository ownership.
 
 ## Current Repository Relationship
@@ -59,7 +59,7 @@ The future product promise is not just "automation." It is a local-first environ
 - Preserve readable outputs while keeping canonical machine truth in governed surfaces.
 - Maintain paired human-readable and machine-usable forms of important artifacts wherever practical.
 - Support bounded automation with explicit stop conditions and human oversight.
-- Keep product changes traceable through PRDs, proposals, tasks, acceptance criteria, and validation artifacts.
+- Keep product changes traceable through initiative briefs, proposals, tasks, acceptance criteria, and validation artifacts.
 - Treat reusable knowledge, templates, workflow modules, and references as product value, not side effects.
 
 ## Domain Packs

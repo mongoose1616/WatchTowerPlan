@@ -25,7 +25,7 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 ## Workflow
 1. Confirm the closeout boundary.
    - Resolve the target `trace_id`.
-   - Confirm which PRDs, decisions, designs, plans, tasks, contracts, or evidence surfaces belong to that trace.
+   - Confirm which initiative briefs, decision notes, design records, implementation slices, tasks, contracts, or evidence surfaces belong to that trace.
 2. Check readiness for terminal closeout.
    - Inspect linked task state and any known downstream validation or acceptance gaps.
    - Run or review `watchtower-core validate acceptance --trace-id <trace_id>` when the trace publishes acceptance or evidence surfaces.
@@ -38,7 +38,7 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 4. Refresh human and machine mirrors.
    - Update the traceability index entry.
    - Refresh the initiative index and initiative tracker that project current initiative status.
-   - Refresh the PRD, decision, and design trackers that mirror initiative status.
+   - Refresh the decision, design, and implementation trackers that mirror initiative status when those derived surfaces exist for the trace.
 5. Validate the closeout result.
    - Re-run the narrowest meaningful traceability and schema checks for the touched surfaces.
    - Ensure the closeout state is explicit in the machine-readable traceability layer, the initiative view, and the mirrored family trackers.
@@ -55,7 +55,7 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 ## Outputs
 - Updated traceability entry with initiative closeout metadata
 - Updated initiative index and initiative tracker that mirror the terminal initiative state
-- Updated PRD, decision, and design trackers that mirror initiative status
+- Updated decision, design, and implementation trackers that mirror initiative status
 - A short record of any allowed open-task or validation exceptions that remained at closeout
 
 ## Done When

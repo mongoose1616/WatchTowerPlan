@@ -9,7 +9,11 @@ from pathlib import Path
 from jsonschema import ValidationError
 
 from watchtower_core.control_plane.errors import SchemaResolutionError
-from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    PACK_SETTINGS_PATH,
+    TEMPLATE_CATALOG_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.control_plane.models import TemplateCatalog, TemplateCatalogEntry
 from watchtower_core.control_plane.schemas import SchemaStore
 
@@ -63,9 +67,12 @@ class TemplateCatalogHelper:
         context = effective_loader.load_pack_context(effective_pack_settings_path)
         registry = context.registries.get("template_catalog")
         if not isinstance(registry, TemplateCatalog):
-            raise ValueError(
-                "Active pack settings do not declare a typed template_catalog."
-            )
+            try:
+                registry = effective_loader.load_template_catalog()
+            except (SchemaResolutionError, ValueError):
+                registry = TemplateCatalog.from_document(
+                    effective_loader.load_json_object(TEMPLATE_CATALOG_PATH)
+                )
         return cls(registry, schema_store=effective_loader.schema_store)
 
     def template(self, template_id: str) -> TemplateCatalogEntry:

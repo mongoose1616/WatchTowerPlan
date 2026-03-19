@@ -674,11 +674,8 @@ def test_control_plane_loader_reads_initiative_index() -> None:
     assert artifact_index.get("index.artifacts").artifact_family == "artifact_index"
     for entry in initiative_index.entries:
         assert entry.current_phase in {
-            "prd",
-            "design",
-            "implementation_planning",
+            "capture",
             "execution",
-            "validation",
             "closeout",
             "closed",
         }

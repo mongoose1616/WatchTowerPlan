@@ -31,8 +31,8 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _copy_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    copytree(REPO_ROOT / "core" / "docs", repo_root / "core" / "docs")
     (repo_root / "core" / "python").mkdir(parents=True)
-    copytree(REPO_ROOT / "docs", repo_root / "docs")
     materialize_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     return repo_root
@@ -62,7 +62,7 @@ def test_task_create_write_refreshes_task_and_initiative_surfaces(tmp_path: Path
             scope_items=("Write the live task lifecycle command coverage.",),
             done_when_items=("The live task lifecycle slice validates cleanly.",),
             applies_to=("core/python/src/watchtower_core/",),
-            related_ids=("design.features.workflow_routing_and_authoring",),
+            related_ids=("initiative.workflow_routing_and_authoring",),
         ),
         write=True,
     )

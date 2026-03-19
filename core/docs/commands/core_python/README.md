@@ -6,7 +6,7 @@
 ## Notes
 - Start with `watchtower_core.md` for the root command and shared options.
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow modules.
-- Use `watchtower_core_plan.md` when the main question is how to scaffold planning artifacts, bootstrap a traced planning chain, or advance a live initiative through confirmation and approval.
+- Use `watchtower_core_plan.md` when the main question is how to bootstrap a live initiative package or advance it through confirmation and approval.
 - Use `watchtower_core_query.md` when the main question is which read-only lookup surface to use, then open `watchtower_core_query_foundations.md` when the question is which foundation document governs a surface or which docs cite or apply it.
 - Use `watchtower_core_task.md` when the main question is how to create, update, or transition initiative-local live task records.
 - Use `watchtower_core_sync.md` when the main question is which derived artifact to rebuild, then open `watchtower_core_sync_foundation_index.md` when a foundations change needs the machine-readable intent index refreshed.
@@ -31,7 +31,7 @@
 | `core/docs/commands/core_python/README.md` | Describes the purpose of the core Python command-doc directory and the fastest ways to find command details. |
 | `core/docs/commands/core_python/watchtower_core.md` | Human-readable page for the root `watchtower-core` command and shared CLI behavior. |
 | `core/docs/commands/core_python/watchtower_core_route.md` | Entry page for advisory route preview commands. |
-| `core/docs/commands/core_python/watchtower_core_plan.md` | Entry page for planning scaffold and bootstrap commands. |
+| `core/docs/commands/core_python/watchtower_core_plan.md` | Entry page for live initiative bootstrap and readiness commands. |
 | `core/docs/commands/core_python/watchtower_core_plan_confirm_inputs.md` | Confirms reviewed initiative-authored inputs into machine state before approval. |
 | `core/docs/commands/core_python/watchtower_core_plan_approve.md` | Approves one live initiative package into `ready_for_execution`. |
 | `core/docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including coordination, standards, references, and trace surfaces. |

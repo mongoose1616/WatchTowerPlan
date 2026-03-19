@@ -11,7 +11,7 @@ Use this workflow to analyze viable options and record a durable repository deci
 ## Inputs
 - Scoped decision brief
 - Decision request, open question, or blocker
-- Relevant PRD, feature design, implementation plan, review notes, or proposal materials
+- Relevant initiative brief, design record, implementation slice, review notes, or proposal materials
 - Current-state context summary
 - Internal standards and canonical references applied
 - [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
@@ -34,7 +34,7 @@ Use this workflow to analyze viable options and record a durable repository deci
    - Capture the rationale, assumptions, and conditions that make the outcome valid.
    - Mark the status clearly, such as proposed, accepted, deferred, or rejected.
 3. Record consequences and repository impacts.
-   - Identify what standards, workflows, designs, plans, or implementation work must change because of the decision.
+   - Identify what standards, workflows, design records, implementation slices, or implementation work must change because of the decision.
    - Distinguish immediate follow-up work from longer-term implications, but keep the list to material impacts.
    - If the accepted outcome should become active repository policy, note which canonical artifacts must be updated so the decision does not live only in the decision record.
 

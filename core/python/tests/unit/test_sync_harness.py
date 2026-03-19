@@ -1,4 +1,5 @@
 from pathlib import Path
+from types import SimpleNamespace
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.plan_runtime.sync.command_index import (
@@ -33,3 +34,31 @@ def test_sync_harness_runs_one_document_target_to_overlay_output(tmp_path: Path)
     assert record.target == "command-index"
     assert record.record_count > 0
     assert (tmp_path / COMMAND_INDEX_ARTIFACT_PATH).exists()
+
+
+def test_sync_harness_tracking_details_ignore_retired_planning_count_fields() -> None:
+    harness = SyncHarness(ControlPlaneLoader(REPO_ROOT))
+
+    details = harness._tracking_details(
+        SimpleNamespace(
+            task_count=3,
+            open_count=2,
+            closed_count=1,
+            active_initiative_count=1,
+            actionable_task_count=1,
+            recent_closed_count=0,
+            prd_count=9,
+            decision_count=4,
+            feature_design_count=5,
+            implementation_plan_count=6,
+        )
+    )
+
+    assert details == {
+        "task_count": 3,
+        "open_count": 2,
+        "closed_count": 1,
+        "active_initiative_count": 1,
+        "actionable_task_count": 1,
+        "recent_closed_count": 0,
+    }

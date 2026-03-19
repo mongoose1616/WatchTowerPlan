@@ -20,4 +20,4 @@
 | `plan/docs/standards/governance/rewrite_surface_classification_standard.md` | Defines the four-axis classification and retention-reason model for rewrite-controlled surfaces. |
 | `plan/docs/standards/governance/task_handling_threshold_standard.md` | Defines when repository work must create, update, transition, or explicitly decline a durable local task record. |
 | `plan/docs/standards/governance/task_tracking_standard.md` | Defines the repository's local-first task tracking model and generated task companion surfaces. |
-| `plan/docs/standards/governance/traceability_standard.md` | Defines the repository baseline traceability model across PRDs, decisions, designs, and implementation plans. |
+| `plan/docs/standards/governance/traceability_standard.md` | Defines the repository baseline traceability model across initiative briefs, decisions, design records, and implementation slices. |

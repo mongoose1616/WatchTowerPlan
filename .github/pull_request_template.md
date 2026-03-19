@@ -6,7 +6,7 @@
 - Local task IDs:
 - No durable task needed reason:
 - GitHub issues:
-- Related PRDs / decisions / designs:
+- Related initiative briefs / decisions / design records / implementation slices:
 
 ## Validation
 - [ ] `cd core/python && ./.venv/bin/python -m mypy src`

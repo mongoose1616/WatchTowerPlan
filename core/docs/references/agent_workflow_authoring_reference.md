@@ -124,7 +124,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 5. Prefer citing governed local reference docs when external authority materially affects the workflow.
 
 ## Examples
-- A PRD-generation workflow should point to the PRD standard and template because those files directly shape the output.
+- An initiative-brief-authoring workflow should point to the initiative-package guidance and governing standards because those files directly shape the output.
 - A GitHub-task-sync workflow should point to the GitHub sync standard and sync command doc because they change the authority model and operational behavior.
 - A generic code-validation workflow should usually omit `Additional Files to Load` if the routed baseline already gives enough context.
 

@@ -314,7 +314,6 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     _write_repo_file(repo_root / "core/docs/README.md")
-    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
     (repo_root / "core/docs/commands").mkdir(parents=True, exist_ok=True)
     reference_path = repo_root / "core/docs/references/example_reference.md"
     _write_reference_fixture(reference_path)
@@ -362,7 +361,7 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
 
             ## Operationalization
             - `Modes`: `documentation`
-            - `Operational Surfaces`: `docs/commands`; `core/docs/commands/`
+            - `Operational Surfaces`: `core/docs/commands`; `core/docs/commands/`
 
             ## Validation
             - Standard-index sync should reject semantically duplicate directory paths.

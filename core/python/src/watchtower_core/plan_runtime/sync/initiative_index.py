@@ -14,13 +14,10 @@ from watchtower_core.plan_runtime.plan_workspace import (
 
 INITIATIVE_INDEX_ARTIFACT_PATH = PLAN_INITIATIVE_INDEX_PATH
 PHASE_ORDER = {
-    "prd": 1,
-    "design": 2,
-    "implementation_planning": 3,
-    "execution": 4,
-    "validation": 5,
-    "closeout": 6,
-    "closed": 7,
+    "capture": 1,
+    "execution": 2,
+    "closeout": 3,
+    "closed": 4,
 }
 
 

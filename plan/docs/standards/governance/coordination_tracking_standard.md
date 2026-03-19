@@ -35,7 +35,7 @@ This standard defines the repository's compact live coordination tracker so huma
 - Applies to `plan/tracking/coordination_tracking.md`.
 - Applies to the live plan entrypoint guidance that routes humans to the coordination tracker for current-state questions.
 - Covers compactness, authority boundaries, and rebuild expectations for the human coordination byproduct.
-- Does not replace initiative, task, PRD, design, or decision source artifacts.
+- Does not replace initiative-authored inputs, task state, design records, decision notes, or other traced source artifacts.
 
 ## Use When
 - A contributor needs a compact coordination view after the live `plan/**` surfaces point them to the current plan workspace.

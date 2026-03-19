@@ -19,7 +19,7 @@ aliases:
 # <Document Title>
 
 > Use this template only when no narrower family-specific template applies.
-> For governed standards, references, foundations, PRDs, decision records, feature designs, implementation plans, tasks, workflows, routing tables, command pages, README files, and `AGENTS.md` files, use the dedicated family template instead.
+> For governed standards, references, foundations, initiative-package authored inputs, decision notes, design records, implementation slices, tasks, workflows, routing tables, command pages, README files, and `AGENTS.md` files, use the dedicated family template instead.
 > Use this template for guides, overview docs, local working references outside governed reference families, and other repository docs that need light structure without a stricter family contract.
 > Prefer the smallest useful section set for the document's actual job.
 > Write the document as native to this repository rather than as a description of where the idea came from.

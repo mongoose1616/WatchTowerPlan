@@ -30,7 +30,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Covers decision boundaries, statuses, rationale, options, evidence, consequences, and synchronization with canonical repository artifacts.
 - Applies whether the record is expressed as an initiative-local `decision_notes.md`, an ADR-style note, or another durable decision artifact.
 - Uses initiative-local `decision_notes.md` during capture and promotes durable accepted policy into `requirements.md`, `decisions.md`, standards, workflow docs, or `plan/docs/**` as appropriate.
-- Does not replace PRDs, implementation plans, standards, or references that should hold the active repository guidance after a decision is accepted.
+- Does not replace initiative briefs, implementation slices, standards, or references that should hold the active repository guidance after a decision is accepted.
 
 ## Use When
 - A repository decision needs a durable written record.
@@ -89,7 +89,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Supersedes or superseded-by links when applicable
 
 ## Process or Workflow
-1. Confirm that the issue needs durable decision capture rather than only a PRD note, implementation-task comment, or transient discussion.
+1. Confirm that the issue needs durable decision capture rather than only an initiative-brief note, implementation-task comment, or transient discussion.
 2. Define the decision boundary so the record covers one clear question.
 3. Inspect the current repository context, affected surfaces, constraints, and dependencies.
 4. Gather the internal standards, workflows, templates, and canonical references that should govern the choice.

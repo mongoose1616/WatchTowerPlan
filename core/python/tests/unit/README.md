@@ -14,7 +14,7 @@
 | `core/python/tests/unit/test_all_sync.py` | Unit tests for the registry-backed all-sync orchestration service. |
 | `core/python/tests/unit/test_cli.py` | Thin smoke tests for the watchtower-core entrypoint, help output, and the absence of retired CLI facade modules. |
 | `core/python/tests/unit/test_cli_route_and_path_commands.py` | Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces. |
-| `core/python/tests/unit/test_cli_dry_run_authoring_commands.py` | Parser-level JSON contract tests for dry-run `task create` and `plan scaffold` behavior. |
+| `core/python/tests/unit/test_cli_dry_run_authoring_commands.py` | Parser-level JSON contract tests for dry-run `task create` and `plan bootstrap` behavior. |
 | `core/python/tests/unit/test_cli_knowledge_query_commands.py` | Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families. |
 | `core/python/tests/unit/test_cli_planning_query_commands.py` | Parser-level JSON contract tests for task, initiative, coordination, authority, acceptance, evidence, trace, and project query families. |
 | `core/python/tests/unit/test_cli_sync_commands.py` | Parser-level JSON and output-path tests for the sync command family. |

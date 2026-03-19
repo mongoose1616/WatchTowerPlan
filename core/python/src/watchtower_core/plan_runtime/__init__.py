@@ -5,16 +5,16 @@ from __future__ import annotations
 from watchtower_core.utils.module_exports import lazy_module_getattr
 
 __all__ = [
+    "GovernedDocument",
     "InitiativePackageService",
     "PlanWorkspaceService",
-    "PlanningDocument",
     "ProjectWorkspaceService",
 ]
 
 _EXPORT_MODULES = {
+    "GovernedDocument": "watchtower_core.plan_runtime.governed_documents",
     "InitiativePackageService": "watchtower_core.plan_runtime.initiative_packages",
     "PlanWorkspaceService": "watchtower_core.plan_runtime.plan_workspace",
-    "PlanningDocument": "watchtower_core.plan_runtime.planning_documents",
     "ProjectWorkspaceService": "watchtower_core.plan_runtime.project_workspace",
 }
 

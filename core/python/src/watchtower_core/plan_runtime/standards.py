@@ -15,7 +15,7 @@ from watchtower_core.adapters import (
     normalize_repo_path_reference,
     split_semicolon_list,
 )
-from watchtower_core.plan_runtime.planning_documents import ordered_unique
+from watchtower_core.plan_runtime.governed_documents import ordered_unique
 
 STANDARD_OPERATIONALIZATION_SECTION = "Operationalization"
 STANDARD_OPERATIONALIZATION_MODES_LABEL = "Modes"

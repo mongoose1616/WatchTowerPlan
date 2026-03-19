@@ -77,7 +77,7 @@ This standard defines how initiative acceptance IDs, acceptance contracts, valid
 | Traceability index | Joined lookup across all of the above |
 
 ## Process or Workflow
-1. Resolve the trace, PRD, acceptance contract, traceability entry, and validation evidence artifacts.
+1. Resolve the trace, initiative acceptance source, acceptance contract, traceability entry, and validation evidence artifacts.
 2. Compare the initiative acceptance IDs to the acceptance contract and traceability entry.
 3. Verify validator references against the validator registry.
 4. Verify evidence IDs and evidence acceptance coverage against the acceptance contract.

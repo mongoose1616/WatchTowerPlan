@@ -51,7 +51,7 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - By default the command runs in dry-run mode and does not mutate canonical planning surfaces.
 - This command is not the normal live closeout path for `plan/**` initiative packages; use `watchtower-core closeout plan-initiative` for the live plan workspace.
 - If the requested `trace_id` still belongs to a live `plan/**` initiative package, the command fails closed and tells the operator which `watchtower-core closeout plan-initiative` invocation to use instead.
-- By default the command validates PRD acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
+- By default the command validates initiative acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
 - In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, coordination index, initiative tracker, and coordination tracker that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
 - In `human` mode, the command prints the chosen initiative status, timestamp, and write outcome, plus any explicit open-task or acceptance-validation exception that was allowed.

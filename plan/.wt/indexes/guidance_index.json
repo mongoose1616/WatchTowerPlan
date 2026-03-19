@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-19T16:03:44Z",
+  "updated_at": "2026-03-19T20:15:00Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -66,7 +66,8 @@
         "core/python/",
         "core/workflows/modules/",
         "plan/workflows/modules/",
-        "docs/standards/"
+        "core/docs/standards/",
+        "plan/docs/standards/"
       ]
     },
     {
@@ -87,7 +88,8 @@
       "applies_to": [
         "core/control_plane/",
         "core/python/",
-        "docs/standards/"
+        "core/docs/standards/",
+        "plan/docs/standards/"
       ]
     },
     {
@@ -155,7 +157,8 @@
         "standards"
       ],
       "applies_to": [
-        "docs/standards/",
+        "core/docs/standards/",
+        "plan/docs/standards/",
         "core/control_plane/",
         "core/workflows/modules/",
         "plan/workflows/modules/"
@@ -208,23 +211,478 @@
       ]
     },
     {
+      "guidance_id": "std.data_contracts.acceptance_contract",
+      "title": "Acceptance Contract Standard",
+      "summary": "This standard defines machine-readable acceptance contracts stored under `core/control_plane/contracts/acceptance/`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+      "updated_at": "2026-03-19T08:21:14Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "acceptance_contract"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.coordination_index",
+      "title": "Coordination Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for the machine-readable coordination index stored at `plan/.wt/indexes/coordination_index.json`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/coordination_index_standard.md",
+      "updated_at": "2026-03-13T20:01:23Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "coordination_index",
+        "planning_index_family"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.initiative_index",
+      "title": "Initiative Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for the machine-readable initiative index stored at `plan/.wt/indexes/initiative_index.json`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/initiative_index_standard.md",
+      "updated_at": "2026-03-19T08:21:14Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "initiative_index",
+        "planning_index_family"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.planning_index_family",
+      "title": "Planning Index Family Standard",
+      "summary": "This standard defines the shared baseline for live plan-related derived index standards stored under `core/control_plane/indexes/` and `plan/.wt/indexes/`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/planning_index_family_standard.md",
+      "updated_at": "2026-03-13T20:01:23Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "planning_index_family"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.status_tracking",
+      "title": "Status Tracking Standard",
+      "summary": "This standard defines the lifecycle status vocabulary for governed repository artifacts.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/status_tracking_standard.md",
+      "updated_at": "2026-03-18T23:58:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "status_tracking"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.task_index",
+      "title": "Task Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for the live plan task summary index stored at `plan/.wt/indexes/task_index.json`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/task_index_standard.md",
+      "updated_at": "2026-03-18T14:00:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "task_index",
+        "planning_index_family"
+      ],
+      "applies_to": [
+        "plan/.wt/indexes/task_index.json"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.traceability_index",
+      "title": "Traceability Index Standard",
+      "summary": "This standard defines the unified machine-readable traceability index stored under `core/control_plane/indexes/traceability/`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/traceability_index_standard.md",
+      "updated_at": "2026-03-19T08:21:14Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "traceability_index",
+        "planning_index_family"
+      ]
+    },
+    {
+      "guidance_id": "std.data_contracts.validation_evidence",
+      "title": "Validation Evidence Standard",
+      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/data_contracts/validation_evidence_standard.md",
+      "updated_at": "2026-03-19T08:21:14Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "data_contracts",
+        "validation_evidence"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Standard",
+      "summary": "This standard defines how initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+      "updated_at": "2026-03-19T20:15:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "acceptance",
+        "validation_evidence"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/traceability/traceability_index.json"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.coordination_tracking",
+      "title": "Coordination Tracking Standard",
+      "summary": "This standard defines the repository's compact traced-planning coordination tracker so humans can browse retained planning corpus context without replacing the live `plan/**` authority surfaces.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/coordination_tracking_standard.md",
+      "updated_at": "2026-03-17T06:08:09Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "coordination_tracking"
+      ],
+      "applies_to": [
+        "plan/tracking/coordination_tracking.md",
+        "plan/plan_overview.md"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.decision_capture",
+      "title": "Decision Capture Standard",
+      "summary": "This standard defines how durable repository decisions should be recorded so rationale, tradeoffs, status, and downstream impacts remain clear over time.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/decision_capture_standard.md",
+      "updated_at": "2026-03-15T15:30:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "decision_capture"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.github_collaboration",
+      "title": "GitHub Collaboration Standard",
+      "summary": "This standard defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/github_collaboration_standard.md",
+      "updated_at": "2026-03-18T23:58:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "github"
+      ],
+      "applies_to": [
+        ".github/",
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/tracking/task_tracking.md",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.github_task_sync",
+      "title": "GitHub Task Sync Standard",
+      "summary": "This standard defines the repository's GitHub task sync contract for mirroring initiative-local live task records to GitHub without making GitHub the source of truth.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/github_task_sync_standard.md",
+      "updated_at": "2026-03-18T14:00:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "github_sync"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.initiative_closeout",
+      "title": "Initiative Closeout Standard",
+      "summary": "This standard defines how traced initiatives move to a terminal closeout state without overloading artifact lifecycle status.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/initiative_closeout_standard.md",
+      "updated_at": "2026-03-15T15:30:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "initiative_closeout"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/coordination_tracking.md",
+        "plan/tracking/initiative_tracking.md"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.initiative_tracking",
+      "title": "Initiative Tracking Standard",
+      "summary": "This standard defines the repository's live initiative tracking model over plan/.wt indexes with richer human companion trackers.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/initiative_tracking_standard.md",
+      "updated_at": "2026-03-18T14:00:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "initiative_tracking"
+      ],
+      "applies_to": [
+        "plan/tracking/initiative_tracking.md",
+        "plan/.wt/indexes/initiative_index.json"
+      ]
+    },
+    {
       "guidance_id": "standard.plan_guidance_promotion_helper_foundation_decision_notes",
       "title": "Guidance Promotion Standard",
       "summary": "Durable operational standard for governed guidance promotion. Defines the required machine contracts and durable-document expectations that allow source initiative packages to be purged cleanly.",
       "guidance_family": "standard",
       "status": "active",
       "owner": "repository_maintainer",
-      "doc_path": "plan/docs/standards/plan_guidance_promotion_helper_foundation_decision_notes.md",
+      "doc_path": "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
       "updated_at": "2026-03-19T10:10:00Z",
       "trace_id": "trace.guidance.plan_guidance_promotion_helper_foundation_decision_notes",
       "audience": "shared",
       "authority": "authoritative",
       "applies_to": [
-        "plan/docs/standards/plan_guidance_promotion_helper_foundation_decision_notes.md",
+        "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
         "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.planning_retention_and_purge",
+      "title": "Planning Retention and Purge Standard",
+      "summary": "This standard defines the promote-then-purge retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
+      "updated_at": "2026-03-19T20:15:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "planning_retention",
+        "purge"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "core/control_plane/ledgers/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/cli/"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.reference_distillation",
+      "title": "Reference Distillation Standard",
+      "summary": "This standard defines how externally published source material is distilled into durable local reference guidance and, when needed, translated into explicit repository policy.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/reference_distillation_standard.md",
+      "updated_at": "2026-03-11T06:00:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "reference_distillation"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.rewrite_execution_control",
+      "title": "Rewrite Execution Control Standard",
+      "summary": "This standard defines the parity contract, slice-control package, checkpoint workflow, and phase-entry guardrails for the structural rewrite program.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/rewrite_execution_control_standard.md",
+      "updated_at": "2026-03-19T20:15:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "rewrite",
+        "phase_control"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.rewrite_surface_classification",
+      "title": "Rewrite Surface Classification Standard",
+      "summary": "This standard defines the four-axis classification and retention-reason model that the structural rewrite program must use before any surface is moved, retired, or reclassified.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
+      "updated_at": "2026-03-19T20:15:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "rewrite",
+        "surface_classification"
+      ],
+      "applies_to": [
+        "plan/",
+        "plan/tracking/",
+        "core/docs/standards/",
+        "plan/docs/standards/",
+        "core/control_plane/",
+        "core/python/"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.task_handling_threshold",
+      "title": "Task Handling Threshold Standard",
+      "summary": "This standard defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/task_handling_threshold_standard.md",
+      "updated_at": "2026-03-18T23:58:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "task_threshold"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/task_handoff_review.md",
+        "core/workflows/modules/commit_closeout.md"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.task_tracking",
+      "title": "Task Tracking Standard",
+      "summary": "This standard defines the hard-cutover live task tracking model built on initiative-local plan task state and derived plan-workspace indexes.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/task_tracking_standard.md",
+      "updated_at": "2026-03-18T20:35:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "task_tracking"
+      ],
+      "applies_to": [
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/indexes/task_index.json",
+        "plan/tracking/task_tracking.md"
+      ]
+    },
+    {
+      "guidance_id": "std.governance.traceability",
+      "title": "Traceability Standard",
+      "summary": "This standard defines the repository's baseline traceability model so initiative intent, decisions, designs, implementation slices, and later executable or validation surfaces can be linked end to end.",
+      "guidance_family": "standard",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/docs/standards/governance/traceability_standard.md",
+      "updated_at": "2026-03-15T15:30:00Z",
+      "audience": "shared",
+      "authority": "authoritative",
+      "tags": [
+        "standard",
+        "governance",
+        "traceability"
       ]
     }
   ]

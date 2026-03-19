@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.rebuild import (
     MarkdownReconciliationHelper,
@@ -17,7 +19,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
-    (repo_root / "plan").mkdir(parents=True)
+    copytree(REPO_ROOT / "plan" / ".wt", repo_root / "plan" / ".wt")
     return repo_root
 
 
@@ -34,6 +36,7 @@ def test_rendered_view_builder_uses_registry_definitions_with_overrides(
             title="Example Initiative Plan",
             data={
                 "initiative_identity": ("- `initiative_id`: `initiative.example`",),
+                "scope_and_non_goals": ("- In scope: example initiative.", "- Out of scope: drift."),
                 "objectives": ("- Deliver the example initiative.",),
                 "planned_slices_or_workstreams": (
                     {
@@ -45,6 +48,9 @@ def test_rendered_view_builder_uses_registry_definitions_with_overrides(
                         "summary": "Bootstrap the example initiative.",
                     },
                 ),
+                "dependencies_and_risks": ("- No blocking dependencies.",),
+                "validation_or_completion_gates": ("- Validation passes.",),
+                "linked_outputs": ("- [summary.md](/plan/projects/watchtower/initiatives/example/summary.md)",),
             },
         )
     )
@@ -65,10 +71,12 @@ def test_markdown_reconciliation_helper_detects_missing_and_drifted_outputs(
         RenderedViewSpec(
             surface_id="rendered.plan.overview",
             data={
-                "current_state": ("## Current State", "- `coordination_mode`: `ready_for_bootstrap`"),
-                "active_initiatives": ("## Active Initiatives", "- None."),
-                "actionable_tasks": ("## Actionable Tasks", "- None."),
-                "recent_closeouts": ("## Recent Closeouts", "- None."),
+                "plan_domain_summary": ("- `coordination_mode`: `ready_for_bootstrap`",),
+                "active_pack_wide_initiatives": ("- None.",),
+                "active_project_initiatives": ("- None.",),
+                "blocked_or_attention_needed_items": ("- None.",),
+                "recent_completions_or_changes": ("- None.",),
+                "navigation_links": ("- [README.md](/plan/docs/README.md)",),
             },
         )
     )
@@ -94,3 +102,27 @@ def test_markdown_reconciliation_helper_detects_missing_and_drifted_outputs(
             issue_code="content_drift",
         ),
     )
+
+
+def test_rendered_view_builder_fails_closed_on_missing_section_payload_key(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    builder = RenderedViewBuilder(ControlPlaneLoader(repo_root))
+
+    with pytest.raises(
+        ValueError,
+        match="missing renderer payload keys: active_project_initiatives",
+    ):
+        builder.build_view(
+            RenderedViewSpec(
+                surface_id="rendered.plan.overview",
+                data={
+                    "plan_domain_summary": ("- `coordination_mode`: `ready_for_bootstrap`",),
+                    "active_pack_wide_initiatives": ("- None.",),
+                    "blocked_or_attention_needed_items": ("- None.",),
+                    "recent_completions_or_changes": ("- None.",),
+                    "navigation_links": ("- [README.md](/plan/docs/README.md)",),
+                },
+            )
+        )

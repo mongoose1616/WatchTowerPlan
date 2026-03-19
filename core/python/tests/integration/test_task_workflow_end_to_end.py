@@ -31,8 +31,8 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _copy_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    copytree(REPO_ROOT / "core" / "docs", repo_root / "core" / "docs")
     (repo_root / "core" / "python").mkdir(parents=True)
-    copytree(REPO_ROOT / "docs", repo_root / "docs")
     materialize_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     materialize_acceptance_and_evidence_paths(repo_root)
@@ -67,7 +67,7 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
             owner="repository_maintainer",
             scope_items=("Publish the next live foundation slice.",),
             done_when_items=("The execution slice is ready for validation.",),
-            related_ids=("prd.task_workflow_e2e_foundation",),
+            related_ids=("initiative.task_workflow_e2e_foundation",),
         ),
         write=True,
     )
@@ -83,7 +83,7 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
             owner="repository_maintainer",
             scope_items=("Validate the live execution slice.",),
             done_when_items=("The validation slice is unblocked and completed.",),
-            related_ids=("prd.task_workflow_e2e_foundation",),
+            related_ids=("initiative.task_workflow_e2e_foundation",),
             depends_on=(ready_task_id,),
             blocked_by=(ready_task_id,),
         ),

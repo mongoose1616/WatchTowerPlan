@@ -85,8 +85,8 @@ This standard defines the role, structure, and boundary rules for the machine-re
 | `next_surface_path` | Required | Repository-relative path to the next surface a contributor should open first. |
 | `primary_owner` | Conditionally required | Use when exactly one active owner is present. |
 | `active_owners` | Conditionally required | Current owners of open tasks when present and especially when more than one owner is active. |
-| `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `validation` and `closeout`. |
-| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `validation` and `closeout`, including task title, status, priority, owner, doc path, and actionability. |
+| `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `closeout`. |
+| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
 | `source_surface_paths` | Optional | Linked initiative-authored or promoted source surface paths for the initiative. |
 | `task_ids` | Conditionally required | All linked task IDs for the initiative; active initiatives should not omit this field. |
@@ -109,8 +109,8 @@ This standard defines the role, structure, and boundary rules for the machine-re
 - Every initiative entry should correspond to one current traceability entry.
 - `current_phase` should agree with the current planning and task state implied by the authoritative source surfaces.
 - Active initiative `task_ids` should agree with the current linked task corpus.
-- Active initiatives outside `validation` and `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
-- Active `validation` and `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and validation or initiative closeout is the only next action.
+- Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
+- Active `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Terminal initiative entries should also publish the required closeout fields.
 - Entry payloads should use `artifact_status` rather than a generic `status` field so initiative outcome and artifact lifecycle remain distinct.
 

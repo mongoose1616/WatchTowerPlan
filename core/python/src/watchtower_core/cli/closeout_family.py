@@ -62,7 +62,7 @@ def register_closeout_family(
             """
             Set terminal closeout state for one traced initiative and, in write
             mode, persist it to the traceability index plus the derived
-            initiative, coordination, PRD, decision, and design trackers.
+            initiative, coordination, decision, design, and implementation trackers.
             """
         ).strip(),
         epilog=examples(

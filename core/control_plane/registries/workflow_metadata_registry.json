@@ -258,9 +258,9 @@
       ]
     },
     {
-      "workflow_id": "workflow.feature_design_planning",
+      "workflow_id": "workflow.design_record_planning",
       "phase_type": "planning",
-      "task_family": "design_planning",
+      "task_family": "design_record_planning",
       "primary_risks": [
         "design_gap",
         "execution_drift"
@@ -271,7 +271,7 @@
         "solution"
       ],
       "companion_workflow_ids": [
-        "workflow.implementation_planning",
+        "workflow.implementation_slice_planning",
         "workflow.task_handoff_review"
       ]
     },
@@ -330,9 +330,9 @@
       ]
     },
     {
-      "workflow_id": "workflow.implementation_planning",
+      "workflow_id": "workflow.implementation_slice_planning",
       "phase_type": "planning",
-      "task_family": "implementation_planning",
+      "task_family": "implementation_slice_planning",
       "primary_risks": [
         "design_gap",
         "execution_drift"
@@ -340,10 +340,10 @@
       "extra_trigger_tags": [
         "implementation",
         "execution",
-        "plan"
+        "slice"
       ],
       "companion_workflow_ids": [
-        "workflow.feature_design_planning",
+        "workflow.design_record_planning",
         "workflow.task_handoff_review"
       ]
     },
@@ -385,17 +385,17 @@
       ]
     },
     {
-      "workflow_id": "workflow.prd_generation",
+      "workflow_id": "workflow.initiative_brief_authoring",
       "phase_type": "planning",
-      "task_family": "product_planning",
+      "task_family": "initiative_brief_authoring",
       "primary_risks": [
         "design_gap",
         "execution_drift"
       ],
       "extra_trigger_tags": [
-        "prd",
-        "requirements",
-        "product"
+        "initiative",
+        "brief",
+        "capture"
       ],
       "companion_workflow_ids": [
         "workflow.task_handoff_review"

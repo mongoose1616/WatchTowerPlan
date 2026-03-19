@@ -1,4 +1,4 @@
-"""Repo-specific helpers for governed planning-document services."""
+"""Repo-specific helpers for governed Markdown document services."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ from watchtower_core.plan_runtime.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
 
-PRD_REQUIRED_SECTIONS = (
+INITIATIVE_BRIEF_REQUIRED_SECTIONS = (
     "Summary",
     "Problem Statement",
     "Goals",
@@ -36,7 +36,7 @@ PRD_REQUIRED_SECTIONS = (
     "Risks and Dependencies",
     "References",
 )
-PRD_OPTIONAL_EXPLAINED_SECTIONS = ("Foundations References Applied",)
+INITIATIVE_BRIEF_OPTIONAL_EXPLAINED_SECTIONS = ("Foundations References Applied",)
 
 DECISION_REQUIRED_SECTIONS = (
     "Summary",
@@ -55,7 +55,7 @@ DECISION_REQUIRED_SECTIONS = (
 DECISION_REQUIRED_EXPLAINED_SECTIONS = ("Applied References and Implications",)
 DECISION_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
-FEATURE_DESIGN_REQUIRED_SECTIONS = (
+DESIGN_RECORD_REQUIRED_SECTIONS = (
     "Summary",
     "Source Request",
     "Scope and Feature Boundary",
@@ -68,13 +68,13 @@ FEATURE_DESIGN_REQUIRED_SECTIONS = (
     "Risks",
     "References",
 )
-FEATURE_DESIGN_REQUIRED_EXPLAINED_SECTIONS = (
+DESIGN_RECORD_REQUIRED_EXPLAINED_SECTIONS = (
     "Foundations References Applied",
     "Internal Standards and Canonical References Applied",
 )
-FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
+DESIGN_RECORD_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
-IMPLEMENTATION_PLAN_REQUIRED_SECTIONS = (
+IMPLEMENTATION_SLICE_REQUIRED_SECTIONS = (
     "Summary",
     "Source Request or Design",
     "Scope Summary",
@@ -85,10 +85,10 @@ IMPLEMENTATION_PLAN_REQUIRED_SECTIONS = (
     "Validation Plan",
     "References",
 )
-IMPLEMENTATION_PLAN_REQUIRED_EXPLAINED_SECTIONS = (
+IMPLEMENTATION_SLICE_REQUIRED_EXPLAINED_SECTIONS = (
     "Internal Standards and Canonical References Applied",
 )
-IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
+IMPLEMENTATION_SLICE_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
 
 def ordered_unique(*groups: tuple[str, ...]) -> tuple[str, ...]:
@@ -105,8 +105,8 @@ def ordered_unique(*groups: tuple[str, ...]) -> tuple[str, ...]:
 
 
 @dataclass(frozen=True, slots=True)
-class PlanningDocument:
-    """Parsed and validated governed planning document."""
+class GovernedDocument:
+    """Parsed and validated governed Markdown document."""
 
     relative_path: str
     front_matter: dict[str, Any]
@@ -214,8 +214,8 @@ def load_governed_document(
     required_explained_sections: tuple[str, ...] = (),
     optional_explained_sections: tuple[str, ...] = (),
     require_updated_at_section: bool = False,
-) -> PlanningDocument:
-    """Load one governed planning document and validate its metadata alignment."""
+) -> GovernedDocument:
+    """Load one governed Markdown document and validate its metadata alignment."""
     path = loader.repo_root / relative_path
     front_matter = load_front_matter(path)
     loader.schema_store.validate_instance(front_matter, schema_id=schema_id)
@@ -245,7 +245,7 @@ def load_governed_document(
     for title in optional_explained_sections:
         validate_explained_bullet_section_if_present(relative_path, title, sections.get(title))
 
-    document = PlanningDocument(
+    document = GovernedDocument(
         relative_path=relative_path,
         front_matter=front_matter,
         sections=sections,
@@ -280,13 +280,13 @@ def load_governed_document(
 
 
 def collect_reference_indicators(
-    document: PlanningDocument,
+    document: GovernedDocument,
     repo_root: Path,
     *,
     internal_sections: tuple[str, ...],
     external_sections: tuple[str, ...],
 ) -> tuple[bool, bool, tuple[str, ...], tuple[str, ...]]:
-    """Collect reference indicators from the nominated sections of one planning document."""
+    """Collect reference indicators from the nominated sections of one governed document."""
     source_path = repo_root / document.relative_path
     internal_paths = ordered_unique(
         *(

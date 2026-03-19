@@ -5,12 +5,12 @@ Use this workflow to define the implementation approach and apply the requested 
 
 ## Use When
 - A feature, fix, refactor, or behavior change needs to be implemented.
-- Existing code must be changed to satisfy a PRD, plan, issue, or bug report.
+- Existing code must be changed to satisfy an initiative brief, implementation slice, issue, or bug report.
 - A task requires code changes plus the adjacent tests, docs, or configuration updates needed to keep the repository coherent.
 
 ## Inputs
 - Scoped implementation brief
-- Relevant PRD, implementation plan, issue, or acceptance criteria
+- Relevant initiative brief, implementation slice, issue, or acceptance criteria
 - Current-state context summary
 - Internal standards and canonical references applied
 - External guidance notes when needed

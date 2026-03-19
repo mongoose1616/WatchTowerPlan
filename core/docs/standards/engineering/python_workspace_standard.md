@@ -137,7 +137,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
 - Update `core/README.md`, `core/python/README.md`, `core/python/AGENTS.md`, [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md), and the repository path index in the same change set when the Python workspace entrypoints change materially.
-- Update affected feature designs when the package boundaries for validators, query, sync, rebuild, routing, workflow execution, or control-plane loading change materially.
+- Update affected design records when the package boundaries for validators, query, sync, rebuild, routing, workflow execution, or control-plane loading change materially.
 
 ## References
 - [src_layout_reference.md](/core/docs/references/src_layout_reference.md)

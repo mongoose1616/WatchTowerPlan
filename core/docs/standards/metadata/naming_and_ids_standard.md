@@ -59,7 +59,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 |---|---|---|---|
 | Shared traceability identifier | dotted family prefix + initiative slug | `trace.governed_acceptance_example` | Use to join initiative-authored surfaces, contracts, evidence, and closeout artifacts for one traced initiative. |
 | Governed document front matter | dotted family prefix + concept slug | `ref.front_matter` | Best for references, standards, workflows, and similar long-lived docs. |
-| PRD identifier | dotted family prefix + PRD slug | `prd.traceability_baseline` | Use for durable PRD identity in trackers and indexes. |
+| Initiative package identifier | dotted family prefix + initiative slug | `initiative.traceability_baseline` | Use for stable initiative identity in machine state and indexes. |
 | Decision identifier | dotted family prefix + decision slug | `decision.validation_engine_selection` | Use for durable decision-record identity in trackers and indexes. |
 | Task identifier | dotted family prefix + task slug + sequence token | `task.local_task_tracking_foundation.001` | Use for local task-record identity in trackers and indexes. |
 | Published schema `$id` | `urn:watchtower:schema:` namespace + version token | `urn:watchtower:schema:interfaces:documentation:front-matter-base:v1` | Use for canonical schema identity rather than file paths. |
@@ -80,11 +80,9 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Use the concept slug to describe the document topic, not the document state or file suffix.
 - Approved traceability and planning prefixes currently include:
   - `trace` for shared traceability IDs
-  - `prd` for PRD IDs
+  - `initiative` for initiative-package IDs
   - `decision` for decision-record IDs
   - `task` for task IDs
-  - `design.features` for feature-design IDs
-  - `design.implementation` for implementation-plan IDs
 
 ### Schema `$id` rules
 - Use URNs for published schema identifiers.
@@ -130,12 +128,12 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - `ref.front_matter` is the stable document ID for the front matter reference.
 - `std.front_matter` is the stable document ID for the front matter standard.
 - `wf.documentation_generation` is the stable document ID for the documentation-generation workflow family.
-- `prd.traceability_baseline` is a stable PRD identifier.
+- `initiative.traceability_baseline` is a stable initiative-package identifier.
 - `decision.validation_engine_selection` is a stable decision-record identifier.
 - `task.local_task_tracking_foundation.001` is a stable local task identifier.
 - `urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1` is the canonical `$id` for the reference front matter schema.
 - `reference_front_matter.schema.json` is the corresponding schema filename.
-- A validation run ID may use a UUID, but the related PRD, decision, design, and plan IDs should remain readable deterministic IDs.
+- A validation run ID may use a UUID, but the related initiative, decision, task, and trace IDs should remain readable deterministic IDs.
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`

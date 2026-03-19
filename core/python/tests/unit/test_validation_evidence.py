@@ -14,8 +14,9 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_temp_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    copytree(REPO_ROOT / "core" / "docs", repo_root / "core" / "docs")
+    copytree(REPO_ROOT / "plan" / "docs", repo_root / "plan" / "docs")
     (repo_root / "core" / "python").mkdir(parents=True)
-    (repo_root / "docs").mkdir(parents=True)
     return repo_root
 
 

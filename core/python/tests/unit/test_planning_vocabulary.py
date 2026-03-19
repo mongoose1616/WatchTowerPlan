@@ -18,7 +18,7 @@ def _helper() -> PlanningVocabularyHelper:
 def test_planning_vocabulary_helper_resolves_lifecycle_phases_and_terminals() -> None:
     helper = _helper()
 
-    assert helper.current_phase_for_lifecycle("capture_incomplete") == "implementation_planning"
+    assert helper.current_phase_for_lifecycle("capture_incomplete") == "capture"
     assert helper.current_phase_for_lifecycle("closing") == "closeout"
     assert helper.is_terminal_lifecycle("completed") is True
     assert helper.is_terminal_lifecycle("blocked") is False

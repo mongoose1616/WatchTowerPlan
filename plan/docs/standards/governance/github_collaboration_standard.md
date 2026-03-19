@@ -55,7 +55,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
-- Keep repo-local PRDs, decisions, designs, initiative-local live task state, contracts, evidence, and traceability surfaces authoritative.
+- Keep repo-local initiative briefs, decision notes, design records, initiative-local live task state, contracts, evidence, and traceability surfaces authoritative.
 - Keep local branch naming and local history maintenance under [git_workflow_standard.md](/core/docs/standards/engineering/git_workflow_standard.md) instead of redefining them in hosted collaboration rules.
 - Use GitHub issue forms for structured intake only.
 - Before merge, accepted GitHub work should link or create the corresponding repo-local planning or task artifact.
@@ -94,7 +94,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Process or Workflow
 1. Capture hosted intake through an issue form when the work does not yet have a repo-local artifact.
-2. Triage the issue and decide whether to link or create a repo-local PRD, design, or initiative-local task record.
+2. Triage the issue and decide whether to link or create a repo-local initiative brief, design record, or initiative-local task record.
 3. Use pull requests to reference the relevant `trace_id`, local task IDs, and validation results.
 4. If GitHub task sync is in use, let the repo-local task record push the mirrored issue and project metadata outward.
 5. Keep repo-local status and GitHub-hosted state aligned instead of letting them drift independently.

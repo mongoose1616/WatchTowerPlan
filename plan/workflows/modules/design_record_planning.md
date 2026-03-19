@@ -1,16 +1,16 @@
-# Feature Design Planning Workflow
+# Design Record Planning Workflow
 
 ## Purpose
-Use this workflow to define design options, recommend a technical design, and capture the guardrails that `design_record.md` must pass to `implementation_slice.md`.
+Use this workflow to define design options, recommend a technical design, and capture the guardrails that `design_record.md` must hand off to `implementation_slice.md`.
 
 ## Use When
-- A feature is defined well enough to start technical design but not yet ready for direct implementation.
-- The team needs a proposed solution shape, architecture impact assessment, and design tradeoff analysis for a feature.
+- An initiative is defined well enough to start technical design but not yet ready for direct implementation slicing.
+- The team needs a proposed solution shape, architecture impact assessment, and design tradeoff analysis for a scoped change.
 - A change crosses multiple systems, introduces significant risk, or needs a reviewed design before work is broken into implementation tasks.
 
 ## Inputs
-- Scoped feature-design brief
-- Feature request, initiative brief, issue, or planning brief
+- Scoped design-record planning brief
+- Initiative brief, issue, or planning brief
 - Current-state context summary
 - Foundation-context brief
 - Internal standards and canonical references applied
@@ -34,7 +34,7 @@ Use this workflow to define design options, recommend a technical design, and ca
    - Call out assumptions, invariants, and failure cases that the implementation must respect.
 3. Define design guardrails and planning handoff needs.
    - Capture the validation expectations, rollout constraints, security considerations, and operational guardrails that the implementation must respect.
-   - Identify dependencies, prerequisites, and unresolved decisions that implementation planning must account for.
+   - Identify dependencies, prerequisites, and unresolved decisions that implementation-slice planning must account for.
    - Keep the output at design level rather than turning it into a task breakdown, execution log, or status memo.
 
 ## Data Structure
@@ -46,13 +46,13 @@ Use this workflow to define design options, recommend a technical design, and ca
 
 ## Outputs
 - A review-ready `design_record.md`
-- A recommended technical approach for the feature
-- Implementation-planning handoff detail only when it adds non-obvious value
+- A recommended technical approach for the scoped change
+- Implementation-slice handoff detail only when it adds non-obvious value
 
 ## Done When
-- The feature has a clear recommended technical design.
+- The scoped change has a clear recommended technical design.
 - The design remains aligned with the repository foundations in `core/docs/foundations/`.
 - The design reflects applicable internal standards, canonical references, and existing repository patterns.
 - Major tradeoffs, dependencies, constraints, and implementation guardrails are documented.
-- The output is ready for implementation planning without itself becoming an execution plan or task breakdown.
+- The output is ready for implementation-slice planning without itself becoming an execution plan or task breakdown.
 - The design avoids low-value execution detail or repeated metadata that belongs elsewhere.

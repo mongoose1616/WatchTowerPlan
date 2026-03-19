@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 from watchtower_core.adapters import render_rendered_surface
+from watchtower_core.control_plane import TemplateCatalogHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import RenderedSurfaceDefinition
 from watchtower_core.rebuild.harness import RebuildOutput
@@ -65,11 +66,13 @@ class RenderedViewBuilder:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._registry = loader.load_rendered_surface_registry()
+        self._template_helper = TemplateCatalogHelper.from_loader(loader)
 
     def build_view(self, spec: RenderedViewSpec) -> RenderedViewResult:
         """Build one rendered markdown view from a governed surface definition."""
 
         surface = self._registry.get(spec.surface_id)
+        self._validate_surface_contract(surface, spec.data)
         effective_surface = _surface_with_title_override(surface, spec.title)
         relative_output_path = (
             spec.relative_output_path
@@ -83,6 +86,34 @@ class RenderedViewBuilder:
             content=render_rendered_surface(effective_surface, spec.data),
             artifact_kind=spec.artifact_kind,
         )
+
+    def _validate_surface_contract(
+        self,
+        surface: RenderedSurfaceDefinition,
+        data: Mapping[str, object],
+    ) -> None:
+        templates = self._template_helper.templates_for_surface(surface.surface_id)
+        if len(templates) != 1:
+            raise ValueError(
+                f"Rendered surface {surface.surface_id} must resolve to exactly one template entry."
+            )
+        template = templates[0]
+        surface_section_ids = tuple(section.section_id for section in surface.sections)
+        if surface_section_ids != template.section_order:
+            raise ValueError(
+                f"Rendered surface {surface.surface_id} section order does not match template "
+                f"contract: {surface_section_ids!r} != {template.section_order!r}"
+            )
+        missing_source_keys = tuple(
+            section.source_key
+            for section in surface.sections
+            if section.source_key not in data
+        )
+        if missing_source_keys:
+            raise ValueError(
+                f"Rendered surface {surface.surface_id} is missing renderer payload keys: "
+                f"{', '.join(missing_source_keys)}"
+            )
 
     def build_views(
         self,
