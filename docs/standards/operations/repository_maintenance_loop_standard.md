@@ -9,12 +9,13 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T18:18:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/"
-  - "workflows/"
+  - "core/workflows/"
+  - "plan/workflows/"
   - "core/control_plane/"
   - "core/python/"
 aliases:
@@ -44,7 +45,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - Reviewing whether recurring upkeep responsibilities are still explicit and bounded.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): recurring maintenance should preserve source-of-truth boundaries and synchronized updates.
 - [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): maintenance should favor deterministic local behavior and same-change-set updates.
 - [repository_validation_standard.md](/docs/standards/validations/repository_validation_standard.md): maintenance work should use the baseline validation loop before closeout.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): recurring upkeep should not let planning joins and derived trackers drift silently.
@@ -76,7 +77,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## Operationalization
 - `Modes`: `workflow`; `validation`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/repository_review.md`; `core/workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `plan/tracking/coordination_tracking.md`
 
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.
@@ -94,4 +95,4 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [README.md](/docs/README.md)
 
 ## Updated At
-- `2026-03-13T18:18:00Z`
+- `2026-03-19T08:21:14Z`

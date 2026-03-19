@@ -2,13 +2,12 @@
 
 ## Summary
 This command records terminal closeout state for one traced initiative and, in write mode,
-refreshes the initiative, planning-catalog, and coordination views plus the mirrored family
-trackers that reflect that state. It also validates trace-level acceptance reconciliation by
-default before terminal closeout.
+refreshes the initiative, traceability, and coordination views that reflect that state. It
+also validates trace-level acceptance reconciliation by default before terminal closeout.
 
 ## Use When
-- A retained traced initiative under `docs/planning/**` is complete, superseded, cancelled, or abandoned.
-- You need the traceability index, initiative view, planning-catalog, coordination surfaces, and family trackers to agree on the current initiative outcome.
+- A retained traced initiative record is complete, superseded, cancelled, or abandoned.
+- You need the traceability index, initiative view, and coordination surfaces to agree on the current initiative outcome.
 - You want to dry-run the retained trace closeout record before mutating canonical planning surfaces.
 
 ## Command
@@ -26,7 +25,7 @@ uv run watchtower-core closeout initiative --trace-id <trace_id> --initiative-st
 ```
 
 ## Arguments and Options
-- `--trace-id <trace_id>`: Stable trace identifier such as `trace.core_python_foundation`.
+- `--trace-id <trace_id>`: Stable trace identifier such as `trace.governed_acceptance_example`.
 - `--initiative-status <status>`: Terminal initiative status to record.
 - `--closure-reason <reason>`: Short human-readable reason for the closeout decision.
 - `--superseded-by-trace-id <trace_id>`: Replacement trace identifier. Required when initiative status is `superseded`.
@@ -53,29 +52,24 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - This command is not the normal live closeout path for `plan/**` initiative packages; use `watchtower-core closeout plan-initiative` for the live plan workspace.
 - If the requested `trace_id` still belongs to a live `plan/**` initiative package, the command fails closed and tells the operator which `watchtower-core closeout plan-initiative` invocation to use instead.
 - By default the command validates PRD acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
-- In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, planning catalog, coordination index, initiative tracker, coordination tracker, and PRD, decision, and design trackers that mirror initiative status.
+- In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, coordination index, initiative tracker, and coordination tracker that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
 - In `human` mode, the command prints the chosen initiative status, timestamp, and write outcome, plus any explicit open-task or acceptance-validation exception that was allowed.
-- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, acceptance-issue count, acceptance-exception flag, and output paths for the traceability, initiative, planning-catalog, coordination, and family tracking surfaces when it wrote them.
+- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, acceptance-issue count, acceptance-exception flag, and output paths for the traceability, initiative, and coordination surfaces when it wrote them.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout` | Parent command group for closeout operations. |
-| `watchtower-core closeout plan-initiative` | Use this instead when the target is a live initiative package under `plan/**` rather than the retained traced planning corpus. |
+| `watchtower-core closeout plan-initiative` | Use this instead when the target is a live initiative package under `plan/**` rather than a retained trace record. |
 | `watchtower-core closeout purge-trace` | Use after terminal closeout when the trace package is ready to leave the retained planning corpus. |
-| `watchtower-core query planning` | Reads the planning-catalog view this command now refreshes in write mode. |
 | `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
 | `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry this command updates. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that this closeout command now enforces by default. |
 | `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
-| `watchtower-core sync planning-catalog` | Rebuilds the planning catalog that this command now refreshes in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable initiative tracker that this command also refreshes in write mode. |
-| `watchtower-core sync prd-tracking` | Rebuilds one tracker that this command updates in write mode. |
-| `watchtower-core sync decision-tracking` | Rebuilds one tracker that this command updates in write mode. |
-| `watchtower-core sync design-tracking` | Rebuilds one tracker that this command updates in write mode. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/closeout_family.py`

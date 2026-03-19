@@ -33,8 +33,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - Mapping external terminology into repository-native language.
 
 ## Related Standards and Sources
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
-- [product_direction.md](/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+- [product_direction.md](/core/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -63,7 +63,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | `pack settings` | The pack-owned load-root declaration consumed by reusable-core startup | Current canonical startup input under `core/control_plane/manifests/pack_settings.json`. |
 | `policy` | A repository rule or decision that is usually carried by standards, authority registries, or retained records | Not a dedicated machine-readable artifact family in the current repository layout. |
 | `README` | A directory-orientation document | Quick reference, not a standards or workflow document. |
-| `foundation document` | A durable product, philosophy, standards-context, technology, or narrative document under `docs/foundations/` | Shapes later planning and standards work. |
+| `foundation document` | A durable product, philosophy, standards-context, technology, or narrative document under `core/docs/foundations/` | Shapes later planning and standards work. |
 | `domain pack` | An external operator-facing pack that uses the shared core substrate | Not content owned inside the core control plane. |
 | `updated_at` | The last meaningful content update timestamp for a durable document or artifact | Use RFC 3339 UTC in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 | `recorded_at` | The timestamp for when an evidence or event-style record was captured | Use RFC 3339 UTC in the form `YYYY-MM-DDTHH:MM:SSZ`. |
@@ -85,8 +85,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - Prefer explicit migration from an old term to a new one rather than leaving both in active use indefinitely.
 
 ## References
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
-- [product_direction.md](/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/core/docs/foundations/product_direction.md)
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)

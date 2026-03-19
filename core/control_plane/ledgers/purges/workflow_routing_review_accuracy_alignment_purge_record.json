@@ -1,0 +1,43 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "id": "purge.workflow_routing_review_accuracy_alignment",
+  "title": "Trace Purge Record for Workflow Routing Review Accuracy Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-12T03:52:21Z",
+  "purged_at": "2026-03-19T07:19:14Z",
+  "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage.",
+  "summary": "Removed the legacy docs-backed planning package, acceptance contract, and validation evidence as part of the hard cutover to live plan authority.",
+  "surviving_authority_paths": [
+    "core/control_plane/indexes/routes/route_index.json",
+    "core/python/src/watchtower_core/query/routes.py",
+    "core/python/tests/unit/test_route_index_sync.py",
+    "core/workflows/ROUTING_TABLE.md",
+    "core/workflows/modules/foundations_context_review.md",
+    "decisions.md",
+    "docs/commands/core_python/watchtower_core_route_preview.md",
+    "docs/standards/workflows/routing_and_context_loading_standard.md",
+    "plan/tracking/coordination_tracking.md",
+    "plan/tracking/initiative_tracking.md",
+    "plan/tracking/task_tracking.md",
+    "plan/workflows/ROUTING_TABLE.md",
+    "requirements.md",
+    "workflows/ROUTING_TABLE.md"
+  ],
+  "purged_paths": [
+    "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.json",
+    "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.json",
+    "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+    "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/prds/route_preview_natural_request_matching.md",
+    "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+    "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/harden_workflow_route_scoring_and_review_coverage.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_workflow_routing_review_alignment.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/workflow_routing_review_accuracy_alignment_bootstrap.md"
+  ]
+}

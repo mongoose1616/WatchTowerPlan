@@ -18,9 +18,9 @@
     "core/control_plane/indexes/planning/planning_catalog.json",
     "core/python/src/watchtower_core/closeout/initiative.py",
     "core/python/src/watchtower_core/cli/closeout_handlers.py",
-    "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
-    "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
-    "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py"
+    "core/python/src/watchtower_core/plan_runtime/sync/prd_tracking.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/decision_tracking.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/design_tracking.py"
   ],
   "notes": "This transition closes the bounded closeout coordination sync-reuse review, names the remaining direct PRD, decision, and design tracking refresh step as the next entry question, and does not authorize further Phase 4 implementation."
 }

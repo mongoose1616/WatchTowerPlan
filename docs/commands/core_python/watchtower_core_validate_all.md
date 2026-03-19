@@ -70,9 +70,9 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 - `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/suite.py`
-- `core/python/src/watchtower_core/repo_ops/validation/targets.py`
+- `core/python/src/watchtower_core/plan_runtime/validation/targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
+- `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 

@@ -7,17 +7,14 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/schemas/interfaces/documentation/README.md` | Describes the purpose of the documentation interface schema directory and its current contents. |
-| `core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json` | Profile for governed durable decision-record documents. |
-| `core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.schema.json` | Profile for governed feature-design documents. |
-| `core/control_plane/schemas/interfaces/documentation/foundation_front_matter.schema.json` | Profile for governed foundation documents under `docs/foundations/`. |
+| `core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json` | Profile for governed durable decision-record documents under `plan/docs/decisions/`. |
+| `core/control_plane/schemas/interfaces/documentation/foundation_front_matter.schema.json` | Profile for governed foundation documents under `core/docs/foundations/`. |
 | `core/control_plane/schemas/interfaces/documentation/foundation_section_spec.schema.json` | Section rules for reusable mirrored foundation templates. |
 | `core/control_plane/schemas/interfaces/documentation/front_matter_base.schema.json` | Shared field definitions for governed documentation front matter. |
-| `core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.schema.json` | Profile for governed implementation-plan documents. |
-| `core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json` | Profile for governed product requirements documents. |
+| `core/control_plane/schemas/interfaces/documentation/pattern_front_matter.schema.json` | Profile for governed reusable pattern documents under `plan/docs/patterns/`. |
 | `core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json` | Profile for governed reference documents. |
 | `core/control_plane/schemas/interfaces/documentation/root_agents_section_spec.schema.json` | Section rules for reusable AGENTS.md templates at governed human roots. |
 | `core/control_plane/schemas/interfaces/documentation/root_readme_section_spec.schema.json` | Section rules for reusable README.md templates at governed human roots. |
 | `core/control_plane/schemas/interfaces/documentation/standard_front_matter.schema.json` | Profile for standards that adopt governed front matter. |
-| `core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json` | Profile for governed local task records. |
 | `core/control_plane/schemas/interfaces/documentation/workflow_front_matter.schema.json` | Profile for workflow documents that adopt governed front matter. |
 | `core/control_plane/schemas/interfaces/documentation/workflow_module_section_spec.schema.json` | Section rules for reusable workflow module templates. |

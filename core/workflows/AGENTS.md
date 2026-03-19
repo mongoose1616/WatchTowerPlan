@@ -6,10 +6,10 @@
 
 ## Scope
 - Applies to `core/workflows/**`.
-- Inherit [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md) first.
+- Inherit [AGENTS.md](/AGENTS.md) first.
 
 ## Routing
-- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/core/workflows/ROUTING_TABLE.md) for reusable-core and generic engineering route selection.
+- Use [ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) for reusable-core and generic engineering route selection.
 
 ## Local Rules
 - Treat `requirements.md` and `decisions.md` as the authoritative contract for workflow-root migration.

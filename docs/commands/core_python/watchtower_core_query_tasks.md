@@ -73,7 +73,7 @@ uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cu
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/tasks.py`
+- `core/python/src/watchtower_core/plan_runtime/query/tasks.py`
 - `plan/.wt/indexes/task_index.json`
 
 ## Updated At

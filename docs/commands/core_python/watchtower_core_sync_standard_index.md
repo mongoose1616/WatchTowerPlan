@@ -65,7 +65,7 @@ uv run watchtower-core sync standard-index --output /tmp/standard_index.json --f
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/standard_index.py`
 - `core/control_plane/indexes/standards/standard_index.json`
 
 ## Updated At

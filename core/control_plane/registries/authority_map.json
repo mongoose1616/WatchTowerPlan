@@ -22,7 +22,7 @@
       "fallback_paths": [
         "plan/.wt/indexes/initiative_index.json",
         "plan/.wt/indexes/task_index.json",
-        "docs/planning/coordination_tracking.md"
+        "plan/tracking/coordination_tracking.md"
       ],
       "aliases": [
         "planning start here",
@@ -36,28 +36,26 @@
       "domain": "planning",
       "question": "What is the full trace-linked planning context for one initiative?",
       "status": "active",
-      "artifact_kind": "planning_catalog",
-      "canonical_path": "core/control_plane/indexes/planning/planning_catalog.json",
-      "preferred_command": "watchtower-core query planning",
-      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_planning.md",
+      "artifact_kind": "traceability_index",
+      "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
+      "preferred_command": "watchtower-core query trace",
+      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
-        "artifact_status",
+        "status",
         "initiative_status",
-        "record_status",
-        "decision_status",
         "task_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/prds/"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/initiative_tracking.md",
+        "plan/plan_overview.md"
       ],
       "aliases": [
         "planning graph",
         "deep planning lookup",
         "trace planning context"
       ],
-      "notes": "Use this after coordination identifies the trace, or when one machine-readable record must join planning, task, acceptance, evidence, and next-step state."
+      "notes": "Use this after coordination identifies the trace, or when one durable machine-readable record must join trace-linked identifiers, acceptance, evidence, task state, and initiative outcome."
     },
     {
       "question_id": "authority.planning.initiative_family",
@@ -75,9 +73,8 @@
       ],
       "fallback_paths": [
         "plan/.wt/indexes/coordination_index.json",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "core/control_plane/indexes/planning/planning_catalog.json",
-        "docs/planning/coordination_tracking.md"
+        "plan/tracking/initiative_tracking.md",
+        "plan/tracking/coordination_tracking.md"
       ],
       "aliases": [
         "initiative history",
@@ -100,9 +97,9 @@
         "initiative_status"
       ],
       "fallback_paths": [
-        "core/control_plane/indexes/planning/planning_catalog.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/decisions/decision_tracking.md"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/initiative_tracking.md",
+        "plan/plan_overview.md"
       ],
       "aliases": [
         "trace join",
@@ -127,7 +124,7 @@
       "fallback_paths": [
         "plan/.wt/indexes/coordination_index.json",
         "plan/.wt/indexes/initiative_index.json",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/tracking/task_tracking.md"
       ],
       "aliases": [
         "task board",
@@ -316,14 +313,14 @@
       "artifact_kind": "foundation_index",
       "canonical_path": "core/control_plane/indexes/foundations/foundation_index.json",
       "preferred_command": "watchtower-core query foundations",
-      "preferred_human_path": "docs/foundations/README.md",
+      "preferred_human_path": "core/docs/foundations/README.md",
       "status_fields": [
         "status",
         "authority"
       ],
       "fallback_paths": [
-        "docs/foundations/",
-        "docs/foundations/repository_scope.md"
+        "core/docs/foundations/",
+        "core/docs/foundations/repository_scope.md"
       ],
       "aliases": [
         "foundation lookup",

@@ -34,7 +34,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Deciding whether an artifact should be deprecated or deleted.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 
@@ -81,7 +81,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `plan/.wt/indexes/coordination_index.json`; `plan/.wt/indexes/task_index.json`
+- `Operational Surfaces`: `plan/tracking/coordination_tracking.md`; `plan/tracking/task_tracking.md`; `plan/.wt/indexes/coordination_index.json`; `plan/.wt/indexes/task_index.json`
 
 ## Validation
 - Governed artifacts that expose lifecycle status should use only `draft`, `active`, or `deprecated`.
@@ -95,7 +95,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Prefer deleting obsolete governed artifacts instead of expanding the deprecation taxonomy.
 
 ## References
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 

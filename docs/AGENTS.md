@@ -12,7 +12,7 @@
 
 ## Routing
 - Read this file before working in `docs/**`.
-- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/core/workflows/ROUTING_TABLE.md) for generic documentation routes and [ROUTING_TABLE.md](/home/j/WatchTowerPlan/plan/workflows/ROUTING_TABLE.md) when the work is on live planning or plan-pack workflow surfaces.
+- Use [ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) for generic documentation routes and [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md) when the work is on live planning or plan-pack workflow surfaces.
 - Inherit repository routing from the root [AGENTS.md](/AGENTS.md).
 - Do not turn this file into a second routing table.
 

@@ -62,7 +62,7 @@ uv run watchtower-core plan approve --project-slug watchtower --initiative-slug 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/initiative_packages.py`
+- `core/python/src/watchtower_core/plan_runtime/initiative_packages.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

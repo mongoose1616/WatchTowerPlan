@@ -4,22 +4,22 @@
 Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.
 
 ## Use When
-- A PRD, feature design, or related planning artifact should be aligned with `docs/foundations/`.
+- A PRD, feature design, or related planning artifact should be aligned with `core/docs/foundations/`.
 - A review or documentation-alignment task explicitly asks whether guidance stays cohesive with repository foundations or scope posture.
 - A planning task depends on explicit product, standards, or technology-direction context.
 - A task needs a short record of which foundation documents materially shaped the output.
 
 ## Inputs
 - Scoped planning, design, or review task brief
-- Relevant documents under `docs/foundations/`
+- Relevant documents under `core/docs/foundations/`
 - Known product, standards, or technology questions already surfaced by the task
 
 ## Additional Files to Load
-- [repository_scope.md](/docs/foundations/repository_scope.md): anchors current repository ownership so review work does not let future-product language redefine present repo scope.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): identifies the governance and same-change-set alignment posture this workflow should preserve.
-- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): identifies the current technology-direction constraints this workflow should surface when implementation or tooling surfaces are in scope.
-- [product_direction.md](/docs/foundations/product_direction.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
+- [repository_scope.md](/core/docs/foundations/repository_scope.md): anchors current repository ownership so review work does not let future-product language redefine present repo scope.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): identifies the governance and same-change-set alignment posture this workflow should preserve.
+- [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md): identifies the current technology-direction constraints this workflow should surface when implementation or tooling surfaces are in scope.
+- [product_direction.md](/core/docs/foundations/product_direction.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
 
 ## Workflow
 1. Select the relevant foundation documents.
@@ -28,8 +28,8 @@ Use this workflow to load the repository foundation documents that materially sh
    - Use `watchtower-core query foundations --related-path <path> --format json` when the task starts from one repo surface and you need deterministic machine lookup to narrow which foundation docs to read first.
    - Add `repository_standards_posture.md` when the task can affect authority boundaries, synchronized updates, or governance expectations.
    - Add `engineering_stack_direction.md` when the task affects implementation, tooling, validation, or storage choices.
-   - Add [customer_story.md](/docs/foundations/customer_story.md) when product or design work depends on the intended future operator or user experience, not only on the future product boundary.
-   - Add [coordination_tracking.md](/docs/planning/coordination_tracking.md) when the task is a review loop about overall repository coherence, authority, or next remediation work.
+   - Add [customer_story.md](/core/docs/foundations/customer_story.md) when product or design work depends on the intended future operator or user experience, not only on the future product boundary.
+   - Add [coordination_tracking.md](/plan/tracking/coordination_tracking.md) when the task is a review loop about overall repository coherence, authority, or next remediation work.
    - Prefer direct repository foundations over inferred product assumptions.
 2. Extract the governing context.
    - Record the product boundaries, design principles, standards posture, or technology-direction guidance that should shape the task.

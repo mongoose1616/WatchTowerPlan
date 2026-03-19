@@ -48,7 +48,7 @@
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "The repository-root workflows remain transitional, but reusable-core workflow guidance belongs under core/workflows."
+      "notes": "Shared workflow guidance lives under core/workflows; plan-owned workflow guidance lives under plan/workflows."
     }
   ],
   "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into the plan pack."

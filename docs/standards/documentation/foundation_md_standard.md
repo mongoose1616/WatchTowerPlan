@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.foundation_md"
 title: "Foundation Document Standard"
-summary: "This standard defines the minimum governed shape for foundation documents stored under `docs/foundations/`."
+summary: "This standard defines the minimum governed shape for foundation documents stored under `core/docs/foundations/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Foundation Document Standard
 
 ## Summary
-This standard defines the minimum governed shape for foundation documents stored under `docs/foundations/`.
+This standard defines the minimum governed shape for foundation documents stored under `core/docs/foundations/`.
 
 ## Purpose
 Keep the repository's product, philosophy, standards-posture, and technology-direction documents structured enough that they can be indexed, queried, and audited as first-class intent surfaces.
 
 ## Scope
-- Applies to governed foundation documents stored under `docs/foundations/` other than the short directory `README.md`.
+- Applies to governed foundation documents stored under `core/docs/foundations/` other than the short directory `README.md`.
 - Covers front matter, minimum body requirements, and the role of foundation documents as intent-setting authority.
 - Does not force one narrative template across all foundation documents.
 
@@ -36,10 +36,10 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): foundation docs must publish governed metadata so the intent layer is indexable and traceable.
 - [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): external authority that materially shapes foundations should be normalized through local reference docs when practical.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): foundation docs must use UTC `updated_at` values consistently.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
 
 ## Guidance
-- Store governed foundation documents under `docs/foundations/`.
+- Store governed foundation documents under `core/docs/foundations/`.
 - Use governed front matter on foundation documents and validate it against the published foundation front matter profile.
 - Keep front-matter `audience` accurate so intent-layer retrieval can route human and agent readers effectively.
 - Keep each foundation document centered on one primary intent surface, such as product shape, design philosophy, standards posture, or technology direction.
@@ -56,8 +56,8 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 ### Placement rules
 | Document Type | Canonical Location | Notes |
 |---|---|---|
-| Foundation document | `docs/foundations/<topic>.md` | Use stable snake_case filenames derived from the governed topic. |
-| Foundation directory README | `docs/foundations/README.md` | Directory orientation and inventory only. |
+| Foundation document | `core/docs/foundations/<topic>.md` | Use stable snake_case filenames derived from the governed topic. |
+| Foundation directory README | `core/docs/foundations/README.md` | Directory orientation and inventory only. |
 
 ### Minimum governed requirements
 | Surface | Requirement | Notes |
@@ -69,14 +69,14 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`; `query`
-- `Operational Surfaces`: `docs/foundations/customer_story.md`; `docs/foundations/engineering_design_principles.md`; `docs/foundations/engineering_stack_direction.md`; `docs/foundations/product_direction.md`; `docs/foundations/repository_scope.md`; `docs/foundations/repository_standards_posture.md`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`
+- `Operational Surfaces`: `core/docs/foundations/customer_story.md`; `core/docs/foundations/engineering_design_principles.md`; `core/docs/foundations/engineering_stack_direction.md`; `core/docs/foundations/product_direction.md`; `core/docs/foundations/repository_scope.md`; `core/docs/foundations/repository_standards_posture.md`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py`; `core/python/src/watchtower_core/plan_runtime/query/foundations.py`
 
 ## Validation
 - Foundation-doc front matter should validate against `foundation_front_matter.schema.json`.
 - Foundation docs should publish `References` and `Updated At`.
 - `updated_at` in front matter and the `Updated At` body section should match.
 - Standards lookup should resolve this standard for the governed foundation
-  documents but not for `docs/foundations/README.md`, which is governed by the
+  documents but not for `core/docs/foundations/README.md`, which is governed by the
   README standard instead.
 - Reviewers should reject foundation docs that materially govern the repo but remain structurally invisible to indexes and retrieval.
 
@@ -90,7 +90,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 ## References
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md)
-- [README.md](/docs/foundations/README.md)
+- [README.md](/core/docs/foundations/README.md)
 
 ## Updated At
 - `2026-03-12T23:43:00Z`

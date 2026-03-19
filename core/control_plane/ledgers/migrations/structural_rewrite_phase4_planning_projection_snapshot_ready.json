@@ -15,9 +15,9 @@
     "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
     "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json",
-    "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
-    "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-    "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/initiative_index.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/planning_catalog.py",
+    "core/python/src/watchtower_core/plan_runtime/planning_rendered_serialization.py",
     "core/python/src/watchtower_core/closeout/initiative.py"
   ],
   "notes": "This transition reaffirms the five planning-authority answers, records the full coordination-sync and mutation-path consumer boundary, and approves one bounded private planning projection snapshot slice only."

@@ -33,7 +33,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Splitting a large workflow into smaller routed modules.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
@@ -134,7 +134,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Update routing surfaces in the same change set when a workflow split, merge, or rename changes task classification.
 
 ## References
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 - [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
 - [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
 - [workflow_template.md](/docs/templates/workflow_template.md)

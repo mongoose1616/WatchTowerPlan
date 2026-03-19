@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.initiative_index"
 title: "Initiative Index Standard"
-summary: "This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`."
+summary: "This standard defines the role, structure, and boundary rules for the machine-readable initiative index stored at `plan/.wt/indexes/initiative_index.json`."
 type: "standard"
 status: "active"
 tags:
@@ -10,7 +10,7 @@ tags:
   - "initiative_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T20:01:23Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -18,7 +18,7 @@ authority: "authoritative"
 # Initiative Index Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.
+This standard defines the role, structure, and boundary rules for the machine-readable initiative index stored at `plan/.wt/indexes/initiative_index.json`.
 
 ## Purpose
 - Provide one compact machine-readable initiative-family view over the current traced initiative corpus.
@@ -27,13 +27,13 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Keep the initiative layer distinct from the repo-level coordination index that now sits above it as the default machine start-here surface.
 
 ## Scope
-- Applies to machine-readable initiative index artifacts stored under `core/control_plane/indexes/initiatives/`.
+- Applies to the machine-readable initiative index artifact stored at `plan/.wt/indexes/initiative_index.json`.
 - Covers placement, root artifact fields, initiative entry shape, and update expectations.
 - Does not replace the unified traceability index, family-specific indexes, or task records.
 
 ## Use When
 - Building lookup or review tooling that needs a single initiative-centric view.
-- Refreshing derived initiative coordination data after PRDs, decisions, designs, plans, tasks, evidence, or closeout state change.
+- Refreshing derived initiative coordination data after source surfaces, tasks, evidence, or closeout state change.
 - Reviewing whether the current initiative phase and ownership are explicit enough for another contributor to continue the work.
 
 ## Related Standards and Sources
@@ -45,8 +45,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): defines the repo-level coordination overlay that projects from this initiative-family view.
 - [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by initiative records.
-- [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this index.
-- [README.md](/core/control_plane/indexes/initiatives/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [initiative_tracking.md](/plan/tracking/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this index.
+- [initiative_tracking.md](/plan/tracking/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this machine surface.
 
 ## Guidance
 - Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
@@ -88,10 +88,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `validation` and `closeout`. |
 | `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `validation` and `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
-| `prd_ids` | Optional | Linked PRD IDs for the initiative. |
-| `decision_ids` | Optional | Linked decision IDs for the initiative. |
-| `design_ids` | Optional | Linked feature-design IDs for the initiative. |
-| `plan_ids` | Optional | Linked implementation-plan IDs for the initiative. |
+| `source_surface_paths` | Optional | Linked initiative-authored or promoted source surface paths for the initiative. |
 | `task_ids` | Conditionally required | All linked task IDs for the initiative; active initiatives should not omit this field. |
 | `acceptance_ids` | Optional | Linked acceptance IDs for the initiative. |
 | `acceptance_contract_ids` | Optional | Linked acceptance-contract IDs for the initiative. |
@@ -105,7 +102,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `docs/planning/initiatives/initiative_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `plan/.wt/indexes/initiative_index.json`; `plan/tracking/initiative_tracking.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:
@@ -126,7 +123,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
-- [initiative_tracking.md](/docs/planning/initiatives/initiative_tracking.md)
+- [initiative_tracking.md](/plan/tracking/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-13T20:01:23Z`
+- `2026-03-19T08:21:14Z`

@@ -1,5 +1,7 @@
 # WatchTowerPlan Required Surfaces And Endstate Requirements
 
+> Status update as of March 19, 2026: the hard cutover has landed. The legacy docs-backed planning corpus has been purged, legacy planning indexes have been removed, and the remaining repo-local runtime now lives under `watchtower_core.plan_runtime` while the clean-up slices continue shrinking that namespace.
+
 This document adapts the conceptual structure of `/home/j/mvp_reference/required.md` to `WatchTowerPlan`.
 
 It is intentionally written for the `plan` domain rather than reusing the source reference's domain-specific artifact names and directory examples. Where the reference uses domain-local examples, this document translates those ideas into planning-and-implementation concepts such as work-item notes, initiative briefs, design records, execution plans, tasks, evidence, closeout recaps, and routed workflow execution.
@@ -32,7 +34,7 @@ Status labels in this file mean:
 The current repository boundary matters:
 
 - `WatchTowerPlan` currently owns the reusable governed substrate under `core/control_plane/` and `core/python/`.
-- It currently keeps most live planning state under `docs/planning/`, but this document treats that as a current-state compromise rather than the desired long-term authority model.
+- The old docs-backed planning corpus has been purged; live planning state now lives under `plan/**`, and this document treats that as the active authority model.
 - `/home/j/WatchTower` already exists as the permanent downstream product repository, but it is intentionally not the primary execution surface for this requirements effort yet.
 - `WatchTowerPlan` remains the planning authority and the proving ground for shared core behavior while the product repository is still intentionally sparse.
 - Until explicit downstream product bootstrap begins, any `WatchTower`-facing structures, files, or contracts described here should be treated as implementation-detail requirements recorded in this repository rather than as immediate change targets in `/home/j/WatchTower`.
@@ -55,7 +57,7 @@ When this document proposes a future `plan/` live-work shape, that is the target
 
 - The repo already has the right architectural direction for a future core-plus-pack system: machine-readable control-plane authority, pack settings, typed loading, schema-first validation, routed workflows, and a large derived-index surface are all real.
 - The strongest current reusable-core areas are `watchtower_core.control_plane`, `watchtower_core.validation`, the schema catalog, validator registry, validation suite registry, rendered-surface registry, workflow metadata registry, and the typed pack context.
-- The strongest current repo-local consumer is the planning-and-implementation corpus under `docs/planning/`, but that is also the clearest current authority mismatch because live planning data is living in docs instead of in a first-class live workspace.
+- The strongest current repo-local consumer is the initiative-centric `plan/**` workspace, which is now the live planning authority and the primary proving ground for remaining repo-local orchestration cleanup.
 - The main missing area is not basic governance. It is the next layer of generic pack runtime: initiative-centric live state, event-backed lifecycle contracts, export-safe query, sync, rebuild, workflow execution, artifact-family resolution, and extraction or promotion of durable guidance out of live work.
 - Validation has recently crossed an important boundary: it is now pack-aware reusable-core behavior with a `plan` fixture pack proving schema catalog, validator registry, and validation suite loading through `pack_settings`.
 - Some pack-facing interfaces still need broader maturity work before they should be treated as fully stable generic contracts, but the earlier `challenge`-scoped status leakage and artifact-index field leakage have now been retired.
@@ -69,9 +71,9 @@ When this document proposes a future `plan/` live-work shape, that is the target
 |---|---|---|
 | Core docs corpus | `docs/foundations/` and other reviewed docs already act as durable core guidance, but they are not yet rooted under `core/docs/`. | `core/docs/` should hold documentation that is only about core function, management, engineering, and bootstrap guidance, including a duplicated `core/docs/foundations/` corpus kept aligned with plan. |
 | Plan-domain guidance corpus | Missing as a distinct long-term home. | `plan/docs/` should hold approved extracted plan-domain guidance, including a duplicated `plan/docs/foundations/` corpus kept aligned with core. |
-| Live planning workspace | There is no first-class live initiative root yet; `docs/planning/` and its companion control-plane indexes currently fill that role. | `plan/initiatives/<initiative_slug>/` should carry pack-wide work, while `plan/projects/<project_slug>/initiatives/<initiative_slug>/` should carry project-scoped work. |
+| Live planning workspace | First-class live initiative roots now exist under `plan/initiatives/` and `plan/projects/<project_slug>/initiatives/`. | Keep those roots authoritative and continue shrinking residual repo-local orchestration that still depends on them directly. |
 | Initiative-local machine state | Missing as an explicit first-class layout. Current machine state is mostly derived from markdown planning families and sync outputs. | Each initiative should own a local `.wt/` machine layer with initiative snapshot, event history, task state, promotion records, and evidence. |
-| Pack-level live aggregates | Missing as an explicit `plan/.wt/` root. Current planning, initiative, and coordination indexes live under `core/control_plane/` and are largely sourced from `docs/planning/`. | `plan/.wt/` should provide aggregate initiative and task lookup, status rollups, and fast tracking views without crawling every initiative directory. |
+| Pack-level live aggregates | `plan/.wt/` now provides aggregate initiative and task lookup, status rollups, and fast tracking views. | Keep `plan/.wt/` authoritative for live aggregate state and avoid reintroducing docs-backed planning projections. |
 | Core workflow corpus | The current repo-level `workflows/` tree mixes concerns that should ultimately live under the domain they serve. | `core/workflows/` should hold core-only workflow docs, routing references, and operator procedures. |
 | Plan-domain workflow corpus | The current repo-level `workflows/` tree exists, but the future `plan/` workspace shape does not yet account for a plan-local workflow home. | `plan/workflows/` should become the human workflow corpus for initiative, project, and promotion procedures, with machine companions under `plan/.wt/`. |
 | Human navigation and instruction surfaces | README and AGENTS placement is mostly incidental today. | Human-facing roots should get deliberate `README.md` coverage, while `AGENTS.md` should exist only where interaction rules materially change; machine-only `.wt/` trees should not rely on local instruction files. |
@@ -79,10 +81,10 @@ When this document proposes a future `plan/` live-work shape, that is the target
 | Permanent product repository boundary | `/home/j/WatchTower` exists as the permanent downstream product repo, but the current requirements and core-shaping work are still being executed from `WatchTowerPlan`. | `WatchTower` should remain the long-term home for operator-facing product implementation, while this repo remains the planning authority and core proving area until downstream bootstrap is explicitly started. |
 | Machine-readable control plane | `core/control_plane/` is already the canonical machine authority for schemas, registries, indexes, contracts, ledgers, and manifests. | Strong foundation. Future work should add missing pack-runtime families here or in future pack-owned `.wt/` roots without blurring authority. |
 | Reusable runtime | `watchtower_core.control_plane`, `watchtower_core.validation`, `watchtower_core.evidence`, and selected adapters are reusable-core oriented. | Validation is now meaningfully pack-aware. Query, sync, and rebuild still need a cleaner export-safe story. |
-| Repo-local orchestration | `watchtower_core.repo_ops` and `watchtower_core.cli` own planning-specific query, sync, rendered tracking, task lifecycle, and route CLI behavior. | This split is correct for now, but it needs to re-root from docs-backed planning families to initiative-backed live pack state. |
+| Repo-local orchestration | `watchtower_core.plan_runtime` and `watchtower_core.cli` own planning-specific query, sync, rendered tracking, task lifecycle, and route CLI behavior. | This split is correct for now, but it needs to re-root from docs-backed planning families to initiative-backed live pack state. |
 | Current pack-facing interfaces | `core/control_plane/schemas/interfaces/packs/` already publishes pack settings, governance map, path/status/actor registries, artifact index, work-item note, and extraction envelope interfaces. | Good seed set, but still incomplete and in places too domain-leaky for a stable pack contract. |
-| Validation proof surface | `core/python/tests/fixtures/domain_packs/plan/.wt/` proves a minimal `plan` pack through pack-aware validation. | Important milestone. The same proof strategy should later expand to query, sync, route, and rendered-surface behavior. |
-| Derived indexes and rendered views | The repo already generates command, route, workflow, planning, coordination, initiative, task, traceability, reference, and standards indexes plus rendered tracking pages. | Rich current state, but the live planning-derived surfaces should ultimately be sourced from `plan/initiatives/` and `plan/.wt/`, not from `docs/planning/`. |
+| Validation proof surface | `core/python/tests/fixtures/packs/plan/.wt/` proves a minimal `plan` pack through pack-aware validation. | Important milestone. The same proof strategy should later expand to query, sync, route, and rendered-surface behavior. |
+| Derived indexes and rendered views | The repo already generates command, route, workflow, coordination, initiative, task, traceability, reference, and standards indexes plus rendered tracking pages. | Keep live planning-derived surfaces sourced from `plan/initiatives/` and `plan/.wt/`, not from any recreated docs-backed planning family. |
 
 ## Endstate Authority And Precedence Rules
 
@@ -125,9 +127,9 @@ The permanent product boundary and the current execution boundary are intentiona
 | `governance_surface_resolver` | `Current` | Provide a direct helper that answers where a governed surface lives, whether it is authoritative, whether it is rebuildable, and what companion views depend on it. | The reusable-core governance surface resolver now merges `pack_settings` plus `governance_surface_map` declarations and exposes typed dependency metadata, with export-safe query coverage on top. |
 | `artifact_family_resolver` | `Current` | Load an authoritative artifact-family taxonomy for plan-pack artifacts and answer placement, status, visibility, and renderability rules. | Keep the typed helper registry-backed and fail closed instead of inferring family behavior from scattered indexes or path conventions. |
 | `path_and_id_helpers` | `Current` | Provide generic pack-relative path, id, slug, and naming coherence helpers. | The reusable-core path and id helper now centralizes canonical trace stems, initiative and project roots, and companion artifact id derivation for live plan callers. |
-| `query_harness` | `Current` at reusable-core root | Offer export-safe querying over pack surfaces, indexes, registries, routes, workflow metadata, and artifact families. | Keep reusable-core query exports focused on governed generic metadata while leaving live planning and docs-backed repo-local query services under `repo_ops`. |
+| `query_harness` | `Current` at reusable-core root | Offer export-safe querying over pack surfaces, indexes, registries, routes, workflow metadata, and artifact families. | Keep reusable-core query exports focused on governed generic metadata while leaving live planning and docs-backed repo-local query services under `plan_runtime`. |
 | `validation_harness` | `Current` and strong | Stay the fail-closed, schema-first, pack-aware validation entrypoint. | Expand suite step kinds later for rendered views, compatibility checks, lifecycle rules, and discrepancy policies without leaking repo-local semantics. |
-| `sync_harness` | `Current` | Coordinate authority-preserving synchronization across pack-owned and repo-owned surfaces. | The reusable-core sync harness now runs deterministic multi-target sync specs while repo-local target catalogs remain under `watchtower_core.repo_ops.sync`. |
+| `sync_harness` | `Current` | Coordinate authority-preserving synchronization across pack-owned and repo-owned surfaces. | The reusable-core sync harness now runs deterministic multi-target sync specs while repo-local target catalogs remain under `watchtower_core.plan_runtime.sync`. |
 | `rebuild_harness` | `Current` | Deterministically regenerate indexes and rendered views from stronger authority. | The reusable-core rebuild harness now exposes deterministic multi-output rebuild targets for governed JSON indexes and rendered Markdown views, while plan and project workspace rebuild callers delegate their derived-surface writes through that shared boundary. |
 | `routing_engine` | `Current` | Remain the authoritative machine route selector driven by routing metadata and workflow metadata. | The reusable-core routing engine now selects governed routes by request text or explicit task type through a stable runtime API layered on the route and workflow indexes. |
 | `route_preview_helper` | `Current` | Expose typed advisory route-preview results that downstream packs can call without importing repo-local CLI handlers. | The reusable-core `RoutePreviewService` now exposes typed advisory route-preview results through `watchtower_core.query.routes` and the package-root query exports. |
@@ -188,7 +190,7 @@ The permanent product boundary and the current execution boundary are intentiona
 |---|---|---|
 | Current root docs corpus | `Current but mislocated` | The repo already has durable core-oriented guidance, but the future boundary should move core-only docs under `core/docs/`. |
 | `plan/docs/` guidance layer | `Current` | The distinct plan-domain guidance layer now exists, including promoted decisions, patterns, references, standards, and duplicated foundations. |
-| `docs/planning/` live planning families | `Current but misaligned` | The repo currently stores live planning here, but this conflicts with the intended split between live initiative state, plan-domain guidance, and core-development docs. |
+| Legacy docs-backed planning corpus | `Retired` | Live planning no longer lives in docs. Historical removal is represented only through purge ledgers, promoted guidance, and surviving initiative packages when still retained. |
 | `plan/` live initiative roots | `Current` | The first-class live `plan` workspace now exists for both pack-wide initiatives and project-scoped initiatives. |
 | `plan/.wt/` aggregate tracking root | `Current` | The first-class pack-level aggregate root now exists for initiative, task, readiness, discrepancy, promotion, guidance, and project status rollups. |
 | `core/workflows/` workflow root | `Current` | The first-class core-only workflow root now exists. |
@@ -424,7 +426,7 @@ High-impact current references that matter now:
 - `core/control_plane/schemas/interfaces/packs/pack_settings.schema.json`
 - `core/control_plane/schemas/interfaces/packs/artifact_index.schema.json`
 - `core/python/src/watchtower_core/control_plane/pack_context.py`
-- `core/python/src/watchtower_core/repo_ops/`
+- `core/python/src/watchtower_core/plan_runtime/`
 
 Rule for this document:
 
@@ -469,10 +471,10 @@ Future rule:
 | `watchtower_core.control_plane` | `Current` | Strong reusable-core area with typed models, loader, workspace, and schema-store logic. |
 | `watchtower_core.validation` | `Current` | Strong reusable-core area with pack-aware validation suites and pack contract validation. |
 | `watchtower_core.evidence` | `Current` | The package root now exposes both durable validation-evidence recording and reusable evidence-bundle helpers for pack-local readiness, review, and closeout evidence contracts. |
-| `watchtower_core.query` | `Current` | Export-safe reusable query boundary for governed surfaces, routes, commands, workflows, and artifact families, while fail-closing repo-local planning queries back to `watchtower_core.repo_ops.query`. |
-| `watchtower_core.sync` | `Current` | Export-safe reusable sync boundary for deterministic generic harness surfaces, while repo-local sync target implementations remain under `watchtower_core.repo_ops.sync`. |
+| `watchtower_core.query` | `Current` | Export-safe reusable query boundary for governed surfaces, routes, commands, workflows, and artifact families, while fail-closing repo-local planning queries back to `watchtower_core.plan_runtime.query`. |
+| `watchtower_core.sync` | `Current` | Export-safe reusable sync boundary for deterministic generic harness surfaces, while repo-local sync target implementations remain under `watchtower_core.plan_runtime.sync`. |
 | `watchtower_core.closeout` | `Current` | The package now covers traced initiative closeout, purge, and initiative-package closeout coordination over pack-local evidence, closeout recap, and promotion artifacts without pulling repo-specific path discovery into the public surface. |
-| `watchtower_core.repo_ops` | `Current but intentionally transitional` | It should shrink toward zero; any remaining `repo_ops` surface in the clean endstate requires explicit approval plus companion documentation and machine-readable justification. |
+| `watchtower_core.plan_runtime` | `Current but intentionally transitional` | It should shrink toward zero; any remaining `plan_runtime` surface in the clean endstate requires explicit approval plus companion documentation and machine-readable justification. |
 
 ## Required Endstate Surfaces
 
@@ -501,7 +503,7 @@ Once the intended operating model is fully implemented and the current transitio
 - there are no long-lived transition, compatibility, migration, or historical artifact families retained as part of the normal operating model
 - important durable guidance has been normalized into foundations, standards, references, and other long-term guidance surfaces rather than being left in temporary planning artifacts
 - completed or superseded tasks, PRDs, initiatives, implementation slices, and similar temporary planning records have been removed after their durable outputs are extracted
-- there is a clean core split, and `repo_ops` is effectively absent unless explicitly approved by the repository owner with companion documentation and machine-readable justification
+- there is a clean core split, and `plan_runtime` is effectively absent unless explicitly approved by the repository owner with companion documentation and machine-readable justification
 - the foundations corpus continues to guide WatchTower, but it lives as intentionally duplicated `core/docs/foundations/` and `plan/docs/foundations/` rather than as project-scoped material
 - `pack_context` is always loaded, and `project_context` is loaded separately only when needed
 - human and agent workflows still initiate the work, while Python helpers and harnesses remain the deterministic operational layer underneath
@@ -536,7 +538,7 @@ Once the intended operating model is fully implemented and the current transitio
 
 The following remain explicitly owner-gated and should never appear by default:
 
-- any residual `repo_ops` behavior in the clean endstate
+- any residual `plan_runtime` behavior in the clean endstate
 - any compatibility-contract or compatibility-ledger surface in the clean endstate
 - any long-lived migration, release, historical, or archive family kept as normal operational state
 - any new repo-root operational tree beyond thin routing entrypoints
@@ -681,7 +683,7 @@ Minimum companion set for any new addition:
 
 | Current Item | Why It Needs To Change | Current Evidence | Required Direction |
 |---|---|---|---|
-| `docs/planning/**` stores live planning state. | Live initiatives should not live inside either future `core/docs/` or `plan/docs/` guidance surfaces. | Current planning corpus under `docs/planning/` | Move live planning to `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work, and use `plan/docs/` for approved extracted plan guidance. |
+| Legacy docs-backed planning corpus stored live planning state. | Live initiatives should not live inside either `core/docs/` or `plan/docs/` guidance surfaces. | The removed legacy docs-backed planning corpus | Keep live planning under `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work, and use `plan/docs/` only for approved extracted plan guidance. |
 | Core-oriented docs are not rooted under `core/docs/`. | The desired future boundary is that core-related material lives under `core/` and only core-related material lives there. | Current durable core docs remain under root `docs/`. | Move core-only documentation to `core/docs/` over time, keep a duplicated `core/docs/foundations/` corpus aligned with `plan/docs/foundations/`, and leave non-core material out of `core/`. |
 | There is no first-class `plan/` live-work root. | Without a visible live domain root, planning stays coupled to docs and control-plane projections. | No current `plan/` hierarchy exists. | Add `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work. |
 | There is no initiative-local `.wt/` machine layer. | Live initiative state needs a local machine authority for snapshots, events, tasks, evidence, and promotion records. | Current planning state is mostly docs-backed with derived machine companions. | Add initiative-local `.wt/` contracts and runtime helpers. |
@@ -695,18 +697,18 @@ Minimum companion set for any new addition:
 | Duplicated foundations have no machine-enforced mirror rule. | Two required copies without enforced equivalence create silent authority drift. | The future model intentionally duplicates foundations across core and plan, but no current mirror contract exists. | Add mirror-group semantics or equivalent required-root rules through `documentation_family_registry`, template bindings, and validation suites. |
 | Deletion and promotion gates are not yet explicit. | The clean endstate depends on removing temporary planning state, but removal rules must be deterministic to avoid losing durable guidance. | Current repo still retains live planning artifacts and historical traces in docs-backed form. | Add explicit promotion-before-deletion rules plus validation gates for any surviving replacements. |
 | Governed `template_catalog` now exists for initiative, project, guidance, and workflow surfaces. | Template-backed human surfaces now resolve through governed template and section-spec contracts instead of through ad hoc file conventions. | `plan/.wt/registries/template_catalog.json`, `core/python/src/watchtower_core/control_plane/template_catalog.py`, and the template files under `docs/templates/` | Keep the catalog authoritative and extend it only when new governed human-surface families are added. |
-| Governed promotion now exists from live initiatives into `plan/docs/` guidance surfaces. | Durable plan guidance is now extracted and approved out of live work rather than being authored directly inside live planning. | `plan/.wt/registries/promotion_policy_registry.json`, `core/python/src/watchtower_core/repo_ops/guidance_promotion.py`, and the promoted `plan/docs/**` outputs | Keep promotion policy and promotion records authoritative, and continue mirroring duplicated foundations across `core/docs/foundations/` and `plan/docs/foundations/`. |
-| `artifact_index` now uses domain-neutral provenance fields and a family-registry-backed live builder. | Field-name leakage is resolved and the plan pack now has a real cross-family artifact index over live artifact families and aggregate surfaces. | `core/control_plane/schemas/interfaces/packs/artifact_index.schema.json`, `core/python/src/watchtower_core/control_plane/models/pack_contracts.py`, `core/python/src/watchtower_core/repo_ops/artifact_index.py`, and `plan/.wt/registries/artifact_family_registry.json` | Keep the neutral provenance shape and extend future pack coverage through the artifact-family model rather than by reintroducing domain-specific fields. |
+| Governed promotion now exists from live initiatives into `plan/docs/` guidance surfaces. | Durable plan guidance is now extracted and approved out of live work rather than being authored directly inside live planning. | `plan/.wt/registries/promotion_policy_registry.json`, `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`, and the promoted `plan/docs/**` outputs | Keep promotion policy and promotion records authoritative, and continue mirroring duplicated foundations across `core/docs/foundations/` and `plan/docs/foundations/`. |
+| `artifact_index` now uses domain-neutral provenance fields and a family-registry-backed live builder. | Field-name leakage is resolved and the plan pack now has a real cross-family artifact index over live artifact families and aggregate surfaces. | `core/control_plane/schemas/interfaces/packs/artifact_index.schema.json`, `core/python/src/watchtower_core/control_plane/models/pack_contracts.py`, `core/python/src/watchtower_core/plan_runtime/artifact_index.py`, and `plan/.wt/registries/artifact_family_registry.json` | Keep the neutral provenance shape and extend future pack coverage through the artifact-family model rather than by reintroducing domain-specific fields. |
 | `status_registry` now uses generic blocked, completed, and cancelled vocabulary. | Future family-specific restrictions should stay in `artifact_family_registry` and `status_transition_rules` instead of reintroducing domain-specific entries into the shared registry. | `core/control_plane/registries/status_registry.json` | Keep the shared status registry generic and push future pack-local subsets downward into family and transition policy surfaces. |
-| `watchtower_core.query` now exports reusable generic query services, but live planning queries still remain repo-local. | A future pack model still needs a reusable query boundary that stays generic and does not absorb plan-specific query families. | `core/python/src/watchtower_core/query/README.md` | Keep export-safe query services focused on declared surfaces, registries, routes, workflow metadata, and artifact-family rules while live planning queries stay under `repo_ops`. |
-| `watchtower_core.sync` now exports a reusable generic sync harness, but plan sync targets still remain repo-local. | Multi-pack and exported-core use cases need a reusable sync boundary without forcing repo-local target orchestration into the package root. | `core/python/src/watchtower_core/sync/README.md` | Keep reusable authority-preserving sync helpers generic and drive `repo_ops` toward thinner pack-local orchestration rather than letting it remain the long-term boundary. |
+| `watchtower_core.query` now exports reusable generic query services, but live planning queries still remain repo-local. | A future pack model still needs a reusable query boundary that stays generic and does not absorb plan-specific query families. | `core/python/src/watchtower_core/query/README.md` | Keep export-safe query services focused on declared surfaces, registries, routes, workflow metadata, and artifact-family rules while live planning queries stay under `plan_runtime`. |
+| `watchtower_core.sync` now exports a reusable generic sync harness, but plan sync targets still remain repo-local. | Multi-pack and exported-core use cases need a reusable sync boundary without forcing repo-local target orchestration into the package root. | `core/python/src/watchtower_core/sync/README.md` | Keep reusable authority-preserving sync helpers generic and drive `plan_runtime` toward thinner pack-local orchestration rather than letting it remain the long-term boundary. |
 | The explicit `artifact_family_registry` now governs plan artifact families. | Family behavior is no longer implied only by paths and conventions; placement, visibility, renderability, and index participation now resolve through one machine-readable registry. | `plan/.wt/registries/artifact_family_registry.json` | Keep family behavior authoritative there and extend it when new plan-pack artifact families are introduced. |
 | `status_transition_rules` now exists as the first tranche policy surface. | Status meaning no longer depends only on vocabulary or prose; pack-local transition policy has a governed machine-readable home. | `plan/.wt/policies/status_transition_rules.json` | Grow family-aware transition policy there when lifecycle complexity increases instead of scattering transition rules through code. |
-| Rendered-surface generation is still planning-specific. | The rendered-surface registry is generic enough to describe outputs, but the actual builders remain repo-local. | `core/control_plane/registries/rendered_surface_registry.json` plus planning sync modules under `watchtower_core.repo_ops.sync` | Extract a generic rendered-view builder once a second non-planning rendered surface pattern appears. |
-| The `plan` fixture pack proves validation only. | Validation is a major milestone, but endstate pack readiness also needs query, sync, route, and rendered-view proofs. | `core/python/tests/fixtures/domain_packs/plan/.wt/pack_settings.json` plus fixture validation tests | Expand fixture-driven proofs incrementally after reusable runtime seams exist. |
+| Rendered-surface generation is still planning-specific. | The rendered-surface registry is generic enough to describe outputs, but the actual builders remain repo-local. | `core/control_plane/registries/rendered_surface_registry.json` plus planning sync modules under `watchtower_core.plan_runtime.sync` | Extract a generic rendered-view builder once a second non-planning rendered surface pattern appears. |
+| The `plan` fixture pack proves validation only. | Validation is a major milestone, but endstate pack readiness also needs query, sync, route, and rendered-view proofs. | `core/python/tests/fixtures/packs/plan/.wt/pack_settings.json` plus fixture validation tests | Expand fixture-driven proofs incrementally after reusable runtime seams exist. |
 | Lifecycle contracts for discrepancy, event, environment, review, and closeout are absent. | Pack growth will eventually need first-class lifecycle artifacts instead of burying these concerns in logs, docs, or handlers. | No current schemas or registries exist for these families. | Add only the families that solve real pack problems; do not blindly copy the source reference. |
-| Planning runtime still assumes docs-backed family authority. | The future plan model is initiative-centric and event-backed, not docs-first. | Current scope in `docs/foundations/repository_scope.md` and current planning corpus under `docs/planning/` | Re-root live planning runtime onto pack-wide and project-scoped initiative roots, move core-only docs toward `core/docs/`, and use `plan/docs/` for extracted plan guidance. |
-| `watchtower_core.repo_ops` still holds meaningful behavior. | The clean endstate should not depend on a broad repo-local orchestration namespace. | Current runtime still routes real behavior through `repo_ops`. | Move reusable behavior into explicit core boundaries and require explicit owner approval plus companion documentation for any residual `repo_ops` surface. |
+| Residual planning runtime still assumes some repo-local initiative orchestration. | The future plan model is initiative-centric and event-backed, not docs-first or catch-all runtime-first. | Current scope in `core/docs/foundations/repository_scope.md` and the live `plan/**` workspace | Keep re-rooting live planning runtime onto pack-wide and project-scoped initiative roots, move reusable behavior toward explicit core boundaries, and use `plan/docs/` for extracted plan guidance. |
+| `watchtower_core.plan_runtime` still holds meaningful behavior. | The clean endstate should not depend on a broad repo-local orchestration namespace. | Current runtime still routes real behavior through `plan_runtime`. | Move reusable behavior into explicit core boundaries and require explicit owner approval plus companion documentation for any residual `plan_runtime` surface. |
 | `pack_settings` surface declarations are still minimal. | Current declarations are enough for startup and validation, but future policy, template, or compatibility surfaces may deserve stronger declared kinds. | `core/control_plane/schemas/interfaces/packs/pack_settings.schema.json` | Extend surface kinds only when future packs need machine-distinct treatment, not just because the schema can grow. |
 | The evidence layer now covers both durable validation ledgers and initiative-local evidence bundles. | The current gap is no longer bundle coverage; any future broadening should be justified by a concrete cross-pack or release-level evidence family rather than by generic abstraction pressure. | `core/control_plane/schemas/artifacts/validation_evidence.schema.json`, `plan/.wt/schemas/artifacts/validation_bundle.schema.json`, and `watchtower_core.evidence` | Keep the current reusable evidence boundaries and add new evidence families only when a second shared workflow proves the model needs to grow. |
 
@@ -1013,7 +1015,7 @@ core/  # core-only repository root
 
 ### Near-Term
 
-1. Stop treating new live planning additions under `docs/planning/` as the preferred long-term direction.
+1. Keep treating new live planning additions outside `plan/**` as invalid for the long-term direction.
 2. Define the canonical live roots at `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.
 3. Introduce initiative-state, task-state, and event-stream contracts before proliferating more live planning artifact families.
 4. Add pack-level aggregate tracking under `plan/.wt/` so active initiative lookup does not depend on recursive scans.
@@ -1025,7 +1027,7 @@ core/  # core-only repository root
 
 ### Mid-Term
 
-1. Add reusable query and sync helpers at the package root instead of relying only on docs-backed `repo_ops` flows.
+1. Add reusable query and sync helpers at the package root instead of relying only on docs-backed `plan_runtime` flows.
 2. Introduce `status_transition_rules`, `relation_type_registry`, `promotion_policy_registry`, and other small but high-value rule-bearing surfaces.
 3. Add a generic rendered-view builder for initiative-local `plan.md`, `progress.md`, `summary.md` plus pack-level `plan_overview.md`.
 4. Add governed promotion paths from live initiatives into `plan/docs/` guidance surfaces.
@@ -1037,7 +1039,7 @@ core/  # core-only repository root
 ### Later
 
 1. Add lifecycle families only if they solve concrete problems: discrepancy, environment, closeout, review, and event recording should be demand-driven.
-2. Migrate current live planning families away from `docs/planning/`, move core-only docs toward `core/docs/`, duplicate foundations into `core/docs/foundations/` and `plan/docs/foundations/`, and use `plan/docs/` for approved extracted plan-domain guidance.
+2. Keep live planning rooted under `plan/**`, move core-only docs toward `core/docs/`, duplicate foundations into `core/docs/foundations/` and `plan/docs/foundations/`, and use `plan/docs/` for approved extracted plan-domain guidance.
 3. Remove broad repo-root workflow ownership in favor of `core/workflows/` and `plan/workflows/`.
 4. Keep future external product work in a consuming repository rather than letting this repo silently absorb operator-facing pack runtime content.
 5. Bootstrap `/home/j/WatchTower` only when the product-facing implementation details are approved and mature enough to land as downstream outputs rather than exploratory planning state.
@@ -1083,16 +1085,16 @@ This document was grounded in the current repository and the two requested refer
 - `core/python/src/watchtower_core/validation/suite.py`
 - `core/python/src/watchtower_core/query/README.md`
 - `core/python/src/watchtower_core/sync/README.md`
-- `core/python/src/watchtower_core/repo_ops/README.md`
+- `core/python/src/watchtower_core/plan_runtime/README.md`
 - `core/python/src/watchtower_core/cli/README.md`
 
 ### Key Planning And Endstate Direction Surfaces
 
-- `docs/planning/prds/core_export_readiness_and_optimization.md`
-- `docs/planning/prds/end_to_end_repo_review_and_rationalization.md`
-- `docs/planning/prds/validated_core_and_pack_data_shape_convergence.md`
-- `docs/planning/prds/plan_domain_pack_core_validation.md`
+- `plan/initiatives/plan_task_authority_rendering_governance_recovery/implementation_slice.md`
+- `plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/initiative_brief.md`
+- `plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/design_record.md`
+- `plan/initiatives/plan_requirements_decisions_refresh_hard_cutover/implementation_slice.md`
 
 ## Bottom Line
 
-`WatchTowerPlan` already has enough machine authority, validation maturity, routing structure, and index coverage to justify treating it as the first serious internal `plan`-domain consumer of reusable core. The biggest current mismatch is not missing governance. It is that live planning still lives in docs instead of in a first-class `plan/` workspace, and core-only documentation and workflows are not yet fully rooted under `core/`. The next step is to re-root live planning around initiative-local machine state, pack-wide and project-scoped initiative roots, `plan_overview.md`, plan-domain workflows, duplicated foundations under both `core/docs/foundations/` and `plan/docs/foundations/`, and a separate `project_context` load standard, while driving broad `repo_ops` behavior toward elimination unless it is explicitly approved.
+`WatchTowerPlan` already has enough machine authority, validation maturity, routing structure, and index coverage to justify treating it as the first serious internal `plan`-domain consumer of reusable core. The hard cutover to the first-class `plan/` workspace is now in place, and the remaining work is to keep shrinking residual `plan_runtime` behavior, continue rooting core-only documentation and workflows cleanly under `core/`, and preserve the mirrored foundations plus initiative-centric machine authority without reintroducing legacy planning sprawl.

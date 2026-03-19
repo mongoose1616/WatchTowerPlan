@@ -5,7 +5,7 @@ This command searches the governed standard index so engineers and agents can fi
 
 ## Use When
 - You need to find the governing standard for a repo surface without browsing `docs/standards/` manually.
-- You want one machine-readable result set for a narrow standards subfamily such as the planning-index family.
+- You want one machine-readable result set for a narrow standards subfamily such as the live plan-index family.
 - You want to know which standards currently rely on a given local reference doc under `docs/references/`.
 - You want machine-readable standard lookup results for workflows, scripts, or agent calls.
 
@@ -33,7 +33,7 @@ uv run watchtower-core query standards [--query <text>] [--standard-id <standard
 - `--related-path <path>`: Exact repository-path filter such as `.github/` or `core/python/`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `docs/references/github_collaboration_reference.md`.
 - `--operationalization-mode <mode>`: Exact operationalization-mode filter such as `validation`, `query`, or `workflow`.
-- `--operationalization-path <path>`: Repository-path filter for one operationalizing surface such as `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`. Exact file paths match directly, indexed directory paths also match concrete descendants under that directory, and indexed glob patterns also match concrete files such as nested `README.md` or `AGENTS.md` surfaces.
+- `--operationalization-path <path>`: Repository-path filter for one operationalizing surface such as `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`. Exact file paths match directly, indexed directory paths also match concrete descendants under that directory, and indexed glob patterns also match concrete files such as nested `README.md` or `AGENTS.md` surfaces.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -66,7 +66,7 @@ uv run watchtower-core query standards --category data_contracts --tag planning_
 
 ```sh
 cd core/python
-uv run watchtower-core query standards --operationalization-path docs/planning/prds/reference_and_workflow_standards_alignment.md --format json
+uv run watchtower-core query standards --operationalization-path plan/tracking/coordination_tracking.md --format json
 ```
 
 ```sh
@@ -76,7 +76,7 @@ uv run watchtower-core query standards --operationalization-path docs/references
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- `--operationalization-path` matches exact indexed files, concrete descendant files when a standard operationalizes a directory path such as `docs/planning/prds/`, and concrete files matched by indexed glob patterns such as `**/README.md` or `**/AGENTS.md`.
+- `--operationalization-path` matches exact indexed files, concrete descendant files when a standard operationalizes a directory path such as `plan/tracking/`, and concrete files matched by indexed glob patterns such as `**/README.md` or `**/AGENTS.md`.
 - `--tag` can retrieve authored shared family tags such as `planning_index_family` when several standards intentionally form one governed subfamily.
 - In `human` mode, the command prints matching standard IDs, categories, owners, titles, summaries, and compact operationalization metadata.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and indexed retrieval fields such as `owner`, `applies_to`, `reference_doc_paths`, `operationalization_modes`, and `operationalization_paths`.
@@ -92,7 +92,7 @@ uv run watchtower-core query standards --operationalization-path docs/references
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/standards.py`
+- `core/python/src/watchtower_core/plan_runtime/query/standards.py`
 - `core/control_plane/indexes/standards/standard_index.json`
 
 ## Updated At

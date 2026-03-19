@@ -20,7 +20,6 @@
 - Use `watchtower_core_query_reviews.md` when the main question is initiative or promotion review state without stitching readiness and promotion records together manually.
 - Use `watchtower_core_query_projects.md` when the main question is which project containers exist before loading a full project context.
 - Use `watchtower_core_query_project_context.md` when the main question is how to load one validated project-scoped runtime context on top of the always-loaded pack context.
-- Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
 - Use `watchtower_core_query_authority.md` when the main question is which machine surface is canonical for a planning or governance lookup.
 - Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
 - The family tracking sync pages describe summary-first trackers with companion terminal-history tables. Use the paired `query` commands when you need filtered machine lookup or one exact trace/task record.
@@ -35,7 +34,7 @@
 | `docs/commands/core_python/watchtower_core_plan.md` | Entry page for planning scaffold and bootstrap commands. |
 | `docs/commands/core_python/watchtower_core_plan_confirm_inputs.md` | Confirms reviewed initiative-authored inputs into machine state before approval. |
 | `docs/commands/core_python/watchtower_core_plan_approve.md` | Approves one live initiative package into `ready_for_execution`. |
-| `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including planning, standards, references, and trace surfaces. |
+| `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including coordination, standards, references, and trace surfaces. |
 | `docs/commands/core_python/watchtower_core_query_artifacts.md` | Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`. |
 | `docs/commands/core_python/watchtower_core_query_readiness.md` | Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`. |
 | `docs/commands/core_python/watchtower_core_query_discrepancies.md` | Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`. |
@@ -46,13 +45,11 @@
 | `docs/commands/core_python/watchtower_core_query_project_context.md` | Loads the explicit machine-first runtime context for one project container under `plan/projects/**`. |
 | `docs/commands/core_python/watchtower_core_query_foundations.md` | Query foundations by topic, related surface, authority, or downstream citation or application use. |
 | `docs/commands/core_python/watchtower_core_query_coordination.md` | Machine start-here command page for active traced initiative coordination and next-step lookup. |
-| `docs/commands/core_python/watchtower_core_query_planning.md` | Canonical deep-planning query page for one trace-linked planning record with explicit status semantics. |
 | `docs/commands/core_python/watchtower_core_query_authority.md` | Canonical surface-discovery query page for planning and governance questions. |
 | `docs/commands/core_python/watchtower_core_query_commands.md` | Machine-readable lookup page for finding any other current command page without scanning the directory manually. |
 | `docs/commands/core_python/watchtower_core_task.md` | Entry page for task lifecycle commands that mutate initiative-local live task records in dry-run or write mode. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes. |
 | `docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Rebuild surface for the machine-readable foundation index derived from governed foundation docs. |
-| `docs/commands/core_python/watchtower_core_sync_planning_catalog.md` | Rebuild surface for the canonical planning catalog derived from trace-linked planning sources. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |
 | `docs/commands/core_python/watchtower_core_validate_suite.md` | Runs one pack-declared validation suite through the reusable-core suite runtime. |
 | `docs/commands/core_python/watchtower_core_closeout.md` | Entry page for closeout commands used to terminally update traced initiative state. |

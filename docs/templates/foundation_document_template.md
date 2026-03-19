@@ -1,6 +1,6 @@
 # <Foundation Document Title>
 
-> Use this template for governed foundation documents under `docs/foundations/`.
+> Use this template for governed foundation documents under `core/docs/foundations/`.
 > Add governed front matter that validates against the foundation front matter profile before the Markdown body.
 > Keep the narrative shape that best fits the topic, but retain the required `References` and `Updated At` sections.
 

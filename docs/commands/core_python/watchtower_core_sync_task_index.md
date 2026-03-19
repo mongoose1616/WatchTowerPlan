@@ -64,7 +64,7 @@ uv run watchtower-core sync task-index --output /tmp/task_index.json --format js
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/task_index.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/task_index.py`
 - `plan/.wt/indexes/task_index.json`
 
 ## Updated At

@@ -10,14 +10,15 @@ tags:
   - "planning_retention"
   - "purge"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T11:00:00Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/"
+  - "plan/initiatives/"
+  - "plan/projects/"
   - "core/control_plane/ledgers/"
   - "core/control_plane/indexes/"
-  - "core/python/src/watchtower_core/repo_ops/"
+  - "core/python/src/watchtower_core/plan_runtime/"
   - "core/python/src/watchtower_core/cli/"
 aliases:
   - "trace purge"
@@ -32,12 +33,12 @@ This standard defines the promote-then-purge retention model for closed traced p
 
 ## Purpose
 - Keep current repository policy in standards and other surviving canonical artifacts instead of in closed trace-local planning chains.
-- Prevent the planning corpus from growing indefinitely through retained closed PRDs, decisions, designs, implementation plans, tasks, acceptance contracts, and evidence artifacts that no longer carry unique active authority.
+- Prevent the live planning workspace from growing indefinitely through retained closed initiative packages, task histories, acceptance contracts, and evidence artifacts that no longer carry unique active authority.
 - Define one safe purge boundary that preserves minimal machine-readable history without silently breaking traceability or leaving partial cleanup behind.
 
 ## Scope
 - Applies to traced planning artifacts after their initiative has reached a terminal closeout state.
-- Applies to the retention decision for trace-local PRDs, decision records, feature designs, implementation plans, tasks, acceptance contracts, validation evidence, and related derived planning surfaces.
+- Applies to the retention decision for trace-local initiative briefs, design records, implementation slices, optional decision notes, task state, acceptance contracts, validation evidence, and related derived planning surfaces.
 - Applies to the minimal surviving machine-readable ledger that records a completed purge.
 - Does not authorize purging active traces, partial family cleanup, or deleting a trace whose durable policy still exists only inside the to-be-purged artifacts.
 
@@ -50,9 +51,9 @@ This standard defines the promote-then-purge retention model for closed traced p
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): purge must preserve explicit surviving authority and must not create silent trace-link drift.
 - [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): accepted decisions should move into canonical artifacts instead of remaining the only active policy surface.
 - [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): only terminal traces are eligible for purge consideration.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): task archives remain the normal retained state until an explicit purge removes the full trace package.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): initiative-local task state remains governed in place until an explicit purge removes the full trace package.
 - [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): low-value retained history should not become default clutter when stronger authority already exists elsewhere.
-- [summary_surface_retirement.md](/docs/planning/design/features/summary_surface_retirement.md): retirement work must repair the direct dependency chain instead of deleting artifacts blindly.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): retained history must not compete with one clear current authority answer.
 
 ## Guidance
 - Treat closed trace-local planning artifacts as temporary retained history, not automatic permanent authority.
@@ -65,8 +66,8 @@ This standard defines the promote-then-purge retention model for closed traced p
   - no surviving canonical surface still depends directly on a path inside the trace package
 - Purge by `trace_id`, not by individual file family.
 - An explicit purge must remove the whole trace package in one governed change set, including:
-  - trace-local PRD, decision, feature-design, and implementation-plan documents
-  - trace-local task documents
+  - trace-local `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, and optional `decision_notes.md`
+  - initiative-local `.wt/tasks/**` state and events
   - trace-local acceptance contracts and validation evidence
   - derived tracker and index entries that only exist because the trace package remains present
   - direct surviving references that would otherwise point to removed paths
@@ -81,13 +82,13 @@ This standard defines the promote-then-purge retention model for closed traced p
   - surviving canonical standards or authority paths
 - Do not purge a decision record when its unique rationale has not yet been absorbed into a surviving canonical artifact.
 - Do not let standards, workflows, README files, or command pages depend on purgeable historical task documents as their canonical operationalization surface.
-- Until a trace is explicitly purged under this standard, family-specific standards continue to govern the retained artifacts in their normal locations such as `docs/planning/tasks/closed/archive/`.
+- Until a trace is explicitly purged under this standard, the closed initiative package and its initiative-local machine state remain governed in place under `plan/initiatives/**` or `plan/projects/**`.
 
 ## Structure or Data Model
 ### Retention states
 | State | Meaning |
 |---|---|
-| Retained closed trace | Closed trace still present in the planning corpus. |
+| Retained closed trace | Closed trace still present as an initiative package in the live repository. |
 | Purge-eligible trace | Closed trace that satisfies the purge preconditions and can be removed safely. |
 | Purged trace | Trace-local package removed; minimal surviving history remains only in the purge ledger and any promoted canonical artifacts. |
 
@@ -96,7 +97,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 |---|---|
 | Current policy or rule | Standards, current command docs, or other surviving canonical documentation |
 | Minimal historical trace record | Purge ledger entry |
-| Current machine-readable planning state | Rebuilt planning, initiative, task, traceability, and coordination indexes after purge |
+| Current machine-readable planning state | Rebuilt initiative, task, traceability, coordination, and related live indexes after purge |
 
 ## Process or Workflow
 1. Close the trace normally through initiative closeout, task closeout, acceptance, and evidence reconciliation.
@@ -110,7 +111,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `docs/planning/`; `core/control_plane/ledgers/`; `core/python/src/watchtower_core/repo_ops/`; `core/python/src/watchtower_core/cli/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `core/python/src/watchtower_core/plan_runtime/`; `core/python/src/watchtower_core/cli/`
 
 ## Validation
 - A purged trace should have no surviving open tasks.
@@ -128,7 +129,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 - [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
 - [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md)
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
-- [summary_surface_retirement.md](/docs/planning/design/features/summary_surface_retirement.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 
 ## Updated At
-- `2026-03-15T11:00:00Z`
+- `2026-03-19T20:15:00Z`

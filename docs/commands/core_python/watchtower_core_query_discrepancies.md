@@ -63,7 +63,7 @@ uv run watchtower-core query discrepancies --trace-id trace.plan_core_documentat
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/discrepancies.py`
+- `core/python/src/watchtower_core/plan_runtime/query/discrepancies.py`
 - `plan/.wt/indexes/discrepancy_index.json`
 
 ## Updated At

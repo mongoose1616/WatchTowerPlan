@@ -10,11 +10,12 @@ tags:
   - "rewrite"
   - "surface_classification"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T21:12:00Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/"
+  - "plan/"
+  - "plan/tracking/"
   - "docs/standards/"
   - "core/control_plane/"
   - "core/python/"
@@ -47,11 +48,11 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Related Standards and Sources
 - [status_tracking_standard.md](/docs/standards/data_contracts/status_tracking_standard.md): lifecycle status must stay within the shared `draft` or `active` or `deprecated` vocabulary.
-- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): retained historical planning records should use existing `authority: historical` signaling instead of new lifecycle words.
-- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): live execution state is initiative-local under `plan/**/.wt/tasks/**`, while retained historical task Markdown remains under `docs/planning/tasks/**`.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): surviving historical guidance should use existing authority signaling instead of ad hoc lifecycle words.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): live execution state is initiative-local under `plan/**/.wt/tasks/**`, while historical task state survives only through retained initiative packages or purge ledgers.
 - [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md): canonical planning-authority answers must remain explicit when classification work touches discoverability.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): compatibility shims stay temporary by default, but only after current consumers and boundary value are made explicit.
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): history and compatibility work must preserve one clear canonical answer per question.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): compatibility shims stay temporary by default, but only after current consumers and boundary value are made explicit.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): history and compatibility work must preserve one clear canonical answer per question.
 
 ## Guidance
 - Classify every significant rewrite surface on four independent axes before choosing a retirement, relocation, or retention action.
@@ -87,8 +88,8 @@ This standard defines the four-axis classification and retention-reason model th
   - `discoverability`
   - `historical_context`
   - `migration_window`
-- Treat `status: deprecated` plus `authority: historical` as the default in-place history model for retained planning records.
-- Treat `docs/planning/tasks/**` as retained historical task material, not as the current live task movement model.
+- Treat `status: deprecated` plus `authority: historical` as the default signaling model for retained history and purge-ledger context.
+- Treat purge ledgers plus promoted guidance as the only surviving historical planning surfaces after purge; do not recreate docs-backed task archives.
 - Prefer deletion after proof only when consumer maps, discoverability checks, and rollback expectations show no active dependency remains.
 - No rewrite slice may move or delete a surface until:
   - its four-axis classification is published
@@ -134,14 +135,14 @@ This standard defines the four-axis classification and retention-reason model th
 5. Update the consumer map, checkpoint doc, and any migration or evidence records before executing the slice.
 
 ## Examples
-- `core/control_plane/indexes/coordination/coordination_index.json` is `active`, `canonical_machine_answer`, `active_family_location`, and `n/a`.
-- `docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md` is `deprecated`, `historical_record`, `active_family_location`, and `n/a` when retained as explicit historical context.
+- `plan/.wt/indexes/coordination_index.json` is `active`, `canonical_machine_answer`, `active_family_location`, and `n/a`.
+- `core/control_plane/ledgers/purges/decision_supersession_and_regression_evidence_alignment_purge_record.json` is `deprecated`, `historical_record`, `family_native_closed_or_historical_location`, and `n/a` when retained as explicit historical context.
 - `core/python/src/watchtower_core/query/` is `active`, `compatibility_surface`, `compatibility_namespace_or_marker`, and usually `supported` while the repo still publishes the namespace as a current boundary-layer import surface.
 - `core/python/tests/integration/` can remain `active`, `supporting`, `active_family_location`, and `n/a` when the focused suite family is the canonical regression surface after a hotspot split.
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `plan/**/.wt/tasks/`; `docs/planning/tasks/`; `core/control_plane/registries/authority_map.json`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/tracking/`; `plan/.wt/indexes/task_index.json`; `core/control_plane/registries/authority_map.json`; `core/control_plane/ledgers/purges/`
 
 ## Validation
 - Rewrite reviews should reject proposals that classify a surface with fewer than four axes.
@@ -158,7 +159,7 @@ This standard defines the four-axis classification and retention-reason model th
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 - [authority_map_standard.md](/docs/standards/data_contracts/authority_map_standard.md)
-- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
+- [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-18T21:12:00Z`
+- `2026-03-19T20:15:00Z`

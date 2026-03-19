@@ -10,10 +10,6 @@
 | `docs/standards/data_contracts/planning_index_family_standard.md` | Defines the shared baseline for the planning-related derived index standards and the family-level discoverability contract. |
 | `docs/standards/data_contracts/coordination_index_standard.md` | Defines the family-specific contract for the machine-readable coordination index. |
 | `docs/standards/data_contracts/initiative_index_standard.md` | Defines the family-specific contract for machine-readable initiative indexes. |
-| `docs/standards/data_contracts/planning_catalog_standard.md` | Defines the family-specific contract for the canonical machine-readable planning catalog. |
-| `docs/standards/data_contracts/prd_index_standard.md` | Defines the family-specific contract for machine-readable PRD indexes. |
-| `docs/standards/data_contracts/decision_index_standard.md` | Defines the family-specific contract for machine-readable decision indexes. |
-| `docs/standards/data_contracts/design_document_index_standard.md` | Defines the family-specific contract for machine-readable design-document indexes. |
 | `docs/standards/data_contracts/task_index_standard.md` | Defines the family-specific contract for machine-readable task indexes. |
 | `docs/standards/data_contracts/traceability_index_standard.md` | Defines the family-specific contract for the unified machine-readable traceability index. |
 

@@ -19,9 +19,9 @@
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.json",
     "core/python/src/watchtower_core/closeout/initiative.py",
     "core/python/src/watchtower_core/cli/closeout_handlers.py",
-    "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
-    "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
-    "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py"
+    "core/python/src/watchtower_core/plan_runtime/sync/prd_tracking.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/decision_tracking.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/design_tracking.py"
   ],
   "notes": "This transition keeps the approved shared closeout seam unchanged, preserves the stable closeout result-contract fields, and limits the next slice to one private closeout-local refresh boundary for the remaining PRD, decision, and design tracker outputs."
 }

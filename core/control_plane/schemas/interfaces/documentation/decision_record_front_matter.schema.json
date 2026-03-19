@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
   "title": "Decision Record Front Matter",
-  "description": "Parsed front matter profile for governed durable decision records.",
+  "description": "Parsed front matter profile for governed durable decision-record documents.",
   "allOf": [
     {
       "$ref": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1"
@@ -24,6 +24,9 @@
       "properties": {
         "type": {
           "const": "decision_record"
+        },
+        "authority": {
+          "const": "authoritative"
         }
       }
     }

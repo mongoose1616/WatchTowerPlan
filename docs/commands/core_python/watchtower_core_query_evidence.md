@@ -23,9 +23,9 @@ uv run watchtower-core query evidence [--trace-id <trace_id>] [--result <passed|
 ```
 
 ## Arguments and Options
-- `--trace-id <trace_id>`: Exact trace filter such as `trace.core_python_foundation`.
+- `--trace-id <trace_id>`: Exact trace filter such as `trace.governed_acceptance_example`.
 - `--result <result>`: Exact overall-result filter such as `passed` or `failed`.
-- `--acceptance-id <acceptance_id>`: Exact acceptance-ID filter such as `ac.core_python_foundation.003`.
+- `--acceptance-id <acceptance_id>`: Exact acceptance-ID filter such as `ac.governed_acceptance_example.001`.
 - `--validator-id <validator_id>`: Exact validator-ID filter such as `validator.control_plane.traceability_index`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -33,12 +33,12 @@ uv run watchtower-core query evidence [--trace-id <trace_id>] [--result <passed|
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query evidence --trace-id trace.core_python_foundation
+uv run watchtower-core query evidence --trace-id trace.governed_acceptance_example
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query evidence --acceptance-id ac.core_python_foundation.003 --format json
+uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_example.001 --format json
 ```
 
 ## Behavior and Outputs
@@ -56,7 +56,7 @@ uv run watchtower-core query evidence --acceptance-id ac.core_python_foundation.
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/evidence.py`
+- `core/python/src/watchtower_core/plan_runtime/query/evidence.py`
 - `core/control_plane/ledgers/validation_evidence/`
 
 ## Updated At

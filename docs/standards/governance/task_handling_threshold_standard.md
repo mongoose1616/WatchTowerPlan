@@ -103,7 +103,7 @@ This standard defines when repository work must create, update, transition, or e
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
-- [README.md](/docs/planning/tasks/README.md)
+- [task_tracking.md](/plan/tracking/task_tracking.md)
 
 ## Updated At
 - `2026-03-18T23:58:00Z`

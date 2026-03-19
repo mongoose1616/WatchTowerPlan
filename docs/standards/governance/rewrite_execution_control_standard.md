@@ -10,11 +10,12 @@ tags:
   - "rewrite"
   - "phase_control"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T21:12:00Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/design/implementation/"
+  - "plan/initiatives/"
+  - "plan/projects/"
   - "plan/"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/migrations/"
@@ -53,13 +54,13 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): rewrite control surfaces must stay joined through one trace and active task chain.
 - [planning_retention_and_purge_standard.md](/docs/standards/governance/planning_retention_and_purge_standard.md): closed rewrite trace packages may later be purged, so current rewrite policy cannot depend on specific retained historical task files.
 - [repository_maintenance_loop_standard.md](/docs/standards/operations/repository_maintenance_loop_standard.md): rewrite slices still need the normal inspect, refresh, rebuild, validate, and record loop.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): compatibility and helper-layer changes must stay bounded and explicit.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): compatibility and helper-layer changes must stay bounded and explicit.
 
 ## Guidance
 - Phase 0 and Phase 1 may publish prerequisites, classifications, and review packages only. They do not authorize Phase 2 implementation by themselves.
-- The program-level machine-readable parity contract lives at [structural_rewrite_program_acceptance.json](/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json).
+- The program-level machine-readable parity contract must live under [README.md](/core/control_plane/contracts/acceptance/README.md) and be published by the active rewrite trace rather than by an implicit prose-only checkpoint.
 - The default slice-control package for Phase 2 and later is:
-  - one human checkpoint document under `docs/planning/design/implementation/`
+  - one human checkpoint document under the active initiative root, usually `implementation_slice.md`
   - one machine migration record under `core/control_plane/ledgers/migrations/`
   - one machine validation-evidence artifact under `core/control_plane/ledgers/validation_evidence/`
 - The human checkpoint document is the place to record:
@@ -93,7 +94,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 ### Required control surfaces
 | Control Surface | Canonical Home | Role |
 |---|---|---|
-| Human checkpoint document | `docs/planning/design/implementation/` | Reviewable phase plan, parity notes, and rollback procedure. |
+| Human checkpoint document | `plan/initiatives/<initiative_slug>/implementation_slice.md` or `plan/projects/<project_slug>/initiatives/<initiative_slug>/implementation_slice.md` | Reviewable phase plan, parity notes, and rollback procedure. |
 | Acceptance contract | `core/control_plane/contracts/acceptance/` | Machine-readable parity and entry-condition contract. |
 | Migration record | `core/control_plane/ledgers/migrations/` | Machine-readable state-transition record for the slice. |
 | Validation evidence | `core/control_plane/ledgers/validation_evidence/` | Durable proof of baseline, parity, and validation outcomes. |
@@ -103,10 +104,10 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 | Planning Question | Canonical Surface That Must Stay Stable |
 |---|---|
 | Current planning state and next action | `coordination_index` plus `watchtower-core query coordination` |
-| Full trace-linked planning context | `planning_catalog` plus `watchtower-core query planning` |
 | Compact initiative-family view | `initiative_index` plus `watchtower-core query initiatives` |
 | Authoritative task execution state and dependency graph | `task_index` plus `watchtower-core query tasks` |
 | Durable trace-linked source join and initiative closeout state | `traceability_index` plus `watchtower-core query trace` |
+| Project-scoped runtime container context when needed | project machine state plus `watchtower-core query project-context` |
 
 ### Phase 2 entry conditions
 | Condition | Expectation |
@@ -137,7 +138,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/`; `plan/**/.wt/tasks/`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `plan/.wt/indexes/task_index.json`; `plan/tracking/task_tracking.md`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
 
 ## Validation
 - Rewrite checkpoints should not rely on prose-only approval.
@@ -152,9 +153,8 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## References
 - [rewrite_surface_classification_standard.md](/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [structural_rewrite_program.md](/docs/planning/design/implementation/structural_rewrite_program.md)
-- [structural_rewrite_program_acceptance.json](/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json)
+- [README.md](/core/control_plane/contracts/acceptance/README.md)
 - [authority_map.json](/core/control_plane/registries/authority_map.json)
 
 ## Updated At
-- `2026-03-18T21:12:00Z`
+- `2026-03-19T20:15:00Z`

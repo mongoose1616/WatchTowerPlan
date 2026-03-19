@@ -10,7 +10,7 @@ tags:
   - "traceability_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T20:01:23Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -21,15 +21,15 @@ authority: "authoritative"
 This standard defines the unified machine-readable traceability index stored under `core/control_plane/indexes/traceability/`.
 
 ## Purpose
-- Provide one compact join surface for PRDs, decisions, designs, implementation plans, task records, acceptance contracts, validators, and validation evidence.
+- Provide one compact join surface for initiative briefs, decision notes, design records, implementation slices, task records, acceptance contracts, validators, and validation evidence.
 - Let Python query services and workflows answer trace questions without parsing multiple indexes and documents ad hoc.
 - Complete the baseline machine-readable trace chain established by the repository planning model.
 
 ## Scope
 - Applies to traceability index artifacts stored under `core/control_plane/indexes/traceability/`.
 - Covers placement, root fields, entry fields, and synchronization expectations with family-specific indexes.
-- Does not replace PRD, decision, design, or evidence artifacts as their primary authoritative surfaces.
-- Does not replace human-readable planning trackers.
+- Does not replace initiative, decision, design, or evidence artifacts as their primary authoritative surfaces.
+- Does not replace human-readable plan trackers.
 
 ## Use When
 - Publishing or refreshing the unified join surface for traced initiatives.
@@ -39,9 +39,6 @@ This standard defines the unified machine-readable traceability index stored und
 ## Related Standards and Sources
 - [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this traceability-family standard narrows.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [prd_index_standard.md](/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [decision_index_standard.md](/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [design_document_index_standard.md](/docs/standards/data_contracts/design_document_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [acceptance_contract_standard.md](/docs/standards/data_contracts/acceptance_contract_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [validation_evidence_standard.md](/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -51,12 +48,12 @@ This standard defines the unified machine-readable traceability index stored und
 ## Guidance
 - Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep family-specific indexes as their local lookup surfaces and use the unified traceability index as the cross-family join layer.
-- Treat the governed PRD index, decision index, design-document index, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
+- Treat the governed initiative packages, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
   - `trace_id`
   - a concise title and summary
   - `initiative_status`
-  - upstream planning IDs
+  - upstream source surface paths
   - downstream acceptance, validator, and evidence IDs when they exist
   - key related paths and an `updated_at` RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`
 - Keep one traceability entry per shared `trace_id`.
@@ -84,10 +81,7 @@ This standard defines the unified machine-readable traceability index stored und
 | `closed_at` | Optional | Required when the initiative status is terminal. |
 | `closure_reason` | Optional | Required when the initiative status is terminal. |
 | `superseded_by_trace_id` | Optional | Required when `initiative_status` is `superseded`. |
-| `prd_ids` | Optional | Linked PRD identifiers. |
-| `decision_ids` | Optional | Linked decision identifiers. |
-| `design_ids` | Optional | Linked feature-design identifiers. |
-| `plan_ids` | Optional | Linked implementation-plan identifiers. |
+| `source_surface_paths` | Optional | Linked initiative-authored or promoted source surface paths. |
 | `task_ids` | Optional | Linked local task identifiers. |
 | `requirement_ids` | Optional | Linked requirement identifiers. |
 | `acceptance_ids` | Optional | Linked acceptance identifiers. |
@@ -99,16 +93,16 @@ This standard defines the unified machine-readable traceability index stored und
 | `notes` | Optional | Short join note. |
 
 ## Process or Workflow
-1. Gather the traced artifact IDs from the governed PRD, decision, design, and task indexes plus the current acceptance-contract and validation-evidence artifacts.
+1. Gather the traced artifact IDs from the governed initiative packages, live task index, and the current acceptance-contract and validation-evidence artifacts.
 2. Rebuild the matching traceability entries under the shared `trace_id` values, preferably through the Python sync surface rather than manual hand editing.
 3. Validate the index artifact against its published schema.
 4. Check that linked IDs and related paths still resolve.
 5. Update the family-specific indexes in the same change set if the traceability refresh reveals drift there.
 
 ## Examples
-- A core Python foundation trace should join the PRD, workspace-root decision, feature designs, implementation plan, acceptance contract, and validation evidence under `trace.core_python_foundation`.
-- A local task-tracking trace can join a feature design plus local task records before GitHub sync exists.
-- A future trace with no decision record can omit `decision_ids` while still joining PRD, design, plan, and evidence artifacts.
+- A durable generic example trace can join the acceptance contract and validation evidence used by command docs and standards under `trace.governed_acceptance_example`.
+- A local task-tracking trace can join initiative-authored source surfaces plus local task records before GitHub sync exists.
+- A future trace with no decision notes can omit them while still joining other source surfaces, tasks, and evidence artifacts.
 - A generic folder README does not belong in the traceability index unless it is a high-signal related path for a traced initiative.
 
 ## Operationalization
@@ -135,4 +129,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-13T20:01:23Z`
+- `2026-03-19T08:21:14Z`

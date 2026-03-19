@@ -60,7 +60,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `schema`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`
+- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/sync/standard_index.py`; `core/python/src/watchtower_core/plan_runtime/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`
 
 ## Structure or Data Model
 ### Root artifact fields

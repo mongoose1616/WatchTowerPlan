@@ -1,5 +1,7 @@
 # Capture-First Plan Workspace Decisions
 
+> Status update as of March 19, 2026: the hard cutover described here is now implemented. The legacy docs-backed planning corpus has been purged, the repo-root `workflows/` compatibility tree has been removed, and repo-local planning runtime imports now route through `watchtower_core.plan_runtime`.
+
 This file records the locked decisions gathered during the requirements clarification pass for [requirements.md](requirements.md).
 
 ## Context
@@ -27,7 +29,7 @@ This file records the locked decisions gathered during the requirements clarific
 9. `Q9=9` `policy-assisted manual choice`
    Pack-wide versus project-scoped classification is manual with policy guidance.
 10. `Q10=1` `freeze and replace`
-    Freeze `docs/planning/**` immediately and cut over to the new model.
+    Freeze the legacy docs-backed planning corpus immediately and cut over to the new model.
 11. `Q11=6` `dual required with same stem`
     Require both `initiative_id` and `trace_id`, derived from one canonical stem.
 12. `Q12=8` `author inside initiative root, promote later`
@@ -111,7 +113,7 @@ This file records the locked decisions gathered during the requirements clarific
 
 ## Key Tensions Already Resolved
 - `Q24` and `Q31`: archive-whole-package is allowed only as a transitional policy.
-- `Q10` and `Q48`: hard cutover applies to new authority, while historical `docs/planning/**` handling is intentionally deferred.
+- `Q10` and `Q48`: hard cutover applies to both new authority and historical cleanup. The docs-backed planning corpus has now been purged and replaced with purge ledgers plus promoted guidance.
 - `Q13`, `Q14`, `Q27`, and `Q28`: intake docs stay editable, but machine state remains authoritative through proposal, confirmation, and discrepancy gates.
 
 ## Working Summary

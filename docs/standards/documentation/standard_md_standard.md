@@ -57,7 +57,7 @@ Keep standards structured enough that internal and external authority is not onl
 
 ## Operationalization
 - `Modes`: `validation`; `sync`; `query`; `documentation`
-- `Operational Surfaces`: `docs/standards/*/*_standard.md`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md`; `docs/templates/standard_document_template.md`
+- `Operational Surfaces`: `docs/standards/*/*_standard.md`; `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`; `core/python/src/watchtower_core/plan_runtime/sync/standard_index.py`; `core/python/src/watchtower_core/plan_runtime/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md`; `docs/templates/standard_document_template.md`
 
 ## Structure or Data Model
 ### Required sections

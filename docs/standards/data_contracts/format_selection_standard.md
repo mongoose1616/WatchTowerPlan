@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "format_selection"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -28,13 +28,13 @@ Keep format choices small, predictable, and aligned with the repository's author
 - Does not define every serialization detail, schema rule, or storage configuration by itself.
 
 ## Use When
-- Adding a new artifact type under `docs/`, `workflows/`, or `core/control_plane/`.
+- Adding a new artifact type under `docs/`, `core/workflows/`, `plan/workflows/`, or `core/control_plane/`.
 - Deciding whether a new machine-readable surface should be JSON, YAML, NDJSON, SQLite-backed, or something else.
 - Reviewing whether an existing format choice is introducing avoidable complexity.
 
 ## Related Standards and Sources
-- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [rfc_8259_json_reference.md](/docs/references/rfc_8259_json_reference.md): local reference surface for the external or canonical guidance this standard depends on.
@@ -67,7 +67,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 | Local embedded retrieval, indexing, or durable runtime state | SQLite | Use only when file-based documents are no longer the right shape. |
 
 ### Repository-default decisions
-- `docs/**`, `workflows/**`, and human-facing repository guidance should use Markdown.
+- `docs/**`, `core/workflows/**`, `plan/workflows/**`, and human-facing repository guidance should use Markdown.
 - `core/control_plane/schemas/**` should use JSON.
 - `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, and `ledgers/**` should default to JSON.
 - Documentation front matter should use YAML only for the parsed metadata block, not for the document body.
@@ -100,7 +100,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`; `documentation`
-- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/registries/`; `workflows/`; `docs/`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/registries/`; `core/workflows/`; `plan/workflows/`; `docs/`
 
 ## Validation
 - Reviewers should challenge format choices that add complexity without a concrete benefit.
@@ -115,8 +115,8 @@ Keep format choices small, predictable, and aligned with the repository's author
 - If a narrower standard adopts a different format for a specific artifact family, it must justify the exception explicitly.
 
 ## References
-- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/core/docs/foundations/engineering_stack_direction.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
 - [rfc_8259_json_reference.md](/docs/references/rfc_8259_json_reference.md)
@@ -130,4 +130,4 @@ Keep format choices small, predictable, and aligned with the repository's author
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T08:21:14Z`

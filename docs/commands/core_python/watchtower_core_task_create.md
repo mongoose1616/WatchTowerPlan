@@ -76,7 +76,7 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 ## Source Surface
 - `core/python/src/watchtower_core/cli/task_family.py`
 - `core/python/src/watchtower_core/cli/task_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
+- `core/python/src/watchtower_core/plan_runtime/task_lifecycle.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

@@ -57,7 +57,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 ### Identifier families
 | Artifact Family | Identifier Form | Example | Notes |
 |---|---|---|---|
-| Shared traceability identifier | dotted family prefix + initiative slug | `trace.core_python_foundation` | Use to join PRDs, decisions, designs, plans, and later evidence or closeout artifacts. |
+| Shared traceability identifier | dotted family prefix + initiative slug | `trace.governed_acceptance_example` | Use to join initiative-authored surfaces, contracts, evidence, and closeout artifacts for one traced initiative. |
 | Governed document front matter | dotted family prefix + concept slug | `ref.front_matter` | Best for references, standards, workflows, and similar long-lived docs. |
 | PRD identifier | dotted family prefix + PRD slug | `prd.traceability_baseline` | Use for durable PRD identity in trackers and indexes. |
 | Decision identifier | dotted family prefix + decision slug | `decision.validation_engine_selection` | Use for durable decision-record identity in trackers and indexes. |
@@ -126,7 +126,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 5. Validate any machine-enforced profiles that constrain the identifier shape before treating the change as complete.
 
 ## Examples
-- `trace.core_python_foundation` is a shared traceability ID used to join related design and implementation artifacts.
+- `trace.governed_acceptance_example` is a shared traceability ID used to join the repository's durable acceptance-contract and validation-evidence example surfaces.
 - `ref.front_matter` is the stable document ID for the front matter reference.
 - `std.front_matter` is the stable document ID for the front matter standard.
 - `wf.documentation_generation` is the stable document ID for the documentation-generation workflow family.
@@ -139,7 +139,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/indexes/`; `core/control_plane/contracts/`; `docs/planning/`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/indexes/`; `core/control_plane/contracts/`; `plan/`
 
 ## Validation
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.

@@ -1,7 +1,7 @@
 # `watchtower-core sync coordination`
 
 ## Summary
-This command rebuilds the deterministic coordination slice for live task, traceability, initiative, planning-catalog, coordination-index, and companion tracking surfaces in one dependency-ordered run.
+This command rebuilds the deterministic coordination slice for live task, traceability, initiative, coordination-index, and companion tracking surfaces in one dependency-ordered run.
 
 ## Use When
 - You changed initiative-local live task state and need the task index and task tracker refreshed together.
@@ -64,10 +64,10 @@ uv run watchtower-core sync coordination --output-dir /tmp/watchtower_coordinati
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/coordination.py`
-- `core/python/src/watchtower_core/repo_ops/sync/coordination_index.py`
-- `core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py`
-- `core/python/src/watchtower_core/repo_ops/sync/registry.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/coordination.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/coordination_index.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/coordination_tracking.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/registry.py`
 
 ## Updated At
 - `2026-03-18T21:12:00Z`

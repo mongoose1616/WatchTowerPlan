@@ -10,15 +10,10 @@
 | `docs/standards/documentation/agents_md_standard.md` | Defines the standard for AGENTS.md files. |
 | `docs/standards/documentation/command_md_standard.md` | Defines the standard for human-readable command pages. |
 | `docs/standards/documentation/compact_document_authoring_standard.md` | Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs. |
-| `docs/standards/documentation/decision_record_md_standard.md` | Defines the standard for decision records under `docs/planning/decisions/`. |
 | `docs/standards/documentation/documentation_semantics_standard.md` | Defines the cross-family semantic guardrails for governed Markdown docs and workflow modules. |
-| `docs/standards/documentation/feature_design_md_standard.md` | Defines the standard for feature-design documents under `docs/planning/design/features/`. |
-| `docs/standards/documentation/foundation_md_standard.md` | Defines the standard for governed foundation documents under `docs/foundations/`. |
-| `docs/standards/documentation/implementation_plan_md_standard.md` | Defines the standard for implementation-plan documents under `docs/planning/design/implementation/`. |
-| `docs/standards/documentation/prd_md_standard.md` | Defines the standard for PRD documents. |
+| `docs/standards/documentation/foundation_md_standard.md` | Defines the standard for governed foundation documents under `core/docs/foundations/`. |
 | `docs/standards/documentation/readme_md_standard.md` | Defines the standard for README.md files. |
 | `docs/standards/documentation/reference_md_standard.md` | Defines the standard for reference documents. |
 | `docs/standards/documentation/routing_table_md_standard.md` | Defines the standard for ROUTING_TABLE.md files. |
 | `docs/standards/documentation/standard_md_standard.md` | Defines the standard for governed standard and best-practice documents under `docs/standards/`. |
-| `docs/standards/documentation/task_md_standard.md` | Defines the retained-history standard for legacy task Markdown under `docs/planning/tasks/`. |
 | `docs/standards/documentation/workflow_md_standard.md` | Defines the standard for workflow documents. |

@@ -10,7 +10,7 @@
 | `AGENTS.md` | Defines the repository-wide wrapper instructions and routes work into `core/workflows/` and `plan/workflows/`. |
 | `.github/` | Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template. |
 | `plan/` | Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers. |
-| `docs/` | Holds durable repository documentation, command pages, standards, references, templates, and retained legacy planning material pending promotion or purge. |
+| `docs/` | Holds durable repository documentation, command pages, standards, references, and reusable templates. |
 | `core/` | Holds shared implementation assets and the authored control-plane tree. |
 
 ## Notes
@@ -25,4 +25,4 @@
 - Machine current-state start-here: `plan/.wt/indexes/coordination_index.json`
 - Machine project lookup start-here: `plan/.wt/indexes/project_index.json`
 - Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core query authority --domain planning --format json`
-- `docs/planning/**` is retained legacy planning history pending promotion or purge. Do not start new live work there.
+- Legacy docs-backed planning has been purged. Use `plan/initiatives/**`, `plan/projects/**`, `plan/tracking/**`, and `core/control_plane/ledgers/purges/**` instead.

@@ -46,34 +46,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:indexes:decision-index:v1",
-      "title": "Decision Index",
-      "description": "Schema for machine-readable decision index artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "decision_index",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/decision_index.schema.json",
-      "aliases": [
-        "decision tracking index schema",
-        "decision lookup schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
-      "title": "Design Document Index",
-      "description": "Schema for machine-readable design-document index artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "design_document_index",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/design_document_index.schema.json",
-      "aliases": [
-        "design tracking index schema",
-        "design document lookup schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
       "title": "Foundation Index",
       "description": "Schema for machine-readable foundation index artifacts.",
@@ -102,20 +74,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1",
-      "title": "Planning Catalog",
-      "description": "Schema for the canonical machine-readable planning catalog artifact.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "planning_catalog",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/planning_catalog.schema.json",
-      "aliases": [
-        "canonical planning graph schema",
-        "deep planning catalog schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
       "title": "Authority Map",
       "description": "Schema for authored authority-map registry artifacts.",
@@ -141,20 +99,6 @@
       "aliases": [
         "rendered markdown registry schema",
         "tracker rendering registry schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
-      "title": "PRD Index",
-      "description": "Schema for machine-readable PRD index artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "prd_index",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/prd_index.schema.json",
-      "aliases": [
-        "prd tracking index schema",
-        "requirements document lookup schema"
       ]
     },
     {
@@ -268,9 +212,9 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
-      "title": "Task Index",
-      "description": "Schema for machine-readable task index artifacts.",
+      "schema_id": "urn:watchtower:schema:artifacts:plan:task-summary-index:v1",
+      "title": "Plan Task Summary Index",
+      "description": "Schema for the plan-workspace task summary index.",
       "status": "active",
       "schema_family": "artifact",
       "subject_kind": "task_index",
@@ -413,19 +357,6 @@
       "notes": "Used as the shared base for documentation front matter profiles."
     },
     {
-      "schema_id": "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
-      "title": "Feature Design Front Matter",
-      "description": "Schema for parsed front matter metadata used by governed feature-design documents.",
-      "status": "active",
-      "schema_family": "interface",
-      "subject_kind": "documentation_front_matter",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.schema.json",
-      "aliases": [
-        "feature design metadata schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
       "title": "Foundation Front Matter",
       "description": "Schema for parsed front matter metadata used by governed foundation documents.",
@@ -439,16 +370,16 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
-      "title": "Implementation Plan Front Matter",
-      "description": "Schema for parsed front matter metadata used by governed implementation-plan documents.",
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
+      "title": "Decision Record Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed durable decision-record documents.",
       "status": "active",
       "schema_family": "interface",
       "subject_kind": "documentation_front_matter",
       "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.schema.json",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json",
       "aliases": [
-        "implementation plan metadata schema"
+        "decision record metadata schema"
       ]
     },
     {
@@ -462,32 +393,6 @@
       "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.schema.json",
       "aliases": [
         "reference metadata schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1",
-      "title": "PRD Front Matter",
-      "description": "Schema for parsed front matter metadata used by governed product requirements documents.",
-      "status": "active",
-      "schema_family": "interface",
-      "subject_kind": "documentation_front_matter",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
-      "aliases": [
-        "prd metadata schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
-      "title": "Decision Record Front Matter",
-      "description": "Schema for parsed front matter metadata used by governed durable decision records.",
-      "status": "active",
-      "schema_family": "interface",
-      "subject_kind": "documentation_front_matter",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json",
-      "aliases": [
-        "decision record metadata schema"
       ]
     },
     {
@@ -514,19 +419,6 @@
       "canonical_path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.schema.json",
       "aliases": [
         "standard metadata schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
-      "title": "Task Front Matter",
-      "description": "Schema for parsed front matter metadata used by governed local task records.",
-      "status": "active",
-      "schema_family": "interface",
-      "subject_kind": "documentation_front_matter",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
-      "aliases": [
-        "task metadata schema"
       ]
     },
     {

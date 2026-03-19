@@ -1,12 +1,10 @@
 # `watchtower-core plan`
 
 ## Summary
-This command group scaffolds compact governed planning documents, bootstraps live initiative packages, and advances initiative readiness through confirmation and approval while refreshing derived planning surfaces in write mode.
+This command group bootstraps live initiative packages and advances initiative readiness through confirmation and approval while refreshing derived plan surfaces in write mode.
 
 ## Use When
-- You want help for the planning scaffold surface without copying templates by hand.
-- You need one new PRD, feature design, implementation plan, or decision scaffold.
-- You want to bootstrap a traced PRD, design, plan, and bootstrap-task chain for a new initiative.
+- You want to bootstrap one live initiative package under `plan/**`.
 - You need to confirm reviewed initiative inputs or approve one live initiative package before execution can start.
 
 ## Command
@@ -24,7 +22,7 @@ uv run watchtower-core plan <plan_command> [args]
 ```
 
 ## Arguments and Options
-- `<plan_command>`: Choose `scaffold`, `bootstrap`, `confirm-inputs`, or `approve`.
+- `<plan_command>`: Choose `bootstrap`, `confirm-inputs`, or `approve`.
 - `-h`, `--help`: Show the command help text.
 - Plan operations are dry-run by default. Pass `--write` to the selected leaf command to persist the generated state and refresh derived planning surfaces.
 
@@ -32,11 +30,6 @@ uv run watchtower-core plan <plan_command> [args]
 ```sh
 cd core/python
 uv run watchtower-core plan --help
-```
-
-```sh
-cd core/python
-uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative."
 ```
 
 ```sh
@@ -51,30 +44,26 @@ uv run watchtower-core plan approve --initiative-slug example_initiative --write
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints plan-specific help and exits successfully.
-- `scaffold` creates one compact PRD, feature design, implementation plan, or decision-record scaffold.
-- `bootstrap` creates a traced PRD, design, plan, and bootstrap-task chain, with an optional decision record, and leaves the live initiative package in pre-execution review until approval.
+- `bootstrap` creates one live initiative package, its initiative-local machine state, and a bootstrap task, with optional `decision_notes.md`, and leaves the package in pre-execution review until approval.
 - `confirm-inputs` records maintainer confirmation of the current initiative-authored inputs before execution approval.
 - `approve` moves one validated live initiative package into `ready_for_execution`, which is required before task mutations may start real execution.
-- Optional sections are omitted by default and the rendered documents keep one compact placeholder per required section when richer inputs are not provided.
 - In write mode, the command refreshes the deterministic derived planning surfaces after the selected plan operation writes its canonical outputs.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core plan scaffold` | Scaffolds one compact governed planning document. |
-| `watchtower-core plan bootstrap` | Scaffolds a compact traced planning chain plus one bootstrap task. |
+| `watchtower-core plan bootstrap` | Bootstraps one live initiative package plus one bootstrap task. |
 | `watchtower-core plan confirm-inputs` | Records reviewed initiative-authored inputs into machine state before approval. |
 | `watchtower-core plan approve` | Approves one live initiative package into `ready_for_execution`. |
 | `watchtower-core task` | Manages the bootstrap task or follow-up work after the planning chain exists. |
 | `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
-| `watchtower-core query prds` | Reads one planning surface affected by plan writes. |
-| `watchtower-core query designs` | Reads one planning surface affected by plan writes. |
+| `watchtower-core query initiatives` | Reads the live initiative-family surface affected by plan writes. |
+| `watchtower-core query readiness` | Reads the readiness-gate surface affected by plan writes. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`
-- `core/python/src/watchtower_core/repo_ops/initiative_packages.py`
+- `core/python/src/watchtower_core/plan_runtime/initiative_packages.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

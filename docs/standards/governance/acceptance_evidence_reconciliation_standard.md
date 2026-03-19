@@ -1,7 +1,7 @@
 ---
 id: "std.governance.acceptance_evidence_reconciliation"
 title: "Acceptance and Evidence Reconciliation Standard"
-summary: "This standard defines how PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative."
+summary: "This standard defines how initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative."
 type: "standard"
 status: "active"
 tags:
@@ -10,11 +10,12 @@ tags:
   - "acceptance"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/prds/"
+  - "plan/initiatives/"
+  - "plan/projects/"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/validation_evidence/"
   - "core/control_plane/indexes/traceability/traceability_index.json"
@@ -26,21 +27,21 @@ aliases:
 # Acceptance and Evidence Reconciliation Standard
 
 ## Summary
-This standard defines how PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.
+This standard defines how initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.
 
 ## Purpose
-- Close the semantic gap between PRD acceptance intent and durable validation proof.
+- Close the semantic gap between initiative acceptance intent and durable validation proof.
 - Make acceptance drift visible without relying on reviewers to reconstruct joins manually from prose.
 - Provide a narrow repository rule for when acceptance coverage is complete enough to treat it as reconciled.
 
 ## Scope
-- Applies to traced initiatives that publish PRD acceptance IDs and machine-readable acceptance contracts.
-- Applies to the relationship between PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability entries.
+- Applies to traced initiatives that publish initiative acceptance IDs and machine-readable acceptance contracts.
+- Applies to the relationship between initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability entries.
 - Covers semantic reconciliation rules rather than schema syntax alone.
 - Does not redefine the separate schema-validation rules for the underlying artifact families.
 
 ## Use When
-- A trace publishes PRD acceptance criteria and a machine-readable acceptance contract.
+- A trace publishes initiative-local acceptance criteria and a machine-readable acceptance contract.
 - Validation evidence is expected to prove acceptance coverage durably.
 - Reviewing whether acceptance and evidence drift exists across a traced initiative.
 
@@ -53,12 +54,12 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 
 ## Guidance
 - Reconcile acceptance at the shared `trace_id` level.
-- Treat PRD acceptance IDs as the human source of acceptance intent.
+- Treat initiative-brief or promoted-guidance acceptance IDs as the human source of acceptance intent.
 - Treat the acceptance contract as the machine-readable acceptance boundary.
 - Treat validation evidence as the durable proof layer.
 - Treat the traceability index as the joined current-state lookup surface.
 - For a trace with governed acceptance:
-  - exactly one PRD should own the active acceptance IDs
+  - exactly one initiative package or promoted guidance surface should own the active acceptance IDs
   - exactly one acceptance contract should publish the same acceptance IDs
   - traceability should publish the same `acceptance_ids`
   - traceability should list the matching acceptance-contract and evidence IDs
@@ -69,7 +70,7 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 ## Structure or Data Model
 | Surface | Responsibility |
 |---|---|
-| PRD acceptance criteria | Human acceptance intent |
+| Initiative acceptance criteria | Human acceptance intent |
 | Acceptance contract | Machine-readable acceptance boundary |
 | Validation evidence | Durable proof of covered checks |
 | Validator registry | Stable validator identities |
@@ -77,17 +78,17 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 
 ## Process or Workflow
 1. Resolve the trace, PRD, acceptance contract, traceability entry, and validation evidence artifacts.
-2. Compare the PRD acceptance IDs to the acceptance contract and traceability entry.
+2. Compare the initiative acceptance IDs to the acceptance contract and traceability entry.
 3. Verify validator references against the validator registry.
 4. Verify evidence IDs and evidence acceptance coverage against the acceptance contract.
 5. Record explicit issues for missing joins, unknown validator references, or uncovered acceptance IDs.
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/prds/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.json`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Validation
-- PRD acceptance IDs, acceptance-contract acceptance IDs, and traceability acceptance IDs should match exactly.
+- Initiative acceptance IDs, acceptance-contract acceptance IDs, and traceability acceptance IDs should match exactly.
 - Traceability should list the current acceptance-contract and evidence IDs for the same trace.
 - Validation-evidence checks should not reference unknown acceptance IDs or unknown validator IDs.
 - Every acceptance ID should be covered by at least one durable evidence check once the trace claims durable acceptance coverage.
@@ -102,4 +103,4 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - [acceptance_evidence_reconciliation.md](/plan/workflows/modules/acceptance_evidence_reconciliation.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-19T20:15:00Z`

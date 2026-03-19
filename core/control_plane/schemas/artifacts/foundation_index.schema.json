@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
   "title": "Foundation Index",
-  "description": "Machine-readable lookup index for governed foundation documents stored under docs/foundations/.",
+  "description": "Machine-readable lookup index for governed foundation documents stored under core/docs/foundations/.",
   "type": "object",
   "required": [
     "$schema",
@@ -66,7 +66,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^docs/foundations/.+\\.md$"
+      "pattern": "^core/docs/foundations/.+\\.md$"
     },
     "referenceDocPathList": {
       "type": "array",
@@ -83,7 +83,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^(docs|workflows)/.+\\.md$"
+        "pattern": "^(?:docs|core/docs|plan/docs|core/workflows|plan/workflows)/.+\\.md$"
       }
     },
     "stringList": {

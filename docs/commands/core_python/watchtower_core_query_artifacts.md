@@ -72,8 +72,8 @@ uv run watchtower-core query artifacts --artifact-id index.artifacts
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/artifacts.py`
-- `core/python/src/watchtower_core/repo_ops/artifact_index.py`
+- `core/python/src/watchtower_core/plan_runtime/query/artifacts.py`
+- `core/python/src/watchtower_core/plan_runtime/artifact_index.py`
 - `plan/.wt/indexes/artifact_index.json`
 
 ## Updated At

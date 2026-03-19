@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "documentation_semantics"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T14:07:07Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -28,7 +28,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - Does not replace family-specific front matter, required section, or section-order standards.
 
 ## Use When
-- Adding or editing repo-local Markdown links in `docs/**` or `workflows/**`.
+- Adding or editing repo-local Markdown links in `docs/**`, `core/workflows/**`, or `plan/workflows/**`.
 - Changing the shared document-semantics validator.
 - Reviewing whether authored Markdown still satisfies cross-family semantic guardrails before closeout.
 
@@ -40,7 +40,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 
 ## Guidance
 - Repo-local Markdown links should resolve to existing files or directories inside the current repository tree.
-- Prefer repository-native root-relative targets such as `/docs/...`, `/workflows/...`, `/core/...`, `/.github/...`, or document-relative targets when linking inside the repository.
+- Prefer repository-native root-relative targets such as `/docs/...`, `/core/workflows/...`, `/plan/workflows/...`, `/core/...`, `/.github/...`, or document-relative targets when linking inside the repository.
 - Do not use filesystem-absolute checkout paths such as `/home/...` in repo-local Markdown links; they are not portable across clones, branches, or worktrees.
 - Pure fragment links and external URLs do not participate in repo-local existence checks.
 - Leave one blank line between the last item in a list block and the next heading.
@@ -51,7 +51,7 @@ Keep document-level validation fail closed on the small set of semantic rules th
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/markdown_semantics.py`; `core/python/src/watchtower_core/repo_ops/planning_documents.py`; `core/python/src/watchtower_core/repo_ops/sync/workflow_index.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validator_registry.json`
+- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/markdown_semantics.py`; `core/python/src/watchtower_core/plan_runtime/planning_documents.py`; `core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py`; `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validator_registry.json`
 
 ## Validation
 - `watchtower-core validate document-semantics` should fail when a repo-local Markdown link target does not exist.
@@ -72,4 +72,4 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - [commonmark_reference.md](/docs/references/commonmark_reference.md)
 
 ## Updated At
-- `2026-03-16T14:07:07Z`
+- `2026-03-19T08:21:14Z`

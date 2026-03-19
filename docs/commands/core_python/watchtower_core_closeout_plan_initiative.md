@@ -58,15 +58,15 @@ uv run watchtower-core closeout plan-initiative --project-slug watchtower --init
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout` | Parent command group for closeout operations. |
-| `watchtower-core closeout initiative` | Use for the legacy traced planning corpus under `docs/planning/**`, not live `plan/**` initiative packages. |
+| `watchtower-core closeout initiative` | Use only for retained trace records, not live `plan/**` initiative packages. |
 | `watchtower-core query coordination` | Reads the pack-level coordination view that this command refreshes in write mode. |
-| `watchtower-core query planning` | Reads the traced planning catalog when you need the legacy trace closeout path instead of the live plan path. |
+| `watchtower-core query trace` | Reads the retained traceability record when you need the historical closeout path instead of the live plan path. |
 | `watchtower-core sync all` | Rebuilds the broader derived surface set that includes the indexes and rendered views this command updates directly. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/closeout_family.py`
 - `core/python/src/watchtower_core/cli/closeout_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/initiative_packages.py`
+- `core/python/src/watchtower_core/plan_runtime/initiative_packages.py`
 - `core/python/src/watchtower_core/closeout/initiative_package.py`
 
 ## Updated At

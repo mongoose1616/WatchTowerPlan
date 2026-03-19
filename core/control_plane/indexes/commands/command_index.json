@@ -149,7 +149,7 @@
     {
       "command_id": "command.watchtower_core.plan",
       "command": "watchtower-core plan",
-      "summary": "Scaffold compact governed planning documents, bootstrap live initiative packages, and advance initiative readiness through the captured-input and approval gates.",
+      "summary": "Bootstrap live initiative packages and advance initiative readiness through the captured-input and approval gates.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -191,12 +191,12 @@
     {
       "command_id": "command.watchtower_core.plan.bootstrap",
       "command": "watchtower-core plan bootstrap",
-      "summary": "Scaffold a compact traced planning chain for one new initiative.",
+      "summary": "Bootstrap one live initiative package rooted under `plan/**`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
-      "synopsis": "uv run watchtower-core plan bootstrap [-h] --trace-id TRACE_ID --title TITLE --summary SUMMARY [--owner OWNER] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--include-decision] [--decision-id DECISION_ID] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--task-id TASK_ID] [--task-owner TASK_OWNER] [--task-kind {feature,bug,chore,documentation,governance,research,validation}] [--task-priority {critical,high,medium,low}] [--updated-at UPDATED_AT] [--include-documents] [--write] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core plan bootstrap [-h] --trace-id TRACE_ID [--initiative-slug INITIATIVE_SLUG] [--project-slug PROJECT_SLUG] --title TITLE --summary SUMMARY [--owner OWNER] [--include-decision] [--task-id TASK_ID] [--task-owner TASK_OWNER] [--task-kind {feature,bug,chore,documentation,governance,research,validation}] [--task-priority {critical,high,medium,low}] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.plan",
@@ -238,30 +238,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.plan.scaffold",
-      "command": "watchtower-core plan scaffold",
-      "summary": "Scaffold one compact governed planning document using the current repository planning shape.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_plan_scaffold.md",
-      "synopsis": "uv run watchtower-core plan scaffold [-h] --kind {prd,feature-design,implementation-plan,decision} --trace-id TRACE_ID --document-id DOCUMENT_ID --title TITLE --summary SUMMARY [--owner OWNER] [--status STATUS] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--linked-prd LINKED_PRD] [--linked-decision LINKED_DECISION] [--linked-design LINKED_DESIGN] [--linked-plan LINKED_PLAN] [--linked-acceptance LINKED_ACCEPTANCE] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--updated-at UPDATED_AT] [--include-document] [--write] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.plan",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "plan",
-        "scaffold"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
       "summary": "Search the governed lookup surfaces without opening the raw JSON artifacts directly.",
@@ -287,12 +263,12 @@
     {
       "command_id": "command.watchtower_core.query.acceptance",
       "command": "watchtower-core query acceptance",
-      "summary": "Search governed acceptance contracts by trace, source PRD, or acceptance ID.",
+      "summary": "Search governed acceptance contracts by trace, source surface path, or acceptance ID.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_acceptance.md",
-      "synopsis": "uv run watchtower-core query acceptance [-h] [--trace-id TRACE_ID] [--source-prd-id SOURCE_PRD_ID] [--acceptance-id ACCEPTANCE_ID] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core query acceptance [-h] [--trace-id TRACE_ID] [--source-surface-path SOURCE_SURFACE_PATH] [--acceptance-id ACCEPTANCE_ID] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
@@ -430,54 +406,6 @@
         "cli",
         "query",
         "coordination"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.decisions",
-      "command": "watchtower-core query decisions",
-      "summary": "Search the decision index for governed durable decision records.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_query_decisions.md",
-      "synopsis": "uv run watchtower-core query decisions [-h] [--query QUERY] [--trace-id TRACE_ID] [--decision-status DECISION_STATUS] [--tag TAG] [--linked-prd-id LINKED_PRD_ID] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "decisions"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.designs",
-      "command": "watchtower-core query designs",
-      "summary": "Search the design-document index for governed feature designs and implementation plans.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_query_designs.md",
-      "synopsis": "uv run watchtower-core query designs [-h] [--query QUERY] [--trace-id TRACE_ID] [--family FAMILY] [--tag TAG] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "designs"
       ]
     },
     {
@@ -627,54 +555,6 @@
         "query",
         "plan",
         "evidence"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.planning",
-      "command": "watchtower-core query planning",
-      "summary": "Search the canonical planning catalog for deep trace-linked planning context with explicit status semantics.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_query_planning.md",
-      "synopsis": "uv run watchtower-core query planning [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "planning"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.prds",
-      "command": "watchtower-core query prds",
-      "summary": "Search the PRD index for governed product requirements documents.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_query_prds.md",
-      "synopsis": "uv run watchtower-core query prds [-h] [--query QUERY] [--trace-id TRACE_ID] [--tag TAG] [--requirement-id REQUIREMENT_ID] [--acceptance-id ACCEPTANCE_ID] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "prds"
       ]
     },
     {
@@ -1037,110 +917,9 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.sync.decision_index",
-      "command": "watchtower-core sync decision-index",
-      "summary": "Rebuild the decision index from the governed decision records under `docs/planning/decisions/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_decision_index.md",
-      "synopsis": "uv run watchtower-core sync decision-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "decision",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.decision_tracking",
-      "command": "watchtower-core sync decision-tracking",
-      "summary": "Rebuild the human-readable decision tracker from the governed decision index and the initiative-closeout state stored in traceability.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_decision_tracking.md",
-      "synopsis": "uv run watchtower-core sync decision-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "decision",
-        "tracking"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.design_document_index",
-      "command": "watchtower-core sync design-document-index",
-      "summary": "Rebuild the design-document index from the governed design documents under `docs/planning/design/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_design_document_index.md",
-      "synopsis": "uv run watchtower-core sync design-document-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "design",
-        "document",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.design_tracking",
-      "command": "watchtower-core sync design-tracking",
-      "summary": "Rebuild the human-readable design tracker from the governed design index and the initiative-closeout state stored in traceability.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_design_tracking.md",
-      "synopsis": "uv run watchtower-core sync design-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "design",
-        "tracking"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.sync.foundation_index",
       "command": "watchtower-core sync foundation-index",
-      "summary": "Rebuild the foundation index from the governed foundation documents under `docs/foundations/`.",
+      "summary": "Rebuild the foundation index from the governed foundation documents under `core/docs/foundations/`.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -1234,81 +1013,6 @@
         "cli",
         "sync",
         "initiative",
-        "tracking"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.planning_catalog",
-      "command": "watchtower-core sync planning-catalog",
-      "summary": "Rebuild the canonical planning catalog from traceability, initiative, planning-document, task, acceptance-contract, and validation-evidence sources.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_planning_catalog.md",
-      "synopsis": "uv run watchtower-core sync planning-catalog [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "planning",
-        "catalog"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.prd_index",
-      "command": "watchtower-core sync prd-index",
-      "summary": "Rebuild the PRD index from the governed PRD documents under `docs/planning/prds/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_prd_index.md",
-      "synopsis": "uv run watchtower-core sync prd-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "prd",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.prd_tracking",
-      "command": "watchtower-core sync prd-tracking",
-      "summary": "Rebuild the human-readable PRD tracker from the governed PRD index and the initiative-closeout state stored in traceability.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "docs/commands/core_python/watchtower_core_sync_prd_tracking.md",
-      "synopsis": "uv run watchtower-core sync prd-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_core.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "prd",
         "tracking"
       ]
     },
@@ -1632,7 +1336,7 @@
     {
       "command_id": "command.watchtower_core.validate.acceptance",
       "command": "watchtower-core validate acceptance",
-      "summary": "Validate one traced initiative across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability index.",
+      "summary": "Validate one traced initiative across trace-level acceptance IDs, acceptance contracts, validation evidence, validator references, source-surface links, and the traceability index.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

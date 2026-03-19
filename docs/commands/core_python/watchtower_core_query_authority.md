@@ -26,7 +26,7 @@ uv run watchtower-core query authority [--query <text>] [--question-id <question
 - `--query <text>`: Free-text query over authority-map fields such as the question, canonical path, preferred command, aliases, and fallback paths.
 - `--question-id <question_id>`: Exact authority question filter such as `authority.planning.current_state`.
 - `--domain <planning|governance>`: Exact authority domain filter.
-- `--artifact-kind <kind>`: Exact canonical artifact-kind filter such as `planning_catalog`, `coordination_index`, or `route_index`.
+- `--artifact-kind <kind>`: Exact canonical artifact-kind filter such as `coordination_index`, `initiative_index`, or `route_index`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -52,8 +52,8 @@ uv run watchtower-core query authority --artifact-kind route_index
 - In `human` mode, the command prints matching authority questions, canonical artifact paths, preferred commands, optional human companion paths, and any named status fields to trust.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and authority-map entries.
 - The command is authority-oriented: it tells you which surface is canonical, not every surface that might contain related data.
-- For planning questions, the active-first navigation model still applies after authority resolution: filterless `query planning` and `query initiatives` browse calls default to active, while explicit historical lookup remains opt-in through `--initiative-status` or a known `--trace-id`.
-- The current planning authority entries now point first to live `plan/.wt/**` indexes and `plan/plan_overview.md`, with retained docs-backed planning surfaces kept only as fallback or historical companions where applicable.
+- For planning questions, the active-first navigation model still applies after authority resolution: filterless `query initiatives` browse calls default to active, while explicit historical lookup remains opt-in through `--initiative-status` or a known `--trace-id`.
+- The current planning authority entries now point first to live `plan/.wt/**` indexes and `plan/plan_overview.md`, with retained trace records used only when explicitly requested.
 - If no entries match the requested filters, the command exits successfully and reports that no authority-map entries matched.
 
 ## Related Commands
@@ -64,7 +64,6 @@ uv run watchtower-core query authority --artifact-kind route_index
 | `watchtower-core query readiness` | Canonical execution-gate lookup when the question is whether an initiative may start or resume work. |
 | `watchtower-core query discrepancies` | Canonical mismatch and drift lookup when the question is blocking discrepancies. |
 | `watchtower-core query projects` | Canonical project-container browse surface for pack-level project lookup. |
-| `watchtower-core query planning` | Canonical deep-planning read path for one trace after coordination identifies it. |
 | `watchtower-core query initiatives` | Focused initiative-family lookup surface that the authority map may point to for history or compact phase browsing. |
 | `watchtower-core query trace` | Durable trace-linked source join when the question is IDs or closeout state rather than the full planning read model. |
 | `watchtower-core route preview` | Preferred command for workflow-routing questions resolved by the authority map. |

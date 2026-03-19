@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "id": "purge.control_plane_example_validation_hardening",
+  "title": "Trace Purge Record for Control Plane Example Validation Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.control_plane_example_validation_hardening",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-12T14:47:28Z",
+  "purged_at": "2026-03-19T07:19:14Z",
+  "closure_reason": "Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass.",
+  "summary": "Removed the legacy docs-backed planning package, acceptance contract, and validation evidence as part of the hard cutover to live plan authority.",
+  "surviving_authority_paths": [
+    "core/control_plane/indexes/coordination/coordination_index.json",
+    "core/control_plane/indexes/foundations/foundation_index.json",
+    "core/python/src/watchtower_core/validation/all.py",
+    "core/python/tests/integration/",
+    "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+    "core/python/tests/unit/test_all_validation.py",
+    "core/python/tests/unit/test_schema_store.py",
+    "decisions.md",
+    "docs/commands/core_python/watchtower_core_validate_all.md",
+    "docs/standards/validations/repository_validation_standard.md",
+    "plan/tracking/coordination_tracking.md",
+    "plan/tracking/initiative_tracking.md",
+    "plan/tracking/task_tracking.md",
+    "requirements.md"
+  ],
+  "purged_paths": [
+    "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.json",
+    "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.json",
+    "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/design/features/control_plane_example_validation_hardening.md",
+    "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+    "docs/planning/prds/control_plane_example_validation_hardening.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/control_plane_example_validation_hardening_bootstrap.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/repair_governed_example_validation_coverage.md",
+    "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_example_validation_hardening.md"
+  ]
+}

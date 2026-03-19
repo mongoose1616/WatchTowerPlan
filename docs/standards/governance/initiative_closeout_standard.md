@@ -14,11 +14,9 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/control_plane/indexes/traceability/traceability_index.json"
-  - "core/control_plane/indexes/initiatives/initiative_index.json"
-  - "docs/planning/prds/prd_tracking.md"
-  - "docs/planning/design/design_tracking.md"
-  - "docs/planning/decisions/decision_tracking.md"
-  - "docs/planning/initiatives/initiative_tracking.md"
+  - "plan/.wt/indexes/initiative_index.json"
+  - "plan/tracking/coordination_tracking.md"
+  - "plan/tracking/initiative_tracking.md"
 aliases:
   - "initiative closure"
   - "trace closeout"
@@ -36,14 +34,14 @@ This standard defines how traced initiatives move to a terminal closeout state w
 
 ## Scope
 - Applies to initiative-level closeout fields stored on traceability index entries.
-- Applies to the human planning trackers and derived initiative coordination views that mirror initiative closeout status.
+- Applies to the live human tracking surfaces and derived initiative coordination views that mirror initiative closeout status.
 - Covers closeout status values, required closeout fields, and the baseline closeout workflow boundary.
 - Does not redefine artifact lifecycle status for PRDs, decisions, designs, or plans.
 
 ## Use When
 - A traced initiative is complete, superseded, cancelled, or abandoned.
 - Reviewers need to see whether a trace is still active or has reached a terminal state.
-- Updating the planning trackers or traceability index to show initiative outcome clearly.
+- Updating the live plan trackers or traceability index to show initiative outcome clearly.
 
 ## Related Standards and Sources
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -74,7 +72,6 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Prefer reconciling PRD acceptance IDs, acceptance contracts, validation evidence, and traceability before terminal initiative closeout when those surfaces exist for the trace.
 - If a terminal closeout proceeds with known acceptance-reconciliation issues, the exception should be explicit in the operator workflow or command invocation rather than implied by a successful closeout alone.
 - When terminal closeout metadata changes the traceability entry, `updated_at` should advance to the effective closeout timestamp.
-- Mirror initiative closeout status into the PRD, decision, and design trackers from the traceability index rather than maintaining a second human-authored closeout source.
 - Mirror initiative closeout status into the derived initiative index, coordination surfaces, and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
 - If a terminal trace later becomes purge-eligible, keep the surviving authority in current standards, indexes, and any purge ledger rather than in removed trace-local artifacts.
 
@@ -93,12 +90,12 @@ This standard defines how traced initiatives move to a terminal closeout state w
 4. Record `closed_at` and `closure_reason`, and `superseded_by_trace_id` when required.
 5. Update the traceability index entry for that trace and advance its effective `updated_at`.
 6. Refresh the derived initiative and coordination surfaces.
-7. Refresh the human planning trackers that mirror initiative status.
+7. Refresh the live human plan trackers that mirror initiative status.
 8. Record any remaining open-task or acceptance-validation exception explicitly when closeout happens with unfinished or unreconciled work.
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `artifact`
-- `Operational Surfaces`: `plan/workflows/modules/initiative_closeout.md`; `docs/planning/initiatives/initiative_tracking.md`; `core/control_plane/indexes/initiatives/initiative_index.json`; `core/control_plane/indexes/traceability/traceability_index.json`
+- `Operational Surfaces`: `plan/workflows/modules/initiative_closeout.md`; `plan/tracking/initiative_tracking.md`; `plan/.wt/indexes/initiative_index.json`; `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Validation
 - Every traceability entry should publish `initiative_status`.
@@ -106,7 +103,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - `superseded` entries should also publish `superseded_by_trace_id`.
 - Terminal closeout should not leave `updated_at` behind `closed_at`.
 - Terminal closeout should not silently bypass known acceptance-reconciliation issues when the trace publishes acceptance or evidence surfaces, unless the operator used an explicit exception path.
-- Human planning trackers should agree with the traceability index on initiative closeout status.
+- Human plan trackers should agree with the traceability index on initiative closeout status.
 - Reviewers should reject closeout state that is only implied in prose and not published in the traceability layer.
 
 ## Change Control

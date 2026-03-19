@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "id": "purge.design_document_index_relationship_alignment",
+  "title": "Trace Purge Record for Design Document Index Relationship Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.design_document_index_relationship_alignment",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-11T19:37:52Z",
+  "purged_at": "2026-03-19T07:19:14Z",
+  "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation.",
+  "summary": "Removed the legacy docs-backed planning package, acceptance contract, and validation evidence as part of the hard cutover to live plan authority.",
+  "surviving_authority_paths": [
+    "core/control_plane/indexes/coordination/coordination_index.json",
+    "core/control_plane/indexes/design_documents/design_document_index.json",
+    "core/control_plane/indexes/initiatives/initiative_index.json",
+    "core/control_plane/indexes/tasks/task_index.json",
+    "core/python/tests/unit/README.md",
+    "decisions.md",
+    "docs/standards/data_contracts/design_document_index_standard.md",
+    "docs/standards/documentation/feature_design_md_standard.md",
+    "docs/standards/documentation/implementation_plan_md_standard.md",
+    "docs/templates/implementation_plan_template.md",
+    "plan/tracking/coordination_tracking.md",
+    "plan/tracking/initiative_tracking.md",
+    "plan/tracking/task_tracking.md",
+    "requirements.md"
+  ],
+  "purged_paths": [
+    "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.json",
+    "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.json",
+    "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/design/features/design_document_index_relationship_alignment.md",
+    "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+    "docs/planning/prds/design_document_index_relationship_alignment.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/design_document_index_relationship_alignment_bootstrap.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/project_feature_design_affected_surfaces_into_design_index_related_paths.md"
+  ]
+}

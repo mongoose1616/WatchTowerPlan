@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/contracts/README.md` | Describes the purpose of the contracts directory and its main contract families. |
-| `core/control_plane/contracts/acceptance/` | Defines machine-readable acceptance contracts derived from durable PRD acceptance criteria. |
+| `core/control_plane/contracts/acceptance/` | Defines machine-readable acceptance contracts derived from durable initiative or promoted guidance acceptance criteria. |

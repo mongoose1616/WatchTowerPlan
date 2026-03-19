@@ -152,11 +152,11 @@
         "https://www.conventionalcommits.org/en/v1.0.0/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md",
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md",
+        "docs/standards/engineering/git_commit_standard.md"
       ],
       "applied_by_paths": [
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md"
@@ -218,7 +218,7 @@
         "https://cyclonedx.org/specification/overview/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md"
+        "core/docs/foundations/engineering_stack_direction.md"
       ],
       "tags": [
         "reference",
@@ -231,7 +231,7 @@
       "summary": "This document captures a local distilled reference for Diataxis so documentation in this repository can be written consistently without depending on external browsing during normal authoring work.",
       "status": "active",
       "doc_path": "docs/references/diataxis_local_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -319,12 +319,12 @@
         "https://cbea.ms/git-commit/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md",
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md",
+        "docs/standards/engineering/git_commit_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md",
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md",
+        "docs/standards/engineering/git_commit_standard.md"
       ],
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md"
@@ -340,7 +340,7 @@
       "summary": "This document provides a working reference for the GitHub collaboration surfaces that this repository uses for issue intake, pull request templates, project fields, issue sync, and hosted execution visibility.",
       "status": "active",
       "doc_path": "docs/references/github_collaboration_reference.md",
-      "updated_at": "2026-03-12T22:05:00Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "repository_status": "active_support",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -352,27 +352,23 @@
         "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
       ],
       "cited_by_paths": [
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
-        "workflows/modules/github_task_sync.md"
+        "plan/workflows/modules/github_task_sync.md"
       ],
       "applied_by_paths": [
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
-        "workflows/modules/github_task_sync.md"
+        "plan/workflows/modules/github_task_sync.md"
       ],
       "related_paths": [
         ".github/",
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
         ".github/README.md",
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md"
+        "plan/workflows/modules/github_task_sync.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
       ],
       "aliases": [
         "github collaboration",
@@ -419,7 +415,7 @@
         "https://in-toto.io/docs/specs/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md"
+        "core/docs/foundations/engineering_stack_direction.md"
       ],
       "tags": [
         "reference",
@@ -440,7 +436,7 @@
         "https://json-schema.org/draft/2020-12"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
@@ -491,7 +487,7 @@
         "https://mypy.readthedocs.io/en/stable/config_file.html"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -665,7 +661,7 @@
         "https://www.openpolicyagent.org/docs/policy-language"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md"
+        "core/docs/foundations/engineering_stack_direction.md"
       ],
       "tags": [
         "reference",
@@ -892,7 +888,7 @@
         "https://docs.pydantic.dev/latest/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
@@ -957,7 +953,7 @@
         "https://docs.pytest.org/en/stable/how-to/cache.html"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -1204,7 +1200,7 @@
         "https://docs.astral.sh/ruff/settings/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_code_design_standard.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -1228,7 +1224,7 @@
       "summary": "This document provides a working reference for Semantic Versioning as a release-versioning convention.",
       "status": "active",
       "doc_path": "docs/references/semver_reference.md",
-      "updated_at": "2026-03-09T05:03:16Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1283,7 +1279,7 @@
         "https://docs.sigstore.dev/"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md"
+        "core/docs/foundations/engineering_stack_direction.md"
       ],
       "tags": [
         "reference",
@@ -1305,7 +1301,7 @@
         "https://slsa.dev/blog/2025/04/slsa-v1.1"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md"
+        "core/docs/foundations/engineering_stack_direction.md"
       ],
       "tags": [
         "reference",
@@ -1458,7 +1454,7 @@
         "https://docs.astral.sh/uv/reference/settings/#cache-dir"
       ],
       "cited_by_paths": [
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [

@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "semantic_versioning"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:03:16Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -58,7 +58,7 @@ Provide a consistent way to reason about compatibility and release impact when t
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 
 ### Why It Matters Here
-- Use this reference when version fields or release workflows are added under `docs/standards/**` or `workflows/**`.
+- Use this reference when version fields or release workflows are added under `docs/standards/**`, `core/workflows/**`, or `plan/workflows/**`.
 - Pair it with commit and change-control standards when release automation is introduced.
 
 ### If Local Policy Tightens
@@ -74,4 +74,4 @@ Provide a consistent way to reason about compatibility and release impact when t
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:03:16Z`
+- `2026-03-19T08:21:14Z`

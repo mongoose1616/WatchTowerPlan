@@ -79,7 +79,7 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`
+- `core/python/src/watchtower_core/plan_runtime/planning_scaffolds.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

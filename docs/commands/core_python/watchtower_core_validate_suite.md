@@ -41,7 +41,7 @@ uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validatio
 
 ```sh
 cd core/python
-uv run watchtower-core validate suite --suite-id suite.plan.validation_baseline --pack-settings-path domain_packs/plan/.wt/pack_settings.json --format json
+uv run watchtower-core validate suite --suite-id suite.plan.validation_baseline --pack-settings-path packs/plan/.wt/pack_settings.json --format json
 ```
 
 ## Behavior and Outputs

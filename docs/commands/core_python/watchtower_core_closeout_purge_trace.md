@@ -25,7 +25,7 @@ uv run watchtower-core closeout purge-trace --trace-id <trace_id> [--retained-au
 ```
 
 ## Arguments and Options
-- `--trace-id <trace_id>`: Stable trace identifier such as `trace.core_python_foundation`.
+- `--trace-id <trace_id>`: Stable trace identifier such as `trace.governed_acceptance_example`.
 - `--retained-authority-path <path>`: Repository-relative canonical path that remains authoritative after purge. Repeat the option to record more than one surviving path.
 - `--purged-at <timestamp>`: Explicit RFC 3339 UTC purge timestamp. Defaults to the current UTC time.
 - `--write`: Delete the trace package, write the purge record, and refresh derived surfaces.
@@ -40,7 +40,7 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 
 ```sh
 cd core/python
-uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path core/python/src/watchtower_core/repo_ops/example.py --write --format json
+uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path core/python/src/watchtower_core/plan_runtime/example.py --write --format json
 ```
 
 ## Behavior and Outputs
@@ -59,7 +59,7 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 | `watchtower-core closeout initiative` | Use this first to put the trace into a terminal initiative state before purge. |
 | `watchtower-core validate acceptance` | Confirms trace-level acceptance and evidence coherence before purge. |
 | `watchtower-core sync all` | Rebuilds the derived surfaces that this command refreshes automatically in write mode. |
-| `watchtower-core query planning` | Confirms the purged trace no longer appears in the retained planning catalog. |
+| `watchtower-core query trace` | Confirms the purged trace no longer appears in the retained traceability surface. |
 | `watchtower-core query coordination` | Confirms the retained coordination surface no longer carries the purged trace as active or recent retained work. |
 
 ## Source Surface

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "repository_path_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -94,7 +94,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 5. Update the path-index standard, schema, and README inventory surfaces in the same change set when the artifact family changes structurally.
 
 ## Examples
-- A curated list of the repository root, `docs/`, `workflows/`, `core/`, and the key control-plane subtrees is an `entrypoints` path index.
+- A curated list of the repository root, `docs/`, `core/workflows/`, `plan/workflows/`, `core/`, and the key control-plane subtrees is an `entrypoints` path index.
 - A generated catalog that attempts to cover the whole governed repository tree is a `full_tree` path index.
 - A manually curated catalog of validator identities is not a path index; it belongs in a registry.
 
@@ -127,4 +127,4 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-19T08:21:14Z`

@@ -17,8 +17,8 @@
     "core/control_plane/indexes/coordination/coordination_index.json",
     "core/control_plane/indexes/planning/planning_catalog.json",
     "core/python/src/watchtower_core/closeout/initiative.py",
-    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
-    "core/python/src/watchtower_core/repo_ops/sync/registry.py"
+    "core/python/src/watchtower_core/plan_runtime/sync/coordination.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/registry.py"
   ],
   "notes": "This transition closes the first bounded Phase 4 slice review, names InitiativeCloseoutService as the only remaining direct write-path outlier in the reviewed consumer boundary, and does not authorize further Phase 4 implementation."
 }

@@ -69,7 +69,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
-- Keep `repo_ops/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules.
+- Keep `plan_runtime/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules.
 - Use [python_code_design_standard.md](/docs/standards/engineering/python_code_design_standard.md) for Python naming, boundary, docstring, typing, and consolidation rules instead of re-encoding those choices in workspace-only guidance.
 
 ## Structure or Data Model
@@ -90,16 +90,16 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 |---|---|
 | `core/python/src/watchtower_core/control_plane/` | Loaders, resolvers, and artifact access for governed control-plane surfaces. |
 | `core/python/src/watchtower_core/validation/` | Validator execution, schema-backed checks, and validation result modeling. |
-| `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `core/python/src/watchtower_core/repo_ops/query/`. |
+| `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `core/python/src/watchtower_core/plan_runtime/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
-| `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
+| `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/plan_runtime/sync/`. |
 | `core/python/src/watchtower_core/rebuild/` | Export-safe rebuild harness plus registry-backed rendered-view building and markdown reconciliation. |
 | `core/python/src/watchtower_core/routing/` | Export-safe route-selection runtime over governed route and workflow indexes. |
 | `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
 | `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
 | `core/python/src/watchtower_core/closeout/` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
-| `core/python/src/watchtower_core/repo_ops/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction. |
+| `core/python/src/watchtower_core/plan_runtime/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -115,14 +115,14 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A new schema loader belongs in `core/python/src/watchtower_core/control_plane/`.
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
 - A reusable-core query helper that searches governed command, workflow, authority, route, or artifact-family metadata belongs in `core/python/src/watchtower_core/query/`.
-- A repo-local query helper that searches live planning indexes, initiative packages, or docs-backed planning joins belongs in `core/python/src/watchtower_core/repo_ops/query/`.
+- A repo-local query helper that searches live planning indexes, initiative packages, or docs-backed planning joins belongs in `core/python/src/watchtower_core/plan_runtime/query/`.
 - A reusable route-selection engine belongs in `core/python/src/watchtower_core/routing/`.
 - A reusable rebuild helper for derived surfaces belongs in `core/python/src/watchtower_core/rebuild/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/`; `core/python/src/watchtower_core/repo_ops/sync/`; `core/python/src/watchtower_core/repo_ops/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/`; `core/python/src/watchtower_core/plan_runtime/sync/`; `core/python/src/watchtower_core/plan_runtime/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
 
 ## Validation
 - `core/python/pyproject.toml` should parse and support local lockfile generation.

@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.planning_index_family"
 title: "Planning Index Family Standard"
-summary: "This standard defines the shared baseline for planning-related derived index standards stored under `core/control_plane/indexes/`."
+summary: "This standard defines the shared baseline for live plan-related derived index standards stored under `core/control_plane/indexes/` and `plan/.wt/indexes/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,14 +17,14 @@ authority: "authoritative"
 # Planning Index Family Standard
 
 ## Summary
-This standard defines the shared baseline for planning-related derived index standards stored under `core/control_plane/indexes/`.
+This standard defines the shared baseline for live plan-related derived index standards stored under `core/control_plane/indexes/` and `plan/.wt/indexes/`.
 
 ## Purpose
 - Keep the planning-oriented derived index standards explicit and governable while avoiding repeated restatement of the same baseline derivation, storage, validation, and discoverability contract.
 - Give the planning-related index standards one stable family identity for both human navigation and machine-readable retrieval.
 
 ## Scope
-- Applies to the planning-related derived index standards for coordination, initiatives, planning catalogs, PRDs, decisions, design documents, tasks, and traceability.
+- Applies to the live plan-related derived index standards for coordination, initiatives, tasks, and traceability.
 - Covers the shared baseline that those member standards inherit around derivation, storage, discoverability, validation, and same-change alignment.
 - Does not replace the family-specific fields, invariants, validation rules, or change-control deltas that each member standard must still publish explicitly.
 
@@ -37,7 +37,7 @@ This standard defines the shared baseline for planning-related derived index sta
 - [standard_md_standard.md](/docs/standards/documentation/standard_md_standard.md): keeps the shared baseline pattern explicit and section-complete instead of turning the member standards into vague stubs.
 - [standard_index_standard.md](/docs/standards/data_contracts/standard_index_standard.md): requires the family baseline and member standards to stay queryable through the governed standard index.
 - [compact_document_authoring_standard.md](/docs/standards/documentation/compact_document_authoring_standard.md): supports reducing repeated boilerplate only when the remaining member-standard deltas stay readable and reviewable.
-- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable surfaces to move together when this family changes.
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): requires companion human-readable and machine-readable surfaces to move together when this family changes.
 
 ## Guidance
 - Treat the member standards in this family as derived indexes over governed planning, task, or traceability authority surfaces rather than as primary authored authorities themselves.
@@ -50,7 +50,7 @@ This standard defines the shared baseline for planning-related derived index sta
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `query`
-- `Operational Surfaces`: `docs/standards/data_contracts/planning_index_family_standard.md`; `docs/standards/data_contracts/coordination_index_standard.md`; `docs/standards/data_contracts/initiative_index_standard.md`; `docs/standards/data_contracts/planning_catalog_standard.md`; `docs/standards/data_contracts/prd_index_standard.md`; `docs/standards/data_contracts/decision_index_standard.md`; `docs/standards/data_contracts/design_document_index_standard.md`; `docs/standards/data_contracts/task_index_standard.md`; `docs/standards/data_contracts/traceability_index_standard.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/README.md`; `core/control_plane/indexes/standards/standard_index.json`; `docs/commands/core_python/watchtower_core_query_standards.md`
+- `Operational Surfaces`: `docs/standards/data_contracts/planning_index_family_standard.md`; `docs/standards/data_contracts/coordination_index_standard.md`; `docs/standards/data_contracts/initiative_index_standard.md`; `docs/standards/data_contracts/task_index_standard.md`; `docs/standards/data_contracts/traceability_index_standard.md`; `docs/standards/data_contracts/README.md`; `core/control_plane/indexes/standards/README.md`; `core/control_plane/indexes/standards/standard_index.json`; `docs/commands/core_python/watchtower_core_query_standards.md`
 
 ## Validation
 - Every member standard in this family should cite this baseline in `Related Standards and Sources`.

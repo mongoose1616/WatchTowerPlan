@@ -12,7 +12,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/acceptance_contract_standard.md",
-      "updated_at": "2026-03-13T04:05:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -22,19 +22,17 @@
       "operationalization_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/README.md",
-        "docs/planning/prds/core_python_foundation.md"
+        "plan/initiatives/",
+        "plan/projects/"
       ],
       "internal_reference_paths": [
-        "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/data_contracts/format_selection_standard.md",
-        "core/control_plane/contracts/acceptance/README.md",
-        "docs/planning/prds/core_python_foundation.md"
+        "core/control_plane/contracts/acceptance/README.md"
       ],
       "applied_reference_paths": [
-        "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
@@ -68,16 +66,16 @@
         "core/control_plane/registries/README.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/data_contracts/planning_catalog_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "core/control_plane/registries/README.md"
       ],
       "applied_reference_paths": [
-        "docs/standards/data_contracts/planning_catalog_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
@@ -135,7 +133,7 @@
       "standard_id": "std.data_contracts.coordination_index",
       "category": "data_contracts",
       "title": "Coordination Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`.",
+      "summary": "This standard defines the role, structure, and boundary rules for the machine-readable coordination index stored at `plan/.wt/indexes/coordination_index.json`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
@@ -148,8 +146,8 @@
       ],
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/coordination/",
-        "core/control_plane/indexes/coordination/README.md"
+        "plan/.wt/indexes/coordination_index.json",
+        "plan/tracking/coordination_tracking.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -159,8 +157,7 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/indexes/coordination/README.md"
+        "docs/standards/metadata/timestamp_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -170,109 +167,12 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/indexes/coordination/README.md"
+        "docs/standards/metadata/timestamp_standard.md"
       ],
       "tags": [
         "standard",
         "data_contracts",
         "coordination_index",
-        "planning_index_family"
-      ]
-    },
-    {
-      "standard_id": "std.data_contracts.decision_index",
-      "category": "data_contracts",
-      "title": "Decision Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for machine-readable decision indexes stored under `core/control_plane/indexes/decisions/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/data_contracts/decision_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "artifact",
-        "schema",
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "core/control_plane/indexes/decisions/",
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/decisions/README.md",
-        "docs/planning/decisions/"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "core/control_plane/indexes/decisions/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "core/control_plane/indexes/decisions/README.md"
-      ],
-      "tags": [
-        "standard",
-        "data_contracts",
-        "decision_index",
-        "planning_index_family"
-      ]
-    },
-    {
-      "standard_id": "std.data_contracts.design_document_index",
-      "category": "data_contracts",
-      "title": "Design Document Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for machine-readable design-document indexes stored under `core/control_plane/indexes/design_documents/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "schema",
-        "artifact",
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/design_documents/",
-        "core/control_plane/indexes/design_documents/README.md",
-        "docs/planning/design/"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
-        "docs/standards/data_contracts/repository_path_index_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/design/design_tracking.md",
-        "core/control_plane/indexes/design_documents/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
-        "docs/standards/data_contracts/repository_path_index_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/design/design_tracking.md",
-        "core/control_plane/indexes/design_documents/README.md"
-      ],
-      "tags": [
-        "standard",
-        "data_contracts",
-        "design_document_index",
         "planning_index_family"
       ]
     },
@@ -284,7 +184,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/format_selection_standard.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -295,7 +195,8 @@
       "operationalization_paths": [
         "core/control_plane/",
         "core/control_plane/registries/",
-        "workflows/",
+        "core/workflows/",
+        "plan/workflows/",
         "docs/"
       ],
       "reference_doc_paths": [
@@ -306,8 +207,8 @@
         "docs/references/commonmark_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/references/rfc_8259_json_reference.md",
@@ -317,8 +218,8 @@
         "docs/references/commonmark_reference.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/references/rfc_8259_json_reference.md",
@@ -366,8 +267,8 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
+        "core/python/src/watchtower_core/plan_runtime/query/foundations.py",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
@@ -379,7 +280,7 @@
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/README.md",
+        "core/docs/foundations/README.md",
         "core/control_plane/indexes/foundations/README.md"
       ],
       "applied_reference_paths": [
@@ -387,7 +288,7 @@
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/README.md",
+        "core/docs/foundations/README.md",
         "core/control_plane/indexes/foundations/README.md"
       ],
       "tags": [
@@ -400,11 +301,11 @@
       "standard_id": "std.data_contracts.initiative_index",
       "category": "data_contracts",
       "title": "Initiative Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.",
+      "summary": "This standard defines the role, structure, and boundary rules for the machine-readable initiative index stored at `plan/.wt/indexes/initiative_index.json`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -414,9 +315,8 @@
       ],
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/initiatives/",
-        "core/control_plane/indexes/initiatives/README.md",
-        "docs/planning/initiatives/initiative_tracking.md"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/initiative_tracking.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -427,8 +327,7 @@
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "core/control_plane/indexes/initiatives/README.md"
+        "plan/tracking/initiative_tracking.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -439,8 +338,7 @@
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "core/control_plane/indexes/initiatives/README.md"
+        "plan/tracking/initiative_tracking.md"
       ],
       "tags": [
         "standard",
@@ -450,57 +348,10 @@
       ]
     },
     {
-      "standard_id": "std.data_contracts.planning_catalog",
-      "category": "data_contracts",
-      "title": "Planning Catalog Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for the canonical machine-readable planning catalog stored under `core/control_plane/indexes/planning/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/data_contracts/planning_catalog_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "artifact",
-        "schema"
-      ],
-      "operationalization_paths": [
-        "core/control_plane/indexes/planning/",
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/planning/README.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/data_contracts/status_tracking_standard.md",
-        "core/control_plane/indexes/planning/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/standards/data_contracts/acceptance_contract_standard.md",
-        "docs/standards/data_contracts/validation_evidence_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/data_contracts/status_tracking_standard.md",
-        "core/control_plane/indexes/planning/README.md"
-      ],
-      "tags": [
-        "standard",
-        "data_contracts",
-        "planning_catalog",
-        "planning_index_family"
-      ]
-    },
-    {
       "standard_id": "std.data_contracts.planning_index_family",
       "category": "data_contracts",
       "title": "Planning Index Family Standard",
-      "summary": "This standard defines the shared baseline for planning-related derived index standards stored under `core/control_plane/indexes/`.",
+      "summary": "This standard defines the shared baseline for live plan-related derived index standards stored under `core/control_plane/indexes/` and `plan/.wt/indexes/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -516,10 +367,6 @@
         "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/standards/data_contracts/planning_catalog_standard.md",
-        "docs/standards/data_contracts/prd_index_standard.md",
-        "docs/standards/data_contracts/decision_index_standard.md",
-        "docs/standards/data_contracts/design_document_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/README.md",
@@ -531,65 +378,18 @@
         "docs/standards/documentation/standard_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/documentation/standard_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/foundations/repository_standards_posture.md"
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "tags": [
         "standard",
         "data_contracts",
-        "planning_index_family"
-      ]
-    },
-    {
-      "standard_id": "std.data_contracts.prd_index",
-      "category": "data_contracts",
-      "title": "PRD Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for machine-readable PRD indexes stored under `core/control_plane/indexes/prds/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/data_contracts/prd_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "artifact",
-        "schema",
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "core/control_plane/indexes/prds/",
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/prds/README.md",
-        "docs/planning/prds/"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/prds/prd_tracking.md",
-        "core/control_plane/indexes/prds/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/data_contracts/planning_index_family_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/schema_catalog_standard.md",
-        "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/prds/prd_tracking.md",
-        "core/control_plane/indexes/prds/README.md"
-      ],
-      "tags": [
-        "standard",
-        "data_contracts",
-        "prd_index",
         "planning_index_family"
       ]
     },
@@ -601,7 +401,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-13T18:08:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -646,7 +446,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/repository_path_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -799,8 +599,8 @@
         "docs/references/pydantic_strict_mode_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -810,8 +610,8 @@
         "core/control_plane/README.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
-        "docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -856,8 +656,8 @@
         "schema"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
-        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/plan_runtime/sync/standard_index.py",
+        "core/python/src/watchtower_core/plan_runtime/query/standards.py",
         "core/control_plane/indexes/standards/",
         "core/control_plane/schemas/artifacts/"
       ],
@@ -899,18 +699,18 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/tasks/task_tracking.md",
+        "plan/tracking/coordination_tracking.md",
+        "plan/tracking/task_tracking.md",
         "plan/.wt/indexes/coordination_index.json",
         "plan/.wt/indexes/task_index.json"
       ],
       "internal_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
@@ -924,7 +724,7 @@
       "standard_id": "std.data_contracts.task_index",
       "category": "data_contracts",
       "title": "Task Index Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for the live plan task index stored under plan/.wt/indexes/.",
+      "summary": "This standard defines the role, structure, and boundary rules for the live plan task summary index stored at `plan/.wt/indexes/task_index.json`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/task_index_standard.md",
@@ -939,27 +739,24 @@
         "plan/.wt/indexes/task_index.json",
         "plan/initiatives/",
         "plan/projects/",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/tracking/task_tracking.md"
       ],
       "applies_to": [
         "plan/.wt/indexes/task_index.json"
       ],
       "related_paths": [
-        "plan/.wt/indexes/task_index.json",
-        "core/control_plane/indexes/tasks/task_index.json"
+        "plan/.wt/indexes/task_index.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
-        "docs/planning/tasks/README.md"
+        "plan/tracking/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
@@ -978,7 +775,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -991,9 +788,6 @@
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/prd_index_standard.md",
-        "docs/standards/data_contracts/decision_index_standard.md",
-        "docs/standards/data_contracts/design_document_index_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -1003,9 +797,6 @@
       "applied_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/prd_index_standard.md",
-        "docs/standards/data_contracts/decision_index_standard.md",
-        "docs/standards/data_contracts/design_document_index_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -1027,7 +818,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/validation_evidence_standard.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1037,7 +828,8 @@
       "operationalization_paths": [
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/README.md",
-        "docs/planning/prds/core_python_foundation.md"
+        "plan/initiatives/",
+        "plan/projects/"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -1046,8 +838,7 @@
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/ledgers/validation_evidence/README.md",
-        "docs/planning/prds/core_python_foundation.md"
+        "core/control_plane/ledgers/validation_evidence/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -1224,19 +1015,16 @@
       "operationalization_paths": [
         "docs/templates/",
         "docs/templates/README.md",
-        "docs/planning/"
+        "plan/tracking/",
+        "plan/initiatives/",
+        "plan/projects/"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/templates/README.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
-        "docs/standards/documentation/task_md_standard.md"
+        "docs/templates/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
@@ -1251,48 +1039,6 @@
       ]
     },
     {
-      "standard_id": "std.documentation.decision_record_md",
-      "category": "documentation",
-      "title": "Decision Record Document Standard",
-      "summary": "This standard defines the structure, placement, and document-shape rules for durable decision records stored under `docs/planning/decisions/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/documentation/decision_record_md_standard.md",
-      "updated_at": "2026-03-11T20:38:54Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "docs/templates/decision_record_template.md",
-        "docs/planning/decisions/",
-        "docs/planning/decisions/README.md",
-        "docs/planning/decisions/decision_tracking.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/decision_index_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/decision_record_template.md",
-        "docs/planning/decisions/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/decision_index_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/decision_record_template.md",
-        "docs/planning/decisions/README.md"
-      ],
-      "tags": [
-        "standard",
-        "documentation",
-        "decision_record_md"
-      ]
-    },
-    {
       "standard_id": "std.documentation.documentation_semantics",
       "category": "documentation",
       "title": "Documentation Semantics Standard",
@@ -1300,7 +1046,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/documentation_semantics_standard.md",
-      "updated_at": "2026-03-16T14:07:07Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1309,10 +1055,10 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
-        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
-        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/plan_runtime/markdown_semantics.py",
+        "core/python/src/watchtower_core/plan_runtime/planning_documents.py",
+        "core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py",
+        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
         "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "core/control_plane/registries/validator_registry.json"
@@ -1347,52 +1093,10 @@
       ]
     },
     {
-      "standard_id": "std.documentation.feature_design_md",
-      "category": "documentation",
-      "title": "Feature Design Document Standard",
-      "summary": "This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/planning/design/features/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/documentation/feature_design_md_standard.md",
-      "updated_at": "2026-03-11T20:38:54Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "docs/templates/feature_design_template.md",
-        "docs/planning/design/features/",
-        "docs/planning/design/features/README.md",
-        "docs/planning/design/features/core_python_workspace_and_harness.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/metadata/front_matter_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/feature_design_template.md",
-        "docs/planning/design/features/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/metadata/front_matter_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/feature_design_template.md",
-        "docs/planning/design/features/README.md"
-      ],
-      "tags": [
-        "standard",
-        "documentation",
-        "feature_design_md"
-      ]
-    },
-    {
       "standard_id": "std.documentation.foundation_md",
       "category": "documentation",
       "title": "Foundation Document Standard",
-      "summary": "This standard defines the minimum governed shape for foundation documents stored under `docs/foundations/`.",
+      "summary": "This standard defines the minimum governed shape for foundation documents stored under `core/docs/foundations/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/foundation_md_standard.md",
@@ -1405,124 +1109,33 @@
         "query"
       ],
       "operationalization_paths": [
-        "docs/foundations/customer_story.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/engineering_stack_direction.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/customer_story.md",
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/foundations/product_direction.md",
+        "core/docs/foundations/repository_scope.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/templates/foundation_document_template.md",
-        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-        "core/python/src/watchtower_core/repo_ops/query/foundations.py"
+        "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
+        "core/python/src/watchtower_core/plan_runtime/query/foundations.py"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/README.md"
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/engineering_design_principles.md"
+        "core/docs/foundations/engineering_design_principles.md"
       ],
       "tags": [
         "standard",
         "documentation",
         "foundation_md"
-      ]
-    },
-    {
-      "standard_id": "std.documentation.implementation_plan_md",
-      "category": "documentation",
-      "title": "Implementation Plan Document Standard",
-      "summary": "This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/planning/design/implementation/`.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/documentation/implementation_plan_md_standard.md",
-      "updated_at": "2026-03-11T20:38:54Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "docs/templates/implementation_plan_template.md",
-        "docs/planning/design/implementation/",
-        "docs/planning/design/implementation/README.md",
-        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/metadata/front_matter_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/implementation_plan_template.md",
-        "docs/planning/design/implementation/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/metadata/front_matter_standard.md",
-        "docs/standards/engineering/python_workspace_standard.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/templates/implementation_plan_template.md",
-        "docs/planning/design/implementation/README.md"
-      ],
-      "tags": [
-        "standard",
-        "documentation",
-        "implementation_plan_md"
-      ]
-    },
-    {
-      "standard_id": "std.documentation.prd_md",
-      "category": "documentation",
-      "title": "PRD Document Standard",
-      "summary": "This standard defines the role, structure, placement, and quality expectations for product requirements documents (PRDs) in this repository.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/documentation/prd_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "workflow",
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "plan/workflows/modules/prd_generation.md",
-        "docs/templates/prd_template.md",
-        "docs/planning/prds/",
-        "docs/planning/prds/README.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/prd_index_standard.md",
-        "plan/workflows/modules/prd_generation.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/templates/prd_template.md",
-        "docs/planning/prds/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/governance/traceability_standard.md",
-        "docs/standards/data_contracts/prd_index_standard.md",
-        "plan/workflows/modules/prd_generation.md",
-        "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/templates/prd_template.md",
-        "docs/planning/prds/README.md"
-      ],
-      "tags": [
-        "standard",
-        "documentation",
-        "prd_md"
       ]
     },
     {
@@ -1533,7 +1146,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/readme_md_standard.md",
-      "updated_at": "2026-03-12T01:02:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1656,9 +1269,9 @@
       ],
       "operationalization_paths": [
         "docs/standards/*/*_standard.md",
-        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
-        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
+        "core/python/src/watchtower_core/plan_runtime/sync/standard_index.py",
+        "core/python/src/watchtower_core/plan_runtime/query/standards.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/templates/standard_document_template.md"
       ],
@@ -1683,53 +1296,6 @@
         "standard",
         "documentation",
         "standard_md"
-      ]
-    },
-    {
-      "standard_id": "std.documentation.task_md",
-      "category": "documentation",
-      "title": "Historical Task Markdown Standard",
-      "summary": "This standard defines the retained-history rules for legacy task Markdown stored under docs/planning/tasks/ after the hard cutover to live plan task state.",
-      "status": "active",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/standards/documentation/task_md_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "operationalization_modes": [
-        "documentation"
-      ],
-      "operationalization_paths": [
-        "docs/planning/tasks/",
-        "docs/planning/tasks/closed/archive/",
-        "docs/templates/task_template.md"
-      ],
-      "applies_to": [
-        "docs/planning/tasks/"
-      ],
-      "related_paths": [
-        "docs/planning/tasks/",
-        "docs/planning/tasks/open/",
-        "docs/planning/tasks/closed/"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/planning_retention_and_purge_standard.md",
-        "docs/templates/task_template.md",
-        "docs/planning/tasks/README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/planning_retention_and_purge_standard.md",
-        "docs/templates/task_template.md",
-        "docs/planning/tasks/README.md"
-      ],
-      "tags": [
-        "standard",
-        "documentation",
-        "task_md"
       ]
     },
     {
@@ -1858,7 +1424,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-18T06:23:45Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1869,7 +1435,8 @@
       "operationalization_paths": [
         "core/python/",
         "core/control_plane/",
-        "docs/planning/",
+        "plan/",
+        "docs/",
         "core/workflows/modules/core.md"
       ],
       "internal_reference_paths": [
@@ -1880,7 +1447,7 @@
         "docs/standards/data_contracts/command_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/engineering_design_principles.md"
+        "core/docs/foundations/engineering_design_principles.md"
       ],
       "applied_reference_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
@@ -1890,7 +1457,7 @@
         "docs/standards/data_contracts/command_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/engineering_design_principles.md"
+        "core/docs/foundations/engineering_design_principles.md"
       ],
       "tags": [
         "standard",
@@ -1914,7 +1481,7 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/tracking/task_tracking.md"
       ],
       "reference_doc_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
@@ -1971,8 +1538,8 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "docs/planning/tasks/task_tracking.md",
-        "docs/planning/coordination_tracking.md"
+        "plan/tracking/task_tracking.md",
+        "plan/tracking/coordination_tracking.md"
       ],
       "applies_to": [
         "docs/standards/engineering/git_commit_standard.md",
@@ -1982,8 +1549,7 @@
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "core/workflows/modules/commit_closeout.md",
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md"
       ],
       "internal_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
@@ -2042,7 +1608,7 @@
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
-        "docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/engineering_design_principles.md",
         "docs/references/pep8_reference.md",
         "docs/references/pep257_reference.md",
         "docs/references/src_layout_reference.md",
@@ -2055,7 +1621,7 @@
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
-        "docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/engineering_design_principles.md",
         "docs/references/pep8_reference.md",
         "docs/references/pep257_reference.md",
         "docs/references/src_layout_reference.md",
@@ -2128,9 +1694,9 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/repo_ops/",
-        "core/python/src/watchtower_core/repo_ops/sync/",
-        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/plan_runtime/sync/",
+        "core/python/src/watchtower_core/plan_runtime/query/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/rebuild/",
@@ -2225,11 +1791,11 @@
       "standard_id": "std.governance.acceptance_evidence_reconciliation",
       "category": "governance",
       "title": "Acceptance and Evidence Reconciliation Standard",
-      "summary": "This standard defines how PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.",
+      "summary": "This standard defines how initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2237,19 +1803,22 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "docs/planning/prds/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "applies_to": [
-        "docs/planning/prds/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "related_paths": [
-        "docs/planning/prds/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
@@ -2290,31 +1859,31 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "docs/planning/README.md",
-        "docs/planning/coordination_tracking.md",
+        "plan/README.md",
+        "plan/tracking/coordination_tracking.md",
         "plan/plan_overview.md"
       ],
       "applies_to": [
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/README.md"
+        "plan/tracking/coordination_tracking.md",
+        "plan/plan_overview.md"
       ],
       "related_paths": [
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/README.md"
+        "plan/tracking/coordination_tracking.md",
+        "plan/plan_overview.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/planning/README.md"
+        "plan/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/planning/README.md"
+        "plan/README.md"
       ],
       "tags": [
         "standard",
@@ -2341,13 +1910,14 @@
         "plan/workflows/modules/decision_capture.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/workflows/modules/documentation_generation.md",
-        "docs/planning/decisions/"
+        "plan/initiatives/",
+        "plan/projects/",
+        "decisions.md"
       ],
       "reference_doc_paths": [
         "docs/references/adr_guidance_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/reference_distillation_standard.md",
         "docs/standards/engineering/git_commit_standard.md",
@@ -2358,7 +1928,6 @@
         "docs/references/adr_guidance_reference.md"
       ],
       "applied_reference_paths": [
-        "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/reference_distillation_standard.md",
         "docs/standards/engineering/git_commit_standard.md",
@@ -2400,24 +1969,23 @@
         ".github/",
         "plan/initiatives/",
         "plan/projects/",
-        "docs/planning/tasks/task_tracking.md",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "plan/tracking/task_tracking.md",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
         ".github/README.md"
       ],
       "applies_to": [
         ".github/",
         "plan/initiatives/",
         "plan/projects/",
-        "docs/planning/tasks/task_tracking.md",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
+        "plan/tracking/task_tracking.md",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
       ],
       "related_paths": [
         ".github/",
         "plan/initiatives/",
         "plan/projects/",
-        "docs/planning/tasks/task_tracking.md",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "docs/planning/tasks/"
+        "plan/tracking/task_tracking.md",
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "docs/references/github_collaboration_reference.md"
@@ -2477,19 +2045,18 @@
       "operationalization_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md"
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
+        "docs/references/github_collaboration_reference.md"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
       ],
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "docs/planning/tasks/"
+        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "docs/references/github_collaboration_reference.md"
@@ -2497,21 +2064,17 @@
       "internal_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/references/github_collaboration_reference.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/references/github_collaboration_reference.md"
       ],
       "external_reference_urls": [
@@ -2552,25 +2115,21 @@
       ],
       "operationalization_paths": [
         "plan/workflows/modules/initiative_closeout.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
+        "plan/tracking/initiative_tracking.md",
+        "plan/.wt/indexes/initiative_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "applies_to": [
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "docs/planning/initiatives/initiative_tracking.md"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/coordination_tracking.md",
+        "plan/tracking/initiative_tracking.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "docs/planning/initiatives/initiative_tracking.md"
+        "plan/.wt/indexes/initiative_index.json",
+        "plan/tracking/coordination_tracking.md",
+        "plan/tracking/initiative_tracking.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -2611,18 +2170,17 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "docs/planning/initiatives/",
+        "plan/tracking/initiative_tracking.md",
         "plan/.wt/indexes/initiative_index.json",
         "plan/plan_overview.md"
       ],
       "applies_to": [
-        "docs/planning/initiatives/",
+        "plan/tracking/initiative_tracking.md",
         "plan/.wt/indexes/initiative_index.json"
       ],
       "related_paths": [
-        "docs/planning/initiatives/",
-        "plan/.wt/indexes/initiative_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json"
+        "plan/tracking/initiative_tracking.md",
+        "plan/.wt/indexes/initiative_index.json"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -2630,7 +2188,7 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/planning/initiatives/README.md"
+        "plan/tracking/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -2638,7 +2196,7 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
-        "docs/planning/initiatives/README.md"
+        "plan/tracking/README.md"
       ],
       "tags": [
         "standard",
@@ -2654,7 +2212,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/planning_retention_and_purge_standard.md",
-      "updated_at": "2026-03-15T11:00:00Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2663,23 +2221,26 @@
         "workflow"
       ],
       "operationalization_paths": [
-        "docs/planning/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/ledgers/",
-        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/cli/"
       ],
       "applies_to": [
-        "docs/planning/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/ledgers/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/cli/"
       ],
       "related_paths": [
-        "docs/planning/",
+        "plan/initiatives/",
+        "plan/projects/",
         "core/control_plane/ledgers/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/cli/"
       ],
       "internal_reference_paths": [
@@ -2688,7 +2249,7 @@
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/planning/design/features/summary_surface_retirement.md"
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -2696,7 +2257,7 @@
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "docs/planning/design/features/summary_surface_retirement.md"
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "tags": [
         "standard",
@@ -2766,7 +2327,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/rewrite_execution_control_standard.md",
-      "updated_at": "2026-03-18T21:12:00Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2775,26 +2336,29 @@
         "workflow"
       ],
       "operationalization_paths": [
-        "docs/planning/design/implementation/",
-        "plan/**/.wt/tasks/",
-        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json",
+        "plan/initiatives/",
+        "plan/projects/",
+        "plan/.wt/indexes/task_index.json",
+        "plan/tracking/task_tracking.md",
+        "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/migrations/",
         "core/control_plane/ledgers/validation_evidence/"
       ],
       "applies_to": [
-        "docs/planning/design/implementation/",
+        "plan/initiatives/",
+        "plan/projects/",
         "plan/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/migrations/",
         "core/control_plane/ledgers/validation_evidence/"
       ],
       "related_paths": [
-        "docs/planning/design/implementation/",
+        "plan/initiatives/",
+        "plan/projects/",
         "plan/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/validation_evidence/",
-        "docs/planning/tasks/"
+        "core/control_plane/ledgers/validation_evidence/"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/rewrite_surface_classification_standard.md",
@@ -2804,9 +2368,8 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/planning/design/implementation/structural_rewrite_program.md",
-        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json",
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/control_plane/contracts/acceptance/README.md",
         "core/control_plane/registries/authority_map.json"
       ],
       "applied_reference_paths": [
@@ -2817,7 +2380,7 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
-        "docs/foundations/engineering_design_principles.md"
+        "core/docs/foundations/engineering_design_principles.md"
       ],
       "tags": [
         "standard",
@@ -2834,7 +2397,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/rewrite_surface_classification_standard.md",
-      "updated_at": "2026-03-18T21:12:00Z",
+      "updated_at": "2026-03-19T20:15:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2842,19 +2405,22 @@
         "workflow"
       ],
       "operationalization_paths": [
-        "docs/planning/design/implementation/structural_rewrite_program.md",
-        "plan/**/.wt/tasks/",
-        "docs/planning/tasks/",
-        "core/control_plane/registries/authority_map.json"
+        "plan/initiatives/",
+        "plan/tracking/",
+        "plan/.wt/indexes/task_index.json",
+        "core/control_plane/registries/authority_map.json",
+        "core/control_plane/ledgers/purges/"
       ],
       "applies_to": [
-        "docs/planning/",
+        "plan/",
+        "plan/tracking/",
         "docs/standards/",
         "core/control_plane/",
         "core/python/"
       ],
       "related_paths": [
-        "docs/planning/",
+        "plan/",
+        "plan/tracking/",
         "docs/standards/",
         "core/control_plane/",
         "core/python/"
@@ -2864,17 +2430,17 @@
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/authority_map_standard.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/planning/design/implementation/structural_rewrite_program.md"
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/planning_retention_and_purge_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/authority_map_standard.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/repository_standards_posture.md"
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "tags": [
         "standard",
@@ -2917,11 +2483,7 @@
         "plan/projects/",
         "core/workflows/modules/task_scope_definition.md",
         "core/workflows/modules/task_handoff_review.md",
-        "core/workflows/modules/commit_closeout.md",
-        "docs/planning/tasks/",
-        "workflows/modules/task_scope_definition.md",
-        "workflows/modules/task_handoff_review.md",
-        "workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
@@ -2931,7 +2493,7 @@
         "core/workflows/modules/task_scope_definition.md",
         "core/workflows/modules/task_handoff_review.md",
         "core/workflows/modules/commit_closeout.md",
-        "docs/planning/tasks/README.md"
+        "plan/tracking/task_tracking.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
@@ -2967,39 +2529,35 @@
         "plan/initiatives/",
         "plan/projects/",
         "plan/.wt/indexes/task_index.json",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/tracking/task_tracking.md"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
         "plan/.wt/indexes/task_index.json",
-        "docs/planning/tasks/task_tracking.md"
+        "plan/tracking/task_tracking.md"
       ],
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
         "plan/.wt/indexes/task_index.json",
-        "docs/planning/tasks/task_tracking.md",
-        "docs/planning/tasks/",
-        "core/control_plane/indexes/tasks/task_index.json"
+        "plan/tracking/task_tracking.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/task_handling_threshold_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
-        "docs/planning/tasks/README.md"
+        "plan/tracking/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/task_handling_threshold_standard.md",
-        "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
-        "docs/planning/tasks/README.md"
+        "plan/tracking/README.md"
       ],
       "tags": [
         "standard",
@@ -3011,7 +2569,7 @@
       "standard_id": "std.governance.traceability",
       "category": "governance",
       "title": "Traceability Standard",
-      "summary": "This standard defines the repository's baseline traceability model so product intent, decisions, designs, implementation plans, and later executable or validation surfaces can be linked end to end.",
+      "summary": "This standard defines the repository's baseline traceability model so initiative intent, decisions, designs, implementation slices, and later executable or validation surfaces can be linked end to end.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/traceability_standard.md",
@@ -3025,34 +2583,25 @@
         "workflow"
       ],
       "operationalization_paths": [
-        "docs/planning/coordination_tracking.md",
-        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
-        "core/python/src/watchtower_core/repo_ops/query/traceability.py",
+        "plan/tracking/coordination_tracking.md",
+        "core/python/src/watchtower_core/plan_runtime/sync/traceability.py",
+        "core/python/src/watchtower_core/plan_runtime/query/traceability.py",
         "plan/workflows/modules/traceability_reconciliation.md"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/data_contracts/status_tracking_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
         "docs/standards/governance/decision_capture_standard.md",
-        "docs/standards/governance/initiative_tracking_standard.md",
-        "docs/planning/design/design_tracking.md"
+        "docs/standards/governance/initiative_tracking_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/data_contracts/status_tracking_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/documentation/decision_record_md_standard.md",
-        "docs/standards/documentation/feature_design_md_standard.md",
-        "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
@@ -3083,8 +2632,8 @@
       "operationalization_paths": [
         "core/control_plane/schemas/interfaces/README.md",
         "core/control_plane/schemas/interfaces/documentation/",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/task_tracking.md"
+        "docs/standards/metadata/front_matter_standard.md",
+        "plan/tracking/task_tracking.md"
       ],
       "reference_doc_paths": [
         "docs/references/front_matter_reference.md"
@@ -3143,7 +2692,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/indexes/",
         "core/control_plane/contracts/",
-        "docs/planning/"
+        "plan/"
       ],
       "reference_doc_paths": [
         "docs/references/rfc_9562_uuid_reference.md",
@@ -3200,16 +2749,16 @@
         "plan/workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/product_direction.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/product_direction.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -3280,7 +2829,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/operations/repository_maintenance_loop_standard.md",
-      "updated_at": "2026-03-13T18:18:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3292,22 +2841,24 @@
         "core/workflows/modules/repository_review.md",
         "core/workflows/modules/documentation_refresh.md",
         "core/python/src/watchtower_core/validation/all.py",
-        "docs/planning/coordination_tracking.md"
+        "plan/tracking/coordination_tracking.md"
       ],
       "applies_to": [
         "docs/",
-        "workflows/",
+        "core/workflows/",
+        "plan/workflows/",
         "core/control_plane/",
         "core/python/"
       ],
       "related_paths": [
         "docs/",
-        "workflows/",
+        "core/workflows/",
+        "plan/workflows/",
         "core/control_plane/",
         "core/python/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/validations/repository_validation_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -3316,7 +2867,7 @@
         "docs/README.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/validations/repository_validation_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -3337,7 +2888,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-12T14:40:00Z",
+      "updated_at": "2026-03-19T08:21:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -3347,7 +2898,7 @@
       ],
       "operationalization_paths": [
         "core/python/src/watchtower_core/validation/all.py",
-        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/commands/core_python/watchtower_core_sync_all.md"
       ],
@@ -3355,13 +2906,15 @@
         "core/python/",
         "core/control_plane/",
         "docs/",
-        "workflows/"
+        "core/workflows/",
+        "plan/workflows/"
       ],
       "related_paths": [
         "core/python/",
         "core/control_plane/",
         "docs/",
-        "workflows/"
+        "core/workflows/",
+        "plan/workflows/"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/documentation_semantics_standard.md",
@@ -3475,7 +3028,7 @@
         "docs/references/agent_workflow_authoring_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
@@ -3485,7 +3038,7 @@
         "AGENTS.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/repository_standards_posture.md",
+        "core/docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",

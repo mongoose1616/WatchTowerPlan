@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
   "title": "Initiative Index",
-  "description": "Machine-readable coordination index for traced initiatives across PRDs, decisions, designs, plans, tasks, validation, and closeout.",
+  "description": "Machine-readable coordination index for traced initiatives across live source surfaces, tasks, validation, and closeout.",
   "type": "object",
   "required": [
     "$schema",
@@ -264,17 +264,8 @@
         "blocked_by_task_ids": {
           "$ref": "#/$defs/taskIdList"
         },
-        "prd_ids": {
-          "$ref": "#/$defs/idList"
-        },
-        "decision_ids": {
-          "$ref": "#/$defs/idList"
-        },
-        "design_ids": {
-          "$ref": "#/$defs/idList"
-        },
-        "plan_ids": {
-          "$ref": "#/$defs/idList"
+        "source_surface_paths": {
+          "$ref": "#/$defs/stringList"
         },
         "task_ids": {
           "$ref": "#/$defs/taskIdList"

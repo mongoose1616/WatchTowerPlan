@@ -16,7 +16,7 @@
     "docs/commands/core_python/",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json",
     "core/control_plane/indexes/commands/command_index.json",
-    "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/command_index.py",
     "core/python/tests/unit/test_command_index_sync.py",
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.json"
   ],

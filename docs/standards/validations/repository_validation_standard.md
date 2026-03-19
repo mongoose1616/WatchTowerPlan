@@ -9,14 +9,15 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T14:40:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/python/"
   - "core/control_plane/"
   - "docs/"
-  - "workflows/"
+  - "core/workflows/"
+  - "plan/workflows/"
 aliases:
   - "repo validation baseline"
   - "validation baseline"
@@ -75,7 +76,7 @@ This standard defines the baseline validation expectations for repository change
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `sync`
-- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_all.md`; `docs/commands/core_python/watchtower_core_sync_all.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_all.md`; `docs/commands/core_python/watchtower_core_sync_all.md`
 
 ## Validation
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
@@ -94,4 +95,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-12T14:40:00Z`
+- `2026-03-19T08:21:14Z`

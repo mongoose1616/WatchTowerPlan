@@ -63,15 +63,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - When `applies_to` uses repository paths, exact files should use canonical repo-relative file paths with no trailing slash and directories should use canonical repo-relative directory paths ending in `/`.
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
 - `docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
-- `docs/planning/prds/**` documents should include front matter and validate against the PRD profile.
-- `docs/planning/decisions/**` documents should include front matter and validate against the decision-record profile.
-- `docs/planning/design/features/**` documents should include front matter and validate against the feature-design profile.
-- `docs/planning/design/implementation/**` documents should include front matter and validate against the implementation-plan profile.
-- `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` documents should include front matter and validate against the task profile.
 - `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
-- `docs/foundations/**` foundation documents should include front matter and validate against the foundation profile. Short directory `README.md` files under `docs/foundations/**` remain plain Markdown unless a narrower local rule says otherwise.
+- `core/docs/foundations/**` and mirrored `plan/docs/foundations/**` foundation documents should include front matter and validate against the foundation profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
-- Human tracking surfaces such as `docs/planning/design/design_tracking.md`, `docs/planning/prds/prd_tracking.md`, `docs/planning/decisions/decision_tracking.md`, and `docs/planning/tasks/task_tracking.md` remain plain Markdown unless a narrower standard later governs them.
+- Initiative-local authored package docs and rendered tracking surfaces such as `plan/tracking/task_tracking.md` remain plain Markdown unless a narrower future standard later governs them.
 - `AGENTS.md` files remain plain Markdown by default, including nested instruction overlays under `docs/**`.
 - Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
@@ -98,16 +93,12 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | Document Family | Front Matter Rule | Validation Profile |
 |---|---|---|
 | `docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
-| `docs/planning/prds/**` | Required | `prd_front_matter.schema.json` |
-| `docs/planning/decisions/**` | Required | `decision_record_front_matter.schema.json` |
-| `docs/planning/design/features/**` | Required for governed feature-design docs other than directory `README.md` files | `feature_design_front_matter.schema.json` |
-| `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.schema.json` |
-| `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` | Required for governed task docs other than directory `README.md` files and `task_tracking.md` | `task_front_matter.schema.json` |
 | `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
-| `docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
+| `core/docs/foundations/**` and `plan/docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
 | `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
-| `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
+| `core/workflows/**` and `plan/workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
+| `plan/initiatives/**` and `plan/projects/**` authored package docs | Not required by default; current initiative package docs remain plain Markdown inputs | none |
 | short directory `README.md` files | Not required by default | none |
 
 ### Validation boundary
@@ -130,20 +121,16 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Examples
 - A long-lived reference under `docs/references/**` should use the reference front matter profile.
-- A PRD under `docs/planning/prds/**` should use the PRD front matter profile and carry a shared `trace_id`.
-- A decision record under `docs/planning/decisions/**` should use the decision-record front matter profile and carry a shared `trace_id`.
-- A feature design under `docs/planning/design/features/**` should use the feature-design front matter profile and carry a shared `trace_id`.
-- An implementation plan under `docs/planning/design/implementation/**` should use the implementation-plan front matter profile and carry a shared `trace_id`.
-- A task under `docs/planning/tasks/**` should use the task front matter profile and carry `task_status`, `task_kind`, `priority`, and optional task dependency metadata.
-- A synced task may also carry optional GitHub foreign-key metadata such as `github_repository`, `github_issue_number`, `github_project_item_id`, and `github_synced_at`.
 - A standard under `docs/standards/**` should use the standard front matter profile.
+- A mirrored foundation document under `core/docs/foundations/**` and `plan/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
 - A command page under `docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
+- An initiative-local `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, or `decision_notes.md` should usually remain plain Markdown unless a later governed profile is introduced for that family.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
 - A short `README.md` that only explains directory purpose should usually stay plain Markdown with no front matter.
 
 ## Operationalization
 - `Modes`: `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `docs/planning/prds/prd_tracking.md`; `docs/planning/tasks/task_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `docs/standards/metadata/front_matter_standard.md`; `plan/tracking/task_tracking.md`
 
 ## Validation
 - Front matter should parse cleanly as YAML.

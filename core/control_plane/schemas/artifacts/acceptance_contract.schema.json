@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
   "title": "Acceptance Contract",
-  "description": "Machine-readable acceptance contract derived from durable PRD acceptance criteria.",
+  "description": "Machine-readable acceptance contract derived from durable initiative acceptance criteria.",
   "type": "object",
   "required": [
     "$schema",
@@ -10,7 +10,7 @@
     "title",
     "status",
     "trace_id",
-    "source_prd_id",
+    "source_surface_path",
     "entries"
   ],
   "properties": {
@@ -31,8 +31,9 @@
     "trace_id": {
       "$ref": "#/$defs/idPattern"
     },
-    "source_prd_id": {
-      "$ref": "#/$defs/idPattern"
+    "source_surface_path": {
+      "type": "string",
+      "minLength": 1
     },
     "entries": {
       "type": "array",

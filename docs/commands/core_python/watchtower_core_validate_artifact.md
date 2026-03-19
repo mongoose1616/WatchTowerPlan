@@ -42,7 +42,7 @@ uv run watchtower-core validate artifact --path <path> [--validator-id <validato
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json
+uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json
 ```
 
 ```sh
@@ -67,12 +67,12 @@ uv run watchtower-core validate artifact --path /tmp/pack_note.json --supplement
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path domain_packs/plan/.wt/work_items/plan_note.json --pack-settings-path domain_packs/plan/.wt/pack_settings.json --format json
+uv run watchtower-core validate artifact --path packs/plan/.wt/work_items/plan_note.json --pack-settings-path packs/plan/.wt/pack_settings.json --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json --record-evidence --trace-id trace.core_python_foundation
+uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json --record-evidence --trace-id trace.governed_acceptance_example
 ```
 
 ## Behavior and Outputs
@@ -93,7 +93,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 |---|---|
 | `watchtower-core validate` | Parent command group for governed validation operations. |
 | `watchtower-core validate front-matter` | Validates governed Markdown front matter rather than JSON artifacts. |
-| `watchtower-core query trace` | Useful after validation when you need the related PRD, decision, design, acceptance, or evidence context. |
+| `watchtower-core query trace` | Useful after validation when you need the related source-surface, task, acceptance, or evidence context. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/validate_family.py`

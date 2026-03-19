@@ -68,38 +68,10 @@
       "engine": "json_schema",
       "artifact_kind": "coordination_index",
       "applies_to": [
-        "core/control_plane/indexes/coordination/**"
+        "plan/.wt/indexes/coordination_index.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.decision_index",
-      "title": "Decision Index Validator",
-      "description": "Validates machine-readable decision index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "decision_index",
-      "applies_to": [
-        "core/control_plane/indexes/decisions/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:decision-index:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.design_document_index",
-      "title": "Design Document Index Validator",
-      "description": "Validates machine-readable design-document index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "design_document_index",
-      "applies_to": [
-        "core/control_plane/indexes/design_documents/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:design-document-index:v1"
       ]
     },
     {
@@ -124,7 +96,7 @@
       "engine": "json_schema",
       "artifact_kind": "initiative_index",
       "applies_to": [
-        "core/control_plane/indexes/initiatives/**"
+        "plan/.wt/indexes/initiative_index.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
@@ -142,34 +114,6 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.planning_catalog",
-      "title": "Planning Catalog Validator",
-      "description": "Validates canonical machine-readable planning-catalog artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "planning_catalog",
-      "applies_to": [
-        "core/control_plane/indexes/planning/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.prd_index",
-      "title": "PRD Index Validator",
-      "description": "Validates machine-readable PRD index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "prd_index",
-      "applies_to": [
-        "core/control_plane/indexes/prds/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:prd-index:v1"
       ]
     },
     {
@@ -362,10 +306,10 @@
       "engine": "json_schema",
       "artifact_kind": "task_index",
       "applies_to": [
-        "core/control_plane/indexes/tasks/**"
+        "plan/.wt/indexes/task_index.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:task-index:v1"
+        "urn:watchtower:schema:artifacts:plan:task-summary-index:v1"
       ]
     },
     {
@@ -474,7 +418,8 @@
       "engine": "python",
       "artifact_kind": "acceptance_reconciliation",
       "applies_to": [
-        "docs/planning/prds/**",
+        "plan/initiatives/**",
+        "plan/projects/**",
         "core/control_plane/contracts/acceptance/**",
         "core/control_plane/ledgers/validation_evidence/**",
         "core/control_plane/indexes/traceability/**"
@@ -501,7 +446,7 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "docs/foundations/**"
+        "core/docs/foundations/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -514,54 +459,6 @@
       "artifact_kind": "documentation_semantics",
       "applies_to": [
         "docs/standards/**"
-      ],
-      "notes": "Used by watchtower-core validate document-semantics and validate all."
-    },
-    {
-      "id": "validator.documentation.prd_semantics",
-      "title": "PRD Semantics Validator",
-      "description": "Validates governed PRD structure, required sections, and explained foundation-reference usage.",
-      "status": "active",
-      "engine": "python",
-      "artifact_kind": "documentation_semantics",
-      "applies_to": [
-        "docs/planning/prds/**"
-      ],
-      "notes": "Used by watchtower-core validate document-semantics and validate all."
-    },
-    {
-      "id": "validator.documentation.decision_record_semantics",
-      "title": "Decision Record Semantics Validator",
-      "description": "Validates governed decision-record structure, required sections, and applied-reference implications.",
-      "status": "active",
-      "engine": "python",
-      "artifact_kind": "documentation_semantics",
-      "applies_to": [
-        "docs/planning/decisions/**"
-      ],
-      "notes": "Used by watchtower-core validate document-semantics and validate all."
-    },
-    {
-      "id": "validator.documentation.feature_design_semantics",
-      "title": "Feature Design Semantics Validator",
-      "description": "Validates governed feature-design structure, required sections, and applied-reference implications.",
-      "status": "active",
-      "engine": "python",
-      "artifact_kind": "documentation_semantics",
-      "applies_to": [
-        "docs/planning/design/features/**"
-      ],
-      "notes": "Used by watchtower-core validate document-semantics and validate all."
-    },
-    {
-      "id": "validator.documentation.implementation_plan_semantics",
-      "title": "Implementation Plan Semantics Validator",
-      "description": "Validates governed implementation-plan structure, required sections, and applied-reference implications.",
-      "status": "active",
-      "engine": "python",
-      "artifact_kind": "documentation_semantics",
-      "applies_to": [
-        "docs/planning/design/implementation/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -594,20 +491,6 @@
       "notes": "Validate the parsed front matter object rather than the raw Markdown file."
     },
     {
-      "id": "validator.documentation.feature_design_front_matter",
-      "title": "Feature Design Front Matter Validator",
-      "description": "Validates parsed front matter metadata for governed feature-design documents.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "documentation_front_matter",
-      "applies_to": [
-        "docs/planning/design/features/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1"
-      ]
-    },
-    {
       "id": "validator.documentation.foundation_front_matter",
       "title": "Foundation Front Matter Validator",
       "description": "Validates parsed front matter metadata for governed foundation documents.",
@@ -615,24 +498,10 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "docs/foundations/**"
+        "core/docs/foundations/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1"
-      ]
-    },
-    {
-      "id": "validator.documentation.implementation_plan_front_matter",
-      "title": "Implementation Plan Front Matter Validator",
-      "description": "Validates parsed front matter metadata for governed implementation-plan documents.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "documentation_front_matter",
-      "applies_to": [
-        "docs/planning/design/implementation/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1"
       ]
     },
     {
@@ -650,49 +519,6 @@
       ]
     },
     {
-      "id": "validator.documentation.prd_front_matter",
-      "title": "PRD Front Matter Validator",
-      "description": "Validates parsed front matter metadata for governed product requirements documents.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "documentation_front_matter",
-      "applies_to": [
-        "docs/planning/prds/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1"
-      ]
-    },
-    {
-      "id": "validator.documentation.decision_record_front_matter",
-      "title": "Decision Record Front Matter Validator",
-      "description": "Validates parsed front matter metadata for governed durable decision records.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "documentation_front_matter",
-      "applies_to": [
-        "docs/planning/decisions/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1"
-      ]
-    },
-    {
-      "id": "validator.documentation.task_front_matter",
-      "title": "Task Front Matter Validator",
-      "description": "Validates parsed front matter metadata for governed local task records.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "documentation_front_matter",
-      "applies_to": [
-        "docs/planning/tasks/open/**",
-        "docs/planning/tasks/closed/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1"
-      ]
-    },
-    {
       "id": "validator.documentation.workflow_front_matter",
       "title": "Workflow Front Matter Validator",
       "description": "Validates parsed front matter metadata for workflow documents that adopt governed front matter.",
@@ -700,7 +526,8 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "workflows/**"
+        "core/workflows/**",
+        "plan/workflows/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1"

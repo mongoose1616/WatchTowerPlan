@@ -9,14 +9,14 @@ tags:
   - "github"
   - "collaboration"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T22:05:00Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
   - ".github/"
   - "docs/standards/governance/github_collaboration_standard.md"
   - "docs/standards/governance/github_task_sync_standard.md"
-  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github issue forms"
@@ -46,9 +46,8 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 ## Related Standards and Sources
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
-- [local_task_tracking_and_github_sync.md](/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
+- [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
+- [watchtower_core_sync_github_tasks.md](/docs/commands/core_python/watchtower_core_sync_github_tasks.md)
 
 ## Quick Reference or Distilled Reference
 ### Hosted Surface Roles
@@ -86,9 +85,9 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
 - [README.md](/.github/README.md)
-- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
-- `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
+- [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
+- [watchtower_core_sync_github_tasks.md](/docs/commands/core_python/watchtower_core_sync_github_tasks.md)
+- `core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py`
 
 ### Why It Matters Here
 - This reference is the repo-native lookup surface for GitHub collaboration assumptions that materially shape local standards and designs.
@@ -97,11 +96,11 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 ## References
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
-- [github_collaboration_scaffolding.md](/docs/planning/design/features/github_collaboration_scaffolding.md)
-- [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md)
+- [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
+- [watchtower_core_sync_github_tasks.md](/docs/commands/core_python/watchtower_core_sync_github_tasks.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` while normalizing GitHub-facing repository guidance through local references.
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-19T20:15:00Z`

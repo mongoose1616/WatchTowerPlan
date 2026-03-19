@@ -38,17 +38,8 @@
     "recorded_at": {
       "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
     },
-    "source_prd_ids": {
-      "$ref": "#/$defs/idList"
-    },
-    "source_decision_ids": {
-      "$ref": "#/$defs/idList"
-    },
-    "source_design_ids": {
-      "$ref": "#/$defs/idList"
-    },
-    "source_plan_ids": {
-      "$ref": "#/$defs/idList"
+    "source_surface_paths": {
+      "$ref": "#/$defs/stringList"
     },
     "source_acceptance_contract_ids": {
       "$ref": "#/$defs/idList"

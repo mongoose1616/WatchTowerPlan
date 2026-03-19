@@ -74,14 +74,13 @@ This document is authoritative for current repository ownership. It does not rep
 - Start with [README.md](/README.md) when the main need is root routing.
 - Start with [plan_overview.md](/plan/plan_overview.md) when the main need is current live work state, overall repository coherence, or the next active plan-domain action.
 - Start with [README.md](README.md) when the main need is the foundations corpus and the intended read order across these guiding documents.
-- Use `docs/planning/**` only when the main need is retained legacy planning context that has not yet been promoted or purged.
 - Start with [watchtower_core_query_foundations.md](/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
 
 ## Boundaries That Must Hold
 
 - Root entrypoints remain routers, not large repository handbooks.
 - Shared core surfaces stay domain-agnostic.
-- Live plan execution state stays under `plan/**`, not under `docs/planning/**`.
+- Live plan execution state stays under `plan/**`, not under documentation roots.
 - Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
 - Repo-specific behavior stays explicit instead of leaking into reusable surfaces.

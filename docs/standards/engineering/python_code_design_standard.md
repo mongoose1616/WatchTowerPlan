@@ -29,15 +29,15 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Use When
 - Adding or refactoring Python modules under `core/python/src/watchtower_core/`.
-- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, `repo_ops/`, or `cli/`.
+- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, `plan_runtime/`, or `cli/`.
 - Choosing names for modules, classes, services, helpers, results, or tests.
-- Consolidating duplicate code or shrinking transitional surfaces such as `repo_ops/`.
+- Consolidating duplicate code or shrinking transitional surfaces such as `plan_runtime/`.
 
 ## Related Standards and Sources
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): defines the workspace, package-root, and toolchain constraints that this code-design standard must fit within.
 - [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md): defines the broader repository engineering checkpoints that this Python-specific standard refines.
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): governs stable artifact naming and keeps code-local naming advice from drifting into governed-ID policy.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): defines the repository-wide design philosophy that this Python standard operationalizes for code structure.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): defines the repository-wide design philosophy that this Python standard operationalizes for code structure.
 - [pep8_reference.md](/docs/references/pep8_reference.md): provides the upstream readability baseline for module, class, function, constant, import, and comment style.
 - [pep257_reference.md](/docs/references/pep257_reference.md): provides the upstream baseline for concise docstrings on public or non-obvious Python surfaces.
 - [src_layout_reference.md](/docs/references/src_layout_reference.md): reinforces the package-boundary and import-discipline expectations of the `src/` layout used here.
@@ -48,12 +48,12 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Guidance
 - Prefer explicitness over cleverness. Code should be easy to read in one pass without hidden control flow, magical defaults, or broad implicit repository scans.
-- Prefer extraction to a reusable-core package before growing `repo_ops/`. If logic is not specific to this repository's live planning corpus or repo-local artifact layout, move it out of `repo_ops/`.
+- Prefer extraction to a reusable-core package before growing `plan_runtime/`. If logic is not specific to this repository's live planning corpus or repo-local artifact layout, move it out of `plan_runtime/`.
 - Keep modules narrow and named after one primary responsibility. Split files before they become mixed-purpose collections of query logic, parsing, rendering, validation, and orchestration.
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, and `utils/` own reusable runtime seams.
-  - `repo_ops/` owns only residual repository-local orchestration that still depends on this repository's live planning or governed layout.
+  - `plan_runtime/` owns only residual repository-local orchestration that still depends on this repository's live planning or governed layout.
   - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Consolidate duplicated control flow behind a shared helper only when the repetition is structural and the new helper has a clear boundary. Do not create generic abstractions that are broader than the duplicated behavior.
@@ -82,7 +82,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ### Python boundary checkpoints
 | Checkpoint | Preferred Shape | Notes |
 |---|---|---|
-| Boundary placement | reusable-core first, `repo_ops/` only when repo-local state truly matters | New generic helpers should not land in transitional namespaces. |
+| Boundary placement | reusable-core first, `plan_runtime/` only when repo-local state truly matters | New generic helpers should not land in transitional namespaces. |
 | Module size | one primary responsibility | Split files before they become mixed-purpose grab bags. |
 | Interface style | explicit arguments and typed return values | Hidden globals and embedded task constants increase maintenance cost. |
 | Naming | role-bearing, specific, and boring | Names should describe responsibility, not implementation history. |
@@ -95,10 +95,10 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Validation
 - `core/python/pyproject.toml` should continue to reflect the style and typing posture this standard assumes, including `ruff`, `mypy`, and `pytest` configuration.
-- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than transitional repo-local orchestration until `repo_ops/` and CLI surfaces are brought up to the same bar.
+- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than transitional repo-local orchestration until `plan_runtime/` and CLI surfaces are brought up to the same bar.
 - `core/python/pyproject.toml` should keep `ruff` configured to catch unnecessary comprehension churn in addition to import, upgrade, bugbear, and core readability issues.
 - Reviewers should reject new mixed-purpose modules, vague role-free names, or duplicate implementations that could be consolidated cleanly.
-- Reviewers should reject new generic behavior placed in `repo_ops/` when a reusable-core package boundary fits.
+- Reviewers should reject new generic behavior placed in `plan_runtime/` when a reusable-core package boundary fits.
 - Reviewers should reject CLI handlers that own business logic instead of delegating to package services.
 - The narrowest meaningful `uv run pytest ...`, `uv run ruff check ...`, and `uv run mypy ...` commands should be run for touched Python surfaces.
 
@@ -111,7 +111,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md)
 - [engineering_best_practices_standard.md](/docs/standards/engineering/engineering_best_practices_standard.md)
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
 - [pep8_reference.md](/docs/references/pep8_reference.md)
 - [pep257_reference.md](/docs/references/pep257_reference.md)
 - [src_layout_reference.md](/docs/references/src_layout_reference.md)
@@ -123,7 +123,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ## Notes
 - This standard intentionally favors boring, explicit code over framework-heavy or pattern-heavy abstractions.
 - The goal is maintainable consolidation, not abstraction for its own sake.
-- When a helper is extracted from `repo_ops/`, that is usually a sign that this standard is working as intended.
+- When a helper is extracted from `plan_runtime/`, that is usually a sign that this standard is working as intended.
 
 ## Updated At
 - `2026-03-18T06:44:55Z`

@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.coordination_index"
 title: "Coordination Index Standard"
-summary: "This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`."
+summary: "This standard defines the role, structure, and boundary rules for the machine-readable coordination index stored at `plan/.wt/indexes/coordination_index.json`."
 type: "standard"
 status: "active"
 tags:
@@ -18,7 +18,7 @@ authority: "authoritative"
 # Coordination Index Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`.
+This standard defines the role, structure, and boundary rules for the machine-readable coordination index stored at `plan/.wt/indexes/coordination_index.json`.
 
 ## Purpose
 - Provide one always-useful machine start-here surface for current planning state.
@@ -26,7 +26,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Keep the coordination layer derived so it does not compete with initiative, task, or traceability authority.
 
 ## Scope
-- Applies to machine-readable coordination index artifacts stored under `core/control_plane/indexes/coordination/`.
+- Applies to the machine-readable coordination index artifact stored at `plan/.wt/indexes/coordination_index.json`.
 - Covers placement, root artifact fields, coordination-mode semantics, and the projected initiative and task summaries carried by this family.
 - Does not replace initiative, task, or traceability indexes as their family authorities.
 
@@ -44,7 +44,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the human initiative coordination layer that remains available beneath this machine-first view.
 - [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by coordination records.
-- [README.md](/core/control_plane/indexes/coordination/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): defines the compact human companion tracker that should remain aligned with this machine surface.
 
 ## Guidance
 - Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md).
@@ -89,7 +89,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `plan/.wt/indexes/coordination_index.json`; `plan/tracking/coordination_tracking.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

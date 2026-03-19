@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.task_index"
 title: "Task Index Standard"
-summary: "This standard defines the role, structure, and boundary rules for the live plan task index stored under plan/.wt/indexes/."
+summary: "This standard defines the role, structure, and boundary rules for the live plan task summary index stored at `plan/.wt/indexes/task_index.json`."
 type: "standard"
 status: "active"
 tags:
@@ -23,7 +23,7 @@ aliases:
 # Task Index Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for the live plan task index stored under `plan/.wt/indexes/`.
+This standard defines the role, structure, and boundary rules for the live plan task summary index stored at `plan/.wt/indexes/task_index.json`.
 
 ## Purpose
 Provide one machine-readable lookup surface for live initiative-local task state so tooling, agents, and sync workflows can query current task execution without scanning every initiative directory directly.
@@ -41,7 +41,6 @@ Provide one machine-readable lookup surface for live initiative-local task state
 ## Related Standards and Sources
 - [planning_index_family_standard.md](/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this task-family standard narrows.
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the live task authority boundary and companion human tracker expectations.
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the retained-history boundary for docs-backed task Markdown.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): constrains trace-linked task expectations.
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): constrains schema and validation behavior for the artifact family.
 
@@ -49,7 +48,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 - Keep the authoritative task content in initiative-local `task.json` records under `plan/**/.wt/tasks/**`.
 - Keep the human task tracker and task index derived from that live task state.
 - Every task-index entry must point to an existing initiative-local `task.json` path.
-- Keep live task execution state in the entry `status` field and use the canonical live task vocabulary.
+- Keep artifact lifecycle in the entry `status` field and live execution state in the entry `task_status` field using the canonical live task vocabulary.
 - Update the task index in the same change set whenever live task records change materially.
 
 ## Structure or Data Model
@@ -57,7 +56,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 | Field | Requirement | Notes |
 |---|---|---|
 | `$schema` | Required | Use the published schema identifier for the task-index artifact family. |
-| `id` | Required | Stable identifier for the task index artifact. |
+| `id` | Required | Stable identifier for the task index artifact. Use `index.plan_tasks`. |
 | `title` | Required | Human-readable title for the index artifact. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `entries` | Required | Array of task records. |
@@ -72,7 +71,8 @@ Provide one machine-readable lookup surface for live initiative-local task state
 | `initiative_title` | Required | Human-readable initiative title. |
 | `title` | Required | Stable task title. |
 | `summary` | Required | Short execution summary. |
-| `status` | Required | Current live execution state such as `planned` or `completed`. |
+| `status` | Required | Artifact lifecycle status for the index entry itself. |
+| `task_status` | Required | Current live execution state such as `planned` or `completed`. |
 | `task_kind` | Required | Bounded task category such as `feature` or `bug`. |
 | `priority` | Required | Task priority. |
 | `owner` | Required | Responsible maintainer or role. |
@@ -90,18 +90,18 @@ Provide one machine-readable lookup surface for live initiative-local task state
 5. Validate the task index artifact against its published schema before treating the change as complete.
 
 ## Examples
-- A newly created task should appear with `status` set to `planned` and a `doc_path` beneath one initiative-local `.wt/tasks/` root.
-- A completed task should remain in the index with `status` set to `completed` and the same initiative-local `doc_path`.
+- A newly created task should appear with `status` set to `active`, `task_status` set to `planned`, and a `doc_path` beneath one initiative-local `.wt/tasks/` root.
+- A completed task should remain in the index with `status` set to `active`, `task_status` set to `completed`, and the same initiative-local `doc_path`.
 - A project-scoped task should carry both `initiative_id` and `project_id`.
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `plan/.wt/indexes/task_index.json`; `plan/initiatives/`; `plan/projects/`; `docs/planning/tasks/task_tracking.md`
+- `Operational Surfaces`: `plan/.wt/indexes/task_index.json`; `plan/initiatives/`; `plan/projects/`; `plan/tracking/task_tracking.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:
 - Every `doc_path` should exist and point to a live initiative-local `task.json`.
-- Every entry `status` should use the canonical live task vocabulary.
+- Every entry `task_status` should use the canonical live task vocabulary.
 - `blocked_by` and `depends_on` references should point to existing task IDs in the current index.
 
 ## Change Control
@@ -111,8 +111,7 @@ Provide one machine-readable lookup surface for live initiative-local task state
 
 ## References
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
-- [README.md](/docs/planning/tasks/README.md)
+- [README.md](/plan/tracking/README.md)
 
 ## Updated At
 - `2026-03-18T14:00:00Z`

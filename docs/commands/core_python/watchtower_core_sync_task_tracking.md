@@ -23,7 +23,7 @@ uv run watchtower-core sync task-tracking [--write] [--output <path>] [--include
 ```
 
 ## Arguments and Options
-- `--write`: Write the rebuilt tracker to the canonical task-tracking path under `docs/planning/tasks/`.
+- `--write`: Write the rebuilt tracker to the canonical task-tracking path under `plan/tracking/`.
 - `--output <path>`: Optional explicit output path for the rebuilt tracker.
 - `--include-document`: Include the rebuilt tracker content in JSON output for inspection or downstream tooling.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -60,12 +60,12 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core sync task-index` | Rebuilds the machine-readable task index from the same live task sources. |
 | `watchtower-core query tasks` | Reads the task index that reflects the same live task records. |
-| `docs/planning/tasks/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
+| `plan/tracking/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/task_tracking.py`
-- `docs/planning/tasks/task_tracking.md`
+- `core/python/src/watchtower_core/plan_runtime/sync/task_tracking.py`
+- `plan/tracking/task_tracking.md`
 
 ## Updated At
 - `2026-03-15T05:45:00Z`

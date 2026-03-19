@@ -18,8 +18,8 @@
     "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
     "core/python/src/watchtower_core/closeout/initiative.py",
-    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
-    "core/python/src/watchtower_core/repo_ops/sync/registry.py"
+    "core/python/src/watchtower_core/plan_runtime/sync/coordination.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/registry.py"
   ],
   "notes": "This transition keeps traceability as the pre-seam canonical write, limits the approved shared-output seam to initiative-index, planning-catalog, coordination-index, initiative-tracking, and coordination-tracking, and keeps PRD, decision, and design tracking direct and outside the seam for this slice."
 }

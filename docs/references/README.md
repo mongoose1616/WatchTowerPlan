@@ -7,7 +7,7 @@
 - Start with the reference file that matches the external topic, not with a broad repo scan.
 - Use `watchtower-core query references --query <topic>` when you want the governed reference lookup surface instead of browsing the directory manually.
 - Use `watchtower-core query references --repository-status <candidate_future_guidance|supporting_authority|active_support>` when you need only the current maturity slice instead of the full corpus.
-- Treat these files as supporting lookup artifacts. Enforceable local policy still belongs in `docs/standards/**` and executable procedure still belongs in `workflows/**`.
+- Treat these files as supporting lookup artifacts. Enforceable local policy still belongs in `docs/standards/**` and executable procedure still belongs in `core/workflows/**` or `plan/workflows/**`.
 - Use the `Current Repository Status` and `Current Touchpoints` sections inside each reference to tell whether the topic is active local support, supporting authority for an existing standard, or only candidate future guidance.
 - Treat `Current Touchpoints` as the authoritative list of live repo-local touchpoints. Generic backlinks in `References` are only supporting navigation and should not be read as active local adoption.
 - Re-check the canonical upstream links before tightening local policy for version-sensitive topics such as toolchains, security frameworks, and data-contract formats.

@@ -64,7 +64,7 @@ uv run watchtower-core query closeouts --promotion-review-required true --format
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/closeouts.py`
+- `core/python/src/watchtower_core/plan_runtime/query/closeouts.py`
 - `plan/.wt/indexes/closeout_index.json`
 
 ## Updated At

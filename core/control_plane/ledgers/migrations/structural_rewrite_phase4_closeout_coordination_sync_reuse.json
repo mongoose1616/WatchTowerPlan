@@ -20,7 +20,7 @@
     "core/control_plane/indexes/traceability/traceability_index.json",
     "core/python/src/watchtower_core/closeout/initiative.py",
     "core/python/src/watchtower_core/cli/closeout_handlers.py",
-    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+    "core/python/src/watchtower_core/plan_runtime/sync/coordination.py",
     "core/python/tests/unit/test_initiative_closeout.py",
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.json"
   ],

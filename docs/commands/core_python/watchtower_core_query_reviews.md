@@ -65,7 +65,7 @@ uv run watchtower-core query reviews --subject-kind promotion --format json
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/reviews.py`
+- `core/python/src/watchtower_core/plan_runtime/query/reviews.py`
 - `plan/.wt/indexes/review_index.json`
 
 ## Updated At

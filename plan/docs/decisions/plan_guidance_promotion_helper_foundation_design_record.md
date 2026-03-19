@@ -1,45 +1,38 @@
 ---
-trace_id: trace.plan_guidance_promotion_helper_foundation
+trace_id: trace.guidance.plan_guidance_promotion_helper_foundation_design_record
 id: decision.plan_guidance_promotion_helper_foundation_design_record
-title: 'Plan Guidance Promotion Helper Foundation Decision Record: Plan Guidance Promotion
-  Helper Foundation Design Record'
-summary: Promoted decision record extracted from the design record for Plan Guidance
-  Promotion Helper Foundation. Adds governed promotion-policy and guidance-promotion
-  helpers, then extracts approved initiative-local outputs into durable plan/docs
-  guidance surfaces so requirements.md and decisions.md no longer stop at promotion
-  shells.
+title: Guidance Promotion Decision Record
+summary: Durable decision record for governed guidance promotion. Defines how validated initiative-local outputs become durable plan guidance without retaining live-package references in the durable document.
 type: decision_record
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-17T22:19:46Z'
+updated_at: '2026-03-19T10:10:00Z'
 audience: shared
 authority: authoritative
 applies_to:
-- initiative.plan_guidance_promotion_helper_foundation
-- plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md
-- promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell
+- plan/docs/decisions/plan_guidance_promotion_helper_foundation_design_record.md
+- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
+- plan/.wt/indexes/promotion_index.json
 ---
 
 # Context
 
-`Plan Guidance Promotion Helper Foundation` required a durable decision about how live initiative outputs become approved guidance. Adds governed promotion-policy and guidance-promotion helpers, then extracts approved initiative-local outputs into durable plan/docs guidance surfaces so requirements.md and decisions.md no longer stop at promotion shells.
+This decision defines how validated initiative-local outputs become durable plan guidance. Durable guidance must survive initiative closeout and purge without keeping source-package paths, source trace IDs, or live promotion records embedded in the document itself.
 
 ## Decision
 
 - Durable guidance must be promoted through governed policy, family, and template contracts rather than being copied ad hoc from live initiative inputs.
-- Promotion records must retain source initiative, evidence, review, and target-path provenance.
+- Machine-readable promotion and guidance indexes must preserve provenance without forcing durable docs to retain live initiative package references.
 
 ## Consequences
 
 - Promotion output stays aligned with machine-readable policy and indexing surfaces.
-- Durable guidance can move out of initiative-local planning state without losing traceability.
+- Durable guidance can move out of initiative-local planning state without blocking purge of closed initiative packages.
 - Future closeout and retention flows can treat promoted docs as authority and initiative artifacts as temporary state.
 
 ## Current Status or Supersession Notes
 
-- Active via `promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell`.
-- Source initiative: `initiative.plan_guidance_promotion_helper_foundation` (`trace.plan_guidance_promotion_helper_foundation`)
-- Source artifact: `plan/initiatives/plan_guidance_promotion_helper_foundation/design_record.md`
-- Promotion record: `promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell`
-- Evidence refs: `evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle`
+- Active as durable guidance under `plan/docs/**`.
+- Promotion policy and promotion-index records carry the machine-readable provenance for this guidance family.

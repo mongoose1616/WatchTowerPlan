@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "readme_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:02:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -30,7 +30,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 ## Use When
 - Creating a new directory README.
 - Refreshing a README after a directory's purpose, boundaries, or key contents change.
-- Reviewing whether a README is carrying content that belongs in `AGENTS.md`, `docs/standards/**`, or `workflows/**` instead.
+- Reviewing whether a README is carrying content that belongs in `AGENTS.md`, `docs/standards/**`, `core/workflows/**`, or `plan/workflows/**` instead.
 
 ## Related Standards and Sources
 - [agents_md_standard.md](/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -104,4 +104,4 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - If a README needs long procedural content or repository-wide rules, that content probably belongs in a companion document instead.
 
 ## Updated At
-- `2026-03-12T01:02:00Z`
+- `2026-03-19T08:21:14Z`

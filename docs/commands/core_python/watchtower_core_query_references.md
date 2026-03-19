@@ -78,7 +78,7 @@ uv run watchtower-core query references --applied-by-path docs/standards/governa
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/references.py`
+- `core/python/src/watchtower_core/plan_runtime/query/references.py`
 - `core/control_plane/indexes/references/reference_index.json`
 
 ## Updated At

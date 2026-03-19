@@ -23,7 +23,7 @@ uv run watchtower-core sync <sync_command> [args]
 ```
 
 ## Arguments and Options
-- `<sync_command>`: Choose a leaf sync such as `all`, `coordination`, `planning-catalog`, `route-index`, `workflow-index`, `initiative-index`, `task-index`, `repository-paths`, or another narrower tracker or index refresh.
+- `<sync_command>`: Choose a leaf sync such as `all`, `coordination`, `route-index`, `workflow-index`, `initiative-index`, `task-index`, `repository-paths`, or another narrower tracker or index refresh.
 - `-h`, `--help`: Show the sync-group help text.
 - Pass `--write`, output-directory flags, and any narrower options to the selected leaf command.
 
@@ -40,11 +40,6 @@ uv run watchtower-core sync coordination --format json
 
 ```sh
 cd core/python
-uv run watchtower-core sync planning-catalog --write --format json
-```
-
-```sh
-cd core/python
 uv run watchtower-core sync route-index --write --format json
 ```
 
@@ -56,7 +51,7 @@ uv run watchtower-core sync all --write --format json
 ## Behavior and Outputs
 - With no leaf command, the group prints help and exits successfully.
 - The group itself is routing help; the selected leaf command owns dry-run defaults, write behavior, and artifact-specific output.
-- Use `sync coordination` for the focused task, traceability, initiative, planning-catalog, coordination-index, and coordination-tracker rebuild slice.
+- Use `sync coordination` for the focused task, traceability, initiative, coordination-index, and coordination-tracker rebuild slice.
 - Use `sync all` when you need the full deterministic local rebuild across indexes and trackers.
 - Use narrower leaf commands when one governed family changed and you do not need the full repo rebuild.
 - Open the specific leaf command page or CLI help when you need exact flags, dependency order, or output-file details.
@@ -65,7 +60,6 @@ uv run watchtower-core sync all --write --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync coordination` | Focused current-state planning rebuild slice. |
-| `watchtower-core sync planning-catalog` | Rebuilds the canonical deep planning join. |
 | `watchtower-core sync route-index` | Rebuilds the machine-readable routing surface from the routing table. |
 | `watchtower-core sync all` | Rebuilds the full deterministic local derived-artifact set. |
 | `watchtower-core query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
@@ -73,7 +67,7 @@ uv run watchtower-core sync all --write --format json
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/sync/`
+- `core/python/src/watchtower_core/plan_runtime/sync/`
 
 ## Updated At
 - `2026-03-13T15:05:00Z`

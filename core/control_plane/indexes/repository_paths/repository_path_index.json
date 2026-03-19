@@ -34,8 +34,7 @@
         "routing"
       ],
       "related_paths": [
-        "README.md",
-        "workflows/ROUTING_TABLE.md"
+        "README.md"
       ]
     },
     {
@@ -58,7 +57,6 @@
       "related_paths": [
         "AGENTS.md",
         "docs/",
-        "workflows/",
         "core/"
       ]
     },
@@ -158,7 +156,7 @@
       "path": "core/control_plane/contracts/acceptance/",
       "kind": "directory",
       "surface_kind": "control_plane_contracts",
-      "summary": "Defines machine-readable acceptance contracts derived from durable PRD acceptance criteria.",
+      "summary": "Defines machine-readable acceptance contracts derived from durable initiative or promoted guidance acceptance criteria.",
       "parent_path": "core/control_plane/contracts/",
       "maturity": "supporting",
       "priority": "medium",
@@ -170,10 +168,6 @@
         "contracts",
         "acceptance",
         "traceability"
-      ],
-      "related_paths": [
-        "docs/planning/prds/",
-        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
       ]
     },
     {
@@ -187,30 +181,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.json",
+      "path": "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
       "kind": "file",
       "surface_kind": "control_plane_contract",
-      "summary": "Acceptance contract for the core export readiness and optimization trace.",
-      "parent_path": "core/control_plane/contracts/acceptance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Acceptance contract for the core Python foundation trace.",
-      "parent_path": "core/control_plane/contracts/acceptance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.json",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Acceptance contract for the guarded structural rewrite program through the approved closeout-tracking refresh-boundary checkpoint.",
+      "summary": "Durable generic acceptance-contract example used by command docs, standards, and validation tests.",
       "parent_path": "core/control_plane/contracts/acceptance/",
       "maturity": "authoritative",
       "priority": "high",
@@ -234,9 +208,6 @@
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/",
-        "core/control_plane/indexes/decisions/",
-        "core/control_plane/indexes/design_documents/",
-        "core/control_plane/indexes/prds/",
         "core/control_plane/indexes/traceability/",
         "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/schemas/",
@@ -295,121 +266,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/indexes/coordination/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable coordination indexes for one current-state start-here view above the family-specific planning indexes.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/coordination/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the coordination-index directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/coordination/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/coordination/coordination_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable coordination index for current planning mode, recommended next action, actionable work, and recent closeouts.",
-      "parent_path": "core/control_plane/indexes/coordination/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/decisions/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable indexes for durable decision records and their trace links.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "aliases": [
-        "decision index"
-      ],
-      "tags": [
-        "decisions",
-        "lookup",
-        "tracking"
-      ],
-      "related_paths": [
-        "docs/planning/decisions/",
-        "core/control_plane/indexes/decisions/decision_index.json"
-      ]
-    },
-    {
-      "path": "core/control_plane/indexes/decisions/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the decision index directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/decisions/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/decisions/decision_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable index of current decision records and their traceability anchors.",
-      "parent_path": "core/control_plane/indexes/decisions/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/design_documents/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable indexes for tracking feature designs and implementation plans.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "aliases": [
-        "design index",
-        "design document index"
-      ],
-      "tags": [
-        "design",
-        "lookup",
-        "tracking"
-      ],
-      "related_paths": [
-        "docs/planning/design/design_tracking.md",
-        "core/control_plane/indexes/design_documents/design_document_index.json"
-      ]
-    },
-    {
-      "path": "core/control_plane/indexes/design_documents/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the design-document index directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/design_documents/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/design_documents/design_document_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable index of current feature designs and implementation plans.",
-      "parent_path": "core/control_plane/indexes/design_documents/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/indexes/foundations/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -435,108 +291,6 @@
       "surface_kind": "control_plane_index",
       "summary": "Machine-readable foundation index for governed foundation documents and their downstream citation or application use.",
       "parent_path": "core/control_plane/indexes/foundations/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/initiatives/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable initiative indexes that project current phase, ownership, and next-step status across traced planning surfaces.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/initiatives/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the initiative-index directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/initiatives/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/initiatives/initiative_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable initiative index for current traced initiatives, their phases, active owners, and next actions.",
-      "parent_path": "core/control_plane/indexes/initiatives/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/planning/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Canonical machine-readable planning catalogs that join trace-linked planning, task, acceptance, evidence, and per-trace coordination state.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/planning/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the planning-catalog directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/planning/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/planning/planning_catalog.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Canonical machine-readable planning catalog for deep trace-linked planning lookup with explicit status semantics.",
-      "parent_path": "core/control_plane/indexes/planning/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/prds/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable indexes for PRDs and their traceability anchors.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "aliases": [
-        "prd index"
-      ],
-      "tags": [
-        "planning",
-        "requirements",
-        "lookup"
-      ],
-      "related_paths": [
-        "docs/planning/prds/",
-        "core/control_plane/indexes/prds/prd_index.json"
-      ]
-    },
-    {
-      "path": "core/control_plane/indexes/prds/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the PRD index directory and its current artifacts.",
-      "parent_path": "core/control_plane/indexes/prds/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/prds/prd_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable index of current PRDs and their traceability anchors.",
-      "parent_path": "core/control_plane/indexes/prds/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -702,36 +456,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/indexes/tasks/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Machine-readable indexes for local task records and task lookup.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/tasks/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the purpose of the task-index directory and its current contents.",
-      "parent_path": "core/control_plane/indexes/tasks/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/tasks/task_index.json",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Machine-readable task index for current local task records.",
-      "parent_path": "core/control_plane/indexes/tasks/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/indexes/traceability/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -750,7 +474,6 @@
         "tracking"
       ],
       "related_paths": [
-        "docs/planning/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ]
     },
@@ -1072,8 +795,7 @@
         "traceability"
       ],
       "related_paths": [
-        "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.json"
+        "core/control_plane/indexes/traceability/traceability_index.json"
       ]
     },
     {
@@ -1087,280 +809,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.json",
+      "path": "core/control_plane/ledgers/validation_evidence/governed_acceptance_example_validation_baseline.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the core export hardening follow-up trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the core export readiness and optimization trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Durable validation-evidence artifact for the initial core Python foundation traceability chain.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/derived_projection_status_semantics_validation.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the derived projection status-semantics alignment trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the end-to-end repository review and rationalization trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the foundation scope and entrypoint realignment trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the machine-first coordination surface trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/planning_authority_unification_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the planning authority unification trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the pre-implementation repo review and hardening trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation-baseline evidence for the repo-local hotspot modularity hardening trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation-baseline evidence for the natural maintenance-request route-preview hardening trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/standard_runtime_and_route_explicitness_validation_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation-baseline evidence for the standard, runtime, and route explicitness hardening trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the first bounded structural rewrite Phase 2 slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the completed first bounded Phase 3 command companion source-surface normalization slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the approved Phase 3 entry outcome and the first bounded command companion source-surface normalization slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the closed first Phase 4 slice outcome review and the bounded closeout-coordination entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the approved closeout-coordination entry review and the bounded post-traceability coordination-sync reuse slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the closed closeout coordination sync-reuse outcome review and the bounded closeout-tracking entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the approved closeout-tracking entry review and the bounded private closeout-local tracker refresh boundary slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the completed first bounded Phase 4 planning projection snapshot slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the approved Phase 4 entry outcome and the first bounded planning projection snapshot slice.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Validation evidence for the closed Phase 3 outcome review and the bounded Phase 4 shared-projection entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline evidence for the structural rewrite program after completing Phase 0 and Phase 1 and preparing the Phase 2 review gate.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the template and output efficiency trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/unit_test_hardening_and_rebalancing_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the unit test hardening and rebalancing trace.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Planning-baseline validation evidence for the workflow-system operationalization trace.",
+      "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1605,26 +1057,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/artifacts/decision_index.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable decision-index artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/design_document_index.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable design-document index artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/artifacts/foundation_index.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1649,26 +1081,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable migration-record artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/planning_catalog.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the canonical machine-readable planning-catalog artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/prd_index.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable PRD-index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1748,7 +1160,7 @@
       "path": "core/control_plane/schemas/artifacts/task_index.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable task-index artifact family.",
+      "summary": "Schema for the machine-readable plan task-summary index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1898,17 +1310,7 @@
       "path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed durable decision-record documents.",
-      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed feature-design documents.",
+      "summary": "Profile for governed durable decision-record documents under `plan/docs/decisions/`.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1918,7 +1320,7 @@
       "path": "core/control_plane/schemas/interfaces/documentation/foundation_front_matter.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed foundation documents under `docs/foundations/`.",
+      "summary": "Profile for governed foundation documents under `core/docs/foundations/`.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1945,20 +1347,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.schema.json",
+      "path": "core/control_plane/schemas/interfaces/documentation/pattern_front_matter.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed implementation-plan documents.",
-      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed product requirements documents.",
+      "summary": "Profile for governed reusable pattern documents under `plan/docs/patterns/`.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -1999,16 +1391,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Profile for standards that adopt governed front matter.",
-      "parent_path": "core/control_plane/schemas/interfaces/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/documentation/task_front_matter.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Profile for governed local task records.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2167,7 +1549,7 @@
     {
       "path": "core/docs/foundations/",
       "kind": "directory",
-      "surface_kind": "core_surface",
+      "surface_kind": "documentation_family",
       "summary": "Holds the duplicated foundations corpus for core-owned guidance roots.",
       "parent_path": "core/docs/",
       "maturity": "supporting",
@@ -2271,7 +1653,7 @@
       "path": "core/python/src/",
       "kind": "directory",
       "surface_kind": "python_source",
-      "summary": "Holds the `watchtower_core` package source tree, including CLI, repo-ops, and control-plane runtime code.",
+      "summary": "Holds the `watchtower_core` package source tree, including CLI, plan-runtime, and control-plane runtime code.",
       "parent_path": "core/python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2350,51 +1732,41 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/repo_ops/query/README.md",
+      "path": "core/python/src/watchtower_core/plan_runtime/query/README.md",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Describes the repository query-service boundary and adjacent command docs.",
-      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/repo_ops/query/common.py",
+      "path": "core/python/src/watchtower_core/plan_runtime/query/common.py",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Shared rendered-surface search helpers and deterministic query-term builders for trace-linked planning views.",
-      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+      "path": "core/python/src/watchtower_core/plan_runtime/query/coordination.py",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Active-first coordination query service that layers the coordination snapshot over initiative history lookup.",
-      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+      "path": "core/python/src/watchtower_core/plan_runtime/query/initiatives.py",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Compact initiative-family query service over phase, owner, and blocker rendered surfaces.",
-      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/repo_ops/query/planning.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Deep planning-catalog query service over the canonical planning join.",
-      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2450,11 +1822,11 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/fixtures/domain_packs/plan/",
+      "path": "core/python/tests/fixtures/packs/plan/",
       "kind": "directory",
       "surface_kind": "python_tests",
-      "summary": "Source fixture pack used to materialize a `plan` domain pack into temporary repos for validation-suite tests.",
-      "parent_path": "core/python/tests/fixtures/domain_packs/",
+      "summary": "Source fixture pack used to materialize a `plan` pack into temporary repos for validation-suite tests.",
+      "parent_path": "core/python/tests/fixtures/packs/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -2504,16 +1876,6 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Integration tests for loader-backed artifact materialization plus foundation and entrypoint contract coverage.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for planning-document authoring contracts and workflow additional-load semantics.",
       "parent_path": "core/python/tests/integration/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2643,7 +2005,7 @@
       "path": "core/python/tests/unit/test_cli_planning_query_commands.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for PRD, decision, design, task, initiative, coordination, authority, acceptance, evidence, and trace query families.",
+      "summary": "Parser-level JSON contract tests for task, initiative, coordination, authority, acceptance, evidence, trace, and project query families.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2700,30 +2062,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_decision_index_sync.py",
+      "path": "core/python/tests/unit/test_coordination_index_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path rendering.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_design_document_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the design-document index from governed design docs, including affected-surface and source-path relationship derivation.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_document_semantics_planning_rules.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for planning-document semantic requirements around applied references and heading spacing.",
+      "summary": "Unit tests for rebuilding the coordination index from live initiative and task state.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2760,6 +2102,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/unit/test_documentation_family.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the documentation-family registry helper and mirror requirements.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/test_front_matter_validation.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -2790,20 +2142,20 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_planning_catalog_sync.py",
+      "path": "core/python/tests/unit/test_plan_runtime_boundary.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the planning catalog and validating the deep planning query behavior against the governed artifact.",
+      "summary": "Unit tests for the explicit plan-runtime boundary and the absence of retired wrapper modules.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_prd_index_sync.py",
+      "path": "core/python/tests/unit/test_rebuild_harness.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the PRD index from governed PRD documents.",
+      "summary": "Unit tests for the reusable rebuild harness over governed indexes and rendered views.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2830,10 +2182,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_repo_ops_boundary.py",
+      "path": "core/python/tests/unit/test_repository_paths_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the explicit repo-ops boundary and the absence of retired wrapper modules.",
+      "summary": "Unit tests for rebuilding the repository path index from README inventory surfaces.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2854,6 +2206,16 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for rebuilding the standard index from governed standards docs.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_template_catalog.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the governed template catalog and template lookup behavior.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2983,7 +2345,7 @@
       "path": "docs/",
       "kind": "directory",
       "surface_kind": "documentation",
-      "summary": "Holds durable repository documentation, command pages, standards, references, templates, and retained legacy planning material pending promotion or purge.",
+      "summary": "Holds durable repository documentation, command pages, standards, references, and reusable templates.",
       "parent_path": ".",
       "maturity": "supporting",
       "priority": "medium",
@@ -2994,8 +2356,6 @@
       ],
       "related_paths": [
         "docs/commands/",
-        "docs/foundations/",
-        "docs/planning/",
         "docs/references/",
         "docs/standards/",
         "docs/templates/"
@@ -3157,7 +2517,7 @@
       "path": "docs/commands/core_python/watchtower_core_query.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Entry page for all governed query commands, including planning, standards, references, and trace surfaces.",
+      "summary": "Entry page for all governed query commands, including coordination, standards, references, and trace surfaces.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3244,16 +2604,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_query_planning.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Canonical deep-planning query page for one trace-linked planning record with explicit status semantics.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/commands/core_python/watchtower_core_query_project_context.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -3324,16 +2674,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_sync_planning_catalog.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Rebuild surface for the canonical planning catalog derived from trace-linked planning sources.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/commands/core_python/watchtower_core_task.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -3361,644 +2701,6 @@
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/foundations/",
-      "kind": "directory",
-      "surface_kind": "documentation_family",
-      "summary": "Holds retained compatibility copies of the foundations family until the root cutover removes the legacy path.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "tags": [
-        "foundations",
-        "product"
-      ],
-      "related_paths": [
-        "docs/standards/"
-      ]
-    },
-    {
-      "path": "docs/planning/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Holds retained legacy planning artifacts pending promotion or purge.",
-      "parent_path": "docs/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "planning docs",
-        "planning corpus"
-      ],
-      "tags": [
-        "planning",
-        "documentation"
-      ],
-      "related_paths": [
-        "docs/planning/prds/",
-        "docs/planning/design/",
-        "docs/planning/decisions/"
-      ]
-    },
-    {
-      "path": "docs/planning/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the planning directory and its document families.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/coordination_tracking.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Human-readable companion tracker for retained traced planning context and broader family navigation.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/decisions/",
-      "kind": "directory",
-      "surface_kind": "decision_docs",
-      "summary": "Holds durable decision records and decision tracking surfaces.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "decision records",
-        "adrs"
-      ],
-      "tags": [
-        "decisions",
-        "governance"
-      ],
-      "related_paths": [
-        "docs/planning/decisions/decision_tracking.md",
-        "core/control_plane/indexes/decisions/"
-      ]
-    },
-    {
-      "path": "docs/planning/decisions/README.md",
-      "kind": "file",
-      "surface_kind": "decision_record",
-      "summary": "Describes the purpose of the decisions directory, its current contents, and the standards that govern it.",
-      "parent_path": "docs/planning/decisions/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/decisions/core_python_workspace_root.md",
-      "kind": "file",
-      "surface_kind": "decision_record",
-      "summary": "Decision record for using core/python as the single Python workspace root.",
-      "parent_path": "docs/planning/decisions/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/decisions/decision_tracking.md",
-      "kind": "file",
-      "surface_kind": "decision_tracker",
-      "summary": "Human-readable tracker for the current decision-record corpus.",
-      "parent_path": "docs/planning/decisions/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "decision tracker"
-      ],
-      "tags": [
-        "decisions",
-        "tracking"
-      ],
-      "related_paths": [
-        "docs/planning/decisions/",
-        "core/control_plane/indexes/decisions/decision_index.json"
-      ]
-    },
-    {
-      "path": "docs/planning/design/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Holds feature designs, implementation plans, and design tracking surfaces.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "tags": [
-        "design"
-      ],
-      "related_paths": [
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/design/features/",
-        "docs/planning/design/implementation/"
-      ]
-    },
-    {
-      "path": "docs/planning/design/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the design directory, its document families, and the standards that govern them.",
-      "parent_path": "docs/planning/design/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/design_tracking.md",
-      "kind": "file",
-      "surface_kind": "design_tracker",
-      "summary": "Human-readable tracker for the current feature designs, implementation plans, and their main relationships.",
-      "parent_path": "docs/planning/design/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "design tracker",
-        "design tracking"
-      ],
-      "tags": [
-        "design",
-        "tracking"
-      ],
-      "related_paths": [
-        "docs/planning/design/features/",
-        "docs/planning/design/implementation/",
-        "core/control_plane/indexes/design_documents/design_document_index.json"
-      ]
-    },
-    {
-      "path": "docs/planning/design/features/",
-      "kind": "directory",
-      "surface_kind": "design_docs",
-      "summary": "Holds feature-level technical design documents that define recommended solution direction before implementation planning.",
-      "parent_path": "docs/planning/design/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/README.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Describes the purpose of the feature-design directory, its current documents, and the standards that govern them.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for a future reusable acceptance and validation-evidence reconciliation phase.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/command_documentation_and_lookup.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for human-readable command pages and machine-readable command lookup.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/compact_document_authoring_and_tracking.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for compact default templates, compact planning trackers, and proportional authoring guidance.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/core_python_workspace_and_harness.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for the consolidated core Python workspace and the first helper-harness package boundaries.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for GitHub issue forms, pull request expectations, and the hosted project field model.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/github_task_push_sync.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for push-only GitHub sync from local task records to issues and optional project items.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for initiative closeout state and the generated planning trackers that mirror it.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/python_validator_execution.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for the Python validator execution layer driven by the control-plane validator registry.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/schema_resolution_and_index_search.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for deterministic local schema resolution and index-backed repository search.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/features/structural_rewrite_program.md",
-      "kind": "file",
-      "surface_kind": "feature_design",
-      "summary": "Feature design for executing the guarded structural rewrite program through the closed final Phase 4 outcome review and explicit program closeout decision.",
-      "parent_path": "docs/planning/design/features/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/",
-      "kind": "directory",
-      "surface_kind": "design_docs",
-      "summary": "Holds implementation-plan documents that break approved designs into concrete engineering work.",
-      "parent_path": "docs/planning/design/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "implementation plans"
-      ],
-      "tags": [
-        "design",
-        "implementation"
-      ],
-      "related_paths": [
-        "docs/planning/design/features/",
-        "docs/planning/design/design_tracking.md"
-      ]
-    },
-    {
-      "path": "docs/planning/design/implementation/README.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Describes the purpose of the implementation-plan directory, its current plans, and the standards that govern them.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the bounded artifact-role registry pilot that opens Phase 2 with one additive read-only slice.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Entry package for the bounded Phase 3 command-authority normalization checkpoint.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the first bounded Phase 3 slice that reconciles command-doc source surfaces to the current family-owned command authority model.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Entry package for the bounded next Phase 4 checkpoint around the remaining direct initiative-closeout write-path outlier.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the bounded Phase 4 slice that reuses coordination sync for the shared closeout outputs after the traceability write.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Entry package for the bounded next Phase 4 checkpoint around the remaining direct closeout planning-tracker refresh step.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the bounded Phase 4 slice that routes the remaining closeout tracker refresh step through one private closeout-local boundary and closes through one explicit outcome review plus program closeout decision.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the first bounded Phase 4 slice that introduces one private planning projection snapshot behind initiative-index and planning-catalog sync.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Entry package for the bounded Phase 4 shared-projection and private internal-planning-graph checkpoint.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/structural_rewrite_program.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the landed closeout-tracking refresh-boundary slice, the closed final outcome review, and the explicit program closeout decision.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
-      "kind": "file",
-      "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening.",
-      "parent_path": "docs/planning/design/implementation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/initiatives/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Holds the initiative-family tracker and retained initiative companion surfaces.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/initiatives/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the initiatives directory and how it relates to the family-specific planning surfaces.",
-      "parent_path": "docs/planning/initiatives/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/initiatives/initiative_tracking.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Generated human-readable initiative board for current traced initiatives, their phases, active owners, and next steps.",
-      "parent_path": "docs/planning/initiatives/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/prds/",
-      "kind": "directory",
-      "surface_kind": "prd_docs",
-      "summary": "Holds product requirements documents and PRD tracking surfaces.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "prds",
-        "requirements docs"
-      ],
-      "tags": [
-        "planning",
-        "requirements"
-      ],
-      "related_paths": [
-        "docs/planning/prds/prd_tracking.md",
-        "core/control_plane/indexes/prds/"
-      ]
-    },
-    {
-      "path": "docs/planning/prds/README.md",
-      "kind": "file",
-      "surface_kind": "prd",
-      "summary": "Describes the purpose of the PRD directory, its current contents, and the standards that govern it.",
-      "parent_path": "docs/planning/prds/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/prds/core_python_foundation.md",
-      "kind": "file",
-      "surface_kind": "prd",
-      "summary": "PRD for the core Python workspace, control-plane loading, validation, query, and traceability foundation.",
-      "parent_path": "docs/planning/prds/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/prds/prd_tracking.md",
-      "kind": "file",
-      "surface_kind": "prd_tracker",
-      "summary": "Human-readable tracker for the current PRD corpus.",
-      "parent_path": "docs/planning/prds/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "prd tracker"
-      ],
-      "tags": [
-        "planning",
-        "tracking"
-      ],
-      "related_paths": [
-        "docs/planning/prds/",
-        "core/control_plane/indexes/prds/prd_index.json"
-      ]
-    },
-    {
-      "path": "docs/planning/prds/structural_rewrite_program.md",
-      "kind": "file",
-      "surface_kind": "prd",
-      "summary": "PRD for the guarded structural rewrite program through the closed final Phase 4 outcome review and explicit program closeout decision.",
-      "parent_path": "docs/planning/prds/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/prds/template_and_output_efficiency.md",
-      "kind": "file",
-      "surface_kind": "prd",
-      "summary": "PRD for compact template defaults, compact tracker outputs, and proportional workflow guidance.",
-      "parent_path": "docs/planning/prds/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Holds the derived human task tracker plus retained historical task Markdown.",
-      "parent_path": "docs/planning/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the task-tracking directory and its retained historical boundaries.",
-      "parent_path": "docs/planning/tasks/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/closed/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Retained historical terminal-task archive tree and entrypoint README.",
-      "parent_path": "docs/planning/tasks/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/closed/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the retained historical closed-task archive root.",
-      "parent_path": "docs/planning/tasks/closed/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/closed/archive/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Holds dated historical terminal task records under `YYYY/MM/DD/` directories.",
-      "parent_path": "docs/planning/tasks/closed/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/open/",
-      "kind": "directory",
-      "surface_kind": "planning_root",
-      "summary": "Retained historical pre-cutover non-terminal task Markdown.",
-      "parent_path": "docs/planning/tasks/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/open/README.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Describes the purpose of the retained historical open-task directory.",
-      "parent_path": "docs/planning/tasks/open/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/planning/tasks/task_tracking.md",
-      "kind": "file",
-      "surface_kind": "planning_doc",
-      "summary": "Generated human-readable task board derived from live initiative-local task state.",
-      "parent_path": "docs/planning/tasks/",
-      "maturity": "supporting",
-      "priority": "medium",
       "audience_hint": "shared"
     },
     {
@@ -4194,26 +2896,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/standards/data_contracts/decision_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for machine-readable decision indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for machine-readable design-document indexes.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/standards/data_contracts/format_selection_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -4244,30 +2926,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/standards/data_contracts/planning_catalog_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for the canonical machine-readable planning catalog.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/standards/data_contracts/planning_index_family_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the shared baseline for the planning-related derived index standards and the family-level discoverability contract.",
-      "parent_path": "docs/standards/data_contracts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/data_contracts/prd_index_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the family-specific contract for machine-readable PRD indexes.",
       "parent_path": "docs/standards/data_contracts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4434,16 +3096,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/standards/documentation/decision_record_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for decision records under `docs/planning/decisions/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/standards/documentation/documentation_semantics_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -4454,40 +3106,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/standards/documentation/feature_design_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for feature-design documents under `docs/planning/design/features/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/standards/documentation/foundation_md_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Defines the standard for governed foundation documents under `docs/foundations/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/implementation_plan_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for implementation-plan documents under `docs/planning/design/implementation/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/prd_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the standard for PRD documents.",
+      "summary": "Defines the standard for governed foundation documents under `core/docs/foundations/`.",
       "parent_path": "docs/standards/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4528,16 +3150,6 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for governed standard and best-practice documents under `docs/standards/`.",
-      "parent_path": "docs/standards/documentation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/standards/documentation/task_md_standard.md",
-      "kind": "file",
-      "surface_kind": "standard_doc",
-      "summary": "Defines the retained-history standard for legacy task Markdown under `docs/planning/tasks/`.",
       "parent_path": "docs/standards/documentation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -5000,16 +3612,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/templates/decision_record_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a durable decision record under `docs/planning/decisions/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/templates/documentation_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
@@ -5020,40 +3622,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/templates/feature_design_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a feature-level technical design document.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/templates/foundation_document_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
-      "summary": "Template for a governed foundation document under `docs/foundations/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/implementation_plan_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for an implementation-plan document under `docs/planning/design/implementation/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/templates/prd_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for a PRD under `docs/planning/prds/`.",
+      "summary": "Template for a governed foundation document under `core/docs/foundations/`.",
       "parent_path": "docs/templates/",
       "maturity": "supporting",
       "priority": "medium",
@@ -5100,16 +3672,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/templates/task_template.md",
-      "kind": "file",
-      "surface_kind": "template_doc",
-      "summary": "Template for retained historical task Markdown under `docs/planning/tasks/`.",
-      "parent_path": "docs/templates/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/templates/workflow_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
@@ -5122,7 +3684,7 @@
     {
       "path": "plan/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_workspace",
       "summary": "Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers.",
       "parent_path": ".",
       "maturity": "supporting",
@@ -5132,9 +3694,19 @@
     {
       "path": "plan/.wt/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_workspace",
       "summary": "Holds the authoritative machine-readable plan-pack root and Stage 1 bootstrap record.",
       "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/.wt/indexes/",
+      "kind": "directory",
+      "surface_kind": "plan_workspace",
+      "summary": "Canonical live plan-workspace indexes for coordination, initiatives, tasks, readiness, discrepancies, evidence, and other execution-state projections.",
+      "parent_path": "plan/.wt/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"
@@ -5152,7 +3724,7 @@
     {
       "path": "plan/README.md",
       "kind": "file",
-      "surface_kind": "repository_file",
+      "surface_kind": "plan_surface",
       "summary": "Describes the purpose of the plan root and the main surfaces seeded here.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5162,7 +3734,7 @@
     {
       "path": "plan/docs/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_guidance_family",
       "summary": "Holds durable promoted plan guidance plus the mirrored foundations family.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5172,17 +3744,17 @@
     {
       "path": "plan/docs/README.md",
       "kind": "file",
-      "surface_kind": "repository_file",
+      "surface_kind": "plan_guidance",
       "summary": "Describes the purpose of the plan docs root and its current migration boundary.",
       "parent_path": "plan/docs/",
-      "maturity": "supporting",
-      "priority": "medium",
+      "maturity": "authoritative",
+      "priority": "high",
       "audience_hint": "shared"
     },
     {
       "path": "plan/docs/decisions/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_guidance_family",
       "summary": "Holds durable decision records promoted out of live initiative work.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -5192,7 +3764,7 @@
     {
       "path": "plan/docs/foundations/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "documentation_family",
       "summary": "Holds the duplicated foundations corpus for plan-domain guidance roots.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -5202,7 +3774,7 @@
     {
       "path": "plan/docs/patterns/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_guidance_family",
       "summary": "Holds reusable patterns promoted from validated initiative outcomes.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -5212,7 +3784,7 @@
     {
       "path": "plan/docs/references/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_guidance_family",
       "summary": "Holds curated plan-domain reference material promoted from initiative-local authored inputs.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -5222,7 +3794,7 @@
     {
       "path": "plan/docs/standards/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_guidance_family",
       "summary": "Holds durable operational standards promoted from initiative-local guidance.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -5232,7 +3804,7 @@
     {
       "path": "plan/initiatives/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_workspace",
       "summary": "Holds pack-wide initiative containers for live work.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5242,7 +3814,7 @@
     {
       "path": "plan/plan_overview.md",
       "kind": "file",
-      "surface_kind": "repository_file",
+      "surface_kind": "plan_surface",
       "summary": "Renders the current pack-level plan status board from authoritative machine state.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5252,7 +3824,7 @@
     {
       "path": "plan/projects/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_workspace",
       "summary": "Holds project containers and project-scoped initiative roots.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5262,7 +3834,7 @@
     {
       "path": "plan/workflows/",
       "kind": "directory",
-      "surface_kind": "repository_surface",
+      "surface_kind": "plan_workspace",
       "summary": "Holds the plan-domain workflow routing tables and plan-owned workflow modules.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -5282,7 +3854,7 @@
     {
       "path": "plan/workflows/README.md",
       "kind": "file",
-      "surface_kind": "repository_file",
+      "surface_kind": "plan_surface",
       "summary": "Describes the purpose of the plan workflow entrypoint and its current migration boundary.",
       "parent_path": "plan/workflows/",
       "maturity": "supporting",
@@ -5308,67 +3880,6 @@
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "automation"
-    },
-    {
-      "path": "workflows/README.md",
-      "kind": "file",
-      "surface_kind": "repository_file",
-      "summary": "Describes the purpose of the workflows directory and the main workflow entrypoints stored here.",
-      "parent_path": "workflows/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "workflows/ROUTING_TABLE.md",
-      "kind": "file",
-      "surface_kind": "routing_compatibility",
-      "summary": "Compatibility note pointing readers to the split workflow roots.",
-      "parent_path": "workflows/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "routing table"
-      ],
-      "tags": [
-        "routing",
-        "workflow selection"
-      ],
-      "related_paths": [
-        "AGENTS.md",
-        "workflows/modules/"
-      ]
-    },
-    {
-      "path": "workflows/modules/",
-      "kind": "directory",
-      "surface_kind": "workflow_family",
-      "summary": "Compatibility copies retained for older links while core/workflows/ and plan/workflows/ own current workflow authority.",
-      "parent_path": "workflows/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared",
-      "aliases": [
-        "workflow modules"
-      ],
-      "tags": [
-        "workflow execution"
-      ],
-      "related_paths": [
-        "workflows/ROUTING_TABLE.md",
-        "docs/standards/workflows/"
-      ]
-    },
-    {
-      "path": "workflows/modules/README.md",
-      "kind": "file",
-      "surface_kind": "workflow_compatibility",
-      "summary": "Describes the purpose of the compatibility workflow modules directory.",
-      "parent_path": "workflows/modules/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
     }
   ]
 }

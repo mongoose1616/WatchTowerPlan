@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "id": "purge.standard_authoring_surface_alignment",
+  "title": "Trace Purge Record for Standard Authoring Surface Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.standard_authoring_surface_alignment",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-11T20:05:17Z",
+  "purged_at": "2026-03-19T07:19:14Z",
+  "closure_reason": "Closed after aligning the standard-authoring scaffold, standards lookup surfaces, and regression coverage with the governed standard-document contract.",
+  "summary": "Removed the legacy docs-backed planning package, acceptance contract, and validation evidence as part of the hard cutover to live plan authority.",
+  "surviving_authority_paths": [
+    "core/control_plane/indexes/coordination/coordination_index.json",
+    "core/control_plane/indexes/initiatives/initiative_index.json",
+    "core/control_plane/indexes/standards/standard_index.json",
+    "core/control_plane/indexes/tasks/task_index.json",
+    "core/python/tests/integration/",
+    "core/python/tests/unit/",
+    "decisions.md",
+    "docs/commands/core_python/watchtower_core_query_standards.md",
+    "docs/standards/documentation/standard_md_standard.md",
+    "docs/templates/standard_document_template.md",
+    "plan/tracking/coordination_tracking.md",
+    "plan/tracking/initiative_tracking.md",
+    "plan/tracking/task_tracking.md",
+    "requirements.md"
+  ],
+  "purged_paths": [
+    "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.json",
+    "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.json",
+    "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/design/features/standard_authoring_surface_alignment.md",
+    "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/prds/standard_authoring_surface_alignment.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/align_standard_document_template_with_governed_authoring_contract.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+    "docs/planning/tasks/closed/archive/2026/03/11/standard_authoring_surface_alignment_bootstrap.md"
+  ]
+}

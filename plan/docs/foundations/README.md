@@ -39,7 +39,7 @@
 
 - `core/docs/foundations/` is the authored source.
 - `plan/docs/foundations/` must remain byte-identical to the authored source.
-- `docs/foundations/` is a retained compatibility path during the hard cutover and should not receive independent authored changes.
+- `docs/foundations/` is retired and must not be recreated as a third foundations family.
 
 ## Paths
 | Path | Description |

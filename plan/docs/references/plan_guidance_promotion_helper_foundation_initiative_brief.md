@@ -1,54 +1,48 @@
 ---
-trace_id: trace.plan_guidance_promotion_helper_foundation
+trace_id: trace.guidance.plan_guidance_promotion_helper_foundation_initiative_brief
 id: reference.plan_guidance_promotion_helper_foundation_initiative_brief
-title: 'Plan Guidance Promotion Helper Foundation Reference: Plan Guidance Promotion
-  Helper Foundation'
-summary: Promoted reference extracted from the initiative brief for Plan Guidance
-  Promotion Helper Foundation. Adds governed promotion-policy and guidance-promotion
-  helpers, then extracts approved initiative-local outputs into durable plan/docs
-  guidance surfaces so requirements.md and decisions.md no longer stop at promotion
-  shells.
+title: Guidance Promotion Reference
+summary: Durable reference for governed guidance promotion. Describes how initiative-local authored inputs become durable plan guidance while provenance lives in machine indexes rather than in source-package references.
 type: reference
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-17T22:19:46Z'
+updated_at: '2026-03-19T10:10:00Z'
 audience: shared
 authority: reference
 applies_to:
-- initiative.plan_guidance_promotion_helper_foundation
-- plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md
-- promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell
+- plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md
+- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
+- plan/.wt/indexes/promotion_index.json
 tags:
 - promoted_guidance
 - reference
-- plan_guidance_promotion_helper_foundation
+- guidance_promotion
 - initiative_brief
 ---
 
 # Subject Summary
 
-Plan Guidance Promotion Helper Foundation is promoted from `plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md` in `Plan Guidance Promotion Helper Foundation`. Adds governed promotion-policy and guidance-promotion helpers, then extracts approved initiative-local outputs into durable plan/docs guidance surfaces so requirements.md and decisions.md no longer stop at promotion shells.
+This reference captures the durable operating model for governed guidance promotion. Use it when initiative-local authored inputs need to become durable plan guidance without leaving live-package references embedded in the resulting document.
 
 ## Usage Guidance
 
-- Use this reference when implementing or reviewing `Plan Guidance Promotion Helper Foundation`-style guidance promotion flows.
-- Treat `promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell` and `plan/.wt/registries/promotion_policy_registry.json` as the machine companions for this document.
+- Use this reference when implementing or reviewing promotion of initiative-local inputs into `plan/docs/**`.
+- Treat `plan/.wt/registries/promotion_policy_registry.json`, `plan/.wt/indexes/guidance_index.json`, and `plan/.wt/indexes/promotion_index.json` as the machine companions for this document.
 
-## Provenance or Source Notes
+## Boundaries
 
-- Source initiative: `initiative.plan_guidance_promotion_helper_foundation` (`trace.plan_guidance_promotion_helper_foundation`)
-- Source artifact: `plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md`
-- Promotion record: `promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell`
-- Evidence refs: `evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle`
+- Durable guidance belongs in `plan/docs/**`.
+- Live execution state, closeout artifacts, and evidence bundles remain under initiative-local `plan/**` roots.
 
 ## Related Surfaces
 
 - `plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md`
-- `plan/initiatives/plan_guidance_promotion_helper_foundation/initiative_brief.md`
+- `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`
 - `plan/.wt/indexes/guidance_index.json`
 - `plan/.wt/indexes/promotion_index.json`
 
 ## Notes
 
-- Keep this document durable; live execution details belong in initiative-local state and rendered views.
+- Keep this document durable; initiative-local authored inputs are temporary proof surfaces, not long-term guidance roots.

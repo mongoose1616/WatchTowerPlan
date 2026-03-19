@@ -16,8 +16,8 @@ applies_to:
   - ".github/"
   - "plan/initiatives/"
   - "plan/projects/"
-  - "docs/planning/tasks/task_tracking.md"
-  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
+  - "plan/tracking/task_tracking.md"
+  - "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github project field model"
@@ -88,7 +88,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 | `Priority` | Single select | Use `Critical`, `High`, `Medium`, `Low` if the team needs a hosted priority view. |
 | `Owner` | Text or assignee mirror | Mirrors the repo-local task owner when helpful. |
 | `Trace ID` | Text | Stable trace link back to the planning corpus. |
-| `Area` | Single select or text | Optional high-level repo area such as `core/python` or `docs/planning`. |
+| `Area` | Single select or text | Optional high-level repo area such as `core/python` or `plan/initiatives`. |
 | `Size` | Single select | Optional team-specific sizing field. |
 | `Iteration` | Iteration | Optional cadence field when the team uses GitHub iterations. |
 
@@ -101,7 +101,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `sync`
-- `Operational Surfaces`: `.github/`; `plan/initiatives/`; `plan/projects/`; `docs/planning/tasks/task_tracking.md`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `.github/README.md`
+- `Operational Surfaces`: `.github/`; `plan/initiatives/`; `plan/projects/`; `plan/tracking/task_tracking.md`; `core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py`; `.github/README.md`
 
 ## Validation
 - GitHub issue forms should ask for enough information to create or link the corresponding repo-local artifact.

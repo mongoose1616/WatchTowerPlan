@@ -1,26 +1,25 @@
 ---
-trace_id: trace.plan_guidance_promotion_helper_foundation
+trace_id: trace.guidance.plan_guidance_promotion_helper_foundation_decision_notes
 id: standard.plan_guidance_promotion_helper_foundation_decision_notes
-title: 'Plan Guidance Promotion Helper Foundation Standard: Plan Guidance Promotion
-  Helper Foundation Decision Notes'
-summary: Promoted standard extracted from the decision notes for Plan Guidance Promotion
-  Helper Foundation. Optional decision notes seeded during initiative bootstrap.
+title: Guidance Promotion Standard
+summary: Durable operational standard for governed guidance promotion. Defines the required machine contracts and durable-document expectations that allow source initiative packages to be purged cleanly.
 type: standard
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-17T22:19:46Z'
+updated_at: '2026-03-19T10:10:00Z'
 audience: shared
 authority: authoritative
 applies_to:
-- initiative.plan_guidance_promotion_helper_foundation
-- plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md
-- promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell
+- plan/docs/standards/plan_guidance_promotion_helper_foundation_decision_notes.md
+- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
+- plan/.wt/indexes/promotion_index.json
 ---
 
 # Purpose
 
-This standard captures the rule-bearing obligations for durable guidance promotion proven by `Plan Guidance Promotion Helper Foundation`. Optional decision notes seeded during initiative bootstrap.
+This standard captures the rule-bearing obligations for durable guidance promotion. Durable guidance should remain authoritative after the source initiative package is closed and purged.
 
 ## Applicability
 
@@ -40,11 +39,9 @@ This standard captures the rule-bearing obligations for durable guidance promoti
 
 ## Examples
 
-- `plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md` -> `plan/docs/standards/plan_guidance_promotion_helper_foundation_decision_notes.md`
+- `plan/initiatives/example/decision_notes.md` -> `plan/docs/standards/example_decision_notes.md`
 
 ## Notes
 
-- Source initiative: `initiative.plan_guidance_promotion_helper_foundation` (`trace.plan_guidance_promotion_helper_foundation`)
-- Source artifact: `plan/initiatives/plan_guidance_promotion_helper_foundation/decision_notes.md`
-- Promotion record: `promotion.plan_guidance_promotion_helper_foundation.bootstrap_shell`
-- Evidence refs: `evidence.plan_guidance_promotion_helper_foundation.bootstrap_validation_bundle`
+- Durable guidance should stand on its own after the source initiative package is closed and purged.
+- Promotion indexes carry the machine-readable provenance for the guidance family.

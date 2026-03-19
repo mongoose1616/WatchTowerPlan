@@ -45,7 +45,7 @@ uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validatio
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json
+uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json
 ```
 
 ```sh
@@ -70,18 +70,18 @@ uv run watchtower-core validate front-matter --path docs/standards/metadata/fron
 
 ```sh
 cd core/python
-uv run watchtower-core validate front-matter --path docs/standards/metadata/front_matter_standard.md --record-evidence --trace-id trace.core_python_foundation
+uv run watchtower-core validate front-matter --path docs/standards/metadata/front_matter_standard.md --record-evidence --trace-id trace.governed_acceptance_example
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json
+uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_example --format json
 ```
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints validate-specific help and exits successfully.
 - The command group is a stable entrypoint for governed validation behavior rather than a one-off script surface.
-- The current leaf commands are `all` for the current repo baseline suite plus acceptance reconciliation, `suite` for one pack-declared validation suite, `front-matter` for governed Markdown metadata, `document-semantics` for governed Markdown structure, repo-local link integrity, and applied-reference rules, `artifact` for schema-backed JSON artifacts or direct external schema validation, and `acceptance` for semantic reconciliation across PRD acceptance, contracts, evidence, validators, and traceability.
+- The current leaf commands are `all` for the current repo baseline suite plus acceptance reconciliation, `suite` for one pack-declared validation suite, `front-matter` for governed Markdown metadata, `document-semantics` for governed Markdown structure, repo-local link integrity, and applied-reference rules, `artifact` for schema-backed JSON artifacts or direct external schema validation, and `acceptance` for semantic reconciliation across trace-level acceptance IDs, contracts, evidence, validators, source-surface links, and traceability.
 - Individual leaf commands may return a non-zero exit code when validation fails even if the command itself executed successfully.
 - Leaf commands may optionally emit durable evidence artifacts and synchronized traceability updates when they explicitly support that behavior.
 
@@ -90,7 +90,7 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 |---|---|
 | `watchtower-core validate all` | Runs the current explicit validation families across the governed repository surfaces. |
 | `watchtower-core validate suite` | Runs one pack-declared validation suite with optional pack-settings selection. |
-| `watchtower-core validate acceptance` | Validates one trace across PRD acceptance IDs, acceptance contracts, evidence, validators, and traceability. |
+| `watchtower-core validate acceptance` | Validates one trace across trace-level acceptance IDs, acceptance contracts, evidence, validators, source-surface links, and traceability. |
 | `watchtower-core validate artifact` | Validates one governed JSON artifact against registry-backed schema validators. |
 | `watchtower-core validate document-semantics` | Validates governed Markdown documents against repo-native semantic structure rules. |
 | `watchtower-core validate front-matter` | Validates one Markdown document front-matter block. |

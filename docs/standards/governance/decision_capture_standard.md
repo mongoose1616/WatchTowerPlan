@@ -28,8 +28,8 @@ This standard defines how durable repository decisions should be recorded so rat
 ## Scope
 - Applies to durable repository decisions such as architecture choices, governance decisions, standards decisions, workflow-policy decisions, and major planning or design tradeoffs.
 - Covers decision boundaries, statuses, rationale, options, evidence, consequences, and synchronization with canonical repository artifacts.
-- Applies whether the record is expressed as an ADR, a planning decision record, or another durable decision artifact.
-- Uses `docs/planning/decisions/` as the canonical decision-record directory and the decision-record template and index surfaces that support it.
+- Applies whether the record is expressed as an initiative-local `decision_notes.md`, an ADR-style note, or another durable decision artifact.
+- Uses initiative-local `decision_notes.md` during capture and promotes durable accepted policy into `requirements.md`, `decisions.md`, standards, workflow docs, or `plan/docs/**` as appropriate.
 - Does not replace PRDs, implementation plans, standards, or references that should hold the active repository guidance after a decision is accepted.
 
 ## Use When
@@ -39,7 +39,6 @@ This standard defines how durable repository decisions should be recorded so rat
 - Future contributors would likely need the rationale or consequences to avoid re-litigating the same decision.
 
 ## Related Standards and Sources
-- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -50,7 +49,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - [adr_guidance_reference.md](/docs/references/adr_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
-- Store durable decision records under `docs/planning/decisions/`.
+- Store decision work in the initiative package while the work is live, then promote durable accepted policy into the surviving canonical surfaces that govern current behavior.
 - Capture one durable decision per record. Do not blend unrelated decisions into one artifact just because they were discussed together.
 - State the decision in one clear sentence near the top of the record.
 - Mark the status clearly, such as `proposed`, `accepted`, `deferred`, `rejected`, or `superseded`.
@@ -102,7 +101,7 @@ This standard defines how durable repository decisions should be recorded so rat
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `plan/workflows/modules/decision_capture.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `docs/planning/decisions/`
+- `Operational Surfaces`: `plan/workflows/modules/decision_capture.md`; `core/workflows/modules/documentation_refresh.md`; `core/workflows/modules/documentation_generation.md`; `plan/initiatives/`; `plan/projects/`; `decisions.md`
 
 ## Validation
 - The record captures one decision cleanly.
@@ -119,8 +118,8 @@ This standard defines how durable repository decisions should be recorded so rat
 
 ## Change Control
 - Update this standard when the repository changes how durable decisions are recorded, reviewed, or synchronized with canonical artifacts.
-- Update the decision-capture workflow and any decision-record templates or automation in the same change set when this standard changes materially.
-- Update the decision-record document standard and decision index surfaces in the same change set when durable-decision storage or indexing rules change.
+- Update the decision-capture workflow and any durable-decision automation in the same change set when this standard changes materially.
+- Update the canonical promoted guidance surfaces in the same change set when durable-decision storage or promotion rules change.
 
 ## References
 - [decision_capture.md](/plan/workflows/modules/decision_capture.md)

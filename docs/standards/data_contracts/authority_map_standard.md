@@ -22,12 +22,12 @@ This standard defines the role, structure, and boundary rules for the authored a
 ## Purpose
 - Publish one machine-readable policy answer for which planning or governance surface is canonical for a recurring question.
 - Reduce surface-lookup ambiguity for agents, scripts, and maintainers without turning the authority map into a second path index or prose encyclopedia.
-- Keep canonical-versus-rendered-surface relationships explicit as the planning and governance corpus grows.
+- Keep canonical-versus-rendered-surface relationships explicit as the live plan and governance corpus grows.
 
 ## Scope
 - Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/`.
 - Covers placement, root artifact fields, question-entry shape, preferred-command capture, and fallback-path expectations.
-- Does not replace the path index, command index, coordination index, planning catalog, or the human README and command-doc surfaces those canonical machine answers point to.
+- Does not replace the path index, command index, coordination index, initiative index, traceability index, or the human README and command-doc surfaces those canonical machine answers point to.
 
 ## Use When
 - Publishing or changing the canonical machine answer for a common planning or governance question.
@@ -35,9 +35,9 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Reviewing whether a proposed lookup policy belongs in the authority map or in a different registry or index.
 
 ## Related Standards and Sources
-- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md): defines the canonical deep-planning machine join that the authority map should point to for full trace-linked planning context.
 - [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md): defines the machine start-here planning surface the authority map should point to for current-state questions.
-- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from the planning catalog.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): defines the machine initiative-family surface the authority map should point to for broader active-or-history initiative lookup.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from initiative and coordination views.
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): defines the broader repository path lookup surface the authority map must not duplicate.
 - [schema_catalog_standard.md](/docs/standards/data_contracts/schema_catalog_standard.md): defines schema-catalog update expectations for this registry family.
 - [README.md](/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
@@ -106,8 +106,8 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Prefer updating the authority map over scattering canonical-surface policy across several READMEs.
 
 ## References
-- [planning_catalog_standard.md](/docs/standards/data_contracts/planning_catalog_standard.md)
 - [coordination_index_standard.md](/docs/standards/data_contracts/coordination_index_standard.md)
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
 - [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md)
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
 - [README.md](/core/control_plane/registries/README.md)

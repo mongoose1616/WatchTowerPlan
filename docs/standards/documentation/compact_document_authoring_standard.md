@@ -24,7 +24,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## Scope
 - Applies to repository-authored templates under `docs/templates/`.
-- Applies to governed planning and decision document families under `docs/planning/`.
+- Applies to live `plan/**` rendered trackers and initiative-local authored planning packages.
 - Applies to generic documentation and workflow guidance when that guidance materially shapes authored output size.
 - Does not replace family-specific front matter, traceability, or schema requirements.
 
@@ -54,7 +54,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `docs/templates/`; `docs/templates/README.md`; `docs/planning/`
+- `Operational Surfaces`: `docs/templates/`; `docs/templates/README.md`; `plan/tracking/`; `plan/initiatives/`; `plan/projects/`
 
 ## Validation
 - Reviewers should reject templates that normalize low-value optional sections into every new document.
@@ -67,11 +67,9 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## References
 - [docs/templates/README.md](/docs/templates/README.md)
-- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md)
-- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md)
-- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md)
-- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md)
 
 ## Updated At
 - `2026-03-18T14:00:00Z`

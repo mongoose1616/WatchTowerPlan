@@ -5,7 +5,7 @@ This command rebuilds the governed initiative index from traceability plus the c
 
 ## Use When
 - You changed traced planning, task, evidence, or closeout state and need the cross-family initiative view to match.
-- You want to inspect the rebuilt initiative index in dry-run mode before writing it to the canonical control-plane path.
+- You want to inspect the rebuilt initiative index in dry-run mode before writing it to the canonical live plan-workspace path.
 - You want a deterministic way to regenerate initiative coordination data without rebuilding unrelated derived artifacts.
 
 ## Command
@@ -23,7 +23,7 @@ uv run watchtower-core sync initiative-index [--write] [--output <path>] [--incl
 ```
 
 ## Arguments and Options
-- `--write`: Write the rebuilt artifact to the canonical initiative-index path in `core/control_plane/`.
+- `--write`: Write the rebuilt artifact to the canonical initiative-index path at `plan/.wt/indexes/initiative_index.json`.
 - `--output <path>`: Optional explicit output path for the rebuilt artifact.
 - `--include-document`: Include the rebuilt document in JSON output for inspection or downstream tooling.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -46,7 +46,7 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json
 ```
 
 ## Behavior and Outputs
-- The command reads the governed traceability, PRD, decision, design, and task indexes and rebuilds the machine-readable initiative index deterministically.
+- The command reads the governed traceability index plus the live task index and rebuilds the machine-readable initiative index deterministically.
 - The rebuild projects current phase, active ownership, blockers, the key surface to open first, and the next expected action for each trace.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many initiative entries were rebuilt.
@@ -64,8 +64,8 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
-- `core/control_plane/indexes/initiatives/initiative_index.json`
+- `core/python/src/watchtower_core/plan_runtime/sync/initiative_index.py`
+- `plan/.wt/indexes/initiative_index.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

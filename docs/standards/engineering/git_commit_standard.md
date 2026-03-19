@@ -167,7 +167,7 @@ workflow.
 
 ## Operationalization
 - `Modes`: `workflow`
-- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `plan/tracking/task_tracking.md`
 
 ## Validation
 - One logical change per commit. Refactors, fixes, and docs should be separate when practical.

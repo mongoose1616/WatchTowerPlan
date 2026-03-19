@@ -1,7 +1,7 @@
 # `watchtower-core sync foundation-index`
 
 ## Summary
-This command rebuilds the governed foundation index from the governed foundation documents under `docs/foundations/`.
+This command rebuilds the governed foundation index from the governed foundation documents under `core/docs/foundations/`.
 
 ## Use When
 - You changed a foundation doc and need the machine-readable foundation index to reflect the current intent corpus.
@@ -46,7 +46,7 @@ uv run watchtower-core sync foundation-index --output /tmp/foundation_index.json
 ```
 
 ## Behavior and Outputs
-- The command reads the governed foundation docs under `docs/foundations/` and rebuilds the machine-readable foundation index deterministically.
+- The command reads the governed foundation docs under `core/docs/foundations/` and rebuilds the machine-readable foundation index deterministically.
 - The rebuild validates foundation front matter, enforces required `References` and `Updated At` sections, and captures downstream citation or application use from standards, workflows, and planning docs.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many foundation entries were rebuilt.
@@ -64,7 +64,7 @@ uv run watchtower-core sync foundation-index --output /tmp/foundation_index.json
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`
+- `core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py`
 - `core/control_plane/indexes/foundations/foundation_index.json`
 
 ## Updated At

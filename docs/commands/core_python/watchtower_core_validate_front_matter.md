@@ -54,7 +54,7 @@ uv run watchtower-core validate front-matter --path /tmp/example.md --validator-
 
 ```sh
 cd core/python
-uv run watchtower-core validate front-matter --path docs/standards/metadata/front_matter_standard.md --record-evidence --trace-id trace.core_python_foundation
+uv run watchtower-core validate front-matter --path docs/standards/metadata/front_matter_standard.md --record-evidence --trace-id trace.governed_acceptance_example
 ```
 
 ## Behavior and Outputs

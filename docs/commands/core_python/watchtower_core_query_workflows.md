@@ -28,7 +28,7 @@ uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow
 - `--phase-type <phase>`: Exact workflow phase filter such as `execution`, `validation`, or `reconciliation`.
 - `--task-family <family>`: Exact workflow task-family filter such as `engineering_validation` or `traceability`.
 - `--trigger-tag <tag>`: Exact trigger-tag filter such as `validation`, `github`, or `scope`.
-- `--related-path <path>`: Exact repository-path filter such as `docs/templates/prd_template.md`.
+- `--related-path <path>`: Exact repository-path filter such as `docs/templates/foundation_document_template.md`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `docs/references/github_collaboration_reference.md`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -57,7 +57,7 @@ uv run watchtower-core query workflows --phase-type reconciliation
 
 ```sh
 cd core/python
-uv run watchtower-core query workflows --related-path docs/templates/prd_template.md
+uv run watchtower-core query workflows --related-path docs/templates/foundation_document_template.md
 ```
 
 ```sh
@@ -88,4 +88,4 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-19T20:15:00Z`

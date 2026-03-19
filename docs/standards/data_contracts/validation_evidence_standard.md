@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -22,7 +22,7 @@ This standard defines committed validation-evidence records stored under `core/c
 ## Purpose
 - Provide durable machine-readable records of validation outcomes tied to traces, acceptance items, validators, and governed artifacts.
 - Keep validation history reviewable without turning runtime logs into long-lived control-plane state.
-- Establish the downstream half of the trace chain after PRDs, decisions, designs, and plans.
+- Establish the downstream half of the trace chain after initiative capture, design, implementation planning, and execution.
 
 ## Scope
 - Applies to validation-evidence record artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
@@ -74,7 +74,11 @@ This standard defines committed validation-evidence records stored under `core/c
 | `trace_id` | Required | Shared trace identifier. |
 | `overall_result` | Required | Overall validation outcome for the evidence artifact. |
 | `recorded_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ` for when the evidence was recorded. |
+| `source_surface_paths` | Optional | Source surfaces whose acceptance or planning state the evidence covers. |
+| `source_acceptance_contract_ids` | Optional | Acceptance contracts materially referenced by the evidence artifact. |
 | `checks` | Required | Array of validation check records. |
+| `related_paths` | Optional | Additional high-signal repository paths related to the evidence artifact. |
+| `notes` | Optional | Short artifact-level note. |
 
 ### Check entry fields
 | Field | Requirement | Notes |
@@ -96,18 +100,18 @@ This standard defines committed validation-evidence records stored under `core/c
 5. Update the unified traceability index in the same change set when a new durable evidence artifact is added.
 
 ## Examples
-- A traceability-baseline evidence record can show that PRD, decision, design, acceptance-contract, and traceability-index links are present and valid.
+- A traceability-baseline evidence record can show that source surfaces, acceptance-contract, and traceability-index links are present and valid.
 - A schema-backed check can record the validator ID and the subject artifact path it validated.
 - A transient local smoke test output does not belong in this retained record family unless it is being promoted to durable evidence.
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `docs/planning/prds/core_python_foundation.md`
+- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `plan/initiatives/`; `plan/projects/`
 
 ## Validation
 - Validation-evidence artifacts should validate against their published schema.
 - `validator_id` values should exist in the validator registry when present.
-- `acceptance_ids` should exist in the linked source acceptance contract or PRD when present.
+- `acceptance_ids` should exist in the linked source acceptance contract or source planning input when present.
 - Reviewers should reject evidence artifacts that act like mutable logs, omit trace links, or blur validation outcome with lifecycle status.
 - Repo-local `related_paths` and `subject_paths` should resolve to live repository paths.
 
@@ -118,11 +122,10 @@ This standard defines committed validation-evidence records stored under `core/c
 
 ## References
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
-- [core_python_foundation.md](/docs/planning/prds/core_python_foundation.md)
 - [README.md](/core/control_plane/ledgers/validation_evidence/README.md)
 
 ## Notes
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-19T08:21:14Z`

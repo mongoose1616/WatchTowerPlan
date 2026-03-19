@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T06:23:45Z"
+updated_at: "2026-03-19T20:15:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -41,11 +41,11 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
 
 ## Guidance
 - Start from the routed workflow set and the nearest applicable `AGENTS.md` and `README.md` before making changes.
-- Keep human planning authority in `docs/planning/`, machine-readable authority in `core/control_plane/`, and executable Python behavior in `core/python/`.
+- Keep live planning authority in `plan/**`, machine-readable authority in `core/control_plane/`, durable human guidance in `docs/`, `core/docs/`, and `plan/docs/`, and executable Python behavior in `core/python/`.
 - Prefer deterministic, local-first behavior over hidden heuristics or implicit repository scans.
 - Prefer published indexes, registries, and contracts over hardcoded lookup tables when a governed control-plane surface already exists.
 - Keep CLI entrypoints thin. Put real behavior in package services and pass explicit arguments rather than hardcoding one-off values in commands.
@@ -79,13 +79,13 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 5. Treat the change as incomplete if related indexes, schemas, examples, command docs, or planning trackers are left stale.
 
 ## Examples
-- A new repo-local query command should add its reusable query service under `core/python/src/watchtower_core/repo_ops/query/`, thin CLI wiring under `cli/`, command docs under `docs/commands/`, and a matching command-index entry under `core/control_plane/indexes/commands/`.
+- A new repo-local query command should add its reusable query service under `core/python/src/watchtower_core/plan_runtime/query/`, thin CLI wiring under `cli/`, command docs under `docs/commands/`, and a matching command-index entry under `core/control_plane/indexes/commands/`.
 - A new schema-backed artifact family should add the schema, examples, schema-catalog record, and any affected validators in the same change set.
-- A change to a traced PRD or acceptance contract should keep the matching indexes, evidence expectations, and linked planning surfaces aligned.
+- A change to a traced initiative input or acceptance contract should keep the matching indexes, evidence expectations, and linked planning surfaces aligned.
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `docs/planning/`; `core/workflows/modules/core.md`
+- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `plan/`; `docs/`; `core/workflows/modules/core.md`
 
 ## Validation
 - Code changes should run the narrowest meaningful automated checks for the touched surfaces, such as targeted `pytest`, schema validation, command smoke tests, or index validation.
@@ -105,11 +105,11 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 - [command_index_standard.md](/docs/standards/data_contracts/command_index_standard.md)
 - [traceability_standard.md](/docs/standards/governance/traceability_standard.md)
-- [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
 
 ## Notes
 - This standard is intentionally repo-specific. It complements narrower standards rather than replacing them.
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-18T06:23:45Z`
+- `2026-03-19T20:15:00Z`

@@ -24,7 +24,7 @@ authority: "authoritative"
 > Use repo-relative file paths for exact files, repo-relative directory paths ending in `/` for directories, and bounded repo-relative glob patterns for repeating families.
 > Keep `Updated At` aligned with front matter `updated_at`.
 > Leave one blank line between the last item in a bullet or numbered list and the next heading.
-> Prefer repository-native Markdown links such as `/docs/...`, `/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
+> Prefer repository-native Markdown links such as `/docs/...`, `/core/workflows/...`, `/plan/workflows/...`, `/core/...`, or document-relative targets. Do not use filesystem-absolute checkout paths such as `/home/...`.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
 > Keep the template compact, but do not mark contract-required sections as optional.
 

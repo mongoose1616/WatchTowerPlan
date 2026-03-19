@@ -5,7 +5,7 @@ This command group provides read-only lookup over governed repository indexes an
 
 ## Use When
 - You need to choose the correct lookup path before opening raw JSON or scanning docs manually.
-- You want one read-only command group for current planning state, deep planning joins, command discovery, standards lookup, or trace-linked records.
+- You want one read-only command group for live plan state, command discovery, standards lookup, or trace-linked records.
 - You need structured JSON output for scripts, workflows, or agent use.
 
 ## Command
@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `artifacts`, `readiness`, `discrepancies`, `plan-evidence`, `closeouts`, `reviews`, `projects`, `project-context`, `planning`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `foundations`, or `trace`.
+- `<query_command>`: Choose a leaf command such as `coordination`, `initiatives`, `tasks`, `artifacts`, `readiness`, `discrepancies`, `plan-evidence`, `closeouts`, `reviews`, `projects`, `project-context`, `authority`, `commands`, `paths`, `standards`, `workflows`, `references`, `acceptance`, `evidence`, `foundations`, or `trace`.
 - `-h`, `--help`: Show the query-group help text.
 - Pass filters, limits, and output-mode flags to the selected leaf command.
 
@@ -60,11 +60,6 @@ uv run watchtower-core query project-context --project-slug watchtower --format 
 
 ```sh
 cd core/python
-uv run watchtower-core query planning --trace-id trace.core_python_foundation --format json
-```
-
-```sh
-cd core/python
 uv run watchtower-core query initiatives --initiative-status completed --format json
 ```
 
@@ -88,8 +83,6 @@ uv run watchtower-core query authority --domain planning --format json
 - Use `closeouts` when you need the current closeout recap contract or terminal closeout summary for one live initiative.
 - Use `reviews` when you need initiative review and promotion approval state on one joined machine surface.
 - Use `projects` when you need project lookup without loading the full project context payload.
-- Filterless `planning` and `initiatives` browse calls now default to `initiative_status=active`; pass explicit `--initiative-status` for terminal history and `--trace-id` when you already know the closed trace.
-- Use `planning` after coordination when you need the canonical deep machine-readable record for one trace.
 - Use `initiatives` when you need broader initiative-family browsing, filtered terminal history, or explicit non-active status lookup.
 - Use `authority` when the main question is which planning or governance surface is canonical.
 - Use `commands` or `paths` when the main task is discovery rather than planning-state inspection.
@@ -108,7 +101,6 @@ uv run watchtower-core query authority --domain planning --format json
 | `watchtower-core query reviews` | Live initiative and promotion review-state lookup surface. |
 | `watchtower-core query projects` | Live project-container browse surface. |
 | `watchtower-core query project-context` | Explicit project-scoped runtime context load on top of pack context. |
-| `watchtower-core query planning` | Canonical deep planning join for one trace. |
 | `watchtower-core query initiatives` | Broader initiative-family and historical-status lookup. |
 | `watchtower-core query authority` | Canonical-surface resolver for planning and governance questions. |
 | `watchtower-core` | Root command that dispatches to this group. |
@@ -119,8 +111,8 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/repo_ops/query/`
-- `core/python/src/watchtower_core/repo_ops/project_context.py`
+- `core/python/src/watchtower_core/plan_runtime/query/`
+- `core/python/src/watchtower_core/plan_runtime/project_context.py`
 
 ## Updated At
 - `2026-03-17T22:39:20Z`

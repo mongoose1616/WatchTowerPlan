@@ -103,7 +103,7 @@ This standard defines repository-standard local git workflow behavior, including
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `plan/tracking/task_tracking.md`; `plan/tracking/coordination_tracking.md`
 
 ## Validation
 - Reviewers should reject branch names that do not follow `<kind>/<slug>` or that encode mutable status or owner metadata.

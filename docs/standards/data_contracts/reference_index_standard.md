@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T18:08:00Z"
+updated_at: "2026-03-19T08:21:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -77,8 +77,8 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `uses_internal_references` | Required | Whether the reference document explicitly maps to local repository surfaces. |
 | `uses_external_references` | Required | Whether the reference document explicitly publishes external canonical upstream URLs. |
 | `canonical_upstream_urls` | Required | External authority URLs from the `Canonical Upstream` section. |
-| `cited_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that cite the reference doc or its canonical upstream URLs. |
-| `applied_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that apply the reference in an applied-reference section or a workflow `Additional Files to Load` section. |
+| `cited_by_paths` | Optional | Governed Markdown paths under `docs/**`, `core/workflows/**`, or `plan/workflows/**` that cite the reference doc or its canonical upstream URLs. |
+| `applied_by_paths` | Optional | Governed Markdown paths under `docs/**`, `core/workflows/**`, or `plan/workflows/**` that apply the reference in an applied-reference section or a workflow `Additional Files to Load` section. |
 | `related_paths` | Optional | Internal repository paths explicitly mapped from the reference document. |
 | `aliases` | Optional | Retrieval-oriented aliases from front matter or curated index data. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
@@ -109,4 +109,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-13T18:08:00Z`
+- `2026-03-19T08:21:14Z`

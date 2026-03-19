@@ -13,7 +13,7 @@ updated_at: "2026-03-18T14:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "docs/planning/initiatives/"
+  - "plan/tracking/initiative_tracking.md"
   - "plan/.wt/indexes/initiative_index.json"
 aliases:
   - "initiative tracking"
@@ -33,7 +33,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - Keep the human initiative tracker rich enough for real browsing instead of collapsing terminal history into count-only summaries.
 
 ## Scope
-- Applies to the human-readable initiative tracker under `docs/planning/initiatives/`.
+- Applies to the human-readable initiative tracker under `plan/tracking/initiative_tracking.md`.
 - Applies to the machine-readable initiative index under `plan/.wt/indexes/initiative_index.json`.
 - Covers initiative phase vocabulary, owner rendering rules, next-step rendering, and the authority boundary between initiative views and their source artifacts.
 - Does not replace PRDs, decisions, designs, plans, task records, or the unified traceability index.
@@ -49,17 +49,18 @@ This standard defines the repository's live initiative tracking model so one tra
 - [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md): defines the repo-level human start-here tracker that now sits above this family view.
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the authoritative live task layer that initiative owner and active-task detail must read from.
 - [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): defines the machine-readable initiative rendered-surface contract.
-- [README.md](/docs/planning/initiatives/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [README.md](/plan/tracking/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Keep the planning corpus split by artifact family:
-  - PRDs in `docs/planning/prds/`
-  - decisions in `docs/planning/decisions/`
-  - designs and plans in `docs/planning/design/`
+- Keep the live initiative package split by responsibility:
+  - initiative capture in `initiative_brief.md`
+  - durable rationale in `decision_notes.md` when needed
+  - technical design in `design_record.md`
+  - implementation sequencing in `implementation_slice.md`
   - engineer-sized execution tasks in live `plan/**/.wt/tasks/**`
-- Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
+- Use the initiative layer as the cross-family coordination view, not as a replacement for those authored surfaces.
 - Use `plan/plan_overview.md` as the live human start-here surface for current planning state.
-- Use `docs/planning/coordination_tracking.md` as the retained human start-here surface for the historical docs-backed planning corpus.
+- Use `plan/tracking/coordination_tracking.md` as the richer human coordination companion beneath the summary-first overview.
 - Treat the initiative index and initiative tracker as derived rendered surfaces, not as the authoritative source for artifact content or task state.
 - Keep `initiative_tracking.md` summary-first, but retain full active and terminal initiative tables so humans can browse history without relying on machine output for ordinary review.
 - Use `plan/.wt/indexes/coordination_index.json` as the live machine start-here path for repo-level planning state.
@@ -97,7 +98,7 @@ This standard defines the repository's live initiative tracking model so one tra
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `docs/planning/initiatives/`; `plan/.wt/indexes/initiative_index.json`; `plan/plan_overview.md`
+- `Operational Surfaces`: `plan/tracking/initiative_tracking.md`; `plan/.wt/indexes/initiative_index.json`; `plan/plan_overview.md`
 
 ## Validation
 - Every initiative entry should correspond to one current traceability entry.
@@ -117,7 +118,7 @@ This standard defines the repository's live initiative tracking model so one tra
 - [coordination_tracking_standard.md](/docs/standards/governance/coordination_tracking_standard.md)
 - [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md)
 - [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md)
-- [README.md](/docs/planning/initiatives/README.md)
+- [README.md](/plan/tracking/README.md)
 
 ## Updated At
 - `2026-03-18T14:00:00Z`

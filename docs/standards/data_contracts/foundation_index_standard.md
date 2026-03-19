@@ -24,11 +24,11 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Scope
 - Applies to machine-readable foundation index artifacts stored under `core/control_plane/indexes/foundations/`.
-- Covers placement, entry shape, reverse-citation expectations, and the relationship between the index and governed foundation docs under `docs/foundations/**`.
+- Covers placement, entry shape, reverse-citation expectations, and the relationship between the index and governed foundation docs under `core/docs/foundations/**`.
 - Does not replace the foundation documents themselves as the normative intent authority.
 
 ## Use When
-- Adding or materially updating a governed foundation document under `docs/foundations/**`.
+- Adding or materially updating a governed foundation document under `core/docs/foundations/**`.
 - Building query or review tooling that needs a compact view over the foundations corpus.
 - Auditing where foundation documents are currently cited or applied across standards, workflows, and planning surfaces.
 
@@ -37,7 +37,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md): reverse-citation behavior should stay aligned with the broader reference-audit model.
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): the foundation index complements path lookup with intent-specific retrieval and audit signals.
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): foundation index timestamps must use UTC RFC 3339 values.
-- [README.md](/docs/foundations/README.md): family entrypoint and inventory surface for the governed foundation documents this index summarizes.
+- [README.md](/core/docs/foundations/README.md): family entrypoint and inventory surface for the governed foundation documents this index summarizes.
 - [README.md](/core/control_plane/indexes/foundations/README.md): family entrypoint and inventory surface for the published foundation-index artifacts.
 
 ## Guidance
@@ -46,7 +46,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Store published foundation indexes under `core/control_plane/indexes/foundations/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published foundation-index artifact.
-- Every foundation index entry must point to an existing governed foundation document under `docs/foundations/`.
+- Every foundation index entry must point to an existing governed foundation document under `core/docs/foundations/`.
 - Carry stable `foundation_id` values from governed front matter.
 - Carry front-matter `audience` into the index so intent-layer routing is queryable without reparsing Markdown.
 - Capture reverse citation and reverse application paths so repo tooling can answer which standards, workflows, and planning docs currently rely on a foundation doc.
@@ -89,11 +89,11 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`; `docs/commands/core_python/watchtower_core_query_foundations.md`; `docs/commands/core_python/watchtower_core_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py`; `core/python/src/watchtower_core/plan_runtime/query/foundations.py`; `docs/commands/core_python/watchtower_core_query_foundations.md`; `docs/commands/core_python/watchtower_core_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.
-- Every `doc_path` should exist and point to a file under `docs/foundations/`.
+- Every `doc_path` should exist and point to a file under `core/docs/foundations/`.
 - Every entry should have a stable `foundation_id`.
 - Every entry should preserve the governed front-matter `audience` value.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
@@ -109,7 +109,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [foundation_md_standard.md](/docs/standards/documentation/foundation_md_standard.md)
 - [reference_index_standard.md](/docs/standards/data_contracts/reference_index_standard.md)
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md)
-- [README.md](/docs/foundations/README.md)
+- [README.md](/core/docs/foundations/README.md)
 - [README.md](/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At

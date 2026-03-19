@@ -1,7 +1,7 @@
 # `watchtower-core query acceptance`
 
 ## Summary
-This command searches the governed acceptance-contract artifacts for a trace, PRD, or acceptance ID.
+This command searches the governed acceptance-contract artifacts for a trace, source surface path, or acceptance ID.
 
 ## Use When
 - You need the machine-readable acceptance boundary for a traced initiative.
@@ -19,30 +19,30 @@ This command searches the governed acceptance-contract artifacts for a trace, PR
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query acceptance [--trace-id <trace_id>] [--source-prd-id <prd_id>] [--acceptance-id <acceptance_id>] [--format <human|json>]
+uv run watchtower-core query acceptance [--trace-id <trace_id>] [--source-surface-path <path>] [--acceptance-id <acceptance_id>] [--format <human|json>]
 ```
 
 ## Arguments and Options
-- `--trace-id <trace_id>`: Exact trace filter such as `trace.core_python_foundation`.
-- `--source-prd-id <prd_id>`: Exact source PRD filter such as `prd.core_python_foundation`.
-- `--acceptance-id <acceptance_id>`: Exact acceptance-ID filter such as `ac.core_python_foundation.002`.
+- `--trace-id <trace_id>`: Exact trace filter such as `trace.governed_acceptance_example`.
+- `--source-surface-path <path>`: Exact source surface path filter such as `plan/initiatives/example/initiative_brief.md`.
+- `--acceptance-id <acceptance_id>`: Exact acceptance-ID filter such as `ac.governed_acceptance_example.001`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query acceptance --trace-id trace.core_python_foundation
+uv run watchtower-core query acceptance --trace-id trace.governed_acceptance_example
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query acceptance --acceptance-id ac.core_python_foundation.002 --format json
+uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_example.001 --format json
 ```
 
 ## Behavior and Outputs
 - The command reads governed acceptance contracts directly from `core/control_plane/contracts/acceptance/`.
-- In `human` mode, the command prints matching contracts with their trace, source PRD, and published acceptance IDs.
+- In `human` mode, the command prints matching contracts with their trace, source surface path, and published acceptance IDs.
 - In `json` mode, the command prints one JSON object with the matching contracts and their required validator IDs.
 
 ## Related Commands
@@ -55,8 +55,8 @@ uv run watchtower-core query acceptance --acceptance-id ac.core_python_foundatio
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
-- `core/python/src/watchtower_core/repo_ops/query/acceptance.py`
+- `core/python/src/watchtower_core/plan_runtime/query/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-19T08:21:14Z`
