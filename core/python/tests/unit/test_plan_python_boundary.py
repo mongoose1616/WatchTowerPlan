@@ -1,3 +1,4 @@
+import ast
 import importlib
 import sys
 from pathlib import Path
@@ -24,7 +25,24 @@ from watchtower_plan.validation import (
 )
 from watchtower_core.validation.all import ValidationAllService
 
-PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
+CORE_PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
+PLAN_PACKAGE_ROOT = (
+    Path(__file__).resolve().parents[3] / "plan" / "python" / "src" / "watchtower_plan"
+)
+
+
+def _iter_import_modules(package_root: Path) -> list[tuple[str, str]]:
+    imports: list[tuple[str, str]] = []
+    for path in sorted(package_root.rglob("*.py")):
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        relative_path = path.relative_to(package_root.parent).as_posix()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    imports.append((relative_path, alias.name))
+            elif isinstance(node, ast.ImportFrom) and node.module is not None:
+                imports.append((relative_path, node.module))
+    return imports
 
 
 def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries() -> None:
@@ -123,8 +141,8 @@ def test_public_closeout_root_fails_closed_with_plan_boundary_guidance() -> None
 
 
 def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> None:
-    assert not (PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
-    assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
+    assert not (CORE_PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "query").glob("*.py")) == [
         "__init__.py",
         "acceptance.py",
         "artifact_families.py",
@@ -142,15 +160,21 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "traceability.py",
         "workflows.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "sync").glob("*.py")) == [
         "__init__.py",
         "command_index.py",
+        "foundation_index.py",
         "harness.py",
+        "path_support.py",
+        "reference_index.py",
+        "reference_resolution.py",
         "rendered_tracking.py",
         "repository_paths.py",
         "route_index.py",
+        "standard_index.py",
+        "workflow_index.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "validation").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "validation").glob("*.py")) == [
         "__init__.py",
         "acceptance.py",
         "all.py",
@@ -164,7 +188,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "pack_targets.py",
         "suite.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "documentation").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "documentation").glob("*.py")) == [
         "__init__.py",
         "front_matter_paths.py",
         "governed_documents.py",
@@ -172,27 +196,45 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "reference_semantics.py",
         "standards.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "rebuild").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "rebuild").glob("*.py")) == [
         "__init__.py",
         "harness.py",
         "rendered_views.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "workflow_execution").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "workflow_execution").glob("*.py")) == [
         "__init__.py",
         "harness.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "evidence").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "evidence").glob("*.py")) == [
         "__init__.py",
         "bundles.py",
         "validation_evidence.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "closeout").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "closeout").glob("*.py")) == [
         "__init__.py",
     ]
-    assert sorted(path.name for path in (PACKAGE_ROOT / "routing").glob("*.py")) == [
+    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "routing").glob("*.py")) == [
         "__init__.py",
         "engine.py",
     ]
+
+
+def test_reusable_core_package_does_not_import_plan_runtime_modules() -> None:
+    offending_imports = [
+        f"{relative_path}: {module_name}"
+        for relative_path, module_name in _iter_import_modules(CORE_PACKAGE_ROOT)
+        if module_name == "watchtower_plan" or module_name.startswith("watchtower_plan.")
+    ]
+    assert offending_imports == []
+
+
+def test_plan_package_does_not_import_host_runtime_modules() -> None:
+    offending_imports = [
+        f"{relative_path}: {module_name}"
+        for relative_path, module_name in _iter_import_modules(PLAN_PACKAGE_ROOT)
+        if module_name == "watchtower_host" or module_name.startswith("watchtower_host.")
+    ]
+    assert offending_imports == []
 
 
 @pytest.mark.parametrize(
