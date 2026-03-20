@@ -48,3 +48,4 @@
 - Use the shared fixtures in `conftest.py` for repeated JSON-writing or similar small helper patterns instead of duplicating one-off utilities.
 - When CLI or sync tests only need read-only plan runtime state, prefer `materialize_minimal_plan_pack(...)` plus module-scoped shared fixture repos instead of copying the full `plan/` tree per test. Reserve full plan-pack materialization for cases that truly exercise durable docs or rendered companion surfaces.
 - When repository-aware tests need mutating setup, prefer a module-scoped baseline repo plus per-test `copytree(...)` isolation so expensive bootstrap or sync preparation runs once without sharing mutated state across tests.
+- When acceptance or evidence fixtures reference governed docs, call `materialize_acceptance_and_evidence_paths(..., REPO_ROOT)` so the helper copies the real source documents instead of creating empty placeholder Markdown files that will fail guidance indexing.
