@@ -56,7 +56,8 @@ def test_public_query_services_cover_pack_surface_and_artifact_family_queries() 
         )
     )
     assert surface_matches[0].path == "plan/.wt/indexes/artifact_index.json"
-    assert "coordination_index" in surface_matches[0].depends_on
+    assert surface_matches[0].rebuildable is True
+    assert surface_matches[0].declaration_sources == ("pack_settings",)
 
     artifact_service = ArtifactFamilyQueryService(
         loader,

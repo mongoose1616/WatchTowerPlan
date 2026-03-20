@@ -264,6 +264,17 @@ def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:
                 "description": "Inline pack settings payload.",
                 "updated_at": "2026-03-16T05:15:00Z",
                 "pack_id": "pack.example",
+                "workspace_roots": {
+                    "workspace_root": "packs/example",
+                    "machine_root": "packs/example/.wt",
+                    "docs_root": "packs/example/docs",
+                    "workflows_root": "packs/example/workflows",
+                    "tracking_root": "packs/example/tracking",
+                    "initiatives_root": "packs/example/initiatives",
+                    "projects_root": "packs/example/projects",
+                    "overview_path": "packs/example/overview.md",
+                },
+                "default_validation_suite_id": "suite.example.validation_baseline",
                 "surfaces": [
                     {
                         "surface_name": "schema_catalog",
@@ -281,6 +292,17 @@ def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:
                 "description": "Invalid pack settings payload.",
                 "updated_at": "2026-03-16T05:15:00Z",
                 "pack_id": "pack.example",
+                "workspace_roots": {
+                    "workspace_root": "packs/example",
+                    "machine_root": "packs/example/.wt",
+                    "docs_root": "packs/example/docs",
+                    "workflows_root": "packs/example/workflows",
+                    "tracking_root": "packs/example/tracking",
+                    "initiatives_root": "packs/example/initiatives",
+                    "projects_root": "packs/example/projects",
+                    "overview_path": "packs/example/overview.md",
+                },
+                "default_validation_suite_id": "suite.example.validation_baseline",
                 "surfaces": [
                     {
                         "surface_name": "schema_catalog",

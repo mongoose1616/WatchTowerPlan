@@ -5,13 +5,16 @@ import tempfile
 from pathlib import Path
 
 from watchtower_core.control_plane.governance_surfaces import GovernanceSurfaceResolver
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import CORE_PACK_SETTINGS_PATH, ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
 def test_governance_surface_resolver_resolves_pack_declared_surface() -> None:
-    resolver = GovernanceSurfaceResolver.from_loader(ControlPlaneLoader(REPO_ROOT))
+    resolver = GovernanceSurfaceResolver.from_loader(
+        ControlPlaneLoader(REPO_ROOT),
+        pack_settings_path=CORE_PACK_SETTINGS_PATH,
+    )
 
     resolution = resolver.resolve("route_index")
 
