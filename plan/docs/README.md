@@ -15,7 +15,7 @@
 | `plan/docs/standards/` | Holds durable operational standards promoted from initiative-local guidance. |
 
 ## Notes
-- `requirements.md` and `decisions.md` remain the authoritative contract while this root is being seeded and future promotion paths are still landing.
+- `requirements.md` and `decisions.md` are the authoritative contract for durable plan guidance and promotion targets.
 - `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
 - Promotion into this root is governed by `plan/.wt/registries/promotion_policy_registry.json`, and the currently approved guidance inventory is published through `plan/.wt/indexes/guidance_index.json`.
 - Use this root for approved, durable plan guidance once promotion support exists; do not use it as a second live planning workspace.

@@ -15,7 +15,7 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions for live `plan/**` work until that contract is fully implemented.
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions for live `plan/**` work.
 - Use standards, references, promoted guidance, and purge history only where they support or conform to those two files.
 - Use [README.md](/plan/README.md) as the quick reference for plan-root purpose and entrypoints before broader scans.
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.

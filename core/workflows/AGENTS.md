@@ -12,7 +12,7 @@
 - Use [ROUTING_TABLE.md](/core/workflows/ROUTING_TABLE.md) for reusable-core and generic engineering route selection.
 
 ## Local Rules
-- Treat `requirements.md` and `decisions.md` as the authoritative contract for workflow-root migration.
+- Treat `requirements.md` and `decisions.md` as the authoritative contract for workflow-root boundaries.
 - Keep this subtree focused on reusable-core shared workflow guidance.
 - Keep shared modules stable enough for plan-domain routes to reference without duplicating them.
 

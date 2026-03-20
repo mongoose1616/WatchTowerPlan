@@ -17,7 +17,7 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the controlling contract for active migration, documentation roots, and endstate behavior.
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the controlling contract for documentation roots and endstate behavior.
 - Write documentation as native guidance for this repository.
 - Use current repository paths, names, and terminology.
 - Keep each document focused on one standard, topic, or area.

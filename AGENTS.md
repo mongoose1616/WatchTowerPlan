@@ -34,7 +34,7 @@
 - `plan/tracking/` and `plan/plan_overview.md` are derived human planning surfaces, not manual authority.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions and details until that contract is fully implemented.
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions and details.
 - Use existing standards, references, and helper docs only where they support or conform to [requirements.md](/requirements.md) and [decisions.md](/decisions.md); do not let them materially change what those two files decided.
 - If work is happening under [core/docs](/core/docs), also apply [core/docs/AGENTS.md](/core/docs/AGENTS.md).
 - If work is happening under [plan/docs](/plan/docs), also apply [plan/docs/AGENTS.md](/plan/docs/AGENTS.md).

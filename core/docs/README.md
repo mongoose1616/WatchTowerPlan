@@ -15,7 +15,7 @@
 | `core/docs/templates/` | Holds reusable templates for governed human-authored documents. |
 
 ## Notes
-- `requirements.md` and `decisions.md` remain authoritative while this root is being filled out to the endstate.
+- `requirements.md` and `decisions.md` are the authoritative contract for documentation roots and endstate behavior.
 - `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
 - Do not place live initiative state or plan-domain execution artifacts here.
 - Root `docs/` is retired; keep shared or core-owned durable documentation here instead.

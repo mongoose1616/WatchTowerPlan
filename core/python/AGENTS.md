@@ -11,7 +11,7 @@
 - This file adds Python-workspace execution rules and must not weaken repository-wide safety or documentation rules.
 
 ## Local Rules
-- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for migration, workspace, routing, and plan-pack runtime behavior until those files are fully implemented.
+- Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for workspace, routing, and plan-pack runtime behavior.
 - Use existing standards, references, and helper docs only where they stay consistent with [requirements.md](/requirements.md) and [decisions.md](/decisions.md).
 - Treat [core/python](/core/python) as the canonical shared Python tooling, tests, and local virtual-environment workspace in this repository. The approved plan-owned source boundary now lives under `plan/python/**`.
 - Treat `watchtower_core/**` as the reusable-core Python namespace. Keep plan-specific orchestration and initiative-package behavior in `watchtower_plan/**` when that behavior is truly repo-local.

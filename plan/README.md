@@ -17,7 +17,7 @@
 
 ## Notes
 - Human start-here: `plan/README.md`, then `plan/plan_overview.md`.
-- Authoritative implementation contract for the current migration: `requirements.md` and `decisions.md`.
+- Authoritative implementation contract: `requirements.md` and `decisions.md`.
 - Use local standards and references only where they conform to that contract.
 - Human workflow start-here: `plan/workflows/README.md`.
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
