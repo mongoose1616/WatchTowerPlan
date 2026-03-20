@@ -11,7 +11,6 @@
 |---|---|
 | `core/python/AGENTS.md` | Defines Python-workspace-specific instructions for agents working under this subtree. |
 | `core/python/README.md` | Describes the purpose of the Python workspace and the standard onboarding flow. |
-| `core/python/pyproject.toml` | Declares the supported Python interpreter range and the canonical package or tool configuration. |
 | `core/python/.gitignore` | Ignores the local virtual environment, caches, and build outputs. |
 | `core/python/pyproject.toml` | Canonical Python project and tool configuration for the core helper and harness package. |
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |

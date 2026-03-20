@@ -85,6 +85,28 @@ def _iter_active_surface_files() -> tuple[Path, ...]:
     return tuple(paths)
 
 
+def _iter_paths_table_duplicates(path: Path) -> tuple[tuple[str, int, int], ...]:
+    duplicates: list[tuple[str, int, int]] = []
+    in_paths_section = False
+    seen: dict[str, int] = {}
+
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if line.startswith("## "):
+            in_paths_section = line.strip() == "## Paths"
+            seen = {}
+            continue
+        if not in_paths_section or not line.startswith("| `"):
+            continue
+
+        path_literal = line.split("`", 2)[1]
+        if path_literal in seen:
+            duplicates.append((path_literal, seen[path_literal], line_number))
+            continue
+        seen[path_literal] = line_number
+
+    return tuple(duplicates)
+
+
 def test_root_docs_and_domain_packs_paths_are_gone() -> None:
     assert not (REPO_ROOT / "docs").exists()
     assert not (REPO_ROOT / "domain_packs").exists()
@@ -163,6 +185,20 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
                 violations.append(
                     f"{path.relative_to(REPO_ROOT).as_posix()}: missing expected README fragment {fragment!r}"
                 )
+
+    assert not violations, "\n".join(violations)
+
+
+def test_active_readme_paths_tables_do_not_repeat_entries() -> None:
+    violations: list[str] = []
+    for path in _iter_active_surface_files():
+        if path.name != "README.md":
+            continue
+        for duplicated_path, first_line, duplicate_line in _iter_paths_table_duplicates(path):
+            violations.append(
+                f"{path.relative_to(REPO_ROOT).as_posix()}: duplicate ## Paths entry {duplicated_path!r} "
+                f"at lines {first_line} and {duplicate_line}"
+            )
 
     assert not violations, "\n".join(violations)
 
