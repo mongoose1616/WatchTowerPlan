@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T01:05:00Z"
+updated_at: "2026-03-21T03:50:00Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -17,7 +17,9 @@ aliases:
   - "cli usage help"
   - "argparse help guidance"
 applies_to:
+  - "core/python/src/watchtower_host/cli/"
   - "core/python/src/watchtower_core/cli/"
+  - "plan/python/src/watchtower_plan/cli/"
   - "core/docs/commands/"
   - "plan/docs/commands/"
 ---
@@ -32,7 +34,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 
 ## Scope
 - Applies to repository-native CLI help text implemented in code, including root commands, command groups, and leaf commands.
-- Applies to the `watchtower-core` CLI family under `core/python/`.
+- Applies to the `watchtower-core` CLI family across host-owned root command modules, reusable core helper or compatibility modules, and pack-owned namespace modules.
 - Covers descriptions, option help text, examples, and command-group behavior.
 - Does not replace the fuller command pages under the owning command-doc root.
 
@@ -59,6 +61,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - Use help text to surface safe behavior. If a command defaults to dry run or non-mutating behavior, say so explicitly.
 - Keep per-option help concrete. Describe the field or filter the flag affects rather than repeating the flag name in prose.
 - Do not force users to open source code to learn which subcommands exist or what common invocations look like.
+- Treat `watchtower_host.cli` as the owner of root command help, `watchtower_<pack>.cli` as the owner of pack namespace help, and `watchtower_core.cli` only as reusable helper or compatibility support.
 
 ## Structure or Data Model
 ### Root-command help
@@ -87,11 +90,12 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 ## Examples
 - `watchtower-core --help` should show a short orientation paragraph plus common examples such as `doctor`, `query commands`, and `sync repository-paths`.
 - `watchtower-core query --help` should explain the difference between `paths`, `commands`, and `trace` instead of only listing them.
+- `watchtower-core plan --help` should live in the pack-owned CLI namespace and explain how plan bootstrap, query, sync, task, and closeout commands differ.
 - `watchtower-core sync repository-paths --help` should state that the command is dry-run by default and that `--write` updates the canonical artifact.
 
 ## Operationalization
 - `Modes`: `documentation`; `runtime`
-- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/python/src/watchtower_core/cli/`; `core/docs/commands/core_python/watchtower_core.md`; `plan/docs/commands/core_python/watchtower_core_plan.md`
+- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`; `plan/python/src/watchtower_plan/cli/`; `core/docs/commands/core_python/watchtower_core.md`; `plan/docs/commands/core_python/watchtower_core_plan.md`
 
 ## Validation
 - Root and command-group `--help` output should be understandable without opening the implementation file first.
@@ -110,4 +114,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [core/docs/templates/command_reference_template.md](/core/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-21T01:05:00Z`
+- `2026-03-21T03:50:00Z`

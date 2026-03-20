@@ -674,7 +674,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-21T03:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -684,9 +684,12 @@
       ],
       "operationalization_paths": [
         "core/docs/commands/",
+        "plan/docs/commands/",
         "core/docs/templates/command_reference_template.md",
         "core/control_plane/indexes/commands/command_index.json",
-        "core/python/src/watchtower_core/cli/"
+        "core/python/src/watchtower_host/cli/",
+        "core/python/src/watchtower_core/cli/",
+        "plan/python/src/watchtower_plan/cli/"
       ],
       "internal_reference_paths": [
         "core/docs/standards/documentation/readme_md_standard.md",
@@ -1086,7 +1089,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/cli_help_text_standard.md",
-      "updated_at": "2026-03-21T01:05:00Z",
+      "updated_at": "2026-03-21T03:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1096,17 +1099,23 @@
       "operationalization_paths": [
         "core/docs/commands/",
         "plan/docs/commands/",
+        "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
+        "plan/python/src/watchtower_plan/cli/",
         "core/docs/commands/core_python/watchtower_core.md",
         "plan/docs/commands/core_python/watchtower_core_plan.md"
       ],
       "applies_to": [
+        "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
+        "plan/python/src/watchtower_plan/cli/",
         "core/docs/commands/",
         "plan/docs/commands/"
       ],
       "related_paths": [
+        "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
+        "plan/python/src/watchtower_plan/cli/",
         "core/docs/commands/",
         "plan/docs/commands/",
         "core/python/src/watchtower_core/cli"

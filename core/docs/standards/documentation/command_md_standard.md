@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-21T03:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,6 +56,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Prefer concise examples that match the actual workspace and onboarding contract.
 - Record the implementation or source surface so engineers can move from the doc to the responsible code path quickly.
 - Keep command families modular: one directory per command family and one page per command or subcommand.
+- Point root shared-command pages at `watchtower_host.cli` source surfaces when the host owns parser construction or dispatch, and point pack pages at the owning `watchtower_<pack>.cli` surfaces rather than shared helper shims.
 
 ## Structure or Data Model
 ### Placement rules
@@ -94,13 +95,14 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `runtime`
-- `Operational Surfaces`: `core/docs/commands/`; `core/docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.json`; `core/python/src/watchtower_core/cli/`
+- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.json`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`; `plan/python/src/watchtower_plan/cli/`
 
 ## Validation
 - Command pages should contain the required sections in the documented order.
 - The documented command should exist in the repository’s current command surface.
 - Example invocations should be runnable or clearly marked as illustrative if the command is not yet implemented.
 - If a command advertises structured output, the documented output mode should match the actual implementation surface.
+- Reviewers should reject command pages that point host-owned root commands at pack source files or pack-owned commands at shared-core helper modules.
 - Reviewers should reject command pages that mix multiple unrelated commands into one document or omit the source surface.
 
 ## Change Control
@@ -121,4 +123,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-21T03:50:00Z`
