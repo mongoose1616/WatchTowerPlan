@@ -14,10 +14,7 @@ from watchtower_core.cli.handler_common import (
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
-from watchtower_plan.validation import DocumentSemanticsValidationService
-from watchtower_plan.validation.targets import (
-    resolve_pack_validation_suite_targets,
-)
+from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
@@ -29,10 +26,13 @@ from watchtower_core.validation import (
     ValidationSuiteService,
 )
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
+from watchtower_core.validation.suite import DocumentSemanticsValidationService
 
 ValidationServiceFactory = Callable[
     [ControlPlaneLoader],
-    FrontMatterValidationService | DocumentSemanticsValidationService | ArtifactValidationService,
+    FrontMatterValidationService
+    | ArtifactValidationService
+    | DocumentSemanticsValidationService,
 ]
 
 
@@ -50,7 +50,10 @@ def _run_validate_document_semantics(args: argparse.Namespace) -> int:
         args,
         command_name="watchtower-core validate document-semantics",
         success_message="Document semantics validated successfully.",
-        service_factory=DocumentSemanticsValidationService,
+        service_factory=lambda loader: load_pack_validation_runtime(
+            loader,
+            pack_settings_path=getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH,
+        ).document_semantics_factory(loader),
     )
 
 
@@ -124,9 +127,14 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader(
         active_pack_settings_path=getattr(args, "pack_settings_path", None)
     )
+    validation_runtime = load_pack_validation_runtime(
+        loader,
+        pack_settings_path=pack_settings_path,
+    )
     service = ValidationSuiteService(
         loader,
-        target_resolver=resolve_pack_validation_suite_targets,
+        document_semantics_factory=validation_runtime.document_semantics_factory,
+        target_resolver=validation_runtime.suite_target_resolver,
     )
     try:
         result = service.run(
@@ -174,6 +182,10 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 def _run_validate_all(args: argparse.Namespace) -> int:
     pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
     loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    validation_runtime = load_pack_validation_runtime(
+        loader,
+        pack_settings_path=pack_settings_path,
+    )
     suite_id = loader.load_pack_settings(pack_settings_path).default_validation_suite_id
     included_families = tuple(
         family
@@ -193,7 +205,8 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         loader,
         suite_id=suite_id,
         pack_settings_path=pack_settings_path,
-        suite_target_resolver=resolve_pack_validation_suite_targets,
+        document_semantics_factory=validation_runtime.document_semantics_factory,
+        suite_target_resolver=validation_runtime.suite_target_resolver,
     )
     result = _run_value_error_operation(
         args,

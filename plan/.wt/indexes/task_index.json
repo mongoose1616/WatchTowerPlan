@@ -173,12 +173,12 @@
       "title": "Refactor watchtower_plan into pack-native feature services and namespaced commands",
       "summary": "Rebuilds the plan package around pack-native feature seams instead of mirrored core-style families.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json",
-      "updated_at": "2026-03-20T17:22:35Z",
+      "updated_at": "2026-03-20T18:10:17Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
         "task.core_host_pack_architecture_hard_cutover.host_runtime.002"

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -10,11 +11,14 @@ from tests.pack_fixture_support import (
     materialize_validation_repo_subset,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.pack_integration import PackValidationRuntime
+from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
 from watchtower_core.validation import (
     PackContractValidationService,
     ValidationSelectionError,
     ValidationSuiteService,
 )
+from watchtower_plan import integration as plan_integration
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
@@ -110,3 +114,28 @@ def test_validation_suite_service_fails_closed_on_invalid_step_validator_id(
     assert failing_record.step_kind == "artifact"
     assert failing_record.result.issues[0].code == "validation_step_error"
     assert "Unknown validator ID" in failing_record.result.issues[0].message
+
+
+def test_load_pack_validation_runtime_returns_plan_validation_hooks() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    runtime = load_pack_validation_runtime(loader)
+
+    assert isinstance(runtime, PackValidationRuntime)
+    assert callable(runtime.document_semantics_factory)
+    assert callable(runtime.suite_target_resolver)
+
+
+def test_pack_contract_validation_fails_when_validation_provider_returns_invalid_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        validation_provider=lambda: object(),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_validation_provider_invalid" for issue in result.issues)

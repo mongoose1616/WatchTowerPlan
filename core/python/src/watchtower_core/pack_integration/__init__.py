@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
+
+if TYPE_CHECKING:
+    from watchtower_core.control_plane.loader import ControlPlaneLoader
+    from watchtower_core.validation.suite import ValidationSuiteTargetResolver
 
 REQUIRED_PACK_CAPABILITIES: tuple[str, ...] = (
     "command_registration",
@@ -49,10 +53,19 @@ class PackSyncTargetProvider(Protocol):
 class PackValidationProvider(Protocol):
     """Expose pack-owned validation adapters to the host runtime."""
 
-    def __call__(self, *args: Any, **kwargs: Any) -> object: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> PackValidationRuntime: ...
 
 
 PackLifecycleHook = Callable[..., object]
+PackDocumentSemanticsFactory = Callable[["ControlPlaneLoader"], object]
+
+
+@dataclass(frozen=True, slots=True)
+class PackValidationRuntime:
+    """Pack-owned validation hooks consumed through the integration contract."""
+
+    document_semantics_factory: PackDocumentSemanticsFactory
+    suite_target_resolver: "ValidationSuiteTargetResolver | None" = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -64,6 +77,8 @@ class PackIntegration:
     command_namespace: str
     python_package: str
     declared_capabilities: tuple[str, ...]
+    command_implementation_path: str | None = None
+    command_subcommand_implementation_paths: tuple[tuple[str, str], ...] = ()
     command_registration: PackCommandRegistrar | None = None
     query_runtime: PackQueryProvider | None = None
     sync_targets: PackSyncTargetProvider | None = None
@@ -86,10 +101,12 @@ class PackIntegration:
 __all__ = [
     "OPTIONAL_PACK_CAPABILITIES",
     "PackCommandRegistrar",
+    "PackDocumentSemanticsFactory",
     "PackIntegration",
     "PackLifecycleHook",
     "PackQueryProvider",
     "PackSyncTargetProvider",
+    "PackValidationRuntime",
     "PackValidationProvider",
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",

@@ -7,6 +7,7 @@ import importlib
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.pack_integration import (
+    PackValidationRuntime,
     REQUIRED_PACK_CAPABILITIES,
     SUPPORTED_PACK_CAPABILITIES,
     PackIntegration,
@@ -283,12 +284,65 @@ def _integration_issues(runtime_manifest) -> tuple[ValidationIssue, ...]:
         )
 
     for capability in runtime_manifest.declared_capabilities:
-        if descriptor.hook_for_capability(capability) is not None:
+        hook = descriptor.hook_for_capability(capability)
+        if hook is None:
+            issues.append(
+                ValidationIssue(
+                    code="pack_integration_hook_missing",
+                    message=f"Pack integration descriptor is missing the {capability} hook.",
+                    location=runtime_manifest.integration_module,
+                )
+            )
+            continue
+        if capability != "validation_provider":
+            continue
+        try:
+            validation_runtime = hook()
+        except Exception as exc:  # pragma: no cover - fail-closed guard
+            issues.append(
+                ValidationIssue(
+                    code="pack_validation_provider_error",
+                    message=(
+                        "Pack validation_provider hook raised an error: "
+                        f"{exc}"
+                    ),
+                    location=runtime_manifest.integration_module,
+                )
+            )
+            continue
+        if isinstance(validation_runtime, PackValidationRuntime):
+            if not callable(validation_runtime.document_semantics_factory):
+                issues.append(
+                    ValidationIssue(
+                        code="pack_validation_document_semantics_factory_invalid",
+                        message=(
+                            "Pack validation_provider hook must return a callable "
+                            "document_semantics_factory."
+                        ),
+                        location=runtime_manifest.integration_module,
+                    )
+                )
+            if validation_runtime.suite_target_resolver is not None and not callable(
+                validation_runtime.suite_target_resolver
+            ):
+                issues.append(
+                    ValidationIssue(
+                        code="pack_validation_suite_target_resolver_invalid",
+                        message=(
+                            "Pack validation_provider hook must return a callable "
+                            "suite_target_resolver when one is declared."
+                        ),
+                        location=runtime_manifest.integration_module,
+                    )
+                )
             continue
         issues.append(
             ValidationIssue(
-                code="pack_integration_hook_missing",
-                message=f"Pack integration descriptor is missing the {capability} hook.",
+                code="pack_validation_provider_invalid",
+                message=(
+                    "Pack validation_provider hook must return "
+                    "watchtower_core.pack_integration.PackValidationRuntime."
+                ),
                 location=runtime_manifest.integration_module,
             )
         )

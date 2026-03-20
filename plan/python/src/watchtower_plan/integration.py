@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from watchtower_core.pack_integration import PackIntegration
+from watchtower_core.pack_integration import PackIntegration, PackValidationRuntime
+from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
+from watchtower_plan.validation.targets import resolve_pack_validation_suite_targets
 
 
 def _command_registration(*args: Any, **kwargs: Any) -> None:
@@ -23,10 +25,13 @@ def _sync_targets(*args: Any, **kwargs: Any) -> tuple[str, ...]:
     return ()
 
 
-def _validation_provider(*args: Any, **kwargs: Any) -> dict[str, object]:
-    """Placeholder validation hook for pack-contract validation."""
+def _validation_provider(*args: Any, **kwargs: Any) -> PackValidationRuntime:
+    """Return the plan-pack validation runtime declared through the contract."""
 
-    return {}
+    return PackValidationRuntime(
+        document_semantics_factory=DocumentSemanticsValidationService,
+        suite_target_resolver=resolve_pack_validation_suite_targets,
+    )
 
 
 PACK_INTEGRATION = PackIntegration(
@@ -40,6 +45,7 @@ PACK_INTEGRATION = PackIntegration(
         "sync_targets",
         "validation_provider",
     ),
+    command_implementation_path="plan/python/src/watchtower_plan/integration.py",
     command_registration=_command_registration,
     query_runtime=_query_runtime,
     sync_targets=_sync_targets,

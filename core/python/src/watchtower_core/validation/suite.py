@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from typing import TYPE_CHECKING, Any
+from typing import Any, Protocol
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition, ValidatorDefinition
+from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
 from watchtower_core.validation.artifact import ArtifactValidationService
 from watchtower_core.validation.common import discover_repository_targets
 from watchtower_core.validation.context import PackValidationContext
@@ -20,14 +21,23 @@ from watchtower_core.validation.models import (
 )
 from watchtower_core.validation.pack_contract import PackContractValidationService
 
-if TYPE_CHECKING:
-    from watchtower_plan.validation.document_semantics import (
-        DocumentSemanticsValidationService,
-    )
-
 
 DOCUMENT_SEMANTICS_ARTIFACT_KIND = "documentation_semantics"
-DocumentSemanticsFactory = Callable[[ControlPlaneLoader], "DocumentSemanticsValidationService"]
+
+
+class DocumentSemanticsValidationService(Protocol):
+    """Structural protocol for pack-owned document-semantics validators."""
+
+    def validate(
+        self,
+        target: str,
+        *,
+        validator_id: str | None = None,
+    ) -> ValidationResult:
+        """Validate one Markdown target through pack-owned semantic rules."""
+
+
+DocumentSemanticsFactory = Callable[[ControlPlaneLoader], DocumentSemanticsValidationService]
 ValidationSuiteTargetResolver = Callable[
     [PackValidationContext, ValidationSuiteStepDefinition],
     tuple[str, ...] | None,
@@ -70,7 +80,7 @@ class ValidationSuiteService:
 
         artifact = ArtifactValidationService(context.loader)
         front_matter = FrontMatterValidationService(context.loader)
-        document_semantics = self._document_semantics_factory(context.loader)
+        document_semantics: DocumentSemanticsValidationService | None = None
         pack_contract = PackContractValidationService(context.loader)
 
         allowed_step_kinds = (
@@ -116,6 +126,8 @@ class ValidationSuiteService:
                 )
                 continue
             if step.step_kind == "document_semantics":
+                if document_semantics is None:
+                    document_semantics = self._document_semantics_factory(context.loader)
                 records.extend(
                     self._run_validation_step(
                         context,
@@ -292,11 +304,8 @@ class ValidationSuiteService:
 def _default_document_semantics_factory(
     loader: ControlPlaneLoader,
 ) -> DocumentSemanticsValidationService:
-    from watchtower_plan.validation.document_semantics import (
-        DocumentSemanticsValidationService,
-    )
-
-    return DocumentSemanticsValidationService(loader)
+    runtime = load_pack_validation_runtime(loader)
+    return runtime.document_semantics_factory(loader)
 
 
 __all__ = ["ValidationSuiteService", "ValidationSuiteTargetResolver"]

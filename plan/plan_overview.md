@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
+- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
 - `recommended_surface_path`: `plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md`
 
 ## Active Pack-Wide Initiatives

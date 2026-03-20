@@ -8,6 +8,7 @@ from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlan
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.models import ValidationResult
 from watchtower_core.validation.suite import (
+    DocumentSemanticsFactory,
     ValidationSuiteService,
     ValidationSuiteTargetResolver,
 )
@@ -111,6 +112,7 @@ class ValidationAllService:
         *,
         suite_id: str,
         pack_settings_path: str = PACK_SETTINGS_PATH,
+        document_semantics_factory: DocumentSemanticsFactory | None = None,
         suite_target_resolver: ValidationSuiteTargetResolver | None = None,
     ) -> None:
         self._loader = loader
@@ -118,6 +120,7 @@ class ValidationAllService:
         self._pack_settings_path = pack_settings_path
         self._suite = ValidationSuiteService(
             loader,
+            document_semantics_factory=document_semantics_factory,
             target_resolver=suite_target_resolver,
         )
         self._acceptance = AcceptanceReconciliationService(loader)
