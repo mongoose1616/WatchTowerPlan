@@ -172,11 +172,7 @@ class CommandIndexSyncService:
                 doc_path=spec.doc_path,
                 synopsis=spec.synopsis,
                 implementation_path=spec.implementation_path,
-                package_entrypoint=(
-                    current.package_entrypoint
-                    if current is not None and current.package_entrypoint is not None
-                    else spec.package_entrypoint
-                ),
+                package_entrypoint=spec.package_entrypoint,
                 parent_command_id=spec.parent_command_id,
                 output_formats=resolved_output_formats,
                 default_output_format=resolved_default_output,

@@ -14,7 +14,7 @@ This is the root CLI entrypoint for the core Python workspace. It dispatches to 
 | Invocation | `watchtower-core` |
 | Kind | `root_command` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/parser.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/parser.py` |
 
 ## Synopsis
 ```sh
@@ -74,8 +74,8 @@ uv run watchtower-core validate all --format json
 | `core/docs/commands/core_python/README.md` | Command-family entrypoint for the core Python workspace. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/parser.py`
-- `core/python/src/watchtower_core/cli/registry.py`
+- `core/python/src/watchtower_host/cli/parser.py`
+- `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
 - `2026-03-17T20:03:23Z`

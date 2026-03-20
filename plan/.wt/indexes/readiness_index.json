@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-20T17:54:28Z",
+  "updated_at": "2026-03-20T18:08:51Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -18,7 +18,7 @@
       "approval_status": "approved",
       "ready_for_execution": true,
       "blocking_reasons": [],
-      "updated_at": "2026-03-20T17:54:28Z"
+      "updated_at": "2026-03-20T18:08:51Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

@@ -15,7 +15,8 @@
 | `core/python/pyproject.toml` | Canonical Python project and tool configuration for the core helper and harness package. |
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
 | `core/python/src/` | Holds the `watchtower_core` reusable-core package source tree. |
-| `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the major `watchtower_core` namespaces. |
+| `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the reusable-core namespaces. |
+| `core/python/src/watchtower_host/README.md` | Describes the host-owned CLI composition boundary for the `watchtower-core` binary. |
 | `core/python/tests/` | Holds Python tests and fixtures for package behavior, validation, and sync/query flows. |
 | `core/python/tools/` | Holds small workspace-local helper scripts such as `dev_shell.sh` when they are warranted. |
 
@@ -139,7 +140,8 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 
 | Package README | Classification | Notes |
 |---|---|---|
-| `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
+| `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level reusable-core package map and navigation. |
+| `core/python/src/watchtower_host/README.md` | `host_composition` | Host-owned CLI parser, registry, and entrypoint composition for the `watchtower-core` binary. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
 | `core/python/src/watchtower_core/documentation/README.md` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic. |
 | `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; repo-local document semantics stay under `watchtower_plan.validation`. |
@@ -152,7 +154,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/closeout/README.md` | `boundary_layer` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
 | `plan/python/src/watchtower_plan/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific repo-local plan orchestration under the approved plan-owned Python boundary. |
-| `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
+| `core/python/src/watchtower_core/cli/README.md` | `boundary_guard` | Compatibility import surface plus remaining family and handler modules while host-owned CLI composition lives under `watchtower_host`. |
 | `core/python/src/watchtower_core/utils/README.md` | `reusable_core` | Narrow shared helpers that do not justify a first-class package. |
 
 Use the nested READMEs under `plan/python/src/watchtower_plan/`, `integrations/github/`, and the reusable-core subpackages when you need the next layer of boundary detail.

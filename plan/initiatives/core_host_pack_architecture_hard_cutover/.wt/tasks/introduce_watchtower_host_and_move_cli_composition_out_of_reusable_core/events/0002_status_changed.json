@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.core_host_pack_architecture_hard_cutover.introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core.0002_status_changed",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-20T17:54:28Z",
+  "summary": "Changed task.core_host_pack_architecture_hard_cutover.host_runtime.002 status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json"
+  },
+  "task_id": "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
+}

@@ -534,7 +534,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     validate_artifact = command_index.get("command.watchtower_core.validate.artifact")
 
     assert command_index.get("command.watchtower_core").implementation_path == (
-        "core/python/src/watchtower_core/cli/parser.py"
+        "core/python/src/watchtower_host/cli/parser.py"
+    )
+    assert (
+        command_index.get("command.watchtower_core").package_entrypoint
+        == "watchtower_host.cli.main:main"
     )
     assert doctor.parent_command_id == "command.watchtower_core"
     assert doctor.doc_path == "core/docs/commands/core_python/watchtower_core_doctor.md"

@@ -1,7 +1,7 @@
 # `watchtower_core`
 
 ## Summary
-`watchtower_core` is the in-repo reusable-core Python package plus the CLI boundary layers that still need to reach repo-local plan behavior through narrow, explicit seams.
+`watchtower_core` is the reusable-core Python package for loader, schema, validation, query, sync, rebuild, routing, and workflow primitives. Host-owned CLI composition now lives under `watchtower_host`, and pack-native orchestration belongs under `watchtower_<pack>`.
 
 ## Boundary
 - `Classification`: `runtime_architecture_start_here`
@@ -21,13 +21,14 @@
 | `routing/` | `reusable_core` | Export-safe route-selection runtime over the governed route and workflow indexes; CLI formatting and repo-local route handlers stay out of the package root. |
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
-| `cli/` | `repo_local_orchestration` | CLI parser wiring and command-family registration that bridges reusable core and repo-local plan services. |
+| `cli/` | `boundary_guard` | Compatibility import surface plus the remaining command-family and handler modules while host-owned CLI composition lives under `watchtower_host`. |
 | `closeout/` | `boundary_guard` | Fail-closed compatibility guard; plan-domain closeout services live under `watchtower_plan.closeout`. |
 | `evidence/` | `reusable_core` | Validation-evidence ledgers plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
 | `utils/` | `reusable_core` | Small shared helpers with low coupling. |
 
 ## Related Surfaces
 - `core/python/README.md`
+- `core/python/src/watchtower_host/README.md`
 - `core/docs/standards/engineering/python_code_design_standard.md`
 - `plan/python/src/watchtower_plan/README.md`
 - `requirements.md`

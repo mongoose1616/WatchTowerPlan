@@ -2753,6 +2753,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/src/watchtower_host/README.md",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Describes the host-owned CLI composition boundary for the `watchtower-core` binary.",
+      "parent_path": "core/python/src/watchtower_host/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_host/cli/parser.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Host-owned parser construction for the `watchtower-core` binary.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/",
       "kind": "directory",
       "surface_kind": "python_tests",

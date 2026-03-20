@@ -3,10 +3,10 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-20T17:54:28Z",
+  "updated_at": "2026-03-20T18:08:51Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
-  "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
+  "recommended_next_action": "Promote the next planned task to ready before opening follow-up work.",
   "recommended_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
   "active_initiative_count": 1,
   "blocked_task_count": 0,
@@ -19,11 +19,11 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-20T17:54:28Z",
-      "open_task_count": 7,
+      "updated_at": "2026-03-20T18:08:51Z",
+      "open_task_count": 6,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
+      "next_action": "Promote the next planned task to ready before opening follow-up work.",
       "next_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
       "slug": "core_host_pack_architecture_hard_cutover",
@@ -35,7 +35,6 @@
       "active_task_ids": [
         "task.core_host_pack_architecture_hard_cutover.pack_tests.005",
         "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
-        "task.core_host_pack_architecture_hard_cutover.host_runtime.002",
         "task.core_host_pack_architecture_hard_cutover.docs_workflows.004",
         "task.core_host_pack_architecture_hard_cutover.plan_pack.003",
         "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006",
@@ -49,10 +48,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_pack_interface_validation_import_boundary_guards_and_second_pack_proofs/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
@@ -61,15 +57,6 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.core_host_pack_architecture_hard_cutover.host_runtime.002",
-          "title": "Introduce watchtower_host and move CLI composition out of reusable core",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json",
           "is_actionable": false
         },
         {
@@ -88,10 +75,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006",

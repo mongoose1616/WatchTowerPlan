@@ -29,10 +29,10 @@ dev = [
 watchtower-plan = { path = "../../plan/python", editable = true }
 
 [project.scripts]
-watchtower-core = "watchtower_core.cli.main:main"
+watchtower-core = "watchtower_host.cli.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/watchtower_core"]
+packages = ["src/watchtower_core", "src/watchtower_host"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]
@@ -43,7 +43,7 @@ addopts = [
 
 [tool.coverage.run]
 branch = true
-source = ["watchtower_core"]
+source = ["watchtower_core", "watchtower_host"]
 
 [tool.coverage.report]
 show_missing = true

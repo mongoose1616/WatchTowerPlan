@@ -75,7 +75,11 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.sync.route_index" in spec_by_id
     assert (
         spec_by_id["command.watchtower_core"].implementation_path
-        == "core/python/src/watchtower_core/cli/parser.py"
+        == "core/python/src/watchtower_host/cli/parser.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core"].package_entrypoint
+        == "watchtower_host.cli.main:main"
     )
     assert (
         spec_by_id["command.watchtower_core.doctor"].implementation_path
@@ -227,7 +231,16 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
 
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core.md"]
-        == "core/python/src/watchtower_core/cli/parser.py"
+        == "core/python/src/watchtower_host/cli/parser.py"
+    )
+    package_entrypoint_by_doc = {
+        entry["doc_path"]: entry["package_entrypoint"]
+        for entry in document["entries"]
+        if "package_entrypoint" in entry
+    }
+    assert (
+        package_entrypoint_by_doc["core/docs/commands/core_python/watchtower_core.md"]
+        == "watchtower_host.cli.main:main"
     )
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_doctor.md"]
