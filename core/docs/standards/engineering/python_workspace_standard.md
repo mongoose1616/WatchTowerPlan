@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T23:53:14Z"
+updated_at: "2026-03-20T09:26:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -62,6 +62,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep reusable-core Python source under `core/python/src/watchtower_core/` and plan-domain Python source under `plan/python/src/watchtower_plan/`.
 - Install the plan-owned package through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_plan`.
 - Keep tests under `core/python/tests/`.
+- Keep the fast default suite under `core/python/tests/unit/` and repository-aware orchestration coverage under `core/python/tests/integration/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
@@ -134,7 +135,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `core/python/.venv/` should be reproducible from `uv sync --extra dev`.
 - Python source should be importable through the canonical package path.
 - Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
-- `uv run pytest`, `uv run ruff check .`, and `uv run mypy src` should be the default validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
+- `uv run pytest -q`, `uv run ruff check .`, and `uv run mypy src` should be the default narrow validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
+- `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad Python test pass before closeout when repository-aware integration behavior changed.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and the approved `plan/python/` boundary.
 
@@ -157,4 +159,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository now has two approved Python package roots: reusable core under `core/python/src/watchtower_core/` and plan-domain code under `plan/python/src/watchtower_plan/`.
 
 ## Updated At
-- `2026-03-19T23:53:14Z`
+- `2026-03-20T09:26:00Z`

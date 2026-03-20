@@ -1,51 +1,24 @@
 # `core/python/tests/unit`
 
 ## Description
-`This directory contains a hybrid unit and repository-contract test suite for the core helper and harness workspace. The fastest tests still exercise small functions directly, but many tests intentionally run against authored repository state, generated control-plane artifacts, and command outputs.`
+`This directory contains the fast unit suite for the core helper and harness workspace. Tests here stay below repo-materialization and multi-surface orchestration: they exercise parser-level CLI wiring, pure helpers, registry builders, schema services, render/query helpers, boundary guards, and other narrow behaviors that can run in the default local loop.`
 
-## Files
+## Key Local Surfaces
 | Path | Description |
 |---|---|
 | `core/python/tests/unit/README.md` | Describes the purpose of the unit-test directory. |
-| `core/python/tests/unit/conftest.py` | Shared pytest fixtures for common JSON-writing and future unit-suite helpers. |
-| `core/python/tests/unit/test_all_validation.py` | Unit tests for the registry-backed validate-all orchestration service. |
-| `core/python/tests/unit/test_artifact_validation.py` | Unit tests for registry-backed JSON artifact validation. |
-| `core/python/tests/unit/test_acceptance_reconciliation.py` | Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation. |
-| `core/python/tests/unit/test_all_sync.py` | Unit tests for the registry-backed all-sync orchestration service. |
-| `core/python/tests/unit/test_cli.py` | Thin smoke tests for the watchtower-core entrypoint, help output, and the absence of retired CLI facade modules. |
-| `core/python/tests/unit/test_cli_route_and_path_commands.py` | Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces. |
-| `core/python/tests/unit/test_cli_dry_run_authoring_commands.py` | Parser-level JSON contract tests for dry-run `task create` and `plan bootstrap` behavior. |
-| `core/python/tests/unit/test_cli_knowledge_query_commands.py` | Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families. |
-| `core/python/tests/unit/test_cli_planning_query_commands.py` | Parser-level JSON contract tests for task, initiative, coordination, authority, acceptance, evidence, trace, and project query families. |
-| `core/python/tests/unit/test_cli_sync_commands.py` | Parser-level JSON and output-path tests for the sync command family. |
-| `core/python/tests/unit/test_cli_validate_commands.py` | Parser-level JSON and evidence-recording tests for the validation command family. |
-| `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
-| `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
-| `core/python/tests/unit/test_coordination_index_sync.py` | Unit tests for rebuilding the coordination index from live initiative and task state. |
-| `core/python/tests/unit/document_semantics_fixtures.py` | Shared temporary-repo and fixture writers for the focused document-semantics validation suites. |
-| `core/python/tests/unit/test_document_semantics_validator_selection.py` | Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules. |
-| `core/python/tests/unit/test_document_semantics_reference_rules.py` | Unit tests for governed reference-document semantic requirements and allowed maturity wording. |
-| `core/python/tests/unit/test_document_semantics_standard_rules.py` | Unit tests for standard-document link accounting and canonical path semantics. |
-| `core/python/tests/unit/test_documentation_family.py` | Unit tests for the documentation-family registry helper and mirror requirements. |
-| `core/python/tests/unit/test_rebuild_harness.py` | Unit tests for the reusable rebuild harness over governed indexes and rendered views. |
-| `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
-| `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
-| `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
-| `core/python/tests/unit/test_repository_paths_sync.py` | Unit tests for rebuilding the repository path index from README inventory surfaces. |
-| `core/python/tests/unit/test_rendered_search_common.py` | Unit tests for the shared rendered-surface search helper that planning, initiative, and coordination queries now share. |
-| `core/python/tests/unit/test_plan_python_boundary.py` | Unit tests for the explicit core-versus-plan Python boundary and the absence of retired wrapper modules. |
-| `core/python/tests/unit/test_template_catalog.py` | Unit tests for the governed template catalog and template lookup behavior. |
-| `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |
-| `core/python/tests/unit/test_standard_index_sync.py` | Unit tests for rebuilding the standard index from governed standards docs. |
-| `core/python/tests/unit/test_schema_store.py` | Unit tests for schema-catalog-backed schema resolution and validation. |
-| `core/python/tests/unit/test_traceability_index_sync.py` | Unit tests for rebuilding the traceability index from governed source artifacts. |
-| `core/python/tests/unit/test_validation_evidence.py` | Unit tests for durable validation-evidence document building and write flows. |
-| `core/python/tests/unit/test_workspace_injection.py` | Unit tests for injected workspace mappings, logical artifact paths, and default artifact writes outside the fixed repo layout. |
+| `core/python/tests/unit/conftest.py` | Shared pytest fixtures for small unit-only helper patterns. |
+| `core/python/tests/unit/document_semantics_fixtures.py` | Focused temporary-document writers for document-semantics rule tests. |
+| `core/python/tests/unit/test_unit_suite_boundary.py` | Fail-closed guard that blocks repo-fixture helper imports from the unit suite. |
+
+## Suite Families
+- CLI parser and handler tests stay here when they can validate behavior without bootstrapping a temp repo. See `test_cli.py`, `test_cli_knowledge_query_commands.py`, `test_cli_route_and_path_commands.py`, `test_cli_validate_commands.py`, `test_plan_and_task_handlers.py`, and `test_route_and_query_handlers.py`.
+- Reusable-core service tests stay here when they operate directly on governed artifacts or in-memory data, such as `test_artifact_validation.py`, `test_control_plane_loader.py`, `test_rebuild_harness.py`, `test_schema_store.py`, `test_validation_evidence.py`, and `test_validation_suite_service.py`.
+- Boundary and policy guards stay here when they are pure import, export, vocabulary, or contract checks, such as `test_plan_python_boundary.py`, `test_python_tooling_contracts.py`, `test_planning_vocabulary.py`, `test_retention_policy.py`, and `test_sync_harness.py`.
 
 ## Notes
-- This suite is not a pure isolated unit-test corpus. Many tests are intentionally repository-aware because the package governs authored docs, schemas, indexes, and trackers.
+- This suite is now a true fast unit corpus.
 - Keep broad parser or help assertions in the dedicated CLI family files and prefer direct handler or service tests when behavior can be validated below the top-level parser.
 - Use the shared fixtures in `conftest.py` for repeated JSON-writing or similar small helper patterns instead of duplicating one-off utilities.
-- When CLI or sync tests only need read-only plan runtime state, prefer `materialize_minimal_plan_pack(...)` plus module-scoped shared fixture repos instead of copying the full `plan/` tree per test. Reserve full plan-pack materialization for cases that truly exercise durable docs or rendered companion surfaces.
-- When repository-aware tests need mutating setup, prefer a module-scoped baseline repo plus per-test `copytree(...)` isolation so expensive bootstrap or sync preparation runs once without sharing mutated state across tests.
-- When acceptance or evidence fixtures reference governed docs, call `materialize_acceptance_and_evidence_paths(..., REPO_ROOT)` so the helper copies the real source documents instead of creating empty placeholder Markdown files that will fail guidance indexing.
+- Do not import `tests.fixture_repo_support` from `tests/unit/`. Any test that needs pack materialization, repo bootstrap, sync orchestration, closeout flows, or governed-doc copying belongs in `tests/integration/`.
+- Keep `pytest -q` fast by moving repo-aware scenarios out of this directory instead of adding more helper shortcuts here.

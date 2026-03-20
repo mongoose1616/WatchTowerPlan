@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T23:53:14Z"
+updated_at: "2026-03-20T09:26:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -77,8 +77,9 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Keep `Any` at the edges where untyped libraries, JSON payloads, or dynamic external data make it unavoidable. Convert into narrower local shapes quickly instead of letting `Any` spread.
 - Prefer typed records or small data classes over loose dict conventions for internal multi-field data when the shape is stable and not already governed by a schema-backed artifact contract.
 - Keep imports grouped as standard library, third-party, and local package imports. Avoid wildcard imports and avoid import-time side effects beyond constant or lightweight registry initialization.
-- Write tests around observable behavior. Use unit tests for narrow helpers and integration tests for repo-local orchestration, loader behavior, or multi-surface sync flows.
+- Write tests around observable behavior. Use unit tests for narrow helpers and integration tests for repo-local orchestration, loader behavior, pack materialization, or multi-surface sync flows.
 - Keep fixtures local and explicit. Prefer a small helper or fixture near the tests that need it over a broad hidden fixture tree.
+- Do not let `tests/unit/` grow back into a repo-bootstrap suite. Tests that need `tests.fixture_repo_support`, pack materialization, initiative bootstrap, governed-doc copying, sync orchestration, or closeout flows belong in `tests/integration/`.
 
 ## Structure or Data Model
 ### Python boundary checkpoints
@@ -103,6 +104,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Reviewers should reject new generic behavior placed in `watchtower_plan` when a reusable-core package boundary fits.
 - Reviewers should reject CLI handlers that own business logic instead of delegating to package services.
 - The narrowest meaningful `uv run pytest ...`, `uv run ruff check ...`, and `uv run mypy ...` commands should be run for touched Python surfaces.
+- Reviewers should reject new unit tests that import repo fixture helpers or otherwise require pack materialization to run.
 
 ## Change Control
 - Update this standard when the repository's Python boundary taxonomy, naming rules, docstring posture, or consolidation rules change materially.
@@ -128,4 +130,4 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - When a helper is extracted from `watchtower_plan`, that is usually a sign that this standard is working as intended. The goal is a narrow plan-owned domain boundary, not a second generic package root.
 
 ## Updated At
-- `2026-03-19T23:53:14Z`
+- `2026-03-20T09:26:00Z`

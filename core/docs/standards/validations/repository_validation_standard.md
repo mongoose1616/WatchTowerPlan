@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-20T09:26:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -60,10 +60,11 @@ This standard defines the baseline validation expectations for repository change
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
+- Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
 - When `core/python/**` changes, the normal workspace validation baseline is:
   - `./.venv/bin/python -m mypy src`
   - `./.venv/bin/ruff check src tests/unit tests/integration`
-  - `./.venv/bin/python -m pytest`
+  - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - When a change is docs-only and does not affect the Python workspace, narrower validation may be sufficient if the touched surfaces remain within governed Markdown or derived-index boundaries.
 - Validation results should be summarized in closeout metadata or pull-request metadata for non-trivial changes.
 
@@ -96,4 +97,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-20T09:26:00Z`

@@ -2815,6 +2815,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/cli_command_helpers.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Shared JSON command-runner helper used by parser-level CLI tests in both suites.",
+      "parent_path": "core/python/tests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/fixture_repo_support.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Canonical temporary-repo and pack-materialization helper surface for repository-aware scenarios.",
+      "parent_path": "core/python/tests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/fixtures/",
       "kind": "directory",
       "surface_kind": "python_tests",
@@ -2985,6 +3005,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/pack_fixture_support.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Reusable static pack-fixture materialization helpers for validation-pack scenarios.",
+      "parent_path": "core/python/tests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/",
       "kind": "directory",
       "surface_kind": "python_tests",
@@ -3008,7 +3038,7 @@
       "path": "core/python/tests/unit/conftest.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Shared pytest fixtures for common JSON-writing and future unit-suite helpers.",
+      "summary": "Shared pytest fixtures for small unit-only helper patterns.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3018,327 +3048,17 @@
       "path": "core/python/tests/unit/document_semantics_fixtures.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Shared temporary-repo and fixture writers for the focused document-semantics validation suites.",
+      "summary": "Focused temporary-document writers for document-semantics rule tests.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_acceptance_reconciliation.py",
+      "path": "core/python/tests/unit/test_unit_suite_boundary.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_all_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the registry-backed all-sync orchestration service.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_all_validation.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the registry-backed validate-all orchestration service.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_artifact_validation.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for registry-backed JSON artifact validation.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Thin smoke tests for the watchtower-core entrypoint, help output, and the absence of retired CLI facade modules.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for dry-run `task create` and `plan bootstrap` behavior.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_knowledge_query_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_planning_query_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for task, initiative, coordination, authority, acceptance, evidence, trace, and project query families.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_route_and_path_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_sync_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON and output-path tests for the sync command family.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_validate_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON and evidence-recording tests for the validation command family.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_command_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_control_plane_loader.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the high-level governed artifact loaders.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_coordination_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the coordination index from live initiative and task state.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_document_semantics_reference_rules.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for governed reference-document semantic requirements and allowed maturity wording.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_document_semantics_standard_rules.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for standard-document link accounting and canonical path semantics.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_document_semantics_validator_selection.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_documentation_family.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the documentation-family registry helper and mirror requirements.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_front_matter_validation.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for registry-backed front-matter validation.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_github_task_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for push-only GitHub task sync planning behavior.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_governed_markdown_reference_resolution.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_plan_python_boundary.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the explicit core-versus-plan Python boundary and the absence of retired wrapper modules.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_rebuild_harness.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the reusable rebuild harness over governed indexes and rendered views.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_reference_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the reference index from governed reference docs.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_rendered_search_common.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the shared rendered-surface search helper that planning, initiative, and coordination queries now share.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_repository_paths_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the repository path index from README inventory surfaces.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_schema_store.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for schema-catalog-backed schema resolution and validation.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_standard_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the standard index from governed standards docs.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_template_catalog.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for the governed template catalog and template lookup behavior.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_traceability_index_sync.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the traceability index from governed source artifacts.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_validation_evidence.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for durable validation-evidence document building and write flows.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_workspace_injection.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Unit tests for injected workspace mappings, logical artifact paths, and default artifact writes outside the fixed repo layout.",
+      "summary": "Fail-closed guard that blocks repo-fixture helper imports from the unit suite.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

@@ -1225,7 +1225,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_code_design_standard.md",
-      "updated_at": "2026-03-19T23:53:14Z",
+      "updated_at": "2026-03-20T09:26:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1330,7 +1330,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-19T23:53:14Z",
+      "updated_at": "2026-03-20T09:26:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1710,7 +1710,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-20T09:26:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

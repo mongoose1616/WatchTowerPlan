@@ -31,7 +31,7 @@ Workspace: ${workspace_root}
 Inside this shell, run commands directly from the activated environment:
   watchtower-core --help
   watchtower-core doctor
-  pytest
+  pytest -q
   ruff check .
   mypy src
 
