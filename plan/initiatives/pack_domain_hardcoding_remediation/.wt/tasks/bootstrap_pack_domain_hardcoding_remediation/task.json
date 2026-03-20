@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
+  "slug": "bootstrap_pack_domain_hardcoding_remediation",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "title": "Bootstrap Pack Domain Hardcoding Remediation",
+  "summary": "Bootstrap Pack Domain Hardcoding Remediation live initiative package.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T20:34:56Z",
+  "updated_at": "2026-03-19T21:50:30Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

@@ -5,6 +5,178 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Bootstrap Pack Domain Hardcoding Remediation",
+      "summary": "Bootstrap Pack Domain Hardcoding Remediation live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/bootstrap_pack_domain_hardcoding_remediation/task.json",
+      "updated_at": "2026-03-19T21:50:30Z"
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Pack-drive runtime roots and validation selection",
+      "summary": "Remove remaining fixed pack-root assumptions from runtime helpers, CLI defaults, and validation selection.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/pack_drive_runtime_roots_and_validation_selection/task.json",
+      "updated_at": "2026-03-20T00:12:58Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/",
+        "core/control_plane/manifests/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Re-root governed contracts and generated surfaces",
+      "summary": "Move remaining plan-specific governed contracts out of shared-core assumptions and bind them through pack-owned declarations.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/re_root_governed_contracts_and_generated_surfaces/task.json",
+      "updated_at": "2026-03-20T00:13:23Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "plan/.wt/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Recover rich human docs and guidance from pack-driven state",
+      "summary": "Review main-branch patterns and restore rich human-facing documentation and navigation without reintroducing hardcoded domain roots.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/recover_rich_human_docs_and_guidance_from_pack_driven_state/task.json",
+      "updated_at": "2026-03-20T00:13:48Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/docs/",
+        "plan/docs/",
+        "plan/tracking/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.run_assessment_pass_one",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Run assessment pass one",
+      "summary": "Run the first full repository assessment after the main hardcoding fixes land and convert any new gaps into tracked remediation work.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_one/task.json",
+      "updated_at": "2026-03-20T00:14:12Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/",
+        "plan/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Run assessment pass two",
+      "summary": "Run the final full repository assessment after cleanup and confirm the pack-driven endstate has no remaining actionable gaps.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
+      "updated_at": "2026-03-20T00:14:38Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/",
+        "plan/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Split core and plan Python boundary",
+      "summary": "Move residual plan-domain runtime out of watchtower_core.plan_runtime and behind a plan-owned Python boundary under plan/**.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
+      "updated_at": "2026-03-20T00:14:55Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/cli/",
+        "plan/"
+      ]
+    },
+    {
+      "task_id": "task.pack_domain_hardcoding_remediation.verify_report_and_map_pack_roots",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Verify report findings and map pack roots",
+      "summary": "Validate the hardcoding assessment against the current repository and map the actual pack-root authority seams.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "research",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/verify_report_findings_and_map_pack_roots/task.json",
+      "updated_at": "2026-03-19T21:51:04Z",
+      "related_ids": [
+        "initiative.pack_domain_hardcoding_remediation"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/",
+        "core/control_plane/",
+        "plan/.wt/"
+      ]
+    },
+    {
       "task_id": "task.plan_requirements_decisions_adherence_remediation.bootstrap",
       "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",

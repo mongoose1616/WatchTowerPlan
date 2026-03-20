@@ -48,6 +48,59 @@
       "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
     },
     {
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "title": "Pack Domain Hardcoding Remediation",
+      "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-20T00:16:10Z",
+      "source_surface_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
+        "task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation",
+        "task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts",
+        "task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance",
+        "task.pack_domain_hardcoding_remediation.run_assessment_pass_one",
+        "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+        "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+        "task.pack_domain_hardcoding_remediation.verify_report_and_map_pack_roots"
+      ],
+      "related_paths": [
+        "core/",
+        "core/control_plane/",
+        "core/control_plane/manifests/",
+        "core/docs/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/",
+        "plan/.wt/",
+        "plan/docs/",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/initiative.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/bootstrap_pack_domain_hardcoding_remediation/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/pack_drive_runtime_roots_and_validation_selection/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/re_root_governed_contracts_and_generated_surfaces/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/recover_rich_human_docs_and_guidance_from_pack_driven_state/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_one/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/verify_report_findings_and_map_pack_roots/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/tracking/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
       "title": "Requirements And Decisions Adherence Remediation",
       "summary": "Retire the root docs tree, finish the initiative-package hard cutover, and restore rich machine-backed documentation surfaces.",

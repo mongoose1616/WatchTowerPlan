@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+  "slug": "split_core_and_plan_python_boundary",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "title": "Split core and plan Python boundary",
+  "summary": "Move residual plan-domain runtime out of watchtower_core.plan_runtime and behind a plan-owned Python boundary under plan/**.",
+  "status": "active",
+  "task_status": "ready",
+  "task_kind": "feature",
+  "priority": "critical",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T00:12:19Z",
+  "updated_at": "2026-03-20T00:14:55Z",
+  "related_ids": [
+    "initiative.pack_domain_hardcoding_remediation"
+  ],
+  "applies_to": [
+    "core/python/src/watchtower_core/plan_runtime/",
+    "core/python/src/watchtower_core/cli/",
+    "plan/"
+  ],
+  "scope_items": [
+    "Define the approved plan-owned Python boundary under plan/**.",
+    "Move residual plan-domain runtime, query, sync, and validation services out of watchtower_core.plan_runtime.",
+    "Update CLI, docs, tests, and validation so reusable core imports no longer depend directly on plan-domain Python."
+  ],
+  "done_when_items": [
+    "watchtower_core.plan_runtime no longer owns active plan-domain runtime in the clean endstate.",
+    "Plan-domain Python lives behind an approved boundary under plan/** and reusable core stays pack-agnostic.",
+    "Validation and test suites pass after the boundary cutover."
+  ]
+}

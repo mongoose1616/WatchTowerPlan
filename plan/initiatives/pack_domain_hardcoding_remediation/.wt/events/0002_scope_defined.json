@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.pack_domain_hardcoding_remediation.0002_scope_defined",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "sequence": 2,
+  "event_type": "scope_defined",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T20:34:56Z",
+  "summary": "Recorded the initial pack-wide initiative scope.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.pack_domain_hardcoding_remediation",
+  "related_paths": [
+    "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+    "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+    "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+    "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
+  ]
+}

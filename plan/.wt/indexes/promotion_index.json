@@ -3,8 +3,47 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-19T18:39:56Z",
+  "updated_at": "2026-03-20T00:16:10Z",
   "entries": [
+    {
+      "promotion_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/pack_domain_hardcoding_remediation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-19T20:34:56Z",
+      "target_paths": [
+        "plan/docs/decisions/pack_domain_hardcoding_remediation_design_record.md",
+        "plan/docs/patterns/pack_domain_hardcoding_remediation_implementation_slice.md",
+        "plan/docs/references/pack_domain_hardcoding_remediation_initiative_brief.md",
+        "plan/docs/standards/governance/pack_domain_hardcoding_remediation_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
     {
       "promotion_id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",
       "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",

@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.pack_domain_hardcoding_remediation.run_assessment_pass_one",
+  "slug": "run_assessment_pass_one",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "title": "Run assessment pass one",
+  "summary": "Run the first full repository assessment after the main hardcoding fixes land and convert any new gaps into tracked remediation work.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T20:36:25Z",
+  "updated_at": "2026-03-20T00:14:12Z",
+  "related_ids": [
+    "initiative.pack_domain_hardcoding_remediation"
+  ],
+  "applies_to": [
+    "core/",
+    "plan/"
+  ],
+  "scope_items": [
+    "Assess runtime, docs, standards, and governed surfaces after the initial cutover fixes",
+    "Record and fix any newly discovered actionable gaps"
+  ],
+  "done_when_items": [
+    "The first full assessment yields either no new actionable gaps or tracked follow-up fixes that are completed in-scope"
+  ]
+}

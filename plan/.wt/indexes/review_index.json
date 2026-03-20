@@ -3,8 +3,26 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-19T18:39:56Z",
+  "updated_at": "2026-03-20T00:16:10Z",
   "entries": [
+    {
+      "review_subject_id": "initiative.pack_domain_hardcoding_remediation",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Pack Domain Hardcoding Remediation",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-20T00:16:10Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
+    },
     {
       "review_subject_id": "initiative.plan_requirements_decisions_adherence_remediation",
       "subject_kind": "initiative",
@@ -22,6 +40,22 @@
       "updated_at": "2026-03-19T18:39:56Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-19T20:34:56Z"
     },
     {
       "review_subject_id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",

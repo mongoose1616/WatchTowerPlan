@@ -1,0 +1,94 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "trace_id": "trace.pack_domain_hardcoding_remediation",
+  "slug": "pack_domain_hardcoding_remediation",
+  "title": "Pack Domain Hardcoding Remediation",
+  "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",
+  "scope_type": "pack_wide",
+  "status": "active",
+  "lifecycle_stage": "in_progress",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-19T20:34:56Z",
+  "updated_at": "2026-03-20T00:16:10Z",
+  "task_ids": [
+    "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
+    "task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation",
+    "task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts",
+    "task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance",
+    "task.pack_domain_hardcoding_remediation.run_assessment_pass_one",
+    "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+    "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+    "task.pack_domain_hardcoding_remediation.verify_report_and_map_pack_roots"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.pack_domain_hardcoding_remediation.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.pack_domain_hardcoding_remediation.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+      "sha256": "96d9f2fc82d0cd64f11d54f7f5018f55e9792cf2e89612789115bee043a00821",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T00:15:56Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+      "sha256": "0b58182514289d52ed04f6b207d814317ed84988ee71a276ad546f706b868749",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T00:15:56Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+      "sha256": "cd7ba8e648d04a9ba485f6354fd70adea6af470c1904581b01246a91795b67db",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T00:15:56Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
+      "sha256": "95e40a6d40a6b847683b0d1a6dc2adfadb31e8585154d4f8ce5c6a7f4e4f28e7",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T00:15:56Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-19T20:36:49Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-19T20:36:53Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-20T00:15:56Z"
+    }
+  ]
+}

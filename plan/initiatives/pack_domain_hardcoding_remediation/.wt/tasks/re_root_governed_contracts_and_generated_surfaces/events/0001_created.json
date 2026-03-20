@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_domain_hardcoding_remediation.re_root_governed_contracts_and_generated_surfaces.0001_created",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T20:36:25Z",
+  "summary": "Created live task task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/re_root_governed_contracts_and_generated_surfaces/task.json"
+  },
+  "task_id": "task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts"
+}

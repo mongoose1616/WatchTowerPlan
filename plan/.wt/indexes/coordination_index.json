@@ -3,16 +3,122 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-19T18:39:56Z",
-  "coordination_mode": "ready_for_bootstrap",
-  "summary": "No active plan-workspace initiatives exist.",
-  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
-  "recommended_surface_path": "plan/plan_overview.md",
-  "active_initiative_count": 0,
+  "updated_at": "2026-03-20T00:16:10Z",
+  "coordination_mode": "active_work",
+  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
+  "recommended_next_action": "Start the highest-priority ready task from the initiative package.",
+  "recommended_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
+  "active_initiative_count": 1,
   "blocked_task_count": 0,
-  "actionable_task_count": 0,
-  "entries": [],
-  "actionable_tasks": [],
+  "actionable_task_count": 1,
+  "entries": [
+    {
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "title": "Pack Domain Hardcoding Remediation",
+      "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-20T00:16:10Z",
+      "open_task_count": 2,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
+      "next_action": "Start the highest-priority ready task from the initiative package.",
+      "next_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
+      "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+      "slug": "pack_domain_hardcoding_remediation",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+        "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+          "title": "Run assessment pass two",
+          "task_status": "in_progress",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
+          "is_actionable": false
+        },
+        {
+          "task_id": "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+          "title": "Split core and plan Python boundary",
+          "task_status": "ready",
+          "priority": "critical",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
+          "is_actionable": true
+        }
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
+        "task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation",
+        "task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts",
+        "task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance",
+        "task.pack_domain_hardcoding_remediation.run_assessment_pass_one",
+        "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
+        "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+        "task.pack_domain_hardcoding_remediation.verify_report_and_map_pack_roots"
+      ],
+      "evidence_ids": [
+        "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
+        "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
+        "core/",
+        "core/control_plane/",
+        "core/control_plane/manifests/",
+        "core/docs/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/",
+        "plan/.wt/",
+        "plan/docs/",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/initiative.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/bootstrap_pack_domain_hardcoding_remediation/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/pack_drive_runtime_roots_and_validation_selection/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/re_root_governed_contracts_and_generated_surfaces/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/recover_rich_human_docs_and_guidance_from_pack_driven_state/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_one/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
+        "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/verify_report_findings_and_map_pack_roots/task.json",
+        "plan/tracking/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    }
+  ],
+  "actionable_tasks": [
+    {
+      "trace_id": "trace.pack_domain_hardcoding_remediation",
+      "initiative_title": "Pack Domain Hardcoding Remediation",
+      "task_id": "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
+      "title": "Split core and plan Python boundary",
+      "task_status": "ready",
+      "priority": "critical",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
+      "is_actionable": true
+    }
+  ],
   "recent_closed_initiatives": [
     {
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",

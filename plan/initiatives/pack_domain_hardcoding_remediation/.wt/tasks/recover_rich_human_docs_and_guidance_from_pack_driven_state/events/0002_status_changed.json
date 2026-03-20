@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance_from_pack_driven_state.0002_status_changed",
+  "initiative_id": "initiative.pack_domain_hardcoding_remediation",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-19T22:02:53Z",
+  "summary": "Changed task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/recover_rich_human_docs_and_guidance_from_pack_driven_state/task.json"
+  },
+  "task_id": "task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance"
+}
