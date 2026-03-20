@@ -65,6 +65,10 @@ REMOVED_TEST_PATHS = (
     REPO_ROOT / "core/python/tests/unit/test_traceability_index_sync.py",
     REPO_ROOT / "core/python/tests/unit/test_workspace_injection.py",
 )
+REMOVED_PLACEHOLDER_PATHS = (
+    REPO_ROOT / "core/control_plane/indexes/registries",
+    REPO_ROOT / "core/control_plane/indexes/schemas",
+)
 
 
 def _iter_active_surface_files() -> tuple[Path, ...]:
@@ -88,6 +92,11 @@ def test_root_docs_and_domain_packs_paths_are_gone() -> None:
 
 def test_removed_repo_fixture_helpers_and_repo_aware_unit_paths_stay_gone() -> None:
     violations = [path.relative_to(REPO_ROOT).as_posix() for path in REMOVED_TEST_PATHS if path.exists()]
+    assert not violations, "\n".join(violations)
+
+
+def test_removed_placeholder_index_roots_stay_gone() -> None:
+    violations = [path.relative_to(REPO_ROOT).as_posix() for path in REMOVED_PLACEHOLDER_PATHS if path.exists()]
     assert not violations, "\n".join(violations)
 
 
