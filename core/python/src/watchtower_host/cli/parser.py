@@ -25,6 +25,8 @@ def build_parser() -> argparse.ArgumentParser:
         ).strip(),
         epilog=examples(
             "uv run watchtower-core doctor",
+            "uv run watchtower-core pack list --format json",
+            "uv run watchtower-core pack validate --pack plan --format json",
             "uv run watchtower-core route preview --request \"review code and commit\"",
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
             "--title \"Example Initiative\" "

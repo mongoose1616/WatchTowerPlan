@@ -60,6 +60,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert result == 0
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
+    assert "uv run watchtower-core pack list --format json" in captured.out
     assert (
         "uv run watchtower-core route preview --request "
         "\"review code and commit\"" in captured.out

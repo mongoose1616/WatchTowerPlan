@@ -8,6 +8,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.cli.doctor_family import register_doctor_family
+from watchtower_core.cli.pack_family import register_pack_family
 from watchtower_core.cli.query_family import register_query_family
 from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
@@ -31,6 +32,7 @@ class CommandGroupSpec:
 QUERY_DISCOVERY_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_discovery_family.py"
 QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_knowledge_family.py"
 QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_records_family.py"
+PACK_FAMILY_HANDLERS_PATH = "core/python/src/watchtower_core/cli/pack_handlers.py"
 
 CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
@@ -56,6 +58,16 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("standards", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("acceptance", QUERY_RECORDS_FAMILY_PATH),
             ("evidence", QUERY_RECORDS_FAMILY_PATH),
+        ),
+    ),
+    CommandGroupSpec(
+        name="pack",
+        registrar=register_pack_family,
+        implementation_path="core/python/src/watchtower_core/cli/pack_family.py",
+        subcommand_implementation_paths=(
+            ("list", PACK_FAMILY_HANDLERS_PATH),
+            ("describe", PACK_FAMILY_HANDLERS_PATH),
+            ("validate", PACK_FAMILY_HANDLERS_PATH),
         ),
     ),
     CommandGroupSpec(
@@ -112,6 +124,7 @@ __all__ = [
     "CORE_COMMAND_GROUP_SPECS",
     "CommandGroupSpec",
     "CommandRegistrar",
+    "PACK_FAMILY_HANDLERS_PATH",
     "QUERY_DISCOVERY_FAMILY_PATH",
     "QUERY_KNOWLEDGE_FAMILY_PATH",
     "QUERY_RECORDS_FAMILY_PATH",

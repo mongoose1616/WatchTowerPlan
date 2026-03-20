@@ -1,7 +1,7 @@
 # `watchtower-core`
 
 ## Summary
-This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, planning, query, sync, validation, and closeout flows.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, planning, query, sync, validation, and closeout flows.
 
 ## Use When
 - You need the top-level command map before choosing a narrower command group.
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `plan`, `query`, `sync`, `closeout`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `plan`, `query`, `sync`, `closeout`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 
@@ -36,6 +36,11 @@ uv run watchtower-core --help
 ```sh
 cd core/python
 uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core pack list --format json
 ```
 
 ```sh
@@ -68,6 +73,7 @@ uv run watchtower-core validate all --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core route` | Advisory route preview for turning a request into workflow modules. |
+| `watchtower-core pack` | Inspects hosted-pack registry entries, runtime manifests, and pack-contract validation. |
 | `watchtower-core plan` | Pack-owned plan namespace for bootstrap, live query, task, and plan closeout flows. |
 | `watchtower-core query` | Shared read-only lookup surface for commands, standards, references, foundations, workflows, and durable records. |
 | `watchtower-core sync` | Rebuilds derived governed artifacts and tracking surfaces. |
@@ -79,4 +85,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
-- `2026-03-17T20:03:23Z`
+- `2026-03-20T19:20:00Z`

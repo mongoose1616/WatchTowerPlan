@@ -22,6 +22,7 @@ Reusable command-family registration and handler helpers for shared `watchtower-
 | `core/python/src/watchtower_host/cli/parser.py` | Host-owned parser construction for the `watchtower-core` binary. |
 | `core/python/src/watchtower_host/cli/registry.py` | Host-owned root command-family registry metadata. |
 | `core/python/src/watchtower_host/cli/introspection.py` | Host-owned parser metadata for command-index rebuilds and CLI surface validation. |
+| `core/python/src/watchtower_core/cli/pack_family.py` | Registers the shared `pack` namespace for hosted-pack inspection and contract validation. |
 | `core/python/src/watchtower_core/cli/query_family.py` | Registers the shared root `query` namespace for discovery, knowledge, and durable-record lookup. |
 | `plan/python/src/watchtower_plan/cli/query.py` | Registers the pack-owned `plan query` namespace for live plan-state lookup. |
 | `plan/python/src/watchtower_plan/cli/query_rendered_handlers.py` | Handles the plan query rendered-view commands such as coordination and initiatives. |

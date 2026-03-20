@@ -63,6 +63,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core" in spec_by_id
     assert "command.watchtower_core.route" in spec_by_id
     assert "command.watchtower_core.route.preview" in spec_by_id
+    assert "command.watchtower_core.pack" in spec_by_id
+    assert "command.watchtower_core.pack.list" in spec_by_id
+    assert "command.watchtower_core.pack.describe" in spec_by_id
+    assert "command.watchtower_core.pack.validate" in spec_by_id
     assert "command.watchtower_core.plan" in spec_by_id
     assert "command.watchtower_core.plan.approve" in spec_by_id
     assert "command.watchtower_core.plan.bootstrap" in spec_by_id
@@ -216,6 +220,18 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.query.readiness" not in spec_by_id
     assert "command.watchtower_core.query.tasks" not in spec_by_id
     assert "command.watchtower_core.query.trace" not in spec_by_id
+    assert (
+        spec_by_id["command.watchtower_core.pack.list"].implementation_path
+        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.pack.describe"].implementation_path
+        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.pack.validate"].implementation_path
+        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+    )
     assert (
         spec_by_id["command.watchtower_core.sync.command_index"].implementation_path
         == "core/python/src/watchtower_core/cli/sync_family.py"
