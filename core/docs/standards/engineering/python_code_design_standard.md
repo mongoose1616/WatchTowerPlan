@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T09:26:00Z"
+updated_at: "2026-03-20T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -45,6 +45,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - [ruff_reference.md](/core/docs/references/ruff_reference.md): supports the lint and import-order rules that keep local style predictable.
 - [mypy_reference.md](/core/docs/references/mypy_reference.md): supports the typed-boundary and gradual-strictness expectations defined here.
 - [pytest_reference.md](/core/docs/references/pytest_reference.md): supports the testing posture for observable behavior and focused fixtures.
+- [python_maintainability_practices_reference.md](/core/docs/references/python_maintainability_practices_reference.md): distills composition, purity, and pragmatic maintainability guidance that fits this repository's current architecture.
 
 ## Guidance
 - Prefer explicitness over cleverness. Code should be easy to read in one pass without hidden control flow, magical defaults, or broad implicit repository scans.
@@ -60,7 +61,10 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Do not hide pack-package imports behind repo-local `sys.path` mutation inside reusable core or host composition; pack runtimes must be installed through the shared workspace contract instead.
 - Consolidate duplicated control flow behind a shared helper only when the repetition is structural and the new helper has a clear boundary. Do not create generic abstractions that are broader than the duplicated behavior.
+- Prefer composition over inheritance when you need reusable behavior without shared lifecycle or hidden state. Reach for inheritance only when there is a real subtype relationship or a tightly bounded framework seam.
+- Prefer typed behavioral contracts such as `Protocol` when multiple implementations need to satisfy one reusable interface without sharing implementation.
 - Prefer pure or read-oriented helpers for parsing, filtering, shaping, or summarizing data. Keep filesystem writes, sync operations, closeout steps, and other side effects in explicit orchestration layers.
+- Keep pure helpers stateless and argument-driven. If a function's real job is transformation, validation prep, or lookup, do not make it a method just to keep it near mutable state.
 - Keep interfaces argument-driven. Pass explicit dependencies, paths, IDs, filters, and write options instead of relying on hidden globals or embedded task-specific constants.
 - Use standard Python naming:
   - Modules, functions, variables, and tests use `snake_case`.
@@ -78,6 +82,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Keep `Any` at the edges where untyped libraries, JSON payloads, or dynamic external data make it unavoidable. Convert into narrower local shapes quickly instead of letting `Any` spread.
 - Prefer typed records or small data classes over loose dict conventions for internal multi-field data when the shape is stable and not already governed by a schema-backed artifact contract.
 - Keep imports grouped as standard library, third-party, and local package imports. Avoid wildcard imports and avoid import-time side effects beyond constant or lightweight registry initialization.
+- Break cleanliness or abstraction rules only for explicit local reasons such as measured bottlenecks, compatibility shims, validator determinism, or preserving a sharper boundary. When you do, keep the exception narrow and document the reason in code, tests, or commit context.
 - Write tests around observable behavior. Use unit tests for narrow helpers and integration tests for repo-local orchestration, loader behavior, pack materialization, or multi-surface sync flows.
 - Keep fixtures local and explicit. Prefer a small helper or fixture near the tests that need it over a broad hidden fixture tree.
 - Do not let `tests/unit/` grow back into a repo-bootstrap suite. Tests that need `tests.fixture_repo_support`, pack materialization, initiative bootstrap, governed-doc copying, sync orchestration, or closeout flows belong in `tests/integration/`.
@@ -104,6 +109,8 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Reviewers should reject new mixed-purpose modules, vague role-free names, or duplicate implementations that could be consolidated cleanly.
 - Reviewers should reject new generic behavior placed in `watchtower_plan` when a reusable-core package boundary fits.
 - Reviewers should reject CLI handlers that own business logic instead of delegating to package services.
+- Reviewers should reject inheritance hierarchies used only to share utility behavior when composition or a typed contract would be clearer.
+- Reviewers should reject stateful helper classes whose behavior could be expressed as pure functions without losing boundary clarity.
 - The narrowest meaningful `uv run pytest ...`, `uv run ruff check ...`, and `uv run mypy ...` commands should be run for touched Python surfaces.
 - Reviewers should reject new unit tests that import repo fixture helpers or otherwise require pack materialization to run.
 
@@ -129,6 +136,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - This standard intentionally favors boring, explicit code over framework-heavy or pattern-heavy abstractions.
 - The goal is maintainable consolidation, not abstraction for its own sake.
 - When a helper is extracted from `watchtower_plan`, that is usually a sign that this standard is working as intended. The goal is a narrow plan-owned domain boundary, not a second generic package root.
+- Composition, pure functions, and pragmatic exceptions are preferred here because they strengthen testability and boundary clarity, not because they are universal rules for every code base.
 
 ## Updated At
-- `2026-03-20T09:26:00Z`
+- `2026-03-20T23:55:00Z`

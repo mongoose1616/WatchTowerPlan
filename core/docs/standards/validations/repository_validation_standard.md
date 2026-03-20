@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T02:45:00Z"
+updated_at: "2026-03-20T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -63,6 +63,7 @@ This standard defines the baseline validation expectations for repository change
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
 - Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
+- When validators, loaders, sync flows, or closeout logic change, cover at least one failure mode or boundary condition in addition to the happy path.
 - When `core/python/**` changes, the normal workspace validation baseline is:
   - `./.venv/bin/python -m mypy src`
   - `./.venv/bin/ruff check src tests/unit tests/integration`
@@ -86,6 +87,7 @@ This standard defines the baseline validation expectations for repository change
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
 - Generated trackers and indexes should not be validated against stale source state.
 - Python helper changes should not close out without typecheck, lint, and test coverage unless the exception is explicit.
+- Reviewers should reject validation updates that only prove the happy path when the changed code clearly owns fail-closed behavior, error mapping, or edge-case handling.
 
 ## Change Control
 - Update this standard when the repository changes its baseline validation commands or required validation tiers.
@@ -99,4 +101,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-21T02:45:00Z`
+- `2026-03-20T23:55:00Z`

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T15:30:00Z"
+updated_at: "2026-03-20T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,6 +47,7 @@ This standard defines the repository's baseline traceability model so initiative
 ## Guidance
 - Use one shared `trace_id` to tie the artifacts of a single initiative, feature, or change boundary together.
 - Use explicit identifiers for durable planning artifacts instead of relying only on filenames or titles.
+- Prefer readable semantic `trace_id` values over adding a second opaque UUID layer for normal repository traceability.
 - Treat traceability as both a human-readable and machine-readable concern:
   - human-readable trackers summarize the current corpus
   - machine-readable indexes provide stable lookup surfaces for tooling
@@ -86,6 +87,7 @@ This standard defines the repository's baseline traceability model so initiative
 - Task records should publish `trace_id` when they belong to a traced initiative and should preserve task-to-task dependencies explicitly.
 - Active traced initiatives should not remain active without linked task records.
 - Machine-readable indexes for initiative packages, task records, acceptance contracts, validation evidence, and traceability joins should carry `trace_id` explicitly so tooling can join related artifacts without parsing prose.
+- Add UUIDs only when an external integration requires them as external identifiers; do not treat them as the default local join key when `trace_id` already exists.
 - Update trackers and indexes in the same change set when a traced planning artifact is added, renamed, removed, or materially retargeted.
 - Prefer a missing-link follow-up note over silent omission when a downstream artifact cannot yet point back to its upstream planning source.
 
@@ -155,4 +157,4 @@ This standard defines the repository's baseline traceability model so initiative
 - [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-15T15:30:00Z`
+- `2026-03-20T23:55:00Z`

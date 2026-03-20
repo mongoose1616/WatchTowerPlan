@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-20T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -108,6 +108,7 @@ This standard defines the repository commit-message policy for human maintainers
   - `Trace-ID:`
   - `Task-ID:`
   - `No-Task-Reason:`
+- Prefer repository semantic identifiers such as `trace.*` and `task.*` in commit metadata. Do not add opaque UUID footers when the repository already has a stable semantic trace or task identifier.
 
 ### Breaking Change Guidance
 1. Use both the `!` marker and a `BREAKING CHANGE:` footer for high-impact changes when feasible.
@@ -175,6 +176,7 @@ workflow.
 - The body explains context or migration steps when the change is complex, risky, or non-obvious, with lines wrapped near 80 characters.
 - Footers capture breaking changes, issues, approvals, and collaborators using `Token: value` format.
 - Traced or non-trivial changes should publish `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason`.
+- Reviewers should reject commit metadata that introduces a second opaque identifier layer when a stable repository `trace_id` or task identifier already exists.
 - Commit text is reviewed for spelling, case, and placeholder removal before commit or before being shared for review.
 
 ## Examples
@@ -265,4 +267,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-20T23:55:00Z`

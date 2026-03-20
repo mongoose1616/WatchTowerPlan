@@ -35,6 +35,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
    - Write the subject in imperative voice with 72 characters or fewer and no trailing punctuation.
    - Add a body and footers when the change is complex, risky, trace-linked, task-linked, or breaking.
    - For traced or non-trivial work, include `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason`.
+   - Prefer repository semantic trace and task identifiers over opaque UUIDs when adding commit metadata.
 3. Validate the commit message and create the commit when requested.
    - Check the message against the repository regex and commit-message rules from the standard.
    - Confirm the message accurately matches the staged change set.

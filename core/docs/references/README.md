@@ -33,3 +33,4 @@
 | `core/docs/references/pytest_reference.md` | Working reference for the canonical Python test runner used in the workspace baseline. |
 | `core/docs/references/mypy_reference.md` | Working reference for static typing guidance used by the Python workspace. |
 | `core/docs/references/ruff_reference.md` | Working reference for linting and formatting policy used by the Python workspace. |
+| `core/docs/references/python_maintainability_practices_reference.md` | Distills external Python maintainability guidance into the subset that reinforces current repository standards and design boundaries. |

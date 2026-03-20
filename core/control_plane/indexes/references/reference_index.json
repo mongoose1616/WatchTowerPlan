@@ -1080,6 +1080,38 @@
       ]
     },
     {
+      "reference_id": "ref.python_maintainability_practices",
+      "title": "Python Maintainability Practices Reference",
+      "summary": "Working reference that distills external Python maintainability guidance into the subset that reinforces this repository's current design philosophy.",
+      "status": "active",
+      "doc_path": "core/docs/references/python_maintainability_practices_reference.md",
+      "updated_at": "2026-03-20T23:55:00Z",
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "canonical_upstream_urls": [
+        "https://medium.com/better-programming/7-rules-for-a-maintainable-python-code-base-6c7d0cdeed43",
+        "https://track.appacademy.io/blog/python-coding-best-practices"
+      ],
+      "cited_by_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md"
+      ],
+      "related_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "plan/docs/standards/governance/traceability_standard.md",
+        "core/docs/standards/engineering/git_commit_standard.md"
+      ],
+      "tags": [
+        "reference",
+        "python",
+        "maintainability"
+      ]
+    },
+    {
       "reference_id": "ref.python_plugin_discovery",
       "title": "Python Plugin Discovery Reference",
       "summary": "Distilled reference for choosing plugin discovery patterns for host-pack integration in this repository.",

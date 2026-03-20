@@ -1752,6 +1752,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/references/python_maintainability_practices_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Distills external Python maintainability guidance into the subset that reinforces current repository standards and design boundaries.",
+      "parent_path": "core/docs/references/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/references/ruff_reference.md",
       "kind": "file",
       "surface_kind": "reference_doc",
