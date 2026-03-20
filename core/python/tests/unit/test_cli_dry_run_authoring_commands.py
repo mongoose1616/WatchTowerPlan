@@ -5,7 +5,7 @@ from shutil import copytree
 
 import pytest
 
-from tests.integration.fixture_repo_support import (
+from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )

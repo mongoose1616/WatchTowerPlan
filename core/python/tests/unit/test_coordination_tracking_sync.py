@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_minimal_plan_pack
+from tests.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.sync.coordination_tracking import (
     ACTIONABLE_TASK_LIMIT,

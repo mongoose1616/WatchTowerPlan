@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_minimal_plan_pack
+from tests.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane import ControlPlaneLoader
 from watchtower_core.evidence import EvidenceBundleEntrySpec, EvidenceBundleHelper
 

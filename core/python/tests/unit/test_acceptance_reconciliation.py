@@ -5,7 +5,7 @@ from collections import Counter
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import (
+from tests.fixture_repo_support import (
     materialize_acceptance_and_evidence_paths,
     materialize_minimal_plan_pack,
 )
