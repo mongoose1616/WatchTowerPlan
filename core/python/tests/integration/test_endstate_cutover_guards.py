@@ -117,6 +117,16 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
         REPO_ROOT / "core/python/README.md": ("watchtower_core", "watchtower_plan", "plan/.wt/"),
         REPO_ROOT / "plan/python/README.md": ("approved plan-owned Python boundary", "plan/.wt/**", "watchtower_plan"),
         REPO_ROOT / "plan/python/src/watchtower_plan/README.md": ("watchtower_core", "plan/.wt/**", "plan-flavored duplicates"),
+        REPO_ROOT / "core/python/src/watchtower_core/README.md": ("watchtower_plan", "reusable-core", "plan-owned logic"),
+        REPO_ROOT / "core/python/src/watchtower_core/query/README.md": ("watchtower_plan.query", "plan-flavored duplicates", "generic governed-surface query helpers"),
+        REPO_ROOT / "core/python/src/watchtower_core/sync/README.md": ("watchtower_plan.sync", "plan-flavored copies", "reusable harness behavior"),
+        REPO_ROOT / "core/python/src/watchtower_core/validation/README.md": ("watchtower_plan.validation", "plan-flavored duplicates", "reusable suite orchestration"),
+        REPO_ROOT / "plan/python/src/watchtower_plan/query/README.md": ("plan/.wt/**", "watchtower_core.query", "plan-flavored duplicates"),
+        REPO_ROOT / "plan/python/src/watchtower_plan/sync/README.md": ("plan/.wt/**", "watchtower_core.sync", "plan-flavored duplicates"),
+        REPO_ROOT / "plan/python/src/watchtower_plan/validation/README.md": ("watchtower_core.validation", "generic validators", "repo-local semantic validation"),
+        REPO_ROOT / "plan/python/src/watchtower_plan/closeout/README.md": ("machine-state root", "reusable core", "live plan state"),
+        REPO_ROOT / "core/docs/README.md": ("authored foundations source", "byte-identical mirror", "Root `docs/` is retired"),
+        REPO_ROOT / "plan/docs/README.md": ("authored foundations source", "byte-identical mirror", "second live planning workspace"),
     }
 
     violations: list[str] = []
