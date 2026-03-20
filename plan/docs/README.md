@@ -18,4 +18,4 @@
 - `requirements.md` and `decisions.md` are the authoritative contract for durable plan guidance and promotion targets.
 - `core/docs/foundations/` is the authored foundations source and `plan/docs/foundations/` is the required byte-identical mirror.
 - Promotion into this root is governed by `plan/.wt/registries/promotion_policy_registry.json`, and the currently approved guidance inventory is published through `plan/.wt/indexes/guidance_index.json`.
-- Use this root for approved, durable plan guidance once promotion support exists; do not use it as a second live planning workspace.
+- Use this root for approved, durable plan guidance; do not use it as a second live planning workspace.

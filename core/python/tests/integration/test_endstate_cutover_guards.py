@@ -44,6 +44,8 @@ BANNED_PATTERNS = (
     re.compile(r"workflow-root migration", flags=re.IGNORECASE),
     re.compile(r"filled out to the endstate", flags=re.IGNORECASE),
     re.compile(r"being seeded and future promotion paths are still landing", flags=re.IGNORECASE),
+    re.compile(r"will later carry", flags=re.IGNORECASE),
+    re.compile(r"once promotion support exists", flags=re.IGNORECASE),
 )
 REMOVED_TEST_PATHS = (
     REPO_ROOT / "core/python/tests/integration/fixture_repo_support.py",
