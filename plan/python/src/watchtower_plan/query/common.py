@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Iterable
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from typing import Any, Protocol
 
 from watchtower_core.control_plane.models import InitiativeIndexEntry
@@ -32,24 +32,6 @@ class RenderedSearchParamsLike(Protocol):
     current_phase: str | None
     owner: str | None
     limit: int | None
-
-
-class DataclassSearchAdapter[ParamsT, TargetParamsT, EntryT]:
-    """Translate one query dataclass into the adjacent workspace search boundary."""
-
-    def __init__(
-        self,
-        *,
-        target_type: type[TargetParamsT],
-        search: Callable[[TargetParamsT], tuple[EntryT, ...]],
-    ) -> None:
-        self._target_type = target_type
-        self._search = search
-
-    def search(self, params: ParamsT) -> tuple[EntryT, ...]:
-        """Delegate one query through a differently typed workspace search contract."""
-
-        return self._search(self._target_type(**asdict(params)))
 
 
 def rendered_search_filters_from_params(

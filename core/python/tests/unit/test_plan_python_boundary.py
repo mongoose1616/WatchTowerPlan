@@ -12,6 +12,7 @@ import watchtower_core.sync as public_sync
 import watchtower_core.validation as public_validation
 import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.query import CommandQueryService
+from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_core.sync.command_index import CommandIndexSyncService
 from watchtower_plan.validation import (
     DocumentSemanticsValidationService,
@@ -51,6 +52,10 @@ def test_public_query_root_exports_generic_query_services_and_fails_closed_for_p
 
     with pytest.raises(AttributeError, match="watchtower_plan.query"):
         _ = public_query.CoordinationQueryService
+
+
+def test_generic_query_adapter_lives_in_reusable_core() -> None:
+    assert DataclassSearchAdapter.__module__ == "watchtower_core.query.common"
 
 
 def test_public_sync_root_fails_closed_with_plan_boundary_guidance() -> None:

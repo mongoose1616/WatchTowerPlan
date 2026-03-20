@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_plan.project_workspace import (
     PlanProjectIndexEntry,
     ProjectWorkspaceService,
@@ -12,7 +13,6 @@ from watchtower_plan.project_workspace import (
 from watchtower_plan.project_workspace import (
     PlanProjectSearchParams as WorkspacePlanProjectSearchParams,
 )
-from watchtower_plan.query.common import DataclassSearchAdapter
 
 
 @dataclass(frozen=True, slots=True)

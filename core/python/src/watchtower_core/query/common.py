@@ -2,7 +2,26 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
+from dataclasses import asdict
+
+
+class DataclassSearchAdapter[ParamsT, TargetParamsT, EntryT]:
+    """Translate one query dataclass into an adjacent typed search contract."""
+
+    def __init__(
+        self,
+        *,
+        target_type: type[TargetParamsT],
+        search: Callable[[TargetParamsT], tuple[EntryT, ...]],
+    ) -> None:
+        self._target_type = target_type
+        self._search = search
+
+    def search(self, params: ParamsT) -> tuple[EntryT, ...]:
+        """Delegate one query through a differently typed workspace contract."""
+
+        return self._search(self._target_type(**asdict(params)))
 
 
 def normalize_text(value: str) -> str:
@@ -48,4 +67,4 @@ def query_score(query: str | None, fields: Iterable[str]) -> int | None:
     return score
 
 
-__all__ = ["normalize_optional_text", "normalize_text", "query_score"]
+__all__ = ["DataclassSearchAdapter", "normalize_optional_text", "normalize_text", "query_score"]

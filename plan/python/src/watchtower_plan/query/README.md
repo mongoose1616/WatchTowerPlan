@@ -18,7 +18,7 @@ Authoritative repository query services for live plan indexes, rendered planning
 | Path | Description |
 |---|---|
 | `plan/python/src/watchtower_plan/query/README.md` | Describes the repository query-service boundary and adjacent command docs. |
-| `plan/python/src/watchtower_plan/query/common.py` | Shared rendered-surface search helpers and deterministic query-term builders for trace-linked planning views. |
+| `plan/python/src/watchtower_plan/query/common.py` | Shared rendered-surface search filters and deterministic query-term builders for trace-linked planning views. |
 | `plan/python/src/watchtower_plan/query/initiatives.py` | Compact initiative-family query service over phase, owner, and blocker rendered surfaces. |
 | `plan/python/src/watchtower_plan/query/coordination.py` | Active-first coordination query service that layers the coordination snapshot over initiative history lookup. |
 

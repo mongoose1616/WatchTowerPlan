@@ -10,6 +10,7 @@ Export-safe generic query services over governed pack surfaces, command and work
 
 ## Key Surfaces
 - `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing repo-local planning queries.
+- `common.py`: Shared text normalization, scoring, and query-adapter helpers used by both reusable-core and plan-owned query services.
 - `commands.py`, `workflows.py`, and `authority.py`: Index and registry query services for generic governed lookups.
 - `routes.py`: Export-safe advisory route-preview service over the governed route and workflow indexes.
 - `governance_surfaces.py`: Pack-surface lookup over `pack_settings` and `governance_surface_map`.

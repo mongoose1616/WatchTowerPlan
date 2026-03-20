@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_plan.plan_workspace import (
     PlanCloseoutIndexEntry,
     PlanWorkspaceService,
@@ -12,7 +13,6 @@ from watchtower_plan.plan_workspace import (
 from watchtower_plan.plan_workspace import (
     PlanCloseoutSearchParams as WorkspacePlanCloseoutSearchParams,
 )
-from watchtower_plan.query.common import DataclassSearchAdapter
 
 
 @dataclass(frozen=True, slots=True)
