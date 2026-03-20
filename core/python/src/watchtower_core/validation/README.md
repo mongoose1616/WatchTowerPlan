@@ -6,7 +6,7 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `watchtower_core.validation` for exported validators and result types, plus explicit reusable submodules such as `acceptance`, `all`, `artifact`, and `front_matter`.
-- `Non-Goals`: Direct export of repo-local document semantics implementations such as `DocumentSemanticsValidationService`; those stay under `watchtower_plan.validation` even when reusable-core orchestration invokes them.
+- `Non-Goals`: Direct export of repo-local document semantics implementations such as `DocumentSemanticsValidationService`; those stay under `watchtower_plan.validation` even when reusable-core orchestration invokes them, and plan-flavored duplicates of reusable validator helpers.
 
 ## Key Surfaces
 - `acceptance.py`, `artifact.py`, `front_matter.py`, and `pack_contract.py`: Exported validator services.
@@ -18,3 +18,7 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/validation/README.md`
 - `core/docs/commands/core_python/watchtower_core_validate.md`
+
+## Notes
+- Keep reusable suite orchestration, result models, and generic validators here.
+- Keep `watchtower_plan.validation` narrow and limited to repo-local semantic validation rules and target enumeration.

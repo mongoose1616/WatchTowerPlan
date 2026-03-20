@@ -6,7 +6,7 @@ Export-safe generic query services over governed pack surfaces, command and work
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, `artifact_families`, `acceptance`, `evidence`, `foundations`, `references`, `repository`, `standards`, and `traceability`.
-- `Non-Goals`: Live planning, initiative, task, review, closeout, discrepancy, readiness, and plan-evidence query services that live under `watchtower_plan.query`.
+- `Non-Goals`: Live planning, initiative, task, review, closeout, discrepancy, readiness, and plan-evidence query services that live under `watchtower_plan.query`, and plan-flavored duplicates of reusable query helpers.
 
 ## Key Surfaces
 - `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing repo-local planning queries.
@@ -22,3 +22,7 @@ Export-safe generic query services over governed pack surfaces, command and work
 - `plan/python/src/watchtower_plan/query/README.md`
 - `requirements.md`
 - `decisions.md`
+
+## Notes
+- Keep generic governed-surface query helpers here.
+- Keep `watchtower_plan.query` narrow and limited to live plan lookup behavior that cannot already live under reusable core.
