@@ -1,4 +1,4 @@
-# `watchtower-core task create`
+# `watchtower-core plan task create`
 
 ## Summary
 This command creates one initiative-local live task record from compact structured inputs and refreshes derived plan-workspace surfaces in write mode.
@@ -11,15 +11,15 @@ This command creates one initiative-local live task record from compact structur
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core task create` |
+| Invocation | `watchtower-core plan task create` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/task_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/tasks.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task create --task-id <task_id> --title <title> --summary <summary> --task-kind <kind> --priority <priority> --owner <owner> --scope <item> --done-when <item> [--trace-id <trace_id>] [--task-status <status>] [--applies-to <path_or_concept>] [--related-id <id>] [--depends-on <task_id>] [--blocked-by <task_id>] [--file-stem <stem>] [--updated-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core plan task create --task-id <task_id> --title <title> --summary <summary> --task-kind <kind> --priority <priority> --owner <owner> --scope <item> --done-when <item> [--trace-id <trace_id>] [--task-status <status>] [--applies-to <path_or_concept>] [--related-id <id>] [--depends-on <task_id>] [--blocked-by <task_id>] [--file-stem <stem>] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -46,12 +46,12 @@ uv run watchtower-core task create --task-id <task_id> --title <title> --summary
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core task create --task-id task.example.001 --title "Draft the example" --summary "Creates the example task." --task-kind documentation --priority medium --owner repository_maintainer --scope "Write the example" --done-when "The example exists"
+uv run watchtower-core plan task create --task-id task.example.001 --title "Draft the example" --summary "Creates the example task." --task-kind documentation --priority medium --owner repository_maintainer --scope "Write the example" --done-when "The example exists"
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task create --task-id task.traceable.example.001 --trace-id trace.example --title "Implement the slice" --summary "Implements the bounded slice." --task-kind feature --priority high --owner implementation_engineer --applies-to core/python/src/ --related-id design.features.example --scope "Ship the slice" --done-when "Tests pass" --format json
+uv run watchtower-core plan task create --task-id task.traceable.example.001 --trace-id trace.example --title "Implement the slice" --summary "Implements the bounded slice." --task-kind feature --priority high --owner implementation_engineer --applies-to core/python/src/ --related-id design.features.example --scope "Ship the slice" --done-when "Tests pass" --format json
 ```
 
 ## Behavior and Outputs
@@ -66,16 +66,15 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core task` | Parent command group for task lifecycle operations. |
-| `watchtower-core task update` | Applies later structured updates to the created task. |
-| `watchtower-core task transition` | Applies a narrower handoff-style update to the created task. |
+| `watchtower-core plan task` | Parent command group for task lifecycle operations. |
+| `watchtower-core plan task update` | Applies later structured updates to the created task. |
+| `watchtower-core plan task transition` | Applies a narrower handoff-style update to the created task. |
 | `watchtower-core plan approve` | Required before a new task can be created directly in an execution-starting state. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/task_family.py`
-- `core/python/src/watchtower_core/cli/task_handlers.py`
+- `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/task_lifecycle.py`
 
 ## Updated At

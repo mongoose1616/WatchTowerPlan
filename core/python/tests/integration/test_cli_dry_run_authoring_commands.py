@@ -43,6 +43,7 @@ def test_task_create_supports_json_output(
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "task",
             "create",
             "--task-id",
@@ -67,7 +68,7 @@ def test_task_create_supports_json_output(
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core task create"
+    assert payload["command"] == "watchtower-core plan task create"
     assert payload["status"] == "ok"
     assert (
         payload["task_id"]

@@ -87,7 +87,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert "uv run watchtower-core query workflows --query validation" in captured.out
     assert (
-        "uv run watchtower-core task transition --task-id task.example.001 "
+        "uv run watchtower-core plan task transition --task-id task.example.001 "
         "--task-status completed --format json" in captured.out
     )
     assert "uv run watchtower-core sync standard-index" in captured.out
@@ -191,10 +191,11 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
     assert "bootstrap" in captured.out
     assert "confirm-inputs" in captured.out
     assert "approve" in captured.out
+    assert "task" in captured.out
 
 
 def test_task_group_prints_group_specific_help(capsys) -> None:
-    result = main(["task"])
+    result = main(["plan", "task"])
 
     captured = capsys.readouterr()
     assert result == 0
@@ -202,7 +203,7 @@ def test_task_group_prints_group_specific_help(capsys) -> None:
     assert "create" in captured.out
     assert "update" in captured.out
     assert "transition" in captured.out
-    assert "uv run watchtower-core task create --task-id task.example.001" in captured.out
+    assert "uv run watchtower-core plan task create --task-id task.example.001" in captured.out
 
 
 def test_sync_group_prints_group_specific_help(capsys) -> None:

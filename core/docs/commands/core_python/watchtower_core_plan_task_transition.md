@@ -1,4 +1,4 @@
-# `watchtower-core task transition`
+# `watchtower-core plan task transition`
 
 ## Summary
 This command applies a bounded handoff-style status, owner, or blocker transition to one initiative-local live task record and refreshes derived plan-workspace surfaces in write mode.
@@ -11,15 +11,15 @@ This command applies a bounded handoff-style status, owner, or blocker transitio
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core task transition` |
+| Invocation | `watchtower-core plan task transition` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/task_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/tasks.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id <task_id> --task-status <status> [--next-owner <owner>] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core plan task transition --task-id <task_id> --task-status <status> [--next-owner <owner>] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,12 +38,12 @@ uv run watchtower-core task transition --task-id <task_id> --task-status <status
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status in_review --next-owner validation_engineer
+uv run watchtower-core plan task transition --task-id task.example.001 --task-status in_review --next-owner validation_engineer
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status completed --clear-blocked-by --clear-depends-on --write
+uv run watchtower-core plan task transition --task-id task.example.001 --task-status completed --clear-blocked-by --clear-depends-on --write
 ```
 
 ## Behavior and Outputs
@@ -59,16 +59,15 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core task` | Parent command group for task lifecycle operations. |
-| `watchtower-core task update` | Use when the transition also requires broader field or body edits. |
+| `watchtower-core plan task` | Parent command group for task lifecycle operations. |
+| `watchtower-core plan task update` | Use when the transition also requires broader field or body edits. |
 | `watchtower-core plan approve` | Required before handoff transitions can start real execution. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 | `watchtower-core closeout plan-initiative` | Use when the transition leaves a live `plan/**` initiative package with only terminal task state. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/task_family.py`
-- `core/python/src/watchtower_core/cli/task_handlers.py`
+- `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/task_lifecycle.py`
 
 ## Updated At

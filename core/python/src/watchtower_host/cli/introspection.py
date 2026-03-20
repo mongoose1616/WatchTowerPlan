@@ -84,9 +84,10 @@ def _build_spec(parser: argparse.ArgumentParser) -> CommandParserSpec:
         summary=_extract_first_paragraph(parser.description or parser.format_help()),
         kind="root_command" if len(tokens) == 1 else "subcommand",
         workspace="core_python",
-        doc_path=_command_doc_path(tokens),
+        doc_path=_command_doc_path(parser, tokens),
         synopsis=_synopsis_for_parser(parser),
         implementation_path=_implementation_path(
+            parser,
             tokens,
             command_group_implementation_paths=command_group_implementation_paths,
             command_group_subcommand_paths=command_group_subcommand_paths,
@@ -127,17 +128,24 @@ def _extract_output_formats(parser: argparse.ArgumentParser) -> tuple[tuple[str,
     return (), None
 
 
-def _command_doc_path(tokens: tuple[str, ...]) -> str:
+def _command_doc_path(parser: argparse.ArgumentParser, tokens: tuple[str, ...]) -> str:
+    declared_doc_path = parser.get_default("_doc_path")
+    if isinstance(declared_doc_path, str) and declared_doc_path:
+        return declared_doc_path
     suffix = "_".join(token.replace("-", "_") for token in tokens)
     return f"{COMMAND_DOC_ROOT}/{suffix}.md"
 
 
 def _implementation_path(
+    parser: argparse.ArgumentParser,
     tokens: tuple[str, ...],
     *,
     command_group_implementation_paths: dict[str, str],
     command_group_subcommand_paths: dict[str, dict[str, str]],
 ) -> str:
+    declared_path = parser.get_default("_implementation_path")
+    if isinstance(declared_path, str) and declared_path:
+        return declared_path
     if len(tokens) == 1:
         return CLI_PARSER_PATH
 

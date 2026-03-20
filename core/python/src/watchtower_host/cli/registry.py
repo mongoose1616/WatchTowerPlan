@@ -12,7 +12,6 @@ from watchtower_core.cli.doctor_family import register_doctor_family
 from watchtower_core.cli.query_family import register_query_family
 from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
-from watchtower_core.cli.task_family import register_task_family
 from watchtower_core.cli.validate_family import register_validate_family
 from watchtower_core.pack_integration.runtime import load_registered_pack_integrations
 
@@ -67,11 +66,6 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("initiatives", QUERY_COORDINATION_FAMILY_PATH),
             ("trace", QUERY_COORDINATION_FAMILY_PATH),
         ),
-    ),
-    CommandGroupSpec(
-        name="task",
-        registrar=register_task_family,
-        implementation_path="core/python/src/watchtower_core/cli/task_family.py",
     ),
     CommandGroupSpec(
         name="closeout",

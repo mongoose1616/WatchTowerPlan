@@ -70,7 +70,7 @@ uv run watchtower-core plan bootstrap --project-slug watchtower --trace-id trace
 | `watchtower-core plan` | Parent command group for live initiative-package bootstrap and readiness operations. |
 | `watchtower-core plan confirm-inputs` | Records reviewed initiative-authored inputs before readiness approval. |
 | `watchtower-core plan approve` | Approves the live initiative package into `ready_for_execution`. |
-| `watchtower-core task` | Manages the bootstrap task or any follow-up tasks created after the chain exists. |
+| `watchtower-core plan task` | Manages the bootstrap task or any follow-up tasks created after the chain exists. |
 | `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
 | `watchtower-core closeout plan-initiative` | Use after the bootstrap task and its successors are terminal on the live `plan/**` initiative package. |
 

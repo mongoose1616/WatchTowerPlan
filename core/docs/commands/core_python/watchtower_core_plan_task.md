@@ -1,4 +1,4 @@
-# `watchtower-core task`
+# `watchtower-core plan task`
 
 ## Summary
 This command group creates, updates, and transitions initiative-local live task records under `plan/**/.wt/tasks/**` while refreshing derived plan-workspace surfaces in write mode.
@@ -11,15 +11,15 @@ This command group creates, updates, and transitions initiative-local live task 
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core task` |
+| Invocation | `watchtower-core plan task` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/task_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/tasks.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task <task_command> [args]
+uv run watchtower-core plan task <task_command> [args]
 ```
 
 ## Arguments and Options
@@ -30,22 +30,22 @@ uv run watchtower-core task <task_command> [args]
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core task --help
+uv run watchtower-core plan task --help
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task create --task-id task.example.001 --title "Draft the example" --summary "Creates the example task." --task-kind documentation --priority medium --owner repository_maintainer --scope "Write the example" --done-when "The example exists"
+uv run watchtower-core plan task create --task-id task.example.001 --title "Draft the example" --summary "Creates the example task." --task-kind documentation --priority medium --owner repository_maintainer --scope "Write the example" --done-when "The example exists"
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id task.example.001 --task-status in_progress --owner implementation_engineer --format json
+uv run watchtower-core plan task update --task-id task.example.001 --task-status in_progress --owner implementation_engineer --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status completed --write
+uv run watchtower-core plan task transition --task-id task.example.001 --task-status completed --write
 ```
 
 ## Behavior and Outputs
@@ -63,17 +63,16 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core task create` | Creates one initiative-local live task record. |
-| `watchtower-core task update` | Applies structured field updates to one live task record. |
-| `watchtower-core task transition` | Applies a handoff-style status or ownership transition. |
+| `watchtower-core plan task create` | Creates one initiative-local live task record. |
+| `watchtower-core plan task update` | Applies structured field updates to one live task record. |
+| `watchtower-core plan task transition` | Applies a handoff-style status or ownership transition. |
 | `watchtower-core plan approve` | Required before task transitions can begin real execution on a live initiative package. |
 | `watchtower-core query tasks` | Reads the task index refreshed by task write operations. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that task write operations refresh. |
 | `watchtower-core closeout plan-initiative` | Use after task transitions leave a live `plan/**` initiative package with only terminal task state. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/task_family.py`
-- `core/python/src/watchtower_core/cli/task_handlers.py`
+- `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/task_lifecycle.py`
 
 ## Updated At

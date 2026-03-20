@@ -4,7 +4,8 @@ import argparse
 import json
 from types import SimpleNamespace
 
-from watchtower_core.cli import plan_handlers, task_handlers
+from watchtower_plan.cli import handlers as plan_handlers
+from watchtower_plan.cli import tasks as task_handlers
 
 
 def _plan_args(**overrides: object) -> argparse.Namespace:
@@ -345,7 +346,7 @@ def test_task_transition_supports_json_error_output(monkeypatch, capsys) -> None
     payload = json.loads(captured.out)
     assert result == 1
     assert payload == {
-        "command": "watchtower-core task transition",
+        "command": "watchtower-core plan task transition",
         "message": "unknown task",
         "status": "error",
     }

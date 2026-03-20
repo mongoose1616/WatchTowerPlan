@@ -24,6 +24,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         _run_plan_bootstrap,
         _run_plan_confirm_inputs,
     )
+    from watchtower_plan.cli.tasks import register_plan_task_commands
     from watchtower_plan.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
     plan_parser = subparsers.add_parser(
@@ -216,6 +217,8 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
     )
     add_human_json_format_argument(approve_parser)
     approve_parser.set_defaults(handler=_run_plan_approve)
+
+    register_plan_task_commands(plan_subparsers)
 
 
 __all__ = [

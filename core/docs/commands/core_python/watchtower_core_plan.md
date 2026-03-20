@@ -55,7 +55,7 @@ uv run watchtower-core plan approve --initiative-slug example_initiative --write
 | `watchtower-core plan bootstrap` | Bootstraps one live initiative package plus one bootstrap task. |
 | `watchtower-core plan confirm-inputs` | Records reviewed initiative-authored inputs into machine state before approval. |
 | `watchtower-core plan approve` | Approves one live initiative package into `ready_for_execution`. |
-| `watchtower-core task` | Manages the bootstrap task or follow-up work after the planning chain exists. |
+| `watchtower-core plan task` | Manages the bootstrap task or follow-up work after the planning chain exists. |
 | `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
 | `watchtower-core query initiatives` | Reads the live initiative-family surface affected by plan writes. |
 | `watchtower-core query readiness` | Reads the readiness-gate surface affected by plan writes. |

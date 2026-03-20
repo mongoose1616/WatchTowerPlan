@@ -60,7 +60,7 @@
 - `uv run watchtower-core query standards --category governance --format json`
 - `uv run watchtower-core query tasks --task-status planned`
 - `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
-- `uv run watchtower-core task transition --task-id task.example.001 --task-status completed --format json`
+- `uv run watchtower-core plan task transition --task-id task.example.001 --task-status completed --format json`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core query initiatives --current-phase capture`
@@ -89,7 +89,7 @@
 - Use the group pages for deeper browsing:
   - [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md)
   - [watchtower_core_query.md](/core/docs/commands/core_python/watchtower_core_query.md)
-  - [watchtower_core_task.md](/core/docs/commands/core_python/watchtower_core_task.md)
+  - [watchtower_core_plan_task.md](/core/docs/commands/core_python/watchtower_core_plan_task.md)
   - [watchtower_core_sync.md](/core/docs/commands/core_python/watchtower_core_sync.md)
   - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
   - [watchtower_core_closeout.md](/core/docs/commands/core_python/watchtower_core_closeout.md)
@@ -123,7 +123,7 @@
 - `uv run watchtower-core closeout plan-initiative --write ...` is the default live closeout path for `plan/**` initiative packages and refreshes the initiative-local artifacts plus the pack and project coordination surfaces in the same slice.
 - `uv run watchtower-core closeout initiative --write ...` is compatibility-only and must fail closed back to `closeout plan-initiative` for live `plan/**` initiatives.
 - `uv run watchtower-core closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge ledger, and then refreshes all derived governed surfaces.
-- `uv run watchtower-core task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
+- `uv run watchtower-core plan task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.

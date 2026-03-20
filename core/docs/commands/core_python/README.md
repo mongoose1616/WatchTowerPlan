@@ -8,7 +8,7 @@
 - Use `watchtower_core_route.md` when the main question is how a request maps to workflow modules.
 - Use `watchtower_core_plan.md` when the main question is how to bootstrap a live initiative package or advance it through confirmation and approval.
 - Use `watchtower_core_query.md` when the main question is which read-only lookup surface to use, then open `watchtower_core_query_foundations.md` when the question is which foundation document governs a surface or which docs cite or apply it.
-- Use `watchtower_core_task.md` when the main question is how to create, update, or transition initiative-local live task records.
+- Use `watchtower_core_plan_task.md` when the main question is how to create, update, or transition initiative-local live task records.
 - Use `watchtower_core_sync.md` when the main question is which derived artifact to rebuild, then open `watchtower_core_sync_foundation_index.md` when a foundations change needs the machine-readable intent index refreshed.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_query_coordination.md` when the main question is current live planning state, next action, and active work context.
@@ -47,7 +47,10 @@
 | `core/docs/commands/core_python/watchtower_core_query_coordination.md` | Machine start-here command page for active traced initiative coordination and next-step lookup. |
 | `core/docs/commands/core_python/watchtower_core_query_authority.md` | Canonical surface-discovery query page for planning and governance questions. |
 | `core/docs/commands/core_python/watchtower_core_query_commands.md` | Machine-readable lookup page for finding any other current command page without scanning the directory manually. |
-| `core/docs/commands/core_python/watchtower_core_task.md` | Entry page for task lifecycle commands that mutate initiative-local live task records in dry-run or write mode. |
+| `core/docs/commands/core_python/watchtower_core_plan_task.md` | Entry page for pack-owned task lifecycle commands that mutate initiative-local live task records in dry-run or write mode. |
+| `core/docs/commands/core_python/watchtower_core_plan_task_create.md` | Creates one initiative-local live task record under the pack-owned `plan task` namespace. |
+| `core/docs/commands/core_python/watchtower_core_plan_task_update.md` | Applies structured field updates under the pack-owned `plan task` namespace. |
+| `core/docs/commands/core_python/watchtower_core_plan_task_transition.md` | Applies a bounded handoff-style transition under the pack-owned `plan task` namespace. |
 | `core/docs/commands/core_python/watchtower_core_sync.md` | Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes. |
 | `core/docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Rebuild surface for the machine-readable foundation index derived from governed foundation docs. |
 | `core/docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |

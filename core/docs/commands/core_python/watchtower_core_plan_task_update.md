@@ -1,4 +1,4 @@
-# `watchtower-core task update`
+# `watchtower-core plan task update`
 
 ## Summary
 This command applies structured field updates to one initiative-local live task record and refreshes derived plan-workspace surfaces in write mode.
@@ -11,15 +11,15 @@ This command applies structured field updates to one initiative-local live task 
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core task update` |
+| Invocation | `watchtower-core plan task update` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/task_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/tasks.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id <task_id> [--title <title>] [--summary <summary>] [--task-kind <kind>] [--priority <priority>] [--owner <owner>] [--task-status <status>] [--scope <item>] [--done-when <item>] [--applies-to <path_or_concept> | --clear-applies-to] [--related-id <id> | --clear-related-ids] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core plan task update --task-id <task_id> [--title <title>] [--summary <summary>] [--task-kind <kind>] [--priority <priority>] [--owner <owner>] [--task-status <status>] [--scope <item>] [--done-when <item>] [--applies-to <path_or_concept> | --clear-applies-to] [--related-id <id> | --clear-related-ids] [--depends-on <task_id> | --clear-depends-on] [--blocked-by <task_id> | --clear-blocked-by] [--updated-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -48,17 +48,17 @@ uv run watchtower-core task update --task-id <task_id> [--title <title>] [--summ
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id task.example.001 --task-status in_progress --owner implementation_engineer
+uv run watchtower-core plan task update --task-id task.example.001 --task-status in_progress --owner implementation_engineer
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id task.example.001 --blocked-by task.other.001 --depends-on task.other.001 --write
+uv run watchtower-core plan task update --task-id task.example.001 --blocked-by task.other.001 --depends-on task.other.001 --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by --clear-depends-on --format json
+uv run watchtower-core plan task update --task-id task.example.001 --clear-blocked-by --clear-depends-on --format json
 ```
 
 ## Behavior and Outputs
@@ -74,16 +74,15 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core task` | Parent command group for task lifecycle operations. |
-| `watchtower-core task create` | Creates the original task record. |
-| `watchtower-core task transition` | Applies a narrower handoff-style update when full field updates are not needed. |
+| `watchtower-core plan task` | Parent command group for task lifecycle operations. |
+| `watchtower-core plan task create` | Creates the original task record. |
+| `watchtower-core plan task transition` | Applies a narrower handoff-style update when full field updates are not needed. |
 | `watchtower-core plan approve` | Required before status updates can start real execution on a live initiative package. |
 | `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/task_family.py`
-- `core/python/src/watchtower_core/cli/task_handlers.py`
+- `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/task_lifecycle.py`
 
 ## Updated At

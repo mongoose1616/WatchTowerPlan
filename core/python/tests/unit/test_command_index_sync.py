@@ -67,10 +67,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.plan.approve" in spec_by_id
     assert "command.watchtower_core.plan.bootstrap" in spec_by_id
     assert "command.watchtower_core.plan.confirm_inputs" in spec_by_id
-    assert "command.watchtower_core.task" in spec_by_id
-    assert "command.watchtower_core.task.create" in spec_by_id
-    assert "command.watchtower_core.task.update" in spec_by_id
-    assert "command.watchtower_core.task.transition" in spec_by_id
+    assert "command.watchtower_core.plan.task" in spec_by_id
+    assert "command.watchtower_core.plan.task.create" in spec_by_id
+    assert "command.watchtower_core.plan.task.update" in spec_by_id
+    assert "command.watchtower_core.plan.task.transition" in spec_by_id
     assert "command.watchtower_core.sync.command_index" in spec_by_id
     assert "command.watchtower_core.sync.route_index" in spec_by_id
     assert (
@@ -110,20 +110,20 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "plan/python/src/watchtower_plan/cli/handlers.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.task"].implementation_path
-        == "core/python/src/watchtower_core/cli/task_family.py"
+        spec_by_id["command.watchtower_core.plan.task"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/tasks.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.task.create"].implementation_path
-        == "core/python/src/watchtower_core/cli/task_family.py"
+        spec_by_id["command.watchtower_core.plan.task.create"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/tasks.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.task.update"].implementation_path
-        == "core/python/src/watchtower_core/cli/task_family.py"
+        spec_by_id["command.watchtower_core.plan.task.update"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/tasks.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.task.transition"].implementation_path
-        == "core/python/src/watchtower_core/cli/task_family.py"
+        spec_by_id["command.watchtower_core.plan.task.transition"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/tasks.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query"].implementation_path

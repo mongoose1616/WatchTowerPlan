@@ -43,7 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
             "trace.governed_acceptance_example",
             "uv run watchtower-core query tasks --task-status planned",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
-            "uv run watchtower-core task transition --task-id task.example.001 "
+            "uv run watchtower-core plan task transition --task-id task.example.001 "
             "--task-status completed --format json",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync all",
