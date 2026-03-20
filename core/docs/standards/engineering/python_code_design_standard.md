@@ -1,7 +1,7 @@
 ---
 id: "std.engineering.python_code_design"
 title: "Python Code Design Standard"
-summary: "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`."
+summary: "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under reusable core, host composition, and approved pack-owned Python boundaries."
 type: "standard"
 status: "active"
 tags:
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Python Code Design Standard
 
 ## Summary
-This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`.
+This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under reusable core, host composition, and approved pack-owned Python boundaries.
 
 ## Purpose
 Keep the Python workspace coherent, explicit, and easy to maintain by giving contributors one authoritative rule set for module shape, naming, typing, documentation, testing, and reusable-core extraction.
 
 ## Scope
-- Applies to Python package code under `core/python/src/watchtower_core/` and `plan/python/src/watchtower_plan/`, workspace tests under `core/python/tests/`, and the package-facing docs that describe those code boundaries.
+- Applies to Python package code under `core/python/src/watchtower_core/`, `core/python/src/watchtower_host/`, and pack-owned package roots such as `plan/python/src/watchtower_plan/`, workspace tests under `core/python/tests/`, and the package-facing docs that describe those code boundaries.
 - Covers module responsibilities, boundary placement, naming, typing posture, docstrings, tests, and how to reduce sprawl or duplication.
 - Does not redefine workspace bootstrap, dependency management, or repository-wide git process rules that already belong to narrower or broader standards.
 
@@ -54,10 +54,11 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `documentation/` owns repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic.
 - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/` own reusable runtime seams.
-- `plan/python/src/watchtower_plan/` owns repository-local orchestration that still depends on this repository's live planning or governed layout, including plan-domain closeout.
-  - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.
+- `watchtower_host` owns parser construction, command registration composition, and pack dispatch.
+- `plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own repository-local or pack-local orchestration that still depends on pack-owned lifecycle rules, rendered surfaces, or semantic validation.
+  - Pack `cli/` code owns pack namespace argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
-- Do not hide plan-package imports behind repo-local `sys.path` mutation inside reusable core; if runtime behavior needs `watchtower_plan`, install that package through the shared workspace contract instead.
+- Do not hide pack-package imports behind repo-local `sys.path` mutation inside reusable core or host composition; pack runtimes must be installed through the shared workspace contract instead.
 - Consolidate duplicated control flow behind a shared helper only when the repetition is structural and the new helper has a clear boundary. Do not create generic abstractions that are broader than the duplicated behavior.
 - Prefer pure or read-oriented helpers for parsing, filtering, shaping, or summarizing data. Keep filesystem writes, sync operations, closeout steps, and other side effects in explicit orchestration layers.
 - Keep interfaces argument-driven. Pass explicit dependencies, paths, IDs, filters, and write options instead of relying on hidden globals or embedded task-specific constants.
@@ -85,7 +86,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ### Python boundary checkpoints
 | Checkpoint | Preferred Shape | Notes |
 |---|---|---|
-| Boundary placement | reusable-core first, `watchtower_plan` only when repo-local state truly matters | New generic helpers should not land in the plan-owned domain boundary. |
+| Boundary placement | reusable-core first, `watchtower_host` for composition, pack-owned code only when pack-local state truly matters | New generic helpers should not land in a pack-owned boundary. |
 | Module size | one primary responsibility | Split files before they become mixed-purpose grab bags. |
 | Interface style | explicit arguments and typed return values | Hidden globals and embedded task constants increase maintenance cost. |
 | Naming | role-bearing, specific, and boring | Names should describe responsibility, not implementation history. |
@@ -94,7 +95,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/src/watchtower_core/`; `core/python/tests/`; `core/python/AGENTS.md`; `core/python/README.md`; `core/docs/standards/engineering/python_workspace_standard.md`; `core/docs/standards/engineering/engineering_best_practices_standard.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/`; `core/python/src/watchtower_host/`; `plan/python/src/watchtower_plan/`; `core/python/tests/`; `core/python/AGENTS.md`; `core/python/README.md`; `core/docs/standards/engineering/python_workspace_standard.md`; `core/docs/standards/engineering/engineering_best_practices_standard.md`
 
 ## Validation
 - `core/python/pyproject.toml` should continue to reflect the style and typing posture this standard assumes, including `ruff`, `mypy`, and `pytest` configuration.

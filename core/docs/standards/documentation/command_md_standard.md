@@ -1,7 +1,7 @@
 ---
 id: "std.documentation.command_md"
 title: "Command Document Standard"
-summary: "This standard defines how repository-native command reference documents are written under `core/docs/commands/` so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages."
+summary: "This standard defines how repository-native command reference documents are written under shared core or owning-pack command-doc roots so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages."
 type: "standard"
 status: "active"
 tags:
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Command Document Standard
 
 ## Summary
-This standard defines how repository-native command reference documents are written under `core/docs/commands/` so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages.
+This standard defines how repository-native command reference documents are written under shared core or owning-pack command-doc roots so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages.
 
 ## Purpose
 Provide one consistent command-document shape for CLI and operator-facing commands without overloading README files or treating command docs as external references.
 
 ## Scope
-- Applies to command reference documents stored under `core/docs/commands/`.
+- Applies to command reference documents stored under `core/docs/commands/` and pack-owned command reference documents stored under `<pack>/docs/commands/`.
 - Covers placement, required sections, naming expectations, and the relationship between command pages and the machine-readable command index.
 - Does not define the machine-readable command index schema itself.
 
@@ -41,7 +41,8 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - [README.md](/core/docs/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Store repository-native command docs under `core/docs/commands/`.
+- Store shared or reusable-core command docs under `core/docs/commands/`.
+- Store pack-owned command docs under the owning pack root such as `plan/docs/commands/`.
 - Do not place command docs under `core/docs/references/`; they are local command pages, not external references.
 - Keep one primary command or subcommand per document.
 - Use the literal command name in the title, wrapped in backticks.
@@ -60,9 +61,9 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ### Placement rules
 | Document Type | Canonical Location | Notes |
 |---|---|---|
-| Command-family entrypoint README | `core/docs/commands/**/README.md` | Directory orientation and local command inventory. |
-| Root command page | `core/docs/commands/**/<command_name>.md` | Use snake_case filenames derived from the command name. |
-| Subcommand page | `core/docs/commands/**/<command_name>_<subcommand>.md` | Keep the filename readable and stable. |
+| Command-family entrypoint README | `core/docs/commands/**/README.md` or `<pack>/docs/commands/**/README.md` | Directory orientation and local command inventory. |
+| Root command page | owning command-doc root plus `<command_name>.md` | Use snake_case filenames derived from the command name. |
+| Subcommand page | owning command-doc root plus `<command_name>_<subcommand>.md` | Keep the filename readable and stable. |
 
 ### Required sections for command pages
 | Section | Requirement | Notes |
@@ -79,7 +80,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 | `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
 ## Process or Workflow
-1. Place the command doc under the correct command-family directory in `core/docs/commands/`.
+1. Place the command doc under the correct command-family directory in the owning command-doc root.
 2. Draft the page using the command template and required section order.
 3. Update the relevant command-family README and the machine-readable command index in the same change set.
 4. Verify that the documented command actually exists and that the invocation examples match the current workspace contract.
@@ -88,6 +89,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ## Examples
 - A page for `watchtower-core` belongs under `core/docs/commands/core_python/watchtower_core.md`.
 - A page for `watchtower-core doctor` belongs under `core/docs/commands/core_python/watchtower_core_doctor.md`.
+- A pack-owned page for `watchtower-core plan query tasks` belongs under the plan-owned command-doc root once that command is no longer a shared-core surface.
 - A generic Python packaging guide does not belong in `core/docs/commands/`; it belongs in standards, design, or foundations depending on purpose.
 
 ## Operationalization

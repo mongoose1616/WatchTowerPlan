@@ -38,6 +38,46 @@
       ]
     },
     {
+      "route_id": "route.domain_pack_integration",
+      "task_type": "Domain Pack Integration",
+      "trigger_keywords": [
+        "domain pack",
+        "pack integration",
+        "pack boundary",
+        "host runtime",
+        "host-pack",
+        "watchtower_host",
+        "externalizable pack",
+        "pack portability",
+        "pack namespace",
+        "pack manifest"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.domain_pack_integration",
+        "workflow.code_validation",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/domain_pack_integration.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/documentation_refresh.md",
+        "core/workflows/modules/governed_artifact_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.code_review",
       "task_type": "Code Review",
       "trigger_keywords": [
@@ -364,6 +404,39 @@
       ]
     },
     {
+      "route_id": "route.pack_interface_validation",
+      "task_type": "Pack Interface Validation",
+      "trigger_keywords": [
+        "pack interface",
+        "pack contract",
+        "validate pack",
+        "hosted pack validation",
+        "pack manifest validation",
+        "pack extensibility",
+        "pack portability validation"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.pack_interface_validation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/pack_interface_validation.md",
+        "core/workflows/modules/code_validation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.reference_distillation",
       "task_type": "Reference Distillation",
       "trigger_keywords": [
@@ -583,6 +656,40 @@
         "core/workflows/modules/code_validation.md",
         "plan/workflows/modules/traceability_reconciliation.md",
         "plan/workflows/modules/acceptance_evidence_reconciliation.md",
+        "core/workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.pack_boundary_refactor",
+      "task_type": "Pack Boundary Refactor",
+      "trigger_keywords": [
+        "plan pack boundary",
+        "watchtower_plan boundary",
+        "plan python boundary",
+        "domain pack refactor",
+        "pack namespace",
+        "pack integration"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.domain_pack_integration",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "core/workflows/modules/core.md",
+        "core/workflows/modules/task_scope_definition.md",
+        "core/workflows/modules/current_state_inspection.md",
+        "core/workflows/modules/internal_context_review.md",
+        "core/workflows/modules/external_guidance_research.md",
+        "core/workflows/modules/domain_pack_integration.md",
+        "core/workflows/modules/code_validation.md",
+        "plan/workflows/modules/traceability_reconciliation.md",
         "core/workflows/modules/task_handoff_review.md"
       ]
     },

@@ -211,6 +211,71 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.pack_interface_contract",
+      "category": "data_contracts",
+      "title": "Pack Interface Contract Standard",
+      "summary": "This standard defines the governed machine contracts that connect hosted packs to reusable core and host composition.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+      "updated_at": "2026-03-20T23:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "artifact",
+        "validation",
+        "runtime"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/registries/pack_registry.json",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
+        "core/python/src/watchtower_core/pack_integration/",
+        "core/python/src/watchtower_core/validation/pack_contract.py"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/pyproject_toml_reference.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/pyproject_toml_reference.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/validations/repository_validation_standard.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/pyproject_toml_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://packaging.python.org/en/latest/guides/writing-pyproject-toml/",
+        "https://peps.python.org/pep-0518/",
+        "https://peps.python.org/pep-0621/",
+        "https://docs.python.org/3/library/argparse.html"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://packaging.python.org/en/latest/guides/writing-pyproject-toml/",
+        "https://peps.python.org/pep-0518/",
+        "https://peps.python.org/pep-0621/"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "pack_interface"
+      ]
+    },
+    {
       "standard_id": "std.data_contracts.reference_index",
       "category": "data_contracts",
       "title": "Reference Index Standard",
@@ -603,7 +668,7 @@
       "standard_id": "std.documentation.command_md",
       "category": "documentation",
       "title": "Command Document Standard",
-      "summary": "This standard defines how repository-native command reference documents are written under `core/docs/commands/` so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages.",
+      "summary": "This standard defines how repository-native command reference documents are written under shared core or owning-pack command-doc roots so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/command_md_standard.md",
@@ -1062,6 +1127,129 @@
       ]
     },
     {
+      "standard_id": "std.engineering.core_host_pack_python_boundary",
+      "category": "engineering",
+      "title": "Core Host Pack Python Boundary Standard",
+      "summary": "This standard defines the required split between reusable core, host composition, and pack-native Python code for WatchTower packages.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+      "updated_at": "2026-03-20T23:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "plan/python/src/watchtower_plan/",
+        "core/workflows/modules/domain_pack_integration.md",
+        "core/workflows/modules/pack_interface_validation.md"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/argparse_subcommands_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/argparse_subcommands_reference.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md",
+        "core/docs/references/argparse_subcommands_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "python_boundary",
+        "domain_pack"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.domain_pack_authoring",
+      "category": "engineering",
+      "title": "Domain Pack Authoring Standard",
+      "summary": "This standard defines how a hosted domain pack should be structured so it integrates cleanly with reusable core and host composition.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+      "updated_at": "2026-03-20T23:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "documentation",
+        "workflow",
+        "runtime"
+      ],
+      "operationalization_paths": [
+        "plan/",
+        "plan/python/src/watchtower_plan/",
+        "plan/docs/",
+        "plan/workflows/",
+        "plan/.wt/"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_plugin_discovery_reference.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "domain_pack"
+      ]
+    },
+    {
       "standard_id": "std.engineering.best_practices",
       "category": "engineering",
       "title": "Engineering Best Practices Standard",
@@ -1221,7 +1409,7 @@
       "standard_id": "std.engineering.python_code_design",
       "category": "engineering",
       "title": "Python Code Design Standard",
-      "summary": "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`.",
+      "summary": "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under reusable core, host composition, and approved pack-owned Python boundaries.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_code_design_standard.md",
@@ -1235,6 +1423,8 @@
       ],
       "operationalization_paths": [
         "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "plan/python/src/watchtower_plan/",
         "core/python/tests/",
         "core/python/AGENTS.md",
         "core/python/README.md",
@@ -1326,7 +1516,7 @@
       "standard_id": "std.engineering.python_workspace",
       "category": "engineering",
       "title": "Python Workspace Standard",
-      "summary": "This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`.",
+      "summary": "This standard defines how Python code, tooling, environments, and tests are organized across reusable core, host composition, and approved pack-owned package roots.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
@@ -1720,6 +1910,7 @@
       ],
       "operationalization_paths": [
         "core/python/src/watchtower_core/validation/all.py",
+        "core/python/src/watchtower_core/validation/pack_contract.py",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
         "core/docs/commands/core_python/watchtower_core_sync_all.md"

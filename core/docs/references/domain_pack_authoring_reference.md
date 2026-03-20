@@ -34,11 +34,13 @@ Make future packs portable and comprehensible by documenting the intended split 
 - `https://docs.python.org/3/library/importlib.metadata.html` - Python metadata lookup reference for optional entry-point adapters.
 
 ## Related Standards and Sources
-- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
-- [argparse_subcommands_reference.md](/core/docs/references/argparse_subcommands_reference.md)
-- [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md)
-- [requirements.md](/requirements.md)
-- [decisions.md](/decisions.md)
+- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md): captures the discovery and registration tradeoffs that shape how packs integrate with the host.
+- [argparse_subcommands_reference.md](/core/docs/references/argparse_subcommands_reference.md): supports the namespaced command-tree patterns that pack-owned CLI surfaces should follow.
+- [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md): records the packaging metadata and multi-package constraints that affect copy-out portability.
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): turns the architectural split in this reference into an enforceable repository standard.
+- [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the machine contracts that a pack must publish to be host-loadable.
+- [requirements.md](/requirements.md): provides the authoritative endstate direction for reusable core, hosted domains, and portability expectations.
+- [decisions.md](/decisions.md): records the repository-level design decisions that this reference must support rather than reinterpret.
 
 ## Quick Reference or Distilled Reference
 ### Layer Responsibilities
@@ -81,14 +83,21 @@ Make future packs portable and comprehensible by documenting the intended split 
 
 ## Local Mapping in This Repository
 ### Current Repository Status
-- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+- Supporting authority for current repository standards, workflow modules, and boundary guidance around hosted-pack integration.
+
+### Current Touchpoints
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
+- [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md)
+- [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md)
+- [core/workflows/modules/domain_pack_integration.md](/core/workflows/modules/domain_pack_integration.md)
+- [core/workflows/modules/pack_interface_validation.md](/core/workflows/modules/pack_interface_validation.md)
 
 ### Why It Matters Here
 - The repository is actively separating reusable core, host composition, and pack-native runtime code.
 - This reference exists so new standards, manifests, validators, and workflow modules can converge on one pack model instead of repeating assumptions in multiple places.
 
 ### If Local Policy Tightens
-- Add or update a core-owned Python-boundary standard, pack-manifest standard, pack-interface validator guidance, workflow routes for pack authoring, and package README/AGENTS surfaces in the same slice.
+- Add or update the core-owned Python-boundary standard, pack-interface contract standard, pack-interface validator guidance, workflow routes for pack authoring, and package README or AGENTS surfaces in the same slice.
 
 ## Process or Workflow
 1. Define the pack's owned roots and machine surfaces.

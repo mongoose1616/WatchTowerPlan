@@ -94,6 +94,12 @@
       "canonical_upstream_urls": [
         "https://docs.python.org/3/library/argparse.html"
       ],
+      "cited_by_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md"
+      ],
       "related_paths": [
         "core/python/pyproject.toml",
         "core/docs/commands/core_python/watchtower_core.md",
@@ -283,14 +289,30 @@
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
       "updated_at": "2026-03-20T17:12:07Z",
-      "repository_status": "candidate_future_guidance",
-      "uses_internal_references": false,
+      "repository_status": "supporting_authority",
+      "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
         "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
         "https://docs.python.org/3/library/argparse.html",
         "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "cited_by_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md"
+      ],
+      "related_paths": [
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/workflows/modules/domain_pack_integration.md",
+        "core/workflows/modules/pack_interface_validation.md"
       ],
       "tags": [
         "reference",
@@ -965,10 +987,12 @@
         "https://peps.python.org/pep-0621/"
       ],
       "cited_by_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md"
       ],
@@ -1069,6 +1093,15 @@
         "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
         "https://docs.python.org/3/library/importlib.metadata.html",
         "https://packaging.python.org/en/latest/specifications/pyproject-toml/"
+      ],
+      "cited_by_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md"
       ],
       "related_paths": [
         "core/python/pyproject.toml",

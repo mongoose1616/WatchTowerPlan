@@ -1527,7 +1527,7 @@
       "path": "core/docs/commands/",
       "kind": "directory",
       "surface_kind": "command_docs",
-      "summary": "Holds canonical CLI command pages.",
+      "summary": "Holds shared and reusable-core CLI command pages.",
       "parent_path": "core/docs/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3218,6 +3218,26 @@
       "surface_kind": "plan_guidance",
       "summary": "Describes the purpose of the plan docs root and its owned guidance families.",
       "parent_path": "plan/docs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/",
+      "kind": "directory",
+      "surface_kind": "plan_guidance_family",
+      "summary": "Holds pack-owned command pages when a `watchtower-core <pack> ...` surface is owned by this pack.",
+      "parent_path": "plan/docs/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/README.md",
+      "kind": "file",
+      "surface_kind": "plan_guidance",
+      "summary": "Describes the purpose of the plan-owned command-doc root.",
+      "parent_path": "plan/docs/commands/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "shared"

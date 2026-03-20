@@ -79,7 +79,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 5. Treat the change as incomplete if related indexes, schemas, examples, command docs, or planning trackers are left stale.
 
 ## Examples
-- A new repo-local query command should add its reusable query service under `plan/python/src/watchtower_plan/query/`, thin CLI wiring under `cli/`, command docs under `core/docs/commands/`, and a matching command-index entry under `core/control_plane/indexes/commands/`.
+- A new pack-owned query command should add its pack-native service under the owning pack boundary, pack-owned CLI wiring under the owning pack, pack-owned command docs under the owning pack docs root, and a matching command-index entry under `core/control_plane/indexes/commands/`.
 - A new schema-backed artifact family should add the schema, examples, schema-catalog record, and any affected validators in the same change set.
 - A change to a traced initiative input or acceptance contract should keep the matching indexes, evidence expectations, and linked planning surfaces aligned.
 

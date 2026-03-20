@@ -240,6 +240,27 @@
       ]
     },
     {
+      "workflow_id": "workflow.domain_pack_integration",
+      "phase_type": "execution",
+      "task_family": "architecture",
+      "primary_risks": [
+        "hidden_coupling",
+        "boundary_regression"
+      ],
+      "extra_trigger_tags": [
+        "pack",
+        "host",
+        "boundary",
+        "integration"
+      ],
+      "companion_workflow_ids": [
+        "workflow.pack_interface_validation",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.external_guidance_research",
       "phase_type": "research",
       "task_family": "external_research",
@@ -381,6 +402,26 @@
       ],
       "companion_workflow_ids": [
         "workflow.external_guidance_research",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.pack_interface_validation",
+      "phase_type": "validation",
+      "task_family": "architecture_validation",
+      "primary_risks": [
+        "contract_drift",
+        "portability_gap"
+      ],
+      "extra_trigger_tags": [
+        "pack",
+        "manifest",
+        "contract",
+        "portability"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
         "workflow.task_handoff_review"
       ]
     },

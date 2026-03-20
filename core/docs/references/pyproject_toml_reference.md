@@ -33,10 +33,11 @@ Provide a single configuration baseline so Python package metadata, console entr
 - `https://peps.python.org/pep-0621/` - verified 2026-03-20; PEP 621 – Storing project metadata in pyproject.toml.
 
 ## Related Standards and Sources
-- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
-- [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
-- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
-- [pyproject.toml](/core/python/pyproject.toml)
+- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): constrains how packaging configuration changes should stay aligned with Python module ownership.
+- [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the repository package layout that the `pyproject.toml` configuration must represent.
+- [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): depends on explicit distribution and import-name metadata that packaging config must keep stable.
+- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md): builds on these packaging rules when evaluating plugin discovery choices.
+- [pyproject.toml](/core/python/pyproject.toml): is the live repository configuration surface this reference is interpreting.
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points

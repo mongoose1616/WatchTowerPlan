@@ -1,7 +1,7 @@
 ---
 id: "std.engineering.python_workspace"
 title: "Python Workspace Standard"
-summary: "This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`."
+summary: "This standard defines how Python code, tooling, environments, and tests are organized across reusable core, host composition, and approved pack-owned package roots."
 type: "standard"
 status: "active"
 tags:
@@ -17,7 +17,7 @@ authority: "authoritative"
 # Python Workspace Standard
 
 ## Summary
-This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`.
+This standard defines how Python code, tooling, environments, and tests are organized across reusable core, host composition, and approved pack-owned package roots.
 
 ## Purpose
 Keep the Python workspace deterministic, easy to onboard, and isolated from the authored control plane so engineers can work in one standard local environment without scattering Python tooling across `core/` and `plan/`.
@@ -59,11 +59,11 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Treat `uv run ...` as the default human and agent execution path. Manual virtual-environment activation is optional and mainly for interactive shell work.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
-- Keep reusable-core Python source under `core/python/src/watchtower_core/` and plan-domain Python source under `plan/python/src/watchtower_plan/`.
+- Keep reusable-core Python source under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain Python source under the owning pack root such as `plan/python/src/watchtower_plan/`.
 - Install the plan-owned package through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_plan`.
 - Keep tests under `core/python/tests/`.
 - Keep the fast default suite under `core/python/tests/unit/` and repository-aware orchestration coverage under `core/python/tests/integration/`.
-- Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
+- Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
 - Ignore local caches, wheels, build outputs, virtual environments, and `*.egg-info` directories. Do not treat them as governed repository artifacts.
@@ -84,7 +84,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/pyproject.toml` | Required | Canonical project metadata, dependencies, and tool configuration. |
 | `core/python/uv.lock` | Required | Locked dependency graph for repeatable onboarding. |
 | `core/python/.gitignore` | Required | Ignores local envs, caches, and build outputs. |
-| `core/python/src/watchtower_core/` | Required | Canonical package root. |
+| `core/python/src/watchtower_core/` | Required | Canonical reusable-core package root. |
+| `core/python/src/watchtower_host/` | Required for host composition | Canonical host-owned CLI and pack-composition package root. |
 | `plan/python/src/watchtower_plan/` | Required for plan-domain Python | Approved plan-owned package root, installed through the shared workspace as a local editable dependency. |
 | `core/python/tests/` | Required | Canonical Python test root. |
 
@@ -103,9 +104,10 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
 | `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
 | `core/python/src/watchtower_core/closeout/` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
+| `core/python/src/watchtower_host/cli/` | Host-owned parser construction, command registration, and dispatch composition. |
 | `plan/python/src/watchtower_plan/closeout/` | Plan-domain closeout orchestration for retained traces, initiative packages, and guarded purge flows. |
 | `plan/python/src/watchtower_plan/` | Approved WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that belongs on the plan-owned side of the core-versus-domain split. |
-| `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
+| `plan/python/src/watchtower_plan/cli/` | Plan-owned namespace registration and pack-specific CLI wiring. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
 ## Process or Workflow
@@ -156,7 +158,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 
 ## Notes
 - This standard intentionally keeps the shared Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
-- The repository now has two approved Python package roots: reusable core under `core/python/src/watchtower_core/` and plan-domain code under `plan/python/src/watchtower_plan/`.
+- The repository now has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code under pack-owned roots such as `plan/python/src/watchtower_plan/`.
 
 ## Updated At
 - `2026-03-20T09:26:00Z`

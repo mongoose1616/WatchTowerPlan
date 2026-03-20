@@ -33,10 +33,12 @@ Keep plugin-discovery decisions explicit so pack integration does not drift into
 - `https://packaging.python.org/en/latest/specifications/pyproject-toml/` - `pyproject.toml` specification for scripts and entry-point declarations.
 
 ## Related Standards and Sources
-- [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md)
-- [argparse_subcommands_reference.md](/core/docs/references/argparse_subcommands_reference.md)
-- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
-- [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md): captures the packaging metadata surfaces that plugin discovery strategies rely on.
+- [argparse_subcommands_reference.md](/core/docs/references/argparse_subcommands_reference.md): complements discovery guidance with the CLI tree shape needed once packs are loaded.
+- [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): turns the selected discovery model into an explicit governed contract.
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): anchors the chosen discovery model inside the repository’s layer boundaries.
+- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): constrains where discovery helpers and pack adapters should live in Python code.
+- [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): constrains where the host runtime, pack code, and packaging metadata live in the workspace.
 
 ## Quick Reference or Distilled Reference
 ### Discovery Modes

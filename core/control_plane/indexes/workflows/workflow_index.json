@@ -447,6 +447,51 @@
       ]
     },
     {
+      "workflow_id": "workflow.domain_pack_integration",
+      "title": "Domain Pack Integration Workflow",
+      "summary": "Use this workflow to implement or refactor the reusable-core, host-runtime, and pack-runtime boundary so hosted packs integrate through explicit contracts instead of direct imports or hidden repository coupling.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/domain_pack_integration.md",
+      "phase_type": "execution",
+      "task_family": "architecture",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "hidden_coupling",
+        "boundary_regression"
+      ],
+      "trigger_tags": [
+        "domain",
+        "pack",
+        "integration",
+        "implement",
+        "refactor",
+        "reusable",
+        "core",
+        "host",
+        "runtime",
+        "boundary",
+        "hosted",
+        "packs",
+        "integrate",
+        "through",
+        "explicit",
+        "contracts",
+        "instead",
+        "direct",
+        "imports",
+        "hidden",
+        "repository",
+        "coupling"
+      ],
+      "companion_workflow_ids": [
+        "workflow.pack_interface_validation",
+        "workflow.documentation_refresh",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.external_guidance_research",
       "title": "External Guidance Research Workflow",
       "summary": "Use this workflow to consult authoritative external guidance only when internal repository guidance is incomplete or the active task depends on version-sensitive, domain-specific, regulatory, standards-driven, or vendor-controlled behavior.",
@@ -686,6 +731,51 @@
       ],
       "internal_reference_paths": [
         "core/docs/standards/README.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.pack_interface_validation",
+      "title": "Pack Interface Validation Workflow",
+      "summary": "Use this workflow to validate that a hosted pack publishes the required machine contracts, Python hooks, owned roots, and portability guarantees expected by reusable core and host composition.",
+      "status": "active",
+      "doc_path": "core/workflows/modules/pack_interface_validation.md",
+      "phase_type": "validation",
+      "task_family": "architecture_validation",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "primary_risks": [
+        "contract_drift",
+        "portability_gap"
+      ],
+      "trigger_tags": [
+        "pack",
+        "interface",
+        "validation",
+        "validate",
+        "that",
+        "hosted",
+        "publishes",
+        "required",
+        "machine",
+        "contracts",
+        "python",
+        "hooks",
+        "owned",
+        "roots",
+        "portability",
+        "guarantees",
+        "expected",
+        "reusable",
+        "core",
+        "host",
+        "composition",
+        "manifest",
+        "contract"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
       ]
     },
     {

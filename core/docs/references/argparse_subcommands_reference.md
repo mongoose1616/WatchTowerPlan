@@ -31,9 +31,10 @@ Keep command registration and dispatch predictable while the repository moves fr
 - `https://docs.python.org/3/library/argparse.html` - Python standard-library reference for `argparse`.
 
 ## Related Standards and Sources
-- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
-- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
-- [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md)
+- [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md): explains how loaded packs are discovered before their command namespaces are attached to the parser tree.
+- [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): constrains where parser builders, command registrars, and help-text helpers belong in Python code.
+- [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the host-owned parser composition model that this subcommand guidance supports.
+- [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md): documents the current top-level CLI surface that applies these parser patterns.
 
 ## Quick Reference or Distilled Reference
 ### Core Mechanics

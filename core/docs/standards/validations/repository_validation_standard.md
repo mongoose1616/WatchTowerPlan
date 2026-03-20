@@ -58,6 +58,7 @@ This standard defines the baseline validation expectations for repository change
 - Before closeout for non-trivial changes, run the broadest meaningful validation for the touched surfaces.
 - When derived trackers or indexes changed, run `watchtower-core sync all --write` before the final broad validation pass.
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
+- Use pack-interface validation whenever hosted-pack registries, runtime manifests, or pack-owned integration hooks change materially.
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
 - Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
@@ -78,7 +79,7 @@ This standard defines the baseline validation expectations for repository change
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `sync`
-- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `plan/python/src/watchtower_plan/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `core/docs/commands/core_python/watchtower_core_sync_all.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/validation/pack_contract.py`; `plan/python/src/watchtower_plan/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `core/docs/commands/core_python/watchtower_core_sync_all.md`
 
 ## Validation
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
