@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `ready_for_bootstrap`
-- `summary`: No active plan-workspace initiatives exist.
-- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
-- `recommended_surface_path`: `plan/plan_overview.md`
+- `coordination_mode`: `active_work`
+- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
+- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
+- `recommended_surface_path`: `plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md`
 
 ## Active Pack-Wide Initiatives
-- None.
+- `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`execution` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.

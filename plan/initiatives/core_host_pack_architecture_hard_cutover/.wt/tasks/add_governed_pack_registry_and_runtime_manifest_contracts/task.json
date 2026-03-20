@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
+  "slug": "add_governed_pack_registry_and_runtime_manifest_contracts",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "title": "Add governed pack registry and runtime manifest contracts",
+  "summary": "Defines the core-owned registry, schemas, typed models, and validator hooks for host-pack integration.",
+  "status": "active",
+  "task_status": "in_progress",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T17:21:02Z",
+  "updated_at": "2026-03-20T17:21:02Z",
+  "related_ids": [
+    "initiative.core_host_pack_architecture_hard_cutover"
+  ],
+  "applies_to": [
+    "core/control_plane/",
+    "core/python/src/watchtower_core/control_plane/",
+    "core/python/src/watchtower_core/validation/"
+  ],
+  "scope_items": [
+    "Add core-owned pack registry and pack runtime manifest artifacts and schemas.",
+    "Extend typed pack-contract models and loader accessors for the new governed surfaces."
+  ],
+  "done_when_items": [
+    "Pack registry and runtime manifest surfaces validate through reusable-core validation.",
+    "Core exposes typed load helpers without direct pack imports."
+  ]
+}

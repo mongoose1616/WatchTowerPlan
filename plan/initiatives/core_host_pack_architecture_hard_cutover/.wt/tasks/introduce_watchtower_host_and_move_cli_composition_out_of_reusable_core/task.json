@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_host_pack_architecture_hard_cutover.host_runtime.002",
+  "slug": "introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "title": "Introduce watchtower_host and move CLI composition out of reusable core",
+  "summary": "Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T17:22:15Z",
+  "updated_at": "2026-03-20T17:22:15Z",
+  "dependency_task_ids": [
+    "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
+  ],
+  "related_ids": [
+    "initiative.core_host_pack_architecture_hard_cutover"
+  ],
+  "applies_to": [
+    "core/python/src/watchtower_core/cli/",
+    "core/python/pyproject.toml"
+  ],
+  "scope_items": [
+    "Create the host package and move root parser construction and pack dispatch there.",
+    "Remove direct watchtower_core CLI ownership of pack composition and plan command wiring."
+  ],
+  "done_when_items": [
+    "The watchtower-core console script resolves to watchtower_host.",
+    "Reusable core no longer composes pack commands directly."
+  ]
+}

@@ -3,8 +3,26 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-20T01:51:19Z",
+  "updated_at": "2026-03-20T17:24:02Z",
   "entries": [
+    {
+      "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+      "trace_id": "trace.core_host_pack_architecture_hard_cutover",
+      "initiative_title": "Core Host Pack Architecture Hard Cutover",
+      "title": "Core Host Pack Architecture Hard Cutover",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-20T17:24:02Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
+    },
     {
       "review_subject_id": "initiative.pack_domain_hardcoding_remediation",
       "subject_kind": "initiative",
@@ -58,6 +76,22 @@
       "updated_at": "2026-03-19T18:39:56Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+      "trace_id": "trace.core_host_pack_architecture_hard_cutover",
+      "initiative_title": "Core Host Pack Architecture Hard Cutover",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-20T17:17:23Z"
     },
     {
       "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",

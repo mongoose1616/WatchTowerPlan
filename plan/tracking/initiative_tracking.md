@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.core_host_pack_architecture_hard_cutover` | Core Host Pack Architecture Hard Cutover | `execution` | repository_maintainer | `8` | [plan.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md) | [plan.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md) | [task.core_host_pack_architecture_hard_cutover.pack_contract.001](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json) (`in_progress`) <br> [task.core_host_pack_architecture_hard_cutover.pack_tests.005](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_pack_interface_validation_import_boundary_guards_and_second_pack_proofs/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.host_runtime.002](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.docs_workflows.004](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/publish_host_pack_standards_references_templates_and_workflow_modules/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.plan_pack.003](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_boundary_stabilization_cleanup_loop/task.json) (`planned`) <br> [task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_extensibility_and_portability_hardening_loop/task.json) (`planned`) | Advance the current in-progress task set and keep initiative-local task state current. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -10,4 +12,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-20T01:51:19Z`_
+_Updated At: `2026-03-20T17:24:02Z`_

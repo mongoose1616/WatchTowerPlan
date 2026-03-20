@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_host_pack_architecture_hard_cutover.0012_execution_started",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "sequence": 12,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-20T17:21:02Z",
+  "summary": "Execution started after task task.core_host_pack_architecture_hard_cutover.pack_contract.001 entered in_progress.",
+  "payload": {
+    "task_id": "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
+    "task_status": "in_progress"
+  },
+  "trace_id": "trace.core_host_pack_architecture_hard_cutover",
+  "related_paths": [
+    "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json"
+  ]
+}

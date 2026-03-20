@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_host_pack_architecture_hard_cutover.0002_scope_defined",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "sequence": 2,
+  "event_type": "scope_defined",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-20T17:17:23Z",
+  "summary": "Recorded the initial pack-wide initiative scope.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.core_host_pack_architecture_hard_cutover",
+  "related_paths": [
+    "plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md",
+    "plan/initiatives/core_host_pack_architecture_hard_cutover/design_record.md",
+    "plan/initiatives/core_host_pack_architecture_hard_cutover/implementation_slice.md",
+    "plan/initiatives/core_host_pack_architecture_hard_cutover/decision_notes.md"
+  ]
+}

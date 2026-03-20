@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007",
+  "slug": "run_extensibility_and_portability_hardening_loop",
+  "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+  "title": "Run extensibility and portability hardening loop",
+  "summary": "Performs the second required validation loop focused on pack portability, extensibility, and surrounding contract cleanup.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "governance",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T17:24:02Z",
+  "updated_at": "2026-03-20T17:24:02Z",
+  "dependency_task_ids": [
+    "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006"
+  ],
+  "related_ids": [
+    "initiative.core_host_pack_architecture_hard_cutover"
+  ],
+  "scope_items": [
+    "Run the second post-implementation validation pass with pack portability and extensibility checks.",
+    "Fix adjacent pack-contract, template, docs, workflow, and fixture issues and record the slice in a bounded commit."
+  ],
+  "done_when_items": [
+    "The second cleanup loop lands at least one bounded commit with real fixes.",
+    "Pack copy-out and second-pack assumptions are revalidated after the fixes."
+  ]
+}

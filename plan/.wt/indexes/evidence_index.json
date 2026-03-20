@@ -3,8 +3,37 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-20T01:51:19Z",
+  "updated_at": "2026-03-20T17:24:02Z",
   "entries": [
+    {
+      "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
+      "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
+      "trace_id": "trace.core_host_pack_architecture_hard_cutover",
+      "initiative_title": "Core Host Pack Architecture Hard Cutover",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/core_host_pack_architecture_hard_cutover",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/discrepancies",
+        "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-20T17:17:23Z"
+    },
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
