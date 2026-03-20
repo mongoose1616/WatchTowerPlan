@@ -14,7 +14,5 @@
 | `core/control_plane/indexes/routes/` | Machine-readable indexes for routed task types and their required workflow modules. |
 | `core/control_plane/indexes/standards/` | Machine-readable indexes for governed standards and best-practice documents. |
 | `core/control_plane/indexes/workflows/` | Machine-readable indexes for workflow modules and their governing sources. |
-| `core/control_plane/indexes/schemas/` | Reserved placeholder for future schema-index artifacts. The family is README-only until a real consumer requires published schema lookup indexes. |
-| `core/control_plane/indexes/registries/` | Reserved placeholder for future registry-index artifacts. The family is README-only until a real consumer requires published registry lookup indexes. |
 | `core/control_plane/indexes/traceability/` | Unified traceability indexes that join planning, contract, validator, and evidence surfaces. |
 | `plan/.wt/indexes/` | Canonical live plan-workspace indexes for coordination, initiatives, tasks, readiness, discrepancies, evidence, and other execution-state projections. |

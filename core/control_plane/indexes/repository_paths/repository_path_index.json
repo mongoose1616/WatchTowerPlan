@@ -218,9 +218,7 @@
       "related_paths": [
         "core/control_plane/indexes/commands/",
         "core/control_plane/indexes/traceability/",
-        "core/control_plane/indexes/repository_paths/",
-        "core/control_plane/indexes/schemas/",
-        "core/control_plane/indexes/registries/"
+        "core/control_plane/indexes/repository_paths/"
       ]
     },
     {
@@ -335,26 +333,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/indexes/registries/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Reserved placeholder for future registry-index artifacts. The family is README-only until a real consumer requires published registry lookup indexes.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/registries/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the reserved placeholder boundary for registry indexes until live artifacts exist here.",
-      "parent_path": "core/control_plane/indexes/registries/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/indexes/repository_paths/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -410,26 +388,6 @@
       "surface_kind": "control_plane_index",
       "summary": "Canonical machine-readable route index rebuilt from `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.",
       "parent_path": "core/control_plane/indexes/routes/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/schemas/",
-      "kind": "directory",
-      "surface_kind": "control_plane_indexes",
-      "summary": "Reserved placeholder for future schema-index artifacts. The family is README-only until a real consumer requires published schema lookup indexes.",
-      "parent_path": "core/control_plane/indexes/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/indexes/schemas/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_index",
-      "summary": "Describes the reserved placeholder boundary for schema indexes until live artifacts exist here.",
-      "parent_path": "core/control_plane/indexes/schemas/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
