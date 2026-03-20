@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from tests.unit.cli_command_helpers import run_json_command
+from tests.cli_command_helpers import run_json_command
 
 
 def test_query_paths_supports_json_output(capsys) -> None:

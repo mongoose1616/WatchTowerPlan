@@ -10,7 +10,7 @@ from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )
-from tests.unit.cli_command_helpers import run_json_command
+from tests.cli_command_helpers import run_json_command
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiative_packages import InitiativePackageService
 from watchtower_plan.plan_workspace import PlanWorkspaceService

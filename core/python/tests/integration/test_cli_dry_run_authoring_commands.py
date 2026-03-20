@@ -9,7 +9,7 @@ from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )
-from tests.unit.cli_command_helpers import run_json_command
+from tests.cli_command_helpers import run_json_command
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

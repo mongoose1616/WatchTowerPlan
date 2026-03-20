@@ -34,6 +34,26 @@ BANNED_PATTERNS = (
     re.compile(r"plan scaffold", flags=re.IGNORECASE),
     re.compile(r"\(\?:docs\|core/docs\|plan/docs"),
 )
+REMOVED_TEST_PATHS = (
+    REPO_ROOT / "core/python/tests/integration/fixture_repo_support.py",
+    REPO_ROOT / "core/python/tests/unit/fixture_repo_support.py",
+    REPO_ROOT / "core/python/tests/unit/cli_command_helpers.py",
+    REPO_ROOT / "core/python/tests/unit/test_acceptance_reconciliation.py",
+    REPO_ROOT / "core/python/tests/unit/test_all_sync.py",
+    REPO_ROOT / "core/python/tests/unit/test_all_validation.py",
+    REPO_ROOT / "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
+    REPO_ROOT / "core/python/tests/unit/test_cli_planning_query_commands.py",
+    REPO_ROOT / "core/python/tests/unit/test_cli_sync_commands.py",
+    REPO_ROOT / "core/python/tests/unit/test_coordination_index_sync.py",
+    REPO_ROOT / "core/python/tests/unit/test_coordination_tracking_sync.py",
+    REPO_ROOT / "core/python/tests/unit/test_evidence_bundle_helper.py",
+    REPO_ROOT / "core/python/tests/unit/test_github_task_sync.py",
+    REPO_ROOT / "core/python/tests/unit/test_initiative_closeout.py",
+    REPO_ROOT / "core/python/tests/unit/test_task_lifecycle.py",
+    REPO_ROOT / "core/python/tests/unit/test_trace_purge.py",
+    REPO_ROOT / "core/python/tests/unit/test_traceability_index_sync.py",
+    REPO_ROOT / "core/python/tests/unit/test_workspace_injection.py",
+)
 
 
 def _iter_active_surface_files() -> tuple[Path, ...]:
@@ -53,6 +73,11 @@ def _iter_active_surface_files() -> tuple[Path, ...]:
 def test_root_docs_and_domain_packs_paths_are_gone() -> None:
     assert not (REPO_ROOT / "docs").exists()
     assert not (REPO_ROOT / "domain_packs").exists()
+
+
+def test_removed_repo_fixture_helpers_and_repo_aware_unit_paths_stay_gone() -> None:
+    violations = [path.relative_to(REPO_ROOT).as_posix() for path in REMOVED_TEST_PATHS if path.exists()]
+    assert not violations, "\n".join(violations)
 
 
 def test_active_endstate_surfaces_do_not_publish_retired_planning_residue() -> None:
