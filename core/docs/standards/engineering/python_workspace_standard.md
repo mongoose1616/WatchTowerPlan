@@ -91,6 +91,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | Path | Role |
 |---|---|
 | `core/python/src/watchtower_core/control_plane/` | Loaders, resolvers, and artifact access for governed control-plane surfaces. |
+| `core/python/src/watchtower_core/documentation/` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic. |
 | `core/python/src/watchtower_core/validation/` | Validator execution, schema-backed checks, and validation result modeling. |
 | `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `plan/python/src/watchtower_plan/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
@@ -124,7 +125,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `documentation`
-- `Operational Surfaces`: `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/sync/`; `plan/python/src/watchtower_plan/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
+- `Operational Surfaces`: `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/sync/`; `plan/python/src/watchtower_plan/query/`; `core/python/src/watchtower_core/documentation/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
 
 ## Validation
 - `core/python/pyproject.toml` should parse and support local lockfile generation.

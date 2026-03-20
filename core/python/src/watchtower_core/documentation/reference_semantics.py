@@ -10,7 +10,7 @@ from watchtower_core.control_plane.reference_status import (
     REFERENCE_REPOSITORY_STATUS_PREFIXES,
     REFERENCE_REPOSITORY_STATUS_VALUES,
 )
-from watchtower_plan.governed_documents import validate_required_section_order
+from watchtower_core.documentation.governed_documents import validate_required_section_order
 
 REFERENCE_LOCAL_MAPPING_SECTION = "Local Mapping in This Repository"
 REFERENCE_CURRENT_REPOSITORY_STATUS_SUBSECTION = "Current Repository Status"

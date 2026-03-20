@@ -241,6 +241,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
         python_code_design_standard
     )
     assert "plan/python/src/watchtower_plan/query/" in workspace_standard
+    assert "core/python/src/watchtower_core/documentation/" in workspace_standard
     assert "core/python/src/watchtower_core/query/" in workspace_standard
     assert "plan/python/src/watchtower_plan/sync/" in workspace_standard
     assert "core/python/src/watchtower_core/rebuild/" in workspace_standard
@@ -251,6 +252,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "A reusable-core query helper" in workspace_standard
     assert "plan/python/src/watchtower_plan/" in workspace_standard
     assert "Approved WatchTowerPlan-specific" in workspace_standard
+    assert "| `documentation/` | `reusable_core` |" in package_readme
     assert "Classification`: `reusable_core`" in query_readme
     assert "| `query/` | `reusable_core` |" in package_readme
     assert "| `rebuild/` | `reusable_core` |" in package_readme

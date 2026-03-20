@@ -1,4 +1,4 @@
-"""Repo-specific helpers for governed Markdown document services."""
+"""Repo-shared helpers for governed Markdown document services."""
 
 from __future__ import annotations
 
@@ -18,11 +18,11 @@ from watchtower_core.adapters import (
     split_semicolon_list,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.front_matter_paths import (
+from watchtower_core.documentation.front_matter_paths import (
     applies_to_path_values,
     normalize_front_matter_applies_to,
 )
-from watchtower_plan.markdown_semantics import (
+from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
 

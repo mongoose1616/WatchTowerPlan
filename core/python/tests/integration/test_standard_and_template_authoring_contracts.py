@@ -4,7 +4,7 @@ import re
 
 from tests.integration.control_plane_artifact_helpers import FRONT_MATTER_PATTERN, REPO_ROOT
 from watchtower_core.adapters import extract_sections
-from watchtower_plan.standards import parse_standard_operationalization
+from watchtower_core.documentation.standards import parse_standard_operationalization
 
 
 def test_governed_standards_and_foundations_publish_references_sections() -> None:

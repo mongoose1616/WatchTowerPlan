@@ -15,20 +15,20 @@ from watchtower_core.adapters import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
-from watchtower_plan.front_matter_paths import normalize_front_matter_applies_to
-from watchtower_plan.markdown_semantics import (
+from watchtower_core.documentation.front_matter_paths import normalize_front_matter_applies_to
+from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
-from watchtower_plan.governed_documents import (
+from watchtower_core.documentation.governed_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_plan.reference_semantics import (
+from watchtower_core.documentation.reference_semantics import (
     REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,
     REFERENCE_LOCAL_MAPPING_SECTION,
     parse_reference_local_mapping,
 )
-from watchtower_plan.standards import (
+from watchtower_core.documentation.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
     collect_standard_reference_metadata,
     parse_standard_operationalization,

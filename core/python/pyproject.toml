@@ -72,6 +72,8 @@ module = [
   "watchtower_core.adapters.*",
   "watchtower_core.control_plane",
   "watchtower_core.control_plane.*",
+  "watchtower_core.documentation",
+  "watchtower_core.documentation.*",
   "watchtower_core.validation",
   "watchtower_core.validation.*",
   "watchtower_core.query",

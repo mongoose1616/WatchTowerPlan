@@ -1,7 +1,7 @@
 # `watchtower_plan`
 
 ## Summary
-WatchTowerPlan-specific plan-domain runtime that depends on this repository's current plan-workspace layout, live plan indexes, and pack-local authored-document semantics. This namespace is the approved plan-owned Python boundary under `plan/**`, and it is installed into the shared `core/python` environment as a local editable package.
+WatchTowerPlan-specific plan-domain runtime that depends on this repository's current plan-workspace layout, live plan indexes, and pack-local orchestration seams. This namespace is the approved plan-owned Python boundary under `plan/**`, and it is installed into the shared `core/python` environment as a local editable package.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
@@ -11,7 +11,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 
 ## Responsibilities
 - Workspace orchestration: `initiative_packages.py`, `plan_workspace.py`, and `project_workspace.py` still own live `plan/**` and `plan/projects/**` package bootstrap, rendered-surface shaping, and readiness-gate behavior that has not been extracted behind narrower reusable-core seams.
-- Authored-document semantics: `front_matter_paths.py`, `markdown_semantics.py`, `reference_resolution.py`, `reference_semantics.py`, and `standards.py` still interpret this repository's governed Markdown corpus and related repo-native path rules.
+- Authored-document orchestration: `reference_resolution.py` still bridges plan-owned sync services into reusable documentation helpers when plan-domain sync or validation needs a freshly rebuilt reference map.
 - Planning lifecycle: `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py` still own repo-local task state mutation, task-event recording, and lifecycle guardrails over live plan state.
 - Pack-local aggregate services: `artifact_index.py`, `guidance_promotion.py`, and `project_context.py` still coordinate plan-pack artifacts, promotion, and project-scoped runtime loading that remain specific to the current pack.
 - Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries, but only for live plan-runtime behavior that cannot already live under reusable core.
@@ -19,20 +19,20 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 ## Key Surfaces
 - `initiative_packages.py`: Plan-workspace initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
 - `plan_workspace.py` and `project_workspace.py`: Pack-wide and project-scoped workspace orchestration over live initiative state, rendered views, and derived-surface drift checks.
-- `front_matter_paths.py`, `markdown_semantics.py`, `reference_resolution.py`, `reference_semantics.py`, and `standards.py`: Repo-native document parsing, normalization, and reference-resolution helpers for governed Markdown surfaces that still live in this repository.
+- `reference_resolution.py`: Plan-owned bridge from plan sync services into reusable documentation helper data such as rebuilt reference URL maps.
 - `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
-- `task_lifecycle.py` and `task_lifecycle_support.py`: Live task transition support over initiative-local plan task state.
 - `guidance_promotion.py`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
-- `query/`, `sync/`, and `validation/`: Repo-local planning and orchestration implementations behind the reusable-core query, sync, and validation boundaries, with generic governed-index query services expected to live back under `watchtower_core.query`.
+- `query/`, `sync/`, and `validation/`: Repo-local planning and orchestration implementations behind the reusable-core query, sync, validation, and documentation boundaries, with generic governed-index or document-semantics helpers expected to live back under `watchtower_core`.
 
 ## Shrink Rules
 - Prefer moving new generic helpers into explicit reusable-core packages rather than growing this plan-owned namespace unnecessarily.
-- Keep `watchtower_plan` additions tightly scoped to plan-workspace state, repo-native authored-document semantics, or other current-pack behavior that cannot move cleanly into reusable core.
+- Keep `watchtower_plan` additions tightly scoped to plan-workspace state, plan-owned reference-resolution bridges, or other current-pack behavior that cannot move cleanly into reusable core.
 - Do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary is available.
 
 ## Related Surfaces
 - `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/python/src/watchtower_core/query/README.md`
+- `core/python/src/watchtower_core/documentation/README.md`
 - `core/python/src/watchtower_core/sync/README.md`
 - `core/python/src/watchtower_core/rebuild/README.md`
 - `core/python/src/watchtower_core/routing/README.md`

@@ -19,7 +19,7 @@ from watchtower_core.control_plane.operationalization_paths import (
     operationalization_path_is_glob,
     operationalization_path_matches,
 )
-from watchtower_plan.governed_documents import ordered_unique
+from watchtower_core.documentation.governed_documents import ordered_unique
 
 STANDARD_OPERATIONALIZATION_SECTION = "Operationalization"
 STANDARD_OPERATIONALIZATION_MODES_LABEL = "Modes"

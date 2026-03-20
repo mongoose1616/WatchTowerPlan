@@ -13,6 +13,7 @@
 |---|---|---|
 | `adapters/` | `reusable_core` | Parsing and normalizing governed front matter and Markdown surfaces. |
 | `control_plane/` | `reusable_core` | Workspace-aware schema, artifact, and loader primitives. |
+| `documentation/` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic used by validation and sync services. |
 | `validation/` | `reusable_core` | Export-safe validation services and result models; plan-domain document semantics and aggregate validation stay under `watchtower_plan.validation`. |
 | `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; live planning queries stay under `watchtower_plan.query`. |
 | `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; plan-domain sync registries and orchestration stay under `watchtower_plan.sync`. |

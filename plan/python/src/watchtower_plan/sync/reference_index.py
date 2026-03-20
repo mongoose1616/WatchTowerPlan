@@ -18,18 +18,18 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_plan.front_matter_paths import (
+from watchtower_core.documentation.front_matter_paths import (
     applies_to_path_values,
     normalize_front_matter_applies_to,
 )
-from watchtower_plan.markdown_semantics import (
+from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
-from watchtower_plan.governed_documents import (
+from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_required_section_order,
 )
-from watchtower_plan.reference_semantics import (
+from watchtower_core.documentation.reference_semantics import (
     REFERENCE_LOCAL_MAPPING_SECTION,
     parse_reference_local_mapping,
 )

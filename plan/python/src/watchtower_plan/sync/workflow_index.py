@@ -20,10 +20,10 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import WorkflowMetadataDefinition
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_plan.markdown_semantics import (
+from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
-from watchtower_plan.governed_documents import (
+from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_explained_bullet_section,
     validate_required_section_order,

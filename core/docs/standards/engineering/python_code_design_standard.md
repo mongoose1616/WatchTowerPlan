@@ -52,6 +52,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Keep modules narrow and named after one primary responsibility. Split files before they become mixed-purpose collections of query logic, parsing, rendering, validation, and orchestration.
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
+  - `documentation/` owns repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic.
   - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, and `utils/` own reusable runtime seams.
   - `plan/python/src/watchtower_plan/` owns repository-local orchestration that still depends on this repository's live planning or governed layout.
   - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.

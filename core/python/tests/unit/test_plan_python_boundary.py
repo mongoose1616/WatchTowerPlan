@@ -106,7 +106,7 @@ def test_public_validation_root_fails_closed_with_plan_boundary_guidance() -> No
         _ = public_validation.DocumentSemanticsValidationService
 
 
-def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
+def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> None:
     assert not (PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
         "__init__.py",
@@ -131,6 +131,14 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
         "harness.py",
         "repository_paths.py",
         "route_index.py",
+    ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "documentation").glob("*.py")) == [
+        "__init__.py",
+        "front_matter_paths.py",
+        "governed_documents.py",
+        "markdown_semantics.py",
+        "reference_semantics.py",
+        "standards.py",
     ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "rebuild").glob("*.py")) == [
         "__init__.py",
@@ -174,6 +182,11 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
         "watchtower_plan.query.workflows",
         "watchtower_core.sync.all",
         "watchtower_core.sync.traceability",
+        "watchtower_plan.front_matter_paths",
+        "watchtower_plan.governed_documents",
+        "watchtower_plan.markdown_semantics",
+        "watchtower_plan.reference_semantics",
+        "watchtower_plan.standards",
         "watchtower_plan.sync.command_index",
         "watchtower_plan.sync.repository_paths",
         "watchtower_plan.sync.route_index",

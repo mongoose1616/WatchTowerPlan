@@ -12,7 +12,7 @@ from watchtower_core.control_plane.event_stream import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.terminology import TerminologyHelper
-from watchtower_plan.front_matter_paths import (
+from watchtower_core.documentation.front_matter_paths import (
     normalize_governed_applies_to_values,
 )
 from watchtower_plan.plan_task_state import (

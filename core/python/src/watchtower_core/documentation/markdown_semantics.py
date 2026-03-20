@@ -1,4 +1,4 @@
-"""Shared repo-local Markdown semantic helpers."""
+"""Repo-shared Markdown semantic helpers."""
 
 from __future__ import annotations
 

@@ -28,6 +28,7 @@ def test_python_workspace_tooling_contract_publishes_stricter_reusable_core_rule
     assert {
         "watchtower_core.adapters",
         "watchtower_core.control_plane",
+        "watchtower_core.documentation",
         "watchtower_core.validation",
         "watchtower_core.query",
         "watchtower_core.sync",
