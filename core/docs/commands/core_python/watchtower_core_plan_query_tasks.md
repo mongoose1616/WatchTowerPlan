@@ -1,4 +1,4 @@
-# `watchtower-core query tasks`
+# `watchtower-core plan query tasks`
 
 ## Summary
 This command searches the live plan task index so engineers and agents can find initiative-local task records by task ID, task status, owner, trace, blockers, dependencies, priority, task kind, or free-text execution context.
@@ -11,15 +11,15 @@ This command searches the live plan task index so engineers and agents can find 
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query tasks` |
+| Invocation | `watchtower-core plan query tasks` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query tasks [--query <text>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--priority <priority>] [--owner <owner>] [--task-kind <task_kind>] [--blocked-only] [--blocked-by <task_id>] [--depends-on <task_id>] [--include-dependency-details] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query tasks [--query <text>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--priority <priority>] [--owner <owner>] [--task-kind <task_kind>] [--blocked-only] [--blocked-by <task_id>] [--depends-on <task_id>] [--include-dependency-details] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -41,17 +41,17 @@ uv run watchtower-core query tasks [--query <text>] [--task-id <task_id>] [--tra
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query tasks --task-status planned
+uv run watchtower-core plan query tasks --task-status planned
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query tasks --blocked-only --include-dependency-details
+uv run watchtower-core plan query tasks --blocked-only --include-dependency-details
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cutover --format json
+uv run watchtower-core plan query tasks --trace-id trace.plan_live_query_authority_cutover --format json
 ```
 
 ## Behavior and Outputs
@@ -65,14 +65,14 @@ uv run watchtower-core query tasks --trace-id trace.plan_live_query_authority_cu
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query` | Parent command group for all index-backed lookup commands. |
+| `watchtower-core plan query` | Parent command group for all plan-owned index-backed lookup commands. |
 | `watchtower-core sync all` | Rebuilds the live task index and its rendered companions. |
-| `watchtower-core query trace` | Resolves a joined trace record when you already know the trace ID and want linked task IDs. |
+| `watchtower-core plan query trace` | Resolves a joined trace record when you already know the trace ID and want linked task IDs. |
 | `watchtower-core sync github-tasks` | Uses the same live task filters, then previews or applies GitHub sync for the matched initiative-local task records. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/tasks.py`
 - `plan/.wt/indexes/task_index.json`
 

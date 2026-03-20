@@ -4,11 +4,8 @@ import argparse
 import json
 from types import SimpleNamespace
 
-from watchtower_core.cli import (
-    query_coordination_lookup_handlers,
-    query_coordination_rendered_handlers,
-    route_handlers,
-)
+from watchtower_core.cli import route_handlers
+from watchtower_plan.cli import query_lookup_handlers, query_rendered_handlers
 
 
 def _route_args(**overrides: object) -> argparse.Namespace:
@@ -268,10 +265,10 @@ def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
                 return blocker
             return dependency
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(query_coordination_lookup_handlers, "TaskQueryService", FakeService)
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "TaskQueryService", FakeService)
 
-    result = query_coordination_lookup_handlers._run_query_tasks(
+    result = query_lookup_handlers._run_query_tasks(
         _query_args(include_dependency_details=True)
     )
 
@@ -283,7 +280,7 @@ def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
 
 
 def test_task_entry_payload_keeps_artifact_and_workflow_statuses_distinct() -> None:
-    payload = query_coordination_lookup_handlers._task_entry_payload(
+    payload = query_lookup_handlers._task_entry_payload(
         _task_entry(),
         service=SimpleNamespace(),
         reverse_dependencies={},
@@ -311,10 +308,10 @@ def test_query_tasks_skips_dependency_detail_work_when_not_requested(monkeypatch
         def get(self, task_id: str) -> SimpleNamespace:
             raise AssertionError("get should not be called without dependency details")
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(query_coordination_lookup_handlers, "TaskQueryService", FakeService)
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "TaskQueryService", FakeService)
 
-    result = query_coordination_lookup_handlers._run_query_tasks(_query_args())
+    result = query_lookup_handlers._run_query_tasks(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -339,10 +336,10 @@ def test_query_tasks_prints_empty_message(monkeypatch, capsys) -> None:
         def get(self, task_id: str) -> SimpleNamespace:
             raise AssertionError("get should not be called for empty results")
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(query_coordination_lookup_handlers, "TaskQueryService", FakeService)
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "TaskQueryService", FakeService)
 
-    result = query_coordination_lookup_handlers._run_query_tasks(_query_args())
+    result = query_lookup_handlers._run_query_tasks(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -357,14 +354,14 @@ def test_query_artifacts_prints_human_summary(monkeypatch, capsys) -> None:
         def search(self, params: object) -> tuple[SimpleNamespace, ...]:
             return (_artifact_entry(),)
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(
-        query_coordination_lookup_handlers,
+        query_lookup_handlers,
         "ArtifactQueryService",
         FakeService,
     )
 
-    result = query_coordination_lookup_handlers._run_query_artifacts(_query_args())
+    result = query_lookup_handlers._run_query_artifacts(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -382,24 +379,24 @@ def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:
             return (_initiative_entry(),)
 
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "InitiativeQueryService",
         FakeService,
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "serialize_initiative_entry",
         lambda entry, *, compact=False: (_ for _ in ()).throw(
             AssertionError("serialize_initiative_entry should not be called")
         ),
     )
 
-    result = query_coordination_rendered_handlers._run_query_initiatives(_query_args())
+    result = query_rendered_handlers._run_query_initiatives(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -415,17 +412,17 @@ def test_query_initiatives_prints_empty_message(monkeypatch, capsys) -> None:
             return ()
 
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "InitiativeQueryService",
         FakeService,
     )
 
-    result = query_coordination_rendered_handlers._run_query_initiatives(_query_args())
+    result = query_rendered_handlers._run_query_initiatives(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -460,24 +457,24 @@ def test_query_coordination_supports_json_defaults(monkeypatch, capsys) -> None:
             )
 
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
 
-    result = query_coordination_rendered_handlers._run_query_coordination(
+    result = query_rendered_handlers._run_query_coordination(
         _query_args(format="json")
     )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 0
-    assert payload["command"] == "watchtower-core query coordination"
+    assert payload["command"] == "watchtower-core plan query coordination"
     assert payload["default_initiative_status"] == "active"
     assert payload["actionable_tasks"][0]["task_id"] == "task.example.001"
 
@@ -514,17 +511,17 @@ def test_query_coordination_prints_recent_closeouts_when_no_active_entries(
             )
 
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
 
-    result = query_coordination_rendered_handlers._run_query_coordination(_query_args())
+    result = query_rendered_handlers._run_query_coordination(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -557,24 +554,24 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
             )
 
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "ControlPlaneLoader",
         lambda: object(),
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "CoordinationQueryService",
         FakeService,
     )
     monkeypatch.setattr(
-        query_coordination_rendered_handlers,
+        query_rendered_handlers,
         "serialize_initiative_entry",
         lambda entry, *, compact=False: (_ for _ in ()).throw(
             AssertionError("serialize_initiative_entry should not be called")
         ),
     )
 
-    result = query_coordination_rendered_handlers._run_query_coordination(_query_args())
+    result = query_rendered_handlers._run_query_coordination(_query_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -591,14 +588,14 @@ def test_query_trace_reports_unknown_trace(monkeypatch, capsys) -> None:
         def get(self, trace_id: str) -> SimpleNamespace:
             raise KeyError(trace_id)
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(
-        query_coordination_lookup_handlers,
+        query_lookup_handlers,
         "TraceabilityQueryService",
         FakeService,
     )
 
-    result = query_coordination_lookup_handlers._run_query_trace(
+    result = query_lookup_handlers._run_query_trace(
         _query_args(trace_id="trace.unknown")
     )
 
@@ -642,14 +639,14 @@ def test_query_trace_prints_human_summary(monkeypatch, capsys) -> None:
             assert trace_id == "trace.example"
             return trace_entry
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(
-        query_coordination_lookup_handlers,
+        query_lookup_handlers,
         "TraceabilityQueryService",
         FakeService,
     )
 
-    result = query_coordination_lookup_handlers._run_query_trace(
+    result = query_lookup_handlers._run_query_trace(
         _query_args(trace_id="trace.example")
     )
 
@@ -690,14 +687,14 @@ def test_query_project_context_prints_human_summary(monkeypatch, capsys) -> None
         ),
     )
 
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(
-        query_coordination_lookup_handlers,
+        query_lookup_handlers,
         "load_project_context",
         lambda loader, project_slug: project_context,
     )
 
-    result = query_coordination_lookup_handlers._run_query_project_context(
+    result = query_lookup_handlers._run_query_project_context(
         _query_args(project_slug="watchtower")
     )
 
@@ -710,16 +707,16 @@ def test_query_project_context_prints_human_summary(monkeypatch, capsys) -> None
 
 
 def test_query_project_context_supports_json_errors(monkeypatch, capsys) -> None:
-    monkeypatch.setattr(query_coordination_lookup_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_lookup_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(
-        query_coordination_lookup_handlers,
+        query_lookup_handlers,
         "load_project_context",
         lambda loader, project_slug: (_ for _ in ()).throw(
             ValueError("Project root is missing: plan/projects/watchtower.")
         ),
     )
 
-    result = query_coordination_lookup_handlers._run_query_project_context(
+    result = query_lookup_handlers._run_query_project_context(
         _query_args(project_slug="watchtower", format="json")
     )
 
@@ -727,7 +724,7 @@ def test_query_project_context_supports_json_errors(monkeypatch, capsys) -> None
     payload = json.loads(captured.out)
     assert result == 1
     assert payload == {
-        "command": "watchtower-core query project-context",
+        "command": "watchtower-core plan query project-context",
         "message": "Project root is missing: plan/projects/watchtower.",
         "status": "error",
     }

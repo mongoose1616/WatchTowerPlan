@@ -95,7 +95,7 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 | `watchtower-core validate document-semantics` | Validates governed Markdown documents against repo-native semantic structure rules. |
 | `watchtower-core validate front-matter` | Validates one Markdown document front-matter block. |
 | `watchtower-core` | Root command that dispatches to this command group. |
-| `watchtower-core query trace` | Helpful after validation when you need to inspect the related planning and evidence surfaces. |
+| `watchtower-core plan query trace` | Helpful after validation when you need to inspect the related planning and evidence surfaces. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/validate_family.py`

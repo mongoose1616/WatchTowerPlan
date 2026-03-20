@@ -1,4 +1,4 @@
-# `watchtower-core query coordination`
+# `watchtower-core plan query coordination`
 
 ## Summary
 This command provides the machine-readable live coordination view for the plan workspace, including active initiatives, actionable tasks, blockers, and recent closeouts.
@@ -11,15 +11,15 @@ This command provides the machine-readable live coordination view for the plan w
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query coordination` |
+| Invocation | `watchtower-core plan query coordination` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id>] [--initiative-status <status>] [--current-phase <phase>] [--owner <owner>] [--blocked-only] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query coordination [--query <text>] [--trace-id <trace_id>] [--initiative-status <status>] [--current-phase <phase>] [--owner <owner>] [--blocked-only] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -39,29 +39,29 @@ uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
 - Explicit non-active `--initiative-status` lookups resolve result rows from initiative-family data while the top-level coordination snapshot remains the current repo state.
 - `plan/plan_overview.md` is the compact human companion view built from the same live coordination state, while `plan/tracking/coordination_tracking.md` remains the richer human browse companion.
-- Use `watchtower-core query trace` after this command when you need the canonical traceability record for one trace.
-- Use `watchtower-core query authority` when you need to confirm whether coordination is canonical for the question you are asking.
-- Use `watchtower-core query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
+- Use `watchtower-core plan query trace` after this command when you need the canonical traceability record for one trace.
+- Use `watchtower-core plan query authority` when you need to confirm whether coordination is canonical for the question you are asking.
+- Use `watchtower-core plan query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query coordination
+uv run watchtower-core plan query coordination
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query coordination --blocked-only --format json
+uv run watchtower-core plan query coordination --blocked-only --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query coordination --initiative-status completed --trace-id trace.plan_workflow_root_authority_split
+uv run watchtower-core plan query coordination --initiative-status completed --trace-id trace.plan_workflow_root_authority_split
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query coordination --initiative-status completed --trace-id trace.plan_workflow_root_authority_split --format json
+uv run watchtower-core plan query coordination --initiative-status completed --trace-id trace.plan_workflow_root_authority_split --format json
 ```
 
 ## Behavior and Outputs
@@ -76,17 +76,17 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core query authority` | Resolves whether coordination, initiative, traceability, or governance surfaces are canonical for a recurring lookup question. |
-| `watchtower-core query trace` | Descends from the start-here coordination view into the canonical traceability record for one trace. |
-| `watchtower-core query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
+| `watchtower-core plan query` | Parent command group for all plan-owned index-backed lookup commands. |
+| `watchtower-core plan query authority` | Resolves whether coordination, initiative, traceability, or governance surfaces are canonical for a recurring lookup question. |
+| `watchtower-core plan query trace` | Descends from the start-here coordination view into the canonical traceability record for one trace. |
+| `watchtower-core plan query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
 | `watchtower-core sync all` | Rebuilds the live coordination index and its dependent rendered surfaces. |
-| `watchtower-core query tasks` | Inspects the full task records behind the compact active-task summaries. |
-| `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
+| `watchtower-core plan query tasks` | Inspects the full task records behind the compact active-task summaries. |
+| `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_rendered_handlers.py`
 - `plan/python/src/watchtower_plan/query/coordination.py`
 - `plan/.wt/indexes/coordination_index.json`
 

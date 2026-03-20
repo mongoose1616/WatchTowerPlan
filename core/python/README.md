@@ -46,24 +46,24 @@
 - `uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example Initiative" --summary "Bootstraps the example initiative." --format json`
 - `uv run watchtower-core plan confirm-inputs --initiative-slug example_initiative --format json`
 - `uv run watchtower-core plan approve --initiative-slug example_initiative --format json`
-- `uv run watchtower-core query coordination --format json`
-- `uv run watchtower-core query artifacts --artifact-family initiative_state --format json`
-- `uv run watchtower-core query readiness --ready-for-execution true --format json`
-- `uv run watchtower-core query projects --slug watchtower --format json`
-- `uv run watchtower-core query project-context --project-slug watchtower --format json`
-- `uv run watchtower-core query authority --domain planning --format json`
+- `uv run watchtower-core plan query coordination --format json`
+- `uv run watchtower-core plan query artifacts --artifact-family initiative_state --format json`
+- `uv run watchtower-core plan query readiness --ready-for-execution true --format json`
+- `uv run watchtower-core plan query projects --slug watchtower --format json`
+- `uv run watchtower-core plan query project-context --project-slug watchtower --format json`
+- `uv run watchtower-core plan query authority --domain planning --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
 - `uv run watchtower-core query foundations --query philosophy`
 - `uv run watchtower-core query workflows --query validation`
 - `uv run watchtower-core query references --query uv`
 - `uv run watchtower-core query references --repository-status candidate_future_guidance --format json`
 - `uv run watchtower-core query standards --category governance --format json`
-- `uv run watchtower-core query tasks --task-status planned`
-- `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
+- `uv run watchtower-core plan query tasks --task-status planned`
+- `uv run watchtower-core plan query tasks --blocked-only --include-dependency-details`
 - `uv run watchtower-core plan task transition --task-id task.example.001 --task-status completed --format json`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
-- `uv run watchtower-core query initiatives --current-phase capture`
+- `uv run watchtower-core plan query initiatives --current-phase capture`
 - `uv run watchtower-core sync all`
 - `uv run watchtower-core sync coordination`
 - `uv run watchtower-core sync route-index`
@@ -111,11 +111,11 @@
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
 - `plan/.wt/indexes/coordination_index.json` is the live machine-readable current-state entrypoint for the plan workspace.
-- `uv run watchtower-core query project-context --project-slug <slug> --format json` is the explicit runtime proof path for loading `project_context` on top of always-loaded `pack_context` for project-scoped work.
-- `uv run watchtower-core query coordination --format json` is the live plan-workspace machine start-here command backed by `plan/.wt/indexes/coordination_index.json`.
-- `uv run watchtower-core query artifacts --format json` exposes the cross-family live artifact lookup under `plan/.wt/indexes/artifact_index.json`.
-- `uv run watchtower-core query readiness --format json`, `query discrepancies --format json`, and `query projects --format json` expose the live readiness, discrepancy, and project indexes under `plan/.wt/indexes/`.
-- Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
+- `uv run watchtower-core plan query project-context --project-slug <slug> --format json` is the explicit runtime proof path for loading `project_context` on top of always-loaded `pack_context` for project-scoped work.
+- `uv run watchtower-core plan query coordination --format json` is the live plan-workspace machine start-here command backed by `plan/.wt/indexes/coordination_index.json`.
+- `uv run watchtower-core plan query artifacts --format json` exposes the cross-family live artifact lookup under `plan/.wt/indexes/artifact_index.json`.
+- `uv run watchtower-core plan query readiness --format json`, `plan query discrepancies --format json`, and `plan query projects --format json` expose the live readiness, discrepancy, and project indexes under `plan/.wt/indexes/`.
+- Use `uv run watchtower-core plan query coordination --initiative-status <status> --format json` or `uv run watchtower-core plan query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
 - The decision, design, implementation, initiative, and task tracking sync commands rebuild summary-first human trackers with companion terminal-history tables. Use the paired `query` commands when you need exact filtered machine lookup.
 - `uv run watchtower-core plan bootstrap --include-decision --write ...` seeds a live initiative package in pre-execution review and leaves bootstrap-only traces in `capture` until non-bootstrap active work exists.
 - `uv run watchtower-core plan confirm-inputs --write ...` records maintainer confirmation of the current initiative-authored inputs before execution approval.
@@ -124,7 +124,7 @@
 - `uv run watchtower-core closeout initiative --write ...` is the retained-trace closeout path and fails closed with a `watchtower-core plan closeout initiative` recommendation when the target still belongs to a live `plan/**` initiative package.
 - `uv run watchtower-core plan closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge ledger, and then refreshes all derived governed surfaces.
 - `uv run watchtower-core plan task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
-- `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
+- `uv run watchtower-core plan query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `watchtower_core` is the reusable-core namespace. Push generic loaders, validators, query helpers, sync helpers, adapters, and utilities back into `watchtower_core` when they stop being plan-specific.

@@ -37,9 +37,9 @@ Retire the root docs tree, finish the initiative-package hard cutover, and resto
 ## Validation Plan
 - Targeted command proofs:
   - `watchtower-core plan bootstrap --help`
-  - `watchtower-core query coordination --format json`
-  - `watchtower-core query initiatives --current-phase capture --format json`
-  - `watchtower-core query initiatives --current-phase execution --format json`
+  - `watchtower-core plan query coordination --format json`
+  - `watchtower-core plan query initiatives --current-phase capture --format json`
+  - `watchtower-core plan query initiatives --current-phase execution --format json`
   - `watchtower-core validate all --format json`
 - Add and run fail-closed tests for:
   - `plan_overview` section parity

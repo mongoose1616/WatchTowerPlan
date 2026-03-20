@@ -1,4 +1,4 @@
-# `watchtower-core query projects`
+# `watchtower-core plan query projects`
 
 ## Summary
 This command searches the live project index for project containers, their linked repositories, and their initiative roots.
@@ -11,15 +11,15 @@ This command searches the live project index for project containers, their linke
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query projects` |
+| Invocation | `watchtower-core plan query projects` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query projects [--query <text>] [--project-id <project_id>] [--slug <slug>] [--status <status>] [--repository-role <role>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query projects [--query <text>] [--project-id <project_id>] [--slug <slug>] [--status <status>] [--repository-role <role>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -35,12 +35,12 @@ uv run watchtower-core query projects [--query <text>] [--project-id <project_id
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query projects --slug watchtower
+uv run watchtower-core plan query projects --slug watchtower
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query projects --repository-role implementation --format json
+uv run watchtower-core plan query projects --repository-role implementation --format json
 ```
 
 ## Behavior and Outputs
@@ -53,13 +53,13 @@ uv run watchtower-core query projects --repository-role implementation --format 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query project-context` | Loads one full validated project context after browse identifies the target project. |
-| `watchtower-core query coordination` | Pack-level start-here path that can point you toward project-scoped work. |
-| `watchtower-core query authority` | Resolves when project lookup is the canonical planning surface. |
+| `watchtower-core plan query project-context` | Loads one full validated project context after browse identifies the target project. |
+| `watchtower-core plan query coordination` | Pack-level start-here path that can point you toward project-scoped work. |
+| `watchtower-core plan query authority` | Resolves when project lookup is the canonical planning surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/projects.py`
 - `plan/.wt/indexes/project_index.json`
 

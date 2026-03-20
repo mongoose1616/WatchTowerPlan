@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `plan`, `query`, `sync`, `closeout`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 
@@ -40,12 +40,12 @@ uv run watchtower-core route preview --request "do a documentation review of the
 
 ```sh
 cd core/python
-uv run watchtower-core query coordination --format json
+uv run watchtower-core plan query coordination --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query artifacts --artifact-family initiative_state --format json
+uv run watchtower-core plan query artifacts --artifact-family initiative_state --format json
 ```
 
 ```sh
@@ -68,7 +68,8 @@ uv run watchtower-core validate all --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core route` | Advisory route preview for turning a request into workflow modules. |
-| `watchtower-core query` | Read-only lookup surface for commands, planning, coordination, standards, and other governed indexes. |
+| `watchtower-core plan` | Pack-owned plan namespace for bootstrap, live query, task, and plan closeout flows. |
+| `watchtower-core query` | Shared read-only lookup surface for commands, standards, references, foundations, workflows, and durable records. |
 | `watchtower-core sync` | Rebuilds derived governed artifacts and tracking surfaces. |
 | `watchtower-core validate` | Runs repo-wide, artifact, document, and acceptance validation flows. |
 | `core/docs/commands/core_python/README.md` | Command-family entrypoint for the core Python workspace. |

@@ -25,6 +25,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         _run_plan_bootstrap,
         _run_plan_confirm_inputs,
     )
+    from watchtower_plan.cli.query import register_plan_query_commands
     from watchtower_plan.cli.tasks import register_plan_task_commands
     from watchtower_plan.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
@@ -33,8 +34,9 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         help="Bootstrap live initiative packages and advance readiness gates.",
         description=dedent(
             """
-            Bootstrap live initiative packages and advance initiative readiness
-            through the captured-input and approval gates.
+            Bootstrap live initiative packages, inspect live plan state, and
+            advance initiative readiness through the captured-input and approval
+            gates.
 
             These commands are dry-run by default. Add `--write` to persist the
             initiative-state change and refresh the derived plan surfaces.
@@ -44,6 +46,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
             "--title \"Example Initiative\" "
             "--summary \"Bootstraps the example initiative.\" --format json",
+            "uv run watchtower-core plan query coordination --format json",
             "uv run watchtower-core plan approve --initiative-slug example_initiative --write",
         ),
         formatter_class=HelpFormatter,
@@ -55,6 +58,8 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         metavar="<plan_command>",
     )
     plan_parser.set_defaults(handler=_run_help, help_parser=plan_parser)
+
+    register_plan_query_commands(plan_subparsers)
 
     bootstrap_parser = plan_subparsers.add_parser(
         "bootstrap",

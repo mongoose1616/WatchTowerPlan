@@ -59,7 +59,7 @@ uv run watchtower-core sync task-index --output /tmp/task_index.json --format js
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker from the same live task sources. |
-| `watchtower-core query tasks` | Reads the task index that this command rebuilds. |
+| `watchtower-core plan query tasks` | Reads the task index that this command rebuilds. |
 | `watchtower-core sync traceability-index` | Reads the task index as one of its governed source surfaces. |
 
 ## Source Surface

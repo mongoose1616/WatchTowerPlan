@@ -31,10 +31,6 @@ class CommandGroupSpec:
 QUERY_DISCOVERY_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_discovery_family.py"
 QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_knowledge_family.py"
 QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_records_family.py"
-QUERY_COORDINATION_FAMILY_PATH = (
-    "core/python/src/watchtower_core/cli/query_coordination_family.py"
-)
-
 
 CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
@@ -60,11 +56,6 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("standards", QUERY_KNOWLEDGE_FAMILY_PATH),
             ("acceptance", QUERY_RECORDS_FAMILY_PATH),
             ("evidence", QUERY_RECORDS_FAMILY_PATH),
-            ("tasks", QUERY_COORDINATION_FAMILY_PATH),
-            ("coordination", QUERY_COORDINATION_FAMILY_PATH),
-            ("authority", QUERY_COORDINATION_FAMILY_PATH),
-            ("initiatives", QUERY_COORDINATION_FAMILY_PATH),
-            ("trace", QUERY_COORDINATION_FAMILY_PATH),
         ),
     ),
     CommandGroupSpec(
@@ -121,7 +112,6 @@ __all__ = [
     "CORE_COMMAND_GROUP_SPECS",
     "CommandGroupSpec",
     "CommandRegistrar",
-    "QUERY_COORDINATION_FAMILY_PATH",
     "QUERY_DISCOVERY_FAMILY_PATH",
     "QUERY_KNOWLEDGE_FAMILY_PATH",
     "QUERY_RECORDS_FAMILY_PATH",

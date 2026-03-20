@@ -174,11 +174,11 @@ def test_query_tasks_supports_json_output(
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
-        ["query", "tasks", "--trace-id", ACTIVE_TRACE_ID],
+        ["plan", "query", "tasks", "--trace-id", ACTIVE_TRACE_ID],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query tasks"
+    assert payload["command"] == "watchtower-core plan query tasks"
     assert payload["status"] == "ok"
     entry = next(entry for entry in payload["results"] if entry["task_id"] == ACTIVE_TASK_ID)
     assert entry["status"] == "active"
@@ -205,6 +205,7 @@ def test_query_tasks_supports_dependency_details_json_output(
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "tasks",
             "--task-id",
@@ -214,7 +215,7 @@ def test_query_tasks_supports_dependency_details_json_output(
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query tasks"
+    assert payload["command"] == "watchtower-core plan query tasks"
     entry = payload["results"][0]
     assert entry["task_id"] == DEPENDENCY_TASK_ID
     assert "blocked_by_details" in entry
@@ -231,11 +232,11 @@ def test_query_initiatives_supports_json_output(
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
-        ["query", "initiatives", "--trace-id", ACTIVE_TRACE_ID],
+        ["plan", "query", "initiatives", "--trace-id", ACTIVE_TRACE_ID],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["command"] == "watchtower-core plan query initiatives"
     assert payload["status"] == "ok"
     assert "default_initiative_status" not in payload
     assert any(
@@ -250,10 +251,10 @@ def test_query_coordination_defaults_to_active_status(
 ) -> None:
     repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
-    result, payload = run_json_command(capsys, ["query", "coordination"])
+    result, payload = run_json_command(capsys, ["plan", "query", "coordination"])
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query coordination"
+    assert payload["command"] == "watchtower-core plan query coordination"
     assert payload["status"] == "ok"
     assert payload["default_initiative_status"] == "active"
     assert payload["coordination_mode"] in {
@@ -278,6 +279,7 @@ def test_query_coordination_supports_explicit_historical_lookup(
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "coordination",
             "--initiative-status",
@@ -288,7 +290,7 @@ def test_query_coordination_supports_explicit_historical_lookup(
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query coordination"
+    assert payload["command"] == "watchtower-core plan query coordination"
     assert payload["status"] == "ok"
     matched = next(
         entry for entry in payload["results"] if entry["trace_id"] == COMPLETED_TRACE_ID
@@ -307,11 +309,11 @@ def test_query_readiness_supports_json_output(
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
-        ["query", "readiness", "--initiative-id", ACTIVE_INITIATIVE_ID],
+        ["plan", "query", "readiness", "--initiative-id", ACTIVE_INITIATIVE_ID],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query readiness"
+    assert payload["command"] == "watchtower-core plan query readiness"
     assert payload["status"] == "ok"
     assert any(
         entry["initiative_id"] == ACTIVE_INITIATIVE_ID for entry in payload["results"]
@@ -321,11 +323,11 @@ def test_query_readiness_supports_json_output(
 def test_query_artifacts_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "artifacts", "--artifact-family", "artifact_index"],
+        ["plan", "query", "artifacts", "--artifact-family", "artifact_index"],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query artifacts"
+    assert payload["command"] == "watchtower-core plan query artifacts"
     assert payload["status"] == "ok"
     assert any(
         entry["artifact_id"] == "index.artifacts" for entry in payload["results"]
@@ -335,11 +337,11 @@ def test_query_artifacts_supports_json_output(capsys) -> None:
 def test_query_discrepancies_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "discrepancies", "--trace-id", DISCREPANCY_TRACE_ID],
+        ["plan", "query", "discrepancies", "--trace-id", DISCREPANCY_TRACE_ID],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query discrepancies"
+    assert payload["command"] == "watchtower-core plan query discrepancies"
     assert payload["status"] == "ok"
     assert payload["result_count"] >= 0
     if payload["results"]:
@@ -349,11 +351,11 @@ def test_query_discrepancies_supports_json_output(capsys) -> None:
 def test_query_projects_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "projects", "--project-id", WATCHTOWER_PROJECT_ID],
+        ["plan", "query", "projects", "--project-id", WATCHTOWER_PROJECT_ID],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query projects"
+    assert payload["command"] == "watchtower-core plan query projects"
     assert payload["status"] == "ok"
     assert payload["results"][0]["project_id"] == WATCHTOWER_PROJECT_ID
 
@@ -361,11 +363,11 @@ def test_query_projects_supports_json_output(capsys) -> None:
 def test_query_project_context_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "project-context", "--project-slug", "watchtower"],
+        ["plan", "query", "project-context", "--project-slug", "watchtower"],
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query project-context"
+    assert payload["command"] == "watchtower-core plan query project-context"
     assert payload["status"] == "ok"
     assert payload["result"]["project_id"] == "project.watchtower"
     assert payload["result"]["pack_context"]["pack_id"] == "pack.plan"
@@ -383,6 +385,7 @@ def test_query_initiatives_uses_explicit_artifact_status_field(
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "initiatives",
             "--trace-id",
@@ -393,7 +396,7 @@ def test_query_initiatives_uses_explicit_artifact_status_field(
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["command"] == "watchtower-core plan query initiatives"
     entry = next(
         item for item in payload["results"] if item["trace_id"] == COMPLETED_TRACE_ID
     )
@@ -409,10 +412,10 @@ def test_query_initiatives_defaults_to_active_status_when_filterless(
 ) -> None:
     repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
-    result, payload = run_json_command(capsys, ["query", "initiatives"])
+    result, payload = run_json_command(capsys, ["plan", "query", "initiatives"])
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["command"] == "watchtower-core plan query initiatives"
     assert payload["status"] == "ok"
     assert payload["default_initiative_status"] == "active"
     assert payload["result_count"] >= 1
@@ -429,6 +432,7 @@ def test_query_initiatives_supports_closed_current_phase_history_lookup(
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "initiatives",
             "--initiative-status",
@@ -439,7 +443,7 @@ def test_query_initiatives_supports_closed_current_phase_history_lookup(
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["command"] == "watchtower-core plan query initiatives"
     assert payload["result_count"] > 0
     assert any(entry["trace_id"] == COMPLETED_TRACE_ID for entry in payload["results"])
     assert all(entry["current_phase"] == "closed" for entry in payload["results"])
@@ -449,6 +453,7 @@ def test_query_authority_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "authority",
             "--question-id",
@@ -457,17 +462,18 @@ def test_query_authority_supports_json_output(capsys) -> None:
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query authority"
+    assert payload["command"] == "watchtower-core plan query authority"
     assert payload["status"] == "ok"
     assert payload["results"][0]["question_id"] == "authority.planning.deep_trace_context"
     assert payload["results"][0]["artifact_kind"] == "traceability_index"
-    assert payload["results"][0]["preferred_command"] == "watchtower-core query trace"
+    assert payload["results"][0]["preferred_command"] == "watchtower-core plan query trace"
 
 
 def test_query_trace_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,
         [
+            "plan",
             "query",
             "trace",
             "--trace-id",
@@ -476,6 +482,6 @@ def test_query_trace_supports_json_output(capsys) -> None:
     )
 
     assert result == 0
-    assert payload["command"] == "watchtower-core query trace"
+    assert payload["command"] == "watchtower-core plan query trace"
     assert payload["status"] == "ok"
     assert payload["result"]["trace_id"] == "trace.governed_acceptance_example"

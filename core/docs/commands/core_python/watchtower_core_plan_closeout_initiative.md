@@ -59,8 +59,8 @@ uv run watchtower-core plan closeout initiative --project-slug watchtower --init
 |---|---|
 | `watchtower-core plan closeout` | Parent command group for live plan closeout operations. |
 | `watchtower-core closeout initiative` | Use only for retained trace records, not live `plan/**` initiative packages. |
-| `watchtower-core query coordination` | Reads the pack-level coordination view that this command refreshes in write mode. |
-| `watchtower-core query trace` | Reads the retained traceability record when you need the historical closeout path instead of the live plan path. |
+| `watchtower-core plan query coordination` | Reads the pack-level coordination view that this command refreshes in write mode. |
+| `watchtower-core plan query trace` | Reads the retained traceability record when you need the historical closeout path instead of the live plan path. |
 | `watchtower-core sync all` | Rebuilds the broader derived surface set that includes the indexes and rendered views this command updates directly. |
 
 ## Source Surface

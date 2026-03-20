@@ -7,11 +7,11 @@ import sys
 import pytest
 
 from watchtower_core.cli.main import main
-from watchtower_core.cli.query_coordination_lookup_handlers import (
-    _run_query_tasks as split_query_tasks,
+from watchtower_plan.cli.query_lookup_handlers import (
+    _run_query_tasks as plan_query_tasks,
 )
-from watchtower_core.cli.query_coordination_rendered_handlers import (
-    _run_query_coordination as split_query_coordination,
+from watchtower_plan.cli.query_rendered_handlers import (
+    _run_query_coordination as plan_query_coordination,
 )
 
 
@@ -49,8 +49,8 @@ def test_retired_cli_facade_modules_are_not_importable(module_name: str) -> None
 
 
 def test_split_query_handler_modules_remain_available() -> None:
-    assert callable(split_query_coordination)
-    assert callable(split_query_tasks)
+    assert callable(plan_query_coordination)
+    assert callable(plan_query_tasks)
 
 
 def test_root_command_prints_help(capsys) -> None:
@@ -64,17 +64,23 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core route preview --request "
         "\"review code and commit\"" in captured.out
     )
-    assert "uv run watchtower-core query coordination --format json" in captured.out
+    assert "uv run watchtower-core plan query coordination --format json" in captured.out
     assert (
-        "uv run watchtower-core query artifacts --artifact-family initiative_state --format json"
+        "uv run watchtower-core plan query artifacts --artifact-family initiative_state --format json"
         in captured.out
     )
     assert (
-        "uv run watchtower-core query readiness --ready-for-execution true --format json"
+        "uv run watchtower-core plan query readiness --ready-for-execution true --format json"
         in captured.out
     )
-    assert "uv run watchtower-core query projects --slug watchtower --format json" in captured.out
-    assert "uv run watchtower-core query authority --domain planning --format json" in captured.out
+    assert (
+        "uv run watchtower-core plan query projects --slug watchtower --format json"
+        in captured.out
+    )
+    assert (
+        "uv run watchtower-core plan query authority --domain planning --format json"
+        in captured.out
+    )
     assert (
         "uv run watchtower-core query standards --category governance --format json"
         in captured.out
@@ -117,26 +123,16 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
-    assert "query coordination" in captured.out
-    assert "query artifacts" in captured.out
-    assert "query readiness" in captured.out
-    assert "query discrepancies" in captured.out
-    assert "query projects" in captured.out
-    assert "query project-context" in captured.out
-    assert "query authority" in captured.out
     assert "query foundations" in captured.out
     assert "query workflows" in captured.out
     assert "query references" in captured.out
     assert "query standards" in captured.out
     assert "query acceptance" in captured.out
     assert "query evidence" in captured.out
-    assert "query tasks" in captured.out
-    assert "query initiatives" in captured.out
-    assert (
-        "uv run watchtower-core query trace --trace-id "
-        "trace.governed_acceptance_example"
-        in captured.out
-    )
+    assert "watchtower-core query coordination" not in captured.out
+    assert "watchtower-core query initiatives" not in captured.out
+    assert "watchtower-core query tasks" not in captured.out
+    assert "watchtower-core query trace" not in captured.out
 
 
 def test_query_foundations_help_uses_live_examples(capsys) -> None:
@@ -152,13 +148,7 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
     ) in captured.out
 
 
-@pytest.mark.parametrize(
-    "command",
-    (
-        ["query", "coordination", "--help"],
-        ["query", "initiatives", "--help"],
-    ),
-)
+@pytest.mark.parametrize("command", (["plan", "query", "coordination", "--help"],))
 def test_query_live_family_help_uses_live_phase_terms(
     command: list[str],
     capsys,
@@ -191,8 +181,25 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
     assert "bootstrap" in captured.out
     assert "confirm-inputs" in captured.out
     assert "approve" in captured.out
+    assert "query" in captured.out
     assert "closeout" in captured.out
     assert "task" in captured.out
+
+
+def test_plan_query_group_prints_group_specific_help(capsys) -> None:
+    result = main(["plan", "query"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Search the plan-owned machine lookup surfaces" in captured.out
+    assert "coordination" in captured.out
+    assert "initiatives" in captured.out
+    assert "tasks" in captured.out
+    assert "artifacts" in captured.out
+    assert "readiness" in captured.out
+    assert "authority" in captured.out
+    assert "trace" in captured.out
+    assert "uv run watchtower-core plan query coordination --format json" in captured.out
 
 
 def test_task_group_prints_group_specific_help(capsys) -> None:

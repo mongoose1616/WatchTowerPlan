@@ -1,4 +1,4 @@
-# `watchtower-core query project-context`
+# `watchtower-core plan query project-context`
 
 ## Summary
 This command loads one project-scoped runtime context from machine-authoritative project artifacts on top of the always-loaded pack context.
@@ -11,15 +11,15 @@ This command loads one project-scoped runtime context from machine-authoritative
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query project-context` |
+| Invocation | `watchtower-core plan query project-context` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query project-context --project-slug <project_slug> [--format <human|json>]
+uv run watchtower-core plan query project-context --project-slug <project_slug> [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -30,12 +30,12 @@ uv run watchtower-core query project-context --project-slug <project_slug> [--fo
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query project-context --project-slug watchtower
+uv run watchtower-core plan query project-context --project-slug watchtower
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query project-context --project-slug watchtower --format json
+uv run watchtower-core plan query project-context --project-slug watchtower --format json
 ```
 
 ## Behavior and Outputs
@@ -49,16 +49,16 @@ uv run watchtower-core query project-context --project-slug watchtower --format 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query coordination` | Pack-level current-state entrypoint before narrowing to one project. |
-| `watchtower-core query initiatives` | Project-scoped initiative lookup once the project root is known. |
-| `watchtower-core query trace` | Trace-linked initiative lookup after you know the exact trace you need. |
-| `watchtower-core query authority` | Canonical-surface resolver when you are not sure which machine surface to trust. |
+| `watchtower-core plan query coordination` | Pack-level current-state entrypoint before narrowing to one project. |
+| `watchtower-core plan query initiatives` | Project-scoped initiative lookup once the project root is known. |
+| `watchtower-core plan query trace` | Trace-linked initiative lookup after you know the exact trace you need. |
+| `watchtower-core plan query authority` | Canonical-surface resolver when you are not sure which machine surface to trust. |
 | `watchtower-core sync all` | Rebuilds command docs, live plan indexes, and retained companion surfaces after query-surface changes. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/project_context.py`
 - `plan/projects/<project_slug>/.wt/project.json`
 - `plan/projects/<project_slug>/.wt/project_repository_map.json`

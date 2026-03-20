@@ -1,4 +1,4 @@
-# `watchtower-core query initiatives`
+# `watchtower-core plan query initiatives`
 
 ## Summary
 This command searches the governed initiative index for broader initiative-family lookup, including filtered history and non-default initiative-status views.
@@ -11,15 +11,15 @@ This command searches the governed initiative index for broader initiative-famil
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query initiatives` |
+| Invocation | `watchtower-core plan query initiatives` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>] [--initiative-status <status>] [--current-phase <phase>] [--owner <owner>] [--blocked-only] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query initiatives [--query <text>] [--trace-id <trace_id>] [--initiative-status <status>] [--current-phase <phase>] [--owner <owner>] [--blocked-only] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -34,31 +34,31 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 - `-h`, `--help`: Show the command help text.
 
 ## Notes
-- Use `watchtower-core query coordination` when you want the machine start-here path for current planning state.
-- Use `watchtower-core query trace` when you need the canonical traceability record for one trace rather than a compact initiative rendered surface.
-- Use `watchtower-core query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
+- Use `watchtower-core plan query coordination` when you want the machine start-here path for current planning state.
+- Use `watchtower-core plan query trace` when you need the canonical traceability record for one trace rather than a compact initiative rendered surface.
+- Use `watchtower-core plan query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
 - Filterless browse now defaults to active initiatives; this command remains the broader initiative query surface for explicit historical or status-specific lookup.
 - This command reads the live initiative-family index under `plan/.wt/indexes/initiative_index.json`.
 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query initiatives --current-phase execution
+uv run watchtower-core plan query initiatives --current-phase execution
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query initiatives --blocked-only --format json
+uv run watchtower-core plan query initiatives --blocked-only --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query initiatives --trace-id trace.plan_live_query_authority_cutover
+uv run watchtower-core plan query initiatives --trace-id trace.plan_live_query_authority_cutover
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query initiatives --initiative-status completed --format json
+uv run watchtower-core plan query initiatives --initiative-status completed --format json
 ```
 
 ## Behavior and Outputs
@@ -73,17 +73,17 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core query coordination` | Preferred machine start-here path for current planning state. |
-| `watchtower-core query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or governance should answer instead. |
-| `watchtower-core query trace` | Canonical traceability read path when the initiative summary is too compact. |
+| `watchtower-core plan query` | Parent command group for all plan-owned index-backed lookup commands. |
+| `watchtower-core plan query coordination` | Preferred machine start-here path for current planning state. |
+| `watchtower-core plan query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or governance should answer instead. |
+| `watchtower-core plan query trace` | Canonical traceability read path when the initiative summary is too compact. |
 | `watchtower-core sync all` | Rebuilds the live initiative-family index and its rendered companions. |
-| `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
-| `watchtower-core query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
+| `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
+| `watchtower-core plan query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_rendered_handlers.py`
 - `plan/python/src/watchtower_plan/query/initiatives.py`
 - `plan/.wt/indexes/initiative_index.json`
 

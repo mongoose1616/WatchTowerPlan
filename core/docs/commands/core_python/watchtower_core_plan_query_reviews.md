@@ -1,4 +1,4 @@
-# `watchtower-core query reviews`
+# `watchtower-core plan query reviews`
 
 ## Summary
 This command searches the live review index for initiative review state and promotion approval state.
@@ -11,15 +11,15 @@ This command searches the live review index for initiative review state and prom
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query reviews` |
+| Invocation | `watchtower-core plan query reviews` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query reviews [--query <text>] [--subject-kind <initiative|promotion>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--review-state <state>] [--ready-for-execution <true|false>] [--review-ref <ref>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query reviews [--query <text>] [--subject-kind <initiative|promotion>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--review-state <state>] [--ready-for-execution <true|false>] [--review-ref <ref>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,12 +38,12 @@ uv run watchtower-core query reviews [--query <text>] [--subject-kind <initiativ
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query reviews --review-state pending
+uv run watchtower-core plan query reviews --review-state pending
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query reviews --subject-kind promotion --format json
+uv run watchtower-core plan query reviews --subject-kind promotion --format json
 ```
 
 ## Behavior and Outputs
@@ -56,15 +56,15 @@ uv run watchtower-core query reviews --subject-kind promotion --format json
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query readiness` | Shows initiative execution-readiness state for the same review-bearing initiative subjects. |
-| `watchtower-core query plan-evidence` | Shows evidence bundles cited by review-bearing initiative and promotion subjects. |
-| `watchtower-core query closeouts` | Shows closeout recaps that depend on promotion-review outcomes. |
-| `watchtower-core query authority` | Resolves when the live review index is the canonical lookup surface. |
+| `watchtower-core plan query readiness` | Shows initiative execution-readiness state for the same review-bearing initiative subjects. |
+| `watchtower-core plan query plan-evidence` | Shows evidence bundles cited by review-bearing initiative and promotion subjects. |
+| `watchtower-core plan query closeouts` | Shows closeout recaps that depend on promotion-review outcomes. |
+| `watchtower-core plan query authority` | Resolves when the live review index is the canonical lookup surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/reviews.py`
 - `plan/.wt/indexes/review_index.json`
 

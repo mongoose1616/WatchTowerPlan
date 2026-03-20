@@ -60,7 +60,7 @@ uv run watchtower-core sync traceability-index --output /tmp/traceability_index.
 | `watchtower-core sync initiative-index` | Rebuilds one of the primary machine-readable planning surfaces that this command depends on. |
 | `watchtower-core sync task-index` | Rebuilds one of the task-backed coordination surfaces that contributes to traced initiative state. |
 | `watchtower-core sync all` | Rebuilds all governed planning surfaces when you want the full deterministic slice instead of only traceability. |
-| `watchtower-core query trace` | Reads the traceability index that this command rebuilds. |
+| `watchtower-core plan query trace` | Reads the traceability index that this command rebuilds. |
 | `watchtower-core validate artifact` | Validates the traceability index and related governed JSON artifacts. |
 
 ## Source Surface

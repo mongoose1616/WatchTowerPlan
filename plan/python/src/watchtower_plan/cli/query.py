@@ -1,4 +1,4 @@
-"""Registration helpers for coordination-oriented query subcommands."""
+"""Pack-owned registration for the `watchtower-core plan query` namespace."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from watchtower_core.cli.common import (
     add_tri_state_bool_argument,
     examples,
 )
-from watchtower_core.cli.query_coordination_lookup_handlers import (
+from watchtower_plan.cli.query_lookup_handlers import (
     _run_query_artifacts,
     _run_query_authority,
     _run_query_closeouts,
@@ -26,10 +26,12 @@ from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_tasks,
     _run_query_trace,
 )
-from watchtower_core.cli.query_coordination_rendered_handlers import (
+from watchtower_plan.cli.query_rendered_handlers import (
     _run_query_coordination,
     _run_query_initiatives,
 )
+
+IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/query.py"
 
 
 def _add_live_scope_arguments(
@@ -53,10 +55,53 @@ def _add_output_arguments(
     add_human_json_format_argument(parser)
 
 
-def register_query_coordination_commands(
-    query_subparsers: argparse._SubParsersAction,
+def register_plan_query_commands(
+    plan_subparsers: argparse._SubParsersAction,
 ) -> None:
-    """Register coordination-oriented query commands."""
+    """Register the pack-owned `plan query` command group."""
+
+    from watchtower_core.cli.handler_common import _run_help
+
+    query_parser = plan_subparsers.add_parser(
+        "query",
+        help="Search live plan state, plan-owned indexes, and retained planning records.",
+        description=dedent(
+            """
+            Search the plan-owned machine lookup surfaces without opening the raw
+            JSON artifacts directly.
+
+            Use `coordination` for the machine start-here planning view,
+            `initiatives` for broader initiative-family lookup including
+            history, `tasks` for initiative-local task execution state,
+            `artifacts` for the cross-family plan artifact catalog,
+            `readiness` for execution-gate state, `discrepancies` for blocking
+            drift or mismatch records, `projects` for pack-level project
+            lookup, `project-context` for one fully loaded project container,
+            `authority` for canonical planning and governance surface lookup,
+            `plan-evidence` for initiative-local evidence bundles, `reviews`
+            for initiative or promotion review state, `closeouts` for closeout
+            recap state, and `trace` for one retained traceability record.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core plan query coordination --format json",
+            "uv run watchtower-core plan query initiatives --current-phase execution",
+            "uv run watchtower-core plan query tasks --task-status planned --format json",
+            "uv run watchtower-core plan query readiness --ready-for-execution true --format json",
+            "uv run watchtower-core plan query authority --domain planning --format json",
+            "uv run watchtower-core plan query trace --trace-id "
+            "trace.governed_acceptance_example --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
+    query_subparsers = query_parser.add_subparsers(
+        dest="plan_query_command",
+        title="plan query commands",
+        metavar="<plan_query_command>",
+    )
+    query_parser.set_defaults(handler=_run_help, help_parser=query_parser)
+
     query_project_context_parser = query_subparsers.add_parser(
         "project-context",
         help="Load the machine-first context for one project container.",
@@ -72,11 +117,12 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query project-context --project-slug watchtower",
-            "uv run watchtower-core query project-context --project-slug watchtower --format json",
+            "uv run watchtower-core plan query project-context --project-slug watchtower",
+            "uv run watchtower-core plan query project-context --project-slug watchtower --format json",
         ),
         formatter_class=HelpFormatter,
     )
+    query_project_context_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_project_context_parser.add_argument(
         "--project-slug",
         required=True,
@@ -97,14 +143,14 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query tasks --task-status planned",
+            "uv run watchtower-core plan query tasks --task-status planned",
             (
-                "uv run watchtower-core query tasks "
+                "uv run watchtower-core plan query tasks "
                 "--blocked-by task.plan_live_query_authority_cutover."
                 "reroot_public_planning_queries_onto_live_plan_indexes"
             ),
             (
-                "uv run watchtower-core query tasks "
+                "uv run watchtower-core plan query tasks "
                 "--trace-id trace.plan_live_query_authority_cutover --format json"
             ),
         ),
@@ -165,6 +211,7 @@ def register_query_coordination_commands(
         help="Include forward and reverse dependency detail in the result payload or human output.",
     )
     _add_output_arguments(query_tasks_parser)
+    query_tasks_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_tasks_parser.set_defaults(handler=_run_query_tasks)
 
     query_artifacts_parser = query_subparsers.add_parser(
@@ -181,9 +228,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query artifacts --artifact-family initiative_state",
+            "uv run watchtower-core plan query artifacts --artifact-family initiative_state",
             (
-                "uv run watchtower-core query artifacts "
+                "uv run watchtower-core plan query artifacts "
                 "--context-id trace.plan_artifact_index_runtime_foundation --format json"
             ),
         ),
@@ -236,6 +283,7 @@ def register_query_coordination_commands(
         help_text="Filter by whether the artifact lives on a hidden machine surface.",
     )
     _add_output_arguments(query_artifacts_parser)
+    query_artifacts_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_artifacts_parser.set_defaults(handler=_run_query_artifacts)
 
     query_readiness_parser = query_subparsers.add_parser(
@@ -251,9 +299,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query readiness --ready-for-execution true",
+            "uv run watchtower-core plan query readiness --ready-for-execution true",
             (
-                "uv run watchtower-core query readiness "
+                "uv run watchtower-core plan query readiness "
                 "--trace-id trace.plan_live_query_authority_cutover --format json"
             ),
         ),
@@ -294,6 +342,7 @@ def register_query_coordination_commands(
         help="Return only entries with one or more blocking reasons.",
     )
     _add_output_arguments(query_readiness_parser)
+    query_readiness_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_readiness_parser.set_defaults(handler=_run_query_readiness)
 
     query_discrepancies_parser = query_subparsers.add_parser(
@@ -309,9 +358,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query discrepancies --blocking-only",
+            "uv run watchtower-core plan query discrepancies --blocking-only",
             (
-                "uv run watchtower-core query discrepancies "
+                "uv run watchtower-core plan query discrepancies "
                 "--trace-id trace.plan_core_documentation_template_authority_foundation "
                 "--format json"
             ),
@@ -352,6 +401,7 @@ def register_query_coordination_commands(
         help="Return only discrepancies whose gate effect is blocking readiness or execution.",
     )
     _add_output_arguments(query_discrepancies_parser)
+    query_discrepancies_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_discrepancies_parser.set_defaults(handler=_run_query_discrepancies)
 
     query_plan_evidence_parser = query_subparsers.add_parser(
@@ -368,9 +418,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query plan-evidence --status planned",
+            "uv run watchtower-core plan query plan-evidence --status planned",
             (
-                "uv run watchtower-core query plan-evidence "
+                "uv run watchtower-core plan query plan-evidence "
                 "--trace-id trace.plan_live_evidence_closeout_review_indexes_foundation "
                 "--format json"
             ),
@@ -416,6 +466,7 @@ def register_query_coordination_commands(
         help="Exact acceptance-label filter as captured in the validation bundle.",
     )
     _add_output_arguments(query_plan_evidence_parser)
+    query_plan_evidence_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_plan_evidence_parser.set_defaults(handler=_run_query_plan_evidence)
 
     query_closeouts_parser = query_subparsers.add_parser(
@@ -432,9 +483,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query closeouts --status planned",
+            "uv run watchtower-core plan query closeouts --status planned",
             (
-                "uv run watchtower-core query closeouts "
+                "uv run watchtower-core plan query closeouts "
                 "--promotion-review-required true --format json"
             ),
         ),
@@ -472,6 +523,7 @@ def register_query_coordination_commands(
         help_text="Filter by whether the closeout recap requires promotion review.",
     )
     _add_output_arguments(query_closeouts_parser)
+    query_closeouts_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_closeouts_parser.set_defaults(handler=_run_query_closeouts)
 
     query_reviews_parser = query_subparsers.add_parser(
@@ -487,9 +539,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query reviews --review-state pending",
+            "uv run watchtower-core plan query reviews --review-state pending",
             (
-                "uv run watchtower-core query reviews "
+                "uv run watchtower-core plan query reviews "
                 "--subject-kind promotion --format json"
             ),
         ),
@@ -533,6 +585,7 @@ def register_query_coordination_commands(
         help="Exact review-ref filter such as repository_maintainer_review or actor.repository_maintainer.",
     )
     _add_output_arguments(query_reviews_parser)
+    query_reviews_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_reviews_parser.set_defaults(handler=_run_query_reviews)
 
     query_projects_parser = query_subparsers.add_parser(
@@ -548,8 +601,8 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query projects --slug watchtower",
-            "uv run watchtower-core query projects --repository-role implementation --format json",
+            "uv run watchtower-core plan query projects --slug watchtower",
+            "uv run watchtower-core plan query projects --repository-role implementation --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -577,6 +630,7 @@ def register_query_coordination_commands(
         help="Exact repository-role filter such as implementation or planning.",
     )
     _add_output_arguments(query_projects_parser)
+    query_projects_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_projects_parser.set_defaults(handler=_run_query_projects)
 
     query_coordination_parser = query_subparsers.add_parser(
@@ -593,9 +647,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query coordination",
-            "uv run watchtower-core query coordination --blocked-only --format json",
-            "uv run watchtower-core query coordination --initiative-status completed "
+            "uv run watchtower-core plan query coordination",
+            "uv run watchtower-core plan query coordination --blocked-only --format json",
+            "uv run watchtower-core plan query coordination --initiative-status completed "
             "--trace-id trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
@@ -635,6 +689,7 @@ def register_query_coordination_commands(
         help="Return only initiatives with one or more currently blocked active tasks.",
     )
     _add_output_arguments(query_coordination_parser)
+    query_coordination_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_coordination_parser.set_defaults(handler=_run_query_coordination)
 
     query_authority_parser = query_subparsers.add_parser(
@@ -652,10 +707,10 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query authority --domain planning",
-            "uv run watchtower-core query authority --question-id "
+            "uv run watchtower-core plan query authority --domain planning",
+            "uv run watchtower-core plan query authority --question-id "
             "authority.planning.deep_trace_context --format json",
-            "uv run watchtower-core query authority --artifact-kind route_index",
+            "uv run watchtower-core plan query authority --artifact-kind route_index",
         ),
         formatter_class=HelpFormatter,
     )
@@ -680,6 +735,7 @@ def register_query_coordination_commands(
         help="Exact canonical artifact-kind filter such as coordination_index or route_index.",
     )
     _add_output_arguments(query_authority_parser)
+    query_authority_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_authority_parser.set_defaults(handler=_run_query_authority)
 
     query_initiatives_parser = query_subparsers.add_parser(
@@ -698,9 +754,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query initiatives --current-phase execution",
-            "uv run watchtower-core query initiatives --blocked-only --format json",
-            "uv run watchtower-core query initiatives --trace-id "
+            "uv run watchtower-core plan query initiatives --current-phase execution",
+            "uv run watchtower-core plan query initiatives --blocked-only --format json",
+            "uv run watchtower-core plan query initiatives --trace-id "
             "trace.governed_acceptance_example",
         ),
         formatter_class=HelpFormatter,
@@ -740,6 +796,7 @@ def register_query_coordination_commands(
         help="Return only initiatives with one or more currently blocked active tasks.",
     )
     _add_output_arguments(query_initiatives_parser)
+    query_initiatives_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_initiatives_parser.set_defaults(handler=_run_query_initiatives)
 
     query_trace_parser = query_subparsers.add_parser(
@@ -754,9 +811,9 @@ def register_query_coordination_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query trace --trace-id "
+            "uv run watchtower-core plan query trace --trace-id "
             "trace.governed_acceptance_example",
-            "uv run watchtower-core query trace --trace-id "
+            "uv run watchtower-core plan query trace --trace-id "
             "trace.governed_acceptance_example --format json",
         ),
         formatter_class=HelpFormatter,
@@ -767,4 +824,5 @@ def register_query_coordination_commands(
         help="Stable trace identifier such as trace.governed_acceptance_example.",
     )
     add_human_json_format_argument(query_trace_parser)
+    query_trace_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
     query_trace_parser.set_defaults(handler=_run_query_trace)

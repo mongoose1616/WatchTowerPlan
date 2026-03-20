@@ -99,7 +99,7 @@
     {
       "command_id": "command.watchtower_core.plan",
       "command": "watchtower-core plan",
-      "summary": "Bootstrap live initiative packages and advance initiative readiness through the captured-input and approval gates.",
+      "summary": "Bootstrap live initiative packages, inspect live plan state, and advance initiative readiness through the captured-input and approval gates.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -258,6 +258,351 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.plan.query",
+      "command": "watchtower-core plan query",
+      "summary": "Search the plan-owned machine lookup surfaces without opening the raw JSON artifacts directly.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query.md",
+      "synopsis": "uv run watchtower-core plan query [-h] <plan_query_command> ...",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.artifacts",
+      "command": "watchtower-core plan query artifacts",
+      "summary": "Search the cross-family plan artifact index for live machine artifacts and aggregate indexes.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_artifacts.md",
+      "synopsis": "uv run watchtower-core plan query artifacts [-h] [--query QUERY] [--artifact-id ARTIFACT_ID] [--artifact-family ARTIFACT_FAMILY] [--context-id CONTEXT_ID] [--source-context SOURCE_CONTEXT] [--source-channel SOURCE_CHANNEL] [--status STATUS] [--authoritative {true,false}] [--derived {true,false}] [--hidden {true,false}] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "artifacts"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.authority",
+      "command": "watchtower-core plan query authority",
+      "summary": "Search the authored authority map for canonical planning and governance surfaces, preferred commands, and documented fallback paths.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_authority.md",
+      "synopsis": "uv run watchtower-core plan query authority [-h] [--query QUERY] [--question-id QUESTION_ID] [--domain {planning,governance}] [--artifact-kind ARTIFACT_KIND] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "authority"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.closeouts",
+      "command": "watchtower-core plan query closeouts",
+      "summary": "Search the live closeout index for initiative-local closeout contracts and terminal recap state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_closeouts.md",
+      "synopsis": "uv run watchtower-core plan query closeouts [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--terminal-state TERMINAL_STATE] [--promotion-review-required {true,false}] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "closeouts"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.coordination",
+      "command": "watchtower-core plan query coordination",
+      "summary": "Search the coordination index through the machine start-here path for live current planning state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_coordination.md",
+      "synopsis": "uv run watchtower-core plan query coordination [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "coordination"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.discrepancies",
+      "command": "watchtower-core plan query discrepancies",
+      "summary": "Search the discrepancy index for drift, validation, and readiness mismatches captured in the live plan workspace.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_discrepancies.md",
+      "synopsis": "uv run watchtower-core plan query discrepancies [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--category CATEGORY] [--severity SEVERITY] [--status STATUS] [--blocking-only] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "discrepancies"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.initiatives",
+      "command": "watchtower-core plan query initiatives",
+      "summary": "Search the cross-family initiative index for the current phase, active ownership, blockers, and next step of a traced initiative.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_initiatives.md",
+      "synopsis": "uv run watchtower-core plan query initiatives [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "initiatives"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.plan_evidence",
+      "command": "watchtower-core plan query plan-evidence",
+      "summary": "Search the live evidence index for initiative-local validation bundles captured under the plan workspace.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_plan_evidence.md",
+      "synopsis": "uv run watchtower-core plan query plan-evidence [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--owner OWNER] [--target-phase TARGET_PHASE] [--validation-type VALIDATION_TYPE] [--acceptance-label ACCEPTANCE_LABEL] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "evidence"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.project_context",
+      "command": "watchtower-core plan query project-context",
+      "summary": "Load one project-scoped runtime context on top of the always-loaded pack context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_project_context.md",
+      "synopsis": "uv run watchtower-core plan query project-context [-h] --project-slug PROJECT_SLUG [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "project",
+        "context"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.projects",
+      "command": "watchtower-core plan query projects",
+      "summary": "Search the pack-level project index for project containers and their linked repositories.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_projects.md",
+      "synopsis": "uv run watchtower-core plan query projects [-h] [--query QUERY] [--project-id PROJECT_ID] [--slug SLUG] [--status STATUS] [--repository-role REPOSITORY_ROLE] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "projects"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.readiness",
+      "command": "watchtower-core plan query readiness",
+      "summary": "Search the readiness-gate index for initiative execution readiness.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_readiness.md",
+      "synopsis": "uv run watchtower-core plan query readiness [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--lifecycle-stage LIFECYCLE_STAGE] [--review-status REVIEW_STATUS] [--ready-for-execution {true,false}] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "readiness"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.reviews",
+      "command": "watchtower-core plan query reviews",
+      "summary": "Search the live review index for initiative review state and promotion approval state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_reviews.md",
+      "synopsis": "uv run watchtower-core plan query reviews [-h] [--query QUERY] [--subject-kind SUBJECT_KIND] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--review-state REVIEW_STATE] [--ready-for-execution {true,false}] [--review-ref REVIEW_REF] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "reviews"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.tasks",
+      "command": "watchtower-core plan query tasks",
+      "summary": "Search the live plan task index for initiative-local task records.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_tasks.md",
+      "synopsis": "uv run watchtower-core plan query tasks [-h] [--query QUERY] [--task-id TASK_ID] [--trace-id TRACE_ID] [--task-status TASK_STATUS] [--priority PRIORITY] [--owner OWNER] [--task-kind TASK_KIND] [--blocked-only] [--blocked-by BLOCKED_BY] [--depends-on DEPENDS_ON] [--include-dependency-details] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "tasks"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.query.trace",
+      "command": "watchtower-core plan query trace",
+      "summary": "Resolve one traceability record by its stable trace identifier.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_query_trace.md",
+      "synopsis": "uv run watchtower-core plan query trace [-h] --trace-id TRACE_ID [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/query.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "query",
+        "trace"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.plan.task",
       "command": "watchtower-core plan task",
       "summary": "Create, update, and transition initiative-local live task records under `plan/**/.wt/tasks/**` while refreshing the derived plan-workspace and coordination surfaces on write.",
@@ -399,78 +744,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.query.artifacts",
-      "command": "watchtower-core query artifacts",
-      "summary": "Search the cross-family plan artifact index for live machine artifacts and aggregate indexes.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_artifacts.md",
-      "synopsis": "uv run watchtower-core query artifacts [-h] [--query QUERY] [--artifact-id ARTIFACT_ID] [--artifact-family ARTIFACT_FAMILY] [--context-id CONTEXT_ID] [--source-context SOURCE_CONTEXT] [--source-channel SOURCE_CHANNEL] [--status STATUS] [--authoritative {true,false}] [--derived {true,false}] [--hidden {true,false}] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "artifacts"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.authority",
-      "command": "watchtower-core query authority",
-      "summary": "Search the authored authority map for canonical planning and governance surfaces, preferred commands, and documented fallback paths.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_authority.md",
-      "synopsis": "uv run watchtower-core query authority [-h] [--query QUERY] [--question-id QUESTION_ID] [--domain {planning,governance}] [--artifact-kind ARTIFACT_KIND] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "authority"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.closeouts",
-      "command": "watchtower-core query closeouts",
-      "summary": "Search the live closeout index for initiative-local closeout contracts and terminal recap state.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_closeouts.md",
-      "synopsis": "uv run watchtower-core query closeouts [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--terminal-state TERMINAL_STATE] [--promotion-review-required {true,false}] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "closeouts"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.query.commands",
       "command": "watchtower-core query commands",
       "summary": "Search the command index for documented repository commands and subcommands.",
@@ -496,54 +769,6 @@
         "cli",
         "query",
         "commands"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.coordination",
-      "command": "watchtower-core query coordination",
-      "summary": "Search the coordination index through the machine start-here path for live current planning state.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_coordination.md",
-      "synopsis": "uv run watchtower-core query coordination [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "coordination"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.discrepancies",
-      "command": "watchtower-core query discrepancies",
-      "summary": "Search the discrepancy index for drift, validation, and readiness mismatches captured in the live plan workspace.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_discrepancies.md",
-      "synopsis": "uv run watchtower-core query discrepancies [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--category CATEGORY] [--severity SEVERITY] [--status STATUS] [--blocking-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "discrepancies"
       ]
     },
     {
@@ -595,30 +820,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.query.initiatives",
-      "command": "watchtower-core query initiatives",
-      "summary": "Search the cross-family initiative index for the current phase, active ownership, blockers, and next step of a traced initiative.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_initiatives.md",
-      "synopsis": "uv run watchtower-core query initiatives [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "initiatives"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.query.paths",
       "command": "watchtower-core query paths",
       "summary": "Search the repository path index by free text or exact filters.",
@@ -647,104 +848,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.query.plan_evidence",
-      "command": "watchtower-core query plan-evidence",
-      "summary": "Search the live evidence index for initiative-local validation bundles captured under the plan workspace.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_plan_evidence.md",
-      "synopsis": "uv run watchtower-core query plan-evidence [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--status STATUS] [--owner OWNER] [--target-phase TARGET_PHASE] [--validation-type VALIDATION_TYPE] [--acceptance-label ACCEPTANCE_LABEL] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "plan",
-        "evidence"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.project_context",
-      "command": "watchtower-core query project-context",
-      "summary": "Load one project-scoped runtime context on top of the always-loaded pack context.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_project_context.md",
-      "synopsis": "uv run watchtower-core query project-context [-h] --project-slug PROJECT_SLUG [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "project",
-        "context"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.projects",
-      "command": "watchtower-core query projects",
-      "summary": "Search the pack-level project index for project containers and their linked repositories.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_projects.md",
-      "synopsis": "uv run watchtower-core query projects [-h] [--query QUERY] [--project-id PROJECT_ID] [--slug SLUG] [--status STATUS] [--repository-role REPOSITORY_ROLE] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "projects"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.readiness",
-      "command": "watchtower-core query readiness",
-      "summary": "Search the readiness-gate index for initiative execution readiness.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_readiness.md",
-      "synopsis": "uv run watchtower-core query readiness [-h] [--query QUERY] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--lifecycle-stage LIFECYCLE_STAGE] [--review-status REVIEW_STATUS] [--ready-for-execution {true,false}] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "readiness"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.query.references",
       "command": "watchtower-core query references",
       "summary": "Search the governed reference index for curated internal reference documents and their upstream authority links.",
@@ -769,30 +872,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.query.reviews",
-      "command": "watchtower-core query reviews",
-      "summary": "Search the live review index for initiative review state and promotion approval state.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_reviews.md",
-      "synopsis": "uv run watchtower-core query reviews [-h] [--query QUERY] [--subject-kind SUBJECT_KIND] [--initiative-id INITIATIVE_ID] [--project-id PROJECT_ID] [--trace-id TRACE_ID] [--review-state REVIEW_STATE] [--ready-for-execution {true,false}] [--review-ref REVIEW_REF] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "reviews"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.query.standards",
       "command": "watchtower-core query standards",
       "summary": "Search the governed standard index for repository standards and best-practice docs.",
@@ -814,58 +893,6 @@
         "cli",
         "query",
         "standards"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.tasks",
-      "command": "watchtower-core query tasks",
-      "summary": "Search the live plan task index for initiative-local task records.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_tasks.md",
-      "synopsis": "uv run watchtower-core query tasks [-h] [--query QUERY] [--task-id TASK_ID] [--trace-id TRACE_ID] [--task-status TASK_STATUS] [--priority PRIORITY] [--owner OWNER] [--task-kind TASK_KIND] [--blocked-only] [--blocked-by BLOCKED_BY] [--depends-on DEPENDS_ON] [--include-dependency-details] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "tasks"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.query.trace",
-      "command": "watchtower-core query trace",
-      "summary": "Resolve one traceability record by its stable trace identifier.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_query_trace.md",
-      "synopsis": "uv run watchtower-core query trace [-h] --trace-id TRACE_ID [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.query",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "aliases": [
-        "trace lookup",
-        "traceability query"
-      ],
-      "tags": [
-        "python",
-        "cli",
-        "query",
-        "traceability"
       ]
     },
     {

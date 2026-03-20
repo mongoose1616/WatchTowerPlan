@@ -167,24 +167,36 @@ def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
 
 
 def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
-    query_docs = sorted(
+    shared_query_docs = sorted(
         (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_query_*.md")
     )
     reusable_core_query_docs = {
         "watchtower_core_query_acceptance.md",
-        "watchtower_core_query_authority.md",
         "watchtower_core_query_commands.md",
         "watchtower_core_query_evidence.md",
         "watchtower_core_query_foundations.md",
         "watchtower_core_query_paths.md",
         "watchtower_core_query_references.md",
         "watchtower_core_query_standards.md",
-        "watchtower_core_query_trace.md",
         "watchtower_core_query_workflows.md",
     }
-    for path in query_docs:
+    for path in shared_query_docs:
         markdown = path.read_text(encoding="utf-8")
         if path.name in reusable_core_query_docs:
+            assert "core/python/src/watchtower_core/query/" in markdown, path
+        else:
+            assert "core/python/src/watchtower_core/query/" not in markdown, path
+
+    plan_query_docs = sorted(
+        (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_plan_query*.md")
+    )
+    plan_query_docs_with_reusable_core_query_helpers = {
+        "watchtower_core_plan_query_authority.md",
+        "watchtower_core_plan_query_trace.md",
+    }
+    for path in plan_query_docs:
+        markdown = path.read_text(encoding="utf-8")
+        if path.name in plan_query_docs_with_reusable_core_query_helpers:
             assert "core/python/src/watchtower_core/query/" in markdown, path
         else:
             assert "core/python/src/watchtower_core/query/" not in markdown, path
@@ -237,8 +249,10 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_standard
     assert "Keep package boundaries explicit:" in python_code_design_standard
     assert "`control_plane/` owns reusable loaders" in python_code_design_standard
-    assert "`plan/python/src/watchtower_plan/` owns repository-local orchestration" in (
-        python_code_design_standard
+    assert (
+        "`plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own "
+        "repository-local or pack-local orchestration"
+        in python_code_design_standard
     )
     assert "plan/python/src/watchtower_plan/query/" in workspace_standard
     assert "core/python/src/watchtower_core/documentation/" in workspace_standard
@@ -275,7 +289,11 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/python/src/watchtower_core/routing/README.md" in workspace_readme
     assert "core/python/src/watchtower_core/workflow_execution/README.md" in workspace_readme
     assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_readme
-    assert "plan/python/src/watchtower_plan/query/" in best_practices_standard
+    assert (
+        "A new pack-owned query command should add its pack-native service under the "
+        "owning pack boundary"
+        in best_practices_standard
+    )
     assert "core/docs/standards/engineering/python_code_design_standard.md" in (
         best_practices_standard
     )

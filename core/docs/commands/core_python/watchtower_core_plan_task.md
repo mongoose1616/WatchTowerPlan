@@ -67,7 +67,7 @@ uv run watchtower-core plan task transition --task-id task.example.001 --task-st
 | `watchtower-core plan task update` | Applies structured field updates to one live task record. |
 | `watchtower-core plan task transition` | Applies a handoff-style status or ownership transition. |
 | `watchtower-core plan approve` | Required before task transitions can begin real execution on a live initiative package. |
-| `watchtower-core query tasks` | Reads the task index refreshed by task write operations. |
+| `watchtower-core plan query tasks` | Reads the task index refreshed by task write operations. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that task write operations refresh. |
 | `watchtower-core plan closeout initiative` | Use after task transitions leave a live `plan/**` initiative package with only terminal task state. |
 

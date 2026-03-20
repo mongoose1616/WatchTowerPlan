@@ -62,7 +62,7 @@ uv run watchtower-core plan task transition --task-id task.example.001 --task-st
 | `watchtower-core plan task` | Parent command group for task lifecycle operations. |
 | `watchtower-core plan task update` | Use when the transition also requires broader field or body edits. |
 | `watchtower-core plan approve` | Required before handoff transitions can start real execution. |
-| `watchtower-core query tasks` | Reads the task index refreshed in write mode. |
+| `watchtower-core plan query tasks` | Reads the task index refreshed in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 | `watchtower-core plan closeout initiative` | Use when the transition leaves a live `plan/**` initiative package with only terminal task state. |
 

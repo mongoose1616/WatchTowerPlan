@@ -52,9 +52,9 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core plan closeout initiative` | Applies terminal closeout state for one live initiative package under `plan/**`. |
 | `watchtower-core plan closeout purge-trace` | Purges one eligible closed trace package after retention checks pass. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that closeout now enforces by default. |
-| `watchtower-core query initiatives` | Reads the initiative view that the closeout command also refreshes in write mode. |
-| `watchtower-core query trace` | Reads the traceability entry that the closeout command updates. |
-| `watchtower-core query coordination` | Reads the live pack-level coordination view that plan closeout refreshes in write mode. |
+| `watchtower-core plan query initiatives` | Reads the initiative view that the closeout command also refreshes in write mode. |
+| `watchtower-core plan query trace` | Reads the traceability entry that the closeout command updates. |
+| `watchtower-core plan query coordination` | Reads the live pack-level coordination view that plan closeout refreshes in write mode. |
 | `watchtower-core sync initiative-index` | Rebuilds one of the initiative coordination surfaces that retained or plan closeout also updates in write mode. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable initiative tracker that retained or plan closeout also updates in write mode. |
 

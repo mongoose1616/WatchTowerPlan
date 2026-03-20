@@ -26,7 +26,7 @@ def test_public_query_services_cover_generic_governed_surfaces() -> None:
         CommandSearchParams(query="coordination", limit=5)
     )
     assert any(
-        entry.command_id == "command.watchtower_core.query.coordination"
+        entry.command_id == "command.watchtower_core.plan.query.coordination"
         for entry in command_matches
     )
 

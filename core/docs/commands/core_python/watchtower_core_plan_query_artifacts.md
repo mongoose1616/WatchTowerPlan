@@ -1,4 +1,4 @@
-# `watchtower-core query artifacts`
+# `watchtower-core plan query artifacts`
 
 ## Summary
 This command searches the live plan artifact index for cross-family machine artifacts, aggregate indexes, and their canonical context metadata.
@@ -11,15 +11,15 @@ This command searches the live plan artifact index for cross-family machine arti
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query artifacts` |
+| Invocation | `watchtower-core plan query artifacts` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query artifacts [--query <text>] [--artifact-id <artifact_id>] [--artifact-family <family>] [--context-id <context_id>] [--source-context <context>] [--source-channel <channel>] [--status <status>] [--authoritative <true|false>] [--derived <true|false>] [--hidden <true|false>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query artifacts [--query <text>] [--artifact-id <artifact_id>] [--artifact-family <family>] [--context-id <context_id>] [--source-context <context>] [--source-channel <channel>] [--status <status>] [--authoritative <true|false>] [--derived <true|false>] [--hidden <true|false>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -40,17 +40,17 @@ uv run watchtower-core query artifacts [--query <text>] [--artifact-id <artifact
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query artifacts --artifact-family initiative_state
+uv run watchtower-core plan query artifacts --artifact-family initiative_state
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query artifacts --context-id trace.plan_artifact_index_runtime_foundation --format json
+uv run watchtower-core plan query artifacts --context-id trace.plan_artifact_index_runtime_foundation --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query artifacts --artifact-id index.artifacts
+uv run watchtower-core plan query artifacts --artifact-id index.artifacts
 ```
 
 ## Behavior and Outputs
@@ -64,14 +64,14 @@ uv run watchtower-core query artifacts --artifact-id index.artifacts
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query coordination` | Start-here planning lookup before narrowing into specific artifacts. |
-| `watchtower-core query initiatives` | Initiative-family browse view when the question is about initiative summaries rather than artifact inventory. |
-| `watchtower-core query projects` | Project-container browse surface when you need project summaries rather than artifact-level results. |
-| `watchtower-core query authority` | Resolves when the artifact index is the canonical lookup surface for a planning question. |
+| `watchtower-core plan query coordination` | Start-here planning lookup before narrowing into specific artifacts. |
+| `watchtower-core plan query initiatives` | Initiative-family browse view when the question is about initiative summaries rather than artifact inventory. |
+| `watchtower-core plan query projects` | Project-container browse surface when you need project summaries rather than artifact-level results. |
+| `watchtower-core plan query authority` | Resolves when the artifact index is the canonical lookup surface for a planning question. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/artifacts.py`
 - `plan/python/src/watchtower_plan/artifact_index.py`
 - `plan/.wt/indexes/artifact_index.json`

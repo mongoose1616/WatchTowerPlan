@@ -15,10 +15,10 @@ def test_query_commands_supports_json_output(capsys) -> None:
     assert any(entry["command"] == "watchtower-core doctor" for entry in payload["results"])
 
 
-def test_query_commands_reports_split_query_family_implementation_paths(capsys) -> None:
+def test_query_commands_reports_shared_and_plan_query_implementation_paths(capsys) -> None:
     result, payload = run_json_command(
         capsys,
-        ["query", "commands", "--tag", "query", "--limit", "20"],
+        ["query", "commands", "--tag", "query", "--limit", "40"],
     )
 
     assert result == 0
@@ -38,15 +38,21 @@ def test_query_commands_reports_split_query_family_implementation_paths(capsys) 
     assert implementation_paths["command.watchtower_core.query.acceptance"] == (
         "core/python/src/watchtower_core/cli/query_records_family.py"
     )
-    assert implementation_paths["command.watchtower_core.query.coordination"] == (
-        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    assert implementation_paths["command.watchtower_core.plan.query"] == (
+        "plan/python/src/watchtower_plan/cli/query.py"
     )
-    assert implementation_paths["command.watchtower_core.query.initiatives"] == (
-        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    assert implementation_paths["command.watchtower_core.plan.query.coordination"] == (
+        "plan/python/src/watchtower_plan/cli/query.py"
     )
-    assert implementation_paths["command.watchtower_core.query.tasks"] == (
-        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    assert implementation_paths["command.watchtower_core.plan.query.initiatives"] == (
+        "plan/python/src/watchtower_plan/cli/query.py"
     )
+    assert implementation_paths["command.watchtower_core.plan.query.tasks"] == (
+        "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert "command.watchtower_core.query.coordination" not in implementation_paths
+    assert "command.watchtower_core.query.initiatives" not in implementation_paths
+    assert "command.watchtower_core.query.tasks" not in implementation_paths
     assert "command.watchtower_core.query.planning" not in implementation_paths
 
 

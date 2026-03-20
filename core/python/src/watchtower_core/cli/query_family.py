@@ -7,9 +7,6 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.handler_common import _run_help
-from watchtower_core.cli.query_coordination_family import (
-    register_query_coordination_commands,
-)
 from watchtower_core.cli.query_discovery_family import register_query_discovery_commands
 from watchtower_core.cli.query_knowledge_family import register_query_knowledge_commands
 from watchtower_core.cli.query_records_family import register_query_record_commands
@@ -21,52 +18,38 @@ def register_query_family(
     """Register the query command family and its subcommands."""
     query_parser = subparsers.add_parser(
         "query",
-        help="Search governed indexes for paths, commands, live plan state, and traces.",
+        help="Search shared governed lookup surfaces for commands, docs, and durable records.",
         description=dedent(
             """
             Search the governed lookup surfaces without opening the raw JSON
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `coordination` for the machine start-here planning view, `initiatives`
-            for broader initiative-family lookup including history, `tasks` for
-            initiative-local task execution state, `artifacts` for the cross-family
-            plan artifact catalog, `readiness` for execution-gate state,
-            `discrepancies` for blocking drift or mismatch records, `projects`
-            for pack-level project lookup, `project-context` for one fully loaded
-            project container, `authority` for canonical planning and governance
-            surface lookup, `foundations` for the intent-layer foundation corpus,
-            `workflows` for workflow-module lookup, `references` for the reference
-            library, `standards` for governed repository standards, `acceptance`,
-            and `evidence`, and `trace`
-            when you already know the trace identifier you want.
+            `foundations` for the intent-layer foundation corpus, `workflows`
+            for workflow-module lookup, `references` for the reference library,
+            `standards` for governed repository standards, `acceptance` for
+            governed acceptance contracts, and `evidence` for durable validation
+            proof.
+
+            Live plan-workspace queries now live under
+            `watchtower-core plan query ...`.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
-            "uv run watchtower-core query coordination --format json",
-            "uv run watchtower-core query artifacts --artifact-family initiative_state --format json",
-            "uv run watchtower-core query readiness --ready-for-execution true --format json",
-            "uv run watchtower-core query discrepancies --blocking-only --format json",
-            "uv run watchtower-core query projects --slug watchtower --format json",
-            "uv run watchtower-core query project-context --project-slug watchtower --format json",
-            "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
             "core/docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "core/docs/references/github_collaboration_reference.md",
-            "uv run watchtower-core query initiatives --owner repository_maintainer",
             "uv run watchtower-core query acceptance --trace-id "
             "trace.governed_acceptance_example",
             "uv run watchtower-core query evidence --trace-id "
             "trace.governed_acceptance_example",
-            "uv run watchtower-core query tasks --task-status planned",
-            "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
-            "uv run watchtower-core query trace --trace-id "
-            "trace.governed_acceptance_example",
+            "uv run watchtower-core plan query coordination --format json",
+            "uv run watchtower-core plan query tasks --task-status planned --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -80,4 +63,3 @@ def register_query_family(
     register_query_discovery_commands(query_subparsers)
     register_query_knowledge_commands(query_subparsers)
     register_query_record_commands(query_subparsers)
-    register_query_coordination_commands(query_subparsers)

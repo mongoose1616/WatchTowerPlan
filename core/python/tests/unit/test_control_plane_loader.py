@@ -454,7 +454,7 @@ def test_control_plane_loader_reads_authority_map() -> None:
 
     assert authority_map.artifact_id == "registry.authority_map"
     assert entry.artifact_kind == "traceability_index"
-    assert entry.preferred_command == "watchtower-core query trace"
+    assert entry.preferred_command == "watchtower-core plan query trace"
     assert "status" in entry.status_fields
 
 
@@ -507,12 +507,13 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_workflows = command_index.get("command.watchtower_core.query.workflows")
     query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
-    query_coordination = command_index.get("command.watchtower_core.query.coordination")
-    query_authority = command_index.get("command.watchtower_core.query.authority")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
-    query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
-    query_trace = command_index.get("command.watchtower_core.query.trace")
     query_references = command_index.get("command.watchtower_core.query.references")
+    plan_query_group = command_index.get("command.watchtower_core.plan.query")
+    plan_query_coordination = command_index.get("command.watchtower_core.plan.query.coordination")
+    plan_query_authority = command_index.get("command.watchtower_core.plan.query.authority")
+    plan_query_initiatives = command_index.get("command.watchtower_core.plan.query.initiatives")
+    plan_query_trace = command_index.get("command.watchtower_core.plan.query.trace")
     route_group = command_index.get("command.watchtower_core.route")
     route_preview = command_index.get("command.watchtower_core.route.preview")
     sync_initiative_index = command_index.get("command.watchtower_core.sync.initiative_index")
@@ -603,23 +604,23 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_standards.implementation_path
         == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
-    assert query_coordination.parent_command_id == "command.watchtower_core.query"
+    assert plan_query_group.parent_command_id == "command.watchtower_core.plan"
     assert (
-        query_coordination.doc_path
-        == "core/docs/commands/core_python/watchtower_core_query_coordination.md"
+        plan_query_group.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_query.md"
     )
     assert (
-        query_coordination.implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+        plan_query_group.implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
     )
-    assert query_authority.parent_command_id == "command.watchtower_core.query"
+    assert plan_query_coordination.parent_command_id == "command.watchtower_core.plan.query"
     assert (
-        query_authority.doc_path
-        == "core/docs/commands/core_python/watchtower_core_query_authority.md"
+        plan_query_coordination.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_query_coordination.md"
     )
     assert (
-        query_authority.implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+        plan_query_coordination.implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
     )
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (
@@ -639,23 +640,32 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_evidence.implementation_path
         == "core/python/src/watchtower_core/cli/query_records_family.py"
     )
-    assert query_initiatives.parent_command_id == "command.watchtower_core.query"
+    assert plan_query_authority.parent_command_id == "command.watchtower_core.plan.query"
     assert (
-        query_initiatives.doc_path
-        == "core/docs/commands/core_python/watchtower_core_query_initiatives.md"
+        plan_query_authority.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_query_authority.md"
     )
     assert (
-        query_initiatives.implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+        plan_query_authority.implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
     )
-    assert query_trace.parent_command_id == "command.watchtower_core.query"
+    assert plan_query_initiatives.parent_command_id == "command.watchtower_core.plan.query"
     assert (
-        query_trace.doc_path
-        == "core/docs/commands/core_python/watchtower_core_query_trace.md"
+        plan_query_initiatives.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_query_initiatives.md"
     )
     assert (
-        query_trace.implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+        plan_query_initiatives.implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert plan_query_trace.parent_command_id == "command.watchtower_core.plan.query"
+    assert (
+        plan_query_trace.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_query_trace.md"
+    )
+    assert (
+        plan_query_trace.implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
     )
     assert query_references.parent_command_id == "command.watchtower_core.query"
     assert (

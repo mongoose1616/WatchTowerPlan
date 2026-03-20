@@ -21,9 +21,10 @@ Compatibility import surface plus the remaining command-family and handler modul
 |---|---|
 | `core/python/src/watchtower_core/cli/README.md` | Describes the CLI parser and handler boundary for `watchtower-core`. |
 | `core/python/src/watchtower_host/cli/parser.py` | Host-owned parser construction for the `watchtower-core` binary. |
-| `core/python/src/watchtower_core/cli/query_coordination_family.py` | Registers the planning-oriented query subcommands and their parser contracts. |
-| `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py` | Handles the coordination, initiative, and planning rendered query subcommands plus their shared payload formatting. |
-| `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py` | Handles the authority, task, and trace lookup subcommands plus their direct payload formatting. |
+| `core/python/src/watchtower_core/cli/query_family.py` | Registers the shared root `query` namespace for discovery, knowledge, and durable-record lookup. |
+| `plan/python/src/watchtower_plan/cli/query.py` | Registers the pack-owned `plan query` namespace for live plan-state lookup. |
+| `plan/python/src/watchtower_plan/cli/query_rendered_handlers.py` | Handles the plan query rendered-view commands such as coordination and initiatives. |
+| `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py` | Handles the plan query lookup commands such as authority, tasks, trace, and project context. |
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/README.md`

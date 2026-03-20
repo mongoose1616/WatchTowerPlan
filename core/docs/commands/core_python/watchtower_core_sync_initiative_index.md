@@ -60,7 +60,7 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core sync traceability-index` | Rebuilds the joined traceability layer this command projects from. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable tracker from the initiative index this command writes. |
-| `watchtower-core query initiatives` | Reads the initiative index that this command rebuilds. |
+| `watchtower-core plan query initiatives` | Reads the initiative index that this command rebuilds. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`

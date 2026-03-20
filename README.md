@@ -28,5 +28,5 @@
 - Machine project lookup start-here: `plan/.wt/indexes/project_index.json`
 - Shared Python workspace start-here: `core/python/README.md`
 - Plan-owned Python boundary start-here: `plan/python/README.md`
-- Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core query authority --domain planning --format json`
+- Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core plan query authority --domain planning --format json`
 - Legacy docs-backed planning has been purged. Use `plan/initiatives/**`, `plan/projects/**`, `plan/tracking/**`, and `core/control_plane/ledgers/purges/**` instead.

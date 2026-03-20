@@ -1,4 +1,4 @@
-# `watchtower-core query trace`
+# `watchtower-core plan query trace`
 
 ## Summary
 This command resolves one governed traceability record by trace ID so engineers can inspect the linked initiative, validation, evidence, task, and closeout surfaces for a single trace.
@@ -11,15 +11,15 @@ This command resolves one governed traceability record by trace ID so engineers 
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query trace` |
+| Invocation | `watchtower-core plan query trace` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query trace --trace-id <trace_id> [--format <human|json>]
+uv run watchtower-core plan query trace --trace-id <trace_id> [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -30,12 +30,12 @@ uv run watchtower-core query trace --trace-id <trace_id> [--format <human|json>]
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query trace --trace-id trace.governed_acceptance_example
+uv run watchtower-core plan query trace --trace-id trace.governed_acceptance_example
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query trace --trace-id trace.governed_acceptance_example --format json
+uv run watchtower-core plan query trace --trace-id trace.governed_acceptance_example --format json
 ```
 
 ## Behavior and Outputs
@@ -48,10 +48,10 @@ uv run watchtower-core query trace --trace-id trace.governed_acceptance_example 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core query authority` | Resolves when traceability is the canonical answer versus when coordination or initiative lookup should answer instead. |
-| `watchtower-core query initiatives` | Searches the initiative index when you need broader initiative-family lookup before resolving one trace. |
-| `watchtower-core query tasks` | Searches the task index when you want task records rather than a joined trace record. |
+| `watchtower-core plan query` | Parent command group for all plan-owned index-backed lookup commands. |
+| `watchtower-core plan query authority` | Resolves when traceability is the canonical answer versus when coordination or initiative lookup should answer instead. |
+| `watchtower-core plan query initiatives` | Searches the initiative index when you need broader initiative-family lookup before resolving one trace. |
+| `watchtower-core plan query tasks` | Searches the task index when you want task records rather than a joined trace record. |
 | `watchtower-core query acceptance` | Searches the acceptance-contract family for the machine acceptance boundary linked to the trace. |
 | `watchtower-core query evidence` | Searches durable validation evidence linked to the trace. |
 | `watchtower-core sync traceability-index` | Rebuilds the traceability index that this command reads. |
@@ -59,8 +59,8 @@ uv run watchtower-core query trace --trace-id trace.governed_acceptance_example 
 | `watchtower-core query commands` | Helps discover other CLI surfaces once you know which workflow you want. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `core/python/src/watchtower_core/query/traceability.py`
 - `core/control_plane/indexes/traceability/traceability_index.json`
 

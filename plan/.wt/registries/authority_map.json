@@ -11,7 +11,7 @@
       "status": "active",
       "artifact_kind": "coordination_index",
       "canonical_path": "plan/.wt/indexes/coordination_index.json",
-      "preferred_command": "watchtower-core query coordination",
+      "preferred_command": "watchtower-core plan query coordination",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "mode",
@@ -38,7 +38,7 @@
       "status": "active",
       "artifact_kind": "traceability_index",
       "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
-      "preferred_command": "watchtower-core query trace",
+      "preferred_command": "watchtower-core plan query trace",
       "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
         "status",
@@ -64,7 +64,7 @@
       "status": "active",
       "artifact_kind": "initiative_index",
       "canonical_path": "plan/.wt/indexes/initiative_index.json",
-      "preferred_command": "watchtower-core query initiatives",
+      "preferred_command": "watchtower-core plan query initiatives",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "initiative_status",
@@ -90,7 +90,7 @@
       "status": "active",
       "artifact_kind": "traceability_index",
       "canonical_path": "core/control_plane/indexes/traceability/traceability_index.json",
-      "preferred_command": "watchtower-core query trace",
+      "preferred_command": "watchtower-core plan query trace",
       "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_trace.md",
       "status_fields": [
         "status",
@@ -115,7 +115,7 @@
       "status": "active",
       "artifact_kind": "task_index",
       "canonical_path": "plan/.wt/indexes/task_index.json",
-      "preferred_command": "watchtower-core query tasks",
+      "preferred_command": "watchtower-core plan query tasks",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "task_status",
@@ -140,7 +140,7 @@
       "status": "active",
       "artifact_kind": "readiness_index",
       "canonical_path": "plan/.wt/indexes/readiness_index.json",
-      "preferred_command": "watchtower-core query readiness",
+      "preferred_command": "watchtower-core plan query readiness",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "lifecycle_stage",
@@ -167,7 +167,7 @@
       "status": "active",
       "artifact_kind": "discrepancy_index",
       "canonical_path": "plan/.wt/indexes/discrepancy_index.json",
-      "preferred_command": "watchtower-core query discrepancies",
+      "preferred_command": "watchtower-core plan query discrepancies",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "severity",
@@ -193,7 +193,7 @@
       "status": "active",
       "artifact_kind": "artifact_index",
       "canonical_path": "plan/.wt/indexes/artifact_index.json",
-      "preferred_command": "watchtower-core query artifacts",
+      "preferred_command": "watchtower-core plan query artifacts",
       "preferred_human_path": "core/docs/commands/core_python/watchtower_core_query_artifacts.md",
       "status_fields": [
         "status",
@@ -219,7 +219,7 @@
       "status": "active",
       "artifact_kind": "project_index",
       "canonical_path": "plan/.wt/indexes/project_index.json",
-      "preferred_command": "watchtower-core query projects",
+      "preferred_command": "watchtower-core plan query projects",
       "preferred_human_path": "plan/plan_overview.md",
       "status_fields": [
         "status"

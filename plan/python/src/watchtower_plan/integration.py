@@ -54,6 +54,7 @@ PACK_INTEGRATION = PackIntegration(
         ("bootstrap", "plan/python/src/watchtower_plan/cli/handlers.py"),
         ("confirm-inputs", "plan/python/src/watchtower_plan/cli/handlers.py"),
         ("approve", "plan/python/src/watchtower_plan/cli/handlers.py"),
+        ("query", "plan/python/src/watchtower_plan/cli/query.py"),
         ("closeout", "plan/python/src/watchtower_plan/cli/closeout.py"),
         ("task", "plan/python/src/watchtower_plan/cli/tasks.py"),
     ),

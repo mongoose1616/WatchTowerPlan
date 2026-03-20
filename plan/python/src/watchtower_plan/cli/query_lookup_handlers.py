@@ -58,7 +58,7 @@ def _run_query_authority(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query authority",
+        command_name="watchtower-core plan query authority",
         entries=entries,
         noun="authority",
         empty_message="No authority-map entries matched the requested filters.",
@@ -86,7 +86,7 @@ def _run_query_artifacts(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query artifacts",
+        command_name="watchtower-core plan query artifacts",
         entries=entries,
         noun="artifact",
         empty_message="No artifact entries matched the requested filters.",
@@ -112,7 +112,7 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query tasks",
+        command_name="watchtower-core plan query tasks",
         entries=entries,
         noun="task",
         empty_message="No task entries matched the requested filters.",
@@ -151,7 +151,7 @@ def _run_query_readiness(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query readiness",
+        command_name="watchtower-core plan query readiness",
         entries=entries,
         noun="readiness",
         empty_message="No readiness entries matched the requested filters.",
@@ -177,7 +177,7 @@ def _run_query_discrepancies(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query discrepancies",
+        command_name="watchtower-core plan query discrepancies",
         entries=entries,
         noun="discrepancy",
         empty_message="No discrepancy entries matched the requested filters.",
@@ -204,7 +204,7 @@ def _run_query_plan_evidence(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query plan-evidence",
+        command_name="watchtower-core plan query plan-evidence",
         entries=entries,
         noun="plan evidence",
         empty_message="No plan evidence entries matched the requested filters.",
@@ -230,7 +230,7 @@ def _run_query_closeouts(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query closeouts",
+        command_name="watchtower-core plan query closeouts",
         entries=entries,
         noun="closeout",
         empty_message="No closeout entries matched the requested filters.",
@@ -257,7 +257,7 @@ def _run_query_reviews(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query reviews",
+        command_name="watchtower-core plan query reviews",
         entries=entries,
         noun="review",
         empty_message="No review entries matched the requested filters.",
@@ -280,7 +280,7 @@ def _run_query_projects(args: argparse.Namespace) -> int:
     )
     return _emit_collection_query_results(
         args,
-        command_name="watchtower-core query projects",
+        command_name="watchtower-core plan query projects",
         entries=entries,
         noun="project",
         empty_message="No project entries matched the requested filters.",
@@ -296,12 +296,12 @@ def _run_query_trace(args: argparse.Namespace) -> int:
     except KeyError:
         return _emit_command_error(
             args,
-            "watchtower-core query trace",
+            "watchtower-core plan query trace",
             f"Unknown trace ID: {args.trace_id}",
         )
 
     payload = {
-        "command": "watchtower-core query trace",
+        "command": "watchtower-core plan query trace",
         "status": "ok",
         "result": {
             "trace_id": entry.trace_id,
@@ -354,14 +354,14 @@ def _run_query_trace(args: argparse.Namespace) -> int:
 def _run_query_project_context(args: argparse.Namespace) -> int:
     context = _run_value_error_operation(
         args,
-        command_name="watchtower-core query project-context",
+        command_name="watchtower-core plan query project-context",
         operation=lambda: load_project_context(ControlPlaneLoader(), args.project_slug),
     )
     if context is None:
         return 1
 
     payload = {
-        "command": "watchtower-core query project-context",
+        "command": "watchtower-core plan query project-context",
         "status": "ok",
         "result": {
             "pack_context": {

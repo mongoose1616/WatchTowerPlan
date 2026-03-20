@@ -59,7 +59,7 @@ uv run watchtower-core sync initiative-tracking --output /tmp/initiative_trackin
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index from the authoritative source surfaces. |
-| `watchtower-core query initiatives` | Reads the initiative index that aligns with the same tracker content. |
+| `watchtower-core plan query initiatives` | Reads the initiative index that aligns with the same tracker content. |
 | `plan/tracking/initiative_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface

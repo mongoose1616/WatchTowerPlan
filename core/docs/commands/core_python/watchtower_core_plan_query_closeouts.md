@@ -1,4 +1,4 @@
-# `watchtower-core query closeouts`
+# `watchtower-core plan query closeouts`
 
 ## Summary
 This command searches the live closeout index for initiative-local closeout contracts and terminal recap state.
@@ -11,15 +11,15 @@ This command searches the live closeout index for initiative-local closeout cont
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query closeouts` |
+| Invocation | `watchtower-core plan query closeouts` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query closeouts [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--status <planned|active|completed>] [--terminal-state <completed|superseded|cancelled>] [--promotion-review-required <true|false>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query closeouts [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--status <planned|active|completed>] [--terminal-state <completed|superseded|cancelled>] [--promotion-review-required <true|false>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -37,12 +37,12 @@ uv run watchtower-core query closeouts [--query <text>] [--initiative-id <initia
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query closeouts --status planned
+uv run watchtower-core plan query closeouts --status planned
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query closeouts --promotion-review-required true --format json
+uv run watchtower-core plan query closeouts --promotion-review-required true --format json
 ```
 
 ## Behavior and Outputs
@@ -55,15 +55,15 @@ uv run watchtower-core query closeouts --promotion-review-required true --format
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query plan-evidence` | Shows the evidence bundles referenced by closeout recaps. |
-| `watchtower-core query reviews` | Shows approval and review state that can gate closeout and promotion outcomes. |
+| `watchtower-core plan query plan-evidence` | Shows the evidence bundles referenced by closeout recaps. |
+| `watchtower-core plan query reviews` | Shows approval and review state that can gate closeout and promotion outcomes. |
 | `watchtower-core plan closeout initiative` | Applies terminal closeout state to one live initiative package. |
-| `watchtower-core query authority` | Resolves when the live closeout index is the canonical lookup surface. |
+| `watchtower-core plan query authority` | Resolves when the live closeout index is the canonical lookup surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/closeouts.py`
 - `plan/.wt/indexes/closeout_index.json`
 

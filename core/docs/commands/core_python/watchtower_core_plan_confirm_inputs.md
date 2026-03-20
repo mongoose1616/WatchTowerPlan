@@ -54,7 +54,7 @@ uv run watchtower-core plan confirm-inputs --project-slug watchtower --initiativ
 |---|---|
 | `watchtower-core plan` | Parent command group for live initiative bootstrap and readiness operations. |
 | `watchtower-core plan approve` | Approves the confirmed live initiative package into `ready_for_execution`. |
-| `watchtower-core query readiness` | Reads the readiness view updated after confirmation. |
+| `watchtower-core plan query readiness` | Reads the readiness view updated after confirmation. |
 | `watchtower-core plan task` | Uses the same initiative package after confirmation and approval. |
 
 ## Source Surface

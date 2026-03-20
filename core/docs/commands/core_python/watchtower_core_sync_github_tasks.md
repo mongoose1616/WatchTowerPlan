@@ -80,7 +80,7 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 | `watchtower-core sync task-index` | Rebuilds the machine-readable task index after live task metadata changes. |
 | `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker after live task metadata changes. |
 | `watchtower-core sync traceability-index` | Rebuilds traceability after traced task metadata changes. |
-| `watchtower-core query tasks` | Reads the separate plan-workspace task index; it does not control GitHub task sync selection. |
+| `watchtower-core plan query tasks` | Reads the separate plan-workspace task index; it does not control GitHub task sync selection. |
 | `watchtower-core plan task update` | Adjusts the authoritative live task metadata before the GitHub push step. |
 
 ## Source Surface

@@ -63,9 +63,9 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core closeout` | Parent command group for closeout operations. |
 | `watchtower-core plan closeout initiative` | Use this instead when the target is a live initiative package under `plan/**` rather than a retained trace record. |
 | `watchtower-core plan closeout purge-trace` | Use after terminal closeout when the trace package is ready to leave the retained planning corpus. |
-| `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
-| `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
-| `watchtower-core query trace` | Reads the traceability entry this command updates. |
+| `watchtower-core plan query initiatives` | Reads the initiative view this command refreshes in write mode. |
+| `watchtower-core plan query coordination` | Reads the coordination view this command refreshes in write mode. |
+| `watchtower-core plan query trace` | Reads the traceability entry this command updates. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that this closeout command now enforces by default. |
 | `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |

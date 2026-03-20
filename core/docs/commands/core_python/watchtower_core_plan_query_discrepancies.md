@@ -1,4 +1,4 @@
-# `watchtower-core query discrepancies`
+# `watchtower-core plan query discrepancies`
 
 ## Summary
 This command searches the live discrepancy index for mismatch, drift, and stale-surface records captured in the plan workspace.
@@ -11,15 +11,15 @@ This command searches the live discrepancy index for mismatch, drift, and stale-
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query discrepancies` |
+| Invocation | `watchtower-core plan query discrepancies` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query discrepancies [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--category <category>] [--severity <severity>] [--status <status>] [--blocking-only] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query discrepancies [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--category <category>] [--severity <severity>] [--status <status>] [--blocking-only] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,12 +38,12 @@ uv run watchtower-core query discrepancies [--query <text>] [--initiative-id <in
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query discrepancies --blocking-only
+uv run watchtower-core plan query discrepancies --blocking-only
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query discrepancies --trace-id trace.plan_core_documentation_template_authority_foundation --format json
+uv run watchtower-core plan query discrepancies --trace-id trace.plan_core_documentation_template_authority_foundation --format json
 ```
 
 ## Behavior and Outputs
@@ -56,13 +56,13 @@ uv run watchtower-core query discrepancies --trace-id trace.plan_core_documentat
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query readiness` | Surfaces the execution gate state affected by blocking discrepancies. |
-| `watchtower-core query coordination` | Pack-level start-here path before narrowing to mismatch details. |
-| `watchtower-core query authority` | Resolves when discrepancy lookup is the canonical surface. |
+| `watchtower-core plan query readiness` | Surfaces the execution gate state affected by blocking discrepancies. |
+| `watchtower-core plan query coordination` | Pack-level start-here path before narrowing to mismatch details. |
+| `watchtower-core plan query authority` | Resolves when discrepancy lookup is the canonical surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/discrepancies.py`
 - `plan/.wt/indexes/discrepancy_index.json`
 

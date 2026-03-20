@@ -50,7 +50,7 @@ uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_e
 |---|---|
 | `watchtower-core query evidence` | Lets you inspect durable evidence that should cover the same acceptance IDs. |
 | `watchtower-core validate acceptance` | Performs semantic reconciliation across the same trace surfaces. |
-| `watchtower-core query trace` | Shows the joined traceability record that should mirror the same acceptance contract IDs. |
+| `watchtower-core plan query trace` | Shows the joined traceability record that should mirror the same acceptance contract IDs. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_records_family.py`

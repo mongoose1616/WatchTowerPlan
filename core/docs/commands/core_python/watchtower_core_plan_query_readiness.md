@@ -1,4 +1,4 @@
-# `watchtower-core query readiness`
+# `watchtower-core plan query readiness`
 
 ## Summary
 This command searches the live readiness index for initiative execution-gate state, including capture completeness, approval status, and blocking reasons.
@@ -11,15 +11,15 @@ This command searches the live readiness index for initiative execution-gate sta
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query readiness` |
+| Invocation | `watchtower-core plan query readiness` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query readiness [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--lifecycle-stage <stage>] [--review-status <status>] [--ready-for-execution <true|false>] [--blocked-only] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query readiness [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--lifecycle-stage <stage>] [--review-status <status>] [--ready-for-execution <true|false>] [--blocked-only] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,12 +38,12 @@ uv run watchtower-core query readiness [--query <text>] [--initiative-id <initia
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query readiness --ready-for-execution true
+uv run watchtower-core plan query readiness --ready-for-execution true
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query readiness --trace-id trace.plan_live_query_authority_cutover --format json
+uv run watchtower-core plan query readiness --trace-id trace.plan_live_query_authority_cutover --format json
 ```
 
 ## Behavior and Outputs
@@ -56,14 +56,14 @@ uv run watchtower-core query readiness --trace-id trace.plan_live_query_authorit
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query coordination` | Machine start-here path for current live planning state before narrowing to readiness details. |
-| `watchtower-core query discrepancies` | Shows blocking mismatches that can also affect readiness. |
-| `watchtower-core query initiatives` | Shows the broader initiative-family state behind one readiness entry. |
-| `watchtower-core query authority` | Resolves when readiness is the canonical lookup surface. |
+| `watchtower-core plan query coordination` | Machine start-here path for current live planning state before narrowing to readiness details. |
+| `watchtower-core plan query discrepancies` | Shows blocking mismatches that can also affect readiness. |
+| `watchtower-core plan query initiatives` | Shows the broader initiative-family state behind one readiness entry. |
+| `watchtower-core plan query authority` | Resolves when readiness is the canonical lookup surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/readiness.py`
 - `plan/.wt/indexes/readiness_index.json`
 

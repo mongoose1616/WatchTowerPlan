@@ -54,8 +54,8 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 | `watchtower-core plan closeout purge-trace` | Purges one eligible closed trace package after retention checks pass. |
 | `watchtower-core closeout initiative` | Applies terminal closeout state for one retained trace record after live `plan/**` work has already been promoted or purged. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that purge enforces by default. |
-| `watchtower-core query coordination` | Reads the live pack-level coordination view that plan closeout refreshes in write mode. |
-| `watchtower-core query trace` | Reads the retained traceability entry updated before or after purge. |
+| `watchtower-core plan query coordination` | Reads the live pack-level coordination view that plan closeout refreshes in write mode. |
+| `watchtower-core plan query trace` | Reads the retained traceability entry updated before or after purge. |
 | `watchtower-core sync all` | Rebuilds the broader derived surface set that plan closeout also updates in write mode. |
 
 ## Source Surface

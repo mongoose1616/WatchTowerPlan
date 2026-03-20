@@ -62,7 +62,7 @@ uv run watchtower-core sync all --write --format json
 | `watchtower-core sync coordination` | Focused current-state planning rebuild slice. |
 | `watchtower-core sync route-index` | Rebuilds the machine-readable routing surface from the routing table. |
 | `watchtower-core sync all` | Rebuilds the full deterministic local derived-artifact set. |
-| `watchtower-core query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
+| `watchtower-core plan query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`

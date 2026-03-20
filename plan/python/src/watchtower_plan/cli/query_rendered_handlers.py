@@ -39,7 +39,7 @@ def _run_query_initiatives(args: argparse.Namespace) -> int:
     )
     return _emit_initiative_query_results(
         args,
-        command_name="watchtower-core query initiatives",
+        command_name="watchtower-core plan query initiatives",
         entries=entries,
         empty_message=_history_browse_empty_message(
             "initiative entries",
@@ -175,7 +175,7 @@ def _coordination_payload(
     include_default_status: bool,
 ) -> dict[str, object]:
     payload: dict[str, object] = {
-        "command": "watchtower-core query coordination",
+        "command": "watchtower-core plan query coordination",
         "status": "ok",
         "coordination_mode": result.index.coordination_mode,
         "summary": result.index.summary,

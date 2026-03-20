@@ -59,7 +59,7 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core sync task-index` | Rebuilds the machine-readable task index from the same live task sources. |
-| `watchtower-core query tasks` | Reads the task index that reflects the same live task records. |
+| `watchtower-core plan query tasks` | Reads the task index that reflects the same live task records. |
 | `plan/tracking/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface

@@ -1,4 +1,4 @@
-# `watchtower-core query plan-evidence`
+# `watchtower-core plan query plan-evidence`
 
 ## Summary
 This command searches the live evidence index for initiative-local validation bundles captured under the plan workspace.
@@ -11,15 +11,15 @@ This command searches the live evidence index for initiative-local validation bu
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core query plan-evidence` |
+| Invocation | `watchtower-core plan query plan-evidence` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/query.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query plan-evidence [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--status <planned|active|completed>] [--owner <owner>] [--target-phase <phase>] [--validation-type <type>] [--acceptance-label <label>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core plan query plan-evidence [--query <text>] [--initiative-id <initiative_id>] [--project-id <project_id>] [--trace-id <trace_id>] [--status <planned|active|completed>] [--owner <owner>] [--target-phase <phase>] [--validation-type <type>] [--acceptance-label <label>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -39,12 +39,12 @@ uv run watchtower-core query plan-evidence [--query <text>] [--initiative-id <in
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query plan-evidence --status planned
+uv run watchtower-core plan query plan-evidence --status planned
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core query plan-evidence --trace-id trace.plan_live_evidence_closeout_review_indexes_foundation --format json
+uv run watchtower-core plan query plan-evidence --trace-id trace.plan_live_evidence_closeout_review_indexes_foundation --format json
 ```
 
 ## Behavior and Outputs
@@ -57,15 +57,15 @@ uv run watchtower-core query plan-evidence --trace-id trace.plan_live_evidence_c
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core query closeouts` | Shows the closeout recaps that consume or reference the same initiative-local evidence IDs. |
-| `watchtower-core query reviews` | Shows review state for initiative and promotion subjects that often reference the same evidence bundles. |
-| `watchtower-core query readiness` | Shows whether open evidence obligations still block execution readiness. |
-| `watchtower-core query authority` | Resolves when the live evidence index is the canonical lookup surface. |
+| `watchtower-core plan query closeouts` | Shows the closeout recaps that consume or reference the same initiative-local evidence IDs. |
+| `watchtower-core plan query reviews` | Shows review state for initiative and promotion subjects that often reference the same evidence bundles. |
+| `watchtower-core plan query readiness` | Shows whether open evidence obligations still block execution readiness. |
+| `watchtower-core plan query authority` | Resolves when the live evidence index is the canonical lookup surface. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/plan_evidence.py`
 - `plan/.wt/indexes/evidence_index.json`
 

@@ -70,6 +70,13 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.plan.closeout.initiative" in spec_by_id
     assert "command.watchtower_core.plan.closeout.purge_trace" in spec_by_id
     assert "command.watchtower_core.plan.confirm_inputs" in spec_by_id
+    assert "command.watchtower_core.plan.query" in spec_by_id
+    assert "command.watchtower_core.plan.query.artifacts" in spec_by_id
+    assert "command.watchtower_core.plan.query.authority" in spec_by_id
+    assert "command.watchtower_core.plan.query.coordination" in spec_by_id
+    assert "command.watchtower_core.plan.query.initiatives" in spec_by_id
+    assert "command.watchtower_core.plan.query.tasks" in spec_by_id
+    assert "command.watchtower_core.plan.query.trace" in spec_by_id
     assert "command.watchtower_core.plan.task" in spec_by_id
     assert "command.watchtower_core.plan.task.create" in spec_by_id
     assert "command.watchtower_core.plan.task.update" in spec_by_id
@@ -125,6 +132,34 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "plan/python/src/watchtower_plan/cli/handlers.py"
     )
     assert (
+        spec_by_id["command.watchtower_core.plan.query"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.artifacts"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.authority"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.coordination"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.initiatives"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.tasks"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.query.trace"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/query.py"
+    )
+    assert (
         spec_by_id["command.watchtower_core.plan.task"].implementation_path
         == "plan/python/src/watchtower_plan/cli/tasks.py"
     )
@@ -172,42 +207,15 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         spec_by_id["command.watchtower_core.query.evidence"].implementation_path
         == "core/python/src/watchtower_core/cli/query_records_family.py"
     )
-    assert (
-        spec_by_id["command.watchtower_core.query.artifacts"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.discrepancies"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.projects"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.readiness"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.coordination"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.authority"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.initiatives"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.tasks"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
-    )
-    assert (
-        spec_by_id["command.watchtower_core.query.trace"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
-    )
+    assert "command.watchtower_core.query.artifacts" not in spec_by_id
+    assert "command.watchtower_core.query.authority" not in spec_by_id
+    assert "command.watchtower_core.query.coordination" not in spec_by_id
+    assert "command.watchtower_core.query.discrepancies" not in spec_by_id
+    assert "command.watchtower_core.query.initiatives" not in spec_by_id
+    assert "command.watchtower_core.query.projects" not in spec_by_id
+    assert "command.watchtower_core.query.readiness" not in spec_by_id
+    assert "command.watchtower_core.query.tasks" not in spec_by_id
+    assert "command.watchtower_core.query.trace" not in spec_by_id
     assert (
         spec_by_id["command.watchtower_core.sync.command_index"].implementation_path
         == "core/python/src/watchtower_core/cli/sync_family.py"
@@ -257,6 +265,10 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_doctor.md"]
         == "core/python/src/watchtower_core/cli/doctor_family.py"
+    )
+    assert (
+        implementation_by_doc["core/docs/commands/core_python/watchtower_core_plan_query.md"]
+        == "plan/python/src/watchtower_plan/cli/query.py"
     )
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_sync_command_index.md"]
