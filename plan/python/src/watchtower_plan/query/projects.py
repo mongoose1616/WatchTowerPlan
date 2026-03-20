@@ -6,11 +6,11 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.query.common import DataclassSearchAdapter
-from watchtower_plan.project_workspace import (
+from watchtower_plan.projects import (
     PlanProjectIndexEntry,
     ProjectWorkspaceService,
 )
-from watchtower_plan.project_workspace import (
+from watchtower_plan.projects import (
     PlanProjectSearchParams as WorkspacePlanProjectSearchParams,
 )
 

@@ -15,7 +15,7 @@ from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.documentation.front_matter_paths import (
     normalize_governed_applies_to_values,
 )
-from watchtower_plan.plan_task_state import (
+from watchtower_plan.tasks.state import (
     PlanInitiativeState,
     find_initiative_by_slug,
     find_initiative_by_trace_id,
@@ -28,7 +28,7 @@ from watchtower_plan.plan_workspace import (
     PlanWorkspaceService,
 )
 from watchtower_plan.sync.coordination import CoordinationSyncService
-from watchtower_plan.task_lifecycle_support import (
+from watchtower_plan.tasks.support import (
     TASK_KIND_CHOICES,
     TASK_PRIORITY_CHOICES,
     apply_optional_list_field,
@@ -39,7 +39,7 @@ from watchtower_plan.task_lifecycle_support import (
     pick_string,
     slugify_file_stem,
 )
-from watchtower_plan.task_lifecycle_support import (
+from watchtower_plan.tasks.support import (
     TASK_STATUS_CHOICES as _TASK_STATUS_CHOICES,
 )
 from watchtower_core.utils import utc_timestamp_now

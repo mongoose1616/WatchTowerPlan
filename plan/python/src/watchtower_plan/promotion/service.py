@@ -663,7 +663,7 @@ def build_guidance_front_matter(
         "authority": _AUTHORITY_BY_FAMILY[target_family],
         "applies_to": [
             *promoted_paths,
-            "plan/python/src/watchtower_plan/guidance_promotion.py",
+            "plan/python/src/watchtower_plan/promotion/service.py",
             "plan/.wt/registries/promotion_policy_registry.json",
             "plan/.wt/indexes/guidance_index.json",
             "plan/.wt/indexes/promotion_index.json",
@@ -714,7 +714,7 @@ def render_guidance_body(
             "- Live execution state, closeout artifacts, and evidence bundles remain under initiative-local `plan/**` roots.\n\n"
             "## Related Surfaces\n\n"
             f"- `{target_path}`\n"
-            "- `plan/python/src/watchtower_plan/guidance_promotion.py`\n"
+            "- `plan/python/src/watchtower_plan/promotion/service.py`\n"
             "- `plan/.wt/indexes/guidance_index.json`\n"
             "- `plan/.wt/indexes/promotion_index.json`\n\n"
             "## Notes\n\n"
@@ -774,7 +774,7 @@ def render_guidance_body(
             "## Related Standards and Sources\n\n"
             "- [standard_md_standard.md](/core/docs/standards/documentation/standard_md_standard.md): promoted standards under `plan/docs/standards/**` must satisfy the governed standard-document contract instead of using a reduced template-only shape.\n"
             "- [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md): durable guidance must remain authoritative after initiative packages are eligible for purge.\n"
-            "- [guidance_promotion.py](/plan/python/src/watchtower_plan/guidance_promotion.py): the promotion runtime must route outputs into governed roots and keep rendered documents aligned with the active validators.\n"
+            "- [promotion/service.py](/plan/python/src/watchtower_plan/promotion/service.py): the promotion runtime must route outputs into governed roots and keep rendered documents aligned with the active validators.\n"
             "- [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json): the promotion policy registry defines the sanctioned target family, root, review path, provenance, and mirror behavior.\n\n"
             "## Guidance\n\n"
             "- Require one governed promotion record with source, evidence, approval, and target-path metadata before durable promotion writes occur.\n"
@@ -783,7 +783,7 @@ def render_guidance_body(
             "- Do not promote durable standards directly into `plan/docs/**` without a recorded initiative-local promotion artifact and synchronized machine indexes.\n\n"
             "## Operationalization\n\n"
             f"- `Modes`: `documentation`; `sync`; `validation`\n"
-            f"- `Operational Surfaces`: `{target_path}`; `plan/python/src/watchtower_plan/guidance_promotion.py`; `plan/.wt/registries/promotion_policy_registry.json`; `plan/.wt/indexes/guidance_index.json`; `plan/.wt/indexes/promotion_index.json`\n\n"
+            f"- `Operational Surfaces`: `{target_path}`; `plan/python/src/watchtower_plan/promotion/service.py`; `plan/.wt/registries/promotion_policy_registry.json`; `plan/.wt/indexes/guidance_index.json`; `plan/.wt/indexes/promotion_index.json`\n\n"
             "## Validation\n\n"
             "- Promotion records and promoted standard docs should pass schema-backed validation before closeout.\n"
             "- Promoted standards should rebuild the guidance and promotion indexes cleanly in the same change set.\n"
@@ -816,7 +816,7 @@ def render_guidance_body(
             "- Operators and agents can rely on promoted guidance as a durable surface without treating initiative-local authored inputs as permanent docs.\n\n"
             "## Related Surfaces\n\n"
             f"- `{target_path}`\n"
-            "- `plan/python/src/watchtower_plan/guidance_promotion.py`\n"
+            "- `plan/python/src/watchtower_plan/promotion/service.py`\n"
             "- `plan/.wt/registries/promotion_policy_registry.json`\n\n"
             "## Notes\n\n"
             "- Promotion and guidance indexes retain the machine-readable provenance for these mirrored foundations.\n\n"

@@ -14,8 +14,8 @@ from tests.fixture_repo_support import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import GitHubApiError, GitHubIssueRef, GitHubProjectContext
-from watchtower_plan.initiative_packages import InitiativeTaskSpec
-from watchtower_plan.plan_task_state import update_task_document
+from watchtower_plan.initiatives import InitiativeTaskSpec
+from watchtower_plan.tasks import update_task_document
 from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
 from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 

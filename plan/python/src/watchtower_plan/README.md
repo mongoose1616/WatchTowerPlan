@@ -5,31 +5,33 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit residual services and subpackages such as `plan_workspace`, `project_workspace`, `initiative_packages`, `task_lifecycle`, `query`, `sync`, `validation`, and `closeout`.
+- `Supported Imports`: Explicit plan-owned services and subpackages such as `initiatives`, `projects`, `tasks`, `promotion`, `rendering`, `plan_workspace`, `artifact_index`, `reference_resolution`, `query`, `sync`, `validation`, and `closeout`.
 - `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository, a mirror of `watchtower_core`, or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `documentation`, or `utils`.
 - `Packaging Contract`: Reach this package through the shared workspace installation path, not through repo-local `sys.path` mutation inside `watchtower_core`.
 - `Machine-State Boundary`: Keep live plan machine state in `plan/.wt/**`, not in this package tree.
 
 ## Responsibilities
-- Workspace orchestration: `initiative_packages.py`, `plan_workspace.py`, and `project_workspace.py` still own live `plan/**` and `plan/projects/**` package bootstrap, rendered-surface shaping, and readiness-gate behavior that has not been extracted behind narrower reusable-core seams.
+- Feature-owned lifecycle orchestration: `initiatives/`, `projects/`, and `tasks/` own live `plan/**` bootstrap, project-container state, task mutation, and readiness-gate behavior that depends on plan-local workspace rules.
+- Workspace aggregation: `plan_workspace.py` still owns pack-wide derived surfaces, rendered views, and overview shaping across live `plan/**` initiative state.
 - Authored-document orchestration: `reference_resolution.py` still bridges plan-owned sync services into reusable documentation helpers when plan-domain sync or validation needs a freshly rebuilt reference map.
-- Planning lifecycle: `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py` still own repo-local task state mutation, task-event recording, and lifecycle guardrails over live plan state.
-- Pack-local aggregate services: `artifact_index.py`, `guidance_promotion.py`, and `project_context.py` still coordinate plan-pack artifacts, promotion, and project-scoped runtime loading that remain specific to the current pack.
+- Pack-local aggregate services: `artifact_index.py`, `promotion/`, and `rendering/` still coordinate plan-pack artifacts, durable guidance promotion, and rendered initiative payload shaping that remain specific to the current pack.
 - Plan-domain closeout: `closeout/` owns retained trace closeout, initiative-package terminal closeout helpers, and guarded purge orchestration because those flows depend on live plan workspace state and repo-local purge policy.
-- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries, but only for live plan behavior that cannot already live under reusable core.
+- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the pack-local integrations behind reusable-core boundaries, but generic governed-surface rebuild, validation, and documentation helpers should move back into `watchtower_core`.
 
 ## Key Surfaces
-- `initiative_packages.py`: Plan-workspace initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
-- `plan_workspace.py` and `project_workspace.py`: Pack-wide and project-scoped workspace orchestration over live initiative state, rendered views, and derived-surface drift checks.
+- `initiatives/`: Initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
+- `projects/`: Project context loading, project-container bootstrap, and project-local rendered/query surfaces.
+- `tasks/`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
+- `plan_workspace.py`: Pack-wide orchestration over live initiative state, rendered views, and derived-surface drift checks.
 - `reference_resolution.py`: Plan-owned bridge from plan sync services into reusable documentation helper data such as rebuilt reference URL maps.
-- `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
-- `guidance_promotion.py`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
+- `promotion/`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
+- `rendering/`: Shared serializers for compact and human-facing initiative payloads that support CLI, query, and rendered-surface output.
 - `closeout/`: Plan-domain closeout services for retained traces, live initiative packages, and guarded trace purges.
-- `query/`, `sync/`, and `validation/`: Repo-local planning and orchestration implementations behind the reusable-core query, sync, validation, and documentation boundaries, with generic governed-index or document-semantics helpers expected to live back under `watchtower_core`.
+- `query/`, `sync/`, and `validation/`: Pack-local planning integrations behind the reusable-core query, sync, validation, and documentation boundaries, with generic governed-index or document-semantics helpers expected to live back under `watchtower_core`.
 
 ## Shrink Rules
 - Prefer moving new generic helpers into explicit reusable-core packages rather than growing this plan-owned namespace unnecessarily.
-- Keep `watchtower_plan` additions tightly scoped to plan-workspace state, plan-owned reference-resolution bridges, or other current-pack behavior that cannot move cleanly into reusable core.
+- Keep `watchtower_plan` additions tightly scoped to plan-workspace state, plan-owned reference-resolution bridges, or other feature-owned pack behavior that cannot move cleanly into reusable core.
 - Do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary is available.
 - Do not mirror reusable-core package structure here just to create plan-flavored duplicates.
 

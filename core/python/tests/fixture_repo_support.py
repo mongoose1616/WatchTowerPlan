@@ -9,7 +9,7 @@ import yaml
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
-from watchtower_plan.initiative_packages import (
+from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageResult,
     InitiativePackageService,

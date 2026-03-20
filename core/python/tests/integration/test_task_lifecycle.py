@@ -13,15 +13,15 @@ from tests.fixture_repo_support import (
     packwide_initiative_root,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan import plan_task_state
-from watchtower_plan import task_lifecycle as task_lifecycle_module
-from watchtower_plan.initiative_packages import InitiativePackageService
-from watchtower_plan.plan_task_state import update_task_document
-from watchtower_plan.task_lifecycle import (
+from watchtower_plan.initiatives import InitiativePackageService
+from watchtower_plan.tasks import update_task_document
+from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskUpdateParams,
 )
+from watchtower_plan.tasks import lifecycle as task_lifecycle_module
+from watchtower_plan.tasks import state as plan_task_state
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

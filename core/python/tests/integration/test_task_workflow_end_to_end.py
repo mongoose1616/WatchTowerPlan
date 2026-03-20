@@ -12,7 +12,7 @@ from tests.fixture_repo_support import (
     materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.initiative_packages import InitiativePackageService
+from watchtower_plan.initiatives import InitiativePackageService
 from watchtower_plan.query import (
     CoordinationSearchParams,
     CoordinationQueryService,
@@ -21,7 +21,7 @@ from watchtower_plan.query import (
     TaskSearchParams,
 )
 from watchtower_plan.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
-from watchtower_plan.task_lifecycle import (
+from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskUpdateParams,

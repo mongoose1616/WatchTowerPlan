@@ -18,7 +18,7 @@ from watchtower_plan.query import (
     ReadinessSearchParams,
     TaskQueryService,
 )
-from watchtower_plan.task_lifecycle import (
+from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskTransitionParams,

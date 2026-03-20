@@ -59,7 +59,7 @@ uv run watchtower-core plan query project-context --project-slug watchtower --fo
 - `plan/python/src/watchtower_plan/cli/query.py`
 - `plan/python/src/watchtower_plan/cli/query.py`
 - `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
-- `plan/python/src/watchtower_plan/project_context.py`
+- `plan/python/src/watchtower_plan/projects/context.py`
 - `plan/projects/<project_slug>/.wt/project.json`
 - `plan/projects/<project_slug>/.wt/project_repository_map.json`
 

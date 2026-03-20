@@ -20,7 +20,7 @@ from watchtower_core.control_plane.models import (
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
-from watchtower_plan.plan_task_state import task_event_directory
+from watchtower_plan.tasks import task_event_directory
 from watchtower_plan.plan_workspace import PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncService
 

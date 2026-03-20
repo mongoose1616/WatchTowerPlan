@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from watchtower_core.control_plane.models import InitiativeActiveTaskSummary, InitiativeIndexEntry
-from watchtower_plan.planning_rendered_serialization_helpers import (
+from watchtower_plan.rendering.serialization_helpers import (
     _assign_scalar,
     _assign_sequence,
     _assign_serialized_collection,

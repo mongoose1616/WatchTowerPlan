@@ -6,13 +6,13 @@ from shutil import copytree, rmtree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
-from watchtower_plan.initiative_packages import (
+from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_plan.project_context import load_project_context
-from watchtower_plan.project_workspace import (
+from watchtower_plan.projects.context import load_project_context
+from watchtower_plan.projects import (
     PLAN_PROJECT_INDEX_PATH,
     PlanProjectSearchParams,
     ProjectBootstrapParams,

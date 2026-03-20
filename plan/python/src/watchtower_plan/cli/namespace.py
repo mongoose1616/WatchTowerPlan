@@ -28,7 +28,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
     from watchtower_plan.cli.query import register_plan_query_commands
     from watchtower_plan.cli.sync import register_plan_sync_commands
     from watchtower_plan.cli.tasks import register_plan_task_commands
-    from watchtower_plan.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
+    from watchtower_plan.tasks import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
     plan_parser = subparsers.add_parser(
         "plan",

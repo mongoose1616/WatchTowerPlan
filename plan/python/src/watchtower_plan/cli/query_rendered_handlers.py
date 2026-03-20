@@ -10,7 +10,7 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
-from watchtower_plan.planning_rendered_serialization import serialize_initiative_entry
+from watchtower_plan.rendering import serialize_initiative_entry
 from watchtower_plan.query import (
     CoordinationQueryResult,
     CoordinationQueryService,

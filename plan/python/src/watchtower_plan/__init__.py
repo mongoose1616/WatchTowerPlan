@@ -11,9 +11,9 @@ __all__ = [
 ]
 
 _EXPORT_MODULES = {
-    "InitiativePackageService": "watchtower_plan.initiative_packages",
+    "InitiativePackageService": "watchtower_plan.initiatives",
     "PlanWorkspaceService": "watchtower_plan.plan_workspace",
-    "ProjectWorkspaceService": "watchtower_plan.project_workspace",
+    "ProjectWorkspaceService": "watchtower_plan.projects",
 }
 
 __getattr__ = lazy_module_getattr(

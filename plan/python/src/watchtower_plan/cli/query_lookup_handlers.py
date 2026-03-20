@@ -20,7 +20,7 @@ from watchtower_core.query import (
     AuthorityMapSearchParams,
     TraceabilityQueryService,
 )
-from watchtower_plan.project_context import load_project_context
+from watchtower_plan.projects.context import load_project_context
 from watchtower_plan.query import (
     ArtifactQueryService,
     ArtifactSearchParams,

@@ -65,7 +65,7 @@ uv run watchtower-core plan closeout initiative --project-slug watchtower --init
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/closeout.py`
-- `plan/python/src/watchtower_plan/initiative_packages.py`
+- `plan/python/src/watchtower_plan/initiatives/service.py`
 - `plan/python/src/watchtower_plan/closeout/initiative_package.py`
 
 ## Updated At

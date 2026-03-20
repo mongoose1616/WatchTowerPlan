@@ -46,7 +46,7 @@ from watchtower_plan.artifact_index import (
     PLAN_ARTIFACT_INDEX_PATH,
     ArtifactIndexService,
 )
-from watchtower_plan.planning_rendered_serialization import serialize_initiative_entry
+from watchtower_plan.rendering import serialize_initiative_entry
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"

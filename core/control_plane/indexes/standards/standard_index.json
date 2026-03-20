@@ -2886,20 +2886,20 @@
       ],
       "operationalization_paths": [
         "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
-        "plan/python/src/watchtower_plan/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
       ],
       "applies_to": [
         "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
-        "plan/python/src/watchtower_plan/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
       ],
       "related_paths": [
-        "plan/python/src/watchtower_plan/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -2907,7 +2907,7 @@
       "internal_reference_paths": [
         "core/docs/standards/documentation/standard_md_standard.md",
         "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "plan/python/src/watchtower_plan/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -2915,7 +2915,7 @@
       "applied_reference_paths": [
         "core/docs/standards/documentation/standard_md_standard.md",
         "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "plan/python/src/watchtower_plan/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/promotion/service.py",
         "plan/.wt/registries/promotion_policy_registry.json"
       ]
     },

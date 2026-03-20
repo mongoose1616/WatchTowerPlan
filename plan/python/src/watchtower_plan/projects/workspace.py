@@ -24,7 +24,7 @@ from watchtower_plan.artifact_index import (
     PLAN_ARTIFACT_INDEX_PATH,
     ArtifactIndexService,
 )
-from watchtower_plan.project_context import (
+from watchtower_plan.projects.context import (
     PLAN_PACK_SETTINGS_PATH,
     ProjectContext,
     load_project_context,

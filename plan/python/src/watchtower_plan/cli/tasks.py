@@ -16,7 +16,7 @@ from watchtower_core.cli.handler_common import (
     _run_value_error_operation,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.task_lifecycle import (
+from watchtower_plan.tasks import (
     TASK_KIND_CHOICES,
     TASK_PRIORITY_CHOICES,
     TASK_STATUS_CHOICES,

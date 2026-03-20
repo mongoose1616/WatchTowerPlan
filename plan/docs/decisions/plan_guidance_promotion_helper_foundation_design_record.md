@@ -11,7 +11,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - plan/docs/decisions/plan_guidance_promotion_helper_foundation_design_record.md
-- plan/python/src/watchtower_plan/guidance_promotion.py
+- plan/python/src/watchtower_plan/promotion/service.py
 - plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
 - plan/.wt/indexes/promotion_index.json

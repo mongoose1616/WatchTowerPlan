@@ -8,7 +8,7 @@ from watchtower_core.sync.rendered_tracking import (
     RenderedTrackingSyncService,
     latest_updated_at_for_entries,
 )
-from watchtower_plan.plan_task_state import PlanTaskStateDocument, iter_task_documents
+from watchtower_plan.tasks import PlanTaskStateDocument, iter_task_documents
 
 TASK_TRACKING_DOCUMENT_PATH = "plan/tracking/task_tracking.md"
 TASK_TRACKING_SURFACE_ID = "rendered.task_tracking"

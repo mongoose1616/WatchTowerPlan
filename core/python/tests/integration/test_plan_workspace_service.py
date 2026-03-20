@@ -11,8 +11,8 @@ from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.query.rendered_search import RenderedSearchFilters
 from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
-from watchtower_plan.guidance_promotion import GuidancePromotionService
-from watchtower_plan.initiative_packages import (
+from watchtower_plan.promotion import GuidancePromotionService
+from watchtower_plan.initiatives import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
     InitiativePackageService,
@@ -38,7 +38,7 @@ from watchtower_plan.plan_workspace import (
     PlanTaskSearchParams,
     PlanWorkspaceService,
 )
-from watchtower_plan.project_workspace import (
+from watchtower_plan.projects import (
     ProjectBootstrapParams,
     ProjectRepositoryLinkSpec,
     ProjectWorkspaceService,

@@ -31,16 +31,16 @@ from watchtower_core.control_plane.path_ids import (
 )
 from watchtower_core.control_plane.promotion_policy import PromotionPolicyHelper
 from watchtower_core.evidence import EvidenceBundleEntrySpec, EvidenceBundleHelper
-from watchtower_plan.guidance_promotion import (
+from watchtower_plan.promotion import (
     default_mirror_target_paths,
     default_target_family_for_source_kind,
     default_target_path,
     source_artifact_kind_for_path,
 )
 from watchtower_plan.plan_workspace import PlanWorkspaceService
-from watchtower_plan.project_workspace import ProjectWorkspaceService
+from watchtower_plan.projects import ProjectWorkspaceService
 from watchtower_plan.sync.coordination import CoordinationSyncService
-from watchtower_plan.task_lifecycle_support import slugify_file_stem
+from watchtower_plan.tasks.support import slugify_file_stem
 from watchtower_core.utils.timestamps import utc_timestamp_now
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
 

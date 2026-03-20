@@ -83,7 +83,7 @@ uv run watchtower-core plan task update --task-id task.example.001 --clear-block
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/tasks.py`
-- `plan/python/src/watchtower_plan/task_lifecycle.py`
+- `plan/python/src/watchtower_plan/tasks/lifecycle.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

@@ -80,7 +80,7 @@ uv run watchtower-core plan query coordination --format json
 - `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/cli/closeout.py`
-- `plan/python/src/watchtower_plan/initiative_packages.py`
+- `plan/python/src/watchtower_plan/initiatives/service.py`
 
 ## Updated At
 - `2026-03-20T21:20:00Z`

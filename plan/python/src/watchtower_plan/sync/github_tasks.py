@@ -16,7 +16,7 @@ from watchtower_core.integrations.github import (
     GitHubClient,
     GitHubProjectContext,
 )
-from watchtower_plan.plan_task_state import PlanTaskStateDocument, update_task_document
+from watchtower_plan.tasks import PlanTaskStateDocument, update_task_document
 from watchtower_plan.plan_workspace import PLAN_PACK_SETTINGS_PATH
 from watchtower_plan.sync.github_task_sync_support import (
     issue_labels,

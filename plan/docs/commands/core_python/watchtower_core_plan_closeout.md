@@ -68,7 +68,7 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/closeout.py`
 - `plan/python/src/watchtower_plan/closeout/`
-- `plan/python/src/watchtower_plan/initiative_packages.py`
+- `plan/python/src/watchtower_plan/initiatives/service.py`
 
 ## Updated At
 - `2026-03-21T00:20:00Z`

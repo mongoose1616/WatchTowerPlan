@@ -8,7 +8,7 @@ from tests.fixture_repo_support import (
     materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.initiative_packages import (
+from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
