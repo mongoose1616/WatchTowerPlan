@@ -50,7 +50,7 @@ uv run watchtower-core plan query artifacts --artifact-family initiative_state -
 
 ```sh
 cd core/python
-uv run watchtower-core sync all --format json
+uv run watchtower-core plan sync all --format json
 ```
 
 ```sh

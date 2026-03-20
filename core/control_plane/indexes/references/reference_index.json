@@ -436,7 +436,7 @@
         "plan/python/src/watchtower_plan/sync/github_tasks.py",
         ".github/README.md",
         "plan/workflows/modules/github_task_sync.md",
-        "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+        "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md"
       ],
       "aliases": [
         "github collaboration",

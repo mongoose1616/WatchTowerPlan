@@ -58,7 +58,7 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core route preview` | Reads the route index that this command rebuilds. |
-| `watchtower-core sync workflow-index` | Rebuilds the companion workflow lookup surface referenced by route entries. |
+| `watchtower-core plan sync workflow-index` | Rebuilds the companion workflow lookup surface referenced by route entries. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`

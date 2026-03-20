@@ -79,7 +79,7 @@ uv run watchtower-core plan task update --task-id task.example.001 --clear-block
 | `watchtower-core plan task transition` | Applies a narrower handoff-style update when full field updates are not needed. |
 | `watchtower-core plan approve` | Required before status updates can start real execution on a live initiative package. |
 | `watchtower-core plan query tasks` | Reads the task index refreshed in write mode. |
-| `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
+| `watchtower-core plan sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/tasks.py`

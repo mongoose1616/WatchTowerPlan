@@ -603,6 +603,335 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.plan.sync",
+      "command": "watchtower-core plan sync",
+      "summary": "Rebuild plan-owned derived indexes, trackers, and orchestration slices from authored pack surfaces and live plan machine state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync.md",
+      "synopsis": "uv run watchtower-core plan sync [-h] <sync_command> ...",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.all",
+      "command": "watchtower-core plan sync all",
+      "summary": "Rebuild all plan-owned local deterministic sync surfaces in one run.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_all.md",
+      "synopsis": "uv run watchtower-core plan sync all [-h] [--write] [--output-dir OUTPUT_DIR] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "all"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.coordination",
+      "command": "watchtower-core plan sync coordination",
+      "summary": "Rebuild the deterministic coordination slice for task, traceability, initiative, coordination-index, and compact coordination-tracking surfaces in dependency order.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_coordination.md",
+      "synopsis": "uv run watchtower-core plan sync coordination [-h] [--write] [--output-dir OUTPUT_DIR] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "coordination"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.foundation_index",
+      "command": "watchtower-core plan sync foundation-index",
+      "summary": "Rebuild the plan-owned foundation index from the governed foundation documents under `core/docs/foundations/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+      "synopsis": "uv run watchtower-core plan sync foundation-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "foundation",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.github_tasks",
+      "command": "watchtower-core plan sync github-tasks",
+      "summary": "Push local-first task records to GitHub in a push-only, local-source model.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
+      "synopsis": "uv run watchtower-core plan sync github-tasks [-h] [--write] [--repo REPO] [--task-id TASK_ID] [--trace-id TRACE_ID] [--task-status TASK_STATUS] [--priority PRIORITY] [--owner OWNER] [--task-kind TASK_KIND] [--blocked-only] [--blocked-by BLOCKED_BY] [--depends-on DEPENDS_ON] [--project-owner PROJECT_OWNER] [--project-owner-type {user,organization}] [--project-number PROJECT_NUMBER] [--project-status-field PROJECT_STATUS_FIELD] [--no-label-sync] [--token-env TOKEN_ENV] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "github",
+        "tasks"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.initiative_index",
+      "command": "watchtower-core plan sync initiative-index",
+      "summary": "Rebuild the cross-family initiative index from traceability plus the current planning and task indexes.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_initiative_index.md",
+      "synopsis": "uv run watchtower-core plan sync initiative-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "initiative",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.initiative_tracking",
+      "command": "watchtower-core plan sync initiative-tracking",
+      "summary": "Rebuild the human-readable initiative tracker from the governed initiative index.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_initiative_tracking.md",
+      "synopsis": "uv run watchtower-core plan sync initiative-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "initiative",
+        "tracking"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.reference_index",
+      "command": "watchtower-core plan sync reference-index",
+      "summary": "Rebuild the plan-owned reference index from the governed reference documents under `core/docs/references/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_reference_index.md",
+      "synopsis": "uv run watchtower-core plan sync reference-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "reference",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.standard_index",
+      "command": "watchtower-core plan sync standard-index",
+      "summary": "Rebuild the standard index from the governed standards under `core/docs/standards/` and `plan/docs/standards/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_standard_index.md",
+      "synopsis": "uv run watchtower-core plan sync standard-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "standard",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.task_index",
+      "command": "watchtower-core plan sync task-index",
+      "summary": "Rebuild the live plan task index from initiative-local task state under `plan/**/.wt/tasks/**`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_task_index.md",
+      "synopsis": "uv run watchtower-core plan sync task-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "task",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.task_tracking",
+      "command": "watchtower-core plan sync task-tracking",
+      "summary": "Rebuild the human-readable task tracker from initiative-local live task state under `plan/**/.wt/tasks/**`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_task_tracking.md",
+      "synopsis": "uv run watchtower-core plan sync task-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "task",
+        "tracking"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.traceability_index",
+      "command": "watchtower-core plan sync traceability-index",
+      "summary": "Rebuild the traceability index from the governed planning indexes, acceptance contracts, and validation evidence artifacts.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_traceability_index.md",
+      "synopsis": "uv run watchtower-core plan sync traceability-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "traceability",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.sync.workflow_index",
+      "command": "watchtower-core plan sync workflow-index",
+      "summary": "Rebuild the workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_sync_workflow_index.md",
+      "synopsis": "uv run watchtower-core plan sync workflow-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "workflow",
+        "index"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.plan.task",
       "command": "watchtower-core plan task",
       "summary": "Create, update, and transition initiative-local live task records under `plan/**/.wt/tasks/**` while refreshing the derived plan-workspace and coordination surfaces on write.",
@@ -964,7 +1293,7 @@
     {
       "command_id": "command.watchtower_core.sync",
       "command": "watchtower-core sync",
-      "summary": "Rebuild derived governed artifacts from authored repository sources.",
+      "summary": "Rebuild reusable-core derived governed artifacts from authored repository sources.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -983,30 +1312,6 @@
         "sync"
       ],
       "notes": "With no leaf command, this surface prints sync-specific help and exits successfully."
-    },
-    {
-      "command_id": "command.watchtower_core.sync.all",
-      "command": "watchtower-core sync all",
-      "summary": "Rebuild all local deterministic sync surfaces in one run.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_all.md",
-      "synopsis": "uv run watchtower-core sync all [-h] [--write] [--output-dir OUTPUT_DIR] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "all"
-      ]
     },
     {
       "command_id": "command.watchtower_core.sync.command_index",
@@ -1030,155 +1335,6 @@
         "cli",
         "sync",
         "command",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.coordination",
-      "command": "watchtower-core sync coordination",
-      "summary": "Rebuild the deterministic coordination slice for task, traceability, initiative, coordination-index, and compact coordination-tracking surfaces in dependency order.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_coordination.md",
-      "synopsis": "uv run watchtower-core sync coordination [-h] [--write] [--output-dir OUTPUT_DIR] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "coordination"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.foundation_index",
-      "command": "watchtower-core sync foundation-index",
-      "summary": "Rebuild the foundation index from the governed foundation documents under `core/docs/foundations/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
-      "synopsis": "uv run watchtower-core sync foundation-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "foundation",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.github_tasks",
-      "command": "watchtower-core sync github-tasks",
-      "summary": "Push local-first task records to GitHub in a push-only, local-source model.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md",
-      "synopsis": "uv run watchtower-core sync github-tasks [-h] [--write] [--repo REPO] [--task-id TASK_ID] [--trace-id TRACE_ID] [--task-status TASK_STATUS] [--priority PRIORITY] [--owner OWNER] [--task-kind TASK_KIND] [--blocked-only] [--blocked-by BLOCKED_BY] [--depends-on DEPENDS_ON] [--project-owner PROJECT_OWNER] [--project-owner-type {user,organization}] [--project-number PROJECT_NUMBER] [--project-status-field PROJECT_STATUS_FIELD] [--no-label-sync] [--token-env TOKEN_ENV] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "github",
-        "tasks"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.initiative_index",
-      "command": "watchtower-core sync initiative-index",
-      "summary": "Rebuild the cross-family initiative index from traceability plus the current planning and task indexes.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_initiative_index.md",
-      "synopsis": "uv run watchtower-core sync initiative-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "initiative",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.initiative_tracking",
-      "command": "watchtower-core sync initiative-tracking",
-      "summary": "Rebuild the human-readable initiative tracker from the governed initiative index.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_initiative_tracking.md",
-      "synopsis": "uv run watchtower-core sync initiative-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "initiative",
-        "tracking"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.reference_index",
-      "command": "watchtower-core sync reference-index",
-      "summary": "Rebuild the reference index from the governed reference documents under `core/docs/references/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_reference_index.md",
-      "synopsis": "uv run watchtower-core sync reference-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "reference",
         "index"
       ]
     },
@@ -1233,131 +1389,6 @@
         "cli",
         "sync",
         "route",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.standard_index",
-      "command": "watchtower-core sync standard-index",
-      "summary": "Rebuild the standard index from the governed standards under `core/docs/standards/` and `plan/docs/standards/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_standard_index.md",
-      "synopsis": "uv run watchtower-core sync standard-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "standard",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.task_index",
-      "command": "watchtower-core sync task-index",
-      "summary": "Rebuild the live plan task index from initiative-local task state under `plan/**/.wt/tasks/**`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_task_index.md",
-      "synopsis": "uv run watchtower-core sync task-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "task",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.task_tracking",
-      "command": "watchtower-core sync task-tracking",
-      "summary": "Rebuild the human-readable task tracker from initiative-local live task state under `plan/**/.wt/tasks/**`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_task_tracking.md",
-      "synopsis": "uv run watchtower-core sync task-tracking [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "task",
-        "tracking"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.traceability_index",
-      "command": "watchtower-core sync traceability-index",
-      "summary": "Rebuild the traceability index from the governed planning indexes, acceptance contracts, and validation evidence artifacts.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_traceability_index.md",
-      "synopsis": "uv run watchtower-core sync traceability-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "traceability",
-        "index"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.sync.workflow_index",
-      "command": "watchtower-core sync workflow-index",
-      "summary": "Rebuild the workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_sync_workflow_index.md",
-      "synopsis": "uv run watchtower-core sync workflow-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.sync",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "sync",
-        "workflow",
         "index"
       ]
     },

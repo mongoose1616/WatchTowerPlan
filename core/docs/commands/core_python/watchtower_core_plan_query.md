@@ -77,7 +77,7 @@ uv run watchtower-core plan query authority --domain planning --format json
 |---|---|
 | `watchtower-core plan` | Parent command group for live plan bootstrap, lookup, task, and closeout operations. |
 | `watchtower-core query` | Shared governed lookup surface for commands, paths, standards, foundations, references, acceptance, and evidence. |
-| `watchtower-core sync all` | Rebuilds the same derived plan indexes and rendered companions that these queries read. |
+| `watchtower-core plan sync all` | Rebuilds the same derived plan indexes and rendered companions that these queries read. |
 | `watchtower-core validate all` | Verifies the governed artifacts and live plan indexes that back these lookup surfaces. |
 
 ## Source Surface

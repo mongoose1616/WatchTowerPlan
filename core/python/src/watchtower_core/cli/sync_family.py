@@ -10,7 +10,6 @@ from watchtower_core.cli.sync_family_special import (
     build_sync_subparsers,
     register_special_sync_commands,
 )
-from watchtower_core.cli.sync_family_tracking import register_tracking_sync_commands
 from watchtower_core.cli.sync_handlers import SYNC_HANDLERS
 
 
@@ -23,4 +22,3 @@ def register_sync_family(
     sync_subparsers = build_sync_subparsers(subparsers, help_handler=_run_help)
     register_special_sync_commands(sync_subparsers, handlers)
     register_document_sync_commands(sync_subparsers, handlers)
-    register_tracking_sync_commands(sync_subparsers, handlers)

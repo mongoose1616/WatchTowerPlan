@@ -1,4 +1,4 @@
-# `watchtower-core sync reference-index`
+# `watchtower-core plan sync reference-index`
 
 ## Summary
 This command rebuilds the governed reference index from the authored reference documents under `core/docs/references/`.
@@ -11,15 +11,15 @@ This command rebuilds the governed reference index from the authored reference d
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync reference-index` |
+| Invocation | `watchtower-core plan sync reference-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync reference-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync reference-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync reference-index [--write] [--output <path>] [--inclu
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync reference-index
+uv run watchtower-core plan sync reference-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync reference-index --write
+uv run watchtower-core plan sync reference-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync reference-index --output /tmp/reference_index.json --format json
+uv run watchtower-core plan sync reference-index --output /tmp/reference_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -59,7 +59,7 @@ uv run watchtower-core sync reference-index --output /tmp/reference_index.json -
 | `watchtower-core sync repository-paths` | Rebuilds the path index that complements reference lookup when engineers browse by surface instead of topic. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/reference_index.py`
 - `core/control_plane/indexes/references/reference_index.json`
 

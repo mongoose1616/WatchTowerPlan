@@ -1,4 +1,4 @@
-# `watchtower-core sync coordination`
+# `watchtower-core plan sync coordination`
 
 ## Summary
 This command rebuilds the deterministic coordination slice for live task, traceability, initiative, coordination-index, and companion tracking surfaces in one dependency-ordered run.
@@ -11,15 +11,15 @@ This command rebuilds the deterministic coordination slice for live task, tracea
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync coordination` |
+| Invocation | `watchtower-core plan sync coordination` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync coordination [--write] [--output-dir <dir>] [--format <human|json>]
+uv run watchtower-core plan sync coordination [--write] [--output-dir <dir>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -31,17 +31,17 @@ uv run watchtower-core sync coordination [--write] [--output-dir <dir>] [--forma
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync coordination
+uv run watchtower-core plan sync coordination
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync coordination --write
+uv run watchtower-core plan sync coordination --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync coordination --output-dir /tmp/watchtower_coordination --format json
+uv run watchtower-core plan sync coordination --output-dir /tmp/watchtower_plan_coordination --format json
 ```
 
 ## Behavior and Outputs
@@ -55,15 +55,15 @@ uv run watchtower-core sync coordination --output-dir /tmp/watchtower_coordinati
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync all` | Rebuilds the coordination slice plus the rest of the deterministic local sync surfaces. |
-| `watchtower-core sync task-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
-| `watchtower-core sync traceability-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
-| `watchtower-core sync initiative-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
-| `watchtower-core sync task-tracking` | Rebuilds one of the human-readable coordination trackers included in this command. |
-| `watchtower-core sync initiative-tracking` | Rebuilds one of the human-readable coordination trackers included in this command. |
+| `watchtower-core plan sync all` | Rebuilds the coordination slice plus the rest of the deterministic local sync surfaces. |
+| `watchtower-core plan sync task-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
+| `watchtower-core plan sync traceability-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
+| `watchtower-core plan sync initiative-index` | Rebuilds one of the machine-readable coordination surfaces included in this command. |
+| `watchtower-core plan sync task-tracking` | Rebuilds one of the human-readable coordination trackers included in this command. |
+| `watchtower-core plan sync initiative-tracking` | Rebuilds one of the human-readable coordination trackers included in this command. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/coordination.py`
 - `plan/python/src/watchtower_plan/sync/coordination_index.py`
 - `plan/python/src/watchtower_plan/sync/coordination_tracking.py`

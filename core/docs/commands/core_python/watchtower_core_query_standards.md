@@ -86,7 +86,7 @@ uv run watchtower-core query standards --operationalization-path core/docs/refer
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core sync standard-index` | Rebuilds the standard index that this command reads. |
+| `watchtower-core plan sync standard-index` | Rebuilds the standard index that this command reads. |
 | `watchtower-core query references` | Searches the reference index when you know the local reference doc but not the governed standard. |
 
 ## Source Surface

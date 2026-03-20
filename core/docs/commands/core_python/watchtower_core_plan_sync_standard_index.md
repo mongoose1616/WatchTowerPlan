@@ -1,4 +1,4 @@
-# `watchtower-core sync standard-index`
+# `watchtower-core plan sync standard-index`
 
 ## Summary
 This command rebuilds the governed standard index from the governed standards and best-practice documents under `core/docs/standards/` and `plan/docs/standards/`.
@@ -11,15 +11,15 @@ This command rebuilds the governed standard index from the governed standards an
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync standard-index` |
+| Invocation | `watchtower-core plan sync standard-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync standard-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync standard-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync standard-index [--write] [--output <path>] [--includ
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync standard-index
+uv run watchtower-core plan sync standard-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync standard-index --write
+uv run watchtower-core plan sync standard-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync standard-index --output /tmp/standard_index.json --format json
+uv run watchtower-core plan sync standard-index --output /tmp/standard_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -61,10 +61,10 @@ uv run watchtower-core sync standard-index --output /tmp/standard_index.json --f
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core query standards` | Reads the standard index that this command rebuilds. |
-| `watchtower-core sync reference-index` | Rebuilds the companion reference index used to derive transitive external authority. |
+| `watchtower-core plan sync reference-index` | Rebuilds the companion reference index used to derive transitive external authority. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/standard_index.py`
 - `core/control_plane/indexes/standards/standard_index.json`
 

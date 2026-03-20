@@ -1,4 +1,4 @@
-# `watchtower-core sync task-tracking`
+# `watchtower-core plan sync task-tracking`
 
 ## Summary
 This command rebuilds the human-readable task tracker from initiative-local live task state under `plan/**/.wt/tasks/**`.
@@ -11,15 +11,15 @@ This command rebuilds the human-readable task tracker from initiative-local live
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync task-tracking` |
+| Invocation | `watchtower-core plan sync task-tracking` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync task-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync task-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync task-tracking [--write] [--output <path>] [--include
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync task-tracking
+uv run watchtower-core plan sync task-tracking
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync task-tracking --write
+uv run watchtower-core plan sync task-tracking --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --format json
+uv run watchtower-core plan sync task-tracking --output /tmp/task_tracking.md --format json
 ```
 
 ## Behavior and Outputs
@@ -58,12 +58,12 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync task-index` | Rebuilds the machine-readable task index from the same live task sources. |
+| `watchtower-core plan sync task-index` | Rebuilds the machine-readable task index from the same live task sources. |
 | `watchtower-core plan query tasks` | Reads the task index that reflects the same live task records. |
 | `plan/tracking/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/task_tracking.py`
 - `plan/tracking/task_tracking.md`
 

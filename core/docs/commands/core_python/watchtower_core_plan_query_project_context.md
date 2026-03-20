@@ -53,7 +53,7 @@ uv run watchtower-core plan query project-context --project-slug watchtower --fo
 | `watchtower-core plan query initiatives` | Project-scoped initiative lookup once the project root is known. |
 | `watchtower-core plan query trace` | Trace-linked initiative lookup after you know the exact trace you need. |
 | `watchtower-core plan query authority` | Canonical-surface resolver when you are not sure which machine surface to trust. |
-| `watchtower-core sync all` | Rebuilds command docs, live plan indexes, and retained companion surfaces after query-surface changes. |
+| `watchtower-core plan sync all` | Rebuilds command docs, live plan indexes, and retained companion surfaces after query-surface changes. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/query.py`

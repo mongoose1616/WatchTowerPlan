@@ -64,13 +64,15 @@
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core plan query initiatives --current-phase capture`
-- `uv run watchtower-core sync all`
-- `uv run watchtower-core sync coordination`
+- `uv run watchtower-core sync command-index`
 - `uv run watchtower-core sync route-index`
-- `uv run watchtower-core sync initiative-index`
-- `uv run watchtower-core sync task-index`
-- `uv run watchtower-core sync github-tasks --repo owner/repo`
-- `uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync`
+- `uv run watchtower-core sync repository-paths`
+- `uv run watchtower-core plan sync all`
+- `uv run watchtower-core plan sync coordination`
+- `uv run watchtower-core plan sync initiative-index`
+- `uv run watchtower-core plan sync task-index`
+- `uv run watchtower-core plan sync github-tasks --repo owner/repo`
+- `uv run watchtower-core plan sync github-tasks --repo owner/repo --no-label-sync`
 - `uv run watchtower-core plan closeout initiative --initiative-slug plan_example --initiative-status completed --closure-reason "Delivered and validated" --write`
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"`
 - `uv run watchtower-core plan closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md`
@@ -106,7 +108,7 @@
 - `uv run ...` is the default workflow for this repository.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad Python validation pass when a change touches repo-materialization, workspace orchestration, or multi-surface CLI behavior.
-- `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
+- `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before the shared root sync commands, `plan sync all`, or `validate all`.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
@@ -126,7 +128,7 @@
 - `uv run watchtower-core plan task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
 - `uv run watchtower-core plan query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
-- `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
+- `uv run watchtower-core plan sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `watchtower_core` is the reusable-core namespace. Push generic loaders, validators, query helpers, sync helpers, adapters, and utilities back into `watchtower_core` when they stop being plan-specific.
 - `watchtower_plan` is the narrow repo-local plan boundary under `plan/python/`; do not grow it into a plan-flavored mirror of `watchtower_core`.
 - `plan/.wt/` is live plan machine state only. Keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.

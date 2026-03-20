@@ -96,13 +96,13 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core plan task transition --task-id task.example.001 "
         "--task-status completed --format json" in captured.out
     )
-    assert "uv run watchtower-core sync standard-index" in captured.out
-    assert "uv run watchtower-core sync foundation-index" in captured.out
-    assert "uv run watchtower-core sync workflow-index" in captured.out
-    assert "uv run watchtower-core sync coordination" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync route-index" in captured.out
-    assert "uv run watchtower-core sync task-index" in captured.out
+    assert "uv run watchtower-core plan sync standard-index" in captured.out
+    assert "uv run watchtower-core plan sync foundation-index" in captured.out
+    assert "uv run watchtower-core plan sync workflow-index" in captured.out
+    assert "uv run watchtower-core plan sync coordination" in captured.out
+    assert "uv run watchtower-core plan sync task-index" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
         "uv run watchtower-core validate document-semantics --path "
@@ -182,6 +182,7 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
     assert "confirm-inputs" in captured.out
     assert "approve" in captured.out
     assert "query" in captured.out
+    assert "sync" in captured.out
     assert "closeout" in captured.out
     assert "task" in captured.out
 
@@ -219,13 +220,24 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Rebuild derived governed artifacts" in captured.out
+    assert "Rebuild reusable-core derived governed artifacts" in captured.out
     assert "command-index" in captured.out
+    assert "route-index" in captured.out
+    assert "repository-paths" in captured.out
+    assert "uv run watchtower-core sync command-index --write" in captured.out
+    assert "watchtower-core plan sync" in captured.out
+
+
+def test_plan_sync_group_prints_group_specific_help(capsys) -> None:
+    result = main(["plan", "sync"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Rebuild plan-owned derived indexes, trackers, and orchestration" in captured.out
     assert "all" in captured.out
     assert "coordination" in captured.out
     assert "foundation-index" in captured.out
     assert "reference-index" in captured.out
-    assert "route-index" in captured.out
     assert "standard-index" in captured.out
     assert "workflow-index" in captured.out
     assert "task-index" in captured.out
@@ -233,8 +245,8 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert "initiative-index" in captured.out
     assert "initiative-tracking" in captured.out
     assert "traceability-index" in captured.out
-    assert "repository-paths" in captured.out
-    assert "uv run watchtower-core sync command-index --write" in captured.out
+    assert "github-tasks" in captured.out
+    assert "uv run watchtower-core plan sync all" in captured.out
 
 
 def test_validate_group_prints_group_specific_help(capsys) -> None:

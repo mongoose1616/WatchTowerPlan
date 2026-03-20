@@ -17,7 +17,7 @@
 | Need | Start Here | Why |
 |---|---|---|
 | Find the governing foundation document for one repo surface, citation path, or applied-reference path | `core/docs/commands/core_python/watchtower_core_query_foundations.md` | Uses the machine-readable foundation index for deterministic lookup instead of rescanning the full foundations corpus manually. |
-| Rebuild the machine-readable foundations corpus after a foundations-doc change | `core/docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
+| Rebuild the machine-readable foundations corpus after a foundations-doc change | `core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md` | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
 
 ## Authoritative Backbone
 

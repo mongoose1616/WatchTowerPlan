@@ -19,7 +19,7 @@ Use this workflow to publish initiative-local live task records to GitHub issues
 - [github_task_sync_standard.md](/plan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary, foreign-key set, and status mapping this workflow must preserve.
 - [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): initiative-local live task state remains authoritative even when GitHub mirrors exist.
 - [github_collaboration_reference.md](/core/docs/references/github_collaboration_reference.md): distills the GitHub issue and project behavior this workflow may need to map local tasks onto.
-- [watchtower_core_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_sync_github_tasks.md): documents the command surface that performs the actual push-only sync.
+- [watchtower_core_plan_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md): documents the command surface that performs the actual push-only sync.
 - [task_lifecycle_management.md](/plan/workflows/modules/task_lifecycle_management.md): GitHub sync writes live task metadata and must leave the authoritative task corpus aligned afterward.
 
 ## Workflow

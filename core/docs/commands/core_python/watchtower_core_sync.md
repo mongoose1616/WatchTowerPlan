@@ -1,12 +1,13 @@
 # `watchtower-core sync`
 
 ## Summary
-This command group rebuilds derived governed artifacts from authored repository sources. Use it to refresh machine-readable indexes, human-readable trackers, and other deterministic byproducts after source changes land.
+This command group rebuilds reusable-core derived governed artifacts from authored repository sources. Use it to refresh shared machine-readable indexes and other deterministic byproducts after core-owned source changes land.
 
 ## Use When
-- You changed an authored planning, workflow, command, standards, or control-plane surface and need the derived artifacts to match.
+- You changed an authored command, routing, README inventory, or other shared core-governed surface and need the derived artifacts to match.
 - You need the fastest route to the correct rebuild command instead of scanning all sync leaf docs.
 - You want structured dry-run or write output for automation.
+- You need to distinguish between shared root sync commands and plan-owned `watchtower-core plan sync ...` commands.
 
 ## Command
 | Field | Value |
@@ -23,7 +24,7 @@ uv run watchtower-core sync <sync_command> [args]
 ```
 
 ## Arguments and Options
-- `<sync_command>`: Choose a leaf sync such as `all`, `coordination`, `route-index`, `workflow-index`, `initiative-index`, `task-index`, `repository-paths`, or another narrower tracker or index refresh.
+- `<sync_command>`: Choose one reusable-core leaf sync such as `command-index`, `route-index`, or `repository-paths`.
 - `-h`, `--help`: Show the sync-group help text.
 - Pass `--write`, output-directory flags, and any narrower options to the selected leaf command.
 
@@ -35,7 +36,7 @@ uv run watchtower-core sync --help
 
 ```sh
 cd core/python
-uv run watchtower-core sync coordination --format json
+uv run watchtower-core plan sync coordination --format json
 ```
 
 ```sh
@@ -43,32 +44,26 @@ cd core/python
 uv run watchtower-core sync route-index --write --format json
 ```
 
-```sh
-cd core/python
-uv run watchtower-core sync all --write --format json
-```
-
 ## Behavior and Outputs
 - With no leaf command, the group prints help and exits successfully.
 - The group itself is routing help; the selected leaf command owns dry-run defaults, write behavior, and artifact-specific output.
-- Use `sync coordination` for the focused task, traceability, initiative, coordination-index, and coordination-tracker rebuild slice.
-- Use `sync all` when you need the full deterministic local rebuild across indexes and trackers.
-- Use narrower leaf commands when one governed family changed and you do not need the full repo rebuild.
+- Root `sync` owns only reusable-core shared surfaces.
+- Plan-owned sync operations now live under `watchtower-core plan sync ...`.
+- Use narrower root leaf commands when one shared governed family changed and you do not need the pack-owned rebuild flows.
 - Open the specific leaf command page or CLI help when you need exact flags, dependency order, or output-file details.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core sync coordination` | Focused current-state planning rebuild slice. |
+| `watchtower-core plan sync coordination` | Focused live plan rebuild slice. |
 | `watchtower-core sync route-index` | Rebuilds the machine-readable routing surface from the routing table. |
-| `watchtower-core sync all` | Rebuilds the full deterministic local derived-artifact set. |
+| `watchtower-core plan sync all` | Rebuilds the full deterministic plan-owned derived-artifact set. |
 | `watchtower-core plan query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_handlers.py`
 - `core/python/src/watchtower_core/sync/`
-- `plan/python/src/watchtower_plan/sync/`
 
 ## Updated At
 - `2026-03-13T15:05:00Z`

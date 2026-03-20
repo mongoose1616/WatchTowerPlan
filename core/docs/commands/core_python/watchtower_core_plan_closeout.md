@@ -56,7 +56,7 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that purge enforces by default. |
 | `watchtower-core plan query coordination` | Reads the live pack-level coordination view that plan closeout refreshes in write mode. |
 | `watchtower-core plan query trace` | Reads the retained traceability entry updated before or after purge. |
-| `watchtower-core sync all` | Rebuilds the broader derived surface set that plan closeout also updates in write mode. |
+| `watchtower-core plan sync all` | Rebuilds the broader derived surface set that plan closeout also updates in write mode. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/closeout.py`

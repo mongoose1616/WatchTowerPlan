@@ -64,7 +64,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
   - the local task ID or IDs when task tracking applies, or an explicit no-task reason when it does not
   - the validation commands or checks actually run
   - whether human and machine companion surfaces were updated
-- Use the managed GitHub labels created by `watchtower-core sync github-tasks` for mirrored execution metadata:
+- Use the managed GitHub labels created by `watchtower-core plan sync github-tasks` for mirrored execution metadata:
   - `source:watchtower`
   - `kind:<task_kind>`
   - `status:<task_status>`

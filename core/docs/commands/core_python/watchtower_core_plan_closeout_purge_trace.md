@@ -58,7 +58,7 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 | `watchtower-core plan closeout` | Parent command group for live plan closeout and purge operations. |
 | `watchtower-core closeout initiative` | Use this first when the trace still needs retained terminal closeout before purge. |
 | `watchtower-core validate acceptance` | Confirms trace-level acceptance and evidence coherence before purge. |
-| `watchtower-core sync all` | Rebuilds the derived surfaces that this command refreshes automatically in write mode. |
+| `watchtower-core plan sync all` | Rebuilds the derived surfaces that this command refreshes automatically in write mode. |
 | `watchtower-core plan query trace` | Confirms the purged trace no longer appears in the retained traceability surface. |
 | `watchtower-core plan query coordination` | Confirms the retained coordination surface no longer carries the purged trace as active or recent retained work. |
 

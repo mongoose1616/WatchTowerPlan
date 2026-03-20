@@ -77,7 +77,7 @@ uv run watchtower-core plan query initiatives --initiative-status completed --fo
 | `watchtower-core plan query coordination` | Preferred machine start-here path for current planning state. |
 | `watchtower-core plan query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or governance should answer instead. |
 | `watchtower-core plan query trace` | Canonical traceability read path when the initiative summary is too compact. |
-| `watchtower-core sync all` | Rebuilds the live initiative-family index and its rendered companions. |
+| `watchtower-core plan sync all` | Rebuilds the live initiative-family index and its rendered companions. |
 | `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 | `watchtower-core plan query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
 

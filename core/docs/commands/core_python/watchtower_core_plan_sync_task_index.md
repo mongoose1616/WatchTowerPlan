@@ -1,4 +1,4 @@
-# `watchtower-core sync task-index`
+# `watchtower-core plan sync task-index`
 
 ## Summary
 This command rebuilds the live plan task index from initiative-local task state under `plan/**/.wt/tasks/**`.
@@ -11,15 +11,15 @@ This command rebuilds the live plan task index from initiative-local task state 
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync task-index` |
+| Invocation | `watchtower-core plan sync task-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync task-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync task-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync task-index [--write] [--output <path>] [--include-do
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync task-index
+uv run watchtower-core plan sync task-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync task-index --write
+uv run watchtower-core plan sync task-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync task-index --output /tmp/task_index.json --format json
+uv run watchtower-core plan sync task-index --output /tmp/task_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -58,12 +58,12 @@ uv run watchtower-core sync task-index --output /tmp/task_index.json --format js
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker from the same live task sources. |
+| `watchtower-core plan sync task-tracking` | Rebuilds the human-readable task tracker from the same live task sources. |
 | `watchtower-core plan query tasks` | Reads the task index that this command rebuilds. |
-| `watchtower-core sync traceability-index` | Reads the task index as one of its governed source surfaces. |
+| `watchtower-core plan sync traceability-index` | Reads the task index as one of its governed source surfaces. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/task_index.py`
 - `plan/.wt/indexes/task_index.json`
 

@@ -1,4 +1,4 @@
-# `watchtower-core sync all`
+# `watchtower-core plan sync all`
 
 ## Summary
 This command rebuilds all local deterministic indexes and human-readable trackers in one run, using the registry-backed sync target set in dependency order.
@@ -12,15 +12,15 @@ This command rebuilds all local deterministic indexes and human-readable tracker
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync all` |
+| Invocation | `watchtower-core plan sync all` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync all [--write] [--output-dir <dir>] [--format <human|json>]
+uv run watchtower-core plan sync all [--write] [--output-dir <dir>] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync all [--write] [--output-dir <dir>] [--format <human|
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync all
+uv run watchtower-core plan sync all
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync all --write
+uv run watchtower-core plan sync all --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
+uv run watchtower-core plan sync all --output-dir /tmp/watchtower_plan_sync --format json
 ```
 
 ## Behavior and Outputs
@@ -58,18 +58,18 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync coordination` | Rebuilds the smaller task, traceability, initiative, and coordination slice when `sync all` would be unnecessarily broad. |
-| `watchtower-core sync command-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync foundation-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync standard-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync workflow-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync traceability-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync initiative-index` | Rebuilds one of the surfaces included in `sync all`. |
-| `watchtower-core sync initiative-tracking` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync coordination` | Rebuilds the smaller task, traceability, initiative, and coordination slice when `sync all` would be unnecessarily broad. |
+| `watchtower-core sync command-index` | Rebuilds one shared governed surface that often changes in the same broader repository slice. |
+| `watchtower-core plan sync foundation-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync standard-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync workflow-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync traceability-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync initiative-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync initiative-tracking` | Rebuilds one of the surfaces included in `sync all`. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/all.py`
 - `plan/python/src/watchtower_plan/sync/registry.py`
 

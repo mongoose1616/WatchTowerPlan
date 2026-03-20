@@ -24,9 +24,22 @@ def _query_runtime(*args: Any, **kwargs: Any) -> dict[str, object]:
 
 
 def _sync_targets(*args: Any, **kwargs: Any) -> tuple[str, ...]:
-    """Placeholder sync-target hook for pack-contract validation."""
+    """Return the plan-owned sync targets exposed under `watchtower-core plan sync`."""
 
-    return ()
+    return (
+        "all",
+        "coordination",
+        "reference-index",
+        "foundation-index",
+        "standard-index",
+        "workflow-index",
+        "initiative-index",
+        "initiative-tracking",
+        "task-index",
+        "task-tracking",
+        "traceability-index",
+        "github-tasks",
+    )
 
 
 def _validation_provider(*args: Any, **kwargs: Any) -> PackValidationRuntime:
@@ -55,6 +68,7 @@ PACK_INTEGRATION = PackIntegration(
         ("confirm-inputs", "plan/python/src/watchtower_plan/cli/handlers.py"),
         ("approve", "plan/python/src/watchtower_plan/cli/handlers.py"),
         ("query", "plan/python/src/watchtower_plan/cli/query.py"),
+        ("sync", "plan/python/src/watchtower_plan/cli/sync.py"),
         ("closeout", "plan/python/src/watchtower_plan/cli/closeout.py"),
         ("task", "plan/python/src/watchtower_plan/cli/tasks.py"),
     ),

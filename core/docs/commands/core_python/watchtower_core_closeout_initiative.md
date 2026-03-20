@@ -67,9 +67,9 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core plan query coordination` | Reads the coordination view this command refreshes in write mode. |
 | `watchtower-core plan query trace` | Reads the traceability entry this command updates. |
 | `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that this closeout command now enforces by default. |
-| `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
-| `watchtower-core sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |
-| `watchtower-core sync initiative-tracking` | Rebuilds the human-readable initiative tracker that this command also refreshes in write mode. |
+| `watchtower-core plan sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
+| `watchtower-core plan sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |
+| `watchtower-core plan sync initiative-tracking` | Rebuilds the human-readable initiative tracker that this command also refreshes in write mode. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/closeout_family.py`

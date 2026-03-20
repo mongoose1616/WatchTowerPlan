@@ -183,7 +183,7 @@
         "plan/python/src/watchtower_plan/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
-        "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
         "core/control_plane/indexes/foundations/README.md"
@@ -1913,7 +1913,7 @@
         "core/python/src/watchtower_core/validation/pack_contract.py",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_sync_all.md"
+        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "applies_to": [
         "core/python/",
@@ -1938,7 +1938,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_sync_all.md"
+        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/documentation/documentation_semantics_standard.md",
@@ -1947,7 +1947,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_sync_all.md"
+        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "tags": [
         "standard",

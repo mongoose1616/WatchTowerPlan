@@ -1,4 +1,4 @@
-# `watchtower-core sync foundation-index`
+# `watchtower-core plan sync foundation-index`
 
 ## Summary
 This command rebuilds the governed foundation index from the governed foundation documents under `core/docs/foundations/`.
@@ -11,15 +11,15 @@ This command rebuilds the governed foundation index from the governed foundation
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync foundation-index` |
+| Invocation | `watchtower-core plan sync foundation-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync foundation-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync foundation-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync foundation-index [--write] [--output <path>] [--incl
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync foundation-index
+uv run watchtower-core plan sync foundation-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync foundation-index --write
+uv run watchtower-core plan sync foundation-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync foundation-index --output /tmp/foundation_index.json --format json
+uv run watchtower-core plan sync foundation-index --output /tmp/foundation_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -59,11 +59,11 @@ uv run watchtower-core sync foundation-index --output /tmp/foundation_index.json
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core query foundations` | Reads the foundation index that this command rebuilds. |
-| `watchtower-core sync reference-index` | Rebuilds the companion reference index used to normalize downstream external authority. |
-| `watchtower-core sync all` | Rebuilds the foundation index together with the other local deterministic sync surfaces. |
+| `watchtower-core plan sync reference-index` | Rebuilds the companion reference index used to normalize downstream external authority. |
+| `watchtower-core plan sync all` | Rebuilds the foundation index together with the other local deterministic sync surfaces. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/foundation_index.py`
 - `core/control_plane/indexes/foundations/foundation_index.json`
 

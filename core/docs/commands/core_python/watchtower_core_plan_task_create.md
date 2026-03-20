@@ -71,7 +71,7 @@ uv run watchtower-core plan task create --task-id task.traceable.example.001 --t
 | `watchtower-core plan task transition` | Applies a narrower handoff-style update to the created task. |
 | `watchtower-core plan approve` | Required before a new task can be created directly in an execution-starting state. |
 | `watchtower-core plan query tasks` | Reads the task index refreshed in write mode. |
-| `watchtower-core sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
+| `watchtower-core plan sync coordination` | Rebuilds the same coordination slice that write mode refreshes. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/tasks.py`

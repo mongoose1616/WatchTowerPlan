@@ -9,7 +9,7 @@
 - Use `watchtower_core_plan.md` when the main question is how to bootstrap a live initiative package or advance it through confirmation and approval.
 - Use `watchtower_core_query.md` when the main question is which shared read-only lookup surface to use, then open `watchtower_core_plan_query.md` when the question is live planning state or plan-owned machine indexes.
 - Use `watchtower_core_plan_task.md` when the main question is how to create, update, or transition initiative-local live task records.
-- Use `watchtower_core_sync.md` when the main question is which derived artifact to rebuild, then open `watchtower_core_sync_foundation_index.md` when a foundations change needs the machine-readable intent index refreshed.
+- Use `watchtower_core_sync.md` when the main question is which shared derived artifact to rebuild, then open `watchtower_core_plan_sync.md` when the change touches plan-owned indexes, trackers, or GitHub task sync.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_plan_query_coordination.md` when the main question is current live planning state, next action, and active work context.
 - Use `watchtower_core_plan_query_artifacts.md` when the main question spans multiple live plan artifact families or needs canonical machine artifact paths and context metadata.
@@ -52,8 +52,9 @@
 | `core/docs/commands/core_python/watchtower_core_plan_task_create.md` | Creates one initiative-local live task record under the pack-owned `plan task` namespace. |
 | `core/docs/commands/core_python/watchtower_core_plan_task_update.md` | Applies structured field updates under the pack-owned `plan task` namespace. |
 | `core/docs/commands/core_python/watchtower_core_plan_task_transition.md` | Applies a bounded handoff-style transition under the pack-owned `plan task` namespace. |
-| `core/docs/commands/core_python/watchtower_core_sync.md` | Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes. |
-| `core/docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Rebuild surface for the machine-readable foundation index derived from governed foundation docs. |
+| `core/docs/commands/core_python/watchtower_core_sync.md` | Entry page for reusable-core sync commands such as command, route, and repository-path rebuilds. |
+| `core/docs/commands/core_python/watchtower_core_plan_sync.md` | Entry page for plan-owned sync commands such as coordination, task tracking, and GitHub task sync. |
+| `core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md` | Rebuild surface for the machine-readable foundation index derived from governed foundation docs. |
 | `core/docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |
 | `core/docs/commands/core_python/watchtower_core_validate_suite.md` | Runs one pack-declared validation suite through the reusable-core suite runtime. |
 | `core/docs/commands/core_python/watchtower_core_closeout.md` | Entry page for retained traced-initiative closeout commands after live pack work has already been promoted or purged. |

@@ -80,7 +80,7 @@ uv run watchtower-core plan query coordination --initiative-status completed --t
 | `watchtower-core plan query authority` | Resolves whether coordination, initiative, traceability, or governance surfaces are canonical for a recurring lookup question. |
 | `watchtower-core plan query trace` | Descends from the start-here coordination view into the canonical traceability record for one trace. |
 | `watchtower-core plan query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
-| `watchtower-core sync all` | Rebuilds the live coordination index and its dependent rendered surfaces. |
+| `watchtower-core plan sync all` | Rebuilds the live coordination index and its dependent rendered surfaces. |
 | `watchtower-core plan query tasks` | Inspects the full task records behind the compact active-task summaries. |
 | `watchtower-core plan query trace` | Resolves the underlying traceability record for one known trace ID. |
 

@@ -23,7 +23,7 @@ uv run watchtower-core plan <plan_command> [args]
 ```
 
 ## Arguments and Options
-- `<plan_command>`: Choose `bootstrap`, `confirm-inputs`, `approve`, `query`, `task`, or `closeout`.
+- `<plan_command>`: Choose `bootstrap`, `confirm-inputs`, `approve`, `query`, `sync`, `task`, or `closeout`.
 - `-h`, `--help`: Show the command help text.
 - Plan operations are dry-run by default. Pass `--write` to the selected leaf command to persist the generated state and refresh derived planning surfaces.
 
@@ -54,6 +54,7 @@ uv run watchtower-core plan query coordination --format json
 - `confirm-inputs` records maintainer confirmation of the current initiative-authored inputs before execution approval.
 - `approve` moves one validated live initiative package into `ready_for_execution`, which is required before task mutations may start real execution.
 - `query` provides read-only lookup over live plan state, plan-owned indexes, and retained planning records.
+- `sync` rebuilds the plan-owned derived indexes, trackers, and orchestration slices under the pack namespace.
 - `task` owns initiative-local live task creation, update, and transition flows.
 - `closeout` owns live initiative terminal closeout and eligible purge flows under the plan namespace.
 - In write mode, the command refreshes the deterministic derived planning surfaces after the selected plan operation writes its canonical outputs.
@@ -66,8 +67,9 @@ uv run watchtower-core plan query coordination --format json
 | `watchtower-core plan approve` | Approves one live initiative package into `ready_for_execution`. |
 | `watchtower-core plan query` | Reads live plan state, plan-owned indexes, and retained planning records. |
 | `watchtower-core plan task` | Manages the bootstrap task or follow-up work after the planning chain exists. |
+| `watchtower-core plan sync` | Rebuilds the plan-owned derived indexes and trackers refreshed by plan write operations. |
 | `watchtower-core plan closeout` | Applies live initiative closeout and eligible purge flows under the pack-owned namespace. |
-| `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
+| `watchtower-core plan sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
 | `watchtower-core plan query initiatives` | Reads the live initiative-family surface affected by plan writes. |
 | `watchtower-core plan query readiness` | Reads the readiness-gate surface affected by plan writes. |
 
@@ -75,6 +77,7 @@ uv run watchtower-core plan query coordination --format json
 - `plan/python/src/watchtower_plan/cli/namespace.py`
 - `plan/python/src/watchtower_plan/cli/handlers.py`
 - `plan/python/src/watchtower_plan/cli/query.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/cli/tasks.py`
 - `plan/python/src/watchtower_plan/cli/closeout.py`
 - `plan/python/src/watchtower_plan/initiative_packages.py`

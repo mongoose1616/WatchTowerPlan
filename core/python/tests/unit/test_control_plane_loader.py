@@ -514,18 +514,36 @@ def test_control_plane_loader_reads_command_index() -> None:
     plan_query_authority = command_index.get("command.watchtower_core.plan.query.authority")
     plan_query_initiatives = command_index.get("command.watchtower_core.plan.query.initiatives")
     plan_query_trace = command_index.get("command.watchtower_core.plan.query.trace")
+    plan_sync_group = command_index.get("command.watchtower_core.plan.sync")
+    plan_sync_all = command_index.get("command.watchtower_core.plan.sync.all")
+    plan_sync_coordination = command_index.get("command.watchtower_core.plan.sync.coordination")
+    plan_sync_reference_index = command_index.get(
+        "command.watchtower_core.plan.sync.reference_index"
+    )
+    plan_sync_foundation_index = command_index.get(
+        "command.watchtower_core.plan.sync.foundation_index"
+    )
+    plan_sync_initiative_index = command_index.get(
+        "command.watchtower_core.plan.sync.initiative_index"
+    )
+    plan_sync_initiative_tracking = command_index.get(
+        "command.watchtower_core.plan.sync.initiative_tracking"
+    )
+    plan_sync_standard_index = command_index.get(
+        "command.watchtower_core.plan.sync.standard_index"
+    )
+    plan_sync_workflow_index = command_index.get(
+        "command.watchtower_core.plan.sync.workflow_index"
+    )
+    plan_sync_traceability = command_index.get(
+        "command.watchtower_core.plan.sync.traceability_index"
+    )
+    plan_sync_github_tasks = command_index.get(
+        "command.watchtower_core.plan.sync.github_tasks"
+    )
     route_group = command_index.get("command.watchtower_core.route")
     route_preview = command_index.get("command.watchtower_core.route.preview")
-    sync_initiative_index = command_index.get("command.watchtower_core.sync.initiative_index")
-    sync_initiative_tracking = command_index.get(
-        "command.watchtower_core.sync.initiative_tracking"
-    )
-    sync_coordination = command_index.get("command.watchtower_core.sync.coordination")
     sync_route_index = command_index.get("command.watchtower_core.sync.route_index")
-    sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
-    sync_workflow_index = command_index.get("command.watchtower_core.sync.workflow_index")
-    sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
-    sync_github_tasks = command_index.get("command.watchtower_core.sync.github_tasks")
     validate_all = command_index.get("command.watchtower_core.validate.all")
     validate_acceptance = command_index.get("command.watchtower_core.validate.acceptance")
     validate_front_matter = command_index.get("command.watchtower_core.validate.front_matter")
@@ -676,22 +694,27 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_references.implementation_path
         == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
-    assert sync_traceability.parent_command_id == "command.watchtower_core.sync"
-    sync_reference_index = command_index.get("command.watchtower_core.sync.reference_index")
-    sync_foundation_index = command_index.get("command.watchtower_core.sync.foundation_index")
-    assert sync_reference_index.parent_command_id == "command.watchtower_core.sync"
+    assert plan_sync_group.parent_command_id == "command.watchtower_core.plan"
+    assert plan_sync_group.doc_path == "core/docs/commands/core_python/watchtower_core_plan_sync.md"
     assert (
-        sync_reference_index.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_reference_index.md"
+        plan_sync_group.implementation_path
+        == "plan/python/src/watchtower_plan/cli/sync.py"
     )
-    sync_all = command_index.get("command.watchtower_core.sync.all")
-    assert sync_all.parent_command_id == "command.watchtower_core.sync"
-    assert sync_all.doc_path == "core/docs/commands/core_python/watchtower_core_sync_all.md"
-    assert sync_all.implementation_path == "core/python/src/watchtower_core/cli/sync_family.py"
-    assert sync_coordination.parent_command_id == "command.watchtower_core.sync"
+    assert plan_sync_reference_index.parent_command_id == "command.watchtower_core.plan.sync"
     assert (
-        sync_coordination.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_coordination.md"
+        plan_sync_reference_index.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_reference_index.md"
+    )
+    assert plan_sync_all.parent_command_id == "command.watchtower_core.plan.sync"
+    assert plan_sync_all.doc_path == "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+    assert (
+        plan_sync_all.implementation_path
+        == "plan/python/src/watchtower_plan/cli/sync.py"
+    )
+    assert plan_sync_coordination.parent_command_id == "command.watchtower_core.plan.sync"
+    assert (
+        plan_sync_coordination.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_coordination.md"
     )
     assert sync_route_index.parent_command_id == "command.watchtower_core.sync"
     assert (
@@ -702,39 +725,54 @@ def test_control_plane_loader_reads_command_index() -> None:
         sync_route_index.implementation_path
         == "core/python/src/watchtower_core/cli/sync_family.py"
     )
-    assert sync_initiative_index.parent_command_id == "command.watchtower_core.sync"
     assert (
-        sync_initiative_index.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_initiative_index.md"
+        plan_sync_coordination.implementation_path
+        == "plan/python/src/watchtower_plan/cli/sync.py"
     )
-    assert sync_initiative_tracking.parent_command_id == "command.watchtower_core.sync"
+    assert plan_sync_initiative_index.parent_command_id == "command.watchtower_core.plan.sync"
     assert (
-        sync_initiative_tracking.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_initiative_tracking.md"
-    )
-    assert sync_foundation_index.parent_command_id == "command.watchtower_core.sync"
-    assert (
-        sync_foundation_index.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md"
-    )
-    assert sync_standard_index.parent_command_id == "command.watchtower_core.sync"
-    assert (
-        sync_standard_index.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_standard_index.md"
-    )
-    assert sync_workflow_index.parent_command_id == "command.watchtower_core.sync"
-    assert (
-        sync_workflow_index.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_workflow_index.md"
+        plan_sync_initiative_index.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_initiative_index.md"
     )
     assert (
-        sync_traceability.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_traceability_index.md"
+        plan_sync_initiative_index.implementation_path
+        == "plan/python/src/watchtower_plan/cli/sync.py"
     )
-    assert sync_github_tasks.parent_command_id == "command.watchtower_core.sync"
     assert (
-        sync_github_tasks.doc_path
-        == "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+        plan_sync_initiative_tracking.parent_command_id
+        == "command.watchtower_core.plan.sync"
+    )
+    assert (
+        plan_sync_initiative_tracking.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_initiative_tracking.md"
+    )
+    assert (
+        plan_sync_foundation_index.parent_command_id
+        == "command.watchtower_core.plan.sync"
+    )
+    assert (
+        plan_sync_foundation_index.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md"
+    )
+    assert plan_sync_standard_index.parent_command_id == "command.watchtower_core.plan.sync"
+    assert (
+        plan_sync_standard_index.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_standard_index.md"
+    )
+    assert plan_sync_workflow_index.parent_command_id == "command.watchtower_core.plan.sync"
+    assert (
+        plan_sync_workflow_index.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_workflow_index.md"
+    )
+    assert (
+        plan_sync_traceability.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_traceability_index.md"
+    )
+    assert plan_sync_traceability.parent_command_id == "command.watchtower_core.plan.sync"
+    assert plan_sync_github_tasks.parent_command_id == "command.watchtower_core.plan.sync"
+    assert (
+        plan_sync_github_tasks.doc_path
+        == "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md"
     )
     assert validate_all.parent_command_id == "command.watchtower_core.validate"
     assert validate_all.doc_path == "core/docs/commands/core_python/watchtower_core_validate_all.md"

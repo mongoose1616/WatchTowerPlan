@@ -140,7 +140,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - `https://docs.anthropic.com/en/docs/claude-code/sub-agents`
 
 ## Tooling and Automation
-- `uv run watchtower-core sync workflow-index`
+- `uv run watchtower-core plan sync workflow-index`
 - `uv run watchtower-core validate document-semantics --path core/workflows/modules/<module>.md`
 - `uv run watchtower-core validate document-semantics --path plan/workflows/modules/<module>.md`
 - `uv run watchtower-core query workflows --query <topic>`

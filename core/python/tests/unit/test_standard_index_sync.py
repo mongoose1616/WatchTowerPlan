@@ -100,7 +100,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+    assert "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "core/control_plane/indexes/foundations/README.md" in (

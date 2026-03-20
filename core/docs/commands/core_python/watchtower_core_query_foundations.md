@@ -67,7 +67,7 @@ uv run watchtower-core query foundations --applied-by-path core/docs/standards/e
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core sync foundation-index` | Rebuilds the foundation index that this command reads. |
+| `watchtower-core plan sync foundation-index` | Rebuilds the foundation index that this command reads. |
 | `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the governing foundation doc. |
 | `watchtower-core query standards` | Searches the standard index when you want the downstream governed rules that apply one foundation doc. |
 

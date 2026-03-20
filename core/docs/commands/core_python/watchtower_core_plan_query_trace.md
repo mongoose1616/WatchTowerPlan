@@ -54,7 +54,7 @@ uv run watchtower-core plan query trace --trace-id trace.governed_acceptance_exa
 | `watchtower-core plan query tasks` | Searches the task index when you want task records rather than a joined trace record. |
 | `watchtower-core query acceptance` | Searches the acceptance-contract family for the machine acceptance boundary linked to the trace. |
 | `watchtower-core query evidence` | Searches durable validation evidence linked to the trace. |
-| `watchtower-core sync traceability-index` | Rebuilds the traceability index that this command reads. |
+| `watchtower-core plan sync traceability-index` | Rebuilds the traceability index that this command reads. |
 | `watchtower-core query paths` | Helps find the traceability index artifact path if you need to inspect the source artifact directly. |
 | `watchtower-core query commands` | Helps discover other CLI surfaces once you know which workflow you want. |
 

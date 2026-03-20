@@ -42,7 +42,10 @@ def _run_doctor(args: argparse.Namespace) -> int:
             "traces": len(traceability_index.entries),
         },
         "recommended_baseline": [
-            "watchtower-core sync all --write",
+            "watchtower-core sync command-index --write",
+            "watchtower-core sync route-index --write",
+            "watchtower-core sync repository-paths --write",
+            "watchtower-core plan sync all --write",
             "watchtower-core validate all",
             "./.venv/bin/python -m mypy src",
             "./.venv/bin/ruff check src tests/unit tests/integration",

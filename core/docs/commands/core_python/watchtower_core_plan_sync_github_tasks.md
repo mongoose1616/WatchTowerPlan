@@ -1,4 +1,4 @@
-# `watchtower-core sync github-tasks`
+# `watchtower-core plan sync github-tasks`
 
 ## Summary
 This command pushes initiative-local live task records to GitHub issues and optional project items while keeping the local task records authoritative.
@@ -11,15 +11,15 @@ This command pushes initiative-local live task records to GitHub issues and opti
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync github-tasks` |
+| Invocation | `watchtower-core plan sync github-tasks` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--no-label-sync] [--write] [--format <human|json>]
+uv run watchtower-core plan sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--no-label-sync] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -46,29 +46,29 @@ uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo
+uv run watchtower-core plan sync github-tasks --repo owner/repo
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo --task-id task.local_task_tracking.github_sync.001 --write
+uv run watchtower-core plan sync github-tasks --repo owner/repo --task-id task.local_task_tracking.github_sync.001 --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo --project-owner owner --project-owner-type organization --project-number 7 --write --format json
+uv run watchtower-core plan sync github-tasks --repo owner/repo --project-owner owner --project-owner-type organization --project-number 7 --write --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --write
+uv run watchtower-core plan sync github-tasks --repo owner/repo --no-label-sync --write
 ```
 
 ## Behavior and Outputs
 - The command is push-only: initiative-local live task records remain the source of truth.
 - Task selection resolves through the live plan task query path and then loads the matched initiative-local task records before planning or applying GitHub updates.
 - In dry-run mode, the command reports which tasks would create or update issues and project items without mutating GitHub or local files.
-- Dry-run `watchtower-core sync github-tasks ...` is the authoritative preview surface for this command's filter set.
+- Dry-run `watchtower-core plan sync github-tasks ...` is the authoritative preview surface for this command's filter set.
 - In write mode, the command creates or updates GitHub issues, keeps a bounded managed label set aligned unless `--no-label-sync` is used, optionally updates project placement and status, persists GitHub foreign keys back onto the live task records, and rebuilds the live task indexes plus companion human trackers.
 - The synced issue body mirrors the live task metadata, summary, scope, done-when criteria, dependencies, and a short local-authority note.
 - In `human` mode, the command prints one result block per selected task.
@@ -77,14 +77,14 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core sync task-index` | Rebuilds the machine-readable task index after live task metadata changes. |
-| `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker after live task metadata changes. |
-| `watchtower-core sync traceability-index` | Rebuilds traceability after traced task metadata changes. |
+| `watchtower-core plan sync task-index` | Rebuilds the machine-readable task index after live task metadata changes. |
+| `watchtower-core plan sync task-tracking` | Rebuilds the human-readable task tracker after live task metadata changes. |
+| `watchtower-core plan sync traceability-index` | Rebuilds traceability after traced task metadata changes. |
 | `watchtower-core plan query tasks` | Reads the separate plan-workspace task index; it does not control GitHub task sync selection. |
 | `watchtower-core plan task update` | Adjusts the authoritative live task metadata before the GitHub push step. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/github_tasks.py`
 - `core/python/src/watchtower_core/integrations/github/client.py`
 - `.github/`

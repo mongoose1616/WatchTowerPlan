@@ -1,4 +1,4 @@
-# `watchtower-core sync workflow-index`
+# `watchtower-core plan sync workflow-index`
 
 ## Summary
 This command rebuilds the governed workflow index from the workflow modules under `core/workflows/modules/` and `plan/workflows/modules/`.
@@ -11,15 +11,15 @@ This command rebuilds the governed workflow index from the workflow modules unde
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync workflow-index` |
+| Invocation | `watchtower-core plan sync workflow-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync workflow-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync workflow-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync workflow-index [--write] [--output <path>] [--includ
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync workflow-index
+uv run watchtower-core plan sync workflow-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync workflow-index --write
+uv run watchtower-core plan sync workflow-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync workflow-index --output /tmp/workflow_index.json --format json
+uv run watchtower-core plan sync workflow-index --output /tmp/workflow_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -62,10 +62,10 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.json --f
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
 | `watchtower-core query workflows` | Reads the workflow index that this command rebuilds. |
-| `watchtower-core sync reference-index` | Rebuilds the companion reference index used to derive transitive external authority. |
+| `watchtower-core plan sync reference-index` | Rebuilds the companion reference index used to derive transitive external authority. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `core/python/src/watchtower_core/cli/sync_family_documents.py`
 - `core/python/src/watchtower_core/cli/sync_document_handlers.py`
 - `plan/python/src/watchtower_plan/sync/workflow_index.py`

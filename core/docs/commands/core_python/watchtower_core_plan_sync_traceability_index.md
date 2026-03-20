@@ -1,4 +1,4 @@
-# `watchtower-core sync traceability-index`
+# `watchtower-core plan sync traceability-index`
 
 ## Summary
 This command rebuilds the governed traceability index from the published planning indexes, acceptance contracts, and validation-evidence artifacts.
@@ -11,15 +11,15 @@ This command rebuilds the governed traceability index from the published plannin
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync traceability-index` |
+| Invocation | `watchtower-core plan sync traceability-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync traceability-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync traceability-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync traceability-index [--write] [--output <path>] [--in
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync traceability-index
+uv run watchtower-core plan sync traceability-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync traceability-index --write
+uv run watchtower-core plan sync traceability-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync traceability-index --output /tmp/traceability_index.json --format json
+uv run watchtower-core plan sync traceability-index --output /tmp/traceability_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -57,14 +57,14 @@ uv run watchtower-core sync traceability-index --output /tmp/traceability_index.
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync initiative-index` | Rebuilds one of the primary machine-readable planning surfaces that this command depends on. |
-| `watchtower-core sync task-index` | Rebuilds one of the task-backed coordination surfaces that contributes to traced initiative state. |
-| `watchtower-core sync all` | Rebuilds all governed planning surfaces when you want the full deterministic slice instead of only traceability. |
+| `watchtower-core plan sync initiative-index` | Rebuilds one of the primary machine-readable planning surfaces that this command depends on. |
+| `watchtower-core plan sync task-index` | Rebuilds one of the task-backed coordination surfaces that contributes to traced initiative state. |
+| `watchtower-core plan sync all` | Rebuilds all governed planning surfaces when you want the full deterministic slice instead of only traceability. |
 | `watchtower-core plan query trace` | Reads the traceability index that this command rebuilds. |
 | `watchtower-core validate artifact` | Validates the traceability index and related governed JSON artifacts. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/traceability.py`
 - `core/control_plane/indexes/traceability/traceability_index.json`
 

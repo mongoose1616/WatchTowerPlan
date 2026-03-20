@@ -1,4 +1,4 @@
-# `watchtower-core sync initiative-index`
+# `watchtower-core plan sync initiative-index`
 
 ## Summary
 This command rebuilds the governed initiative index from traceability plus the current planning and task indexes.
@@ -11,15 +11,15 @@ This command rebuilds the governed initiative index from traceability plus the c
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core sync initiative-index` |
+| Invocation | `watchtower-core plan sync initiative-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/sync.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync initiative-index [--write] [--output <path>] [--include-document] [--format <human|json>]
+uv run watchtower-core plan sync initiative-index [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -32,17 +32,17 @@ uv run watchtower-core sync initiative-index [--write] [--output <path>] [--incl
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core sync initiative-index
+uv run watchtower-core plan sync initiative-index
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync initiative-index --write
+uv run watchtower-core plan sync initiative-index --write
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json --format json
+uv run watchtower-core plan sync initiative-index --output /tmp/initiative_index.json --format json
 ```
 
 ## Behavior and Outputs
@@ -58,12 +58,12 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync traceability-index` | Rebuilds the joined traceability layer this command projects from. |
-| `watchtower-core sync initiative-tracking` | Rebuilds the human-readable tracker from the initiative index this command writes. |
+| `watchtower-core plan sync traceability-index` | Rebuilds the joined traceability layer this command projects from. |
+| `watchtower-core plan sync initiative-tracking` | Rebuilds the human-readable tracker from the initiative index this command writes. |
 | `watchtower-core plan query initiatives` | Reads the initiative index that this command rebuilds. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `plan/python/src/watchtower_plan/cli/sync.py`
 - `plan/python/src/watchtower_plan/sync/initiative_index.py`
 - `plan/.wt/indexes/initiative_index.json`
 

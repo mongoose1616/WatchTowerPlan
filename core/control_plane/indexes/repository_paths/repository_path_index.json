@@ -1776,6 +1776,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_plan_task.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1860,16 +1870,6 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
