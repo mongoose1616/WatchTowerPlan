@@ -110,6 +110,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - [plan/README.md](/plan/README.md)
 - [plan/python/README.md](/plan/python/README.md)
 - `WatchTowerOversight` as a second-pack design reference for future capabilities and docs shape
+- `core/python/tests/fixtures/python/watchtower_oversight_fixture/` as the repository’s synthetic second-pack proof that host discovery and pack validation work for more than the default `plan` pack
 
 ## References
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)

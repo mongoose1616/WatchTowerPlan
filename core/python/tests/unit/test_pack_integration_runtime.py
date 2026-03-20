@@ -21,6 +21,7 @@ from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
     load_pack_sync_runtime,
     load_pack_validation_runtime,
+    load_registered_pack_integrations,
 )
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_plan import integration as plan_integration
@@ -105,3 +106,33 @@ def test_load_pack_sync_runtime_fails_closed_on_empty_target_list(
 
     with pytest.raises(ValueError, match="one or more non-empty target names"):
         load_pack_sync_runtime(loader)
+
+
+def test_load_registered_pack_integrations_supports_second_pack_fixture(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    monkeypatch.syspath_prepend(
+        str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    loaded = load_registered_pack_integrations(loader)
+
+    assert tuple(item.registry_entry.pack_slug for item in loaded) == ("plan", "oversight")
+    oversight = next(item for item in loaded if item.registry_entry.pack_slug == "oversight")
+    assert oversight.runtime_manifest.integration_module == "watchtower_oversight_fixture.integration"
+    assert oversight.integration.command_namespace == "oversight"

@@ -2,8 +2,15 @@ from __future__ import annotations
 
 import json
 from dataclasses import replace
+from pathlib import Path
 
+from tests.pack_fixture_support import (
+    REPO_ROOT,
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from watchtower_core.pack_integration import PackQueryRuntime
+from watchtower_host.cli.registry import load_command_group_specs
 from watchtower_host.cli.main import main
 from watchtower_plan import integration as plan_integration
 
@@ -79,3 +86,64 @@ def test_pack_describe_reports_runtime_hook_errors_without_masking_import_succes
     assert payload["integration"]["query_runtime_commands"] is None
     assert "non-empty command names" in payload["integration"]["query_runtime_error"]
     assert "all" in payload["integration"]["sync_runtime_targets"]
+
+
+def test_pack_commands_support_second_pack_fixture(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.syspath_prepend(
+        str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
+    )
+
+    result = main(["pack", "describe", "--pack", "oversight", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack"]["pack_slug"] == "oversight"
+    assert payload["runtime_manifest"]["integration_module"] == "watchtower_oversight_fixture.integration"
+    assert payload["integration"]["query_runtime_commands"] == ["assessments", "reviews"]
+    assert payload["integration"]["sync_runtime_targets"] == ["oversight-index", "review-index"]
+
+
+def test_host_command_registry_loads_second_pack_namespace(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.syspath_prepend(
+        str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
+    )
+
+    specs = load_command_group_specs()
+
+    assert any(spec.name == "plan" for spec in specs)
+    assert any(spec.name == "oversight" for spec in specs)

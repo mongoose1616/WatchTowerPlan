@@ -28,6 +28,7 @@ Use this workflow to validate that a hosted pack publishes the required machine 
 4. Validate portability expectations.
    - Check that pack-owned docs, workflows, tracking, and Python surfaces exist where declared.
    - Check that reusable core does not import the pack and the pack does not import host internals.
+   - When the host-pack contract changed materially, prove it against at least one non-default or synthetic second-pack fixture instead of validating only the current default pack.
 
 ## Data Structure
 - In-scope pack list

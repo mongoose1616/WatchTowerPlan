@@ -8,61 +8,110 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 _PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
 _DEFAULT_FIXTURE_PACK_ROOT = "packs/plan"
 _DEFAULT_FIXTURE_WT_ROOT = "packs/plan/.wt"
-_PLAN_NOTE_VALIDATOR_ID = "validator.packs.plan_note"
-_PLAN_SUITE_ID = "suite.plan.validation_baseline"
 
 
 def materialize_pack_validation_suite(
     pack_root: Path,
     *,
+    pack_id: str = "pack.plan",
+    pack_slug: str = "plan",
+    command_namespace: str = "plan",
+    python_distribution: str = "watchtower-plan",
+    python_package: str = "watchtower_plan",
+    integration_module: str = "watchtower_plan.integration",
+    default_repo_pack: bool | None = None,
     include_validation_suite_registry: bool = True,
     suite_step_validator_id: str | None = None,
     validator_schema_ids: tuple[str, ...] | None = None,
+    registry_mode: str = "replace_default",
 ) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
     copytree(_PLAN_FIXTURE_ROOT, pack_root, dirs_exist_ok=True)
 
     actual_wt_root = f"{pack_root.relative_to(repo_root).as_posix()}/.wt"
     actual_pack_root = actual_wt_root.removesuffix("/.wt")
-    if actual_wt_root != _DEFAULT_FIXTURE_WT_ROOT:
-        for relative_path in (
-            ".wt/manifests/pack_settings.json",
-            ".wt/manifests/pack_runtime_manifest.json",
-            ".wt/registries/schema_catalog.json",
-            ".wt/registries/validator_registry.json",
-            ".wt/registries/validation_suite_registry.json",
-        ):
-            path = pack_root / relative_path
-            if not path.exists():
-                continue
-            path.write_text(
-                path.read_text(encoding="utf-8")
-                .replace(_DEFAULT_FIXTURE_WT_ROOT, actual_wt_root)
-                .replace(_DEFAULT_FIXTURE_PACK_ROOT, actual_pack_root),
-                encoding="utf-8",
-            )
+    note_slug = f"{pack_slug}_note"
+    schema_slug = f"{pack_slug}-note"
+    suite_id = f"suite.{pack_slug}.validation_baseline"
+    validator_id = f"validator.packs.{note_slug}"
+    schema_id = f"urn:watchtower:schema:interfaces:packs:{schema_slug}:v1"
+
+    if note_slug != "plan_note":
+        original_artifact_path = pack_root / ".wt" / "work_items" / "plan_note.json"
+        renamed_artifact_path = pack_root / ".wt" / "work_items" / f"{note_slug}.json"
+        if original_artifact_path.exists():
+            original_artifact_path.rename(renamed_artifact_path)
+        original_schema_path = (
+            pack_root / ".wt" / "schemas" / "interfaces" / "packs" / "plan_note.schema.json"
+        )
+        renamed_schema_path = (
+            pack_root / ".wt" / "schemas" / "interfaces" / "packs" / f"{note_slug}.schema.json"
+        )
+        if original_schema_path.exists():
+            original_schema_path.rename(renamed_schema_path)
+
+    replacements = (
+        (_DEFAULT_FIXTURE_WT_ROOT, actual_wt_root),
+        (_DEFAULT_FIXTURE_PACK_ROOT, actual_pack_root),
+        ("pack.plan", pack_id),
+        ("suite.plan.validation_baseline", suite_id),
+        ("validator.packs.plan_note", validator_id),
+        ("urn:watchtower:schema:interfaces:packs:plan-note:v1", schema_id),
+        ("plan_note", note_slug),
+        ("watchtower-plan", python_distribution),
+        ("watchtower_plan", python_package),
+        ("watchtower_plan.integration", integration_module),
+        ('"pack_slug": "plan"', f'"pack_slug": "{pack_slug}"'),
+        ('"command_namespace": "plan"', f'"command_namespace": "{command_namespace}"'),
+    )
+    for path in sorted(pack_root.rglob("*.json")):
+        text = path.read_text(encoding="utf-8")
+        for old, new in replacements:
+            text = text.replace(old, new)
+        path.write_text(text, encoding="utf-8")
+
     pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
     if pack_registry_path.exists():
-        pack_registry_path.write_text(
-            pack_registry_path.read_text(encoding="utf-8")
-            .replace(
-                "plan/.wt/manifests/pack_runtime_manifest.json",
-                f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
-            )
-            .replace(
-                "plan/.wt/manifests/pack_settings.json",
-                f"{actual_wt_root}/manifests/pack_settings.json",
-            )
-            .replace(
-                f"{_DEFAULT_FIXTURE_WT_ROOT}/manifests/pack_runtime_manifest.json",
-                f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
-            )
-            .replace(
-                f"{_DEFAULT_FIXTURE_WT_ROOT}/manifests/pack_settings.json",
-                f"{actual_wt_root}/manifests/pack_settings.json",
-            ),
-            encoding="utf-8",
+        pack_registry = _load_json(pack_registry_path)
+        effective_default_pack = (
+            default_repo_pack if default_repo_pack is not None else (pack_slug == "plan")
         )
+        registry_entry = {
+            "pack_id": pack_id,
+            "pack_slug": pack_slug,
+            "command_namespace": command_namespace,
+            "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
+            "pack_runtime_manifest_path": f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
+            "python_distribution": python_distribution,
+            "python_package": python_package,
+            "default_repo_pack": effective_default_pack,
+            "notes": (
+                f"The {pack_slug} pack fixture exercises hosted-pack integration "
+                "without changing reusable-core runtime code."
+            ),
+        }
+        packs = list(pack_registry["packs"])
+        if registry_mode == "append":
+            packs = [
+                entry
+                for entry in packs
+                if entry["pack_id"] != pack_id and entry["pack_slug"] != pack_slug
+            ]
+            packs.append(registry_entry)
+        elif registry_mode == "replace_default":
+            replaced = False
+            updated: list[dict[str, object]] = []
+            for entry in packs:
+                if entry.get("pack_id") == pack_id or entry.get("default_repo_pack") is True:
+                    updated.append(registry_entry)
+                    replaced = True
+                else:
+                    updated.append(entry)
+            packs = updated if replaced else [*updated, registry_entry]
+        else:
+            raise ValueError(f"Unknown registry_mode: {registry_mode}")
+        pack_registry["packs"] = packs
+        _write_json(pack_registry_path, pack_registry)
 
     validation_suite_registry_path = f"{actual_wt_root}/registries/validation_suite_registry.json"
     if not include_validation_suite_registry:
@@ -90,14 +139,14 @@ def materialize_pack_validation_suite(
         _write_json(pack_root / ".wt/registries/validator_registry.json", validator_registry)
 
     return {
-        "artifact_relative_path": f"{actual_wt_root}/work_items/plan_note.json",
+        "artifact_relative_path": f"{actual_wt_root}/work_items/{note_slug}.json",
         "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
         "pack_runtime_manifest_path": f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
-        "schema_id": "urn:watchtower:schema:interfaces:packs:plan-note:v1",
-        "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/plan_note.schema.json",
-        "suite_id": _PLAN_SUITE_ID,
+        "schema_id": schema_id,
+        "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/{note_slug}.schema.json",
+        "suite_id": suite_id,
         "validation_suite_registry_path": validation_suite_registry_path,
-        "validator_id": _PLAN_NOTE_VALIDATOR_ID,
+        "validator_id": validator_id,
     }
 
 
