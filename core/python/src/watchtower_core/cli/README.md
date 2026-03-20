@@ -1,15 +1,15 @@
 # `watchtower_core.cli`
 
 ## Summary
-Reusable command-family registration and handler helpers for shared `watchtower-core` commands. Host-owned parser construction, registry metadata, and parser introspection now live under `watchtower_host.cli`, while `main.py` remains as a thin forwarding shim so already-installed console scripts keep working.
+Reusable command-family registration and handler helpers for shared `watchtower-core` commands. Host-owned parser construction, registry metadata, and parser introspection now live under `watchtower_host.cli`, while `main.py` stays as a thin compatibility shim for environments whose installed console script has not yet been refreshed.
 
 ## Boundary
 - `Classification`: `reusable_core_cli_support`
-- `Supported Imports`: `watchtower_core.cli.main` as a forwarding shim for existing console-script environments, plus explicit family, helper, and handler modules when changing shared root-command wiring.
+- `Supported Imports`: Explicit family, helper, and handler modules when changing shared root-command wiring, plus `watchtower_core.cli.main` only as a thin compatibility shim.
 - `Non-Goals`: Host-owned parser construction, host registry metadata, or parser introspection.
 
 ## Key Surfaces
-- `main.py`: Thin forwarding shim for environments where the installed `watchtower-core` script still imports `watchtower_core.cli.main`.
+- `main.py`: Thin compatibility shim that forwards stale console-script entrypoints to `watchtower_host.cli.main` without owning parser or dispatch logic.
 - `*_family.py`: Command-group registration entrypoints, including grouped sync-family helpers.
 - `*_handlers.py`: Runtime handler facades, including grouped sync document, tracking, and orchestration helpers.
 
@@ -17,7 +17,7 @@ Reusable command-family registration and handler helpers for shared `watchtower-
 | Path | Description |
 |---|---|
 | `core/python/src/watchtower_core/cli/README.md` | Describes the shared CLI family and handler boundary for `watchtower-core`. |
-| `core/python/src/watchtower_core/cli/main.py` | Forwarding shim that preserves the installed `watchtower-core` script while the host owns the real entrypoint. |
+| `core/python/src/watchtower_core/cli/main.py` | Thin compatibility shim for console scripts that still target `watchtower_core.cli.main`. |
 | `core/python/src/watchtower_host/cli/main.py` | Host-owned console entrypoint for the `watchtower-core` binary. |
 | `core/python/src/watchtower_host/cli/parser.py` | Host-owned parser construction for the `watchtower-core` binary. |
 | `core/python/src/watchtower_host/cli/registry.py` | Host-owned root command-family registry metadata. |

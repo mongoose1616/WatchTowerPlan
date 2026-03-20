@@ -2546,7 +2546,7 @@
       "path": "core/python/src/watchtower_core/cli/main.py",
       "kind": "file",
       "surface_kind": "python_source_file",
-      "summary": "Forwarding shim that preserves the installed `watchtower-core` script while the host owns the real entrypoint.",
+      "summary": "Thin compatibility shim for console scripts that still target `watchtower_core.cli.main`.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",

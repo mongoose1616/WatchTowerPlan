@@ -124,6 +124,16 @@ def test_removed_placeholder_index_roots_stay_gone() -> None:
     assert not violations, "\n".join(violations)
 
 
+def test_cli_main_compatibility_shim_stays_thin_and_host_forwarding_only() -> None:
+    shim_path = REPO_ROOT / "core/python/src/watchtower_core/cli/main.py"
+    text = shim_path.read_text(encoding="utf-8")
+
+    assert "from watchtower_host.cli.main import main" in text
+    assert "raise SystemExit(main())" in text
+    assert "ArgumentParser" not in text
+    assert "load_command_group_specs" not in text
+
+
 def test_instruction_layers_publish_current_core_plan_boundaries() -> None:
     expectations = {
         REPO_ROOT / "AGENTS.md": ("core/control_plane/", "plan/.wt/", "plan/python/**"),

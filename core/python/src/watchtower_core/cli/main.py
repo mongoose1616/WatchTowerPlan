@@ -1,4 +1,4 @@
-"""Compatibility shim for existing console-script environments."""
+"""Thin compatibility shim for environments with a stale console-script target."""
 
 from __future__ import annotations
 
