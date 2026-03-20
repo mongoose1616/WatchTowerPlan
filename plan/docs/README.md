@@ -6,7 +6,7 @@
 ## Paths
 | Path | Description |
 |---|---|
-| `plan/docs/README.md` | Describes the purpose of the plan docs root and its current migration boundary. |
+| `plan/docs/README.md` | Describes the purpose of the plan docs root and its owned guidance families. |
 | `plan/docs/AGENTS.md` | Defines plan-guidance-specific instructions for the `plan/docs/**` subtree. |
 | `plan/docs/foundations/` | Holds the required byte-identical mirror of the authored foundations source under `core/docs/foundations/`. |
 | `plan/docs/decisions/` | Holds durable decision records promoted out of live initiative work. |

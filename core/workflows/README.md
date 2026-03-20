@@ -6,7 +6,7 @@
 ## Paths
 | Path | Description |
 |---|---|
-| `core/workflows/README.md` | Describes the purpose of the core workflow root and its current migration boundary. |
+| `core/workflows/README.md` | Describes the purpose of the core workflow root and its owned workflow surfaces. |
 | `core/workflows/AGENTS.md` | Defines local instructions for future core-owned workflow guidance. |
 | `core/workflows/ROUTING_TABLE.md` | Defines the reusable-core task routes and shared workflow-module selection rules. |
 | `core/workflows/modules/README.md` | Explains the authoritative core workflow-module set. |

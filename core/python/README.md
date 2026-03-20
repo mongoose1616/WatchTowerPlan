@@ -178,5 +178,5 @@ Use the nested READMEs under `plan/python/src/watchtower_plan/`, `integrations/g
 - `watchtower_plan` is the approved internal plan-pack consumer boundary under `plan/python/src/watchtower_plan/`; keep pack-agnostic loading and validation logic out of that namespace, and move generic behavior back into reusable-core packages when it stops being plan-specific.
 - `watchtower_plan` should be consumed through the shared workspace installation contract, not through repo-local `sys.path` mutation.
 - `watchtower_plan` is not a second generic Python root and not a mirror of `watchtower_core`; keep it narrow and repo-local.
-- The Python design target is boring, explicit, and easy to consolidate: prefer one canonical implementation, extract generic behavior before growing plan-runtime-only surfaces, and keep CLI or doc-facing modules thin.
+- The Python design target is boring, explicit, and easy to consolidate: prefer one canonical implementation, extract generic behavior before growing repo-local plan-only surfaces, and keep CLI or doc-facing modules thin.
 - The default lint baseline now includes Ruff comprehension checks, and the reusable-core package subset is held to stricter `mypy` rules than the plan-owned repo-local surfaces while those domain modules continue tightening.

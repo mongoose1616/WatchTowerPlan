@@ -6,7 +6,7 @@
 ## Paths
 | Path | Description |
 |---|---|
-| `plan/workflows/README.md` | Describes the purpose of the plan workflow entrypoint and its current migration boundary. |
+| `plan/workflows/README.md` | Describes the purpose of the plan workflow entrypoint and its owned workflow surfaces. |
 | `plan/workflows/AGENTS.md` | Defines local instructions for plan-domain workflow guidance surfaces. |
 | `plan/workflows/ROUTING_TABLE.md` | Defines plan-domain task routes and the required workflow modules for those routes. |
 | `plan/workflows/modules/README.md` | Explains the authoritative plan-owned workflow-module set. |

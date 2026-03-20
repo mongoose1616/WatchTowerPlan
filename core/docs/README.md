@@ -6,7 +6,7 @@
 ## Paths
 | Path | Description |
 |---|---|
-| `core/docs/README.md` | Describes the purpose of the core docs root and its current migration boundary. |
+| `core/docs/README.md` | Describes the purpose of the core docs root and its owned documentation families. |
 | `core/docs/AGENTS.md` | Defines documentation-specific instructions for the `core/docs/**` subtree. |
 | `core/docs/commands/` | Holds canonical CLI command pages. |
 | `core/docs/foundations/` | Holds the authored foundations source for shared guidance roots. |

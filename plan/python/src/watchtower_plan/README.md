@@ -16,7 +16,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - Planning lifecycle: `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py` still own repo-local task state mutation, task-event recording, and lifecycle guardrails over live plan state.
 - Pack-local aggregate services: `artifact_index.py`, `guidance_promotion.py`, and `project_context.py` still coordinate plan-pack artifacts, promotion, and project-scoped runtime loading that remain specific to the current pack.
 - Plan-domain closeout: `closeout/` owns retained trace closeout, initiative-package terminal closeout helpers, and guarded purge orchestration because those flows depend on live plan workspace state and repo-local purge policy.
-- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries, but only for live plan-runtime behavior that cannot already live under reusable core.
+- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries, but only for live plan behavior that cannot already live under reusable core.
 
 ## Key Surfaces
 - `initiative_packages.py`: Plan-workspace initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.

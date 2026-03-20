@@ -5,7 +5,7 @@ Repo-local live plan query services for plan indexes, rendered planning views, a
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit plan-runtime query modules such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `reviews`, `closeouts`, `plan_evidence`, and `artifacts`.
+- `Supported Imports`: Explicit live plan query modules such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `reviews`, `closeouts`, `plan_evidence`, and `artifacts`.
 - `Non-Goals`: Re-owning generic command, workflow, authority, route-preview, governance-surface, artifact-family, acceptance, evidence, standards, references, foundations, repository-path, or traceability query services that now live under `watchtower_core.query`.
 - `Machine-State Boundary`: Query live plan machine state from `plan/.wt/**`; do not turn this package into a second machine-state store.
 
