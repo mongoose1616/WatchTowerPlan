@@ -8,8 +8,7 @@ import pytest
 
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
-    materialize_governed_applies_to_targets,
-    materialize_plan_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
 from watchtower_core.control_plane.loader import (
@@ -31,13 +30,15 @@ from watchtower_plan.sync.registry import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+REFERENCE_RESOLUTION_SYNC_TARGETS = frozenset(
+    {"reference-index", "foundation-index", "standard-index", "workflow-index"}
+)
 
 
 def _build_coordination_fixture_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
-    materialize_governed_applies_to_targets(repo_root)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id="trace.example_coordination_sync_dependency_fixture",
@@ -61,6 +62,18 @@ def coordination_fixture_repo(tmp_path: Path, coordination_fixture_baseline: Pat
     return repo_root
 
 
+@pytest.fixture(scope="module")
+def all_sync_dry_run_result() -> object:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    return AllSyncService(loader).run()
+
+
+@pytest.fixture(scope="module")
+def coordination_sync_dry_run_result() -> object:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    return CoordinationSyncService(loader).run()
+
+
 def _first_live_initiative_trace_id(repo_root: Path) -> str:
     for path in sorted((repo_root / "plan").rglob("initiative.json")):
         if "/.wt/" not in path.as_posix():
@@ -70,12 +83,8 @@ def _first_live_initiative_trace_id(repo_root: Path) -> str:
     raise AssertionError("Expected at least one live initiative package in the fixture repo.")
 
 
-def test_all_sync_runs_in_dry_run_mode() -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
-    service = AllSyncService(loader)
-
-    result = service.run()
-
+def test_all_sync_runs_in_dry_run_mode(all_sync_dry_run_result: object) -> None:
+    result = all_sync_dry_run_result
     assert result.wrote is False
     assert tuple(record.target for record in result.records) == tuple(
         spec.target for spec in SYNC_TARGET_SPECS
@@ -87,6 +96,9 @@ def test_all_sync_reuses_reference_index_build_for_dependent_targets(
 ) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = AllSyncService(loader)
+    reference_specs = tuple(
+        spec for spec in SYNC_TARGET_SPECS if spec.target in REFERENCE_RESOLUTION_SYNC_TARGETS
+    )
     reference_build_count = 0
     original_build_document = ReferenceIndexSyncService.build_document
 
@@ -103,7 +115,7 @@ def test_all_sync_reuses_reference_index_build_for_dependent_targets(
         wrapped_build_document,
     )
 
-    result = service.run()
+    result = service.run_specs(reference_specs)
 
     assert result.wrote is False
     assert reference_build_count == 1
@@ -130,12 +142,10 @@ def test_coordination_sync_group_has_expected_targets_in_order() -> None:
     )
 
 
-def test_coordination_sync_runs_in_dry_run_mode() -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
-    service = CoordinationSyncService(loader)
-
-    result = service.run()
-
+def test_coordination_sync_runs_in_dry_run_mode(
+    coordination_sync_dry_run_result: object,
+) -> None:
+    result = coordination_sync_dry_run_result
     assert result.wrote is False
     assert tuple(record.target for record in result.records) == (
         "task-index",
