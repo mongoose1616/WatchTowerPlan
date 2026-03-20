@@ -7,6 +7,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 
 ACTIVE_SURFACE_ROOTS = (
     REPO_ROOT / ".github",
+    REPO_ROOT / "core/control_plane/AGENTS.md",
     REPO_ROOT / "core/docs",
     REPO_ROOT / "plan/docs",
     REPO_ROOT / "core/workflows",
@@ -17,6 +18,9 @@ ACTIVE_SURFACE_ROOTS = (
     REPO_ROOT / "core/control_plane/schemas",
     REPO_ROOT / "README.md",
     REPO_ROOT / "AGENTS.md",
+    REPO_ROOT / "core/python/AGENTS.md",
+    REPO_ROOT / "plan/AGENTS.md",
+    REPO_ROOT / "plan/python/AGENTS.md",
 )
 TEXT_SUFFIXES = {".json", ".md", ".py", ".yaml", ".yml"}
 BANNED_LITERALS = (
@@ -77,6 +81,31 @@ def test_root_docs_and_domain_packs_paths_are_gone() -> None:
 
 def test_removed_repo_fixture_helpers_and_repo_aware_unit_paths_stay_gone() -> None:
     violations = [path.relative_to(REPO_ROOT).as_posix() for path in REMOVED_TEST_PATHS if path.exists()]
+    assert not violations, "\n".join(violations)
+
+
+def test_instruction_layers_publish_current_core_plan_boundaries() -> None:
+    expectations = {
+        REPO_ROOT / "AGENTS.md": ("core/control_plane/", "plan/.wt/", "plan/python/**"),
+        REPO_ROOT / "plan/AGENTS.md": ("plan/.wt/", "plan/docs/**", "plan/python/**"),
+        REPO_ROOT / "core/python/AGENTS.md": ("watchtower_core/**", "plan/python/**", "plan/.wt/**"),
+        REPO_ROOT / "plan/python/AGENTS.md": (
+            "core/python/src/watchtower_core/**",
+            "watchtower_plan",
+            "plan-domain runtime under `watchtower_core.plan_runtime`",
+        ),
+        REPO_ROOT / "core/control_plane/AGENTS.md": ("core/control_plane/**", "plan/.wt/**", "schemas"),
+    }
+
+    violations: list[str] = []
+    for path, required_fragments in expectations.items():
+        text = path.read_text(encoding="utf-8")
+        for fragment in required_fragments:
+            if fragment not in text:
+                violations.append(
+                    f"{path.relative_to(REPO_ROOT).as_posix()}: missing expected boundary fragment {fragment!r}"
+                )
+
     assert not violations, "\n".join(violations)
 
 
