@@ -10,7 +10,7 @@ tags:
   - "planning_retention"
   - "purge"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T20:15:00Z"
+updated_at: "2026-03-21T03:58:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -19,7 +19,7 @@ applies_to:
   - "core/control_plane/ledgers/"
   - "core/control_plane/indexes/"
   - "plan/python/src/watchtower_plan/"
-  - "core/python/src/watchtower_core/cli/"
+  - "plan/python/src/watchtower_plan/cli/"
 aliases:
   - "trace purge"
   - "planning retention"
@@ -111,7 +111,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `plan/python/src/watchtower_plan/`; `core/python/src/watchtower_core/cli/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/cli/`
 
 ## Validation
 - A purged trace should have no surviving open tasks.
@@ -132,4 +132,4 @@ This standard defines the promote-then-purge retention model for closed traced p
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-21T03:58:00Z`
