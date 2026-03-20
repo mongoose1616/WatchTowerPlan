@@ -35,7 +35,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_closeout.md",
       "synopsis": "uv run watchtower-core closeout [-h] <closeout_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/closeout_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/closeout.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "tags": [
@@ -53,7 +53,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_closeout_initiative.md",
       "synopsis": "uv run watchtower-core closeout initiative [-h] --trace-id TRACE_ID --initiative-status {completed,superseded,cancelled,abandoned} --closure-reason CLOSURE_REASON [--superseded-by-trace-id SUPERSEDED_BY_TRACE_ID] [--closed-at CLOSED_AT] [--allow-open-tasks] [--allow-acceptance-issues] [--write] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/closeout_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/closeout.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.closeout",
       "output_formats": [

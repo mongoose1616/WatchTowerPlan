@@ -4,7 +4,7 @@ import argparse
 import json
 from types import SimpleNamespace
 
-from watchtower_core.cli import closeout_handlers
+from watchtower_host.cli import closeout as closeout_handlers
 from watchtower_plan.cli import closeout as plan_closeout_handlers
 
 

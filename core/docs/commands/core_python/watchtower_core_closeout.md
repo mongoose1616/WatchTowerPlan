@@ -15,7 +15,7 @@ been promoted or purged.
 | Invocation | `watchtower-core closeout` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/closeout_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/closeout.py` |
 
 ## Synopsis
 ```sh
@@ -59,8 +59,7 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core plan sync initiative-tracking` | Rebuilds the human-readable initiative tracker that retained or plan closeout also updates in write mode. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/closeout_family.py`
-- `core/python/src/watchtower_core/cli/closeout_handlers.py`
+- `core/python/src/watchtower_host/cli/closeout.py`
 
 ## Updated At
-- `2026-03-18T23:58:00Z`
+- `2026-03-20T18:10:00Z`

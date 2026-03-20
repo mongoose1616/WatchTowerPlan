@@ -16,7 +16,7 @@ Plan-domain closeout services for live initiative packages, retained trace close
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/README.md`
-- `core/python/src/watchtower_core/cli/closeout_handlers.py`
+- `core/python/src/watchtower_host/cli/closeout.py`
 - `plan/docs/standards/governance/initiative_closeout_standard.md`
 
 ## Shrink Rules
