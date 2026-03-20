@@ -6,7 +6,7 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `watchtower_core.control_plane` and explicit helper or model submodules such as `loader`, `pack_context`, `governance_surfaces`, `terminology`, `template_catalog`, `schemas`, and `workspace`.
-- `Non-Goals`: Repo-local planning semantics, Markdown document rules, or task orchestration policy.
+- `Non-Goals`: Repo-local planning semantics, Markdown document rules, task orchestration policy, or live plan machine state that belongs under `plan/.wt/**`.
 
 ## Key Surfaces
 - Load and workspace helpers: `loader.py`, `pack_context.py`, `workspace.py`, `paths.py`, `errors.py`, and `schemas.py` provide governed artifact loading, workspace configuration, filesystem abstraction, and schema-store support.
@@ -19,3 +19,7 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 - `core/python/src/watchtower_core/adapters/README.md`
 - `plan/python/src/watchtower_plan/README.md`
 - `core/control_plane/README.md`
+
+## Notes
+- Keep authored machine authority in `core/control_plane/**` and live plan machine state in `plan/.wt/**`.
+- Keep generic pack/runtime helpers here and push repo-local plan behavior back out to `watchtower_plan` when it depends on the current plan workspace.

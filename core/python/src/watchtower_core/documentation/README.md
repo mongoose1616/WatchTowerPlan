@@ -6,7 +6,7 @@ Repo-shared helpers for governed Markdown semantics, front-matter path normaliza
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: Explicit helper modules such as `front_matter_paths`, `governed_documents`, `markdown_semantics`, `reference_semantics`, and `standards`.
-- `Non-Goals`: Live plan workspace orchestration, plan task lifecycle behavior, or plan-pack sync coordination.
+- `Non-Goals`: Live plan workspace orchestration, plan task lifecycle behavior, plan-pack sync coordination, or repo-local semantic validators that should stay under `watchtower_plan.validation`.
 
 ## Key Surfaces
 - `front_matter_paths.py`: Canonical normalization for path-valued governed front matter.
@@ -21,3 +21,7 @@ Repo-shared helpers for governed Markdown semantics, front-matter path normaliza
 - `plan/python/src/watchtower_plan/validation/README.md`
 - `requirements.md`
 - `decisions.md`
+
+## Notes
+- Keep repo-shared governed-document helpers here.
+- Keep repo-local semantic validation rules and target selection in `watchtower_plan.validation`.
