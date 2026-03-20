@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-20T01:25:48Z",
+  "updated_at": "2026-03-20T01:51:19Z",
   "entries": [
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",
@@ -33,6 +33,35 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/initiative.json"
       ],
       "updated_at": "2026-03-20T01:25:48Z"
+    },
+    {
+      "evidence_id": "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle",
+      "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+      "trace_id": "trace.plan_python_package_dependency_cleanup",
+      "initiative_title": "Plan Python Package Dependency Cleanup",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_python_package_dependency_cleanup",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/discrepancies",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-20T01:51:19Z"
     },
     {
       "evidence_id": "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle",

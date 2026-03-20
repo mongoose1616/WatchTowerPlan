@@ -1,0 +1,30 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.plan_python_package_dependency_cleanup.validate_workspace_closeout",
+  "slug": "validate_workspace_package_split_and_close_out",
+  "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+  "title": "Validate workspace package split and close out",
+  "summary": "Validate the installable-package cutover, repeat the boundary residue pass, and close the initiative on the final green tree.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T01:38:56Z",
+  "updated_at": "2026-03-20T01:50:52Z",
+  "related_ids": [
+    "initiative.plan_python_package_dependency_cleanup"
+  ],
+  "applies_to": [
+    "core/python/",
+    "plan/python/"
+  ],
+  "scope_items": [
+    "Run targeted and full validation for the installable-package cutover.",
+    "Perform a final residue pass for core-vs-domain boundary leaks.",
+    "Refresh derived plan surfaces and close the initiative once the final tree is green."
+  ],
+  "done_when_items": [
+    "Validation passes on the final tree and no actionable boundary leaks remain."
+  ]
+}

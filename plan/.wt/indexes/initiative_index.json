@@ -76,6 +76,65 @@
       ]
     },
     {
+      "trace_id": "trace.plan_python_package_dependency_cleanup",
+      "title": "Plan Python Package Dependency Cleanup",
+      "summary": "Make plan/python an installable workspace package and remove the last repo-local import shim from reusable core.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-20T01:51:19Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_python_package_dependency_cleanup/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_python_package_dependency_cleanup/summary.md",
+      "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+      "slug": "plan_python_package_dependency_cleanup",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.plan_python_package_dependency_cleanup.bootstrap",
+        "task.plan_python_package_dependency_cleanup.make_plan_python_installable",
+        "task.plan_python_package_dependency_cleanup.remove_repo_local_bootstrap",
+        "task.plan_python_package_dependency_cleanup.validate_workspace_closeout"
+      ],
+      "evidence_ids": [
+        "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-20T01:51:19Z",
+      "closure_reason": "Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split.",
+      "related_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md",
+        "core/python/",
+        "core/python/pyproject.toml",
+        "core/python/src/watchtower_core/",
+        "core/python/uv.lock",
+        "plan/initiatives/plan_python_package_dependency_cleanup/",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/initiative.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/bootstrap_plan_python_package_dependency_cleanup/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/make_plan_python_installable/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/remove_repo_local_bootstrap_from_watchtower_core/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/validate_workspace_package_split_and_close_out/task.json",
+        "plan/python/",
+        "plan/python/src/watchtower_plan/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
       "title": "Requirements And Decisions Adherence Remediation",
       "summary": "Retire the root docs tree, finish the initiative-package hard cutover, and restore rich machine-backed documentation surfaces.",

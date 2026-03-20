@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.plan_python_package_dependency_cleanup.validate_workspace_package_split_and_close_out.0002_status_changed",
+  "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-20T01:49:21Z",
+  "summary": "Changed task.plan_python_package_dependency_cleanup.validate_workspace_closeout status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/validate_workspace_package_split_and_close_out/task.json"
+  },
+  "task_id": "task.plan_python_package_dependency_cleanup.validate_workspace_closeout"
+}

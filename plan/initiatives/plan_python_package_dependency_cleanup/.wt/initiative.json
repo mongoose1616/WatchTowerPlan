@@ -1,0 +1,87 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+  "trace_id": "trace.plan_python_package_dependency_cleanup",
+  "slug": "plan_python_package_dependency_cleanup",
+  "title": "Plan Python Package Dependency Cleanup",
+  "summary": "Make plan/python an installable workspace package and remove the last repo-local import shim from reusable core.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-20T01:38:08Z",
+  "updated_at": "2026-03-20T01:51:19Z",
+  "task_ids": [
+    "task.plan_python_package_dependency_cleanup.bootstrap",
+    "task.plan_python_package_dependency_cleanup.make_plan_python_installable",
+    "task.plan_python_package_dependency_cleanup.remove_repo_local_bootstrap",
+    "task.plan_python_package_dependency_cleanup.validate_workspace_closeout"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_python_package_dependency_cleanup.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_python_package_dependency_cleanup.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+      "sha256": "32abd0120c88d1e03a4abc05a9d2dc8dfa762733d3476df638e435dcb6f23809",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T01:40:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+      "sha256": "0814213c2f475e0b0db6948e46b32da34be2ddebd51fdf68d08a398d72d60f58",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T01:40:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+      "sha256": "8baab926fbc5028680843a01a56d2b0fe9c6135d347ef8f2ead29500674349b4",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T01:40:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md",
+      "sha256": "f2da5cec09525f4363c869ac4a025a8eaa241071f896566a95b2eaf24f67f815",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-20T01:40:00Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-20T01:40:00Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-20T01:40:17Z"
+    }
+  ],
+  "closed_at": "2026-03-20T01:51:19Z",
+  "closure_reason": "Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split."
+}

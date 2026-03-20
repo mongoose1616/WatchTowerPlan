@@ -103,6 +103,49 @@
       ]
     },
     {
+      "trace_id": "trace.plan_python_package_dependency_cleanup",
+      "title": "Plan Python Package Dependency Cleanup",
+      "summary": "Make plan/python an installable workspace package and remove the last repo-local import shim from reusable core.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-20T01:51:19Z",
+      "closed_at": "2026-03-20T01:51:19Z",
+      "closure_reason": "Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split.",
+      "source_surface_paths": [
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.plan_python_package_dependency_cleanup.bootstrap",
+        "task.plan_python_package_dependency_cleanup.make_plan_python_installable",
+        "task.plan_python_package_dependency_cleanup.remove_repo_local_bootstrap",
+        "task.plan_python_package_dependency_cleanup.validate_workspace_closeout"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/python/pyproject.toml",
+        "core/python/src/watchtower_core/",
+        "core/python/uv.lock",
+        "plan/initiatives/plan_python_package_dependency_cleanup/",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/initiative.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/bootstrap_plan_python_package_dependency_cleanup/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/make_plan_python_installable/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/remove_repo_local_bootstrap_from_watchtower_core/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/validate_workspace_package_split_and_close_out/task.json",
+        "plan/initiatives/plan_python_package_dependency_cleanup/decision_notes.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/design_record.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/implementation_slice.md",
+        "plan/initiatives/plan_python_package_dependency_cleanup/initiative_brief.md",
+        "plan/python/",
+        "plan/python/src/watchtower_plan/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
       "title": "Requirements And Decisions Adherence Remediation",
       "summary": "Retire the root docs tree, finish the initiative-package hard cutover, and restore rich machine-backed documentation surfaces.",

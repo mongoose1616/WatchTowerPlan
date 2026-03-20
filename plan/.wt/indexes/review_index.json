@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-20T01:25:48Z",
+  "updated_at": "2026-03-20T01:51:19Z",
   "entries": [
     {
       "review_subject_id": "initiative.pack_domain_hardcoding_remediation",
@@ -20,6 +20,24 @@
         "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-20T01:25:48Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.plan_python_package_dependency_cleanup",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+      "trace_id": "trace.plan_python_package_dependency_cleanup",
+      "initiative_title": "Plan Python Package Dependency Cleanup",
+      "title": "Plan Python Package Dependency Cleanup",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-20T01:51:19Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -56,6 +74,22 @@
         "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-20T01:25:48Z"
+    },
+    {
+      "review_subject_id": "promotion.plan_python_package_dependency_cleanup.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.plan_python_package_dependency_cleanup",
+      "trace_id": "trace.plan_python_package_dependency_cleanup",
+      "initiative_title": "Plan Python Package Dependency Cleanup",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-20T01:51:19Z"
     },
     {
       "review_subject_id": "promotion.plan_requirements_decisions_adherence_remediation.bootstrap_shell",
