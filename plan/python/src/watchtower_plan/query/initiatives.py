@@ -6,12 +6,12 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import InitiativeIndexEntry
-from watchtower_plan.plan_workspace import PlanWorkspaceService
-from watchtower_plan.query.common import (
+from watchtower_core.query.rendered_search import (
     initiative_rendered_query_terms,
     rendered_search_filters_from_params,
     search_rendered_entries,
 )
+from watchtower_plan.plan_workspace import PlanWorkspaceService
 
 
 @dataclass(frozen=True, slots=True)

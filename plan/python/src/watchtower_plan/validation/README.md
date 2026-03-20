@@ -1,16 +1,16 @@
 # `watchtower_plan.validation`
 
 ## Summary
-Repo-local document-semantic validators plus WatchTowerPlan-specific validation-target enumeration that cannot already live under reusable core.
+Repo-local document-semantic validators for plan-owned guidance and workflow semantics that cannot already live under reusable core.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit repo-local semantic validators and target-enumeration helpers such as `document_semantics` and `targets`.
-- `Non-Goals`: Owning reusable validation-suite orchestration or aggregate validate-all services, or duplicating generic reusable validator helpers.
+- `Supported Imports`: Explicit repo-local semantic validators such as `document_semantics`.
+- `Non-Goals`: Owning reusable validation-suite orchestration, pack-target enumeration, or aggregate validate-all services, or duplicating generic reusable validator helpers.
 
 ## Key Surfaces
-- `document_semantics.py`: Repo-local validator wiring over reusable documentation helpers plus plan-owned workflow and validator target rules.
-- `targets.py`: WatchTowerPlan-specific target enumeration for the repo baseline validation suite.
+- `document_semantics.py`: Repo-local validator wiring over reusable documentation helpers plus plan-owned workflow and semantic rules.
+- Generic pack-target enumeration now lives in `watchtower_core.validation.pack_targets`.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`
@@ -18,4 +18,4 @@ Repo-local document-semantic validators plus WatchTowerPlan-specific validation-
 
 ## Shrink Rules
 - Keep reusable suite orchestration, aggregate helpers, and generic validators in `watchtower_core.validation`.
-- Keep `watchtower_plan.validation` narrow and limited to repo-local semantic validation rules and target enumeration.
+- Keep `watchtower_plan.validation` narrow and limited to repo-local semantic validation rules.

@@ -14,6 +14,7 @@ Repo-local live plan query services for plan indexes, rendered planning views, a
 - `initiatives.py`, `tasks.py`, `readiness.py`, `discrepancies.py`, `plan_evidence.py`, `closeouts.py`, `reviews.py`, and `projects.py`: Initiative-local and pack-local planning state lookup.
 - `artifacts.py`: Repo-local artifact lookup over live plan artifact indexes and package-local orchestration surfaces.
 - Reusable command, workflow, authority, route-preview, knowledge, discovery, and record queries resolve directly from `watchtower_core.query`.
+- Shared rendered-surface search filters, ranking helpers, and deterministic initiative search-term builders now live in `watchtower_core.query.rendered_search`.
 
 ## Shrink Rules
 - Keep generic governed-surface query helpers in `watchtower_core.query`.
@@ -23,10 +24,10 @@ Repo-local live plan query services for plan indexes, rendered planning views, a
 | Path | Description |
 |---|---|
 | `plan/python/src/watchtower_plan/query/README.md` | Describes the repository query-service boundary and adjacent command docs. |
-| `plan/python/src/watchtower_plan/query/common.py` | Shared rendered-surface search filters and deterministic query-term builders for trace-linked planning views. |
 | `plan/python/src/watchtower_plan/query/initiatives.py` | Compact initiative-family query service over phase, owner, and blocker rendered surfaces. |
 | `plan/python/src/watchtower_plan/query/coordination.py` | Active-first coordination query service that layers the coordination snapshot over initiative history lookup. |
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/query/README.md`
+- `core/python/src/watchtower_core/query/rendered_search.py`
 - `core/docs/commands/core_python/watchtower_core_query.md`

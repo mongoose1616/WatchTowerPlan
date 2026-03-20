@@ -1,4 +1,4 @@
-"""Shared helpers for index-backed query services."""
+"""Generic rendered-surface query helpers used by hosted packs."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ class RenderedSearchFilters:
 
 
 class RenderedSearchParamsLike(Protocol):
-    """Common rendered-search parameter shape used across repo-local queries."""
+    """Common rendered-search parameter shape used across hosted packs."""
 
     query: str | None
     trace_id: str | None
@@ -66,6 +66,7 @@ def search_rendered_entries[EntryT](
     blocked_task_count: Callable[[EntryT], int] | None = None,
 ) -> tuple[EntryT, ...]:
     """Apply shared rendered-surface search filters and deterministic ranking."""
+
     normalized_trace_id = normalize_optional_text(filters.trace_id)
     normalized_initiative_status = normalize_optional_text(filters.initiative_status)
     normalized_current_phase = normalize_optional_text(filters.current_phase)
@@ -112,6 +113,7 @@ def search_rendered_entries[EntryT](
 
 def initiative_rendered_query_terms(entry: InitiativeIndexEntry) -> tuple[str, ...]:
     """Return deterministic searchable terms for compact initiative rendered surfaces."""
+
     return (
         entry.trace_id,
         entry.initiative_id or "",
@@ -156,3 +158,12 @@ def _owner_matches(
     if primary_owner is not None:
         owner_values.add(normalize_text(primary_owner))
     return normalized_owner in owner_values
+
+
+__all__ = [
+    "RenderedSearchFilters",
+    "RenderedSearchParamsLike",
+    "initiative_rendered_query_terms",
+    "rendered_search_filters_from_params",
+    "search_rendered_entries",
+]

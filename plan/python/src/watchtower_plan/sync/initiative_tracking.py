@@ -6,12 +6,12 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.adapters import render_repo_link
-from watchtower_plan.plan_workspace import PlanWorkspaceService
-from watchtower_plan.sync.initiative_index import PHASE_ORDER
-from watchtower_plan.sync.tracking_common import (
+from watchtower_core.sync.rendered_tracking import (
     RenderedTrackingSyncService,
     latest_updated_at_for_entries,
 )
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.sync.initiative_index import PHASE_ORDER
 
 INITIATIVE_TRACKING_DOCUMENT_PATH = "plan/tracking/initiative_tracking.md"
 INITIATIVE_TRACKING_SURFACE_ID = "rendered.initiative_tracking"

@@ -11,6 +11,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
+from watchtower_core.query.common import normalize_optional_text, normalize_text, query_score
 from watchtower_core.rebuild import (
     MarkdownReconciliationHelper,
     RebuildHarness,
@@ -28,11 +29,6 @@ from watchtower_plan.project_context import (
     ProjectContext,
     load_project_context,
     validate_project_machine_state,
-)
-from watchtower_plan.query.common import (
-    normalize_optional_text,
-    normalize_text,
-    query_score,
 )
 from watchtower_core.utils.timestamps import utc_timestamp_now
 from watchtower_core.validation import ValidationResult

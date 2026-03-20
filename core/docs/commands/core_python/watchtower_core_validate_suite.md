@@ -48,7 +48,7 @@ uv run watchtower-core validate suite --suite-id suite.example.validation_baseli
 - The command loads pack settings first, then resolves the active schema catalog, validator registry, and validation-suite registry from the declared surfaces.
 - When `--pack-settings-path` is omitted, the runtime uses the active pack if one was selected explicitly; otherwise it discovers the repository-default pack settings surface and falls back to the shared-core pack only when no repo-local pack exists.
 - Suite steps can currently run `pack_contract`, `artifact`, `front_matter`, and `document_semantics` validations.
-- The current repository baseline suite uses repo-local target enumeration so the suite runtime can stay generic while the repo keeps its bounded validation target set.
+- The current repository baseline suite uses reusable-core pack-target enumeration so the suite runtime stays generic while each hosted pack keeps its bounded validation target set.
 - In `json` mode, the command returns one JSON object with the suite ID, pack-settings path, per-step summaries, and one structured result per executed target.
 - The command exits with status code `0` when every executed target passes and `1` when any step fails or suite selection cannot be completed.
 

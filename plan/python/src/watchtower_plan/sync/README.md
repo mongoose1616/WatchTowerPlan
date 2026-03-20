@@ -13,9 +13,9 @@ Repository-local sync services for live plan indexes, rendered trackers, workflo
 ## Key Surfaces
 - `all.py`: Aggregate sync orchestration.
 - `coordination*.py`, `initiative*.py`, `task*.py`, and `workflow_index.py`: Family-specific rebuild logic for plan-domain indexes and trackers.
-- `tracking_common.py`: Shared rendered-tracker bootstrap, write helpers, and terminal-history shaping.
 - `traceability.py` and `traceability_support.py`: Traceability index orchestration and helper-backed merge logic.
 - `github_tasks.py` and `github_task_sync_support.py`: GitHub task mirror orchestration plus task-selection, rendering, and write-sync helpers.
+- Shared rendered-tracker bootstrap, write helpers, and terminal-history shaping now live in `watchtower_core.sync.rendered_tracking`.
 
 ## Shrink Rules
 - Keep reusable sync harness behavior in `watchtower_core.sync`.
@@ -26,6 +26,7 @@ Repository-local sync services for live plan indexes, rendered trackers, workflo
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/sync/README.md`
+- `core/python/src/watchtower_core/sync/rendered_tracking.py`
 - `core/python/src/watchtower_core/integrations/github/README.md`
 - `core/docs/standards/engineering/python_code_design_standard.md`
 - `core/docs/commands/core_python/watchtower_core_sync.md`

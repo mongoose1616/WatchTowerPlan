@@ -1,4 +1,4 @@
-"""Pack-driven validation target enumeration."""
+"""Generic pack-validation target enumeration helpers."""
 
 from __future__ import annotations
 

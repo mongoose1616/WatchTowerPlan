@@ -22,9 +22,9 @@ from watchtower_core.pack_integration.runtime import (
     load_pack_sync_runtime,
     load_pack_validation_runtime,
 )
+from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_plan import integration as plan_integration
 from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
-from watchtower_plan.validation.targets import resolve_pack_validation_suite_targets
 
 
 def test_load_pack_validation_runtime_uses_repo_pack_contract() -> None:

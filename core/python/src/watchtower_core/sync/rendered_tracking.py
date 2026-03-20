@@ -1,4 +1,4 @@
-"""Shared helpers for generated human-readable planning trackers."""
+"""Generic helpers for rendered tracking surfaces owned by hosted packs."""
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ class UpdatedEntry(Protocol):
 
 
 class RenderedTrackingSyncService:
-    """Shared repo-root bootstrap and write helpers for rendered trackers."""
+    """Shared bootstrap and write helpers for rendered tracking documents."""
 
     DOCUMENT_PATH: ClassVar[str]
     SURFACE_ID: ClassVar[str]
@@ -70,6 +70,7 @@ class RenderedTrackingSyncService:
 
 def initiative_status_map(loader: ControlPlaneLoader) -> dict[str, str]:
     """Return initiative-status values keyed by trace ID."""
+
     index = loader.load_traceability_index()
     return {entry.trace_id: entry.initiative_status for entry in index.entries}
 
@@ -79,6 +80,7 @@ def terminal_initiative_status_counts_for_trace_ids(
     trace_statuses: Mapping[str, str],
 ) -> tuple[tuple[str, int], ...]:
     """Return non-zero initiative terminal-status counts by unique trace ID."""
+
     counts: Counter[str] = Counter()
     seen_trace_ids: set[str] = set()
 
@@ -99,6 +101,7 @@ def terminal_initiative_status_counts_for_trace_ids(
 
 def latest_timestamp(values: tuple[str, ...]) -> str:
     """Return the latest timestamp from a non-empty or empty timestamp tuple."""
+
     return max(values) if values else "None"
 
 
@@ -162,6 +165,26 @@ def latest_updated_at_for_entries(entries: Iterable[UpdatedEntry]) -> str:
 
 def effective_updated_at(updated_at: str, closed_at: str | None = None) -> str:
     """Return the effective update timestamp, treating closeout as a state change."""
+
     if closed_at and closed_at > updated_at:
         return closed_at
     return updated_at
+
+
+__all__ = [
+    "ACTIVE_INITIATIVE_STATUS",
+    "RenderedTrackingBuildResult",
+    "RenderedTrackingSyncService",
+    "TERMINAL_INITIATIVE_STATUSES",
+    "TraceTrackedEntry",
+    "UpdatedEntry",
+    "active_entries_for_trace_status",
+    "effective_updated_at",
+    "initiative_status_for_trace_id",
+    "initiative_status_map",
+    "latest_timestamp",
+    "latest_updated_at_for_entries",
+    "terminal_count_rows_for_entries",
+    "terminal_entries_for_trace_status",
+    "terminal_initiative_status_counts_for_trace_ids",
+]

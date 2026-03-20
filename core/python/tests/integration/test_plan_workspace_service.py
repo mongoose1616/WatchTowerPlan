@@ -9,6 +9,7 @@ import pytest
 from watchtower_core.adapters.front_matter import load_front_matter
 from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.query.rendered_search import RenderedSearchFilters
 from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_plan.guidance_promotion import GuidancePromotionService
 from watchtower_plan.initiative_packages import (
@@ -43,7 +44,6 @@ from watchtower_plan.project_workspace import (
     ProjectWorkspaceService,
 )
 from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
-from watchtower_plan.query.common import RenderedSearchFilters
 from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

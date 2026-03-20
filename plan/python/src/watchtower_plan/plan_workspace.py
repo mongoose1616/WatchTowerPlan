@@ -28,6 +28,12 @@ from watchtower_core.control_plane.models import (
 )
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.evidence import EvidenceBundleHelper
+from watchtower_core.query.common import normalize_optional_text, normalize_text, query_score
+from watchtower_core.query.rendered_search import (
+    RenderedSearchFilters,
+    initiative_rendered_query_terms,
+    search_rendered_entries,
+)
 from watchtower_core.rebuild import (
     MarkdownReconciliationHelper,
     RebuildHarness,
@@ -41,14 +47,6 @@ from watchtower_plan.artifact_index import (
     ArtifactIndexService,
 )
 from watchtower_plan.planning_rendered_serialization import serialize_initiative_entry
-from watchtower_plan.query.common import (
-    RenderedSearchFilters,
-    initiative_rendered_query_terms,
-    normalize_optional_text,
-    normalize_text,
-    query_score,
-    search_rendered_entries,
-)
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"

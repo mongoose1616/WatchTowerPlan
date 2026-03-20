@@ -14,11 +14,13 @@ import watchtower_core.validation as public_validation
 import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.query import CommandQueryService
 from watchtower_core.query.common import DataclassSearchAdapter
+from watchtower_core.query.rendered_search import RenderedSearchFilters
 from watchtower_core.sync.command_index import CommandIndexSyncService
+from watchtower_core.sync.rendered_tracking import RenderedTrackingSyncService
+from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_plan.closeout import InitiativeCloseoutService
 from watchtower_plan.validation import (
     DocumentSemanticsValidationService,
-    resolve_pack_validation_suite_targets,
 )
 from watchtower_core.validation.all import ValidationAllService
 
@@ -133,6 +135,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "foundations.py",
         "governance_surfaces.py",
         "references.py",
+        "rendered_search.py",
         "repository.py",
         "routes.py",
         "standards.py",
@@ -143,8 +146,23 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "__init__.py",
         "command_index.py",
         "harness.py",
+        "rendered_tracking.py",
         "repository_paths.py",
         "route_index.py",
+    ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "validation").glob("*.py")) == [
+        "__init__.py",
+        "acceptance.py",
+        "all.py",
+        "artifact.py",
+        "common.py",
+        "context.py",
+        "errors.py",
+        "front_matter.py",
+        "models.py",
+        "pack_contract.py",
+        "pack_targets.py",
+        "suite.py",
     ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "documentation").glob("*.py")) == [
         "__init__.py",
@@ -216,6 +234,9 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "watchtower_core.workflow_execution.initiative_packages",
         "watchtower_plan.validation.all",
         "watchtower_plan.validation.registry",
+        "watchtower_plan.validation.targets",
+        "watchtower_plan.query.common",
+        "watchtower_plan.sync.tracking_common",
     ),
 )
 def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
@@ -228,14 +249,16 @@ def test_plan_python_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_core.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
+    assert RenderedSearchFilters.__module__ == "watchtower_core.query.rendered_search"
+    assert RenderedTrackingSyncService.__module__ == "watchtower_core.sync.rendered_tracking"
+    assert (
+        resolve_pack_validation_suite_targets.__module__
+        == "watchtower_core.validation.pack_targets"
+    )
     assert InitiativeCloseoutService.__module__ == "watchtower_plan.closeout.initiative"
     assert (
         DocumentSemanticsValidationService.__module__
         == "watchtower_plan.validation.document_semantics"
-    )
-    assert (
-        resolve_pack_validation_suite_targets.__module__
-        == "watchtower_plan.validation.targets"
     )
 
 

@@ -1,7 +1,7 @@
 # `watchtower_core.validation`
 
 ## Summary
-Export-safe validation services, suite orchestration, aggregate baseline helpers, result models, and namespace guardrails. Reusable-core validation orchestration now loads pack-owned semantic rule providers through the declared pack-integration contract instead of hard-importing plan code.
+Export-safe validation services, suite orchestration, aggregate baseline helpers, result models, generic pack-target enumeration, and namespace guardrails. Reusable-core validation orchestration now loads pack-owned semantic rule providers through the declared pack-integration contract instead of hard-importing plan code.
 
 ## Boundary
 - `Classification`: `reusable_core`
@@ -12,6 +12,7 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 - `acceptance.py`, `artifact.py`, `front_matter.py`, and `pack_contract.py`: Exported validator services.
 - `all.py`: Aggregate validation helper that runs a selected suite baseline plus acceptance reconciliation.
 - `suite.py`: Registry-backed reusable-core suite orchestration that resolves pack-owned document semantics through `watchtower_core.pack_integration.runtime`.
+- `pack_targets.py`: Generic pack-target enumeration over validator and workflow contracts for hosted packs.
 - `context.py`, `models.py`, and `errors.py`: Pack-aware context helpers, shared validation result models, and error types.
 - `__init__.py`: Namespace guardrail for helpers that stay out of the package root, including repo-local semantic validators and submodule-only aggregate orchestration.
 
@@ -21,4 +22,4 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 
 ## Notes
 - Keep reusable suite orchestration, result models, and generic validators here.
-- Keep `watchtower_plan.validation` narrow and limited to repo-local semantic validation rules and target enumeration.
+- Keep `watchtower_plan.validation` narrow and limited to repo-local semantic validation rules.

@@ -10,8 +10,8 @@ from watchtower_core.pack_integration import (
     PackSyncRuntime,
     PackValidationRuntime,
 )
+from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
-from watchtower_plan.validation.targets import resolve_pack_validation_suite_targets
 
 
 def _command_registration(*args: Any, **kwargs: Any) -> None:

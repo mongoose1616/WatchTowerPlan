@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from watchtower_plan.sync.tracking_common import (
+from watchtower_core.sync.rendered_tracking import (
     RenderedTrackingSyncService,
     latest_updated_at_for_entries,
 )

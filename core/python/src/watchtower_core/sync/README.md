@@ -14,6 +14,7 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 - `command_index.py`: Repo-shared command-index rebuild service.
 - `route_index.py`: Repo-shared route-index rebuild service.
 - `repository_paths.py`: Repo-shared repository-path index rebuild service.
+- `rendered_tracking.py`: Shared rendered-tracker bootstrap, write helpers, and initiative-status summary shaping used by hosted packs.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/sync/README.md`
