@@ -48,7 +48,7 @@ def _run_doctor(args: argparse.Namespace) -> int:
             "watchtower-core validate all",
             "./.venv/bin/python -m mypy src",
             "./.venv/bin/ruff check src tests/unit tests/integration",
-            "./.venv/bin/python -m pytest",
+            "./.venv/bin/python -m pytest tests/unit tests/integration -q",
         ],
     }
 

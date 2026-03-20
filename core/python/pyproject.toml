@@ -35,7 +35,7 @@ watchtower-core = "watchtower_core.cli.main:main"
 packages = ["src/watchtower_core"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests/unit"]
 addopts = [
   "-q",
   "--maxfail=1",

@@ -34,7 +34,8 @@
 - Manual fallback: run `source .venv/bin/activate` if you specifically want to activate the environment in your current shell.
 
 ### Common Commands
-- `uv run pytest`
+- `uv run pytest -q`
+- `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - `uv run ruff check .`
 - `uv run mypy src`
 - `uv run watchtower-core --help`
@@ -97,12 +98,14 @@
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
 - `watchtower-core doctor`
-- `pytest`
+- `pytest -q`
 - `ruff check .`
 - `mypy src`
 
 ### Notes
 - `uv run ...` is the default workflow for this repository.
+- `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
+- Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad Python validation pass when a change touches repo-materialization, workspace orchestration, or multi-surface CLI behavior.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
@@ -145,7 +148,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/workflow_execution/README.md` | `reusable_core` | Export-safe workflow execution harness over routed workflow selection and metadata. |
 | `core/python/src/watchtower_core/evidence/README.md` | `reusable_core` | Validation-evidence recording plus reusable evidence-bundle helpers. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
-| `core/python/src/watchtower_core/closeout/README.md` | `repo_local_orchestration` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
+| `core/python/src/watchtower_core/closeout/README.md` | `boundary_layer` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
 | `plan/python/src/watchtower_plan/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific plan-domain runtime, query, sync, validation, and authored-document semantics under the approved plan-owned Python boundary. |
 | `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
 | `core/python/src/watchtower_core/utils/README.md` | `reusable_core` | Narrow shared helpers that do not justify a first-class package. |
