@@ -10,7 +10,7 @@ from tests.integration.fixture_repo_support import (
     materialize_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.query import (
+from watchtower_plan.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
     ValidationEvidenceQueryService,

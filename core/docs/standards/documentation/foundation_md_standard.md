@@ -69,7 +69,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`; `query`
-- `Operational Surfaces`: `core/docs/foundations/customer_story.md`; `core/docs/foundations/engineering_design_principles.md`; `core/docs/foundations/engineering_stack_direction.md`; `core/docs/foundations/product_direction.md`; `core/docs/foundations/repository_scope.md`; `core/docs/foundations/repository_standards_posture.md`; `core/docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py`; `core/python/src/watchtower_core/plan_runtime/query/foundations.py`
+- `Operational Surfaces`: `core/docs/foundations/customer_story.md`; `core/docs/foundations/engineering_design_principles.md`; `core/docs/foundations/engineering_stack_direction.md`; `core/docs/foundations/product_direction.md`; `core/docs/foundations/repository_scope.md`; `core/docs/foundations/repository_standards_posture.md`; `core/docs/templates/foundation_document_template.md`; `plan/python/src/watchtower_plan/sync/foundation_index.py`; `plan/python/src/watchtower_plan/query/foundations.py`
 
 ## Validation
 - Foundation-doc front matter should validate against `foundation_front_matter.schema.json`.

@@ -32,5 +32,5 @@ __all__ = [
 ]
 __getattr__ = fail_closed_package_getattr(
     "watchtower_core.workflow_execution exports only reusable workflow execution surfaces. "
-    "Repo-specific workflow behavior still lives under watchtower_core.plan_runtime."
+    "Repo-specific workflow behavior still lives under watchtower_plan."
 )

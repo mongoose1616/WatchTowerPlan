@@ -18,7 +18,7 @@ applies_to:
   - "plan/projects/"
   - "core/control_plane/ledgers/"
   - "core/control_plane/indexes/"
-  - "core/python/src/watchtower_core/plan_runtime/"
+  - "plan/python/src/watchtower_plan/"
   - "core/python/src/watchtower_core/cli/"
 aliases:
   - "trace purge"
@@ -111,7 +111,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `core/python/src/watchtower_core/plan_runtime/`; `core/python/src/watchtower_core/cli/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `plan/python/src/watchtower_plan/`; `core/python/src/watchtower_core/cli/`
 
 ## Validation
 - A purged trace should have no surviving open tasks.

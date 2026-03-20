@@ -9,9 +9,9 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
-from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
-from watchtower_core.plan_runtime.sync.all import AllSyncRecord
-from watchtower_core.plan_runtime.sync.coordination import CoordinationSyncService
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.sync.all import AllSyncRecord
+from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
 

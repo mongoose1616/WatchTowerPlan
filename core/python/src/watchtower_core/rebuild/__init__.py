@@ -38,5 +38,5 @@ __all__ = [
 ]
 __getattr__ = fail_closed_package_getattr(
     "watchtower_core.rebuild exports only generic rebuild harness surfaces. "
-    "Repo-specific rebuild orchestration still lives under watchtower_core.plan_runtime."
+    "Repo-specific rebuild orchestration still lives under watchtower_plan."
 )

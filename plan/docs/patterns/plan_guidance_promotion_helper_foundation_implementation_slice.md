@@ -11,7 +11,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - plan/docs/patterns/plan_guidance_promotion_helper_foundation_implementation_slice.md
-- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/python/src/watchtower_plan/guidance_promotion.py
 - plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
 - plan/.wt/indexes/promotion_index.json

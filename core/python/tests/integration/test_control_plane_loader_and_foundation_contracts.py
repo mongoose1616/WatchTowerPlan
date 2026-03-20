@@ -120,8 +120,8 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
         REPO_ROOT / "core/docs/standards/data_contracts/foundation_index_standard.md"
     ).read_text(encoding="utf-8")
 
-    assert "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py" in markdown
-    assert "core/python/src/watchtower_core/plan_runtime/query/foundations.py" in markdown
+    assert "plan/python/src/watchtower_plan/sync/foundation_index.py" in markdown
+    assert "plan/python/src/watchtower_plan/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
@@ -203,11 +203,11 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     package_readme = (
         REPO_ROOT / "core/python/src/watchtower_core/README.md"
     ).read_text(encoding="utf-8")
-    plan_runtime_readme = (
-        REPO_ROOT / "core/python/src/watchtower_core/plan_runtime/README.md"
+    plan_python_readme = (
+        REPO_ROOT / "plan/python/src/watchtower_plan/README.md"
     ).read_text(encoding="utf-8")
-    plan_runtime_sync_readme = (
-        REPO_ROOT / "core/python/src/watchtower_core/plan_runtime/sync/README.md"
+    plan_python_sync_readme = (
+        REPO_ROOT / "plan/python/src/watchtower_plan/sync/README.md"
     ).read_text(encoding="utf-8")
     control_plane_readme = (
         REPO_ROOT / "core/python/src/watchtower_core/control_plane/README.md"
@@ -221,33 +221,33 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_standard
     assert "Keep package boundaries explicit:" in python_code_design_standard
     assert "`control_plane/` owns reusable loaders" in python_code_design_standard
-    assert "`plan_runtime/` owns only residual repository-local orchestration" in (
+    assert "`plan/python/src/watchtower_plan/` owns repository-local orchestration" in (
         python_code_design_standard
     )
-    assert "core/python/src/watchtower_core/plan_runtime/query/" in workspace_standard
+    assert "plan/python/src/watchtower_plan/query/" in workspace_standard
     assert "core/python/src/watchtower_core/query/" in workspace_standard
-    assert "core/python/src/watchtower_core/plan_runtime/sync/" in workspace_standard
+    assert "plan/python/src/watchtower_plan/sync/" in workspace_standard
     assert "core/python/src/watchtower_core/rebuild/" in workspace_standard
     assert "core/python/src/watchtower_core/routing/" in workspace_standard
     assert "core/python/src/watchtower_core/workflow_execution/" in workspace_standard
     assert "Export-safe generic query services" in workspace_standard
     assert "Export-safe generic sync harness and target contracts" in workspace_standard
     assert "A reusable-core query helper" in workspace_standard
-    assert "plan_runtime/" in workspace_standard
-    assert "Residual WatchTowerPlan-specific" in workspace_standard
+    assert "plan/python/src/watchtower_plan/" in workspace_standard
+    assert "Approved WatchTowerPlan-specific" in workspace_standard
     assert "Classification`: `reusable_core`" in query_readme
     assert "| `query/` | `reusable_core` |" in package_readme
     assert "| `rebuild/` | `reusable_core` |" in package_readme
     assert "| `routing/` | `reusable_core` |" in package_readme
     assert "| `workflow_execution/` | `reusable_core` |" in package_readme
-    assert "Residual WatchTowerPlan-specific orchestration" in package_readme
+    assert "plan-domain sync target registries and orchestration live under `watchtower_plan.sync`" in package_readme
     assert "core/docs/standards/engineering/python_code_design_standard.md" in package_readme
-    assert "Residual WatchTowerPlan-specific orchestration" in plan_runtime_readme
-    assert "Repository-local sync services" in plan_runtime_sync_readme
-    assert "Shrink Rules" in plan_runtime_sync_readme
+    assert "approved plan-owned Python boundary" in plan_python_readme
+    assert "Repository-local sync services" in plan_python_sync_readme
+    assert "Shrink Rules" in plan_python_sync_readme
     assert (
         "core/docs/standards/engineering/python_code_design_standard.md"
-        in plan_runtime_sync_readme
+        in plan_python_sync_readme
     )
     assert "human_surface_policy.py" in control_plane_readme
     assert "retention_policy.py" in control_plane_readme
@@ -257,7 +257,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/python/src/watchtower_core/routing/README.md" in workspace_readme
     assert "core/python/src/watchtower_core/workflow_execution/README.md" in workspace_readme
     assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_readme
-    assert "core/python/src/watchtower_core/plan_runtime/query/" in best_practices_standard
+    assert "plan/python/src/watchtower_plan/query/" in best_practices_standard
     assert "core/docs/standards/engineering/python_code_design_standard.md" in (
         best_practices_standard
     )
@@ -269,7 +269,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
         "core/docs/commands/core_python/watchtower_core_sync_github_tasks.md",
     ):
         markdown = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
-        assert "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py" in markdown
+        assert "plan/python/src/watchtower_plan/sync/github_tasks.py" in markdown
         assert "core/python/src/watchtower_core/sync/github_tasks.py" not in markdown
 
 

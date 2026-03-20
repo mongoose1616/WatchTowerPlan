@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition, ValidatorDefinition
+from watchtower_core.repo_local_bootstrap import ensure_plan_python_src_on_path
 from watchtower_core.validation.artifact import ArtifactValidationService
 from watchtower_core.validation.common import discover_repository_targets
 from watchtower_core.validation.context import PackValidationContext
@@ -21,7 +22,7 @@ from watchtower_core.validation.models import (
 from watchtower_core.validation.pack_contract import PackContractValidationService
 
 if TYPE_CHECKING:
-    from watchtower_core.plan_runtime.validation.document_semantics import (
+    from watchtower_plan.validation.document_semantics import (
         DocumentSemanticsValidationService,
     )
 
@@ -292,7 +293,8 @@ class ValidationSuiteService:
 def _default_document_semantics_factory(
     loader: ControlPlaneLoader,
 ) -> DocumentSemanticsValidationService:
-    from watchtower_core.plan_runtime.validation.document_semantics import (
+    ensure_plan_python_src_on_path()
+    from watchtower_plan.validation.document_semantics import (
         DocumentSemanticsValidationService,
     )
 

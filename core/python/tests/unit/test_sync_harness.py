@@ -2,7 +2,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.sync.command_index import (
+from watchtower_plan.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )

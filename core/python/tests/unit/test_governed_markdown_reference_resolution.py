@@ -6,11 +6,11 @@ from textwrap import dedent
 
 from watchtower_core.adapters import extract_repo_path_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.governed_documents import (
+from watchtower_plan.governed_documents import (
     GovernedDocument,
     collect_reference_indicators,
 )
-from watchtower_core.plan_runtime.sync import FoundationIndexSyncService
+from watchtower_plan.sync import FoundationIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

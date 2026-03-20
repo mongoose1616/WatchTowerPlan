@@ -362,11 +362,11 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.standard_index",
         ),
         (
-            "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
+            "plan/python/src/watchtower_plan/sync/foundation_index.py",
             "std.data_contracts.foundation_index",
         ),
         (
-            "core/python/src/watchtower_core/plan_runtime/query/foundations.py",
+            "plan/python/src/watchtower_plan/query/foundations.py",
             "std.data_contracts.foundation_index",
         ),
         (

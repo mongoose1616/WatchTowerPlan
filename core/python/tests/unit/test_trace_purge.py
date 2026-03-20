@@ -14,11 +14,11 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.plan_runtime.plan_workspace import (
+from watchtower_plan.plan_workspace import (
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
 )
-from watchtower_core.plan_runtime.sync.all import AllSyncRecord, AllSyncResult
+from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

@@ -16,7 +16,7 @@ applies_to:
   - ".github/"
   - "plan/docs/standards/governance/github_collaboration_standard.md"
   - "plan/docs/standards/governance/github_task_sync_standard.md"
-  - "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+  - "plan/python/src/watchtower_plan/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github issue forms"
@@ -87,7 +87,7 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [README.md](/.github/README.md)
 - [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
 - [watchtower_core_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_sync_github_tasks.md)
-- `core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py`
+- `plan/python/src/watchtower_plan/sync/github_tasks.py`
 
 ### Why It Matters Here
 - This reference is the repo-native lookup surface for GitHub collaboration assumptions that materially shape local standards and designs.

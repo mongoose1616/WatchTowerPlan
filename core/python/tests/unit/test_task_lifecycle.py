@@ -9,15 +9,15 @@ import pytest
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_governed_applies_to_targets,
-    materialize_plan_runtime_pack,
+    materialize_minimal_plan_pack,
     packwide_initiative_root,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime import plan_task_state
-from watchtower_core.plan_runtime import task_lifecycle as task_lifecycle_module
-from watchtower_core.plan_runtime.initiative_packages import InitiativePackageService
-from watchtower_core.plan_runtime.plan_task_state import update_task_document
-from watchtower_core.plan_runtime.task_lifecycle import (
+from watchtower_plan import plan_task_state
+from watchtower_plan import task_lifecycle as task_lifecycle_module
+from watchtower_plan.initiative_packages import InitiativePackageService
+from watchtower_plan.plan_task_state import update_task_document
+from watchtower_plan.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskUpdateParams,
@@ -31,7 +31,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
     (repo_root / "core" / "python" / "tests" / "unit").mkdir(parents=True, exist_ok=True)
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     return repo_root
 

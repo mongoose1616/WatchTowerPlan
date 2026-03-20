@@ -12,7 +12,7 @@ from watchtower_core.adapters.markdown import (
 from watchtower_core.cli.introspection import iter_command_parser_specs
 from watchtower_core.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.sync import CommandIndexSyncService
+from watchtower_plan.sync import CommandIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

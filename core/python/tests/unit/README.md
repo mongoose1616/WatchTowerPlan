@@ -33,7 +33,7 @@
 | `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
 | `core/python/tests/unit/test_repository_paths_sync.py` | Unit tests for rebuilding the repository path index from README inventory surfaces. |
 | `core/python/tests/unit/test_rendered_search_common.py` | Unit tests for the shared rendered-surface search helper that planning, initiative, and coordination queries now share. |
-| `core/python/tests/unit/test_plan_runtime_boundary.py` | Unit tests for the explicit plan-runtime boundary and the absence of retired wrapper modules. |
+| `core/python/tests/unit/test_plan_python_boundary.py` | Unit tests for the explicit core-versus-plan Python boundary and the absence of retired wrapper modules. |
 | `core/python/tests/unit/test_template_catalog.py` | Unit tests for the governed template catalog and template lookup behavior. |
 | `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |
 | `core/python/tests/unit/test_standard_index_sync.py` | Unit tests for rebuilding the standard index from governed standards docs. |

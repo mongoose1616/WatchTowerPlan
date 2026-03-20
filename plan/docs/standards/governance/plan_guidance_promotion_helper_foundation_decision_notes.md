@@ -11,7 +11,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md
-- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/python/src/watchtower_plan/guidance_promotion.py
 - plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
 - plan/.wt/indexes/promotion_index.json
@@ -43,7 +43,7 @@ Define the rule-bearing obligations for governed promotion of initiative-local a
 
 - [standard_md_standard.md](/core/docs/standards/documentation/standard_md_standard.md): promoted standards under `plan/docs/standards/**` must satisfy the governed standard-document contract instead of using a reduced template-only shape.
 - [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md): durable guidance must remain authoritative after initiative packages are eligible for purge.
-- [guidance_promotion.py](/core/python/src/watchtower_core/plan_runtime/guidance_promotion.py): the promotion runtime must route outputs into governed roots and keep rendered documents aligned with the active validators.
+- [guidance_promotion.py](/plan/python/src/watchtower_plan/guidance_promotion.py): the promotion runtime must route outputs into governed roots and keep rendered documents aligned with the active validators.
 - [promotion_policy_registry.json](/plan/.wt/registries/promotion_policy_registry.json): the promotion policy registry defines the sanctioned target family, root, review path, provenance, and mirror behavior.
 
 ## Guidance
@@ -56,7 +56,7 @@ Define the rule-bearing obligations for governed promotion of initiative-local a
 ## Operationalization
 
 - `Modes`: `documentation`; `sync`; `validation`
-- `Operational Surfaces`: `plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md`; `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`; `plan/.wt/registries/promotion_policy_registry.json`; `plan/.wt/indexes/guidance_index.json`; `plan/.wt/indexes/promotion_index.json`
+- `Operational Surfaces`: `plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md`; `plan/python/src/watchtower_plan/guidance_promotion.py`; `plan/.wt/registries/promotion_policy_registry.json`; `plan/.wt/indexes/guidance_index.json`; `plan/.wt/indexes/promotion_index.json`
 
 ## Validation
 

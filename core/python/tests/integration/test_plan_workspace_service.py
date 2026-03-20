@@ -9,15 +9,15 @@ import pytest
 from watchtower_core.adapters.front_matter import load_front_matter
 from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.artifact_index import PLAN_ARTIFACT_INDEX_PATH
-from watchtower_core.plan_runtime.guidance_promotion import GuidancePromotionService
-from watchtower_core.plan_runtime.initiative_packages import (
+from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
+from watchtower_plan.guidance_promotion import GuidancePromotionService
+from watchtower_plan.initiative_packages import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_core.plan_runtime.plan_workspace import (
+from watchtower_plan.plan_workspace import (
     PLAN_CLOSEOUT_INDEX_PATH,
     PLAN_COORDINATION_INDEX_PATH,
     PLAN_DISCREPANCY_INDEX_PATH,
@@ -37,13 +37,13 @@ from watchtower_core.plan_runtime.plan_workspace import (
     PlanTaskSearchParams,
     PlanWorkspaceService,
 )
-from watchtower_core.plan_runtime.project_workspace import (
+from watchtower_plan.project_workspace import (
     ProjectBootstrapParams,
     ProjectRepositoryLinkSpec,
     ProjectWorkspaceService,
 )
-from watchtower_core.plan_runtime.query import ArtifactQueryService, ArtifactSearchParams
-from watchtower_core.plan_runtime.query.common import RenderedSearchFilters
+from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
+from watchtower_plan.query.common import RenderedSearchFilters
 from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

@@ -20,7 +20,7 @@ def register_task_family(subparsers: argparse._SubParsersAction) -> None:
         _run_task_transition,
         _run_task_update,
     )
-    from watchtower_core.plan_runtime.task_lifecycle import (
+    from watchtower_plan.task_lifecycle import (
         TASK_KIND_CHOICES,
         TASK_PRIORITY_CHOICES,
         TASK_STATUS_CHOICES,

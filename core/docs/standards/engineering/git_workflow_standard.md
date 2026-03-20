@@ -91,7 +91,7 @@ This standard defines repository-standard local git workflow behavior, including
 | Bounded feature slice | `feature/registry-backed-command-surface` |
 | Bug fix | `fix/task-index-trace-filter` |
 | Docs-only change | `chore/doc-root-cutover` |
-| Narrow task branch | `task/repo-ops-boundary-split` |
+| Narrow task branch | `task/plan-python-boundary-split` |
 
 ## Process or Workflow
 1. Decide whether the work crosses the durable-task threshold or otherwise needs a bounded branch.

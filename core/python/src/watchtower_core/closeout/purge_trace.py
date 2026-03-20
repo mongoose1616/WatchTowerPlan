@@ -18,9 +18,9 @@ from watchtower_core.control_plane.models import (
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
-from watchtower_core.plan_runtime.plan_task_state import task_event_directory
-from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
-from watchtower_core.plan_runtime.sync.all import AllSyncService
+from watchtower_plan.plan_task_state import task_event_directory
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.sync.all import AllSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
 

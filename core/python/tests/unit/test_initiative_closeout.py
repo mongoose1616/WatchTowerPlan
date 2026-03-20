@@ -16,12 +16,12 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.plan_runtime.plan_workspace import (
+from watchtower_plan.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
-from watchtower_core.plan_runtime.sync.coordination import CoordinationSyncService
+from watchtower_plan.sync.coordination import CoordinationSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 CURRENT_ACCEPTANCE_PATH = (

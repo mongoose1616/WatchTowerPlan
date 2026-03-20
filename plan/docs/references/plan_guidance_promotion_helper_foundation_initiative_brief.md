@@ -11,7 +11,7 @@ audience: shared
 authority: reference
 applies_to:
 - plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md
-- core/python/src/watchtower_core/plan_runtime/guidance_promotion.py
+- plan/python/src/watchtower_plan/guidance_promotion.py
 - plan/.wt/registries/promotion_policy_registry.json
 - plan/.wt/indexes/guidance_index.json
 - plan/.wt/indexes/promotion_index.json
@@ -39,7 +39,7 @@ This reference captures the durable operating model for governed guidance promot
 ## Related Surfaces
 
 - `plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md`
-- `core/python/src/watchtower_core/plan_runtime/guidance_promotion.py`
+- `plan/python/src/watchtower_plan/guidance_promotion.py`
 - `plan/.wt/indexes/guidance_index.json`
 - `plan/.wt/indexes/promotion_index.json`
 

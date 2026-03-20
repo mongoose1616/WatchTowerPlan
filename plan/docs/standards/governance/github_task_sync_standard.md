@@ -15,7 +15,7 @@ authority: "authoritative"
 applies_to:
   - "plan/initiatives/"
   - "plan/projects/"
-  - "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+  - "plan/python/src/watchtower_plan/sync/github_tasks.py"
 aliases:
   - "github task sync"
   - "issue sync"
@@ -140,7 +140,7 @@ This standard defines the repository's GitHub task sync contract for pushing ini
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py`; `core/docs/references/github_collaboration_reference.md`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `plan/python/src/watchtower_plan/sync/github_tasks.py`; `core/docs/references/github_collaboration_reference.md`
 
 ## Validation
 - Live task records with `github_issue_number` should also carry `github_repository`.

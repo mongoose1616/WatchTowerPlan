@@ -9,15 +9,15 @@ import pytest
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_governed_applies_to_targets,
-    materialize_plan_runtime_pack,
+    materialize_minimal_plan_pack,
     packwide_initiative_root,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import GitHubApiError, GitHubIssueRef, GitHubProjectContext
-from watchtower_core.plan_runtime.initiative_packages import InitiativeTaskSpec
-from watchtower_core.plan_runtime.plan_task_state import update_task_document
-from watchtower_core.plan_runtime.plan_workspace import PLAN_TASK_INDEX_PATH
-from watchtower_core.plan_runtime.sync import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_plan.initiative_packages import InitiativeTaskSpec
+from watchtower_plan.plan_task_state import update_task_document
+from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
+from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 TRACE_ID = "trace.github_task_sync_fixture"
@@ -29,7 +29,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
     bootstrap_packwide_initiative(
         repo_root,

@@ -38,7 +38,7 @@ _EXPORT_MODULES = {
     "WorkflowSearchParams": "watchtower_core.query.workflows",
 }
 
-_REPO_OPS_EXPORTS = {
+_PLAN_DOMAIN_EXPORTS = {
     "AcceptanceContractQueryService",
     "ArtifactQueryService",
     "CoordinationQueryService",
@@ -59,9 +59,9 @@ __getattr__ = lazy_module_getattr(
     module_name=__name__,
     export_modules=_EXPORT_MODULES,
     blocked_messages=dict.fromkeys(
-        _REPO_OPS_EXPORTS,
+        _PLAN_DOMAIN_EXPORTS,
         "watchtower_core.query exposes only reusable generic query services. "
         "Import live planning or repo-local query services from "
-        "watchtower_core.plan_runtime.query.",
+        "watchtower_plan.query.",
     ),
 )

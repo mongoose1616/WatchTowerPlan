@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
+from tests.integration.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane import ControlPlaneLoader
 from watchtower_core.evidence import EvidenceBundleEntrySpec, EvidenceBundleHelper
 
@@ -46,7 +46,7 @@ def test_evidence_bundle_helper_loads_typed_artifact_from_live_plan_bundle(
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     helper = EvidenceBundleHelper(
         ControlPlaneLoader(
             repo_root,

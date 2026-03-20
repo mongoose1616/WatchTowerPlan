@@ -13,13 +13,13 @@
 ## Local Rules
 - Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for migration, workspace, routing, and plan-pack runtime behavior until those files are fully implemented.
 - Use existing standards, references, and helper docs only where they stay consistent with [requirements.md](/requirements.md) and [decisions.md](/decisions.md).
-- Treat [core/python](/core/python) as the current canonical Python workspace in this repository until an approved plan-owned Python boundary lands under `plan/**`.
+- Treat [core/python](/core/python) as the canonical shared Python tooling, tests, and local virtual-environment workspace in this repository. The approved plan-owned source boundary now lives under `plan/python/**`.
 - Run Python package commands from `core/python/` unless a narrower subpath is explicitly required.
 - Prefer `uv run <command>` for tests, linting, typechecking, CLI execution, and ad hoc package-local Python invocations.
 - When a command supports structured output, prefer `--format json` for agent or workflow use instead of scraping human-readable text.
 - Use the workspace-local environment at `core/python/.venv/`; do not create alternate virtual environments under `core/` or elsewhere in the repo.
 - Keep Python dependency and tool changes aligned across `pyproject.toml`, `uv.lock`, and [core/python/README.md](/core/python/README.md) in the same change set.
-- When Python command behavior changes, update the relevant command pages under [core/docs/commands/core_python](/core/docs/commands/core_python/), the command index, and the workspace README in the same change set.
+- When Python command behavior changes, update the relevant command pages under [core/docs/commands/core_python](/core/docs/commands/core_python/), the command index, the workspace README, and any impacted `plan/python/**` boundary docs in the same change set.
 - Keep authored schemas, registries, contracts, policies, and indexes in [core/control_plane](/core/control_plane), not in the Python workspace.
 
 ## Do
@@ -31,5 +31,5 @@
 
 ## Do Not
 - Do not install Python packages globally for repository work when the workspace can manage them locally.
-- Do not add ad hoc parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`. A future plan-owned Python root under `plan/**` requires explicit approval plus companion updates to [requirements.md](/requirements.md), [decisions.md](/decisions.md), workspace READMEs, validation coverage, and routing or command guidance.
+- Do not add ad hoc parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`. The approved plan-domain exception is `plan/python/src/watchtower_plan/`; any additional Python root still requires explicit approval plus companion updates to [requirements.md](/requirements.md), [decisions.md](/decisions.md), workspace READMEs, validation coverage, and routing or command guidance.
 - Do not commit `.venv`, caches, wheels, or build outputs.

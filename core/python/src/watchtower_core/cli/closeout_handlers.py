@@ -10,7 +10,7 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.closeout import InitiativeCloseoutService, TracePurgeService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime import InitiativePackageService
+from watchtower_plan import InitiativePackageService
 
 
 def _run_closeout_initiative(args: argparse.Namespace) -> int:

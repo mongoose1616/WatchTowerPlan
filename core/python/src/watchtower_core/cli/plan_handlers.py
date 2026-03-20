@@ -6,7 +6,7 @@ import argparse
 
 from watchtower_core.cli.handler_common import _emit_detail_result, _run_value_error_operation
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import (
+from watchtower_plan.initiative_packages import (
     InitiativeBootstrapParams,
     InitiativePackageResult,
     InitiativePackageService,

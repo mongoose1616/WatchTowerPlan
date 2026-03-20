@@ -12,14 +12,16 @@ from tests.integration.fixture_repo_support import (
     materialize_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import InitiativePackageService
-from watchtower_core.plan_runtime.query import (
+from watchtower_plan.initiative_packages import InitiativePackageService
+from watchtower_plan.query import (
+    CoordinationSearchParams,
+    CoordinationQueryService,
     InitiativeQueryService,
     TaskQueryService,
     TaskSearchParams,
 )
-from watchtower_core.plan_runtime.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
-from watchtower_core.plan_runtime.task_lifecycle import (
+from watchtower_plan.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_plan.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
     TaskUpdateParams,
@@ -109,6 +111,27 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
     assert initiative_entry.primary_owner == "repository_maintainer"
     assert {ready_task_id, blocked_task_id}.issubset(set(initiative_entry.active_task_ids))
     assert "ready task" in initiative_entry.next_action
+
+    lifecycle.update(
+        TaskUpdateParams(task_id=ready_task_id, task_status="in_progress"),
+        write=True,
+    )
+
+    refreshed_loader = ControlPlaneLoader(repo_root)
+    refreshed_initiative_entry = InitiativeQueryService(refreshed_loader).get(trace_id)
+    assert (
+        refreshed_initiative_entry.next_action
+        == "Advance the current in-progress task set and keep initiative-local task state current."
+    )
+
+    coordination_result = CoordinationQueryService(refreshed_loader).search(
+        CoordinationSearchParams()
+    )
+    assert coordination_result.index.actionable_task_count == 0
+    assert (
+        coordination_result.index.recommended_next_action
+        == "Advance the current in-progress task set and keep initiative-local task state current."
+    )
 
     task_tracking = (repo_root / "plan/tracking/task_tracking.md").read_text(
         encoding="utf-8"

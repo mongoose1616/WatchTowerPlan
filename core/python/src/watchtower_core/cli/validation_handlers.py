@@ -14,8 +14,8 @@ from watchtower_core.cli.handler_common import (
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
-from watchtower_core.plan_runtime.validation import DocumentSemanticsValidationService
-from watchtower_core.plan_runtime.validation.targets import (
+from watchtower_plan.validation import DocumentSemanticsValidationService
+from watchtower_plan.validation.targets import (
     resolve_pack_validation_suite_targets,
 )
 from watchtower_core.validation import (

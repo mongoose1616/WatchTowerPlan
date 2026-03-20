@@ -6,7 +6,7 @@ Export-safe generic query services over governed pack surfaces, command and work
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, and `artifact_families`.
-- `Non-Goals`: Live planning, initiative, task, and discrepancy query services that live under `watchtower_core.plan_runtime.query`.
+- `Non-Goals`: Live planning, initiative, task, and discrepancy query services that live under `watchtower_plan.query`.
 
 ## Key Surfaces
 - `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing repo-local planning queries.
@@ -16,6 +16,6 @@ Export-safe generic query services over governed pack surfaces, command and work
 - `artifact_families.py`: Artifact-family registry query and path-resolution helpers.
 
 ## Related Surfaces
-- `core/python/src/watchtower_core/plan_runtime/query/README.md`
+- `plan/python/src/watchtower_plan/query/README.md`
 - `requirements.md`
 - `decisions.md`

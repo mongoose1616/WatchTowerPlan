@@ -10,7 +10,7 @@ from tests.unit.document_semantics_fixtures import (
     write_repo_file,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.validation import DocumentSemanticsValidationService
+from watchtower_plan.validation import DocumentSemanticsValidationService
 
 
 def test_document_semantics_validation_rejects_reference_without_canonical_upstream(

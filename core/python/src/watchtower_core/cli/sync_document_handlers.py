@@ -36,7 +36,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "repository_paths",
         "export_name": "_run_sync_repository_paths",
-        "module_name": "watchtower_core.plan_runtime.sync.repository_paths",
+        "module_name": "watchtower_plan.sync.repository_paths",
         "class_name": "RepositoryPathIndexSyncService",
         "command_name": "watchtower-core sync repository-paths",
         "artifact_label": "repository path index",
@@ -44,7 +44,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "command_index",
         "export_name": "_run_sync_command_index",
-        "module_name": "watchtower_core.plan_runtime.sync.command_index",
+        "module_name": "watchtower_plan.sync.command_index",
         "class_name": "CommandIndexSyncService",
         "command_name": "watchtower-core sync command-index",
         "artifact_label": "command index",
@@ -52,7 +52,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "reference_index",
         "export_name": "_run_sync_reference_index",
-        "module_name": "watchtower_core.plan_runtime.sync.reference_index",
+        "module_name": "watchtower_plan.sync.reference_index",
         "class_name": "ReferenceIndexSyncService",
         "command_name": "watchtower-core sync reference-index",
         "artifact_label": "reference index",
@@ -60,7 +60,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "route_index",
         "export_name": "_run_sync_route_index",
-        "module_name": "watchtower_core.plan_runtime.sync.route_index",
+        "module_name": "watchtower_plan.sync.route_index",
         "class_name": "RouteIndexSyncService",
         "command_name": "watchtower-core sync route-index",
         "artifact_label": "route index",
@@ -68,7 +68,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "foundation_index",
         "export_name": "_run_sync_foundation_index",
-        "module_name": "watchtower_core.plan_runtime.sync.foundation_index",
+        "module_name": "watchtower_plan.sync.foundation_index",
         "class_name": "FoundationIndexSyncService",
         "command_name": "watchtower-core sync foundation-index",
         "artifact_label": "foundation index",
@@ -76,7 +76,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "standard_index",
         "export_name": "_run_sync_standard_index",
-        "module_name": "watchtower_core.plan_runtime.sync.standard_index",
+        "module_name": "watchtower_plan.sync.standard_index",
         "class_name": "StandardIndexSyncService",
         "command_name": "watchtower-core sync standard-index",
         "artifact_label": "standard index",
@@ -84,7 +84,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "initiative_index",
         "export_name": "_run_sync_initiative_index",
-        "module_name": "watchtower_core.plan_runtime.sync.initiative_index",
+        "module_name": "watchtower_plan.sync.initiative_index",
         "class_name": "InitiativeIndexSyncService",
         "command_name": "watchtower-core sync initiative-index",
         "artifact_label": "initiative index",
@@ -92,7 +92,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "task_index",
         "export_name": "_run_sync_task_index",
-        "module_name": "watchtower_core.plan_runtime.sync.task_index",
+        "module_name": "watchtower_plan.sync.task_index",
         "class_name": "TaskIndexSyncService",
         "command_name": "watchtower-core sync task-index",
         "artifact_label": "task index",
@@ -100,7 +100,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "traceability_index",
         "export_name": "_run_sync_traceability_index",
-        "module_name": "watchtower_core.plan_runtime.sync.traceability",
+        "module_name": "watchtower_plan.sync.traceability",
         "class_name": "TraceabilityIndexSyncService",
         "command_name": "watchtower-core sync traceability-index",
         "artifact_label": "traceability index",
@@ -108,7 +108,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "workflow_index",
         "export_name": "_run_sync_workflow_index",
-        "module_name": "watchtower_core.plan_runtime.sync.workflow_index",
+        "module_name": "watchtower_plan.sync.workflow_index",
         "class_name": "WorkflowIndexSyncService",
         "command_name": "watchtower-core sync workflow-index",
         "artifact_label": "workflow index",

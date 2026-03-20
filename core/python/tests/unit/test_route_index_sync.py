@@ -5,7 +5,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.query.routes import RoutePreviewService
-from watchtower_core.plan_runtime.sync import RouteIndexSyncService
+from watchtower_plan.sync import RouteIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

@@ -132,7 +132,7 @@ This standard defines the repository's baseline traceability model so initiative
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`; `query`; `workflow`
-- `Operational Surfaces`: `plan/tracking/coordination_tracking.md`; `core/python/src/watchtower_core/plan_runtime/sync/traceability.py`; `core/python/src/watchtower_core/plan_runtime/query/traceability.py`; `plan/workflows/modules/traceability_reconciliation.md`
+- `Operational Surfaces`: `plan/tracking/coordination_tracking.md`; `plan/python/src/watchtower_plan/sync/traceability.py`; `plan/python/src/watchtower_plan/query/traceability.py`; `plan/workflows/modules/traceability_reconciliation.md`
 
 ## Validation
 - Durable planning and trace artifacts should have stable IDs where this standard expects them.

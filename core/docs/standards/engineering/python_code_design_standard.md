@@ -1,7 +1,7 @@
 ---
 id: "std.engineering.python_code_design"
 title: "Python Code Design Standard"
-summary: "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/`."
+summary: "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,21 +17,21 @@ authority: "authoritative"
 # Python Code Design Standard
 
 ## Summary
-This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/`.
+This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`.
 
 ## Purpose
 Keep the Python workspace coherent, explicit, and easy to maintain by giving contributors one authoritative rule set for module shape, naming, typing, documentation, testing, and reusable-core extraction.
 
 ## Scope
-- Applies to Python package code under `core/python/src/watchtower_core/`, workspace tests under `core/python/tests/`, and the package-facing docs that describe those code boundaries.
+- Applies to Python package code under `core/python/src/watchtower_core/` and `plan/python/src/watchtower_plan/`, workspace tests under `core/python/tests/`, and the package-facing docs that describe those code boundaries.
 - Covers module responsibilities, boundary placement, naming, typing posture, docstrings, tests, and how to reduce sprawl or duplication.
 - Does not redefine workspace bootstrap, dependency management, or repository-wide git process rules that already belong to narrower or broader standards.
 
 ## Use When
-- Adding or refactoring Python modules under `core/python/src/watchtower_core/`.
-- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, the transitional `plan_runtime/` staging area, or `cli/`.
+- Adding or refactoring Python modules under `core/python/src/watchtower_core/` or `plan/python/src/watchtower_plan/`.
+- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, the approved plan-owned boundary under `plan/python/src/watchtower_plan/`, or `cli/`.
 - Choosing names for modules, classes, services, helpers, results, or tests.
-- Consolidating duplicate code, shrinking transitional surfaces such as `plan_runtime/`, or preparing the eventual split between reusable core and plan-owned Python.
+- Consolidating duplicate code or sharpening the split between reusable core and plan-owned Python.
 
 ## Related Standards and Sources
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the workspace, package-root, and toolchain constraints that this code-design standard must fit within.
@@ -48,12 +48,12 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Guidance
 - Prefer explicitness over cleverness. Code should be easy to read in one pass without hidden control flow, magical defaults, or broad implicit repository scans.
-- Prefer extraction to a reusable-core package before growing `plan_runtime/`. If logic is not specific to this repository's live planning corpus or repo-local artifact layout, move it out of `plan_runtime/`.
+- Prefer extraction to a reusable-core package before growing `watchtower_plan`. If logic is not specific to this repository's live planning corpus or repo-local artifact layout, move it out of the plan-owned boundary.
 - Keep modules narrow and named after one primary responsibility. Split files before they become mixed-purpose collections of query logic, parsing, rendering, validation, and orchestration.
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, and `utils/` own reusable runtime seams.
-  - `plan_runtime/` owns only residual repository-local orchestration that still depends on this repository's live planning or governed layout, and it remains transitional until the remaining domain code moves behind a plan-owned Python boundary under `plan/**`.
+  - `plan/python/src/watchtower_plan/` owns repository-local orchestration that still depends on this repository's live planning or governed layout.
   - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Consolidate duplicated control flow behind a shared helper only when the repetition is structural and the new helper has a clear boundary. Do not create generic abstractions that are broader than the duplicated behavior.
@@ -82,7 +82,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ### Python boundary checkpoints
 | Checkpoint | Preferred Shape | Notes |
 |---|---|---|
-| Boundary placement | reusable-core first, `plan_runtime/` only when repo-local state truly matters | New generic helpers should not land in transitional namespaces. |
+| Boundary placement | reusable-core first, `watchtower_plan` only when repo-local state truly matters | New generic helpers should not land in the plan-owned domain boundary. |
 | Module size | one primary responsibility | Split files before they become mixed-purpose grab bags. |
 | Interface style | explicit arguments and typed return values | Hidden globals and embedded task constants increase maintenance cost. |
 | Naming | role-bearing, specific, and boring | Names should describe responsibility, not implementation history. |
@@ -95,10 +95,10 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Validation
 - `core/python/pyproject.toml` should continue to reflect the style and typing posture this standard assumes, including `ruff`, `mypy`, and `pytest` configuration.
-- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than transitional repo-local orchestration until `plan_runtime/` and CLI surfaces are brought up to the same bar.
+- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than plan-owned repo-local orchestration until the domain boundary is brought up to the same bar.
 - `core/python/pyproject.toml` should keep `ruff` configured to catch unnecessary comprehension churn in addition to import, upgrade, bugbear, and core readability issues.
 - Reviewers should reject new mixed-purpose modules, vague role-free names, or duplicate implementations that could be consolidated cleanly.
-- Reviewers should reject new generic behavior placed in `plan_runtime/` when a reusable-core package boundary fits.
+- Reviewers should reject new generic behavior placed in `watchtower_plan` when a reusable-core package boundary fits.
 - Reviewers should reject CLI handlers that own business logic instead of delegating to package services.
 - The narrowest meaningful `uv run pytest ...`, `uv run ruff check ...`, and `uv run mypy ...` commands should be run for touched Python surfaces.
 
@@ -123,7 +123,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ## Notes
 - This standard intentionally favors boring, explicit code over framework-heavy or pattern-heavy abstractions.
 - The goal is maintainable consolidation, not abstraction for its own sake.
-- When a helper is extracted from `plan_runtime/`, that is usually a sign that this standard is working as intended. When a whole remaining slice is still plan-specific after those extractions, the next target is the plan-owned Python boundary rather than a permanent `plan_runtime/` namespace.
+- When a helper is extracted from `watchtower_plan`, that is usually a sign that this standard is working as intended. The goal is a narrow plan-owned domain boundary, not a second generic package root.
 
 ## Updated At
 - `2026-03-19T23:53:14Z`

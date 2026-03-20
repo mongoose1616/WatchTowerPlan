@@ -1,7 +1,7 @@
 ---
 id: "std.engineering.python_workspace"
 title: "Python Workspace Standard"
-summary: "This standard defines how Python code, tooling, environments, and tests are organized for the core helper and harness layer under `core/python/`."
+summary: "This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,20 +17,20 @@ authority: "authoritative"
 # Python Workspace Standard
 
 ## Summary
-This standard defines how Python code, tooling, environments, and tests are organized for the core helper and harness layer under `core/python/`.
+This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`.
 
 ## Purpose
-Keep the Python workspace deterministic, easy to onboard, and isolated from the authored control plane so engineers can work in one standard local environment without scattering Python tooling across `core/`.
+Keep the Python workspace deterministic, easy to onboard, and isolated from the authored control plane so engineers can work in one standard local environment without scattering Python tooling across `core/` and `plan/`.
 
 ## Scope
-- Applies to Python package code, tests, tooling, and local environment bootstrap for the core helper and harness layer.
+- Applies to Python package code, tests, tooling, and local environment bootstrap for the shared core helper and harness layer plus the approved plan-owned package root.
 - Covers workspace placement, required files, package layout, environment management, and generated-artifact boundaries.
 - Does not define the full behavior of validators, query services, or control-plane artifact families.
 
 ## Use When
 - Creating or restructuring Python code under `core/`.
 - Adding Python dependencies, developer tools, or onboarding commands.
-- Reviewing whether a Python-related file belongs in `core/python/` or somewhere else.
+- Reviewing whether a Python-related file belongs in `core/python/`, `plan/python/`, or somewhere else.
 
 ## Related Standards and Sources
 - [format_selection_standard.md](/core/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -46,9 +46,9 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [mypy_reference.md](/core/docs/references/mypy_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
-- Keep all Python-specific repository surfaces under `core/python/`.
+- Keep shared Python tooling, tests, and the local virtual environment under `core/python/`.
 - Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, manifests, or indexes into the Python workspace.
-- Use one canonical Python workspace rooted at `core/python/` until an approved plan-owned Python boundary is introduced under `plan/**`.
+- Use one canonical shared Python workspace rooted at `core/python/`, with the approved plan-owned package source boundary rooted at `plan/python/`.
 - Use `uv` as the standard local environment and dependency-management tool.
 - Keep the supported interpreter range in `core/python/pyproject.toml` and keep the locked dependency graph in `core/python/uv.lock`.
 - Keep canonical package and tool configuration in `core/python/pyproject.toml`.
@@ -59,7 +59,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Treat `uv run ...` as the default human and agent execution path. Manual virtual-environment activation is optional and mainly for interactive shell work.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
-- Keep Python source code under `core/python/src/` with one active package root at `core/python/src/watchtower_core/` until an approved plan-owned Python boundary lands under `plan/**`.
+- Keep reusable-core Python source under `core/python/src/watchtower_core/` and plan-domain Python source under `plan/python/src/watchtower_plan/`.
 - Keep tests under `core/python/tests/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
@@ -69,7 +69,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
-- Keep `plan_runtime/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules, and the remaining plan-domain runtime should eventually move behind a plan-owned Python boundary under `plan/**`.
+- Keep `watchtower_plan` explicitly plan-owned. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules inside either Python boundary.
 - Use [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md) for Python naming, boundary, docstring, typing, and consolidation rules instead of re-encoding those choices in workspace-only guidance.
 
 ## Structure or Data Model
@@ -83,6 +83,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/uv.lock` | Required | Locked dependency graph for repeatable onboarding. |
 | `core/python/.gitignore` | Required | Ignores local envs, caches, and build outputs. |
 | `core/python/src/watchtower_core/` | Required | Canonical package root. |
+| `plan/python/src/watchtower_plan/` | Required for plan-domain Python | Approved plan-owned package root. |
 | `core/python/tests/` | Required | Canonical Python test root. |
 
 ### Package layout
@@ -90,16 +91,16 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 |---|---|
 | `core/python/src/watchtower_core/control_plane/` | Loaders, resolvers, and artifact access for governed control-plane surfaces. |
 | `core/python/src/watchtower_core/validation/` | Validator execution, schema-backed checks, and validation result modeling. |
-| `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `core/python/src/watchtower_core/plan_runtime/query/`. |
+| `core/python/src/watchtower_core/query/` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; authoritative live planning query logic still lives under `plan/python/src/watchtower_plan/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
-| `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `core/python/src/watchtower_core/plan_runtime/sync/`. |
+| `core/python/src/watchtower_core/sync/` | Export-safe generic sync harness and target contracts; authoritative repo-local sync target logic still lives under `plan/python/src/watchtower_plan/sync/`. |
 | `core/python/src/watchtower_core/rebuild/` | Export-safe rebuild harness plus registry-backed rendered-view building and markdown reconciliation. |
 | `core/python/src/watchtower_core/routing/` | Export-safe route-selection runtime over governed route and workflow indexes. |
 | `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
 | `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
 | `core/python/src/watchtower_core/closeout/` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
-| `core/python/src/watchtower_core/plan_runtime/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction and before the approved move behind a plan-owned Python boundary under `plan/**`. |
+| `plan/python/src/watchtower_plan/` | Approved WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that belongs on the plan-owned side of the core-versus-domain split. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -115,14 +116,14 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A new schema loader belongs in `core/python/src/watchtower_core/control_plane/`.
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
 - A reusable-core query helper that searches governed command, workflow, authority, route, or artifact-family metadata belongs in `core/python/src/watchtower_core/query/`.
-- A repo-local query helper that searches live planning indexes or initiative packages currently belongs in `core/python/src/watchtower_core/plan_runtime/query/` until the plan-owned Python boundary is approved and bootstrapped.
+- A repo-local query helper that searches live planning indexes or initiative packages belongs in `plan/python/src/watchtower_plan/query/`.
 - A reusable route-selection engine belongs in `core/python/src/watchtower_core/routing/`.
 - A reusable rebuild helper for derived surfaces belongs in `core/python/src/watchtower_core/rebuild/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/python/src/watchtower_core/plan_runtime/`; `core/python/src/watchtower_core/plan_runtime/sync/`; `core/python/src/watchtower_core/plan_runtime/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
+- `Operational Surfaces`: `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/sync/`; `plan/python/src/watchtower_plan/query/`; `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/rebuild/`; `core/python/src/watchtower_core/routing/`; `core/python/src/watchtower_core/workflow_execution/`; `core/control_plane/`; `core/README.md`
 
 ## Validation
 - `core/python/pyproject.toml` should parse and support local lockfile generation.
@@ -132,7 +133,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
 - `uv run pytest`, `uv run ruff check .`, and `uv run mypy src` should be the default validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
-- Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/`. A future approved plan-owned boundary under `plan/**` must land as an explicit governed change, not as incidental drift.
+- Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and the approved `plan/python/` boundary.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
@@ -149,8 +150,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md)
 
 ## Notes
-- This standard intentionally keeps the Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
-- The workspace may grow additional modules over time, but it should not grow additional package roots unless a later approved standard explicitly allows that change, such as the planned core-versus-domain split for plan-owned Python under `plan/**`.
+- This standard intentionally keeps the shared Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
+- The repository now has two approved Python package roots: reusable core under `core/python/src/watchtower_core/` and plan-domain code under `plan/python/src/watchtower_plan/`.
 
 ## Updated At
 - `2026-03-19T23:53:14Z`

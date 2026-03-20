@@ -14,5 +14,5 @@ __all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
 
 __getattr__ = fail_closed_package_getattr(
     "watchtower_core.sync exports only generic sync harness surfaces. "
-    "Repo-specific sync services still live under watchtower_core.plan_runtime.sync."
+    "Repo-specific sync services still live under watchtower_plan.sync."
 )

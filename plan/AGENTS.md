@@ -21,6 +21,7 @@
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.
 - Treat `plan/plan_overview.md` and initiative-local rendered views as derived human surfaces, not manual authority.
 - Treat `plan/workflows/README.md` as the human workflow entrypoint for live plan-domain procedures.
+- Treat `.wt/` trees as machine-state roots only. Do not place Python source, workflow prose, or other hand-maintained runtime code inside them.
 - Use promoted guidance, closed initiative packages, and purge ledgers for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
 
 ## Do

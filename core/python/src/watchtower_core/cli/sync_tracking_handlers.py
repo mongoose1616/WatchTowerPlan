@@ -65,7 +65,7 @@ def _run_tracking_sync(
 def _run_sync_initiative_tracking(args: argparse.Namespace) -> int:
     return _run_tracking_sync(
         args,
-        module_name="watchtower_core.plan_runtime.sync.initiative_tracking",
+        module_name="watchtower_plan.sync.initiative_tracking",
         class_name="InitiativeTrackingSyncService",
         command_name="watchtower-core sync initiative-tracking",
         payload_counts_factory=lambda result: {
@@ -87,7 +87,7 @@ def _run_sync_initiative_tracking(args: argparse.Namespace) -> int:
 def _run_sync_task_tracking(args: argparse.Namespace) -> int:
     return _run_tracking_sync(
         args,
-        module_name="watchtower_core.plan_runtime.sync.task_tracking",
+        module_name="watchtower_plan.sync.task_tracking",
         class_name="TaskTrackingSyncService",
         command_name="watchtower-core sync task-tracking",
         payload_counts_factory=lambda result: {

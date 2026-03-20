@@ -36,7 +36,7 @@ _EXPORT_MODULES = {
     "ValidationSelectionError": "watchtower_core.validation.errors",
 }
 
-_REPO_OPS_EXPORTS = {
+_PLAN_DOMAIN_EXPORTS = {
     "DocumentSemanticsValidationService",
 }
 _SUBMODULE_ONLY_EXPORTS = {
@@ -52,9 +52,9 @@ __getattr__ = lazy_module_getattr(
     export_modules=_EXPORT_MODULES,
     blocked_messages=(
         dict.fromkeys(
-            _REPO_OPS_EXPORTS,
+            _PLAN_DOMAIN_EXPORTS,
             "watchtower_core.validation exposes only reusable validation services. "
-            "Import repo-local document semantics from watchtower_core.plan_runtime.validation.",
+            "Import repo-local document semantics from watchtower_plan.validation.",
         )
         | dict.fromkeys(
             _SUBMODULE_ONLY_EXPORTS,

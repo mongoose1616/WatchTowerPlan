@@ -189,7 +189,7 @@ def register_closeout_family(
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
             "--retained-authority-path plan/docs/standards/governance/example.md",
             "uv run watchtower-core closeout purge-trace --trace-id trace.example "
-            "--retained-authority-path core/python/src/watchtower_core/plan_runtime/example.py "
+            "--retained-authority-path plan/python/src/watchtower_plan/example.py "
             "--write --format json",
         ),
         formatter_class=HelpFormatter,

@@ -7,18 +7,18 @@ from shutil import copytree, rmtree
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import (
+from watchtower_plan.initiative_packages import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_core.plan_runtime.task_lifecycle import (
+from watchtower_plan.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
 )
-from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
-from watchtower_core.plan_runtime.project_workspace import (
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.project_workspace import (
     ProjectBootstrapParams,
     ProjectRepositoryLinkSpec,
     ProjectWorkspaceService,

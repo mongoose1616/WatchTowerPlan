@@ -17,7 +17,7 @@ applies_to:
   - "plan/initiatives/"
   - "plan/projects/"
   - "plan/tracking/task_tracking.md"
-  - "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+  - "plan/python/src/watchtower_plan/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github project field model"
@@ -101,7 +101,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `sync`
-- `Operational Surfaces`: `.github/`; `plan/initiatives/`; `plan/projects/`; `plan/tracking/task_tracking.md`; `core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py`; `.github/README.md`
+- `Operational Surfaces`: `.github/`; `plan/initiatives/`; `plan/projects/`; `plan/tracking/task_tracking.md`; `plan/python/src/watchtower_plan/sync/github_tasks.py`; `.github/README.md`
 
 ## Validation
 - GitHub issue forms should ask for enough information to create or link the corresponding repo-local artifact.

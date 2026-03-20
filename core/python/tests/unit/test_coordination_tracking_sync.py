@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import materialize_plan_runtime_pack
+from tests.integration.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.sync.coordination_tracking import (
+from watchtower_plan.sync.coordination_tracking import (
     ACTIONABLE_TASK_LIMIT,
     ACTIVE_INITIATIVE_LIMIT,
     RECENT_CLOSEOUT_LIMIT,
@@ -19,7 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 

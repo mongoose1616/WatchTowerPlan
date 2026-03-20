@@ -6,16 +6,16 @@ from shutil import copytree
 
 from tests.integration.fixture_repo_support import (
     materialize_plan_pack,
-    materialize_plan_runtime_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import (
+from watchtower_plan.initiative_packages import (
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_core.plan_runtime.plan_workspace import PLAN_TASK_INDEX_PATH
-from watchtower_core.plan_runtime.sync import TraceabilityIndexSyncService
+from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
+from watchtower_plan.sync import TraceabilityIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -86,7 +86,7 @@ def test_traceability_index_sync_writes_temp_output(tmp_path: Path) -> None:
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     _bootstrap_packwide_trace(
         repo_root,

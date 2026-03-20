@@ -20,7 +20,7 @@ def register_plan_family(subparsers: argparse._SubParsersAction) -> None:
         _run_plan_bootstrap,
         _run_plan_confirm_inputs,
     )
-    from watchtower_core.plan_runtime.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
+    from watchtower_plan.task_lifecycle import TASK_KIND_CHOICES, TASK_PRIORITY_CHOICES
 
     plan_parser = subparsers.add_parser(
         "plan",

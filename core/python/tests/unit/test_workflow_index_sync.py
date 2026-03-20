@@ -8,8 +8,8 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.sync import WorkflowIndexSyncService
-from watchtower_core.plan_runtime.sync.workflow_index import validate_workflow_additional_load_section
+from watchtower_plan.sync import WorkflowIndexSyncService
+from watchtower_plan.sync.workflow_index import validate_workflow_additional_load_section
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

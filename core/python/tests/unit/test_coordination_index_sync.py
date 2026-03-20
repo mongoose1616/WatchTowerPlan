@@ -6,17 +6,17 @@ from shutil import copytree
 
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
-    materialize_plan_runtime_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import InitiativeTaskSpec
-from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
-from watchtower_core.plan_runtime.query.coordination import (
+from watchtower_plan.initiative_packages import InitiativeTaskSpec
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.query.coordination import (
     CoordinationQueryService,
     CoordinationSearchParams,
 )
-from watchtower_core.plan_runtime.sync.coordination_index import CoordinationIndexSyncService
-from watchtower_core.plan_runtime.task_lifecycle import TaskLifecycleService, TaskUpdateParams
+from watchtower_plan.sync.coordination_index import CoordinationIndexSyncService
+from watchtower_plan.task_lifecycle import TaskLifecycleService, TaskUpdateParams
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -24,7 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    materialize_plan_runtime_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 

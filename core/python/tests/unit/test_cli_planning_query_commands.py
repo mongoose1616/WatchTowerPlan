@@ -10,10 +10,10 @@ from tests.integration.fixture_repo_support import (
 )
 from tests.unit.cli_command_helpers import run_json_command
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.initiative_packages import InitiativePackageService
-from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
-from watchtower_core.plan_runtime.plan_task_state import update_task_document
-from watchtower_core.plan_runtime.sync.coordination import CoordinationSyncService
+from watchtower_plan.initiative_packages import InitiativePackageService
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.plan_task_state import update_task_document
+from watchtower_plan.sync.coordination import CoordinationSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 ACTIVE_TRACE_ID = "trace.example_live_query_active"

@@ -15,8 +15,8 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
-from watchtower_core.plan_runtime.project_context import load_project_context
-from watchtower_core.plan_runtime.query import (
+from watchtower_plan.project_context import load_project_context
+from watchtower_plan.query import (
     ArtifactQueryService,
     ArtifactSearchParams,
     AuthorityMapQueryService,

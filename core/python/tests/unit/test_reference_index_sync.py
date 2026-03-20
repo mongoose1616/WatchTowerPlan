@@ -6,7 +6,7 @@ from shutil import copytree
 from textwrap import dedent
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.plan_runtime.sync import ReferenceIndexSyncService
+from watchtower_plan.sync import ReferenceIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

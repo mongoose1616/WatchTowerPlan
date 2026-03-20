@@ -9,7 +9,7 @@ import yaml
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
-from watchtower_core.plan_runtime.initiative_packages import (
+from watchtower_plan.initiative_packages import (
     InitiativeBootstrapParams,
     InitiativePackageResult,
     InitiativePackageService,
@@ -26,8 +26,8 @@ def materialize_plan_pack(repo_root: Path, source_repo_root: Path) -> None:
     copytree(source_plan_root, repo_root / "plan")
 
 
-def materialize_plan_runtime_pack(repo_root: Path, source_repo_root: Path) -> None:
-    """Copy only the minimum live plan runtime package required by loaders and syncs."""
+def materialize_minimal_plan_pack(repo_root: Path, source_repo_root: Path) -> None:
+    """Copy only the minimum live plan pack surfaces required by loaders and syncs."""
 
     source_plan_root = source_repo_root / "plan"
     source_runtime_root = source_plan_root / ".wt"
