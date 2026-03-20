@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "command_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-21T01:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -42,15 +42,16 @@ Provide a compact lookup surface that maps available commands and subcommands to
 ## Guidance
 - Model command lookup as an index, not as a registry.
 - Treat the command index as a machine-readable routing aid rather than the authoritative definition of command behavior.
-- Keep human-readable command semantics in `core/docs/commands/**`.
+- Keep human-readable command semantics in the owning command-doc root under `core/docs/commands/**` or `<pack>/docs/commands/**`.
 - Keep implementation authority in the actual command code surface.
 - Store published command indexes under `core/control_plane/indexes/commands/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published command index artifact.
 - Catalog only durable repository commands or subcommands that have stable command pages.
 - Treat the registry-backed CLI parser tree as the machine source for command presence, hierarchy, synopsis, and output-format metadata.
-- Treat the authored command pages under `core/docs/commands/` as the primary human companion surface for the derived command index.
-- Every command index entry must point to a command page under `core/docs/commands/`.
+- Treat the authored command pages under the owning command-doc root as the primary human companion surface for the derived command index.
+- Shared and reusable-core command entries must point to `core/docs/commands/**`.
+- Pack-owned command entries must point to the owning pack docs root such as `plan/docs/commands/**` or `packs/<slug>/docs/commands/**`.
 - Every entry should point to the owning implementation surface when one exists.
 - Use a stable `command_id` per command or subcommand.
 - Represent subcommands as separate entries rather than embedding them only inside parent records.
@@ -78,7 +79,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 | `kind` | Required | Use `root_command` or `subcommand`. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `workspace` | Required | Stable workspace label such as `core_python`. |
-| `doc_path` | Required | Repository-relative path to the command page under `core/docs/commands/`. |
+| `doc_path` | Required | Repository-relative path to the command page under `core/docs/commands/` or the owning pack docs root. |
 | `synopsis` | Required | Short usage form for quick lookup. |
 | `implementation_path` | Optional | Repository-relative owning implementation surface. |
 | `package_entrypoint` | Optional | Import-style entrypoint when one exists. |
@@ -90,7 +91,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 | `notes` | Optional | Short lookup or operator notes. |
 
 ## Process or Workflow
-1. Add or update the command page under `core/docs/commands/` and the registry-backed CLI parser surface in the same change set when command behavior changes materially.
+1. Add or update the command page under the owning command-doc root and the registry-backed CLI parser surface in the same change set when command behavior changes materially.
 2. Rebuild the command index from the current CLI parser tree and review the derived output alongside the command pages in the same change set.
 3. Validate that every entry points to an existing command page and any listed implementation path exists.
 4. Update related command-family READMEs, repository path indexes, and schemas in the same change set when the command surface changes structurally.
@@ -103,11 +104,11 @@ Provide a compact lookup surface that maps available commands and subcommands to
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `core/docs/commands/`
+- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `core/docs/commands/`; `plan/docs/commands/`
 
 ## Validation
 - The command index should validate against its published artifact schema.
-- Every `doc_path` should exist and point to a command page under `core/docs/commands/`.
+- Every `doc_path` should exist and point to a command page under `core/docs/commands/` or the owning pack docs root.
 - Every listed `implementation_path` should exist.
 - Subcommand entries should name a valid `parent_command_id`.
 - When `default_output_format` is present, it should match one of the listed `output_formats`.
@@ -129,4 +130,4 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-21T01:05:00Z`

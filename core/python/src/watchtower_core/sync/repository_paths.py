@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -81,7 +82,9 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         "plan/workflows/modules/"
     ):
         return "workflow_module" if kind == "file" else "workflow_family"
-    if relative_path.startswith("core/docs/commands/"):
+    if relative_path.startswith("core/docs/commands/") or relative_path.startswith(
+        "plan/docs/commands/"
+    ) or re.match(r"^packs/[^/]+/docs/commands/", relative_path):
         return "command_doc" if kind == "file" else "command_docs"
     if relative_path.startswith("core/docs/references/"):
         return "reference_doc" if kind == "file" else "reference"

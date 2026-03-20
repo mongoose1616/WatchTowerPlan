@@ -1,7 +1,7 @@
 # `watchtower-core`
 
 ## Summary
-This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, planning, query, sync, validation, and closeout flows.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, hosted-pack inspection, planning, query, sync, and validation flows.
 
 ## Use When
 - You need the top-level command map before choosing a narrower command group.
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `plan`, `query`, `sync`, `closeout`, or `validate`.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `pack`, `plan`, `query`, `sync`, or `validate`.
 - `-h`, `--help`: Show the root command help text.
 - No root-only flags exist beyond help and subcommand selection.
 

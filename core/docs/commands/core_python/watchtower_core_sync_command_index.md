@@ -1,7 +1,7 @@
 # `watchtower-core sync command-index`
 
 ## Summary
-This command rebuilds the governed command index from the registry-backed CLI parser metadata while requiring companion command pages under `core/docs/commands/`.
+This command rebuilds the governed command index from the registry-backed CLI parser metadata while requiring companion command pages under the owning command-doc root.
 
 ## Use When
 - You changed a command page or the registry-backed CLI parser surface and need to refresh the machine-readable command lookup surface.
@@ -47,7 +47,7 @@ uv run watchtower-core sync command-index --output /tmp/command_index.json --for
 
 ## Behavior and Outputs
 - The command reads the registry-backed CLI parser metadata and rebuilds the machine-readable command index deterministically.
-- The command fails closed when a registry-backed command is missing its companion command page under `core/docs/commands/` or when that page's `Source Surface` metadata drifts from the registry-backed implementation path.
+- The command fails closed when a registry-backed command is missing its companion command page under `core/docs/commands/` or the owning pack docs root, or when that page's `Source Surface` metadata drifts from the registry-backed implementation path.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many command entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.

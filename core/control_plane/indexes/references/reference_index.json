@@ -87,7 +87,7 @@
       "summary": "Distilled reference for building nested CLI subcommands with stable handler dispatch.",
       "status": "active",
       "doc_path": "core/docs/references/argparse_subcommands_reference.md",
-      "updated_at": "2026-03-20T17:12:07Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -103,7 +103,7 @@
       "related_paths": [
         "core/python/pyproject.toml",
         "core/docs/commands/core_python/watchtower_core.md",
-        "core/docs/commands/core_python/watchtower_core_plan.md"
+        "plan/docs/commands/core_python/watchtower_core_plan.md"
       ],
       "tags": [
         "reference",
@@ -288,7 +288,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-20T17:12:07Z",
+      "updated_at": "2026-03-20T23:58:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -408,7 +408,7 @@
       "summary": "This document provides a working reference for the GitHub collaboration surfaces that this repository uses for issue intake, pull request templates, project fields, issue sync, and hosted execution visibility.",
       "status": "active",
       "doc_path": "core/docs/references/github_collaboration_reference.md",
-      "updated_at": "2026-03-19T20:15:00Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "repository_status": "active_support",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -436,7 +436,7 @@
         "plan/python/src/watchtower_plan/sync/github_tasks.py",
         ".github/README.md",
         "plan/workflows/modules/github_task_sync.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md"
       ],
       "aliases": [
         "github collaboration",

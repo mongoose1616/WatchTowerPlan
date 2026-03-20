@@ -1640,6 +1640,8 @@ class PlanWorkspaceService:
             if path.name in {"README.md", "AGENTS.md"}:
                 continue
             relative_path = path.relative_to(self._loader.repo_root).as_posix()
+            if relative_path.startswith(f"{self._workspace_paths.docs_root}/commands/"):
+                continue
             try:
                 front_matter = load_front_matter(path)
             except FrontMatterParseError as exc:

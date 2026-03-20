@@ -54,7 +54,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/command_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -66,7 +66,8 @@
         "core/control_plane/indexes/commands/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/commands/README.md",
-        "core/docs/commands/"
+        "core/docs/commands/",
+        "plan/docs/commands/"
       ],
       "internal_reference_paths": [
         "core/docs/standards/documentation/command_md_standard.md",
@@ -169,7 +170,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-12T23:12:00Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -183,7 +184,7 @@
         "plan/python/src/watchtower_plan/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
         "core/control_plane/indexes/foundations/README.md"
@@ -218,7 +219,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-20T23:40:00Z",
+      "updated_at": "2026-03-20T23:58:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1084,7 +1085,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/cli_help_text_standard.md",
-      "updated_at": "2026-03-12T02:46:38Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1093,16 +1094,20 @@
       ],
       "operationalization_paths": [
         "core/docs/commands/",
+        "plan/docs/commands/",
         "core/python/src/watchtower_core/cli/",
-        "core/docs/commands/core_python/watchtower_core.md"
+        "core/docs/commands/core_python/watchtower_core.md",
+        "plan/docs/commands/core_python/watchtower_core_plan.md"
       ],
       "applies_to": [
         "core/python/src/watchtower_core/cli/",
-        "core/docs/commands/"
+        "core/docs/commands/",
+        "plan/docs/commands/"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/cli/",
         "core/docs/commands/",
+        "plan/docs/commands/",
         "core/python/src/watchtower_core/cli"
       ],
       "internal_reference_paths": [
@@ -1199,7 +1204,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-20T23:40:00Z",
+      "updated_at": "2026-03-20T23:58:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1900,7 +1905,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-20T09:26:00Z",
+      "updated_at": "2026-03-21T01:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1913,7 +1918,7 @@
         "core/python/src/watchtower_core/validation/pack_contract.py",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "applies_to": [
         "core/python/",
@@ -1938,7 +1943,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/documentation/documentation_semantics_standard.md",
@@ -1947,7 +1952,7 @@
         "core/docs/standards/data_contracts/schema_standard.md",
         "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "tags": [
         "standard",

@@ -345,6 +345,9 @@ def test_plan_workspace_sync_builds_promotion_and_guidance_indexes_and_validates
     guidance_ids = {entry.guidance_id for entry in guidance_entries}
     assert "foundation.repository_scope" in guidance_ids
     assert "foundation.product_direction" in guidance_ids
+    assert not any(
+        entry.doc_path.startswith("plan/docs/commands/") for entry in guidance_entries
+    )
     repository_scope_entry = next(
         entry for entry in guidance_entries if entry.guidance_id == "foundation.repository_scope"
     )
@@ -469,6 +472,9 @@ def test_guidance_promotion_service_promotes_outputs_and_updates_indexes(
 
     guidance_entries = workspace_service.load_guidance_entries()
     guidance_ids = {entry.guidance_id for entry in guidance_entries}
+    assert not any(
+        entry.doc_path.startswith("plan/docs/commands/") for entry in guidance_entries
+    )
     assert {
         "decision.workspace_guidance_promotion_design_record",
         "pattern.workspace_guidance_promotion_implementation_slice",

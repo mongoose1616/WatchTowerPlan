@@ -3,6 +3,10 @@
 ## Description
 `This directory holds machine-readable command indexes that map available repository commands to their human-readable command pages and implementation surfaces. Keep these indexes reviewable and lookup-oriented rather than turning them into a second command manual.`
 
+## Notes
+- Shared and reusable-core command entries point to `core/docs/commands/**`.
+- Pack-owned command entries point to the owning pack docs root such as `plan/docs/commands/**`.
+
 ## Files
 | Path | Description |
 |---|---|

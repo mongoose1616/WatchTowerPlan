@@ -17,8 +17,9 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "help": "Rebuild the command index from registry-backed CLI metadata.",
         "description": """
             Rebuild the command index from the registry-backed CLI parser
-            metadata while keeping the command pages under `core/docs/commands/`
-            as the human-readable companion surface.
+            metadata while keeping the human-readable companion pages under
+            `core/docs/commands/` for shared commands and the owning pack docs
+            root for pack-native commands.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.

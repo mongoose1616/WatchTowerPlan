@@ -281,7 +281,7 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
         == "core/python/src/watchtower_core/cli/doctor_family.py"
     )
     assert (
-        implementation_by_doc["core/docs/commands/core_python/watchtower_core_plan_query.md"]
+        implementation_by_doc["plan/docs/commands/core_python/watchtower_core_plan_query.md"]
         == "plan/python/src/watchtower_plan/cli/query.py"
     )
     assert (

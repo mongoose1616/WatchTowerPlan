@@ -673,12 +673,12 @@
       "related_paths": [
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
       ]
     },
     {
@@ -1248,7 +1248,7 @@
         "plan/docs/standards/governance/github_task_sync_standard.md",
         "plan/docs/standards/governance/task_tracking_standard.md",
         "core/docs/references/github_collaboration_reference.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "reference_doc_paths": [
@@ -1258,7 +1258,7 @@
         "plan/docs/standards/governance/github_task_sync_standard.md",
         "plan/docs/standards/governance/task_tracking_standard.md",
         "core/docs/references/github_collaboration_reference.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
         "plan/workflows/modules/task_lifecycle_management.md"
       ],
       "external_reference_urls": [
@@ -1418,8 +1418,8 @@
         "governance",
         "standard",
         "tracking",
-        "core",
         "commands",
+        "core",
         "python",
         "watchtower",
         "retained",
@@ -1434,13 +1434,13 @@
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_tracking_standard.md",
-        "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
       ],
       "internal_reference_paths": [
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_tracking_standard.md",
-        "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
+        "plan/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
       ]
     },
     {

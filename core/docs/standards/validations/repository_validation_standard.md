@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T09:26:00Z"
+updated_at: "2026-03-21T01:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -51,7 +51,7 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): schema-backed surfaces should fail closed when malformed.
 - [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md): durable evidence should be recorded when a validation flow writes governed proof.
 - [watchtower_core_validate_all.md](/core/docs/commands/core_python/watchtower_core_validate_all.md): documents the aggregate validation command that operationalizes the current baseline.
-- [watchtower_core_plan_sync_all.md](/core/docs/commands/core_python/watchtower_core_plan_sync_all.md): derived local state should be regenerated before broad validation when the change touches generated trackers or indexes.
+- [watchtower_core_plan_sync_all.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_all.md): derived local state should be regenerated before broad validation when the change touches generated trackers or indexes.
 
 ## Guidance
 - Use the narrowest meaningful validation while working.
@@ -79,7 +79,7 @@ This standard defines the baseline validation expectations for repository change
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `sync`
-- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/validation/pack_contract.py`; `plan/python/src/watchtower_plan/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `core/docs/commands/core_python/watchtower_core_plan_sync_all.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/validation/pack_contract.py`; `plan/python/src/watchtower_plan/validation/document_semantics.py`; `core/docs/commands/core_python/watchtower_core_validate_all.md`; `plan/docs/commands/core_python/watchtower_core_plan_sync_all.md`
 
 ## Validation
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
@@ -92,10 +92,10 @@ This standard defines the baseline validation expectations for repository change
 
 ## References
 - [watchtower_core_validate_all.md](/core/docs/commands/core_python/watchtower_core_validate_all.md)
-- [watchtower_core_plan_sync_all.md](/core/docs/commands/core_python/watchtower_core_plan_sync_all.md)
+- [watchtower_core_plan_sync_all.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_all.md)
 - [documentation_semantics_standard.md](/core/docs/standards/documentation/documentation_semantics_standard.md)
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-20T09:26:00Z`
+- `2026-03-21T01:05:00Z`

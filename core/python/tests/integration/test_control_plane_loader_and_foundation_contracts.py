@@ -93,7 +93,7 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
     ).read_text(encoding="utf-8")
 
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
-    assert "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
+    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
         foundations_readme
     )
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
@@ -101,7 +101,7 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_index_readme
     )
-    assert "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
+    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
         foundation_index_readme
     )
 
@@ -112,7 +112,7 @@ def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
     assert "core/docs/commands/core_python/watchtower_core_query.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_sync.md" in markdown
-    assert "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
+    assert "plan/docs/commands/core_python/" in markdown
 
 
 def test_foundation_index_standard_operationalizes_foundation_family_surfaces() -> None:
@@ -123,7 +123,7 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "plan/python/src/watchtower_plan/sync/foundation_index.py" in markdown
     assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
+    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 
@@ -188,7 +188,7 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
             assert "core/python/src/watchtower_core/query/" not in markdown, path
 
     plan_query_docs = sorted(
-        (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_plan_query*.md")
+        (REPO_ROOT / "plan/docs/commands/core_python").glob("watchtower_core_plan_query*.md")
     )
     plan_query_docs_with_reusable_core_query_helpers = {
         "watchtower_core_plan_query_authority.md",
@@ -216,6 +216,13 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
             assert "core/python/src/watchtower_core/sync/" in markdown, path
         else:
             assert "core/python/src/watchtower_core/sync/" not in markdown, path
+
+    plan_sync_docs = sorted(
+        (REPO_ROOT / "plan/docs/commands/core_python").glob("watchtower_core_plan_sync*.md")
+    )
+    for path in plan_sync_docs:
+        markdown = path.read_text(encoding="utf-8")
+        assert "plan/python/src/watchtower_plan/" in markdown, path
 
 
 def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
@@ -302,7 +309,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
         "plan/docs/standards/governance/github_collaboration_standard.md",
         "plan/docs/standards/governance/github_task_sync_standard.md",
         "core/docs/references/github_collaboration_reference.md",
-        "core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md",
     ):
         markdown = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
         assert "plan/python/src/watchtower_plan/sync/github_tasks.py" in markdown

@@ -9,15 +9,6 @@ from watchtower_host.cli.registry import load_command_group_specs
 
 CLI_PARSER_PATH = "core/python/src/watchtower_host/cli/parser.py"
 CLI_MAIN_ENTRYPOINT = "watchtower_host.cli.main:main"
-COMMAND_DOC_ROOT = "core/docs/commands/core_python"
-COMMAND_GROUP_IMPLEMENTATION_PATHS = {
-    spec.name: spec.implementation_path for spec in load_command_group_specs()
-}
-COMMAND_GROUP_SUBCOMMAND_IMPLEMENTATION_PATHS = {
-    spec.name: dict(spec.subcommand_implementation_paths)
-    for spec in load_command_group_specs()
-    if spec.subcommand_implementation_paths
-}
 
 @dataclass(frozen=True, slots=True)
 class CommandParserSpec:
@@ -133,7 +124,17 @@ def _command_doc_path(parser: argparse.ArgumentParser, tokens: tuple[str, ...]) 
     if isinstance(declared_doc_path, str) and declared_doc_path:
         return declared_doc_path
     suffix = "_".join(token.replace("-", "_") for token in tokens)
-    return f"{COMMAND_DOC_ROOT}/{suffix}.md"
+    command_group_doc_roots = {
+        spec.name: spec.doc_root for spec in load_command_group_specs()
+    }
+    if len(tokens) == 1:
+        return f"{command_group_doc_roots.get('doctor', 'core/docs/commands/core_python')}/watchtower_core.md"
+    family = tokens[1]
+    try:
+        doc_root = command_group_doc_roots[family]
+    except KeyError as exc:
+        raise ValueError(f"Unknown CLI command family for parser metadata: {family}") from exc
+    return f"{doc_root}/{suffix}.md"
 
 
 def _implementation_path(

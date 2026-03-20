@@ -24,6 +24,7 @@ class CommandGroupSpec:
 
     name: str
     registrar: CommandRegistrar
+    doc_root: str
     implementation_path: str
     subcommand_implementation_paths: tuple[tuple[str, str], ...] = ()
 
@@ -37,16 +38,19 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
         name="doctor",
         registrar=register_doctor_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/doctor_family.py",
     ),
     CommandGroupSpec(
         name="route",
         registrar=register_route_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/route_family.py",
     ),
     CommandGroupSpec(
         name="query",
         registrar=register_query_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/query_family.py",
         subcommand_implementation_paths=(
             ("paths", QUERY_DISCOVERY_FAMILY_PATH),
@@ -62,6 +66,7 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
         name="pack",
         registrar=register_pack_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/pack_family.py",
         subcommand_implementation_paths=(
             ("list", PACK_FAMILY_HANDLERS_PATH),
@@ -72,11 +77,13 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
         name="sync",
         registrar=register_sync_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/sync_family.py",
     ),
     CommandGroupSpec(
         name="validate",
         registrar=register_validate_family,
+        doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_core/cli/validate_family.py",
     ),
 )
@@ -101,6 +108,7 @@ def load_command_group_specs(
             CommandGroupSpec(
                 name=namespace,
                 registrar=registrar,
+                doc_root=f"{loaded.runtime_manifest.owned_roots.docs_root}/commands/core_python",
                 implementation_path=loaded.integration.command_implementation_path
                 or loaded.registry_entry.pack_runtime_manifest_path,
                 subcommand_implementation_paths=loaded.integration.command_subcommand_implementation_paths,

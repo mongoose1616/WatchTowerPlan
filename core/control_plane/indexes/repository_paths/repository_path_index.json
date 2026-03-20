@@ -1559,7 +1559,7 @@
       "path": "core/docs/commands/core_python/",
       "kind": "directory",
       "surface_kind": "command_docs",
-      "summary": "Holds command pages for the core Python workspace and the watchtower-core CLI family.",
+      "summary": "Holds shared and reusable-core command pages for the core Python workspace and the `watchtower-core` CLI family.",
       "parent_path": "core/docs/commands/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1590,246 +1590,6 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for live initiative bootstrap and readiness commands.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_approve.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Approves one live initiative package into `ready_for_execution`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_closeout.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for live plan closeout and purge commands under the pack-owned namespace.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_closeout_initiative.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Live plan-initiative closeout page for terminally updating one initiative package under `plan/**`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_closeout_purge_trace.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Retained trace-record closeout page for terminally updating one historical trace after live work is already closed.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_confirm_inputs.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Confirms reviewed initiative-authored inputs into machine state before approval.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for plan-owned live query commands.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_artifacts.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for the live cross-family plan artifact index under `plan/.wt/indexes/artifact_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_authority.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Canonical surface-discovery query page for planning and governance questions.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_closeouts.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live closeout recaps under `plan/.wt/indexes/closeout_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_coordination.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Machine start-here command page for active traced initiative coordination and next-step lookup.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_discrepancies.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live plan discrepancy records under `plan/.wt/indexes/discrepancy_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_plan_evidence.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative-local evidence bundles under `plan/.wt/indexes/evidence_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_project_context.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Loads the explicit machine-first runtime context for one project container under `plan/projects/**`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_projects.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for pack-level project lookup under `plan/.wt/indexes/project_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_readiness.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative readiness and execution-gate state under `plan/.wt/indexes/readiness_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_query_reviews.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Query page for live initiative and promotion review state under `plan/.wt/indexes/review_index.json`.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_sync.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for plan-owned sync commands such as coordination, task tracking, and GitHub task sync.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_task.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for pack-owned task lifecycle commands that mutate initiative-local live task records in dry-run or write mode.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_task_create.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Creates one initiative-local live task record under the pack-owned `plan task` namespace.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_task_transition.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Applies a bounded handoff-style transition under the pack-owned `plan task` namespace.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "core/docs/commands/core_python/watchtower_core_plan_task_update.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Applies structured field updates under the pack-owned `plan task` namespace.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3315,7 +3075,7 @@
     {
       "path": "plan/docs/commands/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "command_docs",
       "summary": "Holds pack-owned command pages when a `watchtower-core <pack> ...` surface is owned by this pack.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3325,9 +3085,79 @@
     {
       "path": "plan/docs/commands/README.md",
       "kind": "file",
-      "surface_kind": "plan_guidance",
+      "surface_kind": "command_doc",
       "summary": "Describes the purpose of the plan-owned command-doc root.",
       "parent_path": "plan/docs/commands/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/",
+      "kind": "directory",
+      "surface_kind": "command_docs",
+      "summary": "Holds plan-owned pages for the `watchtower-core plan ...` namespace.",
+      "parent_path": "plan/docs/commands/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/README.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Describes the purpose of the plan-owned core Python command-doc directory.",
+      "parent_path": "plan/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/watchtower_core_plan.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for the pack-owned `watchtower-core plan` namespace.",
+      "parent_path": "plan/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/watchtower_core_plan_closeout.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for plan-owned closeout commands.",
+      "parent_path": "plan/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/watchtower_core_plan_query.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for plan-owned live query commands.",
+      "parent_path": "plan/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/watchtower_core_plan_sync.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for plan-owned sync commands.",
+      "parent_path": "plan/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/docs/commands/core_python/watchtower_core_plan_task.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for plan-owned task lifecycle commands.",
+      "parent_path": "plan/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "shared"

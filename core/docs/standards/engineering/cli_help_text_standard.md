@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:46:38Z"
+updated_at: "2026-03-21T01:05:00Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -19,6 +19,7 @@ aliases:
 applies_to:
   - "core/python/src/watchtower_core/cli/"
   - "core/docs/commands/"
+  - "plan/docs/commands/"
 ---
 
 # CLI Help Text Standard
@@ -33,7 +34,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - Applies to repository-native CLI help text implemented in code, including root commands, command groups, and leaf commands.
 - Applies to the `watchtower-core` CLI family under `core/python/`.
 - Covers descriptions, option help text, examples, and command-group behavior.
-- Does not replace the fuller command pages under `core/docs/commands/`.
+- Does not replace the fuller command pages under the owning command-doc root.
 
 ## Use When
 - Adding a new root command, command group, or leaf command.
@@ -90,7 +91,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 
 ## Operationalization
 - `Modes`: `documentation`; `runtime`
-- `Operational Surfaces`: `core/docs/commands/`; `core/python/src/watchtower_core/cli/`; `core/docs/commands/core_python/watchtower_core.md`
+- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/python/src/watchtower_core/cli/`; `core/docs/commands/core_python/watchtower_core.md`; `plan/docs/commands/core_python/watchtower_core_plan.md`
 
 ## Validation
 - Root and command-group `--help` output should be understandable without opening the implementation file first.
@@ -109,4 +110,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [core/docs/templates/command_reference_template.md](/core/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-12T02:46:38Z`
+- `2026-03-21T01:05:00Z`

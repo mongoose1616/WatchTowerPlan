@@ -9,7 +9,7 @@ tags:
   - "github"
   - "collaboration"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T20:15:00Z"
+updated_at: "2026-03-21T01:05:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -47,7 +47,7 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [github_collaboration_standard.md](/plan/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/plan/docs/standards/governance/github_task_sync_standard.md)
 - [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
-- [watchtower_core_plan_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
+- [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
 
 ## Quick Reference or Distilled Reference
 ### Hosted Surface Roles
@@ -86,7 +86,7 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [github_task_sync_standard.md](/plan/docs/standards/governance/github_task_sync_standard.md)
 - [README.md](/.github/README.md)
 - [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
-- [watchtower_core_plan_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
+- [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
 - `plan/python/src/watchtower_plan/sync/github_tasks.py`
 
 ### Why It Matters Here
@@ -97,10 +97,10 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [github_collaboration_standard.md](/plan/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/plan/docs/standards/governance/github_task_sync_standard.md)
 - [github_task_sync.md](/plan/workflows/modules/github_task_sync.md)
-- [watchtower_core_plan_sync_github_tasks.md](/core/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
+- [watchtower_core_plan_sync_github_tasks.md](/plan/docs/commands/core_python/watchtower_core_plan_sync_github_tasks.md)
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` while normalizing GitHub-facing repository guidance through local references.
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-21T01:05:00Z`

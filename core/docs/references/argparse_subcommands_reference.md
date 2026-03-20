@@ -9,7 +9,7 @@ tags:
   - "python"
   - "argparse"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T17:12:07Z"
+updated_at: "2026-03-21T01:05:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -74,7 +74,7 @@ Keep command registration and dispatch predictable while the repository moves fr
 ### Current Touchpoints
 - [pyproject.toml](/core/python/pyproject.toml)
 - [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md)
-- [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md)
+- [watchtower_core_plan.md](/plan/docs/commands/core_python/watchtower_core_plan.md)
 
 ### Why It Matters Here
 - The repository is moving toward `watchtower-core <pack> ...` namespacing, which depends on nested subparsers rather than more flat command families.
@@ -103,4 +103,4 @@ Keep command registration and dispatch predictable while the repository moves fr
 - Canonical upstream source was reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-20T17:12:07Z`
+- `2026-03-21T01:05:00Z`

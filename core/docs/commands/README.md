@@ -10,4 +10,8 @@
 | Path | Description |
 |---|---|
 | `core/docs/commands/README.md` | Describes the purpose of the command-doc directory and its current command families. |
-| `core/docs/commands/core_python/` | Holds command pages for the core Python workspace and the watchtower-core CLI family. |
+| `core/docs/commands/core_python/` | Holds shared and reusable-core command pages for the core Python workspace and the `watchtower-core` CLI family. |
+
+## Notes
+- Keep shared and reusable-core command docs here.
+- Keep pack-owned command docs under the owning pack docs root such as `plan/docs/commands/`.

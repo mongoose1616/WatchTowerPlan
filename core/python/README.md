@@ -86,15 +86,15 @@
 - Start with [README.md](/core/docs/commands/core_python/README.md) for command-doc navigation.
 - Open [watchtower_core.md](/core/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
 - Open [watchtower_core_route.md](/core/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
-- Open [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md) when you need live initiative bootstrap or readiness-gate commands.
+- Open [watchtower_core_plan.md](/plan/docs/commands/core_python/watchtower_core_plan.md) when you need live initiative bootstrap or readiness-gate commands.
 - Open [watchtower_core_validate_suite.md](/core/docs/commands/core_python/watchtower_core_validate_suite.md) when you need the pack-declared suite runtime and `--pack-settings-path` behavior.
 - Use the group pages for deeper browsing:
-  - [watchtower_core_plan.md](/core/docs/commands/core_python/watchtower_core_plan.md)
+  - [watchtower_core_plan.md](/plan/docs/commands/core_python/watchtower_core_plan.md)
   - [watchtower_core_query.md](/core/docs/commands/core_python/watchtower_core_query.md)
-  - [watchtower_core_plan_task.md](/core/docs/commands/core_python/watchtower_core_plan_task.md)
+  - [watchtower_core_plan_task.md](/plan/docs/commands/core_python/watchtower_core_plan_task.md)
   - [watchtower_core_sync.md](/core/docs/commands/core_python/watchtower_core_sync.md)
   - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
-  - [watchtower_core_plan_closeout.md](/core/docs/commands/core_python/watchtower_core_plan_closeout.md)
+  - [watchtower_core_plan_closeout.md](/plan/docs/commands/core_python/watchtower_core_plan_closeout.md)
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 
 ### Commands Inside `./tools/dev_shell.sh`

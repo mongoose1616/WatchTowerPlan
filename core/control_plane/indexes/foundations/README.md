@@ -6,7 +6,7 @@
 ## Notes
 - Human family entrypoint: `core/docs/foundations/README.md`
 - Machine lookup entrypoint: `core/docs/commands/core_python/watchtower_core_query_foundations.md`
-- Rebuild entrypoint: `core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`
+- Rebuild entrypoint: `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`
 
 ## Files
 | Path | Description |
