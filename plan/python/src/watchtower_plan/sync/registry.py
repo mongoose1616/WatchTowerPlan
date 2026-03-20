@@ -8,6 +8,14 @@ from watchtower_core.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )
+from watchtower_core.sync.foundation_index import (
+    FOUNDATION_INDEX_ARTIFACT_PATH,
+    FoundationIndexSyncService,
+)
+from watchtower_core.sync.reference_index import (
+    REFERENCE_INDEX_ARTIFACT_PATH,
+    ReferenceIndexSyncService,
+)
 from watchtower_plan.sync.coordination_index import (
     COORDINATION_INDEX_ARTIFACT_PATH,
     CoordinationIndexSyncService,
@@ -15,10 +23,6 @@ from watchtower_plan.sync.coordination_index import (
 from watchtower_plan.sync.coordination_tracking import (
     COORDINATION_TRACKING_DOCUMENT_PATH,
     CoordinationTrackingSyncService,
-)
-from watchtower_plan.sync.foundation_index import (
-    FOUNDATION_INDEX_ARTIFACT_PATH,
-    FoundationIndexSyncService,
 )
 from watchtower_plan.sync.initiative_index import (
     INITIATIVE_INDEX_ARTIFACT_PATH,
@@ -28,10 +32,6 @@ from watchtower_plan.sync.initiative_tracking import (
     INITIATIVE_TRACKING_DOCUMENT_PATH,
     InitiativeTrackingSyncService,
 )
-from watchtower_plan.sync.reference_index import (
-    REFERENCE_INDEX_ARTIFACT_PATH,
-    ReferenceIndexSyncService,
-)
 from watchtower_core.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
@@ -40,9 +40,13 @@ from watchtower_core.sync.route_index import (
     ROUTE_INDEX_ARTIFACT_PATH,
     RouteIndexSyncService,
 )
-from watchtower_plan.sync.standard_index import (
+from watchtower_core.sync.standard_index import (
     STANDARD_INDEX_ARTIFACT_PATH,
     StandardIndexSyncService,
+)
+from watchtower_core.sync.workflow_index import (
+    WORKFLOW_INDEX_ARTIFACT_PATH,
+    WorkflowIndexSyncService,
 )
 from watchtower_plan.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
 from watchtower_plan.sync.task_tracking import (
@@ -52,10 +56,6 @@ from watchtower_plan.sync.task_tracking import (
 from watchtower_plan.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceabilityIndexSyncService,
-)
-from watchtower_plan.sync.workflow_index import (
-    WORKFLOW_INDEX_ARTIFACT_PATH,
-    WorkflowIndexSyncService,
 )
 from watchtower_core.sync.harness import SyncTargetMode, SyncTargetSpec
 

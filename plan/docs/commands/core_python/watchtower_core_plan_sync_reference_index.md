@@ -60,7 +60,7 @@ uv run watchtower-core plan sync reference-index --output /tmp/reference_index.j
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/sync.py`
-- `plan/python/src/watchtower_plan/sync/reference_index.py`
+- `core/python/src/watchtower_core/sync/reference_index.py`
 - `core/control_plane/indexes/references/reference_index.json`
 
 ## Updated At

@@ -368,7 +368,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.standard_index",
         ),
         (
-            "plan/python/src/watchtower_plan/sync/foundation_index.py",
+            "core/python/src/watchtower_core/sync/foundation_index.py",
             "std.data_contracts.foundation_index",
         ),
         (

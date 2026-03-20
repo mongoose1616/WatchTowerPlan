@@ -89,7 +89,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
-- `Operational Surfaces`: `plan/python/src/watchtower_plan/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.

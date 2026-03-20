@@ -11,10 +11,10 @@ from watchtower_core.control_plane.loader import (
     VALIDATION_EVIDENCE_DIRECTORY,
     ControlPlaneLoader,
 )
-from watchtower_plan.reference_resolution import (
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.sync.reference_resolution import (
     reference_urls_by_path_from_index_document,
 )
-from watchtower_plan.sync.reference_index import ReferenceIndexSyncService
 from watchtower_plan.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 from watchtower_core.sync.harness import (
     ReferenceAwareSyncService,

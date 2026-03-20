@@ -24,7 +24,7 @@ from watchtower_core.validation.pack_targets import (
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
-from watchtower_plan.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

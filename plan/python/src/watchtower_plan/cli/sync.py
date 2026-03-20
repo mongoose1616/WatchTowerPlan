@@ -199,10 +199,10 @@ _TRACKING_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
 )
 
 _DOCUMENT_HANDLER_SPECS = (
-    ("reference_index", "watchtower_plan.sync.reference_index", "ReferenceIndexSyncService", "watchtower-core plan sync reference-index", "reference index"),
-    ("foundation_index", "watchtower_plan.sync.foundation_index", "FoundationIndexSyncService", "watchtower-core plan sync foundation-index", "foundation index"),
-    ("standard_index", "watchtower_plan.sync.standard_index", "StandardIndexSyncService", "watchtower-core plan sync standard-index", "standard index"),
-    ("workflow_index", "watchtower_plan.sync.workflow_index", "WorkflowIndexSyncService", "watchtower-core plan sync workflow-index", "workflow index"),
+    ("reference_index", "watchtower_core.sync.reference_index", "ReferenceIndexSyncService", "watchtower-core plan sync reference-index", "reference index"),
+    ("foundation_index", "watchtower_core.sync.foundation_index", "FoundationIndexSyncService", "watchtower-core plan sync foundation-index", "foundation index"),
+    ("standard_index", "watchtower_core.sync.standard_index", "StandardIndexSyncService", "watchtower-core plan sync standard-index", "standard index"),
+    ("workflow_index", "watchtower_core.sync.workflow_index", "WorkflowIndexSyncService", "watchtower-core plan sync workflow-index", "workflow index"),
     ("initiative_index", "watchtower_plan.sync.initiative_index", "InitiativeIndexSyncService", "watchtower-core plan sync initiative-index", "initiative index"),
     ("task_index", "watchtower_plan.sync.task_index", "TaskIndexSyncService", "watchtower-core plan sync task-index", "task index"),
     ("traceability_index", "watchtower_plan.sync.traceability", "TraceabilityIndexSyncService", "watchtower-core plan sync traceability-index", "traceability index"),

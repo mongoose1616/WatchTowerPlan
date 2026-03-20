@@ -181,7 +181,7 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "plan/python/src/watchtower_plan/sync/foundation_index.py",
+        "core/python/src/watchtower_core/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
         "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
@@ -540,7 +540,7 @@
         "schema"
       ],
       "operationalization_paths": [
-        "plan/python/src/watchtower_plan/sync/standard_index.py",
+        "core/python/src/watchtower_core/sync/standard_index.py",
         "core/python/src/watchtower_core/query/standards.py",
         "core/control_plane/indexes/standards/",
         "core/control_plane/schemas/artifacts/"
@@ -769,7 +769,7 @@
       "operationalization_paths": [
         "core/python/src/watchtower_core/documentation/markdown_semantics.py",
         "core/python/src/watchtower_core/documentation/governed_documents.py",
-        "plan/python/src/watchtower_plan/sync/workflow_index.py",
+        "core/python/src/watchtower_core/sync/workflow_index.py",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
@@ -828,7 +828,7 @@
         "core/docs/foundations/repository_scope.md",
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/templates/foundation_document_template.md",
-        "plan/python/src/watchtower_plan/sync/foundation_index.py",
+        "core/python/src/watchtower_core/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py"
       ],
       "internal_reference_paths": [
@@ -983,7 +983,7 @@
         "core/docs/standards/*/*_standard.md",
         "plan/docs/standards/*/*_standard.md",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
-        "plan/python/src/watchtower_plan/sync/standard_index.py",
+        "core/python/src/watchtower_core/sync/standard_index.py",
         "core/python/src/watchtower_core/query/standards.py",
         "core/docs/commands/core_python/watchtower_core_query_standards.md",
         "core/docs/templates/standard_document_template.md"

@@ -28,7 +28,7 @@ from watchtower_core.documentation.governed_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_plan.reference_resolution import build_reference_urls_by_path
+from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
 WORKFLOW_DOC_ROOTS = ("core/workflows/modules", "plan/workflows/modules")

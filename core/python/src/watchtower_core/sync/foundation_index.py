@@ -1,4 +1,4 @@
-"""Deterministic rebuild helpers for the standard index."""
+"""Deterministic rebuild helpers for the foundation index."""
 
 from __future__ import annotations
 
@@ -6,9 +6,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-from jsonschema import ValidationError
-
 from watchtower_core.adapters import (
+    extract_external_urls,
+    extract_repo_path_references,
     extract_sections,
     extract_title,
     extract_updated_at_from_section,
@@ -27,49 +27,44 @@ from watchtower_core.documentation.markdown_semantics import (
 )
 from watchtower_core.documentation.governed_documents import (
     ordered_unique,
-    validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_plan.reference_resolution import build_reference_urls_by_path
-from watchtower_core.documentation.standards import (
-    STANDARD_OPERATIONALIZATION_SECTION,
-    collect_standard_reference_metadata,
-    parse_standard_operationalization,
-)
-from watchtower_plan.sync.traceability_support import existing_paths
+from watchtower_core.sync.path_support import existing_paths
+from watchtower_core.sync.reference_index import iter_citation_audit_documents
+from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
-STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.json"
-STANDARD_FRONT_MATTER_SCHEMA_ID = (
-    "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
+FOUNDATION_INDEX_ARTIFACT_PATH = (
+    "core/control_plane/indexes/foundations/foundation_index.json"
 )
-STANDARD_DOC_ROOTS = (
-    "core/docs/standards",
-    "plan/docs/standards",
+FOUNDATION_FRONT_MATTER_SCHEMA_ID = (
+    "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1"
 )
-STANDARD_EXCLUDED_NAMES = {"README.md"}
+FOUNDATION_DOC_ROOT = "core/docs/foundations"
+FOUNDATION_EXCLUDED_NAMES = {"README.md"}
 
 
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
     try:
-        document = loader.load_validated_document(STANDARD_INDEX_ARTIFACT_PATH)
-    except (ArtifactLoadError, ValidationError):
+        document = loader.load_json_object(FOUNDATION_INDEX_ARTIFACT_PATH)
+    except ArtifactLoadError:
         return {}
+
     entries = document.get("entries")
     if not isinstance(entries, list):
-        raise ValueError(f"{STANDARD_INDEX_ARTIFACT_PATH} is missing its entries list.")
+        raise ValueError(f"{FOUNDATION_INDEX_ARTIFACT_PATH} is missing its entries list.")
 
     existing: dict[str, dict[str, Any]] = {}
     for entry in entries:
         if not isinstance(entry, dict):
             continue
-        standard_id = entry.get("standard_id")
-        if isinstance(standard_id, str):
-            existing[standard_id] = entry
+        foundation_id = entry.get("foundation_id")
+        if isinstance(foundation_id, str):
+            existing[foundation_id] = entry
     return existing
 
 
-class StandardIndexSyncService:
-    """Build and write the standard index from governed standards."""
+class FoundationIndexSyncService:
+    """Build and write the foundation index from governed foundation documents."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
@@ -77,7 +72,7 @@ class StandardIndexSyncService:
         self._reference_urls_by_path: dict[str, tuple[str, ...]] | None = None
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> StandardIndexSyncService:
+    def from_repo_root(cls, repo_root: Path | None = None) -> FoundationIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def set_reference_urls_by_path(
@@ -93,27 +88,19 @@ class StandardIndexSyncService:
         reference_urls_by_path = self._reference_urls_by_path or build_reference_urls_by_path(
             self._loader
         )
+        citation_maps = self._build_citation_maps()
         entries: list[dict[str, object]] = []
 
-        standard_documents: list[tuple[Path, int]] = []
-        for root in STANDARD_DOC_ROOTS:
-            standards_root = self._repo_root / root
-            root_depth = len(Path(root).parts)
-            for path in standards_root.rglob("*.md"):
-                if path.name in STANDARD_EXCLUDED_NAMES:
-                    continue
-                standard_documents.append((path, root_depth))
-
-        for path, root_depth in sorted(
-            standard_documents,
-            key=lambda item: item[0].relative_to(self._repo_root).as_posix(),
-        ):
+        foundations_root = self._repo_root / FOUNDATION_DOC_ROOT
+        for path in sorted(foundations_root.glob("*.md")):
+            if path.name in FOUNDATION_EXCLUDED_NAMES:
+                continue
 
             relative_path = path.relative_to(self._repo_root).as_posix()
             front_matter = load_front_matter(path)
             self._loader.schema_store.validate_instance(
                 front_matter,
-                schema_id=STANDARD_FRONT_MATTER_SCHEMA_ID,
+                schema_id=FOUNDATION_FRONT_MATTER_SCHEMA_ID,
             )
             applies_to = normalize_front_matter_applies_to(
                 front_matter,
@@ -133,46 +120,41 @@ class StandardIndexSyncService:
                 )
 
             sections = extract_sections(markdown)
-            required_sections = (
-                "Related Standards and Sources",
-                STANDARD_OPERATIONALIZATION_SECTION,
-                "References",
-                "Updated At",
-            )
+            required_sections = ("References", "Updated At")
             missing_sections = [section for section in required_sections if section not in sections]
             if missing_sections:
                 joined = ", ".join(missing_sections)
                 raise ValueError(f"{relative_path} is missing required sections: {joined}")
             validate_required_section_order(relative_path, sections, required_sections)
-            validate_explained_bullet_section(
-                relative_path,
-                "Related Standards and Sources",
-                sections["Related Standards and Sources"],
-            )
 
             updated_at = front_matter["updated_at"]
             if extract_updated_at_from_section(sections["Updated At"]) != updated_at:
                 raise ValueError(
                     f"{relative_path} Updated At section does not match front matter updated_at."
                 )
-            operationalization_modes, operationalization_paths = (
-                parse_standard_operationalization(
-                    relative_path,
-                    sections.get(STANDARD_OPERATIONALIZATION_SECTION),
-                    self._repo_root,
-                )
-            )
 
             current = existing_entries.get(front_matter["id"], {})
-            reference_metadata = collect_standard_reference_metadata(
-                relative_path=relative_path,
-                repo_root=self._repo_root,
-                source_path=path,
-                related_section=sections["Related Standards and Sources"],
-                references_section=sections["References"],
-                reference_urls_by_path=reference_urls_by_path,
+            internal_reference_paths = ordered_unique(
+                extract_repo_path_references(
+                    sections["References"],
+                    self._repo_root,
+                    source_path=path,
+                )
             )
-
+            reference_doc_paths = tuple(
+                value for value in internal_reference_paths if value.startswith("core/docs/references/")
+            )
+            direct_external_urls = ordered_unique(extract_external_urls(sections["References"]))
+            transitive_external_urls = ordered_unique(
+                *(
+                    reference_urls_by_path.get(reference_path, ())
+                    for reference_path in reference_doc_paths
+                )
+            )
+            external_reference_urls = ordered_unique(
+                direct_external_urls,
+                transitive_external_urls,
+            )
             related_paths = ordered_unique(
                 applies_to_path_values(applies_to, relative_path=relative_path),
                 existing_paths(
@@ -180,50 +162,44 @@ class StandardIndexSyncService:
                     _tuple_of_strings(current.get("related_paths")),
                 ),
             )
+            aliases = ordered_unique(
+                _front_matter_list(front_matter, "aliases"),
+                _tuple_of_strings(current.get("aliases")),
+            )
             tags = ordered_unique(
                 _front_matter_list(front_matter, "tags"),
                 _tuple_of_strings(current.get("tags")),
             )
             notes = _optional_string(current.get("notes"))
-            path_parts = Path(relative_path).parts
-            if len(path_parts) <= root_depth:
-                raise ValueError(
-                    f"{relative_path} is not nested under a valid standards category directory."
-                )
-            category = path_parts[root_depth]
-            owner = front_matter["owner"]
+
             entry: dict[str, object] = {
-                "standard_id": front_matter["id"],
-                "category": category,
+                "foundation_id": front_matter["id"],
                 "title": front_matter["title"],
                 "summary": front_matter["summary"],
                 "status": front_matter["status"],
-                "owner": owner,
+                "audience": front_matter["audience"],
+                "authority": front_matter["authority"],
                 "doc_path": relative_path,
                 "updated_at": updated_at,
-                "uses_internal_references": bool(reference_metadata.internal_reference_paths),
-                "uses_external_references": bool(reference_metadata.external_reference_urls),
-                "operationalization_modes": list(operationalization_modes),
-                "operationalization_paths": list(operationalization_paths),
+                "uses_internal_references": bool(internal_reference_paths),
+                "uses_external_references": bool(external_reference_urls),
             }
-            if applies_to:
-                entry["applies_to"] = list(applies_to)
+            cited_by_paths = citation_maps["cited_by"].get(relative_path, ())
+            applied_by_paths = citation_maps["applied_by"].get(relative_path, ())
             if related_paths:
                 entry["related_paths"] = list(related_paths)
-            if reference_metadata.reference_doc_paths:
-                entry["reference_doc_paths"] = list(reference_metadata.reference_doc_paths)
-            if reference_metadata.internal_reference_paths:
-                entry["internal_reference_paths"] = list(
-                    reference_metadata.internal_reference_paths
-                )
-            if reference_metadata.applied_reference_paths:
-                entry["applied_reference_paths"] = list(reference_metadata.applied_reference_paths)
-            if reference_metadata.external_reference_urls:
-                entry["external_reference_urls"] = list(reference_metadata.external_reference_urls)
-            if reference_metadata.applied_external_reference_urls:
-                entry["applied_external_reference_urls"] = list(
-                    reference_metadata.applied_external_reference_urls
-                )
+            if reference_doc_paths:
+                entry["reference_doc_paths"] = list(reference_doc_paths)
+            if internal_reference_paths:
+                entry["internal_reference_paths"] = list(internal_reference_paths)
+            if external_reference_urls:
+                entry["external_reference_urls"] = list(external_reference_urls)
+            if cited_by_paths:
+                entry["cited_by_paths"] = list(cited_by_paths)
+            if applied_by_paths:
+                entry["applied_by_paths"] = list(applied_by_paths)
+            if aliases:
+                entry["aliases"] = list(aliases)
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:
@@ -232,9 +208,9 @@ class StandardIndexSyncService:
             entries.append(entry)
 
         artifact: dict[str, object] = {
-            "$schema": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
-            "id": "index.standards",
-            "title": "Standard Index",
+            "$schema": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
+            "id": "index.foundations",
+            "title": "Foundation Index",
             "status": "active",
             "entries": entries,
         }
@@ -242,10 +218,44 @@ class StandardIndexSyncService:
         return artifact
 
     def write_document(self, document: dict[str, object], destination: Path | None = None) -> Path:
-        """Write the generated standard index to disk."""
-        target = destination or (self._repo_root / STANDARD_INDEX_ARTIFACT_PATH)
+        """Write the generated foundation index to disk."""
+        target = destination or (self._repo_root / FOUNDATION_INDEX_ARTIFACT_PATH)
         target.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
         return target
+
+    def _build_citation_maps(self) -> dict[str, dict[str, tuple[str, ...]]]:
+        foundation_paths = self._load_foundation_paths()
+        cited_by: dict[str, set[str]] = {path: set() for path in foundation_paths}
+        applied_by: dict[str, set[str]] = {path: set() for path in foundation_paths}
+
+        for relative_path, cited_paths, _, applied_paths, _ in iter_citation_audit_documents(
+            self._repo_root
+        ):
+            for foundation_path in foundation_paths:
+                if foundation_path in cited_paths:
+                    cited_by[foundation_path].add(relative_path)
+                if foundation_path in applied_paths:
+                    applied_by[foundation_path].add(relative_path)
+
+        return {
+            "cited_by": {
+                path: tuple(sorted(values))
+                for path, values in cited_by.items()
+                if values
+            },
+            "applied_by": {
+                path: tuple(sorted(values))
+                for path, values in applied_by.items()
+                if values
+            },
+        }
+
+    def _load_foundation_paths(self) -> tuple[str, ...]:
+        return tuple(
+            path.relative_to(self._repo_root).as_posix()
+            for path in sorted((self._repo_root / FOUNDATION_DOC_ROOT).glob("*.md"))
+            if path.name not in FOUNDATION_EXCLUDED_NAMES
+        )
 
 
 def _front_matter_list(front_matter: dict[str, Any], key: str) -> tuple[str, ...]:
@@ -253,11 +263,11 @@ def _front_matter_list(front_matter: dict[str, Any], key: str) -> tuple[str, ...
     if value is None:
         return ()
     if not isinstance(value, list):
-        raise ValueError(f"Standard front matter key {key} must be a YAML list when present.")
+        raise ValueError(f"Foundation front matter key {key} must be a YAML list when present.")
     items: list[str] = []
     for item in value:
         if not isinstance(item, str) or not item.strip():
-            raise ValueError(f"Standard front matter key {key} must contain only strings.")
+            raise ValueError(f"Foundation front matter key {key} must contain only strings.")
         items.append(item.strip())
     return tuple(items)
 

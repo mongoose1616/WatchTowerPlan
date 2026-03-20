@@ -15,6 +15,7 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 from watchtower_plan.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
@@ -22,7 +23,6 @@ from watchtower_plan.plan_workspace import (
 )
 from watchtower_plan.sync import AllSyncService, CoordinationSyncService
 from watchtower_plan.sync.coordination_tracking import CoordinationTrackingSyncService
-from watchtower_plan.sync.reference_index import ReferenceIndexSyncService
 from watchtower_plan.sync.registry import (
     COORDINATION_SYNC_GROUP,
     SYNC_TARGET_SPECS,

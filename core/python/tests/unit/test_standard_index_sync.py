@@ -8,7 +8,7 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.sync import StandardIndexSyncService
+from watchtower_core.sync.standard_index import StandardIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -91,7 +91,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert {"sync", "query", "documentation", "schema", "artifact"}.issubset(
         set(foundation_entry.get("operationalization_modes", []))
     )
-    assert "plan/python/src/watchtower_plan/sync/foundation_index.py" in (
+    assert "core/python/src/watchtower_core/sync/foundation_index.py" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "core/python/src/watchtower_core/query/foundations.py" in (

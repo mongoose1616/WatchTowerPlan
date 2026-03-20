@@ -33,10 +33,10 @@ from watchtower_core.documentation.standards import (
     collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
-from watchtower_plan.sync.foundation_index import FOUNDATION_FRONT_MATTER_SCHEMA_ID
-from watchtower_plan.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
-from watchtower_plan.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
-from watchtower_plan.sync.workflow_index import (
+from watchtower_core.sync.foundation_index import FOUNDATION_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.sync.workflow_index import (
     WorkflowDocumentContext,
     build_workflow_document_context,
     load_workflow_document,

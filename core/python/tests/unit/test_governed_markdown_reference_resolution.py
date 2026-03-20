@@ -10,7 +10,7 @@ from watchtower_core.documentation.governed_documents import (
     GovernedDocument,
     collect_reference_indicators,
 )
-from watchtower_plan.sync import FoundationIndexSyncService
+from watchtower_core.sync.foundation_index import FoundationIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

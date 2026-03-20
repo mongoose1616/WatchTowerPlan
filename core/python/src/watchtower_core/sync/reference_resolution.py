@@ -1,9 +1,9 @@
-"""Shared helpers for repo-local reference-resolution reuse."""
+"""Shared helpers for governed reference-resolution reuse."""
 
 from __future__ import annotations
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
 
 def reference_urls_by_path_from_index_document(
