@@ -1,0 +1,769 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1",
+  "id": "registry.rendered_surfaces",
+  "title": "Rendered Surface Registry",
+  "status": "active",
+  "surfaces": [
+    {
+      "surface_id": "rendered.task_tracking",
+      "title": "Task Tracking",
+      "output_path": "plan/tracking/task_tracking.md",
+      "sections": [
+        {
+          "section_id": "open_tasks",
+          "title": "Open Tasks",
+          "kind": "table",
+          "source_key": "open_tasks",
+          "empty_message": "_No open tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_blocked_by_column"
+            }
+          ]
+        },
+        {
+          "section_id": "closed_task_summary",
+          "title": "Closed Task Summary",
+          "kind": "bullet_summary",
+          "source_key": "closed_task_counts",
+          "empty_message": "_No closed tasks._",
+          "label_field": "label",
+          "count_field": "count"
+        },
+        {
+          "section_id": "closed_tasks",
+          "title": "Closed Tasks",
+          "kind": "table",
+          "source_key": "closed_tasks",
+          "empty_message": "_No closed tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_blocked_by_column"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.initiative_tracking",
+      "title": "Initiative Tracking",
+      "output_path": "plan/tracking/initiative_tracking.md",
+      "sections": [
+        {
+          "section_id": "active_initiatives",
+          "title": "Active Initiatives",
+          "kind": "table",
+          "source_key": "active_initiatives",
+          "empty_message": "_No active initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Title",
+              "field": "title",
+              "formatter": "plain"
+            },
+            {
+              "header": "Phase",
+              "field": "current_phase",
+              "formatter": "code"
+            },
+            {
+              "header": "Owners",
+              "field": "owners",
+              "formatter": "plain"
+            },
+            {
+              "header": "Open Tasks",
+              "field": "open_tasks",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            },
+            {
+              "header": "Next",
+              "field": "next_label",
+              "formatter": "repo_link",
+              "path_field": "next_surface_path",
+              "label_field": "next_label"
+            },
+            {
+              "header": "Active Tasks",
+              "field": "active_tasks",
+              "formatter": "markdown"
+            },
+            {
+              "header": "Action",
+              "field": "next_action",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "closed_initiatives",
+          "title": "Closed Initiatives",
+          "kind": "table",
+          "source_key": "closed_initiatives",
+          "empty_message": "_No closed initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Title",
+              "field": "title",
+              "formatter": "plain"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            },
+            {
+              "header": "Closed At",
+              "field": "closed_at",
+              "formatter": "code",
+              "empty_value": "-"
+            },
+            {
+              "header": "Reason",
+              "field": "closure_reason",
+              "formatter": "plain",
+              "empty_value": "-"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.coordination_tracking",
+      "title": "Coordination Tracking",
+      "output_path": "plan/tracking/coordination_tracking.md",
+      "sections": [
+        {
+          "section_id": "current_state",
+          "title": "Current State",
+          "kind": "table",
+          "source_key": "current_state",
+          "columns": [
+            {
+              "header": "Field",
+              "field": "field",
+              "formatter": "plain"
+            },
+            {
+              "header": "Value",
+              "field": "value",
+              "formatter": "markdown"
+            }
+          ]
+        },
+        {
+          "section_id": "active_initiatives",
+          "title": "Active Initiatives",
+          "kind": "table",
+          "source_key": "active_initiatives",
+          "empty_message": "_No active initiatives._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Phase",
+              "field": "current_phase",
+              "formatter": "code"
+            },
+            {
+              "header": "Owners",
+              "field": "owners",
+              "formatter": "plain"
+            },
+            {
+              "header": "Next",
+              "field": "next_label",
+              "formatter": "repo_link",
+              "path_field": "next_surface_path",
+              "label_field": "next_label"
+            },
+            {
+              "header": "Action",
+              "field": "next_action",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "active_initiative_notes",
+          "kind": "lines",
+          "source_key": "active_initiative_notes"
+        },
+        {
+          "section_id": "actionable_tasks",
+          "title": "Actionable Tasks",
+          "kind": "table",
+          "source_key": "actionable_tasks",
+          "empty_message": "_No actionable tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Initiative",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            }
+          ]
+        },
+        {
+          "section_id": "actionable_task_notes",
+          "kind": "lines",
+          "source_key": "actionable_task_notes"
+        },
+        {
+          "section_id": "recent_closeouts",
+          "title": "Recent Closeouts",
+          "kind": "table",
+          "source_key": "recent_closeouts",
+          "empty_message": "_No recent closeouts._",
+          "columns": [
+            {
+              "header": "Trace ID",
+              "field": "trace_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Status",
+              "field": "initiative_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Closed At",
+              "field": "closed_at",
+              "formatter": "code"
+            },
+            {
+              "header": "Key",
+              "field": "key_label",
+              "formatter": "repo_link",
+              "path_field": "key_surface_path",
+              "label_field": "key_label"
+            }
+          ]
+        },
+        {
+          "section_id": "updated_at",
+          "kind": "updated_at",
+          "source_key": "updated_at"
+        }
+      ]
+    },
+    {
+      "surface_id": "rendered.plan.overview",
+      "title": "Plan Overview",
+      "output_path": "plan/plan_overview.md",
+      "sections": [
+        {
+          "section_id": "plan_domain_summary",
+          "title": "Plan Domain Summary",
+          "kind": "lines",
+          "source_key": "plan_domain_summary"
+        },
+        {
+          "section_id": "active_pack_wide_initiatives",
+          "title": "Active Pack-Wide Initiatives",
+          "kind": "lines",
+          "source_key": "active_pack_wide_initiatives"
+        },
+        {
+          "section_id": "active_project_initiatives",
+          "title": "Active Project Initiatives",
+          "kind": "lines",
+          "source_key": "active_project_initiatives"
+        },
+        {
+          "section_id": "blocked_or_attention_needed_items",
+          "title": "Blocked or Attention-Needed Items",
+          "kind": "lines",
+          "source_key": "blocked_or_attention_needed_items"
+        },
+        {
+          "section_id": "recent_completions_or_changes",
+          "title": "Recent Completions or Changes",
+          "kind": "lines",
+          "source_key": "recent_completions_or_changes"
+        },
+        {
+          "section_id": "navigation_links",
+          "title": "Navigation Links",
+          "kind": "lines",
+          "source_key": "navigation_links"
+        }
+      ],
+      "notes": "Plan-pack rendered overview surface derived from plan/.wt indexes and current initiative state."
+    },
+    {
+      "surface_id": "rendered.initiative.plan",
+      "title": "Initiative Plan",
+      "output_path": "plan/initiatives/{initiative_slug}/plan.md",
+      "sections": [
+        {
+          "section_id": "initiative_identity",
+          "title": "Initiative Identity",
+          "kind": "lines",
+          "source_key": "initiative_identity"
+        },
+        {
+          "section_id": "scope_and_non_goals",
+          "title": "Scope and Non-Goals",
+          "kind": "lines",
+          "source_key": "scope_and_non_goals"
+        },
+        {
+          "section_id": "objectives",
+          "title": "Objectives",
+          "kind": "lines",
+          "source_key": "objectives"
+        },
+        {
+          "section_id": "planned_slices_or_workstreams",
+          "title": "Planned Slices or Workstreams",
+          "kind": "table",
+          "source_key": "planned_slices_or_workstreams",
+          "empty_message": "_No planned slices or tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_planned_slice_blocked_by"
+            },
+            {
+              "header": "Depends On",
+              "field": "depends_on",
+              "formatter": "plain",
+              "enabled_when_key": "include_planned_slice_depends_on"
+            }
+          ]
+        },
+        {
+          "section_id": "dependencies_and_risks",
+          "title": "Dependencies and Risks",
+          "kind": "lines",
+          "source_key": "dependencies_and_risks"
+        },
+        {
+          "section_id": "validation_or_completion_gates",
+          "title": "Validation or Completion Gates",
+          "kind": "lines",
+          "source_key": "validation_or_completion_gates"
+        },
+        {
+          "section_id": "linked_outputs",
+          "title": "Linked Outputs",
+          "kind": "lines",
+          "source_key": "linked_outputs"
+        }
+      ],
+      "notes": "Initiative-local rendered plan surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.initiative.progress",
+      "title": "Initiative Progress",
+      "output_path": "plan/initiatives/{initiative_slug}/progress.md",
+      "sections": [
+        {
+          "section_id": "current_status",
+          "title": "Current Status",
+          "kind": "lines",
+          "source_key": "current_status"
+        },
+        {
+          "section_id": "recent_events_or_changes",
+          "title": "Recent Events or Changes",
+          "kind": "table",
+          "source_key": "recent_events_or_changes",
+          "empty_message": "_No recent initiative events._",
+          "columns": [
+            {
+              "header": "Recorded At",
+              "field": "recorded_at",
+              "formatter": "code"
+            },
+            {
+              "header": "Event",
+              "field": "event_type",
+              "formatter": "code"
+            },
+            {
+              "header": "Actor",
+              "field": "actor_id",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            }
+          ]
+        },
+        {
+          "section_id": "active_tasks",
+          "title": "Active Tasks",
+          "kind": "table",
+          "source_key": "active_tasks",
+          "empty_message": "_No active tasks._",
+          "columns": [
+            {
+              "header": "Task",
+              "field": "task_id",
+              "formatter": "repo_link",
+              "path_field": "doc_path"
+            },
+            {
+              "header": "Status",
+              "field": "task_status",
+              "formatter": "code"
+            },
+            {
+              "header": "Priority",
+              "field": "priority",
+              "formatter": "code"
+            },
+            {
+              "header": "Owner",
+              "field": "owner",
+              "formatter": "code"
+            },
+            {
+              "header": "Summary",
+              "field": "summary",
+              "formatter": "plain"
+            },
+            {
+              "header": "Blocked By",
+              "field": "blocked_by",
+              "formatter": "plain",
+              "enabled_when_key": "include_active_task_blocked_by"
+            },
+            {
+              "header": "Depends On",
+              "field": "depends_on",
+              "formatter": "plain",
+              "enabled_when_key": "include_active_task_depends_on"
+            }
+          ]
+        },
+        {
+          "section_id": "blockers",
+          "title": "Blockers",
+          "kind": "lines",
+          "source_key": "blockers"
+        },
+        {
+          "section_id": "next_actions",
+          "title": "Next Actions",
+          "kind": "lines",
+          "source_key": "next_actions"
+        },
+        {
+          "section_id": "evidence_or_validation_state",
+          "title": "Evidence or Validation State",
+          "kind": "lines",
+          "source_key": "evidence_or_validation_state"
+        }
+      ],
+      "notes": "Initiative-local rendered progress surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.initiative.summary",
+      "title": "Initiative Summary",
+      "output_path": "plan/initiatives/{initiative_slug}/summary.md",
+      "sections": [
+        {
+          "section_id": "outcome_summary",
+          "title": "Outcome Summary",
+          "kind": "lines",
+          "source_key": "outcome_summary"
+        },
+        {
+          "section_id": "delivered_outputs",
+          "title": "Delivered Outputs",
+          "kind": "lines",
+          "source_key": "delivered_outputs"
+        },
+        {
+          "section_id": "promoted_guidance",
+          "title": "Promoted Guidance",
+          "kind": "lines",
+          "source_key": "promoted_guidance"
+        },
+        {
+          "section_id": "evidence_references",
+          "title": "Evidence References",
+          "kind": "lines",
+          "source_key": "evidence_references"
+        },
+        {
+          "section_id": "unresolved_follow_ups",
+          "title": "Unresolved Follow-Ups",
+          "kind": "lines",
+          "source_key": "unresolved_follow_ups"
+        },
+        {
+          "section_id": "closeout_state",
+          "title": "Closeout State",
+          "kind": "lines",
+          "source_key": "closeout_state"
+        }
+      ],
+      "notes": "Initiative-local rendered summary surface for both pack-wide and project-scoped initiative roots."
+    },
+    {
+      "surface_id": "rendered.project.project",
+      "title": "Project Surface",
+      "output_path": "plan/projects/{project_slug}/project.md",
+      "sections": [
+        {
+          "section_id": "project_identity",
+          "kind": "lines",
+          "source_key": "project_identity"
+        },
+        {
+          "section_id": "purpose_and_scope",
+          "kind": "lines",
+          "source_key": "purpose_and_scope"
+        },
+        {
+          "section_id": "current_state",
+          "kind": "lines",
+          "source_key": "current_state"
+        },
+        {
+          "section_id": "linked_initiatives",
+          "kind": "lines",
+          "source_key": "linked_initiatives"
+        },
+        {
+          "section_id": "linked_repositories",
+          "kind": "lines",
+          "source_key": "linked_repositories"
+        },
+        {
+          "section_id": "key_references_or_docs",
+          "kind": "lines",
+          "source_key": "key_references_or_docs"
+        }
+      ],
+      "notes": "Rendered project identity surface derived from project machine state."
+    },
+    {
+      "surface_id": "rendered.project.repositories",
+      "title": "Project Repositories",
+      "output_path": "plan/projects/{project_slug}/repositories.md",
+      "sections": [
+        {
+          "section_id": "repository_role_summary",
+          "kind": "lines",
+          "source_key": "repository_role_summary"
+        },
+        {
+          "section_id": "repository_locations",
+          "kind": "lines",
+          "source_key": "repository_locations"
+        },
+        {
+          "section_id": "ownership_or_access_notes",
+          "kind": "lines",
+          "source_key": "ownership_or_access_notes"
+        },
+        {
+          "section_id": "implementation_vs_planning_boundary",
+          "kind": "lines",
+          "source_key": "implementation_vs_planning_boundary"
+        },
+        {
+          "section_id": "active_flags",
+          "kind": "lines",
+          "source_key": "active_flags"
+        }
+      ],
+      "notes": "Rendered project repository map derived from project_repository_map state."
+    },
+    {
+      "surface_id": "rendered.project.summary",
+      "title": "Project Summary",
+      "output_path": "plan/projects/{project_slug}/summary.md",
+      "sections": [
+        {
+          "section_id": "project_delivery_summary",
+          "kind": "lines",
+          "source_key": "project_delivery_summary"
+        },
+        {
+          "section_id": "current_health",
+          "kind": "lines",
+          "source_key": "current_health"
+        },
+        {
+          "section_id": "open_risks",
+          "kind": "lines",
+          "source_key": "open_risks"
+        },
+        {
+          "section_id": "next_milestones_or_follow_ups",
+          "kind": "lines",
+          "source_key": "next_milestones_or_follow_ups"
+        },
+        {
+          "section_id": "promotion_or_guidance_impacts",
+          "kind": "lines",
+          "source_key": "promotion_or_guidance_impacts"
+        }
+      ],
+      "notes": "Rendered project summary surface derived from project and initiative indexes."
+    }
+  ]
+}

@@ -36,10 +36,13 @@ def _discover_repo_root(start: Path) -> Path:
 def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
     control_plane_root = pack_root / ".wt"
+    workspace_relative_root = pack_root.relative_to(repo_root).as_posix()
     relative_root = control_plane_root.relative_to(repo_root).as_posix()
     schema_id = "urn:watchtower:schema:interfaces:packs:artifact-pack-note:v1"
     schema_relative_path = f"{relative_root}/schemas/interfaces/packs/artifact_pack_note.schema.json"
     validator_id = "validator.packs.artifact_pack_note"
+    validation_suite_registry_path = f"{relative_root}/registries/validation_suite_registry.json"
+    suite_id = "suite.artifact_test.validation_baseline"
     artifact_relative_path = f"{relative_root}/work_items/artifact_pack_note.json"
     write_json(
         repo_root / schema_relative_path,
@@ -104,6 +107,31 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
+        repo_root / validation_suite_registry_path,
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+            "id": "registry.validation_suites",
+            "title": "Artifact Validation Pack Suites",
+            "status": "active",
+            "suites": [
+                {
+                    "id": suite_id,
+                    "title": "Artifact Validation Pack Baseline",
+                    "description": "Minimal validation suite for artifact pack tests.",
+                    "status": "active",
+                    "steps": [
+                        {
+                            "id": "step.artifact_test.artifacts",
+                            "title": "Validate artifact-test note artifacts",
+                            "description": "Validate pack-local artifact note JSON.",
+                            "step_kind": "artifact",
+                        }
+                    ],
+                }
+            ],
+        },
+    )
+    write_json(
         repo_root / artifact_relative_path,
         {
             "$schema": schema_id,
@@ -111,7 +139,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
             "title": "Artifact Pack Note",
         },
     )
-    pack_settings_path = f"{relative_root}/pack_settings.json"
+    pack_settings_path = f"{relative_root}/manifests/pack_settings.json"
     write_json(
         repo_root / pack_settings_path,
         {
@@ -136,13 +164,32 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
                     "authority": "authoritative",
                     "visibility": "hidden",
                 },
+                {
+                    "surface_name": "validation_suite_registry",
+                    "surface_kind": "registry",
+                    "path": validation_suite_registry_path,
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
             ],
+            "workspace_roots": {
+                "workspace_root": workspace_relative_root,
+                "machine_root": relative_root,
+                "docs_root": f"{workspace_relative_root}/docs",
+                "workflows_root": f"{workspace_relative_root}/workflows",
+                "tracking_root": f"{workspace_relative_root}/tracking",
+                "initiatives_root": f"{workspace_relative_root}/initiatives",
+                "projects_root": f"{workspace_relative_root}/projects",
+                "overview_path": f"{workspace_relative_root}/overview.md",
+            },
+            "default_validation_suite_id": suite_id,
         },
     )
     return {
         "artifact_relative_path": artifact_relative_path,
         "pack_settings_path": pack_settings_path,
         "schema_id": schema_id,
+        "suite_id": suite_id,
         "validator_id": validator_id,
     }
 

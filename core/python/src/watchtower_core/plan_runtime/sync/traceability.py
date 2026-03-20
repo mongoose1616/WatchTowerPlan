@@ -7,11 +7,9 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.plan_runtime.plan_workspace import (
-    PLAN_PACK_SETTINGS_PATH,
-    PLAN_TASK_INDEX_PATH,
-)
+from watchtower_core.plan_runtime.plan_workspace import PLAN_PACK_SETTINGS_PATH
 from watchtower_core.plan_runtime.sync.traceability_support import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceAccumulator,
@@ -23,7 +21,6 @@ from watchtower_core.plan_runtime.sync.traceability_support import (
     optional_string,
     tuple_of_strings,
 )
-TASK_INDEX_PATH = PLAN_TASK_INDEX_PATH
 ACCEPTANCE_CONTRACT_DIRECTORY = "core/control_plane/contracts/acceptance"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 
@@ -35,6 +32,11 @@ class TraceabilityIndexSyncService:
         self._loader = loader
         self._plan_loader = loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
         self._repo_root = loader.repo_root
+        self._workspace_paths = PackWorkspacePaths.from_loader(
+            self._plan_loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        self._task_index_path = self._workspace_paths.index_path("task_index.json")
 
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> TraceabilityIndexSyncService:
@@ -151,8 +153,8 @@ class TraceabilityIndexSyncService:
     def _initiative_state_paths(self) -> tuple[str, ...]:
         paths: list[str] = []
         for root in (
-            self._repo_root / "plan" / "initiatives",
-            self._repo_root / "plan" / "projects",
+            self._repo_root / self._workspace_paths.initiatives_root,
+            self._repo_root / self._workspace_paths.projects_root,
         ):
             if not root.exists():
                 continue
@@ -171,8 +173,8 @@ class TraceabilityIndexSyncService:
         }
 
     def _merge_task_index(self, accumulators: dict[str, TraceAccumulator]) -> None:
-        document = self._plan_loader.load_validated_document(TASK_INDEX_PATH)
-        for entry in load_entries(document, label=TASK_INDEX_PATH):
+        document = self._plan_loader.load_validated_document(self._task_index_path)
+        for entry in load_entries(document, label=self._task_index_path):
             trace_id_value = entry.get("trace_id")
             if not isinstance(trace_id_value, str) or not trace_id_value:
                 continue

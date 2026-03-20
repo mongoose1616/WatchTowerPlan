@@ -2,7 +2,7 @@
   "$schema": "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1",
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
-  "description": "Canonical path patterns for the reusable core boundary surfaces and their human-visible companions.",
+  "description": "Canonical path patterns for shared-core surfaces without pack-specific workspace roots.",
   "updated_at": "2026-03-17T20:03:23Z",
   "patterns": [
     {
@@ -38,53 +38,9 @@
       "authoritative": true
     },
     {
-      "family_name": "human_surface_policy_registry",
-      "path_kind": "hidden_authoritative",
-      "path_pattern": "plan/.wt/registries/human_surface_policy_registry.json",
-      "entity_shape": "file",
-      "visibility": "hidden",
-      "authoritative": true,
-      "notes": "Plan-pack human-surface placement policy for README, AGENTS, and routed workflow entrypoints."
-    },
-    {
-      "family_name": "retention_policy_registry",
-      "path_kind": "hidden_authoritative",
-      "path_pattern": "plan/.wt/registries/retention_policy_registry.json",
-      "entity_shape": "file",
-      "visibility": "hidden",
-      "authoritative": true,
-      "notes": "Plan-pack retention policy for legacy history handling, transitional archives, and clean-endstate purge rules."
-    },
-    {
-      "family_name": "pack_work_item_note",
-      "path_kind": "hidden_authoritative",
-      "path_pattern": "plan/.wt/work_items/*.json",
-      "entity_shape": "file",
-      "visibility": "hidden",
-      "authoritative": true,
-      "notes": "Plan-pack work-item notes live under the machine root and participate in the artifact index."
-    },
-    {
-      "family_name": "artifact_index",
-      "path_kind": "hidden_authoritative",
-      "path_pattern": "plan/.wt/indexes/artifact_index.json",
-      "entity_shape": "file",
-      "visibility": "mixed",
-      "authoritative": true,
-      "notes": "Cross-family live artifact lookup for the plan workspace."
-    },
-    {
       "family_name": "workflow_module",
       "path_kind": "user_visible",
       "path_pattern": "core/workflows/modules/*.md",
-      "entity_shape": "file",
-      "visibility": "user",
-      "authoritative": true
-    },
-    {
-      "family_name": "workflow_module",
-      "path_kind": "user_visible",
-      "path_pattern": "plan/workflows/modules/*.md",
       "entity_shape": "file",
       "visibility": "user",
       "authoritative": true

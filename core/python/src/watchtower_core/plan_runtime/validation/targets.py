@@ -1,107 +1,60 @@
-"""WatchTowerPlan-specific validation target enumeration."""
+"""Pack-driven validation target enumeration."""
 
 from __future__ import annotations
 
 from collections.abc import Callable
+from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition
-from watchtower_core.plan_runtime.governed_documents import iter_markdown_documents
-from watchtower_core.plan_runtime.sync.foundation_index import (
-    FOUNDATION_DOC_ROOT,
-    FOUNDATION_EXCLUDED_NAMES,
-)
-from watchtower_core.plan_runtime.sync.reference_index import (
-    REFERENCE_DOC_ROOT,
-    REFERENCE_EXCLUDED_NAMES,
-)
-from watchtower_core.plan_runtime.sync.standard_index import (
-    STANDARD_DOC_ROOTS,
-    STANDARD_EXCLUDED_NAMES,
-)
-from watchtower_core.plan_runtime.sync.workflow_index import WORKFLOW_DOC_ROOTS, WORKFLOW_EXCLUDED_NAMES
 from watchtower_core.validation.context import PackValidationContext
 
-WATCHTOWER_PLAN_VALIDATION_SUITE_ID = "suite.watchtower_plan.validation_baseline"
-_WATCHTOWER_PLAN_PACK_ID = "pack.watchtower_plan"
-_STEP_TARGET_BUILDERS: dict[str, Callable[[ControlPlaneLoader], tuple[str, ...]]] = {}
+_STEP_TARGET_BUILDERS: dict[
+    str,
+    Callable[[PackValidationContext], tuple[str, ...]],
+] = {}
+_EXCLUDED_MARKDOWN_TARGET_NAMES = {"README.md", "AGENTS.md"}
 
 
-def resolve_watchtower_plan_suite_targets(
+def resolve_pack_validation_suite_targets(
     context: PackValidationContext,
     step: ValidationSuiteStepDefinition,
 ) -> tuple[str, ...] | None:
-    """Return repo-native target lists for the WatchTowerPlan validation baseline."""
+    """Return target lists for one pack-declared validation suite step."""
 
-    if context.pack_settings.pack_id != _WATCHTOWER_PLAN_PACK_ID:
-        return None
-    builder = _STEP_TARGET_BUILDERS.get(step.step_id)
+    builder = _STEP_TARGET_BUILDERS.get(step.step_kind)
     if builder is None:
         return None
-    return builder(context.loader)
+    return builder(context)
 
 
-def front_matter_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
-    """Return repo-native front-matter validation targets."""
+def front_matter_targets(context: PackValidationContext) -> tuple[str, ...]:
+    """Return Markdown front-matter validation targets for the active pack."""
 
-    repo_root = loader.repo_root
-    standards = tuple(
-        path.relative_to(repo_root).as_posix()
-        for standards_root in STANDARD_DOC_ROOTS
-        for path in sorted((repo_root / standards_root).rglob("*.md"))
-        if path.name not in STANDARD_EXCLUDED_NAMES
-    )
-    return (
-        *iter_markdown_documents(
-            repo_root,
-            REFERENCE_DOC_ROOT,
-            excluded_names=REFERENCE_EXCLUDED_NAMES,
-        ),
-        *iter_markdown_documents(
-            repo_root,
-            FOUNDATION_DOC_ROOT,
-            excluded_names=FOUNDATION_EXCLUDED_NAMES,
-        ),
-        *standards,
+    return _targets_for_validators(
+        context.loader,
+        engine="json_schema",
+        artifact_kind="documentation_front_matter",
+        default_extension=".md",
+        exclude_workflow_targets=True,
     )
 
 
-def document_semantics_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
-    """Return repo-native document-semantics validation targets."""
+def document_semantics_targets(context: PackValidationContext) -> tuple[str, ...]:
+    """Return document-semantics validation targets for the active pack."""
 
-    repo_root = loader.repo_root
-    standards = tuple(
-        path.relative_to(repo_root).as_posix()
-        for standards_root in STANDARD_DOC_ROOTS
-        for path in sorted((repo_root / standards_root).rglob("*.md"))
-        if path.name not in STANDARD_EXCLUDED_NAMES
-    )
-    workflows = tuple(
-        path.relative_to(repo_root).as_posix()
-        for workflow_root in WORKFLOW_DOC_ROOTS
-        for path in sorted((repo_root / workflow_root).glob("*.md"))
-        if path.name not in WORKFLOW_EXCLUDED_NAMES
-    )
-    return (
-        *iter_markdown_documents(
-            repo_root,
-            REFERENCE_DOC_ROOT,
-            excluded_names=REFERENCE_EXCLUDED_NAMES,
-        ),
-        *iter_markdown_documents(
-            repo_root,
-            FOUNDATION_DOC_ROOT,
-            excluded_names=FOUNDATION_EXCLUDED_NAMES,
-        ),
-        *standards,
-        *workflows,
+    return _targets_for_validators(
+        context.loader,
+        engine="python",
+        artifact_kind="documentation_semantics",
+        default_extension=".md",
     )
 
 
-def artifact_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
-    """Return repo-native schema-backed artifact validation targets."""
+def artifact_targets(context: PackValidationContext) -> tuple[str, ...]:
+    """Return schema-backed artifact validation targets for the active pack."""
 
-    registry = loader.load_validator_registry()
+    registry = context.validator_registry
     ordered_paths: list[str] = []
     seen: set[str] = set()
     for validator in registry.validators:
@@ -112,7 +65,11 @@ def artifact_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
         if validator.artifact_kind == "documentation_front_matter":
             continue
         for pattern in validator.applies_to:
-            for relative_path in _artifact_paths_for_pattern(loader, pattern):
+            for relative_path in _paths_for_pattern(
+                context.loader,
+                pattern,
+                default_extension=".json",
+            ):
                 if relative_path in seen:
                     continue
                 seen.add(relative_path)
@@ -120,32 +77,92 @@ def artifact_targets(loader: ControlPlaneLoader) -> tuple[str, ...]:
     return tuple(ordered_paths)
 
 
-def _artifact_paths_for_pattern(
+def _paths_for_pattern(
     loader: ControlPlaneLoader,
     pattern: str,
+    *,
+    default_extension: str,
 ) -> tuple[str, ...]:
     if pattern.endswith("/**"):
+        suffix = Path(pattern.removesuffix("/**")).suffix.casefold()
+        extension = suffix or default_extension
         relative_root = pattern.removesuffix("/**")
+        root = loader.resolve_path(relative_root)
+        if not root.exists():
+            return ()
         return tuple(
             loader.workspace_config.logical_path_for(path)
-            for path in sorted(loader.resolve_path(relative_root).glob("*.json"))
+            for path in sorted(root.rglob(f"*{extension}"))
+            if path.is_file()
         )
-    if pattern.endswith(".json"):
+    if pattern.endswith(".json") or pattern.endswith(".md"):
         path = loader.resolve_path(pattern)
         if path.exists():
             return (pattern,)
         return ()
     return ()
+
+
+def _targets_for_validators(
+    loader: ControlPlaneLoader,
+    *,
+    engine: str,
+    artifact_kind: str,
+    default_extension: str,
+    exclude_workflow_targets: bool = False,
+) -> tuple[str, ...]:
+    ordered_paths: list[str] = []
+    seen: set[str] = set()
+    for validator in loader.load_validator_registry().validators:
+        if validator.status != "active":
+            continue
+        if validator.engine != engine:
+            continue
+        if validator.artifact_kind != artifact_kind:
+            continue
+        for pattern in validator.applies_to:
+            for relative_path in _paths_for_pattern(
+                loader,
+                pattern,
+                default_extension=default_extension,
+            ):
+                if not _include_validation_target(
+                    relative_path,
+                    exclude_workflow_targets=exclude_workflow_targets,
+                ):
+                    continue
+                if relative_path in seen:
+                    continue
+                seen.add(relative_path)
+                ordered_paths.append(relative_path)
+    return tuple(ordered_paths)
+
+
+def _include_validation_target(
+    relative_path: str,
+    *,
+    exclude_workflow_targets: bool = False,
+) -> bool:
+    path = Path(relative_path)
+    if path.name in _EXCLUDED_MARKDOWN_TARGET_NAMES:
+        return False
+    if "workflows" in path.parts and "modules" not in path.parts:
+        return False
+    if exclude_workflow_targets and "workflows" in path.parts:
+        return False
+    return True
+
+
 _STEP_TARGET_BUILDERS = {
-    "step.watchtower_plan.front_matter": front_matter_targets,
-    "step.watchtower_plan.document_semantics": document_semantics_targets,
-    "step.watchtower_plan.artifacts": artifact_targets,
+    "front_matter": front_matter_targets,
+    "document_semantics": document_semantics_targets,
+    "artifact": artifact_targets,
 }
 
+
 __all__ = [
-    "WATCHTOWER_PLAN_VALIDATION_SUITE_ID",
     "artifact_targets",
     "document_semantics_targets",
     "front_matter_targets",
-    "resolve_watchtower_plan_suite_targets",
+    "resolve_pack_validation_suite_targets",
 ]

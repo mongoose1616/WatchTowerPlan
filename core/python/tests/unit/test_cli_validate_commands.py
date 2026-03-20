@@ -335,7 +335,7 @@ def test_validate_suite_supports_json_output(capsys) -> None:
             "validate",
             "suite",
             "--suite-id",
-            "suite.watchtower_plan.validation_baseline",
+            "suite.plan.validation_baseline",
             "--format",
             "json",
         ]
@@ -346,7 +346,7 @@ def test_validate_suite_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core validate suite"
     assert payload["status"] == "ok"
-    assert payload["suite_id"] == "suite.watchtower_plan.validation_baseline"
+    assert payload["suite_id"] == "suite.plan.validation_baseline"
     assert payload["passed"] is True
     assert any(summary["step_kind"] == "front_matter" for summary in payload["step_summaries"])
     assert any(

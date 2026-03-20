@@ -13,6 +13,33 @@ def _tuple_of_strings(document: dict[str, Any], key: str) -> tuple[str, ...]:
 
 
 @dataclass(frozen=True, slots=True)
+class PackWorkspaceRoots:
+    """Declared repository-relative workspace roots for one active pack."""
+
+    workspace_root: str
+    machine_root: str
+    docs_root: str
+    workflows_root: str
+    tracking_root: str
+    initiatives_root: str
+    projects_root: str
+    overview_path: str
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackWorkspaceRoots:
+        return cls(
+            workspace_root=document["workspace_root"],
+            machine_root=document["machine_root"],
+            docs_root=document["docs_root"],
+            workflows_root=document["workflows_root"],
+            tracking_root=document["tracking_root"],
+            initiatives_root=document["initiatives_root"],
+            projects_root=document["projects_root"],
+            overview_path=document["overview_path"],
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class PackSurfaceDeclaration:
     """Shared declaration shape used by pack settings and governance surface maps."""
 
@@ -51,6 +78,8 @@ class PackSettings:
     description: str
     updated_at: str
     pack_id: str
+    workspace_roots: PackWorkspaceRoots
+    default_validation_suite_id: str
     surfaces: tuple[PackSurfaceDeclaration, ...]
     notes: str | None = None
 
@@ -63,6 +92,8 @@ class PackSettings:
             description=document["description"],
             updated_at=document["updated_at"],
             pack_id=document["pack_id"],
+            workspace_roots=PackWorkspaceRoots.from_document(document["workspace_roots"]),
+            default_validation_suite_id=document["default_validation_suite_id"],
             surfaces=tuple(
                 PackSurfaceDeclaration.from_document(entry)
                 for entry in document["surfaces"]

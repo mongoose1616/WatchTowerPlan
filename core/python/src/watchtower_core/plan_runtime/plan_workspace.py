@@ -16,6 +16,7 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
     VALIDATION_EVIDENCE_DIRECTORY,
 )
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import (
     CoordinationIndex,
     CoordinationRecentInitiativeSummary,
@@ -629,13 +630,30 @@ class PlanWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._evidence_bundles = EvidenceBundleHelper(self._pack_loader())
+        pack_loader = self._pack_loader()
+        self._workspace_paths = PackWorkspacePaths.from_loader(
+            pack_loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        self._initiative_index_path = self._workspace_paths.index_path("initiative_index.json")
+        self._task_index_path = self._workspace_paths.index_path("task_index.json")
+        self._readiness_index_path = self._workspace_paths.index_path("readiness_index.json")
+        self._discrepancy_index_path = self._workspace_paths.index_path("discrepancy_index.json")
+        self._evidence_index_path = self._workspace_paths.index_path("evidence_index.json")
+        self._closeout_index_path = self._workspace_paths.index_path("closeout_index.json")
+        self._review_index_path = self._workspace_paths.index_path("review_index.json")
+        self._promotion_index_path = self._workspace_paths.index_path("promotion_index.json")
+        self._guidance_index_path = self._workspace_paths.index_path("guidance_index.json")
+        self._coordination_index_path = self._workspace_paths.index_path("coordination_index.json")
+        self._artifact_index_path = self._workspace_paths.index_path("artifact_index.json")
+        self._overview_path = self._workspace_paths.overview_path
+        self._evidence_bundles = EvidenceBundleHelper(pack_loader)
         self._vocabulary = TerminologyHelper.from_loader(
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
-        self._rendered_views = RenderedViewBuilder(loader)
-        self._markdown_reconciliation = MarkdownReconciliationHelper(loader)
+        self._rendered_views = RenderedViewBuilder(pack_loader)
+        self._markdown_reconciliation = MarkdownReconciliationHelper(pack_loader)
         self._traceability_entries_by_trace: dict[str, TraceabilityEntry] | None = None
 
     def sync(self, *, write: bool) -> PlanWorkspaceSyncResult:
@@ -643,16 +661,16 @@ class PlanWorkspaceService:
         documents = self._build_documents(snapshots)
         artifact_document = ArtifactIndexService(self._loader).build_document(
             aggregate_overrides={
-                PLAN_INITIATIVE_INDEX_PATH: documents["initiative_index"],
-                PLAN_TASK_INDEX_PATH: documents["task_index"],
-                PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
-                PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
-                PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
-                PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
-                PLAN_REVIEW_INDEX_PATH: documents["review_index"],
-                PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
-                PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
-                PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
+                self._initiative_index_path: documents["initiative_index"],
+                self._task_index_path: documents["task_index"],
+                self._readiness_index_path: documents["readiness_index"],
+                self._discrepancy_index_path: documents["discrepancy_index"],
+                self._evidence_index_path: documents["evidence_index"],
+                self._closeout_index_path: documents["closeout_index"],
+                self._review_index_path: documents["review_index"],
+                self._promotion_index_path: documents["promotion_index"],
+                self._guidance_index_path: documents["guidance_index"],
+                self._coordination_index_path: documents["coordination_index"],
             }
         )
         rebuild_outputs = self._build_rebuild_outputs(documents, artifact_document)
@@ -672,6 +690,30 @@ class PlanWorkspaceService:
             wrote=rebuild_result.wrote,
         )
 
+    def sync_discrepancy_index(self, *, write: bool) -> bool:
+        """Rebuild only the discrepancy index without healing unrelated derived surfaces."""
+
+        snapshots = self._load_initiative_snapshots()
+        documents = self._build_documents(snapshots)
+        rebuild_result = RebuildHarness(self._loader).run_specs(
+            (
+                RebuildTargetSpec(
+                    target="plan-workspace-discrepancy-index",
+                    build_outputs=lambda _loader: (
+                        RebuildOutput(
+                            relative_output_path=self._discrepancy_index_path,
+                            artifact_kind="index",
+                            output_format="json",
+                            content=_json_document(documents["discrepancy_index"]),
+                            validated=True,
+                        ),
+                    ),
+                ),
+            ),
+            write=write,
+        )
+        return rebuild_result.wrote
+
     def expected_surface_issues(self, initiative_root: str) -> tuple[DiscrepancyIssue, ...]:
         snapshots = self._load_initiative_snapshots()
         documents = self._build_documents(snapshots)
@@ -685,7 +727,7 @@ class PlanWorkspaceService:
             else Path(initiative_root).name
         )
         expected_markdown = {
-            PLAN_OVERVIEW_PATH: str(documents["plan_overview"]),
+            self._overview_path: str(documents["plan_overview"]),
             f"{initiative_root}/plan.md": documents["initiative_views"].get(
                 f"{initiative_root}/plan.md",
                 "",
@@ -700,28 +742,28 @@ class PlanWorkspaceService:
             ),
         }
         expected_json = {
-            PLAN_INITIATIVE_INDEX_PATH: documents["initiative_index"],
-            PLAN_TASK_INDEX_PATH: documents["task_index"],
-            PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
-            PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
-            PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
-            PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
-            PLAN_REVIEW_INDEX_PATH: documents["review_index"],
-            PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
-            PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
-            PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
-            PLAN_ARTIFACT_INDEX_PATH: ArtifactIndexService(self._loader).build_document(
+            self._initiative_index_path: documents["initiative_index"],
+            self._task_index_path: documents["task_index"],
+            self._readiness_index_path: documents["readiness_index"],
+            self._discrepancy_index_path: documents["discrepancy_index"],
+            self._evidence_index_path: documents["evidence_index"],
+            self._closeout_index_path: documents["closeout_index"],
+            self._review_index_path: documents["review_index"],
+            self._promotion_index_path: documents["promotion_index"],
+            self._guidance_index_path: documents["guidance_index"],
+            self._coordination_index_path: documents["coordination_index"],
+            self._artifact_index_path: ArtifactIndexService(self._loader).build_document(
                 aggregate_overrides={
-                    PLAN_INITIATIVE_INDEX_PATH: documents["initiative_index"],
-                    PLAN_TASK_INDEX_PATH: documents["task_index"],
-                    PLAN_READINESS_INDEX_PATH: documents["readiness_index"],
-                    PLAN_DISCREPANCY_INDEX_PATH: documents["discrepancy_index"],
-                    PLAN_EVIDENCE_INDEX_PATH: documents["evidence_index"],
-                    PLAN_CLOSEOUT_INDEX_PATH: documents["closeout_index"],
-                    PLAN_REVIEW_INDEX_PATH: documents["review_index"],
-                    PLAN_PROMOTION_INDEX_PATH: documents["promotion_index"],
-                    PLAN_GUIDANCE_INDEX_PATH: documents["guidance_index"],
-                    PLAN_COORDINATION_INDEX_PATH: documents["coordination_index"],
+                    self._initiative_index_path: documents["initiative_index"],
+                    self._task_index_path: documents["task_index"],
+                    self._readiness_index_path: documents["readiness_index"],
+                    self._discrepancy_index_path: documents["discrepancy_index"],
+                    self._evidence_index_path: documents["evidence_index"],
+                    self._closeout_index_path: documents["closeout_index"],
+                    self._review_index_path: documents["review_index"],
+                    self._promotion_index_path: documents["promotion_index"],
+                    self._guidance_index_path: documents["guidance_index"],
+                    self._coordination_index_path: documents["coordination_index"],
                 }
             ),
         }
@@ -794,10 +836,10 @@ class PlanWorkspaceService:
         )
 
     def load_initiative_index(self) -> InitiativeIndex:
-        return InitiativeIndex.from_document(self._load_plan_json(PLAN_INITIATIVE_INDEX_PATH))
+        return InitiativeIndex.from_document(self._load_plan_json(self._initiative_index_path))
 
     def load_coordination_index(self) -> CoordinationIndex:
-        return CoordinationIndex.from_document(self._load_plan_json(PLAN_COORDINATION_INDEX_PATH))
+        return CoordinationIndex.from_document(self._load_plan_json(self._coordination_index_path))
 
     def build_initiative_index_document(self) -> dict[str, object]:
         return self._build_documents(self._load_initiative_snapshots())["initiative_index"]
@@ -828,35 +870,35 @@ class PlanWorkspaceService:
         return task_index
 
     def load_task_entries(self) -> tuple[PlanTaskIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_TASK_INDEX_PATH)
+        document = self._load_plan_json(self._task_index_path)
         return tuple(PlanTaskIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_readiness_entries(self) -> tuple[PlanReadinessIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_READINESS_INDEX_PATH)
+        document = self._load_plan_json(self._readiness_index_path)
         return tuple(PlanReadinessIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_discrepancy_entries(self) -> tuple[PlanDiscrepancyIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_DISCREPANCY_INDEX_PATH)
+        document = self._load_plan_json(self._discrepancy_index_path)
         return tuple(PlanDiscrepancyIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_evidence_entries(self) -> tuple[PlanEvidenceIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_EVIDENCE_INDEX_PATH)
+        document = self._load_plan_json(self._evidence_index_path)
         return tuple(PlanEvidenceIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_closeout_entries(self) -> tuple[PlanCloseoutIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_CLOSEOUT_INDEX_PATH)
+        document = self._load_plan_json(self._closeout_index_path)
         return tuple(PlanCloseoutIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_review_entries(self) -> tuple[PlanReviewIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_REVIEW_INDEX_PATH)
+        document = self._load_plan_json(self._review_index_path)
         return tuple(PlanReviewIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_promotion_entries(self) -> tuple[PlanPromotionIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_PROMOTION_INDEX_PATH)
+        document = self._load_plan_json(self._promotion_index_path)
         return tuple(PlanPromotionIndexEntry.from_document(entry) for entry in document["entries"])
 
     def load_guidance_entries(self) -> tuple[PlanGuidanceIndexEntry, ...]:
-        document = self._load_plan_json(PLAN_GUIDANCE_INDEX_PATH)
+        document = self._load_plan_json(self._guidance_index_path)
         return tuple(PlanGuidanceIndexEntry.from_document(entry) for entry in document["entries"])
 
     def search_initiatives(
@@ -936,17 +978,17 @@ class PlanWorkspaceService:
             (
                 _existing_document_updated_at(self._loader.repo_root / relative_path)
                 for relative_path in (
-                    PLAN_INITIATIVE_INDEX_PATH,
-                    PLAN_TASK_INDEX_PATH,
-                    PLAN_READINESS_INDEX_PATH,
-                    PLAN_DISCREPANCY_INDEX_PATH,
-                    PLAN_EVIDENCE_INDEX_PATH,
-                    PLAN_CLOSEOUT_INDEX_PATH,
-                    PLAN_REVIEW_INDEX_PATH,
-                    PLAN_PROMOTION_INDEX_PATH,
-                    PLAN_GUIDANCE_INDEX_PATH,
-                    PLAN_COORDINATION_INDEX_PATH,
-                    PLAN_ARTIFACT_INDEX_PATH,
+                    self._initiative_index_path,
+                    self._task_index_path,
+                    self._readiness_index_path,
+                    self._discrepancy_index_path,
+                    self._evidence_index_path,
+                    self._closeout_index_path,
+                    self._review_index_path,
+                    self._promotion_index_path,
+                    self._guidance_index_path,
+                    self._coordination_index_path,
+                    self._artifact_index_path,
                 )
             ),
             fallback="",
@@ -1593,7 +1635,7 @@ class PlanWorkspaceService:
 
     def _build_guidance_entries(self) -> tuple[PlanGuidanceIndexEntry, ...]:
         entries: list[PlanGuidanceIndexEntry] = []
-        docs_root = self._loader.repo_root / "plan" / "docs"
+        docs_root = self._loader.repo_root / self._workspace_paths.docs_root
         if not docs_root.exists():
             return ()
         for path in sorted(docs_root.rglob("*.md")):
@@ -1768,7 +1810,7 @@ class PlanWorkspaceService:
         if not active_entries:
             summary = "No active plan-workspace initiatives exist."
             next_action = "Bootstrap a new initiative package before starting execution."
-            surface_path = PLAN_OVERVIEW_PATH
+            surface_path = self._overview_path
             coordination_mode = "ready_for_bootstrap"
         else:
             focus_entry = sorted(
@@ -1858,12 +1900,12 @@ class PlanWorkspaceService:
             for entry in coordination_document["actionable_tasks"]
         )
         navigation_links = (
-            "- [initiative_tracking.md](/plan/tracking/initiative_tracking.md)",
-            "- [task_tracking.md](/plan/tracking/task_tracking.md)",
-            "- [coordination_tracking.md](/plan/tracking/coordination_tracking.md)",
-            "- [README.md](/plan/docs/README.md)",
+            f"- [initiative_tracking.md](/{self._workspace_paths.tracking_path('initiative_tracking.md')})",
+            f"- [task_tracking.md](/{self._workspace_paths.tracking_path('task_tracking.md')})",
+            f"- [coordination_tracking.md](/{self._workspace_paths.tracking_path('coordination_tracking.md')})",
+            f"- [README.md](/{self._workspace_paths.docs_path('README.md')})",
             "- [README.md](/core/docs/README.md)",
-            "- [ROUTING_TABLE.md](/plan/workflows/ROUTING_TABLE.md)",
+            f"- [ROUTING_TABLE.md](/{self._workspace_paths.workflows_path('ROUTING_TABLE.md')})",
         )
         result = self._rendered_views.build_view(
             RenderedViewSpec(
@@ -1928,7 +1970,7 @@ class PlanWorkspaceService:
                 },
             )
         )
-        assert result.relative_output_path == PLAN_OVERVIEW_PATH
+        assert result.relative_output_path == self._overview_path
         return result.content
 
     def _render_initiative_views(
@@ -2082,7 +2124,7 @@ class PlanWorkspaceService:
     def _load_initiative_snapshots(self) -> tuple[_PlanInitiativeSnapshot, ...]:
         snapshots: list[_PlanInitiativeSnapshot] = []
         trace_artifact_refs = self._load_trace_artifact_refs()
-        pack_initiatives_root = self._loader.repo_root / "plan" / "initiatives"
+        pack_initiatives_root = self._loader.repo_root / self._workspace_paths.initiatives_root
         if pack_initiatives_root.exists():
             for initiative_path in sorted(pack_initiatives_root.iterdir()):
                 snapshot = self._snapshot_for_initiative_path(
@@ -2093,7 +2135,7 @@ class PlanWorkspaceService:
                 if snapshot is not None:
                     snapshots.append(snapshot)
 
-        projects_root = self._loader.repo_root / "plan" / "projects"
+        projects_root = self._loader.repo_root / self._workspace_paths.projects_root
         if projects_root.exists():
             for project_path in sorted(projects_root.iterdir()):
                 if not project_path.is_dir():
@@ -2131,7 +2173,7 @@ class PlanWorkspaceService:
         )
         initiative_slug = initiative_path.name
         project_root = (
-            f"plan/projects/{project_slug}"
+            self._workspace_paths.project_root_relative(project_slug)
             if project_slug is not None
             else None
         )
@@ -2220,84 +2262,84 @@ class PlanWorkspaceService:
         assert isinstance(initiative_views, dict)
         outputs = (
             RebuildOutput(
-                relative_output_path=PLAN_INITIATIVE_INDEX_PATH,
+                relative_output_path=self._initiative_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["initiative_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_TASK_INDEX_PATH,
+                relative_output_path=self._task_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["task_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_READINESS_INDEX_PATH,
+                relative_output_path=self._readiness_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["readiness_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_DISCREPANCY_INDEX_PATH,
+                relative_output_path=self._discrepancy_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["discrepancy_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_EVIDENCE_INDEX_PATH,
+                relative_output_path=self._evidence_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["evidence_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_CLOSEOUT_INDEX_PATH,
+                relative_output_path=self._closeout_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["closeout_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_REVIEW_INDEX_PATH,
+                relative_output_path=self._review_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["review_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_PROMOTION_INDEX_PATH,
+                relative_output_path=self._promotion_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["promotion_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_GUIDANCE_INDEX_PATH,
+                relative_output_path=self._guidance_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["guidance_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_COORDINATION_INDEX_PATH,
+                relative_output_path=self._coordination_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=_json_document(documents["coordination_index"]),
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_ARTIFACT_INDEX_PATH,
+                relative_output_path=self._artifact_index_path,
                 artifact_kind="index",
                 output_format="json",
                 content=artifact_document,
                 validated=True,
             ),
             RebuildOutput(
-                relative_output_path=PLAN_OVERVIEW_PATH,
+                relative_output_path=self._overview_path,
                 artifact_kind="rendered_view",
                 output_format="markdown",
                 content=_markdown_content(documents["plan_overview"]),

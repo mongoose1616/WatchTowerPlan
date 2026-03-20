@@ -13,6 +13,10 @@ from watchtower_core.plan_runtime.initiative_packages import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_core.plan_runtime.task_lifecycle import (
+    TaskCreateParams,
+    TaskLifecycleService,
+)
 from watchtower_core.plan_runtime.plan_workspace import PlanWorkspaceService
 from watchtower_core.plan_runtime.project_workspace import (
     ProjectBootstrapParams,
@@ -734,3 +738,80 @@ def test_project_scoped_validation_restores_in_progress_after_transient_block(
 
     refreshed_state = _load_json(state_path)
     assert refreshed_state["lifecycle_stage"] == "in_progress"
+
+
+def test_validate_packwide_reconciles_stale_approval_and_task_inventory_from_machine_state(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    service = InitiativePackageService(loader)
+    service.bootstrap_packwide(_bootstrap_params(), write=True)
+    service.approve_packwide(
+        INITIATIVE_SLUG,
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    new_task_id = f"task.{INITIATIVE_SLUG}.reconcile_stale_initiative_state"
+    TaskLifecycleService(loader).create(
+        TaskCreateParams(
+            task_id=new_task_id,
+            title="Reconcile stale initiative state",
+            summary="Adds one live task after approval to prove state healing.",
+            task_kind="feature",
+            priority="high",
+            owner="repository_maintainer",
+            scope_items=("Reconcile initiative state from machine truth.",),
+            done_when_items=("Approval and task inventory reconcile cleanly.",),
+            trace_id=TRACE_ID,
+        ),
+        write=True,
+    )
+
+    state_path = _initiative_root(repo_root) / ".wt" / "initiative.json"
+    stale_state = _load_json(state_path)
+    stale_state["task_ids"] = [
+        f"task.{INITIATIVE_SLUG}.seed_initiative_contracts",
+    ]
+    stale_state["gate_state"] = {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "pending",
+        "ready_for_execution": False,
+        "blocking_reasons": [],
+    }
+    stale_state["approvals"] = [
+        approval
+        for approval in stale_state["approvals"]
+        if approval["approval_kind"] != "ready_for_execution"
+    ]
+    state_path.write_text(f"{json.dumps(stale_state, indent=2)}\n", encoding="utf-8")
+
+    readiness = service.validate_packwide(
+        INITIATIVE_SLUG,
+        write=True,
+        require_approved=False,
+    )
+
+    assert readiness.passed is True
+    assert readiness.lifecycle_stage == "ready_for_execution"
+
+    refreshed_state = _initiative_state(repo_root)
+    assert refreshed_state["review_status"] == "approved"
+    assert refreshed_state["gate_state"] == {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "approved",
+        "ready_for_execution": True,
+        "blocking_reasons": [],
+    }
+    assert refreshed_state["task_ids"] == [
+        f"task.{INITIATIVE_SLUG}.reconcile_stale_initiative_state",
+        f"task.{INITIATIVE_SLUG}.seed_initiative_contracts",
+        f"task.{INITIATIVE_SLUG}.validate_readiness_gate",
+    ]
+    assert any(
+        approval["approval_kind"] == "ready_for_execution"
+        for approval in refreshed_state["approvals"]
+    )

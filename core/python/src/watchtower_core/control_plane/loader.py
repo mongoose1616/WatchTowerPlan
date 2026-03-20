@@ -64,18 +64,8 @@ AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
-DOCUMENTATION_FAMILY_REGISTRY_PATH = "plan/.wt/registries/documentation_family_registry.json"
-TEMPLATE_CATALOG_PATH = "plan/.wt/registries/template_catalog.json"
-ARTIFACT_FAMILY_REGISTRY_PATH = "plan/.wt/registries/artifact_family_registry.json"
-LIFECYCLE_STAGE_REGISTRY_PATH = "plan/.wt/registries/lifecycle_stage_registry.json"
-REVIEW_STATUS_REGISTRY_PATH = "plan/.wt/registries/review_status_registry.json"
-SOURCE_TYPE_REGISTRY_PATH = "plan/.wt/registries/source_type_registry.json"
-PROMOTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/promotion_policy_registry.json"
-PROJECT_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/project_surface_policy_registry.json"
-HUMAN_SURFACE_POLICY_REGISTRY_PATH = "plan/.wt/registries/human_surface_policy_registry.json"
-RETENTION_POLICY_REGISTRY_PATH = "plan/.wt/registries/retention_policy_registry.json"
-ARTIFACT_INDEX_PATH = "plan/.wt/indexes/artifact_index.json"
-PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
+PACK_SETTINGS_PATH = "__active_pack_settings__"
+CORE_PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
 STATUS_REGISTRY_PATH = "core/control_plane/registries/status_registry.json"
@@ -88,11 +78,8 @@ COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.json"
 ROUTE_INDEX_PATH = "core/control_plane/indexes/routes/route_index.json"
 REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.json"
 FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.json"
-INITIATIVE_INDEX_PATH = "plan/.wt/indexes/initiative_index.json"
-COORDINATION_INDEX_PATH = "plan/.wt/indexes/coordination_index.json"
 STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.json"
 WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
-TASK_INDEX_PATH = "plan/.wt/indexes/task_index.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 TRACE_PURGE_LEDGER_DIRECTORY = "core/control_plane/ledgers/purges"
@@ -146,6 +133,7 @@ class ControlPlaneLoader:
         self.artifact_store = artifact_store or default_io
         self.active_pack_settings_path = active_pack_settings_path
         self._active_pack_settings: PackSettings | None = None
+        self._active_surface_paths: dict[str, str] = {}
         self._active_schema_catalog_path: str | None = None
         self._active_validator_registry_path: str | None = None
         self._active_validation_suite_registry_path: str | None = None
@@ -210,6 +198,9 @@ class ControlPlaneLoader:
         pack_settings = self.load_pack_settings(pack_settings_path)
         self.active_pack_settings_path = pack_settings_path
         self._active_pack_settings = pack_settings
+        self._active_surface_paths = {
+            declaration.surface_name: declaration.path for declaration in pack_settings.surfaces
+        }
 
         try:
             schema_catalog_path = pack_settings.get("schema_catalog").path
@@ -231,156 +222,38 @@ class ControlPlaneLoader:
                 "Active pack settings must declare a validator_registry surface."
             ) from exc
         self._active_validator_registry_path = validator_registry_path
-        suite_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "validation_suite_registry"
-            ),
-            None,
+        self._active_validation_suite_registry_path = self._active_surface_paths.get(
+            "validation_suite_registry"
         )
-        self._active_validation_suite_registry_path = (
-            suite_registry_declaration.path if suite_registry_declaration is not None else None
+        self._active_documentation_family_registry_path = self._active_surface_paths.get(
+            "documentation_family_registry"
         )
-        documentation_family_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "documentation_family_registry"
-            ),
-            None,
+        self._active_template_catalog_path = self._active_surface_paths.get("template_catalog")
+        self._active_artifact_family_registry_path = self._active_surface_paths.get(
+            "artifact_family_registry"
         )
-        self._active_documentation_family_registry_path = (
-            documentation_family_registry_declaration.path
-            if documentation_family_registry_declaration is not None
-            else None
+        self._active_lifecycle_stage_registry_path = self._active_surface_paths.get(
+            "lifecycle_stage_registry"
         )
-        template_catalog_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "template_catalog"
-            ),
-            None,
+        self._active_review_status_registry_path = self._active_surface_paths.get(
+            "review_status_registry"
         )
-        self._active_template_catalog_path = (
-            template_catalog_declaration.path if template_catalog_declaration is not None else None
+        self._active_source_type_registry_path = self._active_surface_paths.get(
+            "source_type_registry"
         )
-        artifact_family_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "artifact_family_registry"
-            ),
-            None,
+        self._active_promotion_policy_registry_path = self._active_surface_paths.get(
+            "promotion_policy_registry"
         )
-        self._active_artifact_family_registry_path = (
-            artifact_family_registry_declaration.path
-            if artifact_family_registry_declaration is not None
-            else None
+        self._active_project_surface_policy_registry_path = self._active_surface_paths.get(
+            "project_surface_policy_registry"
         )
-        lifecycle_stage_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "lifecycle_stage_registry"
-            ),
-            None,
+        self._active_human_surface_policy_registry_path = self._active_surface_paths.get(
+            "human_surface_policy_registry"
         )
-        self._active_lifecycle_stage_registry_path = (
-            lifecycle_stage_registry_declaration.path
-            if lifecycle_stage_registry_declaration is not None
-            else None
+        self._active_retention_policy_registry_path = self._active_surface_paths.get(
+            "retention_policy_registry"
         )
-        review_status_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "review_status_registry"
-            ),
-            None,
-        )
-        self._active_review_status_registry_path = (
-            review_status_registry_declaration.path
-            if review_status_registry_declaration is not None
-            else None
-        )
-        source_type_registry_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "source_type_registry"
-            ),
-            None,
-        )
-        self._active_source_type_registry_path = (
-            source_type_registry_declaration.path
-            if source_type_registry_declaration is not None
-            else None
-        )
-        promotion_policy_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "promotion_policy_registry"
-            ),
-            None,
-        )
-        self._active_promotion_policy_registry_path = (
-            promotion_policy_declaration.path
-            if promotion_policy_declaration is not None
-            else None
-        )
-        project_surface_policy_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "project_surface_policy_registry"
-            ),
-            None,
-        )
-        self._active_project_surface_policy_registry_path = (
-            project_surface_policy_declaration.path
-            if project_surface_policy_declaration is not None
-            else None
-        )
-        human_surface_policy_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "human_surface_policy_registry"
-            ),
-            None,
-        )
-        self._active_human_surface_policy_registry_path = (
-            human_surface_policy_declaration.path
-            if human_surface_policy_declaration is not None
-            else None
-        )
-        retention_policy_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "retention_policy_registry"
-            ),
-            None,
-        )
-        self._active_retention_policy_registry_path = (
-            retention_policy_declaration.path
-            if retention_policy_declaration is not None
-            else None
-        )
-        artifact_index_declaration = next(
-            (
-                declaration
-                for declaration in pack_settings.surfaces
-                if declaration.surface_name == "artifact_index"
-            ),
-            None,
-        )
-        self._active_artifact_index_path = (
-            artifact_index_declaration.path if artifact_index_declaration is not None else None
-        )
+        self._active_artifact_index_path = self._active_surface_paths.get("artifact_index")
 
     def set_validated_document_override(
         self,
@@ -437,31 +310,35 @@ class ControlPlaneLoader:
 
     def load_json_object(self, relative_path: str) -> dict[str, Any]:
         """Load a repository-relative JSON object."""
-        override = self._validated_document_overrides.get(relative_path)
+        effective_path = self._current_pack_settings_path(relative_path)
+        override = self._validated_document_overrides.get(effective_path)
         if override is not None:
             return override
         try:
-            return self.artifact_source.load_json_object(relative_path)
+            return self.artifact_source.load_json_object(effective_path)
         except ArtifactLoadError:
             raise
         except FileNotFoundError as exc:
-            raise ArtifactLoadError(f"Could not load governed artifact at {relative_path}") from exc
+            raise ArtifactLoadError(f"Could not load governed artifact at {effective_path}") from exc
 
     def resolve_path(self, relative_path: str) -> Path:
         """Resolve one repository-relative path through the current workspace mapping."""
-        return self.workspace_config.resolve_path(relative_path)
+        return self.workspace_config.resolve_path(
+            self._current_pack_settings_path(relative_path)
+        )
 
     def load_validated_document(self, relative_path: str) -> dict[str, Any]:
         """Load and validate a governed artifact that declares its own $schema."""
-        override = self._validated_document_overrides.get(relative_path)
+        effective_path = self._current_pack_settings_path(relative_path)
+        override = self._validated_document_overrides.get(effective_path)
         if override is not None:
             return override
-        cached = self._validated_document_cache.get(relative_path)
+        cached = self._validated_document_cache.get(effective_path)
         if cached is not None:
             return cached
-        document = self.load_json_object(relative_path)
+        document = self.load_json_object(effective_path)
         self.schema_store.validate_instance(document)
-        self._validated_document_cache[relative_path] = document
+        self._validated_document_cache[effective_path] = document
         return document
 
     def load_schema_catalog(self) -> SchemaCatalog:
@@ -497,8 +374,13 @@ class ControlPlaneLoader:
     ) -> GovernanceSurfaceMap:
         """Load one typed governance-surface map."""
 
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "governance_surface_map",
             relative_path,
+            default_path=GOVERNANCE_SURFACE_MAP_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             GovernanceSurfaceMap.from_document,
         )
 
@@ -508,55 +390,88 @@ class ControlPlaneLoader:
     ) -> PathPatternRegistry:
         """Load one typed path-pattern registry."""
 
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "path_pattern_registry",
             relative_path,
+            default_path=PATH_PATTERN_REGISTRY_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             PathPatternRegistry.from_document,
         )
 
     def load_status_registry(self, relative_path: str = STATUS_REGISTRY_PATH) -> StatusRegistry:
         """Load one typed status registry."""
 
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "status_registry",
             relative_path,
+            default_path=STATUS_REGISTRY_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             StatusRegistry.from_document,
         )
 
     def load_actor_registry(self, relative_path: str = ACTOR_REGISTRY_PATH) -> ActorRegistry:
         """Load one typed actor registry."""
 
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "actor_registry",
             relative_path,
+            default_path=ACTOR_REGISTRY_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             ActorRegistry.from_document,
         )
 
     def load_authority_map(self) -> AuthorityMap:
         """Load the current authority-map registry."""
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "authority_map",
             AUTHORITY_MAP_PATH,
+            default_path=AUTHORITY_MAP_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             AuthorityMap.from_document,
         )
 
     def load_rendered_surface_registry(self) -> RenderedSurfaceRegistry:
         """Load the current rendered-surface registry."""
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "rendered_surface_registry",
             RENDERED_SURFACE_REGISTRY_PATH,
+            default_path=RENDERED_SURFACE_REGISTRY_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             RenderedSurfaceRegistry.from_document,
         )
 
     def load_workflow_metadata_registry(self) -> WorkflowMetadataRegistry:
         """Load the current workflow metadata registry."""
-        return self._load_typed_document(
+        effective_path = self._current_surface_path(
+            "workflow_metadata_registry",
             WORKFLOW_METADATA_REGISTRY_PATH,
+            default_path=WORKFLOW_METADATA_REGISTRY_PATH,
+        )
+        return self._load_typed_document(
+            effective_path,
             WorkflowMetadataRegistry.from_document,
         )
 
     def load_documentation_family_registry(
         self,
-        relative_path: str = DOCUMENTATION_FAMILY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> DocumentationFamilyRegistry:
         """Load the current documentation-family registry."""
 
-        effective_path = self._current_documentation_family_registry_path(relative_path)
+        effective_path = self._required_surface_path(
+            "documentation_family_registry",
+            relative_path,
+        )
         return self._load_typed_document(
             effective_path,
             DocumentationFamilyRegistry.from_document,
@@ -564,11 +479,11 @@ class ControlPlaneLoader:
 
     def load_template_catalog(
         self,
-        relative_path: str = TEMPLATE_CATALOG_PATH,
+        relative_path: str | None = None,
     ) -> TemplateCatalog:
         """Load the current template catalog."""
 
-        effective_path = self._current_template_catalog_path(relative_path)
+        effective_path = self._required_surface_path("template_catalog", relative_path)
         return self._load_typed_document(
             effective_path,
             TemplateCatalog.from_document,
@@ -576,11 +491,11 @@ class ControlPlaneLoader:
 
     def load_artifact_family_registry(
         self,
-        relative_path: str = ARTIFACT_FAMILY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> ArtifactFamilyRegistry:
         """Load the current artifact-family registry."""
 
-        effective_path = self._current_artifact_family_registry_path(relative_path)
+        effective_path = self._required_surface_path("artifact_family_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             ArtifactFamilyRegistry.from_document,
@@ -588,11 +503,11 @@ class ControlPlaneLoader:
 
     def load_lifecycle_stage_registry(
         self,
-        relative_path: str = LIFECYCLE_STAGE_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> LifecycleStageRegistry:
         """Load the current lifecycle-stage registry."""
 
-        effective_path = self._current_lifecycle_stage_registry_path(relative_path)
+        effective_path = self._required_surface_path("lifecycle_stage_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             LifecycleStageRegistry.from_document,
@@ -600,11 +515,11 @@ class ControlPlaneLoader:
 
     def load_review_status_registry(
         self,
-        relative_path: str = REVIEW_STATUS_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> ReviewStatusRegistry:
         """Load the current review-status registry."""
 
-        effective_path = self._current_review_status_registry_path(relative_path)
+        effective_path = self._required_surface_path("review_status_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             ReviewStatusRegistry.from_document,
@@ -612,11 +527,11 @@ class ControlPlaneLoader:
 
     def load_source_type_registry(
         self,
-        relative_path: str = SOURCE_TYPE_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> SourceTypeRegistry:
         """Load the current source-type registry."""
 
-        effective_path = self._current_source_type_registry_path(relative_path)
+        effective_path = self._required_surface_path("source_type_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             SourceTypeRegistry.from_document,
@@ -624,11 +539,11 @@ class ControlPlaneLoader:
 
     def load_promotion_policy_registry(
         self,
-        relative_path: str = PROMOTION_POLICY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> PromotionPolicyRegistry:
         """Load the current promotion-policy registry."""
 
-        effective_path = self._current_promotion_policy_registry_path(relative_path)
+        effective_path = self._required_surface_path("promotion_policy_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             PromotionPolicyRegistry.from_document,
@@ -636,11 +551,14 @@ class ControlPlaneLoader:
 
     def load_project_surface_policy_registry(
         self,
-        relative_path: str = PROJECT_SURFACE_POLICY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> ProjectSurfacePolicyRegistry:
         """Load the current project-surface policy registry."""
 
-        effective_path = self._current_project_surface_policy_registry_path(relative_path)
+        effective_path = self._required_surface_path(
+            "project_surface_policy_registry",
+            relative_path,
+        )
         return self._load_typed_document(
             effective_path,
             ProjectSurfacePolicyRegistry.from_document,
@@ -648,11 +566,11 @@ class ControlPlaneLoader:
 
     def load_human_surface_policy_registry(
         self,
-        relative_path: str = HUMAN_SURFACE_POLICY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> HumanSurfacePolicyRegistry:
         """Load the current human-surface policy registry."""
 
-        effective_path = self._current_human_surface_policy_registry_path(relative_path)
+        effective_path = self._required_surface_path("human_surface_policy_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             HumanSurfacePolicyRegistry.from_document,
@@ -660,11 +578,11 @@ class ControlPlaneLoader:
 
     def load_retention_policy_registry(
         self,
-        relative_path: str = RETENTION_POLICY_REGISTRY_PATH,
+        relative_path: str | None = None,
     ) -> RetentionPolicyRegistry:
         """Load the current retention-policy registry."""
 
-        effective_path = self._current_retention_policy_registry_path(relative_path)
+        effective_path = self._required_surface_path("retention_policy_registry", relative_path)
         return self._load_typed_document(
             effective_path,
             RetentionPolicyRegistry.from_document,
@@ -672,11 +590,11 @@ class ControlPlaneLoader:
 
     def load_artifact_index(
         self,
-        relative_path: str = ARTIFACT_INDEX_PATH,
+        relative_path: str | None = None,
     ) -> ArtifactIndex:
         """Load the current pack artifact index."""
 
-        effective_path = self._current_artifact_index_path(relative_path)
+        effective_path = self._required_surface_path("artifact_index", relative_path)
         return self._load_typed_document(
             effective_path,
             ArtifactIndex.from_document,
@@ -719,15 +637,17 @@ class ControlPlaneLoader:
 
     def load_initiative_index(self) -> InitiativeIndex:
         """Load the current initiative index."""
+        effective_path = self._required_surface_path("initiative_index")
         return self._load_typed_document(
-            INITIATIVE_INDEX_PATH,
+            effective_path,
             InitiativeIndex.from_document,
         )
 
     def load_coordination_index(self) -> CoordinationIndex:
         """Load the current coordination index."""
+        effective_path = self._required_surface_path("coordination_index")
         return self._load_typed_document(
-            COORDINATION_INDEX_PATH,
+            effective_path,
             CoordinationIndex.from_document,
         )
 
@@ -747,7 +667,8 @@ class ControlPlaneLoader:
 
     def load_task_index(self) -> TaskIndex:
         """Load the current task index."""
-        return self._load_typed_document(TASK_INDEX_PATH, TaskIndex.from_document)
+        effective_path = self._required_surface_path("task_index")
+        return self._load_typed_document(effective_path, TaskIndex.from_document)
 
     def load_traceability_index(self) -> TraceabilityIndex:
         """Load the current traceability index."""
@@ -946,6 +867,23 @@ class ControlPlaneLoader:
     def load_known_surface(self, relative_path: str) -> object:
         """Load one known governed surface as a typed artifact when available."""
 
+        if relative_path == PACK_SETTINGS_PATH:
+            return self.load_pack_settings()
+        if relative_path == CORE_PACK_SETTINGS_PATH:
+            return self.load_pack_settings(CORE_PACK_SETTINGS_PATH)
+        if relative_path == self.default_pack_settings_path():
+            return self.load_pack_settings(relative_path)
+        if (
+            self.active_pack_settings_path is not None
+            and relative_path == self.active_pack_settings_path
+        ):
+            return self.load_pack_settings(relative_path)
+        active_surface_name = self._surface_name_for_active_path(relative_path)
+        if active_surface_name is not None:
+            return self.load_declared_surface(
+                surface_name=active_surface_name,
+                relative_path=relative_path,
+            )
         if relative_path == SCHEMA_CATALOG_ARTIFACT_PATH:
             return self.load_schema_catalog()
         if relative_path == VALIDATOR_REGISTRY_PATH:
@@ -958,100 +896,6 @@ class ControlPlaneLoader:
             return self.load_rendered_surface_registry()
         if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
             return self.load_workflow_metadata_registry()
-        if relative_path == DOCUMENTATION_FAMILY_REGISTRY_PATH:
-            return self.load_documentation_family_registry()
-        if relative_path == TEMPLATE_CATALOG_PATH:
-            return self.load_template_catalog()
-        if relative_path == ARTIFACT_FAMILY_REGISTRY_PATH:
-            return self.load_artifact_family_registry()
-        if relative_path == LIFECYCLE_STAGE_REGISTRY_PATH:
-            return self.load_lifecycle_stage_registry()
-        if relative_path == REVIEW_STATUS_REGISTRY_PATH:
-            return self.load_review_status_registry()
-        if relative_path == SOURCE_TYPE_REGISTRY_PATH:
-            return self.load_source_type_registry()
-        if relative_path == PROMOTION_POLICY_REGISTRY_PATH:
-            return self.load_promotion_policy_registry()
-        if relative_path == PROJECT_SURFACE_POLICY_REGISTRY_PATH:
-            return self.load_project_surface_policy_registry()
-        if relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH:
-            return self.load_human_surface_policy_registry()
-        if relative_path == RETENTION_POLICY_REGISTRY_PATH:
-            return self.load_retention_policy_registry()
-        if relative_path == ARTIFACT_INDEX_PATH:
-            return self.load_artifact_index()
-        if relative_path == PACK_SETTINGS_PATH:
-            return self.load_pack_settings()
-        if (
-            self.active_pack_settings_path is not None
-            and relative_path == self.active_pack_settings_path
-        ):
-            return self.load_pack_settings(relative_path)
-        if (
-            self._active_validator_registry_path is not None
-            and relative_path == self._active_validator_registry_path
-        ):
-            return self.load_validator_registry()
-        if (
-            self._active_validation_suite_registry_path is not None
-            and relative_path == self._active_validation_suite_registry_path
-        ):
-            return self.load_validation_suite_registry()
-        if (
-            self._active_documentation_family_registry_path is not None
-            and relative_path == self._active_documentation_family_registry_path
-        ):
-            return self.load_documentation_family_registry(relative_path)
-        if (
-            self._active_template_catalog_path is not None
-            and relative_path == self._active_template_catalog_path
-        ):
-            return self.load_template_catalog(relative_path)
-        if (
-            self._active_artifact_family_registry_path is not None
-            and relative_path == self._active_artifact_family_registry_path
-        ):
-            return self.load_artifact_family_registry(relative_path)
-        if (
-            self._active_lifecycle_stage_registry_path is not None
-            and relative_path == self._active_lifecycle_stage_registry_path
-        ):
-            return self.load_lifecycle_stage_registry(relative_path)
-        if (
-            self._active_review_status_registry_path is not None
-            and relative_path == self._active_review_status_registry_path
-        ):
-            return self.load_review_status_registry(relative_path)
-        if (
-            self._active_source_type_registry_path is not None
-            and relative_path == self._active_source_type_registry_path
-        ):
-            return self.load_source_type_registry(relative_path)
-        if (
-            self._active_promotion_policy_registry_path is not None
-            and relative_path == self._active_promotion_policy_registry_path
-        ):
-            return self.load_promotion_policy_registry(relative_path)
-        if (
-            self._active_project_surface_policy_registry_path is not None
-            and relative_path == self._active_project_surface_policy_registry_path
-        ):
-            return self.load_project_surface_policy_registry(relative_path)
-        if (
-            self._active_human_surface_policy_registry_path is not None
-            and relative_path == self._active_human_surface_policy_registry_path
-        ):
-            return self.load_human_surface_policy_registry(relative_path)
-        if (
-            self._active_retention_policy_registry_path is not None
-            and relative_path == self._active_retention_policy_registry_path
-        ):
-            return self.load_retention_policy_registry(relative_path)
-        if (
-            self._active_artifact_index_path is not None
-            and relative_path == self._active_artifact_index_path
-        ):
-            return self.load_artifact_index(relative_path)
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -1070,16 +914,10 @@ class ControlPlaneLoader:
             return self.load_reference_index()
         if relative_path == FOUNDATION_INDEX_PATH:
             return self.load_foundation_index()
-        if relative_path == INITIATIVE_INDEX_PATH:
-            return self.load_initiative_index()
-        if relative_path == COORDINATION_INDEX_PATH:
-            return self.load_coordination_index()
         if relative_path == STANDARD_INDEX_PATH:
             return self.load_standard_index()
         if relative_path == WORKFLOW_INDEX_PATH:
             return self.load_workflow_index()
-        if relative_path == TASK_INDEX_PATH:
-            return self.load_task_index()
         if relative_path == TRACEABILITY_INDEX_PATH:
             return self.load_traceability_index()
         return self.load_validated_document(relative_path)
@@ -1089,128 +927,109 @@ class ControlPlaneLoader:
 
         if relative_path == PACK_SETTINGS_PATH and self.active_pack_settings_path is not None:
             return self.active_pack_settings_path
+        if relative_path == PACK_SETTINGS_PATH:
+            return self.default_pack_settings_path()
         return relative_path
+
+    def default_pack_settings_path(self) -> str:
+        """Return the repository-default active pack-settings path for this loader."""
+
+        if self.active_pack_settings_path is not None:
+            return self.active_pack_settings_path
+        discovered = self._discover_default_pack_settings_path()
+        return discovered or CORE_PACK_SETTINGS_PATH
+
+    def effective_pack_settings_path(self, relative_path: str = PACK_SETTINGS_PATH) -> str:
+        """Resolve one requested pack-settings token into a concrete repository path."""
+
+        return self._current_pack_settings_path(relative_path)
 
     def _current_validator_registry_path(self) -> str:
         """Return the validator registry path active for this loader instance."""
 
         if self._active_validator_registry_path is not None:
             return self._active_validator_registry_path
-        return VALIDATOR_REGISTRY_PATH
+        return self._default_pack_surface_path("validator_registry", VALIDATOR_REGISTRY_PATH)
 
     def _current_validation_suite_registry_path(self) -> str:
         """Return the validation-suite registry path active for this loader instance."""
 
         if self._active_validation_suite_registry_path is not None:
             return self._active_validation_suite_registry_path
-        return VALIDATION_SUITE_REGISTRY_PATH
+        return self._default_pack_surface_path(
+            "validation_suite_registry",
+            VALIDATION_SUITE_REGISTRY_PATH,
+        )
 
-    def _current_documentation_family_registry_path(self, relative_path: str) -> str:
-        """Return the documentation-family registry path active for this loader instance."""
+    def _current_surface_path(
+        self,
+        surface_name: str,
+        relative_path: str,
+        *,
+        default_path: str,
+    ) -> str:
+        """Return the active declared path for one surface or the provided default."""
 
-        if (
-            relative_path == DOCUMENTATION_FAMILY_REGISTRY_PATH
-            and self._active_documentation_family_registry_path is not None
-        ):
-            return self._active_documentation_family_registry_path
+        active_path = self._active_surface_paths.get(surface_name)
+        if active_path is not None and relative_path == default_path:
+            return active_path
+        if relative_path == default_path:
+            return self._default_pack_surface_path(surface_name, default_path)
         return relative_path
 
-    def _current_template_catalog_path(self, relative_path: str) -> str:
-        """Return the template-catalog path active for this loader instance."""
+    def _required_surface_path(
+        self,
+        surface_name: str,
+        relative_path: str | None = None,
+    ) -> str:
+        """Return one explicit path or the required active pack-declared path."""
 
-        if (
-            relative_path == TEMPLATE_CATALOG_PATH
-            and self._active_template_catalog_path is not None
-        ):
-            return self._active_template_catalog_path
-        return relative_path
+        if relative_path is not None:
+            return relative_path
+        active_path = self._active_surface_paths.get(surface_name)
+        if active_path is not None:
+            return active_path
+        default_pack_settings = self._current_pack_settings_path(PACK_SETTINGS_PATH)
+        pack_settings = self.load_pack_settings(default_pack_settings)
+        try:
+            declaration = pack_settings.get(surface_name)
+        except KeyError as exc:
+            raise ValueError(
+                f"Active pack settings must declare a {surface_name} surface."
+            ) from exc
+        self._active_surface_paths[surface_name] = declaration.path
+        return declaration.path
 
-    def _current_artifact_family_registry_path(self, relative_path: str) -> str:
-        """Return the artifact-family registry path active for this loader instance."""
+    def _surface_name_for_active_path(self, relative_path: str) -> str | None:
+        """Return the active declared surface name for one path, if any."""
 
-        if (
-            relative_path == ARTIFACT_FAMILY_REGISTRY_PATH
-            and self._active_artifact_family_registry_path is not None
-        ):
-            return self._active_artifact_family_registry_path
-        return relative_path
+        for surface_name, declared_path in self._active_surface_paths.items():
+            if relative_path == declared_path:
+                return surface_name
+        return None
 
-    def _current_lifecycle_stage_registry_path(self, relative_path: str) -> str:
-        """Return the lifecycle-stage registry path active for this loader instance."""
+    def _default_pack_surface_path(self, surface_name: str, fallback_path: str) -> str:
+        """Return one default-pack surface path when the default pack is available."""
 
-        if (
-            relative_path == LIFECYCLE_STAGE_REGISTRY_PATH
-            and self._active_lifecycle_stage_registry_path is not None
-        ):
-            return self._active_lifecycle_stage_registry_path
-        return relative_path
+        try:
+            declaration = self.load_pack_settings(PACK_SETTINGS_PATH).get(surface_name)
+        except (ArtifactLoadError, KeyError, ValueError):
+            return fallback_path
+        return declaration.path
 
-    def _current_review_status_registry_path(self, relative_path: str) -> str:
-        """Return the review-status registry path active for this loader instance."""
+    def _discover_default_pack_settings_path(self) -> str | None:
+        """Discover one repo-local default pack settings path when available."""
 
-        if (
-            relative_path == REVIEW_STATUS_REGISTRY_PATH
-            and self._active_review_status_registry_path is not None
-        ):
-            return self._active_review_status_registry_path
-        return relative_path
-
-    def _current_source_type_registry_path(self, relative_path: str) -> str:
-        """Return the source-type registry path active for this loader instance."""
-
-        if (
-            relative_path == SOURCE_TYPE_REGISTRY_PATH
-            and self._active_source_type_registry_path is not None
-        ):
-            return self._active_source_type_registry_path
-        return relative_path
-
-    def _current_promotion_policy_registry_path(self, relative_path: str) -> str:
-        """Return the promotion-policy registry path active for this loader instance."""
-
-        if (
-            relative_path == PROMOTION_POLICY_REGISTRY_PATH
-            and self._active_promotion_policy_registry_path is not None
-        ):
-            return self._active_promotion_policy_registry_path
-        return relative_path
-
-    def _current_project_surface_policy_registry_path(self, relative_path: str) -> str:
-        """Return the project-surface policy registry path active for this loader instance."""
-
-        if (
-            relative_path == PROJECT_SURFACE_POLICY_REGISTRY_PATH
-            and self._active_project_surface_policy_registry_path is not None
-        ):
-            return self._active_project_surface_policy_registry_path
-        return relative_path
-
-    def _current_human_surface_policy_registry_path(self, relative_path: str) -> str:
-        """Return the human-surface policy registry path active for this loader instance."""
-
-        if (
-            relative_path == HUMAN_SURFACE_POLICY_REGISTRY_PATH
-            and self._active_human_surface_policy_registry_path is not None
-        ):
-            return self._active_human_surface_policy_registry_path
-        return relative_path
-
-    def _current_retention_policy_registry_path(self, relative_path: str) -> str:
-        """Return the retention-policy registry path active for this loader instance."""
-
-        if (
-            relative_path == RETENTION_POLICY_REGISTRY_PATH
-            and self._active_retention_policy_registry_path is not None
-        ):
-            return self._active_retention_policy_registry_path
-        return relative_path
-
-    def _current_artifact_index_path(self, relative_path: str) -> str:
-        """Return the artifact-index path active for this loader instance."""
-
-        if relative_path == ARTIFACT_INDEX_PATH and self._active_artifact_index_path is not None:
-            return self._active_artifact_index_path
-        return relative_path
+        candidates = tuple(
+            sorted(
+                candidate.relative_to(self.repo_root).as_posix()
+                for candidate in self.repo_root.glob("*/.wt/manifests/pack_settings.json")
+                if candidate.is_file()
+            )
+        )
+        if not candidates:
+            return None
+        return candidates[0]
 
     def load_typed_document(
         self,

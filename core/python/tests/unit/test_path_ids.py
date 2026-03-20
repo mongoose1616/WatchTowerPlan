@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pytest
 
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 
 
@@ -31,27 +32,60 @@ def test_plan_path_id_helper_derives_trace_and_initiative_identity() -> None:
         )
 
 
-def test_plan_path_id_helper_builds_packwide_and_project_scoped_locations() -> None:
-    packwide = PlanPathIdHelper.packwide_initiative_location(trace_id="trace.example_path_helper")
-    assert packwide.initiative_root_relative == "plan/initiatives/example_path_helper"
-    assert packwide.relative_path(".wt/initiative.json") == (
-        "plan/initiatives/example_path_helper/.wt/initiative.json"
+def _workspace_paths() -> PackWorkspacePaths:
+    return PackWorkspacePaths.from_pack_settings(
+        type(
+            "PackSettingsStub",
+            (),
+            {
+                "pack_id": "pack.example",
+                "default_validation_suite_id": "suite.example.validation_baseline",
+                "workspace_roots": type(
+                    "WorkspaceRootsStub",
+                    (),
+                    {
+                        "workspace_root": "packs/example",
+                        "machine_root": "packs/example/.wt",
+                        "docs_root": "packs/example/docs",
+                        "workflows_root": "packs/example/workflows",
+                        "tracking_root": "packs/example/tracking",
+                        "initiatives_root": "packs/example/initiatives",
+                        "projects_root": "packs/example/projects",
+                        "overview_path": "packs/example/overview.md",
+                    },
+                )(),
+            },
+        )(),
+        pack_settings_path="packs/example/.wt/manifests/pack_settings.json",
+    )
+
+
+def test_pack_workspace_paths_build_packwide_and_project_scoped_locations() -> None:
+    workspace_paths = _workspace_paths()
+    packwide = workspace_paths.packwide_initiative_location(
+        trace_id="trace.example_path_helper"
+    )
+    assert packwide.initiative_root_relative == "packs/example/initiatives/example_path_helper"
+    assert (
+        packwide.relative_path(".wt/initiative.json")
+        == "packs/example/initiatives/example_path_helper/.wt/initiative.json"
     )
     assert packwide.discrepancy_namespace == "example_path_helper"
 
-    project_scoped = PlanPathIdHelper.project_scoped_initiative_location(
+    project_scoped = workspace_paths.project_scoped_initiative_location(
         "watchtower",
         trace_id="trace.example_path_helper",
     )
     assert project_scoped.project_id == "project.watchtower"
     assert (
         project_scoped.initiative_root_relative
-        == "plan/projects/watchtower/initiatives/example_path_helper"
+        == "packs/example/projects/watchtower/initiatives/example_path_helper"
     )
     assert project_scoped.discrepancy_namespace == "watchtower.example_path_helper"
 
 
 def test_plan_path_id_helper_builds_canonical_companion_ids_and_project_paths() -> None:
+    workspace_paths = _workspace_paths()
     assert (
         PlanPathIdHelper.canonical_project_id("watchtower") == "project.watchtower"
     )
@@ -81,9 +115,10 @@ def test_plan_path_id_helper_builds_canonical_companion_ids_and_project_paths() 
         == "evidence.example_path_helper.bootstrap_validation_bundle"
     )
     assert (
-        PlanPathIdHelper.project_root_relative("watchtower") == "plan/projects/watchtower"
+        workspace_paths.project_root_relative("watchtower")
+        == "packs/example/projects/watchtower"
     )
     assert (
-        PlanPathIdHelper.project_initiatives_root_relative("watchtower")
-        == "plan/projects/watchtower/initiatives"
+        workspace_paths.project_initiatives_root_relative("watchtower")
+        == "packs/example/projects/watchtower/initiatives"
     )

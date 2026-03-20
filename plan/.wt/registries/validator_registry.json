@@ -5,276 +5,562 @@
   "status": "active",
   "validators": [
     {
-      "id": "validator.plan.pack_settings",
-      "title": "Plan Pack Settings Validator",
-      "description": "Validates the plan-pack load-root manifest.",
+      "id": "validator.control_plane.acceptance_contract",
+      "title": "Acceptance Contract Validator",
+      "description": "Validates machine-readable acceptance contract artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "acceptance_contract",
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.actor_registry",
+      "title": "Actor Registry Validator",
+      "description": "Validates actor registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "actor_registry",
+      "applies_to": [
+        "core/control_plane/registries/actor_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:actor-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.authority_map",
+      "title": "Authority Map Validator",
+      "description": "Validates authored authority-map registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "authority_map",
+      "applies_to": [
+        "core/control_plane/registries/authority_map.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:authority-map:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.command_index",
+      "title": "Command Index Validator",
+      "description": "Validates machine-readable command index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "command_index",
+      "applies_to": [
+        "core/control_plane/indexes/commands/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:command-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.documentation_family_registry",
+      "title": "Documentation Family Registry Validator",
+      "description": "Validates authored reusable-core documentation-family registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_family_registry",
+      "applies_to": [
+        "core/control_plane/registries/documentation_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:documentation-family-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.foundation_index",
+      "title": "Foundation Index Validator",
+      "description": "Validates machine-readable foundation index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "foundation_index",
+      "applies_to": [
+        "core/control_plane/indexes/foundations/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:foundation-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.governance_surface_map",
+      "title": "Governance Surface Map Validator",
+      "description": "Validates governance surface map artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "governance_surface_map",
+      "applies_to": [
+        "core/control_plane/registries/governance_surface_map.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:governance-surface-map:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.migration_record",
+      "title": "Migration Record Validator",
+      "description": "Validates machine-readable migration ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "migration_record",
+      "applies_to": [
+        "core/control_plane/ledgers/migrations/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.pack_settings",
+      "title": "Pack Settings Validator",
+      "description": "Validates pack settings load-root artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "pack_settings",
       "applies_to": [
-        "plan/.wt/manifests/pack_settings.json"
+        "core/control_plane/manifests/pack_settings.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
       ]
     },
     {
-      "id": "validator.plan.schema_catalog",
-      "title": "Plan Schema Catalog Validator",
-      "description": "Validates the plan-pack schema catalog.",
+      "id": "validator.control_plane.path_pattern_registry",
+      "title": "Path Pattern Registry Validator",
+      "description": "Validates path pattern registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "path_pattern_registry",
+      "applies_to": [
+        "core/control_plane/registries/path_pattern_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.reference_index",
+      "title": "Reference Index Validator",
+      "description": "Validates machine-readable reference index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "reference_index",
+      "applies_to": [
+        "core/control_plane/indexes/references/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:reference-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.release_record",
+      "title": "Release Record Validator",
+      "description": "Validates machine-readable release ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "release_record",
+      "applies_to": [
+        "core/control_plane/ledgers/releases/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.rendered_surface_registry",
+      "title": "Rendered Surface Registry Validator",
+      "description": "Validates authored rendered-surface registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "rendered_surface_registry",
+      "applies_to": [
+        "core/control_plane/registries/rendered_surface_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.repository_path_index",
+      "title": "Repository Path Index Validator",
+      "description": "Validates machine-readable repository path index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "repository_path_index",
+      "applies_to": [
+        "core/control_plane/indexes/repository_paths/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.route_index",
+      "title": "Route Index Validator",
+      "description": "Validates machine-readable route index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "route_index",
+      "applies_to": [
+        "core/control_plane/indexes/routes/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:route-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.schema_catalog",
+      "title": "Schema Catalog Validator",
+      "description": "Validates authored schema catalog registry artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "schema_catalog",
       "applies_to": [
-        "plan/.wt/registries/schema_catalog.json"
+        "core/control_plane/registries/schema_catalog.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
       ]
     },
     {
-      "id": "validator.plan.validator_registry",
-      "title": "Plan Validator Registry Validator",
-      "description": "Validates the plan-pack validator registry.",
+      "id": "validator.control_plane.standard_index",
+      "title": "Standard Index Validator",
+      "description": "Validates machine-readable standard index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "standard_index",
+      "applies_to": [
+        "core/control_plane/indexes/standards/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:standard-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.status_registry",
+      "title": "Status Registry Validator",
+      "description": "Validates status registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "status_registry",
+      "applies_to": [
+        "core/control_plane/registries/status_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:status-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.template_catalog",
+      "title": "Template Catalog Validator",
+      "description": "Validates authored reusable-core template catalog artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "template_catalog",
+      "applies_to": [
+        "core/control_plane/registries/template_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:template-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.trace_purge_record",
+      "title": "Trace Purge Record Validator",
+      "description": "Validates machine-readable trace-purge ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "trace_purge_record",
+      "applies_to": [
+        "core/control_plane/ledgers/purges/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.traceability_index",
+      "title": "Traceability Index Validator",
+      "description": "Validates unified machine-readable traceability index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "traceability_index",
+      "applies_to": [
+        "core/control_plane/indexes/traceability/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:traceability-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.validation_evidence",
+      "title": "Validation Evidence Validator",
+      "description": "Validates durable validation-evidence ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_evidence",
+      "applies_to": [
+        "core/control_plane/ledgers/validation_evidence/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.validation_suite_registry",
+      "title": "Validation Suite Registry Validator",
+      "description": "Validates authored validation suite registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_suite_registry",
+      "applies_to": [
+        "core/control_plane/registries/validation_suite_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.validator_registry",
+      "title": "Validator Registry Validator",
+      "description": "Validates authored validator registry artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "validator_registry",
       "applies_to": [
-        "plan/.wt/registries/validator_registry.json"
+        "core/control_plane/registries/validator_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.pack_work_item_note",
-      "title": "Plan Pack Work Item Note Validator",
-      "description": "Validates plan-pack work item notes stored under plan/.wt/work_items/.",
+      "id": "validator.control_plane.workflow_index",
+      "title": "Workflow Index Validator",
+      "description": "Validates machine-readable workflow index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_index",
+      "applies_to": [
+        "core/control_plane/indexes/workflows/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:workflow-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.workflow_metadata_registry",
+      "title": "Workflow Metadata Registry Validator",
+      "description": "Validates machine-readable workflow metadata registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_metadata_registry",
+      "applies_to": [
+        "core/control_plane/registries/workflow_metadata_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.foundation_front_matter",
+      "title": "Foundation Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed foundation documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "core/docs/foundations/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.foundation_semantics",
+      "title": "Foundation Document Semantics Validator",
+      "description": "Validates governed foundation-document structure and timestamp alignment.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "core/docs/foundations/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.reference_front_matter",
+      "title": "Reference Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed reference documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "core/docs/references/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
+      ],
+      "notes": "Validate the parsed front matter object rather than the raw Markdown file."
+    },
+    {
+      "id": "validator.documentation.reference_semantics",
+      "title": "Reference Document Semantics Validator",
+      "description": "Validates governed reference-document structure, section order, and local reference rules.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "core/docs/references/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.standard_front_matter",
+      "title": "Standard Front Matter Validator",
+      "description": "Validates parsed front matter metadata for standards that adopt governed front matter.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "core/docs/standards/**",
+        "plan/docs/standards/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.standard_semantics",
+      "title": "Standard Document Semantics Validator",
+      "description": "Validates governed standard-document structure, explained applied-reference sections, and local-reference usage.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "core/docs/standards/**",
+        "plan/docs/standards/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.workflow_front_matter",
+      "title": "Workflow Front Matter Validator",
+      "description": "Validates parsed front matter metadata for workflow documents that adopt governed front matter.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "core/workflows/**",
+        "plan/workflows/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.workflow_semantics",
+      "title": "Workflow Semantics Validator",
+      "description": "Validates workflow-module structure, section order, and explained governing-source bullets.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "core/workflows/modules/**",
+        "plan/workflows/modules/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.interface.extraction_output_envelope",
+      "title": "Extraction Output Envelope Validator",
+      "description": "Validates generic structured extraction workflow output envelopes.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "extraction_output_envelope",
+      "applies_to": [
+        "**/extraction_output_envelope*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1"
+      ],
+      "notes": "Supports explicit validation or repo-local auto-selection for pack-owned extraction envelopes without requiring repo-local example fixtures."
+    },
+    {
+      "id": "validator.interface.pack_work_item_note",
+      "title": "Pack Work Item Note Validator",
+      "description": "Validates generic pack-facing work-item note artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "pack_work_item_note",
       "applies_to": [
-        "plan/.wt/work_items/*.json"
+        "**/pack_work_item_note*.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
+      ],
+      "notes": "Supports explicit validation or repo-local auto-selection for pack-owned work-item note artifacts without requiring repo-local example fixtures."
+    },
+    {
+      "id": "validator.plan.artifact_family_registry",
+      "title": "Plan Artifact Family Registry Validator",
+      "description": "Validates the plan-pack artifact family registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "artifact_family_registry",
+      "applies_to": [
+        "plan/.wt/registries/artifact_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.documentation_family_registry",
-      "title": "Plan Documentation Family Registry Validator",
-      "description": "Validates the plan-pack documentation-family registry.",
+      "id": "validator.plan.artifact_index",
+      "title": "Plan Artifact Index Validator",
+      "description": "Validates the plan-workspace cross-family artifact index.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "documentation_family_registry",
+      "artifact_kind": "artifact_index",
       "applies_to": [
-        "plan/.wt/registries/documentation_family_registry.json"
+        "plan/.wt/indexes/artifact_index.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
+        "urn:watchtower:schema:interfaces:packs:artifact-index:v1"
       ]
     },
     {
-      "id": "validator.plan.template_catalog",
-      "title": "Plan Template Catalog Validator",
-      "description": "Validates the plan-pack template catalog.",
+      "id": "validator.plan.authority_map",
+      "title": "Plan Authority Map Validator",
+      "description": "Validates the plan-pack authority map.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "template_catalog",
+      "artifact_kind": "authority_map",
       "applies_to": [
-        "plan/.wt/registries/template_catalog.json"
+        "plan/.wt/registries/authority_map.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:template-catalog:v1"
+        "urn:watchtower:schema:artifacts:registries:authority-map:v1"
       ]
     },
     {
-      "id": "validator.plan.human_surface_policy_registry",
-      "title": "Plan Human Surface Policy Validator",
-      "description": "Validates the plan-pack human-surface placement policy registry.",
+      "id": "validator.plan.closeout_index",
+      "title": "Plan Closeout Index Validator",
+      "description": "Validates the plan-workspace closeout index.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "human_surface_policy_registry",
+      "artifact_kind": "plan_closeout_index",
       "applies_to": [
-        "plan/.wt/registries/human_surface_policy_registry.json"
+        "plan/.wt/indexes/closeout_index.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.retention_policy_registry",
-      "title": "Plan Retention Policy Validator",
-      "description": "Validates the plan-pack retention-policy registry.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "retention_policy_registry",
-      "applies_to": [
-        "plan/.wt/registries/retention_policy_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.lifecycle_stage_registry",
-      "title": "Plan Lifecycle Stage Registry Validator",
-      "description": "Validates the plan-pack lifecycle-stage registry.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "lifecycle_stage_registry",
-      "applies_to": [
-        "plan/.wt/registries/lifecycle_stage_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:lifecycle-stage-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.review_status_registry",
-      "title": "Plan Review Status Registry Validator",
-      "description": "Validates the plan-pack review-status registry.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "review_status_registry",
-      "applies_to": [
-        "plan/.wt/registries/review_status_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:review-status-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.source_type_registry",
-      "title": "Plan Source Type Registry Validator",
-      "description": "Validates the plan-pack source-type registry.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "source_type_registry",
-      "applies_to": [
-        "plan/.wt/registries/source_type_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:source-type-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.project_surface_policy_registry",
-      "title": "Plan Project Surface Policy Validator",
-      "description": "Validates the plan-pack project-surface policy registry.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "project_surface_policy_registry",
-      "applies_to": [
-        "plan/.wt/registries/project_surface_policy_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.initiative_state",
-      "title": "Plan Initiative State Validator",
-      "description": "Validates initiative-local current-state snapshots.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "initiative_state",
-      "applies_to": [
-        "plan/initiatives/**/.wt/initiative.json",
-        "plan/projects/**/initiatives/**/.wt/initiative.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:initiative-state:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.initiative_event_stream",
-      "title": "Plan Initiative Event Validator",
-      "description": "Validates initiative-local event-stream records.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "initiative_event_stream",
-      "applies_to": [
-        "plan/initiatives/**/.wt/events/*.json",
-        "plan/projects/**/initiatives/**/.wt/events/*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.task_state",
-      "title": "Plan Task State Validator",
-      "description": "Validates initiative-local task-state snapshots.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "task_state",
-      "applies_to": [
-        "plan/initiatives/**/.wt/tasks/**/task.json",
-        "plan/projects/**/initiatives/**/.wt/tasks/**/task.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:task-state:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.task_event_stream",
-      "title": "Plan Task Event Validator",
-      "description": "Validates initiative-local task event-stream records.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "task_event_stream",
-      "applies_to": [
-        "plan/initiatives/**/.wt/tasks/**/events/*.json",
-        "plan/projects/**/initiatives/**/.wt/tasks/**/events/*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:task-event-stream:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.deferred_item_record",
-      "title": "Plan Deferred Item Validator",
-      "description": "Validates initiative-local deferred item contracts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "deferred_item_record",
-      "applies_to": [
-        "plan/initiatives/**/.wt/deferred/*.json",
-        "plan/projects/**/initiatives/**/.wt/deferred/*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.discrepancy_record",
-      "title": "Plan Discrepancy Record Validator",
-      "description": "Validates initiative-local discrepancy records.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "discrepancy_record",
-      "applies_to": [
-        "plan/initiatives/**/.wt/discrepancies/*.json",
-        "plan/projects/**/initiatives/**/.wt/discrepancies/*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.validation_bundle",
-      "title": "Plan Validation Bundle Validator",
-      "description": "Validates initiative-local evidence shells and validation bundles.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "validation_bundle",
-      "applies_to": [
-        "plan/initiatives/**/.wt/evidence/*.json",
-        "plan/projects/**/initiatives/**/.wt/evidence/*.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+        "urn:watchtower:schema:artifacts:plan:closeout-index:v1"
       ]
     },
     {
@@ -293,6 +579,120 @@
       ]
     },
     {
+      "id": "validator.plan.coordination_index",
+      "title": "Plan Coordination Index Validator",
+      "description": "Validates the plan-workspace coordination index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "coordination_index",
+      "applies_to": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.deferred_item_record",
+      "title": "Plan Deferred Item Validator",
+      "description": "Validates initiative-local deferred item contracts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "deferred_item_record",
+      "applies_to": [
+        "plan/initiatives/**/.wt/deferred/*.json",
+        "plan/projects/**/initiatives/**/.wt/deferred/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:deferred-item-record:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.discrepancy_index",
+      "title": "Plan Discrepancy Index Validator",
+      "description": "Validates the plan-workspace discrepancy index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_discrepancy_index",
+      "applies_to": [
+        "plan/.wt/indexes/discrepancy_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.discrepancy_record",
+      "title": "Plan Discrepancy Record Validator",
+      "description": "Validates initiative-local discrepancy records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "discrepancy_record",
+      "applies_to": [
+        "plan/initiatives/**/.wt/discrepancies/*.json",
+        "plan/projects/**/initiatives/**/.wt/discrepancies/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.documentation_family_registry",
+      "title": "Plan Documentation Family Registry Validator",
+      "description": "Validates the plan-pack documentation-family registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_family_registry",
+      "applies_to": [
+        "plan/.wt/registries/documentation_family_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.evidence_index",
+      "title": "Plan Evidence Index Validator",
+      "description": "Validates the plan-workspace evidence index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_evidence_index",
+      "applies_to": [
+        "plan/.wt/indexes/evidence_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:evidence-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.governance_surface_map",
+      "title": "Plan Governance Surface Map Validator",
+      "description": "Validates the plan-pack governance surface map.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "governance_surface_map",
+      "applies_to": [
+        "plan/.wt/registries/governance_surface_map.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:governance-surface-map:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.guidance_index",
+      "title": "Plan Guidance Index Validator",
+      "description": "Validates the plan-workspace guidance index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_guidance_index",
+      "applies_to": [
+        "plan/.wt/indexes/guidance_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:guidance-index:v1"
+      ]
+    },
+    {
       "id": "validator.plan.guidance_promotion_record",
       "title": "Plan Guidance Promotion Validator",
       "description": "Validates initiative-local promotion shells and guidance-promotion records.",
@@ -308,59 +708,131 @@
       ]
     },
     {
-      "id": "validator.plan.promotion_policy_registry",
-      "title": "Plan Promotion Policy Validator",
-      "description": "Validates the plan-pack promotion policy registry.",
+      "id": "validator.plan.human_surface_policy_registry",
+      "title": "Plan Human Surface Policy Validator",
+      "description": "Validates the plan-pack human-surface placement policy registry.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "promotion_policy_registry",
+      "artifact_kind": "human_surface_policy_registry",
       "applies_to": [
-        "plan/.wt/registries/promotion_policy_registry.json"
+        "plan/.wt/registries/human_surface_policy_registry.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1"
+        "urn:watchtower:schema:artifacts:plan:human-surface-policy-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.relation_type_registry",
-      "title": "Plan Relation Type Validator",
-      "description": "Validates the plan-pack relation type registry.",
+      "id": "validator.plan.initiative_event_stream",
+      "title": "Plan Initiative Event Validator",
+      "description": "Validates initiative-local event-stream records.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "relation_type_registry",
+      "artifact_kind": "initiative_event_stream",
       "applies_to": [
-        "plan/.wt/registries/relation_type_registry.json"
+        "plan/initiatives/**/.wt/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/events/*.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:relation-type-registry:v1"
+        "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1"
       ]
     },
     {
-      "id": "validator.plan.status_transition_rules",
-      "title": "Plan Status Transition Rules Validator",
-      "description": "Validates the plan-pack status transition rules.",
+      "id": "validator.plan.initiative_index",
+      "title": "Plan Initiative Index Validator",
+      "description": "Validates the plan-workspace initiative index.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "status_transition_rules",
+      "artifact_kind": "initiative_index",
       "applies_to": [
-        "plan/.wt/policies/status_transition_rules.json"
+        "plan/.wt/indexes/initiative_index.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1"
+        "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
       ]
     },
     {
-      "id": "validator.plan.artifact_family_registry",
-      "title": "Plan Artifact Family Registry Validator",
-      "description": "Validates the plan-pack artifact family registry.",
+      "id": "validator.plan.initiative_state",
+      "title": "Plan Initiative State Validator",
+      "description": "Validates initiative-local current-state snapshots.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "artifact_family_registry",
+      "artifact_kind": "initiative_state",
       "applies_to": [
-        "plan/.wt/registries/artifact_family_registry.json"
+        "plan/initiatives/**/.wt/initiative.json",
+        "plan/projects/**/initiatives/**/.wt/initiative.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:artifact-family-registry:v1"
+        "urn:watchtower:schema:artifacts:plan:initiative-state:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.lifecycle_stage_registry",
+      "title": "Plan Lifecycle Stage Registry Validator",
+      "description": "Validates the plan-pack lifecycle-stage registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "lifecycle_stage_registry",
+      "applies_to": [
+        "plan/.wt/registries/lifecycle_stage_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:lifecycle-stage-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.pack_settings",
+      "title": "Plan Pack Settings Validator",
+      "description": "Validates the plan-pack load-root manifest.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_settings",
+      "applies_to": [
+        "plan/.wt/manifests/pack_settings.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.pack_work_item_note",
+      "title": "Plan Pack Work Item Note Validator",
+      "description": "Validates plan-pack work item notes stored under plan/.wt/work_items/.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_work_item_note",
+      "applies_to": [
+        "plan/.wt/work_items/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.path_pattern_registry",
+      "title": "Plan Path Pattern Registry Validator",
+      "description": "Validates the plan-pack path pattern registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "path_pattern_registry",
+      "applies_to": [
+        "plan/.wt/registries/path_pattern_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.project_index",
+      "title": "Plan Project Index Validator",
+      "description": "Validates the plan-workspace project index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_project_index",
+      "applies_to": [
+        "plan/.wt/indexes/project_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:project-index:v1"
       ]
     },
     {
@@ -392,101 +864,17 @@
       ]
     },
     {
-      "id": "validator.plan.initiative_index",
-      "title": "Plan Initiative Index Validator",
-      "description": "Validates the plan-workspace initiative index.",
+      "id": "validator.plan.project_surface_policy_registry",
+      "title": "Plan Project Surface Policy Validator",
+      "description": "Validates the plan-pack project-surface policy registry.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "initiative_index",
+      "artifact_kind": "project_surface_policy_registry",
       "applies_to": [
-        "plan/.wt/indexes/initiative_index.json"
+        "plan/.wt/registries/project_surface_policy_registry.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.task_summary_index",
-      "title": "Plan Task Summary Index Validator",
-      "description": "Validates the plan-workspace task summary index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_task_summary_index",
-      "applies_to": [
-        "plan/.wt/indexes/task_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:task-summary-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.readiness_index",
-      "title": "Plan Readiness Index Validator",
-      "description": "Validates the plan-workspace readiness index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_readiness_index",
-      "applies_to": [
-        "plan/.wt/indexes/readiness_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:readiness-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.discrepancy_index",
-      "title": "Plan Discrepancy Index Validator",
-      "description": "Validates the plan-workspace discrepancy index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_discrepancy_index",
-      "applies_to": [
-        "plan/.wt/indexes/discrepancy_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:discrepancy-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.evidence_index",
-      "title": "Plan Evidence Index Validator",
-      "description": "Validates the plan-workspace evidence index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_evidence_index",
-      "applies_to": [
-        "plan/.wt/indexes/evidence_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:evidence-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.closeout_index",
-      "title": "Plan Closeout Index Validator",
-      "description": "Validates the plan-workspace closeout index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_closeout_index",
-      "applies_to": [
-        "plan/.wt/indexes/closeout_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:closeout-index:v1"
-      ]
-    },
-    {
-      "id": "validator.plan.review_index",
-      "title": "Plan Review Index Validator",
-      "description": "Validates the plan-workspace review index.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "plan_review_index",
-      "applies_to": [
-        "plan/.wt/indexes/review_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:review-index:v1"
+        "urn:watchtower:schema:artifacts:plan:project-surface-policy-registry:v1"
       ]
     },
     {
@@ -504,60 +892,261 @@
       ]
     },
     {
-      "id": "validator.plan.guidance_index",
-      "title": "Plan Guidance Index Validator",
-      "description": "Validates the plan-workspace guidance index.",
+      "id": "validator.plan.promotion_policy_registry",
+      "title": "Plan Promotion Policy Validator",
+      "description": "Validates the plan-pack promotion policy registry.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "plan_guidance_index",
+      "artifact_kind": "promotion_policy_registry",
       "applies_to": [
-        "plan/.wt/indexes/guidance_index.json"
+        "plan/.wt/registries/promotion_policy_registry.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:guidance-index:v1"
+        "urn:watchtower:schema:artifacts:plan:promotion-policy-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.artifact_index",
-      "title": "Plan Artifact Index Validator",
-      "description": "Validates the plan-workspace cross-family artifact index.",
+      "id": "validator.plan.readiness_index",
+      "title": "Plan Readiness Index Validator",
+      "description": "Validates the plan-workspace readiness index.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "artifact_index",
+      "artifact_kind": "plan_readiness_index",
       "applies_to": [
-        "plan/.wt/indexes/artifact_index.json"
+        "plan/.wt/indexes/readiness_index.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:artifact-index:v1"
+        "urn:watchtower:schema:artifacts:plan:readiness-index:v1"
       ]
     },
     {
-      "id": "validator.plan.coordination_index",
-      "title": "Plan Coordination Index Validator",
-      "description": "Validates the plan-workspace coordination index.",
+      "id": "validator.plan.relation_type_registry",
+      "title": "Plan Relation Type Validator",
+      "description": "Validates the plan-pack relation type registry.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "coordination_index",
+      "artifact_kind": "relation_type_registry",
       "applies_to": [
-        "plan/.wt/indexes/coordination_index.json"
+        "plan/.wt/registries/relation_type_registry.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+        "urn:watchtower:schema:artifacts:plan:relation-type-registry:v1"
       ]
     },
     {
-      "id": "validator.plan.project_index",
-      "title": "Plan Project Index Validator",
-      "description": "Validates the plan-workspace project index.",
+      "id": "validator.plan.rendered_surface_registry",
+      "title": "Plan Rendered Surface Registry Validator",
+      "description": "Validates the plan-pack rendered surface registry.",
       "status": "active",
       "engine": "json_schema",
-      "artifact_kind": "plan_project_index",
+      "artifact_kind": "rendered_surface_registry",
       "applies_to": [
-        "plan/.wt/indexes/project_index.json"
+        "plan/.wt/registries/rendered_surface_registry.json"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:project-index:v1"
+        "urn:watchtower:schema:artifacts:registries:rendered-surface-registry:v1"
       ]
+    },
+    {
+      "id": "validator.plan.retention_policy_registry",
+      "title": "Plan Retention Policy Validator",
+      "description": "Validates the plan-pack retention-policy registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "retention_policy_registry",
+      "applies_to": [
+        "plan/.wt/registries/retention_policy_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.review_index",
+      "title": "Plan Review Index Validator",
+      "description": "Validates the plan-workspace review index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_review_index",
+      "applies_to": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:review-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.review_status_registry",
+      "title": "Plan Review Status Registry Validator",
+      "description": "Validates the plan-pack review-status registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "review_status_registry",
+      "applies_to": [
+        "plan/.wt/registries/review_status_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:review-status-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.schema_catalog",
+      "title": "Plan Schema Catalog Validator",
+      "description": "Validates the plan-pack schema catalog.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "schema_catalog",
+      "applies_to": [
+        "plan/.wt/registries/schema_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.source_type_registry",
+      "title": "Plan Source Type Registry Validator",
+      "description": "Validates the plan-pack source-type registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "source_type_registry",
+      "applies_to": [
+        "plan/.wt/registries/source_type_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:source-type-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.status_transition_rules",
+      "title": "Plan Status Transition Rules Validator",
+      "description": "Validates the plan-pack status transition rules.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "status_transition_rules",
+      "applies_to": [
+        "plan/.wt/policies/status_transition_rules.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:status-transition-rules:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_event_stream",
+      "title": "Plan Task Event Validator",
+      "description": "Validates initiative-local task event-stream records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "task_event_stream",
+      "applies_to": [
+        "plan/initiatives/**/.wt/tasks/**/events/*.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/events/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-event-stream:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_state",
+      "title": "Plan Task State Validator",
+      "description": "Validates initiative-local task-state snapshots.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "task_state",
+      "applies_to": [
+        "plan/initiatives/**/.wt/tasks/**/task.json",
+        "plan/projects/**/initiatives/**/.wt/tasks/**/task.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-state:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.task_summary_index",
+      "title": "Plan Task Summary Index Validator",
+      "description": "Validates the plan-workspace task summary index.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "plan_task_summary_index",
+      "applies_to": [
+        "plan/.wt/indexes/task_index.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:task-summary-index:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.template_catalog",
+      "title": "Plan Template Catalog Validator",
+      "description": "Validates the plan-pack template catalog.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "template_catalog",
+      "applies_to": [
+        "plan/.wt/registries/template_catalog.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:template-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.validation_bundle",
+      "title": "Plan Validation Bundle Validator",
+      "description": "Validates initiative-local evidence shells and validation bundles.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_bundle",
+      "applies_to": [
+        "plan/initiatives/**/.wt/evidence/*.json",
+        "plan/projects/**/initiatives/**/.wt/evidence/*.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.validation_suite_registry",
+      "title": "Plan Validation Suite Registry Validator",
+      "description": "Validates the plan-pack validation suite registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_suite_registry",
+      "applies_to": [
+        "plan/.wt/registries/validation_suite_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.validator_registry",
+      "title": "Plan Validator Registry Validator",
+      "description": "Validates the plan-pack validator registry.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validator_registry",
+      "applies_to": [
+        "plan/.wt/registries/validator_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.trace.acceptance_reconciliation",
+      "title": "Acceptance Reconciliation Validator",
+      "description": "Validates alignment across initiative acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "acceptance_reconciliation",
+      "applies_to": [
+        "plan/initiatives/**",
+        "plan/projects/**",
+        "core/control_plane/contracts/acceptance/**",
+        "core/control_plane/ledgers/validation_evidence/**",
+        "core/control_plane/indexes/traceability/**"
+      ],
+      "notes": "Used by the watchtower-core validate acceptance command."
     }
   ]
 }

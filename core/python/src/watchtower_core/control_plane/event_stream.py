@@ -92,20 +92,11 @@ class EventStreamHelper:
     ) -> EventStreamHelper:
         """Build one helper from a loader and effective pack settings path."""
 
-        effective_pack_settings_path = (
-            loader.active_pack_settings_path
-            if pack_settings_path == PACK_SETTINGS_PATH and loader.active_pack_settings_path
-            else pack_settings_path
-        )
+        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
         effective_loader = (
             loader
             if loader.active_pack_settings_path == effective_pack_settings_path
-            else ControlPlaneLoader(
-                workspace_config=loader.workspace_config,
-                artifact_source=loader.artifact_source,
-                artifact_store=loader.artifact_store,
-                active_pack_settings_path=effective_pack_settings_path,
-            )
+            else loader.derive(active_pack_settings_path=effective_pack_settings_path)
         )
         return cls(effective_loader)
 

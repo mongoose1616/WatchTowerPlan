@@ -17,7 +17,6 @@ from watchtower_core.control_plane.workspace import (
 
 SyncServiceFactory = Callable[[ControlPlaneLoader], object]
 SyncTargetMode = Literal["document", "tracking"]
-DEFAULT_PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -307,9 +306,10 @@ class SyncHarness:
             )
         active_pack_settings_path = self._loader.active_pack_settings_path
         if active_pack_settings_path is None:
-            candidate_path = self._repo_root / DEFAULT_PLAN_PACK_SETTINGS_PATH
+            default_pack_settings_path = self._loader.default_pack_settings_path()
+            candidate_path = self._repo_root / default_pack_settings_path
             if candidate_path.exists():
-                active_pack_settings_path = DEFAULT_PLAN_PACK_SETTINGS_PATH
+                active_pack_settings_path = default_pack_settings_path
         return ControlPlaneLoader(
             workspace_config=self._loader.workspace_config,
             schema_store=self._loader.schema_store,

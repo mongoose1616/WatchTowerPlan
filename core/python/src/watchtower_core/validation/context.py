@@ -8,6 +8,7 @@ from pathlib import Path
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     PackSettings,
+    PackWorkspaceRoots,
     SchemaCatalog,
     ValidationSuiteRegistry,
     ValidatorRegistry,
@@ -21,6 +22,7 @@ class PackValidationContext:
     pack_root: Path
     pack_settings_path: str
     pack_settings: PackSettings
+    workspace_roots: PackWorkspaceRoots
     loader: ControlPlaneLoader
     schema_catalog: SchemaCatalog
     validator_registry: ValidatorRegistry
@@ -36,33 +38,28 @@ class PackValidationContext:
     ) -> PackValidationContext:
         """Build a pack-aware validation context from one base loader."""
 
-        effective_pack_settings_path = (
-            loader.active_pack_settings_path
-            if pack_settings_path == PACK_SETTINGS_PATH and loader.active_pack_settings_path
-            else pack_settings_path
-        )
+        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
         effective_loader = (
             loader
             if loader.active_pack_settings_path == effective_pack_settings_path
-            else ControlPlaneLoader(
-                workspace_config=loader.workspace_config,
-                artifact_source=loader.artifact_source,
-                artifact_store=loader.artifact_store,
-                active_pack_settings_path=effective_pack_settings_path,
-            )
+            else loader.derive(active_pack_settings_path=effective_pack_settings_path)
         )
         pack_settings = effective_loader.load_pack_settings(effective_pack_settings_path)
         surfaces: dict[str, object] = {}
         for declaration in pack_settings.surfaces:
+            if declaration.surface_name == "schema_catalog":
+                surfaces[declaration.surface_name] = effective_loader.load_schema_catalog()
+                continue
             surfaces[declaration.surface_name] = effective_loader.load_declared_surface(
                 surface_name=declaration.surface_name,
                 relative_path=declaration.path,
             )
 
         return cls(
-            pack_root=effective_loader.resolve_path(effective_pack_settings_path).parent,
+            pack_root=effective_loader.resolve_path(pack_settings.workspace_roots.workspace_root),
             pack_settings_path=effective_pack_settings_path,
             pack_settings=pack_settings,
+            workspace_roots=pack_settings.workspace_roots,
             loader=effective_loader,
             schema_catalog=_require_surface(surfaces, "schema_catalog", SchemaCatalog),
             validator_registry=_require_surface(

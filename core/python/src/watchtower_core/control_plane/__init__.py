@@ -37,6 +37,7 @@ from watchtower_core.control_plane.human_surface_policy import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanInitiativeLocation, PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import (
     ProjectSurfacePolicyHelper,
@@ -100,6 +101,7 @@ __all__ = [
     "HumanSurfacePolicyHelper",
     "HumanSurfacePolicyIssue",
     "PackContext",
+    "PackWorkspacePaths",
     "PlanInitiativeLocation",
     "PlanPathIdHelper",
     "PlanningVocabularyHelper",

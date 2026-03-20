@@ -20,8 +20,7 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.plan_runtime.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.plan_runtime.validation.targets import (
-    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
-    resolve_watchtower_plan_suite_targets,
+    resolve_pack_validation_suite_targets,
 )
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
@@ -42,8 +41,8 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
 def _service(repo_root: Path | None = None) -> ValidationAllService:
     return ValidationAllService(
         ControlPlaneLoader(repo_root),
-        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
-        suite_target_resolver=resolve_watchtower_plan_suite_targets,
+        suite_id="suite.plan.validation_baseline",
+        suite_target_resolver=resolve_pack_validation_suite_targets,
     )
 
 
@@ -56,7 +55,7 @@ def _service_with_targets(
 
     return ValidationAllService(
         ControlPlaneLoader(repo_root),
-        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+        suite_id="suite.plan.validation_baseline",
         suite_target_resolver=resolver,
     )
 
@@ -179,7 +178,7 @@ def test_validate_all_records_selection_errors_as_failed_results(
 ) -> None:
     target = "core/docs/references/example_reference.md"
     service = _service_with_targets(
-        {"step.watchtower_plan.front_matter": (target,)},
+        {"step.plan.front_matter": (target,)},
     )
 
     def raise_selection_error(
@@ -210,7 +209,7 @@ def test_validate_all_reports_missing_standard_guidance_section(
     relative_path = "core/docs/standards/documentation/validate_all_standard_semantics.md"
     _write_invalid_standard_fixture(repo_root / relative_path)
     service = _service_with_targets(
-        {"step.watchtower_plan.document_semantics": (relative_path,)},
+        {"step.plan.document_semantics": (relative_path,)},
         repo_root,
     )
 
@@ -243,7 +242,7 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
 ) -> None:
     service = _service_with_targets(
         {
-            "step.watchtower_plan.document_semantics": (
+            "step.plan.document_semantics": (
                 "core/workflows/modules/code_validation.md",
                 "core/workflows/modules/code_review.md",
             )
@@ -275,12 +274,13 @@ def test_validate_all_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     service = _service()
+    validator_registry_path = service._loader.load_pack_settings().get("validator_registry").path
     validator_registry_document_loads = 0
     original_load_validated_document = service._loader.load_validated_document
 
     def wrapped_load_validated_document(relative_path: str) -> dict[str, Any]:
         nonlocal validator_registry_document_loads
-        if relative_path == VALIDATOR_REGISTRY_PATH:
+        if relative_path == validator_registry_path:
             validator_registry_document_loads += 1
         return original_load_validated_document(relative_path)
 

@@ -1,41 +1,41 @@
 {
   "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
   "id": "registry.validation_suites",
-  "title": "Core Validation Suite Registry",
+  "title": "Plan Validation Suite Registry",
   "status": "active",
   "suites": [
     {
-      "id": "suite.core.shared_validation_baseline",
-      "title": "Core Shared Validation Baseline",
-      "description": "Shared-core validation suite for the reusable core manifest, governed Markdown surfaces, and schema-backed control-plane artifacts.",
+      "id": "suite.plan.validation_baseline",
+      "title": "Plan Validation Baseline",
+      "description": "Pack-driven validation suite for the active plan workspace contract, governed Markdown surfaces, and schema-backed plan artifacts.",
       "status": "active",
       "steps": [
         {
-          "id": "step.core.pack_contract",
+          "id": "step.plan.pack_contract",
           "title": "Validate pack contract",
           "description": "Ensure the default pack settings surface and its declared validation surfaces load successfully.",
           "step_kind": "pack_contract"
         },
         {
-          "id": "step.core.front_matter",
+          "id": "step.plan.front_matter",
           "title": "Validate governed front matter",
           "description": "Validate the governed Markdown front matter targets selected by the repo baseline target enumerator.",
           "step_kind": "front_matter"
         },
         {
-          "id": "step.core.document_semantics",
+          "id": "step.plan.document_semantics",
           "title": "Validate governed document semantics",
           "description": "Validate the governed Markdown semantic targets selected by the repo baseline target enumerator.",
           "step_kind": "document_semantics"
         },
         {
-          "id": "step.core.artifacts",
+          "id": "step.plan.artifacts",
           "title": "Validate governed JSON artifacts",
           "description": "Validate the schema-backed governed JSON artifacts selected by the repo baseline target enumerator.",
           "step_kind": "artifact"
         }
       ],
-      "notes": "The shared-core suite is not the live plan-pack baseline. Active repo validation selects the suite declared by the active pack manifest."
+      "notes": "The plan baseline is selected from pack settings and resolves targets from the active pack workspace roots plus the shared core guidance roots."
     }
   ]
 }

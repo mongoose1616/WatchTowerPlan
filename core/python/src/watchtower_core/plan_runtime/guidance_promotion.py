@@ -18,6 +18,7 @@ from watchtower_core.control_plane import (
     TemplateCatalogHelper,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import ExtractionOutputEnvelopeArtifact
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
@@ -103,6 +104,10 @@ class GuidancePromotionService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._pack_loader = _plan_pack_loader(loader)
+        self._workspace_paths = PackWorkspacePaths.from_loader(
+            self._pack_loader,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
         self._policy_helper = PromotionPolicyHelper.from_loader(
             self._pack_loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
@@ -128,7 +133,7 @@ class GuidancePromotionService:
         """Build validated extraction envelopes for one pack-wide initiative."""
 
         return self._extract(
-            initiative_root=Path("plan/initiatives") / initiative_slug,
+            initiative_root=Path(self._workspace_paths.initiatives_root) / initiative_slug,
             promotion_record_filename=promotion_record_filename,
             updated_at=updated_at or utc_timestamp_now(),
         )
@@ -144,7 +149,10 @@ class GuidancePromotionService:
         """Build validated extraction envelopes for one project-scoped initiative."""
 
         return self._extract(
-            initiative_root=Path("plan/projects") / project_slug / "initiatives" / initiative_slug,
+            initiative_root=Path(
+                self._workspace_paths.project_initiatives_root_relative(project_slug)
+            )
+            / initiative_slug,
             promotion_record_filename=promotion_record_filename,
             updated_at=updated_at or utc_timestamp_now(),
         )
@@ -161,7 +169,7 @@ class GuidancePromotionService:
         """Promote durable outputs for one pack-wide initiative."""
 
         return self._promote(
-            initiative_root=Path("plan/initiatives") / initiative_slug,
+            initiative_root=Path(self._workspace_paths.initiatives_root) / initiative_slug,
             promotion_record_filename=promotion_record_filename,
             approver_ref=approver_ref,
             updated_at=updated_at or utc_timestamp_now(),
@@ -181,7 +189,10 @@ class GuidancePromotionService:
         """Promote durable outputs for one project-scoped initiative."""
 
         return self._promote(
-            initiative_root=Path("plan/projects") / project_slug / "initiatives" / initiative_slug,
+            initiative_root=Path(
+                self._workspace_paths.project_initiatives_root_relative(project_slug)
+            )
+            / initiative_slug,
             promotion_record_filename=promotion_record_filename,
             approver_ref=approver_ref,
             updated_at=updated_at or utc_timestamp_now(),

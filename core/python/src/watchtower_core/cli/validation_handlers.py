@@ -16,8 +16,7 @@ from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlan
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.plan_runtime.validation import DocumentSemanticsValidationService
 from watchtower_core.plan_runtime.validation.targets import (
-    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
-    resolve_watchtower_plan_suite_targets,
+    resolve_pack_validation_suite_targets,
 )
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
@@ -121,15 +120,18 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
 
 
 def _run_validate_suite(args: argparse.Namespace) -> int:
-    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
+    loader = ControlPlaneLoader(
+        active_pack_settings_path=getattr(args, "pack_settings_path", None)
+    )
     service = ValidationSuiteService(
         loader,
-        target_resolver=resolve_watchtower_plan_suite_targets,
+        target_resolver=resolve_pack_validation_suite_targets,
     )
     try:
         result = service.run(
             args.suite_id,
-            pack_settings_path=getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH,
+            pack_settings_path=pack_settings_path,
         )
     except (SchemaResolutionError, ValidationExecutionError, ValidationSelectionError) as exc:
         return _emit_command_error(
@@ -170,6 +172,9 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 
 
 def _run_validate_all(args: argparse.Namespace) -> int:
+    pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
+    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    suite_id = loader.load_pack_settings(pack_settings_path).default_validation_suite_id
     included_families = tuple(
         family
         for family in VALIDATION_ALL_FAMILIES
@@ -184,9 +189,10 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         )
     )
     service = ValidationAllService(
-        ControlPlaneLoader(),
-        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
-        suite_target_resolver=resolve_watchtower_plan_suite_targets,
+        loader,
+        suite_id=suite_id,
+        pack_settings_path=pack_settings_path,
+        suite_target_resolver=resolve_pack_validation_suite_targets,
     )
     result = _run_value_error_operation(
         args,

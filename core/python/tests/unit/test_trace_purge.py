@@ -10,12 +10,14 @@ from tests.integration.fixture_repo_support import (
 )
 from watchtower_core.closeout import TracePurgeService
 from watchtower_core.control_plane.loader import (
-    INITIATIVE_INDEX_PATH,
     TRACE_PURGE_LEDGER_DIRECTORY,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.plan_runtime.plan_workspace import PLAN_TASK_INDEX_PATH
+from watchtower_core.plan_runtime.plan_workspace import (
+    PLAN_INITIATIVE_INDEX_PATH,
+    PLAN_TASK_INDEX_PATH,
+)
 from watchtower_core.plan_runtime.sync.all import AllSyncRecord, AllSyncResult
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -185,7 +187,7 @@ def _configure_trace_fixture(repo_root: Path) -> None:
         },
     )
 
-    initiative_index = _load_json(repo_root, INITIATIVE_INDEX_PATH)
+    initiative_index = _load_json(repo_root, PLAN_INITIATIVE_INDEX_PATH)
     initiative_entry = dict(initiative_index["entries"][0])
     initiative_entry.update(
         {
@@ -224,7 +226,7 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     initiative_entry.pop("active_task_summaries", None)
     initiative_entry.pop("blocked_by_task_ids", None)
     initiative_index["entries"] = [initiative_entry]
-    _write_json(repo_root, INITIATIVE_INDEX_PATH, initiative_index)
+    _write_json(repo_root, PLAN_INITIATIVE_INDEX_PATH, initiative_index)
 
     task_index = _load_json(repo_root, PLAN_TASK_INDEX_PATH)
     task_entry = dict(task_index["entries"][0])
@@ -308,8 +310,8 @@ class _FakeAllSyncService:
                 AllSyncRecord(
                     target="initiative-index",
                     artifact_kind="index",
-                    relative_output_path=INITIATIVE_INDEX_PATH,
-                    output_path=INITIATIVE_INDEX_PATH if write else None,
+                    relative_output_path=PLAN_INITIATIVE_INDEX_PATH,
+                    output_path=PLAN_INITIATIVE_INDEX_PATH if write else None,
                     wrote=write,
                     record_count=1,
                     details={},

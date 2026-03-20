@@ -259,7 +259,7 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
     )
     template_catalog = load_json_object(REPO_ROOT / "plan/.wt/registries/template_catalog.json")
     rendered_registry = load_json_object(
-        REPO_ROOT / "core/control_plane/registries/rendered_surface_registry.json"
+        REPO_ROOT / "plan/.wt/registries/rendered_surface_registry.json"
     )
 
     plan_schema_ids = {record.schema_id for record in pack_loader.load_schema_catalog().records}

@@ -24,7 +24,7 @@ def materialize_pack_validation_suite(
     actual_wt_root = f"{pack_root.relative_to(repo_root).as_posix()}/.wt"
     if actual_wt_root != _DEFAULT_FIXTURE_WT_ROOT:
         for relative_path in (
-            ".wt/pack_settings.json",
+            ".wt/manifests/pack_settings.json",
             ".wt/registries/schema_catalog.json",
             ".wt/registries/validator_registry.json",
             ".wt/registries/validation_suite_registry.json",
@@ -45,13 +45,13 @@ def materialize_pack_validation_suite(
         suite_registry_file = pack_root / ".wt/registries/validation_suite_registry.json"
         if suite_registry_file.exists():
             suite_registry_file.unlink()
-        pack_settings = _load_json(pack_root / ".wt/pack_settings.json")
+        pack_settings = _load_json(pack_root / ".wt/manifests/pack_settings.json")
         pack_settings["surfaces"] = [
             surface
             for surface in pack_settings["surfaces"]
             if surface["surface_name"] != "validation_suite_registry"
         ]
-        _write_json(pack_root / ".wt/pack_settings.json", pack_settings)
+        _write_json(pack_root / ".wt/manifests/pack_settings.json", pack_settings)
     elif suite_step_validator_id is not None:
         suite_registry = _load_json(pack_root / ".wt/registries/validation_suite_registry.json")
         suite_registry["suites"][0]["steps"][1]["validator_id"] = suite_step_validator_id
@@ -67,7 +67,7 @@ def materialize_pack_validation_suite(
 
     return {
         "artifact_relative_path": f"{actual_wt_root}/work_items/plan_note.json",
-        "pack_settings_path": f"{actual_wt_root}/pack_settings.json",
+        "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
         "schema_id": "urn:watchtower:schema:interfaces:packs:plan-note:v1",
         "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/plan_note.schema.json",
         "suite_id": _PLAN_SUITE_ID,

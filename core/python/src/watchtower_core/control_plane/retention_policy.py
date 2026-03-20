@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import RetentionPolicyEntry, RetentionPolicyRegistry
 
 
@@ -21,8 +22,13 @@ class RetentionPolicyIssue:
 class RetentionPolicyHelper:
     """Resolve and validate governed retention-policy rules by repository path."""
 
-    def __init__(self, registry: RetentionPolicyRegistry) -> None:
+    def __init__(
+        self,
+        registry: RetentionPolicyRegistry,
+        workspace_paths: PackWorkspacePaths,
+    ) -> None:
         self._registry = registry
+        self._workspace_paths = workspace_paths
 
     @classmethod
     def from_loader(
@@ -39,7 +45,10 @@ class RetentionPolicyHelper:
             raise ValueError(
                 "Active pack settings do not declare a typed retention_policy_registry."
             )
-        return cls(registry)
+        return cls(
+            registry,
+            PackWorkspacePaths.from_loader(loader, pack_settings_path=pack_settings_path),
+        )
 
     def policy_for_path(self, relative_path: str) -> RetentionPolicyEntry:
         """Return the most-specific policy entry for one repository-relative path."""
@@ -66,7 +75,7 @@ class RetentionPolicyHelper:
         """Validate that all currently relevant roots resolve to a retention policy."""
 
         issues: list[RetentionPolicyIssue] = []
-        for relative_root in _relevant_roots(repo_root):
+        for relative_root in self._relevant_roots(repo_root):
             try:
                 self.policy_for_path(relative_root)
             except KeyError:
@@ -81,6 +90,28 @@ class RetentionPolicyHelper:
                     )
                 )
         return tuple(issues)
+
+    def _relevant_roots(self, repo_root: Path) -> tuple[str, ...]:
+        roots: set[str] = {
+            self._workspace_paths.machine_root,
+            self._workspace_paths.docs_root,
+            "core/control_plane/ledgers/purges",
+        }
+        initiatives_root = repo_root / self._workspace_paths.initiatives_root
+        if initiatives_root.exists():
+            roots.update(
+                path.relative_to(repo_root).as_posix()
+                for path in initiatives_root.glob("*")
+                if path.is_dir()
+            )
+        projects_root = repo_root / self._workspace_paths.projects_root
+        if projects_root.exists():
+            roots.update(
+                path.relative_to(repo_root).as_posix()
+                for path in projects_root.glob("*/initiatives/*")
+                if path.is_dir()
+            )
+        return tuple(sorted(roots))
 
 
 def _normalize_relative_path(relative_path: str) -> str:
@@ -110,25 +141,6 @@ def _policy_matches(entry: RetentionPolicyEntry, relative_path: str) -> bool:
 def _specificity_key(entry: RetentionPolicyEntry) -> tuple[int, int]:
     wildcard_penalty = entry.path_pattern.count("*")
     return (len(entry.path_pattern) - wildcard_penalty, -wildcard_penalty)
-
-
-def _relevant_roots(repo_root: Path) -> tuple[str, ...]:
-    roots: set[str] = {
-        "plan/.wt",
-        "plan/docs",
-        "core/control_plane/ledgers/purges",
-    }
-    roots.update(
-        path.relative_to(repo_root).as_posix()
-        for path in (repo_root / "plan" / "initiatives").glob("*")
-        if path.is_dir()
-    )
-    roots.update(
-        path.relative_to(repo_root).as_posix()
-        for path in (repo_root / "plan" / "projects").glob("*/initiatives/*")
-        if path.is_dir()
-    )
-    return tuple(sorted(roots))
 
 
 __all__ = ["RetentionPolicyHelper", "RetentionPolicyIssue"]

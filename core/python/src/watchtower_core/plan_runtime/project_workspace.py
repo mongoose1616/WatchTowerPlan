@@ -8,6 +8,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane import TerminologyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
 from watchtower_core.rebuild import (
@@ -173,6 +174,7 @@ class ProjectWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        pack_loader = self._pack_loader()
         self._vocabulary = TerminologyHelper.from_loader(
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
@@ -181,8 +183,8 @@ class ProjectWorkspaceService:
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
-        self._rendered_views = RenderedViewBuilder(loader)
-        self._markdown_reconciliation = MarkdownReconciliationHelper(loader)
+        self._rendered_views = RenderedViewBuilder(pack_loader)
+        self._markdown_reconciliation = MarkdownReconciliationHelper(pack_loader)
 
     def bootstrap(
         self,
@@ -235,7 +237,7 @@ class ProjectWorkspaceService:
             "summary": params.summary,
             "status": params.status,
             "linked_repository_refs": repository_refs,
-            "initiative_root": PlanPathIdHelper.project_initiatives_root_relative(
+            "initiative_root": self._workspace_paths().project_initiatives_root_relative(
                 project_slug
             ),
             "updated_at": updated_at,
@@ -578,8 +580,8 @@ class ProjectWorkspaceService:
                             ),
                             "key_references_or_docs": (
                                 "## Key References or Docs",
-                                f"- [repositories.md](/plan/projects/{project['slug']}/repositories.md)",
-                                f"- [summary.md](/plan/projects/{project['slug']}/summary.md)",
+                                f"- [repositories.md](/{self._project_root(project['slug'])}/repositories.md)",
+                                f"- [summary.md](/{self._project_root(project['slug'])}/summary.md)",
                             ),
                         },
                     ),
@@ -655,7 +657,7 @@ class ProjectWorkspaceService:
         return documents
 
     def _load_project_snapshots(self) -> tuple[_ProjectSnapshot, ...]:
-        projects_root = self._loader.repo_root / "plan" / "projects"
+        projects_root = self._loader.repo_root / self._workspace_paths().projects_root
         if not projects_root.exists():
             return ()
         snapshots: list[_ProjectSnapshot] = []
@@ -741,18 +743,24 @@ class ProjectWorkspaceService:
         )
 
     def _project_root(self, project_slug: str) -> Path:
-        return self._loader.repo_root / "plan" / "projects" / project_slug
+        return self._loader.repo_root / self._project_root_relative(project_slug)
 
     def _project_root_relative(self, project_slug: str) -> str:
-        return PlanPathIdHelper.project_root_relative(project_slug)
+        return self._workspace_paths().project_root_relative(project_slug)
 
     def _project_initiative_root_relative(self, project_slug: str) -> str:
-        return PlanPathIdHelper.project_initiatives_root_relative(project_slug)
+        return self._workspace_paths().project_initiatives_root_relative(project_slug)
 
     def _project_path(self, project_slug: str, suffix: str) -> str:
         return PlanPathIdHelper.join_relative(
             self._project_root_relative(project_slug),
             suffix,
+        )
+
+    def _workspace_paths(self) -> PackWorkspacePaths:
+        return PackWorkspacePaths.from_loader(
+            self._pack_loader(),
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
 
 

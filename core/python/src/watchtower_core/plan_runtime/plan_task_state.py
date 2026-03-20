@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.plan_runtime.plan_workspace import PLAN_PACK_SETTINGS_PATH
 
 TASK_STATE_SCHEMA_ID = "urn:watchtower:schema:artifacts:plan:task-state:v1"
@@ -264,12 +265,16 @@ def update_task_document(
 
 def _initiative_roots(repo_root: Path) -> tuple[Path, ...]:
     roots: list[Path] = []
+    workspace_paths = PackWorkspacePaths.from_loader(
+        ControlPlaneLoader(repo_root, active_pack_settings_path=PLAN_PACK_SETTINGS_PATH),
+        pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+    )
 
-    pack_root = repo_root / "plan" / "initiatives"
+    pack_root = repo_root / workspace_paths.initiatives_root
     if pack_root.exists():
         roots.extend(path for path in sorted(pack_root.iterdir()) if path.is_dir())
 
-    projects_root = repo_root / "plan" / "projects"
+    projects_root = repo_root / workspace_paths.projects_root
     if projects_root.exists():
         for project_root in sorted(path for path in projects_root.iterdir() if path.is_dir()):
             initiatives_root = project_root / "initiatives"

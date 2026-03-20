@@ -2,9 +2,9 @@
   "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
   "surface_name": "pack_settings",
   "contract_version": "v1",
-  "description": "Pack settings load root for the reusable WatchTowerPlan core boundary.",
+  "description": "Pack settings load root for the reusable shared-core boundary.",
   "updated_at": "2026-03-16T18:20:00Z",
-  "pack_id": "pack.watchtower_plan",
+  "pack_id": "pack.core_shared",
   "surfaces": [
     {
       "surface_name": "schema_catalog",
@@ -101,5 +101,16 @@
       "rebuildable": true
     }
   ],
-  "notes": "This is the load root for the reusable core boundary while repo-local planning remains outside PackContext."
+  "notes": "Shared-core pack settings exist for reusable-core validation and do not define the live repository workspace.",
+  "workspace_roots": {
+    "workspace_root": "core",
+    "machine_root": "core/control_plane",
+    "docs_root": "core/docs",
+    "workflows_root": "core/workflows",
+    "tracking_root": "core/control_plane/indexes",
+    "initiatives_root": "packs/core/initiatives",
+    "projects_root": "packs/core/projects",
+    "overview_path": "packs/core/overview.md"
+  },
+  "default_validation_suite_id": "suite.core.shared_validation_baseline"
 }

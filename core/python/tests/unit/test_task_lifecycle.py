@@ -14,6 +14,8 @@ from tests.integration.fixture_repo_support import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.plan_runtime import plan_task_state
+from watchtower_core.plan_runtime import task_lifecycle as task_lifecycle_module
+from watchtower_core.plan_runtime.initiative_packages import InitiativePackageService
 from watchtower_core.plan_runtime.plan_task_state import update_task_document
 from watchtower_core.plan_runtime.task_lifecycle import (
     TaskCreateParams,
@@ -281,6 +283,72 @@ def test_task_update_rejects_execution_start_before_initiative_approval(
             ),
             write=False,
         )
+
+
+def test_task_create_reloads_initiative_state_before_execution_write(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    trace_id = "trace.unit_test_trace_stale_initiative_snapshot"
+    initiative_slug = "unit_test_trace_stale_initiative_snapshot"
+    _bootstrap_trace(repo_root, trace_id)
+    loader = ControlPlaneLoader(repo_root)
+    stale_initiative = plan_task_state.find_initiative_by_trace_id(loader, trace_id)
+
+    package_service = InitiativePackageService(loader)
+    package_service.approve_packwide(
+        initiative_slug,
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    original_resolve = task_lifecycle_module.find_initiative_by_trace_id
+
+    def _return_stale_initiative(
+        loader_arg: ControlPlaneLoader,
+        requested_trace_id: str,
+    ):
+        if requested_trace_id == trace_id:
+            return stale_initiative
+        return original_resolve(loader_arg, requested_trace_id)
+
+    monkeypatch.setattr(
+        task_lifecycle_module,
+        "find_initiative_by_trace_id",
+        _return_stale_initiative,
+    )
+    service = TaskLifecycleService(loader)
+    result = service.create(
+        TaskCreateParams(
+            task_id="task.unit_test_trace_stale_initiative_snapshot.001",
+            trace_id=trace_id,
+            title="Start execution from fresh initiative state",
+            summary="Proves task lifecycle writes reload initiative state before mutation.",
+            task_kind="feature",
+            priority="high",
+            owner="repository_maintainer",
+            task_status="in_progress",
+            scope_items=("Start execution after approval.",),
+            done_when_items=("Execution has started without clobbering approval state.",),
+            updated_at="2026-03-19T21:15:00Z",
+        ),
+        write=True,
+    )
+
+    state_path = packwide_initiative_root(repo_root, trace_id) / ".wt" / "initiative.json"
+    initiative_state = json.loads(state_path.read_text(encoding="utf-8"))
+
+    assert result.wrote is True
+    assert initiative_state["gate_state"]["approval_status"] == "approved"
+    assert initiative_state["gate_state"]["ready_for_execution"] is True
+    assert initiative_state["review_status"] == "approved"
+    assert initiative_state["lifecycle_stage"] == "in_progress"
+    assert result.task_id in initiative_state["task_ids"]
+    assert any(
+        approval["approval_kind"] == "ready_for_execution"
+        for approval in initiative_state["approvals"]
+    )
 
 
 def test_task_update_rejects_conflicting_clear_flags(tmp_path: Path) -> None:

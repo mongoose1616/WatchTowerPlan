@@ -10,7 +10,9 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     ActorRegistry,
     GovernanceSurfaceMap,
+    PackSurfaceDeclaration,
     PackSettings,
+    PackWorkspaceRoots,
     PathPatternRegistry,
     SchemaCatalog,
     StatusRegistry,
@@ -29,6 +31,7 @@ class PackContext:
     pack_root: Path
     pack_settings_path: str
     pack_settings: PackSettings
+    workspace_roots: PackWorkspaceRoots
     schema_catalog: SchemaCatalog
     validator_registry: ValidatorRegistry
     validation_suite_registry: ValidationSuiteRegistry
@@ -49,22 +52,11 @@ class PackContext:
     ) -> PackContext:
         """Build one pack context by loading the declared pack settings and surfaces."""
 
-        from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
-
-        effective_pack_settings_path = (
-            loader.active_pack_settings_path
-            if pack_settings_path == PACK_SETTINGS_PATH and loader.active_pack_settings_path
-            else pack_settings_path
-        )
+        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
         effective_loader = (
             loader
             if loader.active_pack_settings_path == effective_pack_settings_path
-            else ControlPlaneLoader(
-                workspace_config=loader.workspace_config,
-                artifact_source=loader.artifact_source,
-                artifact_store=loader.artifact_store,
-                active_pack_settings_path=effective_pack_settings_path,
-            )
+            else loader.derive(active_pack_settings_path=effective_pack_settings_path)
         )
 
         pack_settings = effective_loader.load_pack_settings(effective_pack_settings_path)
@@ -72,6 +64,8 @@ class PackContext:
         registries: dict[str, object] = {}
         indexes: dict[str, object] = {}
         for declaration in pack_settings.surfaces:
+            if not _should_eager_load_surface(declaration):
+                continue
             try:
                 surface = _load_declared_surface(
                     effective_loader,
@@ -89,9 +83,10 @@ class PackContext:
                 indexes[declaration.surface_name] = surface
 
         return cls(
-            pack_root=effective_loader.resolve_path(effective_pack_settings_path).parent,
+            pack_root=effective_loader.resolve_path(pack_settings.workspace_roots.workspace_root),
             pack_settings_path=effective_pack_settings_path,
             pack_settings=pack_settings,
+            workspace_roots=pack_settings.workspace_roots,
             schema_catalog=_require_surface(
                 surfaces,
                 "schema_catalog",
@@ -146,10 +141,25 @@ def _load_declared_surface(
 ) -> object:
     """Load one declared surface through the loader's declaration-aware resolver."""
 
+    if surface_name == "schema_catalog":
+        return loader.load_schema_catalog()
     return loader.load_declared_surface(
         surface_name=surface_name,
         relative_path=relative_path,
     )
+
+
+def _should_eager_load_surface(declaration: PackSurfaceDeclaration) -> bool:
+    """Return whether pack-context construction should eagerly load one surface.
+
+    Pack context is consumed by reusable-core helpers such as terminology, template,
+    and policy resolution. Those helpers need stable pack-owned governance surfaces,
+    not rebuildable derived indexes from a live domain workspace.
+    """
+
+    if declaration.authority == "derived" and declaration.rebuildable is True:
+        return False
+    return True
 
 
 def _require_surface[TExpected](

@@ -11,7 +11,6 @@ from jsonschema import ValidationError
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import (
     PACK_SETTINGS_PATH,
-    TEMPLATE_CATALOG_PATH,
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import TemplateCatalog, TemplateCatalogEntry
@@ -49,20 +48,11 @@ class TemplateCatalogHelper:
     ) -> TemplateCatalogHelper:
         """Build one helper from the active pack context."""
 
-        effective_pack_settings_path = (
-            loader.active_pack_settings_path
-            if pack_settings_path == PACK_SETTINGS_PATH and loader.active_pack_settings_path
-            else pack_settings_path
-        )
+        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
         effective_loader = (
             loader
             if loader.active_pack_settings_path == effective_pack_settings_path
-            else ControlPlaneLoader(
-                workspace_config=loader.workspace_config,
-                artifact_source=loader.artifact_source,
-                artifact_store=loader.artifact_store,
-                active_pack_settings_path=effective_pack_settings_path,
-            )
+            else loader.derive(active_pack_settings_path=effective_pack_settings_path)
         )
         context = effective_loader.load_pack_context(effective_pack_settings_path)
         registry = context.registries.get("template_catalog")
@@ -70,8 +60,9 @@ class TemplateCatalogHelper:
             try:
                 registry = effective_loader.load_template_catalog()
             except (SchemaResolutionError, ValueError):
+                template_catalog_path = context.pack_settings.get("template_catalog").path
                 registry = TemplateCatalog.from_document(
-                    effective_loader.load_json_object(TEMPLATE_CATALOG_PATH)
+                    effective_loader.load_json_object(template_catalog_path)
                 )
         return cls(registry, schema_store=effective_loader.schema_store)
 

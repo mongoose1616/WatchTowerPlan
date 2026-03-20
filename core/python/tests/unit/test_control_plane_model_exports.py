@@ -109,6 +109,17 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                     "visibility": "hidden",
                 }
             ],
+            "workspace_roots": {
+                "workspace_root": "packs/example",
+                "machine_root": "packs/example/.wt",
+                "docs_root": "packs/example/docs",
+                "workflows_root": "packs/example/workflows",
+                "tracking_root": "packs/example/tracking",
+                "initiatives_root": "packs/example/initiatives",
+                "projects_root": "packs/example/projects",
+                "overview_path": "packs/example/overview.md",
+            },
+            "default_validation_suite_id": "suite.example.validation_baseline",
         }
     )
     status_registry = StatusRegistry.from_document(
@@ -129,6 +140,8 @@ def test_control_plane_models_export_pack_contract_types() -> None:
     )
 
     assert pack_settings.get("schema_catalog").surface_kind == "schema_collection"
+    assert pack_settings.workspace_roots.machine_root == "packs/example/.wt"
+    assert pack_settings.default_validation_suite_id == "suite.example.validation_baseline"
     assert status_registry.get("active").summary == "Active example."
 
 

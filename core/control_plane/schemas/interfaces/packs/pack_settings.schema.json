@@ -11,6 +11,8 @@
     "description",
     "updated_at",
     "pack_id",
+    "workspace_roots",
+    "default_validation_suite_id",
     "surfaces"
   ],
   "properties": {
@@ -34,6 +36,13 @@
     "pack_id": {
       "type": "string",
       "pattern": "^pack\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "workspace_roots": {
+      "$ref": "#/$defs/workspaceRoots"
+    },
+    "default_validation_suite_id": {
+      "type": "string",
+      "pattern": "^suite\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
     },
     "surfaces": {
       "type": "array",
@@ -104,6 +113,54 @@
           "minLength": 1
         },
         "source_surface": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "workspaceRoots": {
+      "type": "object",
+      "required": [
+        "workspace_root",
+        "machine_root",
+        "docs_root",
+        "workflows_root",
+        "tracking_root",
+        "initiatives_root",
+        "projects_root",
+        "overview_path"
+      ],
+      "properties": {
+        "workspace_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "docs_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workflows_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tracking_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initiatives_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projects_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "overview_path": {
           "type": "string",
           "minLength": 1
         }

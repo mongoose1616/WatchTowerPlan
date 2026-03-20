@@ -24,6 +24,7 @@ from watchtower_core.control_plane.event_stream import (
 )
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import (
     PlanInitiativeLocation,
     PlanPathIdHelper,
@@ -500,7 +501,10 @@ class InitiativePackageService:
         require_approved: bool,
     ) -> InitiativeReadinessResult:
         initiative_state_path = self._initiative_path_for_location(location, ".wt/initiative.json")
-        initiative_document = self._load_json(initiative_state_path)
+        initiative_document = self._reconcile_initiative_state_document(
+            location,
+            self._load_json(initiative_state_path),
+        )
         initiative_id = str(initiative_document["initiative_id"])
         trace_id = str(initiative_document["trace_id"])
         previous_lifecycle_stage = str(initiative_document["lifecycle_stage"])
@@ -537,6 +541,9 @@ class InitiativePackageService:
         if authored_input_issues:
             blocking_reasons.append("authored_input_drift")
 
+        if write:
+            self._loader.artifact_store.write_json_object(initiative_state_path, initiative_document)
+
         derived_surface_issues = self._stale_derived_surface_issues(location)
         if location.scope_type == "project_scoped":
             derived_surface_issues = (
@@ -564,6 +571,10 @@ class InitiativePackageService:
                 discrepancy_issues=(*authored_input_issues, *derived_surface_issues),
                 updated_at=utc_timestamp_now(),
             )
+            if derived_surface_issues:
+                PlanWorkspaceService(self._fresh_loader()).sync_discrepancy_index(write=True)
+            else:
+                self._sync_derived_surfaces(location)
         open_discrepancies = self._open_discrepancy_documents(location)
         if open_discrepancies:
             issues.extend(
@@ -622,7 +633,8 @@ class InitiativePackageService:
                 "machine_valid": not issues,
                 "approval_status": approval_status,
                 "ready_for_execution": (
-                    approval_status == "approved" and passed
+                    approval_status == "approved"
+                    and lifecycle_stage not in {"capture_incomplete", "ready_for_review"}
                 ),
                 "blocking_reasons": sorted(set(blocking_reasons)),
             }
@@ -1607,6 +1619,107 @@ class InitiativePackageService:
         path = self._loader.repo_root / relative_path
         return json.loads(path.read_text(encoding="utf-8"))
 
+    def _reconcile_initiative_state_document(
+        self,
+        location: _InitiativeLocation,
+        initiative_document: dict[str, object],
+    ) -> dict[str, object]:
+        reconciled = json.loads(json.dumps(initiative_document))
+        reconciled["task_ids"] = sorted(
+            str(document["task_id"]) for document in self._task_documents(location)
+        )
+        reconciled["deferred_item_ids"] = sorted(
+            str(document["deferred_item_id"])
+            for _, document in self._artifact_documents(location, ".wt/deferred", "*.json")
+        )
+        reconciled["evidence_ids"] = sorted(
+            str(document["id"])
+            for _, document in self._artifact_documents(location, ".wt/evidence", "*.json")
+        )
+        reconciled["promotion_ids"] = sorted(
+            str(document["id"])
+            for _, document in self._artifact_documents(location, ".wt/promotions", "*.json")
+        )
+        reconciled["closeout_ids"] = sorted(
+            str(document["id"])
+            for _, document in self._artifact_documents(location, ".wt/closeout", "*.json")
+        )
+
+        approvals = [
+            approval
+            for approval in reconciled.get("approvals", ())
+            if isinstance(approval, dict)
+        ]
+        approval_keys = {
+            (
+                str(approval.get("approval_kind", "")),
+                str(approval.get("actor_id", "")),
+                str(approval.get("approved_at", "")),
+            )
+            for approval in approvals
+        }
+        for document in self._initiative_event_documents(location):
+            event_type = str(document.get("event_type", ""))
+            actor_id = str(document.get("actor_id", ""))
+            approved_at = str(document.get("recorded_at", ""))
+            if event_type == "ready_for_execution_approved":
+                approval_kind = "ready_for_execution"
+            elif event_type == "authored_inputs_confirmed" and actor_id != "actor.watchtower_core":
+                approval_kind = "authored_input_confirmation"
+            else:
+                continue
+            key = (approval_kind, actor_id, approved_at)
+            if key in approval_keys:
+                continue
+            approvals.append(
+                {
+                    "approval_kind": approval_kind,
+                    "actor_id": actor_id,
+                    "approved_at": approved_at,
+                }
+            )
+            approval_keys.add(key)
+
+        approvals.sort(
+            key=lambda approval: (
+                str(approval.get("approved_at", "")),
+                str(approval.get("approval_kind", "")),
+                str(approval.get("actor_id", "")),
+            )
+        )
+        reconciled["approvals"] = approvals
+        approval_status = (
+            "approved"
+            if any(
+                str(approval.get("approval_kind", "")) == "ready_for_execution"
+                for approval in approvals
+            )
+            else "pending"
+        )
+        gate_state = reconciled.get("gate_state")
+        if not isinstance(gate_state, dict):
+            gate_state = {}
+        gate_state["approval_status"] = approval_status
+        lifecycle_stage = str(reconciled.get("lifecycle_stage", "capture_incomplete"))
+        gate_state["ready_for_execution"] = (
+            approval_status == "approved"
+            and lifecycle_stage
+            not in {"capture_incomplete", "ready_for_review"}
+        )
+        reconciled["gate_state"] = gate_state
+        if approval_status == "approved":
+            reconciled["review_status"] = "approved"
+        return reconciled
+
+    def _initiative_event_documents(
+        self,
+        location: _InitiativeLocation,
+    ) -> tuple[dict[str, object], ...]:
+        return tuple(
+            document
+            for _, document in self._artifact_documents(location, ".wt/events", "*.json")
+        )
+
     def _task_documents(self, location: _InitiativeLocation) -> tuple[dict[str, object], ...]:
         return tuple(
             document
@@ -1646,13 +1759,13 @@ class InitiativePackageService:
         return hashlib.sha256(path.read_bytes()).hexdigest()
 
     def _packwide_location(self, params: InitiativeBootstrapParams) -> _InitiativeLocation:
-        return PlanPathIdHelper.packwide_initiative_location(
+        return self._workspace_paths().packwide_initiative_location(
             trace_id=params.trace_id,
             initiative_slug=params.initiative_slug,
         )
 
     def _packwide_location_for_slug(self, initiative_slug: str) -> _InitiativeLocation:
-        return PlanPathIdHelper.packwide_initiative_location(
+        return self._workspace_paths().packwide_initiative_location(
             initiative_slug=initiative_slug,
         )
 
@@ -1661,7 +1774,7 @@ class InitiativePackageService:
         project_slug: str,
         params: InitiativeBootstrapParams,
     ) -> _InitiativeLocation:
-        return PlanPathIdHelper.project_scoped_initiative_location(
+        return self._workspace_paths().project_scoped_initiative_location(
             project_slug,
             trace_id=params.trace_id,
             initiative_slug=params.initiative_slug,
@@ -1672,9 +1785,15 @@ class InitiativePackageService:
         project_slug: str,
         initiative_slug: str,
     ) -> _InitiativeLocation:
-        return PlanPathIdHelper.project_scoped_initiative_location(
+        return self._workspace_paths().project_scoped_initiative_location(
             project_slug,
             initiative_slug=initiative_slug,
+        )
+
+    def _workspace_paths(self) -> PackWorkspacePaths:
+        return PackWorkspacePaths.from_loader(
+            self._pack_loader(),
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
 
     def _initiative_root(self, location: _InitiativeLocation) -> Path:
@@ -1684,8 +1803,9 @@ class InitiativePackageService:
         return location.relative_path(suffix)
 
     def _initiative_identity_exists(self, initiative_id: str, trace_id: str) -> bool:
-        roots = [self._loader.repo_root / "plan" / "initiatives"]
-        projects_root = self._loader.repo_root / "plan" / "projects"
+        workspace_paths = self._workspace_paths()
+        roots = [self._loader.repo_root / workspace_paths.initiatives_root]
+        projects_root = self._loader.repo_root / workspace_paths.projects_root
         if projects_root.exists():
             roots.extend(sorted(projects_root.glob("*/initiatives")))
         for root in roots:
@@ -1701,8 +1821,9 @@ class InitiativePackageService:
         return False
 
     def _trace_id_exists(self, trace_id: str) -> bool:
-        roots = [self._loader.repo_root / "plan" / "initiatives"]
-        projects_root = self._loader.repo_root / "plan" / "projects"
+        workspace_paths = self._workspace_paths()
+        roots = [self._loader.repo_root / workspace_paths.initiatives_root]
+        projects_root = self._loader.repo_root / workspace_paths.projects_root
         if projects_root.exists():
             roots.extend(sorted(projects_root.glob("*/initiatives")))
         for root in roots:

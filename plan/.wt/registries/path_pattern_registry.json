@@ -1,0 +1,166 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1",
+  "surface_name": "path_pattern_registry",
+  "contract_version": "v1",
+  "description": "Canonical path patterns for the plan pack plus reused shared-core surfaces.",
+  "updated_at": "2026-03-17T20:03:23Z",
+  "patterns": [
+    {
+      "family_name": "pack_settings",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/manifests/pack_settings.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "governance_surface_map",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/governance_surface_map.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "status_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/status_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "actor_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/actor_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "human_surface_policy_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/human_surface_policy_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Plan-pack human-surface placement policy for README, AGENTS, and routed workflow entrypoints."
+    },
+    {
+      "family_name": "retention_policy_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/retention_policy_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Plan-pack retention policy for legacy history handling, transitional archives, and clean-endstate purge rules."
+    },
+    {
+      "family_name": "pack_work_item_note",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/work_items/*.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true,
+      "notes": "Plan-pack work-item notes live under the machine root and participate in the artifact index."
+    },
+    {
+      "family_name": "artifact_index",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/indexes/artifact_index.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true,
+      "notes": "Cross-family live artifact lookup for the plan workspace."
+    },
+    {
+      "family_name": "workflow_module",
+      "path_kind": "user_visible",
+      "path_pattern": "core/workflows/modules/*.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": true
+    },
+    {
+      "family_name": "workflow_module",
+      "path_kind": "user_visible",
+      "path_pattern": "plan/workflows/modules/*.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": true
+    },
+    {
+      "family_name": "route_index",
+      "path_kind": "rendered_view",
+      "path_pattern": "core/docs/commands/core_python/watchtower_core_route_preview.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": false
+    },
+    {
+      "family_name": "validation_suite_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/validation_suite_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "governance_surface_map",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/governance_surface_map.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "path_pattern_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/path_pattern_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "authority_map",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/authority_map.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true
+    },
+    {
+      "family_name": "rendered_surface_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/registries/rendered_surface_registry.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true
+    },
+    {
+      "family_name": "initiative_index",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/indexes/initiative_index.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true
+    },
+    {
+      "family_name": "coordination_index",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/indexes/coordination_index.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true
+    },
+    {
+      "family_name": "task_index",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/indexes/task_index.json",
+      "entity_shape": "file",
+      "visibility": "mixed",
+      "authoritative": true
+    }
+  ],
+  "notes": "The current repository now publishes the reusable-core subset plus the plan-pack artifact-index and pack-work-item canonical paths needed by the live plan workspace."
+}

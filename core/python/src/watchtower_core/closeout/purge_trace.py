@@ -11,6 +11,7 @@ from watchtower_core.control_plane.loader import (
     TRACE_PURGE_LEDGER_DIRECTORY,
     ControlPlaneLoader,
 )
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
     TaskIndexEntry,
@@ -28,28 +29,6 @@ TERMINAL_INITIATIVE_STATUSES = frozenset(
     {"completed", "superseded", "cancelled", "abandoned"}
 )
 TERMINAL_TASK_STATUSES = frozenset({"completed", "cancelled"})
-TRACE_LOCAL_ROOTS = (
-    "plan/initiatives/",
-    "plan/projects/",
-    "core/control_plane/contracts/acceptance/",
-    "core/control_plane/ledgers/validation_evidence/",
-)
-TRACE_PACKAGE_PRUNE_ROOTS = (
-    *TRACE_LOCAL_ROOTS,
-)
-DERIVED_REFERENCE_CARRIER_ROOTS = (
-    "core/control_plane/indexes/",
-    "plan/.wt/indexes/",
-)
-DERIVED_REFERENCE_CARRIER_PATHS = frozenset(
-    {
-        "plan/plan_overview.md",
-        "plan/tracking/coordination_tracking.md",
-        "plan/tracking/initiative_tracking.md",
-        "plan/tracking/task_tracking.md",
-    }
-)
-DEFAULT_REFERENCE_SCAN_ROOTS = (".github", "core", "docs", "plan", "workflows")
 SCANNABLE_TEXT_EXTENSIONS = frozenset(
     {".json", ".md", ".py", ".toml", ".yaml", ".yml", ".txt", ".sh", ".lock"}
 )
@@ -85,6 +64,7 @@ class TracePurgeService:
         self._loader = loader
         self._repo_root = loader.repo_root
         self._all_sync_factory = all_sync_factory or AllSyncService
+        self._workspace_paths = PackWorkspacePaths.from_loader(loader)
 
     def purge(
         self,
@@ -320,7 +300,10 @@ class TracePurgeService:
                     "Retained authority path cannot point back into the purge package: "
                     f"{normalized}"
                 )
-            if _is_derived_reference_carrier(normalized):
+            if _is_derived_reference_carrier(
+                normalized,
+                workspace_paths=self._workspace_paths,
+            ):
                 return
             if normalized in {
                 "core/control_plane/",
@@ -340,7 +323,10 @@ class TracePurgeService:
         else:
             for relative_path in trace_entry.related_paths:
                 normalized = _normalize_repo_relative_path(relative_path)
-                if normalized in package_paths or _is_trace_local_path(normalized):
+                if normalized in package_paths or _is_trace_local_path(
+                    normalized,
+                    workspace_paths=self._workspace_paths,
+                ):
                     continue
                 add(normalized)
 
@@ -392,9 +378,15 @@ class TracePurgeService:
             *package_paths,
         }
         conflicts: list[str] = []
-        for path in _iter_reference_scan_files(self._repo_root):
+        for path in _iter_reference_scan_files(
+            self._repo_root,
+            workspace_paths=self._workspace_paths,
+        ):
             relative_path = path.relative_to(self._repo_root).as_posix()
-            if relative_path in package_paths or _is_derived_reference_carrier(relative_path):
+            if relative_path in package_paths or _is_derived_reference_carrier(
+                relative_path,
+                workspace_paths=self._workspace_paths,
+            ):
                 continue
             if not path.exists():
                 continue
@@ -415,7 +407,8 @@ class TracePurgeService:
 
     def _prune_empty_ancestors(self, path: Path) -> None:
         prune_roots = tuple(
-            self._loader.resolve_path(root.rstrip("/")) for root in TRACE_PACKAGE_PRUNE_ROOTS
+            self._loader.resolve_path(root.rstrip("/"))
+            for root in _trace_package_prune_roots(self._workspace_paths)
         )
         current = path.parent
         while any(current != root and _is_within(current, root) for root in prune_roots):
@@ -430,7 +423,13 @@ class TracePurgeService:
             {
                 self._loader.resolve_path(relative_root)
                 for relative_path in package_paths
-                if (relative_root := _package_root_for_path(relative_path)) is not None
+                if (
+                    relative_root := _package_root_for_path(
+                        relative_path,
+                        workspace_paths=self._workspace_paths,
+                    )
+                )
+                is not None
             },
             key=lambda path: len(path.parts),
             reverse=True,
@@ -476,32 +475,47 @@ def _ledger_relative_path(trace_id: str) -> str:
     return f"{TRACE_PURGE_LEDGER_DIRECTORY}/{slug}_purge_record.json"
 
 
-def _is_trace_local_path(relative_path: str) -> bool:
+def _is_trace_local_path(relative_path: str, *, workspace_paths: PackWorkspacePaths) -> bool:
     normalized = relative_path.rstrip("/")
     return any(
         normalized == root.rstrip("/") or normalized.startswith(root)
-        for root in TRACE_LOCAL_ROOTS
+        for root in _trace_local_roots(workspace_paths)
     )
 
 
-def _package_root_for_path(relative_path: str) -> str | None:
+def _package_root_for_path(
+    relative_path: str,
+    *,
+    workspace_paths: PackWorkspacePaths,
+) -> str | None:
     normalized = relative_path.rstrip("/")
-    if normalized.startswith("plan/initiatives/"):
+    initiatives_root = f"{workspace_paths.initiatives_root}/"
+    if normalized.startswith(initiatives_root):
         parts = normalized.split("/")
-        if len(parts) >= 3:
-            return "/".join(parts[:3])
-    if normalized.startswith("plan/projects/"):
+        base_parts = PurePosixPath(workspace_paths.initiatives_root).parts
+        if len(parts) >= len(base_parts) + 1:
+            return "/".join(parts[: len(base_parts) + 1])
+    projects_root = f"{workspace_paths.projects_root}/"
+    if normalized.startswith(projects_root):
         parts = normalized.split("/")
-        if len(parts) >= 5 and parts[3] == "initiatives":
-            return "/".join(parts[:5])
+        project_root_parts = PurePosixPath(workspace_paths.projects_root).parts
+        if (
+            len(parts) >= len(project_root_parts) + 3
+            and parts[len(project_root_parts) + 1] == "initiatives"
+        ):
+            return "/".join(parts[: len(project_root_parts) + 3])
     return None
 
 
-def _is_derived_reference_carrier(relative_path: str) -> bool:
+def _is_derived_reference_carrier(
+    relative_path: str,
+    *,
+    workspace_paths: PackWorkspacePaths,
+) -> bool:
     normalized = relative_path.rstrip("/")
-    return normalized in DERIVED_REFERENCE_CARRIER_PATHS or any(
+    return normalized in _derived_reference_carrier_paths(workspace_paths) or any(
         normalized == root.rstrip("/") or normalized.startswith(root)
-        for root in DERIVED_REFERENCE_CARRIER_ROOTS
+        for root in _derived_reference_carrier_roots(workspace_paths)
     )
 
 
@@ -512,10 +526,14 @@ def _normalize_repo_relative_path(relative_path: str) -> str:
     return normalized.as_posix()
 
 
-def _iter_reference_scan_files(repo_root: Path) -> tuple[Path, ...]:
+def _iter_reference_scan_files(
+    repo_root: Path,
+    *,
+    workspace_paths: PackWorkspacePaths,
+) -> tuple[Path, ...]:
     files: list[Path] = []
 
-    for top_level in DEFAULT_REFERENCE_SCAN_ROOTS:
+    for top_level in _default_reference_scan_roots(workspace_paths):
         root = repo_root / top_level
         if not root.exists():
             continue
@@ -536,6 +554,41 @@ def _iter_text_files_under(root: Path) -> Iterable[Path]:
         if path.suffix and path.suffix not in SCANNABLE_TEXT_EXTENSIONS:
             continue
         yield path
+
+
+def _trace_local_roots(workspace_paths: PackWorkspacePaths) -> tuple[str, ...]:
+    return (
+        f"{workspace_paths.initiatives_root}/",
+        f"{workspace_paths.projects_root}/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+    )
+
+
+def _trace_package_prune_roots(workspace_paths: PackWorkspacePaths) -> tuple[str, ...]:
+    return _trace_local_roots(workspace_paths)
+
+
+def _derived_reference_carrier_roots(workspace_paths: PackWorkspacePaths) -> tuple[str, ...]:
+    return (
+        "core/control_plane/indexes/",
+        f"{workspace_paths.machine_root}/indexes/",
+    )
+
+
+def _derived_reference_carrier_paths(workspace_paths: PackWorkspacePaths) -> frozenset[str]:
+    return frozenset(
+        {
+            workspace_paths.overview_path,
+            workspace_paths.tracking_path("coordination_tracking.md"),
+            workspace_paths.tracking_path("initiative_tracking.md"),
+            workspace_paths.tracking_path("task_tracking.md"),
+        }
+    )
+
+
+def _default_reference_scan_roots(workspace_paths: PackWorkspacePaths) -> tuple[str, ...]:
+    return (".github", "core", workspace_paths.workspace_root)
 
 
 def _is_within(candidate: Path, root: Path) -> bool:

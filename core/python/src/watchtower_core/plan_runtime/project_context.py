@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.human_surface_policy import HumanSurfacePolicyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
@@ -111,7 +112,11 @@ def validate_project_machine_state(
 ) -> ProjectMachineValidationResult:
     """Validate the machine-authoritative project surfaces needed for context load."""
 
-    project_root_relative = PlanPathIdHelper.project_root_relative(project_slug)
+    workspace_paths = PackWorkspacePaths.from_loader(
+        _pack_loader(loader, pack_settings_path),
+        pack_settings_path=pack_settings_path,
+    )
+    project_root_relative = workspace_paths.project_root_relative(project_slug)
     project_root = loader.repo_root / project_root_relative
     project_id = PlanPathIdHelper.canonical_project_id(project_slug)
     issues: list[str] = []
@@ -151,7 +156,7 @@ def validate_project_machine_state(
         surface_kinds=("machine_root", "machine_artifact", "initiative_container"),
     )
     issues.extend(issue.message for issue in policy_issues)
-    initiative_root = PlanPathIdHelper.project_initiatives_root_relative(project_slug)
+    initiative_root = workspace_paths.project_initiatives_root_relative(project_slug)
 
     if not issues:
         project_document = _load_json(loader, f"{project_root_relative}/.wt/project.json")

@@ -49,7 +49,8 @@ def register_validate_family(
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate suite --suite-id "
-            "suite.watchtower_plan.validation_baseline --format json",
+            "suite.example.validation_baseline --pack-settings-path "
+            "/tmp/example_pack/.wt/manifests/pack_settings.json --format json",
             "uv run watchtower-core validate front-matter --path "
             "core/docs/references/front_matter_reference.md",
             "uv run watchtower-core validate document-semantics --path "
@@ -94,6 +95,8 @@ def register_validate_family(
             "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate all --skip-front-matter "
             "--skip-document-semantics --skip-artifacts",
+            "uv run watchtower-core validate all --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -117,6 +120,7 @@ def register_validate_family(
         action="store_true",
         help="Skip trace-level acceptance reconciliation checks.",
     )
+    add_pack_settings_argument(validate_all_parser)
     add_human_json_format_argument(validate_all_parser)
     validate_all_parser.set_defaults(handler=_run_validate_all)
 
@@ -135,10 +139,10 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate suite --suite-id "
-            "suite.watchtower_plan.validation_baseline",
+            "suite.example.validation_baseline",
             "uv run watchtower-core validate suite --suite-id "
-            "suite.plan.validation_baseline --pack-settings-path "
-            "packs/plan/.wt/pack_settings.json --format json",
+            "suite.example.validation_baseline --pack-settings-path "
+            "/tmp/example_pack/.wt/manifests/pack_settings.json --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -147,7 +151,7 @@ def register_validate_family(
         required=True,
         help=(
             "Stable validation suite identifier such as "
-            "suite.watchtower_plan.validation_baseline."
+            "suite.example.validation_baseline."
         ),
     )
     add_pack_settings_argument(validate_suite_parser)

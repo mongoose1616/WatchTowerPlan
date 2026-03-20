@@ -48,11 +48,14 @@ def _discover_repo_root(start: Path) -> Path:
 def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
     control_plane_root = pack_root / ".wt"
+    workspace_relative_root = pack_root.relative_to(repo_root).as_posix()
     relative_root = control_plane_root.relative_to(repo_root).as_posix()
     schema_id = "urn:watchtower:schema:interfaces:packs:loader-pack-note:v1"
     schema_relative_path = f"{relative_root}/schemas/interfaces/packs/loader_pack_note.schema.json"
     validator_id = "validator.packs.loader_pack_note"
     validator_registry_path = f"{relative_root}/registries/validator_registry.json"
+    validation_suite_registry_path = f"{relative_root}/registries/validation_suite_registry.json"
+    suite_id = "suite.loader_test.validation_baseline"
     artifact_relative_path = f"{relative_root}/work_items/loader_pack_note.json"
     write_json(
         repo_root / schema_relative_path,
@@ -114,6 +117,31 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         },
     )
     write_json(
+        repo_root / validation_suite_registry_path,
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+            "id": "registry.validation_suites",
+            "title": "Loader Pack Validation Suites",
+            "status": "active",
+            "suites": [
+                {
+                    "id": suite_id,
+                    "title": "Loader Pack Validation Baseline",
+                    "description": "Pack-local validation baseline for loader tests.",
+                    "status": "active",
+                    "steps": [
+                        {
+                            "id": "step.loader_test.artifacts",
+                            "title": "Validate loader-test artifacts",
+                            "description": "Validate the pack-local loader artifact.",
+                            "step_kind": "artifact",
+                        }
+                    ],
+                }
+            ],
+        },
+    )
+    write_json(
         repo_root / artifact_relative_path,
         {
             "$schema": schema_id,
@@ -121,7 +149,7 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
             "title": "Loader Pack Note",
         },
     )
-    pack_settings_path = f"{relative_root}/pack_settings.json"
+    pack_settings_path = f"{relative_root}/manifests/pack_settings.json"
     write_json(
         repo_root / pack_settings_path,
         {
@@ -146,7 +174,25 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
                     "authority": "authoritative",
                     "visibility": "hidden",
                 },
+                {
+                    "surface_name": "validation_suite_registry",
+                    "surface_kind": "registry",
+                    "path": validation_suite_registry_path,
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
             ],
+            "workspace_roots": {
+                "workspace_root": workspace_relative_root,
+                "machine_root": relative_root,
+                "docs_root": f"{workspace_relative_root}/docs",
+                "workflows_root": f"{workspace_relative_root}/workflows",
+                "tracking_root": f"{workspace_relative_root}/tracking",
+                "initiatives_root": f"{workspace_relative_root}/initiatives",
+                "projects_root": f"{workspace_relative_root}/projects",
+                "overview_path": f"{workspace_relative_root}/overview.md",
+            },
+            "default_validation_suite_id": suite_id,
         },
     )
     return {
@@ -154,7 +200,9 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
         "pack_settings_path": pack_settings_path,
         "schema_id": schema_id,
         "schema_relative_path": schema_relative_path,
+        "suite_id": suite_id,
         "validator_id": validator_id,
+        "validation_suite_registry_path": validation_suite_registry_path,
         "validator_registry_path": validator_registry_path,
     }
 
@@ -176,22 +224,23 @@ def test_control_plane_loader_reads_validation_suite_registry() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     registry = loader.load_validation_suite_registry()
-    suite = registry.get("suite.watchtower_plan.validation_baseline")
+    suite = registry.get("suite.plan.validation_baseline")
 
     assert isinstance(registry, ValidationSuiteRegistry)
-    assert suite.get_step("step.watchtower_plan.front_matter").step_kind == "front_matter"
+    assert suite.get_step("step.plan.front_matter").step_kind == "front_matter"
 
 
 def test_control_plane_loader_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
+    validator_registry_path = loader.load_pack_settings().get("validator_registry").path
     validator_registry_loads = 0
     original_load_validated_document = loader.load_validated_document
 
     def wrapped_load_validated_document(relative_path: str) -> dict[str, object]:
         nonlocal validator_registry_loads
-        if relative_path == VALIDATOR_REGISTRY_PATH:
+        if relative_path == validator_registry_path:
             validator_registry_loads += 1
         return original_load_validated_document(relative_path)
 
@@ -239,9 +288,32 @@ def test_control_plane_loader_active_pack_settings_read_pack_validator_registry(
     assert validator.schema_ids == (surfaces["schema_id"],)
 
 
+def test_control_plane_loader_discovers_repo_local_default_pack_settings_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_surfaces(repo_root / "oversight")
+    loader = ControlPlaneLoader(repo_root)
+
+    pack_settings = loader.load_pack_settings()
+
+    assert loader.default_pack_settings_path() == surfaces["pack_settings_path"]
+    assert pack_settings.pack_id == "pack.loader_test"
+
+
+def test_control_plane_loader_falls_back_to_core_shared_pack_settings_without_pack_root(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_validation_repo_subset(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+
+    assert loader.default_pack_settings_path() == "core/control_plane/manifests/pack_settings.json"
+
+
 def test_control_plane_loader_invalidates_document_and_directory_cache_state() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    original_registry_document = deepcopy(loader.load_validated_document(VALIDATOR_REGISTRY_PATH))
+    validator_registry_path = loader.load_pack_settings().get("validator_registry").path
+    original_registry_document = deepcopy(loader.load_validated_document(validator_registry_path))
     original_contract_documents = tuple(
         (relative_path, deepcopy(document))
         for relative_path, document in loader.iter_validated_documents_with_paths_under(
@@ -252,7 +324,7 @@ def test_control_plane_loader_invalidates_document_and_directory_cache_state() -
     original_registry = loader.load_validator_registry()
     stale_registry_document = deepcopy(original_registry_document)
     stale_registry_document["title"] = "Stale Validator Registry Override"
-    loader.set_validated_document_override(VALIDATOR_REGISTRY_PATH, stale_registry_document)
+    loader.set_validated_document_override(validator_registry_path, stale_registry_document)
 
     updated_registry = loader.load_validator_registry()
 
@@ -843,15 +915,16 @@ def test_control_plane_loader_reads_pack_settings() -> None:
 
     pack_settings = loader.load_pack_settings()
 
-    assert pack_settings.pack_id == "pack.watchtower_plan"
+    assert pack_settings.pack_id == "pack.plan"
     assert pack_settings.get("schema_catalog").path == (
-        "core/control_plane/registries/schema_catalog.json"
+        "plan/.wt/registries/schema_catalog.json"
     )
     assert pack_settings.get("rendered_surface_registry").path == (
-        "core/control_plane/registries/rendered_surface_registry.json"
+        "plan/.wt/registries/rendered_surface_registry.json"
     )
     assert pack_settings.get("status_registry").surface_kind == "status_registry"
-    assert pack_settings.get("route_index").rebuildable is True
+    assert pack_settings.workspace_roots.workspace_root == "plan"
+    assert pack_settings.default_validation_suite_id == "suite.plan.validation_baseline"
 
 
 def test_control_plane_loader_exposes_generic_typed_document_path() -> None:

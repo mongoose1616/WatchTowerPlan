@@ -8,13 +8,12 @@ from pathlib import Path
 
 from watchtower_core.control_plane.artifact_family import ArtifactFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import ArtifactIndex, ArtifactIndexEntry
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
 PLAN_ARTIFACT_INDEX_PATH = "plan/.wt/indexes/artifact_index.json"
-_PACK_ID = "pack.plan"
-_PACK_CONTEXT_ID = "pack.plan"
 
 
 @dataclass(frozen=True, slots=True)
@@ -30,8 +29,17 @@ class ArtifactIndexService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._pack_loader_instance = loader.derive(
+            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
+        )
+        self._workspace_paths = PackWorkspacePaths.from_loader(
+            self._pack_loader_instance,
+            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+        )
+        self._artifact_index_path = self._workspace_paths.index_path("artifact_index.json")
+        self._workspace_subdomain = Path(self._workspace_paths.workspace_root).name
         self._artifact_family = ArtifactFamilyHelper.from_loader(
-            loader,
+            self._pack_loader_instance,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
 
@@ -45,7 +53,7 @@ class ArtifactIndexService:
 
         document = self.build_document(aggregate_overrides=aggregate_overrides)
         if write:
-            self._loader.artifact_store.write_json_object(PLAN_ARTIFACT_INDEX_PATH, document)
+            self._loader.artifact_store.write_json_object(self._artifact_index_path, document)
         return ArtifactIndexSyncResult(
             artifact_count=len(document["artifacts"]),
             wrote=write,
@@ -95,19 +103,22 @@ class ArtifactIndexService:
             {
                 "artifact_id": "index.artifacts",
                 "artifact_family": "artifact_index",
-                "path": PLAN_ARTIFACT_INDEX_PATH,
-                "pack": _PACK_ID,
-                "subdomain": "plan",
-                "context_ids": [_PACK_CONTEXT_ID],
+                "path": self._artifact_index_path,
+                "pack": self._workspace_paths.pack_id,
+                "subdomain": self._workspace_subdomain,
+                "context_ids": [self._workspace_paths.pack_id],
                 "status": "active",
                 "authoritative": True,
                 "hidden": True,
                 "derived": True,
                 "created_at": _entry_timestamp(existing_index_entry, "created_at") or updated_at,
                 "updated_at": _entry_timestamp(existing_index_entry, "updated_at") or updated_at,
-                "title": "Plan Artifact Index",
-                "summary": "Cross-family artifact lookup for the live plan workspace.",
-                "source_context": _PACK_CONTEXT_ID,
+                "title": f"{self._workspace_subdomain.title()} Artifact Index",
+                "summary": (
+                    f"Cross-family artifact lookup for the live {self._workspace_subdomain} "
+                    "workspace."
+                ),
+                "source_context": self._workspace_paths.pack_id,
                 "source_channel": "aggregate_index",
                 "source_type": "artifact_index",
             }
@@ -117,7 +128,10 @@ class ArtifactIndexService:
             "$schema": "urn:watchtower:schema:interfaces:packs:artifact-index:v1",
             "surface_name": "artifact_index",
             "contract_version": "v1",
-            "description": "Cross-family artifact lookup for the live plan workspace.",
+            "description": (
+                f"Cross-family artifact lookup for the live {self._workspace_subdomain} "
+                "workspace."
+            ),
             "updated_at": updated_at,
             "artifacts": sorted(artifacts, key=lambda entry: str(entry["artifact_id"])),
         }
@@ -127,20 +141,24 @@ class ArtifactIndexService:
     def load_index(self) -> ArtifactIndex:
         """Load the typed artifact index from the live plan workspace."""
 
-        return self._pack_loader().load_artifact_index(PLAN_ARTIFACT_INDEX_PATH)
+        return self._pack_loader().load_artifact_index(self._artifact_index_path)
 
     def _load_records(
         self,
         overrides: dict[str, dict[str, object]],
     ) -> list[tuple[str, str, dict[str, object]]]:
         candidate_paths = set(overrides)
-        candidate_paths.update(self._iter_relative_json_paths("plan/initiatives"))
-        candidate_paths.update(self._iter_relative_json_paths("plan/projects"))
-        candidate_paths.update(self._iter_relative_json_paths("plan/.wt/work_items"))
-        candidate_paths.update(self._iter_relative_json_paths("plan/.wt/indexes"))
+        candidate_paths.update(self._iter_relative_json_paths(self._workspace_paths.initiatives_root))
+        candidate_paths.update(self._iter_relative_json_paths(self._workspace_paths.projects_root))
+        candidate_paths.update(
+            self._iter_relative_json_paths(self._workspace_paths.machine_path("work_items"))
+        )
+        candidate_paths.update(
+            self._iter_relative_json_paths(self._workspace_paths.machine_path("indexes"))
+        )
         records: list[tuple[str, str, dict[str, object]]] = []
         for relative_path in sorted(candidate_paths):
-            if relative_path == PLAN_ARTIFACT_INDEX_PATH:
+            if relative_path == self._artifact_index_path:
                 continue
             try:
                 family_entry = self._artifact_family.family_for_path(relative_path)
@@ -189,18 +207,28 @@ class ArtifactIndexService:
             document,
             initiative_document=initiative_document,
             project_document=project_document,
+            pack_context_id=self._workspace_paths.pack_id,
         )
         entry: dict[str, object] = {
             "artifact_id": artifact_id,
             "artifact_family": family_id,
             "path": relative_path,
-            "pack": _PACK_ID,
-            "subdomain": _subdomain(project_document),
+            "pack": self._workspace_paths.pack_id,
+            "subdomain": _subdomain(
+                project_document,
+                workspace_subdomain=self._workspace_subdomain,
+            ),
             "context_ids": list(context_ids),
             "status": _artifact_status(family_id, document),
             "authoritative": True,
-            "hidden": _is_hidden_artifact(relative_path),
-            "derived": _is_derived_artifact(relative_path),
+            "hidden": _is_hidden_artifact(
+                relative_path,
+                machine_root=self._workspace_paths.machine_root,
+            ),
+            "derived": _is_derived_artifact(
+                relative_path,
+                machine_root=self._workspace_paths.machine_root,
+            ),
             "created_at": _artifact_created_at(document, existing_entry),
             "updated_at": _artifact_updated_at(document, existing_entry),
             "title": _artifact_title(family_id, document),
@@ -209,8 +237,13 @@ class ArtifactIndexService:
                 document,
                 initiative_document=initiative_document,
                 project_document=project_document,
+                pack_context_id=self._workspace_paths.pack_id,
             ),
-            "source_channel": _source_channel(family_id, relative_path),
+            "source_channel": _source_channel(
+                family_id,
+                relative_path,
+                machine_root=self._workspace_paths.machine_root,
+            ),
             "source_type": family_id,
         }
         parent_artifact_id = _parent_artifact_id(family_id, document)
@@ -230,6 +263,7 @@ class ArtifactIndexService:
             document=document,
             initiative_document=initiative_document,
             project_document=project_document,
+            overview_path=self._workspace_paths.overview_path,
         )
         if rendered_view_path is not None:
             entry["rendered_view_path"] = rendered_view_path
@@ -239,10 +273,10 @@ class ArtifactIndexService:
         return entry
 
     def _pack_loader(self) -> ControlPlaneLoader:
-        return self._loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
+        return self._pack_loader_instance
 
     def _existing_entries_by_artifact_id(self) -> dict[str, dict[str, object]]:
-        path = self._loader.repo_root / PLAN_ARTIFACT_INDEX_PATH
+        path = self._loader.repo_root / self._artifact_index_path
         if not path.exists():
             return {}
         try:
@@ -486,6 +520,7 @@ def _context_ids(
     *,
     initiative_document: dict[str, object] | None,
     project_document: dict[str, object] | None,
+    pack_context_id: str,
 ) -> tuple[str, ...]:
     values = list(
         _unique_strings(
@@ -499,7 +534,7 @@ def _context_ids(
                 _string_value(initiative_document.get("trace_id")) if initiative_document else None,
                 _string_value(initiative_document.get("project_id")) if initiative_document else None,
                 _string_value(project_document.get("project_id")) if project_document else None,
-                _PACK_CONTEXT_ID,
+                pack_context_id,
             )
         )
     )
@@ -511,19 +546,20 @@ def _source_context(
     *,
     initiative_document: dict[str, object] | None,
     project_document: dict[str, object] | None,
+    pack_context_id: str,
 ) -> str:
     if initiative_document is not None:
-        return _string_value(initiative_document.get("initiative_id")) or _PACK_CONTEXT_ID
+        return _string_value(initiative_document.get("initiative_id")) or pack_context_id
     if project_document is not None:
-        return _string_value(project_document.get("project_id")) or _PACK_CONTEXT_ID
+        return _string_value(project_document.get("project_id")) or pack_context_id
     work_item_id = _string_value(document.get("work_item_id"))
     if work_item_id is not None:
         return work_item_id
-    return _PACK_CONTEXT_ID
+    return pack_context_id
 
 
-def _source_channel(family_id: str, relative_path: str) -> str:
-    if relative_path.startswith("plan/.wt/indexes/"):
+def _source_channel(family_id: str, relative_path: str, *, machine_root: str) -> str:
+    if relative_path.startswith(f"{machine_root}/indexes/"):
         return "aggregate_index"
     if family_id == "pack_work_item_note":
         return "pack_work_item"
@@ -541,13 +577,14 @@ def _rendered_view_path(
     document: dict[str, object],
     initiative_document: dict[str, object] | None,
     project_document: dict[str, object] | None,
+    overview_path: str,
 ) -> str | None:
     if family_id == "initiative_state":
         return f"{Path(relative_path).parents[1].as_posix()}/plan.md"
     if family_id == "project_record":
         return f"{Path(relative_path).parents[1].as_posix()}/project.md"
     if family_id == "coordination_index":
-        return "plan/plan_overview.md"
+        return overview_path
     if family_id == "closeout_recap" and initiative_document is not None:
         initiative_root = Path(relative_path).parents[2].as_posix()
         return f"{initiative_root}/summary.md"
@@ -578,18 +615,18 @@ def _linked_project_document(
     return project_by_id.get(project_id)
 
 
-def _subdomain(project_document: dict[str, object] | None) -> str:
+def _subdomain(project_document: dict[str, object] | None, *, workspace_subdomain: str) -> str:
     if project_document is None:
-        return "plan"
-    return _string_value(project_document.get("project_id")) or "plan"
+        return workspace_subdomain
+    return _string_value(project_document.get("project_id")) or workspace_subdomain
 
 
-def _is_hidden_artifact(relative_path: str) -> bool:
-    return relative_path.startswith("plan/.wt/") or "/.wt/" in relative_path
+def _is_hidden_artifact(relative_path: str, *, machine_root: str) -> bool:
+    return relative_path.startswith(f"{machine_root}/") or "/.wt/" in relative_path
 
 
-def _is_derived_artifact(relative_path: str) -> bool:
-    return relative_path.startswith("plan/.wt/indexes/")
+def _is_derived_artifact(relative_path: str, *, machine_root: str) -> bool:
+    return relative_path.startswith(f"{machine_root}/indexes/")
 
 
 def _string_value(value: object) -> str | None:

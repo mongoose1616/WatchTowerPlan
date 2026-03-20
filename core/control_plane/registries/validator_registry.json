@@ -1,7 +1,7 @@
 {
   "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
   "id": "registry.validators",
-  "title": "Validator Registry",
+  "title": "Core Validators",
   "status": "active",
   "validators": [
     {
@@ -61,20 +61,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.coordination_index",
-      "title": "Coordination Index Validator",
-      "description": "Validates machine-readable coordination index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "coordination_index",
-      "applies_to": [
-        "plan/.wt/indexes/coordination_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.foundation_index",
       "title": "Foundation Index Validator",
       "description": "Validates machine-readable foundation index artifacts.",
@@ -86,20 +72,6 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:foundation-index:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.initiative_index",
-      "title": "Initiative Index Validator",
-      "description": "Validates machine-readable initiative index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "initiative_index",
-      "applies_to": [
-        "plan/.wt/indexes/initiative_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
       ]
     },
     {
@@ -299,20 +271,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.task_index",
-      "title": "Task Index Validator",
-      "description": "Validates machine-readable task index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "task_index",
-      "applies_to": [
-        "plan/.wt/indexes/task_index.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:plan:task-summary-index:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.traceability_index",
       "title": "Traceability Index Validator",
       "description": "Validates unified machine-readable traceability index artifacts.",
@@ -418,8 +376,6 @@
       "engine": "python",
       "artifact_kind": "acceptance_reconciliation",
       "applies_to": [
-        "plan/initiatives/**",
-        "plan/projects/**",
         "core/control_plane/contracts/acceptance/**",
         "core/control_plane/ledgers/validation_evidence/**",
         "core/control_plane/indexes/traceability/**"
@@ -458,8 +414,7 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "core/docs/standards/**",
-        "plan/docs/standards/**"
+        "core/docs/standards/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -471,8 +426,7 @@
       "engine": "python",
       "artifact_kind": "documentation_semantics",
       "applies_to": [
-        "core/workflows/modules/**",
-        "plan/workflows/modules/**"
+        "core/workflows/modules/**"
       ],
       "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
@@ -513,8 +467,7 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "core/docs/standards/**",
-        "plan/docs/standards/**"
+        "core/docs/standards/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
@@ -528,8 +481,7 @@
       "engine": "json_schema",
       "artifact_kind": "documentation_front_matter",
       "applies_to": [
-        "core/workflows/**",
-        "plan/workflows/**"
+        "core/workflows/**"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1"

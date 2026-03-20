@@ -159,7 +159,7 @@ class TaskLifecycleService:
             task_id=task_id,
             trace_id=params.trace_id,
         )
-        _require_mutable_initiative(initiative)
+        _require_mutable_initiative(self._loader, initiative)
 
         updated_at = params.updated_at or utc_timestamp_now()
         task_status = _canonical_task_status(self._terminology, params.task_status)
@@ -288,7 +288,7 @@ class TaskLifecycleService:
             raise ValueError(f"Unknown task ID: {task_id}") from exc
 
         initiative = find_initiative_by_trace_id(self._loader, document.trace_id)
-        _require_mutable_initiative(initiative)
+        _require_mutable_initiative(self._loader, initiative)
         if params.clear_trace_id:
             raise ValueError(
                 "Live initiative-local tasks inherit trace_id from the initiative package and "
@@ -572,7 +572,11 @@ def _task_id_initiative_slug(task_id: str) -> str | None:
     return parts[1]
 
 
-def _require_mutable_initiative(initiative: PlanInitiativeState) -> None:
+def _require_mutable_initiative(
+    loader: ControlPlaneLoader,
+    initiative: PlanInitiativeState,
+) -> None:
+    initiative = _reload_initiative_state(loader, initiative)
     if str(initiative.document.get("status", "active")) != "active":
         raise ValueError(
             f"Live task mutation requires an active initiative package: {initiative.trace_id}"
@@ -594,6 +598,7 @@ def _require_execution_ready_initiative(
     if task_status not in _EXECUTION_START_TASK_STATUSES:
         return
 
+    initiative = _reload_initiative_state(loader, initiative)
     gate_state = initiative.document.get("gate_state")
     approval_status = (
         str(gate_state.get("approval_status"))
@@ -707,7 +712,7 @@ def _update_initiative_state_for_task(
     task_id: str,
     updated_at: str,
 ) -> None:
-    initiative_document = dict(initiative.document)
+    initiative_document = dict(_reload_initiative_state(loader, initiative).document)
     task_ids = [str(value) for value in initiative_document.get("task_ids", ())]
     if task_id not in task_ids:
         task_ids.append(task_id)
@@ -726,7 +731,7 @@ def _touch_initiative_state(
     *,
     updated_at: str,
 ) -> None:
-    initiative_document = dict(initiative.document)
+    initiative_document = dict(_reload_initiative_state(loader, initiative).document)
     initiative_document["updated_at"] = updated_at
     loader.artifact_store.write_json_object(
         f"{initiative.relative_root}/.wt/initiative.json",
@@ -780,10 +785,9 @@ def _mark_initiative_execution_started(
     if task_status not in _EXECUTION_START_TASK_STATUSES:
         return
 
-    initiative_relative_path = f"{initiative.relative_root}/.wt/initiative.json"
-    initiative_document = loader.derive(
-        active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-    ).load_validated_document(initiative_relative_path)
+    initiative = _reload_initiative_state(loader, initiative)
+    initiative_relative_path = _initiative_state_relative_path(initiative)
+    initiative_document = dict(initiative.document)
     execution_started = _initiative_execution_started(loader, initiative)
     changed = False
     if not execution_started:
@@ -863,6 +867,24 @@ def _initiative_execution_started(
         if str(document.get("event_type")) == "execution_started":
             return True
     return False
+
+
+def _reload_initiative_state(
+    loader: ControlPlaneLoader,
+    initiative: PlanInitiativeState,
+) -> PlanInitiativeState:
+    relative_path = _initiative_state_relative_path(initiative)
+    document = loader.derive(
+        active_pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+    ).load_validated_document(relative_path)
+    return PlanInitiativeState(
+        relative_root=initiative.relative_root,
+        document=document,
+    )
+
+
+def _initiative_state_relative_path(initiative: PlanInitiativeState) -> str:
+    return f"{initiative.relative_root}/.wt/initiative.json"
 
 
 def _reject_conflicting_clear(has_values: bool, clear: bool, *, key: str) -> None:

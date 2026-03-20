@@ -28,7 +28,8 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     context = loader.load_pack_context()
 
     assert isinstance(context, PackContext)
-    assert context.pack_settings.pack_id == "pack.watchtower_plan"
+    assert context.pack_settings.pack_id == "pack.plan"
+    assert context.workspace_roots.workspace_root == "plan"
     assert context.schema_catalog.get(
         "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
     ).canonical_relative_path == (
@@ -41,12 +42,12 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     assert "validator_registry" in context.registries
     assert "validation_suite_registry" in context.registries
     assert (
-        context.validation_suite_registry.get("suite.watchtower_plan.validation_baseline")
-        .get_step("step.watchtower_plan.artifacts")
+        context.validation_suite_registry.get("suite.plan.validation_baseline")
+        .get_step("step.plan.artifacts")
         .step_kind
         == "artifact"
     )
-    assert "route_index" in context.indexes
+    assert "coordination_index" not in context.indexes
 
 
 def test_pack_context_exposes_loaded_surfaces_by_name() -> None:
