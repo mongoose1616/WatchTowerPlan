@@ -14,6 +14,10 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry
+from watchtower_core.pack_integration.runtime import (
+    load_pack_query_runtime,
+    load_pack_sync_runtime,
+)
 from watchtower_core.validation.pack_contract import (
     PACK_CONTRACT_VALIDATOR_ID,
     PackContractValidationService,
@@ -62,15 +66,39 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
     entry = resolved
     manifest = loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
 
-    integration_importable = True
+    integration_importable = False
     integration_error: str | None = None
     descriptor = None
+    query_runtime_commands: list[str] | None = None
+    query_runtime_error: str | None = None
+    sync_runtime_targets: list[str] | None = None
+    sync_runtime_error: str | None = None
     try:
         module = importlib.import_module(manifest.integration_module)
         descriptor = getattr(module, "PACK_INTEGRATION", None)
+        integration_importable = True
     except Exception as exc:  # pragma: no cover - fail-closed operator path
-        integration_importable = False
         integration_error = str(exc)
+
+    if integration_importable:
+        try:
+            query_runtime_commands = list(
+                load_pack_query_runtime(
+                    loader,
+                    pack_settings_path=entry.pack_settings_path,
+                ).commands
+            )
+        except Exception as exc:  # pragma: no cover - fail-closed operator path
+            query_runtime_error = str(exc)
+        try:
+            sync_runtime_targets = list(
+                load_pack_sync_runtime(
+                    loader,
+                    pack_settings_path=entry.pack_settings_path,
+                ).targets
+            )
+        except Exception as exc:  # pragma: no cover - fail-closed operator path
+            sync_runtime_error = str(exc)
 
     payload = {
         "command": "watchtower-core pack describe",
@@ -113,6 +141,10 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
             "command_subcommand_implementation_paths": list(
                 getattr(descriptor, "command_subcommand_implementation_paths", ())
             ),
+            "query_runtime_commands": query_runtime_commands,
+            "query_runtime_error": query_runtime_error,
+            "sync_runtime_targets": sync_runtime_targets,
+            "sync_runtime_error": sync_runtime_error,
         },
     }
 
@@ -143,6 +175,14 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
             "Integration Import: "
             + ("ok" if integration_importable else f"failed ({integration_error})")
         )
+        if query_runtime_commands is not None:
+            print("Query Commands: " + ", ".join(query_runtime_commands))
+        elif query_runtime_error:
+            print(f"Query Commands: invalid ({query_runtime_error})")
+        if sync_runtime_targets is not None:
+            print("Sync Targets: " + ", ".join(sync_runtime_targets))
+        elif sync_runtime_error:
+            print(f"Sync Targets: invalid ({sync_runtime_error})")
 
     return _emit_detail_result(
         args,

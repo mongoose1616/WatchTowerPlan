@@ -11,7 +11,11 @@ from tests.pack_fixture_support import (
     materialize_validation_repo_subset,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.pack_integration import PackValidationRuntime
+from watchtower_core.pack_integration import (
+    PackQueryRuntime,
+    PackSyncRuntime,
+    PackValidationRuntime,
+)
 from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
 from watchtower_core.validation import (
     PackContractValidationService,
@@ -139,3 +143,63 @@ def test_pack_contract_validation_fails_when_validation_provider_returns_invalid
 
     assert result.passed is False
     assert any(issue.code == "pack_validation_provider_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        query_runtime=lambda: object(),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_query_runtime_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_query_runtime_returns_empty_commands(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        query_runtime=lambda: PackQueryRuntime(commands=()),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_query_runtime_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_sync_targets_returns_invalid_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        sync_targets=lambda: object(),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_sync_runtime_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_sync_targets_returns_empty_targets(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bad_descriptor = replace(
+        plan_integration.PACK_INTEGRATION,
+        sync_targets=lambda: PackSyncRuntime(targets=()),
+    )
+    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_sync_runtime_invalid" for issue in result.issues)

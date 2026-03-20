@@ -39,7 +39,8 @@ uv run watchtower-core pack describe --pack plan --format json
 
 ## Behavior and Outputs
 - Reads the shared hosted-pack registry entry and the pack-owned runtime manifest for the selected pack.
-- Reports declared capabilities, required validation suites, owned roots, and the integration module path.
+- Reports declared capabilities, required validation suites, owned roots, the integration module path, and the typed query or sync runtimes published by the pack integration descriptor.
+- Separates integration-module import status from runtime-hook validity so malformed query or sync contracts stay visible to operators instead of looking like a plain import failure.
 - Attempts to import the declared integration module and reports whether that import succeeds.
 
 ## Related Commands
@@ -55,4 +56,4 @@ uv run watchtower-core pack describe --pack plan --format json
 - `plan/.wt/manifests/pack_runtime_manifest.json`
 
 ## Updated At
-- `2026-03-20T19:20:00Z`
+- `2026-03-20T23:58:00Z`

@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T17:12:07Z"
+updated_at: "2026-03-20T23:58:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -66,6 +66,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Make the pack portable: copy-out should require packaging or installation updates, not Python code rewrites.
 - Prefer feature-owned modules inside a pack such as `bootstrap`, `initiatives`, `projects`, `tasks`, or `reviews` instead of mirroring generic core package families.
 - Keep machine interface declarations in governed manifests and registries, not hidden in Python import conventions.
+- Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -120,4 +121,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-20T17:12:07Z`
+- `2026-03-20T23:58:00Z`

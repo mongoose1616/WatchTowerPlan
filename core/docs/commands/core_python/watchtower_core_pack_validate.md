@@ -46,7 +46,8 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 ## Behavior and Outputs
 - Resolves the selected hosted pack from the shared pack registry unless `--pack-settings-path` overrides it.
 - Runs the same pack-contract validator that `validate all` includes in the full repository pass.
-- Reports pass or fail plus any contract drift issues around registry parity, runtime manifest fields, importable integration modules, capability hooks, owned roots, or validation-suite declarations.
+- Reports pass or fail plus any contract drift issues around registry parity, runtime manifest fields, importable integration modules, typed capability runtimes, owned roots, or validation-suite declarations.
+- Query and sync runtimes fail closed when they publish empty command or target sets, even if they return the right runtime type.
 
 ## Related Commands
 | Command | Relationship |
@@ -61,4 +62,4 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-20T19:20:00Z`
+- `2026-03-20T23:58:00Z`

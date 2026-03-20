@@ -7,10 +7,14 @@ import importlib
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.pack_integration import (
-    PackValidationRuntime,
     REQUIRED_PACK_CAPABILITIES,
     SUPPORTED_PACK_CAPABILITIES,
     PackIntegration,
+)
+from watchtower_core.pack_integration.runtime import (
+    validate_pack_query_runtime,
+    validate_pack_sync_runtime,
+    validate_pack_validation_runtime,
 )
 from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
@@ -294,57 +298,83 @@ def _integration_issues(runtime_manifest) -> tuple[ValidationIssue, ...]:
                 )
             )
             continue
-        if capability != "validation_provider":
-            continue
-        try:
-            validation_runtime = hook()
-        except Exception as exc:  # pragma: no cover - fail-closed guard
-            issues.append(
-                ValidationIssue(
-                    code="pack_validation_provider_error",
-                    message=(
-                        "Pack validation_provider hook raised an error: "
-                        f"{exc}"
+        if capability == "validation_provider":
+            issues.extend(
+                _runtime_hook_issues(
+                    hook=hook,
+                    integration_module=runtime_manifest.integration_module,
+                    validator=validate_pack_validation_runtime,
+                    error_code="pack_validation_provider_error",
+                    invalid_code="pack_validation_provider_invalid",
+                    invalid_message=(
+                        "Pack validation_provider hook must return "
+                        "watchtower_core.pack_integration.PackValidationRuntime."
                     ),
-                    location=runtime_manifest.integration_module,
                 )
             )
             continue
-        if isinstance(validation_runtime, PackValidationRuntime):
-            if not callable(validation_runtime.document_semantics_factory):
-                issues.append(
-                    ValidationIssue(
-                        code="pack_validation_document_semantics_factory_invalid",
-                        message=(
-                            "Pack validation_provider hook must return a callable "
-                            "document_semantics_factory."
-                        ),
-                        location=runtime_manifest.integration_module,
-                    )
+        if capability == "query_runtime":
+            issues.extend(
+                _runtime_hook_issues(
+                    hook=hook,
+                    integration_module=runtime_manifest.integration_module,
+                    validator=validate_pack_query_runtime,
+                    error_code="pack_query_runtime_error",
+                    invalid_code="pack_query_runtime_invalid",
+                    invalid_message=(
+                        "Pack query_runtime hook must return "
+                        "watchtower_core.pack_integration.PackQueryRuntime."
+                    ),
                 )
-            if validation_runtime.suite_target_resolver is not None and not callable(
-                validation_runtime.suite_target_resolver
-            ):
-                issues.append(
-                    ValidationIssue(
-                        code="pack_validation_suite_target_resolver_invalid",
-                        message=(
-                            "Pack validation_provider hook must return a callable "
-                            "suite_target_resolver when one is declared."
-                        ),
-                        location=runtime_manifest.integration_module,
-                    )
-                )
-            continue
-        issues.append(
-            ValidationIssue(
-                code="pack_validation_provider_invalid",
-                message=(
-                    "Pack validation_provider hook must return "
-                    "watchtower_core.pack_integration.PackValidationRuntime."
-                ),
-                location=runtime_manifest.integration_module,
             )
-        )
+            continue
+        if capability == "sync_targets":
+            issues.extend(
+                _runtime_hook_issues(
+                    hook=hook,
+                    integration_module=runtime_manifest.integration_module,
+                    validator=validate_pack_sync_runtime,
+                    error_code="pack_sync_runtime_error",
+                    invalid_code="pack_sync_runtime_invalid",
+                    invalid_message=(
+                        "Pack sync_targets hook must return "
+                        "watchtower_core.pack_integration.PackSyncRuntime."
+                    ),
+                )
+            )
+            continue
 
     return tuple(issues)
+
+
+def _runtime_hook_issues(
+    *,
+    hook,
+    integration_module: str,
+    validator,
+    error_code: str,
+    invalid_code: str,
+    invalid_message: str,
+) -> tuple[ValidationIssue, ...]:
+    try:
+        runtime = hook()
+    except Exception as exc:  # pragma: no cover - fail-closed guard
+        return (
+            ValidationIssue(
+                code=error_code,
+                message=f"Pack integration hook raised an error: {exc}",
+                location=integration_module,
+            ),
+        )
+    try:
+        validator(runtime, integration_module=integration_module)
+        return ()
+    except ValueError:
+        pass
+    return (
+        ValidationIssue(
+            code=invalid_code,
+            message=invalid_message,
+            location=integration_module,
+        ),
+    )

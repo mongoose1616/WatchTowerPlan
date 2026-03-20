@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:40:00Z"
+updated_at: "2026-03-20T23:58:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,6 +46,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `pack_registry` is the shared hosted-pack inventory used by host composition and validation.
 - Validate machine contracts before importing any pack integration module.
 - Declare one integration module exporting one typed `PACK_INTEGRATION` descriptor per hosted pack.
+- `query_runtime` must return a typed query runtime describing the pack-owned query command surface.
+- `sync_targets` must return a typed sync runtime describing the pack-owned sync target surface.
 - Keep command namespaces unique across the hosted-pack registry.
 - Do not hide primary hosted-pack discovery behind Python entry points or naming conventions alone.
 
@@ -78,6 +80,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Typed descriptor export | Pass |
 | Declared capability hooks present | Pass |
 | Validation-provider runtime shape | Pass |
+| Query-runtime command set shape | Pass |
+| Sync-runtime target set shape | Pass |
 | Owned-root consistency | Pass |
 | Required validation suites present | Pass |
 
@@ -103,4 +107,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-20T23:40:00Z`
+- `2026-03-20T23:58:00Z`

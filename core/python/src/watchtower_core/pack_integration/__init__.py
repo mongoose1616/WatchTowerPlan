@@ -41,13 +41,13 @@ class PackCommandRegistrar(Protocol):
 class PackQueryProvider(Protocol):
     """Expose pack-owned query behavior to the host runtime."""
 
-    def __call__(self, *args: Any, **kwargs: Any) -> object: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> PackQueryRuntime: ...
 
 
 class PackSyncTargetProvider(Protocol):
     """Expose pack-owned sync targets to the host runtime."""
 
-    def __call__(self, *args: Any, **kwargs: Any) -> object: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> PackSyncRuntime: ...
 
 
 class PackValidationProvider(Protocol):
@@ -58,6 +58,20 @@ class PackValidationProvider(Protocol):
 
 PackLifecycleHook = Callable[..., object]
 PackDocumentSemanticsFactory = Callable[["ControlPlaneLoader"], object]
+
+
+@dataclass(frozen=True, slots=True)
+class PackQueryRuntime:
+    """Pack-owned query hooks consumed through the integration contract."""
+
+    commands: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class PackSyncRuntime:
+    """Pack-owned sync hooks consumed through the integration contract."""
+
+    targets: tuple[str, ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -105,6 +119,8 @@ __all__ = [
     "PackIntegration",
     "PackLifecycleHook",
     "PackQueryProvider",
+    "PackQueryRuntime",
+    "PackSyncRuntime",
     "PackSyncTargetProvider",
     "PackValidationRuntime",
     "PackValidationProvider",

@@ -11,7 +11,12 @@ from watchtower_core.control_plane.models import (
     PackRuntimeManifest,
     PackSettings,
 )
-from watchtower_core.pack_integration import PackIntegration, PackValidationRuntime
+from watchtower_core.pack_integration import (
+    PackIntegration,
+    PackQueryRuntime,
+    PackSyncRuntime,
+    PackValidationRuntime,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,7 +87,49 @@ def load_pack_validation_runtime(
             f"{loaded.runtime_manifest.integration_module}"
         )
     runtime = provider()
-    return _validated_pack_validation_runtime(
+    return validate_pack_validation_runtime(
+        runtime,
+        integration_module=loaded.runtime_manifest.integration_module,
+    )
+
+
+def load_pack_query_runtime(
+    loader: ControlPlaneLoader,
+    *,
+    pack_settings_path: str = PACK_SETTINGS_PATH,
+) -> PackQueryRuntime:
+    """Load the declared query runtime for one active pack."""
+
+    loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+    provider = loaded.integration.query_runtime
+    if provider is None:
+        raise ValueError(
+            "Pack integration is missing its query_runtime hook: "
+            f"{loaded.runtime_manifest.integration_module}"
+        )
+    runtime = provider()
+    return validate_pack_query_runtime(
+        runtime,
+        integration_module=loaded.runtime_manifest.integration_module,
+    )
+
+
+def load_pack_sync_runtime(
+    loader: ControlPlaneLoader,
+    *,
+    pack_settings_path: str = PACK_SETTINGS_PATH,
+) -> PackSyncRuntime:
+    """Load the declared sync runtime for one active pack."""
+
+    loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+    provider = loaded.integration.sync_targets
+    if provider is None:
+        raise ValueError(
+            "Pack integration is missing its sync_targets hook: "
+            f"{loaded.runtime_manifest.integration_module}"
+        )
+    runtime = provider()
+    return validate_pack_sync_runtime(
         runtime,
         integration_module=loaded.runtime_manifest.integration_module,
     )
@@ -100,7 +147,7 @@ def _load_pack_integration_descriptor(runtime_manifest: PackRuntimeManifest) -> 
     return descriptor
 
 
-def _validated_pack_validation_runtime(
+def validate_pack_validation_runtime(
     runtime: object,
     *,
     integration_module: str,
@@ -125,9 +172,50 @@ def _validated_pack_validation_runtime(
     return runtime
 
 
+def validate_pack_query_runtime(
+    runtime: object,
+    *,
+    integration_module: str,
+) -> PackQueryRuntime:
+    if not isinstance(runtime, PackQueryRuntime):
+        raise ValueError(
+            "Pack query_runtime hook must return PackQueryRuntime: "
+            f"{integration_module}"
+        )
+    if not runtime.commands or not all(isinstance(command, str) and command for command in runtime.commands):
+        raise ValueError(
+            "Pack query_runtime hook must return one or more non-empty command names: "
+            f"{integration_module}"
+        )
+    return runtime
+
+
+def validate_pack_sync_runtime(
+    runtime: object,
+    *,
+    integration_module: str,
+) -> PackSyncRuntime:
+    if not isinstance(runtime, PackSyncRuntime):
+        raise ValueError(
+            "Pack sync_targets hook must return PackSyncRuntime: "
+            f"{integration_module}"
+        )
+    if not runtime.targets or not all(isinstance(target, str) and target for target in runtime.targets):
+        raise ValueError(
+            "Pack sync_targets hook must return one or more non-empty target names: "
+            f"{integration_module}"
+        )
+    return runtime
+
+
 __all__ = [
     "LoadedPackIntegration",
     "load_active_pack_integration",
+    "load_pack_query_runtime",
+    "load_pack_sync_runtime",
     "load_registered_pack_integrations",
     "load_pack_validation_runtime",
+    "validate_pack_query_runtime",
+    "validate_pack_sync_runtime",
+    "validate_pack_validation_runtime",
 ]

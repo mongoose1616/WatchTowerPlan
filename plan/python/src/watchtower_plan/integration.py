@@ -4,7 +4,12 @@ from __future__ import annotations
 
 from typing import Any
 
-from watchtower_core.pack_integration import PackIntegration, PackValidationRuntime
+from watchtower_core.pack_integration import (
+    PackIntegration,
+    PackQueryRuntime,
+    PackSyncRuntime,
+    PackValidationRuntime,
+)
 from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
 from watchtower_plan.validation.targets import resolve_pack_validation_suite_targets
 
@@ -17,28 +22,46 @@ def _command_registration(*args: Any, **kwargs: Any) -> None:
     register_plan_namespace(*args, **kwargs)
 
 
-def _query_runtime(*args: Any, **kwargs: Any) -> dict[str, object]:
-    """Placeholder query hook for pack-contract validation."""
+def _query_runtime(*args: Any, **kwargs: Any) -> PackQueryRuntime:
+    """Return the plan-owned query command surface exposed under `watchtower-core plan query`."""
 
-    return {}
+    return PackQueryRuntime(
+        commands=(
+            "artifacts",
+            "authority",
+            "closeouts",
+            "coordination",
+            "discrepancies",
+            "initiatives",
+            "plan-evidence",
+            "project-context",
+            "projects",
+            "readiness",
+            "reviews",
+            "tasks",
+            "trace",
+        )
+    )
 
 
-def _sync_targets(*args: Any, **kwargs: Any) -> tuple[str, ...]:
+def _sync_targets(*args: Any, **kwargs: Any) -> PackSyncRuntime:
     """Return the plan-owned sync targets exposed under `watchtower-core plan sync`."""
 
-    return (
-        "all",
-        "coordination",
-        "reference-index",
-        "foundation-index",
-        "standard-index",
-        "workflow-index",
-        "initiative-index",
-        "initiative-tracking",
-        "task-index",
-        "task-tracking",
-        "traceability-index",
-        "github-tasks",
+    return PackSyncRuntime(
+        targets=(
+            "all",
+            "coordination",
+            "reference-index",
+            "foundation-index",
+            "standard-index",
+            "workflow-index",
+            "initiative-index",
+            "initiative-tracking",
+            "task-index",
+            "task-tracking",
+            "traceability-index",
+            "github-tasks",
+        )
     )
 
 
