@@ -1,7 +1,7 @@
 # `plan/projects`
 
 ## Description
-`This directory is the project-container root for project-scoped live plan work. Each project container will own project machine state, rendered project views, repository linkage, and any child initiatives scoped to that project.`
+`This directory is the project-container root for project-scoped live plan work. Each project container owns project machine state, rendered project views, repository linkage, and any child initiatives scoped to that project.`
 
 ## Notes
 - Project containers live at `plan/projects/<project_slug>/`.

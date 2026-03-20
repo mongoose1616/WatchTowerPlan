@@ -1,7 +1,7 @@
 # `plan/initiatives`
 
 ## Description
-`This directory is the pack-wide initiative root for live plan-domain work. Each initiative will own its authored intake docs, rendered views, and initiative-local `.wt/` state under one slugged container.`
+`This directory is the pack-wide initiative root for live plan-domain work. Each initiative owns its authored intake docs, rendered views, and initiative-local `.wt/` state under one slugged container.`
 
 ## Notes
 - Pack-wide initiatives live at `plan/initiatives/<initiative_slug>/`.
