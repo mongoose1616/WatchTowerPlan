@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:58:00Z"
+updated_at: "2026-03-21T02:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -43,6 +43,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Keep pack-owned Python narrow and domain-specific.
 - Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-flavored.
 - Keep pack-owned command docs under the owning pack docs root when the command is pack-specific.
+- Publish the pack namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` so host introspection and pack validation can resolve the command surface deterministically.
 - Keep pack-owned workflow modules under the owning pack workflow root.
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
@@ -77,6 +78,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject pack roots that mirror reusable-core package trees without a real domain need.
 - Reviewers should reject pack-local docs or workflows placed under shared core roots when ownership is pack-specific.
 - Reviewers should reject copied-out pack stories that still require repository-specific Python import hacks.
+- Reviewers should reject packs that keep their namespace command docs in shared core docs or omit the required namespace entry page from the pack-owned docs root.
 
 ## Change Control
 - Update this standard when the repository changes the expected hosted-pack root shape, portability contract, or pack-owned Python guidance.
@@ -91,4 +93,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-20T23:58:00Z`
+- `2026-03-21T02:20:00Z`

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib
+from pathlib import Path
 
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
@@ -10,6 +11,7 @@ from watchtower_core.pack_integration import (
     REQUIRED_PACK_CAPABILITIES,
     SUPPORTED_PACK_CAPABILITIES,
     PackIntegration,
+    pack_command_entry_doc_path,
 )
 from watchtower_core.pack_integration.runtime import (
     validate_pack_query_runtime,
@@ -101,6 +103,7 @@ class PackContractValidationService:
             )
         )
         issues.extend(_owned_root_issues(context, runtime_manifest))
+        issues.extend(_command_doc_issues(context, runtime_manifest))
         issues.extend(_validation_suite_issues(context, runtime_manifest))
         issues.extend(_integration_issues(runtime_manifest))
 
@@ -161,15 +164,84 @@ def _owned_root_issues(
         ("docs_root", workspace_roots.docs_root, owned_roots.docs_root),
         ("workflows_root", workspace_roots.workflows_root, owned_roots.workflows_root),
         ("tracking_root", workspace_roots.tracking_root, owned_roots.tracking_root),
+        ("python_root", _expected_python_root(workspace_roots.workspace_root), owned_roots.python_root),
         ("initiatives_root", workspace_roots.initiatives_root, owned_roots.initiatives_root),
         ("projects_root", workspace_roots.projects_root, owned_roots.projects_root),
     ):
-        if expected == actual:
-            continue
+        if expected != actual:
+            issues.append(
+                ValidationIssue(
+                    code=f"pack_owned_roots_{field_name}_mismatch",
+                    message=(
+                        f"Pack owned_roots field mismatch for {field_name}: {expected} != {actual}"
+                    ),
+                    location=actual,
+                )
+            )
+        issues.extend(
+            _owned_root_location_issues(
+                workspace_root=owned_roots.workspace_root,
+                field_name=field_name,
+                relative_path=actual,
+                repo_root=context.loader.repo_root,
+            )
+        )
+    return tuple(issues)
+
+
+def _command_doc_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    command_doc_path = pack_command_entry_doc_path(
+        command_namespace=runtime_manifest.command_namespace,
+        docs_root=runtime_manifest.owned_roots.docs_root,
+    )
+    if context.loader.resolve_path(command_doc_path).is_file():
+        return ()
+    return (
+        ValidationIssue(
+            code="pack_command_doc_missing",
+            message=(
+                "Pack contract is missing the pack-owned namespace command page: "
+                f"{command_doc_path}"
+            ),
+            location=command_doc_path,
+        ),
+    )
+
+
+def _expected_python_root(workspace_root: str) -> str:
+    return f"{workspace_root}/python"
+
+
+def _owned_root_location_issues(
+    *,
+    workspace_root: str,
+    field_name: str,
+    relative_path: str | None,
+    repo_root: Path,
+) -> tuple[ValidationIssue, ...]:
+    if not relative_path:
+        return ()
+    issues: list[ValidationIssue] = []
+    if relative_path != workspace_root and not relative_path.startswith(f"{workspace_root}/"):
         issues.append(
             ValidationIssue(
-                code=f"pack_owned_roots_{field_name}_mismatch",
-                message=f"Pack owned_roots field mismatch for {field_name}: {expected} != {actual}",
+                code="pack_owned_root_not_pack_local",
+                message=(
+                    "Pack owned root must stay under the pack workspace root: "
+                    f"{field_name} -> {relative_path}"
+                ),
+                location=relative_path,
+            )
+        )
+    if not (repo_root / relative_path).exists():
+        issues.append(
+            ValidationIssue(
+                code="pack_owned_root_missing",
+                message=f"Pack owned root is missing from the repository: {relative_path}",
+                location=relative_path,
             )
         )
     return tuple(issues)

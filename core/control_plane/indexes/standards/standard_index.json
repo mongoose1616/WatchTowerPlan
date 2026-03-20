@@ -219,7 +219,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-20T23:58:00Z",
+      "updated_at": "2026-03-21T02:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -231,7 +231,8 @@
         "core/control_plane/registries/pack_registry.json",
         "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/python/src/watchtower_core/pack_integration/",
-        "core/python/src/watchtower_core/validation/pack_contract.py"
+        "core/python/src/watchtower_core/validation/pack_contract.py",
+        "plan/docs/commands/core_python/"
       ],
       "reference_doc_paths": [
         "core/docs/references/python_plugin_discovery_reference.md",
@@ -1204,7 +1205,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-      "updated_at": "2026-03-20T23:58:00Z",
+      "updated_at": "2026-03-21T02:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

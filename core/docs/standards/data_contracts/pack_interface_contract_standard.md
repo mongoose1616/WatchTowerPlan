@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:58:00Z"
+updated_at: "2026-03-21T02:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,6 +49,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `query_runtime` must return a typed query runtime describing the pack-owned query command surface.
 - `sync_targets` must return a typed sync runtime describing the pack-owned sync target surface.
 - Keep command namespaces unique across the hosted-pack registry.
+- Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
 - Do not hide primary hosted-pack discovery behind Python entry points or naming conventions alone.
 
 ## Structure or Data Model
@@ -83,16 +84,19 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Query-runtime command set shape | Pass |
 | Sync-runtime target set shape | Pass |
 | Owned-root consistency | Pass |
+| Owned-root existence and pack-local placement | Pass |
+| Pack namespace command-doc entry page present | Pass |
 | Required validation suites present | Pass |
 
 ## Operationalization
 - `Modes`: `artifact`; `validation`; `runtime`
-- `Operational Surfaces`: `core/control_plane/registries/pack_registry.json`; `plan/.wt/manifests/pack_runtime_manifest.json`; `core/python/src/watchtower_core/pack_integration/`; `core/python/src/watchtower_core/validation/pack_contract.py`
+- `Operational Surfaces`: `core/control_plane/registries/pack_registry.json`; `plan/.wt/manifests/pack_runtime_manifest.json`; `core/python/src/watchtower_core/pack_integration/`; `core/python/src/watchtower_core/validation/pack_contract.py`; `plan/docs/commands/core_python/`
 
 ## Validation
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
 - Reviewers should reject hosted-pack changes that update only Python hooks or only manifests without the companion governed artifacts.
 - Reviewers should reject command namespace collisions, missing declared hooks, or pack manifests that point at non-existent roots.
+- Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
 
 ## Change Control
 - Update this standard when the hosted-pack registry shape, runtime-manifest contract, or required validation behavior changes materially.
@@ -107,4 +111,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-20T23:58:00Z`
+- `2026-03-21T02:20:00Z`

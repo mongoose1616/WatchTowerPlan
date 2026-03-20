@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:58:00Z"
+updated_at: "2026-03-21T02:20:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -67,6 +67,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Prefer feature-owned modules inside a pack such as `bootstrap`, `initiatives`, `projects`, `tasks`, or `reviews` instead of mirroring generic core package families.
 - Keep machine interface declarations in governed manifests and registries, not hidden in Python import conventions.
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
+- Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -81,6 +82,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Recreating `query`, `sync`, or `validation` package trees inside every pack can turn packs into mirrored copies of core instead of domain runtimes.
 - Letting a pack depend on repository-specific path hacks breaks copy-out portability.
 - Keeping pack command docs in shared core docs muddies ownership and makes additional packs awkward.
+- Omitting the pack namespace entry page breaks deterministic command-doc lookup and should fail pack validation.
 
 ## Local Mapping in This Repository
 ### Current Repository Status
@@ -122,4 +124,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-20T23:58:00Z`
+- `2026-03-21T02:20:00Z`

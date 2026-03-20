@@ -13,6 +13,7 @@ from watchtower_core.cli.query_family import register_query_family
 from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
 from watchtower_core.cli.validate_family import register_validate_family
+from watchtower_core.pack_integration import pack_command_docs_root
 from watchtower_core.pack_integration.runtime import load_registered_pack_integrations
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], None]
@@ -108,7 +109,9 @@ def load_command_group_specs(
             CommandGroupSpec(
                 name=namespace,
                 registrar=registrar,
-                doc_root=f"{loaded.runtime_manifest.owned_roots.docs_root}/commands/core_python",
+                doc_root=pack_command_docs_root(
+                    docs_root=loaded.runtime_manifest.owned_roots.docs_root
+                ),
                 implementation_path=loaded.integration.command_implementation_path
                 or loaded.registry_entry.pack_runtime_manifest_path,
                 subcommand_implementation_paths=loaded.integration.command_subcommand_implementation_paths,

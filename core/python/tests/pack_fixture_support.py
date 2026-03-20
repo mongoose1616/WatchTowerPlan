@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from watchtower_core.pack_integration import pack_command_entry_doc_path
+
 REPO_ROOT = Path(__file__).resolve().parents[3]
 _PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
 _DEFAULT_FIXTURE_PACK_ROOT = "packs/plan"
@@ -69,6 +71,30 @@ def materialize_pack_validation_suite(
         for old, new in replacements:
             text = text.replace(old, new)
         path.write_text(text, encoding="utf-8")
+
+    runtime_manifest = _load_json(pack_root / ".wt/manifests/pack_runtime_manifest.json")
+    _materialize_owned_roots(repo_root, runtime_manifest["owned_roots"])
+    command_doc_relative_path = pack_command_entry_doc_path(
+        command_namespace=command_namespace,
+        docs_root=runtime_manifest["owned_roots"]["docs_root"],
+    )
+    command_doc_path = repo_root / command_doc_relative_path
+    command_doc_path.parent.mkdir(parents=True, exist_ok=True)
+    command_doc_path.write_text(
+        "\n".join(
+            (
+                f"# `watchtower-core {command_namespace}`",
+                "",
+                "## Summary",
+                f"Fixture command page for the `{command_namespace}` hosted-pack namespace.",
+                "",
+                "## Updated At",
+                "- `2026-03-21T02:20:00Z`",
+                "",
+            )
+        ),
+        encoding="utf-8",
+    )
 
     pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
     if pack_registry_path.exists():
@@ -140,6 +166,7 @@ def materialize_pack_validation_suite(
 
     return {
         "artifact_relative_path": f"{actual_wt_root}/work_items/{note_slug}.json",
+        "command_doc_relative_path": command_doc_relative_path,
         "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
         "pack_runtime_manifest_path": f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
         "schema_id": schema_id,
@@ -171,3 +198,10 @@ def _load_json(path: Path) -> dict[str, object]:
 
 def _write_json(path: Path, document: dict[str, object]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def _materialize_owned_roots(repo_root: Path, owned_roots: dict[str, object]) -> None:
+    for relative_path in owned_roots.values():
+        if not isinstance(relative_path, str) or not relative_path:
+            continue
+        (repo_root / relative_path).mkdir(parents=True, exist_ok=True)

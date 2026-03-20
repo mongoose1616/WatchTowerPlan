@@ -6,6 +6,11 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Protocol
 
+from watchtower_core.pack_integration.docs import (
+    pack_command_docs_root,
+    pack_command_entry_doc_path,
+)
+
 if TYPE_CHECKING:
     from watchtower_core.control_plane.loader import ControlPlaneLoader
     from watchtower_core.validation.suite import ValidationSuiteTargetResolver
@@ -126,4 +131,6 @@ __all__ = [
     "PackValidationProvider",
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",
+    "pack_command_docs_root",
+    "pack_command_entry_doc_path",
 ]

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from pathlib import Path
+from shutil import rmtree
 
 import pytest
 
@@ -45,6 +46,36 @@ def test_pack_contract_validation_fails_when_runtime_manifest_is_missing(
 
     assert result.passed is False
     assert any(issue.code == "pack_contract_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_pack_command_doc_is_missing(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    (repo_root / surfaces["command_doc_relative_path"]).unlink()
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_command_doc_missing" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_pack_python_root_is_missing(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    rmtree(repo_root / "packs" / "plan" / "python")
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_owned_root_missing" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
