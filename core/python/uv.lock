@@ -634,6 +634,7 @@ dev = [
     { name = "pytest-cov" },
     { name = "ruff" },
     { name = "types-pyyaml" },
+    { name = "watchtower-plan" },
 ]
 
 [package.metadata]
@@ -647,5 +648,11 @@ requires-dist = [
     { name = "pyyaml", specifier = ">=6.0.2,<7" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.13.0,<1" },
     { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12,<7" },
+    { name = "watchtower-plan", marker = "extra == 'dev'", editable = "../../plan/python" },
 ]
 provides-extras = ["dev"]
+
+[[package]]
+name = "watchtower-plan"
+version = "0.1.0"
+source = { editable = "../../plan/python" }

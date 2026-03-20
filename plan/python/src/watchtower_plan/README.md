@@ -1,12 +1,13 @@
 # `watchtower_plan`
 
 ## Summary
-WatchTowerPlan-specific plan-domain runtime that depends on this repository's current plan-workspace layout, live plan indexes, and pack-local authored-document semantics. This namespace is the approved plan-owned Python boundary under `plan/**`.
+WatchTowerPlan-specific plan-domain runtime that depends on this repository's current plan-workspace layout, live plan indexes, and pack-local authored-document semantics. This namespace is the approved plan-owned Python boundary under `plan/**`, and it is installed into the shared `core/python` environment as a local editable package.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
 - `Supported Imports`: Explicit residual services and subpackages such as `plan_workspace`, `project_workspace`, `initiative_packages`, `task_lifecycle`, `query`, `sync`, and `validation`.
 - `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `closeout`, or `utils`.
+- `Packaging Contract`: Reach this package through the shared workspace installation path, not through repo-local `sys.path` mutation inside `watchtower_core`.
 
 ## Responsibilities
 - Workspace orchestration: `initiative_packages.py`, `plan_workspace.py`, and `project_workspace.py` still own live `plan/**` and `plan/projects/**` package bootstrap, rendered-surface shaping, and readiness-gate behavior that has not been extracted behind narrower reusable-core seams.

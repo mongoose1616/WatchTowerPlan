@@ -1,7 +1,7 @@
 # `core/python`
 
 ## Description
-`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep plan-domain package code under plan/python/, and keep authored control-plane artifacts in core/control_plane/.`
+`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep plan-domain package code under plan/python/, and keep authored control-plane artifacts in core/control_plane/. The shared dev environment also installs the plan-owned package from plan/python/ as an editable local dependency.`
 
 ## Boundaries
 `Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree.`
@@ -29,6 +29,7 @@
 
 ### Daily Use
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
+- `uv sync --extra dev` installs both `watchtower_core` and the local `watchtower_plan` package into the shared workspace environment.
 - Interactive shell path: run `./tools/dev_shell.sh` when you want a shell with `.venv` activated for repeated local commands.
 - Manual fallback: run `source .venv/bin/activate` if you specifically want to activate the environment in your current shell.
 
@@ -168,5 +169,6 @@ Use the nested READMEs under `plan/python/src/watchtower_plan/`, `integrations/g
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.
 - `watchtower_core.validation.suite.ValidationSuiteService` runs declared validation suites against the active pack settings surface, including pack-local schema and validator registries.
 - `watchtower_plan` is the approved internal plan-pack consumer boundary under `plan/python/src/watchtower_plan/`; keep pack-agnostic loading and validation logic out of that namespace, and move generic behavior back into reusable-core packages when it stops being plan-specific.
+- `watchtower_plan` should be consumed through the shared workspace installation contract, not through repo-local `sys.path` mutation.
 - The Python design target is boring, explicit, and easy to consolidate: prefer one canonical implementation, extract generic behavior before growing plan-runtime-only surfaces, and keep CLI or doc-facing modules thin.
 - The default lint baseline now includes Ruff comprehension checks, and the reusable-core package subset is held to stricter `mypy` rules than the plan-owned repo-local surfaces while those domain modules continue tightening.

@@ -92,6 +92,7 @@ def test_public_validation_root_fails_closed_with_plan_boundary_guidance() -> No
 
 
 def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
+    assert not (PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
         "__init__.py",
         "artifact_families.py",
@@ -134,6 +135,7 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
         "watchtower_core.query.foundations",
         "watchtower_core.query.planning",
         "watchtower_core.query.traceability",
+        "watchtower_core.repo_local_bootstrap",
         "watchtower_core.rebuild.plan_workspace",
         "watchtower_core.rebuild.project_workspace",
         "watchtower_plan.query.authority",

@@ -60,6 +60,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
 - Keep reusable-core Python source under `core/python/src/watchtower_core/` and plan-domain Python source under `plan/python/src/watchtower_plan/`.
+- Install the plan-owned package through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_plan`.
 - Keep tests under `core/python/tests/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
@@ -83,7 +84,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/uv.lock` | Required | Locked dependency graph for repeatable onboarding. |
 | `core/python/.gitignore` | Required | Ignores local envs, caches, and build outputs. |
 | `core/python/src/watchtower_core/` | Required | Canonical package root. |
-| `plan/python/src/watchtower_plan/` | Required for plan-domain Python | Approved plan-owned package root. |
+| `plan/python/src/watchtower_plan/` | Required for plan-domain Python | Approved plan-owned package root, installed through the shared workspace as a local editable dependency. |
 | `core/python/tests/` | Required | Canonical Python test root. |
 
 ### Package layout

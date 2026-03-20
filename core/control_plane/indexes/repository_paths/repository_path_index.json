@@ -3855,6 +3855,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "plan/python/pyproject.toml",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Declares the installable package metadata for the plan-owned Python project.",
+      "parent_path": "plan/python/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "plan/python/src/watchtower_plan/",
       "kind": "directory",
       "surface_kind": "plan_workspace",

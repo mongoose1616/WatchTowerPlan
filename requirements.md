@@ -1,6 +1,6 @@
 # WatchTowerPlan Required Surfaces And Endstate Requirements
 
-> Status update as of March 20, 2026: the hard cutover has landed. The legacy docs-backed planning corpus has been purged, legacy planning indexes have been removed, and the core-versus-domain Python split is now explicit: reusable core stays under `watchtower_core`, while plan-domain Python lives behind the approved plan-owned boundary at `plan/python/src/watchtower_plan/`.
+> Status update as of March 20, 2026: the hard cutover has landed. The legacy docs-backed planning corpus has been purged, legacy planning indexes have been removed, and the core-versus-domain Python split is now explicit: reusable core stays under `watchtower_core`, while plan-domain Python lives behind the approved plan-owned boundary at `plan/python/src/watchtower_plan/`. The shared `core/python` workspace installs that plan-owned package directly instead of relying on repo-local path mutation.
 
 This document adapts the conceptual structure of `/home/j/mvp_reference/required.md` to `WatchTowerPlan`.
 
@@ -501,6 +501,7 @@ Once the intended operating model is fully implemented and the current transitio
 - important durable guidance has been normalized into foundations, standards, references, and other long-term guidance surfaces rather than being left in temporary planning artifacts
 - completed or superseded tasks, initiative briefs, design records, implementation slices, and similar temporary planning records have been removed after their durable outputs are extracted
 - there is a clean core-versus-domain split: reusable core remains under `core/python/src/watchtower_core/**`, and plan-domain Python lives under the approved plan-owned boundary at `plan/python/src/watchtower_plan/**`
+- the shared `core/python` workspace installs `watchtower_plan` directly; reusable core should not depend on repo-local `sys.path` mutation to reach the plan-owned package
 - the foundations corpus continues to guide WatchTower, but it lives as intentionally duplicated `core/docs/foundations/` and `plan/docs/foundations/` rather than as project-scoped material
 - `pack_context` is always loaded, and `project_context` is loaded separately only when needed
 - human and agent workflows still initiate the work, while Python helpers and harnesses remain the deterministic operational layer underneath
@@ -536,6 +537,7 @@ Once the intended operating model is fully implemented and the current transitio
 The following remain explicitly owner-gated and should never appear by default:
 
 - any recreation of `watchtower_core.plan_runtime` or another catch-all repo-local namespace inside reusable core
+- any reintroduction of repo-local `sys.path` mutation inside `watchtower_core` to reach `plan/python/src`
 - any compatibility-contract or compatibility-ledger surface in the clean endstate
 - any long-lived migration, release, historical, or archive family kept as normal operational state
 - any new repo-root operational tree beyond thin routing entrypoints

@@ -22,7 +22,11 @@ dev = [
   "pytest-cov>=7.0.0,<8",
   "ruff>=0.13.0,<1",
   "types-PyYAML>=6.0.12,<7",
+  "watchtower-plan",
 ]
+
+[tool.uv.sources]
+watchtower-plan = { path = "../../plan/python", editable = true }
 
 [project.scripts]
 watchtower-core = "watchtower_core.cli.main:main"
@@ -47,7 +51,7 @@ skip_covered = true
 
 [tool.mypy]
 python_version = "3.12"
-mypy_path = ["src", "../../plan/python/src"]
+mypy_path = ["src"]
 warn_return_any = true
 warn_redundant_casts = true
 warn_unused_ignores = true

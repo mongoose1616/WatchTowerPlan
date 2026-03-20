@@ -1,6 +1,6 @@
 # Capture-First Plan Workspace Decisions
 
-> Status update as of March 20, 2026: the hard cutover described here is now implemented. The legacy docs-backed planning corpus has been purged, the repo-root `workflows/` compatibility tree has been removed, and the core-versus-domain Python split is now explicit: reusable core stays under `watchtower_core`, while plan-domain Python lives under `plan/python/src/watchtower_plan/`.
+> Status update as of March 20, 2026: the hard cutover described here is now implemented. The legacy docs-backed planning corpus has been purged, the repo-root `workflows/` compatibility tree has been removed, and the core-versus-domain Python split is now explicit: reusable core stays under `watchtower_core`, while plan-domain Python lives under `plan/python/src/watchtower_plan/`. The shared `core/python` workspace now owns the installation contract for that plan-owned package.
 
 This file records the locked decisions gathered during the requirements clarification pass for [requirements.md](requirements.md).
 
@@ -124,3 +124,4 @@ This file records the locked decisions gathered during the requirements clarific
 - Both pack-wide and project-scoped initiatives are in scope from the first tranche.
 - The first implementation milestone must prove the full capture-first loop for one initiative of each scope type.
 - The current `watchtower_plan` namespace is the approved plan-owned domain boundary under `plan/python/src/watchtower_plan/`; reusable-core behavior still belongs in `watchtower_core`.
+- The shared `core/python` workspace should install `watchtower_plan` as the plan-owned package boundary; reusable core should not keep repo-local path bootstrap helpers for that import.
