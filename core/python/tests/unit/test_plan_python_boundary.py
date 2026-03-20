@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 import watchtower_core.evidence as public_evidence
+import watchtower_core.closeout as public_closeout
 import watchtower_core.query as public_query
 import watchtower_core.rebuild as public_rebuild
 import watchtower_core.routing as public_routing
@@ -14,6 +15,7 @@ import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.query import CommandQueryService
 from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_core.sync.command_index import CommandIndexSyncService
+from watchtower_plan.closeout import InitiativeCloseoutService
 from watchtower_plan.validation import (
     DocumentSemanticsValidationService,
     resolve_pack_validation_suite_targets,
@@ -111,6 +113,13 @@ def test_public_validation_root_fails_closed_with_plan_boundary_guidance() -> No
         _ = public_validation.DocumentSemanticsValidationService
 
 
+def test_public_closeout_root_fails_closed_with_plan_boundary_guidance() -> None:
+    with pytest.raises(AttributeError, match="watchtower_plan.closeout"):
+        _ = public_closeout.InitiativeCloseoutService
+    with pytest.raises(AttributeError, match="watchtower_plan.closeout"):
+        _ = public_closeout.TracePurgeService
+
+
 def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> None:
     assert not (PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
@@ -159,6 +168,9 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "bundles.py",
         "validation_evidence.py",
     ]
+    assert sorted(path.name for path in (PACKAGE_ROOT / "closeout").glob("*.py")) == [
+        "__init__.py",
+    ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "routing").glob("*.py")) == [
         "__init__.py",
         "engine.py",
@@ -174,6 +186,9 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "watchtower_core.repo_local_bootstrap",
         "watchtower_core.rebuild.plan_workspace",
         "watchtower_core.rebuild.project_workspace",
+        "watchtower_core.closeout.initiative",
+        "watchtower_core.closeout.initiative_package",
+        "watchtower_core.closeout.purge_trace",
         "watchtower_plan.query.authority",
         "watchtower_plan.query.acceptance",
         "watchtower_plan.query.commands",
@@ -213,6 +228,7 @@ def test_plan_python_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_core.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
+    assert InitiativeCloseoutService.__module__ == "watchtower_plan.closeout.initiative"
     assert (
         DocumentSemanticsValidationService.__module__
         == "watchtower_plan.validation.document_semantics"

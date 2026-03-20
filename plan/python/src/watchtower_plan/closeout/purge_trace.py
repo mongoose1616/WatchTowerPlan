@@ -11,18 +11,18 @@ from watchtower_core.control_plane.loader import (
     TRACE_PURGE_LEDGER_DIRECTORY,
     ControlPlaneLoader,
 )
-from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
     TaskIndexEntry,
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
+from watchtower_core.utils import utc_timestamp_now
+from watchtower_core.validation import AcceptanceReconciliationService
 from watchtower_plan.plan_task_state import task_event_directory
 from watchtower_plan.plan_workspace import PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncService
-from watchtower_core.utils import utc_timestamp_now
-from watchtower_core.validation import AcceptanceReconciliationService
 
 TRACE_PURGE_RECORD_SCHEMA_ID = "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
 TERMINAL_INITIATIVE_STATUSES = frozenset(
@@ -268,7 +268,6 @@ class TracePurgeService:
                 trace_id,
             )
         )
-
         return tuple(sorted(package_paths))
 
     def _initiative_root_for_trace(self, trace_id: str) -> str | None:
@@ -452,14 +451,10 @@ class TracePurgeService:
                 continue
 
     @staticmethod
-    def _entries_for_trace[
-        TEntry: TaskIndexEntry
-        | AcceptanceContract
-        | ValidationEvidenceArtifact
-    ](
-        entries: Iterable[TEntry],
+    def _entries_for_trace[EntryT: AcceptanceContract | ValidationEvidenceArtifact](
+        entries: Iterable[EntryT],
         trace_id: str,
-    ) -> tuple[TEntry, ...]:
+    ) -> tuple[EntryT, ...]:
         return tuple(entry for entry in entries if entry.trace_id == trace_id)
 
 

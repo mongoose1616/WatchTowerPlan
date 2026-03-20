@@ -22,7 +22,7 @@
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
 | `cli/` | `repo_local_orchestration` | CLI parser wiring and command-family registration. |
-| `closeout/` | `repo_local_orchestration` | Traced closeout services plus pack-level initiative-package closeout coordination helpers. |
+| `closeout/` | `boundary_guard` | Fail-closed compatibility guard; plan-domain closeout services live under `watchtower_plan.closeout`. |
 | `evidence/` | `reusable_core` | Validation-evidence ledgers plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
 | `utils/` | `reusable_core` | Small shared helpers with low coupling. |
 

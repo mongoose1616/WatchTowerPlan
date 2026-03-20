@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from watchtower_core.closeout import (
+from watchtower_plan.closeout import (
     CloseoutArtifactDocument,
     InitiativePackageCloseoutHelper,
 )

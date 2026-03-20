@@ -7,7 +7,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from watchtower_core.closeout.initiative_package import (
+from watchtower_plan.closeout.initiative_package import (
     CloseoutArtifactDocument,
     InitiativePackageCloseoutHelper,
 )

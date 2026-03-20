@@ -9,11 +9,11 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
+from watchtower_core.utils import utc_timestamp_now
+from watchtower_core.validation import AcceptanceReconciliationService
 from watchtower_plan.plan_workspace import PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncRecord
 from watchtower_plan.sync.coordination import CoordinationSyncService
-from watchtower_core.utils import utc_timestamp_now
-from watchtower_core.validation import AcceptanceReconciliationService
 
 TERMINAL_INITIATIVE_STATUSES = {"completed", "superseded", "cancelled", "abandoned"}
 TERMINAL_TASK_STATUSES = {"completed", "cancelled"}
@@ -249,10 +249,10 @@ class InitiativeCloseoutService:
 
 
 def _required_output_path(
-    records_by_target: dict[str, AllSyncRecord],
+    records: dict[str, AllSyncRecord],
     target: str,
 ) -> str:
-    record = records_by_target.get(target)
+    record = records.get(target)
     if record is None:
         raise RuntimeError(f"Closeout coordination sync did not run target: {target}")
     output_path = getattr(record, "output_path", None)

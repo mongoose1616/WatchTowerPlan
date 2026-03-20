@@ -1,55 +1,12 @@
-"""Closeout helpers for traced initiatives and future release/report workflows."""
+"""Fail-closed boundary guard for moved plan-domain closeout services."""
 
-__all__ = [
-    "CloseoutArtifactDocument",
-    "InitiativeCloseoutResult",
-    "InitiativeCloseoutService",
-    "InitiativePackageCloseoutHelper",
-    "InitiativePackageCloseoutPlan",
-    "TERMINAL_INITIATIVE_PACKAGE_STATUSES",
-    "TracePurgeResult",
-    "TracePurgeService",
-]
+from __future__ import annotations
 
+from watchtower_core.utils.module_exports import fail_closed_package_getattr
 
-def __getattr__(name: str) -> object:
-    if name in {
-        "InitiativeCloseoutResult",
-        "InitiativeCloseoutService",
-    }:
-        from watchtower_core.closeout.initiative import (
-            InitiativeCloseoutResult,
-            InitiativeCloseoutService,
-        )
+__all__: list[str] = []
 
-        return {
-            "InitiativeCloseoutResult": InitiativeCloseoutResult,
-            "InitiativeCloseoutService": InitiativeCloseoutService,
-        }[name]
-    if name in {
-        "CloseoutArtifactDocument",
-        "InitiativePackageCloseoutHelper",
-        "InitiativePackageCloseoutPlan",
-        "TERMINAL_INITIATIVE_PACKAGE_STATUSES",
-    }:
-        from watchtower_core.closeout.initiative_package import (
-            TERMINAL_INITIATIVE_PACKAGE_STATUSES,
-            CloseoutArtifactDocument,
-            InitiativePackageCloseoutHelper,
-            InitiativePackageCloseoutPlan,
-        )
-
-        return {
-            "CloseoutArtifactDocument": CloseoutArtifactDocument,
-            "InitiativePackageCloseoutHelper": InitiativePackageCloseoutHelper,
-            "InitiativePackageCloseoutPlan": InitiativePackageCloseoutPlan,
-            "TERMINAL_INITIATIVE_PACKAGE_STATUSES": TERMINAL_INITIATIVE_PACKAGE_STATUSES,
-        }[name]
-    if name in {"TracePurgeResult", "TracePurgeService"}:
-        from watchtower_core.closeout.purge_trace import TracePurgeResult, TracePurgeService
-
-        return {
-            "TracePurgeResult": TracePurgeResult,
-            "TracePurgeService": TracePurgeService,
-        }[name]
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+__getattr__ = fail_closed_package_getattr(
+    "watchtower_core.closeout exposes no supported imports. "
+    "Import repo-local closeout services from watchtower_plan.closeout."
+)

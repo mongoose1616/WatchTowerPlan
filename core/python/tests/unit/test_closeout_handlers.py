@@ -251,7 +251,7 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                 ),
                 retained_authority_paths=(
                     "plan/docs/standards/governance/example.md",
-                    "core/python/src/watchtower_core/closeout/purge_trace.py",
+                    "plan/python/src/watchtower_plan/closeout/purge_trace.py",
                 ),
                 purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
                 purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.json",

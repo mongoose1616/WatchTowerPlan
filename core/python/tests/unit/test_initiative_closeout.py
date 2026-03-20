@@ -11,11 +11,11 @@ from tests.integration.fixture_repo_support import (
     materialize_acceptance_and_evidence_paths,
     materialize_plan_pack,
 )
-from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_plan.closeout import InitiativeCloseoutService
 from watchtower_plan.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,

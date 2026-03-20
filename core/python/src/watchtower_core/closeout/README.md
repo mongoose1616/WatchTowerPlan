@@ -1,17 +1,17 @@
 # `watchtower_core.closeout`
 
 ## Summary
-Repo-local closeout helpers for traced initiatives and adjacent future closeout flows.
+Fail-closed compatibility guard for the moved plan-domain closeout services.
 
 ## Boundary
-- `Classification`: `repo_local_orchestration`
-- `Supported Imports`: `watchtower_core.closeout.InitiativeCloseoutService`, `InitiativePackageCloseoutHelper`, and related result types.
-- `Non-Goals`: Generic release automation or repo-specific path discovery hidden behind convenience imports.
+- `Classification`: `boundary_guard`
+- `Supported Imports`: None.
+- `Non-Goals`: Owning live initiative closeout, initiative-package closeout helpers, or trace-purge orchestration inside reusable core.
 
 ## Key Surfaces
-- `initiative.py`: Initiative closeout orchestration and result types.
-- `initiative_package.py`: Pack-level initiative-package closeout coordination over initiative state, evidence, closeout recap, and promotion artifacts.
+- `__init__.py`: Fails closed and redirects callers to `watchtower_plan.closeout`.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/README.md`
+- `plan/python/src/watchtower_plan/closeout/README.md`
 - `plan/docs/standards/governance/initiative_closeout_standard.md`

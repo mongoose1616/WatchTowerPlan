@@ -74,7 +74,7 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 ## Source Surface
 - `core/python/src/watchtower_core/cli/closeout_family.py`
 - `core/python/src/watchtower_core/cli/closeout_handlers.py`
-- `core/python/src/watchtower_core/closeout/initiative.py`
+- `plan/python/src/watchtower_plan/closeout/initiative.py`
 
 ## Updated At
 - `2026-03-18T23:58:00Z`

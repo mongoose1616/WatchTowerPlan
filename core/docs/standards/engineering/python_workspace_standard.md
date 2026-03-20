@@ -70,7 +70,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
-- Keep `watchtower_plan` explicitly plan-owned. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules inside either Python boundary.
+- Keep `watchtower_plan` explicitly plan-owned. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `documentation/`, or `utils/` instead of growing broad catch-all repo-local modules inside either Python boundary.
 - Use [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md) for Python naming, boundary, docstring, typing, and consolidation rules instead of re-encoding those choices in workspace-only guidance.
 
 ## Structure or Data Model
@@ -101,7 +101,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/routing/` | Export-safe route-selection runtime over governed route and workflow indexes. |
 | `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
 | `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
-| `core/python/src/watchtower_core/closeout/` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
+| `core/python/src/watchtower_core/closeout/` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
+| `plan/python/src/watchtower_plan/closeout/` | Plan-domain closeout orchestration for retained traces, initiative packages, and guarded purge flows. |
 | `plan/python/src/watchtower_plan/` | Approved WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that belongs on the plan-owned side of the core-versus-domain split. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |

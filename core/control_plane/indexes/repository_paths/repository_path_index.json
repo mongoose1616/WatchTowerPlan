@@ -3888,7 +3888,7 @@
       "path": "plan/python/src/watchtower_plan/query/common.py",
       "kind": "file",
       "surface_kind": "plan_surface",
-      "summary": "Shared rendered-surface search helpers and deterministic query-term builders for trace-linked planning views.",
+      "summary": "Shared rendered-surface search filters and deterministic query-term builders for trace-linked planning views.",
       "parent_path": "plan/python/src/watchtower_plan/query/",
       "maturity": "supporting",
       "priority": "medium",

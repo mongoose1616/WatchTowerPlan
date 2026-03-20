@@ -67,7 +67,7 @@ uv run watchtower-core closeout plan-initiative --project-slug watchtower --init
 - `core/python/src/watchtower_core/cli/closeout_family.py`
 - `core/python/src/watchtower_core/cli/closeout_handlers.py`
 - `plan/python/src/watchtower_plan/initiative_packages.py`
-- `core/python/src/watchtower_core/closeout/initiative_package.py`
+- `plan/python/src/watchtower_plan/closeout/initiative_package.py`
 
 ## Updated At
 - `2026-03-17T10:30:00Z`

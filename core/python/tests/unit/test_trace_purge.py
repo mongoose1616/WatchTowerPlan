@@ -10,12 +10,12 @@ from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_plan_pack,
 )
-from watchtower_core.closeout import TracePurgeService
 from watchtower_core.control_plane.loader import (
     TRACE_PURGE_LEDGER_DIRECTORY,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_plan.closeout import TracePurgeService
 from watchtower_plan.plan_workspace import (
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,

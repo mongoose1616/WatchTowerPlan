@@ -53,8 +53,8 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `documentation/` owns repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic.
-  - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, and `utils/` own reusable runtime seams.
-  - `plan/python/src/watchtower_plan/` owns repository-local orchestration that still depends on this repository's live planning or governed layout.
+- `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/` own reusable runtime seams.
+- `plan/python/src/watchtower_plan/` owns repository-local orchestration that still depends on this repository's live planning or governed layout, including plan-domain closeout.
   - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Do not hide plan-package imports behind repo-local `sys.path` mutation inside reusable core; if runtime behavior needs `watchtower_plan`, install that package through the shared workspace contract instead.
