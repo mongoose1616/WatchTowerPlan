@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T01:05:00Z"
+updated_at: "2026-03-21T02:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -59,6 +59,7 @@ This standard defines the baseline validation expectations for repository change
 - When derived trackers or indexes changed, run `watchtower-core plan sync all --write` before the final broad validation pass.
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
 - Use pack-interface validation whenever hosted-pack registries, runtime manifests, or pack-owned integration hooks change materially.
+- When a pack-contract change touches pack-owned command docs or owned roots, run `watchtower-core pack validate --pack <slug> --format json` in addition to the broad repository pass.
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
 - Treat `pytest -q` as the fast unit-only local loop for `core/python/tests/unit/`.
@@ -98,4 +99,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-21T01:05:00Z`
+- `2026-03-21T02:45:00Z`

@@ -123,6 +123,66 @@ def test_pack_commands_support_second_pack_fixture(
     assert payload["integration"]["sync_runtime_targets"] == ["oversight-index", "review-index"]
 
 
+def test_pack_validate_supports_second_pack_fixture(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.syspath_prepend(
+        str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
+    )
+
+    result = main(["pack", "validate", "--pack", "oversight", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack validate"
+    assert payload["pack"] == "oversight"
+    assert payload["passed"] is True
+
+
+def test_pack_validate_reports_missing_pack_command_doc_via_cli(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    (repo_root / surfaces["command_doc_relative_path"]).unlink()
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "validate",
+            "--pack-settings-path",
+            surfaces["pack_settings_path"],
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload["status"] == "ok"
+    assert payload["passed"] is False
+    assert any(issue["code"] == "pack_command_doc_missing" for issue in payload["issues"])
+
+
 def test_host_command_registry_loads_second_pack_namespace(
     tmp_path: Path,
     monkeypatch,

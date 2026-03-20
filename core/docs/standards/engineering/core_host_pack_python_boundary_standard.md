@@ -10,7 +10,7 @@ tags:
   - "python_boundary"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:40:00Z"
+updated_at: "2026-03-21T02:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -52,6 +52,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - Packs must depend on `watchtower_core` contracts, not on host internals or repo-local `sys.path` mutation.
 - Keep packs feature-owned. Prefer modules such as `bootstrap`, `initiatives`, `projects`, `tasks`, `promotion`, `closeout`, and `rendering` over mirrored infra-family package trees.
 - Keep pack-native command docs, workflows, and durable guidance under the owning pack root instead of shared core docs when the command or behavior is pack-specific.
+- Keep each pack namespace entry page under the pack-owned docs root so the host CLI and pack-contract validator resolve the same command-doc surface.
 
 ## Structure or Data Model
 ### Dependency direction
@@ -79,6 +80,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - Reviewers should reject new `watchtower_<pack> -> watchtower_host` imports.
 - Pack-native command registration should route through the host-pack contract, not flat root-command wiring in reusable core.
 - Pack portability checks should fail when a pack requires hidden repository-only Python import tricks.
+- Pack portability checks should fail when a pack points pack-owned docs back at shared core docs or omits its namespace entry page.
 
 ## Change Control
 - Update this standard when the repository changes the core-host-pack split, allowed dependency direction, or command ownership model.
@@ -95,4 +97,4 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 - The stable CLI binary name may remain `watchtower-core` even when the owning Python package is `watchtower_host`.
 
 ## Updated At
-- `2026-03-20T23:40:00Z`
+- `2026-03-21T02:45:00Z`

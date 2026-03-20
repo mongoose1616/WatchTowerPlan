@@ -24,10 +24,10 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
    - List the existing direct imports, duplicated helpers, or flat commands that must be removed.
 3. Implement the cutover.
    - Move reusable behavior into `watchtower_core`, host composition into `watchtower_host`, and pack-native behavior into the owning pack.
-   - Update companion docs, routing, and machine-readable contract surfaces in the same change set.
+   - Update companion docs, routing, machine-readable contract surfaces, and the pack namespace command entry page in the same change set.
 4. Validate the contract.
    - Run pack-interface validation, import-boundary checks, and targeted command or portability proofs.
-   - Fail closed on namespace collisions, missing hooks, invalid manifests, or hidden repository-only assumptions.
+   - Fail closed on namespace collisions, missing hooks, invalid manifests, pack-owned docs rooted outside the pack, missing pack namespace command docs, or hidden repository-only assumptions.
 
 ## Data Structure
 - Layer ownership map

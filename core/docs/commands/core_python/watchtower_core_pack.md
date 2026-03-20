@@ -42,11 +42,16 @@ cd core/python
 uv run watchtower-core pack validate --pack plan --format json
 ```
 
+```sh
+cd core/python
+uv run watchtower-core pack validate --pack oversight --format json
+```
+
 ## Behavior and Outputs
 - With no leaf command, the group prints pack-specific help and exits successfully.
 - `list` reads the shared hosted-pack registry and reports the declared packs.
 - `describe` combines the shared registry entry plus the pack-owned runtime manifest for one hosted pack.
-- `validate` runs the pack-contract validator directly for one hosted pack.
+- `validate` runs the pack-contract validator directly for one hosted pack, including pack-owned command-doc and owned-root checks.
 - Use `validate all` when you want pack-interface validation included in the broader repository pass.
 
 ## Related Commands
@@ -64,4 +69,4 @@ uv run watchtower-core pack validate --pack plan --format json
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At
-- `2026-03-20T19:20:00Z`
+- `2026-03-21T02:45:00Z`

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from dataclasses import replace
 from pathlib import Path
 from shutil import rmtree
@@ -76,6 +77,27 @@ def test_pack_contract_validation_fails_when_pack_python_root_is_missing(
 
     assert result.passed is False
     assert any(issue.code == "pack_owned_root_missing" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_docs_root_is_not_pack_local(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
+    runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
+    runtime_manifest["owned_roots"]["docs_root"] = "core/docs"
+    runtime_manifest_path.write_text(
+        f"{json.dumps(runtime_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_owned_root_not_pack_local" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
