@@ -20,7 +20,7 @@
 _No active tasks._
 
 ## Blockers
-- No current blockers, dependencies, or open discrepancy risks are recorded.
+- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.
 
 ## Next Actions
 - No further default action. Initiative is completed.

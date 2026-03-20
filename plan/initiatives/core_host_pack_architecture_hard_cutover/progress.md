@@ -20,12 +20,7 @@
 _No active tasks._
 
 ## Blockers
-- Task `task.core_host_pack_architecture_hard_cutover.pack_tests.005` depends on `task.core_host_pack_architecture_hard_cutover.pack_contract.001`, `task.core_host_pack_architecture_hard_cutover.host_runtime.002`.
-- Task `task.core_host_pack_architecture_hard_cutover.host_runtime.002` depends on `task.core_host_pack_architecture_hard_cutover.pack_contract.001`.
-- Task `task.core_host_pack_architecture_hard_cutover.docs_workflows.004` depends on `task.core_host_pack_architecture_hard_cutover.pack_contract.001`.
-- Task `task.core_host_pack_architecture_hard_cutover.plan_pack.003` depends on `task.core_host_pack_architecture_hard_cutover.pack_contract.001`, `task.core_host_pack_architecture_hard_cutover.host_runtime.002`.
-- Task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006` depends on `task.core_host_pack_architecture_hard_cutover.plan_pack.003`, `task.core_host_pack_architecture_hard_cutover.docs_workflows.004`, `task.core_host_pack_architecture_hard_cutover.pack_tests.005`.
-- Task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007` depends on `task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006`.
+- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.
 
 ## Next Actions
 - Finalize closeout, evidence, and promotion decisions.

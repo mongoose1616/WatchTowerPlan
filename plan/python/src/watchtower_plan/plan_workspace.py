@@ -1987,15 +1987,25 @@ class PlanWorkspaceService:
                 for row in task_rows
                 if row["task_status"] not in _TERMINAL_TASK_STATUSES
             )
-            include_task_blocked_by = any(
+            include_planned_task_blocked_by = any(
                 row["blocked_by"] not in {None, "-"}
-                for row in (*task_rows, *active_task_rows)
+                for row in task_rows
             )
-            include_task_depends_on = any(
+            include_planned_task_depends_on = any(
                 row["depends_on"] not in {None, "-"}
-                for row in (*task_rows, *active_task_rows)
+                for row in task_rows
+            )
+            include_active_task_blocked_by = any(
+                row["blocked_by"] not in {None, "-"} for row in active_task_rows
+            )
+            include_active_task_depends_on = any(
+                row["depends_on"] not in {None, "-"} for row in active_task_rows
             )
             dependency_and_risk_lines = _initiative_dependency_and_risk_lines(
+                snapshot,
+                readiness=readiness,
+            )
+            blocker_lines = _initiative_blocker_lines(
                 snapshot,
                 readiness=readiness,
             )
@@ -2042,8 +2052,8 @@ class PlanWorkspaceService:
                             ),
                             "objectives": _initiative_objective_lines(snapshot),
                             "planned_slices_or_workstreams": task_rows,
-                            "include_planned_slice_blocked_by": include_task_blocked_by,
-                            "include_planned_slice_depends_on": include_task_depends_on,
+                            "include_planned_slice_blocked_by": include_planned_task_blocked_by,
+                            "include_planned_slice_depends_on": include_planned_task_depends_on,
                             "dependencies_and_risks": dependency_and_risk_lines,
                             "validation_or_completion_gates": _initiative_gate_lines(
                                 snapshot,
@@ -2066,9 +2076,9 @@ class PlanWorkspaceService:
                             ),
                             "recent_events_or_changes": _initiative_event_rows(snapshot),
                             "active_tasks": active_task_rows,
-                            "include_active_task_blocked_by": include_task_blocked_by,
-                            "include_active_task_depends_on": include_task_depends_on,
-                            "blockers": dependency_and_risk_lines,
+                            "include_active_task_blocked_by": include_active_task_blocked_by,
+                            "include_active_task_depends_on": include_active_task_depends_on,
+                            "blockers": blocker_lines,
                             "next_actions": (
                                 f"- {_next_action(snapshot, readiness, self._vocabulary)}",
                                 f"- Next surface: {render_repo_link(next_surface_path, label=Path(next_surface_path).name)}",
@@ -3130,6 +3140,45 @@ def _initiative_dependency_and_risk_lines(
         )
     if not lines:
         return ("- No current blockers, dependencies, or open discrepancy risks are recorded.",)
+    return tuple(lines)
+
+
+def _initiative_blocker_lines(
+    snapshot: _PlanInitiativeSnapshot,
+    *,
+    readiness: PlanReadinessIndexEntry,
+) -> tuple[str, ...]:
+    lines: list[str] = []
+    for reason in readiness.blocking_reasons:
+        lines.append(f"- Readiness blocker: `{reason}`.")
+    for document in snapshot.discrepancy_documents:
+        status = str(document["status"])
+        if status in {"resolved", "closed", "completed", "cancelled"}:
+            continue
+        lines.append(
+            f"- Discrepancy `{document['discrepancy_id']}`: `{document['severity']}` "
+            f"`{document['category']}` / `{status}`. {document['summary']}"
+        )
+    for task_document in snapshot.task_documents:
+        task_status = str(task_document.get("task_status", ""))
+        if task_status in _TERMINAL_TASK_STATUSES:
+            continue
+        blocked_by = tuple(str(value) for value in task_document.get("blocker_task_ids", ()))
+        depends_on = tuple(str(value) for value in task_document.get("dependency_task_ids", ()))
+        if not blocked_by and not depends_on:
+            continue
+        relation_bits: list[str] = []
+        if blocked_by:
+            relation_bits.append("blocked by " + ", ".join(f"`{value}`" for value in blocked_by))
+        if depends_on:
+            relation_bits.append("depends on " + ", ".join(f"`{value}`" for value in depends_on))
+        lines.append(
+            f"- Task `{task_document['task_id']}` "
+            + " and ".join(relation_bits)
+            + "."
+        )
+    if not lines:
+        return ("- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.",)
     return tuple(lines)
 
 

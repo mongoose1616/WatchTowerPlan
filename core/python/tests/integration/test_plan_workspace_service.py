@@ -906,6 +906,16 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
         for task in coordination_index["actionable_tasks"]
     )
 
+    progress_view = (
+        repo_root / "plan/initiatives/workspace_epsilon/progress.md"
+    ).read_text(encoding="utf-8")
+    assert "## Active Tasks\n_No active tasks._" in progress_view
+    assert (
+        "- No active blockers, unresolved dependencies, or open discrepancy risks are recorded."
+        in progress_view
+    )
+    assert "depends on" not in progress_view
+
 
 def test_plan_workspace_sync_treats_task_complete_ready_initiatives_as_closeout(
     tmp_path: Path,
