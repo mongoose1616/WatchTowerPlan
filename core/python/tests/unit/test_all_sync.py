@@ -33,8 +33,7 @@ from watchtower_plan.sync.registry import (
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def _build_coordination_fixture_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_coordination_fixture_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
@@ -45,6 +44,20 @@ def _build_coordination_fixture_repo(tmp_path: Path) -> Path:
         title="Example Coordination Sync Dependency Fixture",
         summary="Seeds one live initiative so coordination dry-run sync exercises generated dependency artifacts.",
     )
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def coordination_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_coordination_fixture_repo(
+        tmp_path_factory.mktemp("coordination_sync_baseline") / "repo"
+    )
+
+
+@pytest.fixture
+def coordination_fixture_repo(tmp_path: Path, coordination_fixture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(coordination_fixture_baseline, repo_root)
     return repo_root
 
 
@@ -174,10 +187,10 @@ def test_coordination_sync_reuses_stable_rendered_sources(
 
 
 def test_coordination_sync_dry_run_uses_generated_dependency_artifacts(
+    coordination_fixture_repo: Path,
     monkeypatch: pytest.MonkeyPatch,
-    tmp_path: Path,
 ) -> None:
-    repo_root = _build_coordination_fixture_repo(tmp_path)
+    repo_root = coordination_fixture_repo
     trace_id = _first_live_initiative_trace_id(repo_root)
     initiative_index_path = repo_root / INITIATIVE_INDEX_PATH
     initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
@@ -255,8 +268,11 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
     assert (output_dir / "plan/tracking/coordination_tracking.md").exists()
 
 
-def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_path: Path) -> None:
-    repo_root = _build_coordination_fixture_repo(tmp_path)
+def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(
+    coordination_fixture_repo: Path,
+    tmp_path: Path,
+) -> None:
+    repo_root = coordination_fixture_repo
     trace_id = _first_live_initiative_trace_id(repo_root)
     initiative_index_path = repo_root / INITIATIVE_INDEX_PATH
     initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
