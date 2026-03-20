@@ -121,7 +121,7 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     ).read_text(encoding="utf-8")
 
     assert "plan/python/src/watchtower_plan/sync/foundation_index.py" in markdown
-    assert "plan/python/src/watchtower_plan/query/foundations.py" in markdown
+    assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
     assert "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
@@ -171,8 +171,15 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
         (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_query_*.md")
     )
     reusable_core_query_docs = {
+        "watchtower_core_query_acceptance.md",
         "watchtower_core_query_authority.md",
         "watchtower_core_query_commands.md",
+        "watchtower_core_query_evidence.md",
+        "watchtower_core_query_foundations.md",
+        "watchtower_core_query_paths.md",
+        "watchtower_core_query_references.md",
+        "watchtower_core_query_standards.md",
+        "watchtower_core_query_trace.md",
         "watchtower_core_query_workflows.md",
     }
     for path in query_docs:

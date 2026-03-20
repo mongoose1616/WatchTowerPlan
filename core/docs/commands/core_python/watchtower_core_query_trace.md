@@ -61,7 +61,7 @@ uv run watchtower-core query trace --trace-id trace.governed_acceptance_example 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `plan/python/src/watchtower_plan/query/traceability.py`
+- `core/python/src/watchtower_core/query/traceability.py`
 - `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At

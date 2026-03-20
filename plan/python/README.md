@@ -1,7 +1,7 @@
 # `plan/python`
 
 ## Description
-`This directory holds the plan-domain Python package project root. Use it for WatchTowerPlan-specific runtime, query, sync, validation, and authored-document semantics that should not live inside reusable core.`
+`This directory holds the plan-domain Python package project root. Use it for WatchTowerPlan-specific runtime, live planning queries, sync, validation, and authored-document semantics that should not live inside reusable core.`
 
 ## Paths
 | Path | Description |

@@ -6,7 +6,7 @@ import argparse
 
 from watchtower_core.cli.handler_common import _emit_collection_query_results
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.query import (
+from watchtower_core.query import (
     CommandQueryService,
     CommandSearchParams,
     RepositoryPathQueryService,

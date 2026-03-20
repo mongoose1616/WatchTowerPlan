@@ -11,7 +11,7 @@ import watchtower_core.routing as public_routing
 import watchtower_core.sync as public_sync
 import watchtower_core.validation as public_validation
 import watchtower_core.workflow_execution as public_workflow_execution
-from watchtower_plan.query import CommandQueryService
+from watchtower_core.query import CommandQueryService
 from watchtower_plan.sync.command_index import CommandIndexSyncService
 from watchtower_plan.validation import (
     DocumentSemanticsValidationService,
@@ -23,8 +23,23 @@ PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
 
 
 def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries() -> None:
+    assert public_query.AcceptanceContractQueryService.__module__ == (
+        "watchtower_core.query.acceptance"
+    )
     assert public_query.CommandQueryService.__module__ == "watchtower_core.query.commands"
+    assert public_query.FoundationQueryService.__module__ == "watchtower_core.query.foundations"
+    assert public_query.ReferenceQueryService.__module__ == "watchtower_core.query.references"
+    assert public_query.RepositoryPathQueryService.__module__ == (
+        "watchtower_core.query.repository"
+    )
     assert public_query.RoutePreviewService.__module__ == "watchtower_core.query.routes"
+    assert public_query.StandardQueryService.__module__ == "watchtower_core.query.standards"
+    assert public_query.TraceabilityQueryService.__module__ == (
+        "watchtower_core.query.traceability"
+    )
+    assert public_query.ValidationEvidenceQueryService.__module__ == (
+        "watchtower_core.query.evidence"
+    )
     assert (
         public_query.GovernanceSurfaceQueryService.__module__
         == "watchtower_core.query.governance_surfaces"
@@ -95,12 +110,19 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
     assert not (PACKAGE_ROOT / "repo_local_bootstrap.py").exists()
     assert sorted(path.name for path in (PACKAGE_ROOT / "query").glob("*.py")) == [
         "__init__.py",
+        "acceptance.py",
         "artifact_families.py",
         "authority.py",
         "commands.py",
         "common.py",
+        "evidence.py",
+        "foundations.py",
         "governance_surfaces.py",
+        "references.py",
+        "repository.py",
         "routes.py",
+        "standards.py",
+        "traceability.py",
         "workflows.py",
     ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == [
@@ -132,15 +154,20 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
     (
         "watchtower_core.control_plane.planning_vocabulary",
         "watchtower_core.query.coordination",
-        "watchtower_core.query.foundations",
         "watchtower_core.query.planning",
-        "watchtower_core.query.traceability",
         "watchtower_core.repo_local_bootstrap",
         "watchtower_core.rebuild.plan_workspace",
         "watchtower_core.rebuild.project_workspace",
         "watchtower_plan.query.authority",
+        "watchtower_plan.query.acceptance",
         "watchtower_plan.query.commands",
+        "watchtower_plan.query.evidence",
+        "watchtower_plan.query.foundations",
+        "watchtower_plan.query.references",
+        "watchtower_plan.query.repository",
         "watchtower_plan.query.routes",
+        "watchtower_plan.query.standards",
+        "watchtower_plan.query.traceability",
         "watchtower_plan.query.workflows",
         "watchtower_core.sync.all",
         "watchtower_core.sync.command_index",
@@ -170,3 +197,14 @@ def test_plan_python_boundary_owners_remain_available() -> None:
         resolve_pack_validation_suite_targets.__module__
         == "watchtower_plan.validation.targets"
     )
+
+
+def test_plan_query_root_fails_closed_for_generic_query_exports() -> None:
+    import watchtower_plan.query as public_plan_query
+
+    with pytest.raises(AttributeError):
+        _ = public_plan_query.CommandQueryService
+    with pytest.raises(AttributeError):
+        _ = public_plan_query.FoundationQueryService
+    with pytest.raises(AttributeError):
+        _ = public_plan_query.TraceabilityQueryService

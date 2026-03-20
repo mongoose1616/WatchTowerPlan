@@ -181,7 +181,7 @@
       ],
       "operationalization_paths": [
         "plan/python/src/watchtower_plan/sync/foundation_index.py",
-        "plan/python/src/watchtower_plan/query/foundations.py",
+        "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
@@ -474,7 +474,7 @@
       ],
       "operationalization_paths": [
         "plan/python/src/watchtower_plan/sync/standard_index.py",
-        "plan/python/src/watchtower_plan/query/standards.py",
+        "core/python/src/watchtower_core/query/standards.py",
         "core/control_plane/indexes/standards/",
         "core/control_plane/schemas/artifacts/"
       ],
@@ -762,7 +762,7 @@
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/templates/foundation_document_template.md",
         "plan/python/src/watchtower_plan/sync/foundation_index.py",
-        "plan/python/src/watchtower_plan/query/foundations.py"
+        "core/python/src/watchtower_core/query/foundations.py"
       ],
       "internal_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
@@ -917,7 +917,7 @@
         "plan/docs/standards/*/*_standard.md",
         "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "plan/python/src/watchtower_plan/sync/standard_index.py",
-        "plan/python/src/watchtower_plan/query/standards.py",
+        "core/python/src/watchtower_core/query/standards.py",
         "core/docs/commands/core_python/watchtower_core_query_standards.md",
         "core/docs/templates/standard_document_template.md"
       ],
@@ -3097,7 +3097,7 @@
       "operationalization_paths": [
         "plan/tracking/coordination_tracking.md",
         "plan/python/src/watchtower_plan/sync/traceability.py",
-        "plan/python/src/watchtower_plan/query/traceability.py",
+        "core/python/src/watchtower_core/query/traceability.py",
         "plan/workflows/modules/traceability_reconciliation.md"
       ],
       "internal_reference_paths": [

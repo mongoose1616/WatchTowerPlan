@@ -55,7 +55,7 @@ uv run watchtower-core query acceptance --acceptance-id ac.governed_acceptance_e
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
-- `plan/python/src/watchtower_plan/query/acceptance.py`
+- `core/python/src/watchtower_core/query/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 
 ## Updated At

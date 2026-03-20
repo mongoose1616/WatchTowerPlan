@@ -1,18 +1,18 @@
 # `watchtower_plan.query`
 
 ## Summary
-Authoritative repository query services for live plan indexes, promoted guidance, and other repo-local lookup behavior that is not export-safe enough for the reusable-core query package.
+Authoritative repository query services for live plan indexes, rendered planning views, and repo-local planning lookup behavior that is not export-safe enough for the reusable-core query package.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit plan-runtime query modules such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `standards`, `references`, `foundations`, `acceptance`, `evidence`, and `traceability`.
-- `Non-Goals`: Re-owning the generic command, workflow, authority, route-preview, governance-surface, or artifact-family query services that now live under `watchtower_core.query`.
+- `Supported Imports`: Explicit plan-runtime query modules such as `coordination`, `initiatives`, `tasks`, `readiness`, `discrepancies`, `projects`, `reviews`, `closeouts`, `plan_evidence`, and `artifacts`.
+- `Non-Goals`: Re-owning generic command, workflow, authority, route-preview, governance-surface, artifact-family, acceptance, evidence, standards, references, foundations, repository-path, or traceability query services that now live under `watchtower_core.query`.
 
 ## Key Surfaces
 - `coordination.py`: Active-first coordination lookup over the live plan-workspace indexes and rendered companion surfaces.
 - `initiatives.py`, `tasks.py`, `readiness.py`, `discrepancies.py`, `plan_evidence.py`, `closeouts.py`, `reviews.py`, and `projects.py`: Initiative-local and pack-local planning state lookup.
-- `standards.py`, `references.py`, `foundations.py`, `acceptance.py`, `evidence.py`, `artifacts.py`, and `traceability.py`: Repo-local durable-guidance and trace-linked lookup layered over the current promoted plan/docs and control-plane surfaces.
-- Reusable command, workflow, authority, and route-preview queries now resolve directly from `watchtower_core.query` even when imported through `watchtower_plan.query`.
+- `artifacts.py`: Repo-local artifact lookup over live plan artifact indexes and package-local orchestration surfaces.
+- Reusable command, workflow, authority, route-preview, knowledge, discovery, and record queries resolve directly from `watchtower_core.query`.
 
 ## Files
 | Path | Description |

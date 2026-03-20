@@ -6,18 +6,15 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.adapters import extract_repo_path_references, extract_subsections
+from watchtower_core.control_plane.reference_status import (
+    REFERENCE_REPOSITORY_STATUS_PREFIXES,
+    REFERENCE_REPOSITORY_STATUS_VALUES,
+)
 from watchtower_plan.governed_documents import validate_required_section_order
 
 REFERENCE_LOCAL_MAPPING_SECTION = "Local Mapping in This Repository"
 REFERENCE_CURRENT_REPOSITORY_STATUS_SUBSECTION = "Current Repository Status"
 REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION = "Current Touchpoints"
-
-REFERENCE_REPOSITORY_STATUS_PREFIXES = {
-    "candidate_future_guidance": "Candidate reference.",
-    "supporting_authority": "Supporting authority",
-    "active_support": "Active support",
-}
-REFERENCE_REPOSITORY_STATUS_VALUES = tuple(REFERENCE_REPOSITORY_STATUS_PREFIXES)
 
 
 @dataclass(frozen=True, slots=True)

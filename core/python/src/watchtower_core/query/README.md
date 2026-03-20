@@ -1,12 +1,12 @@
 # `watchtower_core.query`
 
 ## Summary
-Export-safe generic query services over governed pack surfaces, command and workflow indexes, authority maps, route metadata, and artifact-family rules.
+Export-safe generic query services over governed pack surfaces, command and workflow indexes, authority maps, route metadata, artifact-family rules, and governed knowledge or record indexes such as standards, references, foundations, acceptance contracts, evidence, repository paths, and traceability.
 
 ## Boundary
 - `Classification`: `reusable_core`
-- `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, and `artifact_families`.
-- `Non-Goals`: Live planning, initiative, task, and discrepancy query services that live under `watchtower_plan.query`.
+- `Supported Imports`: The package root plus explicit generic query submodules such as `commands`, `workflows`, `routes`, `authority`, `governance_surfaces`, `artifact_families`, `acceptance`, `evidence`, `foundations`, `references`, `repository`, `standards`, and `traceability`.
+- `Non-Goals`: Live planning, initiative, task, review, closeout, discrepancy, readiness, and plan-evidence query services that live under `watchtower_plan.query`.
 
 ## Key Surfaces
 - `__init__.py`: Curated root export surface for reusable generic query services while still fail-closing repo-local planning queries.
@@ -14,6 +14,8 @@ Export-safe generic query services over governed pack surfaces, command and work
 - `routes.py`: Export-safe advisory route-preview service over the governed route and workflow indexes.
 - `governance_surfaces.py`: Pack-surface lookup over `pack_settings` and `governance_surface_map`.
 - `artifact_families.py`: Artifact-family registry query and path-resolution helpers.
+- `acceptance.py`, `evidence.py`, and `traceability.py`: Governed record lookup over acceptance contracts, validation evidence, and traceability indexes.
+- `foundations.py`, `references.py`, `standards.py`, and `repository.py`: Structured query services over governed knowledge and repository-discovery indexes.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/query/README.md`

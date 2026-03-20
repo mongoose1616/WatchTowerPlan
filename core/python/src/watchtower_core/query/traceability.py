@@ -1,4 +1,4 @@
-"""Repo-specific query helpers for traceability records."""
+"""Reusable query helpers for traceability records."""
 
 from __future__ import annotations
 
@@ -14,5 +14,9 @@ class TraceabilityQueryService:
 
     def get(self, trace_id: str) -> TraceabilityEntry:
         """Return the traceability entry for the requested trace identifier."""
+
         index = self._loader.load_traceability_index()
         return index.get(trace_id)
+
+
+__all__ = ["TraceabilityQueryService"]

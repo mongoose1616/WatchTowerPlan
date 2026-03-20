@@ -92,7 +92,7 @@ uv run watchtower-core query standards --operationalization-path core/docs/refer
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `plan/python/src/watchtower_plan/query/standards.py`
+- `core/python/src/watchtower_core/query/standards.py`
 - `core/control_plane/indexes/standards/standard_index.json`
 
 ## Updated At

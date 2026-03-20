@@ -1,4 +1,4 @@
-"""Repo-specific query helpers for governed acceptance-contract artifacts."""
+"""Reusable query helpers for governed acceptance-contract artifacts."""
 
 from __future__ import annotations
 
@@ -28,6 +28,7 @@ class AcceptanceContractQueryService:
         params: AcceptanceContractSearchParams,
     ) -> tuple[AcceptanceContract, ...]:
         """Return matching acceptance contracts."""
+
         results: list[AcceptanceContract] = []
         for contract in self._loader.load_acceptance_contracts():
             if params.trace_id is not None and contract.trace_id != params.trace_id:
@@ -43,3 +44,6 @@ class AcceptanceContractQueryService:
                 continue
             results.append(contract)
         return tuple(results)
+
+
+__all__ = ["AcceptanceContractQueryService", "AcceptanceContractSearchParams"]

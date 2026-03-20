@@ -1,4 +1,4 @@
-"""Index-backed query helpers for reference documents."""
+"""Reusable index-backed query helpers for governed reference docs."""
 
 from __future__ import annotations
 
@@ -6,8 +6,8 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ReferenceIndexEntry
-from watchtower_plan.query.common import query_score
-from watchtower_plan.reference_semantics import REFERENCE_REPOSITORY_STATUS_VALUES
+from watchtower_core.control_plane.reference_status import REFERENCE_REPOSITORY_STATUS_VALUES
+from watchtower_core.query.common import query_score
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,13 +26,14 @@ class ReferenceSearchParams:
 
 
 class ReferenceQueryService:
-    """Search the reference index with simple structured filters."""
+    """Search the reference index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
 
     def search(self, params: ReferenceSearchParams) -> tuple[ReferenceIndexEntry, ...]:
         """Return reference entries matching the requested filters."""
+
         index = self._loader.load_reference_index()
         reference_id = params.reference_id.casefold() if params.reference_id is not None else None
         repository_status = (
@@ -107,6 +108,7 @@ class ReferenceQueryService:
 
 def validate_repository_status(value: str) -> str:
     """Validate and normalize a repository-status CLI or API input."""
+
     normalized = value.casefold().strip()
     if normalized not in REFERENCE_REPOSITORY_STATUS_VALUES:
         allowed = ", ".join(REFERENCE_REPOSITORY_STATUS_VALUES)
@@ -120,3 +122,11 @@ def _matches_related_path(requested_path: str, related_paths: tuple[str, ...]) -
     if requested.endswith("/"):
         return any(value == requested or value.startswith(requested) for value in candidates)
     return requested in candidates
+
+
+__all__ = [
+    "REFERENCE_REPOSITORY_STATUS_VALUES",
+    "ReferenceQueryService",
+    "ReferenceSearchParams",
+    "validate_repository_status",
+]

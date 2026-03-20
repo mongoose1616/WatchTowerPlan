@@ -15,12 +15,15 @@ from watchtower_core.cli.handler_common import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry, AuthorityMapEntry
+from watchtower_core.query import (
+    AuthorityMapQueryService,
+    AuthorityMapSearchParams,
+    TraceabilityQueryService,
+)
 from watchtower_plan.project_context import load_project_context
 from watchtower_plan.query import (
     ArtifactQueryService,
     ArtifactSearchParams,
-    AuthorityMapQueryService,
-    AuthorityMapSearchParams,
     DiscrepancyQueryService,
     DiscrepancySearchParams,
     PlanCloseoutQueryService,
@@ -35,7 +38,6 @@ from watchtower_plan.query import (
     ReadinessSearchParams,
     TaskQueryService,
     TaskSearchParams,
-    TraceabilityQueryService,
 )
 
 

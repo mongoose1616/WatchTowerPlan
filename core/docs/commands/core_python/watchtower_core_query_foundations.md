@@ -74,7 +74,7 @@ uv run watchtower-core query foundations --applied-by-path core/docs/standards/e
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `plan/python/src/watchtower_plan/query/foundations.py`
+- `core/python/src/watchtower_core/query/foundations.py`
 - `core/control_plane/indexes/foundations/foundation_index.json`
 
 ## Updated At

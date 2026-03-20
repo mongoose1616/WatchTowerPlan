@@ -9,7 +9,7 @@ from watchtower_core.cli.handler_common import (
     _print_reference_usage_summary,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.query import (
+from watchtower_core.query import (
     FoundationQueryService,
     FoundationSearchParams,
     ReferenceQueryService,

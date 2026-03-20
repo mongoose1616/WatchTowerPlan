@@ -1,4 +1,4 @@
-"""Repo-specific query helpers for governed validation-evidence artifacts."""
+"""Reusable query helpers for governed validation-evidence artifacts."""
 
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ class ValidationEvidenceQueryService:
         params: ValidationEvidenceSearchParams,
     ) -> tuple[ValidationEvidenceArtifact, ...]:
         """Return matching validation-evidence artifacts."""
+
         results: list[ValidationEvidenceArtifact] = []
         for artifact in self._loader.load_validation_evidence_artifacts():
             if params.trace_id is not None and artifact.trace_id != params.trace_id:
@@ -48,3 +49,6 @@ class ValidationEvidenceQueryService:
                 continue
             results.append(artifact)
         return tuple(results)
+
+
+__all__ = ["ValidationEvidenceQueryService", "ValidationEvidenceSearchParams"]

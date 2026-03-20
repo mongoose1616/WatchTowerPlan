@@ -1,4 +1,4 @@
-"""Index-backed query helpers for governed foundation documents."""
+"""Reusable index-backed query helpers for governed foundation docs."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import FoundationIndexEntry
-from watchtower_plan.query.common import query_score
+from watchtower_core.query.common import query_score
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,13 +26,14 @@ class FoundationSearchParams:
 
 
 class FoundationQueryService:
-    """Search the foundation index with simple structured filters."""
+    """Search the foundation index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
 
     def search(self, params: FoundationSearchParams) -> tuple[FoundationIndexEntry, ...]:
         """Return foundation entries matching the requested filters."""
+
         index = self._loader.load_foundation_index()
         foundation_id = (
             params.foundation_id.casefold() if params.foundation_id is not None else None
@@ -105,3 +106,6 @@ class FoundationQueryService:
         if params.limit is not None:
             entries = entries[: params.limit]
         return tuple(entries)
+
+
+__all__ = ["FoundationQueryService", "FoundationSearchParams"]

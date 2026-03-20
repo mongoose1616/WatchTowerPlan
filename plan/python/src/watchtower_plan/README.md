@@ -14,7 +14,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - Authored-document semantics: `front_matter_paths.py`, `markdown_semantics.py`, `reference_resolution.py`, `reference_semantics.py`, and `standards.py` still interpret this repository's governed Markdown corpus and related repo-native path rules.
 - Planning lifecycle: `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py` still own repo-local task state mutation, task-event recording, and lifecycle guardrails over live plan state.
 - Pack-local aggregate services: `artifact_index.py`, `guidance_promotion.py`, and `project_context.py` still coordinate plan-pack artifacts, promotion, and project-scoped runtime loading that remain specific to the current pack.
-- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries.
+- Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the repo-local planning implementations that sit behind the reusable-core package boundaries, but only for live plan-runtime behavior that cannot already live under reusable core.
 
 ## Key Surfaces
 - `initiative_packages.py`: Plan-workspace initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
@@ -23,7 +23,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `plan_task_state.py`, `task_lifecycle.py`, and `task_lifecycle_support.py`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
 - `task_lifecycle.py` and `task_lifecycle_support.py`: Live task transition support over initiative-local plan task state.
 - `guidance_promotion.py`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
-- `query/`, `sync/`, and `validation/`: Repo-local planning and orchestration implementations behind the reusable-core query, sync, and validation boundaries.
+- `query/`, `sync/`, and `validation/`: Repo-local planning and orchestration implementations behind the reusable-core query, sync, and validation boundaries, with generic governed-index query services expected to live back under `watchtower_core.query`.
 
 ## Shrink Rules
 - Prefer moving new generic helpers into explicit reusable-core packages rather than growing this plan-owned namespace unnecessarily.

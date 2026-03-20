@@ -1,4 +1,4 @@
-"""Index-backed query helpers for repository path entries."""
+"""Reusable index-backed query helpers for repository path entries."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import RepositoryPathEntry
-from watchtower_plan.query.common import query_score
+from watchtower_core.query.common import query_score
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,13 +28,14 @@ _PRIORITY_BONUS = {"high": 3, "medium": 1, "low": 0}
 
 
 class RepositoryPathQueryService:
-    """Search the repository path index with simple structured filters."""
+    """Search the repository path index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
 
     def search(self, params: RepositoryPathSearchParams) -> tuple[RepositoryPathEntry, ...]:
         """Return repository path entries matching the requested filters."""
+
         index = self._loader.load_repository_path_index()
         tag = params.tag.casefold() if params.tag is not None else None
         surface_kind = params.surface_kind.casefold() if params.surface_kind is not None else None
@@ -92,3 +93,6 @@ class RepositoryPathQueryService:
         if params.limit is not None:
             entries = entries[: params.limit]
         return tuple(entries)
+
+
+__all__ = ["RepositoryPathQueryService", "RepositoryPathSearchParams"]

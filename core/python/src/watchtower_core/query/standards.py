@@ -1,4 +1,4 @@
-"""Index-backed query helpers for governed standards."""
+"""Reusable index-backed query helpers for governed standards."""
 
 from __future__ import annotations
 
@@ -6,8 +6,10 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import StandardIndexEntry
-from watchtower_plan.query.common import query_score
-from watchtower_plan.standards import operationalization_path_matches
+from watchtower_core.control_plane.operationalization_paths import (
+    operationalization_path_matches,
+)
+from watchtower_core.query.common import query_score
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,13 +30,14 @@ class StandardSearchParams:
 
 
 class StandardQueryService:
-    """Search the standard index with simple structured filters."""
+    """Search the standard index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
 
     def search(self, params: StandardSearchParams) -> tuple[StandardIndexEntry, ...]:
         """Return standard entries matching the requested filters."""
+
         index = self._loader.load_standard_index()
         standard_id = params.standard_id.casefold() if params.standard_id is not None else None
         category = params.category.casefold() if params.category is not None else None
@@ -124,6 +127,7 @@ class StandardQueryService:
         indexed_paths: tuple[str, ...],
     ) -> bool:
         """Match exact, directory-descendant, and glob operationalization paths."""
+
         for indexed_path in indexed_paths:
             if operationalization_path_matches(
                 requested_path,
@@ -132,3 +136,6 @@ class StandardQueryService:
             ):
                 return True
         return False
+
+
+__all__ = ["StandardQueryService", "StandardSearchParams"]

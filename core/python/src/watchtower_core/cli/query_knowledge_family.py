@@ -18,7 +18,7 @@ from watchtower_core.cli.query_knowledge_handlers import (
     _run_query_standards,
     _run_query_workflows,
 )
-from watchtower_plan.reference_semantics import REFERENCE_REPOSITORY_STATUS_VALUES
+from watchtower_core.query.references import REFERENCE_REPOSITORY_STATUS_VALUES
 
 
 def register_query_knowledge_commands(
