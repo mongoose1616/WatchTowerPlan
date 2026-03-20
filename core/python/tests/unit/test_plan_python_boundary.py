@@ -192,6 +192,7 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "watchtower_plan.markdown_semantics",
         "watchtower_plan.reference_semantics",
         "watchtower_plan.standards",
+        "watchtower_plan.task_companion_path_repair",
         "watchtower_plan.sync.command_index",
         "watchtower_plan.sync.repository_paths",
         "watchtower_plan.sync.route_index",
