@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T02:20:00Z"
+updated_at: "2026-03-21T03:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,6 +50,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `sync_targets` must return a typed sync runtime describing the pack-owned sync target surface.
 - Keep command namespaces unique across the hosted-pack registry.
 - Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
+- Let pack-interface validation scan live source roots when they exist so reusable core cannot import a hosted pack and a hosted pack cannot import host composition.
 - Do not hide primary hosted-pack discovery behind Python entry points or naming conventions alone.
 
 ## Structure or Data Model
@@ -87,6 +88,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Owned-root existence and pack-local placement | Pass |
 | Pack namespace command-doc entry page present | Pass |
 | Required validation suites present | Pass |
+| Dependency-direction scan across core, host, and pack source roots | Pass |
 
 ## Operationalization
 - `Modes`: `artifact`; `validation`; `runtime`
@@ -94,6 +96,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 
 ## Validation
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
+- `watchtower-core validate all` and `watchtower-core pack validate --pack <slug>` should fail closed when live source roots contain forbidden `watchtower_core -> watchtower_<pack>` or `watchtower_<pack> -> watchtower_host` imports.
 - Reviewers should reject hosted-pack changes that update only Python hooks or only manifests without the companion governed artifacts.
 - Reviewers should reject command namespace collisions, missing declared hooks, or pack manifests that point at non-existent roots.
 - Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
@@ -111,4 +114,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-21T02:20:00Z`
+- `2026-03-21T03:35:00Z`

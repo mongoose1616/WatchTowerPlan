@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import importlib
 from pathlib import Path
 
@@ -22,6 +23,8 @@ from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
 PACK_CONTRACT_VALIDATOR_ID = "validator.pack.contract"
+CORE_PACKAGE_RELATIVE_PATH = Path("core/python/src/watchtower_core")
+HOST_PACKAGE_RELATIVE_PATH = Path("core/python/src/watchtower_host")
 
 
 class PackContractValidationService:
@@ -106,6 +109,7 @@ class PackContractValidationService:
         issues.extend(_command_doc_issues(context, runtime_manifest))
         issues.extend(_validation_suite_issues(context, runtime_manifest))
         issues.extend(_integration_issues(runtime_manifest))
+        issues.extend(_dependency_boundary_issues(context, runtime_manifest))
 
         return ValidationResult(
             validator_id=PACK_CONTRACT_VALIDATOR_ID,
@@ -449,4 +453,95 @@ def _runtime_hook_issues(
             message=invalid_message,
             location=integration_module,
         ),
+    )
+
+
+def _dependency_boundary_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    repo_root = context.loader.repo_root
+    core_package_root = repo_root / CORE_PACKAGE_RELATIVE_PATH
+    pack_package_root = (
+        repo_root
+        / runtime_manifest.owned_roots.python_root
+        / "src"
+        / Path(*runtime_manifest.python_package.split("."))
+    )
+    if core_package_root.is_dir():
+        issues.extend(
+            _forbidden_import_issues(
+                package_root=core_package_root,
+                forbidden_prefixes=(runtime_manifest.python_package,),
+                code="pack_boundary_core_imports_pack",
+                message_prefix="Reusable core may not import pack runtime modules",
+            )
+        )
+    if pack_package_root.is_dir():
+        issues.extend(
+            _forbidden_import_issues(
+                package_root=pack_package_root,
+                forbidden_prefixes=("watchtower_host",),
+                code="pack_boundary_pack_imports_host",
+                message_prefix="Pack runtime may not import host composition modules",
+            )
+        )
+    return tuple(issues)
+
+
+def _forbidden_import_issues(
+    *,
+    package_root: Path,
+    forbidden_prefixes: tuple[str, ...],
+    code: str,
+    message_prefix: str,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    for path in sorted(package_root.rglob("*.py")):
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        except SyntaxError as exc:
+            issues.append(
+                ValidationIssue(
+                    code="pack_boundary_scan_failed",
+                    message=f"Could not parse Python module during boundary scan: {exc}",
+                    location=path.as_posix(),
+                )
+            )
+            continue
+        for module_name in _iter_import_modules(tree):
+            if not _module_matches_forbidden_prefix(
+                module_name=module_name,
+                forbidden_prefixes=forbidden_prefixes,
+            ):
+                continue
+            issues.append(
+                ValidationIssue(
+                    code=code,
+                    message=f"{message_prefix}: {module_name}",
+                    location=path.as_posix(),
+                )
+            )
+    return tuple(issues)
+
+
+def _iter_import_modules(tree: ast.AST) -> tuple[str, ...]:
+    modules: list[str] = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            modules.extend(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module is not None:
+            modules.append(node.module)
+    return tuple(modules)
+
+
+def _module_matches_forbidden_prefix(
+    *,
+    module_name: str,
+    forbidden_prefixes: tuple[str, ...],
+) -> bool:
+    return any(
+        module_name == prefix or module_name.startswith(f"{prefix}.")
+        for prefix in forbidden_prefixes
     )

@@ -100,6 +100,40 @@ def test_pack_contract_validation_fails_when_docs_root_is_not_pack_local(
     assert any(issue.code == "pack_owned_root_not_pack_local" for issue in result.issues)
 
 
+def test_pack_contract_validation_fails_when_reusable_core_imports_pack_runtime(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    illegal_import = repo_root / "core/python/src/watchtower_core/illegal_import.py"
+    illegal_import.parent.mkdir(parents=True, exist_ok=True)
+    illegal_import.write_text("import watchtower_plan.integration\n", encoding="utf-8")
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_boundary_core_imports_pack" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_pack_runtime_imports_host_runtime(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    illegal_import = repo_root / "packs/plan/python/src/watchtower_plan/illegal_import.py"
+    illegal_import.parent.mkdir(parents=True, exist_ok=True)
+    illegal_import.write_text("from watchtower_host.cli import main\n", encoding="utf-8")
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_boundary_pack_imports_host" for issue in result.issues)
+
+
 def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
     tmp_path: Path,
 ) -> None:

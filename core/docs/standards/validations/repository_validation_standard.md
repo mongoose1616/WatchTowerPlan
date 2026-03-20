@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:55:00Z"
+updated_at: "2026-03-21T03:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -59,6 +59,7 @@ This standard defines the baseline validation expectations for repository change
 - When derived trackers or indexes changed, run `watchtower-core plan sync all --write` before the final broad validation pass.
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
 - Use pack-interface validation whenever hosted-pack registries, runtime manifests, or pack-owned integration hooks change materially.
+- Treat pack-interface validation as responsible for dependency-direction checks too: when the relevant source roots exist, reusable core must not import a hosted pack and hosted packs must not import `watchtower_host`.
 - When a pack-contract change touches pack-owned command docs or owned roots, run `watchtower-core pack validate --pack <slug> --format json` in addition to the broad repository pass.
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
@@ -87,6 +88,7 @@ This standard defines the baseline validation expectations for repository change
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
 - Generated trackers and indexes should not be validated against stale source state.
 - Python helper changes should not close out without typecheck, lint, and test coverage unless the exception is explicit.
+- Reviewers should reject hosted-pack boundary changes that bypass pack-interface validation after altering manifests, integration hooks, or dependency direction.
 - Reviewers should reject validation updates that only prove the happy path when the changed code clearly owns fail-closed behavior, error mapping, or edge-case handling.
 
 ## Change Control
@@ -101,4 +103,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-20T23:55:00Z`
+- `2026-03-21T03:35:00Z`
