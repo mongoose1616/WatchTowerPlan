@@ -191,6 +191,7 @@ def test_plan_group_prints_group_specific_help(capsys) -> None:
     assert "bootstrap" in captured.out
     assert "confirm-inputs" in captured.out
     assert "approve" in captured.out
+    assert "closeout" in captured.out
     assert "task" in captured.out
 
 
@@ -251,8 +252,18 @@ def test_closeout_group_prints_group_specific_help(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Apply terminal initiative state to live `plan/**` initiative" in captured.out
-    assert "plan-initiative" in captured.out
+    assert "Apply terminal initiative state to retained traced initiatives" in captured.out
+    assert "initiative" in captured.out
+    assert "purge-trace" not in captured.out
+    assert "uv run watchtower-core closeout initiative --trace-id trace.example" in captured.out
+
+
+def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
+    result = main(["plan", "closeout"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Apply terminal closeout state to live plan initiative packages" in captured.out
     assert "initiative" in captured.out
     assert "purge-trace" in captured.out
-    assert "uv run watchtower-core closeout purge-trace" in captured.out
+    assert "uv run watchtower-core plan closeout purge-trace" in captured.out

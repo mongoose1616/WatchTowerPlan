@@ -49,8 +49,8 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate canonical planning surfaces.
-- This command is not the normal live closeout path for `plan/**` initiative packages; use `watchtower-core closeout plan-initiative` for the live plan workspace.
-- If the requested `trace_id` still belongs to a live `plan/**` initiative package, the command fails closed and tells the operator which `watchtower-core closeout plan-initiative` invocation to use instead.
+- This command is not the normal live closeout path for `plan/**` initiative packages; use `watchtower-core plan closeout initiative` for the live plan workspace.
+- If the requested `trace_id` still belongs to a live `plan/**` initiative package, the command fails closed and tells the operator which `watchtower-core plan closeout initiative` invocation to use instead.
 - By default the command validates initiative acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
 - In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, coordination index, initiative tracker, and coordination tracker that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
@@ -61,8 +61,8 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout` | Parent command group for closeout operations. |
-| `watchtower-core closeout plan-initiative` | Use this instead when the target is a live initiative package under `plan/**` rather than a retained trace record. |
-| `watchtower-core closeout purge-trace` | Use after terminal closeout when the trace package is ready to leave the retained planning corpus. |
+| `watchtower-core plan closeout initiative` | Use this instead when the target is a live initiative package under `plan/**` rather than a retained trace record. |
+| `watchtower-core plan closeout purge-trace` | Use after terminal closeout when the trace package is ready to leave the retained planning corpus. |
 | `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
 | `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry this command updates. |

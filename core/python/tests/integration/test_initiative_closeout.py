@@ -296,7 +296,7 @@ def test_initiative_closeout_rejects_live_plan_trace_ids(
 
     message = str(exc_info.value)
     assert "live `plan/**` initiative package" in message
-    assert "watchtower-core closeout plan-initiative" in message
+    assert "watchtower-core plan closeout initiative" in message
     assert f"--initiative-slug {target_entry['slug']}" in message
 
 

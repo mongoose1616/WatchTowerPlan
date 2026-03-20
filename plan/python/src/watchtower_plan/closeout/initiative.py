@@ -204,7 +204,7 @@ class InitiativeCloseoutService:
         initiative_slug = entry.slug
         if initiative_slug is None and entry.initiative_id is not None:
             initiative_slug = entry.initiative_id.removeprefix("initiative.")
-        command = ["watchtower-core closeout plan-initiative"]
+        command = ["watchtower-core plan closeout initiative"]
         if entry.project_id is not None:
             command.append(f"--project-slug {entry.project_id.removeprefix('project.')}")
         if initiative_slug is not None:

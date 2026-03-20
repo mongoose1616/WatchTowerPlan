@@ -66,6 +66,9 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.plan" in spec_by_id
     assert "command.watchtower_core.plan.approve" in spec_by_id
     assert "command.watchtower_core.plan.bootstrap" in spec_by_id
+    assert "command.watchtower_core.plan.closeout" in spec_by_id
+    assert "command.watchtower_core.plan.closeout.initiative" in spec_by_id
+    assert "command.watchtower_core.plan.closeout.purge_trace" in spec_by_id
     assert "command.watchtower_core.plan.confirm_inputs" in spec_by_id
     assert "command.watchtower_core.plan.task" in spec_by_id
     assert "command.watchtower_core.plan.task.create" in spec_by_id
@@ -104,6 +107,18 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert (
         spec_by_id["command.watchtower_core.plan.bootstrap"].implementation_path
         == "plan/python/src/watchtower_plan/cli/handlers.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.closeout"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/closeout.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.closeout.initiative"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/closeout.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.closeout.purge_trace"].implementation_path
+        == "plan/python/src/watchtower_plan/cli/closeout.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan.confirm_inputs"].implementation_path
@@ -205,10 +220,7 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         spec_by_id["command.watchtower_core.closeout.initiative"].implementation_path
         == "core/python/src/watchtower_core/cli/closeout_family.py"
     )
-    assert (
-        spec_by_id["command.watchtower_core.closeout.purge_trace"].implementation_path
-        == "core/python/src/watchtower_core/cli/closeout_family.py"
-    )
+    assert "command.watchtower_core.closeout.purge_trace" not in spec_by_id
     assert (
         spec_by_id["command.watchtower_core.validate.all"].implementation_path
         == "core/python/src/watchtower_core/cli/validate_family.py"

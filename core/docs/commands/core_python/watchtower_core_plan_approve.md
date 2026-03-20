@@ -57,7 +57,7 @@ uv run watchtower-core plan approve --project-slug watchtower --initiative-slug 
 | `watchtower-core plan confirm-inputs` | Confirms the current initiative-authored inputs before approval. |
 | `watchtower-core plan task` | Starts or progresses execution after the initiative package is approved. |
 | `watchtower-core query readiness` | Reads the readiness view updated after approval. |
-| `watchtower-core closeout plan-initiative` | Closes the live initiative package after its tasks are terminal. |
+| `watchtower-core plan closeout initiative` | Closes the live initiative package after its tasks are terminal. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/handlers.py`

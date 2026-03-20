@@ -5,6 +5,7 @@ import json
 from types import SimpleNamespace
 
 from watchtower_core.cli import closeout_handlers
+from watchtower_plan.cli import closeout as plan_closeout_handlers
 
 
 def _args(**overrides: object) -> argparse.Namespace:
@@ -152,10 +153,10 @@ def test_closeout_plan_initiative_prints_human_summary(monkeypatch, capsys) -> N
                 wrote=True,
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativePackageService", FakeService)
 
-    result = closeout_handlers._run_closeout_plan_initiative(_args())
+    result = plan_closeout_handlers._run_closeout_plan_initiative(_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -189,17 +190,17 @@ def test_closeout_plan_initiative_supports_json_success(monkeypatch, capsys) -> 
                 wrote=False,
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativePackageService", FakeService)
 
-    result = closeout_handlers._run_closeout_plan_initiative(
+    result = plan_closeout_handlers._run_closeout_plan_initiative(
         _args(format="json", write=False, project_slug="watchtower")
     )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 0
-    assert payload["command"] == "watchtower-core closeout plan-initiative"
+    assert payload["command"] == "watchtower-core plan closeout initiative"
     assert payload["scope_type"] == "project_scoped"
     assert payload["initiative_root"] == "plan/projects/watchtower/initiatives/example_initiative"
     assert payload["wrote"] is False
@@ -213,16 +214,16 @@ def test_closeout_plan_initiative_supports_json_errors(monkeypatch, capsys) -> N
         def close_packwide(self, initiative_slug: str, **kwargs: object) -> SimpleNamespace:
             raise ValueError("open local tasks remain")
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativePackageService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativePackageService", FakeService)
 
-    result = closeout_handlers._run_closeout_plan_initiative(_args(format="json"))
+    result = plan_closeout_handlers._run_closeout_plan_initiative(_args(format="json"))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 1
     assert payload == {
-        "command": "watchtower-core closeout plan-initiative",
+        "command": "watchtower-core plan closeout initiative",
         "message": "open local tasks remain",
         "status": "error",
     }
@@ -258,10 +259,10 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                 refreshed_targets=("repository-paths", "traceability-index", "coordination"),
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "TracePurgeService", FakeService)
 
-    result = closeout_handlers._run_closeout_purge_trace(_args())
+    result = plan_closeout_handlers._run_closeout_purge_trace(_args())
 
     captured = capsys.readouterr()
     assert result == 0
@@ -283,16 +284,16 @@ def test_closeout_purge_trace_supports_json_errors(monkeypatch, capsys) -> None:
         def purge(self, **kwargs: object) -> SimpleNamespace:
             raise ValueError("surviving references remain")
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "TracePurgeService", FakeService)
 
-    result = closeout_handlers._run_closeout_purge_trace(_args(format="json"))
+    result = plan_closeout_handlers._run_closeout_purge_trace(_args(format="json"))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 1
     assert payload == {
-        "command": "watchtower-core closeout purge-trace",
+        "command": "watchtower-core plan closeout purge-trace",
         "message": "surviving references remain",
         "status": "error",
     }
@@ -319,14 +320,16 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
                 refreshed_targets=(),
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "TracePurgeService", FakeService)
 
-    result = closeout_handlers._run_closeout_purge_trace(_args(format="json", write=False))
+    result = plan_closeout_handlers._run_closeout_purge_trace(
+        _args(format="json", write=False)
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 0
-    assert payload["command"] == "watchtower-core closeout purge-trace"
+    assert payload["command"] == "watchtower-core plan closeout purge-trace"
     assert payload["purge_ledger_relative_path"].endswith("example_purge_record.json")
     assert payload["wrote"] is False

@@ -19,6 +19,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
     """Register the pack-owned `plan` namespace."""
 
     from watchtower_core.cli.handler_common import _run_help
+    from watchtower_plan.cli.closeout import register_plan_closeout_commands
     from watchtower_plan.cli.handlers import (
         _run_plan_approve,
         _run_plan_bootstrap,
@@ -218,6 +219,7 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
     add_human_json_format_argument(approve_parser)
     approve_parser.set_defaults(handler=_run_plan_approve)
 
+    register_plan_closeout_commands(plan_subparsers)
     register_plan_task_commands(plan_subparsers)
 
 

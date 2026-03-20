@@ -58,7 +58,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
             "uv run watchtower-core sync github-tasks --repo owner/repo",
-            "uv run watchtower-core closeout plan-initiative --initiative-slug plan_example "
+            "uv run watchtower-core plan closeout initiative --initiative-slug plan_example "
             "--initiative-status completed --closure-reason \"Delivered and validated\" --write",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",

@@ -1,4 +1,4 @@
-# `watchtower-core closeout purge-trace`
+# `watchtower-core plan closeout purge-trace`
 
 ## Summary
 This command deletes one eligible closed trace-local planning package, writes the minimal
@@ -13,15 +13,15 @@ guards pass.
 ## Command
 | Field | Value |
 |---|---|
-| Invocation | `watchtower-core closeout purge-trace` |
+| Invocation | `watchtower-core plan closeout purge-trace` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/closeout_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/closeout.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core closeout purge-trace --trace-id <trace_id> [--retained-authority-path <path>]... [--purged-at <timestamp>] [--write] [--format <human|json>]
+uv run watchtower-core plan closeout purge-trace --trace-id <trace_id> [--retained-authority-path <path>]... [--purged-at <timestamp>] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -35,12 +35,12 @@ uv run watchtower-core closeout purge-trace --trace-id <trace_id> [--retained-au
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md
+uv run watchtower-core plan closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path plan/python/src/watchtower_plan/example.py --write --format json
+uv run watchtower-core plan closeout purge-trace --trace-id trace.example --retained-authority-path plan/python/src/watchtower_plan/example.py --write --format json
 ```
 
 ## Behavior and Outputs
@@ -55,16 +55,15 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core closeout` | Parent command group for closeout operations. |
-| `watchtower-core closeout initiative` | Use this first to put the trace into a terminal initiative state before purge. |
+| `watchtower-core plan closeout` | Parent command group for live plan closeout and purge operations. |
+| `watchtower-core closeout initiative` | Use this first when the trace still needs retained terminal closeout before purge. |
 | `watchtower-core validate acceptance` | Confirms trace-level acceptance and evidence coherence before purge. |
 | `watchtower-core sync all` | Rebuilds the derived surfaces that this command refreshes automatically in write mode. |
 | `watchtower-core query trace` | Confirms the purged trace no longer appears in the retained traceability surface. |
 | `watchtower-core query coordination` | Confirms the retained coordination surface no longer carries the purged trace as active or recent retained work. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/closeout_family.py`
-- `core/python/src/watchtower_core/cli/closeout_handlers.py`
+- `plan/python/src/watchtower_plan/cli/closeout.py`
 - `plan/python/src/watchtower_plan/closeout/purge_trace.py`
 
 ## Updated At

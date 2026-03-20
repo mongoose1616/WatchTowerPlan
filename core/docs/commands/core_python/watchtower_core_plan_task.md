@@ -69,7 +69,7 @@ uv run watchtower-core plan task transition --task-id task.example.001 --task-st
 | `watchtower-core plan approve` | Required before task transitions can begin real execution on a live initiative package. |
 | `watchtower-core query tasks` | Reads the task index refreshed by task write operations. |
 | `watchtower-core sync coordination` | Rebuilds the same coordination slice that task write operations refresh. |
-| `watchtower-core closeout plan-initiative` | Use after task transitions leave a live `plan/**` initiative package with only terminal task state. |
+| `watchtower-core plan closeout initiative` | Use after task transitions leave a live `plan/**` initiative package with only terminal task state. |
 
 ## Source Surface
 - `plan/python/src/watchtower_plan/cli/tasks.py`

@@ -57,7 +57,7 @@ uv run watchtower-core query closeouts --promotion-review-required true --format
 |---|---|
 | `watchtower-core query plan-evidence` | Shows the evidence bundles referenced by closeout recaps. |
 | `watchtower-core query reviews` | Shows approval and review state that can gate closeout and promotion outcomes. |
-| `watchtower-core closeout plan-initiative` | Applies terminal closeout state to one live initiative package. |
+| `watchtower-core plan closeout initiative` | Applies terminal closeout state to one live initiative package. |
 | `watchtower-core query authority` | Resolves when the live closeout index is the canonical lookup surface. |
 
 ## Source Surface
