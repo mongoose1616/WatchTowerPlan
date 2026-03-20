@@ -74,7 +74,7 @@
 - `uv run watchtower-core plan sync github-tasks --repo owner/repo`
 - `uv run watchtower-core plan sync github-tasks --repo owner/repo --no-label-sync`
 - `uv run watchtower-core plan closeout initiative --initiative-slug plan_example --initiative-status completed --closure-reason "Delivered and validated" --write`
-- `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"`
+- `uv run watchtower-core plan closeout retained-initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"`
 - `uv run watchtower-core plan closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
 - `uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json`
@@ -94,7 +94,7 @@
   - [watchtower_core_plan_task.md](/core/docs/commands/core_python/watchtower_core_plan_task.md)
   - [watchtower_core_sync.md](/core/docs/commands/core_python/watchtower_core_sync.md)
   - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
-  - [watchtower_core_closeout.md](/core/docs/commands/core_python/watchtower_core_closeout.md)
+  - [watchtower_core_plan_closeout.md](/core/docs/commands/core_python/watchtower_core_plan_closeout.md)
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 
 ### Commands Inside `./tools/dev_shell.sh`
@@ -123,7 +123,7 @@
 - `uv run watchtower-core plan confirm-inputs --write ...` records maintainer confirmation of the current initiative-authored inputs before execution approval.
 - `uv run watchtower-core plan approve --write ...` is the explicit live readiness gate that moves one initiative package into `ready_for_execution` before execution-status task transitions are allowed.
 - `uv run watchtower-core plan closeout initiative --write ...` is the default live closeout path for `plan/**` initiative packages and refreshes the initiative-local artifacts plus the pack and project coordination surfaces in the same slice.
-- `uv run watchtower-core closeout initiative --write ...` is the retained-trace closeout path and fails closed with a `watchtower-core plan closeout initiative` recommendation when the target still belongs to a live `plan/**` initiative package.
+- `uv run watchtower-core plan closeout retained-initiative --write ...` is the retained-trace closeout path and fails closed with a `watchtower-core plan closeout initiative` recommendation when the target still belongs to a live `plan/**` initiative package.
 - `uv run watchtower-core plan closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge ledger, and then refreshes all derived governed surfaces.
 - `uv run watchtower-core plan task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
 - `uv run watchtower-core plan query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.

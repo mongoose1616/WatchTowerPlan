@@ -1422,6 +1422,7 @@
         "commands",
         "python",
         "watchtower",
+        "retained",
         "supersede"
       ],
       "companion_workflow_ids": [
@@ -1433,13 +1434,13 @@
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_tracking_standard.md",
-        "core/docs/commands/core_python/watchtower_core_closeout_initiative.md"
+        "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
       ],
       "internal_reference_paths": [
         "plan/docs/standards/governance/initiative_closeout_standard.md",
         "plan/docs/standards/governance/traceability_standard.md",
         "plan/docs/standards/governance/initiative_tracking_standard.md",
-        "core/docs/commands/core_python/watchtower_core_closeout_initiative.md"
+        "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md"
       ]
     },
     {

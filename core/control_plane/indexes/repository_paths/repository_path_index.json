@@ -1586,16 +1586,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "core/docs/commands/core_python/watchtower_core_closeout.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Entry page for retained traced-initiative closeout commands after live pack work has already been promoted or purged.",
-      "parent_path": "core/docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "core/docs/commands/core_python/watchtower_core_doctor.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1650,6 +1640,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Retained trace-record closeout page for terminally updating one historical trace after live work is already closed.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2787,6 +2787,16 @@
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Forwarding shim that preserves the installed `watchtower-core` script while the host owns the real entrypoint.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/pack_family.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Registers the shared `pack` namespace for hosted-pack inspection and contract validation.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",

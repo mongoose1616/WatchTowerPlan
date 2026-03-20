@@ -10,13 +10,13 @@ Plan-domain closeout services for live initiative packages, retained trace close
 - `Machine-State Boundary`: Operate on governed initiative state, evidence, and purge records; do not treat this package as a second machine-state root.
 
 ## Key Surfaces
-- `initiative.py`: Retained trace closeout orchestration that refuses live `plan/**` initiatives and refreshes the affected indexes and rendered views.
+- `initiative.py`: Retained trace closeout orchestration that now runs under `watchtower-core plan closeout retained-initiative`, refuses live `plan/**` initiatives, and refreshes the affected indexes and rendered views.
 - `initiative_package.py`: Initiative-package terminal closeout helper over initiative state, evidence, closeout recap, and promotion artifacts.
 - `purge_trace.py`: Guarded trace-package purge orchestration and minimal surviving purge-ledger writes.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/README.md`
-- `core/python/src/watchtower_host/cli/closeout.py`
+- `plan/python/src/watchtower_plan/cli/closeout.py`
 - `plan/docs/standards/governance/initiative_closeout_standard.md`
 
 ## Shrink Rules

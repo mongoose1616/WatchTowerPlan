@@ -4,7 +4,6 @@ import argparse
 import json
 from types import SimpleNamespace
 
-from watchtower_host.cli import closeout as closeout_handlers
 from watchtower_plan.cli import closeout as plan_closeout_handlers
 
 
@@ -28,7 +27,7 @@ def _args(**overrides: object) -> argparse.Namespace:
     return argparse.Namespace(**defaults)
 
 
-def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
+def test_closeout_retained_initiative_prints_human_summary(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
             self.loader = loader
@@ -54,16 +53,16 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
                 coordination_tracking_output_path="plan/tracking/coordination_tracking.md",
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativeCloseoutService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativeCloseoutService", FakeService)
 
-    result = closeout_handlers._run_closeout_initiative(
+    result = plan_closeout_handlers._run_closeout_retained_initiative(
         _args(superseded_by_trace_id="trace.next", allow_open_tasks=True)
     )
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "Closed initiative trace.example as completed." in captured.out
+    assert "Closed retained trace trace.example as completed." in captured.out
     assert "Superseded By: trace.next" in captured.out
     assert "Open Tasks Left In Place: task.example.001" in captured.out
     assert "Acceptance Issues Left In Place: 2" in captured.out
@@ -73,7 +72,7 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
     )
 
 
-def test_closeout_initiative_supports_json_errors(monkeypatch, capsys) -> None:
+def test_closeout_retained_initiative_supports_json_errors(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
             self.loader = loader
@@ -81,22 +80,22 @@ def test_closeout_initiative_supports_json_errors(monkeypatch, capsys) -> None:
         def close(self, **kwargs: object) -> SimpleNamespace:
             raise ValueError("open tasks remain")
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativeCloseoutService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativeCloseoutService", FakeService)
 
-    result = closeout_handlers._run_closeout_initiative(_args(format="json"))
+    result = plan_closeout_handlers._run_closeout_retained_initiative(_args(format="json"))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 1
     assert payload == {
-        "command": "watchtower-core closeout initiative",
+        "command": "watchtower-core plan closeout retained-initiative",
         "message": "open tasks remain",
         "status": "error",
     }
 
 
-def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
+def test_closeout_retained_initiative_supports_json_success(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
             self.loader = loader
@@ -119,15 +118,15 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
                 coordination_tracking_output_path="plan/tracking/coordination_tracking.md",
             )
 
-    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
-    monkeypatch.setattr(closeout_handlers, "InitiativeCloseoutService", FakeService)
+    monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(plan_closeout_handlers, "InitiativeCloseoutService", FakeService)
 
-    result = closeout_handlers._run_closeout_initiative(_args(format="json"))
+    result = plan_closeout_handlers._run_closeout_retained_initiative(_args(format="json"))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 0
-    assert payload["command"] == "watchtower-core closeout initiative"
+    assert payload["command"] == "watchtower-core plan closeout retained-initiative"
     assert payload["acceptance_issue_count"] == 0
     assert payload["acceptance_issues_allowed"] is False
     assert ("planning" + "_catalog_output_path") not in payload

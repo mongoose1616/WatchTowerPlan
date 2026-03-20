@@ -27,48 +27,6 @@
       ]
     },
     {
-      "command_id": "command.watchtower_core.closeout",
-      "command": "watchtower-core closeout",
-      "summary": "Apply terminal initiative state to retained traced initiatives after live `plan/**` work has already been promoted or purged.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_closeout.md",
-      "synopsis": "uv run watchtower-core closeout [-h] <closeout_command> ...",
-      "implementation_path": "core/python/src/watchtower_host/cli/closeout.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core",
-      "tags": [
-        "python",
-        "cli",
-        "closeout"
-      ]
-    },
-    {
-      "command_id": "command.watchtower_core.closeout.initiative",
-      "command": "watchtower-core closeout initiative",
-      "summary": "Set terminal closeout state for one traced initiative and, in write mode, persist it to the traceability index plus the derived initiative, coordination, decision, design, and implementation trackers.",
-      "kind": "subcommand",
-      "status": "active",
-      "workspace": "core_python",
-      "doc_path": "core/docs/commands/core_python/watchtower_core_closeout_initiative.md",
-      "synopsis": "uv run watchtower-core closeout initiative [-h] --trace-id TRACE_ID --initiative-status {completed,superseded,cancelled,abandoned} --closure-reason CLOSURE_REASON [--superseded-by-trace-id SUPERSEDED_BY_TRACE_ID] [--closed-at CLOSED_AT] [--allow-open-tasks] [--allow-acceptance-issues] [--write] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_host/cli/closeout.py",
-      "package_entrypoint": "watchtower_host.cli.main:main",
-      "parent_command_id": "command.watchtower_core.closeout",
-      "output_formats": [
-        "human",
-        "json"
-      ],
-      "default_output_format": "human",
-      "tags": [
-        "python",
-        "cli",
-        "closeout",
-        "initiative"
-      ]
-    },
-    {
       "command_id": "command.watchtower_core.doctor",
       "command": "watchtower-core doctor",
       "summary": "Run a small, low-risk workspace health snapshot that confirms the core Python CLI is installed and that the main governed lookup surfaces load successfully.",
@@ -255,7 +213,7 @@
     {
       "command_id": "command.watchtower_core.plan.closeout",
       "command": "watchtower-core plan closeout",
-      "summary": "Apply terminal closeout state to live plan initiative packages or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
+      "summary": "Apply terminal closeout state to live plan initiative packages, close one retained trace record after live work is already promoted or purged, or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -320,6 +278,32 @@
         "closeout",
         "purge",
         "trace"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.closeout.retained_initiative",
+      "command": "watchtower-core plan closeout retained-initiative",
+      "summary": "Set terminal closeout state for one retained trace record and, in write mode, persist it to the traceability index plus the derived initiative and coordination surfaces that still mirror retained trace state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_plan_closeout_retained_initiative.md",
+      "synopsis": "uv run watchtower-core plan closeout retained-initiative [-h] --trace-id TRACE_ID --initiative-status {completed,superseded,cancelled,abandoned} --closure-reason CLOSURE_REASON [--superseded-by-trace-id SUPERSEDED_BY_TRACE_ID] [--closed-at CLOSED_AT] [--allow-open-tasks] [--allow-acceptance-issues] [--write] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/closeout.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.closeout",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "closeout",
+        "retained",
+        "initiative"
       ]
     },
     {

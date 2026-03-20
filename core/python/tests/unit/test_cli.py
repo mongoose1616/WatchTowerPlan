@@ -267,17 +267,6 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     assert "uv run watchtower-core validate artifact" in captured.out
 
 
-def test_closeout_group_prints_group_specific_help(capsys) -> None:
-    result = main(["closeout"])
-
-    captured = capsys.readouterr()
-    assert result == 0
-    assert "Apply terminal initiative state to retained traced initiatives" in captured.out
-    assert "initiative" in captured.out
-    assert "purge-trace" not in captured.out
-    assert "uv run watchtower-core closeout initiative --trace-id trace.example" in captured.out
-
-
 def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
     result = main(["plan", "closeout"])
 
@@ -285,5 +274,7 @@ def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Apply terminal closeout state to live plan initiative packages" in captured.out
     assert "initiative" in captured.out
+    assert "retained-initiative" in captured.out
     assert "purge-trace" in captured.out
+    assert "uv run watchtower-core plan closeout retained-initiative --trace-id trace.example" in captured.out
     assert "uv run watchtower-core plan closeout purge-trace" in captured.out

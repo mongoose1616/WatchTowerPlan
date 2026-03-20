@@ -14,7 +14,6 @@ from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
 from watchtower_core.cli.validate_family import register_validate_family
 from watchtower_core.pack_integration.runtime import load_registered_pack_integrations
-from watchtower_host.cli.closeout import register_closeout_family
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], None]
 
@@ -69,11 +68,6 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("describe", PACK_FAMILY_HANDLERS_PATH),
             ("validate", PACK_FAMILY_HANDLERS_PATH),
         ),
-    ),
-    CommandGroupSpec(
-        name="closeout",
-        registrar=register_closeout_family,
-        implementation_path="core/python/src/watchtower_host/cli/closeout.py",
     ),
     CommandGroupSpec(
         name="sync",

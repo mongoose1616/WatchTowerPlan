@@ -15,7 +15,6 @@ introspection here.
 - `parser.py`: Root parser construction for the hosted command tree.
 - `registry.py`: Root command-family registry metadata for core commands and registered packs.
 - `introspection.py`: Parser-backed metadata used by command-index rebuilds and CLI validation.
-- `closeout.py`: Host-owned retained-trace closeout family that composes reusable core helpers with pack-native closeout services.
 
 ## Related Surfaces
 - `core/python/src/watchtower_host/README.md`

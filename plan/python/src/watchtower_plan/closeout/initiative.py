@@ -74,7 +74,7 @@ class InitiativeCloseoutService:
                 f"Trace {trace_id} belongs to the live `plan/**` initiative package "
                 f"{live_plan_entry.key_surface_path}. Use "
                 f"`{self._plan_closeout_command(live_plan_entry)}` instead of "
-                "`watchtower-core closeout initiative`."
+                "`watchtower-core plan closeout retained-initiative`."
             )
 
         document = self._load_current_document()
