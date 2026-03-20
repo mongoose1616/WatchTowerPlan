@@ -13,7 +13,13 @@ Separates reusable core, host composition, and pack-native runtime behind govern
 - Rendered progress: [progress.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/progress.md)
 - Rendered summary: [summary.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/summary.md)
 - Terminal task `task.core_host_pack_architecture_hard_cutover.pack_contract.001`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.pack_tests.005`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover`: `completed`
 - Terminal task `task.core_host_pack_architecture_hard_cutover.host_runtime.002`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.docs_workflows.004`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.plan_pack.003`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006`: `completed`
+- Terminal task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007`: `completed`
 
 ## Promoted Guidance
 - `promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell`: `planned` / approval `pending`
@@ -26,14 +32,9 @@ Separates reusable core, host composition, and pack-native runtime behind govern
 - `evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle`: `planned`
 
 ## Unresolved Follow-Ups
-- Open task `task.core_host_pack_architecture_hard_cutover.pack_tests.005`: `planned`
-- Open task `task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover`: `planned`
-- Open task `task.core_host_pack_architecture_hard_cutover.docs_workflows.004`: `planned`
-- Open task `task.core_host_pack_architecture_hard_cutover.plan_pack.003`: `in_progress`
-- Open task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006`: `planned`
-- Open task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007`: `planned`
+- No unresolved follow-up items remain.
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-20T18:10:17Z`
+- `updated_at`: `2026-03-20T23:50:31Z`
 - `closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap`: `planned`

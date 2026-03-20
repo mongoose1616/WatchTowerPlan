@@ -3,11 +3,11 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
-- `recommended_surface_path`: `plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md`
+- `recommended_next_action`: Finalize closeout, evidence, and promotion decisions.
+- `recommended_surface_path`: `plan/initiatives/core_host_pack_architecture_hard_cutover/summary.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`execution` / `pack_wide`)
+- `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`closeout` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.

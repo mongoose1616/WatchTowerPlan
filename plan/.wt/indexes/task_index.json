@@ -12,12 +12,12 @@
       "title": "Bootstrap Core Host Pack Architecture Hard Cutover",
       "summary": "Bootstrap Core Host Pack Architecture Hard Cutover live initiative package.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json",
-      "updated_at": "2026-03-20T17:17:23Z"
+      "updated_at": "2026-03-20T23:47:06Z"
     },
     {
       "task_id": "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006",
@@ -27,12 +27,12 @@
       "title": "Run boundary stabilization cleanup loop",
       "summary": "Performs the first required validation, neighboring-surface expansion, fixes, docs updates, and commit pass after the main implementation slices land.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_boundary_stabilization_cleanup_loop/task.json",
-      "updated_at": "2026-03-20T17:23:40Z",
+      "updated_at": "2026-03-20T23:49:51Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.plan_pack.003",
         "task.core_host_pack_architecture_hard_cutover.docs_workflows.004",
@@ -50,12 +50,12 @@
       "title": "Run extensibility and portability hardening loop",
       "summary": "Performs the second required validation loop focused on pack portability, extensibility, and surrounding contract cleanup.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_extensibility_and_portability_hardening_loop/task.json",
-      "updated_at": "2026-03-20T17:24:02Z",
+      "updated_at": "2026-03-20T23:50:31Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006"
       ],
@@ -71,12 +71,12 @@
       "title": "Publish host-pack standards, references, templates, and workflow modules",
       "summary": "Documents the final core-host-pack contract and updates workflow routing, command docs, and pack authoring guidance.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/publish_host_pack_standards_references_templates_and_workflow_modules/task.json",
-      "updated_at": "2026-03-20T17:22:57Z",
+      "updated_at": "2026-03-20T23:48:27Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
       ],
@@ -146,12 +146,12 @@
       "title": "Add pack-interface validation, import-boundary guards, and second-pack proofs",
       "summary": "Proves the new architecture with validator coverage, boundary guards, and a synthetic second-pack fixture.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_pack_interface_validation_import_boundary_guards_and_second_pack_proofs/task.json",
-      "updated_at": "2026-03-20T17:23:18Z",
+      "updated_at": "2026-03-20T23:49:09Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
         "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
@@ -173,12 +173,12 @@
       "title": "Refactor watchtower_plan into pack-native feature services and namespaced commands",
       "summary": "Rebuilds the plan package around pack-native feature seams instead of mirrored core-style families.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json",
-      "updated_at": "2026-03-20T18:10:17Z",
+      "updated_at": "2026-03-20T23:47:48Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
         "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
