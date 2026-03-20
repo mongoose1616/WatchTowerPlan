@@ -10,7 +10,7 @@ from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )
-from watchtower_core.cli.main import main
+from watchtower_host.cli.main import main
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

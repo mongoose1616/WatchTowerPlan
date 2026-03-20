@@ -5,7 +5,7 @@ import json
 import pytest
 
 from tests.pack_fixture_support import REPO_ROOT
-from watchtower_core.cli.main import main
+from watchtower_host.cli.main import main
 
 
 def test_validate_all_passes_for_current_repo_via_cli_json(

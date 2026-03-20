@@ -6,7 +6,7 @@ import sys
 
 import pytest
 
-from watchtower_core.cli.main import main
+from watchtower_host.cli.main import main
 from watchtower_plan.cli.query_lookup_handlers import (
     _run_query_tasks as plan_query_tasks,
 )

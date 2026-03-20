@@ -1,4 +1,4 @@
-"""Compatibility wrapper around the host-owned CLI entrypoint."""
+"""Compatibility shim for existing console-script environments."""
 
 from __future__ import annotations
 

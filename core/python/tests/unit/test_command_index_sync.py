@@ -9,8 +9,8 @@ from watchtower_core.adapters.markdown import (
     load_markdown_body,
     parse_markdown_table,
 )
-from watchtower_core.cli.introspection import iter_command_parser_specs
-from watchtower_core.cli.parser import build_parser
+from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync.command_index import CommandIndexSyncService
 

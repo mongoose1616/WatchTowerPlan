@@ -7,7 +7,7 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
-from watchtower_core.cli.main import main
+from watchtower_host.cli.main import main
 
 
 def test_validate_front_matter_supports_json_output(capsys) -> None:

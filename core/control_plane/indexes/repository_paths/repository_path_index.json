@@ -1776,6 +1776,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/commands/core_python/watchtower_core_plan_sync.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for plan-owned sync commands such as coordination, task tracking, and GitHub task sync.",
+      "parent_path": "core/docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1869,7 +1879,7 @@
       "path": "core/docs/commands/core_python/watchtower_core_sync.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
+      "summary": "Entry page for reusable-core sync commands such as command, route, and repository-path rebuilds.",
       "parent_path": "core/docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2766,7 +2776,17 @@
       "path": "core/python/src/watchtower_core/cli/README.md",
       "kind": "file",
       "surface_kind": "python_source_file",
-      "summary": "Describes the CLI parser and handler boundary for `watchtower-core`.",
+      "summary": "Describes the shared CLI family and handler boundary for `watchtower-core`.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/main.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Forwarding shim that preserves the installed `watchtower-core` script while the host owns the real entrypoint.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2793,10 +2813,40 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/src/watchtower_host/cli/introspection.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Host-owned parser metadata for command-index rebuilds and CLI surface validation.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_host/cli/main.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Host-owned console entrypoint for the `watchtower-core` binary.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/src/watchtower_host/cli/parser.py",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Host-owned parser construction for the `watchtower-core` binary.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_host/cli/registry.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Host-owned root command-family registry metadata.",
       "parent_path": "core/python/src/watchtower_host/cli/",
       "maturity": "authoritative",
       "priority": "high",

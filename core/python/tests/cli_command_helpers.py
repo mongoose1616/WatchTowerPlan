@@ -5,7 +5,7 @@ from typing import Any
 
 import pytest
 
-from watchtower_core.cli.main import main
+from watchtower_host.cli.main import main
 
 
 def run_json_command(

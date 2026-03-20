@@ -1,1 +1,1 @@
-"""CLI entrypoints for the WatchTower core package."""
+"""Shared CLI family helpers for core-owned root commands."""
