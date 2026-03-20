@@ -1,7 +1,7 @@
 # `core/python`
 
 ## Description
-`This directory contains the consolidated Python workspace for the reusable core helper and harness layer plus the residual repo-local planning-and-implementation consumer built on top of it. Keep package code, tests, tool configuration, lockfiles, and local Python environment surfaces here, and keep authored control-plane artifacts in core/control_plane/.`
+`This directory contains the consolidated Python workspace for the reusable core helper and harness layer plus the current transitional repo-local planning-and-implementation consumer built on top of it. Keep package code, tests, tool configuration, lockfiles, and local Python environment surfaces here, and keep authored control-plane artifacts in core/control_plane/. The clean endstate keeps reusable core here while moving plan-domain Python behind a plan-owned boundary under plan/**.`
 
 ## Boundaries
 `Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree.`
@@ -15,7 +15,7 @@
 | `core/python/.gitignore` | Ignores the local virtual environment, caches, and build outputs. |
 | `core/python/pyproject.toml` | Canonical Python project and tool configuration for the core helper and harness package. |
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
-| `core/python/src/` | Holds the `watchtower_core` package source tree, including CLI, plan-runtime, and control-plane runtime code. |
+| `core/python/src/` | Holds the `watchtower_core` package source tree, including the reusable core plus the current transitional `plan_runtime` staging area. |
 | `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the major `watchtower_core` namespaces. |
 | `core/python/tests/` | Holds Python tests and fixtures for package behavior, validation, and sync/query flows. |
 | `core/python/tools/` | Holds small workspace-local helper scripts such as `dev_shell.sh` when they are warranted. |
@@ -73,7 +73,7 @@
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Closed the retained traced planning package"`
 - `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path plan/docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
-- `uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline --format json`
+- `uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json`
 - `uv run watchtower-core validate document-semantics --path core/workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
@@ -144,7 +144,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/evidence/README.md` | `reusable_core` | Validation-evidence recording plus reusable evidence-bundle helpers. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/closeout/README.md` | `repo_local_orchestration` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
-| `core/python/src/watchtower_core/plan_runtime/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific live plan-runtime orchestration that remains outside reusable-core packages. |
+| `core/python/src/watchtower_core/plan_runtime/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific live plan-runtime orchestration that remains transitional until the remaining domain code moves behind a plan-owned Python boundary. |
 | `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
 | `core/python/src/watchtower_core/utils/README.md` | `reusable_core` | Narrow shared helpers that do not justify a first-class package. |
 
@@ -167,6 +167,6 @@ Use the nested READMEs under `plan_runtime/`, `integrations/github/`, and the ne
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.
 - `watchtower_core.validation.suite.ValidationSuiteService` runs declared validation suites against the active pack settings surface, including pack-local schema and validator registries.
-- `watchtower_core.plan_runtime` is the current internal plan-pack consumer of the shared core; keep pack-agnostic loading and validation logic out of that namespace and prefer shrinking it toward narrower reusable-core seams.
+- `watchtower_core.plan_runtime` is the current internal plan-pack consumer of the shared core; keep pack-agnostic loading and validation logic out of that namespace, avoid growing it, and treat the endstate as a move of remaining plan-domain Python behind a plan-owned boundary under `plan/**`.
 - The Python design target is boring, explicit, and easy to consolidate: prefer one canonical implementation, extract generic behavior before growing plan-runtime-only surfaces, and keep CLI or doc-facing modules thin.
 - The default lint baseline now includes Ruff comprehension checks, and the reusable-core package subset is held to stricter `mypy` rules than the plan-runtime surfaces while the remaining repo-local orchestration is still being reduced.

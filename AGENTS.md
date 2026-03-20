@@ -31,7 +31,7 @@
 - Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
 - Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; use `core/control_plane/ledgers/purges/**` only when you need the machine purge history for removed traces.
 - Treat [core/control_plane](/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
-- Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
+- Treat `core/python/` as the current canonical Python workspace for package code, tests, tooling, and local virtual-environment usage until an approved plan-owned Python boundary lands under `plan/**`.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
 - When the main question is live planning state, next work, or repo coordination, start with `plan/.wt/indexes/coordination_index.json` and the derived `plan/plan_overview.md`.

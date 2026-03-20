@@ -1,6 +1,6 @@
 # Capture-First Plan Workspace Decisions
 
-> Status update as of March 19, 2026: the hard cutover described here is now implemented. The legacy docs-backed planning corpus has been purged, the repo-root `workflows/` compatibility tree has been removed, and repo-local planning runtime imports now route through `watchtower_core.plan_runtime`.
+> Status update as of March 19, 2026: the hard cutover described here is now implemented. The legacy docs-backed planning corpus has been purged, the repo-root `workflows/` compatibility tree has been removed, and repo-local planning runtime imports still route through `watchtower_core.plan_runtime` only as a transitional staging boundary rather than the clean endstate.
 
 This file records the locked decisions gathered during the requirements clarification pass for [requirements.md](requirements.md).
 
@@ -110,6 +110,8 @@ This file records the locked decisions gathered during the requirements clarific
     Initiative roots contain `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, and optional `decision_notes.md`.
 50. `Q50=10` `requirements-alignment follow-up`
     The implementation plan must include a later tranche to reconcile history and retention with the requirements endstate.
+51. `Q51=10` `clean core-versus-plan python split`
+    Reusable shared-core Python stays under `watchtower_core`, while remaining plan-domain runtime is transitional only until it moves behind a plan-owned boundary under `plan/**`.
 
 ## Key Tensions Already Resolved
 - `Q24` and `Q31`: archive-whole-package is allowed only as a transitional policy.
@@ -121,3 +123,4 @@ This file records the locked decisions gathered during the requirements clarific
 - The new authority model is machine-first under `plan/.wt/**`.
 - Both pack-wide and project-scoped initiatives are in scope from the first tranche.
 - The first implementation milestone must prove the full capture-first loop for one initiative of each scope type.
+- The current `watchtower_core.plan_runtime` namespace is not the endstate; it is a temporary staging boundary pending a clean split between reusable core and plan-domain Python.

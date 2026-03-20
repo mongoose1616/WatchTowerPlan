@@ -13,7 +13,7 @@
 ## Local Rules
 - Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation contract for migration, workspace, routing, and plan-pack runtime behavior until those files are fully implemented.
 - Use existing standards, references, and helper docs only where they stay consistent with [requirements.md](/requirements.md) and [decisions.md](/decisions.md).
-- Treat [core/python](/core/python) as the only canonical Python workspace in this repository.
+- Treat [core/python](/core/python) as the current canonical Python workspace in this repository until an approved plan-owned Python boundary lands under `plan/**`.
 - Run Python package commands from `core/python/` unless a narrower subpath is explicitly required.
 - Prefer `uv run <command>` for tests, linting, typechecking, CLI execution, and ad hoc package-local Python invocations.
 - When a command supports structured output, prefer `--format json` for agent or workflow use instead of scraping human-readable text.
@@ -31,5 +31,5 @@
 
 ## Do Not
 - Do not install Python packages globally for repository work when the workspace can manage them locally.
-- Do not add parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`.
+- Do not add ad hoc parallel Python roots such as `core/src/`, `core/tests/`, or top-level CLI source trees outside `core/python/src/watchtower_core/`. A future plan-owned Python root under `plan/**` requires explicit approval plus companion updates to [requirements.md](/requirements.md), [decisions.md](/decisions.md), workspace READMEs, validation coverage, and routing or command guidance.
 - Do not commit `.venv`, caches, wheels, or build outputs.

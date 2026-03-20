@@ -23,7 +23,7 @@ uv run watchtower-core validate suite --suite-id <suite_id> [--pack-settings-pat
 ```
 
 ## Arguments and Options
-- `--suite-id <suite_id>`: Stable validation suite identifier such as `suite.watchtower_plan.validation_baseline` or `suite.plan.validation_baseline`.
+- `--suite-id <suite_id>`: Stable validation suite identifier such as `suite.example.validation_baseline` or another pack-declared suite ID.
 - `--pack-settings-path <path>`: Optional repository-relative path to the pack settings surface that declares the active schema, validator, and validation-suite registries.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -31,21 +31,22 @@ uv run watchtower-core validate suite --suite-id <suite_id> [--pack-settings-pat
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline
+uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline --format json
+uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core validate suite --suite-id suite.plan.validation_baseline --pack-settings-path packs/plan/.wt/pack_settings.json --format json
+uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json
 ```
 
 ## Behavior and Outputs
 - The command loads pack settings first, then resolves the active schema catalog, validator registry, and validation-suite registry from the declared surfaces.
+- When `--pack-settings-path` is omitted, the runtime uses the active pack if one was selected explicitly; otherwise it discovers the repository-default pack settings surface and falls back to the shared-core pack only when no repo-local pack exists.
 - Suite steps can currently run `pack_contract`, `artifact`, `front_matter`, and `document_semantics` validations.
 - The current repository baseline suite uses repo-local target enumeration so the suite runtime can stay generic while the repo keeps its bounded validation target set.
 - In `json` mode, the command returns one JSON object with the suite ID, pack-settings path, per-step summaries, and one structured result per executed target.
@@ -67,4 +68,4 @@ uv run watchtower-core validate suite --suite-id suite.plan.validation_baseline 
 - `core/control_plane/registries/validation_suite_registry.json`
 
 ## Updated At
-- `2026-03-16T23:10:00Z`
+- `2026-03-19T22:48:00Z`

@@ -67,7 +67,7 @@ uv run watchtower-core validate artifact --path /tmp/pack_note.json --supplement
 
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path packs/plan/.wt/work_items/plan_note.json --pack-settings-path packs/plan/.wt/pack_settings.json --format json
+uv run watchtower-core validate artifact --path /tmp/example_pack/.wt/work_items/example_note.json --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json
 ```
 
 ```sh
@@ -104,4 +104,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-16T23:10:00Z`
+- `2026-03-19T22:48:00Z`

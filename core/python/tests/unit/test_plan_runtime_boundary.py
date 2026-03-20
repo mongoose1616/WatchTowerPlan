@@ -14,9 +14,8 @@ import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.plan_runtime.query import CommandQueryService
 from watchtower_core.plan_runtime.sync.command_index import CommandIndexSyncService
 from watchtower_core.plan_runtime.validation import (
-    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
     DocumentSemanticsValidationService,
-    resolve_watchtower_plan_suite_targets,
+    resolve_pack_validation_suite_targets,
 )
 from watchtower_core.validation.all import ValidationAllService
 
@@ -166,7 +165,6 @@ def test_plan_runtime_boundary_owners_remain_available() -> None:
         == "watchtower_core.plan_runtime.validation.document_semantics"
     )
     assert (
-        resolve_watchtower_plan_suite_targets.__module__
+        resolve_pack_validation_suite_targets.__module__
         == "watchtower_core.plan_runtime.validation.targets"
     )
-    assert WATCHTOWER_PLAN_VALIDATION_SUITE_ID == "suite.watchtower_plan.validation_baseline"

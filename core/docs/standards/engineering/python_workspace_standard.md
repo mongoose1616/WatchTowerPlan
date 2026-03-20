@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T06:44:55Z"
+updated_at: "2026-03-19T23:53:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,7 +48,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 ## Guidance
 - Keep all Python-specific repository surfaces under `core/python/`.
 - Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, manifests, or indexes into the Python workspace.
-- Use one canonical Python workspace rooted at `core/python/`.
+- Use one canonical Python workspace rooted at `core/python/` until an approved plan-owned Python boundary is introduced under `plan/**`.
 - Use `uv` as the standard local environment and dependency-management tool.
 - Keep the supported interpreter range in `core/python/pyproject.toml` and keep the locked dependency graph in `core/python/uv.lock`.
 - Keep canonical package and tool configuration in `core/python/pyproject.toml`.
@@ -59,7 +59,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Treat `uv run ...` as the default human and agent execution path. Manual virtual-environment activation is optional and mainly for interactive shell work.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
-- Keep Python source code under `core/python/src/` with one package root at `core/python/src/watchtower_core/`.
+- Keep Python source code under `core/python/src/` with one active package root at `core/python/src/watchtower_core/` until an approved plan-owned Python boundary lands under `plan/**`.
 - Keep tests under `core/python/tests/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
@@ -69,7 +69,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
-- Keep `plan_runtime/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules.
+- Keep `plan_runtime/` explicitly transitional and residual. New generic helpers should land in `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, or `utils/` instead of growing broad catch-all repo-local modules, and the remaining plan-domain runtime should eventually move behind a plan-owned Python boundary under `plan/**`.
 - Use [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md) for Python naming, boundary, docstring, typing, and consolidation rules instead of re-encoding those choices in workspace-only guidance.
 
 ## Structure or Data Model
@@ -99,7 +99,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/workflow_execution/` | Export-safe workflow execution harness over routed workflow selection and workflow metadata. |
 | `core/python/src/watchtower_core/integrations/` | External-system integration clients and adapters. |
 | `core/python/src/watchtower_core/closeout/` | Repo-local closeout orchestration plus pack-level initiative-package closeout helpers. |
-| `core/python/src/watchtower_core/plan_runtime/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction. |
+| `core/python/src/watchtower_core/plan_runtime/` | Residual WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that remains after reusable-core extraction and before the approved move behind a plan-owned Python boundary under `plan/**`. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -115,7 +115,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A new schema loader belongs in `core/python/src/watchtower_core/control_plane/`.
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
 - A reusable-core query helper that searches governed command, workflow, authority, route, or artifact-family metadata belongs in `core/python/src/watchtower_core/query/`.
-- A repo-local query helper that searches live planning indexes, initiative packages, or docs-backed planning joins belongs in `core/python/src/watchtower_core/plan_runtime/query/`.
+- A repo-local query helper that searches live planning indexes or initiative packages currently belongs in `core/python/src/watchtower_core/plan_runtime/query/` until the plan-owned Python boundary is approved and bootstrapped.
 - A reusable route-selection engine belongs in `core/python/src/watchtower_core/routing/`.
 - A reusable rebuild helper for derived surfaces belongs in `core/python/src/watchtower_core/rebuild/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
@@ -132,7 +132,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
 - `uv run pytest`, `uv run ruff check .`, and `uv run mypy src` should be the default validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
-- Reviewers should reject parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/`.
+- Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/`. A future approved plan-owned boundary under `plan/**` must land as an explicit governed change, not as incidental drift.
 
 ## Change Control
 - Update this standard when the Python workspace root, package layout, or standard environment contract changes.
@@ -150,7 +150,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 
 ## Notes
 - This standard intentionally keeps the Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
-- The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
+- The workspace may grow additional modules over time, but it should not grow additional package roots unless a later approved standard explicitly allows that change, such as the planned core-versus-domain split for plan-owned Python under `plan/**`.
 
 ## Updated At
-- `2026-03-18T06:44:55Z`
+- `2026-03-19T23:53:14Z`

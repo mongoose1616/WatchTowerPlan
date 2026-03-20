@@ -1,12 +1,12 @@
 # `watchtower_core.plan_runtime`
 
 ## Summary
-Residual WatchTowerPlan-specific orchestration that still depends on this repository's current plan-workspace layout, live plan indexes, and pack-local authored-document semantics.
+Residual WatchTowerPlan-specific orchestration that still depends on this repository's current plan-workspace layout, live plan indexes, and pack-local authored-document semantics. This namespace is a transitional staging boundary, not the clean-endstate home for plan-domain Python.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
 - `Supported Imports`: Explicit residual services and subpackages such as `plan_workspace`, `project_workspace`, `initiative_packages`, `task_lifecycle`, `query`, `sync`, and `validation`.
-- `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository, or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `closeout`, or `utils`.
+- `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository, a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `closeout`, or `utils`, or the permanent home for plan-domain Python once the plan-owned boundary under `plan/**` lands.
 
 ## Residual Responsibilities
 - Workspace orchestration: `initiative_packages.py`, `plan_workspace.py`, and `project_workspace.py` still own live `plan/**` and `plan/projects/**` package bootstrap, rendered-surface shaping, and readiness-gate behavior that has not been extracted behind narrower reusable-core seams.
@@ -27,7 +27,7 @@ Residual WatchTowerPlan-specific orchestration that still depends on this reposi
 ## Shrink Rules
 - Prefer moving new generic helpers into explicit reusable-core packages rather than adding new top-level `plan_runtime` modules.
 - Keep `plan_runtime` additions tightly scoped to plan-workspace state, repo-native authored-document semantics, or other current-pack behavior that cannot yet move behind narrower boundaries.
-- Treat this namespace as transitional, keep shrinking it, and do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary is available.
+- Treat this namespace as transitional, keep shrinking it, and do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary or the future plan-owned Python boundary is available.
 
 ## Related Surfaces
 - `core/docs/standards/engineering/python_code_design_standard.md`

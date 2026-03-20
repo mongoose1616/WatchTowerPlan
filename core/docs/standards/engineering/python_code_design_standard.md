@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T06:44:55Z"
+updated_at: "2026-03-19T23:53:14Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -29,9 +29,9 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Use When
 - Adding or refactoring Python modules under `core/python/src/watchtower_core/`.
-- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, `plan_runtime/`, or `cli/`.
+- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, the transitional `plan_runtime/` staging area, or `cli/`.
 - Choosing names for modules, classes, services, helpers, results, or tests.
-- Consolidating duplicate code or shrinking transitional surfaces such as `plan_runtime/`.
+- Consolidating duplicate code, shrinking transitional surfaces such as `plan_runtime/`, or preparing the eventual split between reusable core and plan-owned Python.
 
 ## Related Standards and Sources
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the workspace, package-root, and toolchain constraints that this code-design standard must fit within.
@@ -53,7 +53,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, `closeout/`, and `utils/` own reusable runtime seams.
-  - `plan_runtime/` owns only residual repository-local orchestration that still depends on this repository's live planning or governed layout.
+  - `plan_runtime/` owns only residual repository-local orchestration that still depends on this repository's live planning or governed layout, and it remains transitional until the remaining domain code moves behind a plan-owned Python boundary under `plan/**`.
   - `cli/` owns argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Consolidate duplicated control flow behind a shared helper only when the repetition is structural and the new helper has a clear boundary. Do not create generic abstractions that are broader than the duplicated behavior.
@@ -123,7 +123,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ## Notes
 - This standard intentionally favors boring, explicit code over framework-heavy or pattern-heavy abstractions.
 - The goal is maintainable consolidation, not abstraction for its own sake.
-- When a helper is extracted from `plan_runtime/`, that is usually a sign that this standard is working as intended.
+- When a helper is extracted from `plan_runtime/`, that is usually a sign that this standard is working as intended. When a whole remaining slice is still plan-specific after those extractions, the next target is the plan-owned Python boundary rather than a permanent `plan_runtime/` namespace.
 
 ## Updated At
-- `2026-03-18T06:44:55Z`
+- `2026-03-19T23:53:14Z`

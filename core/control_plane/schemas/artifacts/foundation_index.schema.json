@@ -83,7 +83,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^(?:docs|core/docs|plan/docs|core/workflows|plan/workflows)/.+\\.md$"
+        "pattern": "^(?:core/docs|plan/docs|core/workflows|plan/workflows)/.+\\.md$"
       }
     },
     "stringList": {

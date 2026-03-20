@@ -40,7 +40,7 @@ uv run watchtower-core validate all --skip-acceptance
 
 ```sh
 cd core/python
-uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline --format json
+uv run watchtower-core validate suite --suite-id suite.example.validation_baseline --pack-settings-path /tmp/example_pack/.wt/manifests/pack_settings.json --format json
 ```
 
 ```sh
@@ -103,4 +103,4 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 - `core/python/src/watchtower_core/validation/`
 
 ## Updated At
-- `2026-03-16T23:10:00Z`
+- `2026-03-19T22:48:00Z`

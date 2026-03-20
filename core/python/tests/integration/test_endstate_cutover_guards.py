@@ -32,6 +32,7 @@ BANNED_PATTERNS = (
     re.compile(r"feature design", flags=re.IGNORECASE),
     re.compile(r"implementation plan", flags=re.IGNORECASE),
     re.compile(r"plan scaffold", flags=re.IGNORECASE),
+    re.compile(r"\(\?:docs\|core/docs\|plan/docs"),
 )
 
 

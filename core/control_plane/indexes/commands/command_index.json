@@ -1365,7 +1365,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_all.md",
-      "synopsis": "uv run watchtower-core validate all [-h] [--skip-front-matter] [--skip-document-semantics] [--skip-artifacts] [--skip-acceptance] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core validate all [-h] [--skip-front-matter] [--skip-document-semantics] [--skip-artifacts] [--skip-acceptance] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
