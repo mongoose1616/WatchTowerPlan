@@ -32,7 +32,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     (repo_root / "core" / "python").mkdir(parents=True)
     (repo_root / "core" / "python" / "tests" / "unit").mkdir(parents=True, exist_ok=True)
     materialize_minimal_plan_pack(repo_root, REPO_ROOT)
-    materialize_governed_applies_to_targets(repo_root)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
     return repo_root
 
 

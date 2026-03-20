@@ -30,7 +30,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
     materialize_minimal_plan_pack(repo_root, REPO_ROOT)
-    materialize_governed_applies_to_targets(repo_root)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id=TRACE_ID,

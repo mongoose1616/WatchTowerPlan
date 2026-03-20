@@ -20,7 +20,7 @@ def _build_custom_workspace(tmp_path: Path) -> WorkspaceConfig:
     copytree(REPO_ROOT / "core" / "docs", repo_root / "core" / "docs")
     copytree(REPO_ROOT / "plan" / "docs", repo_root / "plan" / "docs")
     python_workspace_root.mkdir(parents=True)
-    materialize_governed_applies_to_targets(repo_root)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
 
     return WorkspaceConfig(
         repo_root=repo_root,

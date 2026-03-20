@@ -9,7 +9,7 @@ from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_acceptance_and_evidence_paths,
     materialize_governed_applies_to_targets,
-    materialize_plan_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiative_packages import InitiativePackageService
@@ -35,8 +35,8 @@ def _copy_repo_subset(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "core" / "docs", repo_root / "core" / "docs")
     (repo_root / "core" / "python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
-    materialize_governed_applies_to_targets(repo_root)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
     materialize_acceptance_and_evidence_paths(repo_root, REPO_ROOT)
     return repo_root
 

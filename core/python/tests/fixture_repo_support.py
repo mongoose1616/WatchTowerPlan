@@ -40,7 +40,10 @@ def materialize_minimal_plan_pack(repo_root: Path, source_repo_root: Path) -> No
     (target_plan_root / "projects").mkdir(parents=True, exist_ok=True)
 
 
-def materialize_governed_applies_to_targets(repo_root: Path) -> None:
+def materialize_governed_applies_to_targets(
+    repo_root: Path,
+    source_repo_root: Path | None = None,
+) -> None:
     for docs_root in (repo_root / "core" / "docs", repo_root / "plan" / "docs"):
         if not docs_root.exists():
             continue
@@ -66,6 +69,11 @@ def materialize_governed_applies_to_targets(repo_root: Path) -> None:
                     continue
                 if target.suffix:
                     target.parent.mkdir(parents=True, exist_ok=True)
+                    if source_repo_root is not None:
+                        source = source_repo_root / candidate
+                        if source.exists() and source.is_file():
+                            copy2(source, target)
+                            continue
                     target.touch(exist_ok=True)
                     continue
                 target.mkdir(parents=True, exist_ok=True)

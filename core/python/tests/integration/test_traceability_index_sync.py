@@ -5,7 +5,6 @@ from pathlib import Path
 from shutil import copytree
 
 from tests.fixture_repo_support import (
-    materialize_plan_pack,
     materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -99,7 +98,7 @@ def _build_control_plane_fixture_repo(tmp_path: Path) -> Path:
 def _build_full_plan_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
 
