@@ -13,6 +13,7 @@ from watchtower_core.utils.module_exports import fail_closed_package_getattr
 __all__ = ["SyncHarness", "SyncRecord", "SyncResult", "SyncTargetSpec"]
 
 __getattr__ = fail_closed_package_getattr(
-    "watchtower_core.sync exports only generic sync harness surfaces. "
-    "Repo-specific sync services still live under watchtower_plan.sync."
+    "watchtower_core.sync exports only the generic sync harness from the package root. "
+    "Repo-shared sync services live under explicit watchtower_core.sync.* modules, and "
+    "plan-specific orchestration remains under watchtower_plan.sync."
 )

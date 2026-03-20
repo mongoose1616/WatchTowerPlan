@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from watchtower_plan.sync.command_index import (
+from watchtower_core.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )
@@ -32,11 +32,11 @@ from watchtower_plan.sync.reference_index import (
     REFERENCE_INDEX_ARTIFACT_PATH,
     ReferenceIndexSyncService,
 )
-from watchtower_plan.sync.repository_paths import (
+from watchtower_core.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
 )
-from watchtower_plan.sync.route_index import (
+from watchtower_core.sync.route_index import (
     ROUTE_INDEX_ARTIFACT_PATH,
     RouteIndexSyncService,
 )

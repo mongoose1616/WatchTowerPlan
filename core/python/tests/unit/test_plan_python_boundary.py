@@ -12,7 +12,7 @@ import watchtower_core.sync as public_sync
 import watchtower_core.validation as public_validation
 import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.query import CommandQueryService
-from watchtower_plan.sync.command_index import CommandIndexSyncService
+from watchtower_core.sync.command_index import CommandIndexSyncService
 from watchtower_plan.validation import (
     DocumentSemanticsValidationService,
     resolve_pack_validation_suite_targets,
@@ -56,7 +56,7 @@ def test_public_query_root_exports_generic_query_services_and_fails_closed_for_p
 def test_public_sync_root_fails_closed_with_plan_boundary_guidance() -> None:
     assert public_sync.SyncHarness.__module__ == "watchtower_core.sync.harness"
     assert public_sync.SyncTargetSpec.__module__ == "watchtower_core.sync.harness"
-    with pytest.raises(AttributeError, match="watchtower_plan.sync"):
+    with pytest.raises(AttributeError, match="watchtower_core.sync"):
         _ = public_sync.CommandIndexSyncService
 
 
@@ -127,7 +127,10 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
     ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "sync").glob("*.py")) == [
         "__init__.py",
+        "command_index.py",
         "harness.py",
+        "repository_paths.py",
+        "route_index.py",
     ]
     assert sorted(path.name for path in (PACKAGE_ROOT / "rebuild").glob("*.py")) == [
         "__init__.py",
@@ -170,8 +173,10 @@ def test_public_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
         "watchtower_plan.query.traceability",
         "watchtower_plan.query.workflows",
         "watchtower_core.sync.all",
-        "watchtower_core.sync.command_index",
         "watchtower_core.sync.traceability",
+        "watchtower_plan.sync.command_index",
+        "watchtower_plan.sync.repository_paths",
+        "watchtower_plan.sync.route_index",
         "watchtower_core.validation.document_semantics",
         "watchtower_core.validation.registry",
         "watchtower_core.workflow_execution.initiative_packages",
@@ -187,7 +192,7 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
 
 def test_plan_python_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
-    assert CommandIndexSyncService.__module__ == "watchtower_plan.sync.command_index"
+    assert CommandIndexSyncService.__module__ == "watchtower_core.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
     assert (
         DocumentSemanticsValidationService.__module__

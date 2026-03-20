@@ -192,9 +192,18 @@ def test_query_and_sync_command_docs_follow_current_boundary_owners() -> None:
     sync_docs = sorted(
         (REPO_ROOT / "core/docs/commands/core_python").glob("watchtower_core_sync_*.md")
     )
+    reusable_core_sync_docs = {
+        "watchtower_core_sync.md",
+        "watchtower_core_sync_command_index.md",
+        "watchtower_core_sync_repository_paths.md",
+        "watchtower_core_sync_route_index.md",
+    }
     for path in sync_docs:
         markdown = path.read_text(encoding="utf-8")
-        assert "core/python/src/watchtower_core/sync/" not in markdown, path
+        if path.name in reusable_core_sync_docs:
+            assert "core/python/src/watchtower_core/sync/" in markdown, path
+        else:
+            assert "core/python/src/watchtower_core/sync/" not in markdown, path
 
 
 def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
@@ -238,7 +247,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/python/src/watchtower_core/routing/" in workspace_standard
     assert "core/python/src/watchtower_core/workflow_execution/" in workspace_standard
     assert "Export-safe generic query services" in workspace_standard
-    assert "Export-safe generic sync harness and target contracts" in workspace_standard
+    assert "Export-safe generic sync harness plus repo-shared command, route, and repository-path rebuild services" in workspace_standard
     assert "A reusable-core query helper" in workspace_standard
     assert "plan/python/src/watchtower_plan/" in workspace_standard
     assert "Approved WatchTowerPlan-specific" in workspace_standard
@@ -247,7 +256,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "| `rebuild/` | `reusable_core` |" in package_readme
     assert "| `routing/` | `reusable_core` |" in package_readme
     assert "| `workflow_execution/` | `reusable_core` |" in package_readme
-    assert "plan-domain sync target registries and orchestration live under `watchtower_plan.sync`" in package_readme
+    assert "repo-shared command, route, and repository-path index rebuild services" in package_readme
     assert "core/docs/standards/engineering/python_code_design_standard.md" in package_readme
     assert "approved plan-owned Python boundary" in plan_python_readme
     assert "Repository-local sync services" in plan_python_sync_readme

@@ -1,16 +1,19 @@
 # `watchtower_core.sync`
 
 ## Summary
-Export-safe sync namespace that publishes the reusable generic sync harness while keeping repo-specific sync targets out of the stable core surface.
+Sync namespace for the reusable generic harness plus repo-shared governed-index rebuild services that are not specific to the plan domain.
 
 ## Boundary
 - `Classification`: `reusable_core`
-- `Supported Imports`: `watchtower_core.sync.SyncHarness`, `SyncTargetSpec`, `SyncRecord`, and `SyncResult` for export-safe multi-target sync orchestration.
-- `Non-Goals`: Supported repo-specific leaf imports under `watchtower_core.sync`.
+- `Supported Imports`: `watchtower_core.sync.SyncHarness`, `SyncTargetSpec`, `SyncRecord`, and `SyncResult` from the package root, plus explicit repo-shared leaf modules such as `watchtower_core.sync.command_index`, `watchtower_core.sync.route_index`, and `watchtower_core.sync.repository_paths`.
+- `Non-Goals`: Plan-domain coordination, initiative, task, tracker, and GitHub sync orchestration that still belongs under `watchtower_plan.sync`.
 
 ## Key Surfaces
 - `__init__.py`: Export-safe root for the generic sync harness and fail-closed guidance for repo-specific sync services.
 - `harness.py`: Shared sync target contracts, result models, overlay-aware runtime loader, and dependency-ordered orchestration helpers.
+- `command_index.py`: Repo-shared command-index rebuild service.
+- `route_index.py`: Repo-shared route-index rebuild service.
+- `repository_paths.py`: Repo-shared repository-path index rebuild service.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/sync/README.md`

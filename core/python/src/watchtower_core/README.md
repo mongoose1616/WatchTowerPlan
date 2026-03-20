@@ -15,7 +15,7 @@
 | `control_plane/` | `reusable_core` | Workspace-aware schema, artifact, and loader primitives. |
 | `validation/` | `reusable_core` | Export-safe validation services and result models; plan-domain document semantics and aggregate validation stay under `watchtower_plan.validation`. |
 | `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; live planning queries stay under `watchtower_plan.query`. |
-| `sync/` | `reusable_core` | Export-safe sync harness and target contracts; plan-domain sync target registries and orchestration live under `watchtower_plan.sync`. |
+| `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; plan-domain sync registries and orchestration stay under `watchtower_plan.sync`. |
 | `rebuild/` | `reusable_core` | Export-safe rebuild harness primitives plus registry-backed rendered-view building and markdown reconciliation; plan-owned output shaping stays outside the reusable-core package root. |
 | `routing/` | `reusable_core` | Export-safe route-selection runtime over the governed route and workflow indexes; CLI formatting and repo-local route handlers stay out of the package root. |
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |

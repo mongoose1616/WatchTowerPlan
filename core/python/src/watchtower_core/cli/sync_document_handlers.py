@@ -36,7 +36,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "repository_paths",
         "export_name": "_run_sync_repository_paths",
-        "module_name": "watchtower_plan.sync.repository_paths",
+        "module_name": "watchtower_core.sync.repository_paths",
         "class_name": "RepositoryPathIndexSyncService",
         "command_name": "watchtower-core sync repository-paths",
         "artifact_label": "repository path index",
@@ -44,7 +44,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "command_index",
         "export_name": "_run_sync_command_index",
-        "module_name": "watchtower_plan.sync.command_index",
+        "module_name": "watchtower_core.sync.command_index",
         "class_name": "CommandIndexSyncService",
         "command_name": "watchtower-core sync command-index",
         "artifact_label": "command index",
@@ -60,7 +60,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "route_index",
         "export_name": "_run_sync_route_index",
-        "module_name": "watchtower_plan.sync.route_index",
+        "module_name": "watchtower_core.sync.route_index",
         "class_name": "RouteIndexSyncService",
         "command_name": "watchtower-core sync route-index",
         "artifact_label": "route index",
