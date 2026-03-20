@@ -11,11 +11,14 @@ import pytest
 from watchtower_core.control_plane.loader import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     PACK_SETTINGS_PATH,
+    PACK_REGISTRY_PATH,
     VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import (
+    PackRegistry,
     PackSettings,
+    PackRuntimeManifest,
     RenderedSurfaceRegistry,
     SchemaCatalog,
     ValidationSuiteRegistry,
@@ -230,6 +233,19 @@ def test_control_plane_loader_reads_validation_suite_registry() -> None:
     assert suite.get_step("step.plan.front_matter").step_kind == "front_matter"
 
 
+def test_control_plane_loader_reads_pack_registry_and_runtime_manifest() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    pack_registry = loader.load_pack_registry()
+    runtime_manifest = loader.load_pack_runtime_manifest()
+
+    assert isinstance(pack_registry, PackRegistry)
+    assert pack_registry.default_pack().pack_slug == "plan"
+    assert isinstance(runtime_manifest, PackRuntimeManifest)
+    assert runtime_manifest.integration_module == "watchtower_plan.integration"
+    assert loader.pack_runtime_manifest_path() == "plan/.wt/manifests/pack_runtime_manifest.json"
+
+
 def test_control_plane_loader_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -251,6 +267,28 @@ def test_control_plane_loader_reuses_validator_registry_materialization(
 
     assert first is second
     assert validator_registry_loads == 1
+
+
+def test_control_plane_loader_reuses_pack_registry_materialization(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    pack_registry_loads = 0
+    original_load_validated_document = loader.load_validated_document
+
+    def wrapped_load_validated_document(relative_path: str) -> dict[str, object]:
+        nonlocal pack_registry_loads
+        if relative_path == PACK_REGISTRY_PATH:
+            pack_registry_loads += 1
+        return original_load_validated_document(relative_path)
+
+    monkeypatch.setattr(loader, "load_validated_document", wrapped_load_validated_document)
+
+    first = loader.load_pack_registry()
+    second = loader.load_pack_registry()
+
+    assert first is second
+    assert pack_registry_loads == 1
 
 
 def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog(

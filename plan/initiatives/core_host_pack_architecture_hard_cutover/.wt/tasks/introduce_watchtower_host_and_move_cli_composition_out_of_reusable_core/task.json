@@ -6,12 +6,12 @@
   "title": "Introduce watchtower_host and move CLI composition out of reusable core",
   "summary": "Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name.",
   "status": "active",
-  "task_status": "planned",
+  "task_status": "in_progress",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-20T17:22:15Z",
-  "updated_at": "2026-03-20T17:22:15Z",
+  "updated_at": "2026-03-20T17:54:28Z",
   "dependency_task_ids": [
     "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
   ],

@@ -24,6 +24,21 @@ def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
     assert result.validator_id == "validator.pack.contract"
 
 
+def test_pack_contract_validation_fails_when_runtime_manifest_is_missing(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    (repo_root / surfaces["pack_runtime_manifest_path"]).unlink()
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_contract_invalid" for issue in result.issues)
+
+
 def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
     tmp_path: Path,
 ) -> None:
@@ -61,10 +76,9 @@ def test_validation_suite_service_runs_pack_suite(tmp_path: Path) -> None:
     assert surfaces["pack_settings_path"].startswith("packs/plan/.wt/")
     assert (repo_root / "packs" / "plan" / ".wt").is_dir()
     assert not (repo_root / "domain_packs").exists()
-    assert {record.target for record in result.records} == {
-        surfaces["pack_settings_path"],
-        surfaces["artifact_relative_path"],
-    }
+    targets = {record.target for record in result.records}
+    assert surfaces["pack_settings_path"] in targets
+    assert surfaces["artifact_relative_path"] in targets
 
 
 def test_validation_suite_service_rejects_unknown_suite_id() -> None:

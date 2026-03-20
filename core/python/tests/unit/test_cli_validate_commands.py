@@ -310,10 +310,12 @@ def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) ->
     assert payload["passed"] is True
     assert payload["failed_count"] == 0
     assert payload["included_families"] == [
+        "pack_contract",
         "front_matter",
         "document_semantics",
         "artifacts",
     ]
+    assert any(summary["family"] == "pack_contract" for summary in payload["family_summaries"])
     assert any(summary["family"] == "front_matter" for summary in payload["family_summaries"])
     assert any(summary["family"] == "document_semantics" for summary in payload["family_summaries"])
     assert any(summary["family"] == "artifacts" for summary in payload["family_summaries"])

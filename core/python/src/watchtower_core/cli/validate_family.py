@@ -85,9 +85,10 @@ def register_validate_family(
 
             This command is read-only. It aggregates front-matter validation,
             document-semantic validation, schema-backed artifact validation
-            across live governed artifacts and canonical valid examples, and
-            acceptance reconciliation so you can get one bounded validation
-            summary without invoking each family manually.
+            across live governed artifacts and canonical valid examples,
+            pack-contract validation for the selected pack settings surface,
+            and acceptance reconciliation so you can get one bounded
+            validation summary without invoking each family manually.
             """
         ).strip(),
         epilog=examples(

@@ -134,6 +134,7 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
     assert result.included_families == tuple(
         family for family in VALIDATION_ALL_FAMILIES if family != "acceptance"
     )
+    assert any(summary.family == "pack_contract" for summary in result.family_summaries)
     assert any(summary.family == "front_matter" for summary in result.family_summaries)
     assert any(summary.family == "document_semantics" for summary in result.family_summaries)
     assert any(summary.family == "artifacts" for summary in result.family_summaries)
@@ -230,8 +231,10 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
 
     target_paths = {record.target for record in result.records}
     assert "core/control_plane/manifests/pack_settings.json" in target_paths
+    assert "core/control_plane/registries/pack_registry.json" in target_paths
     assert "core/control_plane/registries/schema_catalog.json" in target_paths
     assert "core/control_plane/indexes/foundations/foundation_index.json" in target_paths
+    assert "plan/.wt/manifests/pack_runtime_manifest.json" in target_paths
     assert all(
         not target_path.startswith("core/control_plane/examples/") for target_path in target_paths
     )

@@ -21,6 +21,8 @@ from watchtower_core.control_plane.models import (
     HumanSurfacePolicyRegistry,
     InitiativeIndex,
     LifecycleStageRegistry,
+    PackRegistry,
+    PackRuntimeManifest,
     PackSettings,
     PathPatternRegistry,
     ProjectSurfacePolicyRegistry,
@@ -60,12 +62,14 @@ from watchtower_core.control_plane.workspace import (
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validator_registry.json"
 VALIDATION_SUITE_REGISTRY_PATH = "core/control_plane/registries/validation_suite_registry.json"
+PACK_REGISTRY_PATH = "core/control_plane/registries/pack_registry.json"
 AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
 )
 PACK_SETTINGS_PATH = "__active_pack_settings__"
 CORE_PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
+PACK_RUNTIME_MANIFEST_FILENAME = "pack_runtime_manifest.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
 STATUS_REGISTRY_PATH = "core/control_plane/registries/status_registry.json"
@@ -360,12 +364,55 @@ class ControlPlaneLoader:
             ValidationSuiteRegistry.from_document,
         )
 
+    def load_pack_registry(self, relative_path: str = PACK_REGISTRY_PATH) -> PackRegistry:
+        """Load the hosted-pack registry."""
+
+        return self._load_typed_document(
+            relative_path,
+            PackRegistry.from_document,
+        )
+
     def load_pack_settings(self, relative_path: str = PACK_SETTINGS_PATH) -> PackSettings:
         """Load one typed pack-settings surface."""
         effective_path = self._current_pack_settings_path(relative_path)
         return self._load_typed_document(
             effective_path,
             PackSettings.from_document,
+        )
+
+    def pack_runtime_manifest_path(
+        self,
+        pack_settings_path: str = PACK_SETTINGS_PATH,
+    ) -> str:
+        """Return the hosted runtime-manifest path for one pack settings surface."""
+
+        effective_pack_settings_path = self.effective_pack_settings_path(pack_settings_path)
+        default_path = str(
+            PurePosixPath(effective_pack_settings_path).with_name(PACK_RUNTIME_MANIFEST_FILENAME)
+        )
+        try:
+            pack_settings = self.load_pack_settings(effective_pack_settings_path)
+            registry_entry = self.load_pack_registry().get_by_pack_id(pack_settings.pack_id)
+        except (ArtifactLoadError, KeyError, ValueError):
+            return default_path
+        return registry_entry.pack_runtime_manifest_path
+
+    def load_pack_runtime_manifest(
+        self,
+        relative_path: str | None = None,
+        *,
+        pack_settings_path: str = PACK_SETTINGS_PATH,
+    ) -> PackRuntimeManifest:
+        """Load one typed pack-runtime manifest."""
+
+        effective_path = (
+            self.pack_runtime_manifest_path(pack_settings_path)
+            if relative_path is None
+            else self._current_pack_settings_path(relative_path)
+        )
+        return self._load_typed_document(
+            effective_path,
+            PackRuntimeManifest.from_document,
         )
 
     def load_governance_surface_map(
@@ -890,6 +937,8 @@ class ControlPlaneLoader:
             return self.load_validator_registry()
         if relative_path == VALIDATION_SUITE_REGISTRY_PATH:
             return self.load_validation_suite_registry()
+        if relative_path == PACK_REGISTRY_PATH:
+            return self.load_pack_registry()
         if relative_path == AUTHORITY_MAP_PATH:
             return self.load_authority_map()
         if relative_path == RENDERED_SURFACE_REGISTRY_PATH:
@@ -920,6 +969,8 @@ class ControlPlaneLoader:
             return self.load_workflow_index()
         if relative_path == TRACEABILITY_INDEX_PATH:
             return self.load_traceability_index()
+        if relative_path == self.pack_runtime_manifest_path():
+            return self.load_pack_runtime_manifest(relative_path=relative_path)
         return self.load_validated_document(relative_path)
 
     def _current_pack_settings_path(self, relative_path: str) -> str:

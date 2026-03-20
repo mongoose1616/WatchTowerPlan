@@ -377,6 +377,106 @@ def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:
             },
             "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
         ),
+        (
+            {
+                "$schema": "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+                "id": "registry.packs",
+                "title": "Inline Pack Registry",
+                "status": "active",
+                "packs": [
+                    {
+                        "pack_id": "pack.example",
+                        "pack_slug": "example",
+                        "command_namespace": "example",
+                        "pack_settings_path": "packs/example/.wt/manifests/pack_settings.json",
+                        "pack_runtime_manifest_path": (
+                            "packs/example/.wt/manifests/pack_runtime_manifest.json"
+                        ),
+                        "python_distribution": "watchtower-example",
+                        "python_package": "watchtower_example",
+                    }
+                ],
+            },
+            {
+                "$schema": "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+                "id": "registry.packs",
+                "title": "Invalid Pack Registry",
+                "status": "active",
+                "packs": [
+                    {
+                        "pack_id": "example",
+                        "pack_slug": "example",
+                        "command_namespace": "example",
+                        "pack_settings_path": "packs/example/.wt/manifests/pack_settings.json",
+                        "pack_runtime_manifest_path": (
+                            "packs/example/.wt/manifests/pack_runtime_manifest.json"
+                        ),
+                        "python_distribution": "watchtower-example",
+                        "python_package": "watchtower_example",
+                    }
+                ],
+            },
+            "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+        ),
+        (
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+                "surface_name": "pack_runtime_manifest",
+                "contract_version": "v1",
+                "description": "Inline runtime manifest payload.",
+                "updated_at": "2026-03-20T22:10:00Z",
+                "pack_id": "pack.example",
+                "pack_slug": "example",
+                "command_namespace": "example",
+                "python_distribution": "watchtower-example",
+                "python_package": "watchtower_example",
+                "integration_module": "watchtower_example.integration",
+                "declared_capabilities": [
+                    "command_registration",
+                    "query_runtime",
+                    "sync_targets",
+                    "validation_provider",
+                ],
+                "required_validation_suite_ids": ["suite.example.validation_baseline"],
+                "owned_roots": {
+                    "workspace_root": "packs/example",
+                    "machine_root": "packs/example/.wt",
+                    "docs_root": "packs/example/docs",
+                    "workflows_root": "packs/example/workflows",
+                    "tracking_root": "packs/example/tracking",
+                    "python_root": "packs/example/python",
+                },
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+                "surface_name": "pack_runtime_manifest",
+                "contract_version": "v1",
+                "description": "Invalid runtime manifest payload.",
+                "updated_at": "2026-03-20T22:10:00Z",
+                "pack_id": "pack.example",
+                "pack_slug": "Example",
+                "command_namespace": "example",
+                "python_distribution": "watchtower-example",
+                "python_package": "watchtower_example",
+                "integration_module": "watchtower_example.integration",
+                "declared_capabilities": [
+                    "command_registration",
+                    "query_runtime",
+                    "sync_targets",
+                    "validation_provider",
+                ],
+                "required_validation_suite_ids": ["suite.example.validation_baseline"],
+                "owned_roots": {
+                    "workspace_root": "packs/example",
+                    "machine_root": "packs/example/.wt",
+                    "docs_root": "packs/example/docs",
+                    "workflows_root": "packs/example/workflows",
+                    "tracking_root": "packs/example/tracking",
+                    "python_root": "packs/example/python",
+                },
+            },
+            "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+        ),
     ]
 
     for valid_document, invalid_document, schema_id in example_pairs:

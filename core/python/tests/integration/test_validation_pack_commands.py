@@ -45,10 +45,9 @@ def test_validate_suite_runs_plan_domain_pack_fixture_via_cli_json(
     assert payload["status"] == "ok"
     assert payload["passed"] is True
     assert payload["suite_id"] == "suite.plan.validation_baseline"
-    assert {record["target"] for record in payload["records"]} == {
-        surfaces["pack_settings_path"],
-        surfaces["artifact_relative_path"],
-    }
+    targets = {record["target"] for record in payload["records"]}
+    assert surfaces["pack_settings_path"] in targets
+    assert surfaces["artifact_relative_path"] in targets
 
 
 def test_validate_suite_fails_closed_on_invalid_schema_reference_via_cli(

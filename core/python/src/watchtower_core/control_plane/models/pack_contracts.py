@@ -111,6 +111,153 @@ class PackSettings:
 
 
 @dataclass(frozen=True, slots=True)
+class PackRegistryEntry:
+    """Core-owned registry entry describing one hosted pack."""
+
+    pack_id: str
+    pack_slug: str
+    command_namespace: str
+    pack_settings_path: str
+    pack_runtime_manifest_path: str
+    python_distribution: str
+    python_package: str
+    default_repo_pack: bool = False
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackRegistryEntry:
+        return cls(
+            pack_id=document["pack_id"],
+            pack_slug=document["pack_slug"],
+            command_namespace=document["command_namespace"],
+            pack_settings_path=document["pack_settings_path"],
+            pack_runtime_manifest_path=document["pack_runtime_manifest_path"],
+            python_distribution=document["python_distribution"],
+            python_package=document["python_package"],
+            default_repo_pack=document.get("default_repo_pack", False),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PackRegistry:
+    """Typed registry of hosted packs."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    packs: tuple[PackRegistryEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            packs=tuple(PackRegistryEntry.from_document(entry) for entry in document["packs"]),
+        )
+
+    def get_by_pack_id(self, pack_id: str) -> PackRegistryEntry:
+        """Return one hosted pack by pack ID."""
+
+        for entry in self.packs:
+            if entry.pack_id == pack_id:
+                return entry
+        raise KeyError(pack_id)
+
+    def get_by_pack_slug(self, pack_slug: str) -> PackRegistryEntry:
+        """Return one hosted pack by slug."""
+
+        for entry in self.packs:
+            if entry.pack_slug == pack_slug:
+                return entry
+        raise KeyError(pack_slug)
+
+    def default_pack(self) -> PackRegistryEntry:
+        """Return the default hosted pack for this repository."""
+
+        default_entries = tuple(entry for entry in self.packs if entry.default_repo_pack)
+        if len(default_entries) != 1:
+            raise ValueError(
+                "Pack registry must declare exactly one default repository pack."
+            )
+        return default_entries[0]
+
+
+@dataclass(frozen=True, slots=True)
+class PackOwnedRoots:
+    """Roots owned by one hosted pack runtime."""
+
+    workspace_root: str
+    machine_root: str
+    docs_root: str
+    workflows_root: str
+    tracking_root: str
+    python_root: str
+    initiatives_root: str | None = None
+    projects_root: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackOwnedRoots:
+        return cls(
+            workspace_root=document["workspace_root"],
+            machine_root=document["machine_root"],
+            docs_root=document["docs_root"],
+            workflows_root=document["workflows_root"],
+            tracking_root=document["tracking_root"],
+            python_root=document["python_root"],
+            initiatives_root=document.get("initiatives_root"),
+            projects_root=document.get("projects_root"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PackRuntimeManifest:
+    """Typed pack-runtime manifest used by the host/composition layer."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    pack_id: str
+    pack_slug: str
+    command_namespace: str
+    python_distribution: str
+    python_package: str
+    integration_module: str
+    declared_capabilities: tuple[str, ...]
+    required_validation_suite_ids: tuple[str, ...]
+    owned_roots: PackOwnedRoots
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackRuntimeManifest:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            pack_id=document["pack_id"],
+            pack_slug=document["pack_slug"],
+            command_namespace=document["command_namespace"],
+            python_distribution=document["python_distribution"],
+            python_package=document["python_package"],
+            integration_module=document["integration_module"],
+            declared_capabilities=_tuple_of_strings(document, "declared_capabilities"),
+            required_validation_suite_ids=_tuple_of_strings(
+                document,
+                "required_validation_suite_ids",
+            ),
+            owned_roots=PackOwnedRoots.from_document(document["owned_roots"]),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class GovernanceSurfaceMap:
     """Typed governance-surface map."""
 

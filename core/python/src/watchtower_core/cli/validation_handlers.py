@@ -178,7 +178,8 @@ def _run_validate_all(args: argparse.Namespace) -> int:
     included_families = tuple(
         family
         for family in VALIDATION_ALL_FAMILIES
-        if not getattr(
+        if family == "pack_contract"
+        or not getattr(
             args,
             {
                 "front_matter": "skip_front_matter",

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+  "title": "Pack Registry",
+  "description": "Registry of hosted domain packs composed into the current repository host runtime.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "packs"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:pack-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.packs"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "packs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/packRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "packId": {
+      "type": "string",
+      "pattern": "^pack\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "packSlug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "pythonDistribution": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+    },
+    "pythonPackage": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "packRecord": {
+      "type": "object",
+      "required": [
+        "pack_id",
+        "pack_slug",
+        "command_namespace",
+        "pack_settings_path",
+        "pack_runtime_manifest_path",
+        "python_distribution",
+        "python_package"
+      ],
+      "properties": {
+        "pack_id": {
+          "$ref": "#/$defs/packId"
+        },
+        "pack_slug": {
+          "$ref": "#/$defs/packSlug"
+        },
+        "command_namespace": {
+          "$ref": "#/$defs/packSlug"
+        },
+        "pack_settings_path": {
+          "type": "string",
+          "pattern": "^(?:core/control_plane|packs/.+/\\.wt|plan/\\.wt)/.+\\.json$"
+        },
+        "pack_runtime_manifest_path": {
+          "type": "string",
+          "pattern": "^(?:packs/.+/\\.wt|plan/\\.wt)/manifests/pack_runtime_manifest\\.json$"
+        },
+        "python_distribution": {
+          "$ref": "#/$defs/pythonDistribution"
+        },
+        "python_package": {
+          "$ref": "#/$defs/pythonPackage"
+        },
+        "default_repo_pack": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

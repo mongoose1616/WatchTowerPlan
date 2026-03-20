@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+  "surface_name": "pack_runtime_manifest",
+  "contract_version": "v1",
+  "description": "Pack-owned runtime manifest for the WatchTower plan pack.",
+  "updated_at": "2026-03-20T22:10:00Z",
+  "pack_id": "pack.plan",
+  "pack_slug": "plan",
+  "command_namespace": "plan",
+  "python_distribution": "watchtower-plan",
+  "python_package": "watchtower_plan",
+  "integration_module": "watchtower_plan.integration",
+  "declared_capabilities": [
+    "command_registration",
+    "query_runtime",
+    "sync_targets",
+    "validation_provider"
+  ],
+  "required_validation_suite_ids": [
+    "suite.plan.validation_baseline"
+  ],
+  "owned_roots": {
+    "workspace_root": "plan",
+    "machine_root": "plan/.wt",
+    "docs_root": "plan/docs",
+    "workflows_root": "plan/workflows",
+    "tracking_root": "plan/tracking",
+    "python_root": "plan/python",
+    "initiatives_root": "plan/initiatives",
+    "projects_root": "plan/projects"
+  },
+  "notes": "The runtime manifest declares host-facing Python integration metadata without overloading pack settings."
+}

@@ -31,6 +31,34 @@
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"
       ]
+    },
+    {
+      "id": "validator.control_plane.pack_registry",
+      "title": "Pack Registry Validator",
+      "description": "Validates the hosted-pack registry artifact.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_registry",
+      "applies_to": [
+        "core/control_plane/registries/pack_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:pack-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.plan.pack_runtime_manifest",
+      "title": "Plan Pack Runtime Manifest Validator",
+      "description": "Validates the plan pack runtime manifest artifact.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_runtime_manifest",
+      "applies_to": [
+        "packs/plan/.wt/manifests/pack_runtime_manifest.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1"
+      ]
     }
   ]
 }

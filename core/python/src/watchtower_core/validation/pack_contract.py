@@ -2,8 +2,15 @@
 
 from __future__ import annotations
 
+import importlib
+
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.pack_integration import (
+    REQUIRED_PACK_CAPABILITIES,
+    SUPPORTED_PACK_CAPABILITIES,
+    PackIntegration,
+)
 from watchtower_core.validation.context import PackValidationContext
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
@@ -19,10 +26,16 @@ class PackContractValidationService:
     def validate(self, pack_settings_path: str = PACK_SETTINGS_PATH) -> ValidationResult:
         """Validate one pack settings surface and its declared validation context."""
 
+        issues: list[ValidationIssue] = []
         try:
-            PackValidationContext.from_loader(
+            context = PackValidationContext.from_loader(
                 self._loader,
                 pack_settings_path=pack_settings_path,
+            )
+            pack_registry = context.loader.load_pack_registry()
+            registry_entry = pack_registry.get_by_pack_id(context.pack_settings.pack_id)
+            runtime_manifest = context.loader.load_pack_runtime_manifest(
+                pack_settings_path=context.pack_settings_path
             )
         except (ControlPlaneError, ValueError) as exc:
             return ValidationResult(
@@ -40,11 +53,244 @@ class PackContractValidationService:
                 ),
             )
 
+        if registry_entry.pack_settings_path != context.pack_settings_path:
+            issues.append(
+                ValidationIssue(
+                    code="pack_registry_settings_path_mismatch",
+                    message=(
+                        "Pack registry entry does not match the active pack settings path: "
+                        f"{registry_entry.pack_settings_path} != {context.pack_settings_path}"
+                    ),
+                    location=context.pack_settings_path,
+                )
+            )
+        effective_runtime_manifest_path = context.loader.pack_runtime_manifest_path(
+            context.pack_settings_path
+        )
+        if registry_entry.pack_runtime_manifest_path != effective_runtime_manifest_path:
+            issues.append(
+                ValidationIssue(
+                    code="pack_registry_runtime_manifest_path_mismatch",
+                    message=(
+                        "Pack registry entry does not match the active runtime manifest path: "
+                        f"{registry_entry.pack_runtime_manifest_path} "
+                        f"!= {effective_runtime_manifest_path}"
+                    ),
+                    location=effective_runtime_manifest_path,
+                )
+            )
+
+        issues.extend(
+            _matching_field_issues(
+                pack_id=context.pack_settings.pack_id,
+                registry_pack_id=registry_entry.pack_id,
+                manifest_pack_id=runtime_manifest.pack_id,
+                pack_slug=registry_entry.pack_slug,
+                manifest_pack_slug=runtime_manifest.pack_slug,
+                command_namespace=registry_entry.command_namespace,
+                manifest_command_namespace=runtime_manifest.command_namespace,
+                python_distribution=registry_entry.python_distribution,
+                manifest_python_distribution=runtime_manifest.python_distribution,
+                python_package=registry_entry.python_package,
+                manifest_python_package=runtime_manifest.python_package,
+            )
+        )
+        issues.extend(_owned_root_issues(context, runtime_manifest))
+        issues.extend(_validation_suite_issues(context, runtime_manifest))
+        issues.extend(_integration_issues(runtime_manifest))
+
         return ValidationResult(
             validator_id=PACK_CONTRACT_VALIDATOR_ID,
             target_path=pack_settings_path,
             engine="python",
             schema_ids=(),
-            passed=True,
-            issues=(),
+            passed=not issues,
+            issues=tuple(issues),
         )
+
+
+def _matching_field_issues(
+    *,
+    pack_id: str,
+    registry_pack_id: str,
+    manifest_pack_id: str,
+    pack_slug: str,
+    manifest_pack_slug: str,
+    command_namespace: str,
+    manifest_command_namespace: str,
+    python_distribution: str,
+    manifest_python_distribution: str,
+    python_package: str,
+    manifest_python_package: str,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    for field_name, left, right in (
+        ("pack_id", pack_id, registry_pack_id),
+        ("pack_id", pack_id, manifest_pack_id),
+        ("pack_slug", pack_slug, manifest_pack_slug),
+        ("command_namespace", command_namespace, manifest_command_namespace),
+        ("python_distribution", python_distribution, manifest_python_distribution),
+        ("python_package", python_package, manifest_python_package),
+    ):
+        if left == right:
+            continue
+        issues.append(
+            ValidationIssue(
+                code=f"pack_contract_{field_name}_mismatch",
+                message=f"Pack contract field mismatch for {field_name}: {left} != {right}",
+            )
+        )
+    return tuple(issues)
+
+
+def _owned_root_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    workspace_roots = context.workspace_roots
+    owned_roots = runtime_manifest.owned_roots
+    for field_name, expected, actual in (
+        ("workspace_root", workspace_roots.workspace_root, owned_roots.workspace_root),
+        ("machine_root", workspace_roots.machine_root, owned_roots.machine_root),
+        ("docs_root", workspace_roots.docs_root, owned_roots.docs_root),
+        ("workflows_root", workspace_roots.workflows_root, owned_roots.workflows_root),
+        ("tracking_root", workspace_roots.tracking_root, owned_roots.tracking_root),
+        ("initiatives_root", workspace_roots.initiatives_root, owned_roots.initiatives_root),
+        ("projects_root", workspace_roots.projects_root, owned_roots.projects_root),
+    ):
+        if expected == actual:
+            continue
+        issues.append(
+            ValidationIssue(
+                code=f"pack_owned_roots_{field_name}_mismatch",
+                message=f"Pack owned_roots field mismatch for {field_name}: {expected} != {actual}",
+            )
+        )
+    return tuple(issues)
+
+
+def _validation_suite_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    available_suite_ids = {
+        suite.suite_id for suite in context.validation_suite_registry.suites
+    }
+    issues: list[ValidationIssue] = []
+    for suite_id in runtime_manifest.required_validation_suite_ids:
+        if suite_id in available_suite_ids:
+            continue
+        issues.append(
+            ValidationIssue(
+                code="pack_required_validation_suite_missing",
+                message=(
+                    "Pack runtime manifest declares a missing validation suite: "
+                    f"{suite_id}"
+                ),
+                location=context.pack_settings_path,
+            )
+        )
+    return tuple(issues)
+
+
+def _integration_issues(runtime_manifest) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    unsupported_capabilities = set(runtime_manifest.declared_capabilities).difference(
+        SUPPORTED_PACK_CAPABILITIES
+    )
+    if unsupported_capabilities:
+        issues.append(
+            ValidationIssue(
+                code="pack_capability_unsupported",
+                message=(
+                    "Pack runtime manifest declares unsupported capabilities: "
+                    + ", ".join(sorted(unsupported_capabilities))
+                ),
+            )
+        )
+        return tuple(issues)
+
+    missing_required_capabilities = set(REQUIRED_PACK_CAPABILITIES).difference(
+        runtime_manifest.declared_capabilities
+    )
+    if missing_required_capabilities:
+        issues.append(
+            ValidationIssue(
+                code="pack_required_capability_missing",
+                message=(
+                    "Pack runtime manifest is missing required capabilities: "
+                    + ", ".join(sorted(missing_required_capabilities))
+                ),
+            )
+        )
+    try:
+        module = importlib.import_module(runtime_manifest.integration_module)
+    except ModuleNotFoundError:
+        return (
+            *issues,
+            ValidationIssue(
+                code="pack_integration_module_missing",
+                message=(
+                    "Pack runtime manifest integration module is not importable: "
+                    f"{runtime_manifest.integration_module}"
+                ),
+                location=runtime_manifest.integration_module,
+            ),
+        )
+
+    descriptor = getattr(module, "PACK_INTEGRATION", None)
+    if not isinstance(descriptor, PackIntegration):
+        return (
+            *issues,
+            ValidationIssue(
+                code="pack_integration_descriptor_missing",
+                message=(
+                    "Pack integration module must export PACK_INTEGRATION as a "
+                    "watchtower_core.pack_integration.PackIntegration instance."
+                ),
+                location=runtime_manifest.integration_module,
+            ),
+        )
+
+    for field_name, expected, actual in (
+        ("pack_id", runtime_manifest.pack_id, descriptor.pack_id),
+        ("pack_slug", runtime_manifest.pack_slug, descriptor.pack_slug),
+        ("command_namespace", runtime_manifest.command_namespace, descriptor.command_namespace),
+        ("python_package", runtime_manifest.python_package, descriptor.python_package),
+    ):
+        if expected == actual:
+            continue
+        issues.append(
+            ValidationIssue(
+                code=f"pack_integration_{field_name}_mismatch",
+                message=f"Pack integration descriptor mismatch for {field_name}: {expected} != {actual}",
+                location=runtime_manifest.integration_module,
+            )
+        )
+
+    descriptor_capabilities = set(descriptor.declared_capabilities)
+    manifest_capabilities = set(runtime_manifest.declared_capabilities)
+    if descriptor_capabilities != manifest_capabilities:
+        issues.append(
+            ValidationIssue(
+                code="pack_integration_capability_mismatch",
+                message=(
+                    "Pack integration descriptor capabilities do not match the runtime manifest."
+                ),
+                location=runtime_manifest.integration_module,
+            )
+        )
+
+    for capability in runtime_manifest.declared_capabilities:
+        if descriptor.hook_for_capability(capability) is not None:
+            continue
+        issues.append(
+            ValidationIssue(
+                code="pack_integration_hook_missing",
+                message=f"Pack integration descriptor is missing the {capability} hook.",
+                location=runtime_manifest.integration_module,
+            )
+        )
+
+    return tuple(issues)

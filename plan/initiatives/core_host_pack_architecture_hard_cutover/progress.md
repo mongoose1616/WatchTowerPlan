@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-20T17:24:02Z`
+- `updated_at`: `2026-03-20T17:54:28Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -19,9 +19,8 @@
 ## Active Tasks
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.core_host_pack_architecture_hard_cutover.pack_contract.001](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json) | `in_progress` | `high` | `repository_maintainer` | Defines the core-owned registry, schemas, typed models, and validator hooks for host-pack integration. | - |
+| [task.core_host_pack_architecture_hard_cutover.host_runtime.002](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json) | `in_progress` | `high` | `repository_maintainer` | Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name. | task.core_host_pack_architecture_hard_cutover.pack_contract.001 |
 | [task.core_host_pack_architecture_hard_cutover.docs_workflows.004](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/publish_host_pack_standards_references_templates_and_workflow_modules/task.json) | `planned` | `high` | `repository_maintainer` | Documents the final core-host-pack contract and updates workflow routing, command docs, and pack authoring guidance. | task.core_host_pack_architecture_hard_cutover.pack_contract.001 |
-| [task.core_host_pack_architecture_hard_cutover.host_runtime.002](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json) | `planned` | `high` | `repository_maintainer` | Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name. | task.core_host_pack_architecture_hard_cutover.pack_contract.001 |
 | [task.core_host_pack_architecture_hard_cutover.pack_tests.005](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_pack_interface_validation_import_boundary_guards_and_second_pack_proofs/task.json) | `planned` | `high` | `repository_maintainer` | Proves the new architecture with validator coverage, boundary guards, and a synthetic second-pack fixture. | task.core_host_pack_architecture_hard_cutover.pack_contract.001, task.core_host_pack_architecture_hard_cutover.host_runtime.002 |
 | [task.core_host_pack_architecture_hard_cutover.plan_pack.003](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json) | `planned` | `high` | `repository_maintainer` | Rebuilds the plan package around pack-native feature seams instead of mirrored core-style families. | task.core_host_pack_architecture_hard_cutover.pack_contract.001, task.core_host_pack_architecture_hard_cutover.host_runtime.002 |
 | [task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json) | `planned` | `medium` | `repository_maintainer` | Bootstrap Core Host Pack Architecture Hard Cutover live initiative package. | - |

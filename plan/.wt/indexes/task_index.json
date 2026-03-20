@@ -98,12 +98,12 @@
       "title": "Introduce watchtower_host and move CLI composition out of reusable core",
       "summary": "Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json",
-      "updated_at": "2026-03-20T17:22:15Z",
+      "updated_at": "2026-03-20T17:54:28Z",
       "depends_on": [
         "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
       ],
@@ -123,12 +123,12 @@
       "title": "Add governed pack registry and runtime manifest contracts",
       "summary": "Defines the core-owned registry, schemas, typed models, and validator hooks for host-pack integration.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json",
-      "updated_at": "2026-03-20T17:21:02Z",
+      "updated_at": "2026-03-20T17:53:04Z",
       "related_ids": [
         "initiative.core_host_pack_architecture_hard_cutover"
       ],

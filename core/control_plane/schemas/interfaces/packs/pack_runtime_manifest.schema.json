@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+  "title": "Pack Runtime Manifest",
+  "description": "Schema for one pack-owned runtime manifest used by the host/composition layer.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "surface_name",
+    "contract_version",
+    "description",
+    "updated_at",
+    "pack_id",
+    "pack_slug",
+    "command_namespace",
+    "python_distribution",
+    "python_package",
+    "integration_module",
+    "owned_roots",
+    "declared_capabilities",
+    "required_validation_suite_ids"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1"
+    },
+    "surface_name": {
+      "const": "pack_runtime_manifest"
+    },
+    "contract_version": {
+      "const": "v1"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pack_id": {
+      "type": "string",
+      "pattern": "^pack\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "pack_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "command_namespace": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    },
+    "python_distribution": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+    },
+    "python_package": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "integration_module": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$"
+    },
+    "declared_capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_validation_suite_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^suite\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+      }
+    },
+    "owned_roots": {
+      "$ref": "#/$defs/ownedRoots"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "rootPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ownedRoots": {
+      "type": "object",
+      "required": [
+        "workspace_root",
+        "machine_root",
+        "docs_root",
+        "workflows_root",
+        "tracking_root",
+        "python_root"
+      ],
+      "properties": {
+        "workspace_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "machine_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "docs_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "workflows_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "tracking_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "python_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "initiatives_root": {
+          "$ref": "#/$defs/rootPath"
+        },
+        "projects_root": {
+          "$ref": "#/$defs/rootPath"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

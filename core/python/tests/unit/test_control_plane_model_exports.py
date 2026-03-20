@@ -8,6 +8,8 @@ import pytest
 from watchtower_core.control_plane.models import (
     FoundationIndex,
     HumanSurfacePolicyRegistry,
+    PackRegistry,
+    PackRuntimeManifest,
     PackSettings,
     RetentionPolicyRegistry,
     StatusRegistry,
@@ -143,6 +145,62 @@ def test_control_plane_models_export_pack_contract_types() -> None:
     assert pack_settings.workspace_roots.machine_root == "packs/example/.wt"
     assert pack_settings.default_validation_suite_id == "suite.example.validation_baseline"
     assert status_registry.get("active").summary == "Active example."
+
+    pack_registry = PackRegistry.from_document(
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+            "id": "registry.packs",
+            "title": "Example Pack Registry",
+            "status": "active",
+            "packs": [
+                {
+                    "pack_id": "pack.example",
+                    "pack_slug": "example",
+                    "command_namespace": "example",
+                    "pack_settings_path": "packs/example/.wt/manifests/pack_settings.json",
+                    "pack_runtime_manifest_path": (
+                        "packs/example/.wt/manifests/pack_runtime_manifest.json"
+                    ),
+                    "python_distribution": "watchtower-example",
+                    "python_package": "watchtower_example",
+                    "default_repo_pack": True,
+                }
+            ],
+        }
+    )
+    runtime_manifest = PackRuntimeManifest.from_document(
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+            "surface_name": "pack_runtime_manifest",
+            "contract_version": "v1",
+            "description": "Example runtime manifest export test.",
+            "updated_at": "2026-03-20T22:10:00Z",
+            "pack_id": "pack.example",
+            "pack_slug": "example",
+            "command_namespace": "example",
+            "python_distribution": "watchtower-example",
+            "python_package": "watchtower_example",
+            "integration_module": "watchtower_example.integration",
+            "declared_capabilities": [
+                "command_registration",
+                "query_runtime",
+                "sync_targets",
+                "validation_provider",
+            ],
+            "required_validation_suite_ids": ["suite.example.validation_baseline"],
+            "owned_roots": {
+                "workspace_root": "packs/example",
+                "machine_root": "packs/example/.wt",
+                "docs_root": "packs/example/docs",
+                "workflows_root": "packs/example/workflows",
+                "tracking_root": "packs/example/tracking",
+                "python_root": "packs/example/python",
+            },
+        }
+    )
+
+    assert pack_registry.default_pack().pack_slug == "example"
+    assert runtime_manifest.owned_roots.python_root == "packs/example/python"
 
 
 def test_control_plane_models_export_validation_suite_registry_types() -> None:

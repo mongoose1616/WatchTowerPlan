@@ -102,6 +102,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:pack-registry:v1",
+      "title": "Pack Registry",
+      "description": "Schema for the hosted-pack registry artifact.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "pack_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/pack_registry.schema.json",
+      "aliases": [
+        "hosted pack registry schema",
+        "domain pack registry schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:reference-index:v1",
       "title": "Reference Index",
       "description": "Schema for machine-readable reference index artifacts.",
@@ -499,6 +513,20 @@
       "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json",
       "aliases": [
         "pack load root schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+      "title": "Pack Runtime Manifest",
+      "description": "Schema for one pack-owned runtime manifest that declares host-facing Python integration metadata.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "pack_runtime_manifest",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_runtime_manifest.schema.json",
+      "aliases": [
+        "pack runtime manifest schema",
+        "host pack integration manifest schema"
       ]
     },
     {

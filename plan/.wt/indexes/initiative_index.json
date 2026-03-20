@@ -11,8 +11,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-20T17:24:02Z",
-      "open_task_count": 8,
+      "updated_at": "2026-03-20T17:54:28Z",
+      "open_task_count": 7,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
       "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -25,7 +25,6 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
         "task.core_host_pack_architecture_hard_cutover.pack_tests.005",
         "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
         "task.core_host_pack_architecture_hard_cutover.host_runtime.002",
@@ -36,15 +35,6 @@
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
-          "title": "Add governed pack registry and runtime manifest contracts",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json",
-          "is_actionable": false
-        },
-        {
           "task_id": "task.core_host_pack_architecture_hard_cutover.pack_tests.005",
           "title": "Add pack-interface validation, import-boundary guards, and second-pack proofs",
           "task_status": "planned",
@@ -53,7 +43,6 @@
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_pack_interface_validation_import_boundary_guards_and_second_pack_proofs/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
             "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
           ]
         },
@@ -69,14 +58,11 @@
         {
           "task_id": "task.core_host_pack_architecture_hard_cutover.host_runtime.002",
           "title": "Introduce watchtower_host and move CLI composition out of reusable core",
-          "task_status": "planned",
+          "task_status": "in_progress",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.core_host_pack_architecture_hard_cutover.docs_workflows.004",
@@ -85,10 +71,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/publish_host_pack_standards_references_templates_and_workflow_modules/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.pack_contract.001"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.core_host_pack_architecture_hard_cutover.plan_pack.003",
@@ -99,7 +82,6 @@
           "doc_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/refactor_watchtower_plan_into_pack_native_feature_services_and_namespaced_commands/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.core_host_pack_architecture_hard_cutover.pack_contract.001",
             "task.core_host_pack_architecture_hard_cutover.host_runtime.002"
           ]
         },

@@ -13,12 +13,14 @@ from watchtower_core.validation.suite import (
 )
 
 VALIDATION_ALL_FAMILIES: tuple[str, ...] = (
+    "pack_contract",
     "front_matter",
     "document_semantics",
     "artifacts",
     "acceptance",
 )
 _STEP_KIND_TO_FAMILY = {
+    "pack_contract": "pack_contract",
     "front_matter": "front_matter",
     "document_semantics": "document_semantics",
     "artifact": "artifacts",

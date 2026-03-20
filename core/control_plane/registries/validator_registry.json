@@ -145,6 +145,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.pack_registry",
+      "title": "Pack Registry Validator",
+      "description": "Validates the hosted-pack registry artifact.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_registry",
+      "applies_to": [
+        "core/control_plane/registries/pack_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:pack-registry:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.governance_surface_map",
       "title": "Governance Surface Map Validator",
       "description": "Validates governance surface map artifacts.",

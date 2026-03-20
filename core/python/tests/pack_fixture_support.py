@@ -6,6 +6,7 @@ from shutil import copytree
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 _PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
+_DEFAULT_FIXTURE_PACK_ROOT = "packs/plan"
 _DEFAULT_FIXTURE_WT_ROOT = "packs/plan/.wt"
 _PLAN_NOTE_VALIDATOR_ID = "validator.packs.plan_note"
 _PLAN_SUITE_ID = "suite.plan.validation_baseline"
@@ -22,9 +23,11 @@ def materialize_pack_validation_suite(
     copytree(_PLAN_FIXTURE_ROOT, pack_root, dirs_exist_ok=True)
 
     actual_wt_root = f"{pack_root.relative_to(repo_root).as_posix()}/.wt"
+    actual_pack_root = actual_wt_root.removesuffix("/.wt")
     if actual_wt_root != _DEFAULT_FIXTURE_WT_ROOT:
         for relative_path in (
             ".wt/manifests/pack_settings.json",
+            ".wt/manifests/pack_runtime_manifest.json",
             ".wt/registries/schema_catalog.json",
             ".wt/registries/validator_registry.json",
             ".wt/registries/validation_suite_registry.json",
@@ -33,12 +36,33 @@ def materialize_pack_validation_suite(
             if not path.exists():
                 continue
             path.write_text(
-                path.read_text(encoding="utf-8").replace(
-                    _DEFAULT_FIXTURE_WT_ROOT,
-                    actual_wt_root,
-                ),
+                path.read_text(encoding="utf-8")
+                .replace(_DEFAULT_FIXTURE_WT_ROOT, actual_wt_root)
+                .replace(_DEFAULT_FIXTURE_PACK_ROOT, actual_pack_root),
                 encoding="utf-8",
             )
+    pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
+    if pack_registry_path.exists():
+        pack_registry_path.write_text(
+            pack_registry_path.read_text(encoding="utf-8")
+            .replace(
+                "plan/.wt/manifests/pack_runtime_manifest.json",
+                f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
+            )
+            .replace(
+                "plan/.wt/manifests/pack_settings.json",
+                f"{actual_wt_root}/manifests/pack_settings.json",
+            )
+            .replace(
+                f"{_DEFAULT_FIXTURE_WT_ROOT}/manifests/pack_runtime_manifest.json",
+                f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
+            )
+            .replace(
+                f"{_DEFAULT_FIXTURE_WT_ROOT}/manifests/pack_settings.json",
+                f"{actual_wt_root}/manifests/pack_settings.json",
+            ),
+            encoding="utf-8",
+        )
 
     validation_suite_registry_path = f"{actual_wt_root}/registries/validation_suite_registry.json"
     if not include_validation_suite_registry:
@@ -68,6 +92,7 @@ def materialize_pack_validation_suite(
     return {
         "artifact_relative_path": f"{actual_wt_root}/work_items/plan_note.json",
         "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
+        "pack_runtime_manifest_path": f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
         "schema_id": "urn:watchtower:schema:interfaces:packs:plan-note:v1",
         "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/plan_note.schema.json",
         "suite_id": _PLAN_SUITE_ID,
