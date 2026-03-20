@@ -1,10 +1,10 @@
 # `core/python`
 
 ## Description
-`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep plan-domain package code under plan/python/, and keep authored control-plane artifacts in core/control_plane/. The shared dev environment also installs the plan-owned package from plan/python/ as an editable local dependency.`
+`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep only narrow plan-owned repo-local code under plan/python/, and keep authored control-plane artifacts in core/control_plane/. The shared dev environment also installs the plan-owned package from plan/python/ as an editable local dependency.`
 
 ## Boundaries
-`Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree.`
+`Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree. Treat watchtower_core as reusable core, treat watchtower_plan as the narrow repo-local plan boundary, and keep live plan machine state under plan/.wt/ rather than in the Python workspace.`
 
 ## Paths
 | Path | Description |
@@ -127,6 +127,9 @@
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
+- `watchtower_core` is the reusable-core namespace. Push generic loaders, validators, query helpers, sync helpers, adapters, and utilities back into `watchtower_core` when they stop being plan-specific.
+- `watchtower_plan` is the narrow repo-local plan boundary under `plan/python/`; do not grow it into a plan-flavored mirror of `watchtower_core`.
+- `plan/.wt/` is live plan machine state only. Keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.
 - If you used `./tools/dev_shell.sh`, leave the activated shell with `exit`.
@@ -140,16 +143,16 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
 | `core/python/src/watchtower_core/documentation/README.md` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic. |
-| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; repo-local document semantics stay in the plan-runtime validation surface. |
-| `core/python/src/watchtower_core/query/README.md` | `reusable_core` | Export-safe generic query services over governed indexes, routes, pack surfaces, knowledge docs, records, and artifact families; live plan-runtime coordination and task queries stay outside the reusable package root. |
-| `core/python/src/watchtower_core/sync/README.md` | `reusable_core` | Export-safe sync harness plus repo-shared command, route, and repository-path index rebuild services; plan-domain sync orchestration stays outside the reusable package root. |
+| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; repo-local document semantics stay under `watchtower_plan.validation`. |
+| `core/python/src/watchtower_core/query/README.md` | `reusable_core` | Export-safe generic query services over governed indexes, routes, pack surfaces, knowledge docs, records, and artifact families; live plan coordination and task queries stay under `watchtower_plan.query`. |
+| `core/python/src/watchtower_core/sync/README.md` | `reusable_core` | Export-safe sync harness plus repo-shared command, route, and repository-path index rebuild services; live plan sync orchestration stays under `watchtower_plan.sync`. |
 | `core/python/src/watchtower_core/rebuild/README.md` | `reusable_core` | Export-safe rebuild harness plus registry-backed rendered-view building and markdown reconciliation. |
 | `core/python/src/watchtower_core/routing/README.md` | `reusable_core` | Export-safe route-selection runtime over governed route and workflow indexes. |
 | `core/python/src/watchtower_core/workflow_execution/README.md` | `reusable_core` | Export-safe workflow execution harness over routed workflow selection and metadata. |
 | `core/python/src/watchtower_core/evidence/README.md` | `reusable_core` | Validation-evidence recording plus reusable evidence-bundle helpers. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/closeout/README.md` | `boundary_layer` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
-| `plan/python/src/watchtower_plan/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific plan-domain runtime, query, sync, validation, and authored-document semantics under the approved plan-owned Python boundary. |
+| `plan/python/src/watchtower_plan/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific repo-local plan orchestration under the approved plan-owned Python boundary. |
 | `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
 | `core/python/src/watchtower_core/utils/README.md` | `reusable_core` | Narrow shared helpers that do not justify a first-class package. |
 
@@ -174,5 +177,6 @@ Use the nested READMEs under `plan/python/src/watchtower_plan/`, `integrations/g
 - `watchtower_core.validation.suite.ValidationSuiteService` runs declared validation suites against the active pack settings surface, including pack-local schema and validator registries.
 - `watchtower_plan` is the approved internal plan-pack consumer boundary under `plan/python/src/watchtower_plan/`; keep pack-agnostic loading and validation logic out of that namespace, and move generic behavior back into reusable-core packages when it stops being plan-specific.
 - `watchtower_plan` should be consumed through the shared workspace installation contract, not through repo-local `sys.path` mutation.
+- `watchtower_plan` is not a second generic Python root and not a mirror of `watchtower_core`; keep it narrow and repo-local.
 - The Python design target is boring, explicit, and easy to consolidate: prefer one canonical implementation, extract generic behavior before growing plan-runtime-only surfaces, and keep CLI or doc-facing modules thin.
 - The default lint baseline now includes Ruff comprehension checks, and the reusable-core package subset is held to stricter `mypy` rules than the plan-owned repo-local surfaces while those domain modules continue tightening.

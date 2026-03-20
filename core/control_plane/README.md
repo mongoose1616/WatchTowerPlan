@@ -24,3 +24,4 @@
 
 ## Notes
 - Keep authored control-plane assets here and keep live plan machine state under `plan/.wt/`.
+- Use `core/control_plane/**` for authored machine authority and `plan/.wt/**` for live plan machine state. Do not blur those roles.

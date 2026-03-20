@@ -6,8 +6,9 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 ## Boundary
 - `Classification`: `repo_local_orchestration`
 - `Supported Imports`: Explicit residual services and subpackages such as `plan_workspace`, `project_workspace`, `initiative_packages`, `task_lifecycle`, `query`, `sync`, `validation`, and `closeout`.
-- `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `documentation`, or `utils`.
+- `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository, a mirror of `watchtower_core`, or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `documentation`, or `utils`.
 - `Packaging Contract`: Reach this package through the shared workspace installation path, not through repo-local `sys.path` mutation inside `watchtower_core`.
+- `Machine-State Boundary`: Keep live plan machine state in `plan/.wt/**`, not in this package tree.
 
 ## Responsibilities
 - Workspace orchestration: `initiative_packages.py`, `plan_workspace.py`, and `project_workspace.py` still own live `plan/**` and `plan/projects/**` package bootstrap, rendered-surface shaping, and readiness-gate behavior that has not been extracted behind narrower reusable-core seams.
@@ -30,6 +31,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - Prefer moving new generic helpers into explicit reusable-core packages rather than growing this plan-owned namespace unnecessarily.
 - Keep `watchtower_plan` additions tightly scoped to plan-workspace state, plan-owned reference-resolution bridges, or other current-pack behavior that cannot move cleanly into reusable core.
 - Do not let live plan behavior drift back into catch-all repo-local modules when a narrower reusable boundary is available.
+- Do not mirror reusable-core package structure here just to create plan-flavored duplicates.
 
 ## Related Surfaces
 - `core/docs/standards/engineering/python_code_design_standard.md`

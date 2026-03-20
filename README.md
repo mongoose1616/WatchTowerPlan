@@ -23,7 +23,10 @@
 - Human plan workflow start-here: `plan/workflows/README.md`
 - Authored foundations start-here: `core/docs/foundations/README.md`
 - Mirrored plan foundations start-here: `plan/docs/foundations/README.md`
+- Authored machine authority start-here: `core/control_plane/README.md`
 - Machine current-state start-here: `plan/.wt/indexes/coordination_index.json`
 - Machine project lookup start-here: `plan/.wt/indexes/project_index.json`
+- Shared Python workspace start-here: `core/python/README.md`
+- Plan-owned Python boundary start-here: `plan/python/README.md`
 - Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core query authority --domain planning --format json`
 - Legacy docs-backed planning has been purged. Use `plan/initiatives/**`, `plan/projects/**`, `plan/tracking/**`, and `core/control_plane/ledgers/purges/**` instead.

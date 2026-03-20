@@ -1,7 +1,13 @@
 # `plan/python`
 
 ## Description
-`This directory holds the plan-domain Python package project root. Use it for WatchTowerPlan-specific runtime, live planning queries, plan-owned sync and validation orchestration, and other pack-local behavior that should not live inside reusable core.`
+`This directory holds the plan-domain Python package project root. Use it only for narrow WatchTowerPlan-specific repo-local orchestration that should not live inside reusable core.`
+
+## Boundaries
+- `plan/python/**` is the approved plan-owned Python boundary.
+- Keep this tree narrow. New generic loaders, validators, adapters, query helpers, sync helpers, and utilities belong in `core/python/src/watchtower_core/**`.
+- `plan/.wt/**` is live plan machine state only, not a place for Python source or hand-maintained implementation logic.
+- Use the shared environment under `core/python/.venv/`; do not create a second local Python workspace here.
 
 ## Paths
 | Path | Description |
@@ -16,4 +22,5 @@
 - The shared `core/python` workspace installs `watchtower-plan` as an editable local package; do not fall back to repo-local `sys.path` mutation to reach this source tree.
 - `watchtower_core` may bridge into `watchtower_plan` for repo-local CLI and closeout flows, but reusable-core logic must stay pack-agnostic.
 - Repo-shared governed-document helpers now live under `core/python/src/watchtower_core/documentation/`; do not duplicate them back into `watchtower_plan`.
+- `watchtower_plan` is not a plan-flavored mirror of `watchtower_core`; keep only repo-local plan behavior here.
 - Keep plan-domain Python aligned with `requirements.md`, `decisions.md`, and the plan-root guidance under `plan/**`.

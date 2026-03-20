@@ -21,8 +21,10 @@
 - Use local standards and references only where they conform to that contract.
 - Human workflow start-here: `plan/workflows/README.md`.
 - `plan/.wt/` is the authoritative machine root for new live plan-pack state.
+- `plan/.wt/**` is machine state only; keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.
 - `plan/AGENTS.md` is the local instruction layer for work under `plan/**`.
 - `plan/docs/foundations/` is the mirrored foundations view and must stay byte-identical with `core/docs/foundations/`.
+- `plan/python/` is the approved plan-owned Python boundary for narrow repo-local plan behavior that should not live in reusable core.
 - Use `plan/initiatives/<initiative_slug>/` for pack-wide work and `plan/projects/<project_slug>/initiatives/<initiative_slug>/` for project-scoped work.
 - `plan/plan_overview.md` and the initiative-local rendered views are derived from the live machine state and must stay current with the indexes under `plan/.wt/indexes/`.
 - `plan/.wt/registries/retention_policy_registry.json` is the live policy surface for promoted guidance, purge ledgers, and terminal initiative retention behavior.
