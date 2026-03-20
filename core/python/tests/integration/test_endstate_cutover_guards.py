@@ -109,6 +109,28 @@ def test_instruction_layers_publish_current_core_plan_boundaries() -> None:
     assert not violations, "\n".join(violations)
 
 
+def test_readme_layers_publish_current_core_plan_boundaries() -> None:
+    expectations = {
+        REPO_ROOT / "README.md": ("core/control_plane/README.md", "plan/.wt/indexes/coordination_index.json", "plan/python/README.md"),
+        REPO_ROOT / "plan/README.md": ("plan/.wt/**", "plan/python/", "machine state only"),
+        REPO_ROOT / "core/control_plane/README.md": ("authored machine authority", "plan/.wt/**", "live plan machine state"),
+        REPO_ROOT / "core/python/README.md": ("watchtower_core", "watchtower_plan", "plan/.wt/"),
+        REPO_ROOT / "plan/python/README.md": ("approved plan-owned Python boundary", "plan/.wt/**", "watchtower_plan"),
+        REPO_ROOT / "plan/python/src/watchtower_plan/README.md": ("watchtower_core", "plan/.wt/**", "plan-flavored duplicates"),
+    }
+
+    violations: list[str] = []
+    for path, required_fragments in expectations.items():
+        text = path.read_text(encoding="utf-8")
+        for fragment in required_fragments:
+            if fragment not in text:
+                violations.append(
+                    f"{path.relative_to(REPO_ROOT).as_posix()}: missing expected README fragment {fragment!r}"
+                )
+
+    assert not violations, "\n".join(violations)
+
+
 def test_active_endstate_surfaces_do_not_publish_retired_planning_residue() -> None:
     violations: list[str] = []
 
