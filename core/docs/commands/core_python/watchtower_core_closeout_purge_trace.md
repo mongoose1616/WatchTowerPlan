@@ -40,7 +40,7 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 
 ```sh
 cd core/python
-uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path core/python/src/watchtower_core/plan_runtime/example.py --write --format json
+uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path plan/python/src/watchtower_plan/example.py --write --format json
 ```
 
 ## Behavior and Outputs

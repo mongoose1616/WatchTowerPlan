@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-20T00:16:10Z",
+  "updated_at": "2026-03-20T01:25:48Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -19,7 +19,7 @@
       "authority": "authoritative",
       "applies_to": [
         "plan/docs/decisions/plan_guidance_promotion_helper_foundation_design_record.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -178,7 +178,7 @@
       "authority": "authoritative",
       "applies_to": [
         "plan/docs/patterns/plan_guidance_promotion_helper_foundation_implementation_slice.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -204,7 +204,7 @@
       ],
       "applies_to": [
         "plan/docs/references/plan_guidance_promotion_helper_foundation_initiative_brief.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -437,7 +437,7 @@
         "plan/initiatives/",
         "plan/projects/",
         "plan/tracking/task_tracking.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ]
     },
     {
@@ -459,7 +459,7 @@
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ]
     },
     {
@@ -520,7 +520,7 @@
       "authority": "authoritative",
       "applies_to": [
         "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -548,7 +548,7 @@
         "plan/projects/",
         "core/control_plane/ledgers/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/cli/"
       ]
     },

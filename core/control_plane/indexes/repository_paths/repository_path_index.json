@@ -2706,7 +2706,7 @@
       "path": "core/python/src/",
       "kind": "directory",
       "surface_kind": "python_source",
-      "summary": "Holds the `watchtower_core` package source tree, including the reusable core plus the current transitional `plan_runtime` staging area.",
+      "summary": "Holds the `watchtower_core` reusable-core package source tree.",
       "parent_path": "core/python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2780,46 +2780,6 @@
       "surface_kind": "python_source_file",
       "summary": "Handles the coordination, initiative, and planning rendered query subcommands plus their shared payload formatting.",
       "parent_path": "core/python/src/watchtower_core/cli/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/plan_runtime/query/README.md",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Describes the repository query-service boundary and adjacent command docs.",
-      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/plan_runtime/query/common.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Shared rendered-surface search helpers and deterministic query-term builders for trace-linked planning views.",
-      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/plan_runtime/query/coordination.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Active-first coordination query service that layers the coordination snapshot over initiative history lookup.",
-      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/plan_runtime/query/initiatives.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Compact initiative-family query service over phase, owner, and blocker rendered surfaces.",
-      "parent_path": "core/python/src/watchtower_core/plan_runtime/query/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -3275,10 +3235,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_plan_runtime_boundary.py",
+      "path": "core/python/tests/unit/test_plan_python_boundary.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the explicit plan-runtime boundary and the absence of retired wrapper modules.",
+      "summary": "Unit tests for the explicit core-versus-plan Python boundary and the absence of retired wrapper modules.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3870,6 +3830,76 @@
       "surface_kind": "plan_workspace",
       "summary": "Holds project containers and project-scoped initiative roots.",
       "parent_path": "plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Adds plan-domain Python instructions on top of the shared Python workspace rules.",
+      "parent_path": "plan/python/",
+      "maturity": "scaffold",
+      "priority": "low",
+      "audience_hint": "automation"
+    },
+    {
+      "path": "plan/python/README.md",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Describes the purpose of the plan-owned Python boundary and how it fits into the repo.",
+      "parent_path": "plan/python/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/",
+      "kind": "directory",
+      "surface_kind": "plan_workspace",
+      "summary": "Holds the plan-domain Python package source tree.",
+      "parent_path": "plan/python/src/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/query/README.md",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Describes the repository query-service boundary and adjacent command docs.",
+      "parent_path": "plan/python/src/watchtower_plan/query/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/query/common.py",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Shared rendered-surface search helpers and deterministic query-term builders for trace-linked planning views.",
+      "parent_path": "plan/python/src/watchtower_plan/query/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/query/coordination.py",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Active-first coordination query service that layers the coordination snapshot over initiative history lookup.",
+      "parent_path": "plan/python/src/watchtower_plan/query/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/query/initiatives.py",
+      "kind": "file",
+      "surface_kind": "plan_surface",
+      "summary": "Compact initiative-family query service over phase, owner, and blocker rendered surfaces.",
+      "parent_path": "plan/python/src/watchtower_plan/query/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

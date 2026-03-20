@@ -64,7 +64,7 @@ uv run watchtower-core query readiness --trace-id trace.plan_live_query_authorit
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/readiness.py`
+- `plan/python/src/watchtower_plan/query/readiness.py`
 - `plan/.wt/indexes/readiness_index.json`
 
 ## Updated At

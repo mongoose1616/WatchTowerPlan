@@ -60,7 +60,7 @@ uv run watchtower-core plan confirm-inputs --project-slug watchtower --initiativ
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/initiative_packages.py`
+- `plan/python/src/watchtower_plan/initiative_packages.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

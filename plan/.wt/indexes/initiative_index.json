@@ -9,44 +9,20 @@
       "title": "Pack Domain Hardcoding Remediation",
       "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-20T00:16:10Z",
-      "open_task_count": 2,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-20T01:25:48Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
-      "next_action": "Start the highest-priority ready task from the initiative package.",
-      "next_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/summary.md",
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
       "slug": "pack_domain_hardcoding_remediation",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
-        "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.pack_domain_hardcoding_remediation.run_assessment_pass_two",
-          "title": "Run assessment pass two",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary",
-          "title": "Split core and plan Python boundary",
-          "task_status": "ready",
-          "priority": "critical",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
-          "is_actionable": true
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
@@ -67,6 +43,8 @@
       "evidence_ids": [
         "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-20T01:25:48Z",
+      "closure_reason": "Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate.",
       "related_paths": [
         "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
@@ -78,7 +56,6 @@
         "core/docs/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/plan_runtime/",
         "plan/",
         "plan/.wt/",
         "plan/docs/",
@@ -91,6 +68,7 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/verify_report_findings_and_map_pack_roots/task.json",
+        "plan/python/",
         "plan/tracking/"
       ],
       "tags": [
@@ -152,7 +130,6 @@
         "core/control_plane/",
         "core/docs/",
         "core/python/",
-        "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/",
         "plan/",

@@ -59,7 +59,7 @@ uv run watchtower-core query project-context --project-slug watchtower --format 
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/project_context.py`
+- `plan/python/src/watchtower_plan/project_context.py`
 - `plan/projects/<project_slug>/.wt/project.json`
 - `plan/projects/<project_slug>/.wt/project_repository_map.json`
 

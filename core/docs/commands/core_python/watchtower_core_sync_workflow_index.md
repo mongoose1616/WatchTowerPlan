@@ -68,7 +68,7 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.json --f
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_family_documents.py`
 - `core/python/src/watchtower_core/cli/sync_document_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py`
+- `plan/python/src/watchtower_plan/sync/workflow_index.py`
 - `core/control_plane/indexes/workflows/workflow_index.json`
 
 ## Updated At

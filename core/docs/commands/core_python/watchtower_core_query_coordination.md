@@ -87,7 +87,7 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/coordination.py`
+- `plan/python/src/watchtower_plan/query/coordination.py`
 - `plan/.wt/indexes/coordination_index.json`
 
 ## Updated At

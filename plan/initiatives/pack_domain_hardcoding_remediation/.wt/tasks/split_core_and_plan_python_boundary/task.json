@@ -4,30 +4,30 @@
   "slug": "split_core_and_plan_python_boundary",
   "initiative_id": "initiative.pack_domain_hardcoding_remediation",
   "title": "Split core and plan Python boundary",
-  "summary": "Move residual plan-domain runtime out of watchtower_core.plan_runtime and behind a plan-owned Python boundary under plan/**.",
+  "summary": "Move repo-local planning runtime under plan/python/src/watchtower_plan/, keep reusable core fail-closed, and guard against .wt or repo_ops regression.",
   "status": "active",
-  "task_status": "ready",
+  "task_status": "completed",
   "task_kind": "feature",
   "priority": "critical",
   "owner": "repository_maintainer",
   "created_at": "2026-03-20T00:12:19Z",
-  "updated_at": "2026-03-20T00:14:55Z",
+  "updated_at": "2026-03-20T01:25:20Z",
   "related_ids": [
     "initiative.pack_domain_hardcoding_remediation"
   ],
   "applies_to": [
-    "core/python/src/watchtower_core/plan_runtime/",
+    "core/python/src/watchtower_core/",
     "core/python/src/watchtower_core/cli/",
-    "plan/"
+    "plan/python/"
   ],
   "scope_items": [
-    "Define the approved plan-owned Python boundary under plan/**.",
-    "Move residual plan-domain runtime, query, sync, and validation services out of watchtower_core.plan_runtime.",
-    "Update CLI, docs, tests, and validation so reusable core imports no longer depend directly on plan-domain Python."
+    "Define and enforce the approved plan-owned Python boundary under plan/python/**.",
+    "Keep reusable core, CLI, closeout, and validation imports aligned with the new boundary.",
+    "Update docs, tests, validation, and residue guards so reusable core stays pack-agnostic while repo-local consumers reach watchtower_plan through explicit repo-local bootstrap."
   ],
   "done_when_items": [
     "watchtower_core.plan_runtime no longer owns active plan-domain runtime in the clean endstate.",
     "Plan-domain Python lives behind an approved boundary under plan/** and reusable core stays pack-agnostic.",
-    "Validation and test suites pass after the boundary cutover."
+    "Validation and targeted regression suites pass after the boundary cutover."
   ]
 }

@@ -69,7 +69,7 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/task_family.py`
 - `core/python/src/watchtower_core/cli/task_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/task_lifecycle.py`
+- `plan/python/src/watchtower_plan/task_lifecycle.py`
 
 ## Updated At
 - `2026-03-18T20:35:00Z`

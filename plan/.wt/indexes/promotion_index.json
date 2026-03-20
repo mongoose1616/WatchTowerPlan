@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-20T00:16:10Z",
+  "updated_at": "2026-03-20T01:25:48Z",
   "entries": [
     {
       "promotion_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",
@@ -11,7 +11,7 @@
       "trace_id": "trace.pack_domain_hardcoding_remediation",
       "initiative_title": "Pack Domain Hardcoding Remediation",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/pack_domain_hardcoding_remediation",
       "candidate_count": 4,
       "candidate_paths": [
@@ -29,7 +29,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-19T20:34:56Z",
+      "updated_at": "2026-03-20T01:25:48Z",
       "target_paths": [
         "plan/docs/decisions/pack_domain_hardcoding_remediation_design_record.md",
         "plan/docs/patterns/pack_domain_hardcoding_remediation_implementation_slice.md",

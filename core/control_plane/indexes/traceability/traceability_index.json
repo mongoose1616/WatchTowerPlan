@@ -52,8 +52,10 @@
       "title": "Pack Domain Hardcoding Remediation",
       "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-20T00:16:10Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-20T01:25:48Z",
+      "closed_at": "2026-03-20T01:25:48Z",
+      "closure_reason": "Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate.",
       "source_surface_paths": [
         "plan/initiatives/pack_domain_hardcoding_remediation/decision_notes.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
@@ -77,7 +79,6 @@
         "core/docs/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/plan_runtime/",
         "plan/",
         "plan/.wt/",
         "plan/docs/",
@@ -94,6 +95,7 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/design_record.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/implementation_slice.md",
         "plan/initiatives/pack_domain_hardcoding_remediation/initiative_brief.md",
+        "plan/python/",
         "plan/tracking/"
       ],
       "tags": [
@@ -135,7 +137,6 @@
         "core/control_plane/",
         "core/docs/",
         "core/python/",
-        "core/python/src/watchtower_core/plan_runtime/",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/",
         "plan/",

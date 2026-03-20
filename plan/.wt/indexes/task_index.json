@@ -114,14 +114,14 @@
       "trace_id": "trace.pack_domain_hardcoding_remediation",
       "initiative_title": "Pack Domain Hardcoding Remediation",
       "title": "Run assessment pass two",
-      "summary": "Run the final full repository assessment after cleanup and confirm the pack-driven endstate has no remaining actionable gaps.",
+      "summary": "Repeat the full repository assessment after the boundary cutover, remove the last residue findings, and confirm there are no remaining actionable pack-domain hardcoding gaps.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json",
-      "updated_at": "2026-03-20T00:14:38Z",
+      "updated_at": "2026-03-20T01:25:20Z",
       "related_ids": [
         "initiative.pack_domain_hardcoding_remediation"
       ],
@@ -136,21 +136,21 @@
       "trace_id": "trace.pack_domain_hardcoding_remediation",
       "initiative_title": "Pack Domain Hardcoding Remediation",
       "title": "Split core and plan Python boundary",
-      "summary": "Move residual plan-domain runtime out of watchtower_core.plan_runtime and behind a plan-owned Python boundary under plan/**.",
+      "summary": "Move repo-local planning runtime under plan/python/src/watchtower_plan/, keep reusable core fail-closed, and guard against .wt or repo_ops regression.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "critical",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json",
-      "updated_at": "2026-03-20T00:14:55Z",
+      "updated_at": "2026-03-20T01:25:20Z",
       "related_ids": [
         "initiative.pack_domain_hardcoding_remediation"
       ],
       "applies_to": [
-        "core/python/src/watchtower_core/plan_runtime/",
+        "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
-        "plan/"
+        "plan/python/"
       ]
     },
     {

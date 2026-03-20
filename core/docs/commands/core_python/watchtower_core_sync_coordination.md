@@ -64,10 +64,10 @@ uv run watchtower-core sync coordination --output-dir /tmp/watchtower_coordinati
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/coordination.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/coordination_index.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/coordination_tracking.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/registry.py`
+- `plan/python/src/watchtower_plan/sync/coordination.py`
+- `plan/python/src/watchtower_plan/sync/coordination_index.py`
+- `plan/python/src/watchtower_plan/sync/coordination_tracking.py`
+- `plan/python/src/watchtower_plan/sync/registry.py`
 
 ## Updated At
 - `2026-03-18T21:12:00Z`

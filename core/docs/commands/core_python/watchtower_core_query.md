@@ -111,8 +111,8 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/plan_runtime/query/`
-- `core/python/src/watchtower_core/plan_runtime/project_context.py`
+- `plan/python/src/watchtower_plan/query/`
+- `plan/python/src/watchtower_plan/project_context.py`
 
 ## Updated At
 - `2026-03-17T22:39:20Z`

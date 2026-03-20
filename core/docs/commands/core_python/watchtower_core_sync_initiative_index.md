@@ -64,7 +64,7 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.json
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/initiative_index.py`
+- `plan/python/src/watchtower_plan/sync/initiative_index.py`
 - `plan/.wt/indexes/initiative_index.json`
 
 ## Updated At

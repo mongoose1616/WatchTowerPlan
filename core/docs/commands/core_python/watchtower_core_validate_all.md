@@ -77,9 +77,9 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 - `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/suite.py`
-- `core/python/src/watchtower_core/plan_runtime/validation/targets.py`
+- `plan/python/src/watchtower_plan/validation/targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`
+- `plan/python/src/watchtower_plan/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 

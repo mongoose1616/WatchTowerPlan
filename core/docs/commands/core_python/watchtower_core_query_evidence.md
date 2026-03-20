@@ -56,7 +56,7 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_records_family.py`
 - `core/python/src/watchtower_core/cli/query_records_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/evidence.py`
+- `plan/python/src/watchtower_plan/query/evidence.py`
 - `core/control_plane/ledgers/validation_evidence/`
 
 ## Updated At

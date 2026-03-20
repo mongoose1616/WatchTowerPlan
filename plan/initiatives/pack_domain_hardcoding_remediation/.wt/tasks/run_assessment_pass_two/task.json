@@ -4,14 +4,14 @@
   "slug": "run_assessment_pass_two",
   "initiative_id": "initiative.pack_domain_hardcoding_remediation",
   "title": "Run assessment pass two",
-  "summary": "Run the final full repository assessment after cleanup and confirm the pack-driven endstate has no remaining actionable gaps.",
+  "summary": "Repeat the full repository assessment after the boundary cutover, remove the last residue findings, and confirm there are no remaining actionable pack-domain hardcoding gaps.",
   "status": "active",
-  "task_status": "in_progress",
+  "task_status": "completed",
   "task_kind": "validation",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-19T20:36:25Z",
-  "updated_at": "2026-03-20T00:14:38Z",
+  "updated_at": "2026-03-20T01:25:20Z",
   "related_ids": [
     "initiative.pack_domain_hardcoding_remediation"
   ],
@@ -20,10 +20,10 @@
     "plan/"
   ],
   "scope_items": [
-    "Repeat the full repository assessment after cleanup and final validation",
-    "Close any new gaps found during the second pass before initiative closeout"
+    "Repeat the full repository assessment after cleanup and final validation.",
+    "Close any new gaps found during the second pass before initiative closeout."
   ],
   "done_when_items": [
-    "The second full assessment yields no remaining actionable gaps"
+    "The second full assessment yields no remaining actionable gaps."
   ]
 }

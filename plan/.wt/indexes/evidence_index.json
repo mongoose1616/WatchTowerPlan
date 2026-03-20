@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-20T00:16:10Z",
+  "updated_at": "2026-03-20T01:25:48Z",
   "entries": [
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",
@@ -11,7 +11,7 @@
       "trace_id": "trace.pack_domain_hardcoding_remediation",
       "initiative_title": "Pack Domain Hardcoding Remediation",
       "title": "Bootstrap Validation Bundle",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/pack_domain_hardcoding_remediation",
       "entry_count": 2,
       "acceptance_labels": [
@@ -32,7 +32,7 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/discrepancies",
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/initiative.json"
       ],
-      "updated_at": "2026-03-19T20:34:56Z"
+      "updated_at": "2026-03-20T01:25:48Z"
     },
     {
       "evidence_id": "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle",

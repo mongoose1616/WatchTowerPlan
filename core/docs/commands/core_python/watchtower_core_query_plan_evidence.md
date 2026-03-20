@@ -66,7 +66,7 @@ uv run watchtower-core query plan-evidence --trace-id trace.plan_live_evidence_c
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/plan_evidence.py`
+- `plan/python/src/watchtower_plan/query/plan_evidence.py`
 - `plan/.wt/indexes/evidence_index.json`
 
 ## Updated At

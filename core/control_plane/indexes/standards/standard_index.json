@@ -180,8 +180,8 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
-        "core/python/src/watchtower_core/plan_runtime/query/foundations.py",
+        "plan/python/src/watchtower_plan/sync/foundation_index.py",
+        "plan/python/src/watchtower_plan/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
@@ -473,8 +473,8 @@
         "schema"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/plan_runtime/sync/standard_index.py",
-        "core/python/src/watchtower_core/plan_runtime/query/standards.py",
+        "plan/python/src/watchtower_plan/sync/standard_index.py",
+        "plan/python/src/watchtower_plan/query/standards.py",
         "core/control_plane/indexes/standards/",
         "core/control_plane/schemas/artifacts/"
       ],
@@ -700,10 +700,10 @@
         "artifact"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/plan_runtime/markdown_semantics.py",
-        "core/python/src/watchtower_core/plan_runtime/governed_documents.py",
-        "core/python/src/watchtower_core/plan_runtime/sync/workflow_index.py",
-        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
+        "plan/python/src/watchtower_plan/markdown_semantics.py",
+        "plan/python/src/watchtower_plan/governed_documents.py",
+        "plan/python/src/watchtower_plan/sync/workflow_index.py",
+        "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
         "core/control_plane/registries/validator_registry.json"
@@ -761,8 +761,8 @@
         "core/docs/foundations/repository_scope.md",
         "core/docs/foundations/repository_standards_posture.md",
         "core/docs/templates/foundation_document_template.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/foundation_index.py",
-        "core/python/src/watchtower_core/plan_runtime/query/foundations.py"
+        "plan/python/src/watchtower_plan/sync/foundation_index.py",
+        "plan/python/src/watchtower_plan/query/foundations.py"
       ],
       "internal_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
@@ -915,9 +915,9 @@
       "operationalization_paths": [
         "core/docs/standards/*/*_standard.md",
         "plan/docs/standards/*/*_standard.md",
-        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
-        "core/python/src/watchtower_core/plan_runtime/sync/standard_index.py",
-        "core/python/src/watchtower_core/plan_runtime/query/standards.py",
+        "plan/python/src/watchtower_plan/validation/document_semantics.py",
+        "plan/python/src/watchtower_plan/sync/standard_index.py",
+        "plan/python/src/watchtower_plan/query/standards.py",
         "core/docs/commands/core_python/watchtower_core_query_standards.md",
         "core/docs/templates/standard_document_template.md"
       ],
@@ -1221,7 +1221,7 @@
       "standard_id": "std.engineering.python_code_design",
       "category": "engineering",
       "title": "Python Code Design Standard",
-      "summary": "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/`.",
+      "summary": "This standard defines the local design philosophy, naming rules, and consolidation rules for Python code under `core/python/` and the approved plan-owned boundary under `plan/python/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_code_design_standard.md",
@@ -1326,7 +1326,7 @@
       "standard_id": "std.engineering.python_workspace",
       "category": "engineering",
       "title": "Python Workspace Standard",
-      "summary": "This standard defines how Python code, tooling, environments, and tests are organized for the core helper and harness layer under `core/python/`.",
+      "summary": "This standard defines how Python code, tooling, environments, and tests are organized across the shared `core/python/` workspace and the approved plan-owned package root under `plan/python/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
@@ -1340,9 +1340,9 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/plan_runtime/",
-        "core/python/src/watchtower_core/plan_runtime/sync/",
-        "core/python/src/watchtower_core/plan_runtime/query/",
+        "plan/python/src/watchtower_plan/",
+        "plan/python/src/watchtower_plan/sync/",
+        "plan/python/src/watchtower_plan/query/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/rebuild/",
@@ -1719,7 +1719,7 @@
       ],
       "operationalization_paths": [
         "core/python/src/watchtower_core/validation/all.py",
-        "core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py",
+        "plan/python/src/watchtower_plan/validation/document_semantics.py",
         "core/docs/commands/core_python/watchtower_core_validate_all.md",
         "core/docs/commands/core_python/watchtower_core_sync_all.md"
       ],
@@ -2429,7 +2429,7 @@
         "plan/initiatives/",
         "plan/projects/",
         "plan/tracking/task_tracking.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
+        "plan/python/src/watchtower_plan/sync/github_tasks.py",
         ".github/README.md"
       ],
       "applies_to": [
@@ -2437,14 +2437,14 @@
         "plan/initiatives/",
         "plan/projects/",
         "plan/tracking/task_tracking.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ],
       "related_paths": [
         ".github/",
         "plan/initiatives/",
         "plan/projects/",
         "plan/tracking/task_tracking.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "core/docs/references/github_collaboration_reference.md"
@@ -2504,18 +2504,18 @@
       "operationalization_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py",
+        "plan/python/src/watchtower_plan/sync/github_tasks.py",
         "core/docs/references/github_collaboration_reference.md"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ],
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/python/src/watchtower_core/plan_runtime/sync/github_tasks.py"
+        "plan/python/src/watchtower_plan/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "core/docs/references/github_collaboration_reference.md"
@@ -2681,20 +2681,20 @@
       ],
       "operationalization_paths": [
         "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
       ],
       "applies_to": [
         "plan/docs/standards/governance/plan_guidance_promotion_helper_foundation_decision_notes.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
       ],
       "related_paths": [
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -2702,7 +2702,7 @@
       "internal_reference_paths": [
         "core/docs/standards/documentation/standard_md_standard.md",
         "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json",
         "plan/.wt/indexes/guidance_index.json",
         "plan/.wt/indexes/promotion_index.json"
@@ -2710,7 +2710,7 @@
       "applied_reference_paths": [
         "core/docs/standards/documentation/standard_md_standard.md",
         "plan/docs/standards/governance/planning_retention_and_purge_standard.md",
-        "core/python/src/watchtower_core/plan_runtime/guidance_promotion.py",
+        "plan/python/src/watchtower_plan/guidance_promotion.py",
         "plan/.wt/registries/promotion_policy_registry.json"
       ]
     },
@@ -2734,7 +2734,7 @@
         "plan/initiatives/",
         "plan/projects/",
         "core/control_plane/ledgers/",
-        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/cli/"
       ],
       "applies_to": [
@@ -2742,7 +2742,7 @@
         "plan/projects/",
         "core/control_plane/ledgers/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/cli/"
       ],
       "related_paths": [
@@ -2750,7 +2750,7 @@
         "plan/projects/",
         "core/control_plane/ledgers/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/plan_runtime/",
+        "plan/python/src/watchtower_plan/",
         "core/python/src/watchtower_core/cli/"
       ],
       "internal_reference_paths": [
@@ -3096,8 +3096,8 @@
       ],
       "operationalization_paths": [
         "plan/tracking/coordination_tracking.md",
-        "core/python/src/watchtower_core/plan_runtime/sync/traceability.py",
-        "core/python/src/watchtower_core/plan_runtime/query/traceability.py",
+        "plan/python/src/watchtower_plan/sync/traceability.py",
+        "plan/python/src/watchtower_plan/query/traceability.py",
         "plan/workflows/modules/traceability_reconciliation.md"
       ],
       "internal_reference_paths": [

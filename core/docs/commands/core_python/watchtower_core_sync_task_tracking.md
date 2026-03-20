@@ -64,7 +64,7 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/task_tracking.py`
+- `plan/python/src/watchtower_plan/sync/task_tracking.py`
 - `plan/tracking/task_tracking.md`
 
 ## Updated At

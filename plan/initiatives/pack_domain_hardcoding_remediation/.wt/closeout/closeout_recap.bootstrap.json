@@ -3,8 +3,8 @@
   "id": "closeout.pack_domain_hardcoding_remediation.bootstrap_recap",
   "initiative_id": "initiative.pack_domain_hardcoding_remediation",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-19T20:34:56Z",
+  "status": "completed",
+  "updated_at": "2026-03-20T01:25:48Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "acceptance.pack_domain_hardcoding_remediation.bootstrap"
@@ -18,5 +18,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-20T01:25:48Z",
+  "closure_reason": "Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate."
 }

@@ -1,21 +1,22 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
-- `recommended_surface_path`: `plan/initiatives/pack_domain_hardcoding_remediation/plan.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.pack_domain_hardcoding_remediation`: Pack Domain Hardcoding Remediation (`execution` / `pack_wide`)
+- None.
 
 ## Active Project Initiatives
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary` (critical) in `trace.pack_domain_hardcoding_remediation` -> `plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json`
+- None.
 
 ## Recent Completions or Changes
+- `trace.pack_domain_hardcoding_remediation`: Pack Domain Hardcoding Remediation (`completed` at `2026-03-20T01:25:48Z`) - Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate.
 - `trace.plan_requirements_decisions_adherence_remediation`: Requirements And Decisions Adherence Remediation (`completed` at `2026-03-19T18:39:56Z`) - Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository.
 
 ## Navigation Links

@@ -67,7 +67,7 @@ uv run watchtower-core sync all --write --format json
 ## Source Surface
 - `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/sync_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/sync/`
+- `plan/python/src/watchtower_plan/sync/`
 
 ## Updated At
 - `2026-03-13T15:05:00Z`

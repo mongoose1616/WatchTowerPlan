@@ -33,7 +33,7 @@ uv run watchtower-core query standards [--query <text>] [--standard-id <standard
 - `--related-path <path>`: Exact repository-path filter such as `.github/` or `core/python/`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `core/docs/references/github_collaboration_reference.md`.
 - `--operationalization-mode <mode>`: Exact operationalization-mode filter such as `validation`, `query`, or `workflow`.
-- `--operationalization-path <path>`: Repository-path filter for one operationalizing surface such as `core/python/src/watchtower_core/plan_runtime/validation/document_semantics.py`. Exact file paths match directly, indexed directory paths also match concrete descendants under that directory, and indexed glob patterns also match concrete files such as nested `README.md` or `AGENTS.md` surfaces.
+- `--operationalization-path <path>`: Repository-path filter for one operationalizing surface such as `plan/python/src/watchtower_plan/validation/document_semantics.py`. Exact file paths match directly, indexed directory paths also match concrete descendants under that directory, and indexed glob patterns also match concrete files such as nested `README.md` or `AGENTS.md` surfaces.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -92,7 +92,7 @@ uv run watchtower-core query standards --operationalization-path core/docs/refer
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_knowledge_family.py`
 - `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/standards.py`
+- `plan/python/src/watchtower_plan/query/standards.py`
 - `core/control_plane/indexes/standards/standard_index.json`
 
 ## Updated At

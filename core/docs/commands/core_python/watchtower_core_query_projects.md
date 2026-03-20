@@ -60,7 +60,7 @@ uv run watchtower-core query projects --repository-role implementation --format 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
-- `core/python/src/watchtower_core/plan_runtime/query/projects.py`
+- `plan/python/src/watchtower_plan/query/projects.py`
 - `plan/.wt/indexes/project_index.json`
 
 ## Updated At

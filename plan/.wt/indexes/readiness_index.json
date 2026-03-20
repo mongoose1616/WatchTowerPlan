@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-20T00:16:10Z",
+  "updated_at": "2026-03-20T01:25:48Z",
   "entries": [
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
@@ -11,14 +11,14 @@
       "title": "Pack Domain Hardcoding Remediation",
       "initiative_root": "plan/initiatives/pack_domain_hardcoding_remediation",
       "scope_type": "pack_wide",
-      "lifecycle_stage": "in_progress",
+      "lifecycle_stage": "completed",
       "review_status": "approved",
       "capture_complete": true,
       "machine_valid": true,
       "approval_status": "approved",
-      "ready_for_execution": true,
+      "ready_for_execution": false,
       "blocking_reasons": [],
-      "updated_at": "2026-03-20T00:16:10Z"
+      "updated_at": "2026-03-20T01:25:48Z"
     },
     {
       "initiative_id": "initiative.plan_requirements_decisions_adherence_remediation",
