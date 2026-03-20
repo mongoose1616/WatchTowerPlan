@@ -95,19 +95,19 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     )
     assert (
         spec_by_id["command.watchtower_core.plan"].implementation_path
-        == "core/python/src/watchtower_core/cli/plan_family.py"
+        == "plan/python/src/watchtower_plan/cli/namespace.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan.approve"].implementation_path
-        == "core/python/src/watchtower_core/cli/plan_family.py"
+        == "plan/python/src/watchtower_plan/cli/handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan.bootstrap"].implementation_path
-        == "core/python/src/watchtower_core/cli/plan_family.py"
+        == "plan/python/src/watchtower_plan/cli/handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan.confirm_inputs"].implementation_path
-        == "core/python/src/watchtower_core/cli/plan_family.py"
+        == "plan/python/src/watchtower_plan/cli/handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.task"].implementation_path

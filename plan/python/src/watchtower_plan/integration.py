@@ -10,7 +10,11 @@ from watchtower_plan.validation.targets import resolve_pack_validation_suite_tar
 
 
 def _command_registration(*args: Any, **kwargs: Any) -> None:
-    """Placeholder registration hook until the host runtime cutover lands."""
+    """Register the pack-owned `plan` namespace lazily to avoid import cycles."""
+
+    from watchtower_plan.cli.namespace import register_plan_namespace
+
+    register_plan_namespace(*args, **kwargs)
 
 
 def _query_runtime(*args: Any, **kwargs: Any) -> dict[str, object]:
@@ -45,7 +49,12 @@ PACK_INTEGRATION = PackIntegration(
         "sync_targets",
         "validation_provider",
     ),
-    command_implementation_path="plan/python/src/watchtower_plan/integration.py",
+    command_implementation_path="plan/python/src/watchtower_plan/cli/namespace.py",
+    command_subcommand_implementation_paths=(
+        ("bootstrap", "plan/python/src/watchtower_plan/cli/handlers.py"),
+        ("confirm-inputs", "plan/python/src/watchtower_plan/cli/handlers.py"),
+        ("approve", "plan/python/src/watchtower_plan/cli/handlers.py"),
+    ),
     command_registration=_command_registration,
     query_runtime=_query_runtime,
     sync_targets=_sync_targets,

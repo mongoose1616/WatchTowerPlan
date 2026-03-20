@@ -43,6 +43,30 @@ def load_active_pack_integration(
     )
 
 
+def load_registered_pack_integrations(
+    loader: ControlPlaneLoader,
+) -> tuple[LoadedPackIntegration, ...]:
+    """Load every hosted-pack integration declared in the shared pack registry."""
+
+    registry = loader.load_pack_registry()
+    loaded: list[LoadedPackIntegration] = []
+    for entry in registry.packs:
+        pack_settings = loader.load_pack_settings(entry.pack_settings_path)
+        runtime_manifest = loader.load_pack_runtime_manifest(
+            pack_settings_path=entry.pack_settings_path
+        )
+        descriptor = _load_pack_integration_descriptor(runtime_manifest)
+        loaded.append(
+            LoadedPackIntegration(
+                pack_settings=pack_settings,
+                registry_entry=entry,
+                runtime_manifest=runtime_manifest,
+                integration=descriptor,
+            )
+        )
+    return tuple(loaded)
+
+
 def load_pack_validation_runtime(
     loader: ControlPlaneLoader,
     *,
@@ -104,5 +128,6 @@ def _validated_pack_validation_runtime(
 __all__ = [
     "LoadedPackIntegration",
     "load_active_pack_integration",
+    "load_registered_pack_integrations",
     "load_pack_validation_runtime",
 ]

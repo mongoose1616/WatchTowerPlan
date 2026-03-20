@@ -6,7 +6,7 @@ import argparse
 from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
-from watchtower_host.cli.registry import COMMAND_GROUP_SPECS
+from watchtower_host.cli.registry import load_command_group_specs
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -74,7 +74,6 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=HelpFormatter,
     )
     subparsers = parser.add_subparsers(dest="command", title="commands", metavar="<command>")
-    for spec in COMMAND_GROUP_SPECS:
+    for spec in load_command_group_specs():
         spec.registrar(subparsers)
     return parser
-

@@ -14,7 +14,7 @@ This command bootstraps one live initiative package under `plan/**`, including a
 | Invocation | `watchtower-core plan bootstrap` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/plan_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/handlers.py` |
 
 ## Synopsis
 ```sh
@@ -75,8 +75,8 @@ uv run watchtower-core plan bootstrap --project-slug watchtower --trace-id trace
 | `watchtower-core closeout plan-initiative` | Use after the bootstrap task and its successors are terminal on the live `plan/**` initiative package. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/plan_family.py`
-- `core/python/src/watchtower_core/cli/plan_handlers.py`
+- `plan/python/src/watchtower_plan/cli/handlers.py`
+- `plan/python/src/watchtower_plan/cli/namespace.py`
 - `plan/python/src/watchtower_plan/initiative_packages.py`
 
 ## Updated At

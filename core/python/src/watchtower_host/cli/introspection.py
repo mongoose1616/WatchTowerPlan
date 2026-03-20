@@ -5,20 +5,19 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 
-from watchtower_host.cli.registry import COMMAND_GROUP_SPECS
+from watchtower_host.cli.registry import load_command_group_specs
 
 CLI_PARSER_PATH = "core/python/src/watchtower_host/cli/parser.py"
 CLI_MAIN_ENTRYPOINT = "watchtower_host.cli.main:main"
 COMMAND_DOC_ROOT = "core/docs/commands/core_python"
 COMMAND_GROUP_IMPLEMENTATION_PATHS = {
-    spec.name: spec.implementation_path for spec in COMMAND_GROUP_SPECS
+    spec.name: spec.implementation_path for spec in load_command_group_specs()
 }
 COMMAND_GROUP_SUBCOMMAND_IMPLEMENTATION_PATHS = {
     spec.name: dict(spec.subcommand_implementation_paths)
-    for spec in COMMAND_GROUP_SPECS
+    for spec in load_command_group_specs()
     if spec.subcommand_implementation_paths
 }
-
 
 @dataclass(frozen=True, slots=True)
 class CommandParserSpec:
@@ -69,6 +68,15 @@ def _find_subparser_action(
 def _build_spec(parser: argparse.ArgumentParser) -> CommandParserSpec:
     command = parser.prog
     tokens = tuple(command.split())
+    command_group_specs = load_command_group_specs()
+    command_group_implementation_paths = {
+        spec.name: spec.implementation_path for spec in command_group_specs
+    }
+    command_group_subcommand_paths = {
+        spec.name: dict(spec.subcommand_implementation_paths)
+        for spec in command_group_specs
+        if spec.subcommand_implementation_paths
+    }
     output_formats, default_output_format = _extract_output_formats(parser)
     return CommandParserSpec(
         command_id=_command_id(tokens),
@@ -78,7 +86,11 @@ def _build_spec(parser: argparse.ArgumentParser) -> CommandParserSpec:
         workspace="core_python",
         doc_path=_command_doc_path(tokens),
         synopsis=_synopsis_for_parser(parser),
-        implementation_path=_implementation_path(tokens),
+        implementation_path=_implementation_path(
+            tokens,
+            command_group_implementation_paths=command_group_implementation_paths,
+            command_group_subcommand_paths=command_group_subcommand_paths,
+        ),
         package_entrypoint=CLI_MAIN_ENTRYPOINT,
         parent_command_id=_parent_command_id(tokens),
         output_formats=output_formats,
@@ -120,17 +132,22 @@ def _command_doc_path(tokens: tuple[str, ...]) -> str:
     return f"{COMMAND_DOC_ROOT}/{suffix}.md"
 
 
-def _implementation_path(tokens: tuple[str, ...]) -> str:
+def _implementation_path(
+    tokens: tuple[str, ...],
+    *,
+    command_group_implementation_paths: dict[str, str],
+    command_group_subcommand_paths: dict[str, dict[str, str]],
+) -> str:
     if len(tokens) == 1:
         return CLI_PARSER_PATH
 
     family = tokens[1]
     try:
-        family_path = COMMAND_GROUP_IMPLEMENTATION_PATHS[family]
+        family_path = command_group_implementation_paths[family]
     except KeyError as exc:
         raise ValueError(f"Unknown CLI command family for parser metadata: {family}") from exc
     if len(tokens) > 2:
-        subcommand_paths = COMMAND_GROUP_SUBCOMMAND_IMPLEMENTATION_PATHS.get(family)
+        subcommand_paths = command_group_subcommand_paths.get(family)
         if subcommand_paths is not None:
             implementation_path = subcommand_paths.get(tokens[2])
             if implementation_path is not None:
@@ -151,4 +168,3 @@ def _parent_command_id(tokens: tuple[str, ...]) -> str | None:
     if len(tokens) == 1:
         return None
     return _command_id(tokens[:-1])
-

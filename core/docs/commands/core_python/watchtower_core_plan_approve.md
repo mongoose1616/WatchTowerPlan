@@ -14,7 +14,7 @@ This command approves one validated live initiative package into `ready_for_exec
 | Invocation | `watchtower-core plan approve` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/plan_family.py` |
+| Source Surface | `plan/python/src/watchtower_plan/cli/handlers.py` |
 
 ## Synopsis
 ```sh
@@ -60,8 +60,8 @@ uv run watchtower-core plan approve --project-slug watchtower --initiative-slug 
 | `watchtower-core closeout plan-initiative` | Closes the live initiative package after its tasks are terminal. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/plan_family.py`
-- `core/python/src/watchtower_core/cli/plan_handlers.py`
+- `plan/python/src/watchtower_plan/cli/handlers.py`
+- `plan/python/src/watchtower_plan/cli/namespace.py`
 - `plan/python/src/watchtower_plan/initiative_packages.py`
 
 ## Updated At
