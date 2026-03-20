@@ -16,10 +16,13 @@
 
 ## Local Rules
 - Treat [requirements.md](/requirements.md) and [decisions.md](/decisions.md) as the authoritative implementation directions for live `plan/**` work until that contract is fully implemented.
-- Use standards, references, and legacy planning docs only where they support or conform to those two files.
+- Use standards, references, promoted guidance, and purge history only where they support or conform to those two files.
 - Use [README.md](/plan/README.md) as the quick reference for plan-root purpose and entrypoints before broader scans.
 - Treat `plan/.wt/` as the authoritative machine root for live plan-pack state.
+- Treat `plan/docs/**` as durable promoted guidance, not live execution state.
 - Treat `plan/plan_overview.md` and initiative-local rendered views as derived human surfaces, not manual authority.
+- Treat `plan/tracking/**` as the browsable derived tracker family for live planning state.
+- Use `plan/python/**` only for plan-specific code that should not live in reusable core.
 - Treat `plan/workflows/README.md` as the human workflow entrypoint for live plan-domain procedures.
 - Treat `.wt/` trees as machine-state roots only. Do not place Python source, workflow prose, or other hand-maintained runtime code inside them.
 - Use promoted guidance, closed initiative packages, and purge ledgers for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
@@ -27,7 +30,9 @@
 ## Do
 - Keep new live plan work under `plan/initiatives/**` or `plan/projects/**/initiatives/**` as appropriate.
 - Keep authored and machine-readable plan surfaces aligned in the same change when one depends on the other.
+- Apply the nested instruction files under `plan/docs/**` and `plan/python/**` when work enters those owned boundaries.
 
 ## Do Not
 - Do not recreate the legacy docs-backed planning corpus or any other docs-backed planning authority surface.
 - Do not place `README.md` or `AGENTS.md` files inside machine-only `.wt/` trees.
+- Do not duplicate generic reusable logic into `plan/**` when `core/**` already owns the reusable boundary.

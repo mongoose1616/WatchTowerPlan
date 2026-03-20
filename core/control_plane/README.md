@@ -12,6 +12,7 @@
 ## Paths
 | Path | Description |
 |---|---|
+| `core/control_plane/AGENTS.md` | Defines the local instruction layer for authored control-plane artifacts and machine-governed boundary work. |
 | `core/control_plane/README.md` | Describes the purpose, boundaries, and main artifact families in the control-plane tree. |
 | `core/control_plane/schemas/` | JSON Schemas for governed core artifacts and external validation interfaces. |
 | `core/control_plane/templates/` | Governed reusable template assets for core-owned human surfaces and mirrored foundations. |
@@ -20,3 +21,6 @@
 | `core/control_plane/contracts/` | Versioned machine-readable contract families, currently the acceptance-contract set. |
 | `core/control_plane/indexes/` | Deliberate derived lookup files when a concrete consumer exists. |
 | `core/control_plane/ledgers/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |
+
+## Notes
+- Keep authored control-plane assets here and keep live plan machine state under `plan/.wt/`.
