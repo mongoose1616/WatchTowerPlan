@@ -191,6 +191,27 @@ def test_readme_layers_publish_current_core_plan_boundaries() -> None:
     assert not violations, "\n".join(violations)
 
 
+def test_specific_active_readmes_do_not_use_stale_future_boundary_wording() -> None:
+    expectations = {
+        REPO_ROOT / "core/workflows/README.md": ("future core-owned workflow guidance",),
+        REPO_ROOT / "core/control_plane/schemas/interfaces/packs/README.md": (
+            "future domain packs",
+            "future pack artifact index",
+        ),
+    }
+
+    violations: list[str] = []
+    for path, banned_fragments in expectations.items():
+        text = path.read_text(encoding="utf-8")
+        for fragment in banned_fragments:
+            if fragment in text:
+                violations.append(
+                    f"{path.relative_to(REPO_ROOT).as_posix()}: contains stale fragment {fragment!r}"
+                )
+
+    assert not violations, "\n".join(violations)
+
+
 def test_active_readme_paths_tables_do_not_repeat_entries() -> None:
     violations: list[str] = []
     for path in _iter_active_surface_files():
