@@ -13,7 +13,7 @@ This command validates one hosted pack contract against the shared registry, run
 | Invocation | `watchtower-core pack validate` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/pack_handlers.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/pack_handlers.py` |
 
 ## Synopsis
 ```sh
@@ -59,7 +59,7 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 | `watchtower-core validate suite` | Runs one pack-declared validation suite after the pack contract itself is valid. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/pack_handlers.py`
+- `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At

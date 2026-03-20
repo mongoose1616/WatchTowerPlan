@@ -14,7 +14,7 @@ This command runs one validation suite declared in the active validation-suite r
 | Invocation | `watchtower-core validate suite` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -61,8 +61,8 @@ uv run watchtower-core validate suite --suite-id suite.example.validation_baseli
 | `watchtower-core plan query authority` | Helpful when you need to confirm which pack-owned surfaces are authoritative. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
-- `core/python/src/watchtower_core/cli/validation_handlers.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
 - `core/python/src/watchtower_core/validation/suite.py`
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 - `core/control_plane/registries/validation_suite_registry.json`

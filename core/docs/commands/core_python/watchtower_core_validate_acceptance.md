@@ -14,7 +14,7 @@ This command validates one trace across trace-level acceptance IDs, acceptance c
 | Invocation | `watchtower-core validate acceptance` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -53,7 +53,7 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 | `watchtower-core query evidence` | Shows the durable evidence records that the reconciliation step inspects. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 - `core/control_plane/ledgers/validation_evidence/`

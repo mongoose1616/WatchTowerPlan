@@ -14,7 +14,7 @@ This command rebuilds the governed command index from the registry-backed CLI pa
 | Invocation | `watchtower-core sync command-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -62,7 +62,7 @@ uv run watchtower-core sync command-index --output /tmp/command_index.json --for
 | `watchtower-core sync repository-paths` | Rebuilds the broader repository path index from README inventories. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
+- `core/python/src/watchtower_host/cli/sync_family.py`
 - `core/python/src/watchtower_host/cli/parser.py`
 - `core/python/src/watchtower_host/cli/introspection.py`
 - `core/python/src/watchtower_core/sync/command_index.py`

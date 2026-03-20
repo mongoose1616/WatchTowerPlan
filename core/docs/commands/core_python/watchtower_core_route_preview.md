@@ -14,7 +14,7 @@ This command previews the routed workflow modules for either free-form request t
 | Invocation | `watchtower-core route preview` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/route_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/route_family.py` |
 
 ## Synopsis
 ```sh
@@ -99,8 +99,8 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 | `watchtower-core query workflows` | Searches the companion workflow index for the selected modules. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/route_family.py`
-- `core/python/src/watchtower_core/cli/route_handlers.py`
+- `core/python/src/watchtower_host/cli/route_family.py`
+- `core/python/src/watchtower_host/cli/route_handlers.py`
 - `core/python/src/watchtower_core/query/routes.py`
 - `core/control_plane/indexes/routes/route_index.json`
 

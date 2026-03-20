@@ -15,7 +15,7 @@ This command group rebuilds reusable-core derived governed artifacts from author
 | Invocation | `watchtower-core sync` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -61,8 +61,8 @@ uv run watchtower-core sync route-index --write --format json
 | `watchtower-core plan query coordination` | Reads one of the current-state surfaces that sync commands rebuild. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/cli/sync_handlers.py`
+- `core/python/src/watchtower_host/cli/sync_family.py`
+- `core/python/src/watchtower_host/cli/sync_handlers.py`
 - `core/python/src/watchtower_core/sync/`
 
 ## Updated At

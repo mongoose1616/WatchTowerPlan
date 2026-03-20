@@ -14,7 +14,7 @@ This command group runs governed validation commands against repository artifact
 | Invocation | `watchtower-core validate` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -98,8 +98,8 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 | `watchtower-core plan query trace` | Helpful after validation when you need to inspect the related planning and evidence surfaces. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
-- `core/python/src/watchtower_core/cli/validation_handlers.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
 - `core/python/src/watchtower_core/validation/`
 
 ## Updated At

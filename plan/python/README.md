@@ -20,7 +20,7 @@
 ## Notes
 - `core/python/.venv/` remains the current shared local environment for repository work.
 - The shared `core/python` workspace installs `watchtower-plan` as an editable local package; do not fall back to repo-local `sys.path` mutation to reach this source tree.
-- `watchtower_core` may bridge into `watchtower_plan` for repo-local CLI and closeout flows, but reusable-core logic must stay pack-agnostic.
+- `watchtower_host` may compose `watchtower_plan` into the shared `watchtower-core` CLI, but reusable-core logic in `watchtower_core` must stay pack-agnostic.
 - Repo-shared governed-document helpers now live under `core/python/src/watchtower_core/documentation/`; do not duplicate them back into `watchtower_plan`.
 - `watchtower_plan` is not a plan-flavored mirror of `watchtower_core`; keep only repo-local plan behavior here.
 - Keep plan-domain Python aligned with `requirements.md`, `decisions.md`, and the plan-root guidance under `plan/**`.

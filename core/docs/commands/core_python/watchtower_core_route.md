@@ -14,7 +14,7 @@ This command group previews the workflow-module route that the current authored 
 | Invocation | `watchtower-core route` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/route_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/route_family.py` |
 
 ## Synopsis
 ```sh
@@ -58,8 +58,8 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review" 
 | `watchtower-core` | Root command that dispatches to this command group. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/route_family.py`
-- `core/python/src/watchtower_core/cli/route_handlers.py`
+- `core/python/src/watchtower_host/cli/route_family.py`
+- `core/python/src/watchtower_host/cli/route_handlers.py`
 - `core/python/src/watchtower_core/query/routes.py`
 
 ## Updated At

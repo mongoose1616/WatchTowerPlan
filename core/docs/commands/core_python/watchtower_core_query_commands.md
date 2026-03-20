@@ -14,7 +14,7 @@ This command searches the governed command index so engineers can discover avail
 | Invocation | `watchtower-core query commands` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_discovery_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/query_discovery_family.py` |
 
 ## Synopsis
 ```sh
@@ -55,8 +55,8 @@ uv run watchtower-core query commands --tag query --format json
 | `core/docs/commands/core_python/README.md` | Human-readable command-family inventory for the current workspace. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_discovery_family.py`
-- `core/python/src/watchtower_core/cli/query_discovery_handlers.py`
+- `core/python/src/watchtower_host/cli/query_discovery_family.py`
+- `core/python/src/watchtower_host/cli/query_discovery_handlers.py`
 - `core/python/src/watchtower_core/query/commands.py`
 - `core/control_plane/indexes/commands/command_index.json`
 

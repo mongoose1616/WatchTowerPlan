@@ -14,7 +14,7 @@ This command runs the active pack's default validation baseline through the reus
 | Invocation | `watchtower-core validate all` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -74,7 +74,7 @@ uv run watchtower-core validate all --pack-settings-path /tmp/example_pack/.wt/m
 | `watchtower-core plan sync all` | Useful after validation when you want to rebuild the full local derived state. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/suite.py`
 - `plan/python/src/watchtower_plan/validation/targets.py`

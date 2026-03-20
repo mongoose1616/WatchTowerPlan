@@ -13,7 +13,7 @@ This command lists the hosted packs declared in the shared pack registry.
 | Invocation | `watchtower-core pack list` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/pack_handlers.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/pack_handlers.py` |
 
 ## Synopsis
 ```sh
@@ -49,7 +49,7 @@ uv run watchtower-core pack list --format json
 | `watchtower-core pack validate` | Validates one hosted pack contract directly. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/pack_handlers.py`
+- `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At

@@ -1,1 +1,1 @@
-"""Shared CLI family helpers for core-owned root commands."""
+"""Reusable CLI support helpers plus the compatibility shim surface."""

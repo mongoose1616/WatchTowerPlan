@@ -14,7 +14,7 @@ This command rebuilds the governed route index from the canonical routing table 
 | Invocation | `watchtower-core sync route-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -61,9 +61,9 @@ uv run watchtower-core sync route-index --output /tmp/route_index.json --format 
 | `watchtower-core plan sync workflow-index` | Rebuilds the companion workflow lookup surface referenced by route entries. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/sync_family.py`
-- `core/python/src/watchtower_core/cli/sync_family_documents.py`
-- `core/python/src/watchtower_core/cli/sync_document_handlers.py`
+- `core/python/src/watchtower_host/cli/sync_family.py`
+- `core/python/src/watchtower_host/cli/sync_family_documents.py`
+- `core/python/src/watchtower_host/cli/sync_document_handlers.py`
 - `core/python/src/watchtower_core/sync/route_index.py`
 - `core/control_plane/indexes/routes/route_index.json`
 

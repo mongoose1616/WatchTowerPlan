@@ -97,15 +97,15 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     )
     assert (
         spec_by_id["command.watchtower_core.doctor"].implementation_path
-        == "core/python/src/watchtower_core/cli/doctor_family.py"
+        == "core/python/src/watchtower_host/cli/doctor_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.route"].implementation_path
-        == "core/python/src/watchtower_core/cli/route_family.py"
+        == "core/python/src/watchtower_host/cli/route_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.route.preview"].implementation_path
-        == "core/python/src/watchtower_core/cli/route_family.py"
+        == "core/python/src/watchtower_host/cli/route_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.plan"].implementation_path
@@ -181,35 +181,35 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     )
     assert (
         spec_by_id["command.watchtower_core.query"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
+        == "core/python/src/watchtower_host/cli/query_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.commands"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+        == "core/python/src/watchtower_host/cli/query_discovery_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.paths"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+        == "core/python/src/watchtower_host/cli/query_discovery_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.foundations"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.references"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.standards"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+        == "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.acceptance"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_records_family.py"
+        == "core/python/src/watchtower_host/cli/query_records_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.evidence"].implementation_path
-        == "core/python/src/watchtower_core/cli/query_records_family.py"
+        == "core/python/src/watchtower_host/cli/query_records_family.py"
     )
     assert "command.watchtower_core.query.artifacts" not in spec_by_id
     assert "command.watchtower_core.query.authority" not in spec_by_id
@@ -222,30 +222,30 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.query.trace" not in spec_by_id
     assert (
         spec_by_id["command.watchtower_core.pack.list"].implementation_path
-        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+        == "core/python/src/watchtower_host/cli/pack_handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.pack.describe"].implementation_path
-        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+        == "core/python/src/watchtower_host/cli/pack_handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.pack.validate"].implementation_path
-        == "core/python/src/watchtower_core/cli/pack_handlers.py"
+        == "core/python/src/watchtower_host/cli/pack_handlers.py"
     )
     assert (
         spec_by_id["command.watchtower_core.sync.command_index"].implementation_path
-        == "core/python/src/watchtower_core/cli/sync_family.py"
+        == "core/python/src/watchtower_host/cli/sync_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.sync.route_index"].implementation_path
-        == "core/python/src/watchtower_core/cli/sync_family.py"
+        == "core/python/src/watchtower_host/cli/sync_family.py"
     )
     assert "command.watchtower_core.closeout" not in spec_by_id
     assert "command.watchtower_core.closeout.initiative" not in spec_by_id
     assert "command.watchtower_core.closeout.purge_trace" not in spec_by_id
     assert (
         spec_by_id["command.watchtower_core.validate.all"].implementation_path
-        == "core/python/src/watchtower_core/cli/validate_family.py"
+        == "core/python/src/watchtower_host/cli/validate_family.py"
     )
     for spec in specs:
         assert (REPO_ROOT / spec.doc_path).exists()
@@ -278,7 +278,7 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
     )
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_doctor.md"]
-        == "core/python/src/watchtower_core/cli/doctor_family.py"
+        == "core/python/src/watchtower_host/cli/doctor_family.py"
     )
     assert (
         implementation_by_doc["plan/docs/commands/core_python/watchtower_core_plan_query.md"]
@@ -286,11 +286,11 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
     )
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_sync_command_index.md"]
-        == "core/python/src/watchtower_core/cli/sync_family.py"
+        == "core/python/src/watchtower_host/cli/sync_family.py"
     )
     assert (
         implementation_by_doc["core/docs/commands/core_python/watchtower_core_validate_all.md"]
-        == "core/python/src/watchtower_core/cli/validate_family.py"
+        == "core/python/src/watchtower_host/cli/validate_family.py"
     )
 
     for doc_path, implementation_path in implementation_by_doc.items():

@@ -14,7 +14,7 @@ This command group provides read-only lookup over shared governed repository ind
 | Invocation | `watchtower-core query` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/query_family.py` |
 
 ## Synopsis
 ```sh
@@ -64,10 +64,10 @@ uv run watchtower-core query foundations --query philosophy
 | `watchtower-core` | Root command that dispatches to this group. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_discovery_family.py`
-- `core/python/src/watchtower_core/cli/query_knowledge_family.py`
-- `core/python/src/watchtower_core/cli/query_records_family.py`
+- `core/python/src/watchtower_host/cli/query_family.py`
+- `core/python/src/watchtower_host/cli/query_discovery_family.py`
+- `core/python/src/watchtower_host/cli/query_knowledge_family.py`
+- `core/python/src/watchtower_host/cli/query_records_family.py`
 
 ## Updated At
 - `2026-03-20T21:20:00Z`

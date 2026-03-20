@@ -15,7 +15,7 @@ This command validates one governed JSON artifact against the active schema-back
 | Invocation | `watchtower-core validate artifact` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -96,8 +96,8 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 | `watchtower-core plan query trace` | Useful after validation when you need the related source-surface, task, acceptance, or evidence context. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
-- `core/python/src/watchtower_core/cli/validation_handlers.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validation_handlers.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/control_plane/schemas.py`
 - `core/python/src/watchtower_core/validation/common.py`

@@ -21,7 +21,7 @@
 | `routing/` | `reusable_core` | Export-safe route-selection runtime over the governed route and workflow indexes; CLI formatting and repo-local route handlers stay out of the package root. |
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
-| `cli/` | `boundary_guard` | Shared command-family and handler modules consumed by `watchtower_host`, plus a thin compatibility shim for already-installed console scripts. |
+| `cli/` | `boundary_guard` | Thin compatibility shim plus reusable CLI support helpers that pack namespaces may import without depending on host composition. |
 | `closeout/` | `boundary_guard` | Fail-closed compatibility guard; plan-domain closeout services live under `watchtower_plan.closeout`. |
 | `evidence/` | `reusable_core` | Validation-evidence ledgers plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
 | `utils/` | `reusable_core` | Small shared helpers with low coupling. |

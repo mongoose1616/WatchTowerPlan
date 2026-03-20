@@ -14,7 +14,7 @@ This command runs the current workspace health snapshot for the core Python pack
 | Invocation | `watchtower-core doctor` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/doctor_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/doctor_family.py` |
 
 ## Synopsis
 ```sh
@@ -51,7 +51,7 @@ uv run watchtower-core doctor --format json
 | `core/python/README.md` | Workspace onboarding guide that uses this command as the final baseline health-check step. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/doctor_family.py`
+- `core/python/src/watchtower_host/cli/doctor_family.py`
 - `core/python/README.md`
 
 ## Updated At

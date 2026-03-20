@@ -7,9 +7,9 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.handler_common import _run_help
-from watchtower_core.cli.query_discovery_family import register_query_discovery_commands
-from watchtower_core.cli.query_knowledge_family import register_query_knowledge_commands
-from watchtower_core.cli.query_records_family import register_query_record_commands
+from watchtower_host.cli.query_discovery_family import register_query_discovery_commands
+from watchtower_host.cli.query_knowledge_family import register_query_knowledge_commands
+from watchtower_host.cli.query_records_family import register_query_record_commands
 
 
 def register_query_family(

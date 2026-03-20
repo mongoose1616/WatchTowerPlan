@@ -17,7 +17,7 @@ def register_pack_family(
 ) -> None:
     """Register the hosted-pack command family."""
     from watchtower_core.cli.handler_common import _run_help
-    from watchtower_core.cli.pack_handlers import (
+    from watchtower_host.cli.pack_handlers import (
         _run_pack_describe,
         _run_pack_list,
         _run_pack_validate,
@@ -113,4 +113,3 @@ def register_pack_family(
     )
     add_human_json_format_argument(pack_validate_parser)
     pack_validate_parser.set_defaults(handler=_run_pack_validate)
-

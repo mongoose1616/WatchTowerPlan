@@ -14,7 +14,7 @@ This command group inspects and validates hosted domain-pack integration contrac
 | Invocation | `watchtower-core pack` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/pack_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/pack_family.py` |
 
 ## Synopsis
 ```sh
@@ -64,8 +64,8 @@ uv run watchtower-core pack validate --pack oversight --format json
 | `watchtower-core plan` | Current hosted default pack namespace. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/pack_family.py`
-- `core/python/src/watchtower_core/cli/pack_handlers.py`
+- `core/python/src/watchtower_host/cli/pack_family.py`
+- `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
 
 ## Updated At

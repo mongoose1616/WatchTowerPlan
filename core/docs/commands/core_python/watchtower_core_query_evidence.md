@@ -14,7 +14,7 @@ This command searches the governed validation-evidence record family for one tra
 | Invocation | `watchtower-core query evidence` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_records_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/query_records_family.py` |
 
 ## Synopsis
 ```sh
@@ -54,8 +54,8 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 | `watchtower-core plan query trace` | Shows the joined traceability record that should list the same evidence IDs. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_records_family.py`
-- `core/python/src/watchtower_core/cli/query_records_handlers.py`
+- `core/python/src/watchtower_host/cli/query_records_family.py`
+- `core/python/src/watchtower_host/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/query/evidence.py`
 - `core/control_plane/ledgers/validation_evidence/`
 

@@ -12,7 +12,7 @@ from watchtower_core.cli.common import (
     add_query_argument,
     examples,
 )
-from watchtower_core.cli.query_knowledge_handlers import (
+from watchtower_host.cli.query_knowledge_handlers import (
     _run_query_foundations,
     _run_query_references,
     _run_query_standards,

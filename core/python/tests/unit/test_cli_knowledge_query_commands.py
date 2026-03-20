@@ -27,16 +27,16 @@ def test_query_commands_reports_shared_and_plan_query_implementation_paths(capsy
         entry["command_id"]: entry["implementation_path"] for entry in payload["results"]
     }
     assert implementation_paths["command.watchtower_core.query"] == (
-        "core/python/src/watchtower_core/cli/query_family.py"
+        "core/python/src/watchtower_host/cli/query_family.py"
     )
     assert implementation_paths["command.watchtower_core.query.commands"] == (
-        "core/python/src/watchtower_core/cli/query_discovery_family.py"
+        "core/python/src/watchtower_host/cli/query_discovery_family.py"
     )
     assert implementation_paths["command.watchtower_core.query.foundations"] == (
-        "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+        "core/python/src/watchtower_host/cli/query_knowledge_family.py"
     )
     assert implementation_paths["command.watchtower_core.query.acceptance"] == (
-        "core/python/src/watchtower_core/cli/query_records_family.py"
+        "core/python/src/watchtower_host/cli/query_records_family.py"
     )
     assert implementation_paths["command.watchtower_core.plan.query"] == (
         "plan/python/src/watchtower_plan/cli/query.py"

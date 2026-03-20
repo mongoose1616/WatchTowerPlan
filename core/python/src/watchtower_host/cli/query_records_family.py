@@ -10,7 +10,7 @@ from watchtower_core.cli.common import (
     add_human_json_format_argument,
     examples,
 )
-from watchtower_core.cli.query_records_handlers import (
+from watchtower_host.cli.query_records_handlers import (
     _run_query_acceptance,
     _run_query_evidence,
 )

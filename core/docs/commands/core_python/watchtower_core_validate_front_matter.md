@@ -14,7 +14,7 @@ This command validates one Markdown document front-matter block against the gove
 | Invocation | `watchtower-core validate front-matter` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -76,7 +76,7 @@ uv run watchtower-core validate front-matter --path core/docs/standards/metadata
 | `watchtower-core plan query trace` | Useful after validation when you need the related initiative, decision, design, implementation, or evidence context. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/validate_family.py`
+- `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
 - `core/python/src/watchtower_core/adapters/front_matter.py`
 - `core/control_plane/registries/validator_registry.json`

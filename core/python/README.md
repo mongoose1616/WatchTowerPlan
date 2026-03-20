@@ -156,7 +156,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/closeout/README.md` | `boundary_layer` | Fail-closed compatibility guard; plan-domain closeout services live under `plan/python/src/watchtower_plan/closeout/`. |
 | `plan/python/src/watchtower_plan/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific repo-local plan orchestration under the approved plan-owned Python boundary. |
-| `core/python/src/watchtower_core/cli/README.md` | `boundary_guard` | Compatibility import surface plus remaining family and handler modules while host-owned CLI composition lives under `watchtower_host`. |
+| `core/python/src/watchtower_core/cli/README.md` | `boundary_guard` | Compatibility import surface plus reusable CLI support helpers while host-owned root command ownership lives under `watchtower_host`. |
 | `core/python/src/watchtower_core/utils/README.md` | `reusable_core` | Narrow shared helpers that do not justify a first-class package. |
 
 Use the nested READMEs under `plan/python/src/watchtower_plan/`, `integrations/github/`, and the reusable-core subpackages when you need the next layer of boundary detail.

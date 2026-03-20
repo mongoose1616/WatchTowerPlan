@@ -35,7 +35,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_doctor.md",
       "synopsis": "uv run watchtower-core doctor [-h] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/doctor_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/doctor_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "output_formats": [
@@ -63,7 +63,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_pack.md",
       "synopsis": "uv run watchtower-core pack [-h] <pack_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/pack_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "tags": [
@@ -81,7 +81,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_pack_describe.md",
       "synopsis": "uv run watchtower-core pack describe [-h] [--pack PACK] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/pack_handlers.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.pack",
       "output_formats": [
@@ -105,7 +105,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_pack_list.md",
       "synopsis": "uv run watchtower-core pack list [-h] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/pack_handlers.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.pack",
       "output_formats": [
@@ -129,7 +129,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_pack_validate.md",
       "synopsis": "uv run watchtower-core pack validate [-h] [--pack PACK] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/pack_handlers.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.pack",
       "output_formats": [
@@ -1108,7 +1108,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query.md",
       "synopsis": "uv run watchtower-core query [-h] <query_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "aliases": [
@@ -1131,7 +1131,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
       "synopsis": "uv run watchtower-core query acceptance [-h] [--trace-id TRACE_ID] [--source-surface-path SOURCE_SURFACE_PATH] [--acceptance-id ACCEPTANCE_ID] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_records_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1155,7 +1155,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_commands.md",
       "synopsis": "uv run watchtower-core query commands [-h] [--query QUERY] [--kind KIND] [--tag TAG] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_discovery_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_discovery_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1183,7 +1183,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_evidence.md",
       "synopsis": "uv run watchtower-core query evidence [-h] [--trace-id TRACE_ID] [--result RESULT] [--acceptance-id ACCEPTANCE_ID] [--validator-id VALIDATOR_ID] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_records_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1207,7 +1207,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_foundations.md",
       "synopsis": "uv run watchtower-core query foundations [-h] [--query QUERY] [--foundation-id FOUNDATION_ID] [--audience AUDIENCE] [--authority AUTHORITY] [--tag TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--cited-by-path CITED_BY_PATH] [--applied-by-path APPLIED_BY_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1231,7 +1231,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_paths.md",
       "synopsis": "uv run watchtower-core query paths [-h] [--query QUERY] [--surface-kind SURFACE_KIND] [--maturity MATURITY] [--priority PRIORITY] [--audience-hint AUDIENCE_HINT] [--tag TAG] [--parent-path PARENT_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_discovery_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_discovery_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1259,7 +1259,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_references.md",
       "synopsis": "uv run watchtower-core query references [-h] [--query QUERY] [--reference-id REFERENCE_ID] [--repository-status {candidate_future_guidance,supporting_authority,active_support}] [--tag TAG] [--related-path RELATED_PATH] [--upstream-url UPSTREAM_URL] [--cited-by-path CITED_BY_PATH] [--applied-by-path APPLIED_BY_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1283,7 +1283,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_standards.md",
       "synopsis": "uv run watchtower-core query standards [-h] [--query QUERY] [--standard-id STANDARD_ID] [--category CATEGORY] [--owner OWNER] [--tag TAG] [--applies-to APPLIES_TO] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--operationalization-mode OPERATIONALIZATION_MODE] [--operationalization-path OPERATIONALIZATION_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1307,7 +1307,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_query_workflows.md",
       "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--phase-type PHASE_TYPE] [--task-family TASK_FAMILY] [--trigger-tag TRIGGER_TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -1331,7 +1331,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_route.md",
       "synopsis": "uv run watchtower-core route [-h] <route_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/route_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/route_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "tags": [
@@ -1349,7 +1349,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_route_preview.md",
       "synopsis": "uv run watchtower-core route preview [-h] (--request REQUEST | --task-type TASK_TYPE) [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/route_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/route_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.route",
       "output_formats": [
@@ -1373,7 +1373,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_sync.md",
       "synopsis": "uv run watchtower-core sync [-h] <sync_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/sync_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "aliases": [
@@ -1396,7 +1396,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_sync_command_index.md",
       "synopsis": "uv run watchtower-core sync command-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/sync_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.sync",
       "output_formats": [
@@ -1421,7 +1421,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_sync_repository_paths.md",
       "synopsis": "uv run watchtower-core sync repository-paths [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/sync_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.sync",
       "output_formats": [
@@ -1450,7 +1450,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_sync_route_index.md",
       "synopsis": "uv run watchtower-core sync route-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/sync_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.sync",
       "output_formats": [
@@ -1475,7 +1475,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate.md",
       "synopsis": "uv run watchtower-core validate [-h] <validate_command> ...",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core",
       "aliases": [
@@ -1498,7 +1498,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
       "synopsis": "uv run watchtower-core validate acceptance [-h] --trace-id TRACE_ID [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [
@@ -1522,7 +1522,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_all.md",
       "synopsis": "uv run watchtower-core validate all [-h] [--skip-front-matter] [--skip-document-semantics] [--skip-artifacts] [--skip-acceptance] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [
@@ -1546,7 +1546,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
       "synopsis": "uv run watchtower-core validate artifact [-h] --path PATH [--validator-id VALIDATOR_ID | --schema-id SCHEMA_ID] [--supplemental-schema-path SUPPLEMENTAL_SCHEMA_PATH] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [
@@ -1575,7 +1575,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_document_semantics.md",
       "synopsis": "uv run watchtower-core validate document-semantics [-h] --path PATH [--validator-id VALIDATOR_ID] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [
@@ -1600,7 +1600,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_front_matter.md",
       "synopsis": "uv run watchtower-core validate front-matter [-h] --path PATH [--validator-id VALIDATOR_ID] [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [
@@ -1629,7 +1629,7 @@
       "workspace": "core_python",
       "doc_path": "core/docs/commands/core_python/watchtower_core_validate_suite.md",
       "synopsis": "uv run watchtower-core validate suite [-h] --suite-id SUITE_ID [--pack-settings-path PACK_SETTINGS_PATH] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
+      "implementation_path": "core/python/src/watchtower_host/cli/validate_family.py",
       "package_entrypoint": "watchtower_host.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
       "output_formats": [

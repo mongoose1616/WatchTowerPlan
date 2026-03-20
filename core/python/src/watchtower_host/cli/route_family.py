@@ -15,7 +15,7 @@ from watchtower_core.cli.common import (
 def register_route_family(subparsers: argparse._SubParsersAction) -> None:
     """Register the route command family and its subcommands."""
     from watchtower_core.cli.handler_common import _run_help
-    from watchtower_core.cli.route_handlers import _run_route_preview
+    from watchtower_host.cli.route_handlers import _run_route_preview
 
     route_parser = subparsers.add_parser(
         "route",

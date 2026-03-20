@@ -15,7 +15,7 @@ This command searches the governed reference index so engineers and agents can f
 | Invocation | `watchtower-core query references` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_knowledge_family.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/query_knowledge_family.py` |
 
 ## Synopsis
 ```sh
@@ -76,8 +76,8 @@ uv run watchtower-core query references --applied-by-path plan/docs/standards/go
 | `watchtower-core query paths` | Searches the repository path index when you know the path or surface instead of the reference topic. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_knowledge_family.py`
-- `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
+- `core/python/src/watchtower_host/cli/query_knowledge_family.py`
+- `core/python/src/watchtower_host/cli/query_knowledge_handlers.py`
 - `core/python/src/watchtower_core/query/references.py`
 - `core/control_plane/indexes/references/reference_index.json`
 

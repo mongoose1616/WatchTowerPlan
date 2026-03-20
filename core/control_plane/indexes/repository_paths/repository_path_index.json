@@ -2546,7 +2546,27 @@
       "path": "core/python/src/watchtower_core/cli/README.md",
       "kind": "file",
       "surface_kind": "python_source_file",
-      "summary": "Describes the shared CLI family and handler boundary for `watchtower-core`.",
+      "summary": "Describes the reusable CLI support-helper and compatibility boundary for `watchtower-core`.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/common.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Shared CLI formatting, argument, and example helpers reused by host and pack namespaces.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/handler_common.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Shared CLI result-emission and error-shaping helpers.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2563,20 +2583,20 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/cli/pack_family.py",
+      "path": "core/python/src/watchtower_core/cli/sync_family_common.py",
       "kind": "file",
       "surface_kind": "python_source_file",
-      "summary": "Registers the shared `pack` namespace for hosted-pack inspection and contract validation.",
+      "summary": "Shared sync-command parser helpers reused by pack sync namespaces.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/cli/query_family.py",
+      "path": "core/python/src/watchtower_core/cli/sync_runtime_helpers.py",
       "kind": "file",
       "surface_kind": "python_source_file",
-      "summary": "Registers the shared root `query` namespace for discovery, knowledge, and durable-record lookup.",
+      "summary": "Shared runtime helpers for sync commands that load services and shape results.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2613,10 +2633,30 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/src/watchtower_host/cli/pack_family.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Registers the shared `pack` namespace for hosted-pack inspection and contract validation.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/src/watchtower_host/cli/parser.py",
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Host-owned parser construction for the `watchtower-core` binary.",
+      "parent_path": "core/python/src/watchtower_host/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_host/cli/query_family.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Registers the shared root `query` namespace for discovery, knowledge, and durable-record lookup.",
       "parent_path": "core/python/src/watchtower_host/cli/",
       "maturity": "authoritative",
       "priority": "high",

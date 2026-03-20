@@ -13,7 +13,7 @@ This command describes one hosted pack's registry entry and runtime manifest.
 | Invocation | `watchtower-core pack describe` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/pack_handlers.py` |
+| Source Surface | `core/python/src/watchtower_host/cli/pack_handlers.py` |
 
 ## Synopsis
 ```sh
@@ -51,7 +51,7 @@ uv run watchtower-core pack describe --pack plan --format json
 | `watchtower-core pack validate` | Validates the same hosted pack contract directly. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/pack_handlers.py`
+- `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
 - `plan/.wt/manifests/pack_runtime_manifest.json`
 
