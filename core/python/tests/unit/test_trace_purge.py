@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_plan_pack,
@@ -23,8 +25,7 @@ from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def _build_purge_fixture_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_purge_fixture_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
@@ -35,6 +36,20 @@ def _build_purge_fixture_repo(tmp_path: Path) -> Path:
         title="Example Live Purge Fixture",
         summary="Seeds one live initiative package so purge tests can derive fixture entries without relying on retained repo history.",
     )
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def purge_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_purge_fixture_repo(
+        tmp_path_factory.mktemp("trace_purge_baseline") / "repo"
+    )
+
+
+@pytest.fixture
+def purge_fixture_repo(tmp_path: Path, purge_fixture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(purge_fixture_baseline, repo_root)
     return repo_root
 
 
@@ -322,8 +337,8 @@ class _FakeAllSyncService:
         )
 
 
-def test_trace_purge_writes_ledger_and_deletes_package(tmp_path: Path) -> None:
-    repo_root = _build_purge_fixture_repo(tmp_path)
+def test_trace_purge_writes_ledger_and_deletes_package(purge_fixture_repo: Path) -> None:
+    repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
 
     service = TracePurgeService(
@@ -351,8 +366,10 @@ def test_trace_purge_writes_ledger_and_deletes_package(tmp_path: Path) -> None:
     ]
 
 
-def test_trace_purge_rejects_surviving_external_references(tmp_path: Path) -> None:
-    repo_root = _build_purge_fixture_repo(tmp_path)
+def test_trace_purge_rejects_surviving_external_references(
+    purge_fixture_repo: Path,
+) -> None:
+    repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
     _write_text(
         repo_root,
@@ -375,8 +392,10 @@ def test_trace_purge_rejects_surviving_external_references(tmp_path: Path) -> No
     assert "plan/docs/standards/governance/blocking_reference.md" in message
 
 
-def test_trace_purge_prefers_explicit_authority_paths_over_defaults(tmp_path: Path) -> None:
-    repo_root = _build_purge_fixture_repo(tmp_path)
+def test_trace_purge_prefers_explicit_authority_paths_over_defaults(
+    purge_fixture_repo: Path,
+) -> None:
+    repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
 
     service = TracePurgeService(
@@ -396,8 +415,10 @@ def test_trace_purge_prefers_explicit_authority_paths_over_defaults(tmp_path: Pa
     )
 
 
-def test_trace_purge_rejects_duplicate_ledger_records(tmp_path: Path) -> None:
-    repo_root = _build_purge_fixture_repo(tmp_path)
+def test_trace_purge_rejects_duplicate_ledger_records(
+    purge_fixture_repo: Path,
+) -> None:
+    repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
     _write_json(
         repo_root,

@@ -31,8 +31,7 @@ CURRENT_ACCEPTANCE_PATH = (
 CURRENT_TRACE_ID = "trace.governed_acceptance_example"
 
 
-def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_closeout_fixture_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
@@ -43,6 +42,20 @@ def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
         title="Example Live Plan Closeout Fixture",
         summary="Seeds one live initiative package so closeout tests cover live-plan rejection and linked-task behavior without relying on retained repo history.",
     )
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def closeout_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_closeout_fixture_repo(
+        tmp_path_factory.mktemp("initiative_closeout_baseline") / "repo"
+    )
+
+
+@pytest.fixture
+def closeout_fixture_repo(tmp_path: Path, closeout_fixture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(closeout_fixture_baseline, repo_root)
     return repo_root
 
 
@@ -79,9 +92,9 @@ def _seed_terminal_task_for_trace(repo_root: Path, trace_id: str, task_id: str) 
 
 def test_initiative_closeout_updates_effective_timestamps_and_coordination_outputs(
     monkeypatch,
-    tmp_path: Path,
+    closeout_fixture_repo: Path,
 ) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+    repo_root = closeout_fixture_repo
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
     assert isinstance(entries, list)
@@ -198,8 +211,10 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
     )
 
 
-def test_initiative_closeout_rejects_open_tasks_without_override(tmp_path: Path) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+def test_initiative_closeout_rejects_open_tasks_without_override(
+    closeout_fixture_repo: Path,
+) -> None:
+    repo_root = closeout_fixture_repo
     trace_id = "trace.example_open_closeout"
     task_id = "task.example_open_closeout.execution.001"
 
@@ -254,8 +269,10 @@ def test_initiative_closeout_rejects_open_tasks_without_override(tmp_path: Path)
     assert "--allow-open-tasks" in message
 
 
-def test_initiative_closeout_rejects_live_plan_trace_ids(tmp_path: Path) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+def test_initiative_closeout_rejects_live_plan_trace_ids(
+    closeout_fixture_repo: Path,
+) -> None:
+    repo_root = closeout_fixture_repo
     initiative_index_document = _load_json(repo_root, INITIATIVE_INDEX_PATH)
     initiative_entries = initiative_index_document["entries"]
     assert isinstance(initiative_entries, list)
@@ -283,8 +300,10 @@ def test_initiative_closeout_rejects_live_plan_trace_ids(tmp_path: Path) -> None
     assert f"--initiative-slug {target_entry['slug']}" in message
 
 
-def test_initiative_closeout_rejects_missing_linked_tasks_in_task_index(tmp_path: Path) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+def test_initiative_closeout_rejects_missing_linked_tasks_in_task_index(
+    closeout_fixture_repo: Path,
+) -> None:
+    repo_root = closeout_fixture_repo
     trace_id = "trace.example_open_closeout"
     missing_task_id = "task.example_open_closeout.missing.001"
 
@@ -323,9 +342,9 @@ def test_initiative_closeout_rejects_missing_linked_tasks_in_task_index(tmp_path
 
 
 def test_initiative_closeout_rejects_acceptance_issues_without_override(
-    tmp_path: Path,
+    closeout_fixture_repo: Path,
 ) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+    repo_root = closeout_fixture_repo
     task_id = "task.governed_acceptance_example.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]
@@ -373,9 +392,9 @@ def test_initiative_closeout_rejects_acceptance_issues_without_override(
 
 
 def test_initiative_closeout_allows_explicit_acceptance_issue_override(
-    tmp_path: Path,
+    closeout_fixture_repo: Path,
 ) -> None:
-    repo_root = _build_closeout_fixture_repo(tmp_path)
+    repo_root = closeout_fixture_repo
     task_id = "task.governed_acceptance_example.closeout.001"
     traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     entries = traceability_document["entries"]

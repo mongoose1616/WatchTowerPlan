@@ -46,3 +46,4 @@
 - This suite is not a pure isolated unit-test corpus. Many tests are intentionally repository-aware because the package governs authored docs, schemas, indexes, and trackers.
 - Keep broad parser or help assertions in the dedicated CLI family files and prefer direct handler or service tests when behavior can be validated below the top-level parser.
 - Use the shared fixtures in `conftest.py` for repeated JSON-writing or similar small helper patterns instead of duplicating one-off utilities.
+- When CLI or sync tests only need read-only plan runtime state, prefer `materialize_minimal_plan_pack(...)` plus module-scoped shared fixture repos instead of copying the full `plan/` tree per test. Reserve full plan-pack materialization for cases that truly exercise durable docs or rendered companion surfaces.

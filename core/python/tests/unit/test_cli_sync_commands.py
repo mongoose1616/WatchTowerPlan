@@ -4,20 +4,21 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
-    materialize_plan_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.cli.main import main
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def _build_live_plan_cli_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_live_plan_cli_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True, exist_ok=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id="trace.example_cli_sync_live_counts",
@@ -25,6 +26,11 @@ def _build_live_plan_cli_repo(tmp_path: Path) -> Path:
         summary="Seeds one live initiative so CLI sync output tests assert non-zero live counts against a temp repo.",
     )
     return repo_root
+
+
+@pytest.fixture(scope="module")
+def live_plan_cli_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_live_plan_cli_repo(tmp_path_factory.mktemp("live_plan_cli_repo") / "repo")
 
 
 def test_sync_repository_paths_supports_json_output(capsys) -> None:
@@ -143,11 +149,11 @@ def test_sync_workflow_index_supports_json_output(capsys) -> None:
 
 
 def test_sync_initiative_index_supports_json_output(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "initiative-index", "--format", "json"])
 
@@ -162,11 +168,11 @@ def test_sync_initiative_index_supports_json_output(
 
 
 def test_sync_initiative_tracking_supports_json_output(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "initiative-tracking", "--format", "json"])
 
@@ -181,11 +187,11 @@ def test_sync_initiative_tracking_supports_json_output(
 
 
 def test_sync_task_index_supports_json_output(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "task-index", "--format", "json"])
 
@@ -200,11 +206,11 @@ def test_sync_task_index_supports_json_output(
 
 
 def test_sync_task_tracking_supports_json_output(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["sync", "task-tracking", "--format", "json"])
 
@@ -219,11 +225,11 @@ def test_sync_task_tracking_supports_json_output(
 
 
 def test_sync_github_tasks_supports_json_output(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(
         [
@@ -247,11 +253,11 @@ def test_sync_github_tasks_supports_json_output(
 
 
 def test_sync_github_tasks_supports_disabling_label_sync(
-    tmp_path: Path,
+    live_plan_cli_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_plan_cli_repo(tmp_path)
+    repo_root = live_plan_cli_repo
     monkeypatch.chdir(repo_root / "core" / "python")
     result = main(
         [

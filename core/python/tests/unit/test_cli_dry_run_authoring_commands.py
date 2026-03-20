@@ -3,17 +3,21 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from tests.integration.fixture_repo_support import bootstrap_packwide_initiative, materialize_plan_pack
+import pytest
+
+from tests.integration.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
 from tests.unit.cli_command_helpers import run_json_command
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def _build_task_preview_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_task_preview_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id="trace.example_cli_task_preview",
@@ -24,8 +28,17 @@ def _build_task_preview_repo(tmp_path: Path) -> Path:
     return repo_root
 
 
-def test_task_create_supports_json_output(tmp_path: Path, monkeypatch, capsys) -> None:
-    repo_root = _build_task_preview_repo(tmp_path)
+@pytest.fixture(scope="module")
+def task_preview_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_task_preview_repo(tmp_path_factory.mktemp("task_preview_repo") / "repo")
+
+
+def test_task_create_supports_json_output(
+    task_preview_repo: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = task_preview_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,

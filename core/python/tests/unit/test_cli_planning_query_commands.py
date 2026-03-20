@@ -3,10 +3,12 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
 from tests.integration.fixture_repo_support import (
     InitiativeTaskSpec,
     bootstrap_packwide_initiative,
-    materialize_plan_pack,
+    materialize_minimal_plan_pack,
 )
 from tests.unit.cli_command_helpers import run_json_command
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -33,11 +35,10 @@ DISCREPANCY_TRACE_ID = "trace.plan_core_documentation_template_authority_foundat
 WATCHTOWER_PROJECT_ID = "project.watchtower"
 
 
-def _build_live_query_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_live_query_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id=ACTIVE_TRACE_ID,
@@ -66,11 +67,10 @@ def _build_live_query_repo(tmp_path: Path) -> Path:
     return repo_root
 
 
-def _build_completed_query_repo(tmp_path: Path) -> Path:
-    repo_root = tmp_path / "repo"
+def _build_completed_query_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     bootstrap_packwide_initiative(
         repo_root,
         trace_id=COMPLETED_TRACE_ID,
@@ -109,6 +109,18 @@ def _build_completed_query_repo(tmp_path: Path) -> Path:
         write=True,
     )
     return repo_root
+
+
+@pytest.fixture(scope="module")
+def live_query_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_live_query_repo(tmp_path_factory.mktemp("live_query_repo") / "repo")
+
+
+@pytest.fixture(scope="module")
+def completed_query_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_completed_query_repo(
+        tmp_path_factory.mktemp("completed_query_repo") / "repo"
+    )
 
 
 def test_query_acceptance_supports_json_output(capsys) -> None:
@@ -154,11 +166,11 @@ def test_query_evidence_supports_json_output(capsys) -> None:
 
 
 def test_query_tasks_supports_json_output(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -184,11 +196,11 @@ def test_query_tasks_supports_json_output(
 
 
 def test_query_tasks_supports_dependency_details_json_output(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -211,11 +223,11 @@ def test_query_tasks_supports_dependency_details_json_output(
 
 
 def test_query_initiatives_supports_json_output(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -232,11 +244,11 @@ def test_query_initiatives_supports_json_output(
 
 
 def test_query_coordination_defaults_to_active_status(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(capsys, ["query", "coordination"])
 
@@ -257,11 +269,11 @@ def test_query_coordination_defaults_to_active_status(
 
 
 def test_query_coordination_supports_explicit_historical_lookup(
-    tmp_path: Path,
+    completed_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_completed_query_repo(tmp_path)
+    repo_root = completed_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -287,11 +299,11 @@ def test_query_coordination_supports_explicit_historical_lookup(
 
 
 def test_query_readiness_supports_json_output(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -362,11 +374,11 @@ def test_query_project_context_supports_json_output(capsys) -> None:
 
 
 def test_query_initiatives_uses_explicit_artifact_status_field(
-    tmp_path: Path,
+    completed_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_completed_query_repo(tmp_path)
+    repo_root = completed_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
@@ -391,11 +403,11 @@ def test_query_initiatives_uses_explicit_artifact_status_field(
 
 
 def test_query_initiatives_defaults_to_active_status_when_filterless(
-    tmp_path: Path,
+    live_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_live_query_repo(tmp_path)
+    repo_root = live_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(capsys, ["query", "initiatives"])
 
@@ -408,11 +420,11 @@ def test_query_initiatives_defaults_to_active_status_when_filterless(
 
 
 def test_query_initiatives_supports_closed_current_phase_history_lookup(
-    tmp_path: Path,
+    completed_query_repo: Path,
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = _build_completed_query_repo(tmp_path)
+    repo_root = completed_query_repo
     monkeypatch.chdir(repo_root / "core/python")
     result, payload = run_json_command(
         capsys,
