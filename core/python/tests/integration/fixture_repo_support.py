@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from shutil import copytree
+from shutil import copy2, copytree
 
 import yaml
 
@@ -71,7 +71,10 @@ def materialize_governed_applies_to_targets(repo_root: Path) -> None:
                 target.mkdir(parents=True, exist_ok=True)
 
 
-def materialize_acceptance_and_evidence_paths(repo_root: Path) -> None:
+def materialize_acceptance_and_evidence_paths(
+    repo_root: Path,
+    source_repo_root: Path | None = None,
+) -> None:
     for relative_root in (
         "core/control_plane/contracts/acceptance",
         "core/control_plane/ledgers/validation_evidence",
@@ -81,23 +84,31 @@ def materialize_acceptance_and_evidence_paths(repo_root: Path) -> None:
             continue
         for path in root.rglob("*.json"):
             document = json.loads(path.read_text(encoding="utf-8"))
-            _materialize_document_paths(repo_root, document)
+            _materialize_document_paths(repo_root, document, source_repo_root)
 
 
-def _materialize_document_paths(repo_root: Path, document: object) -> None:
+def _materialize_document_paths(
+    repo_root: Path,
+    document: object,
+    source_repo_root: Path | None,
+) -> None:
     if isinstance(document, dict):
         for key, value in document.items():
             if key in {"validation_targets", "related_paths", "subject_paths"}:
-                _materialize_paths(repo_root, value)
+                _materialize_paths(repo_root, value, source_repo_root)
             else:
-                _materialize_document_paths(repo_root, value)
+                _materialize_document_paths(repo_root, value, source_repo_root)
         return
     if isinstance(document, list):
         for item in document:
-            _materialize_document_paths(repo_root, item)
+            _materialize_document_paths(repo_root, item, source_repo_root)
 
 
-def _materialize_paths(repo_root: Path, values: object) -> None:
+def _materialize_paths(
+    repo_root: Path,
+    values: object,
+    source_repo_root: Path | None,
+) -> None:
     if not isinstance(values, list):
         return
     for value in values:
@@ -112,6 +123,11 @@ def _materialize_paths(repo_root: Path, values: object) -> None:
             continue
         if target.suffix:
             target.parent.mkdir(parents=True, exist_ok=True)
+            if source_repo_root is not None:
+                source = source_repo_root / candidate
+                if source.exists() and source.is_file():
+                    copy2(source, target)
+                    continue
             target.touch(exist_ok=True)
             continue
         target.mkdir(parents=True, exist_ok=True)

@@ -8,7 +8,7 @@ import pytest
 
 from tests.integration.fixture_repo_support import (
     bootstrap_packwide_initiative,
-    materialize_plan_pack,
+    materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import (
     TRACE_PURGE_LEDGER_DIRECTORY,
@@ -28,7 +28,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def _build_purge_fixture_repo(repo_root: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
-    materialize_plan_pack(repo_root, REPO_ROOT)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     (repo_root / "plan/docs/standards/governance").mkdir(parents=True, exist_ok=True)
     bootstrap_packwide_initiative(
         repo_root,

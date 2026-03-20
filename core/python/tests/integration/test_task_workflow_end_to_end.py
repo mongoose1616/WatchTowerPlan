@@ -37,7 +37,7 @@ def _copy_repo_subset(tmp_path: Path) -> Path:
     (repo_root / "core" / "python").mkdir(parents=True)
     materialize_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root)
-    materialize_acceptance_and_evidence_paths(repo_root)
+    materialize_acceptance_and_evidence_paths(repo_root, REPO_ROOT)
     return repo_root
 
 
