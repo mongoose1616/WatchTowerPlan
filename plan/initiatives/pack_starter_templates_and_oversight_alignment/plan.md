@@ -7,7 +7,7 @@
 - `owner`: `repository_maintainer`
 - `lifecycle_stage`: `in_progress`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-21T01:54:51Z`
+- `updated_at`: `2026-03-21T02:02:15Z`
 
 ## Scope and Non-Goals
 Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight to the shared core-host-pack contract.
@@ -23,10 +23,10 @@ Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight 
 ## Planned Slices or Workstreams
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json) | `ready` | `high` | `repository_maintainer` | Adds governed starter templates and guidance for new hosted packs. | - |
 | [task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json) | `planned` | `high` | `repository_maintainer` | Aligns the oversight pack to the shared core-host-pack contract in its own repository. | task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates |
 | [task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json) | `planned` | `medium` | `repository_maintainer` | Proves the starter templates and real oversight alignment through validation and closeout evidence. | task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates, task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract |
 | [task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/bootstrap_pack_starter_templates_and_oversight_alignment/task.json) | `completed` | `high` | `repository_maintainer` | Bootstrap Pack Starter Templates And Oversight Alignment live initiative package. | - |
+| [task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json) | `completed` | `high` | `repository_maintainer` | Adds governed starter templates and guidance for new hosted packs. | - |
 
 ## Dependencies and Risks
 - Discrepancy `discrepancy.pack_starter_templates_and_oversight_alignment.artifact_index_index_drift`: `high` `stale_aggregate_index` / `resolved`. Aggregate index drift detected for plan/.wt/indexes/artifact_index.json.

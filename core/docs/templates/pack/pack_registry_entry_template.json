@@ -1,0 +1,11 @@
+{
+  "pack_id": "pack.<pack_slug>",
+  "pack_slug": "<pack_slug>",
+  "command_namespace": "<command_namespace>",
+  "pack_settings_path": "<pack_root>/.wt/manifests/pack_settings.json",
+  "pack_runtime_manifest_path": "<pack_root>/.wt/manifests/pack_runtime_manifest.json",
+  "python_distribution": "watchtower-<pack_slug>",
+  "python_package": "watchtower_<pack_slug>",
+  "default_repo_pack": false,
+  "notes": "Hosted-pack registry entry for <pack_slug>."
+}

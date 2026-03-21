@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:54:51Z",
+  "updated_at": "2026-03-21T02:02:15Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -63,7 +63,7 @@
       "approval_status": "approved",
       "ready_for_execution": true,
       "blocking_reasons": [],
-      "updated_at": "2026-03-21T01:54:51Z"
+      "updated_at": "2026-03-21T02:02:15Z"
     },
     {
       "initiative_id": "initiative.plan_python_package_dependency_cleanup",

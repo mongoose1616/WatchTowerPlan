@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
 - `recommended_surface_path`: `plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md`
 
 ## Active Pack-Wide Initiatives
@@ -13,7 +13,7 @@
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates` (high) in `trace.pack_starter_templates_and_oversight_alignment` -> `plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json`
+- None.
 
 ## Recent Completions or Changes
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.

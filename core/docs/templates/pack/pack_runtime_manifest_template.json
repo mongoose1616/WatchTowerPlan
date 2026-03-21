@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+  "surface_name": "pack_runtime_manifest",
+  "contract_version": "v1",
+  "description": "Host-facing runtime manifest for the <pack_slug> pack.",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "pack_id": "pack.<pack_slug>",
+  "pack_slug": "<pack_slug>",
+  "command_namespace": "<command_namespace>",
+  "python_distribution": "watchtower-<pack_slug>",
+  "python_package": "watchtower_<pack_slug>",
+  "integration_module": "watchtower_<pack_slug>.integration",
+  "declared_capabilities": [
+    "command_registration",
+    "query_runtime",
+    "sync_targets",
+    "validation_provider"
+  ],
+  "required_validation_suite_ids": [
+    "suite.<pack_slug>.validation_baseline"
+  ],
+  "owned_roots": {
+    "workspace_root": "<pack_root>",
+    "machine_root": "<pack_root>/.wt",
+    "docs_root": "<pack_root>/docs",
+    "workflows_root": "<pack_root>/workflows",
+    "tracking_root": "<pack_root>/tracking",
+    "python_root": "<pack_root>/python",
+    "domain_roots": {}
+  },
+  "notes": "Keep integration_module under the declared python_package and expand declared_capabilities only when the pack publishes the matching hooks."
+}

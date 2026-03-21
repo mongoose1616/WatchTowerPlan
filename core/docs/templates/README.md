@@ -11,6 +11,7 @@
 | `core/docs/templates/command_reference_template.md` | Template for a repository-native command page. |
 | `core/docs/templates/documentation_template.md` | Fallback template for repository docs without a narrower family-specific scaffold. |
 | `core/docs/templates/foundation_document_template.md` | Template for a governed foundation document under `core/docs/foundations/`. |
+| `core/docs/templates/pack/` | Hosted-pack starter templates for the shared registry entry, pack manifests, pack-owned Python root, and namespace command page. |
 | `core/docs/templates/readme_template.md` | Template for a directory README.md file. |
 | `core/docs/templates/reference_template.md` | Template for an external reference document. |
 | `core/docs/templates/routing_table_template.md` | Template for a routing table document. |

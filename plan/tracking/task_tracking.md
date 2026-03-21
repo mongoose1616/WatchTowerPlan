@@ -3,12 +3,11 @@
 ## Open Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
-| [task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json) | `ready` | `high` | `repository_maintainer` | `trace.pack_starter_templates_and_oversight_alignment` | Adds governed starter templates and guidance for new hosted packs. |
 | [task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json) | `planned` | `high` | `repository_maintainer` | `trace.pack_starter_templates_and_oversight_alignment` | Aligns the oversight pack to the shared core-host-pack contract in its own repository. |
 | [task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json) | `planned` | `medium` | `repository_maintainer` | `trace.pack_starter_templates_and_oversight_alignment` | Proves the starter templates and real oversight alignment through validation and closeout evidence. |
 
 ## Closed Task Summary
-- `completed`: 36
+- `completed`: 37
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -36,6 +35,7 @@
 | [task.pack_domain_hardcoding_remediation.run_assessment_pass_one](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_one/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Run the first full repository assessment after the main hardcoding fixes land and convert any new gaps into tracked remediation work. |
 | [task.pack_domain_hardcoding_remediation.run_assessment_pass_two](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Repeat the full repository assessment after the boundary cutover, remove the last residue findings, and confirm there are no remaining actionable pack-domain hardcoding gaps. |
 | [task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/bootstrap_pack_starter_templates_and_oversight_alignment/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_starter_templates_and_oversight_alignment` | Bootstrap Pack Starter Templates And Oversight Alignment live initiative package. |
+| [task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates](/plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_starter_templates_and_oversight_alignment` | Adds governed starter templates and guidance for new hosted packs. |
 | [task.plan_python_package_dependency_cleanup.bootstrap](/plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/bootstrap_plan_python_package_dependency_cleanup/task.json) | `completed` | `high` | `repository_maintainer` | `trace.plan_python_package_dependency_cleanup` | Bootstrap, author, confirm, and approve the installable-package cleanup initiative. |
 | [task.plan_python_package_dependency_cleanup.validate_workspace_closeout](/plan/initiatives/plan_python_package_dependency_cleanup/.wt/tasks/validate_workspace_package_split_and_close_out/task.json) | `completed` | `high` | `repository_maintainer` | `trace.plan_python_package_dependency_cleanup` | Validate the installable-package cutover, repeat the boundary residue pass, and close the initiative on the final green tree. |
 | [task.plan_requirements_decisions_adherence_remediation.bootstrap](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/bootstrap_requirements_and_decisions_adherence_remediation/task.json) | `completed` | `high` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Bootstrap Requirements And Decisions Adherence Remediation live initiative package. |
@@ -50,4 +50,4 @@
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-21T01:54:51Z`_
+_Updated At: `2026-03-21T02:02:15Z`_

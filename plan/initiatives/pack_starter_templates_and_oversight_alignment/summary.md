@@ -13,6 +13,7 @@ Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight 
 - Rendered progress: [progress.md](/plan/initiatives/pack_starter_templates_and_oversight_alignment/progress.md)
 - Rendered summary: [summary.md](/plan/initiatives/pack_starter_templates_and_oversight_alignment/summary.md)
 - Terminal task `task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment`: `completed`
+- Terminal task `task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates`: `completed`
 
 ## Promoted Guidance
 - `promotion.pack_starter_templates_and_oversight_alignment.bootstrap_shell`: `planned` / approval `pending`
@@ -26,10 +27,9 @@ Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight 
 
 ## Unresolved Follow-Ups
 - Open task `task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract`: `planned`
-- Open task `task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates`: `ready`
 - Open task `task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-21T01:54:51Z`
+- `updated_at`: `2026-03-21T02:02:15Z`
 - `closeout.pack_starter_templates_and_oversight_alignment.bootstrap_recap`: `planned`

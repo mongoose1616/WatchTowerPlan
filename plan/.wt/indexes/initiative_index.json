@@ -217,11 +217,11 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-21T01:54:51Z",
-      "open_task_count": 3,
+      "updated_at": "2026-03-21T02:02:15Z",
+      "open_task_count": 2,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md",
-      "next_action": "Start the highest-priority ready task from the initiative package.",
+      "next_action": "Promote the next planned task to ready before opening follow-up work.",
       "next_surface_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md",
       "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
       "slug": "pack_starter_templates_and_oversight_alignment",
@@ -232,7 +232,6 @@
       ],
       "active_task_ids": [
         "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract",
-        "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
         "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption"
       ],
       "active_task_summaries": [
@@ -243,19 +242,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates"
-          ]
-        },
-        {
-          "task_id": "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
-          "title": "Publish hosted-pack starter templates",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json",
-          "is_actionable": true
+          "is_actionable": false
         },
         {
           "task_id": "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption",
@@ -266,7 +253,6 @@
           "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
             "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract"
           ]
         }

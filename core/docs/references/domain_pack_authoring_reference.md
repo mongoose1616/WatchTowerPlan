@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:32:00Z"
+updated_at: "2026-03-21T21:58:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -77,6 +77,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 
 ### Portable Pack Authoring Checklist
 1. Create the pack-owned root surfaces.
+   - Start from `core/docs/templates/pack/` for the shared registry entry, pack manifests, pack-owned Python package, and namespace command page.
    - Minimum roots: `<pack>/.wt/`, `<pack>/docs/`, `<pack>/workflows/`, `<pack>/tracking/`, and `<pack>/python/`.
    - Add optional `domain_roots` such as `targets/`, `reviews/`, `artifacts/`, or `assessments/` only when the pack truly owns them.
 2. Publish the machine contracts.
@@ -102,12 +103,26 @@ Make future packs portable and comprehensible by documenting the intended split 
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
    - When the host-pack contract changes materially, prove the change against a second pack or synthetic second-pack fixture rather than validating only the default pack.
 
+### Starter Template Set
+| Template | Use |
+|---|---|
+| `core/docs/templates/pack/pack_registry_entry_template.json` | Seed the shared hosted-pack registry entry in `core/control_plane/registries/pack_registry.json`. |
+| `core/docs/templates/pack/pack_settings_template.json` | Seed `<pack>/.wt/manifests/pack_settings.json`. |
+| `core/docs/templates/pack/pack_runtime_manifest_template.json` | Seed `<pack>/.wt/manifests/pack_runtime_manifest.json`. |
+| `core/docs/templates/pack/pack_python_pyproject_template.toml` | Seed `<pack>/python/pyproject.toml`. |
+| `core/docs/templates/pack/pack_package_init_template.py` | Seed `<pack>/python/src/watchtower_<pack>/__init__.py`. |
+| `core/docs/templates/pack/pack_integration_module_template.py` | Seed `<pack>/python/src/watchtower_<pack>/integration.py`. |
+| `core/docs/templates/pack/pack_namespace_command_reference_template.md` | Seed `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`. |
+| `core/docs/templates/readme_template.md` | Seed pack-local README.md files where the starter set does not include a pack-specific doc scaffold. |
+| `core/docs/templates/workflow_template.md` and `core/docs/templates/routing_table_template.md` | Seed pack-local workflow modules and routing tables when the new pack owns its own workflow root. |
+
 ### Minimum Portable Pack File Set
 | File | Why It Exists |
 |---|---|
 | `<pack>/.wt/manifests/pack_settings.json` | Declares the pack load root and governed surfaces |
 | `<pack>/.wt/manifests/pack_runtime_manifest.json` | Declares host-facing runtime metadata and owned roots |
 | `<pack>/python/pyproject.toml` | Makes the pack package installable or externally importable |
+| `<pack>/python/src/watchtower_<pack>/__init__.py` | Creates the pack-owned Python package root |
 | `<pack>/python/src/watchtower_<pack>/integration.py` | Exports `PACK_INTEGRATION` for host discovery |
 | `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` | Publishes the pack namespace command-doc entry page |
 | `core/control_plane/registries/pack_registry.json` entry | Registers the pack with shared host composition |
@@ -170,4 +185,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-21T21:32:00Z`
+- `2026-03-21T21:58:00Z`

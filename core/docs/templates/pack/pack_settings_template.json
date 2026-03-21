@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "surface_name": "pack_settings",
+  "contract_version": "v1",
+  "description": "Load root for the <pack_slug> pack.",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "pack_id": "pack.<pack_slug>",
+  "surfaces": [
+    {
+      "surface_name": "schema_catalog",
+      "surface_kind": "schema_collection",
+      "path": "<pack_root>/.wt/registries/schema_catalog.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validator_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/validator_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    }
+  ],
+  "workspace_roots": {
+    "workspace_root": "<pack_root>",
+    "machine_root": "<pack_root>/.wt",
+    "docs_root": "<pack_root>/docs",
+    "workflows_root": "<pack_root>/workflows",
+    "tracking_root": "<pack_root>/tracking",
+    "overview_path": "<pack_root>/<pack_slug>_overview.md",
+    "domain_roots": {}
+  },
+  "default_validation_suite_id": "suite.<pack_slug>.validation_baseline",
+  "notes": "Expand the surfaces list and domain_roots map only when the pack owns additional governed artifacts or runtime roots."
+}

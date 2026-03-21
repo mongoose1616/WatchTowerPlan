@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:32:00Z"
+updated_at: "2026-03-21T21:58:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -40,6 +40,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 
 ## Guidance
 - A hosted pack owns its own machine root, durable docs root, workflow root, tracking root, and Python package root.
+- Start new packs from `core/docs/templates/pack/` and pair those files with the generic README, workflow, and routing templates when the pack needs local guidance surfaces.
 - Keep pack-owned Python narrow and domain-specific.
 - Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-flavored.
 - Keep pack-owned command docs under the owning pack docs root when the command is pack-specific.
@@ -99,4 +100,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-21T21:32:00Z`
+- `2026-03-21T21:58:00Z`

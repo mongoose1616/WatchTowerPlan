@@ -2358,6 +2358,96 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/templates/pack/",
+      "kind": "directory",
+      "surface_kind": "templates",
+      "summary": "Hosted-pack starter templates for the shared registry entry, pack manifests, pack-owned Python root, and namespace command page.",
+      "parent_path": "core/docs/templates/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/README.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Describes the hosted-pack starter template set and how it fits with the generic repository templates.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_integration_module_template.py",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for `<pack>/python/src/watchtower_<pack>/integration.py` exporting `PACK_INTEGRATION`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_namespace_command_reference_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned namespace command page under `<pack>/docs/commands/core_python/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_package_init_template.py",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for `<pack>/python/src/watchtower_<pack>/__init__.py`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_python_pyproject_template.toml",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned Python package metadata file under `<pack>/python/pyproject.toml`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_registry_entry_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template snippet for the shared `pack_registry.json` entry that registers one hosted pack with the host runtime.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_runtime_manifest_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned `pack_runtime_manifest.json` host contract under `<pack>/.wt/manifests/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_settings_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned `pack_settings.json` load root under `<pack>/.wt/manifests/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/templates/readme_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
