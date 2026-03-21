@@ -22,3 +22,5 @@
 
 ## Notes
 `Pair this starter set with core/docs/templates/readme_template.md, core/docs/templates/workflow_template.md, and core/docs/templates/routing_table_template.md when a new pack also needs local README.md files or workflow docs.`
+
+`Keep these starter templates aligned with core/docs/standards/engineering/hosted_pack_integration_standard.md and core/docs/references/domain_pack_authoring_reference.md so the scaffolded file set still satisfies the current minimum hosted-pack contract.`

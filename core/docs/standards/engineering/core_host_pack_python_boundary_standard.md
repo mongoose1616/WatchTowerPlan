@@ -36,6 +36,7 @@ Keep `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` explicit enou
 ## Related Standards and Sources
 - [python_code_design_standard.md](/core/docs/standards/engineering/python_code_design_standard.md): provides the lower-level Python design rules that must stay consistent with this boundary split.
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the workspace and package-root layout that this boundary standard specializes.
+- [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): states the minimum integrated pack surface set that should respect this ownership boundary.
 - [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md): applies this boundary model to the shape and responsibilities of an individual hosted pack.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the machine contracts that connect these three layers at runtime.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): gives the worked pack-authoring examples that motivated this reusable boundary.

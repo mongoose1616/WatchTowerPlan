@@ -34,6 +34,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 
 ## Related Standards and Sources
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the dependency-direction and ownership boundaries that this machine contract must reinforce.
+- [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): summarizes the minimum developer-facing surface set that should satisfy this machine contract.
 - [domain_pack_authoring_standard.md](/core/docs/standards/engineering/domain_pack_authoring_standard.md): constrains what a hosted pack must publish and own beyond the registry and manifest fields.
 - [repository_validation_standard.md](/core/docs/standards/validations/repository_validation_standard.md): requires pack-interface drift to fail closed in the normal repository validation loop.
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md): captures the primary-source plugin-discovery tradeoffs behind the declarative manifest approach.

@@ -37,6 +37,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md): captures the discovery and registration tradeoffs that shape how packs integrate with the host.
 - [argparse_subcommands_reference.md](/core/docs/references/argparse_subcommands_reference.md): supports the namespaced command-tree patterns that pack-owned CLI surfaces should follow.
 - [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md): records the packaging metadata and multi-package constraints that affect copy-out portability.
+- [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): defines the minimum integrated pack surface set and extension rules this guide operationalizes.
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): turns the architectural split in this reference into an enforceable repository standard.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the machine contracts that a pack must publish to be host-loadable.
 - [requirements.md](/requirements.md): provides the authoritative endstate direction for reusable core, hosted domains, and portability expectations.
@@ -134,6 +135,139 @@ Make future packs portable and comprehensible by documenting the intended split 
 | `<pack>/python/src/watchtower_<pack>/integration.py` | Exports `PACK_INTEGRATION` for host discovery |
 | `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` | Publishes the pack namespace command-doc entry page |
 | `core/control_plane/registries/pack_registry.json` entry | Registers the pack with shared host composition |
+
+### Minimum `pack_settings.json`
+Use this as the smallest practical starting point for a load-root that can satisfy both the schema and the current pack validator.
+
+```json
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "surface_name": "pack_settings",
+  "contract_version": "v1",
+  "description": "Load root for the <pack_slug> pack.",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "pack_id": "pack.<pack_slug>",
+  "surfaces": [
+    {
+      "surface_name": "schema_catalog",
+      "surface_kind": "schema_collection",
+      "path": "<pack_root>/.wt/registries/schema_catalog.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validator_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/validator_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    }
+  ],
+  "workspace_roots": {
+    "workspace_root": "<pack_root>",
+    "machine_root": "<pack_root>/.wt",
+    "docs_root": "<pack_root>/docs",
+    "workflows_root": "<pack_root>/workflows",
+    "tracking_root": "<pack_root>/tracking",
+    "overview_path": "<pack_root>/<pack_slug>_overview.md",
+    "domain_roots": {}
+  },
+  "default_validation_suite_id": "suite.<pack_slug>.validation_baseline"
+}
+```
+
+- Keep `schema_catalog`, `validator_registry`, and `validation_suite_registry` present by name. The current validator treats them as required runtime surfaces, not just optional declarations.
+- Keep `overview_path` present even when the rendered overview is still a placeholder. It is part of the current schema contract.
+- Add `domain_roots` only when the pack truly owns additional roots such as `reviews`, `assessments`, or `targets`.
+
+### Minimum `pack_runtime_manifest.json`
+Use this as the smallest practical host-facing runtime manifest.
+
+```json
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+  "surface_name": "pack_runtime_manifest",
+  "contract_version": "v1",
+  "description": "Host-facing runtime manifest for the <pack_slug> pack.",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "pack_id": "pack.<pack_slug>",
+  "pack_slug": "<pack_slug>",
+  "command_namespace": "<command_namespace>",
+  "python_distribution": "watchtower-<pack_slug>",
+  "python_package": "watchtower_<pack_slug>",
+  "integration_module": "watchtower_<pack_slug>.integration",
+  "declared_capabilities": [
+    "command_registration",
+    "query_runtime",
+    "sync_targets",
+    "validation_provider"
+  ],
+  "required_validation_suite_ids": [
+    "suite.<pack_slug>.validation_baseline"
+  ],
+  "owned_roots": {
+    "workspace_root": "<pack_root>",
+    "machine_root": "<pack_root>/.wt",
+    "docs_root": "<pack_root>/docs",
+    "workflows_root": "<pack_root>/workflows",
+    "tracking_root": "<pack_root>/tracking",
+    "python_root": "<pack_root>/python",
+    "domain_roots": {}
+  }
+}
+```
+
+- Keep `pack_id`, `pack_slug`, `command_namespace`, `python_distribution`, and `python_package` aligned with the shared `pack_registry.json` entry.
+- Keep `integration_module` under the declared `python_package`.
+- Keep `owned_roots` aligned with the roots declared in `pack_settings.json`.
+- Only keep legacy `initiatives_root` or `projects_root` fields when the pack runtime still depends on them.
+
+### Minimum `integration.py`
+The smallest useful integration module exports one typed `PACK_INTEGRATION` with the four required capabilities.
+
+| Hook | Why It Is Required |
+|---|---|
+| `command_registration` | Gives the host a pack-owned namespace registrar |
+| `query_runtime` | Declares the pack query command inventory |
+| `sync_targets` | Declares the pack sync target inventory |
+| `validation_provider` | Supplies pack-owned validation hooks |
+
+- Keep `query_runtime` and `sync_targets` non-empty.
+- Keep the registrar pack-owned even when the handler body is initially minimal.
+- Put operator-facing namespace logic behind the pack CLI package rather than hard-wiring it in reusable core.
+
+### Building Additional Pack-Local Python
+Add new pack-local Python when the behavior is truly domain-specific and does not belong in reusable core or host composition.
+
+| Need | Canonical Location | Also Update |
+|---|---|---|
+| New domain workflow or lifecycle service | `<pack>/python/src/watchtower_<pack>/<feature>/service.py` | Pack docs, workflow docs, tests, and any new pack-owned surfaces |
+| New pack query behavior | `<pack>/python/src/watchtower_<pack>/cli/query.py` or `<feature>/query.py` | `PACK_INTEGRATION.query_runtime`, command docs, tests |
+| New pack sync target | `<pack>/python/src/watchtower_<pack>/sync/<feature>.py` | `PACK_INTEGRATION.sync_targets`, sync docs, tests |
+| New domain-specific validation semantics | `<pack>/python/src/watchtower_<pack>/validation/` | `validation_provider`, validator coverage, tests |
+| New rendered or reporting behavior | `<pack>/python/src/watchtower_<pack>/rendering/` or feature-owned module | Rendered surface declarations, templates, docs, tests |
+
+- Prefer feature-owned folders such as `reviews/`, `targets/`, `bootstrap/`, `closeout/`, `rendering/`, or `sync/` over mirrored copies of reusable-core package families.
+- If the behavior becomes generic across multiple packs, move it into `watchtower_core` instead of cloning helpers into each pack.
+- If the behavior is about root parser construction, pack discovery, or dispatch, it belongs in `watchtower_host`, not the pack.
+- Keep imports one-way: `watchtower_<pack>` may depend on `watchtower_core`, but it must not import `watchtower_host`.
+- When new pack-local Python adds a new human or machine surface, extend `pack_settings.json`, `pack_runtime_manifest.json`, docs, workflows, and tests in the same change.
+
+### Common Extension Sequence
+1. Add or update the feature module under `<pack>/python/src/watchtower_<pack>/`.
+2. Decide whether the feature changes only pack-local Python or also adds new pack-owned docs, workflows, tracking surfaces, or `domain_roots`.
+3. Update `integration.py` if the feature changes namespace registration, query inventory, sync targets, or validation behavior.
+4. Update the pack-owned namespace command docs if the operator-visible surface changed.
+5. Run `watchtower-core pack validate --pack-settings-path <path> --format json`.
+6. Run `watchtower-core pack describe --pack <slug> --format json`.
+7. Prove at least one host-composed path still works, such as `watchtower-core <namespace> --help`.
 
 ### Hosted Pack Scaffold Command
 ```sh

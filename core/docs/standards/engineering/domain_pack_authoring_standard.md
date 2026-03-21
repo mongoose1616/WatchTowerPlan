@@ -34,6 +34,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 
 ## Related Standards and Sources
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): defines the reusable core, host, and pack split that every hosted pack must honor.
+- [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): defines the minimum file set and extension rules contributors should satisfy before treating a pack as integrated.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the registry, manifest, and typed integration contracts a hosted pack must publish.
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): constrains where pack-owned Python code and adjacent workspace artifacts belong.
 - [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md): provides the worked authoring examples and pack-shape comparisons behind this standard.
