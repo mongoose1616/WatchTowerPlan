@@ -31,6 +31,7 @@ Use this workflow to validate that a hosted pack publishes the required machine 
    - Check that pack-owned docs, workflows, tracking, and Python surfaces exist where declared.
    - Check that the pack-owned docs root publishes the namespace command entry page for the pack.
    - Check that reusable core does not import the pack and the pack does not import host internals.
+   - Check that the pack is importable from its own `<pack>/python/src` path or installed package root rather than only from repository-root import assumptions.
    - When the host-pack contract changed materially, prove it against at least one non-default or synthetic second-pack fixture instead of validating only the current default pack.
 
 ## Data Structure
@@ -43,6 +44,7 @@ Use this workflow to validate that a hosted pack publishes the required machine 
 ## Outputs
 - A structured validation result for the scoped pack interface
 - Explicit findings for manifest, hook, namespace, or portability drift
+- Explicit confirmation that the pack-owned Python root and namespace command docs satisfy the externalization contract
 - Follow-up work when the contract is not yet satisfied
 
 ## Done When

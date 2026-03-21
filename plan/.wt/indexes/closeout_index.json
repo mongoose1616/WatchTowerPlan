@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:19:44Z",
+  "updated_at": "2026-03-21T01:24:11Z",
   "entries": [
     {
       "closeout_id": "closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap",

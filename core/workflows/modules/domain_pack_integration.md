@@ -20,13 +20,16 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
    - Confirm what belongs in reusable core, host composition, and the owning pack.
    - Confirm command ownership, docs ownership, and pack portability expectations before editing.
 2. Map the integration seam.
-   - Identify the typed hooks, manifests, registry entries, named `domain_roots`, and validation surfaces the pack must publish.
+   - Identify the typed hooks, manifests, registry entries, named `domain_roots`, pack-owned `python/pyproject.toml`, and validation surfaces the pack must publish.
    - List the existing direct imports, duplicated helpers, or flat commands that must be removed.
 3. Implement the cutover.
    - Move reusable behavior into `watchtower_core`, host composition into `watchtower_host`, and pack-native behavior into the owning pack.
+   - Publish or update the pack-owned namespace command page and the minimum pack-authoring surfaces needed for copy-out portability.
    - Update companion docs, routing, machine-readable contract surfaces, and the pack namespace command entry page in the same change set.
 4. Validate the contract.
    - Run pack-interface validation, import-boundary checks, and targeted command or portability proofs.
+   - Prove the changed pack imports from its own `<pack>/python/src` path or installed package root instead of only from repository-root paths.
+   - When the host-pack contract changed materially, prove it against at least one non-default or synthetic second-pack fixture.
    - Fail closed on namespace collisions, missing hooks, invalid manifests, pack-owned docs rooted outside the pack, manifest paths outside the declared machine root, integration modules outside the pack package, missing pack namespace command docs, or hidden repository-only assumptions.
 
 ## Data Structure
@@ -39,6 +42,7 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
 ## Outputs
 - A host-pack integration change with explicit boundaries
 - Updated manifests, standards, command docs, and workflow routing when affected
+- Pack-authoring guidance that lets future pack work follow the same contract without reading implementation code
 - Validation evidence for the new pack boundary
 
 ## Done When

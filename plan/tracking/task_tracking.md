@@ -1,12 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json) | `planned` | `medium` | `repository_maintainer` | `trace.domain_pack_externalization_portability_proof` | Updates standards, references, and workflow guidance for externalized and future hosted packs. |
+_No open tasks._
 
 ## Closed Task Summary
-- `completed`: 34
+- `completed`: 35
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -42,8 +40,9 @@
 | [task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Bootstrap Core Host Pack Architecture Hard Cutover live initiative package. |
 | [task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_boundary_stabilization_cleanup_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Performs the first required validation, neighboring-surface expansion, fixes, docs updates, and commit pass after the main implementation slices land. |
 | [task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_extensibility_and_portability_hardening_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Performs the second required validation loop focused on pack portability, extensibility, and surrounding contract cleanup. |
+| [task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.domain_pack_externalization_portability_proof` | Updates standards, references, and workflow guidance for externalized and future hosted packs. |
 | [task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/bootstrap_pack_domain_hardcoding_remediation/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Bootstrap Pack Domain Hardcoding Remediation live initiative package. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-21T01:19:44Z`_
+_Updated At: `2026-03-21T01:24:11Z`_

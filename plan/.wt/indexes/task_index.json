@@ -279,12 +279,12 @@
       "title": "Publish externalized pack authoring guidance",
       "summary": "Updates standards, references, and workflow guidance for externalized and future hosted packs.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json",
-      "updated_at": "2026-03-21T00:47:26Z",
+      "updated_at": "2026-03-21T01:24:11Z",
       "depends_on": [
         "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
         "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs"

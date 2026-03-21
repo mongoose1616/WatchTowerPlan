@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-21T01:19:44Z`
+- `updated_at`: `2026-03-21T01:24:11Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -17,16 +17,14 @@
 | `2026-03-21T00:43:50Z` | `ready_for_review_marked` | `actor.watchtower_core` | The initiative package passed capture validation and is ready for review. |
 
 ## Active Tasks
-| Task | Status | Priority | Owner | Summary | Depends On |
-| --- | --- | --- | --- | --- | --- |
-| [task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json) | `planned` | `medium` | `repository_maintainer` | Updates standards, references, and workflow guidance for externalized and future hosted packs. | task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract, task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs |
+_No active tasks._
 
 ## Blockers
-- Task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance` depends on `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`, `task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs`.
+- No active blockers, unresolved dependencies, or open discrepancy risks are recorded.
 
 ## Next Actions
-- Promote the next planned task to ready before opening follow-up work.
-- Next surface: [plan.md](/plan/initiatives/domain_pack_externalization_portability_proof/plan.md)
+- Finalize closeout, evidence, and promotion decisions.
+- Next surface: [summary.md](/plan/initiatives/domain_pack_externalization_portability_proof/summary.md)
 
 ## Evidence or Validation State
 - `machine_valid`: `True`

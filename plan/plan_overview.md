@@ -3,11 +3,11 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
-- `recommended_surface_path`: `plan/initiatives/domain_pack_externalization_portability_proof/plan.md`
+- `recommended_next_action`: Finalize closeout, evidence, and promotion decisions.
+- `recommended_surface_path`: `plan/initiatives/domain_pack_externalization_portability_proof/summary.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`execution` / `pack_wide`)
+- `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`closeout` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.

@@ -16,6 +16,7 @@ Proves that plan and future domain packs can be copied out with only packaging a
 - Terminal task `task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof`: `completed`
 - Terminal task `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`: `completed`
 - Terminal task `task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof`: `completed`
+- Terminal task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance`: `completed`
 
 ## Promoted Guidance
 - `promotion.domain_pack_externalization_portability_proof.bootstrap_shell`: `planned` / approval `pending`
@@ -28,9 +29,9 @@ Proves that plan and future domain packs can be copied out with only packaging a
 - `evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle`: `planned`
 
 ## Unresolved Follow-Ups
-- Open task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance`: `planned`
+- No unresolved follow-up items remain.
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-21T01:19:44Z`
+- `updated_at`: `2026-03-21T01:24:11Z`
 - `closeout.domain_pack_externalization_portability_proof.bootstrap_recap`: `planned`

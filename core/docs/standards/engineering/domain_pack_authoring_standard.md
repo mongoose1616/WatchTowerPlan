@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:05:00Z"
+updated_at: "2026-03-21T21:32:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,10 +48,12 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
 - Keep pack contract paths repository-relative and portable. Absolute paths and parent traversal in pack manifests or settings are invalid.
+- Publish a pack-owned `python/pyproject.toml` and `python/src/watchtower_<pack>/` package so copy-out portability does not depend on repository-root import tricks.
 - Publish typed query and sync runtimes through the pack integration descriptor rather than placeholder hooks or ad hoc tuples.
 - Publish non-empty query command and sync target inventories so host inspection and pack validation can fail closed on incomplete pack wiring.
 - Use `domain_roots` to name optional pack-specific roots such as `reviews`, `assessments`, or `targets`. Only keep legacy `initiatives_root` or `projects_root` fields when a live pack runtime still depends on them.
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
+- Authoring guidance, workflow modules, and standards should be sufficient for pack creation or copy-out; reviewers should not need to reverse-engineer implementation code to determine the required pack shape.
 
 ## Structure or Data Model
 ### Expected pack root shape
@@ -68,6 +70,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 | Checkpoint | Expected Shape |
 |---|---|
 | Command registration | One integration module plus pack-owned registrars |
+| Packaging surface | `python/pyproject.toml` plus `python/src/watchtower_<pack>/` |
 | Runtime orchestration | Feature-owned services |
 | Validation semantics | Pack-owned only when the rules are truly domain-specific |
 | Shared helpers | Move into `watchtower_core` |
@@ -80,6 +83,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject pack roots that mirror reusable-core package trees without a real domain need.
 - Reviewers should reject pack-local docs or workflows placed under shared core roots when ownership is pack-specific.
 - Reviewers should reject copied-out pack stories that still require repository-specific Python import hacks.
+- Reviewers should reject pack authoring guidance that omits the minimum manifest, package, and command-doc surfaces needed to create or externalize a hosted pack.
 - Reviewers should reject packs that keep their namespace command docs in shared core docs or omit the required namespace entry page from the pack-owned docs root.
 
 ## Change Control
@@ -95,4 +99,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-21T21:05:00Z`
+- `2026-03-21T21:32:00Z`
