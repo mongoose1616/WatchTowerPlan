@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:56:17Z",
+  "updated_at": "2026-03-21T05:15:57Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "title": "Pack Bootstrap Installation Contract",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-21T05:15:57Z",
+      "key_surface_path": "plan/initiatives/pack_bootstrap_installation_contract/plan.md",
+      "closure_reason": "Delivered guarded pack bootstrap registration flow and validated shared workspace wiring."
+    },
     {
       "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",

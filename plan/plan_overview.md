@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.pack_bootstrap_installation_contract`: Pack Bootstrap Installation Contract (`completed` at `2026-03-21T05:15:57Z`) - Delivered guarded pack bootstrap registration flow and validated shared workspace wiring.
 - `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`completed` at `2026-03-21T03:56:17Z`) - Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
 - `trace.pack_starter_templates_and_oversight_alignment`: Pack Starter Templates And Oversight Alignment (`completed` at `2026-03-21T02:32:49Z`) - Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories.
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.

@@ -390,6 +390,21 @@
       ]
     },
     {
+      "task_id": "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract",
+      "initiative_id": "initiative.pack_bootstrap_installation_contract",
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "initiative_title": "Pack Bootstrap Installation Contract",
+      "title": "Bootstrap Pack Bootstrap Installation Contract",
+      "summary": "Bootstrap Pack Bootstrap Installation Contract live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json",
+      "updated_at": "2026-03-21T05:15:11Z"
+    },
+    {
       "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
       "trace_id": "trace.pack_domain_hardcoding_remediation",

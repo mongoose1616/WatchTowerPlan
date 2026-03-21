@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract.0002_status_changed",
+  "initiative_id": "initiative.pack_bootstrap_installation_contract",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T05:15:11Z",
+  "summary": "Changed task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract status from planned to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json"
+  },
+  "task_id": "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract"
+}

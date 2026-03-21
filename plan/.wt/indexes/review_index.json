@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:56:17Z",
+  "updated_at": "2026-03-21T05:15:57Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -56,6 +56,24 @@
         "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T03:56:17Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.pack_bootstrap_installation_contract",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.pack_bootstrap_installation_contract",
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "initiative_title": "Pack Bootstrap Installation Contract",
+      "title": "Pack Bootstrap Installation Contract",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T05:15:57Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -178,6 +196,22 @@
         "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T03:56:17Z"
+    },
+    {
+      "review_subject_id": "promotion.pack_bootstrap_installation_contract.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.pack_bootstrap_installation_contract",
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "initiative_title": "Pack Bootstrap Installation Contract",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T05:15:57Z"
     },
     {
       "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",

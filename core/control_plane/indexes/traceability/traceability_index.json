@@ -195,6 +195,36 @@
       ]
     },
     {
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "title": "Pack Bootstrap Installation Contract",
+      "summary": "Turns hosted-pack scaffold output into a safe registration and shared-workspace installation flow.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-21T05:15:57Z",
+      "closed_at": "2026-03-21T05:15:57Z",
+      "closure_reason": "Delivered guarded pack bootstrap registration flow and validated shared workspace wiring.",
+      "source_surface_paths": [
+        "plan/initiatives/pack_bootstrap_installation_contract/decision_notes.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/design_record.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract"
+      ],
+      "related_paths": [
+        "plan/initiatives/pack_bootstrap_installation_contract/.wt/initiative.json",
+        "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json",
+        "plan/initiatives/pack_bootstrap_installation_contract/decision_notes.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/design_record.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
+        "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.pack_domain_hardcoding_remediation",
       "title": "Pack Domain Hardcoding Remediation",
       "summary": "Verify and remove remaining pack-domain hardcoding, reorganize lingering legacy artifacts, and prove the pack-driven endstate.",

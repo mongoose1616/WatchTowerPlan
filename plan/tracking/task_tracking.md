@@ -4,7 +4,7 @@
 _No open tasks._
 
 ## Closed Task Summary
-- `completed`: 44
+- `completed`: 45
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -32,6 +32,7 @@ _No open tasks._
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Bootstrap Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening live initiative package. |
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Reorganizes watchtower_plan so remaining adapter-style package families collapse into feature-owned plan services and minimal host-facing adapters. |
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/turn_pack_starter_templates_into_a_scaffold_command_surface/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Adds an operator-facing scaffold path that renders the hosted-pack starter templates into a validated pack skeleton. |
+| [task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract](/plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_bootstrap_installation_contract` | Bootstrap Pack Bootstrap Installation Contract live initiative package. |
 | [task.pack_domain_hardcoding_remediation.recover_rich_human_docs_and_guidance](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/recover_rich_human_docs_and_guidance_from_pack_driven_state/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Review main-branch patterns and restore rich human-facing documentation and navigation without reintroducing hardcoded domain roots. |
 | [task.pack_domain_hardcoding_remediation.run_assessment_pass_one](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_one/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Run the first full repository assessment after the main hardcoding fixes land and convert any new gaps into tracked remediation work. |
 | [task.pack_domain_hardcoding_remediation.run_assessment_pass_two](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/run_assessment_pass_two/task.json) | `completed` | `high` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Repeat the full repository assessment after the boundary cutover, remove the last residue findings, and confirm there are no remaining actionable pack-domain hardcoding gaps. |
@@ -54,4 +55,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-21T03:55:32Z`_
+_Updated At: `2026-03-21T05:15:11Z`_

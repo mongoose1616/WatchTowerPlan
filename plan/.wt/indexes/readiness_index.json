@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:56:17Z",
+  "updated_at": "2026-03-21T05:15:57Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -49,6 +49,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T03:56:17Z"
+    },
+    {
+      "initiative_id": "initiative.pack_bootstrap_installation_contract",
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "title": "Pack Bootstrap Installation Contract",
+      "initiative_root": "plan/initiatives/pack_bootstrap_installation_contract",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-21T05:15:57Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

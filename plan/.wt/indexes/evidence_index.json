@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:56:17Z",
+  "updated_at": "2026-03-21T05:15:57Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -91,6 +91,35 @@
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T03:56:17Z"
+    },
+    {
+      "evidence_id": "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle",
+      "initiative_id": "initiative.pack_bootstrap_installation_contract",
+      "trace_id": "trace.pack_bootstrap_installation_contract",
+      "initiative_title": "Pack Bootstrap Installation Contract",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/pack_bootstrap_installation_contract",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/pack_bootstrap_installation_contract/.wt/discrepancies",
+        "plan/initiatives/pack_bootstrap_installation_contract/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-21T05:15:57Z"
     },
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",

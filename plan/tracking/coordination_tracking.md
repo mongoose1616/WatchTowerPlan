@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.pack_bootstrap_installation_contract` | `completed` | `2026-03-21T05:15:57Z` | [plan.md](/plan/initiatives/pack_bootstrap_installation_contract/plan.md) |
 | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | `completed` | `2026-03-21T03:56:17Z` | [plan.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md) |
 | `trace.pack_starter_templates_and_oversight_alignment` | `completed` | `2026-03-21T02:32:49Z` | [plan.md](/plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md) |
 | `trace.domain_pack_externalization_portability_proof` | `completed` | `2026-03-21T01:25:24Z` | [plan.md](/plan/initiatives/domain_pack_externalization_portability_proof/plan.md) |
 | `trace.core_host_pack_architecture_hard_cutover` | `completed` | `2026-03-21T00:42:04Z` | [plan.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md) |
-| `trace.plan_python_package_dependency_cleanup` | `completed` | `2026-03-20T01:51:19Z` | [plan.md](/plan/initiatives/plan_python_package_dependency_cleanup/plan.md) |
 
-_Updated At: `2026-03-21T03:56:17Z`_
+_Updated At: `2026-03-21T05:15:57Z`_
