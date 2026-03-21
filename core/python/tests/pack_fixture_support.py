@@ -169,7 +169,7 @@ def materialize_pack_validation_suite(
     if validator_schema_ids is not None:
         validator_registry = _load_json(pack_root / ".wt/registries/validator_registry.json")
         for validator in validator_registry["validators"]:
-            if validator["id"] == _PLAN_NOTE_VALIDATOR_ID:
+            if validator["id"] == validator_id:
                 validator["schema_ids"] = list(validator_schema_ids)
                 break
         _write_json(pack_root / ".wt/registries/validator_registry.json", validator_registry)
