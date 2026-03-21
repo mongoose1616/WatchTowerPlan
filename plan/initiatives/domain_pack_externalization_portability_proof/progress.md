@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-21T01:04:01Z`
+- `updated_at`: `2026-03-21T01:11:41Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -20,12 +20,10 @@
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
 | [task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/add_second_pack_fixture_and_multi_pack_proofs/task.json) | `planned` | `high` | `repository_maintainer` | Strengthens the generic hosted-pack contract with a second-pack fixture informed by WatchTowerOversight shape. | task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract |
-| [task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/exercise_plan_copy_out_and_packaging_proof/task.json) | `planned` | `high` | `repository_maintainer` | Proves that the plan pack can be treated as an externalized package with only packaging and path adjustments. | task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract |
 | [task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json) | `planned` | `medium` | `repository_maintainer` | Updates standards, references, and workflow guidance for externalized and future hosted packs. | task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract, task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs |
 
 ## Blockers
 - Task `task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs` depends on `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`.
-- Task `task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof` depends on `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`.
 - Task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance` depends on `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`, `task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs`.
 
 ## Next Actions

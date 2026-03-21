@@ -257,12 +257,12 @@
       "title": "Exercise plan copy-out and packaging proof",
       "summary": "Proves that the plan pack can be treated as an externalized package with only packaging and path adjustments.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/exercise_plan_copy_out_and_packaging_proof/task.json",
-      "updated_at": "2026-03-21T00:46:27Z",
+      "updated_at": "2026-03-21T01:11:41Z",
       "depends_on": [
         "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract"
       ],

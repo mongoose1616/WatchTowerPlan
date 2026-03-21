@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from shutil import copy2, copytree
 
 from watchtower_core.pack_integration import pack_command_entry_doc_path
 
@@ -182,6 +182,22 @@ def materialize_validation_repo_subset(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
     return repo_root
+
+
+def materialize_externalized_plan_python(pack_python_root: Path) -> None:
+    """Copy the live plan package into an externalized pack-owned python root."""
+
+    source_root = REPO_ROOT / "plan" / "python"
+    pack_python_root.mkdir(parents=True, exist_ok=True)
+    for filename in ("pyproject.toml", "README.md", "AGENTS.md"):
+        source_path = source_root / filename
+        if source_path.exists():
+            copy2(source_path, pack_python_root / filename)
+    copytree(
+        source_root / "src" / "watchtower_plan",
+        pack_python_root / "src" / "watchtower_plan",
+        dirs_exist_ok=True,
+    )
 
 
 def _discover_repo_root(start: Path) -> Path:
