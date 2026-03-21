@@ -876,6 +876,32 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.plan.sync.review_index",
+      "command": "watchtower-core plan sync review-index",
+      "summary": "Rebuild the live plan review index from initiative-local review, approval, and readiness state under `plan/**/.wt/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "plan/docs/commands/core_python/watchtower_core_plan_sync_review_index.md",
+      "synopsis": "uv run watchtower-core plan sync review-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "plan/python/src/watchtower_plan/cli/sync.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "sync",
+        "review",
+        "index"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.plan.sync.standard_index",
       "command": "watchtower-core plan sync standard-index",
       "summary": "Rebuild the standard index from the governed standards under `core/docs/standards/` and `plan/docs/standards/`.",

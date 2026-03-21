@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.hosted_pack_parity_scaffold_and_plan_runtime_flattening.0010_ready_for_review_marked",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "sequence": 10,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T03:02:06Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening"
+}

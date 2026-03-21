@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.hosted_pack_parity_scaffold_and_plan_runtime_flattening.progress_surface_drift",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "category": "stale_rendered_surface",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Rendered surface drift detected for plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/progress.md.",
+  "source_paths": [
+    "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/progress.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-21T02:45:57Z",
+  "updated_at": "2026-03-21T02:46:16Z"
+}

@@ -140,6 +140,24 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         ),
     },
     {
+        "name": "review-index",
+        "handler": "review_index",
+        "help": "Rebuild the live plan review index from initiative-local review state.",
+        "description": """
+            Rebuild the live plan review index from initiative-local review,
+            approval, and readiness state under `plan/**/.wt/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """,
+        "examples": (
+            "uv run watchtower-core plan sync review-index",
+            "uv run watchtower-core plan sync review-index --write",
+            "uv run watchtower-core plan sync review-index --output "
+            "/tmp/review_index.json --format json",
+        ),
+    },
+    {
         "name": "traceability-index",
         "handler": "traceability_index",
         "help": "Rebuild the traceability index from governed planning and evidence sources.",
@@ -205,6 +223,7 @@ _DOCUMENT_HANDLER_SPECS = (
     ("workflow_index", "watchtower_core.sync.workflow_index", "WorkflowIndexSyncService", "watchtower-core plan sync workflow-index", "workflow index"),
     ("initiative_index", "watchtower_plan.sync.initiative_index", "InitiativeIndexSyncService", "watchtower-core plan sync initiative-index", "initiative index"),
     ("task_index", "watchtower_plan.sync.task_index", "TaskIndexSyncService", "watchtower-core plan sync task-index", "task index"),
+    ("review_index", "watchtower_plan.sync.review_index", "ReviewIndexSyncService", "watchtower-core plan sync review-index", "review index"),
     ("traceability_index", "watchtower_plan.sync.traceability", "TraceabilityIndexSyncService", "watchtower-core plan sync traceability-index", "traceability index"),
 )
 

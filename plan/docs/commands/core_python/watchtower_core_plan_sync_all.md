@@ -47,7 +47,7 @@ uv run watchtower-core plan sync all --output-dir /tmp/watchtower_plan_sync --fo
 
 ## Behavior and Outputs
 - The command runs the registry-backed local deterministic sync target set in dependency order so later rebuilds can read the earlier generated surfaces from disk when needed.
-- The current target set includes command, foundation, reference, standard, workflow, decision, design, implementation, coordination, initiative, task, traceability, and repository-path indexes, plus the coordination, decision, design, implementation, initiative, and task trackers.
+- The current target set includes command, foundation, reference, standard, workflow, initiative, task, review, traceability, coordination, and repository-path indexes, plus the coordination, initiative, and task trackers.
 - The command does not call hosted integrations. It intentionally excludes `sync github-tasks`.
 - With no mutation flags, the command runs in dry-run mode and only reports what would be rebuilt.
 - With `--write`, the command writes each rebuilt surface back to its canonical repository path.
@@ -64,6 +64,7 @@ uv run watchtower-core plan sync all --output-dir /tmp/watchtower_plan_sync --fo
 | `watchtower-core plan sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core plan sync standard-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core plan sync workflow-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core plan sync review-index` | Rebuilds one of the live plan-workspace review surfaces included in `sync all`. |
 | `watchtower-core plan sync traceability-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core plan sync initiative-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core plan sync initiative-tracking` | Rebuilds one of the surfaces included in `sync all`. |
@@ -74,4 +75,4 @@ uv run watchtower-core plan sync all --output-dir /tmp/watchtower_plan_sync --fo
 - `plan/python/src/watchtower_plan/sync/registry.py`
 
 ## Updated At
-- `2026-03-10T19:29:01Z`
+- `2026-03-21T03:12:00Z`

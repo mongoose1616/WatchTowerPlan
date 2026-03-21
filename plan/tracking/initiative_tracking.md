@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening | `execution` | repository_maintainer | `4` | [plan.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md) | [plan.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md) | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json) (`in_progress`) <br> [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json) (`planned`) <br> [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/turn_pack_starter_templates_into_a_scaffold_command_surface/task.json) (`planned`) <br> [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/validate_and_close_out_the_hosted_pack_tranche/task.json) (`planned`) | Advance the current in-progress task set and keep initiative-local task state current. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -13,4 +15,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-21T02:32:49Z`_
+_Updated At: `2026-03-21T03:04:13Z`_

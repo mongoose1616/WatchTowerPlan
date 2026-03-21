@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtoweroversight_to_host_layer_parity.0001_created",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T02:44:03Z",
+  "summary": "Created live task task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json"
+  },
+  "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity"
+}

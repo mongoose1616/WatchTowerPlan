@@ -242,6 +242,7 @@ def test_plan_sync_group_prints_group_specific_help(capsys) -> None:
     assert "standard-index" in captured.out
     assert "workflow-index" in captured.out
     assert "task-index" in captured.out
+    assert "review-index" in captured.out
     assert "task-tracking" in captured.out
     assert "initiative-index" in captured.out
     assert "initiative-tracking" in captured.out

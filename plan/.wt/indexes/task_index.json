@@ -295,6 +295,101 @@
       ]
     },
     {
+      "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "title": "Align WatchTowerOversight to host-layer parity",
+      "summary": "Moves WatchTowerOversight CLI composition behind a host layer and aligns its core-host-pack runtime boundaries with WatchTowerPlan.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json",
+      "updated_at": "2026-03-21T03:04:13Z",
+      "applies_to": [
+        "core/python/src/"
+      ]
+    },
+    {
+      "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening",
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "title": "Bootstrap Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "summary": "Bootstrap Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening/task.json",
+      "updated_at": "2026-03-21T03:03:08Z"
+    },
+    {
+      "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "title": "Flatten plan runtime into feature-owned modules",
+      "summary": "Reorganizes watchtower_plan so remaining adapter-style package families collapse into feature-owned plan services and minimal host-facing adapters.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json",
+      "updated_at": "2026-03-21T02:44:49Z",
+      "applies_to": [
+        "plan/python/src/watchtower_plan/",
+        "core/python/src/watchtower_core/"
+      ]
+    },
+    {
+      "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "title": "Turn pack starter templates into a scaffold command surface",
+      "summary": "Adds an operator-facing scaffold path that renders the hosted-pack starter templates into a validated pack skeleton.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/turn_pack_starter_templates_into_a_scaffold_command_surface/task.json",
+      "updated_at": "2026-03-21T02:44:43Z",
+      "applies_to": [
+        "core/docs/templates/",
+        "core/python/src/"
+      ]
+    },
+    {
+      "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche",
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "title": "Validate and close out the hosted-pack tranche",
+      "summary": "Runs the explicit cross-repo validation bundle for host parity, scaffold output, and plan runtime flattening, then closes the initiative.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/validate_and_close_out_the_hosted_pack_tranche/task.json",
+      "updated_at": "2026-03-21T02:45:46Z",
+      "depends_on": [
+        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
+        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
+        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules"
+      ],
+      "applies_to": [
+        "core/python/tests/",
+        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/"
+      ]
+    },
+    {
       "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
       "trace_id": "trace.pack_domain_hardcoding_remediation",

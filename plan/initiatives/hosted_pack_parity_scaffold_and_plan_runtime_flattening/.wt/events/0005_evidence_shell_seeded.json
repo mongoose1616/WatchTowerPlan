@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.hosted_pack_parity_scaffold_and_plan_runtime_flattening.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T02:42:43Z",
+  "summary": "Seeded the evidence shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "related_paths": [
+    "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+    "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+    "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+    "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md"
+  ]
+}

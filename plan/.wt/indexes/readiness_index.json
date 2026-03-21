@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T02:32:49Z",
+  "updated_at": "2026-03-21T03:04:13Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -34,6 +34,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T01:25:24Z"
+    },
+    {
+      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+      "initiative_root": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "in_progress",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": true,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-21T03:04:13Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

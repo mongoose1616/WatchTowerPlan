@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "slug": "hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
+  "summary": "Brings WatchTowerOversight to host-layer parity, turns pack starter templates into scaffoldable operator surfaces, and flattens remaining plan runtime adapters.",
+  "scope_type": "pack_wide",
+  "status": "active",
+  "lifecycle_stage": "in_progress",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T02:42:43Z",
+  "updated_at": "2026-03-21T03:04:13Z",
+  "task_ids": [
+    "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
+    "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening",
+    "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
+    "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
+    "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+      "sha256": "63a7e18f37492fe79ae28c6323d0e6243252f54e8d94a364a862a95ae09f5672",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T02:42:43Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+      "sha256": "a84c629b1d8c885ce0bc9ffc14037042cd22fbf3487c75a7b949a6d79bcfe1b6",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T02:42:43Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+      "sha256": "b221eb16691da7b7169e9fb55bb732a5165b95d7eda1ebf5e1a7d33e402e4984",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T02:42:43Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md",
+      "sha256": "8fa9aedd775edf10006899f4cf511da9317a2ca0a7fd18caa8ebf3b636fb1d10",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T02:42:43Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T02:45:55Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T03:02:19Z"
+    }
+  ]
+}

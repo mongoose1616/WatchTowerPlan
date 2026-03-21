@@ -205,6 +205,25 @@ def test_sync_task_index_supports_json_output(
     assert payload["artifact_path"] is None
 
 
+def test_sync_review_index_supports_json_output(
+    live_plan_cli_repo: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = live_plan_cli_repo
+    monkeypatch.chdir(repo_root / "core" / "python")
+    result = main(["plan", "sync", "review-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan sync review-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 0
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
 def test_sync_task_tracking_supports_json_output(
     live_plan_cli_repo: Path,
     monkeypatch,
@@ -420,6 +439,22 @@ def test_sync_initiative_index_can_write_to_explicit_output(tmp_path: Path, caps
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync initiative-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_review_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+    output_path = tmp_path / "review_index.json"
+
+    result = main(
+        ["plan", "sync", "review-index", "--output", str(output_path), "--format", "json"]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan sync review-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()

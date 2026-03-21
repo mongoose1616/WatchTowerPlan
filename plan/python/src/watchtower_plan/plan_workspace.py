@@ -867,6 +867,9 @@ class PlanWorkspaceService:
         self._pack_loader().schema_store.validate_instance(task_index)
         return task_index
 
+    def build_review_index_document(self) -> dict[str, object]:
+        return self._build_documents(self._load_initiative_snapshots())["review_index"]
+
     def load_task_entries(self) -> tuple[PlanTaskIndexEntry, ...]:
         document = self._load_plan_json(self._task_index_path)
         return tuple(PlanTaskIndexEntry.from_document(entry) for entry in document["entries"])

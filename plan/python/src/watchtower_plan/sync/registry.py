@@ -48,6 +48,10 @@ from watchtower_core.sync.workflow_index import (
     WORKFLOW_INDEX_ARTIFACT_PATH,
     WorkflowIndexSyncService,
 )
+from watchtower_plan.sync.review_index import (
+    REVIEW_INDEX_ARTIFACT_PATH,
+    ReviewIndexSyncService,
+)
 from watchtower_plan.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
 from watchtower_plan.sync.task_tracking import (
     TASK_TRACKING_DOCUMENT_PATH,
@@ -113,6 +117,13 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         relative_output_path=TASK_INDEX_ARTIFACT_PATH,
         service_factory=TaskIndexSyncService,
         groups=(COORDINATION_SYNC_GROUP,),
+    ),
+    SyncTargetSpec(
+        target="review-index",
+        mode="document",
+        artifact_kind="index",
+        relative_output_path=REVIEW_INDEX_ARTIFACT_PATH,
+        service_factory=ReviewIndexSyncService,
     ),
     SyncTargetSpec(
         target="traceability-index",

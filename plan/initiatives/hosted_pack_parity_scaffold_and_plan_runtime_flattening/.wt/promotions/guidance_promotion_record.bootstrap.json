@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_shell",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-21T02:42:43Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/hosted_pack_parity_scaffold_and_plan_runtime_flattening_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/hosted_pack_parity_scaffold_and_plan_runtime_flattening_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/hosted_pack_parity_scaffold_and_plan_runtime_flattening_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/hosted_pack_parity_scaffold_and_plan_runtime_flattening_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

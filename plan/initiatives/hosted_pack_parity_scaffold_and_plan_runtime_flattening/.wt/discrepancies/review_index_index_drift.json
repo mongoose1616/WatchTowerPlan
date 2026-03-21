@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.hosted_pack_parity_scaffold_and_plan_runtime_flattening.review_index_index_drift",
+  "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
+  "category": "stale_aggregate_index",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+  "source_paths": [
+    "plan/.wt/indexes/review_index.json"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-21T02:46:16Z",
+  "updated_at": "2026-03-21T03:01:51Z"
+}
