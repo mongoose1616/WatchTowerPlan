@@ -8,7 +8,7 @@ from pathlib import Path
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import EvidenceBundleArtifact
 
-EVIDENCE_BUNDLE_SCHEMA_ID = "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+EVIDENCE_BUNDLE_SUBJECT_KIND = "validation_bundle"
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,12 +48,13 @@ class EvidenceBundleHelper:
         status: str,
         updated_at: str,
         entries: tuple[EvidenceBundleEntrySpec, ...],
-        schema_id: str = EVIDENCE_BUNDLE_SCHEMA_ID,
+        schema_id: str | None = None,
     ) -> dict[str, object]:
         """Build and validate one evidence-bundle document."""
 
+        resolved_schema_id = self._resolve_schema_id(schema_id)
         document: dict[str, object] = {
-            "$schema": schema_id,
+            "$schema": resolved_schema_id,
             "id": evidence_id,
             "initiative_id": initiative_id,
             "trace_id": trace_id,
@@ -72,7 +73,7 @@ class EvidenceBundleHelper:
                 for entry in entries
             ],
         }
-        self._loader.schema_store.validate_instance(document, schema_id=schema_id)
+        self._loader.schema_store.validate_instance(document, schema_id=resolved_schema_id)
         return document
 
     def artifact_from_document(self, document: dict[str, object]) -> EvidenceBundleArtifact:
@@ -118,9 +119,30 @@ class EvidenceBundleHelper:
         self._loader.schema_store.validate_instance(document)
         return self._loader.artifact_store.write_json_file(destination, document)
 
+    def _resolve_schema_id(self, schema_id: str | None) -> str:
+        """Return the explicit or active-pack evidence-bundle schema identifier."""
+
+        if schema_id is not None:
+            return schema_id
+
+        try:
+            return self._loader.load_schema_catalog().get_by_subject_kind(
+                EVIDENCE_BUNDLE_SUBJECT_KIND
+            ).schema_id
+        except KeyError as exc:
+            raise ValueError(
+                "Evidence bundles require an active pack schema catalog entry for "
+                f"{EVIDENCE_BUNDLE_SUBJECT_KIND!r} or an explicit schema_id."
+            ) from exc
+        except ValueError as exc:
+            raise ValueError(
+                "Evidence bundle schema resolution requires exactly one schema catalog "
+                f"entry for {EVIDENCE_BUNDLE_SUBJECT_KIND!r}."
+            ) from exc
+
 
 __all__ = [
-    "EVIDENCE_BUNDLE_SCHEMA_ID",
+    "EVIDENCE_BUNDLE_SUBJECT_KIND",
     "EvidenceBundleEntrySpec",
     "EvidenceBundleHelper",
     "EvidenceBundleWriteResult",

@@ -112,6 +112,19 @@ class SchemaCatalog:
                 return record
         raise KeyError(schema_id)
 
+    def get_by_subject_kind(self, subject_kind: str) -> SchemaCatalogRecord:
+        """Return the unique catalog record for one subject kind."""
+
+        matches = tuple(record for record in self.records if record.subject_kind == subject_kind)
+        if not matches:
+            raise KeyError(subject_kind)
+        if len(matches) > 1:
+            raise ValueError(
+                "Schema catalog subject kind must resolve to one record, "
+                f"but {subject_kind!r} matched {len(matches)} entries."
+            )
+        return matches[0]
+
 
 @dataclass(frozen=True, slots=True)
 class ValidatorDefinition:

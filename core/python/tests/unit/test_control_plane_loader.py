@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import tempfile
 from copy import deepcopy
 from pathlib import Path
 from shutil import copytree
@@ -10,15 +9,15 @@ import pytest
 
 from watchtower_core.control_plane.loader import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
-    PACK_SETTINGS_PATH,
     PACK_REGISTRY_PATH,
+    PACK_SETTINGS_PATH,
     VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import (
     PackRegistry,
-    PackSettings,
     PackRuntimeManifest,
+    PackSettings,
     RenderedSurfaceRegistry,
     SchemaCatalog,
     ValidationSuiteRegistry,
@@ -307,6 +306,24 @@ def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog(
     assert pack_settings.pack_id == "pack.loader_test"
     assert loader.active_pack_settings_path == surfaces["pack_settings_path"]
     assert pack_schema.canonical_relative_path == surfaces["schema_relative_path"]
+
+
+def test_schema_catalog_get_by_subject_kind_returns_unique_match() -> None:
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+    )
+
+    record = loader.load_schema_catalog().get_by_subject_kind("validation_bundle")
+
+    assert record.schema_id == "urn:watchtower:schema:artifacts:plan:validation-bundle:v1"
+
+
+def test_schema_catalog_get_by_subject_kind_rejects_ambiguous_match() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    with pytest.raises(ValueError, match="documentation_front_matter"):
+        loader.load_schema_catalog().get_by_subject_kind("documentation_front_matter")
 
 
 def test_control_plane_loader_active_pack_settings_read_pack_validator_registry(
@@ -706,7 +723,10 @@ def test_control_plane_loader_reads_command_index() -> None:
         == "plan/docs/commands/core_python/watchtower_core_plan_sync_reference_index.md"
     )
     assert plan_sync_all.parent_command_id == "command.watchtower_core.plan.sync"
-    assert plan_sync_all.doc_path == "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+    assert (
+        plan_sync_all.doc_path
+        == "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+    )
     assert (
         plan_sync_all.implementation_path
         == "plan/python/src/watchtower_plan/cli/sync.py"
