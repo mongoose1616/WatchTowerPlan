@@ -120,7 +120,9 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
     bootstrap_payload = json.loads(capsys.readouterr().out)
 
     assert bootstrap_result == 0
-    assert bootstrap_payload["validation_passed"] is True
+    assert bootstrap_payload["validation_passed"] is None
+
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
 
     validate_result = main(
         [

@@ -2,12 +2,8 @@
 
 from __future__ import annotations
 
-import importlib
 import json
 import subprocess
-import sys
-from collections.abc import Iterator
-from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
@@ -63,7 +59,7 @@ def bootstrap_hosted_pack(
     runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
     pack_runtime_manifest_path = loader.pack_runtime_manifest_path(pack_settings_path)
 
-    _preflight_integration_import(
+    _preflight_integration_module_source(
         repo_root=repo_root,
         integration_module=runtime_manifest.integration_module,
         python_root=runtime_manifest.owned_roots.python_root,
@@ -134,7 +130,7 @@ def bootstrap_hosted_pack(
         uv_lock_path.read_text(encoding="utf-8") if uv_lock_path.exists() else None
     )
     workspace_sync_ran = False
-    validation_passed = False
+    validation_passed: bool | None = None
 
     try:
         if pack_registry_changed:
@@ -147,11 +143,11 @@ def bootstrap_hosted_pack(
         if request.sync_workspace and (pack_registry_changed or core_python_pyproject_changed):
             _run_workspace_sync(repo_root)
             workspace_sync_ran = True
-        validation_passed = _validate_bootstrapped_pack(
-            repo_root=repo_root,
-            pack_settings_path=pack_settings_path,
-            python_root=runtime_manifest.owned_roots.python_root,
-        )
+        if workspace_sync_ran or not (pack_registry_changed or core_python_pyproject_changed):
+            validation_passed = _validate_bootstrapped_pack(
+                repo_root=repo_root,
+                pack_settings_path=pack_settings_path,
+            )
     except Exception:
         _restore_workspace_files(
             pack_registry_path=pack_registry_path,
@@ -289,14 +285,12 @@ def _validate_bootstrapped_pack(
     *,
     repo_root: Path,
     pack_settings_path: str,
-    python_root: str,
 ) -> bool:
     from watchtower_core.validation.pack_contract import PackContractValidationService
 
-    with _temporary_pack_python_source(repo_root=repo_root, python_root=python_root):
-        result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
-            pack_settings_path
-        )
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        pack_settings_path
+    )
     if result.passed:
         return True
     issue_summary = "; ".join(
@@ -308,38 +302,23 @@ def _validate_bootstrapped_pack(
     )
 
 
-def _preflight_integration_import(
+def _preflight_integration_module_source(
     *,
     repo_root: Path,
     integration_module: str,
     python_root: str,
 ) -> None:
-    with _temporary_pack_python_source(repo_root=repo_root, python_root=python_root):
-        try:
-            importlib.import_module(integration_module)
-        except Exception as exc:  # pragma: no cover - fail-closed operator path
-            raise ValueError(
-                "Hosted-pack bootstrap preflight could not import the integration module: "
-                f"{integration_module}: {exc}"
-            ) from exc
-
-
-@contextmanager
-def _temporary_pack_python_source(
-    *,
-    repo_root: Path,
-    python_root: str,
-) -> Iterator[None]:
     python_source_root = repo_root / python_root / "src"
-    source_path = str(python_source_root)
-    sys.path.insert(0, source_path)
-    importlib.invalidate_caches()
-    try:
-        yield
-    finally:
-        if source_path in sys.path:
-            sys.path.remove(source_path)
-        importlib.invalidate_caches()
+    module_parts = integration_module.split(".")
+    module_file = python_source_root.joinpath(*module_parts).with_suffix(".py")
+    package_init = python_source_root.joinpath(*module_parts, "__init__.py")
+    if module_file.is_file() or package_init.is_file():
+        return
+    raise ValueError(
+        "Hosted-pack bootstrap preflight could not resolve the integration module beneath "
+        "the declared pack python root: "
+        f"{integration_module} under {python_root}/src"
+    )
 
 
 def _run_workspace_sync(repo_root: Path) -> None:

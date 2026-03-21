@@ -48,12 +48,13 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 ## Behavior and Outputs
 - Loads the declared pack settings and runtime manifest before changing shared host surfaces.
 - Fails closed when the pack settings path is not repository-relative and portable.
-- Fails closed when the integration module cannot import from the pack-owned `python/src` root.
+- Fails closed when the declared integration module cannot be resolved beneath the pack-owned `python/src` root.
 - Computes and applies the shared `pack_registry.json` entry plus the shared `core/python/pyproject.toml` dev-dependency and `tool.uv.sources` registration for the pack.
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
 - When `--write` is omitted, reports the pending shared changes without mutating the repository.
-- When `--write` is used, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
-- Runs `uv sync` by default after writing shared workspace metadata. Use `--no-sync-workspace` only when a staged change or test fixture needs to defer that step deliberately.
+- When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
+- When `--write` is used with `--no-sync-workspace`, applies the shared wiring but reports validation as deferred until the shared workspace is synced honestly.
+- Runs `uv sync` by default after writing shared workspace metadata. Use `--no-sync-workspace` only when a staged change or test fixture intentionally needs to defer that step and run explicit validation afterward.
 
 ## Related Commands
 | Command | Relationship |

@@ -347,7 +347,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     assert result == 0
     assert payload["wrote"] is True
     assert payload["pack_slug"] == "oversight"
-    assert payload["validation_passed"] is True
+    assert payload["validation_passed"] is None
     assert payload["workspace_sync_ran"] is False
     assert payload["workspace_sync_required"] is True
     assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
@@ -355,6 +355,17 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
         payload["core_python_workspace_registration"]["uv_source"]["path"]
         == "../../packs/oversight/python"
     )
+    assert payload["next_steps"] == [
+        (
+            "Run uv sync in core/python before using the hosted pack from a clean shell "
+            "or environment."
+        ),
+        (
+            "Run watchtower-core pack validate --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --format json after the "
+            "workspace sync completes."
+        ),
+    ]
 
     registry = json.loads(
         (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(

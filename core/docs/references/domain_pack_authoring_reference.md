@@ -96,7 +96,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 5. Register the pack with host composition.
    - Prefer `uv run watchtower-core pack bootstrap --pack-settings-path <pack>/.wt/manifests/pack_settings.json --write --format json` once the pack-owned surfaces exist.
    - Use the dry-run bootstrap output when you need to review the shared changes before writing them.
-   - Use `--no-sync-workspace` only when a staged change or test fixture intentionally needs to defer `uv sync`.
+   - Use `--no-sync-workspace` only when a staged change or test fixture intentionally needs to defer `uv sync` and a follow-on `pack validate` run.
    - Keep `pack_id`, `pack_slug`, `command_namespace`, `python_distribution`, `python_package`, and manifest paths aligned across the registry and manifests.
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
@@ -144,7 +144,7 @@ uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/ove
 - Use the command when you want the pack-owned starter files plus the exact shared-registry and workspace snippets needed to finish host wiring.
 - The command intentionally does not mutate the shared pack registry or `core/python/pyproject.toml` automatically.
 - Follow scaffold with `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json`.
-- Use `--no-sync-workspace` only when a test fixture or staged refactor intentionally needs to defer `uv sync`.
+- Use `--no-sync-workspace` only when a test fixture or staged refactor intentionally needs to defer `uv sync` and then run explicit validation afterward.
 
 ### Hosted Pack Bootstrap Command
 ```sh

@@ -56,7 +56,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
 - Authoring guidance, workflow modules, and standards should be sufficient for pack creation or copy-out; reviewers should not need to reverse-engineer implementation code to determine the required pack shape.
 - Scaffold commands should create only pack-owned surfaces.
-- Shared host wiring should happen through `watchtower-core pack bootstrap`, which must update shared registry and workspace metadata together and validate the resulting pack contract before leaving the repository mutated.
+- Shared host wiring should happen through `watchtower-core pack bootstrap`, which must update shared registry and workspace metadata together and validate the resulting pack contract before leaving the repository mutated unless `--no-sync-workspace` explicitly defers validation until the shared workspace is synced.
 
 ## Structure or Data Model
 ### Expected pack root shape

@@ -312,6 +312,11 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
                     "Run uv sync in core/python before using the hosted pack from a clean "
                     "shell or environment."
                 ),
+                (
+                    "Run watchtower-core pack validate --pack-settings-path "
+                    f"{result.pack_settings_path} --format json after the workspace sync "
+                    "completes."
+                ),
             ]
             if result.workspace_sync_required
             else []
@@ -350,6 +355,8 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
                 "Validation: "
                 + ("passed" if result.validation_passed else "failed")
             )
+        elif result.workspace_sync_required:
+            print("Validation: deferred until the shared workspace is synced.")
         if result.changed_paths:
             print("Changed Paths:")
             for path in result.changed_paths:
