@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-20T23:50:31Z",
+  "updated_at": "2026-03-21T00:42:04Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -11,7 +11,7 @@
       "trace_id": "trace.core_host_pack_architecture_hard_cutover",
       "initiative_title": "Core Host Pack Architecture Hard Cutover",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/core_host_pack_architecture_hard_cutover",
       "candidate_count": 4,
       "candidate_paths": [
@@ -29,7 +29,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-20T17:17:23Z",
+      "updated_at": "2026-03-21T00:42:04Z",
       "target_paths": [
         "plan/docs/decisions/core_host_pack_architecture_hard_cutover_design_record.md",
         "plan/docs/patterns/core_host_pack_architecture_hard_cutover_implementation_slice.md",

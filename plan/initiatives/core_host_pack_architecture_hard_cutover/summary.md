@@ -2,7 +2,9 @@
 
 ## Outcome Summary
 Separates reusable core, host composition, and pack-native runtime behind governed pack contracts, host-owned CLI composition, and pack interface validation.
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
+- `closed_at`: `2026-03-21T00:42:04Z`
+- `closure_reason`: Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.
 
 ## Delivered Outputs
 - Authored input: [initiative_brief.md](/plan/initiatives/core_host_pack_architecture_hard_cutover/initiative_brief.md)
@@ -22,19 +24,21 @@ Separates reusable core, host composition, and pack-native runtime behind govern
 - Terminal task `task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007`: `completed`
 
 ## Promoted Guidance
-- `promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell`: `planned` / approval `pending`
+- `promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell`: `candidate` / approval `pending`
 - Candidate target: [core_host_pack_architecture_hard_cutover_initiative_brief.md](/plan/docs/references/core_host_pack_architecture_hard_cutover_initiative_brief.md)
 - Candidate target: [core_host_pack_architecture_hard_cutover_design_record.md](/plan/docs/decisions/core_host_pack_architecture_hard_cutover_design_record.md)
 - Candidate target: [core_host_pack_architecture_hard_cutover_implementation_slice.md](/plan/docs/patterns/core_host_pack_architecture_hard_cutover_implementation_slice.md)
 - Candidate target: [core_host_pack_architecture_hard_cutover_decision_notes.md](/plan/docs/standards/governance/core_host_pack_architecture_hard_cutover_decision_notes.md)
 
 ## Evidence References
-- `evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle`: `planned`
+- `evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle`: `completed`
 
 ## Unresolved Follow-Ups
 - No unresolved follow-up items remain.
 
 ## Closeout State
-- `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-20T23:50:31Z`
-- `closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap`: `planned`
+- `lifecycle_stage`: `completed`
+- `updated_at`: `2026-03-21T00:42:04Z`
+- `closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap`: `completed`
+- `closed_at`: `2026-03-21T00:42:04Z`
+- `closure_reason`: Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.

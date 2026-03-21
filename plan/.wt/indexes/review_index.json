@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-20T23:50:31Z",
+  "updated_at": "2026-03-21T00:42:04Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -19,9 +19,9 @@
       "evidence_refs": [
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-20T23:50:31Z",
-      "lifecycle_stage": "in_progress",
-      "ready_for_execution": true
+      "updated_at": "2026-03-21T00:42:04Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
     },
     {
       "review_subject_id": "initiative.pack_domain_hardcoding_remediation",
@@ -91,7 +91,7 @@
       "evidence_refs": [
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-20T17:17:23Z"
+      "updated_at": "2026-03-21T00:42:04Z"
     },
     {
       "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",

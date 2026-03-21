@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-20T23:50:31Z",
+  "updated_at": "2026-03-21T00:42:04Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -11,14 +11,14 @@
       "title": "Core Host Pack Architecture Hard Cutover",
       "initiative_root": "plan/initiatives/core_host_pack_architecture_hard_cutover",
       "scope_type": "pack_wide",
-      "lifecycle_stage": "in_progress",
+      "lifecycle_stage": "completed",
       "review_status": "approved",
       "capture_complete": true,
       "machine_valid": true,
       "approval_status": "approved",
-      "ready_for_execution": true,
+      "ready_for_execution": false,
       "blocking_reasons": [],
-      "updated_at": "2026-03-20T23:50:31Z"
+      "updated_at": "2026-03-21T00:42:04Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

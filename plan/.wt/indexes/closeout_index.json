@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-20T23:50:31Z",
+  "updated_at": "2026-03-21T00:42:04Z",
   "entries": [
     {
       "closeout_id": "closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap",
@@ -11,7 +11,7 @@
       "trace_id": "trace.core_host_pack_architecture_hard_cutover",
       "initiative_title": "Core Host Pack Architecture Hard Cutover",
       "title": "Bootstrap Closeout Shell",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/core_host_pack_architecture_hard_cutover",
       "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
       "acceptance_ids": [
@@ -27,7 +27,8 @@
         "superseded",
         "cancelled"
       ],
-      "updated_at": "2026-03-20T17:17:23Z"
+      "updated_at": "2026-03-21T00:42:04Z",
+      "terminal_state": "completed"
     },
     {
       "closeout_id": "closeout.pack_domain_hardcoding_remediation.bootstrap_recap",
