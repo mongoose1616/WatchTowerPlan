@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs.0001_created",
+  "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T00:46:56Z",
+  "summary": "Created live task task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/add_second_pack_fixture_and_multi_pack_proofs/task.json"
+  },
+  "task_id": "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs"
+}

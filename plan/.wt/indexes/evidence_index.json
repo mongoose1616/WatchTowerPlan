@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T00:42:04Z",
+  "updated_at": "2026-03-21T00:49:36Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -33,6 +33,35 @@
         "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "evidence_id": "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/domain_pack_externalization_portability_proof",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/domain_pack_externalization_portability_proof/.wt/discrepancies",
+        "plan/initiatives/domain_pack_externalization_portability_proof/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-21T00:43:27Z"
     },
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",

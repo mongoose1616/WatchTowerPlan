@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+  "trace_id": "trace.domain_pack_externalization_portability_proof",
+  "slug": "domain_pack_externalization_portability_proof",
+  "title": "Domain Pack Externalization and Portability Proof",
+  "summary": "Proves that plan and future domain packs can be copied out with only packaging and path updates while reusable core and host integration remain stable.",
+  "scope_type": "pack_wide",
+  "status": "active",
+  "lifecycle_stage": "in_progress",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T00:43:27Z",
+  "updated_at": "2026-03-21T00:49:36Z",
+  "task_ids": [
+    "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
+    "task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof",
+    "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
+    "task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof",
+    "task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.domain_pack_externalization_portability_proof.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.domain_pack_externalization_portability_proof.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+      "sha256": "9e123488a00d5d893bc3ef5cbaf02249c5bd8f347875e73f5242609cad761845",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T00:48:28Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+      "sha256": "ac2ab2f1240f876b983b098dfcbb4443d5f7d67c1c3b259eef7cf946791118c9",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T00:48:28Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+      "sha256": "c26283e6549070dc7ebd2321ee7f2b483dbb630e11548b62d1bf07555b270ea8",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T00:48:28Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md",
+      "sha256": "c03c6afb66065b711fde76e4a8cf04d186e1191ac367277ea913480c746ca2d9",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T00:48:28Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": true,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T00:48:28Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T00:48:55Z"
+    }
+  ]
+}

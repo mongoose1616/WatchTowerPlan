@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T00:42:04Z",
+  "updated_at": "2026-03-21T00:49:36Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -22,6 +22,24 @@
       "updated_at": "2026-03-21T00:42:04Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.domain_pack_externalization_portability_proof",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Domain Pack Externalization and Portability Proof",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T00:49:36Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
     },
     {
       "review_subject_id": "initiative.pack_domain_hardcoding_remediation",
@@ -92,6 +110,22 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "review_subject_id": "promotion.domain_pack_externalization_portability_proof.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T00:43:27Z"
     },
     {
       "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",

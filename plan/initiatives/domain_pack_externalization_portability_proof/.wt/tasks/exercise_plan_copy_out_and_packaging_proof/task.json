@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof",
+  "slug": "exercise_plan_copy_out_and_packaging_proof",
+  "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+  "title": "Exercise plan copy-out and packaging proof",
+  "summary": "Proves that the plan pack can be treated as an externalized package with only packaging and path adjustments.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T00:46:27Z",
+  "updated_at": "2026-03-21T00:46:27Z",
+  "dependency_task_ids": [
+    "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract"
+  ],
+  "applies_to": [
+    "plan/python/",
+    "core/python/pyproject.toml"
+  ],
+  "scope_items": [
+    "Exercise plan through host-owned seams under externalized packaging assumptions."
+  ],
+  "done_when_items": [
+    "The proof fixture demonstrates expected success and expected failure modes for plan copy-out."
+  ]
+}

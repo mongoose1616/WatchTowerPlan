@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T00:42:04Z",
+  "updated_at": "2026-03-21T00:49:36Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -19,6 +19,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "title": "Domain Pack Externalization and Portability Proof",
+      "initiative_root": "plan/initiatives/domain_pack_externalization_portability_proof",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "in_progress",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": true,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-21T00:49:36Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

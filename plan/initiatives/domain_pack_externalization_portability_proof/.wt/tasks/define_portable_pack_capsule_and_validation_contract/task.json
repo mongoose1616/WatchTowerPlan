@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
+  "slug": "define_portable_pack_capsule_and_validation_contract",
+  "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+  "title": "Define portable pack capsule and validation contract",
+  "summary": "Tightens the portability rules for manifests, owned roots, packaging assumptions, and validator behavior.",
+  "status": "active",
+  "task_status": "ready",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T00:45:59Z",
+  "updated_at": "2026-03-21T00:45:59Z",
+  "applies_to": [
+    "core/control_plane/",
+    "core/python/src/watchtower_core/validation/",
+    "plan/.wt/manifests/"
+  ],
+  "scope_items": [
+    "Define the portable pack capsule and expected validator behavior.",
+    "Document what copy-out may change and what must remain invariant across packs."
+  ],
+  "done_when_items": [
+    "Pack manifests, owned roots, and portability failure modes have an explicit contract.",
+    "Reusable-core validation fails deterministically on portability drift."
+  ]
+}

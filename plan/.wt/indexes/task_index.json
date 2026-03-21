@@ -193,6 +193,108 @@
       ]
     },
     {
+      "task_id": "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Add second-pack fixture and multi-pack proofs",
+      "summary": "Strengthens the generic hosted-pack contract with a second-pack fixture informed by WatchTowerOversight shape.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/add_second_pack_fixture_and_multi_pack_proofs/task.json",
+      "updated_at": "2026-03-21T00:46:56Z",
+      "depends_on": [
+        "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract"
+      ],
+      "applies_to": [
+        "core/python/tests/",
+        "core/control_plane/registries/pack_registry.json"
+      ]
+    },
+    {
+      "task_id": "task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Bootstrap Domain Pack Externalization and Portability Proof",
+      "summary": "Bootstrap Domain Pack Externalization and Portability Proof live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/bootstrap_domain_pack_externalization_and_portability_proof/task.json",
+      "updated_at": "2026-03-21T00:49:36Z"
+    },
+    {
+      "task_id": "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Define portable pack capsule and validation contract",
+      "summary": "Tightens the portability rules for manifests, owned roots, packaging assumptions, and validator behavior.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/define_portable_pack_capsule_and_validation_contract/task.json",
+      "updated_at": "2026-03-21T00:45:59Z",
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "plan/.wt/manifests/"
+      ]
+    },
+    {
+      "task_id": "task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Exercise plan copy-out and packaging proof",
+      "summary": "Proves that the plan pack can be treated as an externalized package with only packaging and path adjustments.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/exercise_plan_copy_out_and_packaging_proof/task.json",
+      "updated_at": "2026-03-21T00:46:27Z",
+      "depends_on": [
+        "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract"
+      ],
+      "applies_to": [
+        "plan/python/",
+        "core/python/pyproject.toml"
+      ]
+    },
+    {
+      "task_id": "task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance",
+      "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+      "trace_id": "trace.domain_pack_externalization_portability_proof",
+      "initiative_title": "Domain Pack Externalization and Portability Proof",
+      "title": "Publish externalized pack authoring guidance",
+      "summary": "Updates standards, references, and workflow guidance for externalized and future hosted packs.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "documentation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json",
+      "updated_at": "2026-03-21T00:47:26Z",
+      "depends_on": [
+        "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract",
+        "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs"
+      ],
+      "applies_to": [
+        "core/docs/",
+        "core/workflows/"
+      ]
+    },
+    {
       "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",
       "trace_id": "trace.pack_domain_hardcoding_remediation",

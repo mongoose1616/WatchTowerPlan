@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.domain_pack_externalization_portability_proof.bootstrap_shell",
+  "initiative_id": "initiative.domain_pack_externalization_portability_proof",
+  "trace_id": "trace.domain_pack_externalization_portability_proof",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-21T00:43:27Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/domain_pack_externalization_portability_proof_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/domain_pack_externalization_portability_proof_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/domain_pack_externalization_portability_proof/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/domain_pack_externalization_portability_proof_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/domain_pack_externalization_portability_proof/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/domain_pack_externalization_portability_proof_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

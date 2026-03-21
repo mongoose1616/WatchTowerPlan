@@ -1,19 +1,19 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `ready_for_bootstrap`
-- `summary`: No active plan-workspace initiatives exist.
-- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
-- `recommended_surface_path`: `plan/plan_overview.md`
+- `coordination_mode`: `active_work`
+- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
+- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_surface_path`: `plan/initiatives/domain_pack_externalization_portability_proof/plan.md`
 
 ## Active Pack-Wide Initiatives
-- None.
+- `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`execution` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.
 
 ## Blocked or Attention-Needed Items
-- None.
+- Actionable task `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract` (high) in `trace.domain_pack_externalization_portability_proof` -> `plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/define_portable_pack_capsule_and_validation_contract/task.json`
 
 ## Recent Completions or Changes
 - `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.
