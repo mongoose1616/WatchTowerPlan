@@ -200,12 +200,12 @@
       "title": "Add second-pack fixture and multi-pack proofs",
       "summary": "Strengthens the generic hosted-pack contract with a second-pack fixture informed by WatchTowerOversight shape.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/add_second_pack_fixture_and_multi_pack_proofs/task.json",
-      "updated_at": "2026-03-21T00:46:56Z",
+      "updated_at": "2026-03-21T01:19:44Z",
       "depends_on": [
         "task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract"
       ],

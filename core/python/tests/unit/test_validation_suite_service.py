@@ -301,6 +301,34 @@ def test_pack_contract_validation_fails_when_integration_module_is_not_pack_loca
     assert any(issue.code == "pack_integration_module_not_pack_local" for issue in result.issues)
 
 
+def test_pack_contract_validation_fails_when_command_namespace_conflicts(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="plan",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(
+        issue.code == "pack_registry_command_namespace_conflict"
+        for issue in result.issues
+    )
+
+
 def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runtime(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

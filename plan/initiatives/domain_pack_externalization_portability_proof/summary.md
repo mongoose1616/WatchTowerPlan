@@ -12,6 +12,7 @@ Proves that plan and future domain packs can be copied out with only packaging a
 - Rendered plan: [plan.md](/plan/initiatives/domain_pack_externalization_portability_proof/plan.md)
 - Rendered progress: [progress.md](/plan/initiatives/domain_pack_externalization_portability_proof/progress.md)
 - Rendered summary: [summary.md](/plan/initiatives/domain_pack_externalization_portability_proof/summary.md)
+- Terminal task `task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs`: `completed`
 - Terminal task `task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof`: `completed`
 - Terminal task `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract`: `completed`
 - Terminal task `task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof`: `completed`
@@ -27,10 +28,9 @@ Proves that plan and future domain packs can be copied out with only packaging a
 - `evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle`: `planned`
 
 ## Unresolved Follow-Ups
-- Open task `task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs`: `planned`
 - Open task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-21T01:11:41Z`
+- `updated_at`: `2026-03-21T01:19:44Z`
 - `closeout.domain_pack_externalization_portability_proof.bootstrap_recap`: `planned`

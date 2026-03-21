@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:05:00Z"
+updated_at: "2026-03-21T21:20:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -73,6 +73,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
 - Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
+- Exercise copy-out and extensibility proofs through each pack’s own `<pack>/python/src` path instead of relying only on shared test-fixture import roots.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -119,7 +120,8 @@ Make future packs portable and comprehensible by documenting the intended split 
 - [plan/README.md](/plan/README.md)
 - [plan/python/README.md](/plan/python/README.md)
 - `WatchTowerOversight` as a second-pack design reference for future capabilities and docs shape
-- `core/python/tests/fixtures/python/watchtower_oversight_fixture/` as the repository’s synthetic second-pack proof that host discovery and pack validation work for more than the default `plan` pack
+- `core/python/tests/fixtures/python/watchtower_oversight_fixture/` as the repository’s synthetic second-pack source package for multi-pack contract tests
+- `core/python/tests/integration/test_pack_externalization.py` as the externalized proof that both the default `plan` pack and a second `oversight`-style pack can load from pack-owned `python/` roots
 
 ## References
 - [python_plugin_discovery_reference.md](/core/docs/references/python_plugin_discovery_reference.md)
@@ -131,4 +133,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-21T21:05:00Z`
+- `2026-03-21T21:20:00Z`

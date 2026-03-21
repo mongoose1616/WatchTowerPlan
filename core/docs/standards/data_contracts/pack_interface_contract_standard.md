@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:05:00Z"
+updated_at: "2026-03-21T21:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -94,6 +94,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Owned-root existence and pack-local placement | Pass |
 | Manifest path parity with `machine_root` | Pass |
 | Pack-settings surface locality | Pass |
+| Hosted-pack registry command-namespace uniqueness | Pass |
 | Integration module stays under `python_package` | Pass |
 | Named `domain_roots` parity across settings and runtime manifest | Pass |
 | Pack namespace command-doc entry page present | Pass |
@@ -107,6 +108,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 ## Validation
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
 - `watchtower-core validate all` and `watchtower-core pack validate --pack <slug>` should fail closed when live source roots contain forbidden `watchtower_core -> watchtower_<pack>` or `watchtower_<pack> -> watchtower_host` imports.
+- `watchtower-core pack validate --pack <slug>` should fail closed when the hosted-pack registry declares a conflicting `command_namespace`.
 - Reviewers should reject hosted-pack changes that update only Python hooks or only manifests without the companion governed artifacts.
 - Reviewers should reject command namespace collisions, missing declared hooks, or pack manifests that point at non-existent roots.
 - Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
@@ -126,4 +128,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-21T21:05:00Z`
+- `2026-03-21T21:20:00Z`

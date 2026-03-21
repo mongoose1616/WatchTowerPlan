@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copy2, copytree
+from shutil import copy2, copytree, ignore_patterns
 
 from watchtower_core.pack_integration import pack_command_entry_doc_path
 
@@ -26,6 +26,7 @@ def materialize_pack_validation_suite(
     suite_step_validator_id: str | None = None,
     validator_schema_ids: tuple[str, ...] | None = None,
     registry_mode: str = "replace_default",
+    extra_domain_root_names: tuple[str, ...] = (),
 ) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
     copytree(_PLAN_FIXTURE_ROOT, pack_root, dirs_exist_ok=True)
@@ -73,6 +74,15 @@ def materialize_pack_validation_suite(
         path.write_text(text, encoding="utf-8")
 
     runtime_manifest = _load_json(pack_root / ".wt/manifests/pack_runtime_manifest.json")
+    pack_settings = _load_json(pack_root / ".wt/manifests/pack_settings.json")
+    if extra_domain_root_names:
+        extra_domain_roots = {
+            root_name: f"{actual_pack_root}/{root_name}" for root_name in extra_domain_root_names
+        }
+        pack_settings["workspace_roots"].setdefault("domain_roots", {}).update(extra_domain_roots)
+        runtime_manifest["owned_roots"].setdefault("domain_roots", {}).update(extra_domain_roots)
+        _write_json(pack_root / ".wt/manifests/pack_settings.json", pack_settings)
+        _write_json(pack_root / ".wt/manifests/pack_runtime_manifest.json", runtime_manifest)
     _materialize_owned_roots(repo_root, runtime_manifest["owned_roots"])
     command_doc_relative_path = pack_command_entry_doc_path(
         command_namespace=command_namespace,
@@ -200,6 +210,52 @@ def materialize_externalized_plan_python(pack_python_root: Path) -> None:
     )
 
 
+def materialize_externalized_fixture_python(
+    pack_python_root: Path,
+    *,
+    python_distribution: str,
+    python_package: str,
+    source_package_root: Path,
+    description: str,
+) -> None:
+    """Materialize a synthetic pack package under one pack-owned python root."""
+
+    pack_python_root.mkdir(parents=True, exist_ok=True)
+    (pack_python_root / "src").mkdir(parents=True, exist_ok=True)
+    (pack_python_root / "pyproject.toml").write_text(
+        "\n".join(
+            (
+                "[build-system]",
+                'requires = ["hatchling>=1.27"]',
+                'build-backend = "hatchling.build"',
+                "",
+                "[project]",
+                f'name = "{python_distribution}"',
+                'version = "0.1.0"',
+                f'description = "{description}"',
+                'readme = "README.md"',
+                'requires-python = ">=3.12,<3.13"',
+                "dependencies = []",
+                "",
+                "[tool.hatch.build.targets.wheel]",
+                f'packages = ["src/{python_package}"]',
+                "",
+            )
+        ),
+        encoding="utf-8",
+    )
+    (pack_python_root / "README.md").write_text(
+        f"# `{python_distribution}`\n\n{description}\n",
+        encoding="utf-8",
+    )
+    copytree(
+        source_package_root,
+        pack_python_root / "src" / python_package,
+        dirs_exist_ok=True,
+        ignore=ignore_patterns("__pycache__", "*.pyc"),
+    )
+
+
 def _discover_repo_root(start: Path) -> Path:
     candidate = start.resolve()
     for parent in (candidate, *candidate.parents):
@@ -218,6 +274,10 @@ def _write_json(path: Path, document: dict[str, object]) -> None:
 
 def _materialize_owned_roots(repo_root: Path, owned_roots: dict[str, object]) -> None:
     for relative_path in owned_roots.values():
-        if not isinstance(relative_path, str) or not relative_path:
+        if isinstance(relative_path, str) and relative_path:
+            (repo_root / relative_path).mkdir(parents=True, exist_ok=True)
             continue
-        (repo_root / relative_path).mkdir(parents=True, exist_ok=True)
+        if isinstance(relative_path, dict):
+            for nested_relative_path in relative_path.values():
+                if isinstance(nested_relative_path, str) and nested_relative_path:
+                    (repo_root / nested_relative_path).mkdir(parents=True, exist_ok=True)

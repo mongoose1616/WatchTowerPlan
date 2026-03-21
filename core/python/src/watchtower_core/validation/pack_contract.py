@@ -7,7 +7,11 @@ import importlib
 from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.errors import ControlPlaneError
-from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    PACK_REGISTRY_PATH,
+    PACK_SETTINGS_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.pack_integration import (
     REQUIRED_PACK_CAPABILITIES,
     SUPPORTED_PACK_CAPABILITIES,
@@ -105,6 +109,7 @@ class PackContractValidationService:
                 manifest_python_package=runtime_manifest.python_package,
             )
         )
+        issues.extend(_registry_collision_issues(pack_registry, registry_entry))
         issues.extend(_manifest_path_issues(context, runtime_manifest))
         issues.extend(_owned_root_issues(context, runtime_manifest))
         issues.extend(_surface_path_issues(context))
@@ -152,6 +157,33 @@ def _matching_field_issues(
             ValidationIssue(
                 code=f"pack_contract_{field_name}_mismatch",
                 message=f"Pack contract field mismatch for {field_name}: {left} != {right}",
+            )
+        )
+    return tuple(issues)
+
+
+def _registry_collision_issues(
+    pack_registry,
+    registry_entry,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    conflicting_entries = tuple(
+        entry
+        for entry in pack_registry.packs
+        if entry.command_namespace == registry_entry.command_namespace
+    )
+    if len(conflicting_entries) > 1:
+        conflicting_pack_slugs = ", ".join(
+            sorted(entry.pack_slug for entry in conflicting_entries)
+        )
+        issues.append(
+            ValidationIssue(
+                code="pack_registry_command_namespace_conflict",
+                message=(
+                    "Hosted-pack command namespaces must be unique across the pack registry: "
+                    f"{registry_entry.command_namespace} is shared by {conflicting_pack_slugs}"
+                ),
+                location=PACK_REGISTRY_PATH,
             )
         )
     return tuple(issues)

@@ -8,11 +8,15 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from tests.pack_fixture_support import (
+    REPO_ROOT,
+    materialize_externalized_fixture_python,
     materialize_externalized_plan_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_host.cli.introspection import iter_command_parser_specs
 from watchtower_host.cli.main import main
+from watchtower_host.cli.parser import build_parser
 
 
 def _purge_module_prefix(prefix: str) -> None:
@@ -142,3 +146,125 @@ def test_pack_validate_fails_when_externalized_plan_manifest_keeps_old_plan_path
     issue_codes = {issue["code"] for issue in payload["issues"]}
     assert "pack_settings_path_not_under_machine_root" in issue_codes
     assert "pack_runtime_manifest_path_not_under_machine_root" in issue_codes
+
+
+def test_pack_validate_supports_externalized_second_pack_package(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+        extra_domain_root_names=("artifacts", "targets"),
+    )
+    materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
+    materialize_externalized_fixture_python(
+        repo_root / "packs" / "oversight" / "python",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "plan" / "python" / "src"))
+
+    with _temporary_module_prefix_reload("watchtower_plan"):
+        with _temporary_module_prefix_reload("watchtower_oversight_fixture"):
+            result = main(
+                [
+                    "pack",
+                    "validate",
+                    "--pack-settings-path",
+                    surfaces["pack_settings_path"],
+                    "--format",
+                    "json",
+                ]
+            )
+            payload = json.loads(capsys.readouterr().out)
+            imported_module = importlib.import_module("watchtower_oversight_fixture.integration")
+
+    assert result == 0
+    assert payload["passed"] is True
+    assert imported_module.__file__ is not None
+    assert str(
+        (
+            repo_root
+            / "packs"
+            / "oversight"
+            / "python"
+            / "src"
+            / "watchtower_oversight_fixture"
+        ).resolve()
+    ) in str(Path(imported_module.__file__).resolve())
+
+
+def test_externalized_multi_pack_parser_registers_namespaced_command_docs(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+        extra_domain_root_names=("artifacts", "targets"),
+    )
+    materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
+    materialize_externalized_fixture_python(
+        repo_root / "packs" / "oversight" / "python",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "plan" / "python" / "src"))
+
+    with _temporary_module_prefix_reload("watchtower_plan"):
+        with _temporary_module_prefix_reload("watchtower_oversight_fixture"):
+            specs = {
+                spec.command_id: spec
+                for spec in iter_command_parser_specs(build_parser())
+            }
+
+    assert specs["command.watchtower_core.plan"].doc_path == (
+        "packs/plan/docs/commands/core_python/watchtower_core_plan.md"
+    )
+    assert specs["command.watchtower_core.oversight"].doc_path == (
+        "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md"
+    )

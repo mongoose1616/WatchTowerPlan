@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:11:41Z",
+  "updated_at": "2026-03-21T01:19:44Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Promote the next planned task to ready before opening follow-up work.",
@@ -19,8 +19,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-21T01:11:41Z",
-      "open_task_count": 2,
+      "updated_at": "2026-03-21T01:19:44Z",
+      "open_task_count": 1,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/domain_pack_externalization_portability_proof/plan.md",
       "next_action": "Promote the next planned task to ready before opening follow-up work.",
@@ -33,19 +33,9 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
         "task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance"
       ],
       "active_task_summaries": [
-        {
-          "task_id": "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
-          "title": "Add second-pack fixture and multi-pack proofs",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/add_second_pack_fixture_and_multi_pack_proofs/task.json",
-          "is_actionable": false
-        },
         {
           "task_id": "task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance",
           "title": "Publish externalized pack authoring guidance",
@@ -53,10 +43,7 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/publish_externalized_pack_authoring_guidance/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs"
-          ]
+          "is_actionable": false
         }
       ],
       "source_surface_paths": [
