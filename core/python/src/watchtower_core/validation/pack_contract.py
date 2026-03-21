@@ -13,9 +13,12 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.pack_integration import (
+    CORE_PYPROJECT_RELATIVE_PATH,
     REQUIRED_PACK_CAPABILITIES,
     SUPPORTED_PACK_CAPABILITIES,
     PackIntegration,
+    core_python_workspace_registration,
+    load_core_python_workspace_state,
     pack_command_entry_doc_path,
 )
 from watchtower_core.pack_integration.runtime import (
@@ -114,6 +117,7 @@ class PackContractValidationService:
         issues.extend(_owned_root_issues(context, runtime_manifest))
         issues.extend(_surface_path_issues(context))
         issues.extend(_command_doc_issues(context, runtime_manifest))
+        issues.extend(_core_python_workspace_issues(context, runtime_manifest))
         issues.extend(_validation_suite_issues(context, runtime_manifest))
         issues.extend(_integration_issues(runtime_manifest))
         issues.extend(_dependency_boundary_issues(context, runtime_manifest))
@@ -202,7 +206,11 @@ def _owned_root_issues(
         ("docs_root", workspace_roots.docs_root, owned_roots.docs_root),
         ("workflows_root", workspace_roots.workflows_root, owned_roots.workflows_root),
         ("tracking_root", workspace_roots.tracking_root, owned_roots.tracking_root),
-        ("python_root", _expected_python_root(workspace_roots.workspace_root), owned_roots.python_root),
+        (
+            "python_root",
+            _expected_python_root(workspace_roots.workspace_root),
+            owned_roots.python_root,
+        ),
         ("initiatives_root", workspace_roots.initiatives_root, owned_roots.initiatives_root),
         ("projects_root", workspace_roots.projects_root, owned_roots.projects_root),
     ):
@@ -281,6 +289,88 @@ def _command_doc_issues(
             location=command_doc_path,
         ),
     )
+
+
+def _core_python_workspace_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    pyproject_path = context.loader.repo_root / CORE_PYPROJECT_RELATIVE_PATH
+    if not pyproject_path.is_file():
+        return (
+            ValidationIssue(
+                code="pack_core_python_pyproject_missing",
+                message=(
+                    "Hosted-pack validation requires the shared core/python/pyproject.toml "
+                    "workspace file."
+                ),
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            ),
+        )
+    try:
+        workspace_state = load_core_python_workspace_state(pyproject_path)
+    except Exception as exc:  # pragma: no cover - fail-closed config guard
+        return (
+            ValidationIssue(
+                code="pack_core_python_pyproject_invalid",
+                message=f"Could not parse shared core/python/pyproject.toml: {exc}",
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            ),
+        )
+
+    registration = core_python_workspace_registration(
+        context.loader.repo_root,
+        python_root=runtime_manifest.owned_roots.python_root,
+        python_distribution=runtime_manifest.python_distribution,
+    )
+    issues: list[ValidationIssue] = []
+    if registration.dependency not in set(workspace_state.dev_dependencies):
+        issues.append(
+            ValidationIssue(
+                code="pack_workspace_dependency_missing",
+                message=(
+                    "Shared core/python optional dev dependencies are missing the hosted-pack "
+                    f"distribution: {registration.dependency}"
+                ),
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            )
+        )
+    uv_source = workspace_state.uv_source_map().get(registration.dependency)
+    if uv_source is None:
+        issues.append(
+            ValidationIssue(
+                code="pack_workspace_source_missing",
+                message=(
+                    "Shared core/python uv sources are missing the hosted-pack path source: "
+                    f"{registration.dependency}"
+                ),
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            )
+        )
+        return tuple(issues)
+    if uv_source.get("path") != registration.uv_source_path:
+        issues.append(
+            ValidationIssue(
+                code="pack_workspace_source_path_mismatch",
+                message=(
+                    "Shared core/python uv source path does not match the hosted-pack python "
+                    f"root: {uv_source.get('path')} != {registration.uv_source_path}"
+                ),
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            )
+        )
+    if bool(uv_source.get("editable", False)) is not registration.editable:
+        issues.append(
+            ValidationIssue(
+                code="pack_workspace_source_editable_mismatch",
+                message=(
+                    "Shared core/python uv source editable flag must match the hosted-pack "
+                    f"registration for {registration.dependency}."
+                ),
+                location=CORE_PYPROJECT_RELATIVE_PATH,
+            )
+        )
+    return tuple(issues)
 
 
 def _expected_python_root(workspace_root: str) -> str:
@@ -514,7 +604,10 @@ def _integration_issues(runtime_manifest) -> tuple[ValidationIssue, ...]:
         issues.append(
             ValidationIssue(
                 code=f"pack_integration_{field_name}_mismatch",
-                message=f"Pack integration descriptor mismatch for {field_name}: {expected} != {actual}",
+                message=(
+                    "Pack integration descriptor mismatch for "
+                    f"{field_name}: {expected} != {actual}"
+                ),
                 location=runtime_manifest.integration_module,
             )
         )

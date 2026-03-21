@@ -10,10 +10,25 @@ from watchtower_core.pack_integration.docs import (
     pack_command_docs_root,
     pack_command_entry_doc_path,
 )
+from watchtower_core.pack_integration.bootstrap import (
+    PackBootstrapRequest,
+    PackBootstrapResult,
+    bootstrap_hosted_pack,
+)
 from watchtower_core.pack_integration.scaffold import (
     PackScaffoldRequest,
     PackScaffoldResult,
     scaffold_hosted_pack,
+)
+from watchtower_core.pack_integration.workspace_registration import (
+    CORE_PYPROJECT_RELATIVE_PATH,
+    CORE_UV_LOCK_RELATIVE_PATH,
+    CorePythonWorkspaceRegistration,
+    core_python_workspace_registration,
+    ensure_core_python_workspace_registration,
+    load_core_python_workspace_state,
+    parse_core_python_workspace_state,
+    render_core_python_workspace_pyproject,
 )
 
 if TYPE_CHECKING:
@@ -124,6 +139,11 @@ class PackIntegration:
 
 __all__ = [
     "OPTIONAL_PACK_CAPABILITIES",
+    "CORE_PYPROJECT_RELATIVE_PATH",
+    "CORE_UV_LOCK_RELATIVE_PATH",
+    "CorePythonWorkspaceRegistration",
+    "PackBootstrapRequest",
+    "PackBootstrapResult",
     "PackCommandRegistrar",
     "PackDocumentSemanticsFactory",
     "PackIntegration",
@@ -138,7 +158,13 @@ __all__ = [
     "PackScaffoldResult",
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",
+    "bootstrap_hosted_pack",
+    "core_python_workspace_registration",
+    "ensure_core_python_workspace_registration",
+    "load_core_python_workspace_state",
     "pack_command_docs_root",
     "pack_command_entry_doc_path",
+    "parse_core_python_workspace_state",
+    "render_core_python_workspace_pyproject",
     "scaffold_hosted_pack",
 ]

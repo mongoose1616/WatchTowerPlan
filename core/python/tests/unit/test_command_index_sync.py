@@ -9,10 +9,10 @@ from watchtower_core.adapters.markdown import (
     load_markdown_body,
     parse_markdown_table,
 )
-from watchtower_host.cli.introspection import iter_command_parser_specs
-from watchtower_host.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync.command_index import CommandIndexSyncService
+from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.parser import build_parser
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -64,6 +64,7 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.route" in spec_by_id
     assert "command.watchtower_core.route.preview" in spec_by_id
     assert "command.watchtower_core.pack" in spec_by_id
+    assert "command.watchtower_core.pack.bootstrap" in spec_by_id
     assert "command.watchtower_core.pack.list" in spec_by_id
     assert "command.watchtower_core.pack.describe" in spec_by_id
     assert "command.watchtower_core.pack.validate" in spec_by_id
@@ -220,6 +221,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core.query.readiness" not in spec_by_id
     assert "command.watchtower_core.query.tasks" not in spec_by_id
     assert "command.watchtower_core.query.trace" not in spec_by_id
+    assert (
+        spec_by_id["command.watchtower_core.pack.bootstrap"].implementation_path
+        == "core/python/src/watchtower_host/cli/pack_handlers.py"
+    )
     assert (
         spec_by_id["command.watchtower_core.pack.list"].implementation_path
         == "core/python/src/watchtower_host/cli/pack_handlers.py"

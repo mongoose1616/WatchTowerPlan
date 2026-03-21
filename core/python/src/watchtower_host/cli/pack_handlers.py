@@ -4,16 +4,19 @@ from __future__ import annotations
 
 import argparse
 import importlib
-from typing import Any
+import json
 
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
-    _emit_command_error,
     _emit_detail_result,
     _run_value_error_operation,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry
+from watchtower_core.pack_integration.bootstrap import (
+    PackBootstrapRequest,
+    bootstrap_hosted_pack,
+)
 from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
     load_pack_sync_runtime,
@@ -264,6 +267,105 @@ def _run_pack_validate(args: argparse.Namespace) -> int:
     )
 
 
+def _run_pack_bootstrap(args: argparse.Namespace) -> int:
+    loader = ControlPlaneLoader()
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core pack bootstrap",
+        prefix="Pack bootstrap error",
+        operation=lambda: bootstrap_hosted_pack(
+            loader.repo_root,
+            PackBootstrapRequest(
+                pack_settings_path=args.pack_settings_path,
+                write=bool(args.write),
+                sync_workspace=not bool(args.no_sync_workspace),
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    payload = {
+        "command": "watchtower-core pack bootstrap",
+        "status": "ok",
+        "pack_slug": result.pack_slug,
+        "pack_settings_path": result.pack_settings_path,
+        "pack_runtime_manifest_path": result.pack_runtime_manifest_path,
+        "pack_registry_entry": result.pack_registry_entry,
+        "core_python_workspace_registration": {
+            "dependency": result.core_python_workspace_registration.dependency,
+            "uv_source": {
+                "path": result.core_python_workspace_registration.uv_source_path,
+                "editable": result.core_python_workspace_registration.editable,
+            },
+        },
+        "pack_registry_changed": result.pack_registry_changed,
+        "core_python_pyproject_changed": result.core_python_pyproject_changed,
+        "workspace_sync_ran": result.workspace_sync_ran,
+        "workspace_sync_required": result.workspace_sync_required,
+        "validation_passed": result.validation_passed,
+        "changed_paths": list(result.changed_paths),
+        "wrote": result.wrote,
+        "next_steps": (
+            [
+                (
+                    "Run uv sync in core/python before using the hosted pack from a clean "
+                    "shell or environment."
+                ),
+            ]
+            if result.workspace_sync_required
+            else []
+        ),
+    }
+
+    def _render_human() -> None:
+        print(f"Bootstrapped pack: {result.pack_slug}")
+        print(f"Pack Settings: {result.pack_settings_path}")
+        print(f"Runtime Manifest: {result.pack_runtime_manifest_path}")
+        print("Shared Registry Entry:")
+        print(json.dumps(result.pack_registry_entry, indent=2, sort_keys=True))
+        print("Core Python Workspace Registration:")
+        print(
+            json.dumps(
+                payload["core_python_workspace_registration"],
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        print(f"Wrote Changes: {'yes' if result.wrote else 'no'}")
+        print(
+            "Registry Changed: "
+            + ("yes" if result.pack_registry_changed else "no")
+        )
+        print(
+            "Core Python Pyproject Changed: "
+            + ("yes" if result.core_python_pyproject_changed else "no")
+        )
+        print(
+            "Workspace Sync: "
+            + ("ran" if result.workspace_sync_ran else "skipped")
+        )
+        if result.validation_passed is not None:
+            print(
+                "Validation: "
+                + ("passed" if result.validation_passed else "failed")
+            )
+        if result.changed_paths:
+            print("Changed Paths:")
+            for path in result.changed_paths:
+                print(f"- {path}")
+        if payload["next_steps"]:
+            print("Next Steps:")
+            for step in payload["next_steps"]:
+                print(f"- {step}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
+    )
+
+
 def _run_pack_scaffold(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
     result = _run_value_error_operation(
@@ -303,17 +405,9 @@ def _run_pack_scaffold(args: argparse.Namespace) -> int:
         },
         "next_steps": [
             (
-                "Add the emitted pack_registry_entry to "
-                "core/control_plane/registries/pack_registry.json."
-            ),
-            (
-                "Add the emitted dependency and uv source to core/python/pyproject.toml, "
-                "then run uv sync in core/python."
-            ),
-            (
-                "Validate the hosted pack with "
-                f"watchtower-core pack validate --pack-settings-path "
-                f"{result.pack_settings_path} --format json."
+                "Register the generated pack with "
+                f"watchtower-core pack bootstrap --pack-settings-path "
+                f"{result.pack_settings_path} --write --format json."
             ),
         ],
     }
@@ -377,7 +471,9 @@ def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:
 
 
 __all__ = [
+    "_run_pack_bootstrap",
     "_run_pack_describe",
     "_run_pack_list",
+    "_run_pack_scaffold",
     "_run_pack_validate",
 ]

@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T03:35:00Z"
+updated_at: "2026-03-21T23:59:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -94,9 +94,9 @@ Make future packs portable and comprehensible by documenting the intended split 
    - Add the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
    - Keep pack-specific command docs under the pack’s docs root instead of shared core docs.
 5. Register the pack with host composition.
-   - Add one entry to `core/control_plane/registries/pack_registry.json`.
-   - Add the scaffold command's `pack_registry_entry` snippet verbatim unless you intentionally need a reviewed variation.
-   - Add the scaffold command's `core_python_workspace_registration` snippet to `core/python/pyproject.toml`, then run `uv sync` in `core/python`.
+   - Prefer `uv run watchtower-core pack bootstrap --pack-settings-path <pack>/.wt/manifests/pack_settings.json --write --format json` once the pack-owned surfaces exist.
+   - Use the dry-run bootstrap output when you need to review the shared changes before writing them.
+   - Use `--no-sync-workspace` only when a staged change or test fixture intentionally needs to defer `uv sync`.
    - Keep `pack_id`, `pack_slug`, `command_namespace`, `python_distribution`, `python_package`, and manifest paths aligned across the registry and manifests.
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
@@ -142,8 +142,19 @@ uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/ove
 ```
 
 - Use the command when you want the pack-owned starter files plus the exact shared-registry and workspace snippets needed to finish host wiring.
-- The command intentionally does not mutate the shared pack registry or `core/python/pyproject.toml` automatically, because a newly registered pack that is not yet installed would break the host parser on the next invocation.
-- Apply the emitted snippets deliberately, run `uv sync`, then use `watchtower-core pack validate --pack-settings-path <path> --format json`.
+- The command intentionally does not mutate the shared pack registry or `core/python/pyproject.toml` automatically.
+- Follow scaffold with `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json`.
+- Use `--no-sync-workspace` only when a test fixture or staged refactor intentionally needs to defer `uv sync`.
+
+### Hosted Pack Bootstrap Command
+```sh
+cd core/python
+uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/manifests/pack_settings.json --write --format json
+```
+
+- Use the command when you want one guarded operator path to update `pack_registry.json`, `core/python/pyproject.toml`, and immediate pack validation together.
+- The command dry-runs by default, so you can inspect the shared changes before they land.
+- The command validates the hosted pack after applying the shared wiring and restores the shared files if validation fails.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -199,8 +210,8 @@ uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/ove
 - [pyproject_toml_reference.md](/core/docs/references/pyproject_toml_reference.md)
 
 ## Notes
-- This reference is intentionally ahead of the final contract implementation so the architecture slice can converge on one explicit shape.
+- This reference captures the current hosted-pack contract and should move in lockstep with pack scaffolding, bootstrap, and validation behavior.
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-22T03:35:00Z`
+- `2026-03-21T23:59:00Z`

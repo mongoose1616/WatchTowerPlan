@@ -1,11 +1,11 @@
 # `watchtower-core pack scaffold`
 
 ## Summary
-This command renders a starter hosted-pack root and emits the shared host-wiring snippets needed to register the new pack deliberately.
+This command renders a starter hosted-pack root so the new pack can be registered through the guarded bootstrap flow.
 
 ## Use When
 - You are creating a new hosted pack and want the minimum pack-owned machine, docs, workflow, tracking, and Python surfaces generated consistently.
-- You want the exact `pack_registry.json` entry and `core/python/pyproject.toml` snippets needed to finish host composition without editing those shared files blindly.
+- You want the exact pack settings path and shared-wiring preview needed to hand the new pack off to `watchtower-core pack bootstrap`.
 
 ## Command
 | Field | Value |
@@ -45,15 +45,16 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 ## Behavior and Outputs
 - Renders pack-owned starter files under the requested pack root, including pack manifests, minimal validation registries, a starter note schema and artifact, namespace command docs, workflow guidance, tracking guidance, and the pack-native Python package skeleton.
 - Fails closed when the requested pack slug, namespace, distribution, or package would collide with an existing hosted pack already declared in the shared pack registry.
-- Does not mutate `core/control_plane/registries/pack_registry.json` or `core/python/pyproject.toml` automatically, because a newly registered pack that is not yet installed would break subsequent parser boot.
-- Emits the exact `pack_registry_entry` and `core_python_workspace_registration` snippets needed to complete host wiring deliberately.
-- After the emitted snippets are applied and `uv sync` has installed the new pack package, validate the pack with `watchtower-core pack validate --pack-settings-path <path> --format json`.
+- Does not mutate `core/control_plane/registries/pack_registry.json` or `core/python/pyproject.toml` automatically.
+- Emits the exact shared-registry and shared-workspace registration data that `watchtower-core pack bootstrap` will apply.
+- After scaffold, use `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json` to register the pack and validate the resulting host wiring.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core pack` | Parent command group for hosted-pack inspection, scaffold, and validation flows. |
-| `watchtower-core pack validate` | Validates the generated pack after the shared registry and workspace metadata are wired. |
+| `watchtower-core pack` | Parent command group for hosted-pack inspection, scaffold, bootstrap, and validation flows. |
+| `watchtower-core pack bootstrap` | Registers the generated pack into the shared registry and shared workspace metadata. |
+| `watchtower-core pack validate` | Validates the generated pack after bootstrap or deliberate shared-wiring updates. |
 | `watchtower-core validate all` | Includes pack-contract validation after the generated pack is registered and installed. |
 
 ## Source Surface
@@ -62,4 +63,4 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 - `core/docs/templates/pack/`
 
 ## Updated At
-- `2026-03-22T03:35:00Z`
+- `2026-03-21T23:59:00Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:20:00Z"
+updated_at: "2026-03-21T23:59:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -44,6 +44,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `pack_settings` remains the pack load-root contract for owned surfaces and defaults.
 - `pack_runtime_manifest` owns Python integration declarations, command namespace, declared capabilities, and owned runtime roots.
 - `pack_registry` is the shared hosted-pack inventory used by host composition and validation.
+- Shared host composition is not complete until `core/python/pyproject.toml` also registers the hosted pack distribution and editable source path for the shared workspace.
 - Keep manifest and registry paths repository-relative and portable. Absolute paths and parent traversal are invalid hosted-pack contract input.
 - Keep `pack_settings.json` and `pack_runtime_manifest.json` directly under the declared `machine_root/manifests/` directory.
 - Validate machine contracts before importing any pack integration module.
@@ -66,6 +67,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | `<pack>/.wt/manifests/pack_settings.json` | owning pack | Pack load roots, validation defaults, governed surfaces |
 | `<pack>/.wt/manifests/pack_runtime_manifest.json` | owning pack | Host-facing runtime manifest |
 | `watchtower_<pack>.integration.PACK_INTEGRATION` | owning pack Python package | Typed runtime descriptor |
+| `core/python/pyproject.toml` hosted-pack registration | shared core workspace | Shared install and import surface for host composition |
 
 ### Required runtime-manifest fields
 | Field | Requirement | Notes |
@@ -99,6 +101,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Named `domain_roots` parity across settings and runtime manifest | Pass |
 | Pack namespace command-doc entry page present | Pass |
 | Required validation suites present | Pass |
+| Shared `core/python` dependency and `tool.uv.sources` registration present | Pass |
 | Dependency-direction scan across core, host, and pack source roots | Pass |
 
 ## Operationalization
@@ -109,7 +112,9 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
 - `watchtower-core validate all` and `watchtower-core pack validate --pack <slug>` should fail closed when live source roots contain forbidden `watchtower_core -> watchtower_<pack>` or `watchtower_<pack> -> watchtower_host` imports.
 - `watchtower-core pack validate --pack <slug>` should fail closed when the hosted-pack registry declares a conflicting `command_namespace`.
+- `watchtower-core pack validate --pack <slug>` should fail closed when `core/python/pyproject.toml` is missing the hosted-pack distribution in optional dev dependencies or missing the pack python root in `tool.uv.sources`.
 - Reviewers should reject hosted-pack changes that update only Python hooks or only manifests without the companion governed artifacts.
+- Reviewers should reject hosted-pack changes that update manifests or registry entries without the companion shared `core/python` workspace registration.
 - Reviewers should reject command namespace collisions, missing declared hooks, or pack manifests that point at non-existent roots.
 - Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
 - Reviewers should reject pack manifests or pack-settings surfaces that use absolute paths, parent traversal, or non-pack-local paths outside `core/control_plane/`.
@@ -128,4 +133,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-21T21:20:00Z`
+- `2026-03-21T23:59:00Z`

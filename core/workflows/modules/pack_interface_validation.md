@@ -22,6 +22,7 @@ Use this workflow to validate that a hosted pack publishes the required machine 
 2. Validate machine contracts.
    - Check schema validity, required fields, owned-root consistency, named `domain_roots`, and declared validation-suite coverage.
    - Check namespace uniqueness and registry-manifest consistency.
+   - Check that shared `core/python/pyproject.toml` registers the hosted-pack distribution in optional dev dependencies and `tool.uv.sources`.
    - Check that manifest paths stay under `machine_root/manifests/` and that pack-settings surfaces remain either pack-local or explicitly shared under `core/control_plane/`.
 3. Validate Python integration hooks.
    - Confirm the integration module imports cleanly.

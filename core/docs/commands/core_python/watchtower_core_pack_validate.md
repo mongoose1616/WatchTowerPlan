@@ -46,15 +46,17 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 ## Behavior and Outputs
 - Resolves the selected hosted pack from the shared pack registry unless `--pack-settings-path` overrides it.
 - Runs the same pack-contract validator that `validate all` includes in the full repository pass.
-- Reports pass or fail plus any contract drift issues around registry parity, runtime manifest fields, pack-local integration modules, typed capability runtimes, owned roots, named `domain_roots`, pack-settings surface locality, pack-owned command docs, or validation-suite declarations.
+- Reports pass or fail plus any contract drift issues around registry parity, runtime manifest fields, pack-local integration modules, typed capability runtimes, owned roots, named `domain_roots`, pack-settings surface locality, pack-owned command docs, shared `core/python/pyproject.toml` workspace registration, or validation-suite declarations.
 - Query and sync runtimes fail closed when they publish empty command or target sets, even if they return the right runtime type.
 - Fails closed when the pack-owned namespace command page is missing from the pack docs root, when a declared owned root is missing from the repository tree, or when pack manifests use non-portable absolute or traversing paths.
+- Fails closed when the shared `core/python` workspace is missing the pack distribution in optional dev dependencies or the pack python root in `tool.uv.sources`.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection and validation. |
-| `watchtower-core pack scaffold` | Generates the pack-owned starter surfaces and host-wiring snippets that should exist before validation. |
+| `watchtower-core pack scaffold` | Generates the pack-owned starter surfaces that should exist before validation. |
+| `watchtower-core pack bootstrap` | Applies the shared registry and workspace registration that validation now expects. |
 | `watchtower-core pack describe` | Shows the hosted pack contract being validated. |
 | `watchtower-core validate all` | Includes pack-contract validation in the broader repository validation pass. |
 | `watchtower-core validate suite` | Runs one pack-declared validation suite after the pack contract itself is valid. |
@@ -64,4 +66,4 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-22T03:35:00Z`
+- `2026-03-21T23:59:00Z`

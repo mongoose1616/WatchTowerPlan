@@ -18,6 +18,7 @@ def register_pack_family(
     """Register the hosted-pack command family."""
     from watchtower_core.cli.handler_common import _run_help
     from watchtower_host.cli.pack_handlers import (
+        _run_pack_bootstrap,
         _run_pack_describe,
         _run_pack_list,
         _run_pack_scaffold,
@@ -29,9 +30,10 @@ def register_pack_family(
         help="Inspect and validate hosted domain-pack integration contracts.",
         description=dedent(
             """
-            Inspect hosted pack registry entries, describe one hosted pack's
-            runtime contract, and validate pack-interface wiring against the
-            governed pack registry plus runtime manifest.
+            Inspect hosted pack registry entries, scaffold new hosted packs,
+            bootstrap shared registry and workspace wiring, and validate
+            pack-interface contracts against the governed pack registry plus
+            runtime manifest.
             """
         ).strip(),
         epilog=examples(
@@ -40,6 +42,8 @@ def register_pack_family(
             "uv run watchtower-core pack validate --pack plan --format json",
             "uv run watchtower-core pack scaffold --pack-slug oversight "
             "--pack-root packs/oversight --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --write --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -117,6 +121,45 @@ def register_pack_family(
     add_human_json_format_argument(pack_validate_parser)
     pack_validate_parser.set_defaults(handler=_run_pack_validate)
 
+    pack_bootstrap_parser = pack_subparsers.add_parser(
+        "bootstrap",
+        help="Register one pack into the shared host registry and Python workspace.",
+        description=dedent(
+            """
+            Register one hosted pack into the shared pack registry and the
+            shared core/python workspace so the host can load it through the
+            normal pack contract.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --write --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "packs/oversight/.wt/manifests/pack_settings.json --write "
+            "--no-sync-workspace --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    pack_bootstrap_parser.add_argument(
+        "--pack-settings-path",
+        required=True,
+        help="Repository-relative path to the pack settings manifest to bootstrap.",
+    )
+    pack_bootstrap_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Persist the shared registry and core/python workspace updates.",
+    )
+    pack_bootstrap_parser.add_argument(
+        "--no-sync-workspace",
+        action="store_true",
+        help="Skip uv sync after writing shared workspace metadata.",
+    )
+    add_human_json_format_argument(pack_bootstrap_parser)
+    pack_bootstrap_parser.set_defaults(handler=_run_pack_bootstrap)
+
     pack_scaffold_parser = pack_subparsers.add_parser(
         "scaffold",
         help="Render a starter hosted-pack root plus host-wiring snippets.",
@@ -124,10 +167,6 @@ def register_pack_family(
             """
             Render the pack-owned starter files for one new hosted pack without
             mutating the shared pack registry or core workspace dependency graph.
-
-            The generated pack is self-consistent and validation-ready once the
-            emitted registry snippet and core-python workspace snippets are
-            applied deliberately.
             """
         ).strip(),
         epilog=examples(
@@ -136,6 +175,8 @@ def register_pack_family(
             "uv run watchtower-core pack scaffold --pack-slug reviews "
             "--pack-root packs/reviews --command-namespace reviews "
             "--domain-root assessments --domain-root reviews --format json",
+            "uv run watchtower-core pack bootstrap --pack-settings-path "
+            "packs/reviews/.wt/manifests/pack_settings.json --write --format json",
         ),
         formatter_class=HelpFormatter,
     )

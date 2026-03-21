@@ -57,7 +57,7 @@
     {
       "command_id": "command.watchtower_core.pack",
       "command": "watchtower-core pack",
-      "summary": "Inspect hosted pack registry entries, describe one hosted pack's runtime contract, and validate pack-interface wiring against the governed pack registry plus runtime manifest.",
+      "summary": "Inspect hosted pack registry entries, scaffold new hosted packs, bootstrap shared registry and workspace wiring, and validate pack-interface contracts against the governed pack registry plus runtime manifest.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -70,6 +70,30 @@
         "python",
         "cli",
         "pack"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.pack.bootstrap",
+      "command": "watchtower-core pack bootstrap",
+      "summary": "Register one hosted pack into the shared pack registry and the shared core/python workspace so the host can load it through the normal pack contract.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_pack_bootstrap.md",
+      "synopsis": "uv run watchtower-core pack bootstrap [-h] --pack-settings-path PACK_SETTINGS_PATH [--write] [--no-sync-workspace] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.pack",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "pack",
+        "bootstrap"
       ]
     },
     {

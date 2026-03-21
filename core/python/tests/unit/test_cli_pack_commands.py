@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import json
+import tomllib
 from dataclasses import replace
 from pathlib import Path
+
+from watchtower_plan import integration as plan_integration
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -11,10 +14,9 @@ from tests.pack_fixture_support import (
 )
 from watchtower_core.pack_integration import PackQueryRuntime
 from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.main import main
 from watchtower_host.cli.parser import build_parser
 from watchtower_host.cli.registry import load_command_group_specs
-from watchtower_host.cli.main import main
-from watchtower_plan import integration as plan_integration
 
 
 def test_pack_list_supports_json_output(capsys) -> None:
@@ -122,7 +124,10 @@ def test_pack_commands_support_second_pack_fixture(
     payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["pack"]["pack_slug"] == "oversight"
-    assert payload["runtime_manifest"]["integration_module"] == "watchtower_oversight_fixture.integration"
+    assert (
+        payload["runtime_manifest"]["integration_module"]
+        == "watchtower_oversight_fixture.integration"
+    )
     assert payload["integration"]["query_runtime_commands"] == ["assessments", "reviews"]
     assert payload["integration"]["sync_runtime_targets"] == ["oversight-index", "review-index"]
 
@@ -221,7 +226,10 @@ def test_pack_scaffold_supports_json_output(
     assert payload["pack_slug"] == "oversight"
     assert payload["command_namespace"] == "oversight"
     assert payload["pack_settings_path"] == "packs/oversight/.wt/manifests/pack_settings.json"
-    assert payload["pack_runtime_manifest_path"] == "packs/oversight/.wt/manifests/pack_runtime_manifest.json"
+    assert (
+        payload["pack_runtime_manifest_path"]
+        == "packs/oversight/.wt/manifests/pack_runtime_manifest.json"
+    )
     assert payload["pack_registry_entry"]["pack_slug"] == "oversight"
     assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
     assert (
@@ -238,6 +246,131 @@ def test_pack_scaffold_supports_json_output(
     )
     assert "packs/oversight/reviews/README.md" in created_paths
     assert "packs/oversight/assessments/README.md" in created_paths
+
+
+def test_pack_bootstrap_supports_json_dry_run(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    scaffold_result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "oversight",
+            "--pack-root",
+            "packs/oversight",
+            "--format",
+            "json",
+        ]
+    )
+    assert scaffold_result == 0
+    capsys.readouterr()
+
+    result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            "packs/oversight/.wt/manifests/pack_settings.json",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack bootstrap"
+    assert payload["pack_slug"] == "oversight"
+    assert payload["wrote"] is False
+    assert payload["pack_registry_changed"] is True
+    assert payload["core_python_pyproject_changed"] is True
+    assert payload["workspace_sync_ran"] is False
+    assert payload["workspace_sync_required"] is True
+    assert payload["validation_passed"] is None
+    assert "core/control_plane/registries/pack_registry.json" in payload["changed_paths"]
+    assert "core/python/pyproject.toml" in payload["changed_paths"]
+
+    registry = json.loads(
+        (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert all(entry["pack_slug"] != "oversight" for entry in registry["packs"])
+
+
+def test_pack_bootstrap_write_updates_registry_and_workspace(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    scaffold_result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "oversight",
+            "--pack-root",
+            "packs/oversight",
+            "--domain-root",
+            "reviews",
+            "--format",
+            "json",
+        ]
+    )
+    assert scaffold_result == 0
+    capsys.readouterr()
+
+    result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            "packs/oversight/.wt/manifests/pack_settings.json",
+            "--write",
+            "--no-sync-workspace",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["wrote"] is True
+    assert payload["pack_slug"] == "oversight"
+    assert payload["validation_passed"] is True
+    assert payload["workspace_sync_ran"] is False
+    assert payload["workspace_sync_required"] is True
+    assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
+    assert (
+        payload["core_python_workspace_registration"]["uv_source"]["path"]
+        == "../../packs/oversight/python"
+    )
+
+    registry = json.loads(
+        (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert any(entry["pack_slug"] == "oversight" for entry in registry["packs"])
+
+    pyproject = tomllib.loads(
+        (repo_root / "core" / "python" / "pyproject.toml").read_text(encoding="utf-8")
+    )
+    assert "watchtower-oversight" in pyproject["project"]["optional-dependencies"]["dev"]
+    assert pyproject["tool"]["uv"]["sources"]["watchtower-oversight"] == {
+        "path": "../../packs/oversight/python",
+        "editable": True,
+    }
 
 
 def test_pack_scaffold_rejects_registry_collisions(

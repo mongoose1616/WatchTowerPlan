@@ -4,7 +4,11 @@ import json
 from pathlib import Path
 from shutil import copy2, copytree, ignore_patterns
 
-from watchtower_core.pack_integration import pack_command_entry_doc_path
+from watchtower_core.pack_integration import (
+    core_python_workspace_registration,
+    ensure_core_python_workspace_registration,
+    pack_command_entry_doc_path,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 _PLAN_FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures" / "packs" / "plan"
@@ -149,6 +153,17 @@ def materialize_pack_validation_suite(
         pack_registry["packs"] = packs
         _write_json(pack_registry_path, pack_registry)
 
+    pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
+    if pyproject_path.exists():
+        ensure_core_python_workspace_registration(
+            pyproject_path,
+            core_python_workspace_registration(
+                repo_root,
+                python_root=f"{actual_pack_root}/python",
+                python_distribution=python_distribution,
+            ),
+        )
+
     validation_suite_registry_path = f"{actual_wt_root}/registries/validation_suite_registry.json"
     if not include_validation_suite_registry:
         suite_registry_file = pack_root / ".wt/registries/validation_suite_registry.json"
@@ -180,7 +195,9 @@ def materialize_pack_validation_suite(
         "pack_settings_path": f"{actual_wt_root}/manifests/pack_settings.json",
         "pack_runtime_manifest_path": f"{actual_wt_root}/manifests/pack_runtime_manifest.json",
         "schema_id": schema_id,
-        "schema_relative_path": f"{actual_wt_root}/schemas/interfaces/packs/{note_slug}.schema.json",
+        "schema_relative_path": (
+            f"{actual_wt_root}/schemas/interfaces/packs/{note_slug}.schema.json"
+        ),
         "suite_id": suite_id,
         "validation_suite_registry_path": validation_suite_registry_path,
         "validator_id": validator_id,
@@ -190,8 +207,15 @@ def materialize_pack_validation_suite(
 def materialize_validation_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    copytree(REPO_ROOT / "core" / "docs" / "templates", repo_root / "core" / "docs" / "templates")
+    copytree(
+        REPO_ROOT / "core" / "docs" / "templates",
+        repo_root / "core" / "docs" / "templates",
+    )
     (repo_root / "core" / "python").mkdir(parents=True)
+    copy2(
+        REPO_ROOT / "core" / "python" / "pyproject.toml",
+        repo_root / "core" / "python" / "pyproject.toml",
+    )
     return repo_root
 
 

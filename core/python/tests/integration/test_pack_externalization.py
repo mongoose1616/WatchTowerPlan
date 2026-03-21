@@ -14,6 +14,10 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_core.pack_integration import (
+    CorePythonWorkspaceRegistration,
+    ensure_core_python_workspace_registration,
+)
 from watchtower_host.cli.introspection import iter_command_parser_specs
 from watchtower_host.cli.main import main
 from watchtower_host.cli.parser import build_parser
@@ -71,6 +75,67 @@ def test_pack_validate_succeeds_with_externalized_plan_package(
     assert str(
         (repo_root / "packs" / "plan" / "python" / "src" / "watchtower_plan").resolve()
     ) in str(Path(imported_module.__file__).resolve())
+
+
+def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    scaffold_result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "oversight",
+            "--pack-root",
+            "packs/oversight",
+            "--domain-root",
+            "reviews",
+            "--domain-root",
+            "assessments",
+            "--format",
+            "json",
+        ]
+    )
+    assert scaffold_result == 0
+    capsys.readouterr()
+
+    bootstrap_result = main(
+        [
+            "pack",
+            "bootstrap",
+            "--pack-settings-path",
+            "packs/oversight/.wt/manifests/pack_settings.json",
+            "--write",
+            "--no-sync-workspace",
+            "--format",
+            "json",
+        ]
+    )
+    bootstrap_payload = json.loads(capsys.readouterr().out)
+
+    assert bootstrap_result == 0
+    assert bootstrap_payload["validation_passed"] is True
+
+    validate_result = main(
+        [
+            "pack",
+            "validate",
+            "--pack-settings-path",
+            "packs/oversight/.wt/manifests/pack_settings.json",
+            "--format",
+            "json",
+        ]
+    )
+    validate_payload = json.loads(capsys.readouterr().out)
+
+    assert validate_result == 0
+    assert validate_payload["passed"] is True
 
 
 def test_pack_validate_fails_when_externalized_plan_manifest_keeps_old_plan_paths(
@@ -301,6 +366,18 @@ def test_pack_scaffold_output_becomes_validation_ready_after_host_wiring(
     pack_registry = json.loads(pack_registry_path.read_text(encoding="utf-8"))
     pack_registry["packs"].append(scaffold_payload["pack_registry_entry"])
     pack_registry_path.write_text(f"{json.dumps(pack_registry, indent=2)}\n", encoding="utf-8")
+    ensure_core_python_workspace_registration(
+        repo_root / "core" / "python" / "pyproject.toml",
+        CorePythonWorkspaceRegistration(
+            dependency=scaffold_payload["core_python_workspace_registration"]["dependency"],
+            uv_source_path=scaffold_payload["core_python_workspace_registration"]["uv_source"][
+                "path"
+            ],
+            editable=scaffold_payload["core_python_workspace_registration"]["uv_source"][
+                "editable"
+            ],
+        ),
+    )
 
     monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
 

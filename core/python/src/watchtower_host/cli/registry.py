@@ -7,14 +7,14 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.pack_integration import pack_command_docs_root
+from watchtower_core.pack_integration.runtime import load_registered_pack_integrations
 from watchtower_host.cli.doctor_family import register_doctor_family
 from watchtower_host.cli.pack_family import register_pack_family
 from watchtower_host.cli.query_family import register_query_family
 from watchtower_host.cli.route_family import register_route_family
 from watchtower_host.cli.sync_family import register_sync_family
 from watchtower_host.cli.validate_family import register_validate_family
-from watchtower_core.pack_integration import pack_command_docs_root
-from watchtower_core.pack_integration.runtime import load_registered_pack_integrations
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], None]
 
@@ -70,6 +70,7 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/pack_family.py",
         subcommand_implementation_paths=(
+            ("bootstrap", PACK_FAMILY_HANDLERS_PATH),
             ("list", PACK_FAMILY_HANDLERS_PATH),
             ("describe", PACK_FAMILY_HANDLERS_PATH),
             ("validate", PACK_FAMILY_HANDLERS_PATH),

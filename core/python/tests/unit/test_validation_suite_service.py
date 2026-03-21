@@ -6,6 +6,7 @@ from pathlib import Path
 from shutil import copy2, rmtree
 
 import pytest
+from watchtower_plan import integration as plan_integration
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -24,7 +25,6 @@ from watchtower_core.validation import (
     ValidationSelectionError,
     ValidationSuiteService,
 )
-from watchtower_plan import integration as plan_integration
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
@@ -62,6 +62,49 @@ def test_pack_contract_validation_fails_when_pack_command_doc_is_missing(
 
     assert result.passed is False
     assert any(issue.code == "pack_command_doc_missing" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_core_python_workspace_dependency_is_missing(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
+    pyproject_text = pyproject_path.read_text(encoding="utf-8")
+    pyproject_path.write_text(
+        pyproject_text.replace('  "watchtower-plan",\n', ""),
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_workspace_dependency_missing" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_core_python_workspace_source_drifts(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
+    pyproject_text = pyproject_path.read_text(encoding="utf-8")
+    pyproject_path.write_text(
+        pyproject_text.replace(
+            '../../packs/plan/python',
+            '../../packs/plan_clone/python',
+        ),
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_workspace_source_path_mismatch" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_pack_python_root_is_missing(

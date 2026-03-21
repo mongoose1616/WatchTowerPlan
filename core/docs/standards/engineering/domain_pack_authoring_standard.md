@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T03:35:00Z"
+updated_at: "2026-03-21T23:59:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,7 +55,8 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Use `domain_roots` to name optional pack-specific roots such as `reviews`, `assessments`, or `targets`. Only keep legacy `initiatives_root` or `projects_root` fields when a live pack runtime still depends on them.
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
 - Authoring guidance, workflow modules, and standards should be sufficient for pack creation or copy-out; reviewers should not need to reverse-engineer implementation code to determine the required pack shape.
-- Scaffold commands should emit the shared registry and workspace snippets needed to finish host wiring explicitly rather than mutating those shared surfaces implicitly.
+- Scaffold commands should create only pack-owned surfaces.
+- Shared host wiring should happen through `watchtower-core pack bootstrap`, which must update shared registry and workspace metadata together and validate the resulting pack contract before leaving the repository mutated.
 
 ## Structure or Data Model
 ### Expected pack root shape
@@ -88,6 +89,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject pack authoring guidance that omits the minimum manifest, package, and command-doc surfaces needed to create or externalize a hosted pack.
 - Reviewers should reject packs that keep their namespace command docs in shared core docs or omit the required namespace entry page from the pack-owned docs root.
 - Reviewers should reject scaffold flows that silently mutate shared host composition surfaces before the new pack package is installable.
+- Reviewers should reject bootstrap flows that update only `pack_registry.json` or only `core/python/pyproject.toml` without the companion shared workspace change.
 
 ## Change Control
 - Update this standard when the repository changes the expected hosted-pack root shape, portability contract, or pack-owned Python guidance.
@@ -102,4 +104,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-22T03:35:00Z`
+- `2026-03-21T23:59:00Z`

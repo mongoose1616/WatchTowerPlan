@@ -7,6 +7,9 @@ import re
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
+from watchtower_core.pack_integration.workspace_registration import (
+    core_python_workspace_registration,
+)
 from watchtower_core.utils.timestamps import utc_timestamp_now
 
 _PACK_TEMPLATES_ROOT = Path("core/docs/templates/pack")
@@ -70,6 +73,11 @@ def scaffold_hosted_pack(
 
     created_paths: list[str] = []
     _write_scaffold_files(repo_root, resolved, created_paths)
+    workspace_registration = core_python_workspace_registration(
+        repo_root,
+        python_root=f"{resolved.pack_root}/python",
+        python_distribution=resolved.python_distribution,
+    )
 
     return PackScaffoldResult(
         pack_slug=resolved.pack_slug,
@@ -81,10 +89,10 @@ def scaffold_hosted_pack(
         pack_runtime_manifest_path=resolved.pack_runtime_manifest_path,
         created_paths=tuple(created_paths),
         pack_registry_entry=_pack_registry_entry(resolved),
-        core_python_dependency=resolved.python_distribution,
+        core_python_dependency=workspace_registration.dependency,
         core_python_uv_source={
-            "path": f"../../{resolved.pack_root}/python",
-            "editable": True,
+            "path": workspace_registration.uv_source_path,
+            "editable": workspace_registration.editable,
         },
     )
 
