@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T02:02:15Z",
+  "updated_at": "2026-03-21T02:32:49Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -98,7 +98,7 @@
       "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
       "initiative_title": "Pack Starter Templates And Oversight Alignment",
       "title": "Bootstrap Validation Bundle",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/pack_starter_templates_and_oversight_alignment",
       "entry_count": 2,
       "acceptance_labels": [
@@ -119,7 +119,7 @@
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/discrepancies",
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/initiative.json"
       ],
-      "updated_at": "2026-03-21T01:48:36Z"
+      "updated_at": "2026-03-21T02:32:49Z"
     },
     {
       "evidence_id": "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle",

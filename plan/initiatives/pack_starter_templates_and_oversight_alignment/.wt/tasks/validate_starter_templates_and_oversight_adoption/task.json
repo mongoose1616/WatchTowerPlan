@@ -6,12 +6,12 @@
   "title": "Validate starter templates and oversight adoption",
   "summary": "Proves the starter templates and real oversight alignment through validation and closeout evidence.",
   "status": "active",
-  "task_status": "planned",
+  "task_status": "completed",
   "task_kind": "validation",
   "priority": "medium",
   "owner": "repository_maintainer",
   "created_at": "2026-03-21T01:54:51Z",
-  "updated_at": "2026-03-21T01:54:51Z",
+  "updated_at": "2026-03-21T02:32:12Z",
   "dependency_task_ids": [
     "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
     "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract"

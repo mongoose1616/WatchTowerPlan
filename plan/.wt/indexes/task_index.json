@@ -474,12 +474,12 @@
       "title": "Align WatchTowerOversight to the shared pack contract",
       "summary": "Aligns the oversight pack to the shared core-host-pack contract in its own repository.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json",
-      "updated_at": "2026-03-21T01:54:08Z",
+      "updated_at": "2026-03-21T02:23:18Z",
       "depends_on": [
         "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates"
       ]
@@ -528,12 +528,12 @@
       "title": "Validate starter templates and oversight adoption",
       "summary": "Proves the starter templates and real oversight alignment through validation and closeout evidence.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "medium",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json",
-      "updated_at": "2026-03-21T01:54:51Z",
+      "updated_at": "2026-03-21T02:32:12Z",
       "depends_on": [
         "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
         "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract"

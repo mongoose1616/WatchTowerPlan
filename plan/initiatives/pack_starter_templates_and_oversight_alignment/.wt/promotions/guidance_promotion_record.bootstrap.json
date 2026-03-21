@@ -4,7 +4,7 @@
   "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
   "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
+  "status": "candidate",
   "approval_state": "pending",
   "review_refs": [
     "repository_maintainer_review"
@@ -12,7 +12,7 @@
   "evidence_refs": [
     "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
   ],
-  "updated_at": "2026-03-21T01:48:36Z",
+  "updated_at": "2026-03-21T02:32:49Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",

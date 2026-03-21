@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T02:02:15Z",
+  "updated_at": "2026-03-21T02:32:49Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -73,9 +73,9 @@
       "evidence_refs": [
         "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-21T02:02:15Z",
-      "lifecycle_stage": "in_progress",
-      "ready_for_execution": true
+      "updated_at": "2026-03-21T02:32:49Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
     },
     {
       "review_subject_id": "initiative.plan_python_package_dependency_cleanup",
@@ -175,7 +175,7 @@
       "evidence_refs": [
         "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-21T01:48:36Z"
+      "updated_at": "2026-03-21T02:32:49Z"
     },
     {
       "review_subject_id": "promotion.plan_python_package_dependency_cleanup.bootstrap_shell",

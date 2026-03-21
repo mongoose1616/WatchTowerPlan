@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-21T02:02:15Z",
+  "updated_at": "2026-03-21T02:32:49Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -128,7 +128,7 @@
       "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
       "initiative_title": "Pack Starter Templates And Oversight Alignment",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/pack_starter_templates_and_oversight_alignment",
       "candidate_count": 4,
       "candidate_paths": [
@@ -146,7 +146,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-21T01:48:36Z",
+      "updated_at": "2026-03-21T02:32:49Z",
       "target_paths": [
         "plan/docs/decisions/pack_starter_templates_and_oversight_alignment_design_record.md",
         "plan/docs/patterns/pack_starter_templates_and_oversight_alignment_implementation_slice.md",

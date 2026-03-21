@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_starter_templates_and_oversight_alignment.validate_starter_templates_and_oversight_adoption.0002_status_changed",
+  "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T02:24:34Z",
+  "summary": "Changed task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json"
+  },
+  "task_id": "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption"
+}

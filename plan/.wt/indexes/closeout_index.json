@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-21T02:02:15Z",
+  "updated_at": "2026-03-21T02:32:49Z",
   "entries": [
     {
       "closeout_id": "closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap",
@@ -86,7 +86,7 @@
       "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
       "initiative_title": "Pack Starter Templates And Oversight Alignment",
       "title": "Bootstrap Closeout Shell",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/pack_starter_templates_and_oversight_alignment",
       "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
       "acceptance_ids": [
@@ -102,7 +102,8 @@
         "superseded",
         "cancelled"
       ],
-      "updated_at": "2026-03-21T01:48:36Z"
+      "updated_at": "2026-03-21T02:32:49Z",
+      "terminal_state": "completed"
     },
     {
       "closeout_id": "closeout.plan_python_package_dependency_cleanup.bootstrap_recap",

@@ -210,8 +210,10 @@
       "title": "Pack Starter Templates And Oversight Alignment",
       "summary": "Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight to the shared core-host-pack contract.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-21T02:02:15Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-21T02:32:49Z",
+      "closed_at": "2026-03-21T02:32:49Z",
+      "closure_reason": "Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories.",
       "source_surface_paths": [
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md",
         "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",

@@ -6,12 +6,12 @@
   "title": "Align WatchTowerOversight to the shared pack contract",
   "summary": "Aligns the oversight pack to the shared core-host-pack contract in its own repository.",
   "status": "active",
-  "task_status": "planned",
+  "task_status": "completed",
   "task_kind": "feature",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-21T01:54:08Z",
-  "updated_at": "2026-03-21T01:54:08Z",
+  "updated_at": "2026-03-21T02:23:18Z",
   "dependency_task_ids": [
     "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates"
   ],

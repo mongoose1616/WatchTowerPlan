@@ -3,8 +3,8 @@
   "id": "closeout.pack_starter_templates_and_oversight_alignment.bootstrap_recap",
   "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-21T01:48:36Z",
+  "status": "completed",
+  "updated_at": "2026-03-21T02:32:49Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "acceptance.pack_starter_templates_and_oversight_alignment.bootstrap"
@@ -18,5 +18,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-21T02:32:49Z",
+  "closure_reason": "Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories."
 }
