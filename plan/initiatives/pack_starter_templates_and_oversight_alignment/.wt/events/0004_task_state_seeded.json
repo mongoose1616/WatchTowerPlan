@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.pack_starter_templates_and_oversight_alignment.0004_task_state_seeded",
+  "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T01:48:36Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+  "related_paths": [
+    "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+    "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+    "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+    "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
+  ]
+}

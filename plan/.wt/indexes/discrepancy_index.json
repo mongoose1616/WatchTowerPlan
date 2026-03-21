@@ -3,6 +3,52 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:25:24Z",
-  "entries": []
+  "updated_at": "2026-03-21T01:54:51Z",
+  "entries": [
+    {
+      "discrepancy_id": "discrepancy.pack_starter_templates_and_oversight_alignment.artifact_index_index_drift",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "title": "Pack Starter Templates And Oversight Alignment",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/artifact_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/artifact_index.json"
+      ],
+      "updated_at": "2026-03-21T01:50:17Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.pack_starter_templates_and_oversight_alignment.progress_surface_drift",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "title": "Pack Starter Templates And Oversight Alignment",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/pack_starter_templates_and_oversight_alignment/progress.md.",
+      "source_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/progress.md"
+      ],
+      "updated_at": "2026-03-21T01:50:17Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.pack_starter_templates_and_oversight_alignment.review_index_index_drift",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "title": "Pack Starter Templates And Oversight Alignment",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "updated_at": "2026-03-21T01:51:45Z"
+    }
+  ]
 }

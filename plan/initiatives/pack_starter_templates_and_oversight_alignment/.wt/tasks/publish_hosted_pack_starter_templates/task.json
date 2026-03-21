@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
+  "slug": "publish_hosted_pack_starter_templates",
+  "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+  "title": "Publish hosted-pack starter templates",
+  "summary": "Adds governed starter templates and guidance for new hosted packs.",
+  "status": "active",
+  "task_status": "ready",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T01:53:24Z",
+  "updated_at": "2026-03-21T01:53:24Z",
+  "applies_to": [
+    "core/docs/templates/",
+    "core/docs/references/",
+    "core/docs/standards/",
+    "core/workflows/"
+  ],
+  "scope_items": [
+    "Create starter templates for pack manifests, pack-owned Python roots, and namespace command docs.",
+    "Update template inventory and pack authoring guidance to point at the starter set."
+  ],
+  "done_when_items": [
+    "A new hosted pack can be scaffolded from governed templates without reverse-engineering an existing pack.",
+    "Templates and guidance identify the minimum portable pack file set."
+  ]
+}

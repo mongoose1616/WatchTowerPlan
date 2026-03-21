@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:25:24Z",
+  "updated_at": "2026-03-21T01:54:51Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -58,6 +58,24 @@
       "updated_at": "2026-03-20T01:25:48Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Pack Starter Templates And Oversight Alignment",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T01:54:51Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
     },
     {
       "review_subject_id": "initiative.plan_python_package_dependency_cleanup",
@@ -142,6 +160,22 @@
         "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-20T01:25:48Z"
+    },
+    {
+      "review_subject_id": "promotion.pack_starter_templates_and_oversight_alignment.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T01:48:36Z"
     },
     {
       "review_subject_id": "promotion.plan_python_package_dependency_cleanup.bootstrap_shell",

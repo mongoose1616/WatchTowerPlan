@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.pack_starter_templates_and_oversight_alignment.0010_ready_for_review_marked",
+  "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+  "sequence": 10,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T01:51:58Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.pack_starter_templates_and_oversight_alignment"
+}

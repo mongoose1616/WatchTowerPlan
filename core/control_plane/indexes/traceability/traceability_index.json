@@ -206,6 +206,45 @@
       ]
     },
     {
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "title": "Pack Starter Templates And Oversight Alignment",
+      "summary": "Publishes reusable hosted-pack starter templates and aligns WatchTowerOversight to the shared core-host-pack contract.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-21T01:54:51Z",
+      "source_surface_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract",
+        "task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment",
+        "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
+        "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption"
+      ],
+      "related_paths": [
+        "core/docs/references/",
+        "core/docs/standards/",
+        "core/docs/templates/",
+        "core/python/tests/",
+        "core/workflows/",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/initiative.json",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/bootstrap_pack_starter_templates_and_oversight_alignment/task.json",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.plan_python_package_dependency_cleanup",
       "title": "Plan Python Package Dependency Cleanup",
       "summary": "Make plan/python an installable workspace package and remove the last repo-local import shim from reusable core.",

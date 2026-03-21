@@ -467,6 +467,82 @@
       ]
     },
     {
+      "task_id": "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Align WatchTowerOversight to the shared pack contract",
+      "summary": "Aligns the oversight pack to the shared core-host-pack contract in its own repository.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/align_watchtoweroversight_to_the_shared_pack_contract/task.json",
+      "updated_at": "2026-03-21T01:54:08Z",
+      "depends_on": [
+        "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates"
+      ]
+    },
+    {
+      "task_id": "task.pack_starter_templates_and_oversight_alignment.bootstrap_pack_starter_templates_and_oversight_alignment",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Bootstrap Pack Starter Templates And Oversight Alignment",
+      "summary": "Bootstrap Pack Starter Templates And Oversight Alignment live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/bootstrap_pack_starter_templates_and_oversight_alignment/task.json",
+      "updated_at": "2026-03-21T01:54:51Z"
+    },
+    {
+      "task_id": "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Publish hosted-pack starter templates",
+      "summary": "Adds governed starter templates and guidance for new hosted packs.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json",
+      "updated_at": "2026-03-21T01:53:24Z",
+      "applies_to": [
+        "core/docs/templates/",
+        "core/docs/references/",
+        "core/docs/standards/",
+        "core/workflows/"
+      ]
+    },
+    {
+      "task_id": "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Validate starter templates and oversight adoption",
+      "summary": "Proves the starter templates and real oversight alignment through validation and closeout evidence.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/validate_starter_templates_and_oversight_adoption/task.json",
+      "updated_at": "2026-03-21T01:54:51Z",
+      "depends_on": [
+        "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
+        "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract"
+      ],
+      "applies_to": [
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.plan_python_package_dependency_cleanup.bootstrap",
       "initiative_id": "initiative.plan_python_package_dependency_cleanup",
       "trace_id": "trace.plan_python_package_dependency_cleanup",

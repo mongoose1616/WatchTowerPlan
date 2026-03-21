@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:25:24Z",
+  "updated_at": "2026-03-21T01:54:51Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -117,6 +117,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.pack_starter_templates_and_oversight_alignment.bootstrap_shell",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/pack_starter_templates_and_oversight_alignment",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/initiative_brief.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/design_record.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/implementation_slice.md",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-21T01:48:36Z",
+      "target_paths": [
+        "plan/docs/decisions/pack_starter_templates_and_oversight_alignment_design_record.md",
+        "plan/docs/patterns/pack_starter_templates_and_oversight_alignment_implementation_slice.md",
+        "plan/docs/references/pack_starter_templates_and_oversight_alignment_initiative_brief.md",
+        "plan/docs/standards/governance/pack_starter_templates_and_oversight_alignment_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

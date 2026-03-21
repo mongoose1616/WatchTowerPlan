@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:25:24Z",
+  "updated_at": "2026-03-21T01:54:51Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -91,6 +91,35 @@
         "plan/initiatives/pack_domain_hardcoding_remediation/.wt/initiative.json"
       ],
       "updated_at": "2026-03-20T01:25:48Z"
+    },
+    {
+      "evidence_id": "evidence.pack_starter_templates_and_oversight_alignment.bootstrap_validation_bundle",
+      "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
+      "initiative_title": "Pack Starter Templates And Oversight Alignment",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/pack_starter_templates_and_oversight_alignment",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/discrepancies",
+        "plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-21T01:48:36Z"
     },
     {
       "evidence_id": "evidence.plan_python_package_dependency_cleanup.bootstrap_validation_bundle",

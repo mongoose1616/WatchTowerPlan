@@ -50,7 +50,10 @@
         "externalizable pack",
         "pack portability",
         "pack namespace",
-        "pack manifest"
+        "pack manifest",
+        "pack authoring",
+        "copy-out pack",
+        "externalized pack guidance"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -413,7 +416,9 @@
         "hosted pack validation",
         "pack manifest validation",
         "pack extensibility",
-        "pack portability validation"
+        "pack portability validation",
+        "second-pack proof",
+        "pack copy-out proof"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -668,7 +673,10 @@
         "plan python boundary",
         "domain pack refactor",
         "pack namespace",
-        "pack integration"
+        "pack integration",
+        "pack authoring",
+        "pack portability proof",
+        "copy-out pack"
       ],
       "required_workflow_ids": [
         "workflow.core",

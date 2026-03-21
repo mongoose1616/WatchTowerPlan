@@ -1,19 +1,19 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `ready_for_bootstrap`
-- `summary`: No active plan-workspace initiatives exist.
-- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
-- `recommended_surface_path`: `plan/plan_overview.md`
+- `coordination_mode`: `active_work`
+- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
+- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_surface_path`: `plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md`
 
 ## Active Pack-Wide Initiatives
-- None.
+- `trace.pack_starter_templates_and_oversight_alignment`: Pack Starter Templates And Oversight Alignment (`execution` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.
 
 ## Blocked or Attention-Needed Items
-- None.
+- Actionable task `task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates` (high) in `trace.pack_starter_templates_and_oversight_alignment` -> `plan/initiatives/pack_starter_templates_and_oversight_alignment/.wt/tasks/publish_hosted_pack_starter_templates/task.json`
 
 ## Recent Completions or Changes
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.

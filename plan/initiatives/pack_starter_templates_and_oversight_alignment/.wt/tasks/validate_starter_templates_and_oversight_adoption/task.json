@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.pack_starter_templates_and_oversight_alignment.validate_pack_starter_and_oversight_adoption",
+  "slug": "validate_starter_templates_and_oversight_adoption",
+  "initiative_id": "initiative.pack_starter_templates_and_oversight_alignment",
+  "title": "Validate starter templates and oversight adoption",
+  "summary": "Proves the starter templates and real oversight alignment through validation and closeout evidence.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "validation",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T01:54:51Z",
+  "updated_at": "2026-03-21T01:54:51Z",
+  "dependency_task_ids": [
+    "task.pack_starter_templates_and_oversight_alignment.publish_hosted_pack_starter_templates",
+    "task.pack_starter_templates_and_oversight_alignment.align_watchtower_oversight_to_shared_pack_contract"
+  ],
+  "applies_to": [
+    "core/python/tests/"
+  ],
+  "scope_items": [
+    "Run validation, reconciliation, and evidence passes for the starter templates and the aligned oversight pack.",
+    "Use the real WatchTowerOversight repo as the second-pack adoption proof instead of synthetic fixtures only."
+  ],
+  "done_when_items": [
+    "Validation evidence covers both the starter scaffolds and the real second-repo adoption path."
+  ]
+}
