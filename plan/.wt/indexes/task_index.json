@@ -390,6 +390,21 @@
       ]
     },
     {
+      "task_id": "task.ledger_retirement_contract_change.bootstrap_ledger_retirement_contract_change",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "initiative_title": "Ledger Retirement Contract Change",
+      "title": "Bootstrap Ledger Retirement Contract Change",
+      "summary": "Bootstrap Ledger Retirement Contract Change live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/ledger_retirement_contract_change/.wt/tasks/bootstrap_ledger_retirement_contract_change/task.json",
+      "updated_at": "2026-03-21T22:52:41Z"
+    },
+    {
       "task_id": "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
       "trace_id": "trace.pack_bootstrap_installation_contract",
@@ -403,6 +418,41 @@
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json",
       "updated_at": "2026-03-21T05:15:11Z"
+    },
+    {
+      "task_id": "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Bootstrap Pack CLI Fault Isolation Hardening",
+      "summary": "Bootstrap Pack CLI Fault Isolation Hardening live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/bootstrap_pack_cli_fault_isolation_hardening/task.json",
+      "updated_at": "2026-03-21T23:00:16Z"
+    },
+    {
+      "task_id": "task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Harden Pack CLI Fault Isolation",
+      "summary": "Return structured integration-import failures and keep the host CLI usable when unrelated registered packs are broken.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/harden_pack_cli_fault_isolation/task.json",
+      "updated_at": "2026-03-21T23:45:20Z",
+      "applies_to": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/unit/"
+      ]
     },
     {
       "task_id": "task.pack_domain_hardcoding_remediation.bootstrap_pack_domain_hardcoding_remediation",

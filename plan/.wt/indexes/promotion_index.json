@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -123,6 +123,45 @@
       ]
     },
     {
+      "promotion_id": "promotion.ledger_retirement_contract_change.bootstrap_shell",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "initiative_title": "Ledger Retirement Contract Change",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/ledger_retirement_contract_change",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-21T22:52:52Z",
+      "target_paths": [
+        "plan/docs/decisions/ledger_retirement_contract_change_design_record.md",
+        "plan/docs/patterns/ledger_retirement_contract_change_implementation_slice.md",
+        "plan/docs/references/ledger_retirement_contract_change_initiative_brief.md",
+        "plan/docs/standards/governance/ledger_retirement_contract_change_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
       "promotion_id": "promotion.pack_bootstrap_installation_contract.bootstrap_shell",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
       "trace_id": "trace.pack_bootstrap_installation_contract",
@@ -156,6 +195,42 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.pack_cli_fault_isolation_hardening.bootstrap_shell",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/pack_cli_fault_isolation_hardening",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-21T23:46:04Z",
+      "target_paths": [
+        "plan/docs/decisions/pack_cli_fault_isolation_hardening_design_record.md",
+        "plan/docs/patterns/pack_cli_fault_isolation_hardening_implementation_slice.md",
+        "plan/docs/references/pack_cli_fault_isolation_hardening_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

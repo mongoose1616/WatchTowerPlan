@@ -14,8 +14,7 @@ from watchtower_core.adapters.markdown import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_host.cli.introspection import iter_command_parser_specs
-from watchtower_host.cli.parser import build_parser
+from watchtower_host.cli.introspection import iter_host_command_parser_specs
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 
@@ -79,24 +78,16 @@ def _load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
 
     command_rows = parse_markdown_table(command_section)
     table_source_surface = next(
-        (
-            row["Value"]
-            for row in command_rows
-            if row.get("Field") == "Source Surface"
-        ),
+        (row["Value"] for row in command_rows if row.get("Field") == "Source Surface"),
         None,
     )
     if table_source_surface is None:
-        raise ValueError(
-            "Command doc Command table is missing its Source Surface row: "
-            f"{doc_path}"
-        )
+        raise ValueError(f"Command doc Command table is missing its Source Surface row: {doc_path}")
 
     source_surfaces = extract_code_spans(source_surface_section)
     if not source_surfaces:
         raise ValueError(
-            "Command doc Source Surface section is missing its primary code path: "
-            f"{doc_path}"
+            f"Command doc Source Surface section is missing its primary code path: {doc_path}"
         )
 
     return table_source_surface, source_surfaces[0]
@@ -115,39 +106,47 @@ class CommandIndexSyncService:
 
     def build_document(self) -> dict[str, object]:
         existing_index = self._loader.load_command_index()
-        existing_entries = {
-            entry.command_id: entry
-            for entry in existing_index.entries
-        }
+        existing_entries = {entry.command_id: entry for entry in existing_index.entries}
         derived_entries: dict[str, CommandIndexEntry] = {}
-        for spec in iter_command_parser_specs(build_parser()):
+        for spec in iter_host_command_parser_specs(self._loader):
             doc_path = self._repo_root / spec.doc_path
             if not doc_path.exists():
                 raise ValueError(
                     "Registry-backed CLI command is missing its companion command doc: "
                     f"{spec.command} -> {spec.doc_path}"
                 )
-            if not (self._repo_root / spec.implementation_path).exists():
-                raise ValueError(
-                    "Registry-backed CLI command points to a missing implementation path: "
-                    f"{spec.command} -> {spec.implementation_path}"
-                )
             table_source_surface, primary_source_surface = _load_command_doc_source_surfaces(
                 doc_path
             )
-            if table_source_surface != spec.implementation_path:
+            resolved_implementation_path = spec.implementation_path
+            if resolved_implementation_path is None:
+                if table_source_surface != primary_source_surface:
+                    raise ValueError(
+                        "Companion command doc Source Surface section drifted from the "
+                        "Command table Source Surface row while the registry-backed command "
+                        "is unavailable: "
+                        f"{spec.command} -> {spec.doc_path} "
+                        f"(table={table_source_surface}, source={primary_source_surface})"
+                    )
+                resolved_implementation_path = table_source_surface
+            elif table_source_surface != resolved_implementation_path:
                 raise ValueError(
                     "Companion command doc Command table Source Surface drifted from the "
                     "registry-backed implementation path: "
                     f"{spec.command} -> {spec.doc_path} "
-                    f"(doc={table_source_surface}, expected={spec.implementation_path})"
+                    f"(doc={table_source_surface}, expected={resolved_implementation_path})"
                 )
-            if primary_source_surface != spec.implementation_path:
+            if primary_source_surface != resolved_implementation_path:
                 raise ValueError(
                     "Companion command doc Source Surface section drifted from the "
                     "registry-backed implementation path: "
                     f"{spec.command} -> {spec.doc_path} "
-                    f"(doc={primary_source_surface}, expected={spec.implementation_path})"
+                    f"(doc={primary_source_surface}, expected={resolved_implementation_path})"
+                )
+            if not (self._repo_root / resolved_implementation_path).exists():
+                raise ValueError(
+                    "Registry-backed CLI command points to a missing implementation path: "
+                    f"{spec.command} -> {resolved_implementation_path}"
                 )
 
             current = existing_entries.get(spec.command_id)
@@ -171,17 +170,23 @@ class CommandIndexSyncService:
                 workspace=spec.workspace,
                 doc_path=spec.doc_path,
                 synopsis=spec.synopsis,
-                implementation_path=spec.implementation_path,
+                implementation_path=resolved_implementation_path,
                 package_entrypoint=spec.package_entrypoint,
                 parent_command_id=spec.parent_command_id,
                 output_formats=resolved_output_formats,
                 default_output_format=resolved_default_output,
                 aliases=current.aliases if current is not None else (),
-                tags=current.tags if current is not None and current.tags else _derived_tags(
+                tags=current.tags
+                if current is not None and current.tags
+                else _derived_tags(
                     spec.command,
                     spec.workspace,
                 ),
-                notes=current.notes if current is not None else None,
+                notes=(
+                    spec.notes
+                    if spec.notes is not None
+                    else (current.notes if current is not None else None)
+                ),
             )
 
         self._validate_parent_links(derived_entries)

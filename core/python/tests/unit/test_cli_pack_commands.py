@@ -12,11 +12,11 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.pack_integration import PackQueryRuntime
-from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.introspection import iter_host_command_parser_specs
 from watchtower_host.cli.main import main
-from watchtower_host.cli.parser import build_parser
-from watchtower_host.cli.registry import load_command_group_specs
+from watchtower_host.cli.registry import load_command_group_specs, load_pack_command_group_spec
 
 
 def test_pack_list_supports_json_output(capsys) -> None:
@@ -164,6 +164,55 @@ def test_pack_validate_supports_second_pack_fixture(
     assert payload["passed"] is True
 
 
+def test_pack_commands_still_work_when_another_registered_pack_is_broken(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    oversight_manifest_path = repo_root / oversight_surfaces["pack_runtime_manifest_path"]
+    oversight_manifest = json.loads(oversight_manifest_path.read_text(encoding="utf-8"))
+    oversight_manifest["integration_module"] = "watchtower_oversight_fixture.missing_integration"
+    oversight_manifest_path.write_text(
+        f"{json.dumps(oversight_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "list", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["status"] == "ok"
+    assert {entry["pack_slug"] for entry in payload["results"]} == {"plan", "oversight"}
+
+    result = main(["pack", "describe", "--pack", "plan", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack"]["pack_slug"] == "plan"
+    assert payload["integration"]["importable"] is True
+
+    result = main(["pack", "validate", "--pack", "plan", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack"] == "plan"
+    assert payload["passed"] is True
+
+
 def test_pack_validate_reports_missing_pack_command_doc_via_cli(
     tmp_path: Path,
     monkeypatch,
@@ -240,10 +289,7 @@ def test_pack_scaffold_supports_json_output(
     assert "packs/oversight/.wt/manifests/pack_settings.json" in created_paths
     assert "packs/oversight/.wt/registries/schema_catalog.json" in created_paths
     assert "packs/oversight/python/pyproject.toml" in created_paths
-    assert (
-        "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md"
-        in created_paths
-    )
+    assert "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md" in created_paths
     assert "packs/oversight/reviews/README.md" in created_paths
     assert "packs/oversight/assessments/README.md" in created_paths
 
@@ -435,10 +481,90 @@ def test_host_command_registry_loads_second_pack_namespace(
         str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
     )
 
-    specs = load_command_group_specs()
+    specs = load_command_group_specs(include_pack_namespaces=True)
 
     assert any(spec.name == "plan" for spec in specs)
     assert any(spec.name == "oversight" for spec in specs)
+
+
+def test_selected_pack_namespace_loading_isolated_from_broken_other_pack(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    oversight_manifest_path = repo_root / oversight_surfaces["pack_runtime_manifest_path"]
+    oversight_manifest = json.loads(oversight_manifest_path.read_text(encoding="utf-8"))
+    oversight_manifest["integration_module"] = "watchtower_oversight_fixture.missing_integration"
+    oversight_manifest_path.write_text(
+        f"{json.dumps(oversight_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    plan_spec = load_pack_command_group_spec(
+        "plan",
+        loader=loader,
+        tolerate_import_errors=True,
+    )
+    oversight_spec = load_pack_command_group_spec(
+        "oversight",
+        loader=loader,
+        tolerate_import_errors=True,
+    )
+
+    assert plan_spec is not None
+    assert plan_spec.name == "plan"
+    assert plan_spec.notes is None
+    assert oversight_spec is not None
+    assert oversight_spec.name == "oversight"
+    assert oversight_spec.notes is not None
+
+
+def test_introspection_marks_broken_pack_namespace_unavailable(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    oversight_manifest_path = repo_root / oversight_surfaces["pack_runtime_manifest_path"]
+    oversight_manifest = json.loads(oversight_manifest_path.read_text(encoding="utf-8"))
+    oversight_manifest["integration_module"] = "watchtower_oversight_fixture.missing_integration"
+    oversight_manifest_path.write_text(
+        f"{json.dumps(oversight_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    specs = {
+        spec.command_id: spec
+        for spec in iter_host_command_parser_specs(ControlPlaneLoader(repo_root))
+    }
+
+    assert specs["command.watchtower_core.plan"].notes is None
+    assert specs["command.watchtower_core.oversight"].doc_path == (
+        "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md"
+    )
+    assert "unavailable" in (specs["command.watchtower_core.oversight"].notes or "")
 
 
 def test_parser_specs_route_pack_commands_to_owned_doc_roots(
@@ -463,7 +589,10 @@ def test_parser_specs_route_pack_commands_to_owned_doc_roots(
         str(REPO_ROOT / "core" / "python" / "tests" / "fixtures" / "python")
     )
 
-    specs = {spec.command_id: spec for spec in iter_command_parser_specs(build_parser())}
+    specs = {
+        spec.command_id: spec
+        for spec in iter_host_command_parser_specs(ControlPlaneLoader(repo_root))
+    }
 
     assert (
         specs["command.watchtower_core.plan"].doc_path

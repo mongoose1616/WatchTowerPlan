@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -93,6 +93,35 @@
       "updated_at": "2026-03-21T03:56:17Z"
     },
     {
+      "evidence_id": "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "initiative_title": "Ledger Retirement Contract Change",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/ledger_retirement_contract_change",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/.wt/discrepancies",
+        "plan/initiatives/ledger_retirement_contract_change/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-21T22:52:52Z"
+    },
+    {
       "evidence_id": "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
       "trace_id": "trace.pack_bootstrap_installation_contract",
@@ -120,6 +149,35 @@
         "plan/initiatives/pack_bootstrap_installation_contract/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T05:15:57Z"
+    },
+    {
+      "evidence_id": "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/pack_cli_fault_isolation_hardening",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/discrepancies",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-21T23:46:04Z"
     },
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",

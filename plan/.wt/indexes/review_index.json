@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -60,6 +60,24 @@
       "ready_for_execution": false
     },
     {
+      "review_subject_id": "initiative.ledger_retirement_contract_change",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "initiative_title": "Ledger Retirement Contract Change",
+      "title": "Ledger Retirement Contract Change",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T22:52:52Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
       "review_subject_id": "initiative.pack_bootstrap_installation_contract",
       "subject_kind": "initiative",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
@@ -74,6 +92,24 @@
         "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T05:15:57Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.pack_cli_fault_isolation_hardening",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Pack CLI Fault Isolation Hardening",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T23:46:04Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -198,6 +234,22 @@
       "updated_at": "2026-03-21T03:56:17Z"
     },
     {
+      "review_subject_id": "promotion.ledger_retirement_contract_change.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "initiative_title": "Ledger Retirement Contract Change",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T22:52:52Z"
+    },
+    {
       "review_subject_id": "promotion.pack_bootstrap_installation_contract.bootstrap_shell",
       "subject_kind": "promotion",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
@@ -212,6 +264,22 @@
         "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T05:15:57Z"
+    },
+    {
+      "review_subject_id": "promotion.pack_cli_fault_isolation_hardening.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "initiative_title": "Pack CLI Fault Isolation Hardening",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-21T23:46:04Z"
     },
     {
       "review_subject_id": "promotion.pack_domain_hardcoding_remediation.bootstrap_shell",

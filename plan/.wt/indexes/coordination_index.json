@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,22 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "title": "Pack CLI Fault Isolation Hardening",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-21T23:46:04Z",
+      "key_surface_path": "plan/initiatives/pack_cli_fault_isolation_hardening/plan.md",
+      "closure_reason": "Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations."
+    },
+    {
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "title": "Ledger Retirement Contract Change",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-21T22:52:52Z",
+      "key_surface_path": "plan/initiatives/ledger_retirement_contract_change/plan.md",
+      "closure_reason": "Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end."
+    },
     {
       "trace_id": "trace.pack_bootstrap_installation_contract",
       "title": "Pack Bootstrap Installation Contract",

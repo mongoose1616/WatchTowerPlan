@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import json
 from dataclasses import replace
 from pathlib import Path
 
 import pytest
+from watchtower_plan import integration as plan_integration
+from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -24,8 +27,6 @@ from watchtower_core.pack_integration.runtime import (
     load_registered_pack_integrations,
 )
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
-from watchtower_plan import integration as plan_integration
-from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
 
 
 def test_load_pack_validation_runtime_uses_repo_pack_contract() -> None:
@@ -134,5 +135,42 @@ def test_load_registered_pack_integrations_supports_second_pack_fixture(
 
     assert tuple(item.registry_entry.pack_slug for item in loaded) == ("plan", "oversight")
     oversight = next(item for item in loaded if item.registry_entry.pack_slug == "oversight")
-    assert oversight.runtime_manifest.integration_module == "watchtower_oversight_fixture.integration"
+    assert (
+        oversight.runtime_manifest.integration_module == "watchtower_oversight_fixture.integration"
+    )
     assert oversight.integration.command_namespace == "oversight"
+
+
+def test_selected_pack_loading_still_works_when_another_registered_pack_is_broken(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    plan_surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    oversight_manifest_path = repo_root / oversight_surfaces["pack_runtime_manifest_path"]
+    oversight_manifest = json.loads(oversight_manifest_path.read_text(encoding="utf-8"))
+    oversight_manifest["integration_module"] = "watchtower_oversight_fixture.missing_integration"
+    oversight_manifest_path.write_text(
+        f"{json.dumps(oversight_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    loaded = load_active_pack_integration(
+        loader,
+        pack_settings_path=plan_surfaces["pack_settings_path"],
+    )
+
+    assert loaded.registry_entry.pack_slug == "plan"
+    with pytest.raises(ModuleNotFoundError):
+        load_registered_pack_integrations(loader)

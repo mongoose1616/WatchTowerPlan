@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation.0002_status_changed",
+  "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+  "sequence": 2,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T23:00:16Z",
+  "summary": "Changed task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation status from planned to in_progress.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/harden_pack_cli_fault_isolation/task.json"
+  },
+  "task_id": "task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation"
+}

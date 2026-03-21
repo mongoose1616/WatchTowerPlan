@@ -11,8 +11,7 @@ from watchtower_core.adapters.markdown import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.command_index import CommandIndexSyncService
-from watchtower_host.cli.introspection import iter_command_parser_specs
-from watchtower_host.cli.parser import build_parser
+from watchtower_host.cli.introspection import CommandParserSpec, iter_host_command_parser_specs
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -37,8 +36,7 @@ def test_command_index_sync_builds_schema_valid_document() -> None:
     entries = document["entries"]
     assert isinstance(entries, list)
     assert any(
-        entry["command_id"] == "command.watchtower_core.sync.command_index"
-        for entry in entries
+        entry["command_id"] == "command.watchtower_core.sync.command_index" for entry in entries
     )
     assert any(entry["command_id"] == "command.watchtower_core.route.preview" for entry in entries)
 
@@ -57,7 +55,7 @@ def test_command_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 
 def test_registry_backed_parser_specs_require_companion_docs() -> None:
-    specs = iter_command_parser_specs(build_parser())
+    specs = iter_host_command_parser_specs(ControlPlaneLoader(REPO_ROOT))
     spec_by_id = {spec.command_id: spec for spec in specs}
 
     assert "command.watchtower_core" in spec_by_id
@@ -93,8 +91,7 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_host/cli/parser.py"
     )
     assert (
-        spec_by_id["command.watchtower_core"].package_entrypoint
-        == "watchtower_host.cli.main:main"
+        spec_by_id["command.watchtower_core"].package_entrypoint == "watchtower_host.cli.main:main"
     )
     assert (
         spec_by_id["command.watchtower_core.doctor"].implementation_path
@@ -290,7 +287,9 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
         == "plan/python/src/watchtower_plan/cli/query.py"
     )
     assert (
-        implementation_by_doc["core/docs/commands/core_python/watchtower_core_sync_command_index.md"]
+        implementation_by_doc[
+            "core/docs/commands/core_python/watchtower_core_sync_command_index.md"
+        ]
         == "core/python/src/watchtower_host/cli/sync_family.py"
     )
     assert (
@@ -304,3 +303,57 @@ def test_registry_backed_parser_specs_require_matching_command_doc_source_surfac
         )
         assert table_source_surface == implementation_path
         assert primary_source_surface == implementation_path
+
+
+def test_command_index_sync_uses_doc_source_surface_for_unavailable_pack_specs(
+    monkeypatch,
+) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = CommandIndexSyncService(loader)
+
+    monkeypatch.setattr(
+        "watchtower_host.cli.command_index.iter_host_command_parser_specs",
+        lambda _loader: (
+            CommandParserSpec(
+                command_id="command.watchtower_core",
+                command="watchtower-core",
+                summary="Root CLI entrypoint.",
+                kind="root_command",
+                workspace="core_python",
+                doc_path="core/docs/commands/core_python/watchtower_core.md",
+                synopsis="uv run watchtower-core <command> [args]",
+                implementation_path="core/python/src/watchtower_host/cli/parser.py",
+                package_entrypoint="watchtower_host.cli.main:main",
+                parent_command_id=None,
+                output_formats=(),
+                default_output_format=None,
+            ),
+            CommandParserSpec(
+                command_id="command.watchtower_core.plan",
+                command="watchtower-core plan",
+                summary="Plan namespace entrypoint.",
+                kind="subcommand",
+                workspace="core_python",
+                doc_path="plan/docs/commands/core_python/watchtower_core_plan.md",
+                synopsis="uv run watchtower-core plan <plan_command> [args]",
+                implementation_path=None,
+                package_entrypoint="watchtower_host.cli.main:main",
+                parent_command_id="command.watchtower_core",
+                output_formats=(),
+                default_output_format=None,
+                notes=(
+                    "Registered pack namespace is unavailable because its integration "
+                    "could not be loaded."
+                ),
+            ),
+        ),
+    )
+
+    document = service.build_document()
+    entries = {entry["command_id"]: entry for entry in document["entries"]}
+
+    assert (
+        entries["command.watchtower_core.plan"]["implementation_path"]
+        == "plan/python/src/watchtower_plan/cli/namespace.py"
+    )
+    assert "unavailable" in entries["command.watchtower_core.plan"]["notes"]

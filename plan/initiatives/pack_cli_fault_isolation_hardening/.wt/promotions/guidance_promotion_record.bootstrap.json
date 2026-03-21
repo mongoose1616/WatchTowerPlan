@@ -1,0 +1,48 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.pack_cli_fault_isolation_hardening.bootstrap_shell",
+  "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+  "trace_id": "trace.pack_cli_fault_isolation_hardening",
+  "title": "Bootstrap Promotion Shell",
+  "status": "candidate",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-21T23:46:04Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/pack_cli_fault_isolation_hardening_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/pack_cli_fault_isolation_hardening_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/pack_cli_fault_isolation_hardening_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

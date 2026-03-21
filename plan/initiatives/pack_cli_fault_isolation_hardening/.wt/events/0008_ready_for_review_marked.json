@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.pack_cli_fault_isolation_hardening.0008_ready_for_review_marked",
+  "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+  "sequence": 8,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T22:56:08Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.pack_cli_fault_isolation_hardening"
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening.0001_created",
+  "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-21T22:55:36Z",
+  "summary": "Created task task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening during initiative bootstrap.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening"
+}

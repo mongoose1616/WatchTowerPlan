@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -54,7 +54,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -64,6 +64,9 @@
       "applies_to": [
         "core/control_plane/",
         "core/python/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
         "plan/workflows/modules/",
         "core/docs/standards/",
@@ -78,7 +81,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -88,6 +91,11 @@
       "applies_to": [
         "core/control_plane/",
         "core/python/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
+        "core/control_plane/registries/pack_registry.json",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/docs/standards/",
         "plan/docs/standards/"
       ]
@@ -100,7 +108,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -110,6 +118,9 @@
       "applies_to": [
         "plan/",
         "core/control_plane/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
         "plan/workflows/modules/"
       ]
@@ -122,7 +133,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -138,7 +149,10 @@
         "core/workflows/",
         "plan/workflows/",
         "plan/",
-        "core/"
+        "core/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "plan/python/src/watchtower_plan/"
       ]
     },
     {
@@ -149,7 +163,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -160,6 +174,10 @@
         "core/docs/standards/",
         "plan/docs/standards/",
         "core/control_plane/",
+        "core/python/src/watchtower_host/",
+        "core/control_plane/registries/pack_registry.json",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
+        "core/python/src/watchtower_core/validation/pack_contract.py",
         "core/workflows/modules/",
         "plan/workflows/modules/"
       ]
@@ -339,7 +357,7 @@
     {
       "guidance_id": "std.data_contracts.validation_evidence",
       "title": "Validation Evidence Standard",
-      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.",
+      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/records/validation_evidence/`.",
       "guidance_family": "standard",
       "status": "active",
       "owner": "repository_maintainer",
@@ -374,7 +392,7 @@
         "plan/initiatives/",
         "plan/projects/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/records/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ]
     },
@@ -546,7 +564,7 @@
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/ledgers/",
+        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
@@ -591,8 +609,8 @@
         "plan/projects/",
         "plan/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/migrations/",
+        "core/control_plane/records/validation_evidence/"
       ]
     },
     {

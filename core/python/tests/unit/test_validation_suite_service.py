@@ -4,6 +4,7 @@ import json
 from dataclasses import replace
 from pathlib import Path
 from shutil import copy2, rmtree
+from types import SimpleNamespace
 
 import pytest
 from watchtower_plan import integration as plan_integration
@@ -25,6 +26,7 @@ from watchtower_core.validation import (
     ValidationSelectionError,
     ValidationSuiteService,
 )
+from watchtower_core.validation._pack_contract import runtime as pack_contract_runtime
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
@@ -93,8 +95,8 @@ def test_pack_contract_validation_fails_when_core_python_workspace_source_drifts
     pyproject_text = pyproject_path.read_text(encoding="utf-8")
     pyproject_path.write_text(
         pyproject_text.replace(
-            '../../packs/plan/python',
-            '../../packs/plan_clone/python',
+            "../../packs/plan/python",
+            "../../packs/plan_clone/python",
         ),
         encoding="utf-8",
     )
@@ -410,10 +412,61 @@ def test_pack_contract_validation_fails_when_command_namespace_conflicts(
     )
 
     assert result.passed is False
-    assert any(
-        issue.code == "pack_registry_command_namespace_conflict"
-        for issue in result.issues
+    assert any(issue.code == "pack_registry_command_namespace_conflict" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_integration_module_is_missing(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
+    runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
+    runtime_manifest["integration_module"] = "watchtower_plan.missing_integration"
+    runtime_manifest_path.write_text(
+        f"{json.dumps(runtime_manifest, indent=2)}\n",
+        encoding="utf-8",
     )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_integration_module_missing" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_integration_module_raises_during_import(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def _raise_runtime_error(_module_name: str) -> object:
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(pack_contract_runtime.importlib, "import_module", _raise_runtime_error)
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    issue = next(
+        issue for issue in result.issues if issue.code == "pack_integration_module_import_error"
+    )
+    assert issue.location == "watchtower_plan.integration"
+    assert "RuntimeError: boom" in issue.message
+
+
+def test_pack_contract_validation_fails_when_integration_descriptor_is_missing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        pack_contract_runtime.importlib,
+        "import_module",
+        lambda _module_name: SimpleNamespace(),
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+
+    assert result.passed is False
+    assert any(issue.code == "pack_integration_descriptor_missing" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runtime(

@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T05:15:57Z",
+  "updated_at": "2026-03-21T23:46:04Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -51,6 +51,21 @@
       "updated_at": "2026-03-21T03:56:17Z"
     },
     {
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "title": "Ledger Retirement Contract Change",
+      "initiative_root": "plan/initiatives/ledger_retirement_contract_change",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-21T22:52:52Z"
+    },
+    {
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
       "trace_id": "trace.pack_bootstrap_installation_contract",
       "title": "Pack Bootstrap Installation Contract",
@@ -64,6 +79,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T05:15:57Z"
+    },
+    {
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "title": "Pack CLI Fault Isolation Hardening",
+      "initiative_root": "plan/initiatives/pack_cli_fault_isolation_hardening",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-21T23:46:04Z"
     },
     {
       "initiative_id": "initiative.pack_domain_hardcoding_remediation",

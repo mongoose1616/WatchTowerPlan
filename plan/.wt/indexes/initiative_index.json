@@ -200,6 +200,52 @@
       ]
     },
     {
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "title": "Ledger Retirement Contract Change",
+      "summary": "Retire remaining ledger-authority dependencies through one governed contract change without breaking validation, command, or documentation contracts.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-21T22:52:52Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/ledger_retirement_contract_change/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/ledger_retirement_contract_change/summary.md",
+      "initiative_id": "initiative.ledger_retirement_contract_change",
+      "slug": "ledger_retirement_contract_change",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.ledger_retirement_contract_change.bootstrap_ledger_retirement_contract_change"
+      ],
+      "evidence_ids": [
+        "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-21T22:52:52Z",
+      "closure_reason": "Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end.",
+      "related_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md",
+        "plan/initiatives/ledger_retirement_contract_change/.wt/initiative.json",
+        "plan/initiatives/ledger_retirement_contract_change/.wt/tasks/bootstrap_ledger_retirement_contract_change/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.pack_bootstrap_installation_contract",
       "title": "Pack Bootstrap Installation Contract",
       "summary": "Turns hosted-pack scaffold output into a safe registration and shared-workspace installation flow.",
@@ -240,6 +286,55 @@
         "plan/initiatives/pack_bootstrap_installation_contract/decision_notes.md",
         "plan/initiatives/pack_bootstrap_installation_contract/.wt/initiative.json",
         "plan/initiatives/pack_bootstrap_installation_contract/.wt/tasks/bootstrap_pack_bootstrap_installation_contract/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "title": "Pack CLI Fault Isolation Hardening",
+      "summary": "Keep pack validate, pack describe, and CLI startup usable when a registered hosted pack is malformed or partially bootstrapped.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-21T23:46:04Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/pack_cli_fault_isolation_hardening/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/pack_cli_fault_isolation_hardening/summary.md",
+      "initiative_id": "initiative.pack_cli_fault_isolation_hardening",
+      "slug": "pack_cli_fault_isolation_hardening",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening",
+        "task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation"
+      ],
+      "evidence_ids": [
+        "evidence.pack_cli_fault_isolation_hardening.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-21T23:46:04Z",
+      "closure_reason": "Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations.",
+      "related_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/unit/",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/initiative.json",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/bootstrap_pack_cli_fault_isolation_hardening/task.json",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/harden_pack_cli_fault_isolation/task.json"
       ],
       "tags": [
         "traceability"

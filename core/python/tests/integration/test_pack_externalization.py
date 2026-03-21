@@ -14,13 +14,13 @@ from tests.pack_fixture_support import (
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.pack_integration import (
     CorePythonWorkspaceRegistration,
     ensure_core_python_workspace_registration,
 )
-from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.introspection import iter_host_command_parser_specs
 from watchtower_host.cli.main import main
-from watchtower_host.cli.parser import build_parser
 
 
 def _purge_module_prefix(prefix: str) -> None:
@@ -274,12 +274,7 @@ def test_pack_validate_supports_externalized_second_pack_package(
     assert imported_module.__file__ is not None
     assert str(
         (
-            repo_root
-            / "packs"
-            / "oversight"
-            / "python"
-            / "src"
-            / "watchtower_oversight_fixture"
+            repo_root / "packs" / "oversight" / "python" / "src" / "watchtower_oversight_fixture"
         ).resolve()
     ) in str(Path(imported_module.__file__).resolve())
 
@@ -326,7 +321,7 @@ def test_externalized_multi_pack_parser_registers_namespaced_command_docs(
         with _temporary_module_prefix_reload("watchtower_oversight_fixture"):
             specs = {
                 spec.command_id: spec
-                for spec in iter_command_parser_specs(build_parser())
+                for spec in iter_host_command_parser_specs(ControlPlaneLoader(repo_root))
             }
 
     assert specs["command.watchtower_core.plan"].doc_path == (
