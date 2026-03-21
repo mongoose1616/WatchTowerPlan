@@ -81,13 +81,13 @@
       "title": "Domain Pack Externalization and Portability Proof",
       "summary": "Proves that plan and future domain packs can be copied out with only packaging and path updates while reusable core and host integration remain stable.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-21T01:24:11Z",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-21T01:25:24Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/domain_pack_externalization_portability_proof/plan.md",
-      "next_action": "Finalize closeout, evidence, and promotion decisions.",
+      "next_action": "No further default action. Initiative is completed.",
       "next_surface_path": "plan/initiatives/domain_pack_externalization_portability_proof/summary.md",
       "initiative_id": "initiative.domain_pack_externalization_portability_proof",
       "slug": "domain_pack_externalization_portability_proof",
@@ -112,6 +112,8 @@
       "evidence_ids": [
         "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-21T01:25:24Z",
+      "closure_reason": "Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.",
       "related_paths": [
         "plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md",
         "plan/initiatives/domain_pack_externalization_portability_proof/design_record.md",

@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Finalize closeout, evidence, and promotion decisions.
-- `recommended_surface_path`: `plan/initiatives/domain_pack_externalization_portability_proof/summary.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`closeout` / `pack_wide`)
+- None.
 
 ## Active Project Initiatives
 - None.
@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.
 - `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.
 - `trace.plan_python_package_dependency_cleanup`: Plan Python Package Dependency Cleanup (`completed` at `2026-03-20T01:51:19Z`) - Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split.
 - `trace.pack_domain_hardcoding_remediation`: Pack Domain Hardcoding Remediation (`completed` at `2026-03-20T01:25:48Z`) - Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate.

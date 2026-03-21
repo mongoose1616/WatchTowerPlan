@@ -2,7 +2,9 @@
 
 ## Outcome Summary
 Proves that plan and future domain packs can be copied out with only packaging and path updates while reusable core and host integration remain stable.
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
+- `closed_at`: `2026-03-21T01:25:24Z`
+- `closure_reason`: Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.
 
 ## Delivered Outputs
 - Authored input: [initiative_brief.md](/plan/initiatives/domain_pack_externalization_portability_proof/initiative_brief.md)
@@ -19,19 +21,21 @@ Proves that plan and future domain packs can be copied out with only packaging a
 - Terminal task `task.domain_pack_externalization_portability_proof.publish_externalized_pack_authoring_guidance`: `completed`
 
 ## Promoted Guidance
-- `promotion.domain_pack_externalization_portability_proof.bootstrap_shell`: `planned` / approval `pending`
+- `promotion.domain_pack_externalization_portability_proof.bootstrap_shell`: `candidate` / approval `pending`
 - Candidate target: [domain_pack_externalization_portability_proof_initiative_brief.md](/plan/docs/references/domain_pack_externalization_portability_proof_initiative_brief.md)
 - Candidate target: [domain_pack_externalization_portability_proof_design_record.md](/plan/docs/decisions/domain_pack_externalization_portability_proof_design_record.md)
 - Candidate target: [domain_pack_externalization_portability_proof_implementation_slice.md](/plan/docs/patterns/domain_pack_externalization_portability_proof_implementation_slice.md)
 - Candidate target: [domain_pack_externalization_portability_proof_decision_notes.md](/plan/docs/standards/governance/domain_pack_externalization_portability_proof_decision_notes.md)
 
 ## Evidence References
-- `evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle`: `planned`
+- `evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle`: `completed`
 
 ## Unresolved Follow-Ups
 - No unresolved follow-up items remain.
 
 ## Closeout State
-- `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-21T01:24:11Z`
-- `closeout.domain_pack_externalization_portability_proof.bootstrap_recap`: `planned`
+- `lifecycle_stage`: `completed`
+- `updated_at`: `2026-03-21T01:25:24Z`
+- `closeout.domain_pack_externalization_portability_proof.bootstrap_recap`: `completed`
+- `closed_at`: `2026-03-21T01:25:24Z`
+- `closure_reason`: Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.

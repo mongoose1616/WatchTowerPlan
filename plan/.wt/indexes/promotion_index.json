@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-21T01:24:11Z",
+  "updated_at": "2026-03-21T01:25:24Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -50,7 +50,7 @@
       "trace_id": "trace.domain_pack_externalization_portability_proof",
       "initiative_title": "Domain Pack Externalization and Portability Proof",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/domain_pack_externalization_portability_proof",
       "candidate_count": 4,
       "candidate_paths": [
@@ -68,7 +68,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-21T00:43:27Z",
+      "updated_at": "2026-03-21T01:25:24Z",
       "target_paths": [
         "plan/docs/decisions/domain_pack_externalization_portability_proof_design_record.md",
         "plan/docs/patterns/domain_pack_externalization_portability_proof_implementation_slice.md",

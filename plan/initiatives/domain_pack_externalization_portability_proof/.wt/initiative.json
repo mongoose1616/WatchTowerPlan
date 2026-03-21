@@ -6,12 +6,12 @@
   "title": "Domain Pack Externalization and Portability Proof",
   "summary": "Proves that plan and future domain packs can be copied out with only packaging and path updates while reusable core and host integration remain stable.",
   "scope_type": "pack_wide",
-  "status": "active",
-  "lifecycle_stage": "in_progress",
+  "status": "completed",
+  "lifecycle_stage": "completed",
   "review_status": "approved",
   "owner": "repository_maintainer",
   "created_at": "2026-03-21T00:43:27Z",
-  "updated_at": "2026-03-21T01:24:11Z",
+  "updated_at": "2026-03-21T01:25:24Z",
   "task_ids": [
     "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
     "task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof",
@@ -68,7 +68,7 @@
     "capture_complete": true,
     "machine_valid": true,
     "approval_status": "approved",
-    "ready_for_execution": true,
+    "ready_for_execution": false,
     "blocking_reasons": []
   },
   "approvals": [
@@ -82,5 +82,7 @@
       "actor_id": "actor.repository_maintainer",
       "approved_at": "2026-03-21T00:48:55Z"
     }
-  ]
+  ],
+  "closed_at": "2026-03-21T01:25:24Z",
+  "closure_reason": "Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance."
 }
