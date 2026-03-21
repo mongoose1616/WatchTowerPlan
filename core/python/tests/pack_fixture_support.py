@@ -190,6 +190,7 @@ def materialize_pack_validation_suite(
 def materialize_validation_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    copytree(REPO_ROOT / "core" / "docs" / "templates", repo_root / "core" / "docs" / "templates")
     (repo_root / "core" / "python").mkdir(parents=True)
     return repo_root
 

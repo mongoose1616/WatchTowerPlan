@@ -18,6 +18,10 @@ from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
     load_pack_sync_runtime,
 )
+from watchtower_core.pack_integration.scaffold import (
+    PackScaffoldRequest,
+    scaffold_hosted_pack,
+)
 from watchtower_core.validation.pack_contract import (
     PACK_CONTRACT_VALIDATOR_ID,
     PackContractValidationService,
@@ -257,6 +261,93 @@ def _run_pack_validate(args: argparse.Namespace) -> int:
         payload_factory=lambda: payload,
         render_human=_render_human,
         exit_code=0 if result.passed else 1,
+    )
+
+
+def _run_pack_scaffold(args: argparse.Namespace) -> int:
+    loader = ControlPlaneLoader()
+    result = _run_value_error_operation(
+        args,
+        command_name="watchtower-core pack scaffold",
+        prefix="Pack scaffold error",
+        operation=lambda: scaffold_hosted_pack(
+            loader.repo_root,
+            PackScaffoldRequest(
+                pack_slug=args.pack_slug,
+                pack_root=args.pack_root,
+                command_namespace=args.command_namespace,
+                python_distribution=args.python_distribution,
+                python_package=args.python_package,
+                domain_root_names=tuple(args.domain_root),
+            ),
+        ),
+    )
+    if result is None:
+        return 1
+
+    payload = {
+        "command": "watchtower-core pack scaffold",
+        "status": "ok",
+        "pack_slug": result.pack_slug,
+        "pack_root": result.pack_root,
+        "command_namespace": result.command_namespace,
+        "python_distribution": result.python_distribution,
+        "python_package": result.python_package,
+        "pack_settings_path": result.pack_settings_path,
+        "pack_runtime_manifest_path": result.pack_runtime_manifest_path,
+        "created_paths": list(result.created_paths),
+        "pack_registry_entry": result.pack_registry_entry,
+        "core_python_workspace_registration": {
+            "dependency": result.core_python_dependency,
+            "uv_source": dict(result.core_python_uv_source),
+        },
+        "next_steps": [
+            (
+                "Add the emitted pack_registry_entry to "
+                "core/control_plane/registries/pack_registry.json."
+            ),
+            (
+                "Add the emitted dependency and uv source to core/python/pyproject.toml, "
+                "then run uv sync in core/python."
+            ),
+            (
+                "Validate the hosted pack with "
+                f"watchtower-core pack validate --pack-settings-path "
+                f"{result.pack_settings_path} --format json."
+            ),
+        ],
+    }
+
+    def _render_human() -> None:
+        print(f"Scaffolded pack: {result.pack_slug}")
+        print(f"Pack Root: {result.pack_root}")
+        print(f"Namespace: {result.command_namespace}")
+        print(f"Python Distribution: {result.python_distribution}")
+        print(f"Python Package: {result.python_package}")
+        print("Created Paths:")
+        for path in result.created_paths:
+            print(f"- {path}")
+        print("Pack Registry Entry:")
+        print(json.dumps(result.pack_registry_entry, indent=2, sort_keys=True))
+        print("Core Python Workspace Registration:")
+        print(
+            json.dumps(
+                {
+                    "dependency": result.core_python_dependency,
+                    "uv_source": result.core_python_uv_source,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        print("Next Steps:")
+        for step in payload["next_steps"]:
+            print(f"- {step}")
+
+    return _emit_detail_result(
+        args,
+        payload_factory=lambda: payload,
+        render_human=_render_human,
     )
 
 

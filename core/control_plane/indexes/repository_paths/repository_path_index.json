@@ -2398,6 +2398,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/templates/pack/pack_note_artifact_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a minimal pack-local note artifact under `<pack>/.wt/work_items/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_note_schema_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a minimal pack-local note schema under `<pack>/.wt/schemas/interfaces/packs/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/templates/pack/pack_package_init_template.py",
       "kind": "file",
       "surface_kind": "template_doc",
@@ -2438,10 +2458,40 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/templates/pack/pack_schema_catalog_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned schema catalog under `<pack>/.wt/registries/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/templates/pack/pack_settings_template.json",
       "kind": "file",
       "surface_kind": "template_doc",
       "summary": "Template for the pack-owned `pack_settings.json` load root under `<pack>/.wt/manifests/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_validation_suite_registry_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned validation suite registry under `<pack>/.wt/registries/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "core/docs/templates/pack/pack_validator_registry_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned validator registry under `<pack>/.wt/registries/`.",
       "parent_path": "core/docs/templates/pack/",
       "maturity": "supporting",
       "priority": "medium",

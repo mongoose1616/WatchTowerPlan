@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+  "id": "registry.validation_suites",
+  "title": "<pack_title> Validation Suites",
+  "status": "active",
+  "suites": [
+    {
+      "id": "suite.<pack_slug>.validation_baseline",
+      "title": "<pack_title> Validation Baseline",
+      "description": "Pack-contract plus starter artifact validation for <pack_slug>.",
+      "status": "active",
+      "steps": [
+        {
+          "id": "step.<pack_slug>.pack_contract",
+          "title": "Validate <pack_slug> pack contract",
+          "description": "Ensure the pack publishes the governed surfaces reusable core expects.",
+          "step_kind": "pack_contract"
+        },
+        {
+          "id": "step.<pack_slug>.artifacts",
+          "title": "Validate <pack_slug> starter artifact",
+          "description": "Validate the starter pack note artifact.",
+          "step_kind": "artifact",
+          "paths": [
+            "<pack_root>/.wt/work_items/<note_slug>.json"
+          ],
+          "validator_id": "validator.packs.<note_slug>"
+        }
+      ]
+    }
+  ]
+}

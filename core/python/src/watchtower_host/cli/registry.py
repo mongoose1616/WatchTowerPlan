@@ -73,6 +73,7 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
             ("list", PACK_FAMILY_HANDLERS_PATH),
             ("describe", PACK_FAMILY_HANDLERS_PATH),
             ("validate", PACK_FAMILY_HANDLERS_PATH),
+            ("scaffold", PACK_FAMILY_HANDLERS_PATH),
         ),
     ),
     CommandGroupSpec(

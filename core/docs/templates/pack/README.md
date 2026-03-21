@@ -10,6 +10,11 @@
 | `core/docs/templates/pack/pack_registry_entry_template.json` | Template snippet for the shared `pack_registry.json` entry that registers one hosted pack with the host runtime. |
 | `core/docs/templates/pack/pack_settings_template.json` | Template for the pack-owned `pack_settings.json` load root under `<pack>/.wt/manifests/`. |
 | `core/docs/templates/pack/pack_runtime_manifest_template.json` | Template for the pack-owned `pack_runtime_manifest.json` host contract under `<pack>/.wt/manifests/`. |
+| `core/docs/templates/pack/pack_schema_catalog_template.json` | Template for the pack-owned schema catalog under `<pack>/.wt/registries/`. |
+| `core/docs/templates/pack/pack_validation_suite_registry_template.json` | Template for the pack-owned validation suite registry under `<pack>/.wt/registries/`. |
+| `core/docs/templates/pack/pack_validator_registry_template.json` | Template for the pack-owned validator registry under `<pack>/.wt/registries/`. |
+| `core/docs/templates/pack/pack_note_schema_template.json` | Template for a minimal pack-local note schema under `<pack>/.wt/schemas/interfaces/packs/`. |
+| `core/docs/templates/pack/pack_note_artifact_template.json` | Template for a minimal pack-local note artifact under `<pack>/.wt/work_items/`. |
 | `core/docs/templates/pack/pack_python_pyproject_template.toml` | Template for the pack-owned Python package metadata file under `<pack>/python/pyproject.toml`. |
 | `core/docs/templates/pack/pack_package_init_template.py` | Template for `<pack>/python/src/watchtower_<pack>/__init__.py`. |
 | `core/docs/templates/pack/pack_integration_module_template.py` | Template for `<pack>/python/src/watchtower_<pack>/integration.py` exporting `PACK_INTEGRATION`. |

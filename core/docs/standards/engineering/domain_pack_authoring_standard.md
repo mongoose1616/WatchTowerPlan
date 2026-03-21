@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:58:00Z"
+updated_at: "2026-03-22T03:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -40,7 +40,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 
 ## Guidance
 - A hosted pack owns its own machine root, durable docs root, workflow root, tracking root, and Python package root.
-- Start new packs from `core/docs/templates/pack/` and pair those files with the generic README, workflow, and routing templates when the pack needs local guidance surfaces.
+- Start new packs from `watchtower-core pack scaffold` when working inside a hosted repository, or from `core/docs/templates/pack/` when you need to customize the starter before the first render.
 - Keep pack-owned Python narrow and domain-specific.
 - Put shared helpers back into `watchtower_core` instead of duplicating them to make them pack-flavored.
 - Keep pack-owned command docs under the owning pack docs root when the command is pack-specific.
@@ -55,6 +55,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Use `domain_roots` to name optional pack-specific roots such as `reviews`, `assessments`, or `targets`. Only keep legacy `initiatives_root` or `projects_root` fields when a live pack runtime still depends on them.
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
 - Authoring guidance, workflow modules, and standards should be sufficient for pack creation or copy-out; reviewers should not need to reverse-engineer implementation code to determine the required pack shape.
+- Scaffold commands should emit the shared registry and workspace snippets needed to finish host wiring explicitly rather than mutating those shared surfaces implicitly.
 
 ## Structure or Data Model
 ### Expected pack root shape
@@ -86,6 +87,7 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Reviewers should reject copied-out pack stories that still require repository-specific Python import hacks.
 - Reviewers should reject pack authoring guidance that omits the minimum manifest, package, and command-doc surfaces needed to create or externalize a hosted pack.
 - Reviewers should reject packs that keep their namespace command docs in shared core docs or omit the required namespace entry page from the pack-owned docs root.
+- Reviewers should reject scaffold flows that silently mutate shared host composition surfaces before the new pack package is installable.
 
 ## Change Control
 - Update this standard when the repository changes the expected hosted-pack root shape, portability contract, or pack-owned Python guidance.
@@ -100,4 +102,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-21T21:58:00Z`
+- `2026-03-22T03:35:00Z`

@@ -187,6 +187,88 @@ def test_pack_validate_reports_missing_pack_command_doc_via_cli(
     assert any(issue["code"] == "pack_command_doc_missing" for issue in payload["issues"])
 
 
+def test_pack_scaffold_supports_json_output(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "oversight",
+            "--pack-root",
+            "packs/oversight",
+            "--command-namespace",
+            "oversight",
+            "--domain-root",
+            "reviews",
+            "--domain-root",
+            "assessments",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core pack scaffold"
+    assert payload["pack_slug"] == "oversight"
+    assert payload["command_namespace"] == "oversight"
+    assert payload["pack_settings_path"] == "packs/oversight/.wt/manifests/pack_settings.json"
+    assert payload["pack_runtime_manifest_path"] == "packs/oversight/.wt/manifests/pack_runtime_manifest.json"
+    assert payload["pack_registry_entry"]["pack_slug"] == "oversight"
+    assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
+    assert (
+        payload["core_python_workspace_registration"]["uv_source"]["path"]
+        == "../../packs/oversight/python"
+    )
+    created_paths = set(payload["created_paths"])
+    assert "packs/oversight/.wt/manifests/pack_settings.json" in created_paths
+    assert "packs/oversight/.wt/registries/schema_catalog.json" in created_paths
+    assert "packs/oversight/python/pyproject.toml" in created_paths
+    assert (
+        "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md"
+        in created_paths
+    )
+    assert "packs/oversight/reviews/README.md" in created_paths
+    assert "packs/oversight/assessments/README.md" in created_paths
+
+
+def test_pack_scaffold_rejects_registry_collisions(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "plan",
+            "--pack-root",
+            "packs/plan_clone",
+            "--format",
+            "json",
+        ]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core pack scaffold"
+    assert payload["status"] == "error"
+    assert "Hosted pack already exists in pack_registry: plan" in payload["message"]
+
+
 def test_host_command_registry_loads_second_pack_namespace(
     tmp_path: Path,
     monkeypatch,

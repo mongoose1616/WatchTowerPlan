@@ -268,3 +268,56 @@ def test_externalized_multi_pack_parser_registers_namespaced_command_docs(
     assert specs["command.watchtower_core.oversight"].doc_path == (
         "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md"
     )
+
+
+def test_pack_scaffold_output_becomes_validation_ready_after_host_wiring(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "pack",
+            "scaffold",
+            "--pack-slug",
+            "oversight",
+            "--pack-root",
+            "packs/oversight",
+            "--command-namespace",
+            "oversight",
+            "--domain-root",
+            "reviews",
+            "--format",
+            "json",
+        ]
+    )
+    scaffold_payload = json.loads(capsys.readouterr().out)
+
+    pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
+    pack_registry = json.loads(pack_registry_path.read_text(encoding="utf-8"))
+    pack_registry["packs"].append(scaffold_payload["pack_registry_entry"])
+    pack_registry_path.write_text(f"{json.dumps(pack_registry, indent=2)}\n", encoding="utf-8")
+
+    monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
+
+    result = main(
+        [
+            "pack",
+            "validate",
+            "--pack-settings-path",
+            scaffold_payload["pack_settings_path"],
+            "--format",
+            "json",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+
+    assert result == 0
+    assert scaffold_payload["status"] == "ok"
+    assert payload["command"] == "watchtower-core pack validate"
+    assert payload["pack_settings_path"] == "packs/oversight/.wt/manifests/pack_settings.json"
+    assert payload["passed"] is True

@@ -1,0 +1,24 @@
+{
+  "$id": "urn:watchtower:schema:interfaces:packs:<schema_slug>:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "<pack_title> Note",
+  "description": "Starter pack-local note schema for <pack_slug>.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:<schema_slug>:v1"
+    },
+    "kind": {
+      "const": "<note_slug>"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "$schema",
+    "kind",
+    "title"
+  ],
+  "additionalProperties": false
+}

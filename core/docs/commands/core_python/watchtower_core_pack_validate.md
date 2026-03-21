@@ -54,6 +54,7 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 | Command | Relationship |
 |---|---|
 | `watchtower-core pack` | Parent command group for hosted-pack inspection and validation. |
+| `watchtower-core pack scaffold` | Generates the pack-owned starter surfaces and host-wiring snippets that should exist before validation. |
 | `watchtower-core pack describe` | Shows the hosted pack contract being validated. |
 | `watchtower-core validate all` | Includes pack-contract validation in the broader repository validation pass. |
 | `watchtower-core validate suite` | Runs one pack-declared validation suite after the pack contract itself is valid. |
@@ -63,4 +64,4 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-21T21:05:00Z`
+- `2026-03-22T03:35:00Z`

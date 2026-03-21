@@ -5,10 +5,10 @@ build-backend = "hatchling.build"
 [project]
 name = "watchtower-<pack_slug>"
 version = "0.1.0"
-description = "<Describe the pack-native runtime package.>"
+description = "<pack_title> pack-native runtime package."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = ["watchtower-core"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/watchtower_<pack_slug>"]

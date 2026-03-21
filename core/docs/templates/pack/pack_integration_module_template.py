@@ -29,15 +29,15 @@ def _register_pack_namespace(subparsers) -> None:
 
 
 def _query_runtime() -> PackQueryRuntime:
-    """Return the non-empty pack-owned query command inventory."""
+    """Return the starter pack-owned query command inventory."""
 
-    return PackQueryRuntime(commands=("<first_query_command>",))
+    return PackQueryRuntime(commands=("status",))
 
 
 def _sync_targets() -> PackSyncRuntime:
-    """Return the non-empty pack-owned sync target inventory."""
+    """Return the starter pack-owned sync target inventory."""
 
-    return PackSyncRuntime(targets=("<first_sync_target>",))
+    return PackSyncRuntime(targets=("pack-index",))
 
 
 def _validation_provider() -> PackValidationRuntime:

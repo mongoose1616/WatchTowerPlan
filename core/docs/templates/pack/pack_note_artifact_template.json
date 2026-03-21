@@ -1,0 +1,5 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:<schema_slug>:v1",
+  "kind": "<note_slug>",
+  "title": "<pack_title> Starter Note"
+}

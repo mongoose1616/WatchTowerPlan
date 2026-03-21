@@ -121,6 +121,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.pack.scaffold",
+      "command": "watchtower-core pack scaffold",
+      "summary": "Render the pack-owned starter files for one new hosted pack without mutating the shared pack registry or core workspace dependency graph.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "core/docs/commands/core_python/watchtower_core_pack_scaffold.md",
+      "synopsis": "uv run watchtower-core pack scaffold [-h] --pack-slug PACK_SLUG --pack-root PACK_ROOT [--command-namespace COMMAND_NAMESPACE] [--python-distribution PYTHON_DISTRIBUTION] [--python-package PYTHON_PACKAGE] [--domain-root DOMAIN_ROOT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_host/cli/pack_handlers.py",
+      "package_entrypoint": "watchtower_host.cli.main:main",
+      "parent_command_id": "command.watchtower_core.pack",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "pack",
+        "scaffold"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.pack.validate",
       "command": "watchtower-core pack validate",
       "summary": "Validate one hosted pack contract using the pack registry, runtime manifest, and typed integration descriptor checks.",

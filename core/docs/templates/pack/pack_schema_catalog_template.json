@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "<pack_title> Pack Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:<schema_slug>:v1",
+      "title": "<pack_title> Note",
+      "description": "Minimal pack-local schema used by the starter validation suite.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "<note_slug>",
+      "version": "v1",
+      "canonical_path": "<pack_root>/.wt/schemas/interfaces/packs/<note_slug>.schema.json"
+    }
+  ]
+}

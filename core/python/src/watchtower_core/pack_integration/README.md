@@ -9,6 +9,7 @@ This package holds the reusable contracts and helpers that let `watchtower_host`
 | `core/python/src/watchtower_core/pack_integration/__init__.py` | Typed pack-integration contracts and runtime descriptors. |
 | `core/python/src/watchtower_core/pack_integration/runtime.py` | Generic pack runtime loading and runtime-shape validation helpers. |
 | `core/python/src/watchtower_core/pack_integration/docs.py` | Canonical helpers for pack-owned command-doc roots and namespace entry pages. |
+| `core/python/src/watchtower_core/pack_integration/scaffold.py` | Reusable starter-generation helpers that render hosted-pack template bundles without hard-coding pack specifics into host handlers. |
 
 ## Guidance
 - Keep this package reusable-core only.

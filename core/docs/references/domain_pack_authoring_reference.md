@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T21:58:00Z"
+updated_at: "2026-03-22T03:35:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -77,7 +77,8 @@ Make future packs portable and comprehensible by documenting the intended split 
 
 ### Portable Pack Authoring Checklist
 1. Create the pack-owned root surfaces.
-   - Start from `core/docs/templates/pack/` for the shared registry entry, pack manifests, pack-owned Python package, and namespace command page.
+   - Prefer `uv run watchtower-core pack scaffold --pack-slug <slug> --pack-root <path>` for the starter surface set.
+   - Start from `core/docs/templates/pack/` directly when you need to customize the starter before the first render or when you are working outside the host CLI.
    - Minimum roots: `<pack>/.wt/`, `<pack>/docs/`, `<pack>/workflows/`, `<pack>/tracking/`, and `<pack>/python/`.
    - Add optional `domain_roots` such as `targets/`, `reviews/`, `artifacts/`, or `assessments/` only when the pack truly owns them.
 2. Publish the machine contracts.
@@ -94,6 +95,8 @@ Make future packs portable and comprehensible by documenting the intended split 
    - Keep pack-specific command docs under the pack’s docs root instead of shared core docs.
 5. Register the pack with host composition.
    - Add one entry to `core/control_plane/registries/pack_registry.json`.
+   - Add the scaffold command's `pack_registry_entry` snippet verbatim unless you intentionally need a reviewed variation.
+   - Add the scaffold command's `core_python_workspace_registration` snippet to `core/python/pyproject.toml`, then run `uv sync` in `core/python`.
    - Keep `pack_id`, `pack_slug`, `command_namespace`, `python_distribution`, `python_package`, and manifest paths aligned across the registry and manifests.
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
@@ -109,6 +112,11 @@ Make future packs portable and comprehensible by documenting the intended split 
 | `core/docs/templates/pack/pack_registry_entry_template.json` | Seed the shared hosted-pack registry entry in `core/control_plane/registries/pack_registry.json`. |
 | `core/docs/templates/pack/pack_settings_template.json` | Seed `<pack>/.wt/manifests/pack_settings.json`. |
 | `core/docs/templates/pack/pack_runtime_manifest_template.json` | Seed `<pack>/.wt/manifests/pack_runtime_manifest.json`. |
+| `core/docs/templates/pack/pack_schema_catalog_template.json` | Seed `<pack>/.wt/registries/schema_catalog.json`. |
+| `core/docs/templates/pack/pack_validation_suite_registry_template.json` | Seed `<pack>/.wt/registries/validation_suite_registry.json`. |
+| `core/docs/templates/pack/pack_validator_registry_template.json` | Seed `<pack>/.wt/registries/validator_registry.json`. |
+| `core/docs/templates/pack/pack_note_schema_template.json` | Seed the starter pack-local note schema under `<pack>/.wt/schemas/interfaces/packs/`. |
+| `core/docs/templates/pack/pack_note_artifact_template.json` | Seed the starter pack-local note artifact under `<pack>/.wt/work_items/`. |
 | `core/docs/templates/pack/pack_python_pyproject_template.toml` | Seed `<pack>/python/pyproject.toml`. |
 | `core/docs/templates/pack/pack_package_init_template.py` | Seed `<pack>/python/src/watchtower_<pack>/__init__.py`. |
 | `core/docs/templates/pack/pack_integration_module_template.py` | Seed `<pack>/python/src/watchtower_<pack>/integration.py`. |
@@ -126,6 +134,16 @@ Make future packs portable and comprehensible by documenting the intended split 
 | `<pack>/python/src/watchtower_<pack>/integration.py` | Exports `PACK_INTEGRATION` for host discovery |
 | `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md` | Publishes the pack namespace command-doc entry page |
 | `core/control_plane/registries/pack_registry.json` entry | Registers the pack with shared host composition |
+
+### Hosted Pack Scaffold Command
+```sh
+cd core/python
+uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/oversight --domain-root reviews --format json
+```
+
+- Use the command when you want the pack-owned starter files plus the exact shared-registry and workspace snippets needed to finish host wiring.
+- The command intentionally does not mutate the shared pack registry or `core/python/pyproject.toml` automatically, because a newly registered pack that is not yet installed would break the host parser on the next invocation.
+- Apply the emitted snippets deliberately, run `uv sync`, then use `watchtower-core pack validate --pack-settings-path <path> --format json`.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -185,4 +203,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-21T21:58:00Z`
+- `2026-03-22T03:35:00Z`

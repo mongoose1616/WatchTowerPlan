@@ -20,6 +20,7 @@ def register_pack_family(
     from watchtower_host.cli.pack_handlers import (
         _run_pack_describe,
         _run_pack_list,
+        _run_pack_scaffold,
         _run_pack_validate,
     )
 
@@ -37,6 +38,8 @@ def register_pack_family(
             "uv run watchtower-core pack list --format json",
             "uv run watchtower-core pack describe --pack plan --format json",
             "uv run watchtower-core pack validate --pack plan --format json",
+            "uv run watchtower-core pack scaffold --pack-slug oversight "
+            "--pack-root packs/oversight --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -113,3 +116,56 @@ def register_pack_family(
     )
     add_human_json_format_argument(pack_validate_parser)
     pack_validate_parser.set_defaults(handler=_run_pack_validate)
+
+    pack_scaffold_parser = pack_subparsers.add_parser(
+        "scaffold",
+        help="Render a starter hosted-pack root plus host-wiring snippets.",
+        description=dedent(
+            """
+            Render the pack-owned starter files for one new hosted pack without
+            mutating the shared pack registry or core workspace dependency graph.
+
+            The generated pack is self-consistent and validation-ready once the
+            emitted registry snippet and core-python workspace snippets are
+            applied deliberately.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core pack scaffold --pack-slug oversight "
+            "--pack-root packs/oversight",
+            "uv run watchtower-core pack scaffold --pack-slug reviews "
+            "--pack-root packs/reviews --command-namespace reviews "
+            "--domain-root assessments --domain-root reviews --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    pack_scaffold_parser.add_argument(
+        "--pack-slug",
+        required=True,
+        help="Hosted pack slug such as oversight.",
+    )
+    pack_scaffold_parser.add_argument(
+        "--pack-root",
+        required=True,
+        help="Repository-relative pack root such as packs/oversight.",
+    )
+    pack_scaffold_parser.add_argument(
+        "--command-namespace",
+        help="Optional top-level namespace override. Defaults to --pack-slug.",
+    )
+    pack_scaffold_parser.add_argument(
+        "--python-distribution",
+        help="Optional Python distribution override. Defaults to watchtower-<pack-slug>.",
+    )
+    pack_scaffold_parser.add_argument(
+        "--python-package",
+        help="Optional Python package override. Defaults to watchtower_<pack_slug>.",
+    )
+    pack_scaffold_parser.add_argument(
+        "--domain-root",
+        action="append",
+        default=[],
+        help="Optional pack-local domain root name. Repeat for multiple values.",
+    )
+    add_human_json_format_argument(pack_scaffold_parser)
+    pack_scaffold_parser.set_defaults(handler=_run_pack_scaffold)

@@ -21,7 +21,7 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
    - Confirm command ownership, docs ownership, and pack portability expectations before editing.
 2. Map the integration seam.
    - Identify the typed hooks, manifests, registry entries, named `domain_roots`, pack-owned `python/pyproject.toml`, and validation surfaces the pack must publish.
-   - When the task creates a new pack or a copy-out starter, seed the baseline files from `core/docs/templates/pack/` before adding pack-specific behavior.
+   - When the task creates a new pack or a copy-out starter, prefer `watchtower-core pack scaffold` and fall back to `core/docs/templates/pack/` only when you need to customize the starter before the first render.
    - List the existing direct imports, duplicated helpers, or flat commands that must be removed.
 3. Implement the cutover.
    - Move reusable behavior into `watchtower_core`, host composition into `watchtower_host`, and pack-native behavior into the owning pack.

@@ -288,7 +288,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-21T21:58:00Z",
+      "updated_at": "2026-03-22T03:35:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,

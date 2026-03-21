@@ -10,6 +10,11 @@ from watchtower_core.pack_integration.docs import (
     pack_command_docs_root,
     pack_command_entry_doc_path,
 )
+from watchtower_core.pack_integration.scaffold import (
+    PackScaffoldRequest,
+    PackScaffoldResult,
+    scaffold_hosted_pack,
+)
 
 if TYPE_CHECKING:
     from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -129,8 +134,11 @@ __all__ = [
     "PackSyncTargetProvider",
     "PackValidationRuntime",
     "PackValidationProvider",
+    "PackScaffoldRequest",
+    "PackScaffoldResult",
     "REQUIRED_PACK_CAPABILITIES",
     "SUPPORTED_PACK_CAPABILITIES",
     "pack_command_docs_root",
     "pack_command_entry_doc_path",
+    "scaffold_hosted_pack",
 ]
