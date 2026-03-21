@@ -4,10 +4,14 @@ import sys
 from pathlib import Path
 
 import pytest
-
 import watchtower_plan as public_plan
-import watchtower_core.evidence as public_evidence
+from watchtower_plan.closeout import InitiativeCloseoutService
+from watchtower_plan.validation import (
+    DocumentSemanticsValidationService,
+)
+
 import watchtower_core.closeout as public_closeout
+import watchtower_core.evidence as public_evidence
 import watchtower_core.query as public_query
 import watchtower_core.rebuild as public_rebuild
 import watchtower_core.routing as public_routing
@@ -17,14 +21,10 @@ import watchtower_core.workflow_execution as public_workflow_execution
 from watchtower_core.query import CommandQueryService
 from watchtower_core.query.common import DataclassSearchAdapter
 from watchtower_core.query.rendered_search import RenderedSearchFilters
-from watchtower_core.sync.command_index import CommandIndexSyncService
 from watchtower_core.sync.rendered_tracking import RenderedTrackingSyncService
-from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
-from watchtower_plan.closeout import InitiativeCloseoutService
-from watchtower_plan.validation import (
-    DocumentSemanticsValidationService,
-)
 from watchtower_core.validation.all import ValidationAllService
+from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
+from watchtower_host.cli.command_index import CommandIndexSyncService
 
 CORE_PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
 PLAN_PACKAGE_ROOT = (
@@ -46,7 +46,8 @@ def _iter_import_modules(package_root: Path) -> list[tuple[str, str]]:
     return imports
 
 
-def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries() -> None:
+def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries(
+) -> None:
     assert public_query.AcceptanceContractQueryService.__module__ == (
         "watchtower_core.query.acceptance"
     )
@@ -163,7 +164,6 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
     ]
     assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "sync").glob("*.py")) == [
         "__init__.py",
-        "command_index.py",
         "foundation_index.py",
         "harness.py",
         "path_support.py",
@@ -202,7 +202,9 @@ def test_public_package_roots_reflect_current_core_vs_plan_leaf_modules() -> Non
         "harness.py",
         "rendered_views.py",
     ]
-    assert sorted(path.name for path in (CORE_PACKAGE_ROOT / "workflow_execution").glob("*.py")) == [
+    assert sorted(
+        path.name for path in (CORE_PACKAGE_ROOT / "workflow_execution").glob("*.py")
+    ) == [
         "__init__.py",
         "harness.py",
     ]
@@ -229,6 +231,15 @@ def test_reusable_core_package_does_not_import_plan_runtime_modules() -> None:
     assert offending_imports == []
 
 
+def test_reusable_core_package_does_not_import_host_runtime_modules() -> None:
+    offending_imports = [
+        f"{relative_path}: {module_name}"
+        for relative_path, module_name in _iter_import_modules(CORE_PACKAGE_ROOT)
+        if module_name == "watchtower_host" or module_name.startswith("watchtower_host.")
+    ]
+    assert set(offending_imports) == {"watchtower_core/cli/main.py: watchtower_host.cli.main"}
+
+
 def test_plan_package_does_not_import_host_runtime_modules() -> None:
     offending_imports = [
         f"{relative_path}: {module_name}"
@@ -250,6 +261,7 @@ def test_plan_package_does_not_import_host_runtime_modules() -> None:
         "watchtower_core.closeout.initiative",
         "watchtower_core.closeout.initiative_package",
         "watchtower_core.closeout.purge_trace",
+        "watchtower_core.sync.command_index",
         "watchtower_plan.query.authority",
         "watchtower_plan.query.acceptance",
         "watchtower_plan.query.commands",
@@ -291,7 +303,7 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
 def test_plan_python_boundary_owners_remain_available() -> None:
     assert public_plan.PlanWorkspaceService.__module__ == "watchtower_plan.workspace.service"
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
-    assert CommandIndexSyncService.__module__ == "watchtower_core.sync.command_index"
+    assert CommandIndexSyncService.__module__ == "watchtower_host.cli.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
     assert RenderedSearchFilters.__module__ == "watchtower_core.query.rendered_search"
     assert RenderedTrackingSyncService.__module__ == "watchtower_core.sync.rendered_tracking"

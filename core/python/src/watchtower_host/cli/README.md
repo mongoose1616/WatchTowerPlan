@@ -15,6 +15,7 @@ handlers, root command registry, and parser metadata introspection here.
 - `parser.py`: Root parser construction for the hosted command tree.
 - `registry.py`: Root command-family registry metadata for core commands and registered packs.
 - `introspection.py`: Parser-backed metadata used by command-index rebuilds and CLI validation.
+- `command_index.py`: Host-owned command-index rebuild service over the host-composed parser tree.
 - `doctor_family.py`, `route_family.py`, `query_family.py`, `pack_family.py`, `sync_family.py`, `validate_family.py`: Host-owned root command-family registration.
 - Matching `*_handlers.py` modules: Host-owned root command handlers that delegate to reusable-core runtime surfaces, including the hosted-pack inspection, scaffold, and validation flows.
 

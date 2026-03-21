@@ -4,10 +4,6 @@ from __future__ import annotations
 
 from typing import Literal
 
-from watchtower_core.sync.command_index import (
-    COMMAND_INDEX_ARTIFACT_PATH,
-    CommandIndexSyncService,
-)
 from watchtower_core.sync.foundation_index import (
     FOUNDATION_INDEX_ARTIFACT_PATH,
     FoundationIndexSyncService,
@@ -68,13 +64,6 @@ COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"
 
 
 SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
-    SyncTargetSpec(
-        target="command-index",
-        mode="document",
-        artifact_kind="index",
-        relative_output_path=COMMAND_INDEX_ARTIFACT_PATH,
-        service_factory=CommandIndexSyncService,
-    ),
     SyncTargetSpec(
         target="foundation-index",
         mode="document",

@@ -10,7 +10,7 @@ from watchtower_core.adapters.markdown import (
     parse_markdown_table,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync.command_index import CommandIndexSyncService
+from watchtower_host.cli.command_index import CommandIndexSyncService
 from watchtower_host.cli.introspection import iter_command_parser_specs
 from watchtower_host.cli.parser import build_parser
 

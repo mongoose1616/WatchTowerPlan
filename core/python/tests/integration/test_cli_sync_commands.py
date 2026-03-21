@@ -23,7 +23,10 @@ def _build_live_plan_cli_repo(repo_root: Path) -> Path:
         repo_root,
         trace_id="trace.example_cli_sync_live_counts",
         title="Example CLI Sync Live Counts",
-        summary="Seeds one live initiative so CLI sync output tests assert non-zero live counts against a temp repo.",
+        summary=(
+            "Seeds one live initiative so CLI sync output tests assert non-zero "
+            "live counts against a temp repo."
+        ),
     )
     return repo_root
 
@@ -70,7 +73,6 @@ def test_sync_all_supports_json_output(capsys) -> None:
     assert payload["result_count"] >= 1
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
-    assert any(entry["target"] == "command-index" for entry in payload["results"])
     assert any(entry["target"] == "repository-paths" for entry in payload["results"])
 
 
@@ -387,7 +389,9 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
 def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "standard_index.json"
 
-    result = main(["plan", "sync", "standard-index", "--output", str(output_path), "--format", "json"])
+    result = main(
+        ["plan", "sync", "standard-index", "--output", str(output_path), "--format", "json"]
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
@@ -401,7 +405,9 @@ def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys
 def test_sync_workflow_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "workflow_index.json"
 
-    result = main(["plan", "sync", "workflow-index", "--output", str(output_path), "--format", "json"])
+    result = main(
+        ["plan", "sync", "workflow-index", "--output", str(output_path), "--format", "json"]
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
@@ -495,7 +501,9 @@ def test_sync_task_index_can_write_to_explicit_output(tmp_path: Path, capsys) ->
 def test_sync_task_tracking_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "task_tracking.md"
 
-    result = main(["plan", "sync", "task-tracking", "--output", str(output_path), "--format", "json"])
+    result = main(
+        ["plan", "sync", "task-tracking", "--output", str(output_path), "--format", "json"]
+    )
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)

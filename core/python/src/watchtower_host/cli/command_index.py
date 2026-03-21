@@ -1,4 +1,4 @@
-"""Deterministic rebuild helpers for the command index."""
+"""Host-owned rebuild helper for the command index."""
 
 from __future__ import annotations
 
@@ -11,11 +11,11 @@ from watchtower_core.adapters.markdown import (
     load_markdown_body,
     parse_markdown_table,
 )
-from watchtower_host.cli.introspection import iter_command_parser_specs
-from watchtower_host.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CommandIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_host.cli.introspection import iter_command_parser_specs
+from watchtower_host.cli.parser import build_parser
 
 COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
 
@@ -103,7 +103,7 @@ def _load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
 
 
 class CommandIndexSyncService:
-    """Build and write the command index from registry-backed CLI metadata."""
+    """Build and write the command index from host-composed CLI metadata."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
@@ -218,3 +218,6 @@ class CommandIndexSyncService:
                     f"Subcommand points to a missing parent command: {entry.command_id} -> "
                     f"{entry.parent_command_id}"
                 )
+
+
+__all__ = ["COMMAND_INDEX_ARTIFACT_PATH", "CommandIndexSyncService"]

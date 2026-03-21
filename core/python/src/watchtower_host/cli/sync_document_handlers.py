@@ -33,7 +33,7 @@ _DOCUMENT_SYNC_HANDLER_SPECS: tuple[_DocumentHandlerSpec, ...] = (
     {
         "handler_key": "command_index",
         "export_name": "_run_sync_command_index",
-        "module_name": "watchtower_core.sync.command_index",
+        "module_name": "watchtower_host.cli.command_index",
         "class_name": "CommandIndexSyncService",
         "command_name": "watchtower-core sync command-index",
         "artifact_label": "command index",
@@ -78,6 +78,5 @@ globals().update(
 
 __all__ = [
     "DOCUMENT_SYNC_HANDLERS",
-    "_run_sync_document_command",
     *[spec["export_name"] for spec in _DOCUMENT_SYNC_HANDLER_SPECS],
 ]

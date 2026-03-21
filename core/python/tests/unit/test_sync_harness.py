@@ -2,11 +2,11 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync.command_index import (
+from watchtower_core.sync import SyncHarness, SyncTargetSpec
+from watchtower_host.cli.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )
-from watchtower_core.sync import SyncHarness, SyncTargetSpec
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
