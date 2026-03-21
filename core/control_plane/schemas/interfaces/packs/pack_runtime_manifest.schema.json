@@ -92,7 +92,17 @@
   "$defs": {
     "rootPath": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "domainRoots": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/rootPath"
+      }
     },
     "ownedRoots": {
       "type": "object",
@@ -128,6 +138,9 @@
         },
         "projects_root": {
           "$ref": "#/$defs/rootPath"
+        },
+        "domain_roots": {
+          "$ref": "#/$defs/domainRoots"
         }
       },
       "additionalProperties": false

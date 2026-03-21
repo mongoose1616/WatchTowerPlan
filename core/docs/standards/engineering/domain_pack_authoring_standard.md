@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "domain_pack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T02:20:00Z"
+updated_at: "2026-03-21T21:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,8 +47,10 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - Keep pack-owned workflow modules under the owning pack workflow root.
 - Keep `.wt/` reserved for machine state, manifests, registries, policies, and indexes. Do not put Python source or hand-maintained prose there.
 - Build pack-native Python around features and domain flows, not mirrored copies of reusable-core package taxonomy.
+- Keep pack contract paths repository-relative and portable. Absolute paths and parent traversal in pack manifests or settings are invalid.
 - Publish typed query and sync runtimes through the pack integration descriptor rather than placeholder hooks or ad hoc tuples.
 - Publish non-empty query command and sync target inventories so host inspection and pack validation can fail closed on incomplete pack wiring.
+- Use `domain_roots` to name optional pack-specific roots such as `reviews`, `assessments`, or `targets`. Only keep legacy `initiatives_root` or `projects_root` fields when a live pack runtime still depends on them.
 - A copied-out pack should require packaging, installation, and declared-path updates only. Hidden repo-local Python path tricks are not allowed.
 
 ## Structure or Data Model
@@ -93,4 +95,4 @@ Keep hosted packs portable, comprehensible, and validator-friendly by standardiz
 - The goal is one repeatable pack model, not one-off repo-specific exceptions.
 
 ## Updated At
-- `2026-03-21T02:20:00Z`
+- `2026-03-21T21:05:00Z`

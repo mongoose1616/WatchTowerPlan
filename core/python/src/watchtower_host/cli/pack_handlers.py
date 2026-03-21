@@ -127,6 +127,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
                 "python_root": manifest.owned_roots.python_root,
                 "initiatives_root": manifest.owned_roots.initiatives_root,
                 "projects_root": manifest.owned_roots.projects_root,
+                "domain_roots": dict(manifest.owned_roots.domain_roots),
             },
         },
         "integration": {
@@ -171,6 +172,13 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
             f"tracking={manifest.owned_roots.tracking_root}, "
             f"python={manifest.owned_roots.python_root}"
         )
+        if manifest.owned_roots.domain_roots:
+            print(
+                "Domain Roots: "
+                + ", ".join(
+                    f"{name}={path}" for name, path in manifest.owned_roots.domain_roots
+                )
+            )
         print(
             "Integration Import: "
             + ("ok" if integration_importable else f"failed ({integration_error})")

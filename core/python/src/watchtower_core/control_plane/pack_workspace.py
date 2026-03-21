@@ -56,6 +56,11 @@ class PackWorkspacePaths:
         """Build one workspace helper from one typed pack-settings document."""
 
         roots = pack_settings.workspace_roots
+        if roots.initiatives_root is None or roots.projects_root is None:
+            raise ValueError(
+                "PackWorkspacePaths requires initiative-aware workspace roots with "
+                "initiatives_root and projects_root."
+            )
         return cls(
             pack_id=pack_settings.pack_id,
             pack_settings_path=pack_settings_path,

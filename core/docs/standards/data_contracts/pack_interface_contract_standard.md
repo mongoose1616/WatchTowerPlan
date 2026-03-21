@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T03:35:00Z"
+updated_at: "2026-03-21T21:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -44,14 +44,19 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - `pack_settings` remains the pack load-root contract for owned surfaces and defaults.
 - `pack_runtime_manifest` owns Python integration declarations, command namespace, declared capabilities, and owned runtime roots.
 - `pack_registry` is the shared hosted-pack inventory used by host composition and validation.
+- Keep manifest and registry paths repository-relative and portable. Absolute paths and parent traversal are invalid hosted-pack contract input.
+- Keep `pack_settings.json` and `pack_runtime_manifest.json` directly under the declared `machine_root/manifests/` directory.
 - Validate machine contracts before importing any pack integration module.
 - Declare one integration module exporting one typed `PACK_INTEGRATION` descriptor per hosted pack.
+- Keep `integration_module` under the declared `python_package`; host composition must not reach sideways into unrelated packages.
 - `query_runtime` must return a typed query runtime describing the pack-owned query command surface.
 - `sync_targets` must return a typed sync runtime describing the pack-owned sync target surface.
 - Keep command namespaces unique across the hosted-pack registry.
+- Keep pack-settings surfaces pack-local unless they intentionally point at shared core control-plane authority under `core/control_plane/`.
 - Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
 - Let pack-interface validation scan live source roots when they exist so reusable core cannot import a hosted pack and a hosted pack cannot import host composition.
 - Do not hide primary hosted-pack discovery behind Python entry points or naming conventions alone.
+- Use `domain_roots` for optional pack-specific roots beyond the shared workspace roots. Legacy plan-specific `initiatives_root` and `projects_root` remain allowed only where the current plan runtime still depends on them, and they must agree with `domain_roots` when both are present.
 
 ## Structure or Data Model
 ### Required machine contracts
@@ -71,6 +76,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | `integration_module` | Required | Import string for the typed pack descriptor |
 | `declared_capabilities` | Required | Must align with the integration descriptor hooks |
 | `owned_roots` | Required | Must match the owning pack roots |
+| `owned_roots.domain_roots` | Optional | Names optional pack-specific roots such as `reviews`, `assessments`, or `targets` |
 | `required_validation_suite_ids` | Required | Used by pack-interface validation |
 
 ### Required validation checks
@@ -86,6 +92,10 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 | Sync-runtime target set shape | Pass |
 | Owned-root consistency | Pass |
 | Owned-root existence and pack-local placement | Pass |
+| Manifest path parity with `machine_root` | Pass |
+| Pack-settings surface locality | Pass |
+| Integration module stays under `python_package` | Pass |
+| Named `domain_roots` parity across settings and runtime manifest | Pass |
 | Pack namespace command-doc entry page present | Pass |
 | Required validation suites present | Pass |
 | Dependency-direction scan across core, host, and pack source roots | Pass |
@@ -100,6 +110,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - Reviewers should reject hosted-pack changes that update only Python hooks or only manifests without the companion governed artifacts.
 - Reviewers should reject command namespace collisions, missing declared hooks, or pack manifests that point at non-existent roots.
 - Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
+- Reviewers should reject pack manifests or pack-settings surfaces that use absolute paths, parent traversal, or non-pack-local paths outside `core/control_plane/`.
+- Reviewers should reject runtime manifests whose integration module falls outside the declared pack python package.
 
 ## Change Control
 - Update this standard when the hosted-pack registry shape, runtime-manifest contract, or required validation behavior changes materially.
@@ -114,4 +126,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-21T03:35:00Z`
+- `2026-03-21T21:05:00Z`

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import ast
 import importlib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
@@ -105,7 +105,9 @@ class PackContractValidationService:
                 manifest_python_package=runtime_manifest.python_package,
             )
         )
+        issues.extend(_manifest_path_issues(context, runtime_manifest))
         issues.extend(_owned_root_issues(context, runtime_manifest))
+        issues.extend(_surface_path_issues(context))
         issues.extend(_command_doc_issues(context, runtime_manifest))
         issues.extend(_validation_suite_issues(context, runtime_manifest))
         issues.extend(_integration_issues(runtime_manifest))
@@ -190,6 +192,40 @@ def _owned_root_issues(
                 repo_root=context.loader.repo_root,
             )
         )
+    expected_domain_roots, expected_domain_root_issues = _merged_domain_roots(
+        initiatives_root=workspace_roots.initiatives_root,
+        projects_root=workspace_roots.projects_root,
+        domain_roots=workspace_roots.domain_root_map(),
+        location=context.pack_settings_path,
+    )
+    actual_domain_roots, actual_domain_root_issues = _merged_domain_roots(
+        initiatives_root=owned_roots.initiatives_root,
+        projects_root=owned_roots.projects_root,
+        domain_roots=owned_roots.domain_root_map(),
+        location=context.loader.pack_runtime_manifest_path(context.pack_settings_path),
+    )
+    issues.extend(expected_domain_root_issues)
+    issues.extend(actual_domain_root_issues)
+    if expected_domain_roots != actual_domain_roots:
+        issues.append(
+            ValidationIssue(
+                code="pack_domain_roots_mismatch",
+                message=(
+                    "Pack named domain roots must match between pack settings and the "
+                    f"runtime manifest: {expected_domain_roots} != {actual_domain_roots}"
+                ),
+                location=context.pack_settings_path,
+            )
+        )
+    for root_name, relative_path in actual_domain_roots.items():
+        issues.extend(
+            _owned_root_location_issues(
+                workspace_root=owned_roots.workspace_root,
+                field_name=f"domain_roots.{root_name}",
+                relative_path=relative_path,
+                repo_root=context.loader.repo_root,
+            )
+        )
     return tuple(issues)
 
 
@@ -219,6 +255,53 @@ def _expected_python_root(workspace_root: str) -> str:
     return f"{workspace_root}/python"
 
 
+def _expected_manifest_path(machine_root: str, filename: str) -> str:
+    return f"{machine_root}/manifests/{filename}"
+
+
+def _manifest_path_issues(
+    context: PackValidationContext,
+    runtime_manifest,
+) -> tuple[ValidationIssue, ...]:
+    expected_pack_settings_path = _expected_manifest_path(
+        context.workspace_roots.machine_root,
+        "pack_settings.json",
+    )
+    expected_runtime_manifest_path = _expected_manifest_path(
+        runtime_manifest.owned_roots.machine_root,
+        "pack_runtime_manifest.json",
+    )
+    issues: list[ValidationIssue] = []
+    if context.pack_settings_path != expected_pack_settings_path:
+        issues.append(
+            ValidationIssue(
+                code="pack_settings_path_not_under_machine_root",
+                message=(
+                    "Pack settings must live directly under the declared machine-root "
+                    f"manifest directory: {context.pack_settings_path} != "
+                    f"{expected_pack_settings_path}"
+                ),
+                location=context.pack_settings_path,
+            )
+        )
+    actual_runtime_manifest_path = context.loader.pack_runtime_manifest_path(
+        context.pack_settings_path
+    )
+    if actual_runtime_manifest_path != expected_runtime_manifest_path:
+        issues.append(
+            ValidationIssue(
+                code="pack_runtime_manifest_path_not_under_machine_root",
+                message=(
+                    "Pack runtime manifest must live directly under the declared "
+                    f"machine-root manifest directory: {actual_runtime_manifest_path} "
+                    f"!= {expected_runtime_manifest_path}"
+                ),
+                location=actual_runtime_manifest_path,
+            )
+        )
+    return tuple(issues)
+
+
 def _owned_root_location_issues(
     *,
     workspace_root: str,
@@ -229,6 +312,13 @@ def _owned_root_location_issues(
     if not relative_path:
         return ()
     issues: list[ValidationIssue] = []
+    issues.extend(
+        _repo_relative_path_issues(
+            relative_path,
+            code="pack_owned_root_not_repo_relative",
+            message_prefix="Pack owned root must stay repository-relative and portable",
+        )
+    )
     if relative_path != workspace_root and not relative_path.startswith(f"{workspace_root}/"):
         issues.append(
             ValidationIssue(
@@ -246,6 +336,40 @@ def _owned_root_location_issues(
                 code="pack_owned_root_missing",
                 message=f"Pack owned root is missing from the repository: {relative_path}",
                 location=relative_path,
+            )
+        )
+    return tuple(issues)
+
+
+def _surface_path_issues(
+    context: PackValidationContext,
+) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    workspace_root = context.workspace_roots.workspace_root
+    for declaration in context.pack_settings.surfaces:
+        issues.extend(
+            _repo_relative_path_issues(
+                declaration.path,
+                code="pack_surface_path_not_repo_relative",
+                message_prefix=(
+                    "Pack settings surfaces must stay repository-relative and portable"
+                ),
+            )
+        )
+        if declaration.path.startswith("core/control_plane/"):
+            continue
+        if declaration.path == workspace_root or declaration.path.startswith(
+            f"{workspace_root}/"
+        ):
+            continue
+        issues.append(
+            ValidationIssue(
+                code="pack_surface_not_pack_or_core_local",
+                message=(
+                    "Pack settings may only reference shared core control-plane surfaces "
+                    f"or pack-local paths: {declaration.surface_name} -> {declaration.path}"
+                ),
+                location=declaration.path,
             )
         )
     return tuple(issues)
@@ -277,6 +401,19 @@ def _validation_suite_issues(
 
 def _integration_issues(runtime_manifest) -> tuple[ValidationIssue, ...]:
     issues: list[ValidationIssue] = []
+    if runtime_manifest.integration_module != runtime_manifest.python_package and not (
+        runtime_manifest.integration_module.startswith(f"{runtime_manifest.python_package}.")
+    ):
+        issues.append(
+            ValidationIssue(
+                code="pack_integration_module_not_pack_local",
+                message=(
+                    "Pack runtime manifest integration_module must stay inside the "
+                    "declared pack python package."
+                ),
+                location=runtime_manifest.integration_module,
+            )
+        )
     unsupported_capabilities = set(runtime_manifest.declared_capabilities).difference(
         SUPPORTED_PACK_CAPABILITIES
     )
@@ -545,3 +682,62 @@ def _module_matches_forbidden_prefix(
         module_name == prefix or module_name.startswith(f"{prefix}.")
         for prefix in forbidden_prefixes
     )
+
+
+def _merged_domain_roots(
+    *,
+    initiatives_root: str | None,
+    projects_root: str | None,
+    domain_roots: dict[str, str],
+    location: str,
+) -> tuple[dict[str, str], tuple[ValidationIssue, ...]]:
+    merged = dict(domain_roots)
+    issues: list[ValidationIssue] = []
+    for legacy_name, legacy_value in (
+        ("initiatives", initiatives_root),
+        ("projects", projects_root),
+    ):
+        if legacy_value is None:
+            continue
+        existing = merged.get(legacy_name)
+        if existing is not None and existing != legacy_value:
+            issues.append(
+                ValidationIssue(
+                    code="pack_domain_root_legacy_mismatch",
+                    message=(
+                        "Legacy domain-root fields must match the named domain_roots map: "
+                        f"{legacy_name} -> {existing} != {legacy_value}"
+                    ),
+                    location=location,
+                )
+            )
+            continue
+        merged[legacy_name] = legacy_value
+    return merged, tuple(issues)
+
+
+def _repo_relative_path_issues(
+    relative_path: str,
+    *,
+    code: str,
+    message_prefix: str,
+) -> tuple[ValidationIssue, ...]:
+    path = PurePosixPath(relative_path)
+    issues: list[ValidationIssue] = []
+    if path.is_absolute():
+        issues.append(
+            ValidationIssue(
+                code=code,
+                message=f"{message_prefix}: absolute paths are not allowed ({relative_path})",
+                location=relative_path,
+            )
+        )
+    if ".." in path.parts:
+        issues.append(
+            ValidationIssue(
+                code=code,
+                message=f"{message_prefix}: parent traversal is not allowed ({relative_path})",
+                location=relative_path,
+            )
+        )
+    return tuple(issues)

@@ -39,6 +39,10 @@ def test_pack_describe_supports_json_output(capsys) -> None:
     assert payload["pack"]["pack_slug"] == "plan"
     assert payload["runtime_manifest"]["integration_module"] == "watchtower_plan.integration"
     assert "query_runtime" in payload["runtime_manifest"]["declared_capabilities"]
+    assert payload["runtime_manifest"]["owned_roots"]["domain_roots"] == {
+        "initiatives": "plan/initiatives",
+        "projects": "plan/projects",
+    }
     assert "coordination" in payload["integration"]["query_runtime_commands"]
     assert payload["integration"]["query_runtime_error"] is None
     assert "all" in payload["integration"]["sync_runtime_targets"]

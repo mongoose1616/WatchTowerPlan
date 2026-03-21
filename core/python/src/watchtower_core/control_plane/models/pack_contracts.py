@@ -12,6 +12,12 @@ def _tuple_of_strings(document: dict[str, Any], key: str) -> tuple[str, ...]:
     return tuple(document.get(key, ()))
 
 
+def _mapping_of_strings(document: dict[str, Any], key: str) -> tuple[tuple[str, str], ...]:
+    """Return one optional mapping-of-string field as a stable tuple."""
+
+    return tuple(sorted((str(name), str(path)) for name, path in document.get(key, {}).items()))
+
+
 @dataclass(frozen=True, slots=True)
 class PackWorkspaceRoots:
     """Declared repository-relative workspace roots for one active pack."""
@@ -21,9 +27,10 @@ class PackWorkspaceRoots:
     docs_root: str
     workflows_root: str
     tracking_root: str
-    initiatives_root: str
-    projects_root: str
     overview_path: str
+    initiatives_root: str | None = None
+    projects_root: str | None = None
+    domain_roots: tuple[tuple[str, str], ...] = ()
 
     @classmethod
     def from_document(cls, document: dict[str, Any]) -> PackWorkspaceRoots:
@@ -33,10 +40,16 @@ class PackWorkspaceRoots:
             docs_root=document["docs_root"],
             workflows_root=document["workflows_root"],
             tracking_root=document["tracking_root"],
-            initiatives_root=document["initiatives_root"],
-            projects_root=document["projects_root"],
             overview_path=document["overview_path"],
+            initiatives_root=document.get("initiatives_root"),
+            projects_root=document.get("projects_root"),
+            domain_roots=_mapping_of_strings(document, "domain_roots"),
         )
+
+    def domain_root_map(self) -> dict[str, str]:
+        """Return optional named domain roots as a regular mapping."""
+
+        return dict(self.domain_roots)
 
 
 @dataclass(frozen=True, slots=True)
@@ -198,6 +211,7 @@ class PackOwnedRoots:
     python_root: str
     initiatives_root: str | None = None
     projects_root: str | None = None
+    domain_roots: tuple[tuple[str, str], ...] = ()
 
     @classmethod
     def from_document(cls, document: dict[str, Any]) -> PackOwnedRoots:
@@ -210,7 +224,13 @@ class PackOwnedRoots:
             python_root=document["python_root"],
             initiatives_root=document.get("initiatives_root"),
             projects_root=document.get("projects_root"),
+            domain_roots=_mapping_of_strings(document, "domain_roots"),
         )
+
+    def domain_root_map(self) -> dict[str, str]:
+        """Return optional named domain roots as a regular mapping."""
+
+        return dict(self.domain_roots)
 
 
 @dataclass(frozen=True, slots=True)

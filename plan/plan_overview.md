@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
 - `recommended_surface_path`: `plan/initiatives/domain_pack_externalization_portability_proof/plan.md`
 
 ## Active Pack-Wide Initiatives
@@ -13,7 +13,7 @@
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract` (high) in `trace.domain_pack_externalization_portability_proof` -> `plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/define_portable_pack_capsule_and_validation_contract/task.json`
+- None.
 
 ## Recent Completions or Changes
 - `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.

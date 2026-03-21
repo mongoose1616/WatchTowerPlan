@@ -86,8 +86,7 @@
           ]
         },
         "path": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "authority": {
           "type": "string",
@@ -119,6 +118,20 @@
       },
       "additionalProperties": false
     },
+    "rootPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "domainRoots": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/rootPath"
+      }
+    },
     "workspaceRoots": {
       "type": "object",
       "required": [
@@ -127,42 +140,35 @@
         "docs_root",
         "workflows_root",
         "tracking_root",
-        "initiatives_root",
-        "projects_root",
         "overview_path"
       ],
       "properties": {
         "workspace_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "machine_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "docs_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "workflows_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "tracking_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "initiatives_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         },
         "projects_root": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
+        },
+        "domain_roots": {
+          "$ref": "#/$defs/domainRoots"
         },
         "overview_path": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/rootPath"
         }
       },
       "additionalProperties": false

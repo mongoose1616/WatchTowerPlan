@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-21T00:49:36Z",
+  "updated_at": "2026-03-21T01:04:01Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -37,7 +37,7 @@
       "evidence_refs": [
         "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-21T00:49:36Z",
+      "updated_at": "2026-03-21T01:04:01Z",
       "lifecycle_stage": "in_progress",
       "ready_for_execution": true
     },

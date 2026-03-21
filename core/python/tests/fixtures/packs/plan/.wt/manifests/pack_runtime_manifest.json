@@ -3,7 +3,7 @@
   "surface_name": "pack_runtime_manifest",
   "contract_version": "v1",
   "description": "Fixture runtime manifest for the plan validation pack.",
-  "updated_at": "2026-03-20T22:10:00Z",
+  "updated_at": "2026-03-21T21:05:00Z",
   "pack_id": "pack.plan",
   "pack_slug": "plan",
   "command_namespace": "plan",
@@ -27,6 +27,10 @@
     "tracking_root": "packs/plan/tracking",
     "python_root": "packs/plan/python",
     "initiatives_root": "packs/plan/initiatives",
-    "projects_root": "packs/plan/projects"
+    "projects_root": "packs/plan/projects",
+    "domain_roots": {
+      "initiatives": "packs/plan/initiatives",
+      "projects": "packs/plan/projects"
+    }
   }
 }

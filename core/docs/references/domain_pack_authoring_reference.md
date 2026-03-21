@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T03:35:00Z"
+updated_at: "2026-03-21T21:05:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -64,11 +64,15 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Keep generic logic in reusable core unless it is truly pack-specific.
 - Let the host be the only layer that composes reusable core with one or more packs.
 - Make the pack portable: copy-out should require packaging or installation updates, not Python code rewrites.
+- Keep pack-manifest and pack-settings paths repository-relative, portable, and directly rooted under the declared machine root.
 - Prefer feature-owned modules inside a pack such as `bootstrap`, `initiatives`, `projects`, `tasks`, or `reviews` instead of mirroring generic core package families.
 - Keep machine interface declarations in governed manifests and registries, not hidden in Python import conventions.
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
+- Keep `integration_module` under the pack’s declared `python_package`; jumping out into unrelated packages weakens copy-out portability.
+- Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
+- Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
 
 ### Worked Comparison
 | Concern | `plan` Pack Shape | Future `oversight`-style Pack Shape |
@@ -82,6 +86,7 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Putting pack-native orchestration back into `watchtower_core` creates hidden coupling and blocks future pack reuse.
 - Recreating `query`, `sync`, or `validation` package trees inside every pack can turn packs into mirrored copies of core instead of domain runtimes.
 - Letting a pack depend on repository-specific path hacks breaks copy-out portability.
+- Letting a manifest point outside the pack or shared core control-plane roots introduces hidden repository coupling.
 - Importing `watchtower_host` from pack code or importing pack code from `watchtower_core` violates the hosted-pack contract and should fail validation.
 - Keeping pack command docs in shared core docs muddies ownership and makes additional packs awkward.
 - Omitting the pack namespace entry page breaks deterministic command-doc lookup and should fail pack validation.
@@ -126,4 +131,4 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-21T03:35:00Z`
+- `2026-03-21T21:05:00Z`

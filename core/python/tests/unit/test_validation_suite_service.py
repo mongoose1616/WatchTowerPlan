@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from dataclasses import replace
 from pathlib import Path
-from shutil import rmtree
+from shutil import copy2, rmtree
 
 import pytest
 
@@ -98,6 +98,54 @@ def test_pack_contract_validation_fails_when_docs_root_is_not_pack_local(
 
     assert result.passed is False
     assert any(issue.code == "pack_owned_root_not_pack_local" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_named_domain_roots_drift(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
+    runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
+    runtime_manifest["owned_roots"]["domain_roots"]["initiatives"] = "packs/plan/traces"
+    runtime_manifest_path.write_text(
+        f"{json.dumps(runtime_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_domain_roots_mismatch" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_pack_settings_surface_leaves_pack_and_core(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    pack_settings_path = repo_root / surfaces["pack_settings_path"]
+    pack_settings = json.loads(pack_settings_path.read_text(encoding="utf-8"))
+    relocated_surface = repo_root / "shared" / "schema_catalog.json"
+    relocated_surface.parent.mkdir(parents=True, exist_ok=True)
+    copy2(
+        repo_root / "packs" / "plan" / ".wt" / "registries" / "schema_catalog.json",
+        relocated_surface,
+    )
+    pack_settings["surfaces"][0]["path"] = "shared/schema_catalog.json"
+    pack_settings_path.write_text(
+        f"{json.dumps(pack_settings, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_surface_not_pack_or_core_local" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_reusable_core_imports_pack_runtime(
@@ -230,6 +278,27 @@ def test_pack_contract_validation_fails_when_validation_provider_returns_invalid
 
     assert result.passed is False
     assert any(issue.code == "pack_validation_provider_invalid" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_integration_module_is_not_pack_local(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
+    runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
+    runtime_manifest["integration_module"] = "watchtower_host.cli.main"
+    runtime_manifest_path.write_text(
+        f"{json.dumps(runtime_manifest, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_integration_module_not_pack_local" for issue in result.issues)
 
 
 def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runtime(

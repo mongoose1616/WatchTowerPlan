@@ -20,14 +20,14 @@ Use this workflow to implement or refactor the reusable-core, host-runtime, and 
    - Confirm what belongs in reusable core, host composition, and the owning pack.
    - Confirm command ownership, docs ownership, and pack portability expectations before editing.
 2. Map the integration seam.
-   - Identify the typed hooks, manifests, registry entries, and validation surfaces the pack must publish.
+   - Identify the typed hooks, manifests, registry entries, named `domain_roots`, and validation surfaces the pack must publish.
    - List the existing direct imports, duplicated helpers, or flat commands that must be removed.
 3. Implement the cutover.
    - Move reusable behavior into `watchtower_core`, host composition into `watchtower_host`, and pack-native behavior into the owning pack.
    - Update companion docs, routing, machine-readable contract surfaces, and the pack namespace command entry page in the same change set.
 4. Validate the contract.
    - Run pack-interface validation, import-boundary checks, and targeted command or portability proofs.
-   - Fail closed on namespace collisions, missing hooks, invalid manifests, pack-owned docs rooted outside the pack, missing pack namespace command docs, or hidden repository-only assumptions.
+   - Fail closed on namespace collisions, missing hooks, invalid manifests, pack-owned docs rooted outside the pack, manifest paths outside the declared machine root, integration modules outside the pack package, missing pack namespace command docs, or hidden repository-only assumptions.
 
 ## Data Structure
 - Layer ownership map

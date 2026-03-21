@@ -486,6 +486,80 @@ def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:
             store.validate_instance(invalid_document, schema_id=schema_id)
 
 
+def test_schema_store_accepts_generic_pack_contract_roots_without_plan_specific_fields() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    store.validate_instance(
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+            "surface_name": "pack_settings",
+            "contract_version": "v1",
+            "description": "Generic pack settings payload.",
+            "updated_at": "2026-03-21T21:05:00Z",
+            "pack_id": "pack.oversight",
+            "workspace_roots": {
+                "workspace_root": "packs/oversight",
+                "machine_root": "packs/oversight/.wt",
+                "docs_root": "packs/oversight/docs",
+                "workflows_root": "packs/oversight/workflows",
+                "tracking_root": "packs/oversight/tracking",
+                "domain_roots": {
+                    "reviews": "packs/oversight/reviews",
+                    "assessments": "packs/oversight/assessments"
+                },
+                "overview_path": "packs/oversight/overview.md"
+            },
+            "default_validation_suite_id": "suite.oversight.validation_baseline",
+            "surfaces": [
+                {
+                    "surface_name": "schema_catalog",
+                    "surface_kind": "schema_collection",
+                    "path": "core/control_plane/registries/schema_catalog.json",
+                    "authority": "authoritative",
+                    "visibility": "hidden"
+                }
+            ]
+        },
+        schema_id="urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+    )
+
+    store.validate_instance(
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+            "surface_name": "pack_runtime_manifest",
+            "contract_version": "v1",
+            "description": "Generic runtime manifest payload.",
+            "updated_at": "2026-03-21T21:05:00Z",
+            "pack_id": "pack.oversight",
+            "pack_slug": "oversight",
+            "command_namespace": "oversight",
+            "python_distribution": "watchtower-oversight",
+            "python_package": "watchtower_oversight",
+            "integration_module": "watchtower_oversight.integration",
+            "declared_capabilities": [
+                "command_registration",
+                "query_runtime",
+                "sync_targets",
+                "validation_provider"
+            ],
+            "required_validation_suite_ids": ["suite.oversight.validation_baseline"],
+            "owned_roots": {
+                "workspace_root": "packs/oversight",
+                "machine_root": "packs/oversight/.wt",
+                "docs_root": "packs/oversight/docs",
+                "workflows_root": "packs/oversight/workflows",
+                "tracking_root": "packs/oversight/tracking",
+                "python_root": "packs/oversight/python",
+                "domain_roots": {
+                    "reviews": "packs/oversight/reviews",
+                    "assessments": "packs/oversight/assessments"
+                }
+            }
+        },
+        schema_id="urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
+    )
+
+
 def test_schema_store_rejects_unknown_schema_id() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 

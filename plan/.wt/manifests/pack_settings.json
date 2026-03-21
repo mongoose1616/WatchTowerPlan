@@ -3,7 +3,7 @@
   "surface_name": "pack_settings",
   "contract_version": "v1",
   "description": "Plan-pack settings load root for the active pack-driven workspace.",
-  "updated_at": "2026-03-17T22:39:20Z",
+  "updated_at": "2026-03-21T21:05:00Z",
   "pack_id": "pack.plan",
   "surfaces": [
     {
@@ -188,6 +188,10 @@
     "tracking_root": "plan/tracking",
     "initiatives_root": "plan/initiatives",
     "projects_root": "plan/projects",
+    "domain_roots": {
+      "initiatives": "plan/initiatives",
+      "projects": "plan/projects"
+    },
     "overview_path": "plan/plan_overview.md"
   },
   "default_validation_suite_id": "suite.plan.validation_baseline"

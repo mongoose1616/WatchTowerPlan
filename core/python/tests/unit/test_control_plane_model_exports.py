@@ -119,6 +119,11 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                 "tracking_root": "packs/example/tracking",
                 "initiatives_root": "packs/example/initiatives",
                 "projects_root": "packs/example/projects",
+                "domain_roots": {
+                    "initiatives": "packs/example/initiatives",
+                    "projects": "packs/example/projects",
+                    "reviews": "packs/example/reviews"
+                },
                 "overview_path": "packs/example/overview.md",
             },
             "default_validation_suite_id": "suite.example.validation_baseline",
@@ -195,12 +200,17 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                 "workflows_root": "packs/example/workflows",
                 "tracking_root": "packs/example/tracking",
                 "python_root": "packs/example/python",
+                "domain_roots": {
+                    "reviews": "packs/example/reviews"
+                }
             },
         }
     )
 
     assert pack_registry.default_pack().pack_slug == "example"
     assert runtime_manifest.owned_roots.python_root == "packs/example/python"
+    assert pack_settings.workspace_roots.domain_root_map()["reviews"] == "packs/example/reviews"
+    assert runtime_manifest.owned_roots.domain_root_map()["reviews"] == "packs/example/reviews"
 
 
 def test_control_plane_models_export_validation_suite_registry_types() -> None:

@@ -60,6 +60,10 @@
       "type": "string",
       "pattern": "^[a-z][a-z0-9_]*$"
     },
+    "repoRelativeManifestPath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+/\\.wt/manifests/[a-z_]+\\.json$"
+    },
     "packRecord": {
       "type": "object",
       "required": [
@@ -82,12 +86,24 @@
           "$ref": "#/$defs/packSlug"
         },
         "pack_settings_path": {
-          "type": "string",
-          "pattern": "^(?:core/control_plane|packs/.+/\\.wt|plan/\\.wt)/.+\\.json$"
+          "allOf": [
+            {
+              "$ref": "#/$defs/repoRelativeManifestPath"
+            },
+            {
+              "pattern": "/pack_settings\\.json$"
+            }
+          ]
         },
         "pack_runtime_manifest_path": {
-          "type": "string",
-          "pattern": "^(?:packs/.+/\\.wt|plan/\\.wt)/manifests/pack_runtime_manifest\\.json$"
+          "allOf": [
+            {
+              "$ref": "#/$defs/repoRelativeManifestPath"
+            },
+            {
+              "pattern": "/pack_runtime_manifest\\.json$"
+            }
+          ]
         },
         "python_distribution": {
           "$ref": "#/$defs/pythonDistribution"
