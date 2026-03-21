@@ -9,14 +9,14 @@ from pathlib import Path
 from watchtower_core.adapters import parse_markdown_table
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-
-ROUTING_TABLE_DOCUMENT_PATHS = (
-    "core/workflows/ROUTING_TABLE.md",
-    "plan/workflows/ROUTING_TABLE.md",
+from watchtower_core.pack_integration.roots import (
+    pack_routing_table_paths,
+    pack_workflow_module_roots,
 )
+
+CORE_ROUTING_TABLE_DOCUMENT_PATH = "core/workflows/ROUTING_TABLE.md"
 ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.json"
 _ROUTE_TABLE_HEADER = "| Task Type | Trigger Keywords (Examples) | Required Workflows |"
-_WORKFLOW_PATH_PATTERN = re.compile(r"^(?:core|plan)/workflows/modules/.+\.md$")
 
 
 def _route_id(task_type: str) -> str:
@@ -24,11 +24,17 @@ def _route_id(task_type: str) -> str:
     return f"route.{slug}"
 
 
-def _workflow_path(path: str) -> str:
+def _workflow_path(
+    path: str,
+    *,
+    workflow_module_roots: tuple[str, ...],
+) -> str:
     candidate = path.strip().strip("`")
-    if not _WORKFLOW_PATH_PATTERN.match(candidate):
+    if not candidate.endswith(".md"):
         raise ValueError(f"Route index found unexpected workflow path entry: {path}")
-    return candidate
+    if any(candidate.startswith(f"{root}/") for root in workflow_module_roots):
+        return candidate
+    raise ValueError(f"Route index found unexpected workflow path entry: {path}")
 
 
 def _workflow_id(workflow_path: str) -> str:
@@ -71,8 +77,16 @@ class RouteIndexSyncService:
         entries: list[dict[str, object]] = []
         seen_route_ids: set[str] = set()
         seen_task_types: set[str] = set()
+        routing_table_paths = (
+            CORE_ROUTING_TABLE_DOCUMENT_PATH,
+            *pack_routing_table_paths(self._repo_root, loader=self._loader),
+        )
+        workflow_module_roots = (
+            "core/workflows/modules",
+            *pack_workflow_module_roots(self._repo_root, loader=self._loader),
+        )
 
-        for routing_table_path in ROUTING_TABLE_DOCUMENT_PATHS:
+        for routing_table_path in routing_table_paths:
             routing_markdown = (self._repo_root / routing_table_path).read_text(
                 encoding="utf-8"
             )
@@ -87,7 +101,7 @@ class RouteIndexSyncService:
                     if keyword.strip()
                 )
                 required_workflow_paths = tuple(
-                    _workflow_path(item)
+                    _workflow_path(item, workflow_module_roots=workflow_module_roots)
                     for item in row["Required Workflows"].split(",")
                     if item.strip()
                 )
@@ -101,7 +115,8 @@ class RouteIndexSyncService:
                     raise ValueError(f"Route row is missing required workflows: {task_type}")
                 if route_id in seen_route_ids or task_type in seen_task_types:
                     raise ValueError(
-                        f"Duplicate route entry detected while combining split routing tables: {task_type}"
+                        "Duplicate route entry detected while combining split routing "
+                        f"tables: {task_type}"
                     )
                 seen_route_ids.add(route_id)
                 seen_task_types.add(task_type)

@@ -22,16 +22,20 @@ from watchtower_core.documentation.front_matter_paths import (
     applies_to_path_values,
     normalize_front_matter_applies_to,
 )
-from watchtower_core.documentation.markdown_semantics import (
-    validate_blank_line_before_heading_after_list,
-)
 from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_required_section_order,
 )
+from watchtower_core.documentation.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
+)
 from watchtower_core.documentation.reference_semantics import (
     REFERENCE_LOCAL_MAPPING_SECTION,
     parse_reference_local_mapping,
+)
+from watchtower_core.pack_integration.roots import (
+    pack_standard_doc_roots,
+    pack_workflow_module_roots,
 )
 
 REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.json"
@@ -268,50 +272,57 @@ def _optional_string(value: Any) -> str | None:
     return value if isinstance(value, str) and value else None
 
 
-CITATION_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str, ...]], ...] = (
-    (
-        "core/docs/foundations",
-        {"README.md"},
-        ("References",),
-        (),
-    ),
-    (
-        "core/docs/standards",
-        {"README.md"},
-        ("Related Standards and Sources", "References"),
-        ("Related Standards and Sources",),
-    ),
-    (
-        "plan/docs/standards",
-        {"README.md"},
-        ("Related Standards and Sources", "References"),
-        ("Related Standards and Sources",),
-    ),
-    (
-        "core/workflows/modules",
-        {"README.md"},
-        ("Additional Files to Load",),
-        ("Additional Files to Load",),
-    ),
-    (
-        "plan/workflows/modules",
-        {"README.md"},
-        ("Additional Files to Load",),
-        ("Additional Files to Load",),
-    ),
-)
-
-
 def iter_citation_audit_documents(
     repo_root: Path,
 ) -> tuple[tuple[str, set[str], set[str], set[str], set[str]], ...]:
     documents: list[tuple[str, set[str], set[str], set[str], set[str]]] = []
+    citation_audit_families: tuple[
+        tuple[str, set[str], tuple[str, ...], tuple[str, ...]],
+        ...,
+    ] = (
+        (
+            "core/docs/foundations",
+            {"README.md"},
+            ("References",),
+            (),
+        ),
+        (
+            "core/docs/standards",
+            {"README.md"},
+            ("Related Standards and Sources", "References"),
+            ("Related Standards and Sources",),
+        ),
+        *(
+            (
+                relative_directory,
+                {"README.md"},
+                ("Related Standards and Sources", "References"),
+                ("Related Standards and Sources",),
+            )
+            for relative_directory in pack_standard_doc_roots(repo_root)
+        ),
+        (
+            "core/workflows/modules",
+            {"README.md"},
+            ("Additional Files to Load",),
+            ("Additional Files to Load",),
+        ),
+        *(
+            (
+                relative_directory,
+                {"README.md"},
+                ("Additional Files to Load",),
+                ("Additional Files to Load",),
+            )
+            for relative_directory in pack_workflow_module_roots(repo_root)
+        ),
+    )
     for (
         relative_directory,
         excluded_names,
         cited_sections,
         applied_sections,
-    ) in CITATION_AUDIT_FAMILIES:
+    ) in citation_audit_families:
         directory = repo_root / relative_directory
         for path in sorted(directory.rglob("*.md")):
             if path.name in excluded_names:

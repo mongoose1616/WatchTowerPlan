@@ -22,19 +22,20 @@ from watchtower_core.documentation.front_matter_paths import (
     applies_to_path_values,
     normalize_front_matter_applies_to,
 )
-from watchtower_core.documentation.markdown_semantics import (
-    validate_blank_line_before_heading_after_list,
-)
 from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_explained_bullet_section,
     validate_required_section_order,
+)
+from watchtower_core.documentation.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
 )
 from watchtower_core.documentation.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
     collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
+from watchtower_core.pack_integration.roots import pack_standard_doc_roots
 from watchtower_core.sync.path_support import existing_paths
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
@@ -42,10 +43,7 @@ STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_in
 STANDARD_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
 )
-STANDARD_DOC_ROOTS = (
-    "core/docs/standards",
-    "plan/docs/standards",
-)
+CORE_STANDARD_DOC_ROOT = "core/docs/standards"
 STANDARD_EXCLUDED_NAMES = {"README.md"}
 
 
@@ -96,7 +94,11 @@ class StandardIndexSyncService:
         entries: list[dict[str, object]] = []
 
         standard_documents: list[tuple[Path, int]] = []
-        for root in STANDARD_DOC_ROOTS:
+        standard_roots = (
+            CORE_STANDARD_DOC_ROOT,
+            *pack_standard_doc_roots(self._repo_root, loader=self._loader),
+        )
+        for root in standard_roots:
             standards_root = self._repo_root / root
             root_depth = len(Path(root).parts)
             for path in standards_root.rglob("*.md"):

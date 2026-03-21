@@ -3,14 +3,19 @@
 from __future__ import annotations
 
 import json
-import re
 from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import RepositoryPathEntry, RepositoryPathIndex
+from watchtower_core.control_plane.models import (
+    PackWorkspaceRoots,
+    RepositoryPathEntry,
+    RepositoryPathIndex,
+)
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.pack_integration.docs import pack_command_docs_root
+from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
 
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.json"
@@ -71,41 +76,38 @@ def _parent_path(relative_path: str) -> str:
     return f"{parent}/"
 
 
-def _surface_kind(relative_path: str, kind: str) -> str:
+def _path_matches_root(relative_path: str, root: str | None) -> bool:
+    if root is None:
+        return False
+    normalized_root = root.rstrip("/")
+    normalized_path = relative_path.rstrip("/")
+    return normalized_path == normalized_root or normalized_path.startswith(f"{normalized_root}/")
+
+
+def _surface_kind(
+    relative_path: str,
+    kind: str,
+    *,
+    pack_workspace_roots: tuple[PackWorkspaceRoots, ...],
+) -> str:
     if relative_path == "README.md":
         return "root_readme"
     if relative_path.endswith("AGENTS.md"):
         return "instruction"
-    if relative_path in {"core/workflows/ROUTING_TABLE.md", "plan/workflows/ROUTING_TABLE.md"}:
+    if relative_path == "core/workflows/ROUTING_TABLE.md":
         return "routing_table"
-    if relative_path.startswith("core/workflows/modules/") or relative_path.startswith(
-        "plan/workflows/modules/"
-    ):
+    if relative_path.startswith("core/workflows/modules/"):
         return "workflow_module" if kind == "file" else "workflow_family"
-    if relative_path.startswith("core/docs/commands/") or relative_path.startswith(
-        "plan/docs/commands/"
-    ) or re.match(r"^packs/[^/]+/docs/commands/", relative_path):
+    if relative_path.startswith("core/docs/commands/"):
         return "command_doc" if kind == "file" else "command_docs"
     if relative_path.startswith("core/docs/references/"):
         return "reference_doc" if kind == "file" else "reference"
-    if relative_path.startswith("core/docs/standards/") or relative_path.startswith(
-        "plan/docs/standards/"
-    ):
+    if relative_path.startswith("core/docs/standards/"):
         return "standard_doc" if kind == "file" else "standards"
     if relative_path.startswith("core/docs/templates/"):
         return "template_doc" if kind == "file" else "templates"
     if relative_path.startswith("core/docs/foundations/"):
         return "foundation_doc" if kind == "file" else "documentation_family"
-    if relative_path.startswith("plan/docs/foundations/"):
-        return "foundation_doc" if kind == "file" else "documentation_family"
-    if relative_path.startswith("plan/docs/"):
-        return "plan_guidance" if kind == "file" else "plan_guidance_family"
-    if relative_path.startswith("plan/tracking/"):
-        return "tracking_view" if kind == "file" else "tracking_family"
-    if relative_path.startswith("plan/initiatives/") or relative_path.startswith("plan/projects/"):
-        return "plan_workspace_artifact" if kind == "file" else "plan_workspace"
-    if relative_path.startswith("plan/"):
-        return "plan_surface" if kind == "file" else "plan_workspace"
     if relative_path == "core/python/":
         return "python_workspace"
     if relative_path.startswith("core/python/src/"):
@@ -128,6 +130,30 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         return "control_plane_ledger" if kind == "file" else "control_plane_ledgers"
     if relative_path.startswith("core/control_plane/"):
         return "control_plane_file" if kind == "file" else "control_plane_family"
+    for roots in pack_workspace_roots:
+        if relative_path == f"{roots.workflows_root}/ROUTING_TABLE.md":
+            return "routing_table"
+        if _path_matches_root(relative_path, f"{roots.workflows_root}/modules"):
+            return "workflow_module" if kind == "file" else "workflow_family"
+        if _path_matches_root(relative_path, pack_command_docs_root(docs_root=roots.docs_root)):
+            return "command_doc" if kind == "file" else "command_docs"
+        if _path_matches_root(relative_path, f"{roots.docs_root}/standards"):
+            return "standard_doc" if kind == "file" else "standards"
+        if _path_matches_root(relative_path, roots.docs_root):
+            return "pack_guidance" if kind == "file" else "pack_guidance_family"
+        if _path_matches_root(relative_path, roots.tracking_root):
+            return "tracking_view" if kind == "file" else "tracking_family"
+        if any(
+            _path_matches_root(relative_path, root)
+            for root in (
+                roots.initiatives_root,
+                roots.projects_root,
+                *roots.domain_root_map().values(),
+            )
+        ):
+            return "pack_workspace_artifact" if kind == "file" else "pack_workspace"
+        if _path_matches_root(relative_path, roots.workspace_root):
+            return "pack_surface" if kind == "file" else "pack_workspace"
     if relative_path.startswith("core/"):
         return "core_surface" if kind == "directory" else "core_file"
     return "repository_surface" if kind == "directory" else "repository_file"
@@ -143,7 +169,7 @@ def _maturity_for_surface_kind(surface_kind: str) -> str:
         "reference_doc",
         "standard_doc",
         "foundation_doc",
-        "plan_guidance",
+        "pack_guidance",
         "tracking_view",
         "python_source",
         "python_source_file",
@@ -222,6 +248,10 @@ class RepositoryPathIndexSyncService:
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)
         derived_entries: dict[str, RepositoryPathEntry] = {}
+        pack_workspace_roots = discover_pack_workspace_roots(
+            self._repo_root,
+            loader=self._loader,
+        )
 
         for readme_path in sorted(self._repo_root.rglob("README.md")):
             if any(part.startswith(".") for part in readme_path.relative_to(self._repo_root).parts):
@@ -233,7 +263,11 @@ class RepositoryPathIndexSyncService:
                     continue
 
                 kind = _kind_for_path(self._repo_root, row.path)
-                surface_kind = _surface_kind(row.path, kind)
+                surface_kind = _surface_kind(
+                    row.path,
+                    kind,
+                    pack_workspace_roots=pack_workspace_roots,
+                )
                 current = existing_entries.get(row.path)
                 maturity = _maturity_for_surface_kind(surface_kind)
                 derived_entries[row.path] = RepositoryPathEntry(

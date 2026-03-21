@@ -46,6 +46,25 @@ def _iter_import_modules(package_root: Path) -> list[tuple[str, str]]:
     return imports
 
 
+def _iter_sys_path_mutation_files(package_root: Path) -> list[str]:
+    offending_paths: list[str] = []
+    for path in sorted(package_root.rglob("*.py")):
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Call):
+                continue
+            func = node.func
+            if not isinstance(func, ast.Attribute):
+                continue
+            if func.attr not in {"append", "extend", "insert", "pop", "remove"}:
+                continue
+            if isinstance(func.value, ast.Attribute) and func.value.attr == "path":
+                if isinstance(func.value.value, ast.Name) and func.value.value.id == "sys":
+                    offending_paths.append(path.relative_to(package_root.parent).as_posix())
+                    break
+    return offending_paths
+
+
 def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries(
 ) -> None:
     assert public_query.AcceptanceContractQueryService.__module__ == (
@@ -238,6 +257,10 @@ def test_reusable_core_package_does_not_import_host_runtime_modules() -> None:
         if module_name == "watchtower_host" or module_name.startswith("watchtower_host.")
     ]
     assert set(offending_imports) == {"watchtower_core/cli/main.py: watchtower_host.cli.main"}
+
+
+def test_reusable_core_package_does_not_mutate_sys_path() -> None:
+    assert _iter_sys_path_mutation_files(CORE_PACKAGE_ROOT) == []
 
 
 def test_plan_package_does_not_import_host_runtime_modules() -> None:

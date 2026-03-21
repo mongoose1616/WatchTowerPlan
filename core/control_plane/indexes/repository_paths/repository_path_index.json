@@ -3185,7 +3185,7 @@
     {
       "path": "plan/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds the live plan-domain workspace, machine authority root, and scoped initiative or project containers.",
       "parent_path": ".",
       "maturity": "supporting",
@@ -3195,7 +3195,7 @@
     {
       "path": "plan/.wt/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds the authoritative machine-readable plan-pack root and Stage 1 bootstrap record.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3205,7 +3205,7 @@
     {
       "path": "plan/.wt/indexes/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Canonical live plan-workspace indexes for coordination, initiatives, tasks, readiness, discrepancies, evidence, and other execution-state projections.",
       "parent_path": "plan/.wt/",
       "maturity": "supporting",
@@ -3225,7 +3225,7 @@
     {
       "path": "plan/README.md",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Describes the purpose of the plan root and the main surfaces seeded here.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3235,7 +3235,7 @@
     {
       "path": "plan/docs/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds durable promoted plan guidance plus the mirrored foundations family.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3255,7 +3255,7 @@
     {
       "path": "plan/docs/README.md",
       "kind": "file",
-      "surface_kind": "plan_guidance",
+      "surface_kind": "pack_guidance",
       "summary": "Describes the purpose of the plan docs root and its owned guidance families.",
       "parent_path": "plan/docs/",
       "maturity": "authoritative",
@@ -3265,7 +3265,7 @@
     {
       "path": "plan/docs/commands/",
       "kind": "directory",
-      "surface_kind": "command_docs",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds pack-owned command pages when a `watchtower-core <pack> ...` surface is owned by this pack.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3275,7 +3275,7 @@
     {
       "path": "plan/docs/commands/README.md",
       "kind": "file",
-      "surface_kind": "command_doc",
+      "surface_kind": "pack_guidance",
       "summary": "Describes the purpose of the plan-owned command-doc root.",
       "parent_path": "plan/docs/commands/",
       "maturity": "authoritative",
@@ -3355,7 +3355,7 @@
     {
       "path": "plan/docs/decisions/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds durable decision records promoted out of live initiative work.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3365,7 +3365,7 @@
     {
       "path": "plan/docs/foundations/",
       "kind": "directory",
-      "surface_kind": "documentation_family",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds the required byte-identical mirror of the authored foundations source under `core/docs/foundations/`.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3375,7 +3375,7 @@
     {
       "path": "plan/docs/patterns/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds reusable patterns promoted from validated initiative outcomes.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3385,7 +3385,7 @@
     {
       "path": "plan/docs/references/",
       "kind": "directory",
-      "surface_kind": "plan_guidance_family",
+      "surface_kind": "pack_guidance_family",
       "summary": "Holds curated plan-domain reference material promoted from initiative-local authored inputs.",
       "parent_path": "plan/docs/",
       "maturity": "supporting",
@@ -3645,7 +3645,7 @@
     {
       "path": "plan/initiatives/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds pack-wide initiative containers for live work.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3655,7 +3655,7 @@
     {
       "path": "plan/plan_overview.md",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Renders the current pack-level plan status board from authoritative machine state.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3665,7 +3665,7 @@
     {
       "path": "plan/projects/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds project containers and project-scoped initiative roots.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3685,7 +3685,7 @@
     {
       "path": "plan/python/README.md",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Describes the purpose of the plan-owned Python boundary and how it fits into the repo.",
       "parent_path": "plan/python/",
       "maturity": "supporting",
@@ -3695,7 +3695,7 @@
     {
       "path": "plan/python/pyproject.toml",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Declares the installable package metadata for the plan-owned Python project.",
       "parent_path": "plan/python/",
       "maturity": "supporting",
@@ -3705,7 +3705,7 @@
     {
       "path": "plan/python/src/watchtower_plan/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds the plan-domain Python package source tree.",
       "parent_path": "plan/python/src/",
       "maturity": "supporting",
@@ -3715,7 +3715,7 @@
     {
       "path": "plan/python/src/watchtower_plan/cli/query.py",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Registers the pack-owned `plan query` namespace for live plan-state lookup.",
       "parent_path": "plan/python/src/watchtower_plan/cli/",
       "maturity": "supporting",
@@ -3725,7 +3725,7 @@
     {
       "path": "plan/python/src/watchtower_plan/cli/query_lookup_handlers.py",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Handles the plan query lookup commands such as authority, tasks, trace, and project context.",
       "parent_path": "plan/python/src/watchtower_plan/cli/",
       "maturity": "supporting",
@@ -3735,7 +3735,7 @@
     {
       "path": "plan/python/src/watchtower_plan/cli/query_rendered_handlers.py",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Handles the plan query rendered-view commands such as coordination and initiatives.",
       "parent_path": "plan/python/src/watchtower_plan/cli/",
       "maturity": "supporting",
@@ -3745,7 +3745,7 @@
     {
       "path": "plan/python/src/watchtower_plan/query/README.md",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Describes the repository query-service boundary and adjacent command docs.",
       "parent_path": "plan/python/src/watchtower_plan/query/",
       "maturity": "supporting",
@@ -3755,7 +3755,7 @@
     {
       "path": "plan/python/src/watchtower_plan/query/coordination.py",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Active-first coordination query service that layers the coordination snapshot over initiative history lookup.",
       "parent_path": "plan/python/src/watchtower_plan/query/",
       "maturity": "supporting",
@@ -3765,7 +3765,7 @@
     {
       "path": "plan/python/src/watchtower_plan/query/initiatives.py",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Compact initiative-family query service over phase, owner, and blocker rendered surfaces.",
       "parent_path": "plan/python/src/watchtower_plan/query/",
       "maturity": "supporting",
@@ -3775,7 +3775,7 @@
     {
       "path": "plan/workflows/",
       "kind": "directory",
-      "surface_kind": "plan_workspace",
+      "surface_kind": "pack_workspace",
       "summary": "Holds the plan-domain workflow routing tables and plan-owned workflow modules.",
       "parent_path": "plan/",
       "maturity": "supporting",
@@ -3795,7 +3795,7 @@
     {
       "path": "plan/workflows/README.md",
       "kind": "file",
-      "surface_kind": "plan_surface",
+      "surface_kind": "pack_surface",
       "summary": "Describes the purpose of the plan workflow entrypoint and its owned workflow surfaces.",
       "parent_path": "plan/workflows/",
       "maturity": "supporting",

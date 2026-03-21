@@ -20,18 +20,22 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import WorkflowMetadataDefinition
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.documentation.markdown_semantics import (
-    validate_blank_line_before_heading_after_list,
-)
 from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_explained_bullet_section,
     validate_required_section_order,
 )
+from watchtower_core.documentation.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
+)
+from watchtower_core.pack_integration.roots import (
+    pack_routing_table_paths,
+    pack_workflow_module_roots,
+)
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
-WORKFLOW_DOC_ROOTS = ("core/workflows/modules", "plan/workflows/modules")
+CORE_WORKFLOW_DOC_ROOT = "core/workflows/modules"
 WORKFLOW_EXCLUDED_NAMES = {"README.md"}
 WORKFLOW_REQUIRED_SECTIONS = (
     "Purpose",
@@ -44,10 +48,9 @@ WORKFLOW_REQUIRED_SECTIONS = (
 )
 WORKFLOW_ADDITIONAL_LOAD_SECTION = "Additional Files to Load"
 WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS = 5
-WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
+WORKFLOW_STATIC_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
     "AGENTS.md",
     "core/workflows/ROUTING_TABLE.md",
-    "plan/workflows/ROUTING_TABLE.md",
     "core/workflows/modules/core.md",
     "core/docs/standards/workflows/workflow_design_standard.md",
     "core/docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -174,7 +177,11 @@ def validate_workflow_additional_load_section(
     disallowed_paths = [
         path
         for path in additional_paths
-        if path in WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS
+        if path
+        in (
+            WORKFLOW_STATIC_DISALLOWED_ADDITIONAL_LOAD_PATHS
+            | set(pack_routing_table_paths(repo_root))
+        )
     ]
     if disallowed_paths:
         joined = ", ".join(disallowed_paths)
@@ -365,7 +372,11 @@ class WorkflowIndexSyncService:
         entries: list[dict[str, object]] = []
 
         seen_workflow_ids: set[str] = set()
-        for workflow_root_relative in WORKFLOW_DOC_ROOTS:
+        workflow_roots = (
+            CORE_WORKFLOW_DOC_ROOT,
+            *pack_workflow_module_roots(self._repo_root, loader=self._loader),
+        )
+        for workflow_root_relative in workflow_roots:
             workflow_root = self._repo_root / workflow_root_relative
             if not workflow_root.exists():
                 continue
@@ -383,7 +394,8 @@ class WorkflowIndexSyncService:
                 )
                 if workflow.workflow_id in seen_workflow_ids:
                     raise ValueError(
-                        f"Duplicate workflow_id {workflow.workflow_id} detected across split workflow roots."
+                        "Duplicate workflow_id "
+                        f"{workflow.workflow_id} detected across split workflow roots."
                     )
                 seen_workflow_ids.add(workflow.workflow_id)
 

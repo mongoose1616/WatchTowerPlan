@@ -740,6 +740,16 @@ def _dependency_boundary_issues(
                 message_prefix="Reusable core may not import pack runtime modules",
             )
         )
+        issues.extend(
+            _forbidden_import_issues(
+                package_root=core_package_root,
+                forbidden_prefixes=("watchtower_host",),
+                code="pack_boundary_core_imports_host",
+                message_prefix="Reusable core may not import host composition modules",
+                exempt_path_suffixes=("watchtower_core/cli/main.py",),
+            )
+        )
+        issues.extend(_sys_path_mutation_issues(core_package_root))
     if pack_package_root.is_dir():
         issues.extend(
             _forbidden_import_issues(
@@ -758,9 +768,12 @@ def _forbidden_import_issues(
     forbidden_prefixes: tuple[str, ...],
     code: str,
     message_prefix: str,
+    exempt_path_suffixes: tuple[str, ...] = (),
 ) -> tuple[ValidationIssue, ...]:
     issues: list[ValidationIssue] = []
     for path in sorted(package_root.rglob("*.py")):
+        if any(path.as_posix().endswith(suffix) for suffix in exempt_path_suffixes):
+            continue
         try:
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         except SyntaxError as exc:
@@ -786,6 +799,50 @@ def _forbidden_import_issues(
                 )
             )
     return tuple(issues)
+
+
+def _sys_path_mutation_issues(package_root: Path) -> tuple[ValidationIssue, ...]:
+    issues: list[ValidationIssue] = []
+    for path in sorted(package_root.rglob("*.py")):
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        except SyntaxError as exc:
+            issues.append(
+                ValidationIssue(
+                    code="pack_boundary_scan_failed",
+                    message=f"Could not parse Python module during boundary scan: {exc}",
+                    location=path.as_posix(),
+                )
+            )
+            continue
+        if not _tree_mutates_sys_path(tree):
+            continue
+        issues.append(
+            ValidationIssue(
+                code="pack_boundary_core_mutates_sys_path",
+                message=(
+                    "Reusable core may not mutate sys.path while validating or composing "
+                    "pack runtime."
+                ),
+                location=path.as_posix(),
+            )
+        )
+    return tuple(issues)
+
+
+def _tree_mutates_sys_path(tree: ast.AST) -> bool:
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        func = node.func
+        if not isinstance(func, ast.Attribute):
+            continue
+        if func.attr not in {"append", "extend", "insert", "pop", "remove"}:
+            continue
+        if isinstance(func.value, ast.Attribute) and func.value.attr == "path":
+            if isinstance(func.value.value, ast.Name) and func.value.value.id == "sys":
+                return True
+    return False
 
 
 def _iter_import_modules(tree: ast.AST) -> tuple[str, ...]:

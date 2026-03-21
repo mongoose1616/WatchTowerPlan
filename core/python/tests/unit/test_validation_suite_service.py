@@ -225,6 +225,50 @@ def test_pack_contract_validation_fails_when_pack_runtime_imports_host_runtime(
     assert any(issue.code == "pack_boundary_pack_imports_host" for issue in result.issues)
 
 
+def test_pack_contract_validation_fails_when_reusable_core_imports_host_runtime(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    illegal_import = repo_root / "core/python/src/watchtower_core/illegal_host_import.py"
+    illegal_import.parent.mkdir(parents=True, exist_ok=True)
+    illegal_import.write_text("from watchtower_host.cli import parser\n", encoding="utf-8")
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_boundary_core_imports_host" for issue in result.issues)
+
+
+def test_pack_contract_validation_fails_when_reusable_core_mutates_sys_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    illegal_mutation = repo_root / "core/python/src/watchtower_core/illegal_sys_path.py"
+    illegal_mutation.parent.mkdir(parents=True, exist_ok=True)
+    illegal_mutation.write_text(
+        "\n".join(
+            [
+                "import sys",
+                "",
+                "sys.path.insert(0, 'packs/plan/python/src')",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
+        surfaces["pack_settings_path"]
+    )
+
+    assert result.passed is False
+    assert any(issue.code == "pack_boundary_core_mutates_sys_path" for issue in result.issues)
+
+
 def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
     tmp_path: Path,
 ) -> None:
