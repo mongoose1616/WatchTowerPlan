@@ -7,7 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.workspace.service import (
     PLAN_COORDINATION_INDEX_PATH,
     PlanWorkspaceService,
 )

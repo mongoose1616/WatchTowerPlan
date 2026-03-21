@@ -73,7 +73,7 @@ uv run watchtower-core plan query artifacts --artifact-id index.artifacts
 - `plan/python/src/watchtower_plan/cli/query.py`
 - `plan/python/src/watchtower_plan/cli/query_lookup_handlers.py`
 - `plan/python/src/watchtower_plan/query/artifacts.py`
-- `plan/python/src/watchtower_plan/artifact_index.py`
+- `plan/python/src/watchtower_plan/workspace/artifacts.py`
 - `plan/.wt/indexes/artifact_index.json`
 
 ## Updated At

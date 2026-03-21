@@ -15,7 +15,7 @@ from watchtower_core.integrations.github import (
 )
 from watchtower_plan.sync.task_index import TaskIndexSyncService
 from watchtower_plan.tasks import PlanTaskStateDocument, load_task_document
-from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_core.utils import utc_timestamp_now

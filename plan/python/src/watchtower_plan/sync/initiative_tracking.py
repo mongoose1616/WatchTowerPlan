@@ -10,7 +10,7 @@ from watchtower_core.sync.rendered_tracking import (
     RenderedTrackingSyncService,
     latest_updated_at_for_entries,
 )
-from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.sync.initiative_index import PHASE_ORDER
 
 INITIATIVE_TRACKING_DOCUMENT_PATH = "plan/tracking/initiative_tracking.md"

@@ -11,7 +11,7 @@ from watchtower_core.control_plane.loader import (
 from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
-from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncRecord
 from watchtower_plan.sync.coordination import CoordinationSyncService
 

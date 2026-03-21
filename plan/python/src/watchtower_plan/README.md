@@ -5,15 +5,15 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit plan-owned services and subpackages such as `initiatives`, `projects`, `tasks`, `promotion`, `rendering`, `plan_workspace`, `artifact_index`, `query`, `sync`, `validation`, and `closeout`.
+- `Supported Imports`: Explicit plan-owned services and subpackages such as `initiatives`, `projects`, `tasks`, `promotion`, `rendering`, `workspace`, `query`, `sync`, `validation`, and `closeout`, plus thin compatibility shims for legacy top-level imports.
 - `Non-Goals`: Stable export-safe namespace for downstream consumers outside this repository, a mirror of `watchtower_core`, or a catch-all home for helpers that now fit in `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, `documentation`, or `utils`.
 - `Packaging Contract`: Reach this package through the shared workspace installation path, not through repo-local `sys.path` mutation inside `watchtower_core`.
 - `Machine-State Boundary`: Keep live plan machine state in `plan/.wt/**`, not in this package tree.
 
 ## Responsibilities
 - Feature-owned lifecycle orchestration: `initiatives/`, `projects/`, and `tasks/` own live `plan/**` bootstrap, project-container state, task mutation, and readiness-gate behavior that depends on plan-local workspace rules.
-- Workspace aggregation: `plan_workspace.py` still owns pack-wide derived surfaces, rendered views, and overview shaping across live `plan/**` initiative state.
-- Pack-local aggregate services: `artifact_index.py`, `promotion/`, and `rendering/` still coordinate plan-pack artifacts, durable guidance promotion, and rendered initiative payload shaping that remain specific to the current pack.
+- Workspace aggregation: `workspace/` owns pack-wide derived surfaces, rendered views, overview shaping, and artifact-index generation across live `plan/**` initiative state.
+- Pack-local aggregate services: `promotion/` and `rendering/` still coordinate durable guidance promotion and rendered initiative payload shaping that remain specific to the current pack.
 - Plan-domain closeout: `closeout/` owns retained trace closeout, initiative-package terminal closeout helpers, and guarded purge orchestration because those flows depend on live plan workspace state and repo-local purge policy.
 - Plan-owned subpackages: `query/`, `sync/`, and `validation/` remain the pack-local integrations behind reusable-core boundaries, but generic governed-surface rebuild, validation, and documentation helpers should move back into `watchtower_core`.
 
@@ -21,7 +21,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `initiatives/`: Initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
 - `projects/`: Project context loading, project-container bootstrap, and project-local rendered/query surfaces.
 - `tasks/`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
-- `plan_workspace.py`: Pack-wide orchestration over live initiative state, rendered views, and derived-surface drift checks.
+- `workspace/`: Pack-wide orchestration over live initiative state, rendered views, artifact indexes, and derived-surface drift checks. Legacy `plan_workspace.py` and `artifact_index.py` remain thin forwarding shims.
 - `promotion/`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
 - `rendering/`: Shared serializers for compact and human-facing initiative payloads that support CLI, query, and rendered-surface output.
 - `closeout/`: Plan-domain closeout services for retained traces, live initiative packages, and guarded trace purges.
@@ -41,5 +41,6 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `core/python/src/watchtower_core/rebuild/README.md`
 - `core/python/src/watchtower_core/routing/README.md`
 - `core/python/src/watchtower_core/workflow_execution/README.md`
+- `plan/python/src/watchtower_plan/workspace/README.md`
 - `plan/python/src/watchtower_plan/closeout/README.md`
 - `core/python/src/watchtower_core/validation/README.md`

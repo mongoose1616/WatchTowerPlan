@@ -37,7 +37,7 @@ from watchtower_plan.promotion import (
     default_target_path,
     source_artifact_kind_for_path,
 )
-from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.projects import ProjectWorkspaceService
 from watchtower_plan.sync.coordination import CoordinationSyncService
 from watchtower_plan.tasks.support import slugify_file_stem

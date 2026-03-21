@@ -12,7 +12,7 @@ __all__ = [
 
 _EXPORT_MODULES = {
     "InitiativePackageService": "watchtower_plan.initiatives",
-    "PlanWorkspaceService": "watchtower_plan.plan_workspace",
+    "PlanWorkspaceService": "watchtower_plan.workspace",
     "ProjectWorkspaceService": "watchtower_plan.projects",
 }
 

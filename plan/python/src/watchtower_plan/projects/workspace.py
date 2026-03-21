@@ -20,7 +20,7 @@ from watchtower_core.rebuild import (
     RenderedViewBuilder,
     RenderedViewSpec,
 )
-from watchtower_plan.artifact_index import (
+from watchtower_plan.workspace.artifacts import (
     PLAN_ARTIFACT_INDEX_PATH,
     ArtifactIndexService,
 )

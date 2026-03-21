@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ArtifactIndexEntry
-from watchtower_plan.artifact_index import search_artifact_entries
+from watchtower_plan.workspace.artifacts import search_artifact_entries
 
 
 @dataclass(frozen=True, slots=True)

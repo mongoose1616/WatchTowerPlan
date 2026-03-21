@@ -11,7 +11,7 @@ from watchtower_core.query.rendered_search import (
     rendered_search_filters_from_params,
     search_rendered_entries,
 )
-from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 
 @dataclass(frozen=True, slots=True)

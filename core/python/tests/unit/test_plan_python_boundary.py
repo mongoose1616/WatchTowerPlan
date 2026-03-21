@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+import watchtower_plan as public_plan
 import watchtower_core.evidence as public_evidence
 import watchtower_core.closeout as public_closeout
 import watchtower_core.query as public_query
@@ -288,6 +289,7 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
 
 
 def test_plan_python_boundary_owners_remain_available() -> None:
+    assert public_plan.PlanWorkspaceService.__module__ == "watchtower_plan.workspace.service"
     assert CommandQueryService.__module__ == "watchtower_core.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_core.sync.command_index"
     assert ValidationAllService.__module__ == "watchtower_core.validation.all"
@@ -302,6 +304,23 @@ def test_plan_python_boundary_owners_remain_available() -> None:
         DocumentSemanticsValidationService.__module__
         == "watchtower_plan.validation.document_semantics"
     )
+
+
+def test_plan_internal_modules_use_feature_owned_workspace_package() -> None:
+    legacy_workspace_modules = {
+        "watchtower_plan.plan_workspace",
+        "watchtower_plan.artifact_index",
+    }
+    compatibility_shims = {
+        "watchtower_plan/plan_workspace.py",
+        "watchtower_plan/artifact_index.py",
+    }
+    offending_imports = [
+        f"{relative_path}: {module_name}"
+        for relative_path, module_name in _iter_import_modules(PLAN_PACKAGE_ROOT)
+        if relative_path not in compatibility_shims and module_name in legacy_workspace_modules
+    ]
+    assert offending_imports == []
 
 
 def test_plan_query_root_fails_closed_for_generic_query_exports() -> None:

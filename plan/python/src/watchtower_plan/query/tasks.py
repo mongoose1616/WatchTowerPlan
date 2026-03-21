@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.terminology import TerminologyHelper
 from watchtower_core.query.common import query_score
-from watchtower_plan.plan_workspace import PlanTaskIndexEntry, PlanWorkspaceService
-from watchtower_plan.plan_workspace import PLAN_PACK_SETTINGS_PATH
+from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
+from watchtower_plan.workspace.service import PlanTaskIndexEntry, PlanWorkspaceService
 
 
 @dataclass(frozen=True, slots=True)

@@ -23,7 +23,7 @@ from watchtower_plan.tasks.state import (
     task_event_directory,
     write_task_document,
 )
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.workspace.service import (
     PLAN_PACK_SETTINGS_PATH,
     PlanWorkspaceService,
 )

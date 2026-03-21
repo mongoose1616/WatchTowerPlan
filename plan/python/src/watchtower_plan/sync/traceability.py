@@ -9,7 +9,7 @@ from typing import Any
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_plan.plan_workspace import PLAN_PACK_SETTINGS_PATH
+from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 from watchtower_plan.sync.traceability_support import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceAccumulator,
