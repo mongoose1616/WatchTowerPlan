@@ -2,7 +2,9 @@
 
 ## Outcome Summary
 Brings WatchTowerOversight to host-layer parity, turns pack starter templates into scaffoldable operator surfaces, and flattens remaining plan runtime adapters.
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
+- `closed_at`: `2026-03-21T03:56:17Z`
+- `closure_reason`: Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
 
 ## Delivered Outputs
 - Authored input: [initiative_brief.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md)
@@ -12,25 +14,28 @@ Brings WatchTowerOversight to host-layer parity, turns pack starter templates in
 - Rendered plan: [plan.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md)
 - Rendered progress: [progress.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/progress.md)
 - Rendered summary: [summary.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/summary.md)
+- Terminal task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity`: `completed`
 - Terminal task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening`: `completed`
+- Terminal task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules`: `completed`
+- Terminal task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface`: `completed`
+- Terminal task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche`: `completed`
 
 ## Promoted Guidance
-- `promotion.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_shell`: `planned` / approval `pending`
+- `promotion.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_shell`: `candidate` / approval `pending`
 - Candidate target: [hosted_pack_parity_scaffold_and_plan_runtime_flattening_initiative_brief.md](/plan/docs/references/hosted_pack_parity_scaffold_and_plan_runtime_flattening_initiative_brief.md)
 - Candidate target: [hosted_pack_parity_scaffold_and_plan_runtime_flattening_design_record.md](/plan/docs/decisions/hosted_pack_parity_scaffold_and_plan_runtime_flattening_design_record.md)
 - Candidate target: [hosted_pack_parity_scaffold_and_plan_runtime_flattening_implementation_slice.md](/plan/docs/patterns/hosted_pack_parity_scaffold_and_plan_runtime_flattening_implementation_slice.md)
 - Candidate target: [hosted_pack_parity_scaffold_and_plan_runtime_flattening_decision_notes.md](/plan/docs/standards/governance/hosted_pack_parity_scaffold_and_plan_runtime_flattening_decision_notes.md)
 
 ## Evidence References
-- `evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle`: `planned`
+- `evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle`: `completed`
 
 ## Unresolved Follow-Ups
-- Open task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity`: `in_progress`
-- Open task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules`: `planned`
-- Open task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface`: `planned`
-- Open task `task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche`: `planned`
+- No unresolved follow-up items remain.
 
 ## Closeout State
-- `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-21T03:04:13Z`
-- `closeout.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_recap`: `planned`
+- `lifecycle_stage`: `completed`
+- `updated_at`: `2026-03-21T03:56:17Z`
+- `closeout.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_recap`: `completed`
+- `closed_at`: `2026-03-21T03:56:17Z`
+- `closure_reason`: Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.

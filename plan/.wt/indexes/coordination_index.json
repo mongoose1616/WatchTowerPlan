@@ -3,125 +3,25 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:04:13Z",
-  "coordination_mode": "active_work",
-  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
-  "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-  "recommended_surface_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-21T03:56:17Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active plan-workspace initiatives exist.",
+  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
+  "recommended_surface_path": "plan/plan_overview.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
-  "entries": [
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
-      "summary": "Brings WatchTowerOversight to host-layer parity, turns pack starter templates into scaffoldable operator surfaces, and flattens remaining plan runtime adapters.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-21T03:04:13Z",
-      "open_task_count": 4,
-      "blocked_task_count": 0,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-21T03:56:17Z",
       "key_surface_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md",
-      "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
-      "slug": "hosted_pack_parity_scaffold_and_plan_runtime_flattening",
-      "scope_type": "pack_wide",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
-          "title": "Align WatchTowerOversight to host-layer parity",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
-          "title": "Flatten plan runtime into feature-owned modules",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
-          "title": "Turn pack starter templates into a scaffold command surface",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/turn_pack_starter_templates_into_a_scaffold_command_surface/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche",
-          "title": "Validate and close out the hosted-pack tranche",
-          "task_status": "planned",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/validate_and_close_out_the_hosted_pack_tranche/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
-            "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
-            "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules"
-          ]
-        }
-      ],
-      "source_surface_paths": [
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md"
-      ],
-      "task_ids": [
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.turn_pack_starter_templates_into_a_scaffold_command_surface",
-        "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.validate_and_closeout_the_tranche"
-      ],
-      "evidence_ids": [
-        "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle"
-      ],
-      "related_paths": [
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/initiative_brief.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/implementation_slice.md",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md",
-        "core/docs/templates/",
-        "core/python/src/",
-        "core/python/src/watchtower_core/",
-        "core/python/tests/",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/initiative.json",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening/task.json",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/turn_pack_starter_templates_into_a_scaffold_command_surface/task.json",
-        "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/validate_and_close_out_the_hosted_pack_tranche/task.json",
-        "plan/python/src/watchtower_plan/"
-      ],
-      "tags": [
-        "traceability"
-      ]
-    }
-  ],
-  "actionable_tasks": [],
-  "recent_closed_initiatives": [
+      "closure_reason": "Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche."
+    },
     {
       "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
       "title": "Pack Starter Templates And Oversight Alignment",

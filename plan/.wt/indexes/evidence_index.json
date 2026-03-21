@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T03:04:13Z",
+  "updated_at": "2026-03-21T03:56:17Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -69,7 +69,7 @@
       "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "initiative_title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
       "title": "Bootstrap Validation Bundle",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "entry_count": 2,
       "acceptance_labels": [
@@ -90,7 +90,7 @@
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/discrepancies",
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/initiative.json"
       ],
-      "updated_at": "2026-03-21T02:42:43Z"
+      "updated_at": "2026-03-21T03:56:17Z"
     },
     {
       "evidence_id": "evidence.pack_domain_hardcoding_remediation.bootstrap_validation_bundle",

@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
-- `recommended_surface_path`: `plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`execution` / `pack_wide`)
+- None.
 
 ## Active Project Initiatives
 - None.
@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`completed` at `2026-03-21T03:56:17Z`) - Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
 - `trace.pack_starter_templates_and_oversight_alignment`: Pack Starter Templates And Oversight Alignment (`completed` at `2026-03-21T02:32:49Z`) - Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories.
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.
 - `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.

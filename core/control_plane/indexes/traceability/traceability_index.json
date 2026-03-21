@@ -155,8 +155,10 @@
       "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
       "summary": "Brings WatchTowerOversight to host-layer parity, turns pack starter templates into scaffoldable operator surfaces, and flattens remaining plan runtime adapters.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-21T03:04:13Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-21T03:56:17Z",
+      "closed_at": "2026-03-21T03:56:17Z",
+      "closure_reason": "Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.",
       "source_surface_paths": [
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/decision_notes.md",
         "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/design_record.md",
