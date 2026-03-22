@@ -1301,6 +1301,148 @@
       ]
     },
     {
+      "task_id": "task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Bootstrap Repository Tech Debt Reduction Program",
+      "summary": "Bootstrap Repository Tech Debt Reduction Program live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/bootstrap_repository_tech_debt_reduction_program/task.json",
+      "updated_at": "2026-03-22T21:22:26Z"
+    },
+    {
+      "task_id": "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Inventory High-Cost Technical Debt",
+      "summary": "Profiles the current debt inventory across slow tests, stale compatibility surfaces, migration residue, and duplicate authority declarations.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "research",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json",
+      "updated_at": "2026-03-22T21:21:21Z",
+      "related_ids": [
+        "initiative.repository_tech_debt_reduction_program"
+      ],
+      "applies_to": [
+        "core/python/tests/integration/",
+        "core/python/src/watchtower_core/",
+        "plan/python/src/watchtower_plan/",
+        "plan/.wt/registries/"
+      ]
+    },
+    {
+      "task_id": "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Reconcile Duplicate Registry And Contract Declarations",
+      "summary": "Collapses avoidable duplicated schema, validator, and registry declarations where one authority surface should remain canonical.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
+      "updated_at": "2026-03-22T21:21:59Z",
+      "depends_on": [
+        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
+      ],
+      "related_ids": [
+        "initiative.repository_tech_debt_reduction_program"
+      ],
+      "applies_to": [
+        "core/control_plane/registries/",
+        "core/control_plane/schemas/",
+        "plan/.wt/registries/"
+      ]
+    },
+    {
+      "task_id": "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Reduce Integration Tail And Tier Tests",
+      "summary": "Cuts the slow integration tail by removing redundant end-to-end coverage, reusing prepared baselines, and clarifying fast-versus-slow test boundaries.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
+      "updated_at": "2026-03-22T21:21:31Z",
+      "depends_on": [
+        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
+      ],
+      "related_ids": [
+        "initiative.repository_tech_debt_reduction_program"
+      ],
+      "applies_to": [
+        "core/python/tests/integration/",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
+      "task_id": "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Remove Stale Compatibility And Migration Residue",
+      "summary": "Deletes stale compatibility imports, migration-era glue, and dead edge-case support that no longer protects active contracts.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
+      "updated_at": "2026-03-22T21:21:50Z",
+      "depends_on": [
+        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
+      ],
+      "related_ids": [
+        "initiative.repository_tech_debt_reduction_program"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "plan/python/src/watchtower_plan/"
+      ]
+    },
+    {
+      "task_id": "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Validate And Close First Tech Debt Tranche",
+      "summary": "Runs the final repo gate, records removed debt and bounded deferrals, and closes the first tech-debt tranche cleanly.",
+      "status": "active",
+      "task_status": "planned",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
+      "updated_at": "2026-03-22T21:22:14Z",
+      "depends_on": [
+        "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
+        "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
+        "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations"
+      ],
+      "related_ids": [
+        "initiative.repository_tech_debt_reduction_program"
+      ],
+      "applies_to": [
+        "plan/initiatives/repository_tech_debt_reduction_program/"
+      ]
+    },
+    {
       "task_id": "task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation",
       "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
       "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",

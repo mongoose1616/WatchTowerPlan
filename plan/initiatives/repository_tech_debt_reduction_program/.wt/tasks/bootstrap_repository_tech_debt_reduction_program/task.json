@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program",
+  "slug": "bootstrap_repository_tech_debt_reduction_program",
+  "initiative_id": "initiative.repository_tech_debt_reduction_program",
+  "title": "Bootstrap Repository Tech Debt Reduction Program",
+  "summary": "Bootstrap Repository Tech Debt Reduction Program live initiative package.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T21:17:47Z",
+  "updated_at": "2026-03-22T21:22:26Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

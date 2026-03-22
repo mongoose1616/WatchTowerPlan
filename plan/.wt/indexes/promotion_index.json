@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T20:50:23Z",
+  "updated_at": "2026-03-22T21:22:26Z",
   "entries": [
     {
       "promotion_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
@@ -612,6 +612,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.repository_tech_debt_reduction_program.bootstrap_shell",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/repository_tech_debt_reduction_program",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-22T21:17:47Z",
+      "target_paths": [
+        "plan/docs/decisions/repository_tech_debt_reduction_program_design_record.md",
+        "plan/docs/patterns/repository_tech_debt_reduction_program_implementation_slice.md",
+        "plan/docs/references/repository_tech_debt_reduction_program_initiative_brief.md",
+        "plan/docs/standards/governance/repository_tech_debt_reduction_program_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

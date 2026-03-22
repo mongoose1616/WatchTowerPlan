@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.repository_tech_debt_reduction_program.bootstrap_shell",
+  "initiative_id": "initiative.repository_tech_debt_reduction_program",
+  "trace_id": "trace.repository_tech_debt_reduction_program",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-22T21:17:47Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/repository_tech_debt_reduction_program_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/repository_tech_debt_reduction_program_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/repository_tech_debt_reduction_program_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/repository_tech_debt_reduction_program_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

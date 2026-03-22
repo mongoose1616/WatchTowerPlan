@@ -711,6 +711,53 @@
       ]
     },
     {
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "summary": "Makes tech-debt reduction the active repository priority, starting with legacy residue removal, integration-tail reduction, and stale compatibility cleanup across core, host, and pack-owned code.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-22T21:22:26Z",
+      "source_surface_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program",
+        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
+        "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
+        "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
+        "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
+        "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/",
+        "core/control_plane/schemas/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
+        "plan/.wt/registries/",
+        "plan/initiatives/repository_tech_debt_reduction_program/",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/bootstrap_repository_tech_debt_reduction_program/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+        "plan/python/src/watchtower_plan/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
       "title": "Runtime Telemetry And Command Observability Foundation",
       "summary": "Adds default-on local runtime telemetry, timing, and error tracing across host, reusable-core, and plan command paths without adopting OTEL yet.",

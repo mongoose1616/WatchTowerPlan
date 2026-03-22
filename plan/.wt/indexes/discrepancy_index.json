@@ -3,7 +3,7 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-22T20:50:23Z",
+  "updated_at": "2026-03-22T21:22:26Z",
   "entries": [
     {
       "discrepancy_id": "discrepancy.core_shared_language_deplanification.decision_notes_drift",
@@ -259,6 +259,81 @@
         "plan/.wt/indexes/review_index.json"
       ],
       "updated_at": "2026-03-22T16:47:54Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.repository_tech_debt_reduction_program.decision_notes_drift",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
+      ],
+      "updated_at": "2026-03-22T21:20:38Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.repository_tech_debt_reduction_program.design_record_drift",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/repository_tech_debt_reduction_program/design_record.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md"
+      ],
+      "updated_at": "2026-03-22T21:20:38Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.repository_tech_debt_reduction_program.implementation_slice_drift",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md"
+      ],
+      "updated_at": "2026-03-22T21:20:38Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.repository_tech_debt_reduction_program.initiative_brief_drift",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md"
+      ],
+      "updated_at": "2026-03-22T21:20:38Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.repository_tech_debt_reduction_program.review_index_index_drift",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "title": "Repository Tech Debt Reduction Program",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "updated_at": "2026-03-22T21:20:38Z"
     },
     {
       "discrepancy_id": "discrepancy.runtime_telemetry_and_command_observability_foundation.artifact_index_index_drift",

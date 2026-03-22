@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.repository_tech_debt_reduction_program` | Repository Tech Debt Reduction Program | `execution` | repository_maintainer | `5` | [plan.md](/plan/initiatives/repository_tech_debt_reduction_program/plan.md) | [plan.md](/plan/initiatives/repository_tech_debt_reduction_program/plan.md) | [task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json) (`ready`) <br> [task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json) (`planned`) <br> [task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json) (`planned`) <br> [task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json) (`planned`) <br> [task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json) (`planned`) | Start the highest-priority ready task from the initiative package. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -25,4 +27,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-22T20:50:23Z`_
+_Updated At: `2026-03-22T21:22:26Z`_

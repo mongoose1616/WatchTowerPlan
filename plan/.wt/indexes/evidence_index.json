@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T20:50:23Z",
+  "updated_at": "2026-03-22T21:22:26Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -468,6 +468,35 @@
         "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T06:30:43Z"
+    },
+    {
+      "evidence_id": "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle",
+      "initiative_id": "initiative.repository_tech_debt_reduction_program",
+      "trace_id": "trace.repository_tech_debt_reduction_program",
+      "initiative_title": "Repository Tech Debt Reduction Program",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/repository_tech_debt_reduction_program",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/discrepancies",
+        "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T21:17:47Z"
     },
     {
       "evidence_id": "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle",

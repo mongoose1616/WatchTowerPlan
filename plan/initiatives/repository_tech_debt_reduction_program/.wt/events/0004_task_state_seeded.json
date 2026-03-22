@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.repository_tech_debt_reduction_program.0004_task_state_seeded",
+  "initiative_id": "initiative.repository_tech_debt_reduction_program",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T21:17:47Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.repository_tech_debt_reduction_program",
+  "related_paths": [
+    "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
+    "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
+    "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
+    "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md"
+  ]
+}
