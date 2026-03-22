@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for the plan pack plus reused shared-core surfaces.",
-  "updated_at": "2026-03-17T20:03:23Z",
+  "updated_at": "2026-03-22T17:45:00Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -63,6 +63,15 @@
       "visibility": "hidden",
       "authoritative": true,
       "notes": "Plan-pack work-item notes live under the machine root and participate in the artifact index."
+    },
+    {
+      "family_name": "runtime_telemetry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "plan/.wt/runtime/telemetry/**/*.jsonl",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": false,
+      "notes": "Plan-pack runtime telemetry is local operational machine state, not durable governed authority."
     },
     {
       "family_name": "artifact_index",
@@ -162,5 +171,5 @@
       "authoritative": true
     }
   ],
-  "notes": "The current repository now publishes the reusable-core subset plus the plan-pack artifact-index and pack-work-item canonical paths needed by the live plan workspace."
+  "notes": "The current repository now publishes the reusable-core subset plus the plan-pack artifact-index, pack-work-item, and local runtime telemetry paths needed by the live plan workspace."
 }

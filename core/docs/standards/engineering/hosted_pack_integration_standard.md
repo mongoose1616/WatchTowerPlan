@@ -87,6 +87,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Use `watchtower_<pack>` for domain-specific lifecycle behavior, rendering, semantic validation, query handlers, sync targets, and feature services.
 - Move code into `watchtower_core` when the behavior is truly cross-pack, schema-backed, or pack-agnostic.
 - Keep CLI parser construction, root command-family composition, pack discovery, and dispatch in `watchtower_host`; pack code must not import `watchtower_host`.
+- Keep optional operational runtime outputs such as telemetry under `<pack>/.wt/runtime/` so they remain pack-local machine state rather than shared-core authority.
 - When new pack-local Python introduces new machine or human surfaces, update the companion manifests, command docs, workflows, tracking surfaces, domain-root declarations, and tests in the same change set.
 - Prefer `watchtower-core pack scaffold` to create pack-owned starter surfaces and `watchtower-core pack bootstrap` to update the shared registry and shared workspace registration together.
 

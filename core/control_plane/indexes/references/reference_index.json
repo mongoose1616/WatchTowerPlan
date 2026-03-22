@@ -288,7 +288,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-21T23:59:00Z",
+      "updated_at": "2026-03-22T16:21:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -303,12 +303,14 @@
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-        "core/docs/standards/engineering/hosted_pack_integration_standard.md"
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
-        "core/docs/standards/engineering/hosted_pack_integration_standard.md"
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "related_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
@@ -590,10 +592,13 @@
         "https://github.com/ndjson/ndjson-spec"
       ],
       "cited_by_paths": [
-        "core/docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "applied_by_paths": [
-        "core/docs/standards/data_contracts/format_selection_standard.md"
+        "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "related_paths": [
         "core/docs/standards/data_contracts/format_selection_standard.md"
@@ -774,6 +779,13 @@
         "https://opentelemetry.io/docs/specs/otel/metrics/data-model/",
         "https://opentelemetry.io/docs/specs/otel/logs/sdk/",
         "https://opentelemetry.io/docs/specs/status/"
+      ],
+      "cited_by_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "tags": [
         "reference",
@@ -1076,6 +1088,13 @@
       "canonical_upstream_urls": [
         "https://docs.python.org/3/library/logging.html",
         "https://docs.python.org/3/howto/logging-cookbook.html"
+      ],
+      "cited_by_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "tags": [
         "reference",
@@ -1624,6 +1643,13 @@
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.w3.org/TR/trace-context/"
+      ],
+      "cited_by_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
+      ],
+      "applied_by_paths": [
+        "core/docs/standards/engineering/runtime_telemetry_standard.md"
       ],
       "tags": [
         "reference",

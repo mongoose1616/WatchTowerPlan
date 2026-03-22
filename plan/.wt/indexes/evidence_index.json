@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:52:56Z",
+  "updated_at": "2026-03-22T17:41:52Z",
   "entries": [
     {
       "evidence_id": "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle",
@@ -439,6 +439,35 @@
         "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T06:30:43Z"
+    },
+    {
+      "evidence_id": "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle",
+      "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+      "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
+      "initiative_title": "Runtime Telemetry And Command Observability Foundation",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/runtime_telemetry_and_command_observability_foundation",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/discrepancies",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T17:36:11Z"
     },
     {
       "evidence_id": "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle",

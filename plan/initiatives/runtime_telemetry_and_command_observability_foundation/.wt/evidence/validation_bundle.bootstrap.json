@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle",
+  "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+  "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
+  "title": "Bootstrap Validation Bundle",
+  "status": "planned",
+  "updated_at": "2026-03-22T17:36:11Z",
+  "entries": [
+    {
+      "entry_id": "entry.runtime_telemetry_and_command_observability_foundation.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.runtime_telemetry_and_command_observability_foundation.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/discrepancies"
+      ]
+    }
+  ]
+}

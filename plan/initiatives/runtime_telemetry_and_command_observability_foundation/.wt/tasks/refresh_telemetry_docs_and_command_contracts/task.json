@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts",
+  "slug": "refresh_telemetry_docs_and_command_contracts",
+  "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+  "title": "Refresh telemetry docs and command contracts",
+  "summary": "Update READMEs, standards, references, authoring guidance, and command docs to describe the runtime telemetry contract.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T17:40:56Z",
+  "updated_at": "2026-03-22T17:40:56Z",
+  "dependency_task_ids": [
+    "task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle",
+    "task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime",
+    "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration"
+  ],
+  "related_ids": [
+    "initiative.runtime_telemetry_and_command_observability_foundation"
+  ],
+  "applies_to": [
+    "core/python/README.md",
+    "core/docs/commands/core_python/",
+    "core/docs/references/domain_pack_authoring_reference.md"
+  ],
+  "scope_items": [
+    "Refresh Python workspace and package README guidance for runtime telemetry.",
+    "Update affected core command docs where cross-cutting stderr or runtime-sink behavior must be discoverable.",
+    "Keep pack authoring guidance aligned with the new runtime sink contract."
+  ],
+  "done_when_items": [
+    "User-facing docs describe default-on telemetry, environment controls, sink location, and fail-open behavior.",
+    "Command docs remain aligned with the implemented stdout and stderr behavior."
+  ]
+}

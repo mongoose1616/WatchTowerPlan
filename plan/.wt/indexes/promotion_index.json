@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:52:56Z",
+  "updated_at": "2026-03-22T17:41:52Z",
   "entries": [
     {
       "promotion_id": "promotion.core_copy_forward_operating_mode_documentation.bootstrap_shell",
@@ -573,6 +573,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.runtime_telemetry_and_command_observability_foundation.bootstrap_shell",
+      "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+      "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
+      "initiative_title": "Runtime Telemetry And Command Observability Foundation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/runtime_telemetry_and_command_observability_foundation",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+        "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-22T17:36:11Z",
+      "target_paths": [
+        "plan/docs/decisions/runtime_telemetry_and_command_observability_foundation_design_record.md",
+        "plan/docs/patterns/runtime_telemetry_and_command_observability_foundation_implementation_slice.md",
+        "plan/docs/references/runtime_telemetry_and_command_observability_foundation_initiative_brief.md",
+        "plan/docs/standards/governance/runtime_telemetry_and_command_observability_foundation_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

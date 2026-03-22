@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.runtime_telemetry_and_command_observability_foundation` | Runtime Telemetry And Command Observability Foundation | `execution` | repository_maintainer | `7` | [plan.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md) | [plan.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md) | [task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/build_shared_telemetry_runtime/task.json) (`planned`) <br> [task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/capture_runtime_telemetry_policy/task.json) (`in_progress`) <br> [task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_host_command_lifecycle/task.json) (`planned`) <br> [task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_plan_pack_orchestration/task.json) (`planned`) <br> [task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_sync_validation_and_pack_runtime/task.json) (`planned`) <br> [task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/refresh_telemetry_docs_and_command_contracts/task.json) (`planned`) <br> [task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/validate_benchmark_and_close_out_telemetry_tranche/task.json) (`planned`) | Advance the current in-progress task set and keep initiative-local task state current. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -23,4 +25,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-22T16:52:56Z`_
+_Updated At: `2026-03-22T17:41:52Z`_

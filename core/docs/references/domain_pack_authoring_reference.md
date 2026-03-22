@@ -57,6 +57,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | Surface | Expected Role |
 |---|---|
 | `<pack>/.wt/**` | Live pack machine state and pack-owned manifests. |
+| `<pack>/.wt/runtime/**` | Optional pack-local operational runtime outputs such as telemetry sinks. |
 | `<pack>/docs/**` | Durable pack-local guidance and command docs. |
 | `<pack>/workflows/**` | Pack-local workflow modules and routing. |
 | `<pack>/tracking/**` | Human-facing pack tracking views when the pack owns them. |
@@ -71,6 +72,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Let the host be the only layer that composes reusable core with one or more packs.
 - Make the pack portable: copy-out should require packaging or installation updates, not Python code rewrites.
 - Keep pack-manifest and pack-settings paths repository-relative, portable, and directly rooted under the declared machine root.
+- Keep local runtime telemetry or similar ephemeral machine outputs under `<pack>/.wt/runtime/` and ignore them in Git rather than treating them as durable governed artifacts.
 - Prefer feature-owned modules inside a pack such as `bootstrap`, `initiatives`, `projects`, `tasks`, or `reviews` instead of mirroring generic core package families.
 - Keep machine interface declarations in governed manifests and registries, not hidden in Python import conventions.
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.

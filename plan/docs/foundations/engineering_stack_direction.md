@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T18:45:00Z"
+updated_at: "2026-03-22T17:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -45,6 +45,7 @@ Today the repository has a substantial governed documentation corpus, reusable P
 |---|---|---|---|
 | Markdown | Primary human-facing authoring format | `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
 | JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/records/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
+| JSON Lines | Local runtime telemetry event format | `<pack>/.wt/runtime/telemetry/**` | Used for append-friendly local command telemetry because it stays inspectable and backend-neutral. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
 | YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, and `plan/workflows/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
 | Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/pyproject.toml` and `core/python/uv.lock`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
@@ -66,19 +67,20 @@ Today the repository has a substantial governed documentation corpus, reusable P
 - Treat governed manifests, registries, and pack contracts as the integration contract between host composition and pack-native runtime.
 - Keep Python tooling centralized and predictable under `core/python/` with `pyproject.toml`, `uv`, `pytest`, `ruff`, and `mypy`.
 - Treat `uv` as the preferred workspace manager and execution path, but keep direct `.venv` execution and helper shells available as practical fallbacks when `uv` is not on `PATH`.
+- Use pack-local JSONL runtime telemetry for command timing and error tracing where operator visibility materially improves execution, fault isolation, or performance work.
 - Consider Pydantic strict mode for typed runtime validation where schema checks alone are not enough.
 
 ## Future Candidate Tools
 
 - Use SQLite only when local durable state, indexing, or retrieval needs a lightweight embedded store.
 - Use OPA or Rego only when externally authored rule evaluation materially improves clarity over repository standards plus Python validators.
-- Treat richer observability or provenance tooling as opt-in later additions, not default baseline requirements.
+- Treat OTEL exporters, remote collectors, and cross-process propagation as later additions rather than default baseline requirements.
 
 ## Operational Support
 
 - Keep validation local and deterministic wherever possible.
 - Prefer support mechanisms that strengthen retrieval, orchestration, validation, and context control for LLM or agent workflows.
-- Add structured logging and trace semantics only when they materially improve operator or runtime visibility.
+- Keep local runtime telemetry active where it materially improves operator or runtime visibility, but make richer observability transports opt-in.
 - Treat SBOM, attestation, signing, and provenance formats such as CycloneDX, in-toto, Sigstore, and SLSA as release-evidence tools, not default complexity.
 - Choose formats and tools that keep generated artifacts reviewable and storage rules explicit.
 
@@ -102,12 +104,16 @@ Today the repository has a substantial governed documentation corpus, reusable P
 - [pytest_reference.md](/core/docs/references/pytest_reference.md)
 - [ruff_reference.md](/core/docs/references/ruff_reference.md)
 - [mypy_reference.md](/core/docs/references/mypy_reference.md)
+- [ndjson_spec_reference.md](/core/docs/references/ndjson_spec_reference.md)
+- [python_logging_reference.md](/core/docs/references/python_logging_reference.md)
 - [pydantic_strict_mode_reference.md](/core/docs/references/pydantic_strict_mode_reference.md)
 - [opa_rego_reference.md](/core/docs/references/opa_rego_reference.md)
+- [opentelemetry_reference.md](/core/docs/references/opentelemetry_reference.md)
+- [w3c_trace_context_reference.md](/core/docs/references/w3c_trace_context_reference.md)
 - [cyclonedx_1_7_reference.md](/core/docs/references/cyclonedx_1_7_reference.md)
 - [sigstore_reference.md](/core/docs/references/sigstore_reference.md)
 - [slsa_1_1_reference.md](/core/docs/references/slsa_1_1_reference.md)
 - [in_toto_reference.md](/core/docs/references/in_toto_reference.md)
 
 ## Updated At
-- `2026-03-21T18:45:00Z`
+- `2026-03-22T17:45:00Z`

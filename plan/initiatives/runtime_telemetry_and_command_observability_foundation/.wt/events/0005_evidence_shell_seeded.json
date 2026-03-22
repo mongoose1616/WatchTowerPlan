@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.runtime_telemetry_and_command_observability_foundation.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T17:36:11Z",
+  "summary": "Seeded the evidence shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
+  "related_paths": [
+    "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
+    "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",
+    "plan/initiatives/runtime_telemetry_and_command_observability_foundation/implementation_slice.md",
+    "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md"
+  ]
+}

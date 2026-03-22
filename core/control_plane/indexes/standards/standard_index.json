@@ -1608,7 +1608,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-22T15:02:49Z",
+      "updated_at": "2026-03-22T15:52:38Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1712,6 +1712,94 @@
         "standard",
         "engineering",
         "python_workspace"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.runtime_telemetry",
+      "category": "engineering",
+      "title": "Runtime Telemetry Standard",
+      "summary": "This standard defines the baseline local runtime telemetry contract for command timing, error tracing, and pack-local telemetry sinks.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/runtime_telemetry_standard.md",
+      "updated_at": "2026-03-22T17:45:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "runtime",
+        "documentation",
+        "validation"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/cli/",
+        "plan/python/src/watchtower_plan/",
+        "plan/.wt/",
+        ".gitignore"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_logging_reference.md",
+        "core/docs/references/ndjson_spec_reference.md",
+        "core/docs/references/opentelemetry_reference.md",
+        "core/docs/references/w3c_trace_context_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_logging_reference.md",
+        "core/docs/references/ndjson_spec_reference.md",
+        "core/docs/references/opentelemetry_reference.md",
+        "core/docs/references/w3c_trace_context_reference.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/references/python_logging_reference.md",
+        "core/docs/references/ndjson_spec_reference.md",
+        "core/docs/references/opentelemetry_reference.md",
+        "core/docs/references/w3c_trace_context_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://docs.python.org/3/library/logging.html",
+        "https://docs.python.org/3/howto/logging-cookbook.html",
+        "https://github.com/ndjson/ndjson-spec",
+        "https://opentelemetry.io/docs/specs/otel/",
+        "https://opentelemetry.io/docs/specs/semconv/",
+        "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+        "https://opentelemetry.io/docs/specs/otel/metrics/data-model/",
+        "https://opentelemetry.io/docs/specs/otel/logs/sdk/",
+        "https://opentelemetry.io/docs/specs/status/",
+        "https://www.w3.org/TR/trace-context/"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html",
+        "https://docs.python.org/3/library/logging.html",
+        "https://docs.python.org/3/howto/logging-cookbook.html",
+        "https://github.com/ndjson/ndjson-spec",
+        "https://opentelemetry.io/docs/specs/otel/",
+        "https://opentelemetry.io/docs/specs/semconv/",
+        "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+        "https://opentelemetry.io/docs/specs/otel/metrics/data-model/",
+        "https://opentelemetry.io/docs/specs/otel/logs/sdk/",
+        "https://opentelemetry.io/docs/specs/status/",
+        "https://www.w3.org/TR/trace-context/"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "runtime_telemetry"
       ]
     },
     {
