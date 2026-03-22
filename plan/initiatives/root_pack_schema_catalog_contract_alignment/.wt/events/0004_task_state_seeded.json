@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.root_pack_schema_catalog_contract_alignment.0004_task_state_seeded",
+  "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+  "sequence": 4,
+  "event_type": "task_state_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T22:58:19Z",
+  "summary": "Seeded the initial initiative-local task set.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+  "related_paths": [
+    "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md",
+    "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+    "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+    "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
+  ]
+}

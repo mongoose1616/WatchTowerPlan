@@ -760,6 +760,44 @@
       ]
     },
     {
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "summary": "Extends the reusable-core schema catalog canonical-path contract to support first-party root pack machine roots such as <pack>/.wt without donor-specific exceptions.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T23:08:32Z",
+      "closed_at": "2026-03-22T23:08:32Z",
+      "closure_reason": "Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage.",
+      "source_surface_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.root_pack_schema_catalog_contract_alignment.bootstrap_root_pack_schema_catalog_contract_alignment",
+        "task.root_pack_schema_catalog_contract_alignment.validate_and_close",
+        "task.root_pack_schema_catalog_contract_alignment.widen_root_pack_schema_catalog_contract"
+      ],
+      "related_paths": [
+        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/python/tests/",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/initiative.json",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/bootstrap_root_pack_schema_catalog_contract_alignment/task.json",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/validate_and_close_root_pack_schema_contract_slice/task.json",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/widen_root_pack_schema_catalog_contract/task.json",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
       "title": "Runtime Telemetry And Command Observability Foundation",
       "summary": "Adds default-on local runtime telemetry, timing, and error tracing across host, reusable-core, and plan command paths without adopting OTEL yet.",

@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.root_pack_schema_catalog_contract_alignment.widen_root_pack_schema_catalog_contract",
+  "slug": "widen_root_pack_schema_catalog_contract",
+  "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+  "title": "Widen Root-Pack Schema Catalog Contract",
+  "summary": "Updates reusable-core schema catalog validation so first-party root packs can publish canonical schema paths under <pack>/.wt/schemas/.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T23:00:48Z",
+  "updated_at": "2026-03-22T23:07:50Z",
+  "applies_to": [
+    "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+    "core/python/tests/",
+    "core/docs/references/domain_pack_authoring_reference.md"
+  ],
+  "scope_items": [
+    "Update the schema catalog artifact contract for supported first-party root packs.",
+    "Keep the rule donor-neutral and constrained to supported pack machine roots."
+  ],
+  "done_when_items": [
+    "A first-party root pack schema catalog path such as oversight/.wt/schemas/... validates under reusable core.",
+    "Unsupported non-pack roots still fail the schema catalog artifact contract."
+  ]
+}

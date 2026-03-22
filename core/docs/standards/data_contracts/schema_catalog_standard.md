@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema_catalog"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-22T20:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,6 +50,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 - Catalog only published governed schemas that core expects automation to resolve locally.
 - Use the schema file's published `$id` as the canonical record key. Do not invent separate hidden schema identifiers in code.
 - Keep `canonical_path` values repository-relative. Do not store absolute filesystem paths in the canonical catalog.
+- Restrict `canonical_path` roots to published schema locations under `core/control_plane/schemas/`, a first-party root pack machine root such as `<pack>/.wt/schemas/`, or a nested hosted-pack machine root such as `packs/<slug>/.wt/schemas/`.
 - Keep schema catalog records small. The catalog should point to the authoritative schema file, not duplicate the schema body.
 - Include lookup-oriented metadata such as `schema_family`, `subject_kind`, `version`, and optional `aliases` only when it materially improves local resolution or review clarity.
 - Use `schema_family` to describe the published schema subtree family such as `artifact`, `interface`, or `common`.
@@ -92,6 +93,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The validator registry schema belongs in the catalog as an `artifact` schema with a canonical path under `core/control_plane/schemas/artifacts/`.
 - The shared UTC timestamp fragment belongs in the catalog as a `common` schema with a canonical path under `core/control_plane/schemas/common/`.
 - The reference front matter schema belongs in the catalog as an `interface` schema with a canonical path under `core/control_plane/schemas/interfaces/documentation/`.
+- A first-party root pack such as `oversight/` may publish pack-local schemas with canonical paths under `oversight/.wt/schemas/...` when that pack follows the shared pack contract.
 - A generated repository path catalog does not belong in the schema catalog because it is an index, not a stable schema-identity registry.
 
 ## Operationalization
@@ -123,4 +125,4 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The repository path index remains the right place for broad repository navigation and retrieval. The schema catalog is narrower and authoritative for schema resolution only.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-22T20:10:00Z`

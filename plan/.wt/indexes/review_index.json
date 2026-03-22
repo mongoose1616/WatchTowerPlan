@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:28:03Z",
+  "updated_at": "2026-03-22T23:08:32Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -308,6 +308,24 @@
         "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T22:28:03Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.root_pack_schema_catalog_contract_alignment.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T23:08:32Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -618,6 +636,22 @@
         "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T22:28:03Z"
+    },
+    {
+      "review_subject_id": "promotion.root_pack_schema_catalog_contract_alignment.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.root_pack_schema_catalog_contract_alignment.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T23:08:32Z"
     },
     {
       "review_subject_id": "promotion.runtime_telemetry_and_command_observability_foundation.bootstrap_shell",

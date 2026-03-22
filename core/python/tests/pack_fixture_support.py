@@ -77,6 +77,25 @@ def materialize_pack_validation_suite(
             text = text.replace(old, new)
         path.write_text(text, encoding="utf-8")
 
+    if not actual_pack_root.startswith("packs/"):
+        schema_catalog_path = pack_root / ".wt" / "registries" / "schema_catalog.json"
+        if schema_catalog_path.exists():
+            schema_catalog = _load_json(schema_catalog_path)
+            for record in schema_catalog.get("schemas", []):
+                canonical_path = record.get("canonical_path")
+                if not isinstance(canonical_path, str):
+                    continue
+                misplaced_prefix = f"{actual_wt_root}/schemas/interfaces/"
+                if not canonical_path.startswith(misplaced_prefix):
+                    continue
+                if canonical_path.startswith(f"{actual_wt_root}/schemas/interfaces/packs/"):
+                    continue
+                filename = canonical_path.rsplit("/", maxsplit=1)[-1]
+                record["canonical_path"] = (
+                    f"{actual_wt_root}/schemas/interfaces/packs/{filename}"
+                )
+            _write_json(schema_catalog_path, schema_catalog)
+
     runtime_manifest = _load_json(pack_root / ".wt/manifests/pack_runtime_manifest.json")
     pack_settings = _load_json(pack_root / ".wt/manifests/pack_settings.json")
     if extra_domain_root_names:

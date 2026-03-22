@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.root_pack_schema_catalog_contract_alignment`: Root Pack Schema Catalog Contract Alignment (`completed` at `2026-03-22T23:08:32Z`) - Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage.
 - `trace.repository_tech_debt_reduction_program`: Repository Tech Debt Reduction Program (`completed` at `2026-03-22T22:28:03Z`) - Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication
 - `trace.command_latency_reduction_using_runtime_telemetry`: Command Latency Reduction Using Runtime Telemetry (`completed` at `2026-03-22T20:50:23Z`) - Validated and benchmarked latency reductions on the final optimized tree.
 - `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`completed` at `2026-03-22T18:49:35Z`) - Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.
@@ -25,7 +26,6 @@
 - `trace.core_shared_language_deplanification`: Core Shared Language Deplanification (`completed` at `2026-03-22T15:17:46Z`) - Normalized shared-core language and validated the governed surfaces.
 - `trace.test_suite_efficiency_and_redundancy_reduction`: Test Suite Efficiency And Redundancy Reduction (`completed` at `2026-03-22T08:52:36Z`) - Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work.
 - `trace.remaining_dirty_tranche_closeout`: Remaining Dirty Tranche Closeout (`completed` at `2026-03-22T06:30:43Z`) - Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state.
-- `trace.pack_cli_fault_isolation_hardening`: Pack CLI Fault Isolation Hardening (`completed` at `2026-03-21T23:46:04Z`) - Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

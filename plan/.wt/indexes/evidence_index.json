@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:28:03Z",
+  "updated_at": "2026-03-22T23:08:32Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -497,6 +497,35 @@
         "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T22:28:03Z"
+    },
+    {
+      "evidence_id": "evidence.root_pack_schema_catalog_contract_alignment.bootstrap_validation_bundle",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/root_pack_schema_catalog_contract_alignment",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/discrepancies",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T23:08:32Z"
     },
     {
       "evidence_id": "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle",

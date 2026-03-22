@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:28:03Z",
+  "updated_at": "2026-03-22T23:08:32Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T23:08:32Z",
+      "key_surface_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md",
+      "closure_reason": "Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage."
+    },
     {
       "trace_id": "trace.repository_tech_debt_reduction_program",
       "title": "Repository Tech Debt Reduction Program",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T06:30:43Z",
       "key_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
       "closure_reason": "Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state."
-    },
-    {
-      "trace_id": "trace.pack_cli_fault_isolation_hardening",
-      "title": "Pack CLI Fault Isolation Hardening",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-21T23:46:04Z",
-      "key_surface_path": "plan/initiatives/pack_cli_fault_isolation_hardening/plan.md",
-      "closure_reason": "Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations."
     }
   ]
 }

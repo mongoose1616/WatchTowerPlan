@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import pytest
 from jsonschema import ValidationError
 
 from tests.unit.schema_store_test_support import (
     REPO_ROOT,
+    copy_validation_repo_subset,
     documentation_and_pack_interface_examples,
+    materialize_additional_schema_catalog,
     pack_contract_examples,
 )
 from watchtower_core.control_plane.errors import SchemaResolutionError
@@ -121,6 +126,40 @@ def test_schema_store_accepts_generic_pack_contract_roots_without_plan_specific_
         },
         schema_id="urn:watchtower:schema:interfaces:packs:pack-runtime-manifest:v1",
     )
+
+
+def test_schema_store_accepts_first_party_root_pack_schema_catalog_paths(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_validation_repo_subset(tmp_path)
+    catalog = materialize_additional_schema_catalog(repo_root / "oversight")
+    store = SchemaStore.from_repo_root(repo_root)
+    document = json.loads((repo_root / catalog["catalog_path"]).read_text(encoding="utf-8"))
+
+    store.validate_instance(
+        document,
+        schema_id="urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+    )
+
+    assert document["schemas"][0]["canonical_path"] == catalog["schema_relative_path"]
+
+
+def test_schema_store_rejects_schema_catalog_paths_outside_supported_machine_roots(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_validation_repo_subset(tmp_path)
+    catalog = materialize_additional_schema_catalog(repo_root / "oversight")
+    store = SchemaStore.from_repo_root(repo_root)
+    document = json.loads((repo_root / catalog["catalog_path"]).read_text(encoding="utf-8"))
+    document["schemas"][0]["canonical_path"] = (
+        "oversight/schemas/interfaces/packs/schema_store_note.schema.json"
+    )
+
+    with pytest.raises(ValidationError):
+        store.validate_instance(
+            document,
+            schema_id="urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+        )
 
 
 def test_schema_store_rejects_unknown_schema_id() -> None:

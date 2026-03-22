@@ -1424,6 +1424,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one pack-owned benchmark report.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -2132,6 +2142,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/standards/engineering/runtime_telemetry_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the baseline local runtime telemetry contract for command timing, error tracing, and pack-local telemetry sinks.",
+      "parent_path": "core/docs/standards/engineering/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/standards/metadata/",
       "kind": "directory",
       "surface_kind": "standards",
@@ -2738,6 +2758,16 @@
       "surface_kind": "python_source_file",
       "summary": "Shared runtime helpers for sync commands that load services and shape results.",
       "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/telemetry/README.md",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Describes the local runtime telemetry package, sink rules, and opt-out environment variables.",
+      "parent_path": "core/python/src/watchtower_core/telemetry/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"

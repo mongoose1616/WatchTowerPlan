@@ -1443,6 +1443,63 @@
       ]
     },
     {
+      "task_id": "task.root_pack_schema_catalog_contract_alignment.bootstrap_root_pack_schema_catalog_contract_alignment",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Bootstrap Root Pack Schema Catalog Contract Alignment",
+      "summary": "Bootstrap Root Pack Schema Catalog Contract Alignment live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/bootstrap_root_pack_schema_catalog_contract_alignment/task.json",
+      "updated_at": "2026-03-22T23:00:32Z"
+    },
+    {
+      "task_id": "task.root_pack_schema_catalog_contract_alignment.validate_and_close",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Validate And Close Root-Pack Schema Contract Slice",
+      "summary": "Runs the validation gate for the schema-catalog contract update and closes the initiative cleanly.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/validate_and_close_root_pack_schema_contract_slice/task.json",
+      "updated_at": "2026-03-22T23:08:05Z",
+      "depends_on": [
+        "task.root_pack_schema_catalog_contract_alignment.widen_root_pack_schema_catalog_contract"
+      ],
+      "applies_to": [
+        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/"
+      ]
+    },
+    {
+      "task_id": "task.root_pack_schema_catalog_contract_alignment.widen_root_pack_schema_catalog_contract",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "initiative_title": "Root Pack Schema Catalog Contract Alignment",
+      "title": "Widen Root-Pack Schema Catalog Contract",
+      "summary": "Updates reusable-core schema catalog validation so first-party root packs can publish canonical schema paths under <pack>/.wt/schemas/.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/.wt/tasks/widen_root_pack_schema_catalog_contract/task.json",
+      "updated_at": "2026-03-22T23:07:50Z",
+      "applies_to": [
+        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+        "core/python/tests/",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ]
+    },
+    {
       "task_id": "task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation",
       "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
       "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",

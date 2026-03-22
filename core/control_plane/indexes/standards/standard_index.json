@@ -417,7 +417,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/schema_catalog_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-22T20:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1494,7 +1494,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_code_design_standard.md",
-      "updated_at": "2026-03-22T15:02:49Z",
+      "updated_at": "2026-03-22T18:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1608,7 +1608,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-22T15:52:38Z",
+      "updated_at": "2026-03-22T18:29:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

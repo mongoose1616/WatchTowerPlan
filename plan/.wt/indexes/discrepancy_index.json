@@ -3,7 +3,7 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:28:03Z",
+  "updated_at": "2026-03-22T23:08:32Z",
   "entries": [
     {
       "discrepancy_id": "discrepancy.core_shared_language_deplanification.decision_notes_drift",
@@ -334,6 +334,81 @@
         "plan/.wt/indexes/review_index.json"
       ],
       "updated_at": "2026-03-22T21:20:38Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.root_pack_schema_catalog_contract_alignment.decision_notes_drift",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/decision_notes.md"
+      ],
+      "updated_at": "2026-03-22T22:59:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.root_pack_schema_catalog_contract_alignment.design_record_drift",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/design_record.md"
+      ],
+      "updated_at": "2026-03-22T22:59:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.root_pack_schema_catalog_contract_alignment.implementation_slice_drift",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/implementation_slice.md"
+      ],
+      "updated_at": "2026-03-22T22:59:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.root_pack_schema_catalog_contract_alignment.initiative_brief_drift",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/root_pack_schema_catalog_contract_alignment/initiative_brief.md"
+      ],
+      "updated_at": "2026-03-22T22:59:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.root_pack_schema_catalog_contract_alignment.review_index_index_drift",
+      "initiative_id": "initiative.root_pack_schema_catalog_contract_alignment",
+      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
+      "title": "Root Pack Schema Catalog Contract Alignment",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "updated_at": "2026-03-22T22:59:51Z"
     },
     {
       "discrepancy_id": "discrepancy.runtime_telemetry_and_command_observability_foundation.artifact_index_index_drift",

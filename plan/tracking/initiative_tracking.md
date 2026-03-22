@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.root_pack_schema_catalog_contract_alignment` | Root Pack Schema Catalog Contract Alignment | `completed` | [plan.md](/plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md) | `2026-03-22T23:08:32Z` | Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage. |
 | `trace.repository_tech_debt_reduction_program` | Repository Tech Debt Reduction Program | `completed` | [plan.md](/plan/initiatives/repository_tech_debt_reduction_program/plan.md) | `2026-03-22T22:28:03Z` | Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication |
 | `trace.command_latency_reduction_using_runtime_telemetry` | Command Latency Reduction Using Runtime Telemetry | `completed` | [plan.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md) | `2026-03-22T20:50:23Z` | Validated and benchmarked latency reductions on the final optimized tree. |
 | `trace.runtime_telemetry_and_command_observability_foundation` | Runtime Telemetry And Command Observability Foundation | `completed` | [plan.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md) | `2026-03-22T18:49:35Z` | Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche. |
@@ -26,4 +27,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-22T22:28:03Z`_
+_Updated At: `2026-03-22T23:08:32Z`_
