@@ -8,12 +8,15 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T05:30:00Z"
+updated_at: "2026-03-21T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "plan/"
   - "core/control_plane/"
+  - "core/python/src/watchtower_host/"
+  - "core/python/src/watchtower_core/pack_integration/"
+  - "plan/python/src/watchtower_plan/"
   - "core/workflows/modules/"
   - "plan/workflows/modules/"
 aliases:
@@ -34,8 +37,9 @@ This document defines the intended future WatchTower product shape. For current 
 
 ## Current Repository Relationship
 
-- `WatchTowerPlan` currently owns the governed core substrate, machine-readable control plane, workflow-routing model, and the first internal planning-and-implementation pack.
+- `WatchTowerPlan` currently owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the first internal plan-domain pack.
 - This repository does not yet own the first operator-facing domain-pack implementation.
+- The hosted-pack model is already partially proven here through `watchtower_plan`, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
 - The future product model in this document is still relevant because it constrains how the shared core should evolve now.
 
 ## Core
@@ -64,7 +68,7 @@ The future product promise is not just "automation." It is a local-first environ
 
 ## Domain Packs
 
-Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic.
+Domain packs are the future domain-specific operator layer of the product. They are specialized for a domain so the operator experience feels seamless and domain-native instead of generic. In this repository the model is no longer purely theoretical: `watchtower_plan` is the first internal consumer, hosted-pack portability has been exercised with a second-pack proof, and future external packs should extend that same contract.
 
 - Make packs the main entry point for real operator jobs.
 - Use core to help a human achieve a real domain goal efficiently, repeatably, and with clean closeout.
@@ -73,11 +77,11 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Shape how the LLM or agent assists the human in that domain instead of forcing the user to translate generic system capabilities into domain process by hand.
 - Use shared core contracts instead of reimplementing routing, validation, rule enforcement, traceability, or recovery differently for each domain.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
-- Treat the planning-and-implementation pack as the first internal consumer, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
+- Treat `watchtower_plan` as the first internal consumer, treat the second-pack proof as evidence that the contract can travel, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
 
 ## Product Delivery Boundary
 
-- Future domain-pack implementation belongs in a later product phase and likely in a consuming repository such as `/home/j/WatchTower`.
+- Future external operator-facing domain-pack implementation belongs in a later product phase and likely in a consuming repository such as `/home/j/WatchTower`, even though the host-pack contract is already proven here.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
 
@@ -88,4 +92,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-19T05:30:00Z`
+- `2026-03-21T18:45:00Z`

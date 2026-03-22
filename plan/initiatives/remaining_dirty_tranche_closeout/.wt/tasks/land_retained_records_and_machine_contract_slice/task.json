@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.remaining_dirty_tranche_closeout.retained_records_closeout",
+  "slug": "land_retained_records_and_machine_contract_slice",
+  "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+  "title": "Land retained-records and machine-contract slice",
+  "summary": "Commits the retained-records cutover, control-plane contract updates, and related runtime changes.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T05:30:14Z",
+  "updated_at": "2026-03-22T05:56:08Z",
+  "related_ids": [
+    "initiative.remaining_dirty_tranche_closeout"
+  ],
+  "applies_to": [
+    "core/control_plane/",
+    "core/python/src/watchtower_core/",
+    "plan/python/src/watchtower_plan/closeout/"
+  ],
+  "scope_items": [
+    "Retire ledgers in favor of retained records across control-plane artifacts and runtime helpers.",
+    "Validate purge, retention, acceptance, and evidence behavior against record paths and schema IDs."
+  ],
+  "done_when_items": [
+    "The retained-records slice is committed as a coherent change set.",
+    "Targeted retained-records regressions pass."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout.0001_created",
+  "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T05:14:59Z",
+  "summary": "Created task task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout during initiative bootstrap.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout"
+}

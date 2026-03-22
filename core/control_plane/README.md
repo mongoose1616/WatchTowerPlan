@@ -20,7 +20,7 @@
 | `core/control_plane/registries/` | Canonical lookup data and pack-startup registries owned by core. |
 | `core/control_plane/contracts/` | Versioned machine-readable contract families, currently the acceptance-contract set. |
 | `core/control_plane/indexes/` | Deliberate derived lookup files when a concrete consumer exists. |
-| `core/control_plane/ledgers/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |
+| `core/control_plane/records/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |
 
 ## Notes
 - Keep authored control-plane assets here and keep live plan machine state under `plan/.wt/`.

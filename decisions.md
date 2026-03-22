@@ -115,7 +115,7 @@ This file records the locked decisions gathered during the requirements clarific
 
 ## Key Tensions Already Resolved
 - `Q24` and `Q31`: archive-whole-package is allowed only as a transitional policy.
-- `Q10` and `Q48`: hard cutover applies to both new authority and historical cleanup. The docs-backed planning corpus has now been purged and replaced with purge ledgers plus promoted guidance.
+- `Q10` and `Q48`: hard cutover applies to both new authority and historical cleanup. The docs-backed planning corpus has now been purged and replaced with purge records plus promoted guidance.
 - `Q13`, `Q14`, `Q27`, and `Q28`: intake docs stay editable, but machine state remains authoritative through proposal, confirmation, and discrepancy gates.
 
 ## Working Summary

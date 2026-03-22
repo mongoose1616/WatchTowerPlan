@@ -25,7 +25,7 @@
 - Use `plan/python/**` only for plan-specific code that should not live in reusable core.
 - Treat `plan/workflows/README.md` as the human workflow entrypoint for live plan-domain procedures.
 - Treat `.wt/` trees as machine-state roots only. Do not place Python source, workflow prose, or other hand-maintained runtime code inside them.
-- Use promoted guidance, closed initiative packages, and purge ledgers for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
+- Use promoted guidance, closed initiative packages, and purge records for historical context. The legacy docs-backed planning corpus no longer exists as a working repository surface.
 
 ## Do
 - Keep new live plan work under `plan/initiatives/**` or `plan/projects/**/initiatives/**` as appropriate.

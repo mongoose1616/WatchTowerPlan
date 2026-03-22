@@ -4,7 +4,7 @@
 This command validates one governed JSON artifact against the active schema-backed validators published in the control plane or against an explicitly supplied schema surface.
 
 ## Use When
-- You want to check whether a governed JSON contract, index, ledger, or similar artifact matches its published schema.
+- You want to check whether a governed JSON contract, index, record, or similar artifact matches its published schema.
 - You need a structured validation result for a workflow, script, or agent.
 - You want to force validation with an explicit validator ID for an external or temporary JSON file.
 - You want to validate an external pack-owned artifact against a supplemental schema file or directory without patching the canonical schema catalog.

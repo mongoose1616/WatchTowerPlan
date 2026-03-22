@@ -26,17 +26,17 @@ Use this workflow to evaluate documentation or standards for accuracy, structure
 3. Check operationalization and cross-surface coherence.
    - Verify that related command docs, workflow docs, standards, templates, examples, validators, indexes, registries, and query or sync paths describe or enforce the same behavior.
    - If the main issue is implementation-versus-documentation drift or governed-artifact drift, add the dedicated reconciliation workflow instead of handling it only implicitly here.
-4. Build the findings ledger.
+4. Build the findings register.
    - Record findings by severity and confidence with document or artifact evidence, impacted readers or workflows, and the recommended next action.
    - Separate confirmed issues, intentional explicitness, open questions, and follow-up validation gaps.
 5. Run a confirmation pass.
    - Re-review the highest-risk documents and their direct companion surfaces from a fresh angle for missed stale examples, lookup gaps, or enforcement mismatches.
-   - If the active task is a same-scope review loop and a new actionable issue appears, add it to the findings ledger and repeat until a confirmation pass finds no new issues.
+   - If the active task is a same-scope review loop and a new actionable issue appears, add it to the findings register and repeat until a confirmation pass finds no new issues.
 
 ## Data Structure
 - Review coverage map
 - Review criteria and governing family rules
-- Findings ledger by severity and confidence
+- Findings register by severity and confidence
 - Operationalization and companion-surface gaps
 - Open questions and follow-up recommendations
 

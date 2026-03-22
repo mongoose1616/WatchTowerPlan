@@ -604,6 +604,76 @@
       "tags": [
         "traceability"
       ]
+    },
+    {
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "title": "Remaining Dirty Tranche Closeout",
+      "summary": "Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-22T05:57:25Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
+      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
+      "next_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "slug": "remaining_dirty_tranche_closeout",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
+          "title": "Land docs and governance reconciliation tranche",
+          "task_status": "in_progress",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
+          "is_actionable": false
+        }
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
+        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
+        "task.remaining_dirty_tranche_closeout.retained_records_closeout"
+      ],
+      "evidence_ids": [
+        "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
+        "core/control_plane/",
+        "core/control_plane/indexes/",
+        "core/docs/",
+        "core/python/src/watchtower_core/",
+        "plan/.wt/indexes/",
+        "plan/docs/",
+        "plan/initiatives/",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json",
+        "plan/python/src/watchtower_plan/closeout/"
+      ],
+      "tags": [
+        "traceability"
+      ]
     }
   ]
 }

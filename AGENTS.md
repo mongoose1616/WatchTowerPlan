@@ -24,7 +24,7 @@
 
 ## Repository Map
 - `core/` is the shared implementation and authored machine-governed asset root.
-- `core/control_plane/` is the canonical authored machine-readable authority for schemas, registries, contracts, policies, examples, indexes, and ledgers.
+- `core/control_plane/` is the canonical authored machine-readable authority for schemas, registries, contracts, policies, examples, indexes, and retained records.
 - `core/docs/` is the shared and core-owned durable documentation root, including the authored foundations source under `core/docs/foundations/`.
 - `core/python/` is the canonical shared Python workspace for reusable package code, tests, tooling, and the local virtual environment.
 - `plan/` is the live plan-domain workspace.
@@ -42,13 +42,13 @@
 - If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
 - Keep durable documentation only in `core/docs/` and `plan/docs/` according to ownership. Treat `core/docs/foundations/` as the authored foundations source and `plan/docs/foundations/` as its required mirror.
-- Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; use `core/control_plane/ledgers/purges/**` only when you need the machine purge history for removed traces.
+- Treat `plan/**` as the only live planning workspace. The old docs-backed planning corpus has been purged; use `core/control_plane/records/purges/**` only when you need the machine purge history for removed traces.
 - Treat [core/control_plane](/core/control_plane/README.md) as the authored, versioned machine-readable authority. Treat `plan/.wt/**` as live machine state for the plan pack. Do not blur those roles.
 - Treat `core/python/` as the canonical shared Python tooling, test, and local virtual-environment workspace. Use `plan/python/**` only for plan-specific code that should not live in reusable core.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
 - When the main question is live planning state, next work, or repo coordination, start with `plan/.wt/indexes/coordination_index.json` and the derived `plan/plan_overview.md`.
-- Use `plan/docs/**`, `plan/tracking/**`, and `core/control_plane/ledgers/purges/**` for retained planning guidance, human trackers, and purge history. Do not recreate docs-backed planning families.
+- Use `plan/docs/**`, `plan/tracking/**`, and `core/control_plane/records/purges/**` for retained planning guidance, human trackers, and purge history. Do not recreate docs-backed planning families.
 - When a question is about reusable behavior, loaders, schemas, validators, or generic tooling, start in `core/**`. When it is about plan-specific workflows, initiative packages, or plan-owned orchestration, start in `plan/**`.
 - During any non-documentation workflow, if a documentation gap is discovered, update adjacent docs in the same change when needed for coherence, otherwise load the minimum documentation workflow needed to close the gap or record explicit follow-up work if it is deferred.
 - When code, commands, schemas, or governed artifacts may have drifted from companion docs or machine-readable lookup surfaces, use the documentation-implementation reconciliation workflow or record why no explicit reconciliation pass was needed.

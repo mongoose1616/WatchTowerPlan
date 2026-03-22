@@ -18,8 +18,8 @@ applies_to:
   - "plan/projects/"
   - "plan/"
   - "core/control_plane/contracts/acceptance/"
-  - "core/control_plane/ledgers/migrations/"
-  - "core/control_plane/ledgers/validation_evidence/"
+  - "core/control_plane/records/migrations/"
+  - "core/control_plane/records/validation_evidence/"
 aliases:
   - "rewrite phase control"
   - "rewrite parity contract"
@@ -49,7 +49,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 ## Related Standards and Sources
 - [rewrite_surface_classification_standard.md](/plan/docs/standards/governance/rewrite_surface_classification_standard.md): later rewrite slices must pair execution control with surface classification.
 - [acceptance_contract_standard.md](/plan/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract is materialized as a machine-readable acceptance contract.
-- [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md): durable parity and checkpoint evidence must land in the validation-evidence ledger.
+- [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md): durable parity and checkpoint evidence must land in the validation-evidence record.
 - [authority_map_standard.md](/core/docs/standards/data_contracts/authority_map_standard.md): parity checks must preserve the current canonical planning-authority answers unless an accepted decision changes them.
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): rewrite control surfaces must stay joined through one trace and active task chain.
 - [planning_retention_and_purge_standard.md](/plan/docs/standards/governance/planning_retention_and_purge_standard.md): closed rewrite trace packages may later be purged, so current rewrite policy cannot depend on specific retained historical task files.
@@ -61,8 +61,8 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - The program-level machine-readable parity contract must live under [README.md](/core/control_plane/contracts/acceptance/README.md) and be published by the active rewrite trace rather than by an implicit prose-only checkpoint.
 - The default slice-control package for Phase 2 and later is:
   - one human checkpoint document under the active initiative root, usually `implementation_slice.md`
-  - one machine migration record under `core/control_plane/ledgers/migrations/`
-  - one machine validation-evidence artifact under `core/control_plane/ledgers/validation_evidence/`
+  - one machine migration record under `core/control_plane/records/migrations/`
+  - one machine validation-evidence artifact under `core/control_plane/records/validation_evidence/`
 - The human checkpoint document is the place to record:
   - the slice boundary
   - the old and new authority or builder
@@ -96,8 +96,8 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 |---|---|---|
 | Human checkpoint document | `plan/initiatives/<initiative_slug>/implementation_slice.md` or `plan/projects/<project_slug>/initiatives/<initiative_slug>/implementation_slice.md` | Reviewable phase plan, parity notes, and rollback procedure. |
 | Acceptance contract | `core/control_plane/contracts/acceptance/` | Machine-readable parity and entry-condition contract. |
-| Migration record | `core/control_plane/ledgers/migrations/` | Machine-readable state-transition record for the slice. |
-| Validation evidence | `core/control_plane/ledgers/validation_evidence/` | Durable proof of baseline, parity, and validation outcomes. |
+| Migration record | `core/control_plane/records/migrations/` | Machine-readable state-transition record for the slice. |
+| Validation evidence | `core/control_plane/records/validation_evidence/` | Durable proof of baseline, parity, and validation outcomes. |
 | Active gate task | `plan/**/.wt/tasks/<task_slug>/task.json` | Explicit execution and review ownership for the current checkpoint. |
 
 ### Public planning parity boundary
@@ -138,7 +138,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `plan/.wt/indexes/task_index.json`; `plan/tracking/task_tracking.md`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/migrations/`; `core/control_plane/ledgers/validation_evidence/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `plan/.wt/indexes/task_index.json`; `plan/tracking/task_tracking.md`; `core/control_plane/contracts/acceptance/`; `core/control_plane/records/migrations/`; `core/control_plane/records/validation_evidence/`
 
 ## Validation
 - Rewrite checkpoints should not rely on prose-only approval.

@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.remaining_dirty_tranche_closeout.0017_execution_started",
+  "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+  "sequence": 17,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T05:29:02Z",
+  "summary": "Execution started after task task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout entered completed.",
+  "payload": {
+    "task_id": "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
+    "task_status": "completed"
+  },
+  "trace_id": "trace.remaining_dirty_tranche_closeout",
+  "related_paths": [
+    "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json"
+  ]
+}

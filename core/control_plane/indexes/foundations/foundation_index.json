@@ -39,12 +39,15 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "core/control_plane/",
         "core/python/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
         "plan/workflows/modules/",
         "core/docs/standards/",
@@ -86,16 +89,22 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
         "core/control_plane/",
         "core/python/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
+        "core/control_plane/registries/pack_registry.json",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
         "core/docs/standards/",
         "plan/docs/standards/"
       ],
       "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/references/json_schema_2020_12_reference.md",
         "core/docs/references/uv_reference.md",
         "core/docs/references/pytest_reference.md",
@@ -110,6 +119,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/standards/data_contracts/format_selection_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
         "core/docs/references/json_schema_2020_12_reference.md",
         "core/docs/references/uv_reference.md",
         "core/docs/references/pytest_reference.md",
@@ -123,6 +133,10 @@
         "core/docs/references/in_toto_reference.md"
       ],
       "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html",
         "https://json-schema.org/draft/2020-12",
         "https://docs.astral.sh/uv/",
         "https://docs.astral.sh/uv/concepts/projects/layout/",
@@ -178,12 +192,15 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "plan/",
         "core/control_plane/",
+        "core/python/src/watchtower_host/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "plan/python/src/watchtower_plan/",
         "core/workflows/modules/",
         "plan/workflows/modules/"
       ],
@@ -213,7 +230,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
@@ -222,7 +239,10 @@
         "core/workflows/",
         "plan/workflows/",
         "plan/",
-        "core/"
+        "core/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_host/",
+        "plan/python/src/watchtower_plan/"
       ],
       "cited_by_paths": [
         "core/workflows/modules/foundations_context_review.md"
@@ -249,13 +269,17 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "core/docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-19T05:30:00Z",
+      "updated_at": "2026-03-21T18:45:00Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "related_paths": [
         "core/docs/standards/",
         "plan/docs/standards/",
         "core/control_plane/",
+        "core/python/src/watchtower_host/",
+        "core/control_plane/registries/pack_registry.json",
+        "plan/.wt/manifests/pack_runtime_manifest.json",
+        "core/python/src/watchtower_core/validation/pack_contract.py",
         "core/workflows/modules/",
         "plan/workflows/modules/"
       ],

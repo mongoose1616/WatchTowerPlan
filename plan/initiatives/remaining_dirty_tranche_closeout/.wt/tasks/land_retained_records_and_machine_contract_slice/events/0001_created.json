@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.remaining_dirty_tranche_closeout.land_retained_records_and_machine_contract_slice.0001_created",
+  "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T05:30:14Z",
+  "summary": "Created live task task.remaining_dirty_tranche_closeout.retained_records_closeout.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json"
+  },
+  "task_id": "task.remaining_dirty_tranche_closeout.retained_records_closeout"
+}

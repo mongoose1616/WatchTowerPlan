@@ -17,7 +17,7 @@ applies_to:
   - "plan/initiatives/"
   - "plan/projects/"
   - "core/control_plane/contracts/acceptance/"
-  - "core/control_plane/ledgers/validation_evidence/"
+  - "core/control_plane/records/validation_evidence/"
   - "core/control_plane/indexes/traceability/traceability_index.json"
 aliases:
   - "acceptance reconciliation"
@@ -85,7 +85,7 @@ This standard defines how initiative acceptance IDs, acceptance contracts, valid
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.json`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/records/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Validation
 - Initiative acceptance IDs, acceptance-contract acceptance IDs, and traceability acceptance IDs should match exactly.

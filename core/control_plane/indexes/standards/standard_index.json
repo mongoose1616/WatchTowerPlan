@@ -241,6 +241,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
         "core/docs/references/python_plugin_discovery_reference.md",
@@ -249,6 +250,7 @@
       ],
       "applied_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/validations/repository_validation_standard.md",
         "core/docs/references/python_plugin_discovery_reference.md",
@@ -475,7 +477,7 @@
         "core/control_plane/manifests/",
         "core/control_plane/registries/",
         "core/control_plane/indexes/",
-        "core/control_plane/ledgers/"
+        "core/control_plane/records/"
       ],
       "reference_doc_paths": [
         "core/docs/references/json_schema_2020_12_reference.md",
@@ -1172,6 +1174,7 @@
       "internal_reference_paths": [
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -1181,6 +1184,7 @@
       "applied_reference_paths": [
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/engineering/domain_pack_authoring_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -1235,6 +1239,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md",
@@ -1242,6 +1247,7 @@
       ],
       "applied_reference_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/docs/references/domain_pack_authoring_reference.md"
@@ -1418,6 +1424,66 @@
         "standard",
         "engineering",
         "git_workflow"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.hosted_pack_integration",
+      "category": "engineering",
+      "title": "Hosted Pack Integration Standard",
+      "summary": "This standard defines the minimum surfaces and extension rules a hosted pack must satisfy to integrate with reusable core and host composition.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
+      "updated_at": "2026-03-21T23:59:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "documentation",
+        "runtime",
+        "validation"
+      ],
+      "operationalization_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/templates/pack/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "core/python/src/watchtower_core/validation/pack_contract.py",
+        "core/control_plane/registries/pack_registry.json",
+        "core/python/pyproject.toml"
+      ],
+      "reference_doc_paths": [
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ],
+      "internal_reference_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/templates/pack/README.md"
+      ],
+      "applied_reference_paths": [
+        "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/docs/templates/pack/README.md"
+      ],
+      "external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "applied_external_reference_urls": [
+        "https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/",
+        "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/importlib.metadata.html"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "hosted_pack",
+        "integration"
       ]
     },
     {
@@ -2419,7 +2485,7 @@
       "standard_id": "std.data_contracts.validation_evidence",
       "category": "data_contracts",
       "title": "Validation Evidence Standard",
-      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.",
+      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/records/validation_evidence/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/standards/data_contracts/validation_evidence_standard.md",
@@ -2431,8 +2497,8 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/control_plane/ledgers/validation_evidence/",
-        "core/control_plane/ledgers/validation_evidence/README.md",
+        "core/control_plane/records/validation_evidence/",
+        "core/control_plane/records/validation_evidence/README.md",
         "plan/initiatives/",
         "plan/projects/"
       ],
@@ -2443,7 +2509,7 @@
         "plan/docs/standards/data_contracts/status_tracking_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/ledgers/validation_evidence/README.md"
+        "core/control_plane/records/validation_evidence/README.md"
       ],
       "applied_reference_paths": [
         "plan/docs/standards/governance/traceability_standard.md",
@@ -2452,7 +2518,7 @@
         "plan/docs/standards/data_contracts/status_tracking_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/ledgers/validation_evidence/README.md"
+        "core/control_plane/records/validation_evidence/README.md"
       ],
       "tags": [
         "standard",
@@ -2479,21 +2545,21 @@
         "plan/initiatives/",
         "plan/projects/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/records/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/records/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/records/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "internal_reference_paths": [
@@ -2947,14 +3013,14 @@
       "operationalization_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/ledgers/",
+        "core/control_plane/records/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/ledgers/",
+        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/"
@@ -2962,7 +3028,7 @@
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
-        "core/control_plane/ledgers/",
+        "core/control_plane/records/",
         "core/control_plane/indexes/",
         "plan/python/src/watchtower_plan/",
         "plan/python/src/watchtower_plan/cli/",
@@ -3066,24 +3132,24 @@
         "plan/.wt/indexes/task_index.json",
         "plan/tracking/task_tracking.md",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/migrations/",
+        "core/control_plane/records/validation_evidence/"
       ],
       "applies_to": [
         "plan/initiatives/",
         "plan/projects/",
         "plan/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/migrations/",
+        "core/control_plane/records/validation_evidence/"
       ],
       "related_paths": [
         "plan/initiatives/",
         "plan/projects/",
         "plan/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/migrations/",
+        "core/control_plane/records/validation_evidence/"
       ],
       "internal_reference_paths": [
         "plan/docs/standards/governance/rewrite_surface_classification_standard.md",
@@ -3134,7 +3200,7 @@
         "plan/tracking/",
         "plan/.wt/indexes/task_index.json",
         "core/control_plane/registries/authority_map.json",
-        "core/control_plane/ledgers/purges/"
+        "core/control_plane/records/purges/"
       ],
       "applies_to": [
         "plan/",

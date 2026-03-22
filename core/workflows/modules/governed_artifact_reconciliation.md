@@ -4,7 +4,7 @@
 Use this workflow to reconcile schema-backed governed artifacts with their companion schemas, examples, registries, indexes, loaders, validators, and lookup surfaces so artifact families stay internally coherent.
 
 ## Use When
-- A schema, registry, index, contract, policy, ledger, or other governed artifact family may have drifted from its companion machine-readable or implementation-facing surfaces.
+- A schema, registry, index, contract, policy, record, or other governed artifact family may have drifted from its companion machine-readable or implementation-facing surfaces.
 - A review or maintenance pass needs an explicit control-plane coherence check rather than relying only on generic code validation.
 - A task's main risk is stale schema IDs, stale canonical paths, broken examples, or hidden loader and validator assumptions about governed artifacts.
 - Choose this route when the primary disagreement is inside one schema-backed artifact family, even if companion docs or trace surfaces also need follow-up.

@@ -8,12 +8,17 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T05:30:00Z"
+updated_at: "2026-03-21T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
+  - "core/python/src/watchtower_host/"
+  - "core/python/src/watchtower_core/pack_integration/"
+  - "plan/python/src/watchtower_plan/"
+  - "core/control_plane/registries/pack_registry.json"
+  - "plan/.wt/manifests/pack_runtime_manifest.json"
   - "core/docs/standards/"
   - "plan/docs/standards/"
 aliases:
@@ -24,7 +29,7 @@ aliases:
 
 # Engineering Stack Direction
 
-This repository is still closer to governed-core and planning infrastructure than to a finished product implementation, so the stack should be read as a current working baseline plus a small set of future candidates. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM and agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
+This repository is a governed docs-plus-runtime system that currently owns reusable core, host composition, and the first internal pack. The stack should be read as the current operating baseline for that architecture plus a small set of future candidates. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM and agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
 
 ## Audience
 
@@ -34,12 +39,12 @@ This repository is still closer to governed-core and planning infrastructure tha
 
 ## Current Shape
 
-Today the repository is still documentation-heavy, but it also has a substantive Python runtime and control-plane maintenance layer. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
+Today the repository has a substantial governed documentation corpus, reusable Python runtime, host-composition layer, hosted-pack integration contract, and plan-pack orchestration layer. The docs, workflows, control plane, and Python workspace all matter; none of them should be described as incidental scaffolding anymore.
 
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
 | Markdown | Primary human-facing authoring format | `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
-| JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/ledgers/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
+| JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/records/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
 | YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, and `plan/workflows/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
 | Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/pyproject.toml` and `core/python/uv.lock`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
@@ -49,6 +54,8 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - Durable documentation lives under `core/docs/` and `plan/docs/` according to ownership.
 - Routed task behavior lives under `core/workflows/` and `plan/workflows/`.
 - Shared implementation assets live under `core/`.
+- `watchtower_core`, `watchtower_host`, and `watchtower_<pack>` are the active Python runtime layers in the current architecture.
+- `core/control_plane/registries/pack_registry.json`, `plan/.wt/manifests/pack_runtime_manifest.json`, and pack-contract validation are part of the effective operating stack because they define and validate hosted-pack composition.
 
 ## Preferred Building Blocks
 
@@ -56,6 +63,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - Use JSON Schema as the baseline for machine-validated contracts such as manifests, registries, indexes, and compatibility boundaries.
 - Use YAML sparingly for front matter and simple human-authored metadata when it improves readability.
 - Favor Python for local automation, validators, helper runtime code, and harnesses that improve LLM and agent efficiency when a general-purpose language is needed.
+- Treat governed manifests, registries, and pack contracts as the integration contract between host composition and pack-native runtime.
 - Keep Python tooling centralized and predictable under `core/python/` with `pyproject.toml`, `uv`, `pytest`, `ruff`, and `mypy`.
 - Treat `uv` as the preferred workspace manager and execution path, but keep direct `.venv` execution and helper shells available as practical fallbacks when `uv` is not on `PATH`.
 - Consider Pydantic strict mode for typed runtime validation where schema checks alone are not enough.
@@ -88,6 +96,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [engineering_design_principles.md](engineering_design_principles.md)
 - [product_direction.md](product_direction.md)
 - [format_selection_standard.md](/core/docs/standards/data_contracts/format_selection_standard.md)
+- [domain_pack_authoring_reference.md](/core/docs/references/domain_pack_authoring_reference.md)
 - [json_schema_2020_12_reference.md](/core/docs/references/json_schema_2020_12_reference.md)
 - [uv_reference.md](/core/docs/references/uv_reference.md)
 - [pytest_reference.md](/core/docs/references/pytest_reference.md)
@@ -101,4 +110,4 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [in_toto_reference.md](/core/docs/references/in_toto_reference.md)
 
 ## Updated At
-- `2026-03-19T05:30:00Z`
+- `2026-03-21T18:45:00Z`

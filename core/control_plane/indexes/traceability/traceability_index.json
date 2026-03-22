@@ -138,7 +138,7 @@
       "related_paths": [
         "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/governed_acceptance_example_validation_baseline.json",
+        "core/control_plane/records/validation_evidence/governed_acceptance_example_validation_baseline.json",
         "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
         "core/docs/commands/core_python/watchtower_core_query_evidence.md",
         "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
@@ -195,6 +195,36 @@
       ]
     },
     {
+      "trace_id": "trace.ledger_retirement_contract_change",
+      "title": "Ledger Retirement Contract Change",
+      "summary": "Retire remaining ledger-authority dependencies through one governed contract change without breaking validation, command, or documentation contracts.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-21T22:52:52Z",
+      "closed_at": "2026-03-21T22:52:52Z",
+      "closure_reason": "Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end.",
+      "source_surface_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.ledger_retirement_contract_change.bootstrap_ledger_retirement_contract_change"
+      ],
+      "related_paths": [
+        "plan/initiatives/ledger_retirement_contract_change/.wt/initiative.json",
+        "plan/initiatives/ledger_retirement_contract_change/.wt/tasks/bootstrap_ledger_retirement_contract_change/task.json",
+        "plan/initiatives/ledger_retirement_contract_change/decision_notes.md",
+        "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+        "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+        "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.pack_bootstrap_installation_contract",
       "title": "Pack Bootstrap Installation Contract",
       "summary": "Turns hosted-pack scaffold output into a safe registration and shared-workspace installation flow.",
@@ -219,6 +249,39 @@
         "plan/initiatives/pack_bootstrap_installation_contract/design_record.md",
         "plan/initiatives/pack_bootstrap_installation_contract/implementation_slice.md",
         "plan/initiatives/pack_bootstrap_installation_contract/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.pack_cli_fault_isolation_hardening",
+      "title": "Pack CLI Fault Isolation Hardening",
+      "summary": "Keep pack validate, pack describe, and CLI startup usable when a registered hosted pack is malformed or partially bootstrapped.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-21T23:46:04Z",
+      "closed_at": "2026-03-21T23:46:04Z",
+      "closure_reason": "Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations.",
+      "source_surface_paths": [
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.pack_cli_fault_isolation_hardening.bootstrap_pack_cli_fault_isolation_hardening",
+        "task.pack_cli_fault_isolation_hardening.harden_pack_cli_fault_isolation"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/unit/",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/initiative.json",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/bootstrap_pack_cli_fault_isolation_hardening/task.json",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/.wt/tasks/harden_pack_cli_fault_isolation/task.json",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/design_record.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/implementation_slice.md",
+        "plan/initiatives/pack_cli_fault_isolation_hardening/initiative_brief.md"
       ],
       "tags": [
         "traceability"
@@ -420,6 +483,46 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
         "plan/tracking/",
         "plan/workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "title": "Remaining Dirty Tranche Closeout",
+      "summary": "Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-22T05:57:25Z",
+      "source_surface_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
+        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
+        "task.remaining_dirty_tranche_closeout.retained_records_closeout"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/indexes/",
+        "core/docs/",
+        "core/python/src/watchtower_core/",
+        "plan/.wt/indexes/",
+        "plan/docs/",
+        "plan/initiatives/",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/python/src/watchtower_plan/closeout/"
       ],
       "tags": [
         "traceability"

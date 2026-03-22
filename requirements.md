@@ -79,7 +79,7 @@ When this document proposes a future `plan/` live-work shape, that is the target
 | Human navigation and instruction surfaces | README and AGENTS placement is mostly incidental today. | Human-facing roots should get deliberate `README.md` coverage, while `AGENTS.md` should exist only where interaction rules materially change; machine-only `.wt/` trees should not rely on local instruction files or runtime source code. |
 | Project workspace | Missing as an explicit first-class layout. | `plan/projects/<project_slug>/` should hold that project's own context, supporting documentation, references, linked repository information, and other project-specific material. |
 | Permanent product repository boundary | `/home/j/WatchTower` exists as the permanent downstream product repo, but the current requirements and core-shaping work are still being executed from `WatchTowerPlan`. | `WatchTower` should remain the long-term home for operator-facing product implementation, while this repo remains the planning authority and core proving area until downstream bootstrap is explicitly started. |
-| Machine-readable control plane | `core/control_plane/` is already the canonical machine authority for schemas, registries, indexes, contracts, ledgers, and manifests. | Strong foundation. Future work should add missing pack-runtime families here or in future pack-owned `.wt/` roots without blurring authority. |
+| Machine-readable control plane | `core/control_plane/` is already the canonical machine authority for schemas, registries, indexes, contracts, retained records, and manifests. | Strong foundation. Future work should add missing pack-runtime families here or in future pack-owned `.wt/` roots without blurring authority. |
 | Reusable runtime | `watchtower_core.control_plane`, `watchtower_core.validation`, `watchtower_core.evidence`, and selected adapters are reusable-core oriented. | Validation is now meaningfully pack-aware. Query, sync, and rebuild still need a cleaner export-safe story. |
 | Repo-local orchestration | `watchtower_plan` and `watchtower_core.cli` currently own planning-specific query, sync, rendered tracking, task lifecycle, and route CLI behavior. | Keep this split explicit: reusable core stays under `watchtower_core`, while plan-domain Python stays under `plan/python/src/watchtower_plan/`. |
 | Current pack-facing interfaces | `core/control_plane/schemas/interfaces/packs/` already publishes pack settings, governance map, path/status/actor registries, artifact index, work-item note, and extraction envelope interfaces. | Good seed set, but still incomplete and in places too domain-leaky for a stable pack contract. |
@@ -159,7 +159,7 @@ The permanent product boundary and the current execution boundary are intentiona
 | `registry` | Controlled machine authority for schemas, validators, workflow metadata, rendered surfaces, status values, actors, and similar lookup or rule-bearing data. |
 | `schema` | JSON Schema describing one governed artifact or pack-facing interface. |
 | `contract` | Machine-readable artifact describing required acceptance or compatibility conditions. |
-| `ledger` | Durable append-style or record-style machine history such as validation evidence, release records, migration records, or purge records. |
+| `record` | Durable machine-readable retained history such as validation evidence, release records, migration records, or purge records. |
 | `index` | Derived machine-readable lookup surface optimized for query and navigation. |
 | `rendered view` | Derived human-readable view from stronger authority. |
 | `workflow module` | Human-readable, routed procedure unit selected through the routing system. |
@@ -190,7 +190,7 @@ The permanent product boundary and the current execution boundary are intentiona
 |---|---|---|
 | Current root docs corpus | `Current but mislocated` | The repo already has durable core-oriented guidance, but the future boundary should move core-only docs under `core/docs/`. |
 | `plan/docs/` guidance layer | `Current` | The distinct plan-domain guidance layer now exists, including promoted decisions, patterns, references, standards, and duplicated foundations. |
-| Legacy docs-backed planning corpus | `Retired` | Live planning no longer lives in docs. Historical removal is represented only through purge ledgers, promoted guidance, and surviving initiative packages when still retained. |
+| Legacy docs-backed planning corpus | `Retired` | Live planning no longer lives in docs. Historical removal is represented only through purge records, promoted guidance, and surviving initiative packages when still retained. |
 | `plan/` live initiative roots | `Current` | The first-class live `plan` workspace now exists for both pack-wide initiatives and project-scoped initiatives. |
 | `plan/.wt/` aggregate tracking root | `Current` | The first-class pack-level aggregate root now exists for initiative, task, readiness, discrepancy, promotion, guidance, and project status rollups. |
 | `core/workflows/` workflow root | `Current` | The first-class core-only workflow root now exists. |
@@ -428,7 +428,7 @@ High-impact current references that matter now:
 Rule for this document:
 
 - cite exact current references when the future requirement directly keeps, replaces, constrains, or disputes a current authoritative surface
-- avoid turning the requirements document into a path-by-path migration ledger
+- avoid turning the requirements document into a path-by-path migration record
 - defer the exhaustive migration table to the implementation plan
 
 ### Minimum Semantic Fields For High-Value New Families
@@ -538,7 +538,7 @@ The following remain explicitly owner-gated and should never appear by default:
 
 - any recreation of `watchtower_core.plan_runtime` or another catch-all repo-local namespace inside reusable core
 - any reintroduction of repo-local `sys.path` mutation inside `watchtower_core` to reach `plan/python/src`
-- any compatibility-contract or compatibility-ledger surface in the clean endstate
+- any compatibility-contract or compatibility-record surface in the clean endstate
 - any long-lived migration, release, historical, or archive family kept as normal operational state
 - any new repo-root operational tree beyond thin routing entrypoints
 - any divergence between duplicated foundations copies
@@ -709,7 +709,7 @@ Minimum companion set for any new addition:
 | Residual planning runtime still assumes some repo-local initiative orchestration. | The future plan model is initiative-centric and event-backed, not docs-first or catch-all runtime-first. | Current scope in `core/docs/foundations/repository_scope.md` and the live `plan/**` workspace | Keep re-rooting live planning runtime onto pack-wide and project-scoped initiative roots, move reusable behavior toward explicit core boundaries, and use `plan/docs/` for extracted plan guidance. |
 | `watchtower_plan` still holds meaningful behavior. | The clean endstate should keep domain behavior on the plan-owned side of the split and keep reusable core pack-agnostic. | Current runtime routes plan-domain behavior through `plan/python/src/watchtower_plan/`. | Move reusable behavior into explicit core boundaries and keep the remaining domain logic narrow, deliberate, and fully documented under `plan/python/**`. |
 | `pack_settings` surface declarations are still minimal. | Current declarations are enough for startup and validation, but future policy, template, or compatibility surfaces may deserve stronger declared kinds. | `core/control_plane/schemas/interfaces/packs/pack_settings.schema.json` | Extend surface kinds only when future packs need machine-distinct treatment, not just because the schema can grow. |
-| The evidence layer now covers both durable validation ledgers and initiative-local evidence bundles. | The current gap is no longer bundle coverage; any future broadening should be justified by a concrete cross-pack or release-level evidence family rather than by generic abstraction pressure. | `core/control_plane/schemas/artifacts/validation_evidence.schema.json`, `plan/.wt/schemas/artifacts/validation_bundle.schema.json`, and `watchtower_core.evidence` | Keep the current reusable evidence boundaries and add new evidence families only when a second shared workflow proves the model needs to grow. |
+| The evidence layer now covers both durable validation records and initiative-local evidence bundles. | The current gap is no longer bundle coverage; any future broadening should be justified by a concrete cross-pack or release-level evidence family rather than by generic abstraction pressure. | `core/control_plane/schemas/artifacts/validation_evidence.schema.json`, `plan/.wt/schemas/artifacts/validation_bundle.schema.json`, and `watchtower_core.evidence` | Keep the current reusable evidence boundaries and add new evidence families only when a second shared workflow proves the model needs to grow. |
 
 ## Proposed New Surfaces And Contracts
 

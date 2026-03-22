@@ -1,0 +1,94 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.ledger_retirement_contract_change",
+  "trace_id": "trace.ledger_retirement_contract_change",
+  "slug": "ledger_retirement_contract_change",
+  "title": "Ledger Retirement Contract Change",
+  "summary": "Retire remaining ledger-authority dependencies through one governed contract change without breaking validation, command, or documentation contracts.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-21T21:38:29Z",
+  "updated_at": "2026-03-21T22:52:52Z",
+  "task_ids": [
+    "task.ledger_retirement_contract_change.bootstrap_ledger_retirement_contract_change"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.ledger_retirement_contract_change.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.ledger_retirement_contract_change.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/ledger_retirement_contract_change/initiative_brief.md",
+      "sha256": "0e9f2820b35f6cd0f396208c723ada9d6c12fa5476f3f086f0a8567daf2f1c4e",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T22:51:21Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/ledger_retirement_contract_change/design_record.md",
+      "sha256": "9f0ed4d138126f186663316a6456ed13571097679fd091f1bfb7a19ad04c9965",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T22:51:21Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/ledger_retirement_contract_change/implementation_slice.md",
+      "sha256": "895d1a717ef52d857adc585e0282a00ec513c13604267d7051335515e9d8694a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T22:51:21Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/ledger_retirement_contract_change/decision_notes.md",
+      "sha256": "5e7f4ac800417533f0310504055f5e75d618824369cbf4ab35bd178f505df691",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-21T22:51:21Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T21:56:28Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T21:56:58Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T21:57:07Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-21T22:51:21Z"
+    }
+  ],
+  "closed_at": "2026-03-21T22:52:52Z",
+  "closure_reason": "Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end."
+}

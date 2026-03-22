@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-21T23:46:04Z",
+  "updated_at": "2026-03-22T05:57:25Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -294,6 +294,35 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/initiative.json"
       ],
       "updated_at": "2026-03-19T18:39:56Z"
+    },
+    {
+      "evidence_id": "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "initiative_title": "Remaining Dirty Tranche Closeout",
+      "title": "Bootstrap Validation Bundle",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/remaining_dirty_tranche_closeout",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/discrepancies",
+        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T05:14:59Z"
     }
   ]
 }

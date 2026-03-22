@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `trace.remaining_dirty_tranche_closeout` | Remaining Dirty Tranche Closeout | `execution` | repository_maintainer | `1` | [plan.md](/plan/initiatives/remaining_dirty_tranche_closeout/plan.md) | [plan.md](/plan/initiatives/remaining_dirty_tranche_closeout/plan.md) | [task.remaining_dirty_tranche_closeout.docs_governance_reconciliation](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json) (`in_progress`) | Advance the current in-progress task set and keep initiative-local task state current. |
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
@@ -17,4 +19,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-21T23:46:04Z`_
+_Updated At: `2026-03-22T05:57:25Z`_

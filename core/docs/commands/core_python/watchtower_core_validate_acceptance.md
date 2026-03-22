@@ -56,7 +56,7 @@ uv run watchtower-core validate acceptance --trace-id trace.governed_acceptance_
 - `core/python/src/watchtower_host/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
-- `core/control_plane/ledgers/validation_evidence/`
+- `core/control_plane/records/validation_evidence/`
 - `core/control_plane/indexes/traceability/traceability_index.json`
 
 ## Updated At

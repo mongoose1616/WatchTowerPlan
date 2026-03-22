@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.validation_evidence"
 title: "Validation Evidence Standard"
-summary: "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`."
+summary: "This standard defines committed validation-evidence records stored under `core/control_plane/records/validation_evidence/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,7 +17,7 @@ authority: "authoritative"
 # Validation Evidence Standard
 
 ## Summary
-This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.
+This standard defines committed validation-evidence records stored under `core/control_plane/records/validation_evidence/`.
 
 ## Purpose
 - Provide durable machine-readable records of validation outcomes tied to traces, acceptance items, validators, and governed artifacts.
@@ -25,7 +25,7 @@ This standard defines committed validation-evidence records stored under `core/c
 - Establish the downstream half of the trace chain after initiative capture, design, implementation sequencing, and execution.
 
 ## Scope
-- Applies to validation-evidence record artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
+- Applies to validation-evidence record artifacts stored under `core/control_plane/records/validation_evidence/`.
 - Covers placement, required fields, result vocabulary, and trace-link expectations.
 - Does not define validation rules or validator identity; those remain in standards and registries.
 - Does not define mutable runtime event streams or transient execution logs.
@@ -42,10 +42,10 @@ This standard defines committed validation-evidence records stored under `core/c
 - [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/core/control_plane/ledgers/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [README.md](/core/control_plane/records/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Store durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
+- Store durable validation evidence under `core/control_plane/records/validation_evidence/`.
 - Use JSON for published validation-evidence artifacts.
 - Treat validation evidence as retained historical output, not mutable current-state truth.
 - Every evidence artifact should publish:
@@ -106,7 +106,7 @@ This standard defines committed validation-evidence records stored under `core/c
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `plan/initiatives/`; `plan/projects/`
+- `Operational Surfaces`: `core/control_plane/records/validation_evidence/`; `core/control_plane/records/validation_evidence/README.md`; `plan/initiatives/`; `plan/projects/`
 
 ## Validation
 - Validation-evidence artifacts should validate against their published schema.
@@ -122,7 +122,7 @@ This standard defines committed validation-evidence records stored under `core/c
 
 ## References
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
-- [README.md](/core/control_plane/ledgers/validation_evidence/README.md)
+- [README.md](/core/control_plane/records/validation_evidence/README.md)
 
 ## Notes
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.

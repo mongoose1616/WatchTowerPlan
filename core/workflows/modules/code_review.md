@@ -29,17 +29,17 @@ Use this workflow to evaluate a code change for correctness, regression risk, ma
 3. Check validation and companion surfaces.
    - Review tests, negative coverage, validation strategy, fixtures, and release-risk controls relative to the change risk.
    - Check whether docs, configs, schemas, examples, migrations, or operational guidance were updated when the code change makes them part of the behavior boundary.
-4. Build the findings ledger.
+4. Build the findings register.
    - Record findings by severity and confidence with file or code evidence, impacted scenarios, and the recommended next action.
    - Separate confirmed bugs, broader risks, intentional tradeoffs, open questions, and follow-up validation gaps.
 5. Run a confirmation pass.
    - Re-check the highest-risk paths from a different angle, focusing on touched files, unchanged code that can be broken indirectly, and any surfaces the first pass nearly skipped.
-   - If the active task is a same-scope review loop and a new actionable issue appears, add it to the findings ledger and repeat until a confirmation pass finds no new issues.
+   - If the active task is a same-scope review loop and a new actionable issue appears, add it to the findings register and repeat until a confirmation pass finds no new issues.
 
 ## Data Structure
 - Review coverage map
 - Review criteria and risk areas
-- Findings ledger by severity and confidence
+- Findings register by severity and confidence
 - Validation and companion-surface gaps
 - Open questions and follow-up recommendations
 

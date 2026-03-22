@@ -48,7 +48,7 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 - The command refuses purge attempts when the target trace is not terminal, still has open tasks, still has acceptance-reconciliation drift, already has a purge record, or is still referenced by surviving canonical surfaces.
 - The purge boundary is trace-scoped: the command removes trace-local initiative-package artifacts, decision notes, design records, implementation slices, tasks, acceptance contracts, and validation evidence together rather than allowing partial family cleanup.
 - If `--retained-authority-path` is omitted, the implementation falls back to surviving non-package `related_paths` already published by the trace and records those in the purge record when they remain valid.
-- In write mode, the command deletes the trace package, writes one purge record under `core/control_plane/ledgers/purges/`, and then runs the full derived-surface refresh path.
+- In write mode, the command deletes the trace package, writes one purge record under `core/control_plane/records/purges/`, and then runs the full derived-surface refresh path.
 - In `human` mode, the command prints the purge timestamp, removed-path count, purge-record path, retained-authority paths, and whether it wrote the change.
 - In `json` mode, the command prints one JSON object with the removed paths, retained-authority paths, purge-record path, refreshed sync targets, and write status.
 

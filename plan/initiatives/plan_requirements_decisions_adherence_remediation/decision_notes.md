@@ -20,5 +20,5 @@ This remediation is a hard cutover. Root `docs/**` is retired completely, active
 
 ## Follow-Through
 - Update all active code, schemas, registries, indexes, tests, README surfaces, and help text in the same cutover.
-- Allow historical `docs/**` mentions only in purge and migration ledgers.
+- Allow historical `docs/**` mentions only in purge and migration records.
 - Add residue and `domain_packs` regression gates so the cutover fails closed if the old surfaces reappear.

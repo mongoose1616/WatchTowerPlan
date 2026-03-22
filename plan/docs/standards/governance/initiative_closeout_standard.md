@@ -73,7 +73,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - If a terminal closeout proceeds with known acceptance-reconciliation issues, the exception should be explicit in the operator workflow or command invocation rather than implied by a successful closeout alone.
 - When terminal closeout metadata changes the traceability entry, `updated_at` should advance to the effective closeout timestamp.
 - Mirror initiative closeout status into the derived initiative index, coordination surfaces, and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
-- If a terminal trace later becomes purge-eligible, keep the surviving authority in current standards, indexes, and any purge ledger rather than in removed trace-local artifacts.
+- If a terminal trace later becomes purge-eligible, keep the surviving authority in current standards, indexes, and any purge record rather than in removed trace-local artifacts.
 
 ## Structure or Data Model
 | Field | Meaning |

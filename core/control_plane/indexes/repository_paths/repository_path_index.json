@@ -91,7 +91,7 @@
       "path": "core/control_plane/",
       "kind": "directory",
       "surface_kind": "control_plane",
-      "summary": "Holds authoritative machine-readable schemas, registries, contracts, indexes, examples, and ledgers.",
+      "summary": "Holds authoritative machine-readable schemas, registries, contracts, indexes, examples, and retained records.",
       "parent_path": "core/",
       "maturity": "supporting",
       "priority": "medium",
@@ -107,7 +107,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/registries/",
         "core/control_plane/contracts/",
-        "core/control_plane/ledgers/",
+        "core/control_plane/records/",
         "core/control_plane/indexes/"
       ]
     },
@@ -495,297 +495,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/ledgers/",
-      "kind": "directory",
-      "surface_kind": "control_plane_ledgers",
-      "summary": "Retained governed record families for migrations, releases, purge records, and validation evidence.",
-      "parent_path": "core/control_plane/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "tags": [
-        "history",
-        "ledgers"
-      ],
-      "related_paths": [
-        "core/control_plane/ledgers/migrations/",
-        "core/control_plane/ledgers/releases/",
-        "core/control_plane/ledgers/validation_evidence/"
-      ]
-    },
-    {
-      "path": "core/control_plane/ledgers/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the ledgers directory and its main ledger families.",
-      "parent_path": "core/control_plane/ledgers/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/",
-      "kind": "directory",
-      "surface_kind": "control_plane_ledgers",
-      "summary": "Append-only history of schema and contract migrations.",
-      "parent_path": "core/control_plane/ledgers/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the migration ledger directory and its current contents.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/core_python_workspace_bootstrap.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the transition from a reserved Python scaffold to an active governed local workspace.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the first bounded Phase 2 slice that publishes the additive artifact-role registry pilot.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the completed first bounded Phase 3 slice that reconciles command companion source surfaces and publishes the sync-time drift guard.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the Phase 3 entry outcome that approves the first bounded command companion source-surface normalization slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the closed first Phase 4 slice outcome review that opens the bounded closeout-coordination entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the approved closeout-coordination entry review that opens the bounded post-traceability coordination-sync reuse slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the closed closeout coordination sync-reuse outcome review that opens the bounded closeout-tracking entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the approved closeout-tracking entry review that opens the bounded private closeout-local tracker refresh boundary slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the completed first bounded Phase 4 planning projection snapshot slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the approved Phase 4 entry review that opens the first bounded planning projection snapshot slice.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for the closed Phase 3 outcome review that opens the bounded Phase 4 shared-projection entry checkpoint.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared.",
-      "parent_path": "core/control_plane/ledgers/migrations/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/purges/",
-      "kind": "directory",
-      "surface_kind": "control_plane_ledgers",
-      "summary": "Minimal surviving history for traced planning packages that were explicitly purged.",
-      "parent_path": "core/control_plane/ledgers/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/purges/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the trace-purge ledger directory and its current contents.",
-      "parent_path": "core/control_plane/ledgers/purges/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Purge ledger record for the retired planning-projection modularity hardening trace package.",
-      "parent_path": "core/control_plane/ledgers/purges/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/releases/",
-      "kind": "directory",
-      "surface_kind": "control_plane_ledgers",
-      "summary": "Append-only history of releases and their evidence pointers.",
-      "parent_path": "core/control_plane/ledgers/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/releases/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the release ledger directory and its current contents.",
-      "parent_path": "core/control_plane/ledgers/releases/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/releases/core_python_foundation_release.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Release ledger record for the first governed core Python foundation release baseline.",
-      "parent_path": "core/control_plane/ledgers/releases/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/",
-      "kind": "directory",
-      "surface_kind": "control_plane_ledgers",
-      "summary": "Committed validation evidence linked to traced initiatives, validators, and acceptance items.",
-      "parent_path": "core/control_plane/ledgers/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "aliases": [
-        "validation evidence",
-        "evidence ledger"
-      ],
-      "tags": [
-        "validation",
-        "evidence",
-        "traceability"
-      ],
-      "related_paths": [
-        "core/control_plane/indexes/traceability/traceability_index.json"
-      ]
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the validation-evidence record directory and its current contents.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/ledgers/validation_evidence/governed_acceptance_example_validation_baseline.json",
-      "kind": "file",
-      "surface_kind": "control_plane_ledger",
-      "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example.",
-      "parent_path": "core/control_plane/ledgers/validation_evidence/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/manifests/",
       "kind": "directory",
       "surface_kind": "control_plane_family",
@@ -811,6 +520,297 @@
       "surface_kind": "control_plane_file",
       "summary": "Canonical load root for reusable-core startup and pack-context materialization.",
       "parent_path": "core/control_plane/manifests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Retained governed record families for migrations, releases, purge records, and validation evidence.",
+      "parent_path": "core/control_plane/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer",
+      "tags": [
+        "history",
+        "ledgers"
+      ],
+      "related_paths": [
+        "core/control_plane/records/migrations/",
+        "core/control_plane/records/releases/",
+        "core/control_plane/records/validation_evidence/"
+      ]
+    },
+    {
+      "path": "core/control_plane/records/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the records directory and its main record families.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Append-only history of schema and contract migrations.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the migration record directory and its current contents.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/core_python_workspace_bootstrap.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the transition from a reserved Python scaffold to an active governed local workspace.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_artifact_role_registry_pilot.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the first bounded Phase 2 slice that publishes the additive artifact-role registry pilot.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the completed first bounded Phase 3 slice that reconciles command companion source surfaces and publishes the sync-time drift guard.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the Phase 3 entry outcome that approves the first bounded command companion source-surface normalization slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the closed first Phase 4 slice outcome review that opens the bounded closeout-coordination entry checkpoint.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the approved closeout-coordination entry review that opens the bounded post-traceability coordination-sync reuse slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the closed closeout coordination sync-reuse outcome review that opens the bounded closeout-tracking entry checkpoint.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the approved closeout-tracking entry review that opens the bounded private closeout-local tracker refresh boundary slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_planning_projection_snapshot.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the completed first bounded Phase 4 planning projection snapshot slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the approved Phase 4 entry review that opens the first bounded planning projection snapshot slice.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_phase4_shared_projection_entry_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for the closed Phase 3 outcome review that opens the bounded Phase 4 shared-projection entry checkpoint.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/migrations/structural_rewrite_program_phase0_phase1_ready.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared.",
+      "parent_path": "core/control_plane/records/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/purges/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Minimal surviving history for traced planning packages that were explicitly purged.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/purges/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the trace-purge record directory and its current contents.",
+      "parent_path": "core/control_plane/records/purges/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/purges/planning_projection_pipeline_modularity_hardening_purge_record.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Purge record for the retired planning-projection modularity hardening trace package.",
+      "parent_path": "core/control_plane/records/purges/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/releases/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Append-only history of releases and their evidence pointers.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/releases/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the release record directory and its current contents.",
+      "parent_path": "core/control_plane/records/releases/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/releases/core_python_foundation_release.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Release record for the first governed core Python foundation release baseline.",
+      "parent_path": "core/control_plane/records/releases/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/validation_evidence/",
+      "kind": "directory",
+      "surface_kind": "control_plane_records",
+      "summary": "Committed validation evidence linked to traced initiatives, validators, and acceptance items.",
+      "parent_path": "core/control_plane/records/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer",
+      "aliases": [
+        "validation evidence",
+        "evidence ledger"
+      ],
+      "tags": [
+        "validation",
+        "evidence",
+        "traceability"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.json"
+      ]
+    },
+    {
+      "path": "core/control_plane/records/validation_evidence/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Describes the purpose of the validation-evidence record directory and its current contents.",
+      "parent_path": "core/control_plane/records/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/records/validation_evidence/governed_acceptance_example_validation_baseline.json",
+      "kind": "file",
+      "surface_kind": "control_plane_record",
+      "summary": "Durable generic validation-evidence example paired with the governed acceptance contract example.",
+      "parent_path": "core/control_plane/records/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -1137,7 +1137,7 @@
       "path": "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable trace-purge ledger artifact family.",
+      "summary": "Schema for the machine-readable trace-purge record artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2947,26 +2947,6 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Repository-level hard-cutover guards for root path removal and retired planning-model residue on active surfaces.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_initiative_package_service.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for live initiative-package bootstrap, confirmation, approval, and closeout-adjacent state transitions.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_plan_workspace_service.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for pack-wide plan workspace indexes, rendered views, promotions, and coordination projections.",
       "parent_path": "core/python/tests/integration/",
       "maturity": "supporting",
       "priority": "medium",

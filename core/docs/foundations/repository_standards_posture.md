@@ -8,13 +8,17 @@ tags:
   - "foundation"
   - "standards"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T05:30:00Z"
+updated_at: "2026-03-21T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/docs/standards/"
   - "plan/docs/standards/"
   - "core/control_plane/"
+  - "core/python/src/watchtower_host/"
+  - "core/control_plane/registries/pack_registry.json"
+  - "plan/.wt/manifests/pack_runtime_manifest.json"
+  - "core/python/src/watchtower_core/validation/pack_contract.py"
   - "core/workflows/modules/"
   - "plan/workflows/modules/"
 aliases:
@@ -43,7 +47,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 - Make machine-facing surfaces schema-first, versioned, and fail-closed.
 - Keep paired human-readable and machine-usable forms of durable artifacts wherever practical, with a defined relationship between them.
 - Require synchronized updates across related governed artifacts.
-- Make validation mandatory for governed changes.
+- Make validation mandatory for governed changes, including manifest-governed pack composition and hosted-pack boundary checks.
 - Prefer local, deterministic command surfaces for setup, QA, validation, and verification.
 - Gate risky or high-impact operations explicitly.
 - Treat mutable runtime state, generated reports, and release evidence as governed artifacts with clear storage rules.
@@ -57,6 +61,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 - Design workflow modules as single-objective units with explicit triggers, inputs, steps, outputs, validation, and handoff rules.
 - Design durable artifacts so both humans and machines can use them without inventing parallel undocumented state.
 - Update traceability, acceptance, validation, and registry surfaces alongside product, planning, or workflow changes.
+- Update pack manifests, pack registry entries, host composition, and pack-contract validation together when hosted-pack integration changes.
 - Favor readable, deterministic code and behavior-oriented tests.
 - Use governed templates for recurring artifacts such as workflows, ADRs, intake packets, release decisions, and implementation reports.
 - Mark historical, legacy, and reference-only material as non-authoritative by default.
@@ -68,7 +73,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 Future domain-pack standards should keep packs expressive for their domain without letting them drift away from the shared control model.
 
 - Keep packs portable and primarily declarative.
-- Keep the current internal planning-and-implementation pack on the same reusable-core contract path that later external packs must use.
+- Keep the current internal `watchtower_plan` pack on the same manifest-governed, pack-contract-validated path that later external packs must use.
 - Maintain a clear boundary between user-editable surfaces and managed pack state.
 - Do not allow pack-local hidden state to become the operator-authored source of truth.
 - Require pack workflows, templates, knowledge assets, and tool guidance to follow shared structural contracts.
@@ -84,4 +89,4 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-19T05:30:00Z`
+- `2026-03-21T18:45:00Z`

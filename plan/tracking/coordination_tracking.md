@@ -3,14 +3,16 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active plan-workspace initiatives exist. |
-| Next | Bootstrap a new initiative package before starting execution. |
-| Open First | [plan/plan_overview.md](/plan/plan_overview.md) |
+| Mode | `active_work` |
+| Summary | Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work. |
+| Next | Advance the current in-progress task set and keep initiative-local task state current. |
+| Open First | [plan/initiatives/remaining_dirty_tranche_closeout/plan.md](/plan/initiatives/remaining_dirty_tranche_closeout/plan.md) |
 | Companion Views | [initiative_tracking.md](/plan/tracking/initiative_tracking.md), [task_tracking.md](/plan/tracking/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.remaining_dirty_tranche_closeout` | `execution` | repository_maintainer | [plan.md](/plan/initiatives/remaining_dirty_tranche_closeout/plan.md) | Advance the current in-progress task set and keep initiative-local task state current. |
 
 ## Actionable Tasks
 _No actionable tasks._
@@ -24,4 +26,4 @@ _No actionable tasks._
 | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | `completed` | `2026-03-21T03:56:17Z` | [plan.md](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md) |
 | `trace.pack_starter_templates_and_oversight_alignment` | `completed` | `2026-03-21T02:32:49Z` | [plan.md](/plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md) |
 
-_Updated At: `2026-03-21T23:46:04Z`_
+_Updated At: `2026-03-22T05:57:25Z`_

@@ -299,13 +299,16 @@
         "https://docs.python.org/3/library/importlib.metadata.html"
       ],
       "cited_by_paths": [
+        "core/docs/foundations/engineering_stack_direction.md",
         "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
-        "core/docs/standards/engineering/domain_pack_authoring_standard.md"
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md"
       ],
       "applied_by_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",
-        "core/docs/standards/engineering/domain_pack_authoring_standard.md"
+        "core/docs/standards/engineering/domain_pack_authoring_standard.md",
+        "core/docs/standards/engineering/hosted_pack_integration_standard.md"
       ],
       "related_paths": [
         "core/docs/standards/engineering/core_host_pack_python_boundary_standard.md",

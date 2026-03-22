@@ -42,7 +42,7 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 ```
 
 ## Behavior and Outputs
-- The command reads governed validation-evidence records directly from `core/control_plane/ledgers/validation_evidence/`.
+- The command reads governed validation-evidence records directly from `core/control_plane/records/validation_evidence/`.
 - In `human` mode, the command prints matching evidence artifacts with their trace, recorded-at timestamp, and check count.
 - In `json` mode, the command prints one JSON object with matching evidence artifacts and the acceptance IDs they cover.
 
@@ -57,7 +57,7 @@ uv run watchtower-core query evidence --acceptance-id ac.governed_acceptance_exa
 - `core/python/src/watchtower_host/cli/query_records_family.py`
 - `core/python/src/watchtower_host/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/query/evidence.py`
-- `core/control_plane/ledgers/validation_evidence/`
+- `core/control_plane/records/validation_evidence/`
 
 ## Updated At
 - `2026-03-13T21:57:29Z`

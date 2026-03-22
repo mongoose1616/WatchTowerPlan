@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.ledger_retirement_contract_change.0010_ready_for_execution_approved",
+  "initiative_id": "initiative.ledger_retirement_contract_change",
+  "sequence": 10,
+  "event_type": "ready_for_execution_approved",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-21T21:56:58Z",
+  "summary": "An authorized maintainer approved the initiative package for execution.",
+  "payload": {},
+  "trace_id": "trace.ledger_retirement_contract_change"
+}

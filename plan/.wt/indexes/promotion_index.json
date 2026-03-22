@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-21T23:46:04Z",
+  "updated_at": "2026-03-22T05:57:25Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -387,6 +387,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.plan_requirements_decisions_adherence_remediation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.remaining_dirty_tranche_closeout.bootstrap_shell",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "initiative_title": "Remaining Dirty Tranche Closeout",
+      "title": "Bootstrap Promotion Shell",
+      "status": "planned",
+      "initiative_root": "plan/initiatives/remaining_dirty_tranche_closeout",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-22T05:14:59Z",
+      "target_paths": [
+        "plan/docs/decisions/remaining_dirty_tranche_closeout_design_record.md",
+        "plan/docs/patterns/remaining_dirty_tranche_closeout_implementation_slice.md",
+        "plan/docs/references/remaining_dirty_tranche_closeout_initiative_brief.md",
+        "plan/docs/standards/governance/remaining_dirty_tranche_closeout_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

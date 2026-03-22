@@ -8,12 +8,15 @@ tags:
   - "foundation"
   - "design_philosophy"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T05:30:00Z"
+updated_at: "2026-03-21T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
+  - "core/python/src/watchtower_host/"
+  - "core/python/src/watchtower_core/pack_integration/"
+  - "plan/python/src/watchtower_plan/"
   - "core/workflows/modules/"
   - "plan/workflows/modules/"
   - "core/docs/standards/"
@@ -26,7 +29,7 @@ aliases:
 
 # Engineering Design Principles
 
-This repository is meant to feel like a governed operating environment for LLM- and agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: keep the shared substrate trustworthy, keep the reusable boundary explicit, keep root and human-facing surfaces compact, and keep the boundary between readable outputs and canonical machine state easy to inspect.
+This repository is meant to feel like a governed operating environment for LLM- and agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: keep reusable core, host composition, and pack-native runtime explicit, keep the shared substrate trustworthy, keep root and human-facing surfaces compact, and keep the boundary between readable outputs and canonical machine state easy to inspect.
 
 ## Audience
 
@@ -41,7 +44,9 @@ Core is the part of the system that has to be boring in the best possible way. I
 - Keep core local-first and deterministic.
 - Validate manifests, registries, indexes, and contracts in a schema-first, fail-closed way.
 - Preserve clear source-of-truth boundaries between runtime state, rule-bearing surfaces such as standards or authority registries, reference material, and human-readable outputs.
-- Keep reusable surfaces distinct from repo-local plan-runtime behavior so current repository maintenance rules do not quietly leak into future consumers.
+- Keep reusable surfaces distinct from host composition and pack-native runtime behavior so repository-local maintenance rules do not quietly leak into future consumers.
+- Keep `watchtower_host` as the composition layer that wires reusable core to hosted packs without pulling pack-native behavior into `watchtower_core`.
+- Treat pack integration as manifest-driven, portable, and fail-closed rather than as a repo-local convenience.
 - Treat compatibility shims as temporary migration aids, not permanent public-boundary growth.
 - Concentrate infrastructure complexity inside the control plane, helper runtime, validation tools, and recovery or release surfaces.
 - Treat Python and other implementation code as helper or harness layers that improve LLM and agent efficiency, control, and validation.
@@ -70,12 +75,13 @@ The repository only works when humans and machines can both find the right level
 Future domain packs are where the broader WatchTower product becomes useful to operators. They should remain future-state context for this repository unless and until a consuming product repo mounts them for real execution.
 
 - Make domain packs the primary future operator-facing workflow surface.
-- Keep the first internal planning-and-implementation pack aligned with the same reusable-core contracts that later external packs must follow.
+- Keep the first internal `watchtower_plan` pack aligned with the same reusable-core and host-composition contracts that later external packs must follow.
 - Keep prompt-first, LLM-guided interaction explicit.
 - Encode domain-specific language, domain goals, and domain artifact expectations so the operator works in native terms instead of generic system abstractions.
 - Project readable outputs such as notes, findings, reports, solutions, and recaps from governed state.
 - Preserve machine-usable state and machine-usable workflow artifacts behind those readable outputs.
 - Keep packs portable and bounded so they do not pull host implementation detail into every domain.
+- Let manifests, governed registries, and pack contracts define pack integration instead of repo-local path conventions.
 - Isolate pack-specific workflows, templates, terminology, tool guidance, knowledge, and artifact patterns from shared host concerns.
 - Do not let pack-local hidden state become operator-authored truth.
 
@@ -86,4 +92,4 @@ Future domain packs are where the broader WatchTower product becomes useful to o
 - [engineering_stack_direction.md](engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-19T05:30:00Z`
+- `2026-03-21T18:45:00Z`

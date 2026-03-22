@@ -52,7 +52,7 @@ uv run watchtower-core plan closeout purge-trace --trace-id trace.example --reta
 - With no leaf command, the current implementation prints plan-closeout-specific help and exits successfully.
 - `initiative` closes one live initiative package under `plan/**`, finalizes initiative-local evidence and closeout artifacts, and refreshes the live plan coordination and rendered surfaces in write mode.
 - `retained-initiative` closes one retained trace record after live `plan/**` work is already promoted or purged, then refreshes the traceability, initiative, and coordination mirrors that still expose retained history.
-- `purge-trace` validates terminal-state, open-task, acceptance, duplicate-ledger, and surviving-reference preconditions before it removes one closed trace package and writes the minimal purge ledger entry.
+- `purge-trace` validates terminal-state, open-task, acceptance, duplicate-record, and surviving-reference preconditions before it removes one closed trace package and writes the minimal purge record entry.
 
 ## Related Commands
 | Command | Relationship |

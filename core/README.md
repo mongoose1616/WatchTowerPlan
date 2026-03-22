@@ -7,7 +7,7 @@
 | Path | Description |
 |---|---|
 | `core/README.md` | Describes the purpose of the core root and its main subtrees. |
-| `core/control_plane/` | Holds authoritative machine-readable schemas, registries, contracts, indexes, examples, and ledgers. |
+| `core/control_plane/` | Holds authoritative machine-readable schemas, registries, contracts, indexes, examples, and retained records. |
 | `core/python/` | Holds the canonical Python workspace for `watchtower_core` code, tests, and tooling. |
 | `core/docs/` | Holds authored core-only guidance surfaces, including the authored shared foundations corpus. |
 | `core/workflows/` | Holds the authoritative shared workflow guidance and routing surfaces. |

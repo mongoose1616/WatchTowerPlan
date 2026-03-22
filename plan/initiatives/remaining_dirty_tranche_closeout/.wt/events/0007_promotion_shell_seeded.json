@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.remaining_dirty_tranche_closeout.0007_promotion_shell_seeded",
+  "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+  "sequence": 7,
+  "event_type": "promotion_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T05:14:59Z",
+  "summary": "Seeded the promotion shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.remaining_dirty_tranche_closeout",
+  "related_paths": [
+    "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
+    "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
+    "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
+    "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md"
+  ]
+}

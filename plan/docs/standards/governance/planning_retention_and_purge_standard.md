@@ -16,7 +16,7 @@ authority: "authoritative"
 applies_to:
   - "plan/initiatives/"
   - "plan/projects/"
-  - "core/control_plane/ledgers/"
+  - "core/control_plane/records/"
   - "core/control_plane/indexes/"
   - "plan/python/src/watchtower_plan/"
   - "plan/python/src/watchtower_plan/cli/"
@@ -39,7 +39,7 @@ This standard defines the promote-then-purge retention model for closed traced p
 ## Scope
 - Applies to traced planning artifacts after their initiative has reached a terminal closeout state.
 - Applies to the retention decision for trace-local initiative briefs, design records, implementation slices, optional decision notes, task state, acceptance contracts, validation evidence, and related derived planning surfaces.
-- Applies to the minimal surviving machine-readable ledger that records a completed purge.
+- Applies to the minimal surviving machine-readable record that captures a completed purge.
 - Does not authorize purging active traces, partial family cleanup, or deleting a trace whose durable policy still exists only inside the to-be-purged artifacts.
 
 ## Use When
@@ -71,8 +71,8 @@ This standard defines the promote-then-purge retention model for closed traced p
   - trace-local acceptance contracts and validation evidence
   - derived tracker and index entries that only exist because the trace package remains present
   - direct surviving references that would otherwise point to removed paths
-- Keep one minimal surviving purge ledger entry instead of the full trace package.
-- The purge ledger entry should record at least:
+- Keep one minimal surviving purge record entry instead of the full trace package.
+- The purge record entry should record at least:
   - `trace_id`
   - `title`
   - `initiative_status`
@@ -90,13 +90,13 @@ This standard defines the promote-then-purge retention model for closed traced p
 |---|---|
 | Retained closed trace | Closed trace still present as an initiative package in the live repository. |
 | Purge-eligible trace | Closed trace that satisfies the purge preconditions and can be removed safely. |
-| Purged trace | Trace-local package removed; minimal surviving history remains only in the purge ledger and any promoted canonical artifacts. |
+| Purged trace | Trace-local package removed; minimal surviving history remains only in the purge record and any promoted canonical artifacts. |
 
 ### Surviving authority after purge
 | Concern | Surviving canonical surface |
 |---|---|
 | Current policy or rule | Standards, current command docs, or other surviving canonical documentation |
-| Minimal historical trace record | Purge ledger entry |
+| Minimal historical trace record | Purge record entry |
 | Current machine-readable planning state | Rebuilt initiative, task, traceability, coordination, and related live indexes after purge |
 
 ## Process or Workflow
@@ -105,24 +105,24 @@ This standard defines the promote-then-purge retention model for closed traced p
 3. Confirm that no surviving canonical surface still depends on a trace-local path that would be removed.
 4. Record the purge decision and the surviving canonical authority surfaces.
 5. Remove the whole trace package in one governed change set.
-6. Write the minimal purge ledger entry.
+6. Write the minimal purge record entry.
 7. Rebuild the affected planning trackers and machine-readable indexes.
-8. Validate that the removed trace no longer appears in retained planning surfaces except through the purge ledger.
+8. Validate that the removed trace no longer appears in retained planning surfaces except through the purge record.
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/ledgers/`; `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/cli/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/projects/`; `core/control_plane/records/`; `plan/python/src/watchtower_plan/`; `plan/python/src/watchtower_plan/cli/`
 
 ## Validation
 - A purged trace should have no surviving open tasks.
-- A purged trace should have one purge ledger entry.
+- A purged trace should have one purge record entry.
 - Surviving canonical surfaces should not reference removed trace-local paths after purge.
 - Rebuilt planning trackers and indexes should no longer surface the purged trace as a retained planning package.
 - Reviewers should reject partial or ad hoc file deletion that bypasses the trace-level purge boundary.
 
 ## Change Control
-- Update this standard when the purge eligibility rules, surviving authority model, or purge ledger contract changes materially.
-- Update the purge ledger schema or artifact shape, purge workflow surface, planning trackers, and affected indexes in the same change set when this standard changes structurally.
+- Update this standard when the purge eligibility rules, surviving authority model, or purge record contract changes materially.
+- Update the purge record schema or artifact shape, purge workflow surface, planning trackers, and affected indexes in the same change set when this standard changes structurally.
 
 ## References
 - [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)

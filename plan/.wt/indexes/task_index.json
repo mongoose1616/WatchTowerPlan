@@ -980,6 +980,69 @@
         "plan/",
         ".github/"
       ]
+    },
+    {
+      "task_id": "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "initiative_title": "Remaining Dirty Tranche Closeout",
+      "title": "Bootstrap Remaining Dirty Tranche Closeout",
+      "summary": "Bootstrap Remaining Dirty Tranche Closeout live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json",
+      "updated_at": "2026-03-22T05:29:02Z"
+    },
+    {
+      "task_id": "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "initiative_title": "Remaining Dirty Tranche Closeout",
+      "title": "Land docs and governance reconciliation tranche",
+      "summary": "Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
+      "updated_at": "2026-03-22T05:57:25Z",
+      "related_ids": [
+        "initiative.remaining_dirty_tranche_closeout"
+      ],
+      "applies_to": [
+        "core/docs/",
+        "plan/docs/",
+        "plan/initiatives/",
+        "core/control_plane/indexes/",
+        "plan/.wt/indexes/"
+      ]
+    },
+    {
+      "task_id": "task.remaining_dirty_tranche_closeout.retained_records_closeout",
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "initiative_title": "Remaining Dirty Tranche Closeout",
+      "title": "Land retained-records and machine-contract slice",
+      "summary": "Commits the retained-records cutover, control-plane contract updates, and related runtime changes.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json",
+      "updated_at": "2026-03-22T05:56:08Z",
+      "related_ids": [
+        "initiative.remaining_dirty_tranche_closeout"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/src/watchtower_core/",
+        "plan/python/src/watchtower_plan/closeout/"
+      ]
     }
   ]
 }

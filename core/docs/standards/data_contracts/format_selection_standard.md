@@ -69,7 +69,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 ### Repository-default decisions
 - `core/docs/**`, `plan/docs/**`, `core/workflows/**`, `plan/workflows/**`, and human-facing repository guidance should use Markdown.
 - `core/control_plane/schemas/**` should use JSON.
-- `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, and `ledgers/**` should default to JSON.
+- `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, and `records/**` should default to JSON.
 - Documentation front matter should use YAML only for the parsed metadata block, not for the document body.
 - Future append-only runtime or event records should prefer NDJSON over inventing a custom line format.
 - Future local retrieval or runtime stores should stay out of the canonical versioned control plane and only use SQLite when query needs justify it.

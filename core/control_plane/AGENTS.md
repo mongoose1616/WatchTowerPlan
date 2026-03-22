@@ -17,7 +17,7 @@
 
 ## Local Rules
 - Treat `core/control_plane/**` as the authored, versioned machine-readable authority for shared core artifacts.
-- Keep authored schemas, registries, manifests, contracts, templates, indexes, and retained ledgers here according to their owned families.
+- Keep authored schemas, registries, manifests, contracts, templates, indexes, and retained records here according to their owned families.
 - Treat `plan/.wt/**` as live plan-pack machine state, not as a substitute for authored control-plane assets.
 - Keep reusable core artifacts here and keep plan-owned runtime or initiative-local state out of this tree.
 - When a schema-backed artifact family changes, update its companion schemas, examples, registries, indexes, validators, and affected docs in the same change set.

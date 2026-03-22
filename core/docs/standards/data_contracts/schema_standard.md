@@ -63,14 +63,14 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Keep interface schemas separate from core-authored artifact schemas even when the fields overlap. Accepted external input is a different contract boundary from core-owned canonical state.
 - When external validation needs schemas that do not belong in the canonical catalog, load them through explicit supplemental schema paths or in-memory supplemental schema documents instead of mutating the repository-owned catalog opportunistically.
 - Prefer live governed artifacts and inline test payloads over repository fixture corpora when validating schema behavior.
-- Update related contracts, registries, manifests, indexes, ledgers, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
+- Update related contracts, registries, manifests, indexes, records, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
 
 ## Structure or Data Model
 ### Required placement rules
 | Schema Type | Canonical Location | Notes |
 |---|---|---|
 | Shared fragment or reusable field group | `core/control_plane/schemas/common/` | Use for shared ids, refs, timestamps, status fragments, and common object shapes. |
-| Core-owned artifact schema | `core/control_plane/schemas/artifacts/` | Use for registries, manifests, contracts, indexes, ledgers, or other core-authored artifacts. |
+| Core-owned artifact schema | `core/control_plane/schemas/artifacts/` | Use for registries, manifests, contracts, indexes, records, or other core-authored artifacts. |
 | External validation interface | `core/control_plane/schemas/interfaces/` | Use for artifacts core validates but does not own. |
 
 ### Minimum root expectations
@@ -108,7 +108,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`
-- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/schemas/`; `core/control_plane/README.md`; `core/control_plane/contracts/`; `core/control_plane/manifests/`; `core/control_plane/registries/`; `core/control_plane/indexes/`; `core/control_plane/ledgers/`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/schemas/`; `core/control_plane/README.md`; `core/control_plane/contracts/`; `core/control_plane/manifests/`; `core/control_plane/registries/`; `core/control_plane/indexes/`; `core/control_plane/records/`
 
 ## Validation
 - New or changed schemas should be validated locally with a JSON Schema validator before merge.
@@ -119,7 +119,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 
 ## Change Control
 - Update this standard when the repository changes the schema baseline, schema placement model, or fail-closed rules.
-- Update related files in the same change set when schema changes affect `core/control_plane/contracts/`, `core/control_plane/manifests/`, `core/control_plane/registries/`, `core/control_plane/indexes/`, or `core/control_plane/ledgers/`.
+- Update related files in the same change set when schema changes affect `core/control_plane/contracts/`, `core/control_plane/manifests/`, `core/control_plane/registries/`, `core/control_plane/indexes/`, or `core/control_plane/records/`.
 - Record breaking acceptance or compatibility changes in the relevant compatibility contract and committed migration history when that structure is in use.
 
 ## References

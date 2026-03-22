@@ -50,7 +50,7 @@ This standard defines the four-axis classification and retention-reason model th
 ## Related Standards and Sources
 - [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md): lifecycle status must stay within the shared `draft` or `active` or `deprecated` vocabulary.
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): surviving historical guidance should use existing authority signaling instead of ad hoc lifecycle words.
-- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): live execution state is initiative-local under `plan/**/.wt/tasks/**`, while historical task state survives only through retained initiative packages or purge ledgers.
+- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): live execution state is initiative-local under `plan/**/.wt/tasks/**`, while historical task state survives only through retained initiative packages or purge records.
 - [authority_map_standard.md](/core/docs/standards/data_contracts/authority_map_standard.md): canonical planning-authority answers must remain explicit when classification work touches discoverability.
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): compatibility shims stay temporary by default, but only after current consumers and boundary value are made explicit.
 - [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md): history and compatibility work must preserve one clear canonical answer per question.
@@ -89,8 +89,8 @@ This standard defines the four-axis classification and retention-reason model th
   - `discoverability`
   - `historical_context`
   - `migration_window`
-- Treat `status: deprecated` plus `authority: historical` as the default signaling model for retained history and purge-ledger context.
-- Treat purge ledgers plus promoted guidance as the only surviving historical planning surfaces after purge; do not recreate docs-backed task archives.
+- Treat `status: deprecated` plus `authority: historical` as the default signaling model for retained history and purge-record context.
+- Treat purge records plus promoted guidance as the only surviving historical planning surfaces after purge; do not recreate docs-backed task archives.
 - Prefer deletion after proof only when consumer maps, discoverability checks, and rollback expectations show no active dependency remains.
 - No rewrite slice may move or delete a surface until:
   - its four-axis classification is published
@@ -137,13 +137,13 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Examples
 - `plan/.wt/indexes/coordination_index.json` is `active`, `canonical_machine_answer`, `active_family_location`, and `n/a`.
-- `core/control_plane/ledgers/purges/decision_supersession_and_regression_evidence_alignment_purge_record.json` is `deprecated`, `historical_record`, `family_native_closed_or_historical_location`, and `n/a` when retained as explicit historical context.
+- `core/control_plane/records/purges/decision_supersession_and_regression_evidence_alignment_purge_record.json` is `deprecated`, `historical_record`, `family_native_closed_or_historical_location`, and `n/a` when retained as explicit historical context.
 - `core/python/src/watchtower_core/query/` is `active`, `compatibility_surface`, `compatibility_namespace_or_marker`, and usually `supported` while the repo still publishes the namespace as a current boundary-layer import surface.
 - `core/python/tests/integration/` can remain `active`, `supporting`, `active_family_location`, and `n/a` when the focused suite family is the canonical regression surface after a hotspot split.
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `plan/initiatives/`; `plan/tracking/`; `plan/.wt/indexes/task_index.json`; `core/control_plane/registries/authority_map.json`; `core/control_plane/ledgers/purges/`
+- `Operational Surfaces`: `plan/initiatives/`; `plan/tracking/`; `plan/.wt/indexes/task_index.json`; `core/control_plane/registries/authority_map.json`; `core/control_plane/records/purges/`
 
 ## Validation
 - Rewrite reviews should reject proposals that classify a surface with fewer than four axes.

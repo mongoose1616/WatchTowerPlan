@@ -50,4 +50,4 @@ Retire the root docs tree, finish the initiative-package hard cutover, and resto
 ## Constraints
 - `requirements.md`, `decisions.md`, and the mirrored foundations corpus remain the governing authority when older standards or `main`-branch patterns disagree.
 - `core/docs/foundations/**` remains the authored foundations source and `plan/docs/foundations/**` remains the required byte-identical mirror.
-- Purge and migration ledgers may continue to mention historical `docs/**` paths, but they cannot remain active dependencies.
+- Purge and migration records may continue to mention historical `docs/**` paths, but they cannot remain active dependencies.

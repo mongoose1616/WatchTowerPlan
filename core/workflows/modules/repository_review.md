@@ -20,9 +20,9 @@ Use this workflow to synthesize an existing repository review into evidence-back
 ## Workflow
 1. Establish the review boundary and evidence basis.
    - Confirm the scope, coverage map, standards applied, and any remaining blind spots before synthesizing findings.
-   - When the review continues a stable theme from earlier passes, keep one trace, one master findings ledger, and one closeout boundary instead of starting a new trace for each adjacent same-theme issue.
+   - When the review continues a stable theme from earlier passes, keep one trace, one master findings register, and one closeout boundary instead of starting a new trace for each adjacent same-theme issue.
    - Separate confirmed facts, strong inferences, tentative concerns, and unresolved unknowns.
-2. Build the findings ledger.
+2. Build the findings register.
    - Consolidate the inventory and assessment results into distinct findings by category, severity, confidence, and affected surfaces.
    - Tie each finding to repository evidence, impacted workflows or users, and whether the issue is same-change repairable or explicit follow-up work.
 3. Build the remediation sequence.
@@ -30,14 +30,14 @@ Use this workflow to synthesize an existing repository review into evidence-back
    - Convert major findings into concrete remediation tasks, prerequisites, and non-recommended simplifications when a tempting refactor would violate foundations or governance.
 4. Run a post-synthesis confirmation pass.
    - Re-check the highest-risk areas from a different angle, including direct dependencies, derived surfaces, and review boundaries that could still hide issues.
-   - If the active review loop finds a new actionable issue inside the same scope, add it to the findings ledger and repeat the synthesis.
+   - If the active review loop finds a new actionable issue inside the same scope, add it to the findings register and repeat the synthesis.
 5. Prepare the durable review report.
    - Summarize the scope, standards applied, coverage boundary, findings, remediation plan, and confirmation-pass result in a shape a later contributor can use without replaying the investigation.
 
 ## Data Structure
 - Review scope and coverage map
 - Review criteria, standards, and foundations applied
-- Findings ledger by severity, confidence, and category
+- Findings register by severity, confidence, and category
 - Systemic patterns and non-recommended simplifications
 - Recommended remediation sequence
 - Remaining blind spots or open questions

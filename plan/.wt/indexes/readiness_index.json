@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-21T23:46:04Z",
+  "updated_at": "2026-03-22T05:57:25Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -154,6 +154,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-19T18:39:56Z"
+    },
+    {
+      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
+      "trace_id": "trace.remaining_dirty_tranche_closeout",
+      "title": "Remaining Dirty Tranche Closeout",
+      "initiative_root": "plan/initiatives/remaining_dirty_tranche_closeout",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "in_progress",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": true,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-22T05:57:25Z"
     }
   ]
 }
