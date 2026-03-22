@@ -149,12 +149,11 @@ class PlanWorkspaceSnapshotLoader:
     def _load_trace_artifact_refs(
         self,
     ) -> dict[str, tuple[tuple[str, ...], tuple[str, ...]]]:
-        fresh_loader = ControlPlaneLoader(self._loader.repo_root)
         refs: dict[str, dict[str, list[str]]] = {}
         for (
             _relative_path,
             document,
-        ) in fresh_loader.iter_validated_documents_with_paths_under(
+        ) in self._loader.iter_validated_documents_with_paths_under(
             ACCEPTANCE_CONTRACTS_DIRECTORY
         ):
             trace_id = str(document.get("trace_id", "")).strip()
@@ -167,7 +166,7 @@ class PlanWorkspaceSnapshotLoader:
         for (
             _relative_path,
             document,
-        ) in fresh_loader.iter_validated_documents_with_paths_under(
+        ) in self._loader.iter_validated_documents_with_paths_under(
             VALIDATION_EVIDENCE_DIRECTORY
         ):
             trace_id = str(document.get("trace_id", "")).strip()

@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.plan_task_tracking_sync_performance` | Plan Task Tracking Sync Performance | `completed` | [plan.md](/plan/initiatives/plan_task_tracking_sync_performance/plan.md) | `2026-03-22T16:52:56Z` | Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency. |
 | `trace.first_party_root_pack_roots` | First-Party Root Pack Roots | `completed` | [plan.md](/plan/initiatives/first_party_root_pack_roots/plan.md) | `2026-03-22T16:30:08Z` | Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction. |
 | `trace.core_copy_forward_operating_mode_documentation` | Core Copy Forward Operating Mode Documentation | `completed` | [plan.md](/plan/initiatives/core_copy_forward_operating_mode_documentation/plan.md) | `2026-03-22T16:13:43Z` | Documented copy-forward core adoption and donor-neutral shared-core guidance. |
 | `trace.core_shared_language_deplanification` | Core Shared Language Deplanification | `completed` | [plan.md](/plan/initiatives/core_shared_language_deplanification/plan.md) | `2026-03-22T15:17:46Z` | Normalized shared-core language and validated the governed surfaces. |
@@ -22,4 +23,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-22T16:30:08Z`_
+_Updated At: `2026-03-22T16:52:56Z`_

@@ -183,7 +183,7 @@
       "summary": "Implement first-party root-pack discovery and default-pack resolution so copied repositories can host packs at <slug>/ without donor assumptions.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-22T16:30:08Z",
+      "updated_at": "2026-03-22T16:40:45Z",
       "closed_at": "2026-03-22T16:30:08Z",
       "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction.",
       "source_surface_paths": [
@@ -581,6 +581,34 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/initiative_brief.md",
         "plan/tracking/",
         "plan/workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_task_tracking_sync_performance",
+      "title": "Plan Task Tracking Sync Performance",
+      "summary": "Reduce the coordination rebuild cost caused by repeated live task-state loading during plan write commands.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T16:52:56Z",
+      "closed_at": "2026-03-22T16:52:56Z",
+      "closure_reason": "Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency.",
+      "source_surface_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.plan_task_tracking_sync_performance.bootstrap_plan_task_tracking_sync_performance"
+      ],
+      "related_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/.wt/initiative.json",
+        "plan/initiatives/plan_task_tracking_sync_performance/.wt/tasks/bootstrap_plan_task_tracking_sync_performance/task.json",
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md"
       ],
       "tags": [
         "traceability"

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
@@ -145,7 +146,7 @@ def iter_initiative_states(
 
     pack_loader = _plan_loader(loader)
     states: list[PlanInitiativeState] = []
-    for root in _initiative_roots(loader.repo_root):
+    for root in _initiative_roots(pack_loader):
         initiative_path = root / ".wt" / "initiative.json"
         if not initiative_path.exists():
             continue
@@ -190,6 +191,7 @@ def iter_task_documents(
 ) -> tuple[PlanTaskStateDocument, ...]:
     """Return every validated live task-state document across the plan workspace."""
 
+    pack_loader = _plan_loader(loader)
     documents: list[PlanTaskStateDocument] = []
     for state in iter_initiative_states(loader):
         tasks_root = loader.repo_root / state.relative_root / ".wt" / "tasks"
@@ -198,11 +200,19 @@ def iter_task_documents(
         for path in sorted(tasks_root.glob("*/task.json")):
             relative_path = str(path.relative_to(loader.repo_root))
             try:
-                documents.append(load_task_document(loader, relative_path))
+                task_document = pack_loader.load_validated_document(relative_path)
             except FileNotFoundError:
                 # Task lifecycle updates can remove or replace a sibling task between discovery
                 # and load; skip only the vanished path and keep surviving task state strict.
                 continue
+            documents.append(
+                PlanTaskStateDocument.from_documents(
+                    relative_path=relative_path,
+                    initiative_root=state.relative_root,
+                    initiative_document=state.document,
+                    task_document=task_document,
+                )
+            )
     _assert_unique_task_ids(documents)
     return tuple(documents)
 
@@ -222,8 +232,9 @@ def load_task_document(
     """Load one live task-state document by relative path."""
 
     normalized_path = relative_path.strip().lstrip("/")
-    state = _initiative_for_task_path(loader, normalized_path)
-    task_document = _plan_loader(loader).load_validated_document(normalized_path)
+    pack_loader = _plan_loader(loader)
+    state = _initiative_for_task_path(pack_loader, normalized_path)
+    task_document = pack_loader.load_validated_document(normalized_path)
     return PlanTaskStateDocument.from_documents(
         relative_path=normalized_path,
         initiative_root=state.relative_root,
@@ -279,12 +290,11 @@ def update_task_document(
     return True
 
 
-def _initiative_roots(repo_root: Path) -> tuple[Path, ...]:
+def _initiative_roots(loader: ControlPlaneLoader) -> tuple[Path, ...]:
     roots: list[Path] = []
+    repo_root = loader.repo_root
     workspace_paths = PackWorkspacePaths.from_loader(
-        ControlPlaneLoader(
-            repo_root, active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
-        ),
+        loader,
         pack_settings_path=PLAN_PACK_SETTINGS_PATH,
     )
 
@@ -316,10 +326,15 @@ def _initiative_for_task_path(
         raise ValueError(
             f"Task path is not under an initiative-local task root: {relative_path}"
         )
-    for state in iter_initiative_states(loader):
-        if state.relative_root == prefix:
-            return state
-    raise ValueError(f"Unknown initiative root for task path: {relative_path}")
+    initiative_relative_path = f"{prefix}/.wt/initiative.json"
+    try:
+        initiative_document = loader.load_validated_document(initiative_relative_path)
+    except ArtifactLoadError as exc:
+        raise ValueError(f"Unknown initiative root for task path: {relative_path}") from exc
+    return PlanInitiativeState(
+        relative_root=prefix,
+        document=initiative_document,
+    )
 
 
 def _assert_unique_task_ids(documents: list[PlanTaskStateDocument]) -> None:

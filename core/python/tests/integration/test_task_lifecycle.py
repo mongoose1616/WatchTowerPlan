@@ -311,17 +311,21 @@ def test_task_update_write_tolerates_other_task_disappearing_during_scan(
         for document in plan_task_state.iter_task_documents(loader)
         if document.task_id != created.task_id
     )
-    original_loader = plan_task_state.load_task_document
+    original_load = ControlPlaneLoader.load_validated_document
     triggered = False
 
-    def _load_task_document(loader_arg: ControlPlaneLoader, relative_path: str):
+    def _load_validated_document(loader_arg: ControlPlaneLoader, relative_path: str):
         nonlocal triggered
         if relative_path == missing_relative_path and not triggered:
             triggered = True
             raise FileNotFoundError(relative_path)
-        return original_loader(loader_arg, relative_path)
+        return original_load(loader_arg, relative_path)
 
-    monkeypatch.setattr(plan_task_state, "load_task_document", _load_task_document)
+    monkeypatch.setattr(
+        ControlPlaneLoader,
+        "load_validated_document",
+        _load_validated_document,
+    )
 
     result = service.update(
         TaskUpdateParams(
@@ -336,6 +340,31 @@ def test_task_update_write_tolerates_other_task_disappearing_during_scan(
     assert result.wrote is True
     assert result.doc_path == created.doc_path
     assert (repo_root / result.doc_path).exists()
+
+
+def test_iter_task_documents_scans_initiative_state_once_per_pass(
+    task_lifecycle_approved_repo: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    loader = ControlPlaneLoader(task_lifecycle_approved_repo)
+    original_iter = plan_task_state.iter_initiative_states
+    calls = 0
+
+    def _iter_initiative_states(loader_arg: ControlPlaneLoader):
+        nonlocal calls
+        calls += 1
+        return original_iter(loader_arg)
+
+    monkeypatch.setattr(
+        plan_task_state,
+        "iter_initiative_states",
+        _iter_initiative_states,
+    )
+
+    documents = plan_task_state.iter_task_documents(loader)
+
+    assert documents
+    assert calls == 1
 
 
 def test_task_update_rejects_execution_start_before_initiative_approval(

@@ -248,7 +248,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-22T16:30:08Z",
+      "updated_at": "2026-03-22T16:40:45Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/first_party_root_pack_roots/plan.md",
@@ -746,6 +746,50 @@
         "plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json",
         "plan/tracking/",
         "plan/workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.plan_task_tracking_sync_performance",
+      "title": "Plan Task Tracking Sync Performance",
+      "summary": "Reduce the coordination rebuild cost caused by repeated live task-state loading during plan write commands.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T16:52:56Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/plan_task_tracking_sync_performance/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/plan_task_tracking_sync_performance/summary.md",
+      "initiative_id": "initiative.plan_task_tracking_sync_performance",
+      "slug": "plan_task_tracking_sync_performance",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.plan_task_tracking_sync_performance.bootstrap_plan_task_tracking_sync_performance"
+      ],
+      "evidence_ids": [
+        "evidence.plan_task_tracking_sync_performance.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-22T16:52:56Z",
+      "closure_reason": "Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency.",
+      "related_paths": [
+        "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
+        "plan/initiatives/plan_task_tracking_sync_performance/.wt/initiative.json",
+        "plan/initiatives/plan_task_tracking_sync_performance/.wt/tasks/bootstrap_plan_task_tracking_sync_performance/task.json"
       ],
       "tags": [
         "traceability"

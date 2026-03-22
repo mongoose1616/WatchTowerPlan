@@ -1069,6 +1069,21 @@
       ]
     },
     {
+      "task_id": "task.plan_task_tracking_sync_performance.bootstrap_plan_task_tracking_sync_performance",
+      "initiative_id": "initiative.plan_task_tracking_sync_performance",
+      "trace_id": "trace.plan_task_tracking_sync_performance",
+      "initiative_title": "Plan Task Tracking Sync Performance",
+      "title": "Bootstrap Plan Task Tracking Sync Performance",
+      "summary": "Bootstrap Plan Task Tracking Sync Performance live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/plan_task_tracking_sync_performance/.wt/tasks/bootstrap_plan_task_tracking_sync_performance/task.json",
+      "updated_at": "2026-03-22T16:52:46Z"
+    },
+    {
       "task_id": "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
       "initiative_id": "initiative.remaining_dirty_tranche_closeout",
       "trace_id": "trace.remaining_dirty_tranche_closeout",

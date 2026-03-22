@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:30:08Z",
+  "updated_at": "2026-03-22T16:52:56Z",
   "entries": [
     {
       "closeout_id": "closeout.core_copy_forward_operating_mode_documentation.bootstrap_recap",
@@ -328,6 +328,31 @@
         "cancelled"
       ],
       "updated_at": "2026-03-19T18:39:56Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.plan_task_tracking_sync_performance.bootstrap_recap",
+      "initiative_id": "initiative.plan_task_tracking_sync_performance",
+      "trace_id": "trace.plan_task_tracking_sync_performance",
+      "initiative_title": "Plan Task Tracking Sync Performance",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/plan_task_tracking_sync_performance",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.plan_task_tracking_sync_performance.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.plan_task_tracking_sync_performance.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-22T16:52:56Z",
       "terminal_state": "completed"
     },
     {

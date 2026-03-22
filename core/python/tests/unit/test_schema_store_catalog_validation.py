@@ -128,3 +128,13 @@ def test_schema_store_rejects_unknown_schema_id() -> None:
 
     with pytest.raises(SchemaResolutionError):
         store.load_schema("urn:watchtower:schema:missing:example:v1")
+
+
+def test_schema_store_reuses_validators_for_repeat_schema_lookups() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+    schema_id = "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
+
+    first = store.build_validator(schema_id)
+    second = store.build_validator(schema_id)
+
+    assert first is second

@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.plan_task_tracking_sync_performance",
+  "trace_id": "trace.plan_task_tracking_sync_performance",
+  "slug": "plan_task_tracking_sync_performance",
+  "title": "Plan Task Tracking Sync Performance",
+  "summary": "Reduce the coordination rebuild cost caused by repeated live task-state loading during plan write commands.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T16:42:57Z",
+  "updated_at": "2026-03-22T16:52:56Z",
+  "task_ids": [
+    "task.plan_task_tracking_sync_performance.bootstrap_plan_task_tracking_sync_performance"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.plan_task_tracking_sync_performance.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.plan_task_tracking_sync_performance.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.plan_task_tracking_sync_performance.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/plan_task_tracking_sync_performance/initiative_brief.md",
+      "sha256": "76f8ab97e52de867c0c0c46875ccaff89cc7cccb847d1dc282fa8aa0f450e410",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:51:54Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/plan_task_tracking_sync_performance/design_record.md",
+      "sha256": "e40883fe2a6c8f95141a16c8773d8222ee977b558a307716a97b9a18f575cc2a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:51:54Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/plan_task_tracking_sync_performance/implementation_slice.md",
+      "sha256": "84bb8ff83d32525d6367349de5ddb0f67984a925198bd2bb17087eff7e86d316",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:51:54Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:44:38Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:51:54Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:51:58Z"
+    }
+  ],
+  "closed_at": "2026-03-22T16:52:56Z",
+  "closure_reason": "Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency."
+}

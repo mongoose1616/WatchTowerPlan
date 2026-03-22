@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.plan_task_tracking_sync_performance`: Plan Task Tracking Sync Performance (`completed` at `2026-03-22T16:52:56Z`) - Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency.
 - `trace.first_party_root_pack_roots`: First-Party Root Pack Roots (`completed` at `2026-03-22T16:30:08Z`) - Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction.
 - `trace.core_copy_forward_operating_mode_documentation`: Core Copy Forward Operating Mode Documentation (`completed` at `2026-03-22T16:13:43Z`) - Documented copy-forward core adoption and donor-neutral shared-core guidance.
 - `trace.core_shared_language_deplanification`: Core Shared Language Deplanification (`completed` at `2026-03-22T15:17:46Z`) - Normalized shared-core language and validated the governed surfaces.
@@ -25,7 +26,6 @@
 - `trace.ledger_retirement_contract_change`: Ledger Retirement Contract Change (`completed` at `2026-03-21T22:52:52Z`) - Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end.
 - `trace.pack_bootstrap_installation_contract`: Pack Bootstrap Installation Contract (`completed` at `2026-03-21T05:15:57Z`) - Delivered guarded pack bootstrap registration flow and validated shared workspace wiring.
 - `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`completed` at `2026-03-21T03:56:17Z`) - Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
-- `trace.pack_starter_templates_and_oversight_alignment`: Pack Starter Templates And Oversight Alignment (`completed` at `2026-03-21T02:32:49Z`) - Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

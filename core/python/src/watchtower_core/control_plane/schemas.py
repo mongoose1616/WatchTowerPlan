@@ -136,6 +136,7 @@ class SchemaStore:
         self.catalog = catalog
         self._schema_documents = schema_documents
         self._registry = registry
+        self._validator_cache: dict[str, Draft202012Validator] = {}
         self.supplemental_schema_ids = supplemental_schema_ids
         self.additional_catalog_paths = additional_catalog_paths
 
@@ -312,7 +313,15 @@ class SchemaStore:
 
     def build_validator(self, schema_id: str) -> Draft202012Validator:
         """Build a validator for a cataloged or supplemental schema identifier."""
-        return Draft202012Validator(self.load_schema(schema_id), registry=self._registry)
+        cached = self._validator_cache.get(schema_id)
+        if cached is not None:
+            return cached
+        validator = Draft202012Validator(
+            self.load_schema(schema_id),
+            registry=self._registry,
+        )
+        self._validator_cache[schema_id] = validator
+        return validator
 
     def validate_instance(
         self,

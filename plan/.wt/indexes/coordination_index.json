@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:30:08Z",
+  "updated_at": "2026-03-22T16:52:56Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.plan_task_tracking_sync_performance",
+      "title": "Plan Task Tracking Sync Performance",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T16:52:56Z",
+      "key_surface_path": "plan/initiatives/plan_task_tracking_sync_performance/plan.md",
+      "closure_reason": "Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency."
+    },
     {
       "trace_id": "trace.first_party_root_pack_roots",
       "title": "First-Party Root Pack Roots",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-21T03:56:17Z",
       "key_surface_path": "plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/plan.md",
       "closure_reason": "Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche."
-    },
-    {
-      "trace_id": "trace.pack_starter_templates_and_oversight_alignment",
-      "title": "Pack Starter Templates And Oversight Alignment",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-21T02:32:49Z",
-      "key_surface_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md",
-      "closure_reason": "Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories."
     }
   ]
 }
