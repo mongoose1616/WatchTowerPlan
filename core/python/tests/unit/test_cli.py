@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib
 import json
 import sys
+from pathlib import Path
 
 import pytest
 from watchtower_plan.cli.query_lookup_handlers import (
@@ -32,6 +33,51 @@ def test_doctor_command_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core doctor"
     assert payload["workspace"] == "core_python"
     assert payload["status"] == "ok"
+
+
+def test_doctor_command_emits_telemetry_summary_and_jsonl(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY_DIR", str(tmp_path))
+
+    result = main(["doctor", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    telemetry_files = tuple(tmp_path.glob("**/*.jsonl"))
+    assert result == 0
+    assert payload["status"] == "ok"
+    assert len(telemetry_files) == 1
+    assert "[telemetry] watchtower-core doctor status=ok" in captured.err
+    records = [
+        json.loads(line) for line in telemetry_files[0].read_text(encoding="utf-8").splitlines()
+    ]
+    assert records[0]["record_type"] == "run_started"
+    assert records[-1]["record_type"] == "run_finished"
+    assert any(
+        record.get("operation_name") == "watchtower-core doctor"
+        and record.get("status") == "ok"
+        for record in records
+        if record["record_type"] == "operation_result"
+    )
+
+
+def test_doctor_command_can_disable_telemetry(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY", "off")
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY_DIR", str(tmp_path))
+
+    result = main(["doctor", "--format", "json"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert captured.err == ""
+    assert tuple(tmp_path.glob("**/*.jsonl")) == ()
 
 
 @pytest.mark.parametrize(
@@ -140,6 +186,23 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
         "uv run watchtower-core query foundations --reference-path "
         "core/docs/references/uv_reference.md --format json"
     ) in captured.out
+
+
+def test_query_foundations_help_emits_help_telemetry(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY_DIR", str(tmp_path))
+
+    with pytest.raises(SystemExit) as excinfo:
+        main(["query", "foundations", "--help"])
+
+    captured = capsys.readouterr()
+    telemetry_files = tuple(tmp_path.glob("**/*.jsonl"))
+    assert excinfo.value.code == 0
+    assert len(telemetry_files) == 1
+    assert "[telemetry] watchtower-core query foundations status=help" in captured.err
 
 
 @pytest.mark.parametrize("command", (["plan", "query", "coordination", "--help"],))

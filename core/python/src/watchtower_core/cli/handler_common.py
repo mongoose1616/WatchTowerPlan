@@ -8,6 +8,8 @@ from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
+from watchtower_core.telemetry import add_operation_attributes
+
 
 def _run_help(args: argparse.Namespace) -> int:
     help_parser = getattr(args, "help_parser", None)
@@ -45,6 +47,7 @@ def _emit_detail_result(
 ) -> int:
     """Emit one standard detail payload or fall back to the human renderer."""
 
+    add_operation_attributes(cli_output_format=args.format, cli_result_kind="detail")
     if _print_payload_factory(args, payload_factory) == 0:
         return exit_code
     human_result = render_human()
@@ -64,6 +67,12 @@ def _emit_collection_query_results[EntryT](
 ) -> int:
     """Emit one standard collection-query payload or human summary."""
 
+    add_operation_attributes(
+        cli_command_name=command_name,
+        cli_output_format=args.format,
+        cli_result_kind="collection",
+        cli_result_count=len(entries),
+    )
     if (
         _print_payload_factory(
             args,
@@ -95,6 +104,12 @@ def _emit_command_error(
     *,
     prefix: str | None = None,
 ) -> int:
+    add_operation_attributes(
+        cli_command_name=command_name,
+        cli_output_format=args.format,
+        cli_result_kind="error",
+        cli_error_message=message,
+    )
     payload = {
         "command": command_name,
         "status": "error",
@@ -121,6 +136,11 @@ def _run_value_error_operation[ResultT](
     try:
         return operation()
     except ValueError as exc:
+        add_operation_attributes(
+            cli_error_kind="value_error",
+            cli_error_type=type(exc).__name__,
+            cli_error_message=str(exc),
+        )
         _emit_command_error(args, command_name, str(exc), prefix=prefix)
         return None
 

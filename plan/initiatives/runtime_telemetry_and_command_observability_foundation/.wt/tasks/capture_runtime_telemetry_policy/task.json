@@ -6,12 +6,12 @@
   "title": "Capture runtime telemetry policy",
   "summary": "Publish the telemetry storage, ownership, enablement, and documentation rules before runtime instrumentation lands.",
   "status": "active",
-  "task_status": "in_progress",
+  "task_status": "completed",
   "task_kind": "documentation",
   "priority": "high",
   "owner": "repository_maintainer",
   "created_at": "2026-03-22T17:40:43Z",
-  "updated_at": "2026-03-22T17:41:21Z",
+  "updated_at": "2026-03-22T17:50:26Z",
   "dependency_task_ids": [
     "task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation"
   ],

@@ -13,6 +13,9 @@ Adds default-on local runtime telemetry, timing, and error tracing across host, 
 - Rendered progress: [progress.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/progress.md)
 - Rendered summary: [summary.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/summary.md)
 - Terminal task `task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation`: `completed`
+- Terminal task `task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime`: `completed`
+- Terminal task `task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy`: `completed`
+- Terminal task `task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle`: `completed`
 
 ## Promoted Guidance
 - `promotion.runtime_telemetry_and_command_observability_foundation.bootstrap_shell`: `planned` / approval `pending`
@@ -25,15 +28,12 @@ Adds default-on local runtime telemetry, timing, and error tracing across host, 
 - `evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle`: `planned`
 
 ## Unresolved Follow-Ups
-- Open task `task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime`: `planned`
-- Open task `task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy`: `in_progress`
-- Open task `task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle`: `planned`
 - Open task `task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration`: `planned`
-- Open task `task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime`: `planned`
+- Open task `task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime`: `in_progress`
 - Open task `task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts`: `planned`
 - Open task `task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-22T17:41:52Z`
+- `updated_at`: `2026-03-22T17:58:23Z`
 - `closeout.runtime_telemetry_and_command_observability_foundation.bootstrap_recap`: `planned`

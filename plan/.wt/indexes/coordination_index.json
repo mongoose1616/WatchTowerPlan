@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T17:41:52Z",
+  "updated_at": "2026-03-22T17:58:23Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -19,8 +19,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-22T17:41:52Z",
-      "open_task_count": 7,
+      "updated_at": "2026-03-22T17:58:23Z",
+      "open_task_count": 4,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md",
       "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -33,48 +33,12 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime",
-        "task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy",
-        "task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle",
         "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration",
         "task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime",
         "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts",
         "task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout"
       ],
       "active_task_summaries": [
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime",
-          "title": "Build shared telemetry runtime",
-          "task_status": "planned",
-          "priority": "critical",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/build_shared_telemetry_runtime/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy"
-          ]
-        },
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy",
-          "title": "Capture runtime telemetry policy",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/capture_runtime_telemetry_policy/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle",
-          "title": "Instrument host command lifecycle",
-          "task_status": "planned",
-          "priority": "critical",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_host_command_lifecycle/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime"
-          ]
-        },
         {
           "task_id": "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration",
           "title": "Instrument plan-pack orchestration",
@@ -84,21 +48,17 @@
           "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_plan_pack_orchestration/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle",
             "task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime"
           ]
         },
         {
           "task_id": "task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime",
           "title": "Instrument sync, validation, and pack runtime",
-          "task_status": "planned",
+          "task_status": "in_progress",
           "priority": "critical",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_sync_validation_and_pack_runtime/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts",
@@ -109,7 +69,6 @@
           "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/refresh_telemetry_docs_and_command_contracts/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle",
             "task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime",
             "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration"
           ]

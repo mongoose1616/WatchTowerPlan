@@ -1169,12 +1169,12 @@
       "title": "Build shared telemetry runtime",
       "summary": "Add the reusable-core telemetry runtime, configuration resolution, sink management, and fail-open guard.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "critical",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/build_shared_telemetry_runtime/task.json",
-      "updated_at": "2026-03-22T17:40:46Z",
+      "updated_at": "2026-03-22T17:58:23Z",
       "depends_on": [
         "task.runtime_telemetry_and_command_observability_foundation.capture_runtime_telemetry_policy"
       ],
@@ -1193,12 +1193,12 @@
       "title": "Capture runtime telemetry policy",
       "summary": "Publish the telemetry storage, ownership, enablement, and documentation rules before runtime instrumentation lands.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/capture_runtime_telemetry_policy/task.json",
-      "updated_at": "2026-03-22T17:41:21Z",
+      "updated_at": "2026-03-22T17:50:26Z",
       "depends_on": [
         "task.runtime_telemetry_and_command_observability_foundation.bootstrap_runtime_telemetry_and_command_observability_foundation"
       ],
@@ -1220,12 +1220,12 @@
       "title": "Instrument host command lifecycle",
       "summary": "Instrument root CLI parse, dispatch, help, error, and handler execution paths without changing stdout contracts.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "critical",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_host_command_lifecycle/task.json",
-      "updated_at": "2026-03-22T17:40:47Z",
+      "updated_at": "2026-03-22T17:58:23Z",
       "depends_on": [
         "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime"
       ],
@@ -1270,12 +1270,12 @@
       "title": "Instrument sync, validation, and pack runtime",
       "summary": "Add nested telemetry around sync harness execution, validation entrypoints, and pack runtime import and resolution.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "critical",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_sync_validation_and_pack_runtime/task.json",
-      "updated_at": "2026-03-22T17:40:50Z",
+      "updated_at": "2026-03-22T17:58:23Z",
       "depends_on": [
         "task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime"
       ],
