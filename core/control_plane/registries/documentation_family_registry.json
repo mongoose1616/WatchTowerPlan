@@ -7,7 +7,7 @@
     {
       "family_id": "foundation",
       "entry_status": "active",
-      "summary": "Durable foundation guidance mirrored between core/docs and plan/docs.",
+      "summary": "Durable foundation guidance mirrored between the authored core source and the current required pack mirror root.",
       "front_matter_base_schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
       "front_matter_schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
       "template_ids": [
@@ -29,7 +29,7 @@
       ],
       "equivalence_mode": "byte_identical",
       "mirror_update_mode": "same_change_set",
-      "notes": "The reusable-core foundation family remains one mirrored logical family even though plan also carries pack-local governance metadata."
+      "notes": "The reusable-core foundation family remains one mirrored logical family even when the current repository carries pack-local governance metadata alongside the required mirror."
     },
     {
       "family_id": "workflow",
@@ -48,8 +48,8 @@
       "required_index_ids": [
         "index.workflows"
       ],
-      "notes": "Shared workflow guidance lives under core/workflows; plan-owned workflow guidance lives under plan/workflows."
+      "notes": "Shared workflow guidance lives under core/workflows; pack-owned workflow guidance lives under pack workflow roots such as plan/workflows."
     }
   ],
-  "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into the plan pack."
+  "notes": "This registry governs the reusable-core documentation families that already exist or are intentionally mirrored into current hosted pack roots."
 }

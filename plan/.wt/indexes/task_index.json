@@ -193,6 +193,63 @@
       ]
     },
     {
+      "task_id": "task.core_shared_language_deplanification.bootstrap_core_shared_language_deplanification",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Bootstrap Core Shared Language Deplanification",
+      "summary": "Bootstrap Core Shared Language Deplanification live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_shared_language_deplanification/.wt/tasks/bootstrap_core_shared_language_deplanification/task.json",
+      "updated_at": "2026-03-22T15:14:01Z"
+    },
+    {
+      "task_id": "task.core_shared_language_deplanification.normalize_shared_core_language",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Normalize Shared Core Language",
+      "summary": "Deplanifies shared standards, reusable-core READMEs, and registries while keeping current pack paths as concrete repo facts.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_shared_language_deplanification/.wt/tasks/normalize_shared_core_language/task.json",
+      "updated_at": "2026-03-22T15:15:17Z",
+      "applies_to": [
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/registries/documentation_family_registry.json",
+        "core/control_plane/registries/path_pattern_registry.json"
+      ]
+    },
+    {
+      "task_id": "task.core_shared_language_deplanification.validate_and_closeout",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Validate And Close Out Deplanification",
+      "summary": "Refreshes derived surfaces, validates the changed docs and registries, and closes the initiative cleanly.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_shared_language_deplanification/.wt/tasks/validate_and_close_out_deplanification/task.json",
+      "updated_at": "2026-03-22T15:16:34Z",
+      "applies_to": [
+        "core/control_plane/indexes/standards/standard_index.json",
+        "plan/initiatives/core_shared_language_deplanification/"
+      ]
+    },
+    {
       "task_id": "task.domain_pack_externalization_portability_proof.add_second_pack_fixture_and_multi_pack_proofs",
       "initiative_id": "initiative.domain_pack_externalization_portability_proof",
       "trace_id": "trace.domain_pack_externalization_portability_proof",

@@ -61,6 +61,48 @@
       ]
     },
     {
+      "trace_id": "trace.core_shared_language_deplanification",
+      "title": "Core Shared Language Deplanification",
+      "summary": "Removes WatchTowerPlan and plan-flavored wording from shared core standards, registries, and reusable-core READMEs so core authority stays pack-neutral.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T15:17:46Z",
+      "closed_at": "2026-03-22T15:17:46Z",
+      "closure_reason": "Normalized shared-core language and validated the governed surfaces.",
+      "source_surface_paths": [
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_shared_language_deplanification.bootstrap_core_shared_language_deplanification",
+        "task.core_shared_language_deplanification.normalize_shared_core_language",
+        "task.core_shared_language_deplanification.validate_and_closeout"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/standards/standard_index.json",
+        "core/control_plane/registries/documentation_family_registry.json",
+        "core/control_plane/registries/path_pattern_registry.json",
+        "core/docs/standards/engineering/python_code_design_standard.md",
+        "core/docs/standards/engineering/python_workspace_standard.md",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/",
+        "plan/initiatives/core_shared_language_deplanification/",
+        "plan/initiatives/core_shared_language_deplanification/.wt/initiative.json",
+        "plan/initiatives/core_shared_language_deplanification/.wt/tasks/bootstrap_core_shared_language_deplanification/task.json",
+        "plan/initiatives/core_shared_language_deplanification/.wt/tasks/normalize_shared_core_language/task.json",
+        "plan/initiatives/core_shared_language_deplanification/.wt/tasks/validate_and_close_out_deplanification/task.json",
+        "plan/initiatives/core_shared_language_deplanification/decision_notes.md",
+        "plan/initiatives/core_shared_language_deplanification/design_record.md",
+        "plan/initiatives/core_shared_language_deplanification/implementation_slice.md",
+        "plan/initiatives/core_shared_language_deplanification/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.domain_pack_externalization_portability_proof",
       "title": "Domain Pack Externalization and Portability Proof",
       "summary": "Proves that plan and future domain packs can be copied out with only packaging and path updates while reusable core and host integration remain stable.",

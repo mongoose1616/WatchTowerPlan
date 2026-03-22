@@ -6,7 +6,7 @@
 ## Boundary
 - `Classification`: `runtime_architecture_start_here`
 - `Supported Imports`: Start with the package-specific READMEs below before importing from a new namespace.
-- `Non-Goals`: This file does not define a stable wildcard import surface for the whole package, and `watchtower_core` is not a catch-all home for plan-owned logic that should stay under `watchtower_plan`.
+- `Non-Goals`: This file does not define a stable wildcard import surface for the whole package, and `watchtower_core` is not a catch-all home for pack-owned logic that should stay under the owning `watchtower_<pack>` package such as the current internal `watchtower_plan`.
 
 ## Governing Foundations
 - [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
@@ -26,15 +26,15 @@
 | `adapters/` | `reusable_core` | Parsing and normalizing governed front matter and Markdown surfaces. |
 | `control_plane/` | `reusable_core` | Workspace-aware schema, artifact, and loader primitives. |
 | `documentation/` | `reusable_core` | Repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic used by validation and sync services. |
-| `validation/` | `reusable_core` | Export-safe validation services, pack-target enumeration, and result models; plan-domain semantic validators stay under `watchtower_plan.validation`. |
-| `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; live plan queries stay under `watchtower_plan.query`. |
-| `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; live plan sync orchestration stays under `watchtower_plan.sync`. |
-| `rebuild/` | `reusable_core` | Export-safe rebuild harness primitives plus registry-backed rendered-view building and markdown reconciliation; plan-owned output shaping stays outside the reusable-core package root. |
+| `validation/` | `reusable_core` | Export-safe validation services, pack-target enumeration, and result models; pack-owned semantic validators stay under the owning pack package such as `watchtower_plan.validation`. |
+| `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; pack-local lifecycle or coordination queries stay under the owning pack package such as `watchtower_plan.query`. |
+| `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; pack-local sync orchestration stays under the owning pack package such as `watchtower_plan.sync`. |
+| `rebuild/` | `reusable_core` | Export-safe rebuild harness primitives plus registry-backed rendered-view building and markdown reconciliation; pack-owned output shaping stays outside the reusable-core package root. |
 | `routing/` | `reusable_core` | Export-safe route-selection runtime over the governed route and workflow indexes; CLI formatting and repo-local route handlers stay out of the package root. |
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
 | `cli/` | `boundary_guard` | Thin compatibility shim plus reusable CLI support helpers that pack namespaces may import without depending on host composition. |
-| `closeout/` | `boundary_guard` | Fail-closed compatibility guard; plan-domain closeout services live under `watchtower_plan.closeout`. |
+| `closeout/` | `boundary_guard` | Fail-closed compatibility guard; pack-owned closeout services live under the owning pack package such as `watchtower_plan.closeout`. |
 | `evidence/` | `reusable_core` | Validation-evidence records plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
 | `utils/` | `reusable_core` | Small shared helpers with low coupling. |
 
@@ -48,4 +48,4 @@
 
 ## Notes
 - Keep new generic loaders, validators, query helpers, sync helpers, rebuild helpers, adapters, and utilities in `watchtower_core`.
-- Reach repo-local plan behavior through `watchtower_plan` only when the behavior is truly tied to the live WatchTowerPlan workspace.
+- Reach pack-owned behavior through the owning `watchtower_<pack>` package only when the behavior is truly tied to a pack-local workspace. In this repository, `watchtower_plan` is the current internal pack example.

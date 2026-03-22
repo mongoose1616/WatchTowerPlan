@@ -3,7 +3,7 @@
   "surface_name": "path_pattern_registry",
   "contract_version": "v1",
   "description": "Canonical path patterns for shared-core surfaces without pack-specific workspace roots.",
-  "updated_at": "2026-03-17T20:03:23Z",
+  "updated_at": "2026-03-22T15:02:49Z",
   "patterns": [
     {
       "family_name": "pack_settings",
@@ -54,5 +54,5 @@
       "authoritative": false
     }
   ],
-  "notes": "The current repository now publishes the reusable-core subset plus the plan-pack artifact-index and pack-work-item canonical paths needed by the live plan workspace."
+  "notes": "This registry publishes only the shared-core path subset. Pack-owned workspace roots and pack-local work-item paths should be declared through pack-governed surfaces instead of being treated as reusable-core defaults."
 }

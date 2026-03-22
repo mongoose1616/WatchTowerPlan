@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:55:00Z"
+updated_at: "2026-03-22T15:02:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -29,9 +29,9 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Use When
 - Adding or refactoring Python modules under `core/python/src/watchtower_core/` or `plan/python/src/watchtower_plan/`.
-- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, the approved plan-owned boundary under `plan/python/src/watchtower_plan/`, or `cli/`.
+- Reviewing whether a new helper belongs in `control_plane/`, a reusable-core runtime package, the current internal pack-owned boundary under `plan/python/src/watchtower_plan/`, or `cli/`.
 - Choosing names for modules, classes, services, helpers, results, or tests.
-- Consolidating duplicate code or sharpening the split between reusable core and plan-owned Python.
+- Consolidating duplicate code or sharpening the split between reusable core and pack-owned Python.
 
 ## Related Standards and Sources
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md): defines the workspace, package-root, and toolchain constraints that this code-design standard must fit within.
@@ -49,14 +49,14 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Guidance
 - Prefer explicitness over cleverness. Code should be easy to read in one pass without hidden control flow, magical defaults, or broad implicit repository scans.
-- Prefer extraction to a reusable-core package before growing `watchtower_plan`. If logic is not specific to this repository's live planning corpus or repo-local artifact layout, move it out of the plan-owned boundary.
+- Prefer extraction to a reusable-core package before growing a pack-owned package such as `watchtower_plan`. If logic is not specific to a pack-owned lifecycle, semantic rule set, or artifact layout, move it out of the pack-owned boundary.
 - Keep modules narrow and named after one primary responsibility. Split files before they become mixed-purpose collections of query logic, parsing, rendering, validation, and orchestration.
 - Keep package boundaries explicit:
   - `control_plane/` owns reusable loaders, registries, policies, resolvers, and typed governed-artifact models.
   - `documentation/` owns repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic.
 - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/` own reusable runtime seams.
 - `watchtower_host` owns parser construction, command registration composition, and pack dispatch.
-- `plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own repository-local or pack-local orchestration that still depends on pack-owned lifecycle rules, rendered surfaces, or semantic validation.
+- Pack-owned packages such as `plan/python/src/watchtower_plan/` own repository-local or pack-local orchestration that still depends on pack-owned lifecycle rules, rendered surfaces, or semantic validation.
   - Pack `cli/` code owns pack namespace argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Do not hide pack-package imports behind repo-local `sys.path` mutation inside reusable core or host composition; pack runtimes must be installed through the shared workspace contract instead.
@@ -104,10 +104,10 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 
 ## Validation
 - `core/python/pyproject.toml` should continue to reflect the style and typing posture this standard assumes, including `ruff`, `mypy`, and `pytest` configuration.
-- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than plan-owned repo-local orchestration until the domain boundary is brought up to the same bar.
+- `core/python/pyproject.toml` should keep reusable-core packages such as `adapters`, `validation`, `control_plane`, `query`, `sync`, `rebuild`, `routing`, `workflow_execution`, `evidence`, and `utils` under a stricter `mypy` override than current pack-owned orchestration until those domain boundaries are brought up to the same bar.
 - `core/python/pyproject.toml` should keep `ruff` configured to catch unnecessary comprehension churn in addition to import, upgrade, bugbear, and core readability issues.
 - Reviewers should reject new mixed-purpose modules, vague role-free names, or duplicate implementations that could be consolidated cleanly.
-- Reviewers should reject new generic behavior placed in `watchtower_plan` when a reusable-core package boundary fits.
+- Reviewers should reject new generic behavior placed in pack-owned packages such as `watchtower_plan` when a reusable-core package boundary fits.
 - Reviewers should reject CLI handlers that own business logic instead of delegating to package services.
 - Reviewers should reject inheritance hierarchies used only to share utility behavior when composition or a typed contract would be clearer.
 - Reviewers should reject stateful helper classes whose behavior could be expressed as pure functions without losing boundary clarity.
@@ -135,8 +135,8 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 ## Notes
 - This standard intentionally favors boring, explicit code over framework-heavy or pattern-heavy abstractions.
 - The goal is maintainable consolidation, not abstraction for its own sake.
-- When a helper is extracted from `watchtower_plan`, that is usually a sign that this standard is working as intended. The goal is a narrow plan-owned domain boundary, not a second generic package root.
+- When a helper is extracted from a pack-owned package such as `watchtower_plan`, that is usually a sign that this standard is working as intended. The goal is a narrow pack-owned domain boundary, not a second generic package root.
 - Composition, pure functions, and pragmatic exceptions are preferred here because they strengthen testability and boundary clarity, not because they are universal rules for every code base.
 
 ## Updated At
-- `2026-03-20T23:55:00Z`
+- `2026-03-22T15:02:49Z`

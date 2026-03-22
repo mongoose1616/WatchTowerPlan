@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_shared_language_deplanification.0008_ready_for_review_marked",
+  "initiative_id": "initiative.core_shared_language_deplanification",
+  "sequence": 8,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T14:53:59Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.core_shared_language_deplanification"
+}

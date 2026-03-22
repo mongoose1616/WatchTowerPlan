@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_shared_language_deplanification.0016_closing_started",
+  "initiative_id": "initiative.core_shared_language_deplanification",
+  "sequence": 16,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T15:17:46Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.core_shared_language_deplanification"
+}

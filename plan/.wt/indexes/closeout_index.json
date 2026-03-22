@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-22T08:52:36Z",
+  "updated_at": "2026-03-22T15:17:46Z",
   "entries": [
     {
       "closeout_id": "closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap",
@@ -28,6 +28,31 @@
         "cancelled"
       ],
       "updated_at": "2026-03-21T00:42:04Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.core_shared_language_deplanification.bootstrap_recap",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/core_shared_language_deplanification",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.core_shared_language_deplanification.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.core_shared_language_deplanification.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-22T15:17:46Z",
       "terminal_state": "completed"
     },
     {

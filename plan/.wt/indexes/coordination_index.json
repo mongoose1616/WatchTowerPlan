@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T08:52:36Z",
+  "updated_at": "2026-03-22T15:17:46Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.core_shared_language_deplanification",
+      "title": "Core Shared Language Deplanification",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T15:17:46Z",
+      "key_surface_path": "plan/initiatives/core_shared_language_deplanification/plan.md",
+      "closure_reason": "Normalized shared-core language and validated the governed surfaces."
+    },
     {
       "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
       "title": "Test Suite Efficiency And Redundancy Reduction",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-21T00:42:04Z",
       "key_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
       "closure_reason": "Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup."
-    },
-    {
-      "trace_id": "trace.plan_python_package_dependency_cleanup",
-      "title": "Plan Python Package Dependency Cleanup",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-20T01:51:19Z",
-      "key_surface_path": "plan/initiatives/plan_python_package_dependency_cleanup/plan.md",
-      "closure_reason": "Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split."
     }
   ]
 }

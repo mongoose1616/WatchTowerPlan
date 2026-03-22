@@ -1,12 +1,12 @@
 # `watchtower_core.sync`
 
 ## Summary
-Sync namespace for the reusable generic harness plus repo-shared governed-index rebuild services that are not specific to plan-domain business logic.
+Sync namespace for the reusable generic harness plus repo-shared governed-index rebuild services that are not specific to pack-owned business logic.
 
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `watchtower_core.sync.SyncHarness`, `SyncTargetSpec`, `SyncRecord`, and `SyncResult` from the package root, plus explicit repo-shared leaf modules such as `watchtower_core.sync.reference_index`, `watchtower_core.sync.foundation_index`, `watchtower_core.sync.standard_index`, `watchtower_core.sync.workflow_index`, `watchtower_core.sync.route_index`, and `watchtower_core.sync.repository_paths`.
-- `Non-Goals`: Plan-domain coordination, initiative, task, tracker, and GitHub sync orchestration that still belongs under `watchtower_plan.sync`, and plan-flavored copies of the generic sync harness or rebuild helpers.
+- `Non-Goals`: Pack-owned coordination, initiative, task, tracker, and external-system sync orchestration that belongs under the owning pack package such as `watchtower_plan.sync`, plus pack-flavored copies of the generic sync harness or rebuild helpers.
 
 ## Key Surfaces
 - `__init__.py`: Export-safe root for the generic sync harness and fail-closed guidance for repo-specific sync services.
@@ -26,4 +26,4 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 ## Notes
 - Keep reusable harness behavior, dependency ordering, shared reference-resolution helpers, and repo-shared rebuild targets here.
 - Keep host-composed command-index rebuilding under `watchtower_host.cli.command_index`, because it depends on the host parser tree rather than reusable-core runtime alone.
-- Keep `watchtower_plan.sync` narrow and limited to live plan write targets, joins, and orchestration that depend on the current WatchTowerPlan layout.
+- Keep pack-owned sync packages such as `watchtower_plan.sync` narrow and limited to pack-local write targets, joins, and orchestration that depend on the current pack layout.

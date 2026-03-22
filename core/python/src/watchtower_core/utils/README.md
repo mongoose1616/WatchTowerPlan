@@ -14,4 +14,4 @@ Small shared helpers that keep low-level cross-package utilities out of higher-l
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/control_plane/README.md`
-- `plan/python/src/watchtower_plan/README.md`
+- `core/python/src/watchtower_core/README.md`

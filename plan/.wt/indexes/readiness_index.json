@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-22T08:52:36Z",
+  "updated_at": "2026-03-22T15:17:46Z",
   "entries": [
     {
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -19,6 +19,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "title": "Core Shared Language Deplanification",
+      "initiative_root": "plan/initiatives/core_shared_language_deplanification",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-22T15:17:46Z"
     },
     {
       "initiative_id": "initiative.domain_pack_externalization_portability_proof",

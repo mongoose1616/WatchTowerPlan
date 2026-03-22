@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T08:52:36Z",
+  "updated_at": "2026-03-22T15:17:46Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -33,6 +33,35 @@
         "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "evidence_id": "evidence.core_shared_language_deplanification.bootstrap_validation_bundle",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/core_shared_language_deplanification",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/core_shared_language_deplanification/.wt/discrepancies",
+        "plan/initiatives/core_shared_language_deplanification/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T15:17:46Z"
     },
     {
       "evidence_id": "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle",

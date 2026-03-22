@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T08:52:36Z",
+  "updated_at": "2026-03-22T15:17:46Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -20,6 +20,24 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.core_shared_language_deplanification",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Core Shared Language Deplanification",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_shared_language_deplanification.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T15:17:46Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -236,6 +254,22 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "review_subject_id": "promotion.core_shared_language_deplanification.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_shared_language_deplanification",
+      "trace_id": "trace.core_shared_language_deplanification",
+      "initiative_title": "Core Shared Language Deplanification",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_shared_language_deplanification.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T15:17:46Z"
     },
     {
       "review_subject_id": "promotion.domain_pack_externalization_portability_proof.bootstrap_shell",
