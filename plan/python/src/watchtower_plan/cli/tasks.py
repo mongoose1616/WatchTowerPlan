@@ -16,6 +16,7 @@ from watchtower_core.cli.handler_common import (
     _run_value_error_operation,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_plan.tasks import (
     TASK_KIND_CHOICES,
     TASK_PRIORITY_CHOICES,
@@ -360,32 +361,56 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
 
 def _run_task_create(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan task create",
-        prefix="Task create error",
-        operation=lambda: service.create(
-            TaskCreateParams(
-                task_id=args.task_id,
-                trace_id=args.trace_id,
-                title=args.title,
-                summary=args.summary,
-                task_kind=args.task_kind,
-                priority=args.priority,
-                owner=args.owner,
-                task_status=args.task_status,
-                scope_items=tuple(args.scope),
-                done_when_items=tuple(args.done_when),
-                applies_to=tuple(args.applies_to),
-                related_ids=tuple(args.related_id),
-                depends_on=tuple(args.depends_on),
-                blocked_by=tuple(args.blocked_by),
-                file_stem=args.file_stem,
-                updated_at=args.updated_at,
+    with telemetry_operation(
+        "plan_task",
+        "plan_task_create",
+        attributes={
+            "task_id": args.task_id,
+            "trace_id": args.trace_id,
+            "task_status": args.task_status,
+            "write": args.write,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan task create",
+            prefix="Task create error",
+            operation=lambda: service.create(
+                TaskCreateParams(
+                    task_id=args.task_id,
+                    trace_id=args.trace_id,
+                    title=args.title,
+                    summary=args.summary,
+                    task_kind=args.task_kind,
+                    priority=args.priority,
+                    owner=args.owner,
+                    task_status=args.task_status,
+                    scope_items=tuple(args.scope),
+                    done_when_items=tuple(args.done_when),
+                    applies_to=tuple(args.applies_to),
+                    related_ids=tuple(args.related_id),
+                    depends_on=tuple(args.depends_on),
+                    blocked_by=tuple(args.blocked_by),
+                    file_stem=args.file_stem,
+                    updated_at=args.updated_at,
+                ),
+                write=args.write,
             ),
-            write=args.write,
-        ),
-    )
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok" if result.changed else "no_change",
+                task_id=result.task_id,
+                trace_id=result.trace_id,
+                task_status=result.task_status,
+                wrote=result.wrote,
+                changed=result.changed,
+                closeout_recommended=result.closeout_recommended,
+            )
     if result is None:
         return 1
     return _emit_task_result(
@@ -395,36 +420,59 @@ def _run_task_create(args: argparse.Namespace) -> int:
 
 def _run_task_update(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan task update",
-        prefix="Task update error",
-        operation=lambda: service.update(
-            TaskUpdateParams(
-                task_id=args.task_id,
-                title=args.title,
-                summary=args.summary,
-                task_kind=args.task_kind,
-                priority=args.priority,
-                owner=args.owner,
-                task_status=args.task_status,
-                scope_items=None if args.scope is None else tuple(args.scope),
-                done_when_items=None
-                if args.done_when is None
-                else tuple(args.done_when),
-                applies_to=None if args.applies_to is None else tuple(args.applies_to),
-                clear_applies_to=args.clear_applies_to,
-                related_ids=None if args.related_id is None else tuple(args.related_id),
-                clear_related_ids=args.clear_related_ids,
-                depends_on=None if args.depends_on is None else tuple(args.depends_on),
-                clear_depends_on=args.clear_depends_on,
-                blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
-                clear_blocked_by=args.clear_blocked_by,
-                updated_at=args.updated_at,
+    with telemetry_operation(
+        "plan_task",
+        "plan_task_update",
+        attributes={
+            "task_id": args.task_id,
+            "task_status": args.task_status,
+            "write": args.write,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan task update",
+            prefix="Task update error",
+            operation=lambda: service.update(
+                TaskUpdateParams(
+                    task_id=args.task_id,
+                    title=args.title,
+                    summary=args.summary,
+                    task_kind=args.task_kind,
+                    priority=args.priority,
+                    owner=args.owner,
+                    task_status=args.task_status,
+                    scope_items=None if args.scope is None else tuple(args.scope),
+                    done_when_items=None
+                    if args.done_when is None
+                    else tuple(args.done_when),
+                    applies_to=None if args.applies_to is None else tuple(args.applies_to),
+                    clear_applies_to=args.clear_applies_to,
+                    related_ids=None if args.related_id is None else tuple(args.related_id),
+                    clear_related_ids=args.clear_related_ids,
+                    depends_on=None if args.depends_on is None else tuple(args.depends_on),
+                    clear_depends_on=args.clear_depends_on,
+                    blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
+                    clear_blocked_by=args.clear_blocked_by,
+                    updated_at=args.updated_at,
+                ),
+                write=args.write,
             ),
-            write=args.write,
-        ),
-    )
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok" if result.changed else "no_change",
+                task_id=result.task_id,
+                trace_id=result.trace_id,
+                task_status=result.task_status,
+                wrote=result.wrote,
+                changed=result.changed,
+                closeout_recommended=result.closeout_recommended,
+            )
     if result is None:
         return 1
     return _emit_task_result(
@@ -434,24 +482,47 @@ def _run_task_update(args: argparse.Namespace) -> int:
 
 def _run_task_transition(args: argparse.Namespace) -> int:
     service = TaskLifecycleService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan task transition",
-        prefix="Task transition error",
-        operation=lambda: service.transition(
-            TaskTransitionParams(
-                task_id=args.task_id,
-                task_status=args.task_status,
-                next_owner=args.next_owner,
-                depends_on=None if args.depends_on is None else tuple(args.depends_on),
-                clear_depends_on=args.clear_depends_on,
-                blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
-                clear_blocked_by=args.clear_blocked_by,
-                updated_at=args.updated_at,
+    with telemetry_operation(
+        "plan_task",
+        "plan_task_transition",
+        attributes={
+            "task_id": args.task_id,
+            "task_status": args.task_status,
+            "write": args.write,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan task transition",
+            prefix="Task transition error",
+            operation=lambda: service.transition(
+                TaskTransitionParams(
+                    task_id=args.task_id,
+                    task_status=args.task_status,
+                    next_owner=args.next_owner,
+                    depends_on=None if args.depends_on is None else tuple(args.depends_on),
+                    clear_depends_on=args.clear_depends_on,
+                    blocked_by=None if args.blocked_by is None else tuple(args.blocked_by),
+                    clear_blocked_by=args.clear_blocked_by,
+                    updated_at=args.updated_at,
+                ),
+                write=args.write,
             ),
-            write=args.write,
-        ),
-    )
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok" if result.changed else "no_change",
+                task_id=result.task_id,
+                trace_id=result.trace_id,
+                task_status=result.task_status,
+                wrote=result.wrote,
+                changed=result.changed,
+                closeout_recommended=result.closeout_recommended,
+            )
     if result is None:
         return 1
     return _emit_task_result(

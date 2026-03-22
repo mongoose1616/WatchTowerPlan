@@ -14,6 +14,7 @@ from watchtower_core.cli.handler_common import (
     _task_filter_kwargs,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.telemetry import telemetry_operation
 
 
 class DocumentSyncService(Protocol):
@@ -51,19 +52,36 @@ def run_document_sync_command(
     service: DocumentSyncService,
 ) -> int:
     """Run one document-oriented sync command."""
+    with telemetry_operation(
+        "sync_command",
+        command_name,
+        attributes={
+            "artifact_label": artifact_label,
+            "write": args.write,
+            "output": str(args.output) if args.output is not None else None,
+        },
+    ) as operation:
+        document = service.build_document()
+        entries = document.get("entries")
+        if not isinstance(entries, list):
+            raise RuntimeError(
+                f"{artifact_label.capitalize()} document is missing its entries list."
+            )
+        entry_count = len(entries)
+        destination: str | None = None
+        wrote = False
 
-    document = service.build_document()
-    entries = document.get("entries")
-    if not isinstance(entries, list):
-        raise RuntimeError(f"{artifact_label.capitalize()} document is missing its entries list.")
-    entry_count = len(entries)
-    destination: str | None = None
-    wrote = False
-
-    if args.write or args.output is not None:
-        target = _resolve_output_path(args.output)
-        destination = str(service.write_document(document, target))
-        wrote = True
+        if args.write or args.output is not None:
+            target = _resolve_output_path(args.output)
+            destination = str(service.write_document(document, target))
+            wrote = True
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                entry_count=entry_count,
+                wrote=wrote,
+                artifact_path=destination,
+            )
 
     payload: dict[str, object] = {
         "command": command_name,
@@ -110,16 +128,33 @@ def run_tracking_sync(
     dry_run_message_factory: Callable[[Any], str],
 ) -> int:
     """Run one tracker-oriented sync command."""
+    with telemetry_operation(
+        "sync_command",
+        command_name,
+        attributes={
+            "module_name": module_name,
+            "class_name": class_name,
+            "write": args.write,
+            "output": str(args.output) if args.output is not None else None,
+        },
+    ) as operation:
+        service = load_tracking_sync_service(module_name, class_name)
+        result = service.build_document()
+        destination: str | None = None
+        wrote = False
 
-    service = load_tracking_sync_service(module_name, class_name)
-    result = service.build_document()
-    destination: str | None = None
-    wrote = False
-
-    if args.write or args.output is not None:
-        target = _resolve_output_path(args.output)
-        destination = str(service.write_document(result, target))
-        wrote = True
+        if args.write or args.output is not None:
+            target = _resolve_output_path(args.output)
+            destination = str(service.write_document(result, target))
+            wrote = True
+        if operation is not None:
+            counts = payload_counts_factory(result)
+            operation.set_result(
+                status="ok",
+                wrote=wrote,
+                artifact_path=destination,
+                result_counts=counts,
+            )
 
     payload: dict[str, object] = {
         "command": command_name,
@@ -154,9 +189,25 @@ def run_multi_target_sync(
     human_label: str,
 ) -> int:
     """Run one multi-target sync orchestration."""
-
-    service = load_sync_class(module_name, class_name).from_repo_root()
-    result = service.run(write=args.write, output_dir=args.output_dir)
+    with telemetry_operation(
+        "sync_command",
+        command_name,
+        attributes={
+            "module_name": module_name,
+            "class_name": class_name,
+            "write": args.write,
+            "output_dir": str(args.output_dir) if args.output_dir is not None else None,
+        },
+    ) as operation:
+        service = load_sync_class(module_name, class_name).from_repo_root()
+        result = service.run(write=args.write, output_dir=args.output_dir)
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                result_count=len(result.records),
+                wrote=result.wrote,
+                output_dir=result.output_dir,
+            )
     payload = {
         "command": command_name,
         "status": "ok",

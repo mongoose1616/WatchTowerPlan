@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-22T18:08:25Z",
+  "updated_at": "2026-03-22T18:49:35Z",
   "entries": [
     {
       "closeout_id": "closeout.core_copy_forward_operating_mode_documentation.bootstrap_recap",
@@ -386,7 +386,7 @@
       "trace_id": "trace.runtime_telemetry_and_command_observability_foundation",
       "initiative_title": "Runtime Telemetry And Command Observability Foundation",
       "title": "Bootstrap Closeout Shell",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/runtime_telemetry_and_command_observability_foundation",
       "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
       "acceptance_ids": [
@@ -402,7 +402,8 @@
         "superseded",
         "cancelled"
       ],
-      "updated_at": "2026-03-22T17:36:11Z"
+      "updated_at": "2026-03-22T18:49:35Z",
+      "terminal_state": "completed"
     },
     {
       "closeout_id": "closeout.test_suite_efficiency_and_redundancy_reduction.bootstrap_recap",

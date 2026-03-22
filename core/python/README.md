@@ -16,6 +16,7 @@
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
 | `core/python/src/` | Holds the `watchtower_core` reusable-core package source tree. |
 | `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the reusable-core namespaces. |
+| `core/python/src/watchtower_core/telemetry/README.md` | Describes the local runtime telemetry package, sink rules, and opt-out environment variables. |
 | `core/python/src/watchtower_host/README.md` | Describes the host-owned CLI composition boundary for the `watchtower-core` binary. |
 | `core/python/tests/` | Holds Python tests and fixtures for package behavior, validation, and sync/query flows. |
 | `core/python/tools/` | Holds small workspace-local helper scripts such as `dev_shell.sh` when they are warranted. |
@@ -109,6 +110,9 @@
 
 ### Notes
 - `uv run ...` is the default workflow for this repository.
+- Runtime telemetry is default-on for `watchtower-core` commands. The default sink is `<machine_root>/runtime/telemetry/`, which resolves to `plan/.wt/runtime/telemetry/` for the current internal pack.
+- Use `WATCHTOWER_TELEMETRY=off` to disable runtime telemetry, `WATCHTOWER_TELEMETRY_STDERR=off` to suppress the one-line stderr summary, and `WATCHTOWER_TELEMETRY_DIR=<path>` to redirect the JSONL sink.
+- Command payloads and exit codes remain unchanged on stdout; telemetry emits only operational JSONL files plus one concise stderr summary per invocation.
 - Repo-root `./core/python/.venv/bin/mypy ...` commands are supported through the root [mypy.ini](/mypy.ini) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad Python validation pass when a change touches repo-materialization, workspace orchestration, or multi-surface CLI behavior.
@@ -154,6 +158,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; pack-local document semantics stay under the owning pack package such as `watchtower_plan.validation`. |
 | `core/python/src/watchtower_core/query/README.md` | `reusable_core` | Export-safe generic query services over governed indexes, routes, pack surfaces, knowledge docs, records, and artifact families; pack-local coordination and lifecycle queries stay under the owning pack package such as `watchtower_plan.query`. |
 | `core/python/src/watchtower_core/sync/README.md` | `reusable_core` | Export-safe sync harness plus repo-shared command, governed-doc, workflow, route, and repository-path index rebuild services; pack-local sync orchestration stays under the owning pack package such as `watchtower_plan.sync`. |
+| `core/python/src/watchtower_core/telemetry/README.md` | `reusable_core` | Default-on local runtime telemetry session, nested operation timing, JSONL sink writing, and stderr summary helpers. |
 | `core/python/src/watchtower_core/rebuild/README.md` | `reusable_core` | Export-safe rebuild harness plus registry-backed rendered-view building and markdown reconciliation. |
 | `core/python/src/watchtower_core/routing/README.md` | `reusable_core` | Export-safe route-selection runtime over governed route and workflow indexes. |
 | `core/python/src/watchtower_core/workflow_execution/README.md` | `reusable_core` | Export-safe workflow execution harness over routed workflow selection and metadata. |

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.runtime_telemetry_and_command_observability_foundation.0017_closing_started",
+  "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
+  "sequence": 17,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T18:49:35Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.runtime_telemetry_and_command_observability_foundation"
+}

@@ -661,8 +661,10 @@
       "title": "Runtime Telemetry And Command Observability Foundation",
       "summary": "Adds default-on local runtime telemetry, timing, and error tracing across host, reusable-core, and plan command paths without adopting OTEL yet.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-22T18:08:25Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T18:49:35Z",
+      "closed_at": "2026-03-22T18:49:35Z",
+      "closure_reason": "Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.",
       "source_surface_paths": [
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md",
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",

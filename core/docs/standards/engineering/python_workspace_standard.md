@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:52:38Z"
+updated_at: "2026-03-22T18:29:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -107,7 +107,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/closeout/` | Fail-closed compatibility guard; pack-owned closeout services live under pack roots such as `plan/python/src/watchtower_plan/closeout/`. |
 | `core/python/src/watchtower_host/cli/` | Host-owned parser construction, command registration, and dispatch composition. |
 | `plan/python/src/watchtower_plan/closeout/` | Current internal pack closeout orchestration for retained traces, initiative packages, and guarded purge flows. |
-| `plan/python/src/watchtower_plan/` | Current internal pack planning, query, sync, validation, and document-orchestration behavior that belongs on the pack-owned side of the core-versus-domain split. |
+| `plan/python/src/watchtower_plan/` | Approved WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior that belongs on the pack-owned side of the core-versus-domain split. |
 | `plan/python/src/watchtower_plan/cli/` | Current internal pack namespace registration and pack-specific CLI wiring. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -163,4 +163,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code under pack-owned roots such as `plan/python/src/watchtower_plan/`.
 
 ## Updated At
-- `2026-03-22T15:52:38Z`
+- `2026-03-22T18:29:00Z`

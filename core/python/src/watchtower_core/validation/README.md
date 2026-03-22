@@ -23,3 +23,4 @@ Export-safe validation services, suite orchestration, aggregate baseline helpers
 ## Notes
 - Keep reusable suite orchestration, result models, and generic validators here.
 - Keep pack-owned validation packages such as `watchtower_plan.validation` narrow and limited to pack-local semantic validation rules.
+- Do not reintroduce plan-flavored duplicates of reusable validator helpers or suite orchestration under reusable core.

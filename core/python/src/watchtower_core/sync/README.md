@@ -27,3 +27,4 @@ Sync namespace for the reusable generic harness plus repo-shared governed-index 
 - Keep reusable harness behavior, dependency ordering, shared reference-resolution helpers, and repo-shared rebuild targets here.
 - Keep host-composed command-index rebuilding under `watchtower_host.cli.command_index`, because it depends on the host parser tree rather than reusable-core runtime alone.
 - Keep pack-owned sync packages such as `watchtower_plan.sync` narrow and limited to pack-local write targets, joins, and orchestration that depend on the current pack layout.
+- Do not create plan-flavored copies of the generic sync harness, shared rebuild targets, or reusable sync result models.

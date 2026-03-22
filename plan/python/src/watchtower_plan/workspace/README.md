@@ -29,3 +29,7 @@ Feature-owned pack workspace services for live `plan/**` aggregation. This packa
 ## Shrink Rules
 - Keep new pack-wide workspace logic here instead of adding more top-level `watchtower_plan` modules.
 - When logic becomes generic across packs, move it into `watchtower_core` rather than growing this package.
+
+## Runtime Telemetry
+- Workspace sync and rebuild flows should emit nested telemetry through the active `watchtower_core.telemetry` session when they are invoked from CLI command paths.
+- Keep telemetry-specific file handling out of this package. Sink resolution, JSONL writing, and stderr summaries belong to reusable core.

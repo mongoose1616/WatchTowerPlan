@@ -1,0 +1,117 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pytest
+
+from tests.integration import test_task_lifecycle as task_lifecycle_cases
+from watchtower_host.cli.main import main
+
+CAPTURE_TRACE_ID = task_lifecycle_cases.CAPTURE_TRACE_ID
+task_lifecycle_capture_baseline = task_lifecycle_cases.task_lifecycle_capture_baseline
+task_lifecycle_capture_repo = task_lifecycle_cases.task_lifecycle_capture_repo
+
+
+def _load_telemetry_records(output_dir: Path) -> list[dict[str, object]]:
+    telemetry_files = tuple(output_dir.glob("**/*.jsonl"))
+    assert len(telemetry_files) == 1
+    return [
+        json.loads(line)
+        for line in telemetry_files[0].read_text(encoding="utf-8").splitlines()
+    ]
+
+
+def test_plan_sync_coordination_records_runtime_telemetry(
+    task_lifecycle_capture_repo: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    repo_root = task_lifecycle_capture_repo
+    output_dir = tmp_path / "telemetry"
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY_DIR", str(output_dir))
+
+    result = main(["plan", "sync", "coordination", "--format", "json"])
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan sync coordination"
+    assert "[telemetry] watchtower-core plan sync coordination status=ok" in captured.err
+
+    records = _load_telemetry_records(output_dir)
+    operation_pairs = {
+        (record["operation_kind"], record["operation_name"])
+        for record in records
+        if record.get("record_type") == "operation_result"
+    }
+    assert ("cli_command", "watchtower-core plan sync coordination") in operation_pairs
+    assert ("sync_command", "watchtower-core plan sync coordination") in operation_pairs
+    assert any(
+        record.get("record_type") == "operation_result"
+        and record.get("operation_kind") == "sync_harness"
+        for record in records
+    )
+
+
+def test_plan_task_create_records_runtime_telemetry(
+    task_lifecycle_capture_repo: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    repo_root = task_lifecycle_capture_repo
+    output_dir = tmp_path / "telemetry"
+    monkeypatch.chdir(repo_root / "core" / "python")
+    monkeypatch.setenv("WATCHTOWER_TELEMETRY_DIR", str(output_dir))
+
+    result = main(
+        [
+            "plan",
+            "task",
+            "create",
+            "--task-id",
+            "task.runtime_telemetry_integration.001",
+            "--trace-id",
+            CAPTURE_TRACE_ID,
+            "--title",
+            "Create telemetry integration proof task",
+            "--summary",
+            "Creates one tracked task to prove telemetry crosses host core and pack seams.",
+            "--task-kind",
+            "feature",
+            "--priority",
+            "high",
+            "--owner",
+            "repository_maintainer",
+            "--scope",
+            "Capture one task lifecycle write path.",
+            "--done-when",
+            "The task exists in the initiative package.",
+            "--write",
+            "--format",
+            "json",
+        ]
+    )
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+
+    assert result == 0
+    assert payload["task_id"] == "task.runtime_telemetry_integration.001"
+    assert "[telemetry] watchtower-core plan task create status=ok" in captured.err
+
+    records = _load_telemetry_records(output_dir)
+    operation_pairs = {
+        (record["operation_kind"], record["operation_name"])
+        for record in records
+        if record.get("record_type") == "operation_result"
+    }
+    assert ("cli_command", "watchtower-core plan task create") in operation_pairs
+    assert ("plan_task", "plan_task_create") in operation_pairs
+    assert any(
+        record.get("record_type") == "operation_result"
+        and record.get("operation_kind") == "sync_harness"
+        for record in records
+    )

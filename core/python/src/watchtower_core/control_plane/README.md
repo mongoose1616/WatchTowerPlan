@@ -23,3 +23,4 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 ## Notes
 - Keep authored machine authority in `core/control_plane/**` and live pack machine state in pack workspaces such as `plan/.wt/**`.
 - Keep generic pack/runtime helpers here and push pack-local behavior back out to the owning `watchtower_<pack>` package when it depends on a pack-specific workspace.
+- Keep repo-local plan behavior out of this namespace when it depends on initiative lifecycle rules, plan tracking semantics, or pack-owned rendered surfaces.

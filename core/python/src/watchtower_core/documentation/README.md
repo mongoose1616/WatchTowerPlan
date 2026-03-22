@@ -25,4 +25,5 @@ Repo-shared helpers for governed Markdown semantics, front-matter path normaliza
 ## Notes
 - Keep repo-shared governed-document helpers here.
 - Keep pack-local semantic validation rules in owning pack packages such as `watchtower_plan.validation`.
+- Keep repo-local semantic validators out of this namespace unless they become truly reusable across hosted packs.
 - Keep generic pack-target enumeration in `watchtower_core.validation.pack_targets`.

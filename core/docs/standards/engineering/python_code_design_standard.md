@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:02:49Z"
+updated_at: "2026-03-22T18:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,7 +56,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
   - `documentation/` owns repo-shared governed-document semantics, front-matter path normalization, and standard/reference helper logic.
 - `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/` own reusable runtime seams.
 - `watchtower_host` owns parser construction, command registration composition, and pack dispatch.
-- Pack-owned packages such as `plan/python/src/watchtower_plan/` own repository-local or pack-local orchestration that still depends on pack-owned lifecycle rules, rendered surfaces, or semantic validation.
+- `plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own repository-local or pack-local orchestration that still depends on pack-owned lifecycle rules, rendered surfaces, or semantic validation.
   - Pack `cli/` code owns pack namespace argument parsing, command wiring, and output shaping, not business logic.
 - Prefer one canonical implementation for each behavior. Delete compatibility shims, dead wrappers, and parallel helpers once callers migrate.
 - Do not hide pack-package imports behind repo-local `sys.path` mutation inside reusable core or host composition; pack runtimes must be installed through the shared workspace contract instead.
@@ -139,4 +139,4 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Composition, pure functions, and pragmatic exceptions are preferred here because they strengthen testability and boundary clarity, not because they are universal rules for every code base.
 
 ## Updated At
-- `2026-03-22T15:02:49Z`
+- `2026-03-22T18:28:00Z`

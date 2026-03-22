@@ -55,3 +55,8 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `plan/python/src/watchtower_plan/workspace/README.md`
 - `plan/python/src/watchtower_plan/closeout/README.md`
 - `core/python/src/watchtower_core/validation/README.md`
+
+## Runtime Telemetry
+- Plan-owned CLI handlers and orchestration services emit nested telemetry under the host-created runtime session instead of owning a separate tracing stack.
+- The default sink for the current internal pack lives under `plan/.wt/runtime/telemetry/`.
+- These files are pack-local machine state. They are safe to ignore, relocate with `WATCHTOWER_TELEMETRY_DIR`, or delete between runs.

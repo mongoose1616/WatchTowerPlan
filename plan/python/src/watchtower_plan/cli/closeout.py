@@ -16,6 +16,7 @@ from watchtower_core.cli.handler_common import (
     _run_value_error_operation,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_plan import InitiativePackageService
 from watchtower_plan.closeout import InitiativeCloseoutService, TracePurgeService
 
@@ -235,31 +236,54 @@ def register_plan_closeout_commands(
 
 def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
     service = InitiativePackageService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan closeout initiative",
-        prefix="Closeout error",
-        operation=lambda: (
-            service.close_project_scoped(
-                args.project_slug,
-                args.initiative_slug,
-                initiative_status=args.initiative_status,
-                closure_reason=args.closure_reason,
-                closed_at=args.closed_at,
-                superseded_by_trace_id=args.superseded_by_trace_id,
-                write=args.write,
+    with telemetry_operation(
+        "plan_closeout",
+        "plan_closeout_initiative",
+        attributes={
+            "project_slug": args.project_slug,
+            "initiative_slug": args.initiative_slug,
+            "initiative_status": args.initiative_status,
+            "write": args.write,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan closeout initiative",
+            prefix="Closeout error",
+            operation=lambda: (
+                service.close_project_scoped(
+                    args.project_slug,
+                    args.initiative_slug,
+                    initiative_status=args.initiative_status,
+                    closure_reason=args.closure_reason,
+                    closed_at=args.closed_at,
+                    superseded_by_trace_id=args.superseded_by_trace_id,
+                    write=args.write,
+                )
+                if args.project_slug
+                else service.close_packwide(
+                    args.initiative_slug,
+                    initiative_status=args.initiative_status,
+                    closure_reason=args.closure_reason,
+                    closed_at=args.closed_at,
+                    superseded_by_trace_id=args.superseded_by_trace_id,
+                    write=args.write,
+                )
+            ),
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                initiative_id=result.initiative_id,
+                trace_id=result.trace_id,
+                initiative_status=result.initiative_status,
+                scope_type=result.scope_type,
+                wrote=result.wrote,
             )
-            if args.project_slug
-            else service.close_packwide(
-                args.initiative_slug,
-                initiative_status=args.initiative_status,
-                closure_reason=args.closure_reason,
-                closed_at=args.closed_at,
-                superseded_by_trace_id=args.superseded_by_trace_id,
-                write=args.write,
-            )
-        ),
-    )
     if result is None:
         return 1
 
@@ -302,21 +326,45 @@ def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
 
 def _run_closeout_retained_initiative(args: argparse.Namespace) -> int:
     service = InitiativeCloseoutService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan closeout retained-initiative",
-        prefix="Closeout error",
-        operation=lambda: service.close(
-            trace_id=args.trace_id,
-            initiative_status=args.initiative_status,
-            closure_reason=args.closure_reason,
-            superseded_by_trace_id=args.superseded_by_trace_id,
-            closed_at=args.closed_at,
-            write=args.write,
-            allow_open_tasks=args.allow_open_tasks,
-            allow_acceptance_issues=args.allow_acceptance_issues,
-        ),
-    )
+    with telemetry_operation(
+        "plan_closeout",
+        "plan_closeout_retained_initiative",
+        attributes={
+            "trace_id": args.trace_id,
+            "initiative_status": args.initiative_status,
+            "write": args.write,
+            "allow_open_tasks": args.allow_open_tasks,
+            "allow_acceptance_issues": args.allow_acceptance_issues,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan closeout retained-initiative",
+            prefix="Closeout error",
+            operation=lambda: service.close(
+                trace_id=args.trace_id,
+                initiative_status=args.initiative_status,
+                closure_reason=args.closure_reason,
+                superseded_by_trace_id=args.superseded_by_trace_id,
+                closed_at=args.closed_at,
+                write=args.write,
+                allow_open_tasks=args.allow_open_tasks,
+                allow_acceptance_issues=args.allow_acceptance_issues,
+            ),
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                trace_id=result.trace_id,
+                initiative_status=result.initiative_status,
+                wrote=result.wrote,
+                acceptance_issue_count=result.acceptance_issue_count,
+                open_task_count=len(result.open_task_ids),
+            )
     if result is None:
         return 1
 
@@ -366,17 +414,39 @@ def _run_closeout_retained_initiative(args: argparse.Namespace) -> int:
 
 def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
     service = TracePurgeService(ControlPlaneLoader())
-    result = _run_value_error_operation(
-        args,
-        command_name="watchtower-core plan closeout purge-trace",
-        prefix="Purge error",
-        operation=lambda: service.purge(
-            trace_id=args.trace_id,
-            retained_authority_paths=tuple(args.retained_authority_path or ()),
-            purged_at=args.purged_at,
-            write=args.write,
-        ),
-    )
+    with telemetry_operation(
+        "plan_closeout",
+        "plan_closeout_purge_trace",
+        attributes={
+            "trace_id": args.trace_id,
+            "retained_authority_path_count": len(tuple(args.retained_authority_path or ())),
+            "write": args.write,
+        },
+    ) as operation:
+        result = _run_value_error_operation(
+            args,
+            command_name="watchtower-core plan closeout purge-trace",
+            prefix="Purge error",
+            operation=lambda: service.purge(
+                trace_id=args.trace_id,
+                retained_authority_paths=tuple(args.retained_authority_path or ()),
+                purged_at=args.purged_at,
+                write=args.write,
+            ),
+        )
+        if result is None:
+            if operation is not None:
+                operation.set_result(status="value_error")
+            return 1
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                trace_id=result.trace_id,
+                wrote=result.wrote,
+                removed_path_count=len(result.removed_paths),
+                refreshed_target_count=len(result.refreshed_targets),
+                purge_record_relative_path=result.purge_record_relative_path,
+            )
     if result is None:
         return 1
 

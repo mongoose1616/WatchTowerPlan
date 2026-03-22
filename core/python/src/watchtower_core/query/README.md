@@ -27,3 +27,4 @@ Export-safe generic query services over governed pack surfaces, command and work
 ## Notes
 - Keep generic governed-surface query helpers here.
 - Keep pack-owned query packages such as `watchtower_plan.query` narrow and limited to pack-local lookup behavior that cannot already live under reusable core.
+- Do not reintroduce plan-flavored duplicates of query helpers that already fit the reusable-core boundary.

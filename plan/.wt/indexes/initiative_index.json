@@ -858,60 +858,20 @@
       "title": "Runtime Telemetry And Command Observability Foundation",
       "summary": "Adds default-on local runtime telemetry, timing, and error tracing across host, reusable-core, and plan command paths without adopting OTEL yet.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T18:08:25Z",
-      "open_task_count": 3,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T18:49:35Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/summary.md",
       "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",
       "slug": "runtime_telemetry_and_command_observability_foundation",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration",
-        "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts",
-        "task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration",
-          "title": "Instrument plan-pack orchestration",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_plan_pack_orchestration/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts",
-          "title": "Refresh telemetry docs and command contracts",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/refresh_telemetry_docs_and_command_contracts/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration"
-          ]
-        },
-        {
-          "task_id": "task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout",
-          "title": "Validate, benchmark, and close out telemetry tranche",
-          "task_status": "planned",
-          "priority": "critical",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/validate_benchmark_and_close_out_telemetry_tranche/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts"
-          ]
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/decision_notes.md",
@@ -932,6 +892,8 @@
       "evidence_ids": [
         "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-22T18:49:35Z",
+      "closure_reason": "Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.",
       "related_paths": [
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/initiative_brief.md",
         "plan/initiatives/runtime_telemetry_and_command_observability_foundation/design_record.md",

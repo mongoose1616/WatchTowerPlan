@@ -15,4 +15,4 @@ Export-safe rebuild harness primitives for deterministic regeneration of derived
 
 ## Notes
 - Keep reusable rebuild primitives here.
-- Keep pack-specific output shaping and pack-local target catalogs out of this namespace.
+- Keep Plan-specific rebuild target catalogs, other pack-specific target catalogs, and pack-local output shaping out of this namespace.

@@ -27,6 +27,7 @@ from watchtower_core.cli.sync_runtime_helpers import (
     run_multi_target_sync,
     run_tracking_sync,
 )
+from watchtower_core.telemetry import telemetry_operation
 
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/sync.py"
 
@@ -359,16 +360,35 @@ def _run_plan_sync_task_tracking(args: argparse.Namespace) -> int:
 
 
 def _run_plan_sync_github_tasks(args: argparse.Namespace) -> int:
-    params_class = load_sync_class(
-        "watchtower_plan.sync.github_tasks", "GitHubTaskSyncParams"
-    )
-    service = load_sync_class(
-        "watchtower_plan.sync.github_tasks", "GitHubTaskSyncService"
-    )(build_loader())
-    result = service.sync(
-        build_github_task_sync_params(args, params_class),
-        write=args.write,
-    )
+    with telemetry_operation(
+        "sync_command",
+        "watchtower-core plan sync github-tasks",
+        attributes={
+            "repository": args.repo,
+            "write": args.write,
+        },
+    ) as operation:
+        params_class = load_sync_class(
+            "watchtower_plan.sync.github_tasks", "GitHubTaskSyncParams"
+        )
+        service = load_sync_class(
+            "watchtower_plan.sync.github_tasks", "GitHubTaskSyncService"
+        )(build_loader())
+        result = service.sync(
+            build_github_task_sync_params(args, params_class),
+            write=args.write,
+        )
+        if operation is not None:
+            operation.set_result(
+                status="ok" if all(record.success for record in result.records) else "failed",
+                result_count=len(result.records),
+                synced_task_count=result.synced_task_count,
+                local_change_count=result.local_change_count,
+                rebuilt_task_index=result.rebuilt_task_index,
+                rebuilt_task_tracking=result.rebuilt_task_tracking,
+                rebuilt_traceability_index=result.rebuilt_traceability_index,
+                wrote=result.wrote,
+            )
     payload = {
         "command": "watchtower-core plan sync github-tasks",
         "status": "ok" if all(record.success for record in result.records) else "error",

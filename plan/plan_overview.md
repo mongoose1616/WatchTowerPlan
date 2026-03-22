@@ -1,13 +1,13 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `active_work`
-- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
-- `recommended_surface_path`: `plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md`
+- `coordination_mode`: `ready_for_bootstrap`
+- `summary`: No active plan-workspace initiatives exist.
+- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
+- `recommended_surface_path`: `plan/plan_overview.md`
 
 ## Active Pack-Wide Initiatives
-- `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`execution` / `pack_wide`)
+- None.
 
 ## Active Project Initiatives
 - None.
@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`completed` at `2026-03-22T18:49:35Z`) - Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.
 - `trace.plan_task_tracking_sync_performance`: Plan Task Tracking Sync Performance (`completed` at `2026-03-22T16:52:56Z`) - Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency.
 - `trace.first_party_root_pack_roots`: First-Party Root Pack Roots (`completed` at `2026-03-22T16:30:08Z`) - Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction.
 - `trace.core_copy_forward_operating_mode_documentation`: Core Copy Forward Operating Mode Documentation (`completed` at `2026-03-22T16:13:43Z`) - Documented copy-forward core adoption and donor-neutral shared-core guidance.
@@ -25,7 +26,6 @@
 - `trace.pack_cli_fault_isolation_hardening`: Pack CLI Fault Isolation Hardening (`completed` at `2026-03-21T23:46:04Z`) - Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations.
 - `trace.ledger_retirement_contract_change`: Ledger Retirement Contract Change (`completed` at `2026-03-21T22:52:52Z`) - Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end.
 - `trace.pack_bootstrap_installation_contract`: Pack Bootstrap Installation Contract (`completed` at `2026-03-21T05:15:57Z`) - Delivered guarded pack bootstrap registration flow and validated shared workspace wiring.
-- `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`completed` at `2026-03-21T03:56:17Z`) - Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

@@ -31,3 +31,8 @@
 - `core/python/src/watchtower_core/README.md`
 - `core/python/src/watchtower_core/cli/README.md`
 - `plan/python/src/watchtower_plan/README.md`
+
+## Runtime Telemetry
+- `watchtower_host.cli.main` owns top-level telemetry session creation for each `watchtower-core` invocation.
+- Host composition is responsible for command-level status, exit-code, help, and parse-error telemetry while pack and reusable-core layers emit nested operations under the active session.
+- Telemetry stays fail-open and never changes stdout payload contracts.

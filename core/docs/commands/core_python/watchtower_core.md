@@ -66,6 +66,8 @@ uv run watchtower-core validate all --format json
 ## Behavior and Outputs
 - With no subcommand, the root command prints help and exits successfully.
 - With a valid subcommand, it dispatches to that group's handler and returns the group's exit status.
+- Runtime telemetry is default-on and local. Each invocation writes one JSONL file under `<machine_root>/runtime/telemetry/` unless `WATCHTOWER_TELEMETRY=off` disables it or `WATCHTOWER_TELEMETRY_DIR` redirects the sink.
+- The CLI keeps human and JSON command payloads on stdout. Telemetry emits only one concise stderr summary line per invocation unless `WATCHTOWER_TELEMETRY_STDERR=off` suppresses it.
 - Use the group pages and leaf command pages for exact flags and behavior instead of treating this root page as the exhaustive command catalog.
 - Use `watchtower-core query commands --query <term> --format json` when you need machine-readable command discovery instead of browsing docs manually.
 
@@ -85,4 +87,4 @@ uv run watchtower-core validate all --format json
 - `core/python/src/watchtower_host/cli/registry.py`
 
 ## Updated At
-- `2026-03-20T19:20:00Z`
+- `2026-03-22T18:35:00Z`

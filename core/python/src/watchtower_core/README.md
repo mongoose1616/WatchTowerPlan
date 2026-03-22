@@ -29,6 +29,7 @@
 | `validation/` | `reusable_core` | Export-safe validation services, pack-target enumeration, and result models; pack-owned semantic validators stay under the owning pack package such as `watchtower_plan.validation`. |
 | `query/` | `reusable_core` | Export-safe generic query services over governed command, workflow, route, surface, and artifact-family metadata; pack-local lifecycle or coordination queries stay under the owning pack package such as `watchtower_plan.query`. |
 | `sync/` | `reusable_core` | Export-safe sync harness and repo-shared command, route, and repository-path index rebuild services; pack-local sync orchestration stays under the owning pack package such as `watchtower_plan.sync`. |
+| `telemetry/` | `reusable_core` | Local runtime telemetry session creation, nested operation timing, JSONL sinks, and fail-open stderr summaries for CLI execution. |
 | `rebuild/` | `reusable_core` | Export-safe rebuild harness primitives plus registry-backed rendered-view building and markdown reconciliation; pack-owned output shaping stays outside the reusable-core package root. |
 | `routing/` | `reusable_core` | Export-safe route-selection runtime over the governed route and workflow indexes; CLI formatting and repo-local route handlers stay out of the package root. |
 | `workflow_execution/` | `reusable_core` | Export-safe workflow execution harness built on routed workflow selection and callback-based execution hooks; repo-local workflow behavior stays out of the package root. |
@@ -49,3 +50,5 @@
 ## Notes
 - Keep new generic loaders, validators, query helpers, sync helpers, rebuild helpers, adapters, and utilities in `watchtower_core`.
 - Reach pack-owned behavior through the owning `watchtower_<pack>` package only when the behavior is truly tied to a pack-local workspace. In this repository, `watchtower_plan` is the current internal pack example.
+- Do not pull plan-owned logic back into reusable core when the behavior still depends on pack-local lifecycle rules, rendered surfaces, or workspace state.
+- Runtime telemetry is an active reusable-core baseline. Use `watchtower_core.telemetry` for per-command sessions and nested operation timing instead of ad hoc stderr timers or pack-local JSONL writers.
