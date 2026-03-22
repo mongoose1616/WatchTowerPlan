@@ -110,7 +110,16 @@ def disable_expensive_task_sync(monkeypatch: pytest.MonkeyPatch) -> list[tuple[s
             write: bool = False,
             output_dir: Path | None = None,
         ) -> SimpleNamespace:
-            calls.append(("coordination", write))
+            calls.append(("coordination_full", write))
+            return SimpleNamespace(records=(), wrote=write, output_dir=output_dir)
+
+        def run_workspace_follow_up_outputs(
+            self,
+            *,
+            write: bool = False,
+            output_dir: Path | None = None,
+        ) -> SimpleNamespace:
+            calls.append(("coordination_follow_up", write))
             return SimpleNamespace(records=(), wrote=write, output_dir=output_dir)
 
     monkeypatch.setattr(task_lifecycle_module, "PlanWorkspaceService", _FakePlanWorkspaceService)
@@ -211,6 +220,10 @@ def test_task_create_canonicalizes_directory_applies_to_paths(
     )
 
     assert result.wrote is True
+    assert disable_expensive_task_sync == [
+        ("workspace", True),
+        ("coordination_follow_up", True),
+    ]
     written_document = json.loads((repo_root / result.doc_path).read_text(encoding="utf-8"))
     assert written_document["applies_to"] == ["core/python/tests/unit/"]
 

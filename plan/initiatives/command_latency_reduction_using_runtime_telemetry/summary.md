@@ -14,6 +14,7 @@ Uses the new local runtime telemetry to profile, prioritize, and reduce command 
 - Rendered summary: [summary.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/summary.md)
 - Terminal task `task.command_latency_reduction_using_runtime_telemetry.bootstrap_command_latency_reduction_using_runtime_telemetry`: `completed`
 - Terminal task `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory`: `completed`
+- Terminal task `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`: `completed`
 
 ## Promoted Guidance
 - `promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell`: `planned` / approval `pending`
@@ -28,11 +29,10 @@ Uses the new local runtime telemetry to profile, prioritize, and reduce command 
 ## Unresolved Follow-Ups
 - Open task `task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards`: `planned`
 - Open task `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency`: `planned`
-- Open task `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`: `ready`
 - Open task `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency`: `planned`
 - Open task `task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-22T19:10:50Z`
+- `updated_at`: `2026-03-22T19:30:57Z`
 - `closeout.command_latency_reduction_using_runtime_telemetry.bootstrap_recap`: `planned`

@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-03-22T19:25:00Z",
+  "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+  "baseline_reference": "benchmark_baseline.json",
+  "commands": {
+    "plan_query_coordination": {
+      "command": "watchtower-core plan query coordination --format json",
+      "baseline_median_ms": 1379.610,
+      "current_median_ms": 612.292,
+      "improvement_ms": 767.318,
+      "improvement_percent": 55.62,
+      "notes": [
+        "Measured on the live repo with WATCHTOWER_TELEMETRY_STDERR=off.",
+        "This slice primarily benefited from cached plan index loading and lazy query-path service construction."
+      ]
+    },
+    "plan_sync_coordination_write": {
+      "command": "watchtower-core plan sync coordination --write --format json",
+      "baseline_median_ms": 1329.894,
+      "current_median_ms": 1210.746,
+      "improvement_ms": 119.148,
+      "improvement_percent": 8.96,
+      "notes": [
+        "Measured on the live repo with WATCHTOWER_TELEMETRY_STDERR=off.",
+        "The measured gain here is secondary to the query and task-write reductions."
+      ]
+    },
+    "plan_task_create_write": {
+      "command": "watchtower-core plan task create --write --format json",
+      "baseline_median_ms": 3037.702,
+      "current_median_ms": 2668.563,
+      "improvement_ms": 369.139,
+      "improvement_percent": 12.15,
+      "notes": [
+        "Measured in an isolated temporary repo copy so the active plan workspace stayed clean.",
+        "The dominant gain came from avoiding overlapping coordination rebuilds after task writes."
+      ]
+    }
+  },
+  "follow_up_decision": {
+    "next_task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
+    "reason": "The remaining reusable-core validation and pack-runtime hotspot still dominates common operator commands after the plan command slice."
+  }
+}

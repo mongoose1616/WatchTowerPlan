@@ -95,12 +95,12 @@
       "title": "Reduce plan command latency",
       "summary": "Uses the telemetry baseline to reduce avoidable latency in plan sync, query, task, and closeout command paths.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "completed",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json",
-      "updated_at": "2026-03-22T19:10:50Z",
+      "updated_at": "2026-03-22T19:30:57Z",
       "depends_on": [
         "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory"
       ],

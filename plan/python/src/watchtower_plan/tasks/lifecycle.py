@@ -191,7 +191,9 @@ class TaskLifecycleService:
                 task_doc_path=relative_path,
             )
             PlanWorkspaceService(self._loader).sync(write=True)
-            CoordinationSyncService(self._loader).run(write=True)
+            CoordinationSyncService(self._loader).run_workspace_follow_up_outputs(
+                write=True
+            )
 
         return TaskMutationResult(
             task_id=task_id,
@@ -415,7 +417,9 @@ class TaskLifecycleService:
                 task_doc_path=document.relative_path,
             )
             PlanWorkspaceService(self._loader).sync(write=True)
-            CoordinationSyncService(self._loader).run(write=True)
+            CoordinationSyncService(self._loader).run_workspace_follow_up_outputs(
+                write=True
+            )
 
         return TaskMutationResult(
             task_id=document.task_id,

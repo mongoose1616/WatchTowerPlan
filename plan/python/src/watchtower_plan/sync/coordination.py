@@ -20,6 +20,14 @@ CLOSEOUT_SHARED_OUTPUT_TARGETS = frozenset(
         "coordination-tracking",
     }
 )
+WORKSPACE_FOLLOW_UP_TARGETS = frozenset(
+    {
+        "traceability-index",
+        "task-tracking",
+        "initiative-tracking",
+        "coordination-tracking",
+    }
+)
 
 
 class CoordinationSyncService(AllSyncService):
@@ -50,5 +58,20 @@ class CoordinationSyncService(AllSyncService):
             spec
             for spec in sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
             if spec.target in CLOSEOUT_SHARED_OUTPUT_TARGETS
+        )
+        return self.run_specs(specs, write=write, output_dir=output_dir)
+
+    def run_workspace_follow_up_outputs(
+        self,
+        *,
+        write: bool = False,
+        output_dir: Path | None = None,
+    ) -> AllSyncResult:
+        """Run only coordination outputs not already rebuilt by plan workspace sync."""
+
+        specs = tuple(
+            spec
+            for spec in sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+            if spec.target in WORKSPACE_FOLLOW_UP_TARGETS
         )
         return self.run_specs(specs, write=write, output_dir=output_dir)

@@ -123,52 +123,20 @@ class PlanWorkspaceService:
             "artifact_index.json"
         )
         self._overview_path = self._workspace_paths.overview_path
-        evidence_bundles = EvidenceBundleHelper(self._pack_loader)
-        vocabulary = TerminologyHelper.from_loader(
-            loader,
-            pack_settings_path=PLAN_PACK_SETTINGS_PATH,
-        )
-        rendered_views = RenderedViewBuilder(self._pack_loader)
-        self._snapshot_loader = PlanWorkspaceSnapshotLoader(
-            loader, self._workspace_paths
-        )
-        self._renderer = PlanWorkspaceRenderer(
-            workspace_paths=self._workspace_paths,
-            rendered_views=rendered_views,
-            vocabulary=vocabulary,
-            overview_path=self._overview_path,
-        )
-        self._builder = PlanWorkspaceDocumentBuilder(
-            loader=loader,
-            pack_loader=self._pack_loader,
-            workspace_paths=self._workspace_paths,
-            initiative_index_path=self._initiative_index_path,
-            task_index_path=self._task_index_path,
-            readiness_index_path=self._readiness_index_path,
-            discrepancy_index_path=self._discrepancy_index_path,
-            evidence_index_path=self._evidence_index_path,
-            closeout_index_path=self._closeout_index_path,
-            review_index_path=self._review_index_path,
-            promotion_index_path=self._promotion_index_path,
-            guidance_index_path=self._guidance_index_path,
-            coordination_index_path=self._coordination_index_path,
-            artifact_index_path=self._artifact_index_path,
-            overview_path=self._overview_path,
-            evidence_bundles=evidence_bundles,
-            vocabulary=vocabulary,
-            renderer=self._renderer,
-        )
-        self._markdown_reconciliation = MarkdownReconciliationHelper(self._pack_loader)
+        self._snapshot_loader = PlanWorkspaceSnapshotLoader(loader, self._workspace_paths)
+        self._vocabulary: TerminologyHelper | None = None
+        self._renderer: PlanWorkspaceRenderer | None = None
+        self._builder: PlanWorkspaceDocumentBuilder | None = None
+        self._markdown_reconciliation: MarkdownReconciliationHelper | None = None
 
     def sync(self, *, write: bool) -> PlanWorkspaceSyncResult:
         snapshots = self._snapshot_loader.load_initiative_snapshots()
-        documents = self._builder.build_documents(snapshots)
+        builder = self._builder_service()
+        documents = builder.build_documents(snapshots)
         artifact_document = ArtifactIndexService(self._loader).build_document(
-            aggregate_overrides=self._builder.artifact_aggregate_overrides(documents)
+            aggregate_overrides=builder.artifact_aggregate_overrides(documents)
         )
-        rebuild_outputs = self._builder.build_rebuild_outputs(
-            documents, artifact_document
-        )
+        rebuild_outputs = builder.build_rebuild_outputs(documents, artifact_document)
         rebuild_result = RebuildHarness(self._loader).run_specs(
             (
                 RebuildTargetSpec(
@@ -193,7 +161,7 @@ class PlanWorkspaceService:
         """Rebuild only the discrepancy index without healing unrelated derived surfaces."""
 
         snapshots = self._snapshot_loader.load_initiative_snapshots()
-        documents = self._builder.build_documents(snapshots)
+        documents = self._builder_service().build_documents(snapshots)
         rebuild_result = RebuildHarness(self._loader).run_specs(
             (
                 RebuildTargetSpec(
@@ -217,7 +185,7 @@ class PlanWorkspaceService:
         self, initiative_root: str
     ) -> tuple[DiscrepancyIssue, ...]:
         snapshots = self._snapshot_loader.load_initiative_snapshots()
-        documents = self._builder.build_documents(snapshots)
+        documents = self._builder_service().build_documents(snapshots)
         snapshot = next(
             (
                 candidate
@@ -246,15 +214,19 @@ class PlanWorkspaceService:
             ),
         }
         artifact_document = ArtifactIndexService(self._loader).build_document(
-            aggregate_overrides=self._builder.artifact_aggregate_overrides(documents)
+            aggregate_overrides=self._builder_service().artifact_aggregate_overrides(
+                documents
+            )
         )
         expected_json = {
-            **self._builder.artifact_aggregate_overrides(documents),
+            **self._builder_service().artifact_aggregate_overrides(documents),
             self._artifact_index_path: artifact_document,
         }
 
         issues: list[DiscrepancyIssue] = []
-        for issue in self._markdown_reconciliation.expected_issues(expected_markdown):
+        for issue in self._markdown_reconciliation_service().expected_issues(
+            expected_markdown
+        ):
             relative_path = issue.relative_output_path
             issues.append(
                 DiscrepancyIssue(
@@ -332,26 +304,26 @@ class PlanWorkspaceService:
 
     def build_initiative_index_document(self) -> dict[str, object]:
         return self._json_document(
-            self._builder.build_documents(
+            self._builder_service().build_documents(
                 self._snapshot_loader.load_initiative_snapshots()
             )["initiative_index"]
         )
 
     def build_coordination_index_document(self) -> dict[str, object]:
         return self._json_document(
-            self._builder.build_documents(
+            self._builder_service().build_documents(
                 self._snapshot_loader.load_initiative_snapshots()
             )["coordination_index"]
         )
 
     def build_task_index_document(self) -> dict[str, object]:
-        return self._builder.build_task_index_document(
+        return self._builder_service().build_task_index_document(
             self._snapshot_loader.load_initiative_snapshots()
         )
 
     def build_review_index_document(self) -> dict[str, object]:
         return self._json_document(
-            self._builder.build_documents(
+            self._builder_service().build_documents(
                 self._snapshot_loader.load_initiative_snapshots()
             )["review_index"]
         )
@@ -491,11 +463,55 @@ class PlanWorkspaceService:
         return search_review_entries(self.load_review_entries(), params)
 
     def _load_plan_json(self, relative_path: str) -> dict[str, object]:
-        document = self._loader.derive(
-            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
-        ).load_validated_document(relative_path)
+        document = self._pack_loader.load_validated_document(relative_path)
         assert isinstance(document, dict)
         return document
+
+    def _builder_service(self) -> PlanWorkspaceDocumentBuilder:
+        if self._builder is None:
+            vocabulary = self._vocabulary_service()
+            self._renderer = PlanWorkspaceRenderer(
+                workspace_paths=self._workspace_paths,
+                rendered_views=RenderedViewBuilder(self._pack_loader),
+                vocabulary=vocabulary,
+                overview_path=self._overview_path,
+            )
+            self._builder = PlanWorkspaceDocumentBuilder(
+                loader=self._loader,
+                pack_loader=self._pack_loader,
+                workspace_paths=self._workspace_paths,
+                initiative_index_path=self._initiative_index_path,
+                task_index_path=self._task_index_path,
+                readiness_index_path=self._readiness_index_path,
+                discrepancy_index_path=self._discrepancy_index_path,
+                evidence_index_path=self._evidence_index_path,
+                closeout_index_path=self._closeout_index_path,
+                review_index_path=self._review_index_path,
+                promotion_index_path=self._promotion_index_path,
+                guidance_index_path=self._guidance_index_path,
+                coordination_index_path=self._coordination_index_path,
+                artifact_index_path=self._artifact_index_path,
+                overview_path=self._overview_path,
+                evidence_bundles=EvidenceBundleHelper(self._pack_loader),
+                vocabulary=vocabulary,
+                renderer=self._renderer,
+            )
+        return self._builder
+
+    def _markdown_reconciliation_service(self) -> MarkdownReconciliationHelper:
+        if self._markdown_reconciliation is None:
+            self._markdown_reconciliation = MarkdownReconciliationHelper(
+                self._pack_loader
+            )
+        return self._markdown_reconciliation
+
+    def _vocabulary_service(self) -> TerminologyHelper:
+        if self._vocabulary is None:
+            self._vocabulary = TerminologyHelper.from_loader(
+                self._loader,
+                pack_settings_path=PLAN_PACK_SETTINGS_PATH,
+            )
+        return self._vocabulary
 
     @staticmethod
     def _json_document(value: object) -> dict[str, object]:

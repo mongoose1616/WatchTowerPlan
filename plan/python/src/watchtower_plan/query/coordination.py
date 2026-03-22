@@ -28,8 +28,9 @@ class CoordinationQueryService:
     """Search the coordination index with structured filters."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
+        self._loader = loader
         self._plan_workspace = PlanWorkspaceService(loader)
-        self._initiative_service = InitiativeQueryService(loader)
+        self._initiative_service: InitiativeQueryService | None = None
 
     def search(self, params: CoordinationSearchParams) -> CoordinationQueryResult:
         """Return coordination entries matching the requested filters."""
@@ -37,7 +38,7 @@ class CoordinationQueryService:
         if _delegates_to_initiative_history(params):
             return CoordinationQueryResult(
                 index=index,
-                entries=self._initiative_service.search(params),
+                entries=self._initiative_service_instance().search(params),
             )
         entries = self._plan_workspace.search_coordination(
             rendered_search_filters_from_params(
@@ -46,6 +47,11 @@ class CoordinationQueryService:
             )
         )
         return CoordinationQueryResult(index=index, entries=entries)
+
+    def _initiative_service_instance(self) -> InitiativeQueryService:
+        if self._initiative_service is None:
+            self._initiative_service = InitiativeQueryService(self._loader)
+        return self._initiative_service
 
 
 def _delegates_to_initiative_history(params: CoordinationSearchParams) -> bool:

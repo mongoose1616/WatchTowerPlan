@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-22T19:10:50Z`
+- `updated_at`: `2026-03-22T19:30:57Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -19,7 +19,6 @@
 ## Active Tasks
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json) | `ready` | `high` | `repository_maintainer` | Uses the telemetry baseline to reduce avoidable latency in plan sync, query, task, and closeout command paths. | task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory |
 | [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `planned` | `critical` | `repository_maintainer` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. | task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards, task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency |
 | [task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json) | `planned` | `high` | `repository_maintainer` | Removes avoidable startup overhead in host dispatch and reusable-core loading paths surfaced by the telemetry baseline. | task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory |
 | [task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json) | `planned` | `high` | `repository_maintainer` | Cuts avoidable latency in validation, schema, and pack-runtime execution paths that remain prominent after the baseline pass. | task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory |
@@ -28,12 +27,11 @@
 ## Blockers
 - Task `task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards` depends on `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency`.
 - Task `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency` depends on `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory`.
-- Task `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency` depends on `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory`.
 - Task `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency` depends on `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory`.
 - Task `task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout` depends on `task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards`, `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency`.
 
 ## Next Actions
-- Start the highest-priority ready task from the initiative package.
+- Promote the next planned task to ready before opening follow-up work.
 - Next surface: [plan.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md)
 
 ## Evidence or Validation State

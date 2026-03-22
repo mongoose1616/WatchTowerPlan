@@ -406,7 +406,7 @@ def rebuild_derived_surfaces(loader: ControlPlaneLoader) -> None:
     """Refresh the task and traceability mirrors after a write sync."""
 
     PlanWorkspaceService(loader).sync(write=True)
-    CoordinationSyncService(loader).run(write=True)
+    CoordinationSyncService(loader).run_workspace_follow_up_outputs(write=True)
 
 
 def _render_bullets(items: tuple[str, ...], *, empty_message: str) -> str:

@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_next_action`: Promote the next planned task to ready before opening follow-up work.
 - `recommended_surface_path`: `plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md`
 
 ## Active Pack-Wide Initiatives
@@ -13,7 +13,7 @@
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency` (high) in `trace.command_latency_reduction_using_runtime_telemetry` -> `plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json`
+- None.
 
 ## Recent Completions or Changes
 - `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`completed` at `2026-03-22T18:49:35Z`) - Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.
