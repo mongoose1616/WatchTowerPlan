@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:03:37Z",
+  "updated_at": "2026-03-22T22:28:03Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -475,7 +475,7 @@
       "trace_id": "trace.repository_tech_debt_reduction_program",
       "initiative_title": "Repository Tech Debt Reduction Program",
       "title": "Bootstrap Validation Bundle",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/repository_tech_debt_reduction_program",
       "entry_count": 2,
       "acceptance_labels": [
@@ -496,7 +496,7 @@
         "plan/initiatives/repository_tech_debt_reduction_program/.wt/discrepancies",
         "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json"
       ],
-      "updated_at": "2026-03-22T21:17:47Z"
+      "updated_at": "2026-03-22T22:28:03Z"
     },
     {
       "evidence_id": "evidence.runtime_telemetry_and_command_observability_foundation.bootstrap_validation_bundle",

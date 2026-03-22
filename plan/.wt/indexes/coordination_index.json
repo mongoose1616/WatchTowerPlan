@@ -3,108 +3,25 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T22:03:37Z",
-  "coordination_mode": "active_work",
-  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
-  "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-  "recommended_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-22T22:28:03Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active plan-workspace initiatives exist.",
+  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
+  "recommended_surface_path": "plan/plan_overview.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
-  "entries": [
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.repository_tech_debt_reduction_program",
       "title": "Repository Tech Debt Reduction Program",
-      "summary": "Makes tech-debt reduction the active repository priority, starting with legacy residue removal, integration-tail reduction, and stale compatibility cleanup across core, host, and pack-owned code.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T22:03:37Z",
-      "open_task_count": 2,
-      "blocked_task_count": 0,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T22:28:03Z",
       "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-      "initiative_id": "initiative.repository_tech_debt_reduction_program",
-      "slug": "repository_tech_debt_reduction_program",
-      "scope_type": "pack_wide",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-        "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-          "title": "Reconcile Duplicate Registry And Contract Declarations",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche",
-          "title": "Validate And Close First Tech Debt Tranche",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations"
-          ]
-        }
-      ],
-      "source_surface_paths": [
-        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md"
-      ],
-      "task_ids": [
-        "task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program",
-        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
-        "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-        "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
-        "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
-        "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche"
-      ],
-      "evidence_ids": [
-        "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
-      ],
-      "related_paths": [
-        "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/implementation_slice.md",
-        "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
-        "core/control_plane/registries/",
-        "core/control_plane/schemas/",
-        "core/python/src/watchtower_core/",
-        "core/python/src/watchtower_host/",
-        "core/python/tests/integration/",
-        "core/python/tests/unit/",
-        "plan/.wt/registries/",
-        "plan/initiatives/repository_tech_debt_reduction_program/",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/bootstrap_repository_tech_debt_reduction_program/task.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
-        "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
-        "plan/python/src/watchtower_plan/"
-      ],
-      "tags": [
-        "traceability"
-      ]
-    }
-  ],
-  "actionable_tasks": [],
-  "recent_closed_initiatives": [
+      "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication"
+    },
     {
       "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
       "title": "Command Latency Reduction Using Runtime Telemetry",
@@ -176,14 +93,6 @@
       "closed_at": "2026-03-21T23:46:04Z",
       "key_surface_path": "plan/initiatives/pack_cli_fault_isolation_hardening/plan.md",
       "closure_reason": "Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations."
-    },
-    {
-      "trace_id": "trace.ledger_retirement_contract_change",
-      "title": "Ledger Retirement Contract Change",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-21T22:52:52Z",
-      "key_surface_path": "plan/initiatives/ledger_retirement_contract_change/plan.md",
-      "closure_reason": "Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end."
     }
   ]
 }

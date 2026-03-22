@@ -715,8 +715,10 @@
       "title": "Repository Tech Debt Reduction Program",
       "summary": "Makes tech-debt reduction the active repository priority, starting with legacy residue removal, integration-tail reduction, and stale compatibility cleanup across core, host, and pack-owned code.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-22T22:03:37Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T22:28:03Z",
+      "closed_at": "2026-03-22T22:28:03Z",
+      "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication",
       "source_surface_paths": [
         "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
         "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",

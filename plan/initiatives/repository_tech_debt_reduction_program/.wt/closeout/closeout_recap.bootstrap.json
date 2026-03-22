@@ -3,8 +3,8 @@
   "id": "closeout.repository_tech_debt_reduction_program.bootstrap_recap",
   "initiative_id": "initiative.repository_tech_debt_reduction_program",
   "title": "Bootstrap Closeout Shell",
-  "status": "planned",
-  "updated_at": "2026-03-22T21:17:47Z",
+  "status": "completed",
+  "updated_at": "2026-03-22T22:28:03Z",
   "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
   "acceptance_ids": [
     "acceptance.repository_tech_debt_reduction_program.bootstrap"
@@ -18,5 +18,8 @@
     "completed",
     "superseded",
     "cancelled"
-  ]
+  ],
+  "terminal_state": "completed",
+  "closed_at": "2026-03-22T22:28:03Z",
+  "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication"
 }

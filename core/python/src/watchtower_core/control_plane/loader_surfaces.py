@@ -6,6 +6,7 @@ from collections.abc import Callable
 from typing import Any, cast
 
 from watchtower_core.control_plane.loader_constants import (
+    _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     ACTOR_REGISTRY_PATH,
     AUTHORITY_MAP_PATH,
@@ -110,13 +111,44 @@ def load_schema_catalog(loader: Any) -> SchemaCatalog:
 def load_validator_registry(loader: Any) -> ValidatorRegistry:
     """Load the current validator registry."""
 
-    return cast(
+    current_path = loader._current_validator_registry_path()
+    if current_path == VALIDATOR_REGISTRY_PATH:
+        return cast(
+            ValidatorRegistry,
+            loader._load_typed_document(
+                current_path,
+                ValidatorRegistry.from_document,
+            ),
+        )
+
+    cache_key = "::".join(
+        (
+            _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
+            VALIDATOR_REGISTRY_PATH,
+            current_path,
+        )
+    )
+    cached = loader._typed_document_cache.get(cache_key)
+    if cached is not None:
+        return cast(ValidatorRegistry, cached)
+
+    core_registry = cast(
         ValidatorRegistry,
         loader._load_typed_document(
-            loader._current_validator_registry_path(),
+            VALIDATOR_REGISTRY_PATH,
             ValidatorRegistry.from_document,
         ),
     )
+    pack_registry = cast(
+        ValidatorRegistry,
+        loader._load_typed_document(
+            current_path,
+            ValidatorRegistry.from_document,
+        ),
+    )
+    merged_registry = ValidatorRegistry.merge(core_registry, pack_registry)
+    loader._typed_document_cache[cache_key] = merged_registry
+    return merged_registry
 
 
 def load_validation_suite_registry(loader: Any) -> ValidationSuiteRegistry:
@@ -601,10 +633,7 @@ def _declared_surface_loaders(loader: Any) -> dict[str, Callable[[str], object]]
             relative_path,
             lambda document: SchemaCatalog.from_document(document, loader.workspace_config),
         ),
-        "validator_registry": lambda relative_path: loader._load_typed_document(
-            relative_path,
-            ValidatorRegistry.from_document,
-        ),
+        "validator_registry": lambda relative_path: loader.load_validator_registry(),
         "validation_suite_registry": lambda relative_path: loader._load_typed_document(
             relative_path,
             ValidationSuiteRegistry.from_document,

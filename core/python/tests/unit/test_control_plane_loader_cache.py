@@ -74,13 +74,21 @@ def test_control_plane_loader_invalidates_document_and_directory_cache_state() -
 
     original_registry = loader.load_validator_registry()
     stale_registry_document = deepcopy(original_registry_document)
-    stale_registry_document["title"] = "Stale Validator Registry Override"
+    for validator in stale_registry_document["validators"]:
+        if validator["id"] == "validator.plan.validation_bundle":
+            validator["title"] = "Stale Plan Validation Bundle Validator"
+            break
+    else:
+        raise AssertionError("Expected plan validator entry to exist in active registry.")
     loader.set_validated_document_override(validator_registry_path, stale_registry_document)
 
     updated_registry = loader.load_validator_registry()
 
     assert updated_registry is not original_registry
-    assert updated_registry.title == "Stale Validator Registry Override"
+    assert (
+        updated_registry.get("validator.plan.validation_bundle").title
+        == "Stale Plan Validation Bundle Validator"
+    )
 
     removed_path, removed_document = original_contract_documents[0]
     stale_directory_documents = (
@@ -114,6 +122,29 @@ def test_control_plane_loader_invalidates_document_and_directory_cache_state() -
     assert refreshed_removed_document["title"] == removed_document["title"]
     assert stale_contracts != refreshed_contracts
     assert refreshed_contract_ids == {document["id"] for _, document in fresh_directory_documents}
+
+
+def test_control_plane_loader_invalidates_merged_validator_registry_after_core_override() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    original_registry = loader.load_validator_registry()
+    updated_document = deepcopy(loader.load_validated_document(VALIDATOR_REGISTRY_PATH))
+
+    for validator in updated_document["validators"]:
+        if validator["id"] == "validator.control_plane.acceptance_contract":
+            validator["title"] = "Updated Acceptance Contract Validator"
+            break
+    else:
+        raise AssertionError("Expected shared validator entry to exist in core registry.")
+
+    loader.set_validated_document_override(VALIDATOR_REGISTRY_PATH, updated_document)
+
+    refreshed_registry = loader.load_validator_registry()
+
+    assert refreshed_registry is not original_registry
+    assert (
+        refreshed_registry.get("validator.control_plane.acceptance_contract").title
+        == "Updated Acceptance Contract Validator"
+    )
 
 
 def test_control_plane_loader_document_override_invalidates_cached_parent_directory_state() -> None:

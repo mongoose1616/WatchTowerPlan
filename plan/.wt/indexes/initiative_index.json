@@ -928,47 +928,20 @@
       "title": "Repository Tech Debt Reduction Program",
       "summary": "Makes tech-debt reduction the active repository priority, starting with legacy residue removal, integration-tail reduction, and stale compatibility cleanup across core, host, and pack-owned code.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T22:03:37Z",
-      "open_task_count": 2,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T22:28:03Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/summary.md",
       "initiative_id": "initiative.repository_tech_debt_reduction_program",
       "slug": "repository_tech_debt_reduction_program",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-        "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-          "title": "Reconcile Duplicate Registry And Contract Declarations",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
-          "is_actionable": false
-        },
-        {
-          "task_id": "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche",
-          "title": "Validate And Close First Tech Debt Tranche",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations"
-          ]
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/repository_tech_debt_reduction_program/decision_notes.md",
@@ -987,6 +960,8 @@
       "evidence_ids": [
         "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-22T22:28:03Z",
+      "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication",
       "related_paths": [
         "plan/initiatives/repository_tech_debt_reduction_program/initiative_brief.md",
         "plan/initiatives/repository_tech_debt_reduction_program/design_record.md",

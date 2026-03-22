@@ -66,9 +66,11 @@ def test_control_plane_loader_active_pack_settings_read_pack_validator_registry(
 
     registry = loader.load_validator_registry()
     validator = registry.get(surfaces["validator_id"])
+    shared_validator = registry.get("validator.control_plane.pack_registry")
 
     assert validator.engine == "json_schema"
     assert validator.schema_ids == (surfaces["schema_id"],)
+    assert shared_validator.artifact_kind == "pack_registry"
 
 
 def test_control_plane_loader_discovers_repo_local_default_pack_settings_path(

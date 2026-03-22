@@ -181,13 +181,29 @@ def materialize_pack_validation_suite(
         suite_registry["suites"][0]["steps"][1]["validator_id"] = suite_step_validator_id
         _write_json(pack_root / ".wt/registries/validation_suite_registry.json", suite_registry)
 
+    validator_registry_path = pack_root / ".wt/registries/validator_registry.json"
+    if validator_registry_path.exists():
+        validator_registry = _load_json(validator_registry_path)
+        core_validator_registry = _load_json(
+            repo_root / "core" / "control_plane" / "registries" / "validator_registry.json"
+        )
+        core_validator_ids = {
+            validator["id"] for validator in core_validator_registry["validators"]
+        }
+        validator_registry["validators"] = [
+            validator
+            for validator in validator_registry["validators"]
+            if validator["id"] not in core_validator_ids
+        ]
+        _write_json(validator_registry_path, validator_registry)
+
     if validator_schema_ids is not None:
-        validator_registry = _load_json(pack_root / ".wt/registries/validator_registry.json")
+        validator_registry = _load_json(validator_registry_path)
         for validator in validator_registry["validators"]:
             if validator["id"] == validator_id:
                 validator["schema_ids"] = list(validator_schema_ids)
                 break
-        _write_json(pack_root / ".wt/registries/validator_registry.json", validator_registry)
+        _write_json(validator_registry_path, validator_registry)
 
     return {
         "artifact_relative_path": f"{actual_wt_root}/work_items/{note_slug}.json",

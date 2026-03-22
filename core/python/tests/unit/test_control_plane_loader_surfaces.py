@@ -8,6 +8,7 @@ from watchtower_core.control_plane.models import (
     RenderedSurfaceRegistry,
     SchemaCatalog,
     ValidationSuiteRegistry,
+    ValidatorRegistry,
 )
 
 
@@ -16,12 +17,32 @@ def test_control_plane_loader_reads_validator_registry() -> None:
 
     registry = loader.load_validator_registry()
     validator = registry.get("validator.documentation.reference_front_matter")
+    pack_validator = registry.get("validator.plan.validation_bundle")
 
     assert registry.artifact_id == "registry.validators"
     assert validator.engine == "json_schema"
     assert validator.schema_ids == (
         "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
     )
+    assert pack_validator.artifact_kind == "validation_bundle"
+    assert pack_validator.applies_to == (
+        "plan/initiatives/**/.wt/evidence/*.json",
+        "plan/projects/**/initiatives/**/.wt/evidence/*.json",
+    )
+
+
+def test_control_plane_loader_declared_validator_registry_uses_merged_contract() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    relative_path = loader.load_pack_settings().get("validator_registry").path
+
+    registry = loader.load_declared_surface(
+        surface_name="validator_registry",
+        relative_path=relative_path,
+    )
+
+    assert isinstance(registry, ValidatorRegistry)
+    assert registry.get("validator.control_plane.pack_settings").artifact_kind == "pack_settings"
+    assert registry.get("validator.plan.validation_bundle").artifact_kind == "validation_bundle"
 
 
 def test_control_plane_loader_reads_validation_suite_registry() -> None:

@@ -6,7 +6,10 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
 from watchtower_core.control_plane.errors import ArtifactLoadError
-from watchtower_core.control_plane.loader_constants import _KEEP_ACTIVE_PACK_SETTINGS
+from watchtower_core.control_plane.loader_constants import (
+    _KEEP_ACTIVE_PACK_SETTINGS,
+    _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
+)
 
 if TYPE_CHECKING:
     from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -56,7 +59,7 @@ def set_validated_document_override(
 
     loader._validated_document_overrides[relative_path] = document
     loader._validated_document_cache[relative_path] = document
-    loader._typed_document_cache.pop(relative_path, None)
+    _invalidate_typed_document_state(loader, relative_path)
     loader._invalidate_parent_directory_state(relative_path)
 
 
@@ -77,12 +80,12 @@ def set_validated_directory_override(
     for relative_path, document in documents:
         loader._validated_document_overrides[relative_path] = document
         loader._validated_document_cache[relative_path] = document
-        loader._typed_document_cache.pop(relative_path, None)
+        _invalidate_typed_document_state(loader, relative_path)
 
     for stale_relative_path in previous_paths.difference(next_paths):
         loader._validated_document_overrides.pop(stale_relative_path, None)
         loader._validated_document_cache.pop(stale_relative_path, None)
-        loader._typed_document_cache.pop(stale_relative_path, None)
+        _invalidate_typed_document_state(loader, stale_relative_path)
 
 
 def _invalidate_parent_directory_state(loader: Any, relative_path: str) -> None:
@@ -101,6 +104,20 @@ def _invalidate_parent_directory_state(loader: Any, relative_path: str) -> None:
         loader._validated_directory_overrides.pop(relative_directory, None)
         loader._validated_directory_cache.pop(relative_directory, None)
         loader._typed_directory_cache.pop(relative_directory, None)
+
+
+def _invalidate_typed_document_state(loader: Any, relative_path: str) -> None:
+    """Drop stale typed document cache entries tied to one governed path."""
+
+    loader._typed_document_cache.pop(relative_path, None)
+    stale_merge_keys = tuple(
+        cache_key
+        for cache_key in loader._typed_document_cache
+        if cache_key.startswith(f"{_MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX}::")
+        and relative_path in cache_key.split("::")[1:]
+    )
+    for cache_key in stale_merge_keys:
+        loader._typed_document_cache.pop(cache_key, None)
 
 
 def load_json_object(loader: Any, relative_path: str) -> dict[str, Any]:
