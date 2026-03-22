@@ -168,9 +168,7 @@ class TerminologyHelper:
                 "Active pack settings do not declare a typed lifecycle_stage_registry."
             )
         if not isinstance(review_registry, ReviewStatusRegistry):
-            raise ValueError(
-                "Active pack settings do not declare a typed review_status_registry."
-            )
+            raise ValueError("Active pack settings do not declare a typed review_status_registry.")
         if not isinstance(source_registry, SourceTypeRegistry):
             raise ValueError("Active pack settings do not declare a typed source_type_registry.")
         return cls(

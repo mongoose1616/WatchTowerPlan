@@ -105,9 +105,7 @@ class RenderedViewBuilder:
                 f"contract: {surface_section_ids!r} != {template.section_order!r}"
             )
         missing_source_keys = tuple(
-            section.source_key
-            for section in surface.sections
-            if section.source_key not in data
+            section.source_key for section in surface.sections if section.source_key not in data
         )
         if missing_source_keys:
             raise ValueError(

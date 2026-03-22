@@ -101,8 +101,10 @@ def bootstrap_hosted_pack(
         changed_paths.append(PACK_REGISTRY_PATH)
     if core_python_pyproject_changed:
         changed_paths.append(CORE_PYPROJECT_RELATIVE_PATH)
-    if request.sync_workspace and request.write and (
-        pack_registry_changed or core_python_pyproject_changed
+    if (
+        request.sync_workspace
+        and request.write
+        and (pack_registry_changed or core_python_pyproject_changed)
     ):
         changed_paths.append(CORE_UV_LOCK_RELATIVE_PATH)
 
@@ -218,7 +220,10 @@ def _updated_pack_registry_document(
     registry_document: dict[str, object],
     candidate_entry: dict[str, object],
 ) -> tuple[dict[str, object], bool]:
-    packs = list(registry_document["packs"])
+    raw_packs = registry_document.get("packs")
+    if not isinstance(raw_packs, list):
+        raise ValueError("Pack registry document is missing its packs list.")
+    packs = tuple(entry for entry in raw_packs if isinstance(entry, dict))
     updated_packs: list[dict[str, object]] = []
     matched_existing = False
     changed = False
@@ -293,9 +298,7 @@ def _validate_bootstrapped_pack(
     )
     if result.passed:
         return True
-    issue_summary = "; ".join(
-        f"{issue.code}: {issue.message}" for issue in result.issues[:5]
-    )
+    issue_summary = "; ".join(f"{issue.code}: {issue.message}" for issue in result.issues[:5])
     raise ValueError(
         "Hosted-pack bootstrap failed validation after applying shared workspace wiring: "
         f"{issue_summary}"

@@ -36,7 +36,8 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "handler": "route_index",
         "help": "Rebuild the route index from the canonical routing table.",
         "description": """
-            Rebuild the route index from `core/workflows/ROUTING_TABLE.md` and `plan/workflows/ROUTING_TABLE.md`.
+            Rebuild the route index from `core/workflows/ROUTING_TABLE.md`
+            and `plan/workflows/ROUTING_TABLE.md`.
 
             By default this is a dry run. Add `--write` to update the canonical
             artifact or `--output` to materialize the rebuilt document elsewhere.
@@ -44,8 +45,7 @@ _DOCUMENT_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
         "examples": (
             "uv run watchtower-core sync route-index",
             "uv run watchtower-core sync route-index --write",
-            "uv run watchtower-core sync route-index --output /tmp/route_index.json "
-            "--format json",
+            "uv run watchtower-core sync route-index --output /tmp/route_index.json --format json",
         ),
     },
     {

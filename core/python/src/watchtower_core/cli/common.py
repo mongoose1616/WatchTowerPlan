@@ -6,9 +6,7 @@ import argparse
 from pathlib import Path
 
 
-class HelpFormatter(
-    argparse.RawDescriptionHelpFormatter, argparse.ArgumentDefaultsHelpFormatter
-):
+class HelpFormatter(argparse.RawDescriptionHelpFormatter, argparse.ArgumentDefaultsHelpFormatter):
     """Formatter that preserves examples and shows defaults."""
 
 

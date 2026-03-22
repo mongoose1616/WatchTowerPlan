@@ -33,7 +33,7 @@ def discover_pack_workspace_roots(
         except Exception:
             pack_registry = None
 
-    if pack_registry is not None:
+    if pack_registry is not None and effective_loader is not None:
         for entry in pack_registry.packs:
             seen_settings_paths.add(entry.pack_settings_path)
             try:
@@ -134,8 +134,7 @@ def _conventional_relative_paths(repo_root: Path, suffix: str) -> tuple[str, ...
     matches: list[str] = []
     for pattern in (f"*/{suffix}", f"packs/*/{suffix}"):
         matches.extend(
-            path.relative_to(repo_root).as_posix()
-            for path in sorted(repo_root.glob(pattern))
+            path.relative_to(repo_root).as_posix() for path in sorted(repo_root.glob(pattern))
         )
     return tuple(matches)
 

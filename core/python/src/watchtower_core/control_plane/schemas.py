@@ -70,9 +70,7 @@ def _load_supplemental_schema_document_from_file(path: Path) -> SupplementalSche
         raise SchemaResolutionError(f"Supplemental schema {path} is not valid JSON.") from exc
 
     if not isinstance(loaded, dict):
-        raise SchemaResolutionError(
-            f"Supplemental schema {path} must be a top-level JSON object."
-        )
+        raise SchemaResolutionError(f"Supplemental schema {path} must be a top-level JSON object.")
     return SupplementalSchemaDocument.from_document(loaded, source_label=str(path))
 
 
@@ -99,12 +97,10 @@ def load_supplemental_schema_documents_from_paths(
         json_paths = sorted(path for path in resolved_path.rglob("*.json") if path.is_file())
         if not json_paths:
             raise SchemaResolutionError(
-                "Supplemental schema directory does not contain any JSON files: "
-                f"{resolved_path}"
+                f"Supplemental schema directory does not contain any JSON files: {resolved_path}"
             )
         documents.extend(
-            _load_supplemental_schema_document_from_file(json_path)
-            for json_path in json_paths
+            _load_supplemental_schema_document_from_file(json_path) for json_path in json_paths
         )
     return tuple(documents)
 

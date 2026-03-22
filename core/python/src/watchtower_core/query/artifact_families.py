@@ -62,9 +62,7 @@ class ArtifactFamilyQueryService:
         status_field = params.status_field.casefold() if params.status_field is not None else None
         visibility = params.visibility.casefold() if params.visibility is not None else None
         derived_index_id = (
-            params.derived_index_id.casefold()
-            if params.derived_index_id is not None
-            else None
+            params.derived_index_id.casefold() if params.derived_index_id is not None else None
         )
 
         candidates = (

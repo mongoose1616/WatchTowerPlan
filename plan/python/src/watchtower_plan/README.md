@@ -10,6 +10,17 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `Packaging Contract`: Reach this package through the shared workspace installation path, not through repo-local `sys.path` mutation inside `watchtower_core`.
 - `Machine-State Boundary`: Keep live plan machine state in `plan/.wt/**`, not in this package tree.
 
+## Governing Foundations
+- [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/home/j/WatchTowerPlan/core/docs/foundations/product_direction.md)
+
+## Governing Standards
+- [python_code_design_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/python_code_design_standard.md)
+- [core_host_pack_python_boundary_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
+- [domain_pack_authoring_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/domain_pack_authoring_standard.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/plan/docs/standards/governance/planning_retention_and_purge_standard.md)
+
 ## Responsibilities
 - Feature-owned lifecycle orchestration: `initiatives/`, `projects/`, and `tasks/` own live `plan/**` bootstrap, project-container state, task mutation, and readiness-gate behavior that depends on plan-local workspace rules.
 - Workspace aggregation: `workspace/` owns pack-wide derived surfaces, rendered views, overview shaping, and artifact-index generation across live `plan/**` initiative state.

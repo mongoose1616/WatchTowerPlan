@@ -5,12 +5,6 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiatives import InitiativeTaskSpec
 from watchtower_plan.plan_workspace import (
     PLAN_COORDINATION_INDEX_PATH,
@@ -22,6 +16,12 @@ from watchtower_plan.query.coordination import (
 )
 from watchtower_plan.sync.coordination_index import CoordinationIndexSyncService
 from watchtower_plan.tasks import TaskLifecycleService, TaskUpdateParams
+
+from tests.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

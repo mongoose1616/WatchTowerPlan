@@ -45,8 +45,8 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         ).strip(),
         epilog=examples(
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
-            "--title \"Example Initiative\" "
-            "--summary \"Bootstraps the example initiative.\" --format json",
+            '--title "Example Initiative" '
+            '--summary "Bootstraps the example initiative." --format json',
             "uv run watchtower-core plan query coordination --format json",
             "uv run watchtower-core plan sync coordination --format json",
             "uv run watchtower-core plan approve --initiative-slug example_initiative --write",
@@ -79,18 +79,20 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         ).strip(),
         epilog=examples(
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
-            "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\"",
+            '--title "Example Initiative" --summary "Bootstraps the example initiative."',
             "uv run watchtower-core plan bootstrap --trace-id trace.example "
-            "--title \"Example Initiative\" --summary \"Bootstraps the example initiative.\" "
+            '--title "Example Initiative" --summary "Bootstraps the example initiative." '
             "--include-decision --task-priority high --write --format json",
             "uv run watchtower-core plan bootstrap --project-slug watchtower "
-            "--trace-id trace.watchtower.example --title \"WatchTower Initiative\" "
-            "--summary \"Bootstraps a project-scoped initiative.\" --write",
+            '--trace-id trace.watchtower.example --title "WatchTower Initiative" '
+            '--summary "Bootstraps a project-scoped initiative." --write',
         ),
         formatter_class=HelpFormatter,
     )
     bootstrap_parser.set_defaults(_implementation_path=SUBCOMMAND_IMPLEMENTATION_PATH)
-    bootstrap_parser.add_argument("--trace-id", required=True, help="Stable trace identifier.")
+    bootstrap_parser.add_argument(
+        "--trace-id", required=True, help="Stable trace identifier."
+    )
     bootstrap_parser.add_argument(
         "--initiative-slug",
         help="Optional initiative slug. Defaults to a slug derived from the trace ID.",
@@ -99,7 +101,9 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         "--project-slug",
         help="Optional project slug for project-scoped initiative bootstrap.",
     )
-    bootstrap_parser.add_argument("--title", required=True, help="Initiative title root.")
+    bootstrap_parser.add_argument(
+        "--title", required=True, help="Initiative title root."
+    )
     bootstrap_parser.add_argument(
         "--summary",
         required=True,
@@ -164,7 +168,9 @@ def register_plan_namespace(subparsers: argparse._SubParsersAction) -> None:
         ),
         formatter_class=HelpFormatter,
     )
-    confirm_inputs_parser.set_defaults(_implementation_path=SUBCOMMAND_IMPLEMENTATION_PATH)
+    confirm_inputs_parser.set_defaults(
+        _implementation_path=SUBCOMMAND_IMPLEMENTATION_PATH
+    )
     confirm_inputs_parser.add_argument(
         "--initiative-slug",
         required=True,

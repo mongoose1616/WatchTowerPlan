@@ -4,6 +4,7 @@ from pathlib import Path
 from textwrap import dedent
 
 import pytest
+from watchtower_plan.validation import DocumentSemanticsValidationService
 
 from tests.unit.document_semantics_fixtures import (
     REPO_ROOT,
@@ -13,7 +14,6 @@ from tests.unit.document_semantics_fixtures import (
     write_standard_fixture,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.validation import DocumentSemanticsValidationService
 from watchtower_core.validation.errors import ValidationSelectionError
 
 

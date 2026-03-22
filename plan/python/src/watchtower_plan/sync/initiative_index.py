@@ -29,7 +29,9 @@ class InitiativeIndexSyncService:
         self._repo_root = loader.repo_root
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> InitiativeIndexSyncService:
+    def from_repo_root(
+        cls, repo_root: Path | None = None
+    ) -> InitiativeIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:

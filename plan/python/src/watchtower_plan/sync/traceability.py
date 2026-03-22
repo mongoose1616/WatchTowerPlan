@@ -9,11 +9,11 @@ from typing import Any
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.sync.path_support import add_existing_paths
 from watchtower_plan.workspace.service import PLAN_PACK_SETTINGS_PATH
 from watchtower_plan.sync.traceability_support import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceAccumulator,
-    add_existing_paths,
     iter_validated_documents,
     load_entries,
     load_existing_trace_entries,
@@ -21,8 +21,9 @@ from watchtower_plan.sync.traceability_support import (
     optional_string,
     tuple_of_strings,
 )
+
 ACCEPTANCE_CONTRACT_DIRECTORY = "core/control_plane/contracts/acceptance"
-VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
+VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/records/validation_evidence"
 
 
 class TraceabilityIndexSyncService:
@@ -30,7 +31,9 @@ class TraceabilityIndexSyncService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._plan_loader = loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
+        self._plan_loader = loader.derive(
+            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
+        )
         self._repo_root = loader.repo_root
         self._workspace_paths = PackWorkspacePaths.from_loader(
             self._plan_loader,
@@ -39,7 +42,9 @@ class TraceabilityIndexSyncService:
         self._task_index_path = self._workspace_paths.index_path("task_index.json")
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> TraceabilityIndexSyncService:
+    def from_repo_root(
+        cls, repo_root: Path | None = None
+    ) -> TraceabilityIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:
@@ -61,7 +66,9 @@ class TraceabilityIndexSyncService:
             if accumulators[trace_id].should_publish()
         ]
         if not published_entries:
-            raise ValueError("Traceability index rebuild produced no publishable trace entries.")
+            raise ValueError(
+                "Traceability index rebuild produced no publishable trace entries."
+            )
 
         document: dict[str, object] = {
             "$schema": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
@@ -73,7 +80,9 @@ class TraceabilityIndexSyncService:
         self._loader.schema_store.validate_instance(document)
         return document
 
-    def write_document(self, document: dict[str, object], destination: Path | None = None) -> Path:
+    def write_document(
+        self, document: dict[str, object], destination: Path | None = None
+    ) -> Path:
         """Write the generated traceability index to disk."""
 
         target = destination or (self._repo_root / TRACEABILITY_INDEX_ARTIFACT_PATH)
@@ -102,10 +111,14 @@ class TraceabilityIndexSyncService:
                 continue
             accumulator.preserve_existing_state(existing)
 
-    def _merge_live_initiatives(self, accumulators: dict[str, TraceAccumulator]) -> None:
+    def _merge_live_initiatives(
+        self, accumulators: dict[str, TraceAccumulator]
+    ) -> None:
         for relative_path in self._initiative_state_paths():
             document = json.loads(
-                (self._repo_root / PurePosixPath(relative_path)).read_text(encoding="utf-8")
+                (self._repo_root / PurePosixPath(relative_path)).read_text(
+                    encoding="utf-8"
+                )
             )
             trace_id = str(document["trace_id"])
             accumulator = self._accumulator(accumulators, trace_id)
@@ -135,7 +148,8 @@ class TraceabilityIndexSyncService:
                     *tuple(
                         str(record["path"])
                         for record in document.get("authored_inputs", ())
-                        if isinstance(record, dict) and isinstance(record.get("path"), str)
+                        if isinstance(record, dict)
+                        and isinstance(record.get("path"), str)
                     ),
                 ),
             )
@@ -198,7 +212,9 @@ class TraceabilityIndexSyncService:
                 tuple_of_strings(entry, "doc_path", "applies_to"),
             )
 
-    def _merge_acceptance_contracts(self, accumulators: dict[str, TraceAccumulator]) -> None:
+    def _merge_acceptance_contracts(
+        self, accumulators: dict[str, TraceAccumulator]
+    ) -> None:
         for relative_path, document in iter_validated_documents(
             self._loader,
             ACCEPTANCE_CONTRACT_DIRECTORY,
@@ -212,19 +228,25 @@ class TraceabilityIndexSyncService:
                 status=str(document["status"]),
                 updated_at=None,
             )
-            merge_values(accumulator.acceptance_contract_ids, tuple_of_strings(document, "id"))
+            merge_values(
+                accumulator.acceptance_contract_ids, tuple_of_strings(document, "id")
+            )
             merge_values(
                 accumulator.source_surface_paths,
                 tuple_of_strings(document, "source_surface_path"),
             )
-            add_existing_paths(self._repo_root, accumulator.related_paths, (relative_path,))
+            add_existing_paths(
+                self._repo_root, accumulator.related_paths, (relative_path,)
+            )
             entries = document.get("entries")
             if not isinstance(entries, list):
                 continue
             for entry in entries:
                 if not isinstance(entry, dict):
                     continue
-                merge_values(accumulator.acceptance_ids, tuple_of_strings(entry, "acceptance_id"))
+                merge_values(
+                    accumulator.acceptance_ids, tuple_of_strings(entry, "acceptance_id")
+                )
                 merge_values(
                     accumulator.requirement_ids,
                     tuple_of_strings(entry, "source_requirement_ids"),
@@ -239,7 +261,9 @@ class TraceabilityIndexSyncService:
                     tuple_of_strings(entry, "validation_targets", "related_paths"),
                 )
 
-    def _merge_validation_evidence(self, accumulators: dict[str, TraceAccumulator]) -> None:
+    def _merge_validation_evidence(
+        self, accumulators: dict[str, TraceAccumulator]
+    ) -> None:
         for relative_path, document in iter_validated_documents(
             self._loader,
             VALIDATION_EVIDENCE_DIRECTORY,
@@ -264,7 +288,9 @@ class TraceabilityIndexSyncService:
                 accumulator.acceptance_contract_ids,
                 tuple_of_strings(document, "source_acceptance_contract_ids"),
             )
-            add_existing_paths(self._repo_root, accumulator.related_paths, (relative_path,))
+            add_existing_paths(
+                self._repo_root, accumulator.related_paths, (relative_path,)
+            )
             add_existing_paths(
                 self._repo_root,
                 accumulator.related_paths,
@@ -276,8 +302,13 @@ class TraceabilityIndexSyncService:
             for check in checks:
                 if not isinstance(check, dict):
                     continue
-                merge_values(accumulator.validator_ids, tuple_of_strings(check, "validator_id"))
-                merge_values(accumulator.acceptance_ids, tuple_of_strings(check, "acceptance_ids"))
+                merge_values(
+                    accumulator.validator_ids, tuple_of_strings(check, "validator_id")
+                )
+                merge_values(
+                    accumulator.acceptance_ids,
+                    tuple_of_strings(check, "acceptance_ids"),
+                )
                 add_existing_paths(
                     self._repo_root,
                     accumulator.related_paths,

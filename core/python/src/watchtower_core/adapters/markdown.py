@@ -142,10 +142,7 @@ def parse_markdown_table(section: str) -> list[dict[str, str]]:
         if header is None or len(parts) != len(header):
             continue
         rows.append(
-            {
-                key: value.strip().strip("`")
-                for key, value in zip(header, parts, strict=True)
-            }
+            {key: value.strip().strip("`") for key, value in zip(header, parts, strict=True)}
         )
     return rows
 

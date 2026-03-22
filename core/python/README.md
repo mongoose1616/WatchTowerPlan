@@ -38,6 +38,8 @@
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
 - `uv run ruff check .`
 - `uv run mypy src`
+- `./core/python/.venv/bin/mypy core/python/src/watchtower_core`
+- `./core/python/.venv/bin/mypy plan/python/src/watchtower_plan`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
@@ -106,6 +108,7 @@
 
 ### Notes
 - `uv run ...` is the default workflow for this repository.
+- Repo-root `./core/python/.venv/bin/mypy ...` commands are supported through the root [mypy.ini](/mypy.ini) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad Python validation pass when a change touches repo-materialization, workspace orchestration, or multi-surface CLI behavior.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before the shared root sync commands, `plan sync all`, or `validate all`.
@@ -124,7 +127,7 @@
 - `uv run watchtower-core plan approve --write ...` is the explicit live readiness gate that moves one initiative package into `ready_for_execution` before execution-status task transitions are allowed.
 - `uv run watchtower-core plan closeout initiative --write ...` is the default live closeout path for `plan/**` initiative packages and refreshes the initiative-local artifacts plus the pack and project coordination surfaces in the same slice.
 - `uv run watchtower-core plan closeout retained-initiative --write ...` is the retained-trace closeout path and fails closed with a `watchtower-core plan closeout initiative` recommendation when the target still belongs to a live `plan/**` initiative package.
-- `uv run watchtower-core plan closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge ledger, and then refreshes all derived governed surfaces.
+- `uv run watchtower-core plan closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge record, and then refreshes all derived governed surfaces.
 - `uv run watchtower-core plan task create|update|transition --write ...` writes initiative-local live task state under `plan/**/.wt/tasks/**`, refreshes the live plan indexes and rendered views, still requires `--trace-id` when traced `related_ids` are present, and fails closed if an execution-starting status is requested before the initiative package is approved into `ready_for_execution`.
 - `uv run watchtower-core plan query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.

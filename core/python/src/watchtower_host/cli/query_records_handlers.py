@@ -6,7 +6,6 @@ import argparse
 
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
-    _print_reference_usage_summary,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.query import (

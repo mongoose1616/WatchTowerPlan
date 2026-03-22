@@ -82,9 +82,7 @@ def test_foundations_context_review_loads_foundation_review_and_discovery_routes
 
 
 def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> None:
-    foundations_readme = (REPO_ROOT / "core/docs/foundations/README.md").read_text(
-        encoding="utf-8"
-    )
+    foundations_readme = (REPO_ROOT / "core/docs/foundations/README.md").read_text(encoding="utf-8")
     repository_scope = (REPO_ROOT / "core/docs/foundations/repository_scope.md").read_text(
         encoding="utf-8"
     )
@@ -92,7 +90,9 @@ def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> Non
         REPO_ROOT / "core/control_plane/indexes/foundations/README.md"
     ).read_text(encoding="utf-8")
 
-    assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
+    assert (
+        "core/docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
+    )
     assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in (
         foundations_readme
     )
@@ -123,7 +123,9 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "core/python/src/watchtower_core/sync/foundation_index.py" in markdown
     assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
+    assert (
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md" in markdown
+    )
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 
@@ -148,19 +150,14 @@ def test_foundation_document_standard_operationalizes_governed_docs_only() -> No
 
 def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
     root_readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
-    foundations_readme = (REPO_ROOT / "core/docs/foundations/README.md").read_text(
+    foundations_readme = (REPO_ROOT / "core/docs/foundations/README.md").read_text(encoding="utf-8")
+    repository_scope = (REPO_ROOT / "core/docs/foundations/repository_scope.md").read_text(
         encoding="utf-8"
     )
-    repository_scope = (
-        REPO_ROOT / "core/docs/foundations/repository_scope.md"
-    ).read_text(encoding="utf-8")
 
     assert "plan/plan_overview.md" in root_readme
     assert "plan/plan_overview.md" in foundations_readme
-    assert (
-        "[plan_overview.md]"
-        "(/plan/plan_overview.md)"
-    ) in repository_scope
+    assert ("[plan_overview.md](/plan/plan_overview.md)") in repository_scope
     assert "SUMMARY.md" not in root_readme
     assert "SUMMARY.md" not in foundations_readme
     assert "SUMMARY.md" not in repository_scope
@@ -232,15 +229,15 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     python_code_design_standard = (
         REPO_ROOT / "core/docs/standards/engineering/python_code_design_standard.md"
     ).read_text(encoding="utf-8")
-    query_readme = (
-        REPO_ROOT / "core/python/src/watchtower_core/query/README.md"
-    ).read_text(encoding="utf-8")
-    package_readme = (
-        REPO_ROOT / "core/python/src/watchtower_core/README.md"
-    ).read_text(encoding="utf-8")
-    plan_python_readme = (
-        REPO_ROOT / "plan/python/src/watchtower_plan/README.md"
-    ).read_text(encoding="utf-8")
+    query_readme = (REPO_ROOT / "core/python/src/watchtower_core/query/README.md").read_text(
+        encoding="utf-8"
+    )
+    package_readme = (REPO_ROOT / "core/python/src/watchtower_core/README.md").read_text(
+        encoding="utf-8"
+    )
+    plan_python_readme = (REPO_ROOT / "plan/python/src/watchtower_plan/README.md").read_text(
+        encoding="utf-8"
+    )
     plan_python_sync_readme = (
         REPO_ROOT / "plan/python/src/watchtower_plan/sync/README.md"
     ).read_text(encoding="utf-8")
@@ -258,8 +255,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "`control_plane/` owns reusable loaders" in python_code_design_standard
     assert (
         "`plan/python/src/watchtower_plan/` and future `watchtower_<pack>` packages own "
-        "repository-local or pack-local orchestration"
-        in python_code_design_standard
+        "repository-local or pack-local orchestration" in python_code_design_standard
     )
     assert "plan/python/src/watchtower_plan/query/" in workspace_standard
     assert "core/python/src/watchtower_core/documentation/" in workspace_standard
@@ -269,7 +265,10 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/python/src/watchtower_core/routing/" in workspace_standard
     assert "core/python/src/watchtower_core/workflow_execution/" in workspace_standard
     assert "Export-safe generic query services" in workspace_standard
-    assert "Export-safe generic sync harness plus repo-shared command, route, and repository-path rebuild services" in workspace_standard
+    assert (
+        "Export-safe generic sync harness plus repo-shared command, route, and "
+        "repository-path rebuild services" in workspace_standard
+    )
     assert "A reusable-core query helper" in workspace_standard
     assert "plan/python/src/watchtower_plan/" in workspace_standard
     assert "Approved WatchTowerPlan-specific" in workspace_standard
@@ -279,14 +278,15 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "| `rebuild/` | `reusable_core` |" in package_readme
     assert "| `routing/` | `reusable_core` |" in package_readme
     assert "| `workflow_execution/` | `reusable_core` |" in package_readme
-    assert "repo-shared command, route, and repository-path index rebuild services" in package_readme
+    assert (
+        "repo-shared command, route, and repository-path index rebuild services" in package_readme
+    )
     assert "core/docs/standards/engineering/python_code_design_standard.md" in package_readme
     assert "approved plan-owned Python boundary" in plan_python_readme
     assert "Repository-local sync services" in plan_python_sync_readme
     assert "Shrink Rules" in plan_python_sync_readme
     assert (
-        "core/docs/standards/engineering/python_code_design_standard.md"
-        in plan_python_sync_readme
+        "core/docs/standards/engineering/python_code_design_standard.md" in plan_python_sync_readme
     )
     assert "human_surface_policy.py" in control_plane_readme
     assert "retention_policy.py" in control_plane_readme
@@ -298,8 +298,7 @@ def test_workspace_and_runtime_docs_publish_current_boundary_model() -> None:
     assert "core/docs/standards/engineering/python_code_design_standard.md" in workspace_readme
     assert (
         "A new pack-owned query command should add its pack-native service under the "
-        "owning pack boundary"
-        in best_practices_standard
+        "owning pack boundary" in best_practices_standard
     )
     assert "core/docs/standards/engineering/python_code_design_standard.md" in (
         best_practices_standard
@@ -320,29 +319,20 @@ def test_control_plane_loader_validates_current_traceability_artifacts() -> None
     loader = ControlPlaneLoader(REPO_ROOT)
 
     acceptance_contract = loader.load_validated_document(
-        "core/control_plane/contracts/acceptance/"
-        "governed_acceptance_example_acceptance.json"
+        "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json"
     )
     traceability_index = loader.load_validated_document(
         "core/control_plane/indexes/traceability/traceability_index.json"
     )
     validation_evidence = loader.load_validated_document(
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/validation_evidence/"
         "governed_acceptance_example_validation_baseline.json"
     )
-    initiative_index = loader.load_validated_document(
-        "plan/.wt/indexes/initiative_index.json"
-    )
-    coordination_index = loader.load_validated_document(
-        "plan/.wt/indexes/coordination_index.json"
-    )
+    initiative_index = loader.load_validated_document("plan/.wt/indexes/initiative_index.json")
+    coordination_index = loader.load_validated_document("plan/.wt/indexes/coordination_index.json")
 
-    assert acceptance_contract["id"] == (
-        "contract.acceptance.governed_acceptance_example"
-    )
+    assert acceptance_contract["id"] == ("contract.acceptance.governed_acceptance_example")
     assert traceability_index["id"] == "index.traceability"
-    assert validation_evidence["id"] == (
-        "evidence.governed_acceptance_example.validation_baseline"
-    )
+    assert validation_evidence["id"] == ("evidence.governed_acceptance_example.validation_baseline")
     assert initiative_index["id"] == "index.initiatives"
     assert coordination_index["id"] == "index.coordination"

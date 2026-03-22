@@ -110,7 +110,9 @@ class GitHubTaskSyncService:
 
         for task in task_documents:
             repository = resolve_repository(task, params)
-            issue_action = "create_issue" if task.github_issue_number is None else "update_issue"
+            issue_action = (
+                "create_issue" if task.github_issue_number is None else "update_issue"
+            )
             project_sync_action = project_action(task, params)
             label_specs = issue_labels(task) if params.sync_labels else ()
             label_names = tuple(label.name for label in label_specs)
@@ -291,7 +293,11 @@ def _append_github_sync_event(
             payload={
                 "repository": repository,
                 "issue_number": issue_number,
-                **({"project_item_id": project_item_id} if project_item_id is not None else {}),
+                **(
+                    {"project_item_id": project_item_id}
+                    if project_item_id is not None
+                    else {}
+                ),
             },
         ),
     )

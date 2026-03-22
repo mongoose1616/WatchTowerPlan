@@ -33,7 +33,9 @@ class InitiativeQueryService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._plan_workspace = PlanWorkspaceService(loader)
 
-    def search(self, params: InitiativeSearchParams) -> tuple[InitiativeIndexEntry, ...]:
+    def search(
+        self, params: InitiativeSearchParams
+    ) -> tuple[InitiativeIndexEntry, ...]:
         """Return initiative entries matching the requested filters."""
         return search_rendered_entries(
             self._plan_workspace.load_initiative_index().entries,

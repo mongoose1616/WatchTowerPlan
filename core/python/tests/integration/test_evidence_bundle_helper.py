@@ -18,9 +18,9 @@ def test_evidence_bundle_helper_builds_schema_valid_document() -> None:
         active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
     )
     helper = EvidenceBundleHelper(loader)
-    expected_schema_id = loader.load_schema_catalog().get_by_subject_kind(
-        "validation_bundle"
-    ).schema_id
+    expected_schema_id = (
+        loader.load_schema_catalog().get_by_subject_kind("validation_bundle").schema_id
+    )
 
     document = helper.build_document(
         evidence_id="evidence.plan_example.bootstrap_validation_bundle",
@@ -64,9 +64,7 @@ def test_evidence_bundle_helper_requires_active_pack_schema_or_explicit_schema_i
                     validation_type="schema_validation",
                     owner="repository_maintainer",
                     target_phase="readiness",
-                    expected_output_paths=(
-                        "plan/initiatives/plan_example/.wt/initiative.json",
-                    ),
+                    expected_output_paths=("plan/initiatives/plan_example/.wt/initiative.json",),
                 ),
             ),
         )
@@ -86,8 +84,7 @@ def test_evidence_bundle_helper_loads_typed_artifact_from_live_plan_bundle(
         )
     )
     relative_path = (
-        "plan/initiatives/example_live_bundle/.wt/evidence/"
-        "validation_bundle.bootstrap.json"
+        "plan/initiatives/example_live_bundle/.wt/evidence/validation_bundle.bootstrap.json"
     )
     document = helper.build_document(
         evidence_id="evidence.example_live_bundle.bootstrap_validation_bundle",
@@ -111,9 +108,7 @@ def test_evidence_bundle_helper_loads_typed_artifact_from_live_plan_bundle(
 
     artifact = helper.load_artifact(relative_path)
 
-    assert artifact.evidence_id == (
-        "evidence.example_live_bundle.bootstrap_validation_bundle"
-    )
+    assert artifact.evidence_id == ("evidence.example_live_bundle.bootstrap_validation_bundle")
     assert artifact.entry_count >= 1
     assert "package_contracts_valid" in artifact.acceptance_labels
     assert artifact.target_phases == ("readiness",)

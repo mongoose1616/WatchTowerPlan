@@ -53,9 +53,7 @@ def _run_route_preview(args: argparse.Namespace) -> int:
 
         print("Selected routes:")
         for match in result.selected_routes:
-            matched = (
-                ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
-            )
+            matched = ", ".join(match.matched_keywords) if match.matched_keywords else "explicit"
             print(f"- {match.task_type} [{match.route_id}] score={match.score} matched={matched}")
 
         print("Active workflow modules:")

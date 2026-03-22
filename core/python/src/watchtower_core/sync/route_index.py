@@ -87,9 +87,7 @@ class RouteIndexSyncService:
         )
 
         for routing_table_path in routing_table_paths:
-            routing_markdown = (self._repo_root / routing_table_path).read_text(
-                encoding="utf-8"
-            )
+            routing_markdown = (self._repo_root / routing_table_path).read_text(encoding="utf-8")
             rows = parse_markdown_table(_extract_route_table(routing_markdown))
 
             for row in rows:

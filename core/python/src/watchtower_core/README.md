@@ -8,6 +8,18 @@
 - `Supported Imports`: Start with the package-specific READMEs below before importing from a new namespace.
 - `Non-Goals`: This file does not define a stable wildcard import surface for the whole package, and `watchtower_core` is not a catch-all home for plan-owned logic that should stay under `watchtower_plan`.
 
+## Governing Foundations
+- [repository_scope.md](/home/j/WatchTowerPlan/core/docs/foundations/repository_scope.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_design_principles.md)
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/core/docs/foundations/engineering_stack_direction.md)
+
+## Governing Standards
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/python_workspace_standard.md)
+- [python_code_design_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/python_code_design_standard.md)
+- [core_host_pack_python_boundary_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
+- [pack_interface_contract_standard.md](/home/j/WatchTowerPlan/core/docs/standards/data_contracts/pack_interface_contract_standard.md)
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/core/docs/standards/engineering/engineering_best_practices_standard.md)
+
 ## Package Map
 | Package | Classification | Use It For |
 |---|---|---|
@@ -23,7 +35,7 @@
 | `integrations/` | `boundary_layer` | External-system integration clients such as GitHub. |
 | `cli/` | `boundary_guard` | Thin compatibility shim plus reusable CLI support helpers that pack namespaces may import without depending on host composition. |
 | `closeout/` | `boundary_guard` | Fail-closed compatibility guard; plan-domain closeout services live under `watchtower_plan.closeout`. |
-| `evidence/` | `reusable_core` | Validation-evidence ledgers plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
+| `evidence/` | `reusable_core` | Validation-evidence records plus pack-local evidence-bundle helpers for readiness, review, and closeout flows. |
 | `utils/` | `reusable_core` | Small shared helpers with low coupling. |
 
 ## Related Surfaces

@@ -136,9 +136,7 @@ class EventStreamHelper:
         if descriptor.schema_id == TASK_EVENT_STREAM_SCHEMA_ID and descriptor.task_id is None:
             raise ValueError("Task event streams require task_id.")
 
-        relative_path = (
-            f"{descriptor.relative_dir}/{sequence:04d}_{request.event_type}.json"
-        )
+        relative_path = f"{descriptor.relative_dir}/{sequence:04d}_{request.event_type}.json"
         document: dict[str, Any] = {
             "$schema": descriptor.schema_id,
             "event_id": f"{descriptor.event_id_prefix}.{sequence:04d}_{request.event_type}",

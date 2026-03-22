@@ -15,13 +15,13 @@ __all__ = [
 ]
 
 _EXPORT_MODULES = {
-    "DeferredItemSpec": "watchtower_plan.initiatives.service",
-    "InitiativeBootstrapParams": "watchtower_plan.initiatives.service",
-    "InitiativePackageResult": "watchtower_plan.initiatives.service",
+    "DeferredItemSpec": "watchtower_plan.initiatives.models",
+    "InitiativeBootstrapParams": "watchtower_plan.initiatives.models",
+    "InitiativePackageResult": "watchtower_plan.initiatives.models",
     "InitiativePackageService": "watchtower_plan.initiatives.service",
-    "InitiativeReadinessResult": "watchtower_plan.initiatives.service",
-    "InitiativeTaskSpec": "watchtower_plan.initiatives.service",
-    "InitiativeTerminalCloseoutResult": "watchtower_plan.initiatives.service",
+    "InitiativeReadinessResult": "watchtower_plan.initiatives.models",
+    "InitiativeTaskSpec": "watchtower_plan.initiatives.models",
+    "InitiativeTerminalCloseoutResult": "watchtower_plan.initiatives.models",
 }
 
 __getattr__ = lazy_module_getattr(

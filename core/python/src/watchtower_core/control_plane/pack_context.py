@@ -10,8 +10,8 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     ActorRegistry,
     GovernanceSurfaceMap,
-    PackSurfaceDeclaration,
     PackSettings,
+    PackSurfaceDeclaration,
     PackWorkspaceRoots,
     PathPatternRegistry,
     SchemaCatalog,

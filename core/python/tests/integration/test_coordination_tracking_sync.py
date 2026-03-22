@@ -4,14 +4,15 @@ import json
 from pathlib import Path
 from shutil import copytree
 
-from tests.fixture_repo_support import materialize_minimal_plan_pack
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.sync.coordination_tracking import (
     ACTIONABLE_TASK_LIMIT,
     ACTIVE_INITIATIVE_LIMIT,
     RECENT_CLOSEOUT_LIMIT,
     CoordinationTrackingSyncService,
 )
+
+from tests.fixture_repo_support import materialize_minimal_plan_pack
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -170,11 +171,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
     content = CoordinationTrackingSyncService(loader).build_document().content
 
     assert (
-        f"Showing {ACTIVE_INITIATIVE_LIMIT} of {len(active_entries)} active initiatives"
-        in content
+        f"Showing {ACTIVE_INITIATIVE_LIMIT} of {len(active_entries)} active initiatives" in content
     )
-    assert (
-        f"Showing {ACTIONABLE_TASK_LIMIT} of {len(actionable_tasks)} actionable tasks"
-        in content
-    )
+    assert f"Showing {ACTIONABLE_TASK_LIMIT} of {len(actionable_tasks)} actionable tasks" in content
     assert content.count("trace.closed_") == RECENT_CLOSEOUT_LIMIT

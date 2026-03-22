@@ -72,9 +72,7 @@ def test_template_catalog_helper_reports_section_spec_mismatch(tmp_path: Path) -
 
 def test_core_template_catalog_loads_by_explicit_path_and_validates_contracts() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
-    catalog = loader.load_template_catalog(
-        "core/control_plane/registries/template_catalog.json"
-    )
+    catalog = loader.load_template_catalog("core/control_plane/registries/template_catalog.json")
     helper = TemplateCatalogHelper(catalog, schema_store=loader.schema_store)
 
     entry = helper.template("template.core.workflow.module")

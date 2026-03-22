@@ -35,7 +35,10 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     ).canonical_relative_path == (
         "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json"
     )
-    assert context.governance_surface_map.get("routing_table").path == "core/workflows/ROUTING_TABLE.md"
+    assert (
+        context.governance_surface_map.get("routing_table").path
+        == "core/workflows/ROUTING_TABLE.md"
+    )
     assert context.status_registry.get("accepted").entry_status == "active"
     assert context.actor_registry.get("actor.codex").actor_type == "agent"
     assert "rendered_surface_registry" in context.registries
@@ -72,9 +75,7 @@ def test_pack_context_loads_cleaned_shared_status_vocabulary() -> None:
 def test_pack_context_loads_required_surface_from_relocated_declared_path() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     base_settings = json.loads(
-        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(
-            encoding="utf-8"
-        )
+        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(encoding="utf-8")
     )
 
     with tempfile.TemporaryDirectory(dir=REPO_ROOT) as tmp_dir:
@@ -105,9 +106,7 @@ def test_pack_context_loads_required_surface_from_relocated_declared_path() -> N
 def test_pack_context_skips_missing_rebuildable_derived_surface_until_built() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     base_settings = json.loads(
-        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(
-            encoding="utf-8"
-        )
+        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(encoding="utf-8")
     )
 
     with tempfile.TemporaryDirectory(dir=REPO_ROOT) as tmp_dir:
@@ -116,7 +115,9 @@ def test_pack_context_skips_missing_rebuildable_derived_surface_until_built() ->
         custom_settings["surfaces"] = [dict(entry) for entry in base_settings["surfaces"]]
         for entry in custom_settings["surfaces"]:
             if entry["surface_name"] == "route_index":
-                entry["path"] = (tmp_path / "missing_route_index.json").relative_to(REPO_ROOT).as_posix()
+                entry["path"] = (
+                    (tmp_path / "missing_route_index.json").relative_to(REPO_ROOT).as_posix()
+                )
                 break
         custom_settings_path = tmp_path / "pack_settings.json"
         custom_settings_path.write_text(
@@ -169,7 +170,9 @@ def test_plan_pack_context_loads_documentation_family_and_template_catalog() -> 
     assert template_catalog.get("template.plan.rendered.project.summary").surface_id == (
         "rendered.project.summary"
     )
-    assert template_catalog.get("template.plan.rendered.project.summary").section_spec_schema_id == (
+    assert template_catalog.get(
+        "template.plan.rendered.project.summary"
+    ).section_spec_schema_id == (
         "urn:watchtower:schema:interfaces:plan:documentation:project-summary-section-spec:v1"
     )
 

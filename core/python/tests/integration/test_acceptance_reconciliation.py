@@ -34,16 +34,11 @@ def test_query_acceptance_contracts_by_trace_id() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     results = AcceptanceContractQueryService(loader).search(
-        AcceptanceContractSearchParams(
-            trace_id="trace.governed_acceptance_example"
-        )
+        AcceptanceContractSearchParams(trace_id="trace.governed_acceptance_example")
     )
 
     assert len(results) == 1
-    assert (
-        results[0].contract_id
-        == "contract.acceptance.governed_acceptance_example"
-    )
+    assert results[0].contract_id == "contract.acceptance.governed_acceptance_example"
     assert {entry.acceptance_id for entry in results[0].entries} == {
         "ac.governed_acceptance_example.001",
     }
@@ -53,16 +48,11 @@ def test_query_validation_evidence_by_acceptance_id() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     results = ValidationEvidenceQueryService(loader).search(
-        ValidationEvidenceSearchParams(
-            acceptance_id="ac.governed_acceptance_example.001"
-        )
+        ValidationEvidenceSearchParams(acceptance_id="ac.governed_acceptance_example.001")
     )
 
     assert len(results) == 1
-    assert (
-        results[0].evidence_id
-        == "evidence.governed_acceptance_example.validation_baseline"
-    )
+    assert results[0].evidence_id == "evidence.governed_acceptance_example.validation_baseline"
 
 
 def test_acceptance_reconciliation_passes_for_current_trace() -> None:
@@ -126,13 +116,11 @@ def test_acceptance_reconciliation_reports_missing_repo_local_paths(
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
-        repo_root
-        / "core/control_plane/contracts/acceptance/"
+        repo_root / "core/control_plane/contracts/acceptance/"
         "governed_acceptance_example_acceptance.json"
     )
     evidence_path = (
-        repo_root
-        / "core/control_plane/ledgers/validation_evidence/"
+        repo_root / "core/control_plane/records/validation_evidence/"
         "governed_acceptance_example_validation_baseline.json"
     )
 
@@ -152,9 +140,7 @@ def test_acceptance_reconciliation_reports_missing_repo_local_paths(
     )
 
     assert result.passed is False
-    assert {
-        issue.code for issue in result.issues
-    } >= {
+    assert {issue.code for issue in result.issues} >= {
         "acceptance_validation_target_missing",
         "acceptance_related_path_missing",
         "evidence_related_path_missing",

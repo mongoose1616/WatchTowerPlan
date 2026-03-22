@@ -85,7 +85,8 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
     section = (
-        "- [compact_document_authoring_standard.md](/core/docs/standards/documentation/compact_document_authoring_standard.md): "
+        "- [compact_document_authoring_standard.md]("
+        "/core/docs/standards/documentation/compact_document_authoring_standard.md): "
         "defines the compact authored-document structure for live initiative outputs.\n"
     )
 

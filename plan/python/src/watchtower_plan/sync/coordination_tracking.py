@@ -36,7 +36,9 @@ class CoordinationTrackingSyncService(RenderedTrackingSyncService):
     SURFACE_ID = COORDINATION_TRACKING_SURFACE_ID
 
     def build_document(self) -> CoordinationTrackingBuildResult:
-        coordination_index = PlanWorkspaceService(self._loader).load_coordination_index()
+        coordination_index = PlanWorkspaceService(
+            self._loader
+        ).load_coordination_index()
         active_entries = tuple(
             entry
             for entry in coordination_index.entries

@@ -36,12 +36,18 @@ def test_rendered_view_builder_uses_registry_definitions_with_overrides(
             title="Example Initiative Plan",
             data={
                 "initiative_identity": ("- `initiative_id`: `initiative.example`",),
-                "scope_and_non_goals": ("- In scope: example initiative.", "- Out of scope: drift."),
+                "scope_and_non_goals": (
+                    "- In scope: example initiative.",
+                    "- Out of scope: drift.",
+                ),
                 "objectives": ("- Deliver the example initiative.",),
                 "planned_slices_or_workstreams": (
                     {
                         "task_id": "task.example.bootstrap",
-                        "doc_path": "plan/projects/watchtower/initiatives/example/.wt/tasks/bootstrap/task.json",
+                        "doc_path": (
+                            "plan/projects/watchtower/initiatives/example/.wt/tasks/"
+                            "bootstrap/task.json"
+                        ),
                         "task_status": "planned",
                         "priority": "high",
                         "owner": "repository_maintainer",
@@ -50,7 +56,9 @@ def test_rendered_view_builder_uses_registry_definitions_with_overrides(
                 ),
                 "dependencies_and_risks": ("- No blocking dependencies.",),
                 "validation_or_completion_gates": ("- Validation passes.",),
-                "linked_outputs": ("- [summary.md](/plan/projects/watchtower/initiatives/example/summary.md)",),
+                "linked_outputs": (
+                    "- [summary.md](/plan/projects/watchtower/initiatives/example/summary.md)",
+                ),
             },
         )
     )

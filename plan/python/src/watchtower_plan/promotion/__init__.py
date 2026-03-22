@@ -24,22 +24,22 @@ __all__ = [
 ]
 
 _EXPORT_MODULES = {
-    "GuidancePromotionOutput": "watchtower_plan.promotion.service",
-    "GuidancePromotionResult": "watchtower_plan.promotion.service",
+    "GuidancePromotionOutput": "watchtower_plan.promotion.models",
+    "GuidancePromotionResult": "watchtower_plan.promotion.models",
     "GuidancePromotionService": "watchtower_plan.promotion.service",
-    "build_guidance_front_matter": "watchtower_plan.promotion.service",
-    "default_mirror_target_paths": "watchtower_plan.promotion.service",
-    "default_target_family_for_source_kind": "watchtower_plan.promotion.service",
-    "default_target_path": "watchtower_plan.promotion.service",
-    "extract_markdown_summary": "watchtower_plan.promotion.service",
-    "extract_markdown_title": "watchtower_plan.promotion.service",
-    "guidance_id_for_target_path": "watchtower_plan.promotion.service",
-    "guidance_summary": "watchtower_plan.promotion.service",
-    "guidance_title": "watchtower_plan.promotion.service",
-    "guidance_trace_id_for_target_path": "watchtower_plan.promotion.service",
-    "readable_source_artifact_kind": "watchtower_plan.promotion.service",
-    "render_guidance_body": "watchtower_plan.promotion.service",
-    "source_artifact_kind_for_path": "watchtower_plan.promotion.service",
+    "build_guidance_front_matter": "watchtower_plan.promotion.rendering",
+    "default_mirror_target_paths": "watchtower_plan.promotion.targets",
+    "default_target_family_for_source_kind": "watchtower_plan.promotion.targets",
+    "default_target_path": "watchtower_plan.promotion.targets",
+    "extract_markdown_summary": "watchtower_plan.promotion.rendering",
+    "extract_markdown_title": "watchtower_plan.promotion.rendering",
+    "guidance_id_for_target_path": "watchtower_plan.promotion.targets",
+    "guidance_summary": "watchtower_plan.promotion.rendering",
+    "guidance_title": "watchtower_plan.promotion.rendering",
+    "guidance_trace_id_for_target_path": "watchtower_plan.promotion.targets",
+    "readable_source_artifact_kind": "watchtower_plan.promotion.rendering",
+    "render_guidance_body": "watchtower_plan.promotion.rendering",
+    "source_artifact_kind_for_path": "watchtower_plan.promotion.targets",
 }
 
 __getattr__ = lazy_module_getattr(

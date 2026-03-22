@@ -9,7 +9,9 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_context import PackContext
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
-from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
+from watchtower_core.control_plane.project_surface_policy import (
+    ProjectSurfacePolicyHelper,
+)
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
 
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
@@ -99,7 +101,7 @@ def load_project_context(
                 access=str(entry["access"]),
                 active=bool(entry["active"]),
             )
-            for entry in repository_map_document["repositories"]
+            for entry in _repository_entries(repository_map_document)
         ),
     )
 
@@ -159,7 +161,9 @@ def validate_project_machine_state(
     initiative_root = workspace_paths.project_initiatives_root_relative(project_slug)
 
     if not issues:
-        project_document = _load_json(loader, f"{project_root_relative}/.wt/project.json")
+        project_document = _load_json(
+            loader, f"{project_root_relative}/.wt/project.json"
+        )
         repository_map_document = _load_json(
             loader,
             f"{project_root_relative}/.wt/project_repository_map.json",
@@ -168,9 +172,10 @@ def validate_project_machine_state(
             issues.append(
                 "Project record initiative_root does not match the canonical project initiatives path."
             )
-        repository_refs = tuple(project_document.get("linked_repository_refs", ()))
+        repository_refs = _string_tuple(project_document.get("linked_repository_refs"))
         map_ids = tuple(
-            entry["repository_id"] for entry in repository_map_document.get("repositories", ())
+            entry["repository_id"]
+            for entry in _repository_entries(repository_map_document)
         )
         if tuple(repository_refs) != map_ids:
             issues.append(
@@ -200,7 +205,9 @@ def validate_project_machine_state(
     )
 
 
-def _pack_loader(loader: ControlPlaneLoader, pack_settings_path: str) -> ControlPlaneLoader:
+def _pack_loader(
+    loader: ControlPlaneLoader, pack_settings_path: str
+) -> ControlPlaneLoader:
     return loader.derive(active_pack_settings_path=pack_settings_path)
 
 
@@ -208,3 +215,18 @@ def _load_json(loader: ControlPlaneLoader, relative_path: str) -> dict[str, obje
     document = loader.load_json_object(relative_path)
     assert isinstance(document, dict)
     return document
+
+
+def _repository_entries(document: dict[str, object]) -> tuple[dict[str, object], ...]:
+    repositories = document.get("repositories")
+    if not isinstance(repositories, list):
+        return ()
+    return tuple(entry for entry in repositories if isinstance(entry, dict))
+
+
+def _string_tuple(value: object) -> tuple[str, ...]:
+    if isinstance(value, str):
+        return (value,) if value else ()
+    if not isinstance(value, list):
+        return ()
+    return tuple(item for item in value if isinstance(item, str) and item)

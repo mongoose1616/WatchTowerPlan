@@ -8,7 +8,6 @@ from pathlib import Path
 from watchtower_core.adapters import extract_repo_path_references, extract_subsections
 from watchtower_core.control_plane.reference_status import (
     REFERENCE_REPOSITORY_STATUS_PREFIXES,
-    REFERENCE_REPOSITORY_STATUS_VALUES,
 )
 from watchtower_core.documentation.governed_documents import validate_required_section_order
 
@@ -37,9 +36,7 @@ def parse_reference_local_mapping(
     subsections = extract_subsections(local_mapping_section)
     required_subsections: tuple[str, ...] = (REFERENCE_CURRENT_REPOSITORY_STATUS_SUBSECTION,)
     if REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION in subsections:
-        required_subsections = required_subsections + (
-            REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,
-        )
+        required_subsections = required_subsections + (REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,)
     validate_required_section_order(
         relative_path,
         subsections,
@@ -70,9 +67,7 @@ def parse_reference_repository_status(relative_path: str, status_body: str) -> s
     for repository_status, prefix in REFERENCE_REPOSITORY_STATUS_PREFIXES.items():
         if status_line.startswith(prefix):
             return repository_status
-    allowed = ", ".join(
-        f"`{prefix}`" for prefix in REFERENCE_REPOSITORY_STATUS_PREFIXES.values()
-    )
+    allowed = ", ".join(f"`{prefix}`" for prefix in REFERENCE_REPOSITORY_STATUS_PREFIXES.values())
     raise ValueError(
         f"{relative_path} Current Repository Status must begin with one of: {allowed}."
     )

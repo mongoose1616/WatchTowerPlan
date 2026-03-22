@@ -67,7 +67,7 @@
       "surviving_authority_paths": [
         "plan/docs/",
         "plan/.wt/registries/retention_policy_registry.json",
-        "core/control_plane/ledgers/purges/"
+        "core/control_plane/records/purges/"
       ]
     },
     {
@@ -90,29 +90,29 @@
       "surviving_authority_paths": [
         "plan/docs/",
         "plan/.wt/registries/retention_policy_registry.json",
-        "core/control_plane/ledgers/purges/"
+        "core/control_plane/records/purges/"
       ]
     },
     {
-      "policy_id": "policy.retention.trace_purge_ledgers",
-      "path_pattern": "core/control_plane/ledgers/purges",
+      "policy_id": "policy.retention.trace_purge_records",
+      "path_pattern": "core/control_plane/records/purges",
       "match_mode": "exact",
-      "path_kind": "purge_ledger_root",
+      "path_kind": "purge_record_root",
       "phase_qualifier": "always",
       "entry_status": "active",
-      "current_disposition": "minimal_ledger",
-      "clean_endstate_disposition": "minimal_ledger",
+      "current_disposition": "minimal_record",
+      "clean_endstate_disposition": "minimal_record",
       "operational_visibility": "visible",
       "purge_gate": "none",
       "governing_surfaces": [
         "retention_policy_registry",
         "trace_purge_record"
       ],
-      "clarifying_rule": "Minimal purge ledgers remain the retained machine history after eligible legacy packages are deleted.",
+      "clarifying_rule": "Minimal purge records remain the retained machine history after eligible legacy packages are deleted.",
       "surviving_authority_paths": [
-        "core/control_plane/ledgers/purges/"
+        "core/control_plane/records/purges/"
       ]
     }
   ],
-  "notes": "The registry governs the surviving live plan authority, promoted guidance, purge-eligible closed initiative packages, and the minimal purge ledgers that remain after hard cutover cleanup."
+  "notes": "The registry governs the surviving live plan authority, promoted guidance, purge-eligible closed initiative packages, and the minimal purge records that remain after hard cutover cleanup."
 }

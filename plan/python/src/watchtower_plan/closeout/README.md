@@ -12,7 +12,7 @@ Plan-domain closeout services for live initiative packages, retained trace close
 ## Key Surfaces
 - `initiative.py`: Retained trace closeout orchestration that now runs under `watchtower-core plan closeout retained-initiative`, refuses live `plan/**` initiatives, and refreshes the affected indexes and rendered views.
 - `initiative_package.py`: Initiative-package terminal closeout helper over initiative state, evidence, closeout recap, and promotion artifacts.
-- `purge_trace.py`: Guarded trace-package purge orchestration and minimal surviving purge-ledger writes.
+- `purge_trace.py`: Guarded trace-package purge orchestration and minimal surviving purge-record writes.
 
 ## Related Surfaces
 - `plan/python/src/watchtower_plan/README.md`

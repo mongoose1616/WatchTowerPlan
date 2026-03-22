@@ -5,14 +5,14 @@ import json
 import sys
 
 import pytest
-
-from watchtower_host.cli.main import main
 from watchtower_plan.cli.query_lookup_handlers import (
     _run_query_tasks as plan_query_tasks,
 )
 from watchtower_plan.cli.query_rendered_handlers import (
     _run_query_coordination as plan_query_coordination,
 )
+
+from watchtower_host.cli.main import main
 
 
 def test_doctor_command_returns_zero(capsys) -> None:
@@ -61,35 +61,29 @@ def test_root_command_prints_help(capsys) -> None:
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
     assert "uv run watchtower-core pack list --format json" in captured.out
-    assert (
-        "uv run watchtower-core route preview --request "
-        "\"review code and commit\"" in captured.out
-    )
+    assert 'uv run watchtower-core route preview --request "review code and commit"' in captured.out
     assert "uv run watchtower-core plan query coordination --format json" in captured.out
     assert (
-        "uv run watchtower-core plan query artifacts --artifact-family initiative_state --format json"
-        in captured.out
+        "uv run watchtower-core plan query artifacts --artifact-family "
+        "initiative_state --format json" in captured.out
     )
     assert (
         "uv run watchtower-core plan query readiness --ready-for-execution true --format json"
         in captured.out
     )
     assert (
-        "uv run watchtower-core plan query projects --slug watchtower --format json"
-        in captured.out
+        "uv run watchtower-core plan query projects --slug watchtower --format json" in captured.out
     )
     assert (
         "uv run watchtower-core plan query authority --domain planning --format json"
         in captured.out
     )
     assert (
-        "uv run watchtower-core query standards --category governance --format json"
-        in captured.out
+        "uv run watchtower-core query standards --category governance --format json" in captured.out
     )
     assert (
         "uv run watchtower-core query acceptance --trace-id "
-        "trace.governed_acceptance_example"
-        in captured.out
+        "trace.governed_acceptance_example" in captured.out
     )
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert "uv run watchtower-core query workflows --query validation" in captured.out
@@ -111,8 +105,7 @@ def test_root_command_prints_help(capsys) -> None:
     )
     assert (
         "uv run watchtower-core validate acceptance --trace-id "
-        "trace.governed_acceptance_example"
-        in captured.out
+        "trace.governed_acceptance_example" in captured.out
     )
     assert "watchtower-core validate artifact" in captured.out
 
@@ -277,5 +270,8 @@ def test_plan_closeout_group_prints_group_specific_help(capsys) -> None:
     assert "initiative" in captured.out
     assert "retained-initiative" in captured.out
     assert "purge-trace" in captured.out
-    assert "uv run watchtower-core plan closeout retained-initiative --trace-id trace.example" in captured.out
+    assert (
+        "uv run watchtower-core plan closeout retained-initiative --trace-id trace.example"
+        in captured.out
+    )
     assert "uv run watchtower-core plan closeout purge-trace" in captured.out

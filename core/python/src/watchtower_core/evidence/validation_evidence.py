@@ -13,8 +13,8 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.validation.models import ValidationResult
 
-VALIDATION_EVIDENCE_SCHEMA_ID = "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
-VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
+VALIDATION_EVIDENCE_SCHEMA_ID = "urn:watchtower:schema:artifacts:records:validation-evidence:v1"
+VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/records/validation_evidence"
 
 
 def _timestamp_now() -> str:
@@ -109,9 +109,7 @@ class ValidationEvidenceRecorder:
         if trace_entry.source_surface_paths:
             document["source_surface_paths"] = list(trace_entry.source_surface_paths)
         if trace_entry.acceptance_contract_ids:
-            document["source_acceptance_contract_ids"] = list(
-                trace_entry.acceptance_contract_ids
-            )
+            document["source_acceptance_contract_ids"] = list(trace_entry.acceptance_contract_ids)
         if notes:
             document["notes"] = notes
 

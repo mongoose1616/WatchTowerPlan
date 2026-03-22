@@ -126,9 +126,11 @@ class EvidenceBundleHelper:
             return schema_id
 
         try:
-            return self._loader.load_schema_catalog().get_by_subject_kind(
-                EVIDENCE_BUNDLE_SUBJECT_KIND
-            ).schema_id
+            return (
+                self._loader.load_schema_catalog()
+                .get_by_subject_kind(EVIDENCE_BUNDLE_SUBJECT_KIND)
+                .schema_id
+            )
         except KeyError as exc:
             raise ValueError(
                 "Evidence bundles require an active pack schema catalog entry for "

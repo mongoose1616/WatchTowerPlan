@@ -26,12 +26,23 @@ class RenderedSearchFilters:
 class RenderedSearchParamsLike(Protocol):
     """Common rendered-search parameter shape used across hosted packs."""
 
-    query: str | None
-    trace_id: str | None
-    initiative_status: str | None
-    current_phase: str | None
-    owner: str | None
-    limit: int | None
+    @property
+    def query(self) -> str | None: ...
+
+    @property
+    def trace_id(self) -> str | None: ...
+
+    @property
+    def initiative_status(self) -> str | None: ...
+
+    @property
+    def current_phase(self) -> str | None: ...
+
+    @property
+    def owner(self) -> str | None: ...
+
+    @property
+    def limit(self) -> int | None: ...
 
 
 def rendered_search_filters_from_params(

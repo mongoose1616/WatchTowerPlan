@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "$id": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1",
   "title": "Trace Purge Record",
-  "description": "Machine-readable ledger record for one purged traced planning package.",
+  "description": "Machine-readable record for one purged traced planning package.",
   "type": "object",
   "required": [
     "$schema",
@@ -20,7 +20,7 @@
   ],
   "properties": {
     "$schema": {
-      "const": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+      "const": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1"
     },
     "id": {
       "type": "string",

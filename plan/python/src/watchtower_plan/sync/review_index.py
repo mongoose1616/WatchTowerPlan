@@ -7,7 +7,10 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_plan.workspace.service import PLAN_REVIEW_INDEX_PATH, PlanWorkspaceService
+from watchtower_plan.workspace.service import (
+    PLAN_REVIEW_INDEX_PATH,
+    PlanWorkspaceService,
+)
 
 REVIEW_INDEX_ARTIFACT_PATH = PLAN_REVIEW_INDEX_PATH
 
@@ -26,7 +29,9 @@ class ReviewIndexSyncService:
     def build_document(self) -> dict[str, object]:
         return PlanWorkspaceService(self._loader).build_review_index_document()
 
-    def write_document(self, document: dict[str, object], destination: Path | None = None) -> Path:
+    def write_document(
+        self, document: dict[str, object], destination: Path | None = None
+    ) -> Path:
         """Write the generated review index to disk."""
         target = destination or (self._repo_root / REVIEW_INDEX_ARTIFACT_PATH)
         target.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")

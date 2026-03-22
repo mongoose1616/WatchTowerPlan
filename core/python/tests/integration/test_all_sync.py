@@ -5,6 +5,22 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from watchtower_plan.plan_workspace import (
+    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
+)
+from watchtower_plan.plan_workspace import (
+    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
+)
+from watchtower_plan.plan_workspace import (
+    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
+)
+from watchtower_plan.sync import AllSyncService, CoordinationSyncService
+from watchtower_plan.sync.coordination_tracking import CoordinationTrackingSyncService
+from watchtower_plan.sync.registry import (
+    COORDINATION_SYNC_GROUP,
+    SYNC_TARGET_SPECS,
+    sync_target_specs_for_group,
+)
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
@@ -16,18 +32,6 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
-from watchtower_plan.plan_workspace import (
-    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
-    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
-    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
-)
-from watchtower_plan.sync import AllSyncService, CoordinationSyncService
-from watchtower_plan.sync.coordination_tracking import CoordinationTrackingSyncService
-from watchtower_plan.sync.registry import (
-    COORDINATION_SYNC_GROUP,
-    SYNC_TARGET_SPECS,
-    sync_target_specs_for_group,
-)
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 REFERENCE_RESOLUTION_SYNC_TARGETS = frozenset(
@@ -43,7 +47,10 @@ def _build_coordination_fixture_repo(repo_root: Path) -> Path:
         repo_root,
         trace_id="trace.example_coordination_sync_dependency_fixture",
         title="Example Coordination Sync Dependency Fixture",
-        summary="Seeds one live initiative so coordination dry-run sync exercises generated dependency artifacts.",
+        summary=(
+            "Seeds one live initiative so coordination dry-run sync exercises "
+            "generated dependency artifacts."
+        ),
     )
     return repo_root
 
@@ -123,9 +130,7 @@ def test_all_sync_reuses_reference_index_build_for_dependent_targets(
 
 def test_sync_target_registry_is_unique() -> None:
     assert len({spec.target for spec in SYNC_TARGET_SPECS}) == len(SYNC_TARGET_SPECS)
-    assert len({spec.relative_output_path for spec in SYNC_TARGET_SPECS}) == len(
-        SYNC_TARGET_SPECS
-    )
+    assert len({spec.relative_output_path for spec in SYNC_TARGET_SPECS}) == len(SYNC_TARGET_SPECS)
 
 
 def test_coordination_sync_group_has_expected_targets_in_order() -> None:
@@ -268,9 +273,7 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
 
     assert result.wrote is True
     assert (output_dir / "plan/.wt/indexes/task_index.json").exists()
-    assert (
-        output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
-    ).exists()
+    assert (output_dir / "core/control_plane/indexes/traceability/traceability_index.json").exists()
     assert (output_dir / "plan/.wt/indexes/initiative_index.json").exists()
     assert (output_dir / "plan/.wt/indexes/coordination_index.json").exists()
     assert (output_dir / "plan/tracking/task_tracking.md").exists()

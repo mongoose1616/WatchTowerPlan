@@ -5,13 +5,6 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_governed_applies_to_targets,
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.query import (
     InitiativeQueryService,
     ReadinessQueryService,
@@ -24,6 +17,13 @@ from watchtower_plan.tasks import (
     TaskTransitionParams,
     TaskUpdateParams,
 )
+
+from tests.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_governed_applies_to_targets,
+    materialize_minimal_plan_pack,
+)
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -69,8 +69,7 @@ def test_task_create_write_refreshes_task_and_initiative_surfaces(tmp_path: Path
 
     assert result.wrote is True
     assert (
-        result.doc_path
-        == "plan/initiatives/workflow_system_operationalization/.wt/tasks/"
+        result.doc_path == "plan/initiatives/workflow_system_operationalization/.wt/tasks/"
         "validate_the_task_lifecycle_slice/task.json"
     )
     assert (repo_root / result.doc_path).exists()
@@ -227,11 +226,10 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
     )
 
     contract_relative_path = (
-        "core/control_plane/contracts/acceptance/"
-        "task_lifecycle_service_path_repair_acceptance.json"
+        "core/control_plane/contracts/acceptance/task_lifecycle_service_path_repair_acceptance.json"
     )
     evidence_relative_path = (
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/records/validation_evidence/"
         "task_lifecycle_service_path_repair_planning_baseline.json"
     )
     (repo_root / contract_relative_path).write_text(
@@ -260,7 +258,7 @@ def test_task_update_write_preserves_governed_companion_paths_when_task_status_c
     (repo_root / evidence_relative_path).write_text(
         json.dumps(
             {
-                "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+                "$schema": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
                 "id": "evidence.task_lifecycle_service_path_repair.planning_baseline",
                 "title": "Task Lifecycle Service Path Repair Evidence",
                 "status": "active",

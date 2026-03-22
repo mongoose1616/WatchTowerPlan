@@ -15,18 +15,20 @@ from tests.fixture_repo_support import (
     materialize_minimal_plan_pack,
 )
 from watchtower_core.control_plane.loader import (
-    VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.validation.pack_targets import (
-    resolve_pack_validation_suite_targets,
-)
+from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
-from watchtower_core.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.validation.pack_targets import (
+    resolve_pack_validation_suite_targets,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+STANDARD_SEMANTICS_DOC_PATH = (
+    "/core/docs/standards/documentation/validate_all_standard_semantics.md"
+)
 
 
 def _copy_control_plane_repo(tmp_path: Path) -> Path:
@@ -64,7 +66,7 @@ def _write_invalid_standard_fixture(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         dedent(
-            """\
+            f"""\
             ---
             id: "std.documentation.validate_all_standard_semantics"
             title: "Validate All Standard Semantics"
@@ -96,11 +98,12 @@ def _write_invalid_standard_fixture(path: Path) -> None:
             - Added to pin validate-all coverage.
 
             ## Related Standards and Sources
-            - [validate_all_standard_semantics.md](/core/docs/standards/documentation/validate_all_standard_semantics.md): keeps the fixture self-contained while exercising missing-section validation.
+            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH}):
+              keeps the fixture self-contained while exercising missing-section validation.
 
             ## Operationalization
             - `Modes`: `documentation`
-            - `Operational Surfaces`: `core/docs/standards/documentation/validate_all_standard_semantics.md`
+            - `Operational Surfaces`: `{STANDARD_SEMANTICS_DOC_PATH.lstrip('/')}`
 
             ## Validation
             - Validate-all should surface the missing Guidance section directly.
@@ -109,7 +112,7 @@ def _write_invalid_standard_fixture(path: Path) -> None:
             - Update the validator and fixture together if the required sections change.
 
             ## References
-            - [validate_all_standard_semantics.md](/core/docs/standards/documentation/validate_all_standard_semantics.md)
+            - [validate_all_standard_semantics.md]({STANDARD_SEMANTICS_DOC_PATH})
 
             ## Updated At
             - `2026-03-11T17:05:00Z`
@@ -240,6 +243,7 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
     )
     assert result.passed is True
 
+
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -342,8 +346,7 @@ def test_validate_all_reports_missing_repo_local_acceptance_paths(
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
-        repo_root
-        / "core/control_plane/contracts/acceptance/"
+        repo_root / "core/control_plane/contracts/acceptance/"
         "governed_acceptance_example_acceptance.json"
     )
     contract = json.loads(contract_path.read_text(encoding="utf-8"))

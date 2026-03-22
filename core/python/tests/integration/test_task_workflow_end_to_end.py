@@ -4,18 +4,10 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_acceptance_and_evidence_paths,
-    materialize_governed_applies_to_targets,
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiatives import InitiativePackageService
 from watchtower_plan.query import (
-    CoordinationSearchParams,
     CoordinationQueryService,
+    CoordinationSearchParams,
     InitiativeQueryService,
     TaskQueryService,
     TaskSearchParams,
@@ -26,6 +18,14 @@ from watchtower_plan.tasks import (
     TaskLifecycleService,
     TaskUpdateParams,
 )
+
+from tests.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_acceptance_and_evidence_paths,
+    materialize_governed_applies_to_targets,
+    materialize_minimal_plan_pack,
+)
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -133,16 +133,14 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
         == "Advance the current in-progress task set and keep initiative-local task state current."
     )
 
-    task_tracking = (repo_root / "plan/tracking/task_tracking.md").read_text(
-        encoding="utf-8"
-    )
+    task_tracking = (repo_root / "plan/tracking/task_tracking.md").read_text(encoding="utf-8")
     assert ready_task_id in task_tracking
     assert blocked_task_id in task_tracking
     assert "plan/initiatives/task_workflow_e2e_foundation/.wt/tasks/" in task_tracking
 
-    initiative_tracking = (
-        repo_root / "plan/tracking/initiative_tracking.md"
-    ).read_text(encoding="utf-8")
+    initiative_tracking = (repo_root / "plan/tracking/initiative_tracking.md").read_text(
+        encoding="utf-8"
+    )
     assert trace_id in initiative_tracking
 
     github_result = GitHubTaskSyncService(loader).sync(

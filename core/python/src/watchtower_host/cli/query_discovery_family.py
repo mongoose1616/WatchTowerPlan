@@ -42,8 +42,7 @@ def register_query_discovery_commands(
     add_query_argument(
         query_paths_parser,
         help_text=(
-            "Free-text query over indexed path fields such as path, summary, aliases, and "
-            "tags."
+            "Free-text query over indexed path fields such as path, summary, aliases, and tags."
         ),
     )
     query_paths_parser.add_argument(

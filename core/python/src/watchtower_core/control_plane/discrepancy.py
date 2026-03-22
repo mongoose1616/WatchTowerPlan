@@ -8,9 +8,7 @@ from typing import Any, cast
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 
-DISCREPANCY_RECORD_SCHEMA_ID = (
-    "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1"
-)
+DISCREPANCY_RECORD_SCHEMA_ID = "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1"
 
 
 @dataclass(frozen=True, slots=True)
@@ -99,9 +97,7 @@ class DiscrepancyHelper:
     ) -> tuple[tuple[str, dict[str, Any]], ...]:
         """Return the open validated discrepancy records for one descriptor."""
 
-        discrepancy_dir = self._loader.repo_root / _normalize_relative_dir(
-            descriptor.relative_dir
-        )
+        discrepancy_dir = self._loader.repo_root / _normalize_relative_dir(descriptor.relative_dir)
         if not discrepancy_dir.exists():
             return ()
 

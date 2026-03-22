@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import Counter
 from collections.abc import Iterable, Mapping
 from pathlib import Path
-from typing import ClassVar, Protocol
+from typing import ClassVar, Protocol, Self
 
 from watchtower_core.adapters import render_rendered_surface
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -23,19 +23,22 @@ TERMINAL_INITIATIVE_STATUSES = (
 class RenderedTrackingBuildResult(Protocol):
     """Minimal build-result contract for shared tracker document writes."""
 
-    content: str
+    @property
+    def content(self) -> str: ...
 
 
 class TraceTrackedEntry(Protocol):
     """Entry contract for helpers that reason about initiative trace state."""
 
-    trace_id: str
+    @property
+    def trace_id(self) -> str: ...
 
 
 class UpdatedEntry(Protocol):
     """Entry contract for helpers that derive an updated-at summary."""
 
-    updated_at: str
+    @property
+    def updated_at(self) -> str: ...
 
 
 class RenderedTrackingSyncService:
@@ -49,7 +52,7 @@ class RenderedTrackingSyncService:
         self._repo_root = loader.repo_root
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None):
+    def from_repo_root(cls, repo_root: Path | None = None) -> Self:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def _render_tracking_document(self, context: Mapping[str, object]) -> str:
@@ -93,9 +96,7 @@ def terminal_initiative_status_counts_for_trace_ids(
             counts[status] += 1
 
     return tuple(
-        (status, counts[status])
-        for status in TERMINAL_INITIATIVE_STATUSES
-        if counts[status] > 0
+        (status, counts[status]) for status in TERMINAL_INITIATIVE_STATUSES if counts[status] > 0
     )
 
 

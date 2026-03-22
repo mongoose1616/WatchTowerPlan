@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from shutil import copy2, copytree
 
 import pytest
 
@@ -14,6 +14,10 @@ def _copy_validation_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core" / "python").mkdir(parents=True)
+    copy2(
+        REPO_ROOT / "core" / "python" / "pyproject.toml",
+        repo_root / "core" / "python" / "pyproject.toml",
+    )
     return repo_root
 
 

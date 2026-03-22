@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import tempfile
 from pathlib import Path
 from shutil import copytree
 
@@ -39,7 +38,9 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
     workspace_relative_root = pack_root.relative_to(repo_root).as_posix()
     relative_root = control_plane_root.relative_to(repo_root).as_posix()
     schema_id = "urn:watchtower:schema:interfaces:packs:artifact-pack-note:v1"
-    schema_relative_path = f"{relative_root}/schemas/interfaces/packs/artifact_pack_note.schema.json"
+    schema_relative_path = (
+        f"{relative_root}/schemas/interfaces/packs/artifact_pack_note.schema.json"
+    )
     validator_id = "validator.packs.artifact_pack_note"
     validation_suite_registry_path = f"{relative_root}/registries/validation_suite_registry.json"
     suite_id = "suite.artifact_test.validation_baseline"
@@ -198,8 +199,7 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.validate(
-        "core/control_plane/contracts/acceptance/"
-        "governed_acceptance_example_acceptance.json"
+        "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json"
     )
 
     assert result.passed is True

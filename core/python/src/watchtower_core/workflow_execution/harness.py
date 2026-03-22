@@ -135,11 +135,7 @@ class WorkflowExecutionHarness:
         record(
             "workflow_chain_selected",
             route_ids=tuple(route.route_id for route in selection.selected_routes),
-            detail=(
-                "; ".join(selection.warnings)
-                if selection.warnings
-                else None
-            ),
+            detail=("; ".join(selection.warnings) if selection.warnings else None),
         )
 
         step_results: list[WorkflowExecutionStepResult] = []

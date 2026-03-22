@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from pathlib import Path
 from textwrap import dedent
 
@@ -217,14 +218,62 @@ _TRACKING_COMMAND_SPECS: tuple[SyncCommandSpec, ...] = (
 )
 
 _DOCUMENT_HANDLER_SPECS = (
-    ("reference_index", "watchtower_core.sync.reference_index", "ReferenceIndexSyncService", "watchtower-core plan sync reference-index", "reference index"),
-    ("foundation_index", "watchtower_core.sync.foundation_index", "FoundationIndexSyncService", "watchtower-core plan sync foundation-index", "foundation index"),
-    ("standard_index", "watchtower_core.sync.standard_index", "StandardIndexSyncService", "watchtower-core plan sync standard-index", "standard index"),
-    ("workflow_index", "watchtower_core.sync.workflow_index", "WorkflowIndexSyncService", "watchtower-core plan sync workflow-index", "workflow index"),
-    ("initiative_index", "watchtower_plan.sync.initiative_index", "InitiativeIndexSyncService", "watchtower-core plan sync initiative-index", "initiative index"),
-    ("task_index", "watchtower_plan.sync.task_index", "TaskIndexSyncService", "watchtower-core plan sync task-index", "task index"),
-    ("review_index", "watchtower_plan.sync.review_index", "ReviewIndexSyncService", "watchtower-core plan sync review-index", "review index"),
-    ("traceability_index", "watchtower_plan.sync.traceability", "TraceabilityIndexSyncService", "watchtower-core plan sync traceability-index", "traceability index"),
+    (
+        "reference_index",
+        "watchtower_core.sync.reference_index",
+        "ReferenceIndexSyncService",
+        "watchtower-core plan sync reference-index",
+        "reference index",
+    ),
+    (
+        "foundation_index",
+        "watchtower_core.sync.foundation_index",
+        "FoundationIndexSyncService",
+        "watchtower-core plan sync foundation-index",
+        "foundation index",
+    ),
+    (
+        "standard_index",
+        "watchtower_core.sync.standard_index",
+        "StandardIndexSyncService",
+        "watchtower-core plan sync standard-index",
+        "standard index",
+    ),
+    (
+        "workflow_index",
+        "watchtower_core.sync.workflow_index",
+        "WorkflowIndexSyncService",
+        "watchtower-core plan sync workflow-index",
+        "workflow index",
+    ),
+    (
+        "initiative_index",
+        "watchtower_plan.sync.initiative_index",
+        "InitiativeIndexSyncService",
+        "watchtower-core plan sync initiative-index",
+        "initiative index",
+    ),
+    (
+        "task_index",
+        "watchtower_plan.sync.task_index",
+        "TaskIndexSyncService",
+        "watchtower-core plan sync task-index",
+        "task index",
+    ),
+    (
+        "review_index",
+        "watchtower_plan.sync.review_index",
+        "ReviewIndexSyncService",
+        "watchtower-core plan sync review-index",
+        "review index",
+    ),
+    (
+        "traceability_index",
+        "watchtower_plan.sync.traceability",
+        "TraceabilityIndexSyncService",
+        "watchtower-core plan sync traceability-index",
+        "traceability index",
+    ),
 )
 
 
@@ -234,7 +283,7 @@ def _build_document_handler(
     class_name: str,
     command_name: str,
     artifact_label: str,
-) -> tuple[str, callable]:
+) -> tuple[str, Callable[[argparse.Namespace], int]]:
     def _handler(args: argparse.Namespace) -> int:
         return run_document_sync_command(
             args,
@@ -310,10 +359,12 @@ def _run_plan_sync_task_tracking(args: argparse.Namespace) -> int:
 
 
 def _run_plan_sync_github_tasks(args: argparse.Namespace) -> int:
-    params_class = load_sync_class("watchtower_plan.sync.github_tasks", "GitHubTaskSyncParams")
-    service = load_sync_class("watchtower_plan.sync.github_tasks", "GitHubTaskSyncService")(
-        build_loader()
+    params_class = load_sync_class(
+        "watchtower_plan.sync.github_tasks", "GitHubTaskSyncParams"
     )
+    service = load_sync_class(
+        "watchtower_plan.sync.github_tasks", "GitHubTaskSyncService"
+    )(build_loader())
     result = service.sync(
         build_github_task_sync_params(args, params_class),
         write=args.write,
@@ -372,16 +423,13 @@ def _run_plan_sync_github_tasks(args: argparse.Namespace) -> int:
     )
 
 
-PLAN_SYNC_HANDLERS: dict[str, callable] = {
+PLAN_SYNC_HANDLERS: dict[str, Callable[[argparse.Namespace], int]] = {
     "all": _run_plan_sync_all,
     "coordination": _run_plan_sync_coordination,
     "initiative_tracking": _run_plan_sync_initiative_tracking,
     "task_tracking": _run_plan_sync_task_tracking,
     "github_tasks": _run_plan_sync_github_tasks,
-    **dict(
-        _build_document_handler(*spec)
-        for spec in _DOCUMENT_HANDLER_SPECS
-    ),
+    **dict(_build_document_handler(*spec) for spec in _DOCUMENT_HANDLER_SPECS),
 }
 
 
@@ -389,7 +437,7 @@ def _register_materialized_sync_commands(
     sync_subparsers: argparse._SubParsersAction,
     handlers: HandlerMap,
 ) -> None:
-    specs = (
+    specs: tuple[SyncCommandSpec, ...] = (
         {
             "name": "all",
             "handler": "all",
@@ -507,15 +555,26 @@ def _register_github_task_sync(sync_subparsers: argparse._SubParsersAction) -> N
         action="store_true",
         help="Select only tasks that currently declare blocking task IDs.",
     )
-    parser.add_argument("--blocked-by", help="Select only tasks blocked by the given task ID.")
-    parser.add_argument("--depends-on", help="Select only tasks that depend on the given task ID.")
-    parser.add_argument("--project-owner", help="GitHub project owner login when also syncing to a project.")
+    parser.add_argument(
+        "--blocked-by", help="Select only tasks blocked by the given task ID."
+    )
+    parser.add_argument(
+        "--depends-on", help="Select only tasks that depend on the given task ID."
+    )
+    parser.add_argument(
+        "--project-owner",
+        help="GitHub project owner login when also syncing to a project.",
+    )
     parser.add_argument(
         "--project-owner-type",
         choices=("user", "organization"),
         help="GitHub project owner type when also syncing to a project.",
     )
-    parser.add_argument("--project-number", type=int, help="GitHub project number when also syncing to a project.")
+    parser.add_argument(
+        "--project-number",
+        type=int,
+        help="GitHub project number when also syncing to a project.",
+    )
     parser.add_argument(
         "--project-status-field",
         default="Status",
@@ -569,8 +628,12 @@ def register_plan_sync_commands(plan_subparsers: argparse._SubParsersAction) -> 
     sync_parser.set_defaults(handler=_run_help, help_parser=sync_parser)
 
     _register_materialized_sync_commands(sync_subparsers, PLAN_SYNC_HANDLERS)
-    register_spec_sync_commands(sync_subparsers, handlers=PLAN_SYNC_HANDLERS, specs=_DOCUMENT_COMMAND_SPECS)
-    register_spec_sync_commands(sync_subparsers, handlers=PLAN_SYNC_HANDLERS, specs=_TRACKING_COMMAND_SPECS)
+    register_spec_sync_commands(
+        sync_subparsers, handlers=PLAN_SYNC_HANDLERS, specs=_DOCUMENT_COMMAND_SPECS
+    )
+    register_spec_sync_commands(
+        sync_subparsers, handlers=PLAN_SYNC_HANDLERS, specs=_TRACKING_COMMAND_SPECS
+    )
     _register_github_task_sync(sync_subparsers)
 
 

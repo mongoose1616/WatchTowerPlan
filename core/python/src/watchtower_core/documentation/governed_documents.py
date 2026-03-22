@@ -260,17 +260,13 @@ def load_governed_document(
     if document.metadata_scalar("Trace ID") != document.trace_id:
         raise ValueError(f"{relative_path} Record Metadata Trace ID does not match front matter.")
     if document.metadata_scalar(id_label) != document.document_id:
-        raise ValueError(
-            f"{relative_path} Record Metadata {id_label} does not match front matter."
-        )
+        raise ValueError(f"{relative_path} Record Metadata {id_label} does not match front matter.")
     if document.metadata_scalar(status_label) != document.status:
         raise ValueError(
             f"{relative_path} Record Metadata {status_label} does not match front matter."
         )
     if document.metadata_scalar("Updated At") != document.updated_at:
-        raise ValueError(
-            f"{relative_path} Record Metadata Updated At does not match front matter."
-        )
+        raise ValueError(f"{relative_path} Record Metadata Updated At does not match front matter.")
     if "Updated At" in sections and (
         extract_updated_at_from_section(sections["Updated At"]) != document.updated_at
     ):
@@ -363,11 +359,7 @@ def validate_explained_bullet_section(
     if section is None:
         raise ValueError(f"{relative_path} is missing required section: {title}")
 
-    bullets = [
-        line.strip()
-        for line in section.splitlines()
-        if line.strip().startswith("- ")
-    ]
+    bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
     if not bullets:
         raise ValueError(
             f"{relative_path} section {title!r} must contain one or more bullet entries."
@@ -404,7 +396,5 @@ def validate_required_section_order(
         except ValueError as exc:
             raise ValueError(f"{relative_path} is missing required section: {title}") from exc
         if current_index < previous_index:
-            raise ValueError(
-                f"{relative_path} places required section {title!r} out of order."
-            )
+            raise ValueError(f"{relative_path} places required section {title!r} out of order.")
         previous_index = current_index

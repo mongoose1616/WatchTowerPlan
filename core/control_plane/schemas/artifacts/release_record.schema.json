@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:watchtower:schema:artifacts:ledgers:release-record:v1",
+  "$id": "urn:watchtower:schema:artifacts:records:release-record:v1",
   "title": "Release Record",
-  "description": "Machine-readable release ledger record.",
+  "description": "Machine-readable release record.",
   "type": "object",
   "required": [
     "$schema",
@@ -16,7 +16,7 @@
   ],
   "properties": {
     "$schema": {
-      "const": "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+      "const": "urn:watchtower:schema:artifacts:records:release-record:v1"
     },
     "id": {
       "type": "string",

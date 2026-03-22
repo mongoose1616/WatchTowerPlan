@@ -40,9 +40,10 @@ def register_validate_family(
             pack-declared validation suite, `front-matter` for governed
             Markdown metadata, `document-semantics` for governed
             document-shape and applied-reference rules, `artifact` for
-            schema-backed JSON contracts, indexes, ledgers, and similar
-            machine-readable artifacts, and `acceptance` for semantic reconciliation across initiative-authored inputs,
-            acceptance contracts, validation evidence, and traceability.
+            schema-backed JSON contracts, indexes, records, and similar
+            machine-readable artifacts, and `acceptance` for semantic
+            reconciliation across initiative-authored inputs, acceptance
+            contracts, validation evidence, and traceability.
             """
         ).strip(),
         epilog=examples(
@@ -139,8 +140,7 @@ def register_validate_family(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core validate suite --suite-id "
-            "suite.example.validation_baseline",
+            "uv run watchtower-core validate suite --suite-id suite.example.validation_baseline",
             "uv run watchtower-core validate suite --suite-id "
             "suite.example.validation_baseline --pack-settings-path "
             "/tmp/example_pack/.wt/manifests/pack_settings.json --format json",
@@ -150,10 +150,7 @@ def register_validate_family(
     validate_suite_parser.add_argument(
         "--suite-id",
         required=True,
-        help=(
-            "Stable validation suite identifier such as "
-            "suite.example.validation_baseline."
-        ),
+        help=("Stable validation suite identifier such as suite.example.validation_baseline."),
     )
     add_pack_settings_argument(validate_suite_parser)
     add_human_json_format_argument(validate_suite_parser)

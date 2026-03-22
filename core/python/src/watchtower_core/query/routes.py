@@ -259,6 +259,7 @@ def _matched_token_count(
         if any(_tokens_match(request, candidate) for request in request_tokens)
     )
 
+
 def _tokens_match(request_token: str, candidate_token: str) -> bool:
     return request_token == candidate_token
 
@@ -285,9 +286,8 @@ def _apply_boundary_filters(
 
     filtered: list[RoutePreviewMatch] = []
     for match in matches:
-        if (
-            match.task_type == "Task Lifecycle Management"
-            and set(match.matched_keywords).issubset(_TASK_LIFECYCLE_GENERIC_KEYWORDS)
+        if match.task_type == "Task Lifecycle Management" and set(match.matched_keywords).issubset(
+            _TASK_LIFECYCLE_GENERIC_KEYWORDS
         ):
             continue
         filtered.append(match)

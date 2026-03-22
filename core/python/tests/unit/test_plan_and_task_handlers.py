@@ -338,9 +338,7 @@ def test_task_transition_supports_json_error_output(monkeypatch, capsys) -> None
     monkeypatch.setattr(task_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(task_handlers, "TaskLifecycleService", FakeService)
 
-    result = task_handlers._run_task_transition(
-        _task_args(task_status="completed", format="json")
-    )
+    result = task_handlers._run_task_transition(_task_args(task_status="completed", format="json"))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)

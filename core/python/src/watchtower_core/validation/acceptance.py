@@ -24,7 +24,7 @@ class _TraceLinked(Protocol):
 
 
 class AcceptanceReconciliationService:
-    """Validate one trace across initiative acceptance inputs, contracts, evidence, and traceability."""
+    """Validate one trace across acceptance inputs, contracts, evidence, and traceability."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
@@ -67,9 +67,7 @@ class AcceptanceReconciliationService:
         validator_ids = self._validator_ids_snapshot()
 
         target_path = (
-            contracts[0].doc_path
-            if contracts
-            else "core/control_plane/contracts/acceptance/"
+            contracts[0].doc_path if contracts else "core/control_plane/contracts/acceptance/"
         )
 
         if len(contracts) != 1:
@@ -125,7 +123,8 @@ class AcceptanceReconciliationService:
                 "Acceptance IDs published by the acceptance contract are missing from traceability"
             ),
             extra_message_prefix=(
-                "Acceptance IDs published by traceability are not present in the acceptance contract"
+                "Acceptance IDs published by traceability are not present in the "
+                "acceptance contract"
             ),
         )
 
@@ -322,8 +321,7 @@ class AcceptanceReconciliationService:
     def _trace_entries_by_id_snapshot(self) -> dict[str, TraceabilityEntry]:
         if self._trace_entries_by_id is None:
             self._trace_entries_by_id = {
-                entry.trace_id: entry
-                for entry in self._loader.load_traceability_index().entries
+                entry.trace_id: entry for entry in self._loader.load_traceability_index().entries
             }
         return self._trace_entries_by_id
 
@@ -331,9 +329,7 @@ class AcceptanceReconciliationService:
         self,
     ) -> dict[str, tuple[AcceptanceContract, ...]]:
         if self._contracts_by_trace is None:
-            self._contracts_by_trace = _group_by_trace(
-                self._loader.load_acceptance_contracts()
-            )
+            self._contracts_by_trace = _group_by_trace(self._loader.load_acceptance_contracts())
         return self._contracts_by_trace
 
     def _evidence_by_trace_snapshot(
@@ -414,10 +410,7 @@ def _group_by_trace[TTraceLinked: _TraceLinked](
     grouped: dict[str, list[TTraceLinked]] = {}
     for entry in entries:
         grouped.setdefault(entry.trace_id, []).append(entry)
-    return {
-        trace_id: tuple(grouped_entries)
-        for trace_id, grouped_entries in grouped.items()
-    }
+    return {trace_id: tuple(grouped_entries) for trace_id, grouped_entries in grouped.items()}
 
 
 def _repo_local_path_exists(loader: ControlPlaneLoader, value: str) -> bool:

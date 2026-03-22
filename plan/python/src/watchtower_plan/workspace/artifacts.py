@@ -36,7 +36,9 @@ class ArtifactIndexService:
             self._pack_loader_instance,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
-        self._artifact_index_path = self._workspace_paths.index_path("artifact_index.json")
+        self._artifact_index_path = self._workspace_paths.index_path(
+            "artifact_index.json"
+        )
         self._workspace_subdomain = Path(self._workspace_paths.workspace_root).name
         self._artifact_family = ArtifactFamilyHelper.from_loader(
             self._pack_loader_instance,
@@ -53,9 +55,11 @@ class ArtifactIndexService:
 
         document = self.build_document(aggregate_overrides=aggregate_overrides)
         if write:
-            self._loader.artifact_store.write_json_object(self._artifact_index_path, document)
+            self._loader.artifact_store.write_json_object(
+                self._artifact_index_path, document
+            )
         return ArtifactIndexSyncResult(
-            artifact_count=len(document["artifacts"]),
+            artifact_count=len(_artifact_entries(document)),
             wrote=write,
         )
 
@@ -85,14 +89,14 @@ class ArtifactIndexService:
             artifact_id = _artifact_id(relative_path, document)
             artifacts.append(
                 self._build_entry(
-                relative_path,
-                family_id,
-                document,
-                artifact_id=artifact_id,
-                existing_entry=existing_entries_by_artifact_id.get(artifact_id),
-                initiative_by_id=initiative_by_id,
-                project_by_id=project_by_id,
-            )
+                    relative_path,
+                    family_id,
+                    document,
+                    artifact_id=artifact_id,
+                    existing_entry=existing_entries_by_artifact_id.get(artifact_id),
+                    initiative_by_id=initiative_by_id,
+                    project_by_id=project_by_id,
+                )
             )
         updated_at_candidates = [
             str(entry["updated_at"]) for entry in artifacts if entry.get("updated_at")
@@ -111,8 +115,10 @@ class ArtifactIndexService:
                 "authoritative": True,
                 "hidden": True,
                 "derived": True,
-                "created_at": _entry_timestamp(existing_index_entry, "created_at") or updated_at,
-                "updated_at": _entry_timestamp(existing_index_entry, "updated_at") or updated_at,
+                "created_at": _entry_timestamp(existing_index_entry, "created_at")
+                or updated_at,
+                "updated_at": _entry_timestamp(existing_index_entry, "updated_at")
+                or updated_at,
                 "title": f"{self._workspace_subdomain.title()} Artifact Index",
                 "summary": (
                     f"Cross-family artifact lookup for the live {self._workspace_subdomain} "
@@ -148,13 +154,21 @@ class ArtifactIndexService:
         overrides: dict[str, dict[str, object]],
     ) -> list[tuple[str, str, dict[str, object]]]:
         candidate_paths = set(overrides)
-        candidate_paths.update(self._iter_relative_json_paths(self._workspace_paths.initiatives_root))
-        candidate_paths.update(self._iter_relative_json_paths(self._workspace_paths.projects_root))
         candidate_paths.update(
-            self._iter_relative_json_paths(self._workspace_paths.machine_path("work_items"))
+            self._iter_relative_json_paths(self._workspace_paths.initiatives_root)
         )
         candidate_paths.update(
-            self._iter_relative_json_paths(self._workspace_paths.machine_path("indexes"))
+            self._iter_relative_json_paths(self._workspace_paths.projects_root)
+        )
+        candidate_paths.update(
+            self._iter_relative_json_paths(
+                self._workspace_paths.machine_path("work_items")
+            )
+        )
+        candidate_paths.update(
+            self._iter_relative_json_paths(
+                self._workspace_paths.machine_path("indexes")
+            )
         )
         records: list[tuple[str, str, dict[str, object]]] = []
         for relative_path in sorted(candidate_paths):
@@ -326,19 +340,34 @@ def search_artifact_entries(
 
     matches: list[tuple[int, tuple[str, str], ArtifactIndexEntry]] = []
     for entry in entries:
-        if normalized_artifact_id is not None and _normalize(entry.artifact_id) != normalized_artifact_id:
+        if (
+            normalized_artifact_id is not None
+            and _normalize(entry.artifact_id) != normalized_artifact_id
+        ):
             continue
-        if normalized_artifact_family is not None and _normalize(entry.artifact_family) != normalized_artifact_family:
+        if (
+            normalized_artifact_family is not None
+            and _normalize(entry.artifact_family) != normalized_artifact_family
+        ):
             continue
         if normalized_context_id is not None and normalized_context_id not in {
             _normalize(value) for value in entry.context_ids
         }:
             continue
-        if normalized_source_context is not None and _normalize(entry.source_context) != normalized_source_context:
+        if (
+            normalized_source_context is not None
+            and _normalize(entry.source_context) != normalized_source_context
+        ):
             continue
-        if normalized_source_channel is not None and _normalize(entry.source_channel) != normalized_source_channel:
+        if (
+            normalized_source_channel is not None
+            and _normalize(entry.source_channel) != normalized_source_channel
+        ):
             continue
-        if normalized_status is not None and _normalize(entry.status) != normalized_status:
+        if (
+            normalized_status is not None
+            and _normalize(entry.status) != normalized_status
+        ):
             continue
         if authoritative is not None and entry.authoritative is not authoritative:
             continue
@@ -392,7 +421,9 @@ def _artifact_id(relative_path: str, document: dict[str, object]) -> str:
         value = _string_value(document.get(field_name))
         if value is not None:
             return value
-    return "artifact." + relative_path.removesuffix(".json").replace("/", ".").replace("-", "_")
+    return "artifact." + relative_path.removesuffix(".json").replace("/", ".").replace(
+        "-", "_"
+    )
 
 
 def _artifact_status(family_id: str, document: dict[str, object]) -> str:
@@ -477,7 +508,9 @@ def _parent_artifact_id(family_id: str, document: dict[str, object]) -> str | No
     return None
 
 
-def _related_artifact_ids(family_id: str, document: dict[str, object]) -> tuple[str, ...]:
+def _related_artifact_ids(
+    family_id: str, document: dict[str, object]
+) -> tuple[str, ...]:
     if family_id == "initiative_state":
         return tuple(
             _unique_strings(
@@ -502,7 +535,9 @@ def _related_artifact_ids(family_id: str, document: dict[str, object]) -> tuple[
             )
         )
     if family_id == "project_record":
-        return tuple(_unique_strings(_string_list(document.get("linked_repository_refs"))))
+        return tuple(
+            _unique_strings(_string_list(document.get("linked_repository_refs")))
+        )
     if family_id == "closeout_recap":
         return tuple(
             _unique_strings(
@@ -530,10 +565,18 @@ def _context_ids(
                 _string_value(document.get("task_id")),
                 _string_value(document.get("work_item_id")),
                 _string_value(document.get("project_id")),
-                _string_value(initiative_document.get("initiative_id")) if initiative_document else None,
-                _string_value(initiative_document.get("trace_id")) if initiative_document else None,
-                _string_value(initiative_document.get("project_id")) if initiative_document else None,
-                _string_value(project_document.get("project_id")) if project_document else None,
+                _string_value(initiative_document.get("initiative_id"))
+                if initiative_document
+                else None,
+                _string_value(initiative_document.get("trace_id"))
+                if initiative_document
+                else None,
+                _string_value(initiative_document.get("project_id"))
+                if initiative_document
+                else None,
+                _string_value(project_document.get("project_id"))
+                if project_document
+                else None,
                 pack_context_id,
             )
         )
@@ -549,7 +592,9 @@ def _source_context(
     pack_context_id: str,
 ) -> str:
     if initiative_document is not None:
-        return _string_value(initiative_document.get("initiative_id")) or pack_context_id
+        return (
+            _string_value(initiative_document.get("initiative_id")) or pack_context_id
+        )
     if project_document is not None:
         return _string_value(project_document.get("project_id")) or pack_context_id
     work_item_id = _string_value(document.get("work_item_id"))
@@ -615,7 +660,9 @@ def _linked_project_document(
     return project_by_id.get(project_id)
 
 
-def _subdomain(project_document: dict[str, object] | None, *, workspace_subdomain: str) -> str:
+def _subdomain(
+    project_document: dict[str, object] | None, *, workspace_subdomain: str
+) -> str:
     if project_document is None:
         return workspace_subdomain
     return _string_value(project_document.get("project_id")) or workspace_subdomain
@@ -663,7 +710,9 @@ def _nested_updated_at(document: dict[str, object]) -> str | None:
     return max(timestamps)
 
 
-def _unique_strings(values: tuple[str | None, ...] | tuple[str, ...] | list[str | None]) -> tuple[str, ...]:
+def _unique_strings(
+    values: tuple[str | None, ...] | tuple[str, ...] | list[str | None],
+) -> tuple[str, ...]:
     ordered: list[str] = []
     seen: set[str] = set()
     for value in values:
@@ -695,8 +744,9 @@ def _query_score(query: str | None, fields: tuple[str, ...]) -> int | None:
     tokens = [token for token in normalized_query.split() if token]
     if not tokens:
         return 0
-    haystacks = [_normalize(field) for field in fields if field]
-    haystacks = [field for field in haystacks if field is not None]
+    haystacks: list[str] = [
+        normalized for field in fields if field for normalized in [_normalize(field)] if normalized
+    ]
     score = 0
     for token in tokens:
         token_score = 0
@@ -711,6 +761,13 @@ def _query_score(query: str | None, fields: tuple[str, ...]) -> int | None:
             return None
         score += token_score
     return score
+
+
+def _artifact_entries(document: dict[str, object]) -> tuple[dict[str, object], ...]:
+    artifacts = document.get("artifacts")
+    if not isinstance(artifacts, list):
+        return ()
+    return tuple(entry for entry in artifacts if isinstance(entry, dict))
 
 
 __all__ = [

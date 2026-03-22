@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "$id": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
   "title": "Validation Evidence",
   "description": "Durable machine-readable validation evidence linked to traces, validators, and acceptance items.",
   "type": "object",
@@ -16,7 +16,7 @@
   ],
   "properties": {
     "$schema": {
-      "const": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+      "const": "urn:watchtower:schema:artifacts:records:validation-evidence:v1"
     },
     "id": {
       "type": "string",

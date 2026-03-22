@@ -12,13 +12,13 @@ from watchtower_core.cli.common import (
     add_query_argument,
     examples,
 )
+from watchtower_core.query.references import REFERENCE_REPOSITORY_STATUS_VALUES
 from watchtower_host.cli.query_knowledge_handlers import (
     _run_query_foundations,
     _run_query_references,
     _run_query_standards,
     _run_query_workflows,
 )
-from watchtower_core.query.references import REFERENCE_REPOSITORY_STATUS_VALUES
 
 
 def register_query_knowledge_commands(

@@ -42,7 +42,10 @@ class InitiativeTrackingSyncService(RenderedTrackingSyncService):
                     for entry in initiative_index.entries
                     if entry.initiative_status == "active"
                 ),
-                key=lambda entry: (PHASE_ORDER.get(entry.current_phase, 999), entry.trace_id),
+                key=lambda entry: (
+                    PHASE_ORDER.get(entry.current_phase, 999),
+                    entry.trace_id,
+                ),
             )
         )
         closed_entries = tuple(

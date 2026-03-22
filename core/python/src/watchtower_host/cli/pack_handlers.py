@@ -166,10 +166,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
         if entry.notes:
             print(f"Notes: {entry.notes}")
         print(f"Integration Module: {manifest.integration_module}")
-        print(
-            "Capabilities: "
-            + ", ".join(manifest.declared_capabilities)
-        )
+        print("Capabilities: " + ", ".join(manifest.declared_capabilities))
         print(
             "Owned Roots: "
             f"workspace={manifest.owned_roots.workspace_root}, "
@@ -182,9 +179,7 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
         if manifest.owned_roots.domain_roots:
             print(
                 "Domain Roots: "
-                + ", ".join(
-                    f"{name}={path}" for name, path in manifest.owned_roots.domain_roots
-                )
+                + ", ".join(f"{name}={path}" for name, path in manifest.owned_roots.domain_roots)
             )
         print(
             "Integration Import: "
@@ -338,23 +333,14 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
             )
         )
         print(f"Wrote Changes: {'yes' if result.wrote else 'no'}")
-        print(
-            "Registry Changed: "
-            + ("yes" if result.pack_registry_changed else "no")
-        )
+        print("Registry Changed: " + ("yes" if result.pack_registry_changed else "no"))
         print(
             "Core Python Pyproject Changed: "
             + ("yes" if result.core_python_pyproject_changed else "no")
         )
-        print(
-            "Workspace Sync: "
-            + ("ran" if result.workspace_sync_ran else "skipped")
-        )
+        print("Workspace Sync: " + ("ran" if result.workspace_sync_ran else "skipped"))
         if result.validation_passed is not None:
-            print(
-                "Validation: "
-                + ("passed" if result.validation_passed else "failed")
-            )
+            print("Validation: " + ("passed" if result.validation_passed else "failed"))
         elif result.workspace_sync_required:
             print("Validation: deferred until the shared workspace is synced.")
         if result.changed_paths:
@@ -463,9 +449,7 @@ def _resolve_registry_entry(
         return registry.get_by_pack_slug(pack_slug)
     except KeyError:
         available = ", ".join(entry.pack_slug for entry in registry.packs)
-        raise ValueError(
-            f"Unknown pack slug: {pack_slug}. Available packs: {available}"
-        ) from None
+        raise ValueError(f"Unknown pack slug: {pack_slug}. Available packs: {available}") from None
 
 
 def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:

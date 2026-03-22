@@ -38,9 +38,7 @@ def test_governance_surface_resolver_resolves_governance_map_surface() -> None:
 def test_governance_surface_resolver_reports_declared_dependents() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     base_settings = json.loads(
-        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(
-            encoding="utf-8"
-        )
+        (REPO_ROOT / "core/control_plane/manifests/pack_settings.json").read_text(encoding="utf-8")
     )
 
     with tempfile.TemporaryDirectory(dir=REPO_ROOT) as tmp_dir:

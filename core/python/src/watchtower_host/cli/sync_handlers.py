@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+from watchtower_core.cli.sync_runtime_helpers import run_document_sync_command
 from watchtower_host.cli.sync_document_handlers import (
     DOCUMENT_SYNC_HANDLERS,
 )
-from watchtower_core.cli.sync_runtime_helpers import run_document_sync_command
 
 SYNC_HANDLERS = {**DOCUMENT_SYNC_HANDLERS}
 

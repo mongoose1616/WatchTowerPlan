@@ -8,10 +8,10 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
-from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
+from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
-from watchtower_plan.workspace.service import PlanWorkspaceService
+from watchtower_plan.workspace.service import PlanTaskIndexEntry, PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncRecord
 from watchtower_plan.sync.coordination import CoordinationSyncService
 
@@ -63,7 +63,9 @@ class InitiativeCloseoutService:
                 f"Initiative closeout requires one terminal initiative status: {allowed}"
             )
         if initiative_status == "superseded" and superseded_by_trace_id is None:
-            raise ValueError("Superseded initiative closeout requires superseded_by_trace_id.")
+            raise ValueError(
+                "Superseded initiative closeout requires superseded_by_trace_id."
+            )
         if initiative_status != "superseded" and superseded_by_trace_id is not None:
             raise ValueError(
                 "superseded_by_trace_id is only valid when initiative_status is superseded."
@@ -129,7 +131,9 @@ class InitiativeCloseoutService:
                 document,
             )
             traceability_output_path = str(traceability_path)
-            self._loader.set_validated_document_override(TRACEABILITY_INDEX_PATH, document)
+            self._loader.set_validated_document_override(
+                TRACEABILITY_INDEX_PATH, document
+            )
 
             coordination_records = {
                 record.target: record
@@ -206,7 +210,9 @@ class InitiativeCloseoutService:
             initiative_slug = entry.initiative_id.removeprefix("initiative.")
         command = ["watchtower-core plan closeout initiative"]
         if entry.project_id is not None:
-            command.append(f"--project-slug {entry.project_id.removeprefix('project.')}")
+            command.append(
+                f"--project-slug {entry.project_id.removeprefix('project.')}"
+            )
         if initiative_slug is not None:
             command.append(f"--initiative-slug {initiative_slug}")
         return " ".join(command)
@@ -219,7 +225,7 @@ class InitiativeCloseoutService:
 
         task_entries = PlanWorkspaceService(self._loader).load_task_entries()
         task_entries_by_id = {entry.task_id: entry for entry in task_entries}
-        candidate_entries: dict[str, TaskIndexEntry] = {}
+        candidate_entries: dict[str, PlanTaskIndexEntry] = {}
         missing_task_ids: list[str] = []
 
         for task_id in trace_entry.task_ids:

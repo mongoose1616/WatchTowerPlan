@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:plan:retention-policy-registry:v1",
   "title": "Retention Policy Registry",
-  "description": "Schema for the plan-pack retention-policy registry covering live authority, purge-eligible closed initiative packages, and minimal surviving purge ledgers.",
+  "description": "Schema for the plan-pack retention-policy registry covering live authority, purge-eligible closed initiative packages, and minimal surviving purge records.",
   "type": "object",
   "required": [
     "$schema",
@@ -61,7 +61,7 @@
         "initiative_archive_root",
         "guidance_root",
         "machine_root",
-        "purge_ledger_root"
+        "purge_record_root"
       ]
     },
     "phaseQualifier": {
@@ -84,7 +84,7 @@
       "enum": [
         "authoritative",
         "purge_when_eligible",
-        "minimal_ledger"
+        "minimal_record"
       ]
     },
     "operationalVisibility": {

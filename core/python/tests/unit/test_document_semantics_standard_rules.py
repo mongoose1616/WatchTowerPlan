@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from watchtower_plan.validation import DocumentSemanticsValidationService
+
 from tests.unit.document_semantics_fixtures import (
     copy_control_plane_repo,
     repo_markdown_link,
@@ -11,7 +13,6 @@ from tests.unit.document_semantics_fixtures import (
     write_standard_reference_rule_fixture,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.validation import DocumentSemanticsValidationService
 
 
 def test_document_semantics_validation_accepts_existing_repo_local_markdown_link(
@@ -115,8 +116,7 @@ def test_document_semantics_validation_rejects_noncanonical_directory_operationa
     assert result.passed is False
     assert result.issue_count == 1
     expected = (
-        "directory operationalization surfaces must use repo-relative "
-        "directory paths ending in '/'"
+        "directory operationalization surfaces must use repo-relative directory paths ending in '/'"
     )
     assert expected in result.issues[0].message
 

@@ -118,9 +118,7 @@ class ValidationEvidenceArtifact:
         *,
         doc_path: str,
     ) -> ValidationEvidenceArtifact:
-        checks = tuple(
-            ValidationEvidenceCheck.from_document(entry) for entry in document["checks"]
-        )
+        checks = tuple(ValidationEvidenceCheck.from_document(entry) for entry in document["checks"])
         return cls(
             schema_id=document["$schema"],
             evidence_id=document["id"],
@@ -226,19 +224,13 @@ class EvidenceBundleArtifact:
         """Return the unique expected output paths referenced by the bundle."""
 
         return tuple(
-            sorted(
-                {
-                    path
-                    for entry in self.entries
-                    for path in entry.expected_output_paths
-                }
-            )
+            sorted({path for entry in self.entries for path in entry.expected_output_paths})
         )
 
 
 @dataclass(frozen=True, slots=True)
 class TracePurgeRecord:
-    """Typed trace-purge ledger artifact."""
+    """Typed trace-purge record artifact."""
 
     schema_id: str
     record_id: str

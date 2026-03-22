@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from typing import cast
 
 from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
@@ -22,7 +23,9 @@ from watchtower_plan.query import (
 
 def _run_query_initiatives(args: argparse.Namespace) -> int:
     default_initiative_status = (
-        "active" if _should_default_active_browse(args, include_blocked_only=True) else None
+        "active"
+        if _should_default_active_browse(args, include_blocked_only=True)
+        else None
     )
     initiative_status = args.initiative_status or default_initiative_status
     service = InitiativeQueryService(ControlPlaneLoader())
@@ -64,14 +67,17 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    if _print_payload_factory(
-        args,
-        lambda: _coordination_payload(
-            result=result,
-            initiative_status=initiative_status,
-            include_default_status=(args.initiative_status is None),
-        ),
-    ) == 0:
+    if (
+        _print_payload_factory(
+            args,
+            lambda: _coordination_payload(
+                result=result,
+                initiative_status=initiative_status,
+                include_default_status=(args.initiative_status is None),
+            ),
+        )
+        == 0
+    ):
         return 0
 
     print(f"Coordination mode: {result.index.coordination_mode}")
@@ -83,7 +89,9 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
         if result.index.recent_closed_initiatives:
             print("Recent closeouts:")
             for entry in result.index.recent_closed_initiatives[:3]:
-                print(f"- {entry.trace_id} [{entry.initiative_status}] {entry.closed_at}")
+                print(
+                    f"- {entry.trace_id} [{entry.initiative_status}] {entry.closed_at}"
+                )
                 print(f"  {entry.title}")
         return 0
 
@@ -97,7 +105,7 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
 
 
 def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
-    return serialize_initiative_entry(entry, compact=False)
+    return cast(dict[str, object], serialize_initiative_entry(entry, compact=False))
 
 
 def _should_default_active_browse(
@@ -128,7 +136,9 @@ def _history_browse_empty_message(
 ) -> str:
     if default_initiative_status is None:
         return f"No {noun} matched the requested filters."
-    history_hint = " Pass --initiative-status completed|cancelled|superseded for history browsing."
+    history_hint = (
+        " Pass --initiative-status completed|cancelled|superseded for history browsing."
+    )
     if include_trace_hint:
         history_hint = (
             " Pass --initiative-status completed|cancelled|superseded for history "
@@ -155,7 +165,9 @@ def _emit_initiative_query_results(
         entries=entries,
         noun="initiative",
         empty_message=empty_message,
-        payload_results_factory=lambda: [_initiative_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _initiative_entry_payload(entry) for entry in entries
+        ],
         render_entry=lambda entry: _print_initiative_entry_summary(
             entry,
             show_task_summaries=show_task_summaries,
@@ -231,10 +243,14 @@ def _print_initiative_entry_summary(
     if show_task_summaries and entry.active_task_summaries:
         for task in entry.active_task_summaries:
             state = "actionable" if task.is_actionable else "blocked"
-            print(f"  Task: {task.task_id} [{task.task_status}, {task.priority}, {state}]")
+            print(
+                f"  Task: {task.task_id} [{task.task_status}, {task.priority}, {state}]"
+            )
             print(f"    {task.title}")
     print(f"  Next: {entry.next_action}")
     print(f"  Open first: {entry.next_surface_path}")
+
+
 def _owner_text(primary_owner: str | None, active_owners: tuple[str, ...]) -> str:
     if primary_owner:
         return primary_owner

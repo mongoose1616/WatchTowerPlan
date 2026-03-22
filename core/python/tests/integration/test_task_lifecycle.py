@@ -5,6 +5,15 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from watchtower_plan.initiatives import InitiativePackageService
+from watchtower_plan.tasks import (
+    TaskCreateParams,
+    TaskLifecycleService,
+    TaskUpdateParams,
+    update_task_document,
+)
+from watchtower_plan.tasks import lifecycle as task_lifecycle_module
+from watchtower_plan.tasks import state as plan_task_state
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
@@ -13,15 +22,6 @@ from tests.fixture_repo_support import (
     packwide_initiative_root,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.initiatives import InitiativePackageService
-from watchtower_plan.tasks import update_task_document
-from watchtower_plan.tasks import (
-    TaskCreateParams,
-    TaskLifecycleService,
-    TaskUpdateParams,
-)
-from watchtower_plan.tasks import lifecycle as task_lifecycle_module
-from watchtower_plan.tasks import state as plan_task_state
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

@@ -4,11 +4,9 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from pathlib import Path
 from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync.path_support import add_existing_paths, existing_paths, path_exists
 
 TRACEABILITY_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/traceability/traceability_index.json"

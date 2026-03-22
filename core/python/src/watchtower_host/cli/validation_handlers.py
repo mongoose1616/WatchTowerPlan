@@ -30,9 +30,7 @@ from watchtower_core.validation.suite import DocumentSemanticsValidationService
 
 ValidationServiceFactory = Callable[
     [ControlPlaneLoader],
-    FrontMatterValidationService
-    | ArtifactValidationService
-    | DocumentSemanticsValidationService,
+    FrontMatterValidationService | ArtifactValidationService | DocumentSemanticsValidationService,
 ]
 
 
@@ -124,9 +122,7 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
 
 def _run_validate_suite(args: argparse.Namespace) -> int:
     pack_settings_path = getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH
-    loader = ControlPlaneLoader(
-        active_pack_settings_path=getattr(args, "pack_settings_path", None)
-    )
+    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
     validation_runtime = load_pack_validation_runtime(
         loader,
         pack_settings_path=pack_settings_path,
@@ -151,6 +147,7 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 
     payload = _build_suite_validation_payload(result)
     exit_code = 0 if result.passed else 1
+
     def _render_human() -> None:
         print(
             "Ran validation suite "
@@ -258,6 +255,7 @@ def _run_validate_all(args: argparse.Namespace) -> int:
         ],
     }
     exit_code = 0 if result.passed else 1
+
     def _render_human() -> None:
         print(
             "Ran validate all across "

@@ -28,8 +28,7 @@ def test_routing_engine_selects_routes_for_request_text() -> None:
     assert result.selected_routes
     assert result.selected_routes[0].route_id == "route.code_review"
     assert any(
-        workflow.workflow_id == "workflow.code_review"
-        for workflow in result.selected_workflows
+        workflow.workflow_id == "workflow.code_review" for workflow in result.selected_workflows
     )
 
 

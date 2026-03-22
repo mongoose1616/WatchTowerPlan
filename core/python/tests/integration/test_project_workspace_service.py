@@ -4,14 +4,12 @@ import json
 from pathlib import Path
 from shutil import copytree, rmtree
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_plan.projects.context import load_project_context
 from watchtower_plan.projects import (
     PLAN_PROJECT_INDEX_PATH,
     PlanProjectSearchParams,
@@ -19,6 +17,9 @@ from watchtower_plan.projects import (
     ProjectRepositoryLinkSpec,
     ProjectWorkspaceService,
 )
+from watchtower_plan.projects.context import load_project_context
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -152,8 +153,13 @@ def test_project_workspace_validation_detects_stale_surfaces_until_rebuilt(
     validation = service.validate("watchtower", write=False)
 
     assert validation.passed is False
-    assert any("Project rendered surface drift detected" in message for message in validation.issue_messages)
-    assert any("Project aggregate index drift detected" in message for message in validation.issue_messages)
+    assert any(
+        "Project rendered surface drift detected" in message
+        for message in validation.issue_messages
+    )
+    assert any(
+        "Project aggregate index drift detected" in message for message in validation.issue_messages
+    )
 
     service.sync(write=True)
     restored = service.validate("watchtower", write=False)
@@ -184,7 +190,10 @@ def test_project_context_load_uses_machine_state_even_when_rendered_surfaces_dri
 
     validation = service.validate("watchtower", write=False)
     assert validation.passed is False
-    assert any("Project rendered surface drift detected" in message for message in validation.issue_messages)
+    assert any(
+        "Project rendered surface drift detected" in message
+        for message in validation.issue_messages
+    )
 
 
 def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
@@ -203,8 +212,7 @@ def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
     )
 
     initiative_path = (
-        repo_root
-        / "plan/projects/watchtower/initiatives/watchtower_scope_flow/.wt/initiative.json"
+        repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/.wt/initiative.json"
     )
     initiative_document = _load_json(initiative_path)
     initiative_document["updated_at"] = "2026-03-17T17:30:00Z"
@@ -218,23 +226,17 @@ def test_project_workspace_sync_uses_latest_child_initiative_timestamp(
 
     project_index = _load_json(repo_root / PLAN_PROJECT_INDEX_PATH)
     project_entry = next(
-        entry
-        for entry in project_index["entries"]
-        if entry["project_id"] == "project.watchtower"
+        entry for entry in project_index["entries"] if entry["project_id"] == "project.watchtower"
     )
     assert project_entry["updated_at"] == "2026-03-17T17:30:00Z"
 
     artifact_index = _load_json(repo_root / PLAN_ARTIFACT_INDEX_PATH)
     artifact_entry = next(
-        entry
-        for entry in artifact_index["artifacts"]
-        if entry["artifact_id"] == "index.projects"
+        entry for entry in artifact_index["artifacts"] if entry["artifact_id"] == "index.projects"
     )
     assert artifact_entry["updated_at"] == "2026-03-17T17:30:00Z"
 
-    summary_view = (repo_root / "plan/projects/watchtower/summary.md").read_text(
-        encoding="utf-8"
-    )
+    summary_view = (repo_root / "plan/projects/watchtower/summary.md").read_text(encoding="utf-8")
     assert "`updated_at`: `2026-03-17T17:30:00Z`" in summary_view
 
 
@@ -254,4 +256,6 @@ def test_project_workspace_validation_blocks_stray_machine_root_agents_file(
     validation = service.validate("watchtower", write=False)
 
     assert validation.passed is False
-    assert any("Forbidden human surface is present" in message for message in validation.issue_messages)
+    assert any(
+        "Forbidden human surface is present" in message for message in validation.issue_messages
+    )

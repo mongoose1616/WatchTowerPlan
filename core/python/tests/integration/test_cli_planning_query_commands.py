@@ -4,30 +4,24 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from watchtower_plan.initiatives import InitiativePackageService
+from watchtower_plan.plan_workspace import PlanWorkspaceService
+from watchtower_plan.sync.coordination import CoordinationSyncService
+from watchtower_plan.tasks import update_task_document
 
+from tests.cli_command_helpers import run_json_command
 from tests.fixture_repo_support import (
     InitiativeTaskSpec,
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )
-from tests.cli_command_helpers import run_json_command
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.initiatives import InitiativePackageService
-from watchtower_plan.plan_workspace import PlanWorkspaceService
-from watchtower_plan.tasks import update_task_document
-from watchtower_plan.sync.coordination import CoordinationSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 ACTIVE_TRACE_ID = "trace.example_live_query_active"
 ACTIVE_INITIATIVE_ID = "initiative.example_live_query_active"
-ACTIVE_TASK_ID = (
-    "task.example_live_query_active."
-    "seed_live_query_task_details"
-)
-DEPENDENCY_TASK_ID = (
-    "task.example_live_query_active."
-    "review_live_query_dependency_details"
-)
+ACTIVE_TASK_ID = "task.example_live_query_active.seed_live_query_task_details"
+DEPENDENCY_TASK_ID = "task.example_live_query_active.review_live_query_dependency_details"
 COMPLETED_TRACE_ID = "trace.example_live_query_completed"
 COMPLETED_INITIATIVE_SLUG = "example_live_query_completed"
 COMPLETED_TASK_ID = "task.example_live_query_completed.seed_closed_query_task"
@@ -118,9 +112,7 @@ def live_query_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 @pytest.fixture(scope="module")
 def completed_query_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    return _build_completed_query_repo(
-        tmp_path_factory.mktemp("completed_query_repo") / "repo"
-    )
+    return _build_completed_query_repo(tmp_path_factory.mktemp("completed_query_repo") / "repo")
 
 
 def test_query_acceptance_supports_json_output(capsys) -> None:
@@ -138,8 +130,7 @@ def test_query_acceptance_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query acceptance"
     assert payload["status"] == "ok"
     assert any(
-        entry["contract_id"]
-        == "contract.acceptance.governed_acceptance_example"
+        entry["contract_id"] == "contract.acceptance.governed_acceptance_example"
         for entry in payload["results"]
     )
 
@@ -159,8 +150,7 @@ def test_query_evidence_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query evidence"
     assert payload["status"] == "ok"
     assert any(
-        entry["evidence_id"]
-        == "evidence.governed_acceptance_example.validation_baseline"
+        entry["evidence_id"] == "evidence.governed_acceptance_example.validation_baseline"
         for entry in payload["results"]
     )
 
@@ -239,9 +229,7 @@ def test_query_initiatives_supports_json_output(
     assert payload["command"] == "watchtower-core plan query initiatives"
     assert payload["status"] == "ok"
     assert "default_initiative_status" not in payload
-    assert any(
-        entry["trace_id"] == ACTIVE_TRACE_ID for entry in payload["results"]
-    )
+    assert any(entry["trace_id"] == ACTIVE_TRACE_ID for entry in payload["results"])
 
 
 def test_query_coordination_defaults_to_active_status(
@@ -292,9 +280,7 @@ def test_query_coordination_supports_explicit_historical_lookup(
     assert result == 0
     assert payload["command"] == "watchtower-core plan query coordination"
     assert payload["status"] == "ok"
-    matched = next(
-        entry for entry in payload["results"] if entry["trace_id"] == COMPLETED_TRACE_ID
-    )
+    matched = next(entry for entry in payload["results"] if entry["trace_id"] == COMPLETED_TRACE_ID)
     assert matched["artifact_status"] == "active"
     assert matched["initiative_status"] == "completed"
     assert "status" not in matched
@@ -315,9 +301,7 @@ def test_query_readiness_supports_json_output(
     assert result == 0
     assert payload["command"] == "watchtower-core plan query readiness"
     assert payload["status"] == "ok"
-    assert any(
-        entry["initiative_id"] == ACTIVE_INITIATIVE_ID for entry in payload["results"]
-    )
+    assert any(entry["initiative_id"] == ACTIVE_INITIATIVE_ID for entry in payload["results"])
 
 
 def test_query_artifacts_supports_json_output(capsys) -> None:
@@ -329,9 +313,7 @@ def test_query_artifacts_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core plan query artifacts"
     assert payload["status"] == "ok"
-    assert any(
-        entry["artifact_id"] == "index.artifacts" for entry in payload["results"]
-    )
+    assert any(entry["artifact_id"] == "index.artifacts" for entry in payload["results"])
 
 
 def test_query_discrepancies_supports_json_output(capsys) -> None:
@@ -397,9 +379,7 @@ def test_query_initiatives_uses_explicit_artifact_status_field(
 
     assert result == 0
     assert payload["command"] == "watchtower-core plan query initiatives"
-    entry = next(
-        item for item in payload["results"] if item["trace_id"] == COMPLETED_TRACE_ID
-    )
+    entry = next(item for item in payload["results"] if item["trace_id"] == COMPLETED_TRACE_ID)
     assert entry["artifact_status"] == "active"
     assert entry["initiative_status"] == "completed"
     assert "status" not in entry

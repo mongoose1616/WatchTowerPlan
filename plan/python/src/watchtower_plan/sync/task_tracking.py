@@ -65,11 +65,15 @@ class TaskTrackingSyncService(RenderedTrackingSyncService):
                     for label, count in (
                         (
                             "completed",
-                            sum(task.task_status == "completed" for task in closed_tasks),
+                            sum(
+                                task.task_status == "completed" for task in closed_tasks
+                            ),
                         ),
                         (
                             "cancelled",
-                            sum(task.task_status == "cancelled" for task in closed_tasks),
+                            sum(
+                                task.task_status == "cancelled" for task in closed_tasks
+                            ),
                         ),
                     )
                     if count > 0

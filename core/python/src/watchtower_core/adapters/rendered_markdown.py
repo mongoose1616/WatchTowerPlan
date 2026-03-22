@@ -72,9 +72,7 @@ def _render_table_section(
     rendered.append("| " + " | ".join(separator) + " |")
     for row in rows:
         rendered.append(
-            "| "
-            + " | ".join(_render_column_cell(column, row) for column in columns)
-            + " |"
+            "| " + " | ".join(_render_column_cell(column, row) for column in columns) + " |"
         )
     return rendered
 
@@ -143,11 +141,7 @@ def _render_column_cell(
         path = row.get(path_field)
         if path is None or path == "":
             return empty_value
-        label_value = (
-            row.get(column.label_field)
-            if column.label_field is not None
-            else value
-        )
+        label_value = row.get(column.label_field) if column.label_field is not None else value
         label = _string_value(label_value, empty_value=empty_value)
         return render_repo_link(str(path), label=label)
     raise ValueError(f"Unsupported rendered column formatter: {column.formatter}")

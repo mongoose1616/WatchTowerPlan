@@ -1,0 +1,45 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
+  "id": "evidence.governed_acceptance_example.validation_baseline",
+  "title": "Governed Acceptance Example Validation Baseline",
+  "status": "active",
+  "trace_id": "trace.governed_acceptance_example",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-19T11:00:00Z",
+  "source_surface_paths": [
+    "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+    "plan/docs/standards/governance/traceability_standard.md"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.governed_acceptance_example"
+  ],
+  "checks": [
+    {
+      "check_id": "check.governed_acceptance_example.validation_baseline",
+      "title": "Governed acceptance example remains aligned",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md"
+      ],
+      "subject_ids": [
+        "contract.acceptance.governed_acceptance_example",
+        "trace.governed_acceptance_example"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.governed_acceptance_example.001"
+      ],
+      "notes": "Durable generic example evidence for acceptance and traceability workflows."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
+    "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+    "core/docs/commands/core_python/watchtower_core_query_evidence.md",
+    "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
+  ],
+  "notes": "Durable generic example evidence for acceptance, validation, and traceability guidance."
+}

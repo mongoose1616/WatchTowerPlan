@@ -53,9 +53,7 @@ class GovernanceSurfaceQueryService:
         authority = params.authority.casefold() if params.authority is not None else None
         visibility = params.visibility.casefold() if params.visibility is not None else None
         declaration_source = (
-            params.declaration_source.casefold()
-            if params.declaration_source is not None
-            else None
+            params.declaration_source.casefold() if params.declaration_source is not None else None
         )
 
         matches: list[tuple[int, GovernanceSurfaceResolution]] = []

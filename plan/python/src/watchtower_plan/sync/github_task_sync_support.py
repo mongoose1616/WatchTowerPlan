@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from os import environ
-from typing import Protocol
+from typing import Protocol, cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import (
@@ -13,7 +13,6 @@ from watchtower_core.integrations.github import (
     GitHubLabelSpec,
     GitHubProjectContext,
 )
-from watchtower_plan.sync.task_index import TaskIndexSyncService
 from watchtower_plan.tasks import PlanTaskStateDocument, load_task_document
 from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.query.tasks import TaskQueryService, TaskSearchParams
@@ -124,7 +123,7 @@ def resolve_repository(task: PlanTaskStateDocument, params: GitHubTaskSyncParams
     if params.repository is not None:
         return params.repository
     if task.github_repository is not None:
-        return task.github_repository
+        return cast(str, task.github_repository)
     environment_repository = environ.get("GITHUB_REPOSITORY")
     if environment_repository is not None and environment_repository.strip():
         return environment_repository.strip()
@@ -233,7 +232,7 @@ def sync_project(
     """Upsert the GitHub project item when a project context is active."""
 
     if project_context is None:
-        return task.github_project_item_id
+        return cast(str | None, task.github_project_item_id)
 
     item_id = task.github_project_item_id
     if item_id is None:
@@ -246,7 +245,7 @@ def sync_project(
         item_id=item_id,
         status_name=PROJECT_STATUS_BY_TASK_STATUS[task.task_status],
     )
-    return item_id
+    return cast(str | None, item_id)
 
 
 def task_state_updates(

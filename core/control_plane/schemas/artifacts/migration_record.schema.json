@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "$id": "urn:watchtower:schema:artifacts:records:migration-record:v1",
   "title": "Migration Record",
-  "description": "Machine-readable migration ledger record for controlled repository transitions.",
+  "description": "Machine-readable migration record for controlled repository transitions.",
   "type": "object",
   "required": [
     "$schema",
@@ -17,7 +17,7 @@
   ],
   "properties": {
     "$schema": {
-      "const": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+      "const": "urn:watchtower:schema:artifacts:records:migration-record:v1"
     },
     "id": {
       "type": "string",

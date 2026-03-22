@@ -73,9 +73,7 @@ def test_validation_evidence_recorder_writes_default_outputs_to_injected_workspa
         validator_id="validator.control_plane.traceability_index",
         target_path="core/control_plane/indexes/traceability/traceability_index.json",
         engine="json_schema",
-        schema_ids=(
-            "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
-        ),
+        schema_ids=("urn:watchtower:schema:artifacts:indexes:traceability-index:v1",),
         passed=True,
         issues=(),
     )

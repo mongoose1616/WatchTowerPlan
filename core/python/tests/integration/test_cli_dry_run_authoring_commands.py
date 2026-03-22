@@ -5,11 +5,11 @@ from shutil import copytree
 
 import pytest
 
+from tests.cli_command_helpers import run_json_command
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_minimal_plan_pack,
 )
-from tests.cli_command_helpers import run_json_command
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -70,10 +70,7 @@ def test_task_create_supports_json_output(
     assert result == 0
     assert payload["command"] == "watchtower-core plan task create"
     assert payload["status"] == "ok"
-    assert (
-        payload["task_id"]
-        == "task.example_cli_task_preview.cli_preview_json_output"
-    )
+    assert payload["task_id"] == "task.example_cli_task_preview.cli_preview_json_output"
     assert payload["wrote"] is False
     assert payload["changed"] is True
 

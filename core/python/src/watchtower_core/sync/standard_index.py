@@ -110,7 +110,6 @@ class StandardIndexSyncService:
             standard_documents,
             key=lambda item: item[0].relative_to(self._repo_root).as_posix(),
         ):
-
             relative_path = path.relative_to(self._repo_root).as_posix()
             front_matter = load_front_matter(path)
             self._loader.schema_store.validate_instance(
@@ -157,12 +156,10 @@ class StandardIndexSyncService:
                 raise ValueError(
                     f"{relative_path} Updated At section does not match front matter updated_at."
                 )
-            operationalization_modes, operationalization_paths = (
-                parse_standard_operationalization(
-                    relative_path,
-                    sections.get(STANDARD_OPERATIONALIZATION_SECTION),
-                    self._repo_root,
-                )
+            operationalization_modes, operationalization_paths = parse_standard_operationalization(
+                relative_path,
+                sections.get(STANDARD_OPERATIONALIZATION_SECTION),
+                self._repo_root,
             )
 
             current = existing_entries.get(front_matter["id"], {})

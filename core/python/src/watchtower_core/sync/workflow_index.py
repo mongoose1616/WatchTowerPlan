@@ -117,9 +117,7 @@ def _derive_trigger_tags(
     for source in (workflow_id, title, summary, *related_paths, *reference_doc_paths, *extra_tags):
         tokens.extend(re.findall(r"[a-z0-9]+", source.casefold()))
     filtered_tokens = tuple(
-        token
-        for token in tokens
-        if len(token) > 2 and token not in WORKFLOW_TRIGGER_TAG_STOPWORDS
+        token for token in tokens if len(token) > 2 and token not in WORKFLOW_TRIGGER_TAG_STOPWORDS
     )
     return ordered_unique(filtered_tokens)
 
@@ -137,11 +135,7 @@ def validate_workflow_additional_load_section(
 
     validate_explained_bullet_section(relative_path, WORKFLOW_ADDITIONAL_LOAD_SECTION, section)
 
-    bullets = [
-        line.strip()
-        for line in section.splitlines()
-        if line.strip().startswith("- ")
-    ]
+    bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
     if len(bullets) > WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS:
         raise ValueError(
             f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must not contain "
@@ -221,9 +215,7 @@ def build_workflow_document_context(
 
     metadata_registry = loader.load_workflow_metadata_registry()
     return WorkflowDocumentContext(
-        metadata_by_workflow_id={
-            entry.workflow_id: entry for entry in metadata_registry.entries
-        },
+        metadata_by_workflow_id={entry.workflow_id: entry for entry in metadata_registry.entries},
         reference_urls_by_path=(
             build_reference_urls_by_path(loader)
             if reference_urls_by_path is None
@@ -285,10 +277,7 @@ def load_workflow_document_with_reference_map(
 
     direct_external_urls: tuple[str, ...] = ()
     transitive_external_urls = ordered_unique(
-        *(
-            reference_urls_by_path.get(reference_path, ())
-            for reference_path in reference_doc_paths
-        )
+        *(reference_urls_by_path.get(reference_path, ()) for reference_path in reference_doc_paths)
     )
     external_reference_urls = ordered_unique(direct_external_urls, transitive_external_urls)
     workflow_id = f"workflow.{Path(relative_path).stem}"
@@ -456,9 +445,7 @@ class WorkflowIndexSyncService:
 
     def _validate_companion_links(self, entries: list[dict[str, object]]) -> None:
         known_ids = {
-            entry["workflow_id"]
-            for entry in entries
-            if isinstance(entry.get("workflow_id"), str)
+            entry["workflow_id"] for entry in entries if isinstance(entry.get("workflow_id"), str)
         }
         for entry in entries:
             workflow_id = entry.get("workflow_id")

@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1",
+  "id": "purge.post_rewrite_core_cleanup_and_surface_reduction",
+  "title": "Trace Purge Record for Post-Rewrite Core Cleanup and Surface Reduction Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-16T07:50:26Z",
+  "purged_at": "2026-03-19T07:19:14Z",
+  "closure_reason": "Repaired the workspace validation regression, generalized pack-surface loading, retired inventory-only control-plane families and example validation, reconciled stale historical references, and reran clean validation.",
+  "summary": "Removed the legacy docs-backed planning package, acceptance contract, and validation evidence as part of the hard cutover to live plan authority.",
+  "surviving_authority_paths": [
+    "core/control_plane/indexes/coordination/coordination_index.json",
+    "core/control_plane/indexes/initiatives/initiative_index.json",
+    "decisions.md",
+    "plan/tracking/coordination_tracking.md",
+    "plan/tracking/initiative_tracking.md",
+    "plan/tracking/task_tracking.md",
+    "requirements.md"
+  ],
+  "purged_paths": [
+    "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.json",
+    "core/control_plane/records/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+    "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+    "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/reconcile_retired_example_corpus_historical_references.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_artifact_type_and_role_registries.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+    "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_post_rewrite_core_cleanup.md"
+  ]
+}

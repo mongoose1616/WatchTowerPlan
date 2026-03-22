@@ -34,14 +34,15 @@ def test_public_query_services_cover_generic_governed_surfaces() -> None:
         WorkflowSearchParams(query="validation", limit=10)
     )
     assert any(
-        entry.doc_path == "core/workflows/modules/code_validation.md"
-        for entry in workflow_matches
+        entry.doc_path == "core/workflows/modules/code_validation.md" for entry in workflow_matches
     )
 
     authority_matches = AuthorityMapQueryService(loader).search(
         AuthorityMapSearchParams(question_id="authority.governance.workflow_routing")
     )
-    assert authority_matches[0].canonical_path == "core/control_plane/indexes/routes/route_index.json"
+    assert (
+        authority_matches[0].canonical_path == "core/control_plane/indexes/routes/route_index.json"
+    )
 
 
 def test_public_query_services_cover_pack_surface_and_artifact_family_queries() -> None:

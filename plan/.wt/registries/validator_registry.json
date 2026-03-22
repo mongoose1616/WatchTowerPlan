@@ -105,15 +105,15 @@
     {
       "id": "validator.control_plane.migration_record",
       "title": "Migration Record Validator",
-      "description": "Validates machine-readable migration ledger artifacts.",
+      "description": "Validates machine-readable migration record artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "migration_record",
       "applies_to": [
-        "core/control_plane/ledgers/migrations/**"
+        "core/control_plane/records/migrations/**"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+        "urn:watchtower:schema:artifacts:records:migration-record:v1"
       ]
     },
     {
@@ -189,15 +189,15 @@
     {
       "id": "validator.control_plane.release_record",
       "title": "Release Record Validator",
-      "description": "Validates machine-readable release ledger artifacts.",
+      "description": "Validates machine-readable release record artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "release_record",
       "applies_to": [
-        "core/control_plane/ledgers/releases/**"
+        "core/control_plane/records/releases/**"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+        "urn:watchtower:schema:artifacts:records:release-record:v1"
       ]
     },
     {
@@ -301,15 +301,15 @@
     {
       "id": "validator.control_plane.trace_purge_record",
       "title": "Trace Purge Record Validator",
-      "description": "Validates machine-readable trace-purge ledger artifacts.",
+      "description": "Validates machine-readable trace-purge record artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "trace_purge_record",
       "applies_to": [
-        "core/control_plane/ledgers/purges/**"
+        "core/control_plane/records/purges/**"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+        "urn:watchtower:schema:artifacts:records:trace-purge-record:v1"
       ]
     },
     {
@@ -329,15 +329,15 @@
     {
       "id": "validator.control_plane.validation_evidence",
       "title": "Validation Evidence Validator",
-      "description": "Validates durable validation-evidence ledger artifacts.",
+      "description": "Validates durable validation-evidence record artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "validation_evidence",
       "applies_to": [
-        "core/control_plane/ledgers/validation_evidence/**"
+        "core/control_plane/records/validation_evidence/**"
       ],
       "schema_ids": [
-        "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+        "urn:watchtower:schema:artifacts:records:validation-evidence:v1"
       ]
     },
     {
@@ -1171,7 +1171,7 @@
         "plan/initiatives/**",
         "plan/projects/**",
         "core/control_plane/contracts/acceptance/**",
-        "core/control_plane/ledgers/validation_evidence/**",
+        "core/control_plane/records/validation_evidence/**",
         "core/control_plane/indexes/traceability/**"
       ],
       "notes": "Used by the watchtower-core validate acceptance command."

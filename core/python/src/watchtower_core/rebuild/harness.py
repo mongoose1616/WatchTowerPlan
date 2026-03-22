@@ -191,8 +191,7 @@ class RebuildHarness:
 def _require_json_document(output: RebuildOutput) -> dict[str, object]:
     if not isinstance(output.content, dict):
         raise TypeError(
-            "JSON rebuild outputs must provide a dict document for "
-            f"{output.relative_output_path}."
+            f"JSON rebuild outputs must provide a dict document for {output.relative_output_path}."
         )
     return output.content
 

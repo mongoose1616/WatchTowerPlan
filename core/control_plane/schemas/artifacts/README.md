@@ -22,7 +22,7 @@
 | `core/control_plane/schemas/artifacts/schema_catalog.schema.json` | Schema for the authored schema catalog registry artifact family. |
 | `core/control_plane/schemas/artifacts/standard_index.schema.json` | Schema for the machine-readable standard-index artifact family. |
 | `core/control_plane/schemas/artifacts/task_index.schema.json` | Schema for the machine-readable plan task-summary index artifact family. |
-| `core/control_plane/schemas/artifacts/trace_purge_record.schema.json` | Schema for the machine-readable trace-purge ledger artifact family. |
+| `core/control_plane/schemas/artifacts/trace_purge_record.schema.json` | Schema for the machine-readable trace-purge record artifact family. |
 | `core/control_plane/schemas/artifacts/traceability_index.schema.json` | Schema for the unified machine-readable traceability-index artifact family. |
 | `core/control_plane/schemas/artifacts/validation_evidence.schema.json` | Schema for the durable validation-evidence artifact family. |
 | `core/control_plane/schemas/artifacts/validation_suite_registry.schema.json` | Schema for the authored validation-suite registry artifact family. |

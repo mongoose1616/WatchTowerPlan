@@ -76,8 +76,7 @@ class PromotionPolicyHelper:
             raise KeyError(f"{source_artifact_kind}:{target_family}")
         if len(matches) > 1:
             raise ValueError(
-                "Multiple active promotion policies match "
-                f"{source_artifact_kind}:{target_family}."
+                f"Multiple active promotion policies match {source_artifact_kind}:{target_family}."
             )
         return matches[0]
 

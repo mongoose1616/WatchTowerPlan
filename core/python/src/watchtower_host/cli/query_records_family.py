@@ -34,8 +34,7 @@ def register_query_record_commands(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query acceptance --trace-id "
-            "trace.governed_acceptance_example",
+            "uv run watchtower-core query acceptance --trace-id trace.governed_acceptance_example",
             "uv run watchtower-core query acceptance --acceptance-id "
             "ac.governed_acceptance_example.001 --format json",
         ),
@@ -47,7 +46,10 @@ def register_query_record_commands(
     )
     query_acceptance_parser.add_argument(
         "--source-surface-path",
-        help="Exact source surface path filter such as plan/initiatives/example/initiative_brief.md.",
+        help=(
+            "Exact source surface path filter such as "
+            "plan/initiatives/example/initiative_brief.md."
+        ),
     )
     query_acceptance_parser.add_argument(
         "--acceptance-id",
@@ -65,12 +67,11 @@ def register_query_record_commands(
             result, acceptance ID, or validator ID.
 
             Use this when you need to inspect durable validation proof without
-            opening the raw ledger JSON directly.
+            opening the raw record JSON directly.
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core query evidence --trace-id "
-            "trace.governed_acceptance_example",
+            "uv run watchtower-core query evidence --trace-id trace.governed_acceptance_example",
             "uv run watchtower-core query evidence --acceptance-id "
             "ac.governed_acceptance_example.001 --format json",
         ),

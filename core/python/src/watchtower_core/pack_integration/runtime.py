@@ -154,17 +154,14 @@ def validate_pack_validation_runtime(
 ) -> PackValidationRuntime:
     if not isinstance(runtime, PackValidationRuntime):
         raise ValueError(
-            "Pack validation_provider must return PackValidationRuntime: "
-            f"{integration_module}"
+            f"Pack validation_provider must return PackValidationRuntime: {integration_module}"
         )
     if not callable(runtime.document_semantics_factory):
         raise ValueError(
             "Pack validation_provider must return a callable document_semantics_factory: "
             f"{integration_module}"
         )
-    if runtime.suite_target_resolver is not None and not callable(
-        runtime.suite_target_resolver
-    ):
+    if runtime.suite_target_resolver is not None and not callable(runtime.suite_target_resolver):
         raise ValueError(
             "Pack validation_provider must return a callable suite_target_resolver when "
             f"declared: {integration_module}"
@@ -179,10 +176,11 @@ def validate_pack_query_runtime(
 ) -> PackQueryRuntime:
     if not isinstance(runtime, PackQueryRuntime):
         raise ValueError(
-            "Pack query_runtime hook must return PackQueryRuntime: "
-            f"{integration_module}"
+            f"Pack query_runtime hook must return PackQueryRuntime: {integration_module}"
         )
-    if not runtime.commands or not all(isinstance(command, str) and command for command in runtime.commands):
+    if not runtime.commands or not all(
+        isinstance(command, str) and command for command in runtime.commands
+    ):
         raise ValueError(
             "Pack query_runtime hook must return one or more non-empty command names: "
             f"{integration_module}"
@@ -197,10 +195,11 @@ def validate_pack_sync_runtime(
 ) -> PackSyncRuntime:
     if not isinstance(runtime, PackSyncRuntime):
         raise ValueError(
-            "Pack sync_targets hook must return PackSyncRuntime: "
-            f"{integration_module}"
+            f"Pack sync_targets hook must return PackSyncRuntime: {integration_module}"
         )
-    if not runtime.targets or not all(isinstance(target, str) and target for target in runtime.targets):
+    if not runtime.targets or not all(
+        isinstance(target, str) and target for target in runtime.targets
+    ):
         raise ValueError(
             "Pack sync_targets hook must return one or more non-empty target names: "
             f"{integration_module}"

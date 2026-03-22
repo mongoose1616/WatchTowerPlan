@@ -64,15 +64,18 @@ def _emit_collection_query_results[EntryT](
 ) -> int:
     """Emit one standard collection-query payload or human summary."""
 
-    if _print_payload_factory(
-        args,
-        lambda: _collection_query_payload(
-            command_name=command_name,
-            entries=entries,
-            payload_results_factory=payload_results_factory,
-            extra_payload=extra_payload,
-        ),
-    ) == 0:
+    if (
+        _print_payload_factory(
+            args,
+            lambda: _collection_query_payload(
+                command_name=command_name,
+                entries=entries,
+                payload_results_factory=payload_results_factory,
+                extra_payload=extra_payload,
+            ),
+        )
+        == 0
+    ):
         return 0
 
     if not entries:

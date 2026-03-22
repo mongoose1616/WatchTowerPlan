@@ -80,19 +80,29 @@ class PlanTaskStateDocument:
             owner=str(task_document["owner"]),
             created_at=str(task_document["created_at"]),
             updated_at=str(task_document["updated_at"]),
-            depends_on=tuple(str(value) for value in task_document.get("dependency_task_ids", ())),
-            blocked_by=tuple(str(value) for value in task_document.get("blocker_task_ids", ())),
-            related_ids=tuple(str(value) for value in task_document.get("related_ids", ())),
-            applies_to=tuple(str(value) for value in task_document.get("applies_to", ())),
-            scope_items=tuple(str(value) for value in task_document.get("scope_items", ())),
-            done_when_items=tuple(str(value) for value in task_document.get("done_when_items", ())),
+            depends_on=_tuple_of_strings(task_document.get("dependency_task_ids")),
+            blocked_by=_tuple_of_strings(task_document.get("blocker_task_ids")),
+            related_ids=_tuple_of_strings(task_document.get("related_ids")),
+            applies_to=_tuple_of_strings(task_document.get("applies_to")),
+            scope_items=_tuple_of_strings(task_document.get("scope_items")),
+            done_when_items=_tuple_of_strings(task_document.get("done_when_items")),
             github_repository=_optional_str(task_document.get("github_repository")),
             github_issue_number=_optional_int(task_document.get("github_issue_number")),
-            github_issue_node_id=_optional_str(task_document.get("github_issue_node_id")),
-            github_project_owner=_optional_str(task_document.get("github_project_owner")),
-            github_project_owner_type=_optional_str(task_document.get("github_project_owner_type")),
-            github_project_number=_optional_int(task_document.get("github_project_number")),
-            github_project_item_id=_optional_str(task_document.get("github_project_item_id")),
+            github_issue_node_id=_optional_str(
+                task_document.get("github_issue_node_id")
+            ),
+            github_project_owner=_optional_str(
+                task_document.get("github_project_owner")
+            ),
+            github_project_owner_type=_optional_str(
+                task_document.get("github_project_owner_type")
+            ),
+            github_project_number=_optional_int(
+                task_document.get("github_project_number")
+            ),
+            github_project_item_id=_optional_str(
+                task_document.get("github_project_item_id")
+            ),
             github_synced_at=_optional_str(task_document.get("github_synced_at")),
         )
 
@@ -128,7 +138,9 @@ class PlanInitiativeState:
         return str(value) if value is not None else None
 
 
-def iter_initiative_states(loader: ControlPlaneLoader) -> tuple[PlanInitiativeState, ...]:
+def iter_initiative_states(
+    loader: ControlPlaneLoader,
+) -> tuple[PlanInitiativeState, ...]:
     """Return every initiative package state currently present under `plan/**`."""
 
     pack_loader = _plan_loader(loader)
@@ -173,7 +185,9 @@ def find_initiative_by_slug(
     raise ValueError(f"Unknown live initiative slug: {initiative_slug}")
 
 
-def iter_task_documents(loader: ControlPlaneLoader) -> tuple[PlanTaskStateDocument, ...]:
+def iter_task_documents(
+    loader: ControlPlaneLoader,
+) -> tuple[PlanTaskStateDocument, ...]:
     """Return every validated live task-state document across the plan workspace."""
 
     documents: list[PlanTaskStateDocument] = []
@@ -232,7 +246,9 @@ def write_task_document(
 ) -> None:
     """Write one live task-state document under the active plan workspace."""
 
-    _plan_loader(loader).schema_store.validate_instance(document, schema_id=TASK_STATE_SCHEMA_ID)
+    _plan_loader(loader).schema_store.validate_instance(
+        document, schema_id=TASK_STATE_SCHEMA_ID
+    )
     loader.artifact_store.write_json_object(relative_path, document)
 
 
@@ -266,7 +282,9 @@ def update_task_document(
 def _initiative_roots(repo_root: Path) -> tuple[Path, ...]:
     roots: list[Path] = []
     workspace_paths = PackWorkspacePaths.from_loader(
-        ControlPlaneLoader(repo_root, active_pack_settings_path=PLAN_PACK_SETTINGS_PATH),
+        ControlPlaneLoader(
+            repo_root, active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
+        ),
         pack_settings_path=PLAN_PACK_SETTINGS_PATH,
     )
 
@@ -276,11 +294,15 @@ def _initiative_roots(repo_root: Path) -> tuple[Path, ...]:
 
     projects_root = repo_root / workspace_paths.projects_root
     if projects_root.exists():
-        for project_root in sorted(path for path in projects_root.iterdir() if path.is_dir()):
+        for project_root in sorted(
+            path for path in projects_root.iterdir() if path.is_dir()
+        ):
             initiatives_root = project_root / "initiatives"
             if not initiatives_root.exists():
                 continue
-            roots.extend(path for path in sorted(initiatives_root.iterdir()) if path.is_dir())
+            roots.extend(
+                path for path in sorted(initiatives_root.iterdir()) if path.is_dir()
+            )
 
     return tuple(roots)
 
@@ -291,7 +313,9 @@ def _initiative_for_task_path(
 ) -> PlanInitiativeState:
     prefix, separator, _suffix = relative_path.partition("/.wt/tasks/")
     if not separator:
-        raise ValueError(f"Task path is not under an initiative-local task root: {relative_path}")
+        raise ValueError(
+            f"Task path is not under an initiative-local task root: {relative_path}"
+        )
     for state in iter_initiative_states(loader):
         if state.relative_root == prefix:
             return state
@@ -316,6 +340,14 @@ def _optional_int(value: object) -> int | None:
 
 def _optional_str(value: object) -> str | None:
     return str(value) if value is not None else None
+
+
+def _tuple_of_strings(value: object) -> tuple[str, ...]:
+    if isinstance(value, str):
+        return (value,) if value else ()
+    if not isinstance(value, (list, tuple)):
+        return ()
+    return tuple(item for item in value if isinstance(item, str) and item)
 
 
 def _plan_loader(loader: ControlPlaneLoader) -> ControlPlaneLoader:

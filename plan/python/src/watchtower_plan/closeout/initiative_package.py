@@ -5,7 +5,9 @@ from __future__ import annotations
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 
-TERMINAL_INITIATIVE_PACKAGE_STATUSES = frozenset({"completed", "superseded", "cancelled"})
+TERMINAL_INITIATIVE_PACKAGE_STATUSES = frozenset(
+    {"completed", "superseded", "cancelled"}
+)
 _PRE_CLOSEOUT_LIFECYCLE_STAGES = frozenset({"capture_incomplete", "ready_for_review"})
 _TERMINAL_LIFECYCLE_STAGES = frozenset({"completed", "superseded", "cancelled"})
 
@@ -79,7 +81,9 @@ class InitiativePackageCloseoutHelper:
                 "Terminal closeout requires initiative_status in " + allowed + "."
             )
         if initiative_status == "superseded" and not superseded_by_trace_id:
-            raise ValueError("Superseded terminal closeout requires superseded_by_trace_id.")
+            raise ValueError(
+                "Superseded terminal closeout requires superseded_by_trace_id."
+            )
         if initiative_status != "superseded" and superseded_by_trace_id is not None:
             raise ValueError(
                 "superseded_by_trace_id is only valid when initiative_status is superseded."
@@ -91,7 +95,9 @@ class InitiativePackageCloseoutHelper:
                 "Terminal closeout requires an execution-ready or closing initiative package."
             )
         if current_stage in _TERMINAL_LIFECYCLE_STAGES:
-            raise ValueError(f"Initiative package is already terminal: {current_stage}.")
+            raise ValueError(
+                f"Initiative package is already terminal: {current_stage}."
+            )
         if open_task_ids:
             joined = ", ".join(open_task_ids)
             raise ValueError(
@@ -205,8 +211,7 @@ def _require_expected_artifacts(
     artifact_label: str,
 ) -> None:
     expected_ids = {
-        str(value)
-        for value in _iterable_values(initiative_document, artifact_field)
+        str(value) for value in _iterable_values(initiative_document, artifact_field)
     }
     actual_ids = {artifact.artifact_id for artifact in artifact_documents}
     missing_ids = tuple(sorted(expected_ids - actual_ids))

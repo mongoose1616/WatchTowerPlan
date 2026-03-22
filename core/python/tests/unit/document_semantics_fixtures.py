@@ -56,14 +56,12 @@ def write_reference_fixture(
 
     path.parent.mkdir(parents=True, exist_ok=True)
     canonical_upstream = (
-        "## Canonical Upstream\n"
-        "- [Example upstream](https://example.com/reference)\n\n"
+        "## Canonical Upstream\n- [Example upstream](https://example.com/reference)\n\n"
         if include_canonical_upstream
         else ""
     )
     current_touchpoints = (
-        "### Current Touchpoints\n"
-        f"- [support_target.md]({repo_markdown_link(support_target)})\n\n"
+        f"### Current Touchpoints\n- [support_target.md]({repo_markdown_link(support_target)})\n\n"
         if include_current_touchpoints
         else ""
     )
@@ -195,8 +193,9 @@ def write_standard_reference_rule_fixture(
     """Write one standard fixture that exercises related-source accounting rules."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    content = dedent(
-        """\
+    content = (
+        dedent(
+            """\
         ---
         id: "std.documentation.example"
         title: "Example Standard"
@@ -249,8 +248,11 @@ def write_standard_reference_rule_fixture(
         ## Updated At
         - `2026-03-11T17:35:00Z`
         """
-    ).replace("__RELATED_LINES__", "\n".join(related_lines)).replace(
-        "__REFERENCE_LINES__",
-        "\n".join(reference_lines),
+        )
+        .replace("__RELATED_LINES__", "\n".join(related_lines))
+        .replace(
+            "__REFERENCE_LINES__",
+            "\n".join(reference_lines),
+        )
     )
     path.write_text(content, encoding="utf-8")

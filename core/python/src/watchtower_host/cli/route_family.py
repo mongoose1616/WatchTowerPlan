@@ -30,9 +30,8 @@ def register_route_family(subparsers: argparse._SubParsersAction) -> None:
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core route preview --request "
-            "\"review code and commit the change\"",
-            "uv run watchtower-core route preview --task-type \"Repository Review\" --format json",
+            'uv run watchtower-core route preview --request "review code and commit the change"',
+            'uv run watchtower-core route preview --task-type "Repository Review" --format json',
         ),
         formatter_class=HelpFormatter,
     )
@@ -56,8 +55,8 @@ def register_route_family(subparsers: argparse._SubParsersAction) -> None:
         ).strip(),
         epilog=examples(
             "uv run watchtower-core route preview --request "
-            "\"implement the feature and validate it\"",
-            "uv run watchtower-core route preview --task-type \"Task Lifecycle Management\" "
+            '"implement the feature and validate it"',
+            'uv run watchtower-core route preview --task-type "Task Lifecycle Management" '
             "--format json",
         ),
         formatter_class=HelpFormatter,

@@ -161,7 +161,9 @@ def test_closeout_plan_initiative_prints_human_summary(monkeypatch, capsys) -> N
     assert result == 0
     assert "Closed live plan initiative trace.example_initiative as completed." in captured.out
     assert "Initiative Root: plan/initiatives/example_initiative" in captured.out
-    assert "Initiative state, local artifacts, and derived plan surfaces were updated." in captured.out
+    assert (
+        "Initiative state, local artifacts, and derived plan surfaces were updated." in captured.out
+    )
 
 
 def test_closeout_plan_initiative_supports_json_success(monkeypatch, capsys) -> None:
@@ -253,8 +255,8 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
                     "plan/docs/standards/governance/example.md",
                     "plan/python/src/watchtower_plan/closeout/purge_trace.py",
                 ),
-                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
-                purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.json",
+                purge_record_relative_path="core/control_plane/records/purges/example_purge_record.json",
+                purge_record_output_path="core/control_plane/records/purges/example_purge_record.json",
                 refreshed_targets=("repository-paths", "traceability-index", "coordination"),
             )
 
@@ -268,9 +270,7 @@ def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Prepared purge for trace.example." in captured.out
     assert "Removed Paths: 2" in captured.out
     assert (
-        "Purge Ledger: "
-        "core/control_plane/ledgers/purges/example_purge_record.json"
-        in captured.out
+        "Purge Record: core/control_plane/records/purges/example_purge_record.json" in captured.out
     )
     assert "Trace package was deleted and derived surfaces were refreshed." in captured.out
 
@@ -314,21 +314,19 @@ def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None
                 wrote=False,
                 removed_paths=("plan/initiatives/example/initiative_brief.md",),
                 retained_authority_paths=("plan/docs/standards/governance/example.md",),
-                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.json",
-                purge_ledger_output_path=None,
+                purge_record_relative_path="core/control_plane/records/purges/example_purge_record.json",
+                purge_record_output_path=None,
                 refreshed_targets=(),
             )
 
     monkeypatch.setattr(plan_closeout_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(plan_closeout_handlers, "TracePurgeService", FakeService)
 
-    result = plan_closeout_handlers._run_closeout_purge_trace(
-        _args(format="json", write=False)
-    )
+    result = plan_closeout_handlers._run_closeout_purge_trace(_args(format="json", write=False))
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan closeout purge-trace"
-    assert payload["purge_ledger_relative_path"].endswith("example_purge_record.json")
+    assert payload["purge_record_relative_path"].endswith("example_purge_record.json")
     assert payload["wrote"] is False

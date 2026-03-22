@@ -44,10 +44,8 @@ def register_query_family(
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "core/docs/references/github_collaboration_reference.md",
-            "uv run watchtower-core query acceptance --trace-id "
-            "trace.governed_acceptance_example",
-            "uv run watchtower-core query evidence --trace-id "
-            "trace.governed_acceptance_example",
+            "uv run watchtower-core query acceptance --trace-id trace.governed_acceptance_example",
+            "uv run watchtower-core query evidence --trace-id trace.governed_acceptance_example",
             "uv run watchtower-core plan query coordination --format json",
             "uv run watchtower-core plan query tasks --task-status planned --format json",
         ),

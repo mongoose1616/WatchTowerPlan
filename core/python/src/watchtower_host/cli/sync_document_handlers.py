@@ -65,8 +65,7 @@ def _build_document_sync_handler(
 
 
 DOCUMENT_SYNC_HANDLERS: dict[str, Callable[[argparse.Namespace], int]] = {
-    spec["handler_key"]: _build_document_sync_handler(spec)
-    for spec in _DOCUMENT_SYNC_HANDLER_SPECS
+    spec["handler_key"]: _build_document_sync_handler(spec) for spec in _DOCUMENT_SYNC_HANDLER_SPECS
 }
 
 globals().update(

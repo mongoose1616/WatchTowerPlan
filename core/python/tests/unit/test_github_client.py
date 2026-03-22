@@ -92,9 +92,7 @@ def test_create_issue_can_close_issue_after_creation(monkeypatch) -> None:
     )
 
     assert result.state == "closed"
-    assert update_calls == [
-        ("owner/repo", 7, "Example", "Body", (), "closed", "completed")
-    ]
+    assert update_calls == [("owner/repo", 7, "Example", "Body", (), "closed", "completed")]
 
 
 def test_ensure_labels_creates_only_missing_labels(monkeypatch) -> None:
@@ -135,9 +133,7 @@ def test_ensure_labels_creates_only_missing_labels(monkeypatch) -> None:
         ),
     )
 
-    assert created_payloads == [
-        {"name": "missing", "color": "0E8A16", "description": "Managed"}
-    ]
+    assert created_payloads == [{"name": "missing", "color": "0E8A16", "description": "Managed"}]
 
 
 def test_load_project_context_returns_status_field_mapping(monkeypatch) -> None:

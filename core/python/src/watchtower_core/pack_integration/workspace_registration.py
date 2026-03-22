@@ -32,8 +32,7 @@ class CorePythonWorkspaceState:
         """Return the uv sources as a mutable mapping."""
 
         return {
-            name: {"path": path, "editable": editable}
-            for name, path, editable in self.uv_sources
+            name: {"path": path, "editable": editable} for name, path, editable in self.uv_sources
         }
 
 
@@ -154,7 +153,7 @@ def _rewrite_uv_sources(
         *[
             (
                 f'{name} = {{ path = "{source["path"]}", '
-                f'editable = {str(bool(source.get("editable", False))).lower()} }}'
+                f"editable = {str(bool(source.get('editable', False))).lower()} }}"
             )
             for name, source in sorted(uv_sources.items(), key=lambda item: item[0].casefold())
         ],

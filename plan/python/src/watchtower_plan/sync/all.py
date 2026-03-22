@@ -63,13 +63,10 @@ class AllSyncService(SyncHarness):
         write: bool = False,
         output_dir: Path | None = None,
     ) -> AllSyncResult:
-        return cast(
-            AllSyncResult,
-            self.run_specs(
-                SYNC_TARGET_SPECS,
-                write=write,
-                output_dir=output_dir,
-            ),
+        return self.run_specs(
+            SYNC_TARGET_SPECS,
+            write=write,
+            output_dir=output_dir,
         )
 
     def build_shared_state(
@@ -80,7 +77,9 @@ class AllSyncService(SyncHarness):
         if not any(spec.target in REFERENCE_RESOLUTION_TARGETS for spec in specs):
             return None
 
-        shared_reference_index_document = ReferenceIndexSyncService(loader).build_document()
+        shared_reference_index_document = ReferenceIndexSyncService(
+            loader
+        ).build_document()
         return _AllSyncSharedState(
             shared_reference_index_document=shared_reference_index_document,
             shared_reference_urls_by_path=reference_urls_by_path_from_index_document(

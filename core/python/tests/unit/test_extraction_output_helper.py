@@ -38,7 +38,9 @@ def test_extraction_output_helper_builds_schema_valid_document() -> None:
             ExtractionCandidateKnowledgeSpec(
                 candidate_id="candidate.plan_example.design_record",
                 title="Plan Example Decision Record: Design Record",
-                summary="Promoted decision record extracted from the design record for Plan Example.",
+                summary=(
+                    "Promoted decision record extracted from the design record for Plan Example."
+                ),
                 knowledge_family="decision_record",
                 evidence_artifact_ids=("evidence.plan_example.bootstrap_validation_bundle",),
                 tags=("promoted_guidance", "design_record", "decision_record"),
@@ -53,6 +55,4 @@ def test_extraction_output_helper_builds_schema_valid_document() -> None:
     assert artifact.observation_count == 1
     assert artifact.knowledge_count == 1
     assert artifact.knowledge_families == ("decision_record",)
-    assert artifact.evidence_artifact_ids == (
-        "evidence.plan_example.bootstrap_validation_bundle",
-    )
+    assert artifact.evidence_artifact_ids == ("evidence.plan_example.bootstrap_validation_bundle",)

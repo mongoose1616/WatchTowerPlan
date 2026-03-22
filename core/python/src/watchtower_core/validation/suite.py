@@ -21,7 +21,6 @@ from watchtower_core.validation.models import (
 )
 from watchtower_core.validation.pack_contract import PackContractValidationService
 
-
 DOCUMENT_SEMANTICS_ARTIFACT_KIND = "documentation_semantics"
 
 
@@ -83,9 +82,7 @@ class ValidationSuiteService:
         document_semantics: DocumentSemanticsValidationService | None = None
         pack_contract = PackContractValidationService(context.loader)
 
-        allowed_step_kinds = (
-            set(included_step_kinds) if included_step_kinds is not None else None
-        )
+        allowed_step_kinds = set(included_step_kinds) if included_step_kinds is not None else None
         steps = tuple(
             step
             for step in suite.steps
@@ -160,9 +157,7 @@ class ValidationSuiteService:
             targets = step.paths
         else:
             resolved_targets = (
-                self._target_resolver(context, step)
-                if self._target_resolver is not None
-                else None
+                self._target_resolver(context, step) if self._target_resolver is not None else None
             )
             targets = (
                 resolved_targets
@@ -216,9 +211,7 @@ class ValidationSuiteService:
         suffixes: tuple[str, ...],
     ) -> tuple[str, ...]:
         validators = self._candidate_validators(context, step)
-        patterns = tuple(
-            pattern for validator in validators for pattern in validator.applies_to
-        )
+        patterns = tuple(pattern for validator in validators for pattern in validator.applies_to)
         return discover_repository_targets(
             context.loader,
             patterns,
@@ -258,13 +251,10 @@ class ValidationSuiteService:
         validator: ValidatorDefinition,
     ) -> bool:
         if step_kind == "artifact":
-            return (
-                validator.engine == "json_schema"
-                and validator.artifact_kind not in {
-                    "documentation_front_matter",
-                    DOCUMENT_SEMANTICS_ARTIFACT_KIND,
-                }
-            )
+            return validator.engine == "json_schema" and validator.artifact_kind not in {
+                "documentation_front_matter",
+                DOCUMENT_SEMANTICS_ARTIFACT_KIND,
+            }
         if step_kind == "front_matter":
             return (
                 validator.engine == "json_schema"

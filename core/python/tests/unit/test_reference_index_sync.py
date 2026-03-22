@@ -182,9 +182,7 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
     assert entry["reference_id"] == "ref.example"
     assert entry["repository_status"] == "supporting_authority"
     assert entry["related_paths"] == ["core/docs/README.md"]
-    assert entry["applied_by_paths"] == [
-        "core/docs/standards/documentation/example_standard.md"
-    ]
+    assert entry["applied_by_paths"] == ["core/docs/standards/documentation/example_standard.md"]
 
 
 def test_reference_index_sync_does_not_count_readme_only_backlinks_as_internal_support(

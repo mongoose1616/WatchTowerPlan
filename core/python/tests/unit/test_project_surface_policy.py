@@ -47,7 +47,7 @@ def test_project_surface_policy_helper_reports_missing_required_metadata(tmp_pat
                 "$schema": "urn:watchtower:schema:artifacts:plan:project-record:v1",
                 "project_id": "project.example",
                 "title": "Example",
-                "summary": "Example project."
+                "summary": "Example project.",
             },
             indent=2,
         )
@@ -59,7 +59,7 @@ def test_project_surface_policy_helper_reports_missing_required_metadata(tmp_pat
             {
                 "$schema": "urn:watchtower:schema:artifacts:plan:project-repository-map:v1",
                 "project_id": "project.example",
-                "repositories": []
+                "repositories": [],
             },
             indent=2,
         )

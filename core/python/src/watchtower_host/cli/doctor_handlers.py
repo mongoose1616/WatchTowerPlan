@@ -26,8 +26,7 @@ def _run_doctor(args: argparse.Namespace) -> int:
         "repo_root": str(loader.repo_root),
         "status": "ok",
         "message": (
-            "watchtower-core workspace is available and core governed surfaces "
-            "loaded successfully."
+            "watchtower-core workspace is available and core governed surfaces loaded successfully."
         ),
         "counts": {
             "schemas": len(schema_catalog.records),

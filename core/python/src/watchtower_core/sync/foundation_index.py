@@ -22,20 +22,18 @@ from watchtower_core.documentation.front_matter_paths import (
     applies_to_path_values,
     normalize_front_matter_applies_to,
 )
-from watchtower_core.documentation.markdown_semantics import (
-    validate_blank_line_before_heading_after_list,
-)
 from watchtower_core.documentation.governed_documents import (
     ordered_unique,
     validate_required_section_order,
+)
+from watchtower_core.documentation.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
 )
 from watchtower_core.sync.path_support import existing_paths
 from watchtower_core.sync.reference_index import iter_citation_audit_documents
 from watchtower_core.sync.reference_resolution import build_reference_urls_by_path
 
-FOUNDATION_INDEX_ARTIFACT_PATH = (
-    "core/control_plane/indexes/foundations/foundation_index.json"
-)
+FOUNDATION_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/foundations/foundation_index.json"
 FOUNDATION_FRONT_MATTER_SCHEMA_ID = (
     "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1"
 )
@@ -142,7 +140,9 @@ class FoundationIndexSyncService:
                 )
             )
             reference_doc_paths = tuple(
-                value for value in internal_reference_paths if value.startswith("core/docs/references/")
+                value
+                for value in internal_reference_paths
+                if value.startswith("core/docs/references/")
             )
             direct_external_urls = ordered_unique(extract_external_urls(sections["References"]))
             transitive_external_urls = ordered_unique(
@@ -239,14 +239,10 @@ class FoundationIndexSyncService:
 
         return {
             "cited_by": {
-                path: tuple(sorted(values))
-                for path, values in cited_by.items()
-                if values
+                path: tuple(sorted(values)) for path, values in cited_by.items() if values
             },
             "applied_by": {
-                path: tuple(sorted(values))
-                for path, values in applied_by.items()
-                if values
+                path: tuple(sorted(values)) for path, values in applied_by.items() if values
             },
         }
 

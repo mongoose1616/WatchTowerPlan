@@ -49,9 +49,9 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         ).strip(),
         epilog=examples(
             "uv run watchtower-core plan task create --task-id task.example.001 "
-            "--title \"Draft the example\" --summary \"Creates the example task.\" "
+            '--title "Draft the example" --summary "Creates the example task." '
             "--task-kind documentation --priority medium --owner repository_maintainer "
-            "--scope \"Write the example\" --done-when \"The example exists\"",
+            '--scope "Write the example" --done-when "The example exists"',
             "uv run watchtower-core plan task update --task-id task.example.001 "
             "--task-status in_progress --owner implementation_engineer --format json",
             "uv run watchtower-core plan task transition --task-id task.example.001 "
@@ -82,22 +82,28 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         ).strip(),
         epilog=examples(
             "uv run watchtower-core plan task create --task-id task.example.001 "
-            "--title \"Draft the example\" --summary \"Creates the example task.\" "
+            '--title "Draft the example" --summary "Creates the example task." '
             "--task-kind documentation --priority medium --owner repository_maintainer "
-            "--scope \"Write the example\" --done-when \"The example exists\"",
+            '--scope "Write the example" --done-when "The example exists"',
             "uv run watchtower-core plan task create --task-id task.traceable.example.001 "
-            "--trace-id trace.example --title \"Implement the slice\" "
-            "--summary \"Implements the bounded slice.\" --task-kind feature "
+            '--trace-id trace.example --title "Implement the slice" '
+            '--summary "Implements the bounded slice." --task-kind feature '
             "--priority high --owner implementation_engineer --applies-to core/python/src/ "
-            "--related-id design.features.example --scope \"Ship the slice\" "
-            "--done-when \"Tests pass\" --format json",
+            '--related-id design.features.example --scope "Ship the slice" '
+            '--done-when "Tests pass" --format json',
         ),
         formatter_class=HelpFormatter,
     )
     create_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
-    create_parser.add_argument("--task-id", required=True, help="Stable task identifier.")
-    create_parser.add_argument("--trace-id", help="Optional trace identifier for linked work.")
-    create_parser.add_argument("--title", required=True, help="Human-readable task title.")
+    create_parser.add_argument(
+        "--task-id", required=True, help="Stable task identifier."
+    )
+    create_parser.add_argument(
+        "--trace-id", help="Optional trace identifier for linked work."
+    )
+    create_parser.add_argument(
+        "--title", required=True, help="Human-readable task title."
+    )
     create_parser.add_argument(
         "--summary",
         required=True,
@@ -197,7 +203,9 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         formatter_class=HelpFormatter,
     )
     update_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
-    update_parser.add_argument("--task-id", required=True, help="Stable task identifier.")
+    update_parser.add_argument(
+        "--task-id", required=True, help="Stable task identifier."
+    )
     update_parser.add_argument("--title", help="Replacement task title.")
     update_parser.add_argument("--summary", help="Replacement task summary.")
     update_parser.add_argument(
@@ -302,7 +310,9 @@ def register_plan_task_commands(plan_subparsers: argparse._SubParsersAction) -> 
         formatter_class=HelpFormatter,
     )
     transition_parser.set_defaults(_implementation_path=IMPLEMENTATION_PATH)
-    transition_parser.add_argument("--task-id", required=True, help="Stable task identifier.")
+    transition_parser.add_argument(
+        "--task-id", required=True, help="Stable task identifier."
+    )
     transition_parser.add_argument(
         "--task-status",
         required=True,
@@ -378,7 +388,9 @@ def _run_task_create(args: argparse.Namespace) -> int:
     )
     if result is None:
         return 1
-    return _emit_task_result(args, command_name="watchtower-core plan task create", result=result)
+    return _emit_task_result(
+        args, command_name="watchtower-core plan task create", result=result
+    )
 
 
 def _run_task_update(args: argparse.Namespace) -> int:
@@ -397,7 +409,9 @@ def _run_task_update(args: argparse.Namespace) -> int:
                 owner=args.owner,
                 task_status=args.task_status,
                 scope_items=None if args.scope is None else tuple(args.scope),
-                done_when_items=None if args.done_when is None else tuple(args.done_when),
+                done_when_items=None
+                if args.done_when is None
+                else tuple(args.done_when),
                 applies_to=None if args.applies_to is None else tuple(args.applies_to),
                 clear_applies_to=args.clear_applies_to,
                 related_ids=None if args.related_id is None else tuple(args.related_id),
@@ -413,7 +427,9 @@ def _run_task_update(args: argparse.Namespace) -> int:
     )
     if result is None:
         return 1
-    return _emit_task_result(args, command_name="watchtower-core plan task update", result=result)
+    return _emit_task_result(
+        args, command_name="watchtower-core plan task update", result=result
+    )
 
 
 def _run_task_transition(args: argparse.Namespace) -> int:

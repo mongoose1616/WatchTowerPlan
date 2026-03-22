@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from dataclasses import asdict
+from typing import Any, cast
 
 
 class DataclassSearchAdapter[ParamsT, TargetParamsT, EntryT]:
@@ -21,7 +22,8 @@ class DataclassSearchAdapter[ParamsT, TargetParamsT, EntryT]:
     def search(self, params: ParamsT) -> tuple[EntryT, ...]:
         """Delegate one query through a differently typed workspace contract."""
 
-        return self._search(self._target_type(**asdict(params)))
+        payload = asdict(cast(Any, params))
+        return self._search(self._target_type(**payload))
 
 
 def normalize_text(value: str) -> str:

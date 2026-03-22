@@ -10,8 +10,14 @@ from watchtower_core.control_plane import TerminologyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.path_ids import PlanPathIdHelper
-from watchtower_core.control_plane.project_surface_policy import ProjectSurfacePolicyHelper
-from watchtower_core.query.common import normalize_optional_text, normalize_text, query_score
+from watchtower_core.control_plane.project_surface_policy import (
+    ProjectSurfacePolicyHelper,
+)
+from watchtower_core.query.common import (
+    normalize_optional_text,
+    normalize_text,
+    query_score,
+)
 from watchtower_core.rebuild import (
     MarkdownReconciliationHelper,
     RebuildHarness,
@@ -117,11 +123,17 @@ class PlanProjectIndexEntry:
             status=str(document["status"]),
             project_root=str(document["project_root"]),
             initiative_root=str(document["initiative_root"]),
-            repository_count=int(document["repository_count"]),
-            active_initiative_count=int(document["active_initiative_count"]),
-            blocked_initiative_count=int(document["blocked_initiative_count"]),
-            linked_repository_roles=tuple(document.get("linked_repository_roles", ())),
-            repository_locators=tuple(document.get("repository_locators", ())),
+            repository_count=_required_int(document["repository_count"]),
+            active_initiative_count=_required_int(
+                document["active_initiative_count"]
+            ),
+            blocked_initiative_count=_required_int(
+                document["blocked_initiative_count"]
+            ),
+            linked_repository_roles=_string_tuple(
+                document.get("linked_repository_roles")
+            ),
+            repository_locators=_string_tuple(document.get("repository_locators")),
             updated_at=str(document["updated_at"]),
         )
 
@@ -191,11 +203,15 @@ class ProjectWorkspaceService:
         """Create one project container with its required machine package."""
 
         if not params.repository_links:
-            raise ValueError("Project bootstrap requires at least one linked repository.")
+            raise ValueError(
+                "Project bootstrap requires at least one linked repository."
+            )
 
         updated_at = params.updated_at or utc_timestamp_now()
         project_slug = params.project_slug
-        project_id = params.project_id or PlanPathIdHelper.canonical_project_id(project_slug)
+        project_id = params.project_id or PlanPathIdHelper.canonical_project_id(
+            project_slug
+        )
         if project_id != PlanPathIdHelper.canonical_project_id(project_slug):
             raise ValueError("project_id must use the canonical project.<slug> form.")
 
@@ -208,9 +224,12 @@ class ProjectWorkspaceService:
         repository_entries = []
         repository_refs = []
         for spec in params.repository_links:
-            repository_id = spec.repository_id or PlanPathIdHelper.canonical_repository_id(
-                project_slug,
-                spec.repository_role,
+            repository_id = (
+                spec.repository_id
+                or PlanPathIdHelper.canonical_repository_id(
+                    project_slug,
+                    spec.repository_role,
+                )
             )
             repository_refs.append(repository_id)
             repository_entries.append(
@@ -291,7 +310,8 @@ class ProjectWorkspaceService:
         return ProjectValidationResult(
             project_id=validation.project_id,
             project_root=validation.project_root,
-            passed=not issues and all(result.passed for result in validation.artifact_results),
+            passed=not issues
+            and all(result.passed for result in validation.artifact_results),
             issue_messages=tuple(issues),
             artifact_results=validation.artifact_results,
             wrote=write,
@@ -307,12 +327,15 @@ class ProjectWorkspaceService:
 
         snapshots = self._load_project_snapshots()
         documents = self._build_documents(snapshots)
+        project_index_document = _json_document(documents["project_index"])
         artifact_index_document = ArtifactIndexService(self._loader).build_document(
             aggregate_overrides={
-                PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+                PLAN_PROJECT_INDEX_PATH: project_index_document,
             }
         )
-        rebuild_outputs = self._build_rebuild_outputs(documents, artifact_index_document)
+        rebuild_outputs = self._build_rebuild_outputs(
+            documents, artifact_index_document
+        )
         rebuild_result = RebuildHarness(self._loader).run_specs(
             (
                 RebuildTargetSpec(
@@ -324,7 +347,9 @@ class ProjectWorkspaceService:
         )
         return ProjectWorkspaceSyncResult(
             project_count=len(snapshots),
-            initiative_count=sum(len(snapshot.child_initiatives) for snapshot in snapshots),
+            initiative_count=sum(
+                len(snapshot.child_initiatives) for snapshot in snapshots
+            ),
             wrote=rebuild_result.wrote,
         )
 
@@ -333,7 +358,9 @@ class ProjectWorkspaceService:
 
         document = self._pack_loader().load_validated_document(PLAN_PROJECT_INDEX_PATH)
         assert isinstance(document, dict)
-        return tuple(PlanProjectIndexEntry.from_document(entry) for entry in document["entries"])
+        return tuple(
+            PlanProjectIndexEntry.from_document(entry) for entry in document["entries"]
+        )
 
     def search_projects(
         self,
@@ -356,15 +383,17 @@ class ProjectWorkspaceService:
             project_root,
             surface_kind="rendered_view",
         )
+        project_views = _project_views_document(documents["project_views"])
+        project_index_document = _json_document(documents["project_index"])
         expected_markdown = {
-            relative_path: documents["project_views"].get(relative_path, "")
+            relative_path: project_views.get(relative_path, "")
             for relative_path in required_rendered_paths
         }
         expected_json = {
-            PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+            PLAN_PROJECT_INDEX_PATH: project_index_document,
             PLAN_ARTIFACT_INDEX_PATH: ArtifactIndexService(self._loader).build_document(
                 aggregate_overrides={
-                    PLAN_PROJECT_INDEX_PATH: documents["project_index"],
+                    PLAN_PROJECT_INDEX_PATH: project_index_document,
                 }
             ),
         }
@@ -412,13 +441,17 @@ class ProjectWorkspaceService:
                         message=f"Project aggregate index drift detected for {relative_path}.",
                     )
                 )
-        return tuple(sorted(issues, key=lambda issue: (issue.category, issue.relative_path)))
+        return tuple(
+            sorted(issues, key=lambda issue: (issue.category, issue.relative_path))
+        )
 
     def _build_documents(
         self,
         snapshots: tuple[_ProjectSnapshot, ...],
     ) -> dict[str, object]:
-        updated_at = _latest_timestamp(_snapshot_updated_at(snapshot) for snapshot in snapshots)
+        updated_at = _latest_timestamp(
+            _snapshot_updated_at(snapshot) for snapshot in snapshots
+        )
         project_entries = tuple(
             sorted(
                 (self._build_project_entry(snapshot) for snapshot in snapshots),
@@ -433,7 +466,9 @@ class ProjectWorkspaceService:
             "updated_at": _latest_timestamp(
                 [*(entry.updated_at for entry in project_entries), updated_at]
             ),
-            "entries": [self._serialize_project_entry(entry) for entry in project_entries],
+            "entries": [
+                self._serialize_project_entry(entry) for entry in project_entries
+            ],
         }
         self._pack_loader().schema_store.validate_instance(project_index)
         return {
@@ -447,15 +482,17 @@ class ProjectWorkspaceService:
         active_initiatives = tuple(
             initiative
             for initiative in child_initiatives
-            if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
+            if not self._vocabulary.is_terminal_lifecycle(
+                str(initiative["lifecycle_stage"])
+            )
         )
         blocked_initiatives = tuple(
             initiative
             for initiative in active_initiatives
             if str(initiative["lifecycle_stage"]) == "blocked"
-            or bool(initiative.get("gate_state", {}).get("blocking_reasons"))
+            or _has_blocking_reasons(initiative)
         )
-        repositories = tuple(snapshot.repository_map_document["repositories"])
+        repositories = _repository_entries(snapshot.repository_map_document)
         return PlanProjectIndexEntry(
             project_id=str(project["project_id"]),
             slug=str(project["slug"]),
@@ -483,17 +520,20 @@ class ProjectWorkspaceService:
         documents: dict[str, str] = {}
         for snapshot in snapshots:
             project = snapshot.project_document
-            repositories = tuple(snapshot.repository_map_document["repositories"])
+            project_slug = str(project["slug"])
+            repositories = _repository_entries(snapshot.repository_map_document)
             active_initiatives = tuple(
                 initiative
                 for initiative in snapshot.child_initiatives
-                if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
+                if not self._vocabulary.is_terminal_lifecycle(
+                    str(initiative["lifecycle_stage"])
+                )
             )
             blocked_initiatives = tuple(
                 initiative
                 for initiative in active_initiatives
                 if str(initiative["lifecycle_stage"]) == "blocked"
-                or bool(initiative.get("gate_state", {}).get("blocking_reasons"))
+                or _has_blocking_reasons(initiative)
             )
             initiative_lines = tuple(
                 f"- `{initiative['initiative_id']}`: `{initiative['lifecycle_stage']}` / `{initiative['review_status']}`"
@@ -532,19 +572,21 @@ class ProjectWorkspaceService:
             active_initiative_count = sum(
                 1
                 for initiative in snapshot.child_initiatives
-                if not self._vocabulary.is_terminal_lifecycle(str(initiative["lifecycle_stage"]))
+                if not self._vocabulary.is_terminal_lifecycle(
+                    str(initiative["lifecycle_stage"])
+                )
             )
             blocked_initiative_count = sum(
                 1
                 for initiative in snapshot.child_initiatives
                 if str(initiative["lifecycle_stage"]) == "blocked"
-                or bool(initiative.get("gate_state", {}).get("blocking_reasons"))
+                or _has_blocking_reasons(initiative)
             )
             rendered_views = self._rendered_views.build_views(
                 (
                     RenderedViewSpec(
                         surface_id=PROJECT_SURFACE_ID,
-                        path_params={"project_slug": str(project["slug"])},
+                        path_params={"project_slug": project_slug},
                         title=f"{project['title']} Project",
                         data={
                             "project_identity": (
@@ -576,14 +618,14 @@ class ProjectWorkspaceService:
                             ),
                             "key_references_or_docs": (
                                 "## Key References or Docs",
-                                f"- [repositories.md](/{self._project_root(project['slug'])}/repositories.md)",
-                                f"- [summary.md](/{self._project_root(project['slug'])}/summary.md)",
+                                f"- [repositories.md](/{self._project_root(project_slug)}/repositories.md)",
+                                f"- [summary.md](/{self._project_root(project_slug)}/summary.md)",
                             ),
                         },
                     ),
                     RenderedViewSpec(
                         surface_id=PROJECT_REPOSITORIES_SURFACE_ID,
-                        path_params={"project_slug": str(project["slug"])},
+                        path_params={"project_slug": project_slug},
                         title=f"{project['title']} Repositories",
                         data={
                             "repository_role_summary": (
@@ -610,7 +652,7 @@ class ProjectWorkspaceService:
                     ),
                     RenderedViewSpec(
                         surface_id=PROJECT_SUMMARY_SURFACE_ID,
-                        path_params={"project_slug": str(project["slug"])},
+                        path_params={"project_slug": project_slug},
                         title=f"{project['title']} Summary",
                         data={
                             "project_delivery_summary": (
@@ -665,25 +707,29 @@ class ProjectWorkspaceService:
             if not project_state_path.exists() or not repository_map_path.exists():
                 continue
             child_initiatives = tuple(
-                json.loads(path.read_text(encoding="utf-8"))
-                for path in sorted(project_path.glob("initiatives/*/.wt/initiative.json"))
+                _load_json_object(path)
+                for path in sorted(
+                    project_path.glob("initiatives/*/.wt/initiative.json")
+                )
             )
             snapshots.append(
                 _ProjectSnapshot(
-                    project_document=json.loads(project_state_path.read_text(encoding="utf-8")),
-                    repository_map_document=json.loads(
-                        repository_map_path.read_text(encoding="utf-8")
-                    ),
+                    project_document=_load_json_object(project_state_path),
+                    repository_map_document=_load_json_object(repository_map_path),
                     child_initiatives=child_initiatives,
                     project_root=str(project_path.relative_to(self._loader.repo_root)),
                     initiative_root=str(
-                        (project_path / "initiatives").relative_to(self._loader.repo_root)
+                        (project_path / "initiatives").relative_to(
+                            self._loader.repo_root
+                        )
                     ),
                 )
             )
         return tuple(snapshots)
 
-    def _serialize_project_entry(self, entry: PlanProjectIndexEntry) -> dict[str, object]:
+    def _serialize_project_entry(
+        self, entry: PlanProjectIndexEntry
+    ) -> dict[str, object]:
         payload: dict[str, object] = {
             "project_id": entry.project_id,
             "slug": entry.slug,
@@ -761,6 +807,8 @@ class ProjectWorkspaceService:
 
 
 def _latest_timestamp(values: object) -> str:
+    if not hasattr(values, "__iter__"):
+        return utc_timestamp_now()
     normalized = [value for value in values if isinstance(value, str) and value]
     return max(normalized, default=utc_timestamp_now())
 
@@ -785,6 +833,16 @@ def _json_document(value: object) -> dict[str, object]:
     return value
 
 
+def _project_views_document(value: object) -> dict[str, str]:
+    if not isinstance(value, dict):
+        return {}
+    return {
+        key: content
+        for key, content in value.items()
+        if isinstance(key, str) and isinstance(content, str)
+    }
+
+
 def _project_markdown_issue_message(issue_code: str, relative_path: str) -> str:
     if issue_code == "missing_expected_content":
         return (
@@ -799,6 +857,42 @@ def _project_markdown_issue_message(issue_code: str, relative_path: str) -> str:
 def _markdown_content(value: object) -> str:
     assert isinstance(value, str)
     return value
+
+
+def _load_json_object(path: Path) -> dict[str, object]:
+    loaded = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(loaded, dict):
+        raise ValueError(f"Expected a JSON object at {path}.")
+    return loaded
+
+
+def _repository_entries(document: dict[str, object]) -> tuple[dict[str, object], ...]:
+    repositories = document.get("repositories")
+    if not isinstance(repositories, list):
+        return ()
+    return tuple(entry for entry in repositories if isinstance(entry, dict))
+
+
+def _has_blocking_reasons(document: dict[str, object]) -> bool:
+    gate_state = document.get("gate_state")
+    if not isinstance(gate_state, dict):
+        return False
+    blocking_reasons = gate_state.get("blocking_reasons")
+    return isinstance(blocking_reasons, list) and bool(blocking_reasons)
+
+
+def _string_tuple(value: object) -> tuple[str, ...]:
+    if isinstance(value, str):
+        return (value,) if value else ()
+    if not isinstance(value, (list, tuple)):
+        return ()
+    return tuple(item for item in value if isinstance(item, str) and item)
+
+
+def _required_int(value: object) -> int:
+    if isinstance(value, int) and not isinstance(value, bool):
+        return value
+    return int(str(value))
 
 
 def _search_project_entries(

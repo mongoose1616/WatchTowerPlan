@@ -43,9 +43,7 @@ class GitHubClient:
     def from_env(cls, token_env: str = "GITHUB_TOKEN") -> GitHubClient:
         token = os.environ.get(token_env)
         if token is None or not token.strip():
-            raise GitHubApiError(
-                f"Missing GitHub token in environment variable {token_env}."
-            )
+            raise GitHubApiError(f"Missing GitHub token in environment variable {token_env}.")
         return cls(token.strip())
 
     def create_issue(
@@ -258,9 +256,7 @@ class GitHubClient:
                 payload = response.read().decode("utf-8")
         except HTTPError as exc:
             details = exc.read().decode("utf-8", errors="replace")
-            raise GitHubApiError(
-                f"GitHub API request failed with {exc.code}: {details}"
-            ) from exc
+            raise GitHubApiError(f"GitHub API request failed with {exc.code}: {details}") from exc
         except URLError as exc:
             raise GitHubApiError(f"GitHub API request failed: {exc.reason}") from exc
 

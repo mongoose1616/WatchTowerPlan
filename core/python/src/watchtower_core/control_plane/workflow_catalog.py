@@ -65,8 +65,7 @@ class WorkflowCatalogHelper:
 
         workflow = self.workflow(workflow_id)
         return tuple(
-            self.workflow(companion_id)
-            for companion_id in workflow.companion_workflow_ids
+            self.workflow(companion_id) for companion_id in workflow.companion_workflow_ids
         )
 
     def routes_for_workflow(self, workflow_id: str) -> tuple[RouteIndexEntry, ...]:

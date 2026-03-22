@@ -382,8 +382,7 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
     loader = ControlPlaneLoader(repo_root)
 
     message = (
-        "directory operationalization surfaces must use repo-relative "
-        "directory paths ending in '/'"
+        "directory operationalization surfaces must use repo-relative directory paths ending in '/'"
     )
     with pytest.raises(ValueError, match=message):
         StandardIndexSyncService(loader).build_document()

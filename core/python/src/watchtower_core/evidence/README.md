@@ -14,7 +14,7 @@ Helpers for writing durable validation-evidence artifacts and managing pack-loca
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`
-- `core/control_plane/ledgers/validation_evidence/README.md`
+- `core/control_plane/records/validation_evidence/README.md`
 
 ## Notes
 - Keep reusable evidence bundle and validation-evidence helpers here.

@@ -46,7 +46,9 @@ def test_rebuild_harness_writes_json_and_markdown_outputs_to_output_dir(
     assert result.output_dir == str(tmp_path.resolve())
     assert len(result.records) == 2
 
-    rebuilt_document = json.loads((tmp_path / PLAN_INITIATIVE_INDEX_PATH).read_text(encoding="utf-8"))
+    rebuilt_document = json.loads(
+        (tmp_path / PLAN_INITIATIVE_INDEX_PATH).read_text(encoding="utf-8")
+    )
     assert rebuilt_document == document
     assert (tmp_path / "plan/rebuild_fixture.md").read_text(encoding="utf-8") == (
         "# Fixture Rebuild\n"
@@ -82,9 +84,9 @@ def test_rebuild_harness_reuses_json_overrides_between_specs(tmp_path: Path) -> 
                         content=(
                             "# "
                             + str(
-                                runtime_loader.load_validated_document(
-                                    PLAN_INITIATIVE_INDEX_PATH
-                                )["title"]
+                                runtime_loader.load_validated_document(PLAN_INITIATIVE_INDEX_PATH)[
+                                    "title"
+                                ]
                             )
                         ),
                     ),

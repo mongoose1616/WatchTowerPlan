@@ -118,8 +118,7 @@ def test_validate_artifact_supports_json_output(capsys) -> None:
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/"
-            "governed_acceptance_example_acceptance.json",
+            "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
             "--format",
             "json",
         ]
@@ -250,8 +249,7 @@ def test_validate_artifact_can_record_evidence_to_temp_outputs(tmp_path: Path, c
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/"
-            "governed_acceptance_example_acceptance.json",
+            "core/control_plane/contracts/acceptance/governed_acceptance_example_acceptance.json",
             "--record-evidence",
             "--trace-id",
             "trace.governed_acceptance_example",
@@ -270,10 +268,7 @@ def test_validate_artifact_can_record_evidence_to_temp_outputs(tmp_path: Path, c
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["passed"] is True
-    assert (
-        payload["evidence"]["trace_id"]
-        == "trace.governed_acceptance_example"
-    )
+    assert payload["evidence"]["trace_id"] == "trace.governed_acceptance_example"
     assert evidence_output.exists()
     assert traceability_output.exists()
 
@@ -352,8 +347,7 @@ def test_validate_suite_supports_json_output(capsys) -> None:
     assert payload["passed"] is True
     assert any(summary["step_kind"] == "front_matter" for summary in payload["step_summaries"])
     assert any(
-        summary["step_kind"] == "document_semantics"
-        for summary in payload["step_summaries"]
+        summary["step_kind"] == "document_semantics" for summary in payload["step_summaries"]
     )
     assert any(summary["step_kind"] == "artifact" for summary in payload["step_summaries"])
 

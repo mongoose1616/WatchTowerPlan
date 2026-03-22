@@ -15,7 +15,9 @@ from watchtower_core.adapters import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
-from watchtower_core.documentation.front_matter_paths import normalize_front_matter_applies_to
+from watchtower_core.documentation.front_matter_paths import (
+    normalize_front_matter_applies_to,
+)
 from watchtower_core.documentation.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -42,7 +44,10 @@ from watchtower_core.sync.workflow_index import (
     load_workflow_document,
 )
 from watchtower_core.validation.common import matches_applies_to, resolve_target_path
-from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
+from watchtower_core.validation.errors import (
+    ValidationExecutionError,
+    ValidationSelectionError,
+)
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
 DOCUMENT_SEMANTICS_ARTIFACT_KIND = "documentation_semantics"
@@ -55,9 +60,13 @@ class DocumentSemanticsValidationService:
         self._loader = loader
         self._workflow_document_context: WorkflowDocumentContext | None = None
 
-    def validate(self, path: str | Path, validator_id: str | None = None) -> ValidationResult:
+    def validate(
+        self, path: str | Path, validator_id: str | None = None
+    ) -> ValidationResult:
         """Validate one Markdown document through registry-backed semantic rules."""
-        resolved_path, target_path, relative_target_path = resolve_target_path(self._loader, path)
+        resolved_path, target_path, relative_target_path = resolve_target_path(
+            self._loader, path
+        )
         validator = self._resolve_validator(relative_target_path, validator_id)
 
         try:
@@ -101,7 +110,9 @@ class DocumentSemanticsValidationService:
             try:
                 validator = registry.get(validator_id)
             except KeyError as exc:
-                raise ValidationSelectionError(f"Unknown validator ID: {validator_id}") from exc
+                raise ValidationSelectionError(
+                    f"Unknown validator ID: {validator_id}"
+                ) from exc
             return self._validate_registry_record(validator)
 
         if relative_target_path is None:
@@ -125,14 +136,18 @@ class DocumentSemanticsValidationService:
                 f"No active document-semantics validator applies to {relative_target_path}."
             )
         if len(candidates) > 1:
-            candidate_ids = ", ".join(sorted(candidate.validator_id for candidate in candidates))
+            candidate_ids = ", ".join(
+                sorted(candidate.validator_id for candidate in candidates)
+            )
             raise ValidationSelectionError(
                 "Multiple document-semantics validators apply to "
                 f"{relative_target_path}: {candidate_ids}"
             )
         return self._validate_registry_record(candidates[0])
 
-    def _validate_registry_record(self, validator: ValidatorDefinition) -> ValidatorDefinition:
+    def _validate_registry_record(
+        self, validator: ValidatorDefinition
+    ) -> ValidatorDefinition:
         if validator.status != "active":
             raise ValidationSelectionError(
                 f"Validator is not active and cannot be selected: {validator.validator_id}"
@@ -183,16 +198,22 @@ class DocumentSemanticsValidationService:
             )
             return
 
-        raise ValidationExecutionError(f"Unsupported document-semantics validator: {validator_id}")
+        raise ValidationExecutionError(
+            f"Unsupported document-semantics validator: {validator_id}"
+        )
 
     def _workflow_validation_context(self) -> WorkflowDocumentContext:
         """Return the reusable workflow-loading context for this validation run."""
 
         if self._workflow_document_context is None:
-            self._workflow_document_context = build_workflow_document_context(self._loader)
+            self._workflow_document_context = build_workflow_document_context(
+                self._loader
+            )
         return self._workflow_document_context
 
-    def _validate_reference_document(self, relative_path: str, resolved_path: Path) -> None:
+    def _validate_reference_document(
+        self, relative_path: str, resolved_path: Path
+    ) -> None:
         front_matter = load_front_matter(resolved_path)
         self._loader.schema_store.validate_instance(
             front_matter,
@@ -219,7 +240,10 @@ class DocumentSemanticsValidationService:
             front_matter_title=str(front_matter["title"]),
             required_sections=required_sections,
         )
-        if extract_updated_at_from_section(sections["Updated At"]) != front_matter["updated_at"]:
+        if (
+            extract_updated_at_from_section(sections["Updated At"])
+            != front_matter["updated_at"]
+        ):
             raise ValueError(
                 f"{relative_path} Updated At section does not match front matter updated_at."
             )
@@ -250,7 +274,9 @@ class DocumentSemanticsValidationService:
                 "at least one real repository touchpoint."
             )
 
-    def _validate_foundation_document(self, relative_path: str, resolved_path: Path) -> None:
+    def _validate_foundation_document(
+        self, relative_path: str, resolved_path: Path
+    ) -> None:
         front_matter = load_front_matter(resolved_path)
         self._loader.schema_store.validate_instance(
             front_matter,
@@ -271,12 +297,17 @@ class DocumentSemanticsValidationService:
             front_matter_title=str(front_matter["title"]),
             required_sections=required_sections,
         )
-        if extract_updated_at_from_section(sections["Updated At"]) != front_matter["updated_at"]:
+        if (
+            extract_updated_at_from_section(sections["Updated At"])
+            != front_matter["updated_at"]
+        ):
             raise ValueError(
                 f"{relative_path} Updated At section does not match front matter updated_at."
             )
 
-    def _validate_standard_document(self, relative_path: str, resolved_path: Path) -> None:
+    def _validate_standard_document(
+        self, relative_path: str, resolved_path: Path
+    ) -> None:
         front_matter = load_front_matter(resolved_path)
         self._loader.schema_store.validate_instance(
             front_matter,
@@ -319,7 +350,10 @@ class DocumentSemanticsValidationService:
             sections.get(STANDARD_OPERATIONALIZATION_SECTION),
             self._loader.repo_root,
         )
-        if extract_updated_at_from_section(sections["Updated At"]) != front_matter["updated_at"]:
+        if (
+            extract_updated_at_from_section(sections["Updated At"])
+            != front_matter["updated_at"]
+        ):
             raise ValueError(
                 f"{relative_path} Updated At section does not match front matter updated_at."
             )
@@ -347,7 +381,9 @@ class DocumentSemanticsValidationService:
                 f"{relative_path} H1 title does not match front matter title: "
                 f"{visible_title!r} != {front_matter_title!r}"
             )
-        missing_sections = [title for title in required_sections if title not in sections]
+        missing_sections = [
+            title for title in required_sections if title not in sections
+        ]
         if missing_sections:
             joined = ", ".join(missing_sections)
             raise ValueError(f"{relative_path} is missing required sections: {joined}")
@@ -370,10 +406,12 @@ class DocumentSemanticsValidationService:
             if in_fence:
                 continue
             for target in extract_markdown_links(line):
-                target_path, target_style = self._resolve_repo_local_markdown_link_target(
-                    target,
-                    repo_root=repo_root,
-                    source_path=resolved_path,
+                target_path, target_style = (
+                    self._resolve_repo_local_markdown_link_target(
+                        target,
+                        repo_root=repo_root,
+                        source_path=resolved_path,
+                    )
                 )
                 if target_style is None:
                     continue
@@ -426,7 +464,9 @@ class DocumentSemanticsValidationService:
             if repo_relative_candidate:
                 first_part = Path(repo_relative_candidate).parts[0]
                 if first_part in repo_top_level_names:
-                    return (repo_root / repo_relative_candidate).resolve(), "repo_root_relative"
+                    return (
+                        repo_root / repo_relative_candidate
+                    ).resolve(), "repo_root_relative"
 
             absolute_candidate = Path(without_fragment).resolve()
             try:

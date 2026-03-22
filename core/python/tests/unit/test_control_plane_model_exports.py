@@ -122,7 +122,7 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                 "domain_roots": {
                     "initiatives": "packs/example/initiatives",
                     "projects": "packs/example/projects",
-                    "reviews": "packs/example/reviews"
+                    "reviews": "packs/example/reviews",
                 },
                 "overview_path": "packs/example/overview.md",
             },
@@ -200,9 +200,7 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                 "workflows_root": "packs/example/workflows",
                 "tracking_root": "packs/example/tracking",
                 "python_root": "packs/example/python",
-                "domain_roots": {
-                    "reviews": "packs/example/reviews"
-                }
+                "domain_roots": {"reviews": "packs/example/reviews"},
             },
         }
     )
@@ -216,10 +214,7 @@ def test_control_plane_models_export_pack_contract_types() -> None:
 def test_control_plane_models_export_validation_suite_registry_types() -> None:
     registry = ValidationSuiteRegistry.from_document(
         {
-            "$schema": (
-                "urn:watchtower:schema:artifacts:registries:"
-                "validation-suite-registry:v1"
-            ),
+            "$schema": ("urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"),
             "id": "registry.validation_suites",
             "title": "Example Validation Suites",
             "status": "active",
@@ -242,9 +237,12 @@ def test_control_plane_models_export_validation_suite_registry_types() -> None:
         }
     )
 
-    assert registry.get("suite.example.validation_baseline").get_step(
-        "step.example.pack_contract"
-    ).step_kind == "pack_contract"
+    assert (
+        registry.get("suite.example.validation_baseline")
+        .get_step("step.example.pack_contract")
+        .step_kind
+        == "pack_contract"
+    )
 
 
 def test_control_plane_models_export_human_surface_policy_registry_types() -> None:
@@ -301,7 +299,10 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
                     "purge_gate": "promotion_before_deletion",
                     "governing_surfaces": ["retention_policy_registry"],
                     "clarifying_rule": "Example retention rule.",
-                    "surviving_authority_paths": ["plan/docs/", "core/control_plane/ledgers/purges/"],
+                    "surviving_authority_paths": [
+                        "plan/docs/",
+                        "core/control_plane/records/purges/",
+                    ],
                 }
             ],
         }
@@ -314,9 +315,7 @@ def test_control_plane_models_export_retention_policy_registry_types() -> None:
 
 def test_retired_planning_reexport_modules_are_not_importable() -> None:
     catalog_module = "watchtower_core.control_plane.models." + "_".join(("planning", "catalog"))
-    documents_module = "watchtower_core.control_plane.models." + "_".join(
-        ("planning", "documents")
-    )
+    documents_module = "watchtower_core.control_plane.models." + "_".join(("planning", "documents"))
     sys.modules.pop("watchtower_core.control_plane.models.planning", None)
     sys.modules.pop(catalog_module, None)
     sys.modules.pop(documents_module, None)

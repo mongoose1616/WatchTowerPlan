@@ -6,15 +6,15 @@ from pathlib import Path
 from shutil import copy2, copytree
 
 import yaml
-
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageResult,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.path_ids import PlanPathIdHelper
 
 FRONT_MATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 
@@ -85,7 +85,7 @@ def materialize_acceptance_and_evidence_paths(
 ) -> None:
     for relative_root in (
         "core/control_plane/contracts/acceptance",
-        "core/control_plane/ledgers/validation_evidence",
+        "core/control_plane/records/validation_evidence",
     ):
         root = repo_root / relative_root
         if not root.exists():

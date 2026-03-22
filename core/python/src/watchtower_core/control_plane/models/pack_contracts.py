@@ -108,8 +108,7 @@ class PackSettings:
             workspace_roots=PackWorkspaceRoots.from_document(document["workspace_roots"]),
             default_validation_suite_id=document["default_validation_suite_id"],
             surfaces=tuple(
-                PackSurfaceDeclaration.from_document(entry)
-                for entry in document["surfaces"]
+                PackSurfaceDeclaration.from_document(entry) for entry in document["surfaces"]
             ),
             notes=document.get("notes"),
         )
@@ -193,9 +192,7 @@ class PackRegistry:
 
         default_entries = tuple(entry for entry in self.packs if entry.default_repo_pack)
         if len(default_entries) != 1:
-            raise ValueError(
-                "Pack registry must declare exactly one default repository pack."
-            )
+            raise ValueError("Pack registry must declare exactly one default repository pack.")
         return default_entries[0]
 
 
@@ -298,8 +295,7 @@ class GovernanceSurfaceMap:
             description=document["description"],
             updated_at=document["updated_at"],
             surfaces=tuple(
-                PackSurfaceDeclaration.from_document(entry)
-                for entry in document["surfaces"]
+                PackSurfaceDeclaration.from_document(entry) for entry in document["surfaces"]
             ),
             notes=document.get("notes"),
         )
@@ -358,9 +354,7 @@ class PathPatternRegistry:
             contract_version=document["contract_version"],
             description=document["description"],
             updated_at=document["updated_at"],
-            patterns=tuple(
-                PathPatternEntry.from_document(entry) for entry in document["patterns"]
-            ),
+            patterns=tuple(PathPatternEntry.from_document(entry) for entry in document["patterns"]),
             notes=document.get("notes"),
         )
 
@@ -407,8 +401,7 @@ class StatusRegistry:
             description=document["description"],
             updated_at=document["updated_at"],
             statuses=tuple(
-                StatusRegistryEntry.from_document(entry)
-                for entry in document["statuses"]
+                StatusRegistryEntry.from_document(entry) for entry in document["statuses"]
             ),
             notes=document.get("notes"),
         )
@@ -557,8 +550,7 @@ class ExtractionOutputEnvelopeArtifact:
             extraction_method=document["extraction_method"],
             created_at=document["created_at"],
             observations=tuple(
-                ExtractionObservation.from_document(entry)
-                for entry in document["observations"]
+                ExtractionObservation.from_document(entry) for entry in document["observations"]
             ),
             candidate_knowledge=tuple(
                 ExtractionCandidateKnowledge.from_document(entry)
@@ -584,14 +576,7 @@ class ExtractionOutputEnvelopeArtifact:
     def knowledge_families(self) -> tuple[str, ...]:
         """Return the unique candidate knowledge families covered by the envelope."""
 
-        return tuple(
-            sorted(
-                {
-                    entry.knowledge_family
-                    for entry in self.candidate_knowledge
-                }
-            )
-        )
+        return tuple(sorted({entry.knowledge_family for entry in self.candidate_knowledge}))
 
     @property
     def evidence_artifact_ids(self) -> tuple[str, ...]:
@@ -692,8 +677,7 @@ class ArtifactIndex:
             description=document["description"],
             updated_at=document["updated_at"],
             artifacts=tuple(
-                ArtifactIndexEntry.from_document(entry)
-                for entry in document["artifacts"]
+                ArtifactIndexEntry.from_document(entry) for entry in document["artifacts"]
             ),
             notes=document.get("notes"),
         )

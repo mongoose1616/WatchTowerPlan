@@ -77,7 +77,11 @@ def run_document_sync_command(
 
     def _render_human() -> None:
         if wrote:
-            print(f"Rebuilt {artifact_label} with {entry_count} entries and wrote it to {destination}.")
+            print(
+                "Rebuilt "
+                f"{artifact_label} with {entry_count} entries and wrote it to "
+                f"{destination}."
+            )
             return
         print(f"Rebuilt {artifact_label} with {entry_count} entries in dry-run mode.")
         print("Use --write to update the canonical artifact or --output <path> to write elsewhere.")
@@ -181,10 +185,7 @@ def run_multi_target_sync(
         )
         print(f"Ran {human_label} across {len(result.records)} targets in {mode}.")
         for record in result.records:
-            print(
-                f"- {record.target} [{record.artifact_kind}] "
-                f"record_count={record.record_count}"
-            )
+            print(f"- {record.target} [{record.artifact_kind}] record_count={record.record_count}")
             if record.output_path is not None:
                 print(f"  Wrote to {record.output_path}")
 

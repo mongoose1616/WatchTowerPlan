@@ -31,9 +31,9 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/indexes/standards",
         REPO_ROOT / "core/control_plane/indexes/traceability",
         REPO_ROOT / "core/control_plane/indexes/workflows",
-        REPO_ROOT / "core/control_plane/ledgers/migrations",
-        REPO_ROOT / "core/control_plane/ledgers/releases",
-        REPO_ROOT / "core/control_plane/ledgers/validation_evidence",
+        REPO_ROOT / "core/control_plane/records/migrations",
+        REPO_ROOT / "core/control_plane/records/releases",
+        REPO_ROOT / "core/control_plane/records/validation_evidence",
         REPO_ROOT / "core/control_plane/manifests",
         REPO_ROOT / "core/control_plane/registries",
     )
@@ -73,9 +73,7 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
     review_registry = load_json_object(
         REPO_ROOT / "plan/.wt/registries/review_status_registry.json"
     )
-    source_registry = load_json_object(
-        REPO_ROOT / "plan/.wt/registries/source_type_registry.json"
-    )
+    source_registry = load_json_object(REPO_ROOT / "plan/.wt/registries/source_type_registry.json")
     transition_rules = load_json_object(
         REPO_ROOT / "plan/.wt/policies/status_transition_rules.json"
     )
@@ -174,12 +172,8 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
     for family_id, allowed_states in allowed_states_by_family.items():
         entry = transition_rules_by_family[family_id]
         configured_states = set(entry["initial_states"]) | set(entry["terminal_states"])
-        configured_states |= {
-            transition["from_state"] for transition in entry["transitions"]
-        }
-        configured_states |= {
-            transition["to_state"] for transition in entry["transitions"]
-        }
+        configured_states |= {transition["from_state"] for transition in entry["transitions"]}
+        configured_states |= {transition["to_state"] for transition in entry["transitions"]}
         assert configured_states.issubset(allowed_states), (
             f"{family_id} transition rules reference states outside the live schema: "
             f"{sorted(configured_states - allowed_states)}"
@@ -198,22 +192,14 @@ def test_plan_rule_registries_cover_current_live_plan_family_contracts() -> None
 
 
 def test_plan_artifact_family_registry_covers_current_live_plan_families() -> None:
-    registry = load_json_object(
-        REPO_ROOT / "plan/.wt/registries/artifact_family_registry.json"
-    )
+    registry = load_json_object(REPO_ROOT / "plan/.wt/registries/artifact_family_registry.json")
     loader = ControlPlaneLoader(
         REPO_ROOT,
         active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
     )
 
-    catalog_schema_ids = {
-        record.schema_id
-        for record in loader.load_schema_catalog().records
-    }
-    families = {
-        entry["family_id"]: entry
-        for entry in registry["entries"]
-    }
+    catalog_schema_ids = {record.schema_id for record in loader.load_schema_catalog().records}
+    families = {entry["family_id"]: entry for entry in registry["entries"]}
 
     assert {
         "pack_work_item_note",
@@ -302,13 +288,11 @@ def test_plan_documentation_family_and_template_catalog_cover_live_plan_surfaces
     }.issubset(rendered_surface_ids)
 
     assert (
-        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1"
-        in plan_schema_ids
+        "urn:watchtower:schema:artifacts:plan:documentation-family-registry:v1" in plan_schema_ids
     )
     assert "urn:watchtower:schema:artifacts:plan:template-catalog:v1" in plan_schema_ids
     assert (
-        "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1"
-        in core_schema_ids
+        "urn:watchtower:schema:interfaces:documentation:pattern-front-matter:v1" in core_schema_ids
     )
     assert (
         "urn:watchtower:schema:interfaces:plan:documentation:initiative-plan-section-spec:v1"
@@ -418,9 +402,7 @@ def test_core_documentation_family_and_template_catalog_cover_core_surfaces() ->
 
 def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    initiative_index = load_json_object(
-        REPO_ROOT / "plan/.wt/indexes/initiative_index.json"
-    )
+    initiative_index = load_json_object(REPO_ROOT / "plan/.wt/indexes/initiative_index.json")
     invalid_index = deepcopy(initiative_index)
     if not invalid_index["entries"]:
         invalid_index["entries"] = [
@@ -447,9 +429,7 @@ def test_initiative_index_rejects_missing_current_phase() -> None:
 
 def test_coordination_index_rejects_missing_coordination_mode() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    coordination_index = load_json_object(
-        REPO_ROOT / "plan/.wt/indexes/coordination_index.json"
-    )
+    coordination_index = load_json_object(REPO_ROOT / "plan/.wt/indexes/coordination_index.json")
     invalid_index = deepcopy(coordination_index)
     del invalid_index["coordination_mode"]
 
@@ -494,9 +474,7 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
 
 def test_route_index_rejects_missing_required_workflow_ids() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    route_index = load_json_object(
-        REPO_ROOT / "core/control_plane/indexes/routes/route_index.json"
-    )
+    route_index = load_json_object(REPO_ROOT / "core/control_plane/indexes/routes/route_index.json")
     invalid_index = deepcopy(route_index)
     del invalid_index["entries"][0]["required_workflow_ids"]
 
@@ -506,9 +484,7 @@ def test_route_index_rejects_missing_required_workflow_ids() -> None:
 
 def test_authority_map_rejects_missing_preferred_command() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    authority_map = load_json_object(
-        REPO_ROOT / "core/control_plane/registries/authority_map.json"
-    )
+    authority_map = load_json_object(REPO_ROOT / "core/control_plane/registries/authority_map.json")
     invalid_map = deepcopy(authority_map)
     del invalid_map["entries"][0]["preferred_command"]
 
@@ -568,8 +544,7 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 
     standard_front_matter = load_front_matter(
-        REPO_ROOT
-        / "plan/docs/standards/data_contracts/task_index_standard.md"
+        REPO_ROOT / "plan/docs/standards/data_contracts/task_index_standard.md"
     )
     standard_front_matter["updated_at"] = "2026-03-09T05:06:54-04:00"
     with pytest.raises(ValidationError):
@@ -579,8 +554,7 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
         )
 
     validation_evidence = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/ledgers/validation_evidence/"
+        REPO_ROOT / "core/control_plane/records/validation_evidence/"
         "governed_acceptance_example_validation_baseline.json"
     )
     validation_evidence["recorded_at"] = "2026-03-09T05:06:54+01:00"

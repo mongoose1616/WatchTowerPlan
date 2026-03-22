@@ -22,7 +22,9 @@ from watchtower_plan.closeout import InitiativeCloseoutService, TracePurgeServic
 IMPLEMENTATION_PATH = "plan/python/src/watchtower_plan/cli/closeout.py"
 
 
-def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction) -> None:
+def register_plan_closeout_commands(
+    plan_subparsers: argparse._SubParsersAction,
+) -> None:
     """Register the pack-owned `plan closeout` namespace."""
 
     closeout_parser = plan_subparsers.add_parser(
@@ -40,10 +42,10 @@ def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction)
         epilog=examples(
             "uv run watchtower-core plan closeout initiative --initiative-slug "
             "plan_workspace_bootstrap --initiative-status completed "
-            "--closure-reason \"Live plan slice delivered\" --write",
+            '--closure-reason "Live plan slice delivered" --write',
             "uv run watchtower-core plan closeout retained-initiative --trace-id "
             "trace.example --initiative-status completed --closure-reason "
-            "\"Closed the retained trace record\" --write",
+            '"Closed the retained trace record" --write',
             "uv run watchtower-core plan closeout purge-trace --trace-id trace.example "
             "--retained-authority-path plan/docs/standards/governance/example.md --write",
         ),
@@ -71,10 +73,10 @@ def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction)
         epilog=examples(
             "uv run watchtower-core plan closeout initiative --initiative-slug "
             "plan_workspace_bootstrap --initiative-status completed "
-            "--closure-reason \"Delivered the live plan slice\"",
+            '--closure-reason "Delivered the live plan slice"',
             "uv run watchtower-core plan closeout initiative --project-slug watchtower "
             "--initiative-slug watchtower_work_item_notes --initiative-status completed "
-            "--closure-reason \"Implemented and validated work-item notes\" --write",
+            '--closure-reason "Implemented and validated work-item notes" --write',
         ),
         formatter_class=HelpFormatter,
     )
@@ -129,10 +131,10 @@ def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction)
         epilog=examples(
             "uv run watchtower-core plan closeout retained-initiative --trace-id "
             "trace.example --initiative-status completed --closure-reason "
-            "\"Delivered and validated\"",
+            '"Delivered and validated"',
             "uv run watchtower-core plan closeout retained-initiative --trace-id "
             "trace.example --initiative-status superseded --superseded-by-trace-id "
-            "trace.replacement --closure-reason \"Replaced by the new initiative\" "
+            'trace.replacement --closure-reason "Replaced by the new initiative" '
             "--format json",
         ),
         formatter_class=HelpFormatter,
@@ -185,7 +187,7 @@ def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction)
 
     purge_parser = closeout_subparsers.add_parser(
         "purge-trace",
-        help="Purge one eligible closed trace package and write the purge ledger.",
+        help="Purge one eligible closed trace package and write the purge record.",
         description=dedent(
             """
             Delete one closed trace-local planning package only after verifying
@@ -225,7 +227,7 @@ def register_plan_closeout_commands(plan_subparsers: argparse._SubParsersAction)
     purge_parser.add_argument(
         "--write",
         action="store_true",
-        help="Delete the trace package, write the purge ledger, and refresh derived surfaces.",
+        help="Delete the trace package, write the purge record, and refresh derived surfaces.",
     )
     add_human_json_format_argument(purge_parser)
     purge_parser.set_defaults(handler=_run_closeout_purge_trace)
@@ -276,14 +278,18 @@ def _run_closeout_plan_initiative(args: argparse.Namespace) -> int:
     }
 
     def _render_human() -> None:
-        print(f"Closed live plan initiative {result.trace_id} as {result.initiative_status}.")
+        print(
+            f"Closed live plan initiative {result.trace_id} as {result.initiative_status}."
+        )
         print(f"Initiative Root: {result.initiative_root}")
         print(f"Closed At: {result.closed_at}")
         print(f"Reason: {result.closure_reason}")
         if result.superseded_by_trace_id is not None:
             print(f"Superseded By: {result.superseded_by_trace_id}")
         if result.wrote:
-            print("Initiative state, local artifacts, and derived plan surfaces were updated.")
+            print(
+                "Initiative state, local artifacts, and derived plan surfaces were updated."
+            )
         else:
             print("Dry-run only. Use --write to persist the terminal closeout state.")
 
@@ -385,8 +391,8 @@ def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
         "purged_at": result.purged_at,
         "removed_paths": list(result.removed_paths),
         "retained_authority_paths": list(result.retained_authority_paths),
-        "purge_ledger_relative_path": result.purge_ledger_relative_path,
-        "purge_ledger_output_path": result.purge_ledger_output_path,
+        "purge_record_relative_path": result.purge_record_relative_path,
+        "purge_record_output_path": result.purge_record_output_path,
         "refreshed_targets": list(result.refreshed_targets),
         "wrote": result.wrote,
     }
@@ -395,13 +401,13 @@ def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
         print(f"Prepared purge for {result.trace_id}.")
         print(f"Purged At: {result.purged_at}")
         print(f"Removed Paths: {len(result.removed_paths)}")
-        print(f"Purge Ledger: {result.purge_ledger_relative_path}")
+        print(f"Purge Record: {result.purge_record_relative_path}")
         print("Retained Authority Paths: " + ", ".join(result.retained_authority_paths))
         if result.wrote:
             print("Trace package was deleted and derived surfaces were refreshed.")
         else:
             print(
-                "Dry-run only. Use --write to delete the trace package and write the purge ledger."
+                "Dry-run only. Use --write to delete the trace package and write the purge record."
             )
 
     return _emit_detail_result(

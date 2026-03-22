@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import argparse
 
-from watchtower_core.cli.handler_common import _emit_detail_result, _run_value_error_operation
+from watchtower_core.cli.handler_common import (
+    _emit_detail_result,
+    _run_value_error_operation,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,

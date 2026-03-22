@@ -5,22 +5,22 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.control_plane.loader import (
-    TRACE_PURGE_LEDGER_DIRECTORY,
-    TRACEABILITY_INDEX_PATH,
-    ControlPlaneLoader,
-)
 from watchtower_plan.closeout import TracePurgeService
 from watchtower_plan.plan_workspace import (
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
 )
 from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
+
+from tests.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
+from watchtower_core.control_plane.loader import (
+    TRACE_PURGE_RECORD_DIRECTORY,
+    TRACEABILITY_INDEX_PATH,
+    ControlPlaneLoader,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -34,16 +34,17 @@ def _build_purge_fixture_repo(repo_root: Path) -> Path:
         repo_root,
         trace_id="trace.example_live_purge_fixture",
         title="Example Live Purge Fixture",
-        summary="Seeds one live initiative package so purge tests can derive fixture entries without relying on retained repo history.",
+        summary=(
+            "Seeds one live initiative package so purge tests can derive fixture "
+            "entries without relying on retained repo history."
+        ),
     )
     return repo_root
 
 
 @pytest.fixture(scope="module")
 def purge_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    return _build_purge_fixture_repo(
-        tmp_path_factory.mktemp("trace_purge_baseline") / "repo"
-    )
+    return _build_purge_fixture_repo(tmp_path_factory.mktemp("trace_purge_baseline") / "repo")
 
 
 @pytest.fixture
@@ -79,8 +80,7 @@ def _configure_trace_fixture(repo_root: Path) -> None:
     authority_path = "plan/docs/standards/governance/example_retained_authority.md"
     contract_path = "core/control_plane/contracts/acceptance/example_purge_acceptance.json"
     evidence_path = (
-        "core/control_plane/ledgers/validation_evidence/"
-        "example_purge_planning_baseline.json"
+        "core/control_plane/records/validation_evidence/example_purge_planning_baseline.json"
     )
 
     for relative_path in (
@@ -175,7 +175,7 @@ def _configure_trace_fixture(repo_root: Path) -> None:
         repo_root,
         evidence_path,
         {
-            "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+            "$schema": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
             "id": "evidence.example_purge.planning_baseline",
             "title": "Example Purge Validation Evidence",
             "status": "active",
@@ -337,7 +337,7 @@ class _FakeAllSyncService:
         )
 
 
-def test_trace_purge_writes_ledger_and_deletes_package(purge_fixture_repo: Path) -> None:
+def test_trace_purge_writes_record_and_deletes_package(purge_fixture_repo: Path) -> None:
     repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
 
@@ -355,11 +355,11 @@ def test_trace_purge_writes_ledger_and_deletes_package(purge_fixture_repo: Path)
     assert not (repo_root / "plan/initiatives/example_purge").exists()
     assert (repo_root / "plan/docs/standards/governance/example_retained_authority.md").exists()
 
-    purge_ledger_path = (
-        repo_root / "core/control_plane/ledgers/purges/example_purge_purge_record.json"
+    purge_record_path = (
+        repo_root / "core/control_plane/records/purges/example_purge_purge_record.json"
     )
-    assert purge_ledger_path.exists()
-    purge_document = json.loads(purge_ledger_path.read_text(encoding="utf-8"))
+    assert purge_record_path.exists()
+    purge_document = json.loads(purge_record_path.read_text(encoding="utf-8"))
     assert purge_document["trace_id"] == "trace.example_purge"
     assert purge_document["surviving_authority_paths"] == [
         "plan/docs/standards/governance/example_retained_authority.md"
@@ -404,9 +404,7 @@ def test_trace_purge_prefers_explicit_authority_paths_over_defaults(
     )
     result = service.purge(
         trace_id="trace.example_purge",
-        retained_authority_paths=(
-            "plan/docs/standards/governance/example_retained_authority.md",
-        ),
+        retained_authority_paths=("plan/docs/standards/governance/example_retained_authority.md",),
         write=False,
     )
 
@@ -415,16 +413,16 @@ def test_trace_purge_prefers_explicit_authority_paths_over_defaults(
     )
 
 
-def test_trace_purge_rejects_duplicate_ledger_records(
+def test_trace_purge_rejects_duplicate_record_entries(
     purge_fixture_repo: Path,
 ) -> None:
     repo_root = purge_fixture_repo
     _configure_trace_fixture(repo_root)
     _write_json(
         repo_root,
-        f"{TRACE_PURGE_LEDGER_DIRECTORY}/example_purge_purge_record.json",
+        f"{TRACE_PURGE_RECORD_DIRECTORY}/example_purge_purge_record.json",
         {
-            "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+            "$schema": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1",
             "id": "purge.example_purge",
             "title": "Trace Purge Record for Example Purge Trace",
             "status": "active",
@@ -433,13 +431,11 @@ def test_trace_purge_rejects_duplicate_ledger_records(
             "closed_at": "2026-03-10T20:25:00Z",
             "purged_at": "2026-03-10T20:35:00Z",
             "closure_reason": "Completed and ready for purge testing.",
-            "summary": "Fixture duplicate ledger record.",
+            "summary": "Fixture duplicate record.",
             "surviving_authority_paths": [
                 "plan/docs/standards/governance/example_retained_authority.md"
             ],
-            "purged_paths": [
-                "plan/initiatives/example_purge/plan.md"
-            ],
+            "purged_paths": ["plan/initiatives/example_purge/plan.md"],
         },
     )
 
@@ -453,6 +449,6 @@ def test_trace_purge_rejects_duplicate_ledger_records(
     except ValueError as exc:
         message = str(exc)
     else:
-        raise AssertionError("Expected purge guard to reject duplicate ledger records.")
+        raise AssertionError("Expected purge guard to reject duplicate record entries.")
 
-    assert "already has a purge ledger entry" in message
+    assert "already has a purge record entry" in message

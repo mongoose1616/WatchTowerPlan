@@ -223,14 +223,10 @@ class ReferenceIndexSyncService:
 
         return {
             "cited_by": {
-                path: tuple(sorted(values))
-                for path, values in cited_by.items()
-                if values
+                path: tuple(sorted(values)) for path, values in cited_by.items() if values
             },
             "applied_by": {
-                path: tuple(sorted(values))
-                for path, values in applied_by.items()
-                if values
+                path: tuple(sorted(values)) for path, values in applied_by.items() if values
             },
         }
 

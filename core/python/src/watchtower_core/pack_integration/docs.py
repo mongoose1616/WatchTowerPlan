@@ -13,7 +13,9 @@ def pack_command_entry_doc_path(*, command_namespace: str, docs_root: str) -> st
     """Return the canonical entry page for one pack command namespace."""
 
     normalized_namespace = command_namespace.replace("-", "_")
-    return f"{pack_command_docs_root(docs_root=docs_root)}/watchtower_core_{normalized_namespace}.md"
+    return (
+        f"{pack_command_docs_root(docs_root=docs_root)}/watchtower_core_{normalized_namespace}.md"
+    )
 
 
 __all__ = [

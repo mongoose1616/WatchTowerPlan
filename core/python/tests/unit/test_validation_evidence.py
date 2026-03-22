@@ -35,7 +35,7 @@ def test_validation_evidence_recorder_builds_schema_valid_document() -> None:
 
     loader.schema_store.validate_instance(document)
     assert evidence_id.startswith("evidence.governed_acceptance_example.")
-    assert evidence_relative_path.startswith("core/control_plane/ledgers/validation_evidence/")
+    assert evidence_relative_path.startswith("core/control_plane/records/validation_evidence/")
     assert document["overall_result"] == "passed"
 
 
@@ -63,9 +63,7 @@ def test_validation_evidence_recorder_builds_updated_traceability_document() -> 
     entries = updated_traceability["entries"]
     assert isinstance(entries, list)
     entry = next(
-        item
-        for item in entries
-        if item["trace_id"] == "trace.governed_acceptance_example"
+        item for item in entries if item["trace_id"] == "trace.governed_acceptance_example"
     )
     assert evidence_id in entry["evidence_ids"]
     assert result.validator_id in entry["validator_ids"]

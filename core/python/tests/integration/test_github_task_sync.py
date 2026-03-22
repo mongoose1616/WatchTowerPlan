@@ -5,6 +5,10 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from watchtower_plan.initiatives import InitiativeTaskSpec
+from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
+from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_plan.tasks import update_task_document
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
@@ -14,10 +18,6 @@ from tests.fixture_repo_support import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import GitHubApiError, GitHubIssueRef, GitHubProjectContext
-from watchtower_plan.initiatives import InitiativeTaskSpec
-from watchtower_plan.tasks import update_task_document
-from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
-from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 TRACE_ID = "trace.github_task_sync_fixture"

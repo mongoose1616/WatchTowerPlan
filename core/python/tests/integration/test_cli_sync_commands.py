@@ -317,9 +317,7 @@ def test_sync_traceability_index_supports_json_output(capsys) -> None:
 def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "repository_path_index.json"
 
-    result = main(
-        ["sync", "repository-paths", "--output", str(output_path), "--format", "json"]
-    )
+    result = main(["sync", "repository-paths", "--output", str(output_path), "--format", "json"])
 
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
@@ -355,9 +353,7 @@ def test_sync_all_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> No
     assert payload["command"] == "watchtower-core plan sync all"
     assert payload["wrote"] is True
     assert payload["output_dir"] == str(output_dir.resolve())
-    assert (
-        output_dir / "core/control_plane/indexes/commands/command_index.json"
-    ).exists()
+    assert (output_dir / "core/control_plane/indexes/commands/command_index.json").exists()
     assert (output_dir / "plan/tracking/task_tracking.md").exists()
 
 
@@ -375,12 +371,8 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     assert payload["wrote"] is True
     assert payload["output_dir"] == str(output_dir.resolve())
     assert (output_dir / "plan/.wt/indexes/task_index.json").exists()
-    assert (
-        output_dir / "core/control_plane/indexes/traceability/traceability_index.json"
-    ).exists()
-    assert (
-        output_dir / "plan/.wt/indexes/coordination_index.json"
-    ).exists()
+    assert (output_dir / "core/control_plane/indexes/traceability/traceability_index.json").exists()
+    assert (output_dir / "plan/.wt/indexes/coordination_index.json").exists()
     assert (output_dir / "plan/tracking/task_tracking.md").exists()
     assert (output_dir / "plan/tracking/initiative_tracking.md").exists()
     assert (output_dir / "plan/tracking/coordination_tracking.md").exists()
@@ -466,9 +458,7 @@ def test_sync_review_index_can_write_to_explicit_output(tmp_path: Path, capsys) 
     assert output_path.exists()
 
 
-def test_sync_initiative_tracking_can_write_to_explicit_output(
-    tmp_path: Path, capsys
-) -> None:
+def test_sync_initiative_tracking_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "initiative_tracking.md"
 
     result = main(
@@ -514,9 +504,7 @@ def test_sync_task_tracking_can_write_to_explicit_output(tmp_path: Path, capsys)
     assert output_path.exists()
 
 
-def test_sync_traceability_index_can_write_to_explicit_output(
-    tmp_path: Path, capsys
-) -> None:
+def test_sync_traceability_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "traceability_index.json"
 
     result = main(

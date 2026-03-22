@@ -6,8 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
-from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 from watchtower_core.control_plane.models import RetentionPolicyEntry, RetentionPolicyRegistry
+from watchtower_core.control_plane.pack_workspace import PackWorkspacePaths
 
 
 @dataclass(frozen=True, slots=True)
@@ -95,7 +95,7 @@ class RetentionPolicyHelper:
         roots: set[str] = {
             self._workspace_paths.machine_root,
             self._workspace_paths.docs_root,
-            "core/control_plane/ledgers/purges",
+            "core/control_plane/records/purges",
         }
         initiatives_root = repo_root / self._workspace_paths.initiatives_root
         if initiatives_root.exists():

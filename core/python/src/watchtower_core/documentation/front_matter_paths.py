@@ -77,11 +77,7 @@ def applies_to_path_values(
     relative_path: str,
 ) -> tuple[str, ...]:
     """Return path-like applies_to values that are not the current document path."""
-    return tuple(
-        value
-        for value in applies_to
-        if "/" in value and value != relative_path
-    )
+    return tuple(value for value in applies_to if "/" in value and value != relative_path)
 
 
 def _canonicalize_applies_to_value(

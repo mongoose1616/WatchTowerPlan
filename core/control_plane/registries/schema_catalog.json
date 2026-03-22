@@ -186,42 +186,42 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+      "schema_id": "urn:watchtower:schema:artifacts:records:migration-record:v1",
       "title": "Migration Record",
-      "description": "Schema for machine-readable migration ledger artifacts.",
+      "description": "Schema for machine-readable migration record artifacts.",
       "status": "active",
       "schema_family": "artifact",
       "subject_kind": "migration_record",
       "version": "v1",
       "canonical_path": "core/control_plane/schemas/artifacts/migration_record.schema.json",
       "aliases": [
-        "migration ledger schema"
+        "migration record schema"
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:ledgers:release-record:v1",
+      "schema_id": "urn:watchtower:schema:artifacts:records:release-record:v1",
       "title": "Release Record",
-      "description": "Schema for machine-readable release ledger artifacts.",
+      "description": "Schema for machine-readable release record artifacts.",
       "status": "active",
       "schema_family": "artifact",
       "subject_kind": "release_record",
       "version": "v1",
       "canonical_path": "core/control_plane/schemas/artifacts/release_record.schema.json",
       "aliases": [
-        "release ledger schema"
+        "release record schema"
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+      "schema_id": "urn:watchtower:schema:artifacts:records:trace-purge-record:v1",
       "title": "Trace Purge Record",
-      "description": "Schema for machine-readable trace-purge ledger artifacts.",
+      "description": "Schema for machine-readable trace-purge record artifacts.",
       "status": "active",
       "schema_family": "artifact",
       "subject_kind": "trace_purge_record",
       "version": "v1",
       "canonical_path": "core/control_plane/schemas/artifacts/trace_purge_record.schema.json",
       "aliases": [
-        "trace purge ledger schema",
+        "trace purge record schema",
         "planning retention purge schema"
       ]
     },
@@ -254,9 +254,9 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+      "schema_id": "urn:watchtower:schema:artifacts:records:validation-evidence:v1",
       "title": "Validation Evidence",
-      "description": "Schema for durable validation-evidence ledger artifacts.",
+      "description": "Schema for durable validation-evidence record artifacts.",
       "status": "active",
       "schema_family": "artifact",
       "subject_kind": "validation_evidence",
@@ -264,7 +264,7 @@
       "canonical_path": "core/control_plane/schemas/artifacts/validation_evidence.schema.json",
       "aliases": [
         "validation evidence schema",
-        "evidence ledger schema"
+        "evidence record schema"
       ]
     },
     {

@@ -103,14 +103,11 @@ class GovernanceSurfaceResolver:
         )
 
     def _all_declarations(self) -> tuple[tuple[str, PackSurfaceDeclaration], ...]:
-        return (
-            tuple(
-                ("pack_settings", declaration) for declaration in self._pack_settings.surfaces
-            )
-            + tuple(
-                ("governance_surface_map", declaration)
-                for declaration in self._governance_surface_map.surfaces
-            )
+        return tuple(
+            ("pack_settings", declaration) for declaration in self._pack_settings.surfaces
+        ) + tuple(
+            ("governance_surface_map", declaration)
+            for declaration in self._governance_surface_map.surfaces
         )
 
     def _declarations_for_surface(
@@ -125,7 +122,7 @@ class GovernanceSurfaceResolver:
 
 
 def _choose_primary(
-    declarations: tuple[tuple[str, PackSurfaceDeclaration], ...]
+    declarations: tuple[tuple[str, PackSurfaceDeclaration], ...],
 ) -> PackSurfaceDeclaration:
     for source, declaration in declarations:
         if source == "pack_settings":

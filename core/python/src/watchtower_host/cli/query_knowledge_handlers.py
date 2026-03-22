@@ -43,9 +43,7 @@ def _run_query_foundations(args: argparse.Namespace) -> int:
         entries=entries,
         noun="foundation",
         empty_message="No foundation entries matched the requested filters.",
-        payload_results_factory=lambda: [
-            _foundation_entry_payload(entry) for entry in entries
-        ],
+        payload_results_factory=lambda: [_foundation_entry_payload(entry) for entry in entries],
         render_entry=_print_foundation_entry,
     )
 
@@ -157,8 +155,7 @@ def _print_foundation_entry(entry: object) -> None:
     print(f"  {entry.title}")
     print(f"  {entry.summary}")
     print(
-        "  Usage: "
-        f"cited_by={len(entry.cited_by_paths)}, applied_by={len(entry.applied_by_paths)}"
+        f"  Usage: cited_by={len(entry.cited_by_paths)}, applied_by={len(entry.applied_by_paths)}"
     )
 
 

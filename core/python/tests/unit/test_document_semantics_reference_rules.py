@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from textwrap import dedent
 
+from watchtower_plan.validation import DocumentSemanticsValidationService
+
 from tests.unit.document_semantics_fixtures import (
     copy_control_plane_repo,
     repo_markdown_link,
@@ -10,7 +12,6 @@ from tests.unit.document_semantics_fixtures import (
     write_repo_file,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_plan.validation import DocumentSemanticsValidationService
 
 
 def test_document_semantics_validation_rejects_reference_without_canonical_upstream(

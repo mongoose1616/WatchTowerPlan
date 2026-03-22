@@ -20,6 +20,7 @@ from watchtower_core.query import (
     AuthorityMapSearchParams,
     TraceabilityQueryService,
 )
+from watchtower_plan.projects import PlanProjectIndexEntry
 from watchtower_plan.projects.context import load_project_context
 from watchtower_plan.query import (
     ArtifactQueryService,
@@ -38,6 +39,14 @@ from watchtower_plan.query import (
     ReadinessSearchParams,
     TaskQueryService,
     TaskSearchParams,
+)
+from watchtower_plan.workspace.service import (
+    PlanCloseoutIndexEntry,
+    PlanDiscrepancyIndexEntry,
+    PlanEvidenceIndexEntry,
+    PlanReadinessIndexEntry,
+    PlanReviewIndexEntry,
+    PlanTaskIndexEntry,
 )
 
 
@@ -62,7 +71,9 @@ def _run_query_authority(args: argparse.Namespace) -> int:
         entries=entries,
         noun="authority",
         empty_message="No authority-map entries matched the requested filters.",
-        payload_results_factory=lambda: [_authority_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _authority_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_authority_entry,
     )
 
@@ -90,7 +101,9 @@ def _run_query_artifacts(args: argparse.Namespace) -> int:
         entries=entries,
         noun="artifact",
         empty_message="No artifact entries matched the requested filters.",
-        payload_results_factory=lambda: [_artifact_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _artifact_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_artifact_entry,
     )
 
@@ -155,7 +168,9 @@ def _run_query_readiness(args: argparse.Namespace) -> int:
         entries=entries,
         noun="readiness",
         empty_message="No readiness entries matched the requested filters.",
-        payload_results_factory=lambda: [_readiness_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _readiness_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_readiness_entry,
     )
 
@@ -181,7 +196,9 @@ def _run_query_discrepancies(args: argparse.Namespace) -> int:
         entries=entries,
         noun="discrepancy",
         empty_message="No discrepancy entries matched the requested filters.",
-        payload_results_factory=lambda: [_discrepancy_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _discrepancy_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_discrepancy_entry,
     )
 
@@ -208,7 +225,9 @@ def _run_query_plan_evidence(args: argparse.Namespace) -> int:
         entries=entries,
         noun="plan evidence",
         empty_message="No plan evidence entries matched the requested filters.",
-        payload_results_factory=lambda: [_plan_evidence_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _plan_evidence_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_plan_evidence_entry,
     )
 
@@ -234,7 +253,9 @@ def _run_query_closeouts(args: argparse.Namespace) -> int:
         entries=entries,
         noun="closeout",
         empty_message="No closeout entries matched the requested filters.",
-        payload_results_factory=lambda: [_closeout_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _closeout_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_closeout_entry,
     )
 
@@ -261,7 +282,9 @@ def _run_query_reviews(args: argparse.Namespace) -> int:
         entries=entries,
         noun="review",
         empty_message="No review entries matched the requested filters.",
-        payload_results_factory=lambda: [_review_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _review_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_review_entry,
     )
 
@@ -284,7 +307,9 @@ def _run_query_projects(args: argparse.Namespace) -> int:
         entries=entries,
         noun="project",
         empty_message="No project entries matched the requested filters.",
-        payload_results_factory=lambda: [_project_entry_payload(entry) for entry in entries],
+        payload_results_factory=lambda: [
+            _project_entry_payload(entry) for entry in entries
+        ],
         render_entry=_print_project_entry,
     )
 
@@ -325,6 +350,7 @@ def _run_query_trace(args: argparse.Namespace) -> int:
             "notes": entry.notes,
         },
     }
+
     def _render_human() -> None:
         print(f"{entry.trace_id}: {entry.title}")
         print(entry.summary)
@@ -389,6 +415,7 @@ def _run_query_project_context(args: argparse.Namespace) -> int:
             ],
         },
     }
+
     def _render_human() -> None:
         print(f"{context.project_id}: {context.title} [{context.status}]")
         print(context.summary)
@@ -454,7 +481,9 @@ def _print_artifact_entry(entry: ArtifactIndexEntry) -> None:
     if entry.context_ids:
         print(f"  Context IDs: {', '.join(entry.context_ids)}")
     if entry.source_context is not None or entry.source_channel is not None:
-        print(f"  Source: {entry.source_context or '-'} / {entry.source_channel or '-'}")
+        print(
+            f"  Source: {entry.source_context or '-'} / {entry.source_channel or '-'}"
+        )
     print(
         "  Authority: "
         f"authoritative={entry.authoritative} derived={entry.derived} hidden={entry.hidden}"
@@ -462,10 +491,10 @@ def _print_artifact_entry(entry: ArtifactIndexEntry) -> None:
 
 
 def _task_entry_payload(
-    entry: object,
+    entry: PlanTaskIndexEntry,
     *,
     service: TaskQueryService,
-    reverse_dependencies: dict[str, tuple[object, ...]],
+    reverse_dependencies: dict[str, tuple[PlanTaskIndexEntry, ...]],
     include_dependency_details: bool,
 ) -> dict[str, object]:
     artifact_status = getattr(entry, "status", None)
@@ -506,10 +535,10 @@ def _task_entry_payload(
 
 
 def _print_task_entry(
-    entry: object,
+    entry: PlanTaskIndexEntry,
     *,
     include_dependency_details: bool,
-    reverse_dependencies: dict[str, tuple[object, ...]],
+    reverse_dependencies: dict[str, tuple[PlanTaskIndexEntry, ...]],
 ) -> None:
     task_status = getattr(entry, "task_status", getattr(entry, "status", "unknown"))
     print(f"- {entry.task_id} [{task_status}, {entry.priority}]")
@@ -522,10 +551,13 @@ def _print_task_entry(
             print(f"  Depends on: {', '.join(entry.depends_on)}")
         reverse_links = reverse_dependencies.get(entry.task_id, ())
         if reverse_links:
-            print("  Reverse dependencies: " + ", ".join(task.task_id for task in reverse_links))
+            print(
+                "  Reverse dependencies: "
+                + ", ".join(task.task_id for task in reverse_links)
+            )
 
 
-def _readiness_entry_payload(entry: object) -> dict[str, object]:
+def _readiness_entry_payload(entry: PlanReadinessIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "initiative_id": entry.initiative_id,
         "project_id": entry.project_id,
@@ -545,7 +577,7 @@ def _readiness_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_readiness_entry(entry: object) -> None:
+def _print_readiness_entry(entry: PlanReadinessIndexEntry) -> None:
     readiness_state = "ready" if entry.ready_for_execution else "not_ready"
     print(
         f"- {entry.trace_id} [{entry.lifecycle_stage}, {entry.review_status}, {readiness_state}]"
@@ -564,7 +596,7 @@ def _print_readiness_entry(entry: object) -> None:
     print(f"  Root: {entry.initiative_root}")
 
 
-def _discrepancy_entry_payload(entry: object) -> dict[str, object]:
+def _discrepancy_entry_payload(entry: PlanDiscrepancyIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "discrepancy_id": entry.discrepancy_id,
         "initiative_id": entry.initiative_id,
@@ -582,8 +614,10 @@ def _discrepancy_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_discrepancy_entry(entry: object) -> None:
-    print(f"- {entry.discrepancy_id} [{entry.severity}, {entry.gate_effect}, {entry.status}]")
+def _print_discrepancy_entry(entry: PlanDiscrepancyIndexEntry) -> None:
+    print(
+        f"- {entry.discrepancy_id} [{entry.severity}, {entry.gate_effect}, {entry.status}]"
+    )
     print(f"  {entry.title}")
     print(f"  {entry.summary}")
     print(f"  Category: {entry.category}")
@@ -591,7 +625,7 @@ def _print_discrepancy_entry(entry: object) -> None:
         print(f"  Sources: {', '.join(entry.source_paths)}")
 
 
-def _plan_evidence_entry_payload(entry: object) -> dict[str, object]:
+def _plan_evidence_entry_payload(entry: PlanEvidenceIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "evidence_id": entry.evidence_id,
         "initiative_id": entry.initiative_id,
@@ -612,7 +646,7 @@ def _plan_evidence_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_plan_evidence_entry(entry: object) -> None:
+def _print_plan_evidence_entry(entry: PlanEvidenceIndexEntry) -> None:
     print(f"- {entry.evidence_id} [{entry.status}, {entry.entry_count} checks]")
     print(f"  {entry.initiative_title}")
     print(f"  Validation types: {', '.join(entry.validation_types)}")
@@ -620,7 +654,7 @@ def _print_plan_evidence_entry(entry: object) -> None:
     print(f"  Target phases: {', '.join(entry.target_phases)}")
 
 
-def _closeout_entry_payload(entry: object) -> dict[str, object]:
+def _closeout_entry_payload(entry: PlanCloseoutIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "closeout_id": entry.closeout_id,
         "initiative_id": entry.initiative_id,
@@ -642,7 +676,7 @@ def _closeout_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_closeout_entry(entry: object) -> None:
+def _print_closeout_entry(entry: PlanCloseoutIndexEntry) -> None:
     terminal_state = entry.terminal_state or "-"
     print(f"- {entry.closeout_id} [{entry.status}, terminal={terminal_state}]")
     print(f"  {entry.initiative_title}")
@@ -653,7 +687,7 @@ def _print_closeout_entry(entry: object) -> None:
     )
 
 
-def _review_entry_payload(entry: object) -> dict[str, object]:
+def _review_entry_payload(entry: PlanReviewIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "review_subject_id": entry.review_subject_id,
         "subject_kind": entry.subject_kind,
@@ -672,7 +706,7 @@ def _review_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_review_entry(entry: object) -> None:
+def _print_review_entry(entry: PlanReviewIndexEntry) -> None:
     readiness = (
         "-"
         if entry.ready_for_execution is None
@@ -687,7 +721,7 @@ def _print_review_entry(entry: object) -> None:
         print(f"  Review refs: {', '.join(entry.review_refs)}")
 
 
-def _project_entry_payload(entry: object) -> dict[str, object]:
+def _project_entry_payload(entry: PlanProjectIndexEntry) -> dict[str, object]:
     payload: dict[str, object] = {
         "project_id": entry.project_id,
         "slug": entry.slug,
@@ -706,7 +740,7 @@ def _project_entry_payload(entry: object) -> dict[str, object]:
     return _without_none_values(payload)
 
 
-def _print_project_entry(entry: object) -> None:
+def _print_project_entry(entry: PlanProjectIndexEntry) -> None:
     print(f"- {entry.project_id} [{entry.status}]")
     print(f"  {entry.title}")
     print(f"  {entry.summary}")

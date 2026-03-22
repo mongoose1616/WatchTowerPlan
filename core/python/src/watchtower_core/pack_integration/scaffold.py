@@ -156,7 +156,10 @@ def _validate_repo_state(repo_root: Path, resolved: _ResolvedPackScaffold) -> No
     pack_registry_path = repo_root / "core/control_plane/registries/pack_registry.json"
     pack_registry = json.loads(pack_registry_path.read_text(encoding="utf-8"))
     for entry in pack_registry.get("packs", ()):
-        if entry["pack_id"] == f"pack.{resolved.pack_slug}" or entry["pack_slug"] == resolved.pack_slug:
+        if (
+            entry["pack_id"] == f"pack.{resolved.pack_slug}"
+            or entry["pack_slug"] == resolved.pack_slug
+        ):
             raise ValueError(f"Hosted pack already exists in pack_registry: {resolved.pack_slug}")
         if entry["command_namespace"] == resolved.command_namespace:
             raise ValueError(
@@ -311,7 +314,10 @@ def _template_replacements(resolved: _ResolvedPackScaffold) -> tuple[tuple[str, 
         ("<schema_slug>", resolved.schema_slug),
         ("<note_slug>", resolved.note_slug),
         ("<python_package>", resolved.python_package),
-        ("<pack_root>/python/src/watchtower_<pack_slug>", f"{resolved.pack_root}/python/src/{resolved.python_package}"),
+        (
+            "<pack_root>/python/src/watchtower_<pack_slug>",
+            f"{resolved.pack_root}/python/src/{resolved.python_package}",
+        ),
         ("watchtower_<pack_slug>", resolved.python_package),
         ("watchtower-<pack_slug>", resolved.python_distribution),
         ("YYYY-MM-DDTHH:MM:SSZ", resolved.updated_at),
@@ -385,12 +391,27 @@ def _pack_root_readme(resolved: _ResolvedPackScaffold) -> str:
             "## Paths",
             "| Path | Description |",
             "|---|---|",
-            f"| `{resolved.pack_root}/README.md` | Describes the hosted-pack root and its main boundaries. |",
-            f"| `{resolved.pack_root}/.wt/` | Pack-local machine state, manifests, registries, and starter schemas or artifacts. |",
-            f"| `{resolved.pack_root}/docs/` | Pack-owned durable guidance and namespace command docs. |",
-            f"| `{resolved.pack_root}/workflows/` | Pack-owned workflow guidance and routing surfaces. |",
-            f"| `{resolved.pack_root}/tracking/` | Pack-owned rendered tracking surfaces. |",
-            f"| `{resolved.pack_root}/python/` | Pack-native Python package and editable-install metadata. |",
+            (
+                f"| `{resolved.pack_root}/README.md` | Describes the hosted-pack root "
+                "and its main boundaries. |"
+            ),
+            (
+                f"| `{resolved.pack_root}/.wt/` | Pack-local machine state, manifests, "
+                "registries, and starter schemas or artifacts. |"
+            ),
+            (
+                f"| `{resolved.pack_root}/docs/` | Pack-owned durable guidance and "
+                "namespace command docs. |"
+            ),
+            (
+                f"| `{resolved.pack_root}/workflows/` | Pack-owned workflow guidance "
+                "and routing surfaces. |"
+            ),
+            (f"| `{resolved.pack_root}/tracking/` | Pack-owned rendered tracking surfaces. |"),
+            (
+                f"| `{resolved.pack_root}/python/` | Pack-native Python package and "
+                "editable-install metadata. |"
+            ),
             "",
             "## Boundaries",
             (
@@ -447,8 +468,14 @@ def _workflows_readme(resolved: _ResolvedPackScaffold) -> str:
             "## Files",
             "| Path | Description |",
             "|---|---|",
-            f"| `{resolved.pack_root}/workflows/README.md` | Describes the pack-local workflow root. |",
-            f"| `{resolved.pack_root}/workflows/ROUTING_TABLE.md` | Starter routing guidance for future pack-local modules. |",
+            (
+                f"| `{resolved.pack_root}/workflows/README.md` | Describes the "
+                "pack-local workflow root. |"
+            ),
+            (
+                f"| `{resolved.pack_root}/workflows/ROUTING_TABLE.md` | Starter routing "
+                "guidance for future pack-local modules. |"
+            ),
         )
     )
 
@@ -490,7 +517,10 @@ def _tracking_readme(resolved: _ResolvedPackScaffold) -> str:
             "## Files",
             "| Path | Description |",
             "|---|---|",
-            f"| `{resolved.pack_root}/tracking/README.md` | Describes the pack-owned tracking root. |",
+            (
+                f"| `{resolved.pack_root}/tracking/README.md` | Describes the pack-owned "
+                "tracking root. |"
+            ),
         )
     )
 
@@ -515,9 +545,7 @@ def _namespace_command_reference(resolved: _ResolvedPackScaffold) -> str:
             f"# `watchtower-core {resolved.command_namespace}`",
             "",
             "## Summary",
-            (
-                f"Starter namespace entry page for the hosted `{resolved.pack_slug}` pack."
-            ),
+            (f"Starter namespace entry page for the hosted `{resolved.pack_slug}` pack."),
             "",
             "## Use When",
             (

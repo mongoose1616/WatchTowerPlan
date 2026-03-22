@@ -65,8 +65,9 @@ def _iter_sys_path_mutation_files(package_root: Path) -> list[str]:
     return offending_paths
 
 
-def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries(
-) -> None:
+def test_public_query_root_exports_generic_query_services_and_fails_closed_for_plan_queries() -> (
+    None
+):
     assert public_query.AcceptanceContractQueryService.__module__ == (
         "watchtower_core.query.acceptance"
     )

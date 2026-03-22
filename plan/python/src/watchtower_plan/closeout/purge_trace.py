@@ -1,4 +1,4 @@
-"""Guarded trace-package purge helpers and minimal surviving ledger writes."""
+"""Guarded trace-package purge helpers and minimal surviving record writes."""
 
 from __future__ import annotations
 
@@ -8,12 +8,11 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.loader import (
-    TRACE_PURGE_LEDGER_DIRECTORY,
+    TRACE_PURGE_RECORD_DIRECTORY,
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
-    TaskIndexEntry,
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
@@ -24,7 +23,7 @@ from watchtower_plan.tasks import task_event_directory
 from watchtower_plan.workspace.service import PlanWorkspaceService
 from watchtower_plan.sync.all import AllSyncService
 
-TRACE_PURGE_RECORD_SCHEMA_ID = "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+TRACE_PURGE_RECORD_SCHEMA_ID = "urn:watchtower:schema:artifacts:records:trace-purge-record:v1"
 TERMINAL_INITIATIVE_STATUSES = frozenset(
     {"completed", "superseded", "cancelled", "abandoned"}
 )
@@ -47,8 +46,8 @@ class TracePurgeResult:
     wrote: bool
     removed_paths: tuple[str, ...]
     retained_authority_paths: tuple[str, ...]
-    purge_ledger_relative_path: str
-    purge_ledger_output_path: str | None
+    purge_record_relative_path: str
+    purge_record_output_path: str | None
     refreshed_targets: tuple[str, ...]
 
 
@@ -117,7 +116,7 @@ class TracePurgeService:
         )
         if existing_record is not None:
             raise ValueError(
-                f"Trace {trace_id} already has a purge ledger entry at {existing_record.doc_path}."
+                f"Trace {trace_id} already has a purge record entry at {existing_record.doc_path}."
             )
 
         package_paths = self._package_paths(trace_id)
@@ -161,28 +160,28 @@ class TracePurgeService:
             )
 
         resolved_purged_at = purged_at or utc_timestamp_now()
-        ledger_relative_path = _ledger_relative_path(trace_id)
-        ledger_document = self._build_ledger_document(
+        record_relative_path = _record_relative_path(trace_id)
+        record_document = self._build_record_document(
             trace_entry=trace_entry,
             package_paths=package_paths,
             retained_authority_paths=resolved_authority_paths,
             purged_at=resolved_purged_at,
         )
 
-        ledger_path = self._loader.resolve_path(ledger_relative_path)
-        if ledger_path.exists():
+        record_path = self._loader.resolve_path(record_relative_path)
+        if record_path.exists():
             raise ValueError(
-                f"Trace purge ledger path already exists for {trace_id}: {ledger_relative_path}."
+                f"Trace purge record path already exists for {trace_id}: {record_relative_path}."
             )
 
-        purge_ledger_output_path: str | None = None
+        purge_record_output_path: str | None = None
         refreshed_targets: tuple[str, ...] = ()
         if write:
             self._delete_package_paths(package_paths)
-            purge_ledger_output_path = str(
+            purge_record_output_path = str(
                 self._loader.artifact_store.write_json_object(
-                    ledger_relative_path,
-                    ledger_document,
+                    record_relative_path,
+                    record_document,
                 )
             )
             runtime_loader = ControlPlaneLoader(self._repo_root)
@@ -199,8 +198,8 @@ class TracePurgeService:
             wrote=write,
             removed_paths=package_paths,
             retained_authority_paths=resolved_authority_paths,
-            purge_ledger_relative_path=ledger_relative_path,
-            purge_ledger_output_path=purge_ledger_output_path,
+            purge_record_relative_path=record_relative_path,
+            purge_record_output_path=purge_record_output_path,
             refreshed_targets=refreshed_targets,
         )
 
@@ -331,7 +330,7 @@ class TracePurgeService:
 
         return tuple(sorted(resolved))
 
-    def _build_ledger_document(
+    def _build_record_document(
         self,
         *,
         trace_entry: TraceabilityEntry,
@@ -341,7 +340,7 @@ class TracePurgeService:
     ) -> dict[str, object]:
         document: dict[str, object] = {
             "$schema": TRACE_PURGE_RECORD_SCHEMA_ID,
-            "id": _ledger_record_id(trace_entry.trace_id),
+            "id": _purge_record_id(trace_entry.trace_id),
             "title": f"Trace Purge Record for {trace_entry.title}",
             "status": "active",
             "trace_id": trace_entry.trace_id,
@@ -458,16 +457,16 @@ class TracePurgeService:
         return tuple(entry for entry in entries if entry.trace_id == trace_id)
 
 
-def _ledger_record_id(trace_id: str) -> str:
+def _purge_record_id(trace_id: str) -> str:
     if trace_id.startswith("trace."):
         return f"purge.{trace_id.removeprefix('trace.')}"
     return f"purge.{trace_id}"
 
 
-def _ledger_relative_path(trace_id: str) -> str:
+def _record_relative_path(trace_id: str) -> str:
     slug_source = trace_id.removeprefix("trace.")
     slug = re.sub(r"[^a-z0-9]+", "_", slug_source.casefold()).strip("_") or "trace"
-    return f"{TRACE_PURGE_LEDGER_DIRECTORY}/{slug}_purge_record.json"
+    return f"{TRACE_PURGE_RECORD_DIRECTORY}/{slug}_purge_record.json"
 
 
 def _is_trace_local_path(relative_path: str, *, workspace_paths: PackWorkspacePaths) -> bool:
@@ -556,7 +555,7 @@ def _trace_local_roots(workspace_paths: PackWorkspacePaths) -> tuple[str, ...]:
         f"{workspace_paths.initiatives_root}/",
         f"{workspace_paths.projects_root}/",
         "core/control_plane/contracts/acceptance/",
-        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/records/validation_evidence/",
     )
 
 

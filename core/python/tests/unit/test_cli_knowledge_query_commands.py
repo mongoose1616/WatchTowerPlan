@@ -119,8 +119,7 @@ def test_query_standards_respects_foundation_document_family_boundary(capsys) ->
     assert payload["command"] == "watchtower-core query standards"
     assert payload["status"] == "ok"
     assert any(
-        entry["standard_id"] == "std.documentation.foundation_md"
-        for entry in payload["results"]
+        entry["standard_id"] == "std.documentation.foundation_md" for entry in payload["results"]
     )
 
     result, payload = run_json_command(
@@ -137,8 +136,7 @@ def test_query_standards_respects_foundation_document_family_boundary(capsys) ->
     assert payload["command"] == "watchtower-core query standards"
     assert payload["status"] == "ok"
     assert all(
-        entry["standard_id"] != "std.documentation.foundation_md"
-        for entry in payload["results"]
+        entry["standard_id"] != "std.documentation.foundation_md" for entry in payload["results"]
     )
 
 
@@ -151,9 +149,7 @@ def test_query_workflows_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query workflows"
     assert payload["status"] == "ok"
-    assert any(
-        entry["workflow_id"] == "workflow.code_validation" for entry in payload["results"]
-    )
+    assert any(entry["workflow_id"] == "workflow.code_validation" for entry in payload["results"])
 
 
 def test_query_workflows_supports_retrieval_filters(capsys) -> None:
@@ -206,8 +202,7 @@ def test_query_workflows_supports_boundary_discovery_terms(capsys) -> None:
     assert payload["command"] == "watchtower-core query workflows"
     assert payload["status"] == "ok"
     assert any(
-        entry["workflow_id"] == "workflow.task_phase_transition"
-        for entry in payload["results"]
+        entry["workflow_id"] == "workflow.task_phase_transition" for entry in payload["results"]
     )
 
 
@@ -225,9 +220,7 @@ def test_query_references_supports_reverse_citation_filters(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query references"
     assert payload["status"] == "ok"
-    assert any(
-        entry["reference_id"] == "ref.github_collaboration" for entry in payload["results"]
-    )
+    assert any(entry["reference_id"] == "ref.github_collaboration" for entry in payload["results"])
 
 
 def test_query_references_supports_repository_status_filter(capsys) -> None:
@@ -248,8 +241,7 @@ def test_query_references_supports_repository_status_filter(capsys) -> None:
     assert payload["status"] == "ok"
     assert any(entry["reference_id"] == "ref.opentelemetry" for entry in payload["results"])
     assert all(
-        entry["repository_status"] == "candidate_future_guidance"
-        for entry in payload["results"]
+        entry["repository_status"] == "candidate_future_guidance" for entry in payload["results"]
     )
 
 
@@ -328,8 +320,7 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
     assert payload["status"] == "ok"
     assert any(
         entry["standard_id"] == "std.documentation.standard_md"
-        and "core/docs/templates/standard_document_template.md"
-        in entry["operationalization_paths"]
+        and "core/docs/templates/standard_document_template.md" in entry["operationalization_paths"]
         for entry in payload["results"]
     )
 
@@ -389,7 +380,7 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
         ),
         (
             (
-                "core/control_plane/ledgers/validation_evidence/"
+                "core/control_plane/records/validation_evidence/"
                 "governed_acceptance_example_validation_baseline.json"
             ),
             "std.data_contracts.validation_evidence",
@@ -414,9 +405,9 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
         assert result == 0
         assert payload["command"] == "watchtower-core query standards"
         assert payload["status"] == "ok"
-        assert any(
-            entry["standard_id"] == expected_standard_id for entry in payload["results"]
-        ), payload["results"]
+        assert any(entry["standard_id"] == expected_standard_id for entry in payload["results"]), (
+            payload["results"]
+        )
 
 
 def test_query_standards_supports_canonical_directory_path_filters(capsys) -> None:

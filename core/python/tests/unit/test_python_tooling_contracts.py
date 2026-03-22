@@ -37,12 +37,7 @@ def test_python_workspace_tooling_contract_publishes_stricter_reusable_core_rule
         "watchtower_core.workflow_execution",
         "watchtower_core.evidence",
         "watchtower_core.utils",
-    }.issubset(
-        {
-            module_name.removesuffix(".*")
-            for module_name in strict_override["module"]
-        }
-    )
+    }.issubset({module_name.removesuffix(".*") for module_name in strict_override["module"]})
 
     ruff_select = pyproject["tool"]["ruff"]["lint"]["select"]
     assert "C4" in ruff_select

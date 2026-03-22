@@ -126,8 +126,8 @@ def _surface_kind(
         return "control_plane_contract" if kind == "file" else "control_plane_contracts"
     if relative_path.startswith("core/control_plane/indexes/"):
         return "control_plane_index" if kind == "file" else "control_plane_indexes"
-    if relative_path.startswith("core/control_plane/ledgers/"):
-        return "control_plane_ledger" if kind == "file" else "control_plane_ledgers"
+    if relative_path.startswith("core/control_plane/records/"):
+        return "control_plane_record" if kind == "file" else "control_plane_records"
     if relative_path.startswith("core/control_plane/"):
         return "control_plane_file" if kind == "file" else "control_plane_family"
     for roots in pack_workspace_roots:
@@ -288,10 +288,7 @@ class RepositoryPathIndexSyncService:
                     ),
                 )
 
-        entries = [
-            _entry_to_document(derived_entries[path])
-            for path in sorted(derived_entries)
-        ]
+        entries = [_entry_to_document(derived_entries[path]) for path in sorted(derived_entries)]
         return {
             "$schema": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
             "id": "index.repository_paths",

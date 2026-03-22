@@ -15,9 +15,7 @@ from watchtower_core.adapters import (
     split_semicolon_list,
 )
 from watchtower_core.control_plane.operationalization_paths import (
-    operationalization_path_is_directory,
     operationalization_path_is_glob,
-    operationalization_path_matches,
 )
 from watchtower_core.documentation.governed_documents import ordered_unique
 
@@ -30,8 +28,7 @@ _STANDARD_GLOB_PATTERN_ERROR = (
     "one live repository surface"
 )
 _STANDARD_DIRECTORY_PATH_ERROR = (
-    "directory operationalization surfaces must use repo-relative directory paths "
-    "ending in '/'"
+    "directory operationalization surfaces must use repo-relative directory paths ending in '/'"
 )
 _STANDARD_FILE_PATH_ERROR = "file operationalization surfaces must not end with '/'"
 
@@ -106,10 +103,7 @@ def collect_standard_reference_metadata(
     applied_direct_external_urls = ordered_unique(extract_external_urls(related_section))
     reference_urls_by_path = reference_urls_by_path or {}
     transitive_external_urls = ordered_unique(
-        *(
-            reference_urls_by_path.get(reference_path, ())
-            for reference_path in reference_doc_paths
-        )
+        *(reference_urls_by_path.get(reference_path, ()) for reference_path in reference_doc_paths)
     )
     applied_transitive_external_urls = ordered_unique(
         *(
@@ -191,8 +185,7 @@ def _normalize_standard_operationalization_path(
     without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
     if not without_fragment:
         raise ValueError(
-            f"{relative_path} operationalization surface must be a valid repository path: "
-            f"{value}"
+            f"{relative_path} operationalization surface must be a valid repository path: {value}"
         )
     if operationalization_path_is_glob(without_fragment):
         normalized_pattern = _normalize_repo_relative_glob_pattern(
@@ -206,8 +199,7 @@ def _normalize_standard_operationalization_path(
     normalized = normalize_repo_path_reference(without_fragment, repo_root)
     if normalized is None:
         raise ValueError(
-            f"{relative_path} operationalization surface must be a valid repository path: "
-            f"{value}"
+            f"{relative_path} operationalization surface must be a valid repository path: {value}"
         )
     resolved = repo_root / Path(normalized.rstrip("/"))
     if resolved.is_dir():
@@ -235,9 +227,7 @@ def _normalize_repo_relative_glob_pattern(
     try:
         matches = tuple(repo_root.glob(normalized))
     except ValueError as exc:
-        raise ValueError(
-            f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}"
-        ) from exc
+        raise ValueError(f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}") from exc
     if not matches:
         return None
     return normalized

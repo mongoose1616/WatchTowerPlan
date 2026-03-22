@@ -6,14 +6,14 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Protocol
 
-from watchtower_core.pack_integration.docs import (
-    pack_command_docs_root,
-    pack_command_entry_doc_path,
-)
 from watchtower_core.pack_integration.bootstrap import (
     PackBootstrapRequest,
     PackBootstrapResult,
     bootstrap_hosted_pack,
+)
+from watchtower_core.pack_integration.docs import (
+    pack_command_docs_root,
+    pack_command_entry_doc_path,
 )
 from watchtower_core.pack_integration.scaffold import (
     PackScaffoldRequest,
@@ -33,7 +33,10 @@ from watchtower_core.pack_integration.workspace_registration import (
 
 if TYPE_CHECKING:
     from watchtower_core.control_plane.loader import ControlPlaneLoader
-    from watchtower_core.validation.suite import ValidationSuiteTargetResolver
+    from watchtower_core.validation.suite import (
+        DocumentSemanticsValidationService,
+        ValidationSuiteTargetResolver,
+    )
 
 REQUIRED_PACK_CAPABILITIES: tuple[str, ...] = (
     "command_registration",
@@ -82,7 +85,9 @@ class PackValidationProvider(Protocol):
 
 
 PackLifecycleHook = Callable[..., object]
-PackDocumentSemanticsFactory = Callable[["ControlPlaneLoader"], object]
+PackDocumentSemanticsFactory = Callable[
+    ["ControlPlaneLoader"], "DocumentSemanticsValidationService"
+]
 
 
 @dataclass(frozen=True, slots=True)
@@ -104,7 +109,7 @@ class PackValidationRuntime:
     """Pack-owned validation hooks consumed through the integration contract."""
 
     document_semantics_factory: PackDocumentSemanticsFactory
-    suite_target_resolver: "ValidationSuiteTargetResolver | None" = None
+    suite_target_resolver: ValidationSuiteTargetResolver | None = None
 
 
 @dataclass(frozen=True, slots=True)

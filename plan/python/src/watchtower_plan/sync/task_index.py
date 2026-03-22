@@ -26,7 +26,9 @@ class TaskIndexSyncService:
     def build_document(self) -> dict[str, object]:
         return PlanWorkspaceService(self._loader).build_task_index_document()
 
-    def write_document(self, document: dict[str, object], destination: Path | None = None) -> Path:
+    def write_document(
+        self, document: dict[str, object], destination: Path | None = None
+    ) -> Path:
         """Write the generated task index to disk."""
         target = destination or (self._repo_root / TASK_INDEX_ARTIFACT_PATH)
         target.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")

@@ -51,7 +51,9 @@ def test_governed_standards_explain_related_sources() -> None:
             }
             section = sections.get("Related Standards and Sources")
             assert section is not None, f"missing Related Standards and Sources section: {path}"
-            bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
+            bullets = [
+                line.strip() for line in section.splitlines() if line.strip().startswith("- ")
+            ]
             assert bullets, f"missing related-source bullets: {path}"
             assert all(": " in bullet for bullet in bullets), (
                 f"unexplained related-source bullet: {path}"
@@ -206,7 +208,9 @@ def test_data_contract_standards_do_not_publish_retired_example_operationalizati
                 markdown,
                 flags=re.MULTILINE | re.DOTALL,
             )
-            assert operationalization_match is not None, f"missing Operationalization section: {path}"
+            assert operationalization_match is not None, (
+                f"missing Operationalization section: {path}"
+            )
             operationalization_section = operationalization_match.group(1)
             assert "core/control_plane/examples/" not in operationalization_section, (
                 f"retired example operationalization surface still published in {path}"

@@ -37,7 +37,9 @@ class TaskQueryService:
             loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
         )
-        self._reverse_dependency_map: dict[str, tuple[PlanTaskIndexEntry, ...]] | None = None
+        self._reverse_dependency_map: (
+            dict[str, tuple[PlanTaskIndexEntry, ...]] | None
+        ) = None
 
     def search(self, params: TaskSearchParams) -> tuple[PlanTaskIndexEntry, ...]:
         """Return task entries matching the requested filters."""
@@ -45,13 +47,17 @@ class TaskQueryService:
         selected_task_ids = {task_id.casefold() for task_id in params.task_ids}
         trace_id = params.trace_id.casefold() if params.trace_id is not None else None
         task_status = (
-            self._terminology.canonical_value("plan_task_status", params.task_status).casefold()
+            self._terminology.canonical_value(
+                "plan_task_status", params.task_status
+            ).casefold()
             if params.task_status is not None
             else None
         )
         priority = params.priority.casefold() if params.priority is not None else None
         owner = params.owner.casefold() if params.owner is not None else None
-        task_kind = params.task_kind.casefold() if params.task_kind is not None else None
+        task_kind = (
+            params.task_kind.casefold() if params.task_kind is not None else None
+        )
         blocked_by_task_id = (
             params.blocked_by_task_id.casefold()
             if params.blocked_by_task_id is not None
@@ -111,10 +117,10 @@ class TaskQueryService:
             matches.append((score, entry))
 
         matches.sort(key=lambda item: (-item[0], item[1].task_id))
-        entries = [entry for _, entry in matches]
+        ordered_entries = [entry for _, entry in matches]
         if params.limit is not None:
-            entries = entries[: params.limit]
-        return tuple(entries)
+            ordered_entries = ordered_entries[: params.limit]
+        return tuple(ordered_entries)
 
     def get(self, task_id: str) -> PlanTaskIndexEntry:
         """Return one task entry by its stable task identifier."""

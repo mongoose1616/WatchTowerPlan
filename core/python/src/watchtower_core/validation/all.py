@@ -133,9 +133,7 @@ class ValidationAllService:
         """Run the selected validation families and return their aggregate results."""
 
         requested_families = (
-            set(VALIDATION_ALL_FAMILIES)
-            if included_families is None
-            else set(included_families)
+            set(VALIDATION_ALL_FAMILIES) if included_families is None else set(included_families)
         )
         unknown_families = requested_families.difference(VALIDATION_ALL_FAMILIES)
         if unknown_families:

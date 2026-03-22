@@ -48,8 +48,7 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
     )
     assert any(
         entry["route_id"] == "route.governed_artifact_reconciliation"
-        and "reconcile schema backed indexes examples and validators"
-        in entry["trigger_keywords"]
+        and "reconcile schema backed indexes examples and validators" in entry["trigger_keywords"]
         for entry in entries
     )
     assert any(
@@ -154,7 +153,7 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
             "required_workflow_paths": [
                 "core/workflows/modules/core.md",
             ],
-        }
+        },
     ]
 
 
@@ -202,9 +201,7 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
             "Code Review"
         },
         "Review report changes for release risk review.": {"Code Review"},
-        "Perform a whole-repository health assessment and standards audit.": {
-            "Repository Review"
-        },
+        "Perform a whole-repository health assessment and standards audit.": {"Repository Review"},
         "Review the workflow docs against the current CLI behavior and lookup surfaces.": {
             "Documentation-Implementation Reconciliation"
         },
@@ -219,12 +216,8 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         "Reconcile schema-backed indexes examples and validators for one artifact family.": {
             "Governed Artifact Reconciliation"
         },
-        "Review workflow index schema registry alignment.": {
-            "Governed Artifact Reconciliation"
-        },
-        "Perform schema registry alignment review.": {
-            "Governed Artifact Reconciliation"
-        },
+        "Review workflow index schema registry alignment.": {"Governed Artifact Reconciliation"},
+        "Perform schema registry alignment review.": {"Governed Artifact Reconciliation"},
         "Make the design and standards docs cohesive with the foundations documents.": {
             "Foundations Alignment Review"
         },

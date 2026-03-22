@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Literal
 
+from watchtower_core.cli.sync_runtime_helpers import load_sync_class
+from watchtower_core.control_plane.loader import COMMAND_INDEX_PATH, ControlPlaneLoader
 from watchtower_core.sync.foundation_index import (
     FOUNDATION_INDEX_ARTIFACT_PATH,
     FoundationIndexSyncService,
@@ -48,7 +50,10 @@ from watchtower_plan.sync.review_index import (
     REVIEW_INDEX_ARTIFACT_PATH,
     ReviewIndexSyncService,
 )
-from watchtower_plan.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
+from watchtower_plan.sync.task_index import (
+    TASK_INDEX_ARTIFACT_PATH,
+    TaskIndexSyncService,
+)
 from watchtower_plan.sync.task_tracking import (
     TASK_TRACKING_DOCUMENT_PATH,
     TaskTrackingSyncService,
@@ -63,7 +68,22 @@ SyncTargetGroup = Literal["coordination"]
 COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"
 
 
+def _command_index_sync_service(loader: ControlPlaneLoader) -> object:
+    service_class = load_sync_class(
+        "watchtower_host.cli.command_index",
+        "CommandIndexSyncService",
+    )
+    return service_class(loader)
+
+
 SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
+    SyncTargetSpec(
+        target="command-index",
+        mode="document",
+        artifact_kind="index",
+        relative_output_path=COMMAND_INDEX_PATH,
+        service_factory=_command_index_sync_service,
+    ),
     SyncTargetSpec(
         target="foundation-index",
         mode="document",

@@ -4,10 +4,6 @@ import json
 from pathlib import Path
 from shutil import copytree
 
-from tests.fixture_repo_support import (
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageService,
@@ -15,6 +11,11 @@ from watchtower_plan.initiatives import (
 )
 from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
 from watchtower_plan.sync import TraceabilityIndexSyncService
+
+from tests.fixture_repo_support import (
+    materialize_minimal_plan_pack,
+)
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -128,11 +129,7 @@ def test_traceability_index_sync_uses_closed_at_as_effective_updated_at(
 
     rebuilt_entries = rebuilt["entries"]
     assert isinstance(rebuilt_entries, list)
-    rebuilt_target = next(
-        entry
-        for entry in rebuilt_entries
-        if entry["trace_id"] == trace_id
-    )
+    rebuilt_target = next(entry for entry in rebuilt_entries if entry["trace_id"] == trace_id)
     assert rebuilt_target["updated_at"] == "2099-03-10T23:59:59Z"
 
 
@@ -185,8 +182,7 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
             "priority": "high",
             "owner": "repository_maintainer",
             "doc_path": (
-                "plan/initiatives/synthetic_reopened_follow_up/.wt/tasks/"
-                "follow_up_ready/task.json"
+                "plan/initiatives/synthetic_reopened_follow_up/.wt/tasks/follow_up_ready/task.json"
             ),
             "updated_at": "2099-03-10T23:59:59Z",
         }
@@ -211,7 +207,7 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
 
 def test_traceability_index_sync_prefers_latest_same_rank_note(tmp_path: Path) -> None:
     repo_root = _build_full_plan_fixture_repo(tmp_path)
-    evidence_root = repo_root / "core/control_plane/ledgers/validation_evidence"
+    evidence_root = repo_root / "core/control_plane/records/validation_evidence"
     trace_id = _bootstrap_packwide_trace(
         repo_root,
         initiative_slug="traceability_note_preference",
@@ -245,11 +241,7 @@ def test_traceability_index_sync_prefers_latest_same_rank_note(tmp_path: Path) -
 
     rebuilt_entries = rebuilt["entries"]
     assert isinstance(rebuilt_entries, list)
-    rebuilt_target = next(
-        entry
-        for entry in rebuilt_entries
-        if entry["trace_id"] == trace_id
-    )
+    rebuilt_target = next(entry for entry in rebuilt_entries if entry["trace_id"] == trace_id)
     assert rebuilt_target["notes"] == "Latest checkpoint note."
 
 
@@ -266,7 +258,9 @@ def test_traceability_index_sync_keeps_closed_live_initiative_state_over_stale_e
     initiative_document = json.loads(initiative_path.read_text(encoding="utf-8"))
     initiative_document["status"] = "completed"
     initiative_document["closed_at"] = "2026-03-17T19:38:14Z"
-    initiative_document["closure_reason"] = "Closed for traceability closed-state regression coverage."
+    initiative_document["closure_reason"] = (
+        "Closed for traceability closed-state regression coverage."
+    )
     initiative_path.write_text(
         f"{json.dumps(initiative_document, indent=2)}\n",
         encoding="utf-8",
@@ -319,13 +313,17 @@ def test_traceability_index_sync_drops_active_acceptance_only_traces_without_liv
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     trace_id = "trace.synthetic_acceptance_only"
     acceptance_root = repo_root / "core/control_plane/contracts/acceptance"
-    evidence_root = repo_root / "core/control_plane/ledgers/validation_evidence"
+    evidence_root = repo_root / "core/control_plane/records/validation_evidence"
 
-    acceptance_template = json.loads(next(acceptance_root.glob("*.json")).read_text(encoding="utf-8"))
+    acceptance_template = json.loads(
+        next(acceptance_root.glob("*.json")).read_text(encoding="utf-8")
+    )
     acceptance_template["id"] = "contract.acceptance.synthetic_acceptance_only"
     acceptance_template["trace_id"] = trace_id
     acceptance_template["title"] = "Synthetic Acceptance Only"
-    acceptance_template["source_surface_path"] = "plan/initiatives/synthetic_acceptance_only/initiative_brief.md"
+    acceptance_template["source_surface_path"] = (
+        "plan/initiatives/synthetic_acceptance_only/initiative_brief.md"
+    )
     (acceptance_root / "synthetic_acceptance_only.json").write_text(
         f"{json.dumps(acceptance_template, indent=2)}\n",
         encoding="utf-8",
