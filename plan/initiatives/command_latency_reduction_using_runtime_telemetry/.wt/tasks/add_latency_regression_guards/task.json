@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+  "slug": "add_latency_regression_guards",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "title": "Add latency regression guards",
+  "summary": "Adds targeted regression coverage and benchmark helpers so the reduced-latency paths do not drift back into slow repeated work.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "validation",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T18:57:37Z",
+  "updated_at": "2026-03-22T18:57:37Z",
+  "dependency_task_ids": [
+    "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+    "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+    "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency"
+  ],
+  "applies_to": [
+    "core/python/tests/",
+    "plan/python/src/watchtower_plan/",
+    "core/python/src/watchtower_core/telemetry/"
+  ],
+  "scope_items": [
+    "Add focused regression tests or benchmark helpers around the optimized hotspots instead of broad unstable timing assertions.",
+    "Document the benchmark set and any guardrails needed to keep the improvements measurable and maintainable."
+  ],
+  "done_when_items": [
+    "The optimization tranche has durable regression coverage that protects the hotspot boundaries that were changed.",
+    "The benchmark or profiling helper path is clear enough to reuse in later latency work."
+  ]
+}

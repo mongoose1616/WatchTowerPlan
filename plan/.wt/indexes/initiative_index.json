@@ -5,6 +5,158 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+      "title": "Command Latency Reduction Using Runtime Telemetry",
+      "summary": "Uses the new local runtime telemetry to profile, prioritize, and reduce command latency across host, reusable core, and pack-owned paths.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-22T18:57:43Z",
+      "open_task_count": 6,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
+      "next_action": "Start the highest-priority ready task from the initiative package.",
+      "next_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
+      "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+      "slug": "command_latency_reduction_using_runtime_telemetry",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+        "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+          "title": "Add latency regression guards",
+          "task_status": "planned",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/add_latency_regression_guards/task.json",
+          "is_actionable": false,
+          "depends_on": [
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency"
+          ]
+        },
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory",
+          "title": "Capture latency baseline and hotspot inventory",
+          "task_status": "ready",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json",
+          "is_actionable": true
+        },
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+          "title": "Reduce host and loader startup latency",
+          "task_status": "planned",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json",
+          "is_actionable": false,
+          "depends_on": [
+            "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory"
+          ]
+        },
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+          "title": "Reduce plan command latency",
+          "task_status": "planned",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json",
+          "is_actionable": false,
+          "depends_on": [
+            "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory"
+          ]
+        },
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
+          "title": "Reduce validation and pack-runtime latency",
+          "task_status": "planned",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json",
+          "is_actionable": false,
+          "depends_on": [
+            "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory"
+          ]
+        },
+        {
+          "task_id": "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout",
+          "title": "Validate, benchmark, and close out the latency tranche",
+          "task_status": "planned",
+          "priority": "critical",
+          "owner": "repository_maintainer",
+          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json",
+          "is_actionable": false,
+          "depends_on": [
+            "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency"
+          ]
+        }
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+        "task.command_latency_reduction_using_runtime_telemetry.bootstrap_command_latency_reduction_using_runtime_telemetry",
+        "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout"
+      ],
+      "evidence_ids": [
+        "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
+      ],
+      "related_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/telemetry/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/",
+        "plan/.wt/indexes/",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/initiative.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/add_latency_regression_guards/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/bootstrap_command_latency_reduction_using_runtime_telemetry/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json",
+        "plan/python/src/watchtower_plan/",
+        "plan/tracking/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_copy_forward_operating_mode_documentation",
       "title": "Core Copy Forward Operating Mode Documentation",
       "summary": "Document that downstream WatchTower repositories may consume the shared core by copying core/ alone or alongside one or more hosted packs.",

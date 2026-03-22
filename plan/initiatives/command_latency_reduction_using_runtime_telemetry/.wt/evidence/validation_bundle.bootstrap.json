@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+  "title": "Bootstrap Validation Bundle",
+  "status": "planned",
+  "updated_at": "2026-03-22T18:52:33Z",
+  "entries": [
+    {
+      "entry_id": "entry.command_latency_reduction_using_runtime_telemetry.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.command_latency_reduction_using_runtime_telemetry.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/discrepancies"
+      ]
+    }
+  ]
+}

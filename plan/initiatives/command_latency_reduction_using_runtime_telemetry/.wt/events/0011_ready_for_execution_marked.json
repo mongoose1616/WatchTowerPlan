@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.command_latency_reduction_using_runtime_telemetry.0011_ready_for_execution_marked",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "sequence": 11,
+  "event_type": "ready_for_execution_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T18:54:57Z",
+  "summary": "The initiative package entered ready_for_execution after approval.",
+  "payload": {},
+  "trace_id": "trace.command_latency_reduction_using_runtime_telemetry"
+}

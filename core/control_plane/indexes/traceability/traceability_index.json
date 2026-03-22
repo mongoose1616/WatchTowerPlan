@@ -5,6 +5,58 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+      "title": "Command Latency Reduction Using Runtime Telemetry",
+      "summary": "Uses the new local runtime telemetry to profile, prioritize, and reduce command latency across host, reusable core, and pack-owned paths.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-22T18:57:43Z",
+      "source_surface_paths": [
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+        "task.command_latency_reduction_using_runtime_telemetry.bootstrap_command_latency_reduction_using_runtime_telemetry",
+        "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
+        "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/telemetry/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/",
+        "plan/.wt/indexes/",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/initiative.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/add_latency_regression_guards/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/bootstrap_command_latency_reduction_using_runtime_telemetry/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+        "plan/python/src/watchtower_plan/",
+        "plan/tracking/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_copy_forward_operating_mode_documentation",
       "title": "Core Copy Forward Operating Mode Documentation",
       "summary": "Document that downstream WatchTower repositories may consume the shared core by copying core/ alone or alongside one or more hosted packs.",

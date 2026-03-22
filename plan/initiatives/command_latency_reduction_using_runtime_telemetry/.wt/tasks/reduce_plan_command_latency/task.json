@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency",
+  "slug": "reduce_plan_command_latency",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "title": "Reduce plan command latency",
+  "summary": "Uses the telemetry baseline to reduce avoidable latency in plan sync, query, task, and closeout command paths.",
+  "status": "active",
+  "task_status": "planned",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T18:57:30Z",
+  "updated_at": "2026-03-22T18:57:30Z",
+  "dependency_task_ids": [
+    "task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory"
+  ],
+  "applies_to": [
+    "plan/python/src/watchtower_plan/",
+    "plan/.wt/indexes/",
+    "plan/tracking/"
+  ],
+  "scope_items": [
+    "Optimize the slowest plan-owned command families first, especially coordination, query, task, and closeout write paths if they dominate the baseline.",
+    "Preserve machine-state correctness and rendered planning surfaces while reducing repeated whole-state work."
+  ],
+  "done_when_items": [
+    "The chosen plan command hotspots are measurably faster against the recorded baseline without stale tracking or index regressions.",
+    "The affected plan commands stay behaviorally identical apart from improved runtime."
+  ]
+}

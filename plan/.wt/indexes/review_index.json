@@ -3,8 +3,26 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T18:49:35Z",
+  "updated_at": "2026-03-22T18:57:43Z",
   "entries": [
+    {
+      "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+      "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+      "initiative_title": "Command Latency Reduction Using Runtime Telemetry",
+      "title": "Command Latency Reduction Using Runtime Telemetry",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T18:57:43Z",
+      "lifecycle_stage": "in_progress",
+      "ready_for_execution": true
+    },
     {
       "review_subject_id": "initiative.core_copy_forward_operating_mode_documentation",
       "subject_kind": "initiative",
@@ -310,6 +328,22 @@
       "updated_at": "2026-03-22T08:52:36Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+      "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+      "initiative_title": "Command Latency Reduction Using Runtime Telemetry",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T18:52:33Z"
     },
     {
       "review_subject_id": "promotion.core_copy_forward_operating_mode_documentation.bootstrap_shell",

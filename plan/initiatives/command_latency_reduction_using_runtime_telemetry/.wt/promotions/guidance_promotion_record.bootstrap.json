@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+  "title": "Bootstrap Promotion Shell",
+  "status": "planned",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-22T18:52:33Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/command_latency_reduction_using_runtime_telemetry_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/command_latency_reduction_using_runtime_telemetry_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/command_latency_reduction_using_runtime_telemetry_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/command_latency_reduction_using_runtime_telemetry_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

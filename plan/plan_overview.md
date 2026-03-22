@@ -1,19 +1,19 @@
 # Plan Overview
 
 ## Plan Domain Summary
-- `coordination_mode`: `ready_for_bootstrap`
-- `summary`: No active plan-workspace initiatives exist.
-- `recommended_next_action`: Bootstrap a new initiative package before starting execution.
-- `recommended_surface_path`: `plan/plan_overview.md`
+- `coordination_mode`: `active_work`
+- `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
+- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_surface_path`: `plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md`
 
 ## Active Pack-Wide Initiatives
-- None.
+- `trace.command_latency_reduction_using_runtime_telemetry`: Command Latency Reduction Using Runtime Telemetry (`execution` / `pack_wide`)
 
 ## Active Project Initiatives
 - None.
 
 ## Blocked or Attention-Needed Items
-- None.
+- Actionable task `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory` (high) in `trace.command_latency_reduction_using_runtime_telemetry` -> `plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json`
 
 ## Recent Completions or Changes
 - `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`completed` at `2026-03-22T18:49:35Z`) - Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.
