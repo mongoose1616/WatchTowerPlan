@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-22T21:22:26Z`
+- `updated_at`: `2026-03-22T21:31:39Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -19,9 +19,8 @@
 ## Active Tasks
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json) | `ready` | `high` | `repository_maintainer` | Profiles the current debt inventory across slow tests, stale compatibility surfaces, migration residue, and duplicate authority declarations. | - |
+| [task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json) | `in_progress` | `high` | `repository_maintainer` | Cuts the slow integration tail by removing redundant end-to-end coverage, reusing prepared baselines, and clarifying fast-versus-slow test boundaries. | task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt |
 | [task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json) | `planned` | `high` | `repository_maintainer` | Collapses avoidable duplicated schema, validator, and registry declarations where one authority surface should remain canonical. | task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt |
-| [task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json) | `planned` | `high` | `repository_maintainer` | Cuts the slow integration tail by removing redundant end-to-end coverage, reusing prepared baselines, and clarifying fast-versus-slow test boundaries. | task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt |
 | [task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json) | `planned` | `high` | `repository_maintainer` | Deletes stale compatibility imports, migration-era glue, and dead edge-case support that no longer protects active contracts. | task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt |
 | [task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche](/plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json) | `planned` | `high` | `repository_maintainer` | Runs the final repo gate, records removed debt and bounded deferrals, and closes the first tech-debt tranche cleanly. | task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests, task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue, task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations |
 
@@ -32,7 +31,7 @@
 - Task `task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche` depends on `task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests`, `task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue`, `task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations`.
 
 ## Next Actions
-- Start the highest-priority ready task from the initiative package.
+- Advance the current in-progress task set and keep initiative-local task state current.
 - Next surface: [plan.md](/plan/initiatives/repository_tech_debt_reduction_program/plan.md)
 
 ## Evidence or Validation State

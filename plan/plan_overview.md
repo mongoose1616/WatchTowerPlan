@@ -3,7 +3,7 @@
 ## Plan Domain Summary
 - `coordination_mode`: `active_work`
 - `summary`: Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.
-- `recommended_next_action`: Start the highest-priority ready task from the initiative package.
+- `recommended_next_action`: Advance the current in-progress task set and keep initiative-local task state current.
 - `recommended_surface_path`: `plan/initiatives/repository_tech_debt_reduction_program/plan.md`
 
 ## Active Pack-Wide Initiatives
@@ -13,7 +13,7 @@
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt` (high) in `trace.repository_tech_debt_reduction_program` -> `plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json`
+- None.
 
 ## Recent Completions or Changes
 - `trace.command_latency_reduction_using_runtime_telemetry`: Command Latency Reduction Using Runtime Telemetry (`completed` at `2026-03-22T20:50:23Z`) - Validated and benchmarked latency reductions on the final optimized tree.

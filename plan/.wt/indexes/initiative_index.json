@@ -930,11 +930,11 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-22T21:22:26Z",
-      "open_task_count": 5,
+      "updated_at": "2026-03-22T21:31:39Z",
+      "open_task_count": 4,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-      "next_action": "Start the highest-priority ready task from the initiative package.",
+      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
       "next_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
       "initiative_id": "initiative.repository_tech_debt_reduction_program",
       "slug": "repository_tech_debt_reduction_program",
@@ -944,7 +944,6 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
         "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
         "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
         "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
@@ -952,37 +951,22 @@
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt",
-          "title": "Inventory High-Cost Technical Debt",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json",
-          "is_actionable": true
-        },
-        {
           "task_id": "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
           "title": "Reconcile Duplicate Registry And Contract Declarations",
           "task_status": "planned",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reconcile_duplicate_registry_and_contract_declarations/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
           "title": "Reduce Integration Tail And Tier Tests",
-          "task_status": "planned",
+          "task_status": "in_progress",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
@@ -991,10 +975,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
-          "is_actionable": false,
-          "depends_on": [
-            "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
-          ]
+          "is_actionable": false
         },
         {
           "task_id": "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche",

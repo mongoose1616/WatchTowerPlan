@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-22T21:22:26Z",
+  "updated_at": "2026-03-22T21:31:39Z",
   "entries": [
     {
       "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -258,7 +258,7 @@
       "approval_status": "approved",
       "ready_for_execution": true,
       "blocking_reasons": [],
-      "updated_at": "2026-03-22T21:22:26Z"
+      "updated_at": "2026-03-22T21:31:39Z"
     },
     {
       "initiative_id": "initiative.runtime_telemetry_and_command_observability_foundation",

@@ -1323,12 +1323,12 @@
       "title": "Inventory High-Cost Technical Debt",
       "summary": "Profiles the current debt inventory across slow tests, stale compatibility surfaces, migration residue, and duplicate authority declarations.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "completed",
       "task_kind": "research",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/inventory_high_cost_technical_debt/task.json",
-      "updated_at": "2026-03-22T21:21:21Z",
+      "updated_at": "2026-03-22T21:31:39Z",
       "related_ids": [
         "initiative.repository_tech_debt_reduction_program"
       ],
@@ -1373,12 +1373,12 @@
       "title": "Reduce Integration Tail And Tier Tests",
       "summary": "Cuts the slow integration tail by removing redundant end-to-end coverage, reusing prepared baselines, and clarifying fast-versus-slow test boundaries.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
-      "updated_at": "2026-03-22T21:21:31Z",
+      "updated_at": "2026-03-22T21:31:38Z",
       "depends_on": [
         "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
       ],
