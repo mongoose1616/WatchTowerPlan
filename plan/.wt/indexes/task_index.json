@@ -1373,12 +1373,12 @@
       "title": "Reduce Integration Tail And Tier Tests",
       "summary": "Cuts the slow integration tail by removing redundant end-to-end coverage, reusing prepared baselines, and clarifying fast-versus-slow test boundaries.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "validation",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
-      "updated_at": "2026-03-22T21:31:38Z",
+      "updated_at": "2026-03-22T21:50:42Z",
       "depends_on": [
         "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
       ],
@@ -1398,12 +1398,12 @@
       "title": "Remove Stale Compatibility And Migration Residue",
       "summary": "Deletes stale compatibility imports, migration-era glue, and dead edge-case support that no longer protects active contracts.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "in_progress",
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
-      "updated_at": "2026-03-22T21:21:50Z",
+      "updated_at": "2026-03-22T21:50:42Z",
       "depends_on": [
         "task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt"
       ],

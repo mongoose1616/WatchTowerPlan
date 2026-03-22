@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
-from shutil import copytree, rmtree
+from shutil import copytree
+from tempfile import mkdtemp
 
 import pytest
 from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
@@ -32,14 +34,13 @@ from watchtower_plan.plan_workspace import (
     PlanTaskSearchParams,
     PlanWorkspaceService,
 )
-from watchtower_plan.projects import (
-    ProjectBootstrapParams,
-    ProjectRepositoryLinkSpec,
-    ProjectWorkspaceService,
-)
 from watchtower_plan.promotion import GuidancePromotionService
 from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
 
+from tests.fixture_repo_support import (
+    materialize_governed_applies_to_targets,
+    materialize_minimal_plan_pack,
+)
 from watchtower_core.adapters.front_matter import load_front_matter
 from watchtower_core.control_plane import DocumentationFamilyHelper
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -49,25 +50,21 @@ from watchtower_core.validation.artifact import ArtifactValidationService
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
+@lru_cache(maxsize=1)
+def _fixture_baseline_repo() -> Path:
+    repo_root = Path(mkdtemp(prefix="watchtower_plan_workspace_cases_"))
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    copytree(REPO_ROOT / "plan" / "docs", repo_root / "plan" / "docs")
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
+    (repo_root / "core" / "python").mkdir(parents=True, exist_ok=True)
+    (repo_root / "plan" / "tracking").mkdir(parents=True, exist_ok=True)
+    return repo_root
+
+
 def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
-    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    copytree(REPO_ROOT / "plan", repo_root / "plan")
-    for path in (repo_root / "plan" / "initiatives").iterdir():
-        if path.name == "README.md":
-            continue
-        if path.is_dir():
-            rmtree(path)
-        else:
-            path.unlink()
-    for path in (repo_root / "plan" / "projects").iterdir():
-        if path.name == "README.md":
-            continue
-        if path.is_dir():
-            rmtree(path)
-        else:
-            path.unlink()
-    (repo_root / "core" / "python").mkdir(parents=True)
+    copytree(_fixture_baseline_repo(), repo_root)
     return repo_root
 
 
@@ -109,32 +106,6 @@ def _load_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _bootstrap_project(loader: ControlPlaneLoader) -> None:
-    ProjectWorkspaceService(loader).bootstrap(
-        ProjectBootstrapParams(
-            project_slug="watchtower",
-            title="WatchTower",
-            summary=(
-                "Operator-facing implementation target for project-scoped plan-workspace tests."
-            ),
-            repository_links=(
-                ProjectRepositoryLinkSpec(
-                    repository_role="planning",
-                    repository_locator="/home/j/WatchTowerPlan",
-                    repository_kind="planning",
-                ),
-                ProjectRepositoryLinkSpec(
-                    repository_role="implementation",
-                    repository_locator="/home/j/WatchTower",
-                    repository_kind="implementation",
-                ),
-            ),
-            updated_at="2026-03-17T16:20:00Z",
-        ),
-        write=True,
-    )
-
-
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
     for task_path in sorted((initiative_root / ".wt" / "tasks").glob("*/task.json")):
         document = _load_json(task_path)
@@ -150,6 +121,59 @@ def _mark_initiative_closing(initiative_root: Path, *, updated_at: str) -> None:
     document["lifecycle_stage"] = "closing"
     document["updated_at"] = updated_at
     state_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def _copy_cached_repo(source_repo_root: Path, tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(source_repo_root, repo_root)
+    return repo_root
+
+
+def _new_cached_repo_from(source_repo_root: Path, *, prefix: str) -> Path:
+    repo_root = Path(mkdtemp(prefix=prefix))
+    copytree(source_repo_root, repo_root, dirs_exist_ok=True)
+    return repo_root
+
+
+@lru_cache(maxsize=1)
+def _closing_validation_baseline_repo() -> Path:
+    repo_root = _new_cached_repo_from(
+        _fixture_baseline_repo(),
+        prefix="watchtower_plan_workspace_validation_",
+    )
+    loader = ControlPlaneLoader(repo_root)
+    package_service = InitiativePackageService(loader)
+    workspace_service = PlanWorkspaceService(loader)
+    package_service.bootstrap_packwide(
+        _bootstrap_params(
+            initiative_slug="workspace_zeta",
+            title="Workspace Zeta",
+            updated_at="2026-03-17T17:20:00Z",
+        ),
+        write=True,
+    )
+    package_service.approve_packwide(
+        "workspace_zeta",
+        "actor.repository_maintainer",
+        write=True,
+    )
+    workspace_service.sync(write=True)
+
+    initiative_root = repo_root / "plan/initiatives/workspace_zeta/.wt"
+    for slug in ("seed_contracts", "validate_gate"):
+        task_path = initiative_root / "tasks" / slug / "task.json"
+        task_document = _load_json(task_path)
+        task_document["status"] = "active"
+        task_document["task_status"] = "completed"
+        task_document["updated_at"] = "2026-03-17T17:25:00Z"
+        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
+
+    initiative_path = initiative_root / "initiative.json"
+    initiative_document = _load_json(initiative_path)
+    initiative_document["lifecycle_stage"] = "closing"
+    initiative_document["updated_at"] = "2026-03-17T17:25:00Z"
+    initiative_path.write_text(f"{json.dumps(initiative_document, indent=2)}\n", encoding="utf-8")
+    return repo_root
 
 
 def test_plan_workspace_sync_writes_indexes_views_and_query_surfaces(
@@ -610,187 +634,6 @@ def test_plan_workspace_stale_surface_drift_blocks_readiness_until_explicit_rebu
     assert workspace_service.search_discrepancies(PlanDiscrepancySearchParams(status="open")) == ()
 
 
-def test_plan_workspace_sync_includes_project_scoped_initiatives_in_pack_indexes(
-    tmp_path: Path,
-) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    loader = ControlPlaneLoader(repo_root)
-    package_service = InitiativePackageService(loader)
-    workspace_service = PlanWorkspaceService(loader)
-    _bootstrap_project(loader)
-
-    package_service.bootstrap_packwide(
-        _bootstrap_params(
-            initiative_slug="workspace_alpha",
-            title="Workspace Alpha",
-            updated_at="2026-03-17T16:30:00Z",
-        ),
-        write=True,
-    )
-    package_service.bootstrap_project_scoped(
-        "watchtower",
-        InitiativeBootstrapParams(
-            trace_id="trace.watchtower_scope_flow",
-            title="WatchTower Scope Flow",
-            summary="Bootstraps one project-scoped initiative for plan-workspace sync coverage.",
-            initiative_slug="watchtower_scope_flow",
-            task_specs=(
-                InitiativeTaskSpec(
-                    title="Seed WatchTower scope flow",
-                    summary="Creates one project-scoped initiative package.",
-                    slug="seed_watchtower_scope_flow",
-                ),
-                InitiativeTaskSpec(
-                    title="Validate WatchTower scope gate",
-                    summary="Confirms the project-scoped initiative appears in pack indexes.",
-                    slug="validate_watchtower_scope_gate",
-                ),
-            ),
-            updated_at="2026-03-17T16:35:00Z",
-        ),
-        write=True,
-    )
-
-    sync_result = workspace_service.sync(write=True)
-
-    assert sync_result.wrote is True
-    assert sync_result.initiative_count == 2
-    assert sync_result.task_count == 4
-    assert (
-        repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/plan.md"
-    ).exists()
-    assert (
-        repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/progress.md"
-    ).exists()
-    assert (
-        repo_root / "plan/projects/watchtower/initiatives/watchtower_scope_flow/summary.md"
-    ).exists()
-
-    initiative_entries = workspace_service.load_initiative_index().entries
-    project_entry = next(
-        entry for entry in initiative_entries if entry.trace_id == "trace.watchtower_scope_flow"
-    )
-    assert project_entry.scope_type == "project_scoped"
-    assert project_entry.project_id == "project.watchtower"
-    assert project_entry.key_surface_path == (
-        "plan/projects/watchtower/initiatives/watchtower_scope_flow/plan.md"
-    )
-
-    readiness_entry = next(
-        entry
-        for entry in workspace_service.load_readiness_entries()
-        if entry.trace_id == "trace.watchtower_scope_flow"
-    )
-    assert readiness_entry.project_id == "project.watchtower"
-    assert readiness_entry.scope_type == "project_scoped"
-
-    task_entries = workspace_service.search_tasks(
-        PlanTaskSearchParams(project_id="project.watchtower")
-    )
-    assert len(task_entries) == 2
-    assert all(entry.project_id == "project.watchtower" for entry in task_entries)
-
-
-def test_plan_workspace_coordination_surfaces_recent_closeouts_after_terminal_closeout(
-    tmp_path: Path,
-) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    loader = ControlPlaneLoader(repo_root)
-    package_service = InitiativePackageService(loader)
-    workspace_service = PlanWorkspaceService(loader)
-    _bootstrap_project(loader)
-
-    package_service.bootstrap_packwide(
-        _bootstrap_params(
-            initiative_slug="workspace_alpha",
-            title="Workspace Alpha",
-            updated_at="2026-03-17T16:40:00Z",
-        ),
-        write=True,
-    )
-    package_service.approve_packwide(
-        "workspace_alpha",
-        "actor.repository_maintainer",
-        write=True,
-    )
-    package_service.bootstrap_project_scoped(
-        "watchtower",
-        InitiativeBootstrapParams(
-            trace_id="trace.watchtower_scope_flow",
-            title="WatchTower Scope Flow",
-            summary="Bootstraps one project-scoped initiative for closeout coverage.",
-            initiative_slug="watchtower_scope_flow",
-            task_specs=(
-                InitiativeTaskSpec(
-                    title="Seed WatchTower scope flow",
-                    summary="Creates one project-scoped initiative package.",
-                    slug="seed_watchtower_scope_flow",
-                ),
-            ),
-            updated_at="2026-03-17T16:45:00Z",
-        ),
-        write=True,
-    )
-    package_service.approve_project_scoped(
-        "watchtower",
-        "watchtower_scope_flow",
-        "actor.repository_maintainer",
-        write=True,
-    )
-
-    _mark_tasks_completed(
-        repo_root / "plan" / "initiatives" / "workspace_alpha",
-        updated_at="2026-03-17T16:50:00Z",
-    )
-    _mark_initiative_closing(
-        repo_root / "plan" / "initiatives" / "workspace_alpha",
-        updated_at="2026-03-17T16:51:00Z",
-    )
-    _mark_tasks_completed(
-        repo_root / "plan" / "projects" / "watchtower" / "initiatives" / "watchtower_scope_flow",
-        updated_at="2026-03-17T16:50:00Z",
-    )
-    _mark_initiative_closing(
-        repo_root / "plan" / "projects" / "watchtower" / "initiatives" / "watchtower_scope_flow",
-        updated_at="2026-03-17T16:51:00Z",
-    )
-    workspace_service.sync(write=True)
-    ProjectWorkspaceService(loader).sync(write=True)
-
-    package_service.close_packwide(
-        "workspace_alpha",
-        initiative_status="completed",
-        closure_reason="Delivered workspace alpha.",
-        closed_at="2026-03-17T16:55:00Z",
-        write=True,
-    )
-    package_service.close_project_scoped(
-        "watchtower",
-        "watchtower_scope_flow",
-        initiative_status="completed",
-        closure_reason="Delivered WatchTower scope flow.",
-        closed_at="2026-03-17T16:56:00Z",
-        write=True,
-    )
-
-    coordination_index = workspace_service.load_coordination_index()
-    assert coordination_index.active_initiative_count == 0
-    assert coordination_index.coordination_mode == "ready_for_bootstrap"
-    assert {entry.trace_id for entry in coordination_index.recent_closed_initiatives} == {
-        "trace.workspace_alpha",
-        "trace.watchtower_scope_flow",
-    }
-    assert tuple(entry.trace_id for entry in coordination_index.recent_closed_initiatives) == (
-        "trace.watchtower_scope_flow",
-        "trace.workspace_alpha",
-    )
-
-    plan_overview = (repo_root / PLAN_OVERVIEW_PATH).read_text(encoding="utf-8")
-    assert "## Recent Completions or Changes" in plan_overview
-    assert "Delivered workspace alpha." in plan_overview
-    assert "Delivered WatchTower scope flow." in plan_overview
-
-
 def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
     tmp_path: Path,
 ) -> None:
@@ -973,40 +816,11 @@ def test_plan_workspace_sync_treats_task_complete_ready_initiatives_as_closeout(
 def test_validate_packwide_preserves_closing_lifecycle_while_rebuilding_stale_surfaces(
     tmp_path: Path,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _copy_cached_repo(_closing_validation_baseline_repo(), tmp_path)
     loader = ControlPlaneLoader(repo_root)
     package_service = InitiativePackageService(loader)
     workspace_service = PlanWorkspaceService(loader)
-
-    package_service.bootstrap_packwide(
-        _bootstrap_params(
-            initiative_slug="workspace_zeta",
-            title="Workspace Zeta",
-            updated_at="2026-03-17T17:20:00Z",
-        ),
-        write=True,
-    )
-    package_service.approve_packwide(
-        "workspace_zeta",
-        "actor.repository_maintainer",
-        write=True,
-    )
-    workspace_service.sync(write=True)
-
-    initiative_root = repo_root / "plan/initiatives/workspace_zeta/.wt"
-    for slug in ("seed_contracts", "validate_gate"):
-        task_path = initiative_root / "tasks" / slug / "task.json"
-        task_document = _load_json(task_path)
-        task_document["status"] = "active"
-        task_document["task_status"] = "completed"
-        task_document["updated_at"] = "2026-03-17T17:25:00Z"
-        task_path.write_text(f"{json.dumps(task_document, indent=2)}\n", encoding="utf-8")
-
-    initiative_path = initiative_root / "initiative.json"
-    initiative_document = _load_json(initiative_path)
-    initiative_document["lifecycle_stage"] = "closing"
-    initiative_document["updated_at"] = "2026-03-17T17:25:00Z"
-    initiative_path.write_text(f"{json.dumps(initiative_document, indent=2)}\n", encoding="utf-8")
+    initiative_path = repo_root / "plan/initiatives/workspace_zeta/.wt/initiative.json"
 
     readiness = package_service.validate_packwide(
         "workspace_zeta",

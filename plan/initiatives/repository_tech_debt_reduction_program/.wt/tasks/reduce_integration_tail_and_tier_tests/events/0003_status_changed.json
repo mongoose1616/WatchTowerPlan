@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests.0003_status_changed",
+  "initiative_id": "initiative.repository_tech_debt_reduction_program",
+  "sequence": 3,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T21:50:42Z",
+  "summary": "Changed task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests status from in_progress to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json"
+  },
+  "task_id": "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests"
+}

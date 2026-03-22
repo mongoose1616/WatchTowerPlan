@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T21:31:39Z",
+  "updated_at": "2026-03-22T21:50:42Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -19,8 +19,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-22T21:31:39Z",
-      "open_task_count": 4,
+      "updated_at": "2026-03-22T21:50:42Z",
+      "open_task_count": 3,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
       "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
@@ -34,7 +34,6 @@
       ],
       "active_task_ids": [
         "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations",
-        "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
         "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
         "task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche"
       ],
@@ -49,18 +48,9 @@
           "is_actionable": false
         },
         {
-          "task_id": "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
-          "title": "Reduce Integration Tail And Tier Tests",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/reduce_integration_tail_and_tier_tests/task.json",
-          "is_actionable": false
-        },
-        {
           "task_id": "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
           "title": "Remove Stale Compatibility And Migration Residue",
-          "task_status": "planned",
+          "task_status": "in_progress",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/remove_stale_compatibility_and_migration_residue/task.json",
@@ -75,7 +65,6 @@
           "doc_path": "plan/initiatives/repository_tech_debt_reduction_program/.wt/tasks/validate_and_close_first_tech_debt_tranche/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests",
             "task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue",
             "task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations"
           ]
