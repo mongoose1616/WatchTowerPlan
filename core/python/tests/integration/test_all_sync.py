@@ -69,18 +69,6 @@ def coordination_fixture_repo(tmp_path: Path, coordination_fixture_baseline: Pat
     return repo_root
 
 
-@pytest.fixture(scope="module")
-def all_sync_dry_run_result() -> object:
-    loader = ControlPlaneLoader(REPO_ROOT)
-    return AllSyncService(loader).run()
-
-
-@pytest.fixture(scope="module")
-def coordination_sync_dry_run_result() -> object:
-    loader = ControlPlaneLoader(REPO_ROOT)
-    return CoordinationSyncService(loader).run()
-
-
 def _first_live_initiative_trace_id(repo_root: Path) -> str:
     for path in sorted((repo_root / "plan").rglob("initiative.json")):
         if "/.wt/" not in path.as_posix():
@@ -90,11 +78,23 @@ def _first_live_initiative_trace_id(repo_root: Path) -> str:
     raise AssertionError("Expected at least one live initiative package in the fixture repo.")
 
 
-def test_all_sync_runs_in_dry_run_mode(all_sync_dry_run_result: object) -> None:
-    result = all_sync_dry_run_result
-    assert result.wrote is False
-    assert tuple(record.target for record in result.records) == tuple(
-        spec.target for spec in SYNC_TARGET_SPECS
+def test_all_sync_target_order_matches_registry() -> None:
+    assert tuple(spec.target for spec in SYNC_TARGET_SPECS) == (
+        "command-index",
+        "foundation-index",
+        "reference-index",
+        "route-index",
+        "standard-index",
+        "workflow-index",
+        "task-index",
+        "review-index",
+        "traceability-index",
+        "initiative-index",
+        "coordination-index",
+        "task-tracking",
+        "initiative-tracking",
+        "coordination-tracking",
+        "repository-paths",
     )
 
 
@@ -148,9 +148,9 @@ def test_coordination_sync_group_has_expected_targets_in_order() -> None:
 
 
 def test_coordination_sync_runs_in_dry_run_mode(
-    coordination_sync_dry_run_result: object,
+    coordination_fixture_repo: Path,
 ) -> None:
-    result = coordination_sync_dry_run_result
+    result = CoordinationSyncService(ControlPlaneLoader(coordination_fixture_repo)).run()
     assert result.wrote is False
     assert tuple(record.target for record in result.records) == (
         "task-index",
@@ -164,9 +164,10 @@ def test_coordination_sync_runs_in_dry_run_mode(
 
 
 def test_coordination_sync_reuses_stable_rendered_sources(
+    coordination_fixture_repo: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+    loader = ControlPlaneLoader(coordination_fixture_repo)
     service = CoordinationSyncService(loader)
     source_read_counts: dict[str, int] = {
         TASK_INDEX_PATH: 0,
@@ -264,8 +265,11 @@ def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
     assert (output_dir / "plan/tracking/initiative_tracking.md").exists()
 
 
-def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+def test_coordination_sync_can_materialize_to_output_dir(
+    coordination_fixture_repo: Path,
+    tmp_path: Path,
+) -> None:
+    loader = ControlPlaneLoader(coordination_fixture_repo)
     service = CoordinationSyncService(loader)
     output_dir = tmp_path / "sync_coordination"
 

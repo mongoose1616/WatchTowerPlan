@@ -662,6 +662,65 @@
       "tags": [
         "traceability"
       ]
+    },
+    {
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "title": "Test Suite Efficiency And Redundancy Reduction",
+      "summary": "Profiles the Python test suite, removes redundant or low-signal cases, and reduces expensive setup and execution paths while preserving behavioral coverage.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T08:52:36Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/summary.md",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "slug": "test_suite_efficiency_and_redundancy_reduction",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.test_suite_efficiency_and_redundancy_reduction.bootstrap_test_suite_efficiency_and_redundancy_reduction",
+        "task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots",
+        "task.test_suite_efficiency_and_redundancy_reduction.optimize_task_lifecycle_and_sync_hotspots",
+        "task.test_suite_efficiency_and_redundancy_reduction.reprofile_and_close"
+      ],
+      "evidence_ids": [
+        "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-22T08:52:36Z",
+      "closure_reason": "Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work.",
+      "related_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md",
+        "core/python/README.md",
+        "core/python/tests/",
+        "core/python/tests/integration/test_all_sync.py",
+        "core/python/tests/integration/test_cli_planning_query_commands.py",
+        "core/python/tests/integration/test_cli_sync_commands.py",
+        "core/python/tests/integration/test_initiative_closeout.py",
+        "core/python/tests/integration/test_task_lifecycle.py",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/initiative.json",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/bootstrap_test_suite_efficiency_and_redundancy_reduction/task.json",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_sync_cli_hotspots/task.json",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_task_lifecycle_and_sync_hotspots/task.json",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/reprofile_and_close/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
     }
   ]
 }

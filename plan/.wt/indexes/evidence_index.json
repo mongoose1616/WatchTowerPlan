@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T06:30:43Z",
+  "updated_at": "2026-03-22T08:52:36Z",
   "entries": [
     {
       "evidence_id": "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle",
@@ -323,6 +323,35 @@
         "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T06:30:43Z"
+    },
+    {
+      "evidence_id": "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/discrepancies",
+        "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T08:52:36Z"
     }
   ]
 }

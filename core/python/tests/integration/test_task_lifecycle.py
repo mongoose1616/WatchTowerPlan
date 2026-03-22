@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from shutil import copytree
+from types import SimpleNamespace
 
 import pytest
 from watchtower_plan.initiatives import InitiativePackageService
@@ -24,6 +25,8 @@ from tests.fixture_repo_support import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+CAPTURE_TRACE_ID = "trace.task_lifecycle_capture"
+APPROVED_TRACE_ID = "trace.task_lifecycle_ready"
 
 
 def _build_fixture_repo(tmp_path: Path) -> Path:
@@ -33,7 +36,90 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     (repo_root / "core" / "python" / "tests" / "unit").mkdir(parents=True, exist_ok=True)
     materialize_minimal_plan_pack(repo_root, REPO_ROOT)
     materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
+    loader = ControlPlaneLoader(repo_root)
+    task_lifecycle_module.PlanWorkspaceService(loader).sync(write=True)
+    task_lifecycle_module.CoordinationSyncService(loader).run(write=True)
     return repo_root
+
+
+@pytest.fixture(scope="module")
+def task_lifecycle_fixture_baseline(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_fixture_baseline"))
+
+
+@pytest.fixture
+def task_lifecycle_fixture_repo(tmp_path: Path, task_lifecycle_fixture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(task_lifecycle_fixture_baseline, repo_root)
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def task_lifecycle_capture_baseline(
+    tmp_path_factory: pytest.TempPathFactory,
+) -> Path:
+    repo_root = _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_capture_baseline"))
+    _bootstrap_trace(repo_root, CAPTURE_TRACE_ID)
+    return repo_root
+
+
+@pytest.fixture(scope="module")
+def task_lifecycle_approved_baseline(
+    tmp_path_factory: pytest.TempPathFactory,
+) -> Path:
+    repo_root = _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_approved_baseline"))
+    _bootstrap_trace(repo_root, APPROVED_TRACE_ID, approve=True)
+    return repo_root
+
+
+@pytest.fixture
+def task_lifecycle_capture_repo(tmp_path: Path, task_lifecycle_capture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(task_lifecycle_capture_baseline, repo_root)
+    return repo_root
+
+
+@pytest.fixture
+def task_lifecycle_approved_repo(
+    tmp_path: Path,
+    task_lifecycle_approved_baseline: Path,
+) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(task_lifecycle_approved_baseline, repo_root)
+    return repo_root
+
+
+@pytest.fixture
+def disable_expensive_task_sync(monkeypatch: pytest.MonkeyPatch) -> list[tuple[str, bool]]:
+    calls: list[tuple[str, bool]] = []
+
+    class _FakePlanWorkspaceService:
+        def __init__(self, loader: ControlPlaneLoader) -> None:
+            self._loader = loader
+
+        def sync(self, *, write: bool = False) -> None:
+            calls.append(("workspace", write))
+
+    class _FakeCoordinationSyncService:
+        def __init__(self, loader: ControlPlaneLoader) -> None:
+            self._loader = loader
+
+        def run(
+            self,
+            *,
+            write: bool = False,
+            output_dir: Path | None = None,
+        ) -> SimpleNamespace:
+            calls.append(("coordination", write))
+            return SimpleNamespace(records=(), wrote=write, output_dir=output_dir)
+
+    monkeypatch.setattr(task_lifecycle_module, "PlanWorkspaceService", _FakePlanWorkspaceService)
+    monkeypatch.setattr(
+        task_lifecycle_module,
+        "CoordinationSyncService",
+        _FakeCoordinationSyncService,
+    )
+    return calls
 
 
 def _bootstrap_trace(repo_root: Path, trace_id: str, *, approve: bool = False) -> None:
@@ -66,10 +152,11 @@ def _complete_seed_task(repo_root: Path, trace_id: str) -> None:
     )
 
 
-def test_task_create_can_recommend_closeout_for_terminal_single_trace(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_done"
-    _bootstrap_trace(repo_root, trace_id, approve=True)
+def test_task_create_can_recommend_closeout_for_terminal_single_trace(
+    task_lifecycle_approved_repo: Path,
+) -> None:
+    repo_root = task_lifecycle_approved_repo
+    trace_id = APPROVED_TRACE_ID
     _complete_seed_task(repo_root, trace_id)
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 
@@ -97,10 +184,12 @@ def test_task_create_can_recommend_closeout_for_terminal_single_trace(tmp_path: 
     assert result.doc_path == _task_path(repo_root, trace_id, "unit_test_trace_done")
 
 
-def test_task_create_canonicalizes_directory_applies_to_paths(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_applies_to"
-    _bootstrap_trace(repo_root, trace_id)
+def test_task_create_canonicalizes_directory_applies_to_paths(
+    task_lifecycle_capture_repo: Path,
+    disable_expensive_task_sync: list[tuple[str, bool]],
+) -> None:
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 
     result = service.create(
@@ -126,10 +215,11 @@ def test_task_create_canonicalizes_directory_applies_to_paths(tmp_path: Path) ->
     assert written_document["applies_to"] == ["core/python/tests/unit/"]
 
 
-def test_task_update_writes_in_place_and_clears_optional_fields(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_lifecycle"
-    _bootstrap_trace(repo_root, trace_id, approve=True)
+def test_task_update_writes_in_place_and_clears_optional_fields(
+    task_lifecycle_approved_repo: Path,
+) -> None:
+    repo_root = task_lifecycle_approved_repo
+    trace_id = APPROVED_TRACE_ID
     loader = ControlPlaneLoader(repo_root)
     service = TaskLifecycleService(loader)
 
@@ -189,12 +279,12 @@ def test_task_update_writes_in_place_and_clears_optional_fields(tmp_path: Path) 
 
 
 def test_task_update_write_tolerates_other_task_disappearing_during_scan(
-    tmp_path: Path,
+    task_lifecycle_approved_repo: Path,
     monkeypatch: pytest.MonkeyPatch,
+    disable_expensive_task_sync: list[tuple[str, bool]],
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_disappearing_sync"
-    _bootstrap_trace(repo_root, trace_id, approve=True)
+    repo_root = task_lifecycle_approved_repo
+    trace_id = APPROVED_TRACE_ID
     _bootstrap_trace(repo_root, "trace.unit_test_trace_disappearing_sync_other")
     loader = ControlPlaneLoader(repo_root)
     service = TaskLifecycleService(loader)
@@ -249,11 +339,11 @@ def test_task_update_write_tolerates_other_task_disappearing_during_scan(
 
 
 def test_task_update_rejects_execution_start_before_initiative_approval(
-    tmp_path: Path,
+    task_lifecycle_capture_repo: Path,
+    disable_expensive_task_sync: list[tuple[str, bool]],
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_execution_gate"
-    _bootstrap_trace(repo_root, trace_id)
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
     loader = ControlPlaneLoader(repo_root)
     service = TaskLifecycleService(loader)
     created = service.create(
@@ -286,13 +376,13 @@ def test_task_update_rejects_execution_start_before_initiative_approval(
 
 
 def test_task_create_reloads_initiative_state_before_execution_write(
-    tmp_path: Path,
+    task_lifecycle_capture_repo: Path,
     monkeypatch: pytest.MonkeyPatch,
+    disable_expensive_task_sync: list[tuple[str, bool]],
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_stale_initiative_snapshot"
-    initiative_slug = "unit_test_trace_stale_initiative_snapshot"
-    _bootstrap_trace(repo_root, trace_id)
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
+    initiative_slug = "task_lifecycle_capture"
     loader = ControlPlaneLoader(repo_root)
     stale_initiative = plan_task_state.find_initiative_by_trace_id(loader, trace_id)
 
@@ -351,8 +441,8 @@ def test_task_create_reloads_initiative_state_before_execution_write(
     )
 
 
-def test_task_update_rejects_conflicting_clear_flags(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+def test_task_update_rejects_conflicting_clear_flags(task_lifecycle_fixture_repo: Path) -> None:
+    repo_root = task_lifecycle_fixture_repo
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 
     with pytest.raises(
@@ -369,10 +459,9 @@ def test_task_update_rejects_conflicting_clear_flags(tmp_path: Path) -> None:
         )
 
 
-def test_task_create_rejects_self_reference(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_self"
-    _bootstrap_trace(repo_root, trace_id)
+def test_task_create_rejects_self_reference(task_lifecycle_capture_repo: Path) -> None:
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 
     with pytest.raises(
@@ -396,10 +485,11 @@ def test_task_create_rejects_self_reference(tmp_path: Path) -> None:
         )
 
 
-def test_task_create_rejects_mismatched_traced_related_ids(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_trace_linkage"
-    _bootstrap_trace(repo_root, trace_id)
+def test_task_create_rejects_mismatched_traced_related_ids(
+    task_lifecycle_capture_repo: Path,
+) -> None:
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
     service = TaskLifecycleService(ControlPlaneLoader(repo_root))
 
     with pytest.raises(
@@ -409,6 +499,7 @@ def test_task_create_rejects_mismatched_traced_related_ids(tmp_path: Path) -> No
         service.create(
             TaskCreateParams(
                 task_id="task.unit_test_trace_trace_linkage.001",
+                trace_id=trace_id,
                 title="Reject mismatched traced linkage",
                 summary="Rejects traced related_ids that point at a different trace.",
                 task_kind="feature",
@@ -422,10 +513,12 @@ def test_task_create_rejects_mismatched_traced_related_ids(tmp_path: Path) -> No
         )
 
 
-def test_task_update_rejects_clearing_trace_id_for_live_task_state(tmp_path: Path) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
-    trace_id = "trace.unit_test_trace_trace_linkage"
-    _bootstrap_trace(repo_root, trace_id)
+def test_task_update_rejects_clearing_trace_id_for_live_task_state(
+    task_lifecycle_capture_repo: Path,
+    disable_expensive_task_sync: list[tuple[str, bool]],
+) -> None:
+    repo_root = task_lifecycle_capture_repo
+    trace_id = CAPTURE_TRACE_ID
     loader = ControlPlaneLoader(repo_root)
     service = TaskLifecycleService(loader)
     created = service.create(

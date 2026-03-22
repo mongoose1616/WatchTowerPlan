@@ -2,256 +2,395 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from shutil import copytree
+from types import SimpleNamespace
 
 import pytest
+from watchtower_plan.cli import sync as plan_sync_cli
 
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
+from watchtower_core.cli import sync_runtime_helpers
 from watchtower_host.cli.main import main
 
-REPO_ROOT = Path(__file__).resolve().parents[4]
+
+class _FakeDocumentSyncService:
+    def __init__(self, *, entry_count: int = 3) -> None:
+        self._document = {
+            "entries": [
+                {"id": f"entry.{index}", "path": f"example/{index}.json"}
+                for index in range(entry_count)
+            ]
+        }
+
+    def build_document(self) -> dict[str, object]:
+        return self._document
+
+    def write_document(
+        self,
+        document: dict[str, object],
+        destination: Path | None = None,
+    ) -> Path:
+        if destination is None:
+            raise AssertionError("The fake sync service requires an explicit destination in tests.")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+        return destination.resolve()
 
 
-def _build_live_plan_cli_repo(repo_root: Path) -> Path:
-    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    (repo_root / "core" / "python").mkdir(parents=True, exist_ok=True)
-    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
-    bootstrap_packwide_initiative(
-        repo_root,
-        trace_id="trace.example_cli_sync_live_counts",
-        title="Example CLI Sync Live Counts",
-        summary=(
-            "Seeds one live initiative so CLI sync output tests assert non-zero "
-            "live counts against a temp repo."
-        ),
+class _FakeTrackingSyncService:
+    def __init__(self, *, content: str, counts: dict[str, int]) -> None:
+        self._result = SimpleNamespace(content=content, **counts)
+
+    def build_document(self) -> SimpleNamespace:
+        return self._result
+
+    def write_document(
+        self,
+        result: SimpleNamespace,
+        destination: Path | None = None,
+    ) -> Path:
+        if destination is None:
+            raise AssertionError("The fake tracking service requires an explicit destination.")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(result.content, encoding="utf-8")
+        return destination.resolve()
+
+
+class _FakeParams:
+    def __init__(self, **kwargs: object) -> None:
+        self.__dict__.update(kwargs)
+
+
+def _patch_plan_document_sync(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        plan_sync_cli,
+        "load_document_sync_service",
+        lambda module_name, class_name: _FakeDocumentSyncService(),
     )
-    return repo_root
 
 
-@pytest.fixture(scope="module")
-def live_plan_cli_repo(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    return _build_live_plan_cli_repo(tmp_path_factory.mktemp("live_plan_cli_repo") / "repo")
+def _patch_plan_tracking_sync(monkeypatch: pytest.MonkeyPatch) -> None:
+    def _load_tracking_sync_service(module_name: str, class_name: str) -> object:
+        if class_name == "InitiativeTrackingSyncService":
+            return _FakeTrackingSyncService(
+                content="# initiative tracking\n",
+                counts={"initiative_count": 5, "active_count": 1, "closed_count": 4},
+            )
+        if class_name == "TaskTrackingSyncService":
+            return _FakeTrackingSyncService(
+                content="# task tracking\n",
+                counts={"task_count": 8, "open_count": 3, "closed_count": 5},
+            )
+        raise AssertionError(f"Unexpected tracking service: {module_name}.{class_name}")
+
+    monkeypatch.setattr(
+        sync_runtime_helpers,
+        "load_tracking_sync_service",
+        _load_tracking_sync_service,
+    )
 
 
-def test_sync_repository_paths_supports_json_output(capsys) -> None:
-    result = main(["sync", "repository-paths", "--format", "json"])
+def _patch_multi_target_sync(monkeypatch: pytest.MonkeyPatch) -> dict[str, object]:
+    captured: dict[str, object] = {}
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    class _FakeMultiTargetSyncService:
+        def __init__(self, target_prefix: str) -> None:
+            self._target_prefix = target_prefix
+
+        @classmethod
+        def from_repo_root(cls) -> _FakeMultiTargetSyncService:
+            raise AssertionError("from_repo_root should be provided by the dispatch shim.")
+
+        def run(self, *, write: bool = False, output_dir: Path | None = None) -> SimpleNamespace:
+            captured["write"] = write
+            captured["output_dir"] = output_dir
+            resolved_output_dir = (
+                str(output_dir.resolve()) if output_dir is not None else None
+            )
+            output_path = None
+            if output_dir is not None:
+                output_path = str(
+                    (output_dir / "plan/.wt/indexes/coordination_index.json").resolve()
+                )
+            records = [
+                SimpleNamespace(
+                    target=f"{self._target_prefix}-index",
+                    artifact_kind="index",
+                    relative_output_path=f"plan/.wt/indexes/{self._target_prefix}_index.json",
+                    output_path=output_path,
+                    wrote=write or output_dir is not None,
+                    record_count=2,
+                    details={"kind": self._target_prefix},
+                )
+            ]
+            return SimpleNamespace(
+                records=records,
+                wrote=write or output_dir is not None,
+                output_dir=resolved_output_dir,
+            )
+
+    def _load_sync_class(module_name: str, class_name: str) -> object:
+        if class_name == "AllSyncService":
+            class _AllSyncService(_FakeMultiTargetSyncService):
+                @classmethod
+                def from_repo_root(cls) -> _AllSyncService:
+                    return cls("all")
+
+            return _AllSyncService
+        if class_name == "CoordinationSyncService":
+            class _CoordinationSyncService(_FakeMultiTargetSyncService):
+                @classmethod
+                def from_repo_root(cls) -> _CoordinationSyncService:
+                    return cls("coordination")
+
+            return _CoordinationSyncService
+        raise AssertionError(f"Unexpected sync class request: {module_name}.{class_name}")
+
+    monkeypatch.setattr(sync_runtime_helpers, "load_sync_class", _load_sync_class)
+    return captured
+
+
+def _patch_github_task_sync(monkeypatch: pytest.MonkeyPatch) -> dict[str, object]:
+    captured: dict[str, object] = {}
+
+    class _FakeGitHubTaskSyncService:
+        def __init__(self, loader: object) -> None:
+            captured["loader"] = loader
+
+        def sync(
+            self,
+            params: _FakeParams,
+            *,
+            write: bool = False,
+        ) -> SimpleNamespace:
+            captured["params"] = params
+            captured["write"] = write
+            labels = ["triaged"] if getattr(params, "sync_labels", True) else []
+            return SimpleNamespace(
+                wrote=write,
+                synced_task_count=1,
+                local_change_count=0,
+                rebuilt_task_index=False,
+                rebuilt_task_tracking=False,
+                rebuilt_traceability_index=False,
+                records=[
+                    SimpleNamespace(
+                        task_id="task.example.001",
+                        doc_path="plan/initiatives/example/.wt/tasks/example/task.json",
+                        repository=params.repository,
+                        task_status="planned",
+                        issue_action="preview",
+                        project_action=None,
+                        success=True,
+                        message="Previewed sync only.",
+                        github_issue_number=None,
+                        github_issue_url=None,
+                        github_project_item_id=None,
+                        labels=labels,
+                    )
+                ],
+            )
+
+    def _load_sync_class(module_name: str, class_name: str) -> object:
+        if class_name == "GitHubTaskSyncParams":
+            return _FakeParams
+        if class_name == "GitHubTaskSyncService":
+            return _FakeGitHubTaskSyncService
+        raise AssertionError(f"Unexpected GitHub sync class request: {module_name}.{class_name}")
+
+    monkeypatch.setattr(plan_sync_cli, "load_sync_class", _load_sync_class)
+    monkeypatch.setattr(plan_sync_cli, "build_loader", lambda: object())
+    return captured
+
+
+@pytest.mark.parametrize(
+    ("command", "expected_command"),
+    (
+        (["plan", "sync", "reference-index"], "watchtower-core plan sync reference-index"),
+        (["plan", "sync", "foundation-index"], "watchtower-core plan sync foundation-index"),
+        (["plan", "sync", "standard-index"], "watchtower-core plan sync standard-index"),
+        (["plan", "sync", "workflow-index"], "watchtower-core plan sync workflow-index"),
+        (["plan", "sync", "initiative-index"], "watchtower-core plan sync initiative-index"),
+        (["plan", "sync", "task-index"], "watchtower-core plan sync task-index"),
+        (["plan", "sync", "review-index"], "watchtower-core plan sync review-index"),
+        (["plan", "sync", "traceability-index"], "watchtower-core plan sync traceability-index"),
+    ),
+)
+def test_plan_document_sync_commands_support_json_output(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    command: list[str],
+    expected_command: str,
+) -> None:
+    _patch_plan_document_sync(monkeypatch)
+
+    result = main([*command, "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
-    assert payload["command"] == "watchtower-core sync repository-paths"
+    assert payload["command"] == expected_command
     assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
+    assert payload["entry_count"] == 3
     assert payload["wrote"] is False
     assert payload["artifact_path"] is None
 
 
-def test_sync_command_index_supports_json_output(capsys) -> None:
-    result = main(["sync", "command-index", "--format", "json"])
+@pytest.mark.parametrize(
+    ("command", "expected_command", "filename"),
+    (
+        (
+            ["plan", "sync", "reference-index"],
+            "watchtower-core plan sync reference-index",
+            "reference_index.json",
+        ),
+        (
+            ["plan", "sync", "initiative-index"],
+            "watchtower-core plan sync initiative-index",
+            "initiative_index.json",
+        ),
+        (
+            ["plan", "sync", "traceability-index"],
+            "watchtower-core plan sync traceability-index",
+            "traceability_index.json",
+        ),
+    ),
+)
+def test_plan_document_sync_commands_can_write_to_explicit_output(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    command: list[str],
+    expected_command: str,
+    filename: str,
+) -> None:
+    _patch_plan_document_sync(monkeypatch)
+    output_path = tmp_path / filename
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    result = main([*command, "--output", str(output_path), "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
-    assert payload["command"] == "watchtower-core sync command-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
+    assert payload["command"] == expected_command
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
 
 
-def test_sync_all_supports_json_output(capsys) -> None:
+def test_plan_sync_all_supports_json_output_with_lightweight_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    _patch_multi_target_sync(monkeypatch)
+
     result = main(["plan", "sync", "all", "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync all"
     assert payload["status"] == "ok"
-    assert payload["result_count"] >= 1
+    assert payload["result_count"] == 1
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
-    assert any(entry["target"] == "repository-paths" for entry in payload["results"])
+    assert payload["results"][0]["target"] == "all-index"
 
 
-def test_sync_coordination_supports_json_output(capsys) -> None:
+def test_plan_sync_all_can_write_to_explicit_output_dir_with_lightweight_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    captured = _patch_multi_target_sync(monkeypatch)
+    output_dir = tmp_path / "sync_all"
+
+    result = main(["plan", "sync", "all", "--output-dir", str(output_dir), "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan sync all"
+    assert payload["wrote"] is True
+    assert payload["output_dir"] == str(output_dir.resolve())
+    assert captured["write"] is False
+    assert captured["output_dir"] == output_dir
+
+
+def test_plan_sync_coordination_supports_json_output_with_lightweight_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    _patch_multi_target_sync(monkeypatch)
+
     result = main(["plan", "sync", "coordination", "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync coordination"
     assert payload["status"] == "ok"
-    assert payload["result_count"] == 7
+    assert payload["result_count"] == 1
     assert payload["wrote"] is False
-    assert payload["output_dir"] is None
-    assert [entry["target"] for entry in payload["results"]] == [
-        "task-index",
-        "traceability-index",
-        "initiative-index",
-        "coordination-index",
-        "task-tracking",
-        "initiative-tracking",
-        "coordination-tracking",
-    ]
+    assert payload["results"][0]["target"] == "coordination-index"
 
 
-def test_sync_reference_index_supports_json_output(capsys) -> None:
-    result = main(["plan", "sync", "reference-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync reference-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_foundation_index_supports_json_output(capsys) -> None:
-    result = main(["plan", "sync", "foundation-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync foundation-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_standard_index_supports_json_output(capsys) -> None:
-    result = main(["plan", "sync", "standard-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync standard-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_workflow_index_supports_json_output(capsys) -> None:
-    result = main(["plan", "sync", "workflow-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync workflow-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_initiative_index_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
+def test_plan_sync_coordination_can_write_to_explicit_output_dir_with_lightweight_runtime(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
 ) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
-    result = main(["plan", "sync", "initiative-index", "--format", "json"])
+    captured = _patch_multi_target_sync(monkeypatch)
+    output_dir = tmp_path / "sync_coordination"
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    result = main(
+        ["plan", "sync", "coordination", "--output-dir", str(output_dir), "--format", "json"]
+    )
+
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
-    assert payload["command"] == "watchtower-core plan sync initiative-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
+    assert payload["command"] == "watchtower-core plan sync coordination"
+    assert payload["wrote"] is True
+    assert payload["output_dir"] == str(output_dir.resolve())
+    assert captured["write"] is False
+    assert captured["output_dir"] == output_dir
 
 
-def test_sync_initiative_tracking_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
+def test_plan_sync_initiative_tracking_supports_json_output(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
 ) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
+    _patch_plan_tracking_sync(monkeypatch)
+
     result = main(["plan", "sync", "initiative-tracking", "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync initiative-tracking"
     assert payload["status"] == "ok"
-    assert payload["initiative_count"] >= 1
+    assert payload["initiative_count"] == 5
+    assert payload["active_count"] == 1
+    assert payload["closed_count"] == 4
     assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
 
 
-def test_sync_task_index_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
+def test_plan_sync_task_tracking_supports_json_output(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
 ) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
-    result = main(["plan", "sync", "task-index", "--format", "json"])
+    _patch_plan_tracking_sync(monkeypatch)
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync task-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 1
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_review_index_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
-) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
-    result = main(["plan", "sync", "review-index", "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync review-index"
-    assert payload["status"] == "ok"
-    assert payload["entry_count"] >= 0
-    assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
-
-
-def test_sync_task_tracking_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
-) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
     result = main(["plan", "sync", "task-tracking", "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync task-tracking"
     assert payload["status"] == "ok"
-    assert payload["task_count"] >= 1
+    assert payload["task_count"] == 8
+    assert payload["open_count"] == 3
+    assert payload["closed_count"] == 5
     assert payload["wrote"] is False
-    assert payload["artifact_path"] is None
 
 
 def test_sync_github_tasks_supports_json_output(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
 ) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
+    captured = _patch_github_task_sync(monkeypatch)
+
     result = main(
         [
             "plan",
@@ -264,23 +403,24 @@ def test_sync_github_tasks_supports_json_output(
         ]
     )
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync github-tasks"
     assert payload["status"] == "ok"
     assert payload["wrote"] is False
-    assert payload["result_count"] >= 1
-    assert "labels" in payload["results"][0]
+    assert payload["result_count"] == 1
+    assert payload["results"][0]["labels"] == ["triaged"]
+    params = captured["params"]
+    assert params.repository == "owner/repo"
+    assert params.sync_labels is True
 
 
 def test_sync_github_tasks_supports_disabling_label_sync(
-    live_plan_cli_repo: Path,
-    monkeypatch,
-    capsys,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
 ) -> None:
-    repo_root = live_plan_cli_repo
-    monkeypatch.chdir(repo_root / "core" / "python")
+    captured = _patch_github_task_sync(monkeypatch)
+
     result = main(
         [
             "plan",
@@ -294,33 +434,47 @@ def test_sync_github_tasks_supports_disabling_label_sync(
         ]
     )
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core plan sync github-tasks"
-    assert all(entry["labels"] == [] for entry in payload["results"])
+    assert payload["results"][0]["labels"] == []
+    params = captured["params"]
+    assert params.sync_labels is False
 
 
-def test_sync_traceability_index_supports_json_output(capsys) -> None:
-    result = main(["plan", "sync", "traceability-index", "--format", "json"])
+def test_sync_repository_paths_supports_json_output(capsys: pytest.CaptureFixture[str]) -> None:
+    result = main(["sync", "repository-paths", "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
-    assert payload["command"] == "watchtower-core plan sync traceability-index"
+    assert payload["command"] == "watchtower-core sync repository-paths"
     assert payload["status"] == "ok"
     assert payload["entry_count"] >= 1
     assert payload["wrote"] is False
     assert payload["artifact_path"] is None
 
 
-def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+def test_sync_command_index_supports_json_output(capsys: pytest.CaptureFixture[str]) -> None:
+    result = main(["sync", "command-index", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync command-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_repository_paths_can_write_to_explicit_output(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
     output_path = tmp_path / "repository_path_index.json"
 
     result = main(["sync", "repository-paths", "--output", str(output_path), "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync repository-paths"
     assert payload["wrote"] is True
@@ -328,193 +482,17 @@ def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, caps
     assert output_path.exists()
 
 
-def test_sync_command_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+def test_sync_command_index_can_write_to_explicit_output(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
     output_path = tmp_path / "command_index.json"
 
     result = main(["sync", "command-index", "--output", str(output_path), "--format", "json"])
 
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
+    payload = json.loads(capsys.readouterr().out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync command-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_all_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> None:
-    output_dir = tmp_path / "sync_all"
-
-    result = main(["plan", "sync", "all", "--output-dir", str(output_dir), "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync all"
-    assert payload["wrote"] is True
-    assert payload["output_dir"] == str(output_dir.resolve())
-    assert (output_dir / "core/control_plane/indexes/commands/command_index.json").exists()
-    assert (output_dir / "plan/tracking/task_tracking.md").exists()
-
-
-def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> None:
-    output_dir = tmp_path / "sync_coordination"
-
-    result = main(
-        ["plan", "sync", "coordination", "--output-dir", str(output_dir), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync coordination"
-    assert payload["wrote"] is True
-    assert payload["output_dir"] == str(output_dir.resolve())
-    assert (output_dir / "plan/.wt/indexes/task_index.json").exists()
-    assert (output_dir / "core/control_plane/indexes/traceability/traceability_index.json").exists()
-    assert (output_dir / "plan/.wt/indexes/coordination_index.json").exists()
-    assert (output_dir / "plan/tracking/task_tracking.md").exists()
-    assert (output_dir / "plan/tracking/initiative_tracking.md").exists()
-    assert (output_dir / "plan/tracking/coordination_tracking.md").exists()
-
-
-def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "standard_index.json"
-
-    result = main(
-        ["plan", "sync", "standard-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync standard-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_workflow_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "workflow_index.json"
-
-    result = main(
-        ["plan", "sync", "workflow-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync workflow-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_foundation_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "foundation_index.json"
-
-    result = main(
-        ["plan", "sync", "foundation-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync foundation-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_initiative_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "initiative_index.json"
-
-    result = main(
-        ["plan", "sync", "initiative-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync initiative-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_review_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "review_index.json"
-
-    result = main(
-        ["plan", "sync", "review-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync review-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_initiative_tracking_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "initiative_tracking.md"
-
-    result = main(
-        ["plan", "sync", "initiative-tracking", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync initiative-tracking"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_task_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "task_index.json"
-
-    result = main(["plan", "sync", "task-index", "--output", str(output_path), "--format", "json"])
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync task-index"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_task_tracking_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "task_tracking.md"
-
-    result = main(
-        ["plan", "sync", "task-tracking", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync task-tracking"
-    assert payload["wrote"] is True
-    assert payload["artifact_path"] == str(output_path.resolve())
-    assert output_path.exists()
-
-
-def test_sync_traceability_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
-    output_path = tmp_path / "traceability_index.json"
-
-    result = main(
-        ["plan", "sync", "traceability-index", "--output", str(output_path), "--format", "json"]
-    )
-
-    captured = capsys.readouterr()
-    payload = json.loads(captured.out)
-    assert result == 0
-    assert payload["command"] == "watchtower-core plan sync traceability-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()

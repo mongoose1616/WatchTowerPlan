@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.test_suite_efficiency_and_redundancy_reduction.bootstrap_shell",
+  "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+  "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+  "title": "Bootstrap Promotion Shell",
+  "status": "candidate",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-22T08:52:36Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/test_suite_efficiency_and_redundancy_reduction_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/test_suite_efficiency_and_redundancy_reduction_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/test_suite_efficiency_and_redundancy_reduction_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/test_suite_efficiency_and_redundancy_reduction_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

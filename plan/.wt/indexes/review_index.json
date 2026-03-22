@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T06:30:43Z",
+  "updated_at": "2026-03-22T08:52:36Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -204,6 +204,24 @@
       "ready_for_execution": false
     },
     {
+      "review_subject_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Test Suite Efficiency And Redundancy Reduction",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T08:52:36Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
       "review_subject_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
       "subject_kind": "promotion",
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
@@ -378,6 +396,22 @@
         "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T06:30:43Z"
+    },
+    {
+      "review_subject_id": "promotion.test_suite_efficiency_and_redundancy_reduction.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.test_suite_efficiency_and_redundancy_reduction.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T08:52:36Z"
     }
   ]
 }

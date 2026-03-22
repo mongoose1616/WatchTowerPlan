@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
-from shutil import copytree, rmtree
+from shutil import copytree
+from tempfile import mkdtemp
 
 import pytest
 from watchtower_plan.initiatives import (
@@ -11,6 +13,8 @@ from watchtower_plan.initiatives import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
+from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
+from watchtower_plan.initiatives.locations import InitiativeLocationManager
 from watchtower_plan.plan_workspace import PlanWorkspaceService
 from watchtower_plan.projects import (
     ProjectBootstrapParams,
@@ -22,36 +26,44 @@ from watchtower_plan.tasks import (
     TaskLifecycleService,
 )
 
+from tests.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 INITIATIVE_SLUG = "unit_test_plan_workspace"
 TRACE_ID = f"trace.{INITIATIVE_SLUG}"
 UPDATED_AT = "2026-03-17T15:30:00Z"
+PROJECT_INITIATIVE_SLUG = "watchtower_runtime_bootstrap"
+PROJECT_TRACE_ID = f"trace.{PROJECT_INITIATIVE_SLUG}"
+
+
+@lru_cache(maxsize=1)
+def _fixture_baseline_repo() -> Path:
+    repo_root = Path(mkdtemp(prefix="watchtower_initiative_package_cases_"))
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
+    loader = ControlPlaneLoader(repo_root)
+    PlanWorkspaceService(loader).sync(write=True)
+    ProjectWorkspaceService(loader).sync(write=True)
+    return repo_root
 
 
 def _build_fixture_repo(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
-    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
-    copytree(REPO_ROOT / "plan", repo_root / "plan")
-    for path in (repo_root / "plan" / "initiatives").iterdir():
-        if path.name == "README.md":
-            continue
-        if path.is_dir():
-            rmtree(path)
-        else:
-            path.unlink()
-    for path in (repo_root / "plan" / "projects").iterdir():
-        if path.name == "README.md":
-            continue
-        if path.is_dir():
-            rmtree(path)
-        else:
-            path.unlink()
-    (repo_root / "core" / "python").mkdir(parents=True)
-    loader = ControlPlaneLoader(repo_root)
-    PlanWorkspaceService(loader).sync(write=True)
-    ProjectWorkspaceService(loader).sync(write=True)
+    copytree(_fixture_baseline_repo(), repo_root)
+    return repo_root
+
+
+def _copy_cached_repo(source_repo_root: Path, tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(source_repo_root, repo_root)
+    return repo_root
+
+
+def _new_cached_repo_from(source_repo_root: Path, *, prefix: str) -> Path:
+    repo_root = Path(mkdtemp(prefix=prefix))
+    copytree(source_repo_root, repo_root, dirs_exist_ok=True)
     return repo_root
 
 
@@ -119,7 +131,130 @@ def _bootstrap_project(loader: ControlPlaneLoader) -> None:
             updated_at=UPDATED_AT,
         ),
         write=True,
+        )
+
+
+def _project_scoped_params(*, include_validation_task: bool) -> InitiativeBootstrapParams:
+    task_specs: tuple[InitiativeTaskSpec, ...] = (
+        InitiativeTaskSpec(
+            title="Seed WatchTower project initiative",
+            summary="Creates the project-scoped initiative package.",
+            slug="seed_watchtower_project_initiative",
+        ),
     )
+    if include_validation_task:
+        task_specs = (
+            *task_specs,
+            InitiativeTaskSpec(
+                title="Validate WatchTower project readiness gate",
+                summary="Confirms the project-scoped initiative gate behavior.",
+                slug="validate_watchtower_project_gate",
+            ),
+        )
+    return InitiativeBootstrapParams(
+        trace_id=PROJECT_TRACE_ID,
+        title="WatchTower Runtime Bootstrap",
+        summary="Bootstraps one project-scoped initiative package for WatchTower.",
+        initiative_slug=PROJECT_INITIATIVE_SLUG,
+        task_specs=task_specs,
+        updated_at=UPDATED_AT,
+    )
+
+
+@lru_cache(maxsize=2)
+def _bootstrapped_packwide_baseline_repo(include_decision_notes: bool) -> Path:
+    repo_root = _new_cached_repo_from(
+        _fixture_baseline_repo(),
+        prefix="watchtower_bootstrapped_packwide_",
+    )
+    InitiativePackageService(ControlPlaneLoader(repo_root)).bootstrap_packwide(
+        _bootstrap_params(include_decision_notes=include_decision_notes),
+        write=True,
+    )
+    return repo_root
+
+
+@lru_cache(maxsize=2)
+def _approved_packwide_baseline_repo(include_decision_notes: bool) -> Path:
+    repo_root = _new_cached_repo_from(
+        _bootstrapped_packwide_baseline_repo(include_decision_notes),
+        prefix="watchtower_approved_packwide_",
+    )
+    InitiativePackageService(ControlPlaneLoader(repo_root)).approve_packwide(
+        INITIATIVE_SLUG,
+        "actor.repository_maintainer",
+        write=True,
+    )
+    return repo_root
+
+
+@lru_cache(maxsize=1)
+def _project_container_baseline_repo() -> Path:
+    repo_root = _new_cached_repo_from(
+        _fixture_baseline_repo(),
+        prefix="watchtower_project_container_",
+    )
+    loader = ControlPlaneLoader(repo_root)
+    _bootstrap_project(loader)
+    ProjectWorkspaceService(loader).sync(write=True)
+    return repo_root
+
+
+@lru_cache(maxsize=1)
+def _approved_project_scoped_baseline_repo() -> Path:
+    repo_root = _new_cached_repo_from(
+        _project_container_baseline_repo(),
+        prefix="watchtower_approved_project_scoped_",
+    )
+    loader = ControlPlaneLoader(repo_root)
+    ProjectWorkspaceService(loader).sync(write=True)
+    service = InitiativePackageService(loader)
+    service.bootstrap_project_scoped(
+        "watchtower",
+        _project_scoped_params(include_validation_task=False),
+        write=True,
+    )
+    service.approve_project_scoped(
+        "watchtower",
+        PROJECT_INITIATIVE_SLUG,
+        "actor.repository_maintainer",
+        write=True,
+    )
+    return repo_root
+
+
+def _build_bootstrapped_packwide_repo(
+    tmp_path: Path,
+    *,
+    include_decision_notes: bool = False,
+) -> Path:
+    return _copy_cached_repo(
+        _bootstrapped_packwide_baseline_repo(include_decision_notes),
+        tmp_path,
+    )
+
+
+def _build_approved_packwide_repo(
+    tmp_path: Path,
+    *,
+    include_decision_notes: bool = False,
+) -> Path:
+    return _copy_cached_repo(
+        _approved_packwide_baseline_repo(include_decision_notes),
+        tmp_path,
+    )
+
+
+def _build_project_container_repo(tmp_path: Path) -> Path:
+    repo_root = _copy_cached_repo(_project_container_baseline_repo(), tmp_path)
+    ProjectWorkspaceService(ControlPlaneLoader(repo_root)).sync(write=True)
+    return repo_root
+
+
+def _build_approved_project_scoped_repo(tmp_path: Path) -> Path:
+    repo_root = _copy_cached_repo(_approved_project_scoped_baseline_repo(), tmp_path)
+    ProjectWorkspaceService(ControlPlaneLoader(repo_root)).sync(write=True)
+    return repo_root
 
 
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
@@ -139,10 +274,30 @@ def _mark_initiative_closing(initiative_root: Path, *, updated_at: str) -> None:
     state_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
+def _disable_expensive_derived_sync(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        InitiativeLocationManager,
+        "sync_derived_surfaces",
+        lambda self, location: None,
+    )
+    monkeypatch.setattr(
+        InitiativeDiscrepancyCoordinator,
+        "stale_derived_surface_issues",
+        lambda self, location: (),
+    )
+    monkeypatch.setattr(
+        InitiativeDiscrepancyCoordinator,
+        "project_surface_issues",
+        lambda self, location: (),
+    )
+
+
 def test_bootstrap_packwide_initiative_writes_full_package_and_stages_review(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     repo_root = _build_fixture_repo(tmp_path)
+    _disable_expensive_derived_sync(monkeypatch)
     service = InitiativePackageService(ControlPlaneLoader(repo_root))
 
     result = service.bootstrap_packwide(_bootstrap_params(), write=True)
@@ -189,8 +344,10 @@ def test_bootstrap_packwide_initiative_writes_full_package_and_stages_review(
 
 def test_bootstrap_packwide_initiative_blocks_readiness_when_blocking_deferred_items_exist(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     repo_root = _build_fixture_repo(tmp_path)
+    _disable_expensive_derived_sync(monkeypatch)
     service = InitiativePackageService(ControlPlaneLoader(repo_root))
 
     result = service.bootstrap_packwide(
@@ -231,10 +388,14 @@ def test_bootstrap_packwide_initiative_blocks_readiness_when_blocking_deferred_i
 
 def test_authored_input_drift_requires_confirmation_before_review_is_restored(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_bootstrapped_packwide_repo(
+        tmp_path,
+        include_decision_notes=True,
+    )
+    _disable_expensive_derived_sync(monkeypatch)
     service = InitiativePackageService(ControlPlaneLoader(repo_root))
-    service.bootstrap_packwide(_bootstrap_params(include_decision_notes=True), write=True)
 
     brief_path = _initiative_root(repo_root) / "initiative_brief.md"
     brief_path.write_text(
@@ -288,10 +449,11 @@ def test_authored_input_drift_requires_confirmation_before_review_is_restored(
 
 def test_machine_root_human_surface_policy_blocks_stray_readme(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_bootstrapped_packwide_repo(tmp_path)
+    _disable_expensive_derived_sync(monkeypatch)
     service = InitiativePackageService(ControlPlaneLoader(repo_root))
-    service.bootstrap_packwide(_bootstrap_params(), write=True)
 
     machine_root = _initiative_root(repo_root) / ".wt"
     (machine_root / "README.md").write_text(
@@ -310,10 +472,11 @@ def test_machine_root_human_surface_policy_blocks_stray_readme(
 
 def test_packwide_initiative_approval_requires_default_human_maintainer(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_bootstrapped_packwide_repo(tmp_path)
+    _disable_expensive_derived_sync(monkeypatch)
     service = InitiativePackageService(ControlPlaneLoader(repo_root))
-    service.bootstrap_packwide(_bootstrap_params(), write=True)
 
     with pytest.raises(
         ValueError,
@@ -364,16 +527,15 @@ def test_packwide_initiative_approval_requires_default_human_maintainer(
 
 def test_packwide_terminal_closeout_updates_local_artifacts_and_terminal_state(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_approved_packwide_repo(
+        tmp_path,
+        include_decision_notes=True,
+    )
+    _disable_expensive_derived_sync(monkeypatch)
     loader = ControlPlaneLoader(repo_root)
     service = InitiativePackageService(loader)
-    service.bootstrap_packwide(_bootstrap_params(include_decision_notes=True), write=True)
-    service.approve_packwide(
-        INITIATIVE_SLUG,
-        "actor.repository_maintainer",
-        write=True,
-    )
 
     initiative_root = _initiative_root(repo_root)
     _mark_tasks_completed(
@@ -466,32 +628,15 @@ def test_project_scoped_bootstrap_requires_a_valid_project_container(
 def test_project_scoped_initiative_bootstrap_and_approval_use_project_root(
     tmp_path: Path,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_project_container_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
-    _bootstrap_project(loader)
     service = InitiativePackageService(loader)
 
-    params = InitiativeBootstrapParams(
-        trace_id="trace.watchtower_runtime_bootstrap",
-        title="WatchTower Runtime Bootstrap",
-        summary="Bootstraps one project-scoped initiative package for WatchTower.",
-        initiative_slug="watchtower_runtime_bootstrap",
-        task_specs=(
-            InitiativeTaskSpec(
-                title="Seed WatchTower project initiative",
-                summary="Creates the project-scoped initiative package.",
-                slug="seed_watchtower_project_initiative",
-            ),
-            InitiativeTaskSpec(
-                title="Validate WatchTower project readiness gate",
-                summary="Confirms the project-scoped initiative gate behavior.",
-                slug="validate_watchtower_project_gate",
-            ),
-        ),
-        updated_at=UPDATED_AT,
+    result = service.bootstrap_project_scoped(
+        "watchtower",
+        _project_scoped_params(include_validation_task=True),
+        write=True,
     )
-
-    result = service.bootstrap_project_scoped("watchtower", params, write=True)
 
     assert result.wrote is True
     assert result.validation_passed is True
@@ -541,33 +686,11 @@ def test_project_scoped_initiative_bootstrap_and_approval_use_project_root(
 
 def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_packages(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_approved_project_scoped_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
-    _bootstrap_project(loader)
     service = InitiativePackageService(loader)
-
-    params = InitiativeBootstrapParams(
-        trace_id="trace.watchtower_runtime_bootstrap",
-        title="WatchTower Runtime Bootstrap",
-        summary="Bootstraps one project-scoped initiative package for WatchTower.",
-        initiative_slug="watchtower_runtime_bootstrap",
-        task_specs=(
-            InitiativeTaskSpec(
-                title="Seed WatchTower project initiative",
-                summary="Creates the project-scoped initiative package.",
-                slug="seed_watchtower_project_initiative",
-            ),
-        ),
-        updated_at=UPDATED_AT,
-    )
-    service.bootstrap_project_scoped("watchtower", params, write=True)
-    service.approve_project_scoped(
-        "watchtower",
-        "watchtower_runtime_bootstrap",
-        "actor.repository_maintainer",
-        write=True,
-    )
 
     initiative_root = (
         repo_root
@@ -575,7 +698,7 @@ def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_
         / "projects"
         / "watchtower"
         / "initiatives"
-        / "watchtower_runtime_bootstrap"
+        / PROJECT_INITIATIVE_SLUG
     )
     events_root = initiative_root / ".wt" / "events"
     execution_started_path = events_root / "0011_execution_started.json"
@@ -611,13 +734,14 @@ def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_
     service._sync_derived_surfaces(  # noqa: SLF001 - integration test exercises real derived sync.
         service._project_scoped_location_for_slug(  # noqa: SLF001
             "watchtower",
-            "watchtower_runtime_bootstrap",
+            PROJECT_INITIATIVE_SLUG,
         )
     )
 
+    _disable_expensive_derived_sync(monkeypatch)
     readiness = service.validate_project_scoped(
         "watchtower",
-        "watchtower_runtime_bootstrap",
+        PROJECT_INITIATIVE_SLUG,
         write=True,
         require_approved=True,
     )
@@ -638,33 +762,11 @@ def test_project_scoped_validation_preserves_in_progress_lifecycle_for_approved_
 
 def test_project_scoped_validation_restores_in_progress_after_transient_block(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_approved_project_scoped_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
-    _bootstrap_project(loader)
     service = InitiativePackageService(loader)
-
-    params = InitiativeBootstrapParams(
-        trace_id="trace.watchtower_runtime_bootstrap",
-        title="WatchTower Runtime Bootstrap",
-        summary="Bootstraps one project-scoped initiative package for WatchTower.",
-        initiative_slug="watchtower_runtime_bootstrap",
-        task_specs=(
-            InitiativeTaskSpec(
-                title="Seed WatchTower project initiative",
-                summary="Creates the project-scoped initiative package.",
-                slug="seed_watchtower_project_initiative",
-            ),
-        ),
-        updated_at=UPDATED_AT,
-    )
-    service.bootstrap_project_scoped("watchtower", params, write=True)
-    service.approve_project_scoped(
-        "watchtower",
-        "watchtower_runtime_bootstrap",
-        "actor.repository_maintainer",
-        write=True,
-    )
 
     initiative_root = (
         repo_root
@@ -672,7 +774,7 @@ def test_project_scoped_validation_restores_in_progress_after_transient_block(
         / "projects"
         / "watchtower"
         / "initiatives"
-        / "watchtower_runtime_bootstrap"
+        / PROJECT_INITIATIVE_SLUG
     )
     events_root = initiative_root / ".wt" / "events"
     execution_started_path = events_root / "0011_execution_started.json"
@@ -708,13 +810,14 @@ def test_project_scoped_validation_restores_in_progress_after_transient_block(
     service._sync_derived_surfaces(  # noqa: SLF001 - integration test exercises real derived sync.
         service._project_scoped_location_for_slug(  # noqa: SLF001
             "watchtower",
-            "watchtower_runtime_bootstrap",
+            PROJECT_INITIATIVE_SLUG,
         )
     )
 
+    _disable_expensive_derived_sync(monkeypatch)
     readiness = service.validate_project_scoped(
         "watchtower",
-        "watchtower_runtime_bootstrap",
+        PROJECT_INITIATIVE_SLUG,
         write=True,
         require_approved=True,
     )
@@ -728,16 +831,12 @@ def test_project_scoped_validation_restores_in_progress_after_transient_block(
 
 def test_validate_packwide_reconciles_stale_approval_and_task_inventory_from_machine_state(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repo_root = _build_fixture_repo(tmp_path)
+    repo_root = _build_approved_packwide_repo(tmp_path)
+    _disable_expensive_derived_sync(monkeypatch)
     loader = ControlPlaneLoader(repo_root)
     service = InitiativePackageService(loader)
-    service.bootstrap_packwide(_bootstrap_params(), write=True)
-    service.approve_packwide(
-        INITIATIVE_SLUG,
-        "actor.repository_maintainer",
-        write=True,
-    )
 
     new_task_id = f"task.{INITIATIVE_SLUG}.reconcile_stale_initiative_state"
     TaskLifecycleService(loader).create(

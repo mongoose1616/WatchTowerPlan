@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.test_suite_efficiency_and_redundancy_reduction.plan_surface_drift",
+  "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+  "category": "stale_rendered_surface",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Rendered surface drift detected for plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md.",
+  "source_paths": [
+    "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-22T07:11:29Z",
+  "updated_at": "2026-03-22T07:12:22Z"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots",
+  "slug": "optimize_sync_cli_hotspots",
+  "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+  "title": "Optimize sync CLI hotspot tests",
+  "summary": "Replace redundant expensive sync CLI smoke tests with lightweight forwarding coverage while preserving representative end-to-end sync assertions.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "validation",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T07:13:58Z",
+  "updated_at": "2026-03-22T08:47:35Z",
+  "applies_to": [
+    "core/python/tests/integration/test_cli_sync_commands.py",
+    "core/python/tests/integration/test_all_sync.py"
+  ],
+  "scope_items": [
+    "Collapse expensive CLI sync wrapper tests that only assert JSON envelopes or output wiring.",
+    "Keep one real end-to-end assertion per heavy sync family and rely on lower-level sync tests for runtime behavior."
+  ],
+  "done_when_items": [
+    "The slow CLI sync hotspot files are materially faster without losing meaningful behavioral coverage.",
+    "The retained CLI tests still prove parser dispatch and output-shape behavior."
+  ]
+}

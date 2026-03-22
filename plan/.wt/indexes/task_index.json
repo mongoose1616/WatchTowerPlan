@@ -1043,6 +1043,79 @@
         "core/python/src/watchtower_core/",
         "plan/python/src/watchtower_plan/closeout/"
       ]
+    },
+    {
+      "task_id": "task.test_suite_efficiency_and_redundancy_reduction.bootstrap_test_suite_efficiency_and_redundancy_reduction",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Bootstrap Test Suite Efficiency And Redundancy Reduction",
+      "summary": "Bootstrap Test Suite Efficiency And Redundancy Reduction live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/bootstrap_test_suite_efficiency_and_redundancy_reduction/task.json",
+      "updated_at": "2026-03-22T07:16:30Z"
+    },
+    {
+      "task_id": "task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Optimize sync CLI hotspot tests",
+      "summary": "Replace redundant expensive sync CLI smoke tests with lightweight forwarding coverage while preserving representative end-to-end sync assertions.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_sync_cli_hotspots/task.json",
+      "updated_at": "2026-03-22T08:47:35Z",
+      "applies_to": [
+        "core/python/tests/integration/test_cli_sync_commands.py",
+        "core/python/tests/integration/test_all_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.test_suite_efficiency_and_redundancy_reduction.optimize_task_lifecycle_and_sync_hotspots",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Optimize task lifecycle and sync hotspots",
+      "summary": "Reduce repeated coordination rebuild cost in lifecycle and sync integration tests while preserving at least one true rebuild path.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_task_lifecycle_and_sync_hotspots/task.json",
+      "updated_at": "2026-03-22T08:49:41Z",
+      "applies_to": [
+        "core/python/tests/integration/test_task_lifecycle.py",
+        "core/python/tests/integration/test_cli_planning_query_commands.py",
+        "core/python/tests/integration/test_initiative_closeout.py"
+      ]
+    },
+    {
+      "task_id": "task.test_suite_efficiency_and_redundancy_reduction.reprofile_and_close",
+      "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
+      "initiative_title": "Test Suite Efficiency And Redundancy Reduction",
+      "title": "Reprofile optimized suite and close initiative",
+      "summary": "Rerun hotspot timings and the broad validation gate, then close the initiative once the suite is materially faster and still green.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/reprofile_and_close/task.json",
+      "updated_at": "2026-03-22T08:51:47Z",
+      "applies_to": [
+        "core/python/tests/",
+        "core/python/README.md"
+      ]
     }
   ]
 }

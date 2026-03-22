@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots.0001_created",
+  "initiative_id": "initiative.test_suite_efficiency_and_redundancy_reduction",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T07:13:58Z",
+  "summary": "Created live task task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots.",
+  "payload": {
+    "status": "active",
+    "task_status": "in_progress",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_sync_cli_hotspots/task.json"
+  },
+  "task_id": "task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots"
+}

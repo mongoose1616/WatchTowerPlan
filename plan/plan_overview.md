@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.test_suite_efficiency_and_redundancy_reduction`: Test Suite Efficiency And Redundancy Reduction (`completed` at `2026-03-22T08:52:36Z`) - Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work.
 - `trace.remaining_dirty_tranche_closeout`: Remaining Dirty Tranche Closeout (`completed` at `2026-03-22T06:30:43Z`) - Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state.
 - `trace.pack_cli_fault_isolation_hardening`: Pack CLI Fault Isolation Hardening (`completed` at `2026-03-21T23:46:04Z`) - Delivered and validated host CLI fault isolation hardening for broken hosted-pack integrations.
 - `trace.ledger_retirement_contract_change`: Ledger Retirement Contract Change (`completed` at `2026-03-21T22:52:52Z`) - Retired the live ledger surface family in favor of retained records, updated contracts and governed artifacts, and validated the repository end to end.
@@ -25,7 +26,6 @@
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.
 - `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.
 - `trace.plan_python_package_dependency_cleanup`: Plan Python Package Dependency Cleanup (`completed` at `2026-03-20T01:51:19Z`) - Installed watchtower_plan through the shared workspace, removed repo-local path bootstrapping, and validated the final boundary split.
-- `trace.pack_domain_hardcoding_remediation`: Pack Domain Hardcoding Remediation (`completed` at `2026-03-20T01:25:48Z`) - Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)
