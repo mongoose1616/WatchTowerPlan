@@ -1,0 +1,39 @@
+{
+  "captured_at": "2026-03-22T19:52:00Z",
+  "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+  "baseline_reference": "benchmark_baseline.json",
+  "commands": {
+    "doctor": {
+      "command": "watchtower-core doctor",
+      "baseline_median_ms": 500.166,
+      "current_median_ms": 464.874,
+      "improvement_ms": 35.292,
+      "improvement_percent": 7.06,
+      "notes": [
+        "Measured on the live repo with WATCHTOWER_TELEMETRY_STDERR=off.",
+        "The remaining delta comes from startup and parser narrowing rather than command-handler logic."
+      ]
+    },
+    "pack_list": {
+      "command": "watchtower-core pack list --format json",
+      "baseline_median_ms": 432.497,
+      "current_median_ms": 401.883,
+      "improvement_ms": 30.614,
+      "improvement_percent": 7.08,
+      "notes": [
+        "Measured on the live repo with WATCHTOWER_TELEMETRY_STDERR=off.",
+        "This command benefits from both the lighter import graph and the narrower top-level parser surface."
+      ]
+    }
+  },
+  "startup_microbenchmarks": {
+    "import_watchtower_host_cli_main_ms": {
+      "before_ms": 115.858,
+      "after_ms": 99.081
+    }
+  },
+  "follow_up_decision": {
+    "next_task_id": "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
+    "reason": "The host and loader slice is now measurably better, so the initiative can move to regression guards and the final benchmark and validation closeout."
+  }
+}

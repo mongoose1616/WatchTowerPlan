@@ -9,14 +9,8 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry, PackRuntimeManifest
-from watchtower_core.pack_integration import pack_command_docs_root
+from watchtower_core.pack_integration.docs import pack_command_docs_root
 from watchtower_core.pack_integration.runtime import load_active_pack_integration
-from watchtower_host.cli.doctor_family import register_doctor_family
-from watchtower_host.cli.pack_family import register_pack_family
-from watchtower_host.cli.query_family import register_query_family
-from watchtower_host.cli.route_family import register_route_family
-from watchtower_host.cli.sync_family import register_sync_family
-from watchtower_host.cli.validate_family import register_validate_family
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], object]
 
@@ -54,22 +48,59 @@ QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_knowled
 QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_host/cli/query_records_family.py"
 PACK_FAMILY_HANDLERS_PATH = "core/python/src/watchtower_host/cli/pack_handlers.py"
 
+
+def _register_doctor_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.doctor_family import register_doctor_family
+
+    register_doctor_family(subparsers)
+
+
+def _register_route_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.route_family import register_route_family
+
+    register_route_family(subparsers)
+
+
+def _register_query_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.query_family import register_query_family
+
+    register_query_family(subparsers)
+
+
+def _register_pack_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.pack_family import register_pack_family
+
+    register_pack_family(subparsers)
+
+
+def _register_sync_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.sync_family import register_sync_family
+
+    register_sync_family(subparsers)
+
+
+def _register_validate_family(subparsers: argparse._SubParsersAction) -> None:
+    from watchtower_host.cli.validate_family import register_validate_family
+
+    register_validate_family(subparsers)
+
+
 CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     CommandGroupSpec(
         name="doctor",
-        registrar=register_doctor_family,
+        registrar=_register_doctor_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/doctor_family.py",
     ),
     CommandGroupSpec(
         name="route",
-        registrar=register_route_family,
+        registrar=_register_route_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/route_family.py",
     ),
     CommandGroupSpec(
         name="query",
-        registrar=register_query_family,
+        registrar=_register_query_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/query_family.py",
         subcommand_implementation_paths=(
@@ -85,7 +116,7 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     ),
     CommandGroupSpec(
         name="pack",
-        registrar=register_pack_family,
+        registrar=_register_pack_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/pack_family.py",
         subcommand_implementation_paths=(
@@ -98,13 +129,13 @@ CORE_COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
     ),
     CommandGroupSpec(
         name="sync",
-        registrar=register_sync_family,
+        registrar=_register_sync_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/sync_family.py",
     ),
     CommandGroupSpec(
         name="validate",
-        registrar=register_validate_family,
+        registrar=_register_validate_family,
         doc_root="core/docs/commands/core_python",
         implementation_path="core/python/src/watchtower_host/cli/validate_family.py",
     ),
@@ -141,10 +172,16 @@ def find_registered_pack_command_group(
 ) -> PackCommandGroupDiscovery | None:
     """Resolve one registered pack namespace by its routed top-level command name."""
 
-    for discovery in discover_registered_pack_command_groups(loader):
-        if discovery.name == command_namespace:
-            return discovery
-    return None
+    active_loader = loader or ControlPlaneLoader()
+    entry = _find_registered_pack_entry(command_namespace, active_loader)
+    if entry is None:
+        return None
+    return PackCommandGroupDiscovery(
+        registry_entry=entry,
+        runtime_manifest=active_loader.load_pack_runtime_manifest(
+            pack_settings_path=entry.pack_settings_path
+        ),
+    )
 
 
 def load_pack_command_group_spec(
@@ -156,13 +193,20 @@ def load_pack_command_group_spec(
     """Load one pack command group, optionally degrading gracefully on import failure."""
 
     active_loader = loader or ControlPlaneLoader()
-    discovery = find_registered_pack_command_group(command_namespace, active_loader)
-    if discovery is None:
+    entry = _find_registered_pack_entry(command_namespace, active_loader)
+    if entry is None:
         return None
+    runtime_manifest = active_loader.load_pack_runtime_manifest(
+        pack_settings_path=entry.pack_settings_path
+    )
+    discovery = PackCommandGroupDiscovery(
+        registry_entry=entry,
+        runtime_manifest=runtime_manifest,
+    )
     try:
         loaded = load_active_pack_integration(
             active_loader,
-            pack_settings_path=discovery.registry_entry.pack_settings_path,
+            pack_settings_path=entry.pack_settings_path,
         )
         if discovery.runtime_manifest.command_namespace != discovery.name:
             raise ValueError(
@@ -220,6 +264,16 @@ def load_command_group_specs(
         if loaded_spec is not None:
             specs.append(loaded_spec)
     return tuple(specs)
+
+
+def _find_registered_pack_entry(
+    command_namespace: str,
+    loader: ControlPlaneLoader,
+) -> PackRegistryEntry | None:
+    for entry in loader.load_pack_registry().packs:
+        if entry.command_namespace == command_namespace:
+            return entry
+    return None
 
 
 def _unavailable_pack_command_group(

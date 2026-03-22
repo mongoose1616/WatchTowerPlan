@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency.0003_status_changed",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "sequence": 3,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T19:52:21Z",
+  "summary": "Changed task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency status from in_progress to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json"
+  },
+  "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency"
+}

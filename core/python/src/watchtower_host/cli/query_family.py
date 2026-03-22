@@ -6,16 +6,17 @@ import argparse
 from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
-from watchtower_core.cli.handler_common import _run_help
-from watchtower_host.cli.query_discovery_family import register_query_discovery_commands
-from watchtower_host.cli.query_knowledge_family import register_query_knowledge_commands
-from watchtower_host.cli.query_records_family import register_query_record_commands
 
 
 def register_query_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the query command family and its subcommands."""
+    from watchtower_core.cli.handler_common import _run_help
+    from watchtower_host.cli.query_discovery_family import register_query_discovery_commands
+    from watchtower_host.cli.query_knowledge_family import register_query_knowledge_commands
+    from watchtower_host.cli.query_records_family import register_query_record_commands
+
     query_parser = subparsers.add_parser(
         "query",
         help="Search shared governed lookup surfaces for commands, docs, and durable records.",

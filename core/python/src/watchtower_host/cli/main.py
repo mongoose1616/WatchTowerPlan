@@ -10,6 +10,7 @@ from watchtower_core.telemetry import create_telemetry_session
 from watchtower_host.cli.parser import build_parser
 from watchtower_host.cli.registry import (
     CORE_COMMAND_GROUP_SPECS,
+    CommandGroupSpec,
     find_registered_pack_command_group,
     load_pack_command_group_spec,
 )
@@ -75,11 +76,13 @@ def main(argv: Sequence[str] | None = None) -> int:
 def _command_group_specs_for_argv(
     argv: Sequence[str],
     loader: ControlPlaneLoader,
-) -> tuple:
+) -> tuple[CommandGroupSpec, ...]:
     first_token = argv[0] if argv else None
-    core_names = {spec.name for spec in CORE_COMMAND_GROUP_SPECS}
-    if first_token is None or first_token.startswith("-") or first_token in core_names:
+    if first_token is None or first_token.startswith("-"):
         return CORE_COMMAND_GROUP_SPECS
+    selected_core_spec = _selected_core_command_group_spec(first_token)
+    if selected_core_spec is not None:
+        return (selected_core_spec,)
     if find_registered_pack_command_group(first_token, loader) is None:
         return CORE_COMMAND_GROUP_SPECS
     selected_pack = load_pack_command_group_spec(
@@ -89,7 +92,14 @@ def _command_group_specs_for_argv(
     )
     if selected_pack is None:
         return CORE_COMMAND_GROUP_SPECS
-    return (*CORE_COMMAND_GROUP_SPECS, selected_pack)
+    return (selected_pack,)
+
+
+def _selected_core_command_group_spec(command_name: str) -> CommandGroupSpec | None:
+    for spec in CORE_COMMAND_GROUP_SPECS:
+        if spec.name == command_name:
+            return spec
+    return None
 
 
 def _command_status(result: int, operation: object) -> str:

@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-22T19:39:12Z`
+- `updated_at`: `2026-03-22T19:52:21Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -20,12 +20,8 @@
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
 | [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `planned` | `critical` | `repository_maintainer` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. | task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards, task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency |
-| [task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json) | `planned` | `high` | `repository_maintainer` | Removes avoidable startup overhead in host dispatch and reusable-core loading paths surfaced by the telemetry baseline. | task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory |
-| [task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/add_latency_regression_guards/task.json) | `planned` | `medium` | `repository_maintainer` | Adds targeted regression coverage and benchmark helpers so the reduced-latency paths do not drift back into slow repeated work. | task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency |
 
 ## Blockers
-- Task `task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards` depends on `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency`.
-- Task `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency` depends on `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory`.
 - Task `task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout` depends on `task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards`, `task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency`, `task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency`.
 
 ## Next Actions

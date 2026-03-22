@@ -4,35 +4,24 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from importlib import import_module
 from typing import TYPE_CHECKING, Any, Protocol
-
-from watchtower_core.pack_integration.bootstrap import (
-    PackBootstrapRequest,
-    PackBootstrapResult,
-    bootstrap_hosted_pack,
-)
-from watchtower_core.pack_integration.docs import (
-    pack_command_docs_root,
-    pack_command_entry_doc_path,
-)
-from watchtower_core.pack_integration.scaffold import (
-    PackScaffoldRequest,
-    PackScaffoldResult,
-    scaffold_hosted_pack,
-)
-from watchtower_core.pack_integration.workspace_registration import (
-    CORE_PYPROJECT_RELATIVE_PATH,
-    CORE_UV_LOCK_RELATIVE_PATH,
-    CorePythonWorkspaceRegistration,
-    core_python_workspace_registration,
-    ensure_core_python_workspace_registration,
-    load_core_python_workspace_state,
-    parse_core_python_workspace_state,
-    render_core_python_workspace_pyproject,
-)
 
 if TYPE_CHECKING:
     from watchtower_core.control_plane.loader import ControlPlaneLoader
+    from watchtower_core.pack_integration.bootstrap import (
+        PackBootstrapRequest,
+        PackBootstrapResult,
+    )
+    from watchtower_core.pack_integration.scaffold import (
+        PackScaffoldRequest,
+        PackScaffoldResult,
+    )
+    from watchtower_core.pack_integration.workspace_registration import (
+        CORE_PYPROJECT_RELATIVE_PATH,
+        CORE_UV_LOCK_RELATIVE_PATH,
+        CorePythonWorkspaceRegistration,
+    )
     from watchtower_core.validation.suite import (
         DocumentSemanticsValidationService,
         ValidationSuiteTargetResolver,
@@ -142,6 +131,74 @@ class PackIntegration:
         return getattr(self, capability, None)
 
 
+_EXPORTS: dict[str, tuple[str, str]] = {
+    "CORE_PYPROJECT_RELATIVE_PATH": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "CORE_PYPROJECT_RELATIVE_PATH",
+    ),
+    "CORE_UV_LOCK_RELATIVE_PATH": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "CORE_UV_LOCK_RELATIVE_PATH",
+    ),
+    "CorePythonWorkspaceRegistration": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "CorePythonWorkspaceRegistration",
+    ),
+    "PackBootstrapRequest": (
+        "watchtower_core.pack_integration.bootstrap",
+        "PackBootstrapRequest",
+    ),
+    "PackBootstrapResult": (
+        "watchtower_core.pack_integration.bootstrap",
+        "PackBootstrapResult",
+    ),
+    "PackScaffoldRequest": (
+        "watchtower_core.pack_integration.scaffold",
+        "PackScaffoldRequest",
+    ),
+    "PackScaffoldResult": (
+        "watchtower_core.pack_integration.scaffold",
+        "PackScaffoldResult",
+    ),
+    "bootstrap_hosted_pack": (
+        "watchtower_core.pack_integration.bootstrap",
+        "bootstrap_hosted_pack",
+    ),
+    "core_python_workspace_registration": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "core_python_workspace_registration",
+    ),
+    "ensure_core_python_workspace_registration": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "ensure_core_python_workspace_registration",
+    ),
+    "load_core_python_workspace_state": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "load_core_python_workspace_state",
+    ),
+    "pack_command_docs_root": (
+        "watchtower_core.pack_integration.docs",
+        "pack_command_docs_root",
+    ),
+    "pack_command_entry_doc_path": (
+        "watchtower_core.pack_integration.docs",
+        "pack_command_entry_doc_path",
+    ),
+    "parse_core_python_workspace_state": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "parse_core_python_workspace_state",
+    ),
+    "render_core_python_workspace_pyproject": (
+        "watchtower_core.pack_integration.workspace_registration",
+        "render_core_python_workspace_pyproject",
+    ),
+    "scaffold_hosted_pack": (
+        "watchtower_core.pack_integration.scaffold",
+        "scaffold_hosted_pack",
+    ),
+}
+
+
 __all__ = [
     "OPTIONAL_PACK_CAPABILITIES",
     "CORE_PYPROJECT_RELATIVE_PATH",
@@ -173,3 +230,17 @@ __all__ = [
     "render_core_python_workspace_pyproject",
     "scaffold_hosted_pack",
 ]
+
+
+def __getattr__(name: str) -> object:
+    try:
+        module_name, attribute_name = _EXPORTS[name]
+    except KeyError as exc:  # pragma: no cover - Python import protocol
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}") from exc
+    value = getattr(import_module(module_name), attribute_name)
+    globals()[name] = value
+    return value
+
+
+def __dir__() -> list[str]:
+    return sorted(set(globals()) | set(__all__))
