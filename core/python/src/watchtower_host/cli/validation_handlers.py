@@ -15,6 +15,7 @@ from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
@@ -71,11 +72,28 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
 
     service = ArtifactValidationService(loader)
     try:
-        result = service.validate(
-            args.path,
-            validator_id=args.validator_id,
-            schema_id=args.schema_id,
-        )
+        with telemetry_operation(
+            "validation",
+            "artifact_validate",
+            attributes={
+                "target_path": str(args.path),
+                "validator_id": args.validator_id,
+                "schema_id": args.schema_id,
+            },
+        ) as operation:
+            result = service.validate(
+                args.path,
+                validator_id=args.validator_id,
+                schema_id=args.schema_id,
+            )
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if result.passed else "failed",
+                    issue_count=result.issue_count,
+                    passed=result.passed,
+                    target_path=result.target_path,
+                    validator_id=result.validator_id,
+                )
     except (
         SchemaResolutionError,
         ValidationExecutionError,
@@ -285,7 +303,20 @@ def _run_validate_all(args: argparse.Namespace) -> int:
 
 
 def _run_validate_acceptance(args: argparse.Namespace) -> int:
-    result = AcceptanceReconciliationService(ControlPlaneLoader()).validate(args.trace_id)
+    with telemetry_operation(
+        "validation",
+        "acceptance_validate",
+        attributes={"trace_id": args.trace_id},
+    ) as operation:
+        result = AcceptanceReconciliationService(ControlPlaneLoader()).validate(args.trace_id)
+        if operation is not None:
+            operation.set_result(
+                status="ok" if result.passed else "failed",
+                issue_count=result.issue_count,
+                passed=result.passed,
+                target_path=result.target_path,
+                validator_id=result.validator_id,
+            )
     payload = _build_validation_payload(
         command_name="watchtower-core validate acceptance",
         result=result,
@@ -318,7 +349,24 @@ def _run_validation_command(
     loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
     service = service_factory(loader)
     try:
-        result = service.validate(args.path, validator_id=args.validator_id)
+        with telemetry_operation(
+            "validation",
+            command_name.replace("watchtower-core validate ", "").replace("-", "_"),
+            attributes={
+                "target_path": str(args.path),
+                "validator_id": args.validator_id,
+                "pack_settings_path": getattr(args, "pack_settings_path", None),
+            },
+        ) as operation:
+            result = service.validate(args.path, validator_id=args.validator_id)
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if result.passed else "failed",
+                    issue_count=result.issue_count,
+                    passed=result.passed,
+                    target_path=result.target_path,
+                    validator_id=result.validator_id,
+                )
     except (ValidationExecutionError, ValidationSelectionError) as exc:
         return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
 

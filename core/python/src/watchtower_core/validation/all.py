@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.models import ValidationResult
 from watchtower_core.validation.suite import (
@@ -131,57 +132,75 @@ class ValidationAllService:
         included_families: tuple[str, ...] | None = None,
     ) -> ValidationAllResult:
         """Run the selected validation families and return their aggregate results."""
-
-        requested_families = (
-            set(VALIDATION_ALL_FAMILIES) if included_families is None else set(included_families)
-        )
-        unknown_families = requested_families.difference(VALIDATION_ALL_FAMILIES)
-        if unknown_families:
-            unknown = ", ".join(sorted(unknown_families))
-            raise ValueError(f"validate all received unknown validation families: {unknown}")
-
-        resolved_families = tuple(
-            family for family in VALIDATION_ALL_FAMILIES if family in requested_families
-        )
-        if not resolved_families:
-            raise ValueError("validate all requires at least one validation family.")
-
-        records: list[ValidationAllRecord] = []
-        suite_step_kinds = tuple(
-            step_kind
-            for step_kind, family in _STEP_KIND_TO_FAMILY.items()
-            if family in requested_families
-        )
-        if suite_step_kinds:
-            suite_result = self._suite.run(
-                self._suite_id,
-                pack_settings_path=self._pack_settings_path,
-                included_step_kinds=suite_step_kinds,
+        with telemetry_operation(
+            "validation_all",
+            "run",
+            attributes={
+                "suite_id": self._suite_id,
+                "pack_settings_path": self._pack_settings_path,
+                "included_families": included_families,
+            },
+        ) as operation:
+            requested_families = (
+                set(VALIDATION_ALL_FAMILIES)
+                if included_families is None
+                else set(included_families)
             )
-            records.extend(
-                ValidationAllRecord(
-                    family=_STEP_KIND_TO_FAMILY[record.step_kind],
-                    target=record.target,
-                    result=record.result,
+            unknown_families = requested_families.difference(VALIDATION_ALL_FAMILIES)
+            if unknown_families:
+                unknown = ", ".join(sorted(unknown_families))
+                raise ValueError(f"validate all received unknown validation families: {unknown}")
+
+            resolved_families = tuple(
+                family for family in VALIDATION_ALL_FAMILIES if family in requested_families
+            )
+            if not resolved_families:
+                raise ValueError("validate all requires at least one validation family.")
+
+            records: list[ValidationAllRecord] = []
+            suite_step_kinds = tuple(
+                step_kind
+                for step_kind, family in _STEP_KIND_TO_FAMILY.items()
+                if family in requested_families
+            )
+            if suite_step_kinds:
+                suite_result = self._suite.run(
+                    self._suite_id,
+                    pack_settings_path=self._pack_settings_path,
+                    included_step_kinds=suite_step_kinds,
                 )
-                for record in suite_result.records
-            )
-
-        if "acceptance" in requested_families:
-            for trace_id in self._acceptance.acceptance_trace_ids():
-                result = self._acceptance.validate(trace_id)
-                records.append(
+                records.extend(
                     ValidationAllRecord(
-                        family="acceptance",
-                        target=trace_id,
-                        result=result,
+                        family=_STEP_KIND_TO_FAMILY[record.step_kind],
+                        target=record.target,
+                        result=record.result,
                     )
+                    for record in suite_result.records
                 )
 
-        return ValidationAllResult(
-            records=tuple(records),
-            included_families=resolved_families,
-        )
+            if "acceptance" in requested_families:
+                for trace_id in self._acceptance.acceptance_trace_ids():
+                    result = self._acceptance.validate(trace_id)
+                    records.append(
+                        ValidationAllRecord(
+                            family="acceptance",
+                            target=trace_id,
+                            result=result,
+                        )
+                    )
+
+            aggregate = ValidationAllResult(
+                records=tuple(records),
+                included_families=resolved_families,
+            )
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if aggregate.passed else "failed",
+                    total_count=aggregate.total_count,
+                    passed_count=aggregate.passed_count,
+                    failed_count=aggregate.failed_count,
+                )
+            return aggregate
 
 
 __all__ = [

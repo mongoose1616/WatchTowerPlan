@@ -26,6 +26,7 @@ from watchtower_core.pack_integration.runtime import (
     load_pack_validation_runtime,
     load_registered_pack_integrations,
 )
+from watchtower_core.telemetry import create_telemetry_session
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 
 
@@ -59,6 +60,43 @@ def test_load_active_pack_integration_uses_pack_settings_surface(tmp_path: Path)
     assert loaded.registry_entry.command_namespace == "plan"
     assert loaded.runtime_manifest.command_namespace == "plan"
     assert loaded.integration.python_package == "watchtower_plan"
+
+
+def test_load_active_pack_integration_records_pack_runtime_telemetry(tmp_path: Path) -> None:
+    session = create_telemetry_session(
+        ControlPlaneLoader(REPO_ROOT),
+        ["pack", "describe", "--pack", "plan"],
+        environ={
+            "WATCHTOWER_TELEMETRY": "on",
+            "WATCHTOWER_TELEMETRY_STDERR": "off",
+            "WATCHTOWER_TELEMETRY_DIR": str(tmp_path),
+        },
+    )
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    with session.activate():
+        loaded = load_active_pack_integration(loader)
+    session.finish(status="ok", exit_code=0)
+
+    assert loaded.registry_entry.pack_slug == "plan"
+    assert session.output_path is not None
+    records = [
+        json.loads(line)
+        for line in session.output_path.read_text(encoding="utf-8").splitlines()
+    ]
+    assert any(
+        record.get("operation_name") == "watchtower_plan.integration"
+        and record.get("operation_kind") == "pack_runtime_import"
+        and record.get("status") == "ok"
+        for record in records
+        if record["record_type"] == "operation_result"
+    )
+    assert any(
+        record.get("operation_name") == "load_active_pack_integration"
+        and record["attributes"]["pack_slug"] == "plan"
+        for record in records
+        if record["record_type"] == "operation_result"
+    )
 
 
 def test_load_pack_query_runtime_returns_plan_query_contract() -> None:

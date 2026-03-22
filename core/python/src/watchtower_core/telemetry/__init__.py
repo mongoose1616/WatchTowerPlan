@@ -7,6 +7,7 @@ from watchtower_core.telemetry.runtime import (
     add_operation_attributes,
     create_telemetry_session,
     current_session,
+    telemetry_operation,
 )
 
 __all__ = [
@@ -16,4 +17,5 @@ __all__ = [
     "add_operation_attributes",
     "create_telemetry_session",
     "current_session",
+    "telemetry_operation",
 ]

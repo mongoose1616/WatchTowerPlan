@@ -17,6 +17,7 @@ from watchtower_core.pack_integration import (
     PackSyncRuntime,
     PackValidationRuntime,
 )
+from watchtower_core.telemetry import telemetry_operation
 
 
 @dataclass(frozen=True, slots=True)
@@ -36,16 +37,29 @@ def load_active_pack_integration(
 ) -> LoadedPackIntegration:
     """Load the declared integration for one active pack settings surface."""
 
-    pack_settings = loader.load_pack_settings(pack_settings_path)
-    registry_entry = loader.load_pack_registry().get_by_pack_id(pack_settings.pack_id)
-    runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
-    descriptor = _load_pack_integration_descriptor(runtime_manifest)
-    return LoadedPackIntegration(
-        pack_settings=pack_settings,
-        registry_entry=registry_entry,
-        runtime_manifest=runtime_manifest,
-        integration=descriptor,
-    )
+    with telemetry_operation(
+        "pack_runtime",
+        "load_active_pack_integration",
+        attributes={"pack_settings_path": pack_settings_path},
+    ) as operation:
+        pack_settings = loader.load_pack_settings(pack_settings_path)
+        registry_entry = loader.load_pack_registry().get_by_pack_id(pack_settings.pack_id)
+        runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
+        descriptor = _load_pack_integration_descriptor(runtime_manifest)
+        loaded = LoadedPackIntegration(
+            pack_settings=pack_settings,
+            registry_entry=registry_entry,
+            runtime_manifest=runtime_manifest,
+            integration=descriptor,
+        )
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                pack_slug=registry_entry.pack_slug,
+                command_namespace=runtime_manifest.command_namespace,
+                integration_module=runtime_manifest.integration_module,
+            )
+        return loaded
 
 
 def load_registered_pack_integrations(
@@ -53,23 +67,31 @@ def load_registered_pack_integrations(
 ) -> tuple[LoadedPackIntegration, ...]:
     """Load every hosted-pack integration declared in the shared pack registry."""
 
-    registry = loader.load_pack_registry()
-    loaded: list[LoadedPackIntegration] = []
-    for entry in registry.packs:
-        pack_settings = loader.load_pack_settings(entry.pack_settings_path)
-        runtime_manifest = loader.load_pack_runtime_manifest(
-            pack_settings_path=entry.pack_settings_path
-        )
-        descriptor = _load_pack_integration_descriptor(runtime_manifest)
-        loaded.append(
-            LoadedPackIntegration(
-                pack_settings=pack_settings,
-                registry_entry=entry,
-                runtime_manifest=runtime_manifest,
-                integration=descriptor,
+    with telemetry_operation("pack_runtime", "load_registered_pack_integrations") as operation:
+        registry = loader.load_pack_registry()
+        loaded: list[LoadedPackIntegration] = []
+        for entry in registry.packs:
+            pack_settings = loader.load_pack_settings(entry.pack_settings_path)
+            runtime_manifest = loader.load_pack_runtime_manifest(
+                pack_settings_path=entry.pack_settings_path
             )
-        )
-    return tuple(loaded)
+            descriptor = _load_pack_integration_descriptor(runtime_manifest)
+            loaded.append(
+                LoadedPackIntegration(
+                    pack_settings=pack_settings,
+                    registry_entry=entry,
+                    runtime_manifest=runtime_manifest,
+                    integration=descriptor,
+                )
+            )
+        result = tuple(loaded)
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                pack_count=len(result),
+                pack_slugs=[item.registry_entry.pack_slug for item in result],
+            )
+        return result
 
 
 def load_pack_validation_runtime(
@@ -79,18 +101,30 @@ def load_pack_validation_runtime(
 ) -> PackValidationRuntime:
     """Load the declared validation runtime for one active pack."""
 
-    loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
-    provider = loaded.integration.validation_provider
-    if provider is None:
-        raise ValueError(
-            "Pack integration is missing its validation_provider hook: "
-            f"{loaded.runtime_manifest.integration_module}"
+    with telemetry_operation(
+        "pack_runtime",
+        "load_pack_validation_runtime",
+        attributes={"pack_settings_path": pack_settings_path},
+    ) as operation:
+        loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+        provider = loaded.integration.validation_provider
+        if provider is None:
+            raise ValueError(
+                "Pack integration is missing its validation_provider hook: "
+                f"{loaded.runtime_manifest.integration_module}"
+            )
+        runtime = provider()
+        validated = validate_pack_validation_runtime(
+            runtime,
+            integration_module=loaded.runtime_manifest.integration_module,
         )
-    runtime = provider()
-    return validate_pack_validation_runtime(
-        runtime,
-        integration_module=loaded.runtime_manifest.integration_module,
-    )
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                pack_slug=loaded.registry_entry.pack_slug,
+                integration_module=loaded.runtime_manifest.integration_module,
+            )
+        return validated
 
 
 def load_pack_query_runtime(
@@ -100,18 +134,31 @@ def load_pack_query_runtime(
 ) -> PackQueryRuntime:
     """Load the declared query runtime for one active pack."""
 
-    loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
-    provider = loaded.integration.query_runtime
-    if provider is None:
-        raise ValueError(
-            "Pack integration is missing its query_runtime hook: "
-            f"{loaded.runtime_manifest.integration_module}"
+    with telemetry_operation(
+        "pack_runtime",
+        "load_pack_query_runtime",
+        attributes={"pack_settings_path": pack_settings_path},
+    ) as operation:
+        loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+        provider = loaded.integration.query_runtime
+        if provider is None:
+            raise ValueError(
+                "Pack integration is missing its query_runtime hook: "
+                f"{loaded.runtime_manifest.integration_module}"
+            )
+        runtime = provider()
+        validated = validate_pack_query_runtime(
+            runtime,
+            integration_module=loaded.runtime_manifest.integration_module,
         )
-    runtime = provider()
-    return validate_pack_query_runtime(
-        runtime,
-        integration_module=loaded.runtime_manifest.integration_module,
-    )
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                pack_slug=loaded.registry_entry.pack_slug,
+                integration_module=loaded.runtime_manifest.integration_module,
+                command_count=len(validated.commands),
+            )
+        return validated
 
 
 def load_pack_sync_runtime(
@@ -121,30 +168,56 @@ def load_pack_sync_runtime(
 ) -> PackSyncRuntime:
     """Load the declared sync runtime for one active pack."""
 
-    loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
-    provider = loaded.integration.sync_targets
-    if provider is None:
-        raise ValueError(
-            "Pack integration is missing its sync_targets hook: "
-            f"{loaded.runtime_manifest.integration_module}"
+    with telemetry_operation(
+        "pack_runtime",
+        "load_pack_sync_runtime",
+        attributes={"pack_settings_path": pack_settings_path},
+    ) as operation:
+        loaded = load_active_pack_integration(loader, pack_settings_path=pack_settings_path)
+        provider = loaded.integration.sync_targets
+        if provider is None:
+            raise ValueError(
+                "Pack integration is missing its sync_targets hook: "
+                f"{loaded.runtime_manifest.integration_module}"
+            )
+        runtime = provider()
+        validated = validate_pack_sync_runtime(
+            runtime,
+            integration_module=loaded.runtime_manifest.integration_module,
         )
-    runtime = provider()
-    return validate_pack_sync_runtime(
-        runtime,
-        integration_module=loaded.runtime_manifest.integration_module,
-    )
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                pack_slug=loaded.registry_entry.pack_slug,
+                integration_module=loaded.runtime_manifest.integration_module,
+                target_count=len(validated.targets),
+            )
+        return validated
 
 
 def _load_pack_integration_descriptor(runtime_manifest: PackRuntimeManifest) -> PackIntegration:
-    module = import_module(runtime_manifest.integration_module)
-    descriptor = getattr(module, "PACK_INTEGRATION", None)
-    if not isinstance(descriptor, PackIntegration):
-        raise ValueError(
-            "Pack integration module must export PACK_INTEGRATION as a "
-            "watchtower_core.pack_integration.PackIntegration instance: "
-            f"{runtime_manifest.integration_module}"
-        )
-    return descriptor
+    with telemetry_operation(
+        "pack_runtime_import",
+        runtime_manifest.integration_module,
+        attributes={
+            "pack_slug": runtime_manifest.pack_slug,
+            "command_namespace": runtime_manifest.command_namespace,
+        },
+    ) as operation:
+        module = import_module(runtime_manifest.integration_module)
+        descriptor = getattr(module, "PACK_INTEGRATION", None)
+        if not isinstance(descriptor, PackIntegration):
+            raise ValueError(
+                "Pack integration module must export PACK_INTEGRATION as a "
+                "watchtower_core.pack_integration.PackIntegration instance: "
+                f"{runtime_manifest.integration_module}"
+            )
+        if operation is not None:
+            operation.set_result(
+                status="ok",
+                capability_count=len(runtime_manifest.declared_capabilities),
+            )
+        return descriptor
 
 
 def validate_pack_validation_runtime(

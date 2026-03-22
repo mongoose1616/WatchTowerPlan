@@ -14,6 +14,7 @@ from watchtower_core.control_plane.workspace import (
     OverlayArtifactSource,
     WorkspaceConfig,
 )
+from watchtower_core.telemetry import telemetry_operation
 
 SyncServiceFactory = Callable[[ControlPlaneLoader], object]
 SyncTargetMode = Literal["document", "tracking"]
@@ -110,24 +111,41 @@ class SyncHarness:
         write: bool = False,
         output_dir: Path | None = None,
     ) -> SyncResult:
-        runtime_loader = self._runtime_loader(output_dir)
-        shared_state = self.build_shared_state(runtime_loader, specs)
-        self.prepare_runtime_loader(runtime_loader, specs, shared_state)
-        records = tuple(
-            self._run_registered_sync(
-                loader=runtime_loader,
-                spec=spec,
-                write=write,
-                output_dir=output_dir,
-                shared_state=shared_state,
+        with telemetry_operation(
+            "sync_harness",
+            "run_specs",
+            attributes={
+                "spec_count": len(specs),
+                "write": write,
+                "output_dir": str(output_dir.resolve()) if output_dir is not None else None,
+            },
+        ) as operation:
+            runtime_loader = self._runtime_loader(output_dir)
+            shared_state = self.build_shared_state(runtime_loader, specs)
+            self.prepare_runtime_loader(runtime_loader, specs, shared_state)
+            records = tuple(
+                self._run_registered_sync(
+                    loader=runtime_loader,
+                    spec=spec,
+                    write=write,
+                    output_dir=output_dir,
+                    shared_state=shared_state,
+                )
+                for spec in specs
             )
-            for spec in specs
-        )
-        return SyncResult(
-            records=records,
-            wrote=(write or output_dir is not None),
-            output_dir=str(output_dir.resolve()) if output_dir is not None else None,
-        )
+            result = SyncResult(
+                records=records,
+                wrote=(write or output_dir is not None),
+                output_dir=str(output_dir.resolve()) if output_dir is not None else None,
+            )
+            if operation is not None:
+                operation.set_result(
+                    status="ok",
+                    record_count=len(result.records),
+                    wrote=result.wrote,
+                    output_dir=result.output_dir,
+                )
+            return result
 
     def build_shared_state(
         self,
@@ -172,28 +190,48 @@ class SyncHarness:
         output_dir: Path | None,
         shared_state: object | None,
     ) -> SyncRecord:
-        service = spec.service_factory(loader)
-        self.configure_service(service, spec, shared_state)
-        if spec.mode == "document":
-            return self._run_document_sync(
-                loader=loader,
-                target=spec.target,
-                artifact_kind=spec.artifact_kind,
-                relative_output_path=spec.relative_output_path,
-                service=cast(DocumentSyncService, service),
-                write=write,
-                output_dir=output_dir,
-                document_override=self.document_override_for_spec(spec, shared_state),
-            )
-        return self._run_tracking_sync(
-            target=spec.target,
-            artifact_kind=spec.artifact_kind,
-            relative_output_path=spec.relative_output_path,
-            service=cast(TrackingSyncService, service),
-            record_count_attr=spec.record_count_attr,
-            write=write,
-            output_dir=output_dir,
-        )
+        with telemetry_operation(
+            "sync_target",
+            spec.target,
+            attributes={
+                "mode": spec.mode,
+                "artifact_kind": spec.artifact_kind,
+                "relative_output_path": spec.relative_output_path,
+                "write": write,
+                "output_dir": str(output_dir.resolve()) if output_dir is not None else None,
+            },
+        ) as operation:
+            service = spec.service_factory(loader)
+            self.configure_service(service, spec, shared_state)
+            if spec.mode == "document":
+                record = self._run_document_sync(
+                    loader=loader,
+                    target=spec.target,
+                    artifact_kind=spec.artifact_kind,
+                    relative_output_path=spec.relative_output_path,
+                    service=cast(DocumentSyncService, service),
+                    write=write,
+                    output_dir=output_dir,
+                    document_override=self.document_override_for_spec(spec, shared_state),
+                )
+            else:
+                record = self._run_tracking_sync(
+                    target=spec.target,
+                    artifact_kind=spec.artifact_kind,
+                    relative_output_path=spec.relative_output_path,
+                    service=cast(TrackingSyncService, service),
+                    record_count_attr=spec.record_count_attr,
+                    write=write,
+                    output_dir=output_dir,
+                )
+            if operation is not None:
+                operation.set_result(
+                    status="ok",
+                    wrote=record.wrote,
+                    record_count=record.record_count,
+                    output_path=record.output_path,
+                )
+            return record
 
     def _run_document_sync(
         self,

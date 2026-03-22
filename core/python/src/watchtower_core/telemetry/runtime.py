@@ -319,6 +319,27 @@ def add_operation_attributes(**attributes: object) -> None:
     operation.add_attributes(**attributes)
 
 
+@contextmanager
+def telemetry_operation(
+    operation_kind: str,
+    operation_name: str,
+    *,
+    attributes: Mapping[str, object] | None = None,
+) -> Iterator[TelemetryOperation | None]:
+    """Run one nested telemetry operation when an active session exists."""
+
+    session = current_session()
+    if session is None:
+        yield None
+        return
+    with session.operation(
+        operation_kind,
+        operation_name,
+        attributes=attributes,
+    ) as operation:
+        yield operation
+
+
 def _command_name_from_argv(argv: Sequence[str]) -> str:
     tokens: list[str] = []
     for token in argv:
@@ -385,4 +406,5 @@ __all__ = [
     "add_operation_attributes",
     "create_telemetry_session",
     "current_session",
+    "telemetry_operation",
 ]

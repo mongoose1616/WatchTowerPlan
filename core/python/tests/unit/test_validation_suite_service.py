@@ -21,6 +21,7 @@ from watchtower_core.pack_integration import (
     PackValidationRuntime,
 )
 from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
+from watchtower_core.telemetry import create_telemetry_session
 from watchtower_core.validation import (
     PackContractValidationService,
     ValidationSelectionError,
@@ -452,6 +453,43 @@ def test_pack_contract_validation_fails_when_integration_module_raises_during_im
     )
     assert issue.location == "watchtower_plan.integration"
     assert "RuntimeError: boom" in issue.message
+
+
+def test_pack_contract_validation_records_failed_telemetry_for_import_errors(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def _raise_runtime_error(_module_name: str) -> object:
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(pack_contract_runtime.importlib, "import_module", _raise_runtime_error)
+    session = create_telemetry_session(
+        ControlPlaneLoader(REPO_ROOT),
+        ["pack", "validate", "--pack", "plan"],
+        environ={
+            "WATCHTOWER_TELEMETRY": "on",
+            "WATCHTOWER_TELEMETRY_STDERR": "off",
+            "WATCHTOWER_TELEMETRY_DIR": str(tmp_path),
+        },
+    )
+
+    with session.activate():
+        result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
+    session.finish(status="ok", exit_code=0)
+
+    assert result.passed is False
+    assert session.output_path is not None
+    records = [
+        json.loads(line)
+        for line in session.output_path.read_text(encoding="utf-8").splitlines()
+    ]
+    assert any(
+        record.get("operation_kind") == "pack_contract_validation"
+        and record.get("status") == "failed"
+        and record["attributes"]["issue_count"] >= 1
+        for record in records
+        if record["record_type"] == "operation_result"
+    )
 
 
 def test_pack_contract_validation_fails_when_integration_descriptor_is_missing(

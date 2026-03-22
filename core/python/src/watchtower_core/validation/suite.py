@@ -8,6 +8,7 @@ from typing import Any, Protocol
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidationSuiteStepDefinition, ValidatorDefinition
 from watchtower_core.pack_integration.runtime import load_pack_validation_runtime
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation.artifact import ArtifactValidationService
 from watchtower_core.validation.common import discover_repository_targets
 from watchtower_core.validation.context import PackValidationContext
@@ -67,83 +68,101 @@ class ValidationSuiteService:
         included_step_kinds: tuple[str, ...] | None = None,
     ) -> ValidationSuiteResult:
         """Run one declared validation suite and return aggregate results."""
+        with telemetry_operation(
+            "validation_suite",
+            suite_id,
+            attributes={
+                "pack_settings_path": pack_settings_path,
+                "included_step_kinds": included_step_kinds,
+            },
+        ) as operation:
+            context = PackValidationContext.from_loader(
+                self._loader,
+                pack_settings_path=pack_settings_path,
+            )
+            try:
+                suite = context.validation_suite_registry.get(suite_id)
+            except KeyError as exc:
+                raise ValidationSelectionError(f"Unknown validation suite ID: {suite_id}") from exc
 
-        context = PackValidationContext.from_loader(
-            self._loader,
-            pack_settings_path=pack_settings_path,
-        )
-        try:
-            suite = context.validation_suite_registry.get(suite_id)
-        except KeyError as exc:
-            raise ValidationSelectionError(f"Unknown validation suite ID: {suite_id}") from exc
+            artifact = ArtifactValidationService(context.loader)
+            front_matter = FrontMatterValidationService(context.loader)
+            document_semantics: DocumentSemanticsValidationService | None = None
+            pack_contract = PackContractValidationService(context.loader)
 
-        artifact = ArtifactValidationService(context.loader)
-        front_matter = FrontMatterValidationService(context.loader)
-        document_semantics: DocumentSemanticsValidationService | None = None
-        pack_contract = PackContractValidationService(context.loader)
-
-        allowed_step_kinds = set(included_step_kinds) if included_step_kinds is not None else None
-        steps = tuple(
-            step
-            for step in suite.steps
-            if allowed_step_kinds is None or step.step_kind in allowed_step_kinds
-        )
-
-        records: list[ValidationSuiteRecord] = []
-        for step in steps:
-            if step.step_kind == "pack_contract":
-                records.append(
-                    ValidationSuiteRecord(
-                        step_id=step.step_id,
-                        step_kind=step.step_kind,
-                        target=context.pack_settings_path,
-                        result=pack_contract.validate(context.pack_settings_path),
-                    )
-                )
-                continue
-
-            if step.step_kind == "artifact":
-                records.extend(
-                    self._run_validation_step(
-                        context,
-                        step,
-                        service=artifact,
-                        suffixes=(".json",),
-                    )
-                )
-                continue
-            if step.step_kind == "front_matter":
-                records.extend(
-                    self._run_validation_step(
-                        context,
-                        step,
-                        service=front_matter,
-                        suffixes=(".md",),
-                    )
-                )
-                continue
-            if step.step_kind == "document_semantics":
-                if document_semantics is None:
-                    document_semantics = self._document_semantics_factory(context.loader)
-                records.extend(
-                    self._run_validation_step(
-                        context,
-                        step,
-                        service=document_semantics,
-                        suffixes=(".md",),
-                    )
-                )
-                continue
-
-            raise ValidationExecutionError(
-                f"Unsupported validation suite step kind: {step.step_kind}"
+            allowed_step_kinds = (
+                set(included_step_kinds) if included_step_kinds is not None else None
+            )
+            steps = tuple(
+                step
+                for step in suite.steps
+                if allowed_step_kinds is None or step.step_kind in allowed_step_kinds
             )
 
-        return ValidationSuiteResult(
-            suite_id=suite.suite_id,
-            pack_settings_path=context.pack_settings_path,
-            records=tuple(records),
-        )
+            records: list[ValidationSuiteRecord] = []
+            for step in steps:
+                if step.step_kind == "pack_contract":
+                    records.append(
+                        ValidationSuiteRecord(
+                            step_id=step.step_id,
+                            step_kind=step.step_kind,
+                            target=context.pack_settings_path,
+                            result=pack_contract.validate(context.pack_settings_path),
+                        )
+                    )
+                    continue
+
+                if step.step_kind == "artifact":
+                    records.extend(
+                        self._run_validation_step(
+                            context,
+                            step,
+                            service=artifact,
+                            suffixes=(".json",),
+                        )
+                    )
+                    continue
+                if step.step_kind == "front_matter":
+                    records.extend(
+                        self._run_validation_step(
+                            context,
+                            step,
+                            service=front_matter,
+                            suffixes=(".md",),
+                        )
+                    )
+                    continue
+                if step.step_kind == "document_semantics":
+                    if document_semantics is None:
+                        document_semantics = self._document_semantics_factory(context.loader)
+                    records.extend(
+                        self._run_validation_step(
+                            context,
+                            step,
+                            service=document_semantics,
+                            suffixes=(".md",),
+                        )
+                    )
+                    continue
+
+                raise ValidationExecutionError(
+                    f"Unsupported validation suite step kind: {step.step_kind}"
+                )
+
+            result = ValidationSuiteResult(
+                suite_id=suite.suite_id,
+                pack_settings_path=context.pack_settings_path,
+                records=tuple(records),
+            )
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if result.passed else "failed",
+                    total_count=result.total_count,
+                    passed_count=result.passed_count,
+                    failed_count=result.failed_count,
+                    pack_settings_path=result.pack_settings_path,
+                )
+            return result
 
     def _run_validation_step(
         self,

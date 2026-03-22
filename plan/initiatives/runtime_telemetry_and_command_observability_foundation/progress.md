@@ -5,7 +5,7 @@
 - `review_status`: `approved`
 - `approval_status`: `approved`
 - `ready_for_execution`: `True`
-- `updated_at`: `2026-03-22T17:58:23Z`
+- `updated_at`: `2026-03-22T18:08:25Z`
 
 ## Recent Events or Changes
 | Recorded At | Event | Actor | Summary |
@@ -19,14 +19,12 @@
 ## Active Tasks
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_sync_validation_and_pack_runtime/task.json) | `in_progress` | `critical` | `repository_maintainer` | Add nested telemetry around sync harness execution, validation entrypoints, and pack runtime import and resolution. | task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime |
+| [task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_plan_pack_orchestration/task.json) | `in_progress` | `high` | `repository_maintainer` | Add telemetry to representative plan read and write orchestration paths, including sync, initiative lifecycle, and task lifecycle flows. | task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle, task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime |
 | [task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/validate_benchmark_and_close_out_telemetry_tranche/task.json) | `planned` | `critical` | `repository_maintainer` | Run the full validation gate, benchmark representative commands, and close the telemetry initiative cleanly. | task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts |
-| [task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/instrument_plan_pack_orchestration/task.json) | `planned` | `high` | `repository_maintainer` | Add telemetry to representative plan read and write orchestration paths, including sync, initiative lifecycle, and task lifecycle flows. | task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle, task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime |
 | [task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/.wt/tasks/refresh_telemetry_docs_and_command_contracts/task.json) | `planned` | `high` | `repository_maintainer` | Update READMEs, standards, references, authoring guidance, and command docs to describe the runtime telemetry contract. | task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle, task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime, task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration |
 
 ## Blockers
 - Task `task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration` depends on `task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle`, `task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime`.
-- Task `task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime` depends on `task.runtime_telemetry_and_command_observability_foundation.build_shared_telemetry_runtime`.
 - Task `task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts` depends on `task.runtime_telemetry_and_command_observability_foundation.instrument_host_command_lifecycle`, `task.runtime_telemetry_and_command_observability_foundation.instrument_sync_validation_and_pack_runtime`, `task.runtime_telemetry_and_command_observability_foundation.instrument_plan_pack_orchestration`.
 - Task `task.runtime_telemetry_and_command_observability_foundation.validate_benchmark_and_closeout` depends on `task.runtime_telemetry_and_command_observability_foundation.refresh_docs_and_command_contracts`.
 

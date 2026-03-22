@@ -7,6 +7,7 @@ from watchtower_core.control_plane.loader import (
     PACK_SETTINGS_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation._pack_contract.boundaries import dependency_boundary_issues
 from watchtower_core.validation._pack_contract.manifest import (
     command_doc_issues,
@@ -35,91 +36,113 @@ class PackContractValidationService:
 
     def validate(self, pack_settings_path: str = PACK_SETTINGS_PATH) -> ValidationResult:
         """Validate one pack settings surface and its declared validation context."""
+        with telemetry_operation(
+            "pack_contract_validation",
+            "validate",
+            attributes={"pack_settings_path": pack_settings_path},
+        ) as operation:
+            issues: list[ValidationIssue] = []
+            try:
+                context = PackValidationContext.from_loader(
+                    self._loader,
+                    pack_settings_path=pack_settings_path,
+                )
+                pack_registry = context.loader.load_pack_registry()
+                registry_entry = pack_registry.get_by_pack_id(context.pack_settings.pack_id)
+                runtime_manifest = context.loader.load_pack_runtime_manifest(
+                    pack_settings_path=context.pack_settings_path
+                )
+            except (ControlPlaneError, ValueError) as exc:
+                result = ValidationResult(
+                    validator_id=PACK_CONTRACT_VALIDATOR_ID,
+                    target_path=pack_settings_path,
+                    engine="python",
+                    schema_ids=(),
+                    passed=False,
+                    issues=(
+                        ValidationIssue(
+                            code="pack_contract_invalid",
+                            message=str(exc),
+                            location=pack_settings_path,
+                        ),
+                    ),
+                )
+                if operation is not None:
+                    operation.set_result(
+                        status="failed",
+                        issue_count=result.issue_count,
+                        passed=result.passed,
+                        target_path=result.target_path,
+                        validator_id=result.validator_id,
+                    )
+                return result
 
-        issues: list[ValidationIssue] = []
-        try:
-            context = PackValidationContext.from_loader(
-                self._loader,
-                pack_settings_path=pack_settings_path,
+            if registry_entry.pack_settings_path != context.pack_settings_path:
+                issues.append(
+                    ValidationIssue(
+                        code="pack_registry_settings_path_mismatch",
+                        message=(
+                            "Pack registry entry does not match the active pack settings path: "
+                            f"{registry_entry.pack_settings_path} != {context.pack_settings_path}"
+                        ),
+                        location=context.pack_settings_path,
+                    )
+                )
+            effective_runtime_manifest_path = context.loader.pack_runtime_manifest_path(
+                context.pack_settings_path
             )
-            pack_registry = context.loader.load_pack_registry()
-            registry_entry = pack_registry.get_by_pack_id(context.pack_settings.pack_id)
-            runtime_manifest = context.loader.load_pack_runtime_manifest(
-                pack_settings_path=context.pack_settings_path
+            if registry_entry.pack_runtime_manifest_path != effective_runtime_manifest_path:
+                issues.append(
+                    ValidationIssue(
+                        code="pack_registry_runtime_manifest_path_mismatch",
+                        message=(
+                            "Pack registry entry does not match the active runtime manifest path: "
+                            f"{registry_entry.pack_runtime_manifest_path} "
+                            f"!= {effective_runtime_manifest_path}"
+                        ),
+                        location=effective_runtime_manifest_path,
+                    )
+                )
+
+            issues.extend(
+                matching_field_issues(
+                    pack_id=context.pack_settings.pack_id,
+                    registry_pack_id=registry_entry.pack_id,
+                    manifest_pack_id=runtime_manifest.pack_id,
+                    pack_slug=registry_entry.pack_slug,
+                    manifest_pack_slug=runtime_manifest.pack_slug,
+                    command_namespace=registry_entry.command_namespace,
+                    manifest_command_namespace=runtime_manifest.command_namespace,
+                    python_distribution=registry_entry.python_distribution,
+                    manifest_python_distribution=runtime_manifest.python_distribution,
+                    python_package=registry_entry.python_package,
+                    manifest_python_package=runtime_manifest.python_package,
+                )
             )
-        except (ControlPlaneError, ValueError) as exc:
-            return ValidationResult(
+            issues.extend(registry_collision_issues(pack_registry, registry_entry))
+            issues.extend(manifest_path_issues(context, runtime_manifest))
+            issues.extend(owned_root_issues(context, runtime_manifest))
+            issues.extend(surface_path_issues(context))
+            issues.extend(command_doc_issues(context, runtime_manifest))
+            issues.extend(core_python_workspace_issues(context, runtime_manifest))
+            issues.extend(validation_suite_issues(context, runtime_manifest))
+            issues.extend(integration_issues(runtime_manifest))
+            issues.extend(dependency_boundary_issues(context, runtime_manifest))
+
+            result = ValidationResult(
                 validator_id=PACK_CONTRACT_VALIDATOR_ID,
                 target_path=pack_settings_path,
                 engine="python",
                 schema_ids=(),
-                passed=False,
-                issues=(
-                    ValidationIssue(
-                        code="pack_contract_invalid",
-                        message=str(exc),
-                        location=pack_settings_path,
-                    ),
-                ),
+                passed=not issues,
+                issues=tuple(issues),
             )
-
-        if registry_entry.pack_settings_path != context.pack_settings_path:
-            issues.append(
-                ValidationIssue(
-                    code="pack_registry_settings_path_mismatch",
-                    message=(
-                        "Pack registry entry does not match the active pack settings path: "
-                        f"{registry_entry.pack_settings_path} != {context.pack_settings_path}"
-                    ),
-                    location=context.pack_settings_path,
+            if operation is not None:
+                operation.set_result(
+                    status="ok" if result.passed else "failed",
+                    issue_count=result.issue_count,
+                    passed=result.passed,
+                    target_path=result.target_path,
+                    validator_id=result.validator_id,
                 )
-            )
-        effective_runtime_manifest_path = context.loader.pack_runtime_manifest_path(
-            context.pack_settings_path
-        )
-        if registry_entry.pack_runtime_manifest_path != effective_runtime_manifest_path:
-            issues.append(
-                ValidationIssue(
-                    code="pack_registry_runtime_manifest_path_mismatch",
-                    message=(
-                        "Pack registry entry does not match the active runtime manifest path: "
-                        f"{registry_entry.pack_runtime_manifest_path} "
-                        f"!= {effective_runtime_manifest_path}"
-                    ),
-                    location=effective_runtime_manifest_path,
-                )
-            )
-
-        issues.extend(
-            matching_field_issues(
-                pack_id=context.pack_settings.pack_id,
-                registry_pack_id=registry_entry.pack_id,
-                manifest_pack_id=runtime_manifest.pack_id,
-                pack_slug=registry_entry.pack_slug,
-                manifest_pack_slug=runtime_manifest.pack_slug,
-                command_namespace=registry_entry.command_namespace,
-                manifest_command_namespace=runtime_manifest.command_namespace,
-                python_distribution=registry_entry.python_distribution,
-                manifest_python_distribution=runtime_manifest.python_distribution,
-                python_package=registry_entry.python_package,
-                manifest_python_package=runtime_manifest.python_package,
-            )
-        )
-        issues.extend(registry_collision_issues(pack_registry, registry_entry))
-        issues.extend(manifest_path_issues(context, runtime_manifest))
-        issues.extend(owned_root_issues(context, runtime_manifest))
-        issues.extend(surface_path_issues(context))
-        issues.extend(command_doc_issues(context, runtime_manifest))
-        issues.extend(core_python_workspace_issues(context, runtime_manifest))
-        issues.extend(validation_suite_issues(context, runtime_manifest))
-        issues.extend(integration_issues(runtime_manifest))
-        issues.extend(dependency_boundary_issues(context, runtime_manifest))
-
-        return ValidationResult(
-            validator_id=PACK_CONTRACT_VALIDATOR_ID,
-            target_path=pack_settings_path,
-            engine="python",
-            schema_ids=(),
-            passed=not issues,
-            issues=tuple(issues),
-        )
+            return result
