@@ -63,7 +63,6 @@ if TYPE_CHECKING:
         TemplateCatalogIssue,
     )
     from watchtower_core.control_plane.terminology import (
-        PlanningVocabularyHelper,
         TerminologyHelper,
         TerminologyResolution,
         TerminologyTerm,
@@ -170,10 +169,6 @@ _EXPORTS: dict[str, tuple[str, str]] = {
         "PlanInitiativeLocation",
     ),
     "PlanPathIdHelper": ("watchtower_core.control_plane.path_ids", "PlanPathIdHelper"),
-    "PlanningVocabularyHelper": (
-        "watchtower_core.control_plane.terminology",
-        "PlanningVocabularyHelper",
-    ),
     "PromotionPolicyHelper": (
         "watchtower_core.control_plane.promotion_policy",
         "PromotionPolicyHelper",
@@ -259,7 +254,6 @@ __all__ = [
     "PackWorkspacePaths",
     "PlanInitiativeLocation",
     "PlanPathIdHelper",
-    "PlanningVocabularyHelper",
     "PromotionPolicyHelper",
     "PromotionPolicyIssue",
     "ProjectSurfacePolicyHelper",

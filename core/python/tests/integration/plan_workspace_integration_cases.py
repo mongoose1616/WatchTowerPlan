@@ -7,14 +7,16 @@ from shutil import copytree
 from tempfile import mkdtemp
 
 import pytest
-from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_plan.initiatives import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.promotion import GuidancePromotionService
+from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
+from watchtower_plan.workspace.artifacts import PLAN_ARTIFACT_INDEX_PATH
+from watchtower_plan.workspace.constants import (
     PLAN_CLOSEOUT_INDEX_PATH,
     PLAN_COORDINATION_INDEX_PATH,
     PLAN_DISCREPANCY_INDEX_PATH,
@@ -26,16 +28,16 @@ from watchtower_plan.plan_workspace import (
     PLAN_READINESS_INDEX_PATH,
     PLAN_REVIEW_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
+)
+from watchtower_plan.workspace.models import (
     PlanCloseoutSearchParams,
     PlanDiscrepancySearchParams,
     PlanEvidenceSearchParams,
     PlanReadinessSearchParams,
     PlanReviewSearchParams,
     PlanTaskSearchParams,
-    PlanWorkspaceService,
 )
-from watchtower_plan.promotion import GuidancePromotionService
-from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 from tests.fixture_repo_support import (
     materialize_governed_applies_to_targets,

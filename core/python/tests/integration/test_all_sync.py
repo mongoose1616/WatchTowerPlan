@@ -5,21 +5,21 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-from watchtower_plan.plan_workspace import (
-    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
-)
-from watchtower_plan.plan_workspace import (
-    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
-)
-from watchtower_plan.plan_workspace import (
-    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
-)
 from watchtower_plan.sync import AllSyncService, CoordinationSyncService
 from watchtower_plan.sync.coordination_tracking import CoordinationTrackingSyncService
 from watchtower_plan.sync.registry import (
     COORDINATION_SYNC_GROUP,
     SYNC_TARGET_SPECS,
     sync_target_specs_for_group,
+)
+from watchtower_plan.workspace.constants import (
+    PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
+)
+from watchtower_plan.workspace.constants import (
+    PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
+)
+from watchtower_plan.workspace.constants import (
+    PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
 
 from tests.fixture_repo_support import (

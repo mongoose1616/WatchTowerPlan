@@ -273,13 +273,7 @@ class TerminologyHelper:
             raise KeyError(namespace)
         return terms
 
-
-class PlanningVocabularyHelper(TerminologyHelper):
-    """Backward-compatible alias for callers that still import the older helper name."""
-
-
 __all__ = [
-    "PlanningVocabularyHelper",
     "TerminologyHelper",
     "TerminologyResolution",
     "TerminologyTerm",

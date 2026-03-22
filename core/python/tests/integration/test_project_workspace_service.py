@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 from shutil import copytree, rmtree
 
-from watchtower_plan.artifact_index import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_plan.initiatives import (
     InitiativeBootstrapParams,
     InitiativePackageService,
@@ -18,6 +17,7 @@ from watchtower_plan.projects import (
     ProjectWorkspaceService,
 )
 from watchtower_plan.projects.context import load_project_context
+from watchtower_plan.workspace.artifacts import PLAN_ARTIFACT_INDEX_PATH
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 

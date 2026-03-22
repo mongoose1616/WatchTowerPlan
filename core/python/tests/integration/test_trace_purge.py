@@ -6,11 +6,11 @@ from shutil import copytree
 
 import pytest
 from watchtower_plan.closeout import TracePurgeService
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
+from watchtower_plan.workspace.constants import (
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
 )
-from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,

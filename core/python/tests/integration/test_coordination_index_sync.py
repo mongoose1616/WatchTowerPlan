@@ -6,16 +6,16 @@ from shutil import copytree
 
 import pytest
 from watchtower_plan.initiatives import InitiativeTaskSpec
-from watchtower_plan.plan_workspace import (
-    PLAN_COORDINATION_INDEX_PATH,
-    PLAN_INITIATIVE_INDEX_PATH,
-)
 from watchtower_plan.query.coordination import (
     CoordinationQueryService,
     CoordinationSearchParams,
 )
 from watchtower_plan.sync.coordination_index import CoordinationIndexSyncService
 from watchtower_plan.tasks import TaskLifecycleService, TaskUpdateParams
+from watchtower_plan.workspace.constants import (
+    PLAN_COORDINATION_INDEX_PATH,
+    PLAN_INITIATIVE_INDEX_PATH,
+)
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,

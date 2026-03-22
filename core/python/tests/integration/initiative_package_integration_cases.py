@@ -15,7 +15,6 @@ from watchtower_plan.initiatives import (
 )
 from watchtower_plan.initiatives.discrepancies import InitiativeDiscrepancyCoordinator
 from watchtower_plan.initiatives.locations import InitiativeLocationManager
-from watchtower_plan.plan_workspace import PlanWorkspaceService
 from watchtower_plan.projects import (
     ProjectBootstrapParams,
     ProjectRepositoryLinkSpec,
@@ -25,6 +24,7 @@ from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
 )
+from watchtower_plan.workspace.service import PlanWorkspaceService
 
 from tests.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader

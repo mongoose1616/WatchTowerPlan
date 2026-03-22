@@ -9,8 +9,8 @@ from watchtower_plan.initiatives import (
     InitiativePackageService,
     InitiativeTaskSpec,
 )
-from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
 from watchtower_plan.sync import TraceabilityIndexSyncService
+from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
 
 from tests.fixture_repo_support import (
     materialize_minimal_plan_pack,

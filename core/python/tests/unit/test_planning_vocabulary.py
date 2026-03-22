@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from watchtower_core.control_plane import ControlPlaneLoader, PlanningVocabularyHelper
+from watchtower_core.control_plane import ControlPlaneLoader, TerminologyHelper
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 PLAN_PACK_SETTINGS_PATH = "plan/.wt/manifests/pack_settings.json"
 
 
-def _helper() -> PlanningVocabularyHelper:
-    return PlanningVocabularyHelper.from_loader(
+def _helper() -> TerminologyHelper:
+    return TerminologyHelper.from_loader(
         ControlPlaneLoader(REPO_ROOT),
         pack_settings_path=PLAN_PACK_SETTINGS_PATH,
     )

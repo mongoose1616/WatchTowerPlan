@@ -15,6 +15,7 @@ Makes tech-debt reduction the active repository priority, starting with legacy r
 - Terminal task `task.repository_tech_debt_reduction_program.bootstrap_repository_tech_debt_reduction_program`: `completed`
 - Terminal task `task.repository_tech_debt_reduction_program.inventory_high_cost_technical_debt`: `completed`
 - Terminal task `task.repository_tech_debt_reduction_program.reduce_integration_tail_and_tier_tests`: `completed`
+- Terminal task `task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue`: `completed`
 
 ## Promoted Guidance
 - `promotion.repository_tech_debt_reduction_program.bootstrap_shell`: `planned` / approval `pending`
@@ -27,11 +28,10 @@ Makes tech-debt reduction the active repository priority, starting with legacy r
 - `evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle`: `planned`
 
 ## Unresolved Follow-Ups
-- Open task `task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations`: `planned`
-- Open task `task.repository_tech_debt_reduction_program.remove_stale_compatibility_and_migration_residue`: `in_progress`
+- Open task `task.repository_tech_debt_reduction_program.reconcile_duplicate_registry_and_contract_declarations`: `in_progress`
 - Open task `task.repository_tech_debt_reduction_program.validate_and_close_first_tech_debt_tranche`: `planned`
 
 ## Closeout State
 - `lifecycle_stage`: `in_progress`
-- `updated_at`: `2026-03-22T21:50:42Z`
+- `updated_at`: `2026-03-22T22:03:37Z`
 - `closeout.repository_tech_debt_reduction_program.bootstrap_recap`: `planned`

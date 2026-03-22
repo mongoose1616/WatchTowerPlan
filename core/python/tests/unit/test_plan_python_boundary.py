@@ -316,6 +316,8 @@ def test_plan_package_does_not_import_host_runtime_modules() -> None:
         "watchtower_plan.validation.targets",
         "watchtower_plan.query.common",
         "watchtower_plan.sync.tracking_common",
+        "watchtower_plan.plan_workspace",
+        "watchtower_plan.artifact_index",
     ),
 )
 def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
@@ -347,14 +349,10 @@ def test_plan_internal_modules_use_feature_owned_workspace_package() -> None:
         "watchtower_plan.plan_workspace",
         "watchtower_plan.artifact_index",
     }
-    compatibility_shims = {
-        "watchtower_plan/plan_workspace.py",
-        "watchtower_plan/artifact_index.py",
-    }
     offending_imports = [
         f"{relative_path}: {module_name}"
         for relative_path, module_name in _iter_import_modules(PLAN_PACKAGE_ROOT)
-        if relative_path not in compatibility_shims and module_name in legacy_workspace_modules
+        if module_name in legacy_workspace_modules
     ]
     assert offending_imports == []
 

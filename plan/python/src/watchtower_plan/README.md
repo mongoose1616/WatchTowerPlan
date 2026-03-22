@@ -32,7 +32,7 @@ WatchTowerPlan-specific plan-domain runtime that depends on this repository's cu
 - `initiatives/`: Initiative package bootstrap, authored-input confirmation, and readiness-gate helpers for live `plan/**` state.
 - `projects/`: Project context loading, project-container bootstrap, and project-local rendered/query surfaces.
 - `tasks/`: Live task-state loading, event writes, and lifecycle mutation support over initiative-local plan task state.
-- `workspace/`: Pack-wide orchestration over live initiative state, rendered views, artifact indexes, and derived-surface drift checks. Legacy `plan_workspace.py` and `artifact_index.py` remain thin forwarding shims.
+- `workspace/`: Pack-wide orchestration over live initiative state, rendered views, artifact indexes, and derived-surface drift checks.
 - `promotion/`: Governed initiative-to-guidance promotion flow with an explicit extraction stage before durable `plan/docs/**` outputs and initiative-local promotion records.
 - `rendering/`: Shared serializers for compact and human-facing initiative payloads that support CLI, query, and rendered-surface output.
 - `closeout/`: Plan-domain closeout services for retained traces, live initiative packages, and guarded trace purges.

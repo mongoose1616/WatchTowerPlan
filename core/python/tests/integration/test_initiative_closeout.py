@@ -6,16 +6,16 @@ from shutil import copytree
 
 import pytest
 from watchtower_plan.closeout import InitiativeCloseoutService
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.sync.coordination import CoordinationSyncService
+from watchtower_plan.workspace.constants import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
 )
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.workspace.constants import (
     PLAN_INITIATIVE_INDEX_PATH as INITIATIVE_INDEX_PATH,
 )
-from watchtower_plan.plan_workspace import (
+from watchtower_plan.workspace.constants import (
     PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
-from watchtower_plan.sync.coordination import CoordinationSyncService
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,

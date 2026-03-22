@@ -6,7 +6,6 @@ Feature-owned pack workspace services for live `plan/**` aggregation. This packa
 ## Boundary
 - `Classification`: `repo_local_orchestration`
 - `Responsibilities`: pack-wide workspace rebuilds, rendered overview shaping, coordination/task/readiness aggregate loading, and pack-local artifact index generation.
-- `Compatibility`: top-level [plan_workspace.py](/home/j/WatchTowerPlan/plan/python/src/watchtower_plan/plan_workspace.py) and [artifact_index.py](/home/j/WatchTowerPlan/plan/python/src/watchtower_plan/artifact_index.py) remain thin forwarding shims for callers that still import the legacy paths.
 - `Non-Goals`: generic rebuild/query helpers that already belong in `watchtower_core`, or new infra-family mirrors under `watchtower_plan`.
 
 ## Governing Foundations

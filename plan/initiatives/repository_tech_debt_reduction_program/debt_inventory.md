@@ -26,10 +26,9 @@
 - The task end-to-end file is no longer the worst hotspot, but it still performs expensive whole-pack workflow setup for coverage that overlaps cheaper service-level integration cases.
 
 ## Stale Compatibility And Migration Residue
-- [plan_workspace.py](/home/j/WatchTowerPlan/plan/python/src/watchtower_plan/plan_workspace.py) is a compatibility shim that re-exports the feature-owned workspace service boundary.
-- [artifact_index.py](/home/j/WatchTowerPlan/plan/python/src/watchtower_plan/artifact_index.py) is a compatibility shim that re-exports workspace artifact constants.
-- Current tests still import these shims heavily instead of the owned package seams under `watchtower_plan.workspace.*`.
-- [terminology.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/terminology.py) still keeps `PlanningVocabularyHelper` as a backward-compatible alias.
+- The legacy top-level workspace shims have been removed; callers now import the owned workspace seams under `watchtower_plan.workspace.*`.
+- Artifact-index callers now import [artifacts.py](/home/j/WatchTowerPlan/plan/python/src/watchtower_plan/workspace/artifacts.py) instead of a top-level `watchtower_plan.artifact_index` shim.
+- Terminology callers now use [TerminologyHelper](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/terminology.py) directly instead of the retired `PlanningVocabularyHelper` alias.
 - [workspace.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/validation/_pack_contract/workspace.py) still merges legacy root fields into `domain_roots`, which preserves migration-era shape support that may no longer defend an active contract.
 
 ## Duplicate Authority Findings
@@ -45,9 +44,9 @@
    - Stop rebuilding broad workspace surfaces when a narrower sync or query path is enough.
    - Keep one real end-to-end closeout or coordination proof per family and downgrade the rest to cheaper prepared-state variants.
 2. Remove stale compatibility and migration residue.
-   - Move tests and callers off `watchtower_plan.plan_workspace` and `watchtower_plan.artifact_index`.
-   - Delete compatibility shims once imports are migrated.
-   - Remove legacy migration support only after targeted contract validation shows no active caller depends on it.
+   - Completed: tests and callers moved off `watchtower_plan.plan_workspace` and `watchtower_plan.artifact_index`, and the compatibility shims were deleted.
+   - Completed: terminology callers moved off the `PlanningVocabularyHelper` alias.
+   - Remaining: remove legacy migration support only after targeted contract validation shows no active caller depends on it.
 3. Reconcile duplicated validator authority.
    - Merge core and active-pack validator registries in loader behavior.
    - Shrink the plan registry to plan-specific validators plus any still-required pack-local declarations.

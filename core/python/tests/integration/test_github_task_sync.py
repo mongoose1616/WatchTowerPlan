@@ -6,9 +6,9 @@ from shutil import copytree
 
 import pytest
 from watchtower_plan.initiatives import InitiativeTaskSpec
-from watchtower_plan.plan_workspace import PLAN_TASK_INDEX_PATH
 from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 from watchtower_plan.tasks import update_task_document
+from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
 
 from tests.fixture_repo_support import (
     bootstrap_packwide_initiative,
