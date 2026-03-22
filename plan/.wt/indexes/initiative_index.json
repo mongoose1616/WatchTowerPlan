@@ -9,34 +9,20 @@
       "title": "Command Latency Reduction Using Runtime Telemetry",
       "summary": "Uses the new local runtime telemetry to profile, prioritize, and reduce command latency across host, reusable core, and pack-owned paths.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T19:52:21Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T20:50:23Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
-      "next_action": "Promote the next planned task to ready before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/summary.md",
       "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
       "slug": "command_latency_reduction_using_runtime_telemetry",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout",
-          "title": "Validate, benchmark, and close out the latency tranche",
-          "task_status": "planned",
-          "priority": "critical",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json",
-          "is_actionable": false
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
@@ -56,6 +42,8 @@
       "evidence_ids": [
         "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-22T20:50:23Z",
+      "closure_reason": "Validated and benchmarked latency reductions on the final optimized tree.",
       "related_paths": [
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/initiative_brief.md",
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",

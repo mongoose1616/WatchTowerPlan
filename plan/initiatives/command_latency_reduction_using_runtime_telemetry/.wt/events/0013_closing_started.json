@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.command_latency_reduction_using_runtime_telemetry.0013_closing_started",
+  "initiative_id": "initiative.command_latency_reduction_using_runtime_telemetry",
+  "sequence": 13,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T20:50:23Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.command_latency_reduction_using_runtime_telemetry"
+}

@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-from watchtower_core.pack_integration import (
+from watchtower_core.pack_integration.workspace_registration import (
     CORE_PYPROJECT_RELATIVE_PATH,
     core_python_workspace_registration,
     load_core_python_workspace_state,

@@ -86,9 +86,7 @@ class PlanWorkspaceService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
-        self._pack_loader = loader.derive(
-            active_pack_settings_path=PLAN_PACK_SETTINGS_PATH
-        )
+        self._pack_loader = loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
         self._workspace_paths = PackWorkspacePaths.from_loader(
             self._pack_loader,
             pack_settings_path=PLAN_PACK_SETTINGS_PATH,
@@ -146,6 +144,8 @@ class PlanWorkspaceService:
             ),
             write=write,
         )
+        if write:
+            self._refresh_pack_runtime_state()
         task_index_entries = self._entries(self._json_document(documents["task_index"]))
         discrepancy_index_entries = self._entries(
             self._json_document(documents["discrepancy_index"])
@@ -179,6 +179,8 @@ class PlanWorkspaceService:
             ),
             write=write,
         )
+        if write:
+            self._refresh_pack_runtime_state()
         return rebuild_result.wrote
 
     def expected_surface_issues(
@@ -497,6 +499,12 @@ class PlanWorkspaceService:
                 renderer=self._renderer,
             )
         return self._builder
+
+    def _refresh_pack_runtime_state(self) -> None:
+        self._pack_loader = self._loader.derive(active_pack_settings_path=PLAN_PACK_SETTINGS_PATH)
+        self._renderer = None
+        self._builder = None
+        self._markdown_reconciliation = None
 
     def _markdown_reconciliation_service(self) -> MarkdownReconciliationHelper:
         if self._markdown_reconciliation is None:

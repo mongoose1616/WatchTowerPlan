@@ -23,6 +23,8 @@ CLOSEOUT_SHARED_OUTPUT_TARGETS = frozenset(
 WORKSPACE_FOLLOW_UP_TARGETS = frozenset(
     {
         "traceability-index",
+        "initiative-index",
+        "coordination-index",
         "task-tracking",
         "initiative-tracking",
         "coordination-tracking",

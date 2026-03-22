@@ -235,6 +235,19 @@ def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
     assert result.issue_count == 0
 
 
+def test_artifact_validation_auto_selects_benchmark_report_validator_for_initiative_evidence(
+) -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "plan/initiatives/command_latency_reduction_using_runtime_telemetry/benchmark_baseline.json"
+    )
+
+    assert result.passed is True
+    assert result.validator_id == "validator.interface.benchmark_report"
+    assert result.issue_count == 0
+
+
 def test_artifact_validation_auto_selects_pack_settings_validator() -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
@@ -294,6 +307,37 @@ def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: P
     assert result.validator_id == "validator.interface.pack_work_item_note"
     assert result.issue_count >= 1
     assert any("work_item_id" in issue.message for issue in result.issues)
+
+
+def test_artifact_validation_reports_invalid_benchmark_report(tmp_path: Path) -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+    artifact_path = tmp_path / "benchmark_invalid.json"
+    write_json(
+        artifact_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+            "id": "benchmark.example.invalid",
+            "title": "Invalid Benchmark Report",
+            "status": "active",
+            "trace_id": "trace.example.invalid_benchmark",
+            "benchmark_kind": "task_slice",
+            "captured_at": "2026-03-22T20:45:00Z",
+            "commands": {},
+        },
+    )
+
+    result = service.validate(
+        artifact_path,
+        validator_id="validator.interface.benchmark_report",
+    )
+
+    assert result.passed is False
+    assert result.validator_id == "validator.interface.benchmark_report"
+    assert result.issue_count >= 1
+    assert any(
+        issue.location in {"initiative_slug", "commands"} or "initiative_slug" in issue.message
+        for issue in result.issues
+    )
 
 
 def test_artifact_validation_uses_pack_declared_registry_when_loader_is_pack_aware(

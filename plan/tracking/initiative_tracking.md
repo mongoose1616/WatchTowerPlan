@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Title | Phase | Owners | Open Tasks | Key | Next | Active Tasks | Action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `trace.command_latency_reduction_using_runtime_telemetry` | Command Latency Reduction Using Runtime Telemetry | `execution` | repository_maintainer | `1` | [plan.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md) | [plan.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md) | [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) (`planned`) | Promote the next planned task to ready before opening follow-up work. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.command_latency_reduction_using_runtime_telemetry` | Command Latency Reduction Using Runtime Telemetry | `completed` | [plan.md](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md) | `2026-03-22T20:50:23Z` | Validated and benchmarked latency reductions on the final optimized tree. |
 | `trace.runtime_telemetry_and_command_observability_foundation` | Runtime Telemetry And Command Observability Foundation | `completed` | [plan.md](/plan/initiatives/runtime_telemetry_and_command_observability_foundation/plan.md) | `2026-03-22T18:49:35Z` | Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche. |
 | `trace.plan_task_tracking_sync_performance` | Plan Task Tracking Sync Performance | `completed` | [plan.md](/plan/initiatives/plan_task_tracking_sync_performance/plan.md) | `2026-03-22T16:52:56Z` | Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency. |
 | `trace.first_party_root_pack_roots` | First-Party Root Pack Roots | `completed` | [plan.md](/plan/initiatives/first_party_root_pack_roots/plan.md) | `2026-03-22T16:30:08Z` | Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction. |
@@ -26,4 +25,4 @@
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-22T19:52:21Z`_
+_Updated At: `2026-03-22T20:50:23Z`_

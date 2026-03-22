@@ -595,6 +595,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+      "title": "Benchmark Report",
+      "description": "Schema for one pack-owned benchmark report that captures baseline, slice, or closeout performance evidence.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "benchmark_report",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/benchmark_report.schema.json",
+      "aliases": [
+        "pack benchmark schema",
+        "performance evidence schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
       "title": "Extraction Output Envelope",
       "description": "Schema for one structured extraction workflow output envelope.",

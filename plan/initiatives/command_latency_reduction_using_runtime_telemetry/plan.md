@@ -5,9 +5,9 @@
 - `trace_id`: `trace.command_latency_reduction_using_runtime_telemetry`
 - `scope_type`: `pack_wide`
 - `owner`: `repository_maintainer`
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-22T19:52:21Z`
+- `updated_at`: `2026-03-22T20:50:23Z`
 
 ## Scope and Non-Goals
 Uses the new local runtime telemetry to profile, prioritize, and reduce command latency across host, reusable core, and pack-owned paths.
@@ -26,7 +26,7 @@ Uses the new local runtime telemetry to profile, prioritize, and reduce command 
 ## Planned Slices or Workstreams
 | Task | Status | Priority | Owner | Summary | Depends On |
 | --- | --- | --- | --- | --- | --- |
-| [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `planned` | `critical` | `repository_maintainer` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. | task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards, task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency |
+| [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `completed` | `critical` | `repository_maintainer` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. | task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards, task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency, task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency |
 | [task.command_latency_reduction_using_runtime_telemetry.bootstrap_command_latency_reduction_using_runtime_telemetry](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/bootstrap_command_latency_reduction_using_runtime_telemetry/task.json) | `completed` | `high` | `repository_maintainer` | Bootstrap Command Latency Reduction Using Runtime Telemetry live initiative package. | - |
 | [task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json) | `completed` | `high` | `repository_maintainer` | Profiles the agreed command set and turns the telemetry evidence into a ranked hotspot inventory. | - |
 | [task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_host_and_loader_startup_latency/task.json) | `completed` | `high` | `repository_maintainer` | Removes avoidable startup overhead in host dispatch and reusable-core loading paths surfaced by the telemetry baseline. | task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory |
@@ -45,7 +45,7 @@ Uses the new local runtime telemetry to profile, prioritize, and reduce command 
 - `capture_complete`: `True`
 - `machine_valid`: `True`
 - `approval_status`: `approved`
-- `ready_for_execution`: `True`
+- `ready_for_execution`: `False`
 - `blocking_reasons`: `none`
 - Task count: `7`
 - Evidence bundle count: `1`

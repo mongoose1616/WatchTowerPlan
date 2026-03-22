@@ -9,8 +9,10 @@
       "title": "Command Latency Reduction Using Runtime Telemetry",
       "summary": "Uses the new local runtime telemetry to profile, prioritize, and reduce command latency across host, reusable core, and pack-owned paths.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-22T19:52:21Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T20:50:23Z",
+      "closed_at": "2026-03-22T20:50:23Z",
+      "closure_reason": "Validated and benchmarked latency reductions on the final optimized tree.",
       "source_surface_paths": [
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/decision_notes.md",
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/design_record.md",

@@ -1,4 +1,11 @@
 {
+  "$schema": "urn:watchtower:schema:interfaces:packs:benchmark-report:v1",
+  "id": "benchmark.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
+  "title": "Host And Loader Startup Latency Slice Benchmark",
+  "status": "active",
+  "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
+  "initiative_slug": "command_latency_reduction_using_runtime_telemetry",
+  "benchmark_kind": "task_slice",
   "captured_at": "2026-03-22T19:52:00Z",
   "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
   "baseline_reference": "benchmark_baseline.json",

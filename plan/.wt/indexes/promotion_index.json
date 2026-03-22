@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T19:52:21Z",
+  "updated_at": "2026-03-22T20:50:23Z",
   "entries": [
     {
       "promotion_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
@@ -11,7 +11,7 @@
       "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
       "initiative_title": "Command Latency Reduction Using Runtime Telemetry",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/command_latency_reduction_using_runtime_telemetry",
       "candidate_count": 4,
       "candidate_paths": [
@@ -29,7 +29,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-22T18:52:33Z",
+      "updated_at": "2026-03-22T20:50:23Z",
       "target_paths": [
         "plan/docs/decisions/command_latency_reduction_using_runtime_telemetry_design_record.md",
         "plan/docs/patterns/command_latency_reduction_using_runtime_telemetry_implementation_slice.md",

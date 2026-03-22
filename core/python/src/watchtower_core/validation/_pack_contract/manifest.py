@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from watchtower_core.control_plane.loader import PACK_REGISTRY_PATH
-from watchtower_core.pack_integration import pack_command_entry_doc_path
+from watchtower_core.pack_integration.docs import pack_command_entry_doc_path
 from watchtower_core.validation.models import ValidationIssue
 
 

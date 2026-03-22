@@ -1,16 +1,15 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `planned` | `critical` | `repository_maintainer` | `trace.command_latency_reduction_using_runtime_telemetry` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. |
+_No open tasks._
 
 ## Closed Task Summary
-- `completed`: 75
+- `completed`: 76
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
+| [task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/validate_benchmark_and_close_out_the_latency_tranche/task.json) | `completed` | `critical` | `repository_maintainer` | `trace.command_latency_reduction_using_runtime_telemetry` | Runs the full validation and benchmark gates, records the before-versus-after results, and closes the initiative with evidence. |
 | [task.pack_domain_hardcoding_remediation.pack_drive_runtime_roots_and_validation](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/pack_drive_runtime_roots_and_validation_selection/task.json) | `completed` | `critical` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Remove remaining fixed pack-root assumptions from runtime helpers, CLI defaults, and validation selection. |
 | [task.pack_domain_hardcoding_remediation.re_root_control_plane_and_governed_contracts](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/re_root_governed_contracts_and_generated_surfaces/task.json) | `completed` | `critical` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Move remaining plan-specific governed contracts out of shared-core assumptions and bind them through pack-owned declarations. |
 | [task.pack_domain_hardcoding_remediation.split_core_and_plan_python_boundary](/plan/initiatives/pack_domain_hardcoding_remediation/.wt/tasks/split_core_and_plan_python_boundary/task.json) | `completed` | `critical` | `repository_maintainer` | `trace.pack_domain_hardcoding_remediation` | Move repo-local planning runtime under plan/python/src/watchtower_plan/, keep reusable core fail-closed, and guard against .wt or repo_ops regression. |
@@ -87,4 +86,4 @@
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-22T19:52:21Z`_
+_Updated At: `2026-03-22T20:40:32Z`_
