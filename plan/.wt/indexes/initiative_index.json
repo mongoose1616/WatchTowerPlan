@@ -610,34 +610,20 @@
       "title": "Remaining Dirty Tranche Closeout",
       "summary": "Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T05:57:25Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T06:30:43Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/summary.md",
       "initiative_id": "initiative.remaining_dirty_tranche_closeout",
       "slug": "remaining_dirty_tranche_closeout",
       "scope_type": "pack_wide",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
-          "title": "Land docs and governance reconciliation tranche",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
-          "is_actionable": false
-        }
       ],
       "source_surface_paths": [
         "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
@@ -653,6 +639,8 @@
       "evidence_ids": [
         "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
       ],
+      "closed_at": "2026-03-22T06:30:43Z",
+      "closure_reason": "Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state.",
       "related_paths": [
         "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
         "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",

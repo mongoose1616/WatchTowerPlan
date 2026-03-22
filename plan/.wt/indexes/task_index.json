@@ -1004,12 +1004,12 @@
       "title": "Land docs and governance reconciliation tranche",
       "summary": "Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
-      "updated_at": "2026-03-22T05:57:25Z",
+      "updated_at": "2026-03-22T06:29:57Z",
       "related_ids": [
         "initiative.remaining_dirty_tranche_closeout"
       ],

@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-22T05:57:25Z",
+  "updated_at": "2026-03-22T06:30:43Z",
   "entries": [
     {
       "closeout_id": "closeout.core_host_pack_architecture_hard_cutover.bootstrap_recap",
@@ -261,7 +261,7 @@
       "trace_id": "trace.remaining_dirty_tranche_closeout",
       "initiative_title": "Remaining Dirty Tranche Closeout",
       "title": "Bootstrap Closeout Shell",
-      "status": "planned",
+      "status": "completed",
       "initiative_root": "plan/initiatives/remaining_dirty_tranche_closeout",
       "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
       "acceptance_ids": [
@@ -277,7 +277,8 @@
         "superseded",
         "cancelled"
       ],
-      "updated_at": "2026-03-22T05:14:59Z"
+      "updated_at": "2026-03-22T06:30:43Z",
+      "terminal_state": "completed"
     }
   ]
 }

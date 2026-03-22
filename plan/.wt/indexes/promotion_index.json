@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T05:57:25Z",
+  "updated_at": "2026-03-22T06:30:43Z",
   "entries": [
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
@@ -398,7 +398,7 @@
       "trace_id": "trace.remaining_dirty_tranche_closeout",
       "initiative_title": "Remaining Dirty Tranche Closeout",
       "title": "Bootstrap Promotion Shell",
-      "status": "planned",
+      "status": "candidate",
       "initiative_root": "plan/initiatives/remaining_dirty_tranche_closeout",
       "candidate_count": 4,
       "candidate_paths": [
@@ -416,7 +416,7 @@
       "review_paths": [
         "repository_maintainer_review"
       ],
-      "updated_at": "2026-03-22T05:14:59Z",
+      "updated_at": "2026-03-22T06:30:43Z",
       "target_paths": [
         "plan/docs/decisions/remaining_dirty_tranche_closeout_design_record.md",
         "plan/docs/patterns/remaining_dirty_tranche_closeout_implementation_slice.md",

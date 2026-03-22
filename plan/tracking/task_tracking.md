@@ -1,12 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.remaining_dirty_tranche_closeout.docs_governance_reconciliation](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json) | `in_progress` | `high` | `repository_maintainer` | `trace.remaining_dirty_tranche_closeout` | Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes. |
+_No open tasks._
 
 ## Closed Task Summary
-- `completed`: 50
+- `completed`: 51
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -49,6 +47,7 @@
 | [task.plan_requirements_decisions_adherence_remediation.replace_planning_semantics](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/replace_retired_planning_document_semantics/task.json) | `completed` | `high` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Remove the remaining pre-cutover planning-document semantic helpers and validate only the live initiative-package authored inputs. |
 | [task.plan_requirements_decisions_adherence_remediation.restore_rich_rendering](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/restore_rich_human_facing_rendering_and_navigation/task.json) | `completed` | `high` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Recover the stronger markdown structure, browseable tables, and summary-plus-detail navigation while keeping machine indexes compact. |
 | [task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json) | `completed` | `high` | `repository_maintainer` | `trace.remaining_dirty_tranche_closeout` | Bootstrap Remaining Dirty Tranche Closeout live initiative package. |
+| [task.remaining_dirty_tranche_closeout.docs_governance_reconciliation](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json) | `completed` | `high` | `repository_maintainer` | `trace.remaining_dirty_tranche_closeout` | Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes. |
 | [task.remaining_dirty_tranche_closeout.retained_records_closeout](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json) | `completed` | `high` | `repository_maintainer` | `trace.remaining_dirty_tranche_closeout` | Commits the retained-records cutover, control-plane contract updates, and related runtime changes. |
 | [task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Bootstrap Core Host Pack Architecture Hard Cutover live initiative package. |
 | [task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_boundary_stabilization_cleanup_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Performs the first required validation, neighboring-surface expansion, fixes, docs updates, and commit pass after the main implementation slices land. |
@@ -62,4 +61,4 @@
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-22T05:57:25Z`_
+_Updated At: `2026-03-22T06:29:57Z`_

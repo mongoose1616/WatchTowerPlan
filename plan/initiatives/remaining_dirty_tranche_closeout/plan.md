@@ -5,9 +5,9 @@
 - `trace_id`: `trace.remaining_dirty_tranche_closeout`
 - `scope_type`: `pack_wide`
 - `owner`: `repository_maintainer`
-- `lifecycle_stage`: `in_progress`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-22T05:57:25Z`
+- `updated_at`: `2026-03-22T06:30:43Z`
 
 ## Scope and Non-Goals
 Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.
@@ -22,8 +22,8 @@ Inventories the remaining dirty worktree, lands the validated slices as coherent
 ## Planned Slices or Workstreams
 | Task | Status | Priority | Owner | Summary |
 | --- | --- | --- | --- | --- |
-| [task.remaining_dirty_tranche_closeout.docs_governance_reconciliation](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json) | `in_progress` | `high` | `repository_maintainer` | Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes. |
 | [task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json) | `completed` | `high` | `repository_maintainer` | Bootstrap Remaining Dirty Tranche Closeout live initiative package. |
+| [task.remaining_dirty_tranche_closeout.docs_governance_reconciliation](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json) | `completed` | `high` | `repository_maintainer` | Commits the foundations, governance, initiative-package, and derived-surface reconciliation changes. |
 | [task.remaining_dirty_tranche_closeout.retained_records_closeout](/plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json) | `completed` | `high` | `repository_maintainer` | Commits the retained-records cutover, control-plane contract updates, and related runtime changes. |
 
 ## Dependencies and Risks
@@ -33,7 +33,7 @@ Inventories the remaining dirty worktree, lands the validated slices as coherent
 - `capture_complete`: `True`
 - `machine_valid`: `True`
 - `approval_status`: `approved`
-- `ready_for_execution`: `True`
+- `ready_for_execution`: `False`
 - `blocking_reasons`: `none`
 - Task count: `3`
 - Evidence bundle count: `1`

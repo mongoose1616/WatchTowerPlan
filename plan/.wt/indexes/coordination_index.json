@@ -3,88 +3,25 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T05:57:25Z",
-  "coordination_mode": "active_work",
-  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
-  "recommended_next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-  "recommended_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-22T06:30:43Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active plan-workspace initiatives exist.",
+  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
+  "recommended_surface_path": "plan/plan_overview.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
-  "entries": [
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.remaining_dirty_tranche_closeout",
       "title": "Remaining Dirty Tranche Closeout",
-      "summary": "Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-22T05:57:25Z",
-      "open_task_count": 1,
-      "blocked_task_count": 0,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T06:30:43Z",
       "key_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
-      "next_action": "Advance the current in-progress task set and keep initiative-local task state current.",
-      "next_surface_path": "plan/initiatives/remaining_dirty_tranche_closeout/plan.md",
-      "initiative_id": "initiative.remaining_dirty_tranche_closeout",
-      "slug": "remaining_dirty_tranche_closeout",
-      "scope_type": "pack_wide",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
-          "title": "Land docs and governance reconciliation tranche",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
-          "is_actionable": false
-        }
-      ],
-      "source_surface_paths": [
-        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md"
-      ],
-      "task_ids": [
-        "task.remaining_dirty_tranche_closeout.bootstrap_remaining_dirty_tranche_closeout",
-        "task.remaining_dirty_tranche_closeout.docs_governance_reconciliation",
-        "task.remaining_dirty_tranche_closeout.retained_records_closeout"
-      ],
-      "evidence_ids": [
-        "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
-      ],
-      "related_paths": [
-        "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/implementation_slice.md",
-        "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
-        "core/control_plane/",
-        "core/control_plane/indexes/",
-        "core/docs/",
-        "core/python/src/watchtower_core/",
-        "plan/.wt/indexes/",
-        "plan/docs/",
-        "plan/initiatives/",
-        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/initiative.json",
-        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/bootstrap_remaining_dirty_tranche_closeout/task.json",
-        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_docs_and_governance_reconciliation_tranche/task.json",
-        "plan/initiatives/remaining_dirty_tranche_closeout/.wt/tasks/land_retained_records_and_machine_contract_slice/task.json",
-        "plan/python/src/watchtower_plan/closeout/"
-      ],
-      "tags": [
-        "traceability"
-      ]
-    }
-  ],
-  "actionable_tasks": [],
-  "recent_closed_initiatives": [
+      "closure_reason": "Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state."
+    },
     {
       "trace_id": "trace.pack_cli_fault_isolation_hardening",
       "title": "Pack CLI Fault Isolation Hardening",
@@ -156,14 +93,6 @@
       "closed_at": "2026-03-20T01:25:48Z",
       "key_surface_path": "plan/initiatives/pack_domain_hardcoding_remediation/plan.md",
       "closure_reason": "Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate."
-    },
-    {
-      "trace_id": "trace.plan_requirements_decisions_adherence_remediation",
-      "title": "Requirements And Decisions Adherence Remediation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-19T18:39:56Z",
-      "key_surface_path": "plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md",
-      "closure_reason": "Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository."
     }
   ]
 }

@@ -4,7 +4,7 @@
   "initiative_id": "initiative.remaining_dirty_tranche_closeout",
   "trace_id": "trace.remaining_dirty_tranche_closeout",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
+  "status": "candidate",
   "approval_state": "pending",
   "review_refs": [
     "repository_maintainer_review"
@@ -12,7 +12,7 @@
   "evidence_refs": [
     "evidence.remaining_dirty_tranche_closeout.bootstrap_validation_bundle"
   ],
-  "updated_at": "2026-03-22T05:14:59Z",
+  "updated_at": "2026-03-22T06:30:43Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/remaining_dirty_tranche_closeout/initiative_brief.md",

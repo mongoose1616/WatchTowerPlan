@@ -493,8 +493,10 @@
       "title": "Remaining Dirty Tranche Closeout",
       "summary": "Inventories the remaining dirty worktree, lands the validated slices as coherent commits, and returns the repository to a clean state.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-22T05:57:25Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T06:30:43Z",
+      "closed_at": "2026-03-22T06:30:43Z",
+      "closure_reason": "Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state.",
       "source_surface_paths": [
         "plan/initiatives/remaining_dirty_tranche_closeout/decision_notes.md",
         "plan/initiatives/remaining_dirty_tranche_closeout/design_record.md",
