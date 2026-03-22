@@ -4,7 +4,7 @@
 _No open tasks._
 
 ## Closed Task Summary
-- `completed`: 58
+- `completed`: 59
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -56,6 +56,7 @@ _No open tasks._
 | [task.test_suite_efficiency_and_redundancy_reduction.optimize_sync_cli_hotspots](/plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_sync_cli_hotspots/task.json) | `completed` | `high` | `repository_maintainer` | `trace.test_suite_efficiency_and_redundancy_reduction` | Replace redundant expensive sync CLI smoke tests with lightweight forwarding coverage while preserving representative end-to-end sync assertions. |
 | [task.test_suite_efficiency_and_redundancy_reduction.optimize_task_lifecycle_and_sync_hotspots](/plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_task_lifecycle_and_sync_hotspots/task.json) | `completed` | `high` | `repository_maintainer` | `trace.test_suite_efficiency_and_redundancy_reduction` | Reduce repeated coordination rebuild cost in lifecycle and sync integration tests while preserving at least one true rebuild path. |
 | [task.test_suite_efficiency_and_redundancy_reduction.reprofile_and_close](/plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/reprofile_and_close/task.json) | `completed` | `high` | `repository_maintainer` | `trace.test_suite_efficiency_and_redundancy_reduction` | Rerun hotspot timings and the broad validation gate, then close the initiative once the suite is materially faster and still green. |
+| [task.core_copy_forward_operating_mode_documentation.bootstrap_core_copy_forward_operating_mode_documentation](/plan/initiatives/core_copy_forward_operating_mode_documentation/.wt/tasks/bootstrap_core_copy_forward_operating_mode_documentation/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_copy_forward_operating_mode_documentation` | Bootstrap Core Copy Forward Operating Mode Documentation live initiative package. |
 | [task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/bootstrap_core_host_pack_architecture_hard_cutover/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Bootstrap Core Host Pack Architecture Hard Cutover live initiative package. |
 | [task.core_host_pack_architecture_hard_cutover.cleanup_loop_one.006](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_boundary_stabilization_cleanup_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Performs the first required validation, neighboring-surface expansion, fixes, docs updates, and commit pass after the main implementation slices land. |
 | [task.core_host_pack_architecture_hard_cutover.cleanup_loop_two.007](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/run_extensibility_and_portability_hardening_loop/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Performs the second required validation loop focused on pack portability, extensibility, and surrounding contract cleanup. |
@@ -68,4 +69,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-22T15:16:34Z`_
+_Updated At: `2026-03-22T16:12:58Z`_

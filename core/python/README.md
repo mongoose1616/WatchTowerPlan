@@ -1,7 +1,7 @@
 # `core/python`
 
 ## Description
-`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep pack-owned code only under the owning pack root such as plan/python/, and keep authored control-plane artifacts in core/control_plane/. The shared dev environment also installs the current internal pack package from plan/python/ as an editable local dependency.`
+`This directory contains the shared Python tooling, tests, reusable core package, and local environment surfaces for the repository. Keep reusable package code here under watchtower_core, keep pack-owned code only under the owning pack root such as plan/python/, and keep authored control-plane artifacts in core/control_plane/. The shared dev environment also installs the current internal pack package from plan/python/ as an editable local dependency. Downstream WatchTower repositories may also consume this shared workspace by copying core/ and then wiring whichever hosted packs they actually carry.`
 
 ## Boundaries
 `Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree. Treat watchtower_core as reusable core, treat pack packages such as watchtower_plan as pack-owned boundaries, and keep live pack machine state under pack workspaces such as plan/.wt/ rather than in the Python workspace.`
@@ -30,6 +30,7 @@
 ### Daily Use
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
 - `uv sync --extra dev` installs both `watchtower_core` and the current internal pack package `watchtower_plan` into the shared workspace environment.
+- In this repository, `watchtower_plan` is the current internal hosted pack. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
 - Interactive shell path: run `./tools/dev_shell.sh` when you want a shell with `.venv` activated for repeated local commands.
 - Manual fallback: run `source .venv/bin/activate` if you specifically want to activate the environment in your current shell.
 
@@ -134,6 +135,7 @@
 - `uv run watchtower-core plan sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `watchtower_core` is the reusable-core namespace. Push generic loaders, validators, query helpers, sync helpers, adapters, and utilities back into `watchtower_core` when they stop being pack-specific.
 - `watchtower_plan` is the current internal pack boundary under `plan/python/`; do not grow it into a pack-flavored mirror of `watchtower_core`.
+- In shared-core docs, `watchtower_plan` examples describe the current internal pack in this repository. They do not mean that a downstream repository copying `core/` must keep `plan/` or treat it as the donor-default hosted pack.
 - `plan/.wt/` is the current internal pack machine-state root. Keep Python source, workflow prose, and hand-maintained implementation logic out of that tree.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.

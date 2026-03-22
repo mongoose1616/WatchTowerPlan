@@ -3,7 +3,7 @@
   "id": "index.guidance",
   "title": "Plan Workspace Guidance Index",
   "status": "active",
-  "updated_at": "2026-03-22T15:17:46Z",
+  "updated_at": "2026-03-22T16:13:43Z",
   "entries": [
     {
       "guidance_id": "decision.plan_guidance_promotion_helper_foundation_design_record",
@@ -108,7 +108,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/product_direction.md",
-      "updated_at": "2026-03-21T18:45:00Z",
+      "updated_at": "2026-03-22T15:52:38Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [
@@ -133,7 +133,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "plan/docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-21T18:45:00Z",
+      "updated_at": "2026-03-22T15:52:38Z",
       "audience": "shared",
       "authority": "authoritative",
       "tags": [

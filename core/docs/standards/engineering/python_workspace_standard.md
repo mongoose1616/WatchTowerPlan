@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:02:49Z"
+updated_at: "2026-03-22T15:52:38Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -61,6 +61,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
 - Keep reusable-core Python source under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain Python source under the owning pack root such as `plan/python/src/watchtower_plan/`.
 - Install pack-owned packages through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_plan` or other hosted pack packages.
+- Treat downstream repositories that copy `core/` as a supported operating mode. Shared workspace docs may use the current internal pack as an example in this repository, but the hosted-pack dependency set and local editable source paths remain repo-local configuration that must match the packs actually present in the consuming repository.
 - Keep tests under `core/python/tests/`.
 - Keep the fast default suite under `core/python/tests/unit/` and repository-aware orchestration coverage under `core/python/tests/integration/`.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
@@ -140,6 +141,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `uv run pytest -q`, `uv run ruff check .`, and `uv run mypy src` should be the default narrow validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad Python test pass before closeout when repository-aware integration behavior changed.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
+- Reviewers should reject shared-workspace guidance or metadata changes that make the donor repository's hosted-pack set look like a reusable-core invariant instead of current-repository configuration.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and approved pack-owned boundaries such as `plan/python/`.
 
 ## Change Control
@@ -161,4 +163,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code under pack-owned roots such as `plan/python/src/watchtower_plan/`.
 
 ## Updated At
-- `2026-03-22T15:02:49Z`
+- `2026-03-22T15:52:38Z`

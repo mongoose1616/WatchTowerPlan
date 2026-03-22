@@ -3,8 +3,26 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T15:17:46Z",
+  "updated_at": "2026-03-22T16:13:43Z",
   "entries": [
+    {
+      "review_subject_id": "initiative.core_copy_forward_operating_mode_documentation",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_copy_forward_operating_mode_documentation",
+      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+      "initiative_title": "Core Copy Forward Operating Mode Documentation",
+      "title": "Core Copy Forward Operating Mode Documentation",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T16:13:43Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
     {
       "review_subject_id": "initiative.core_host_pack_architecture_hard_cutover",
       "subject_kind": "initiative",
@@ -238,6 +256,22 @@
       "updated_at": "2026-03-22T08:52:36Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "promotion.core_copy_forward_operating_mode_documentation.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_copy_forward_operating_mode_documentation",
+      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+      "initiative_title": "Core Copy Forward Operating Mode Documentation",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T16:13:43Z"
     },
     {
       "review_subject_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",

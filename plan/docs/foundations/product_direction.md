@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T18:45:00Z"
+updated_at: "2026-03-22T15:52:38Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -40,6 +40,7 @@ This document defines the intended future WatchTower product shape. For current 
 - `WatchTowerPlan` currently owns the governed core substrate, host-composition layer, machine-readable control plane, workflow-routing model, and the first internal plan-domain pack.
 - This repository does not yet own the first operator-facing domain-pack implementation.
 - The hosted-pack model is already partially proven here through `watchtower_plan`, hosted-pack scaffolding, and second-pack portability work; future product work should extend that contract rather than re-invent it.
+- One supported downstream adoption mode is to copy the canonical shared `core/` tree from this repository and then carry whichever hosted packs the consuming repository actually needs. That may begin with `core/` alone during integration bring-up or with `core/` plus one or more hosted packs.
 - The future product model in this document is still relevant because it constrains how the shared core should evolve now.
 
 ## Core
@@ -82,6 +83,7 @@ Domain packs are the future domain-specific operator layer of the product. They 
 ## Product Delivery Boundary
 
 - Future external operator-facing domain-pack implementation belongs in a later product phase and likely in a consuming repository such as `/home/j/WatchTower`, even though the host-pack contract is already proven here.
+- That consuming repository may adopt the shared runtime by copying `core/` and then wiring the hosted pack set it actually owns; shared core must therefore stay donor-neutral even when this repository currently carries `watchtower_plan`.
 - This repository should prepare the reusable substrate and contracts that product work will consume.
 - Product direction should guide current planning, but it should not be mistaken for current repo ownership.
 
@@ -92,4 +94,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](customer_story.md)
 
 ## Updated At
-- `2026-03-21T18:45:00Z`
+- `2026-03-22T15:52:38Z`

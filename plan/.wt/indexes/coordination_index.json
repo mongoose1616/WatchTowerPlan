@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T15:17:46Z",
+  "updated_at": "2026-03-22T16:13:43Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+      "title": "Core Copy Forward Operating Mode Documentation",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T16:13:43Z",
+      "key_surface_path": "plan/initiatives/core_copy_forward_operating_mode_documentation/plan.md",
+      "closure_reason": "Documented copy-forward core adoption and donor-neutral shared-core guidance."
+    },
     {
       "trace_id": "trace.core_shared_language_deplanification",
       "title": "Core Shared Language Deplanification",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-21T01:25:24Z",
       "key_surface_path": "plan/initiatives/domain_pack_externalization_portability_proof/plan.md",
       "closure_reason": "Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance."
-    },
-    {
-      "trace_id": "trace.core_host_pack_architecture_hard_cutover",
-      "title": "Core Host Pack Architecture Hard Cutover",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-21T00:42:04Z",
-      "key_surface_path": "plan/initiatives/core_host_pack_architecture_hard_cutover/plan.md",
-      "closure_reason": "Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup."
     }
   ]
 }

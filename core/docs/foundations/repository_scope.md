@@ -9,7 +9,7 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T18:45:00Z"
+updated_at: "2026-03-22T15:52:38Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,12 +44,15 @@ This document defines what `WatchTowerPlan` owns today. Use it as the authoritat
 
 `WatchTowerPlan` is the reusable core, host-composition home, and first internal plan-domain pack for WatchTower. It owns the reusable substrate, machine-readable control plane, split workflow-routing model, authored shared foundations, mirrored plan foundations, and the live plan system that prepare the project for later product implementation.
 
+`WatchTowerPlan` is also the canonical authored source for the shared `core/` tree. One supported operating mode for the broader WatchTower series is for a downstream repository to consume that shared runtime by copying `core/` alone during integration bring-up or by copying `core/` together with one or more hosted packs. Which packs are present remains a repo-local decision for the consuming repository, not a reusable-core assumption.
+
 This document is authoritative for current repository ownership. It does not replace future product direction. It defines the boundary that future product direction must respect while work remains in this repo.
 
 ## This Repository Owns Today
 
 - The shared governed core substrate under `core/control_plane/` and `core/python/src/watchtower_core/`.
 - The host-composition layer under `core/python/src/watchtower_host/`, including shared CLI composition and hosted-pack dispatch.
+- The canonical authored `core/` source that downstream WatchTower repositories may consume by copying shared core alone or together with selected hosted packs.
 - The live plan-domain workspace under `plan/`, including `plan/.wt/`, pack-wide initiatives, project-scoped initiatives, and plan-domain workflow surfaces.
 - The first internal hosted-pack runtime under `plan/python/src/watchtower_plan/`, installed through the shared workspace contract.
 - The authored shared foundations under `core/docs/foundations/` and the required mirrored copy under `plan/docs/foundations/`.
@@ -86,6 +89,7 @@ This document is authoritative for current repository ownership. It does not rep
 - Root entrypoints remain routers, not large repository handbooks.
 - Shared core surfaces stay domain-agnostic.
 - Host composition stays in `watchtower_host`, and pack-native orchestration stays in `watchtower_<pack>` packages.
+- Shared core policy and docs must not assume that consuming repositories retain the current internal `plan/` pack or any other donor-specific pack set.
 - Live plan execution state stays under `plan/**`, not under documentation roots.
 - Shared foundations are authored in `core/docs/foundations/` and mirrored into `plan/docs/foundations/`.
 - Future product narrative can guide planning, but it must not quietly redefine current repo scope.
@@ -96,4 +100,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](product_direction.md)
 
 ## Updated At
-- `2026-03-21T18:45:00Z`
+- `2026-03-22T15:52:38Z`

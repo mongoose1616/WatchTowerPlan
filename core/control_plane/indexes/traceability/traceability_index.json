@@ -5,6 +5,34 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+      "title": "Core Copy Forward Operating Mode Documentation",
+      "summary": "Document that downstream WatchTower repositories may consume the shared core by copying core/ alone or alongside one or more hosted packs.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-22T16:13:43Z",
+      "closed_at": "2026-03-22T16:13:43Z",
+      "closure_reason": "Documented copy-forward core adoption and donor-neutral shared-core guidance.",
+      "source_surface_paths": [
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/design_record.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_copy_forward_operating_mode_documentation.bootstrap_core_copy_forward_operating_mode_documentation"
+      ],
+      "related_paths": [
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/.wt/initiative.json",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/.wt/tasks/bootstrap_core_copy_forward_operating_mode_documentation/task.json",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/design_record.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_host_pack_architecture_hard_cutover",
       "title": "Core Host Pack Architecture Hard Cutover",
       "summary": "Separates reusable core, host composition, and pack-native runtime behind governed pack contracts, host-owned CLI composition, and pack interface validation.",

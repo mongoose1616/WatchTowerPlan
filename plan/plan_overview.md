@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.core_copy_forward_operating_mode_documentation`: Core Copy Forward Operating Mode Documentation (`completed` at `2026-03-22T16:13:43Z`) - Documented copy-forward core adoption and donor-neutral shared-core guidance.
 - `trace.core_shared_language_deplanification`: Core Shared Language Deplanification (`completed` at `2026-03-22T15:17:46Z`) - Normalized shared-core language and validated the governed surfaces.
 - `trace.test_suite_efficiency_and_redundancy_reduction`: Test Suite Efficiency And Redundancy Reduction (`completed` at `2026-03-22T08:52:36Z`) - Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work.
 - `trace.remaining_dirty_tranche_closeout`: Remaining Dirty Tranche Closeout (`completed` at `2026-03-22T06:30:43Z`) - Landed the retained-records runtime tranche, reconciled the foundations and governance surfaces, and returned the repository to a clean validated state.
@@ -25,7 +26,6 @@
 - `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening`: Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening (`completed` at `2026-03-21T03:56:17Z`) - Aligned WatchTowerOversight to the host layer, shipped hosted-pack scaffolding, flattened plan workspace services into a feature-owned package, and validated the tranche.
 - `trace.pack_starter_templates_and_oversight_alignment`: Pack Starter Templates And Oversight Alignment (`completed` at `2026-03-21T02:32:49Z`) - Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories.
 - `trace.domain_pack_externalization_portability_proof`: Domain Pack Externalization and Portability Proof (`completed` at `2026-03-21T01:25:24Z`) - Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance.
-- `trace.core_host_pack_architecture_hard_cutover`: Core Host Pack Architecture Hard Cutover (`completed` at `2026-03-21T00:42:04Z`) - Delivered the core-host-pack boundary split, namespaced host CLI, pack contracts, validation guards, and closeout cleanup.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

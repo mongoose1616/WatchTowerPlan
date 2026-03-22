@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_copy_forward_operating_mode_documentation.0013_execution_started",
+  "initiative_id": "initiative.core_copy_forward_operating_mode_documentation",
+  "sequence": 13,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T16:11:46Z",
+  "summary": "Execution started after task task.core_copy_forward_operating_mode_documentation.bootstrap_core_copy_forward_operating_mode_documentation entered in_progress.",
+  "payload": {
+    "task_id": "task.core_copy_forward_operating_mode_documentation.bootstrap_core_copy_forward_operating_mode_documentation",
+    "task_status": "in_progress"
+  },
+  "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+  "related_paths": [
+    "plan/initiatives/core_copy_forward_operating_mode_documentation/.wt/tasks/bootstrap_core_copy_forward_operating_mode_documentation/task.json"
+  ]
+}

@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-21T23:59:00Z"
+updated_at: "2026-03-22T15:52:38Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -21,6 +21,8 @@ This reference describes the expected shape of a WatchTower domain pack and how 
 
 ## Purpose
 Make future packs portable and comprehensible by documenting the intended split between shared core, host composition, and pack-native runtime code.
+
+This repository also treats copy-forward adoption as a supported operating mode: downstream WatchTower repositories may consume the shared runtime by copying `core/` alone during bring-up or by copying `core/` together with one or more hosted packs. The pack set that remains present after that copy is owned by the consuming repository, not by the donor repository.
 
 ## Scope
 - Covers the repository-facing shape of a domain pack, including machine state, durable docs, workflows, tracking, and pack-native Python code.
@@ -75,6 +77,16 @@ Make future packs portable and comprehensible by documenting the intended split 
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
 - Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
 - Exercise copy-out and extensibility proofs through each pack’s own `<pack>/python/src` path instead of relying only on shared test-fixture import roots.
+
+### Supported Repository Adoption Modes
+| Mode | What Gets Copied | What Must Stay Repo-Local |
+|---|---|---|
+| Shared core only | `core/` while the consuming repo prepares or rehomes its hosted-pack set. | Pack registry entries, pack manifests, and shared-workspace package wiring for the packs that repo actually hosts. |
+| Shared core plus one hosted pack | `core/` plus one pack root such as `<pack>/`. | The consuming repo still owns which pack is active by default and how the shared workspace points at that pack. |
+| Shared core plus multiple hosted packs | `core/` plus multiple pack roots. | The consuming repo owns the hosted-pack inventory, default-pack choice, and any pack-local docs, workflows, and machine state. |
+
+- Do not treat the donor repository's current internal pack as a reusable-core default just because its examples appear in shared docs.
+- Do not hard-code a donor pack into shared workspace metadata, host defaults, or pack-authoring guidance; those are consuming-repository choices.
 
 ### Portable Pack Authoring Checklist
 1. Create the pack-owned root surfaces.
@@ -348,4 +360,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-21T23:59:00Z`
+- `2026-03-22T15:52:38Z`

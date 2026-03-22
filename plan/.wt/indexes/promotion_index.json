@@ -3,8 +3,44 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T15:17:46Z",
+  "updated_at": "2026-03-22T16:13:43Z",
   "entries": [
+    {
+      "promotion_id": "promotion.core_copy_forward_operating_mode_documentation.bootstrap_shell",
+      "initiative_id": "initiative.core_copy_forward_operating_mode_documentation",
+      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
+      "initiative_title": "Core Copy Forward Operating Mode Documentation",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/core_copy_forward_operating_mode_documentation",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/initiative_brief.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/design_record.md",
+        "plan/initiatives/core_copy_forward_operating_mode_documentation/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-22T16:13:43Z",
+      "target_paths": [
+        "plan/docs/decisions/core_copy_forward_operating_mode_documentation_design_record.md",
+        "plan/docs/patterns/core_copy_forward_operating_mode_documentation_implementation_slice.md",
+        "plan/docs/references/core_copy_forward_operating_mode_documentation_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
     {
       "promotion_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
