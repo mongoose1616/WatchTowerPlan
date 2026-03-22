@@ -14,6 +14,11 @@ from watchtower_core.control_plane.models import (
     ValidatorRegistry,
 )
 
+_REQUIRED_VALIDATION_SURFACE_NAMES = (
+    "validator_registry",
+    "validation_suite_registry",
+)
+
 
 @dataclass(frozen=True, slots=True)
 class PackValidationContext:
@@ -45,12 +50,17 @@ class PackValidationContext:
             else loader.derive(active_pack_settings_path=effective_pack_settings_path)
         )
         pack_settings = effective_loader.load_pack_settings(effective_pack_settings_path)
-        surfaces: dict[str, object] = {}
-        for declaration in pack_settings.surfaces:
-            if declaration.surface_name == "schema_catalog":
-                surfaces[declaration.surface_name] = effective_loader.load_schema_catalog()
+        declared_surfaces = {
+            declaration.surface_name: declaration for declaration in pack_settings.surfaces
+        }
+        surfaces: dict[str, object] = {
+            "schema_catalog": effective_loader.load_schema_catalog(),
+        }
+        for surface_name in _REQUIRED_VALIDATION_SURFACE_NAMES:
+            declaration = declared_surfaces.get(surface_name)
+            if declaration is None:
                 continue
-            surfaces[declaration.surface_name] = effective_loader.load_declared_surface(
+            surfaces[surface_name] = effective_loader.load_declared_surface(
                 surface_name=declaration.surface_name,
                 relative_path=declaration.path,
             )

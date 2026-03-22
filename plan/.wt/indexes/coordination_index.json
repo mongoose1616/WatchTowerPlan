@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T19:30:57Z",
+  "updated_at": "2026-03-22T19:39:12Z",
   "coordination_mode": "active_work",
   "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
   "recommended_next_action": "Promote the next planned task to ready before opening follow-up work.",
@@ -19,8 +19,8 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-22T19:30:57Z",
-      "open_task_count": 4,
+      "updated_at": "2026-03-22T19:39:12Z",
+      "open_task_count": 3,
       "blocked_task_count": 0,
       "key_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
       "next_action": "Promote the next planned task to ready before opening follow-up work.",
@@ -35,7 +35,6 @@
       "active_task_ids": [
         "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
         "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
-        "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
         "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout"
       ],
       "active_task_summaries": [
@@ -48,8 +47,7 @@
           "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/add_latency_regression_guards/task.json",
           "is_actionable": false,
           "depends_on": [
-            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
-            "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency"
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency"
           ]
         },
         {
@@ -62,15 +60,6 @@
           "is_actionable": false
         },
         {
-          "task_id": "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency",
-          "title": "Reduce validation and pack-runtime latency",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json",
-          "is_actionable": false
-        },
-        {
           "task_id": "task.command_latency_reduction_using_runtime_telemetry.validate_benchmark_and_closeout",
           "title": "Validate, benchmark, and close out the latency tranche",
           "task_status": "planned",
@@ -80,8 +69,7 @@
           "is_actionable": false,
           "depends_on": [
             "task.command_latency_reduction_using_runtime_telemetry.add_latency_regression_guards",
-            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency",
-            "task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency"
+            "task.command_latency_reduction_using_runtime_telemetry.reduce_host_and_loader_startup_latency"
           ]
         }
       ],

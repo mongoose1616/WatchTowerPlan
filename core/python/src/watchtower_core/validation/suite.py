@@ -85,8 +85,8 @@ class ValidationSuiteService:
             except KeyError as exc:
                 raise ValidationSelectionError(f"Unknown validation suite ID: {suite_id}") from exc
 
-            artifact = ArtifactValidationService(context.loader)
-            front_matter = FrontMatterValidationService(context.loader)
+            artifact: ArtifactValidationService | None = None
+            front_matter: FrontMatterValidationService | None = None
             document_semantics: DocumentSemanticsValidationService | None = None
             pack_contract = PackContractValidationService(context.loader)
 
@@ -113,6 +113,8 @@ class ValidationSuiteService:
                     continue
 
                 if step.step_kind == "artifact":
+                    if artifact is None:
+                        artifact = ArtifactValidationService(context.loader)
                     records.extend(
                         self._run_validation_step(
                             context,
@@ -123,6 +125,8 @@ class ValidationSuiteService:
                     )
                     continue
                 if step.step_kind == "front_matter":
+                    if front_matter is None:
+                        front_matter = FrontMatterValidationService(context.loader)
                     records.extend(
                         self._run_validation_step(
                             context,
