@@ -13,6 +13,9 @@ from watchtower_core.control_plane.loader_constants import (
     VALIDATION_SUITE_REGISTRY_PATH,
     VALIDATOR_REGISTRY_PATH,
 )
+from watchtower_core.control_plane.pack_settings_discovery import (
+    discover_pack_settings_paths,
+)
 from watchtower_core.control_plane.schemas import SCHEMA_CATALOG_ARTIFACT_PATH
 
 
@@ -109,6 +112,9 @@ def default_pack_settings_path(loader: Any) -> str:
 
     if loader.active_pack_settings_path is not None:
         return cast(str, loader.active_pack_settings_path)
+    registered_default = _registered_default_pack_settings_path(loader)
+    if registered_default is not None:
+        return registered_default
     discovered = loader._discover_default_pack_settings_path()
     return discovered or CORE_PACK_SETTINGS_PATH
 
@@ -208,13 +214,21 @@ def _default_pack_surface_path(loader: Any, surface_name: str, fallback_path: st
 def _discover_default_pack_settings_path(loader: Any) -> str | None:
     """Discover one repo-local default pack settings path when available."""
 
-    candidates = tuple(
-        sorted(
-            candidate.relative_to(loader.repo_root).as_posix()
-            for candidate in loader.repo_root.glob("*/.wt/manifests/pack_settings.json")
-            if candidate.is_file()
-        )
-    )
+    candidates = discover_pack_settings_paths(loader.repo_root)
     if not candidates:
         return None
-    return cast(str, candidates[0])
+    return candidates[0]
+
+
+def _registered_default_pack_settings_path(loader: Any) -> str | None:
+    """Return the valid registry-default pack settings path when one exists."""
+
+    try:
+        pack_settings_path = cast(
+            str,
+            loader.load_pack_registry().default_pack().pack_settings_path,
+        )
+        loader.load_pack_settings(pack_settings_path)
+    except (ArtifactLoadError, KeyError, ValueError):
+        return None
+    return pack_settings_path

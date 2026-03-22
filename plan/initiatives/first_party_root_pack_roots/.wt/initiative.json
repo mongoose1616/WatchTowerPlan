@@ -1,0 +1,81 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "trace_id": "trace.first_party_root_pack_roots",
+  "slug": "first_party_root_pack_roots",
+  "title": "First-Party Root Pack Roots",
+  "summary": "Implement first-party root-pack discovery and default-pack resolution so copied repositories can host packs at <slug>/ without donor assumptions.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-22T16:15:44Z",
+  "updated_at": "2026-03-22T16:30:08Z",
+  "task_ids": [
+    "task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.first_party_root_pack_roots.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.first_party_root_pack_roots.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.first_party_root_pack_roots.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+      "sha256": "f20737ff1cc11e57981372413a78b8ca7ee407b5050606e74279817c1ae7474d",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:17:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/first_party_root_pack_roots/design_record.md",
+      "sha256": "55e03d6e9ee231b7dcae066b88f61e5f77609364ed1737aeed2fa94cc3e2e179",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:17:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/first_party_root_pack_roots/implementation_slice.md",
+      "sha256": "52b6610f496b9c49c4db5971bbed2a08e802969304f448713c1eedb427220b7d",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-22T16:17:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:17:50Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:19:49Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-22T16:28:08Z"
+    }
+  ],
+  "closed_at": "2026-03-22T16:30:08Z",
+  "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction."
+}

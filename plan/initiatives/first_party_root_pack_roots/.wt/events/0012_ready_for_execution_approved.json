@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.0012_ready_for_execution_approved",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 12,
+  "event_type": "ready_for_execution_approved",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-22T16:28:08Z",
+  "summary": "An authorized maintainer approved the initiative package for execution.",
+  "payload": {},
+  "trace_id": "trace.first_party_root_pack_roots"
+}

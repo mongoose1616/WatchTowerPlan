@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T15:52:38Z"
+updated_at: "2026-03-22T16:21:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -62,6 +62,9 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | `<pack>/tracking/**` | Human-facing pack tracking views when the pack owns them. |
 | `<pack>/python/**` | Pack-native Python package and tests. |
 | Optional domain roots | Pack-specific runtime surfaces such as `initiatives/`, `projects/`, `targets/`, or `reviews/`. |
+
+- Preferred first-party layout is a direct repository child such as `plan/` or `oversight/`; `packs/<slug>/` remains a supported nested convention for multi-pack or copied-repository layouts.
+- Pack discovery should key off `<pack>/.wt/manifests/pack_settings.json`, not off one required parent directory name.
 
 ### Rules or Decision Points
 - Keep generic logic in reusable core unless it is truly pack-specific.
@@ -360,4 +363,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
 
 ## Updated At
-- `2026-03-22T15:52:38Z`
+- `2026-03-22T16:21:00Z`

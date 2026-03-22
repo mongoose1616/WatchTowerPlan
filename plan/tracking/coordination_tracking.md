@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.first_party_root_pack_roots` | `completed` | `2026-03-22T16:30:08Z` | [plan.md](/plan/initiatives/first_party_root_pack_roots/plan.md) |
 | `trace.core_copy_forward_operating_mode_documentation` | `completed` | `2026-03-22T16:13:43Z` | [plan.md](/plan/initiatives/core_copy_forward_operating_mode_documentation/plan.md) |
 | `trace.core_shared_language_deplanification` | `completed` | `2026-03-22T15:17:46Z` | [plan.md](/plan/initiatives/core_shared_language_deplanification/plan.md) |
 | `trace.test_suite_efficiency_and_redundancy_reduction` | `completed` | `2026-03-22T08:52:36Z` | [plan.md](/plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md) |
 | `trace.remaining_dirty_tranche_closeout` | `completed` | `2026-03-22T06:30:43Z` | [plan.md](/plan/initiatives/remaining_dirty_tranche_closeout/plan.md) |
-| `trace.pack_cli_fault_isolation_hardening` | `completed` | `2026-03-21T23:46:04Z` | [plan.md](/plan/initiatives/pack_cli_fault_isolation_hardening/plan.md) |
 
-_Updated At: `2026-03-22T16:13:43Z`_
+_Updated At: `2026-03-22T16:30:08Z`_

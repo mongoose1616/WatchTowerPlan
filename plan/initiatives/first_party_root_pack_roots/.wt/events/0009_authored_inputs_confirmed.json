@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.0009_authored_inputs_confirmed",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 9,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-22T16:17:50Z",
+  "summary": "An authorized maintainer confirmed the authored intake documents into machine state.",
+  "payload": {},
+  "trace_id": "trace.first_party_root_pack_roots"
+}

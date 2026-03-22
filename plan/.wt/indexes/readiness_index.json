@@ -3,7 +3,7 @@
   "id": "index.readiness",
   "title": "Plan Workspace Readiness Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:13:43Z",
+  "updated_at": "2026-03-22T16:30:08Z",
   "entries": [
     {
       "initiative_id": "initiative.core_copy_forward_operating_mode_documentation",
@@ -64,6 +64,21 @@
       "ready_for_execution": false,
       "blocking_reasons": [],
       "updated_at": "2026-03-21T01:25:24Z"
+    },
+    {
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "title": "First-Party Root Pack Roots",
+      "initiative_root": "plan/initiatives/first_party_root_pack_roots",
+      "scope_type": "pack_wide",
+      "lifecycle_stage": "completed",
+      "review_status": "approved",
+      "capture_complete": true,
+      "machine_valid": true,
+      "approval_status": "approved",
+      "ready_for_execution": false,
+      "blocking_reasons": [],
+      "updated_at": "2026-03-22T16:30:08Z"
     },
     {
       "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",

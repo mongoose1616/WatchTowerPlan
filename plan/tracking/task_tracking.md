@@ -4,7 +4,7 @@
 _No open tasks._
 
 ## Closed Task Summary
-- `completed`: 59
+- `completed`: 60
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -31,6 +31,7 @@ _No open tasks._
 | [task.domain_pack_externalization_portability_proof.bootstrap_domain_pack_externalization_and_portability_proof](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/bootstrap_domain_pack_externalization_and_portability_proof/task.json) | `completed` | `high` | `repository_maintainer` | `trace.domain_pack_externalization_portability_proof` | Bootstrap Domain Pack Externalization and Portability Proof live initiative package. |
 | [task.domain_pack_externalization_portability_proof.define_portable_pack_capsule_and_validation_contract](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/define_portable_pack_capsule_and_validation_contract/task.json) | `completed` | `high` | `repository_maintainer` | `trace.domain_pack_externalization_portability_proof` | Tightens the portability rules for manifests, owned roots, packaging assumptions, and validator behavior. |
 | [task.domain_pack_externalization_portability_proof.exercise_plan_copy_out_and_packaging_proof](/plan/initiatives/domain_pack_externalization_portability_proof/.wt/tasks/exercise_plan_copy_out_and_packaging_proof/task.json) | `completed` | `high` | `repository_maintainer` | `trace.domain_pack_externalization_portability_proof` | Proves that the plan pack can be treated as an externalized package with only packaging and path adjustments. |
+| [task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots](/plan/initiatives/first_party_root_pack_roots/.wt/tasks/bootstrap_first_party_root_pack_roots/task.json) | `completed` | `high` | `repository_maintainer` | `trace.first_party_root_pack_roots` | Bootstrap First-Party Root Pack Roots live initiative package. |
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/align_watchtoweroversight_to_host_layer_parity/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Moves WatchTowerOversight CLI composition behind a host layer and aligns its core-host-pack runtime boundaries with WatchTowerPlan. |
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/bootstrap_hosted_pack_parity_scaffolding_and_plan_runtime_flattening/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Bootstrap Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening live initiative package. |
 | [task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.flatten_plan_runtime_into_feature_owned_modules](/plan/initiatives/hosted_pack_parity_scaffold_and_plan_runtime_flattening/.wt/tasks/flatten_plan_runtime_into_feature_owned_modules/task.json) | `completed` | `high` | `repository_maintainer` | `trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening` | Reorganizes watchtower_plan so remaining adapter-style package families collapse into feature-owned plan services and minimal host-facing adapters. |
@@ -69,4 +70,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-22T16:12:58Z`_
+_Updated At: `2026-03-22T16:28:48Z`_

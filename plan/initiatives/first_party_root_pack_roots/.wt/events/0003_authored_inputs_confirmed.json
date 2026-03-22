@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.0003_authored_inputs_confirmed",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 3,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T16:15:44Z",
+  "summary": "Confirmed the authored intake documents into machine state.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.first_party_root_pack_roots",
+  "related_paths": [
+    "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+    "plan/initiatives/first_party_root_pack_roots/design_record.md",
+    "plan/initiatives/first_party_root_pack_roots/implementation_slice.md"
+  ]
+}

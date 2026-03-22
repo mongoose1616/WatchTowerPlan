@@ -132,6 +132,24 @@ def test_pack_commands_support_second_pack_fixture(
     assert payload["integration"]["sync_runtime_targets"] == ["oversight-index", "review-index"]
 
 
+def test_pack_commands_support_root_pack_fixture(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(repo_root / "plan")
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "describe", "--pack", "plan", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack"]["pack_settings_path"] == surfaces["pack_settings_path"]
+    assert payload["runtime_manifest"]["owned_roots"]["workspace_root"] == "plan"
+    assert payload["integration"]["importable"] is True
+
+
 def test_pack_validate_supports_second_pack_fixture(
     tmp_path: Path,
     monkeypatch,

@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.0015_closing_started",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 15,
+  "event_type": "closing_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T16:30:08Z",
+  "summary": "The initiative package entered closing before terminal closeout.",
+  "payload": {},
+  "trace_id": "trace.first_party_root_pack_roots"
+}

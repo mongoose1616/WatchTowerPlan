@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:13:43Z",
+  "updated_at": "2026-03-22T16:30:08Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.first_party_root_pack_roots",
+      "title": "First-Party Root Pack Roots",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-22T16:30:08Z",
+      "key_surface_path": "plan/initiatives/first_party_root_pack_roots/plan.md",
+      "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction."
+    },
     {
       "trace_id": "trace.core_copy_forward_operating_mode_documentation",
       "title": "Core Copy Forward Operating Mode Documentation",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-21T02:32:49Z",
       "key_surface_path": "plan/initiatives/pack_starter_templates_and_oversight_alignment/plan.md",
       "closure_reason": "Published hosted-pack starter templates, aligned WatchTowerOversight to the shared runtime-manifest contract, and validated adoption across both repositories."
-    },
-    {
-      "trace_id": "trace.domain_pack_externalization_portability_proof",
-      "title": "Domain Pack Externalization and Portability Proof",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-21T01:25:24Z",
-      "key_surface_path": "plan/initiatives/domain_pack_externalization_portability_proof/plan.md",
-      "closure_reason": "Validated the portable pack capsule contract, proved plan and second-pack externalization, and published externalized pack authoring guidance."
     }
   ]
 }

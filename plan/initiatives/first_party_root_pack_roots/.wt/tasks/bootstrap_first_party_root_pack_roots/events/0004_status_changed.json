@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots.0004_status_changed",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 4,
+  "event_type": "status_changed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T16:28:48Z",
+  "summary": "Changed task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots status from planned to completed.",
+  "payload": {
+    "status": "active",
+    "task_status": "completed",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/first_party_root_pack_roots/.wt/tasks/bootstrap_first_party_root_pack_roots/task.json"
+  },
+  "task_id": "task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots"
+}

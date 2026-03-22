@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.first_party_root_pack_roots.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.first_party_root_pack_roots",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-22T16:15:44Z",
+  "summary": "Seeded the evidence shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.first_party_root_pack_roots",
+  "related_paths": [
+    "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+    "plan/initiatives/first_party_root_pack_roots/design_record.md",
+    "plan/initiatives/first_party_root_pack_roots/implementation_slice.md"
+  ]
+}

@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:13:43Z",
+  "updated_at": "2026-03-22T16:30:08Z",
   "entries": [
     {
       "review_subject_id": "initiative.core_copy_forward_operating_mode_documentation",
@@ -74,6 +74,24 @@
         "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T01:25:24Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.first_party_root_pack_roots",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "initiative_title": "First-Party Root Pack Roots",
+      "title": "First-Party Root Pack Roots",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.first_party_root_pack_roots.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T16:30:08Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -320,6 +338,22 @@
         "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T01:25:24Z"
+    },
+    {
+      "review_subject_id": "promotion.first_party_root_pack_roots.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "initiative_title": "First-Party Root Pack Roots",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.first_party_root_pack_roots.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-22T16:30:08Z"
     },
     {
       "review_subject_id": "promotion.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_shell",

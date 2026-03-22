@@ -367,6 +367,21 @@
       ]
     },
     {
+      "task_id": "task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "initiative_title": "First-Party Root Pack Roots",
+      "title": "Bootstrap First-Party Root Pack Roots",
+      "summary": "Bootstrap First-Party Root Pack Roots live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/first_party_root_pack_roots/.wt/tasks/bootstrap_first_party_root_pack_roots/task.json",
+      "updated_at": "2026-03-22T16:28:48Z"
+    },
+    {
       "task_id": "task.hosted_pack_parity_scaffold_and_plan_runtime_flattening.align_watchtower_oversight_to_host_layer_parity",
       "initiative_id": "initiative.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",

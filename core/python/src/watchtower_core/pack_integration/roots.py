@@ -7,6 +7,9 @@ from pathlib import Path
 from watchtower_core.control_plane.errors import RepoRootNotFoundError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackWorkspaceRoots
+from watchtower_core.control_plane.pack_settings_discovery import (
+    discover_pack_settings_paths,
+)
 
 
 def discover_pack_workspace_roots(
@@ -47,7 +50,7 @@ def discover_pack_workspace_roots(
             seen_workspace_roots.add(workspace_roots.workspace_root)
 
     if effective_loader is not None:
-        for settings_path in _discovered_pack_settings_paths(repo_root):
+        for settings_path in discover_pack_settings_paths(repo_root):
             if settings_path in seen_settings_paths:
                 continue
             try:
@@ -118,17 +121,6 @@ def pack_routing_table_paths(
         ),
         exclude={"core/workflows/ROUTING_TABLE.md"},
     )
-
-
-def _discovered_pack_settings_paths(repo_root: Path) -> tuple[str, ...]:
-    return tuple(
-        sorted(
-            path.relative_to(repo_root).as_posix()
-            for path in repo_root.rglob("pack_settings.json")
-            if path.as_posix().endswith("/.wt/manifests/pack_settings.json")
-        )
-    )
-
 
 def _conventional_relative_paths(repo_root: Path, suffix: str) -> tuple[str, ...]:
     matches: list[str] = []

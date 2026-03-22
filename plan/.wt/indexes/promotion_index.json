@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:13:43Z",
+  "updated_at": "2026-03-22T16:30:08Z",
   "entries": [
     {
       "promotion_id": "promotion.core_copy_forward_operating_mode_documentation.bootstrap_shell",
@@ -153,6 +153,42 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.domain_pack_externalization_portability_proof.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.first_party_root_pack_roots.bootstrap_shell",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "initiative_title": "First-Party Root Pack Roots",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/first_party_root_pack_roots",
+      "candidate_count": 3,
+      "candidate_paths": [
+        "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+        "plan/initiatives/first_party_root_pack_roots/design_record.md",
+        "plan/initiatives/first_party_root_pack_roots/implementation_slice.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-22T16:30:08Z",
+      "target_paths": [
+        "plan/docs/decisions/first_party_root_pack_roots_design_record.md",
+        "plan/docs/patterns/first_party_root_pack_roots_implementation_slice.md",
+        "plan/docs/references/first_party_root_pack_roots_initiative_brief.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.first_party_root_pack_roots.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

@@ -4,6 +4,10 @@ from pathlib import Path
 
 import pytest
 
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from tests.unit.control_plane_loader_test_support import (
     REPO_ROOT,
     copy_validation_repo_subset,
@@ -16,6 +20,7 @@ from watchtower_core.control_plane.loader import (
 )
 from watchtower_core.control_plane.models import PackRegistry, PackRuntimeManifest, PackSettings
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
+from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
 
 
 def test_control_plane_loader_reads_pack_registry_and_runtime_manifest() -> None:
@@ -77,6 +82,80 @@ def test_control_plane_loader_discovers_repo_local_default_pack_settings_path(
 
     assert loader.default_pack_settings_path() == surfaces["pack_settings_path"]
     assert pack_settings.pack_id == "pack.loader_test"
+
+
+def test_control_plane_loader_prefers_registry_default_pack_settings_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(
+        repo_root / "plan",
+        default_repo_pack=False,
+    )
+    oversight_surfaces = materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+        registry_mode="append",
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    assert loader.default_pack_settings_path() == oversight_surfaces["pack_settings_path"]
+
+
+def test_control_plane_loader_fallback_prefers_root_pack_before_nested_pack(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    plan_surfaces = materialize_pack_validation_suite(
+        repo_root / "plan",
+        default_repo_pack=False,
+    )
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    assert loader.default_pack_settings_path() == plan_surfaces["pack_settings_path"]
+
+
+def test_pack_workspace_root_discovery_prefers_root_pack_paths_before_nested_paths(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    materialize_pack_validation_suite(
+        repo_root / "plan",
+        default_repo_pack=False,
+    )
+    materialize_pack_validation_suite(
+        repo_root / "packs" / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=False,
+        registry_mode="append",
+    )
+    (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").unlink()
+
+    roots = discover_pack_workspace_roots(repo_root)
+
+    assert tuple(root.workspace_root for root in roots) == ("plan", "packs/oversight")
 
 
 def test_control_plane_loader_falls_back_to_core_shared_pack_settings_without_pack_root(

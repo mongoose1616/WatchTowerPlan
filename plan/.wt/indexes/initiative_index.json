@@ -242,6 +242,50 @@
       ]
     },
     {
+      "trace_id": "trace.first_party_root_pack_roots",
+      "title": "First-Party Root Pack Roots",
+      "summary": "Implement first-party root-pack discovery and default-pack resolution so copied repositories can host packs at <slug>/ without donor assumptions.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-22T16:30:08Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/first_party_root_pack_roots/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/first_party_root_pack_roots/summary.md",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "slug": "first_party_root_pack_roots",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/first_party_root_pack_roots/design_record.md",
+        "plan/initiatives/first_party_root_pack_roots/implementation_slice.md",
+        "plan/initiatives/first_party_root_pack_roots/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.first_party_root_pack_roots.bootstrap_first_party_root_pack_roots"
+      ],
+      "evidence_ids": [
+        "evidence.first_party_root_pack_roots.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-22T16:30:08Z",
+      "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction.",
+      "related_paths": [
+        "plan/initiatives/first_party_root_pack_roots/initiative_brief.md",
+        "plan/initiatives/first_party_root_pack_roots/design_record.md",
+        "plan/initiatives/first_party_root_pack_roots/implementation_slice.md",
+        "plan/initiatives/first_party_root_pack_roots/.wt/initiative.json",
+        "plan/initiatives/first_party_root_pack_roots/.wt/tasks/bootstrap_first_party_root_pack_roots/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.hosted_pack_parity_scaffold_and_plan_runtime_flattening",
       "title": "Hosted Pack Parity, Scaffolding, and Plan Runtime Flattening",
       "summary": "Brings WatchTowerOversight to host-layer parity, turns pack starter templates into scaffoldable operator surfaces, and flattens remaining plan runtime adapters.",

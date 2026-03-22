@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-22T16:13:43Z",
+  "updated_at": "2026-03-22T16:30:08Z",
   "entries": [
     {
       "evidence_id": "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle",
@@ -120,6 +120,35 @@
         "plan/initiatives/domain_pack_externalization_portability_proof/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T01:25:24Z"
+    },
+    {
+      "evidence_id": "evidence.first_party_root_pack_roots.bootstrap_validation_bundle",
+      "initiative_id": "initiative.first_party_root_pack_roots",
+      "trace_id": "trace.first_party_root_pack_roots",
+      "initiative_title": "First-Party Root Pack Roots",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/first_party_root_pack_roots",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/first_party_root_pack_roots/.wt/discrepancies",
+        "plan/initiatives/first_party_root_pack_roots/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-22T16:30:08Z"
     },
     {
       "evidence_id": "evidence.hosted_pack_parity_scaffold_and_plan_runtime_flattening.bootstrap_validation_bundle",
