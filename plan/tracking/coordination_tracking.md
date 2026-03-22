@@ -17,7 +17,7 @@
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json) | `trace.command_latency_reduction_using_runtime_telemetry` | `ready` | `high` | `repository_maintainer` |
+| [task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json) | `trace.command_latency_reduction_using_runtime_telemetry` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +28,4 @@
 | `trace.core_copy_forward_operating_mode_documentation` | `completed` | `2026-03-22T16:13:43Z` | [plan.md](/plan/initiatives/core_copy_forward_operating_mode_documentation/plan.md) |
 | `trace.core_shared_language_deplanification` | `completed` | `2026-03-22T15:17:46Z` | [plan.md](/plan/initiatives/core_shared_language_deplanification/plan.md) |
 
-_Updated At: `2026-03-22T18:57:43Z`_
+_Updated At: `2026-03-22T19:10:50Z`_

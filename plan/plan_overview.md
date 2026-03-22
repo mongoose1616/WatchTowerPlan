@@ -13,7 +13,7 @@
 - None.
 
 ## Blocked or Attention-Needed Items
-- Actionable task `task.command_latency_reduction_using_runtime_telemetry.capture_latency_baseline_and_hotspot_inventory` (high) in `trace.command_latency_reduction_using_runtime_telemetry` -> `plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/capture_latency_baseline_and_hotspot_inventory/task.json`
+- Actionable task `task.command_latency_reduction_using_runtime_telemetry.reduce_plan_command_latency` (high) in `trace.command_latency_reduction_using_runtime_telemetry` -> `plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_plan_command_latency/task.json`
 
 ## Recent Completions or Changes
 - `trace.runtime_telemetry_and_command_observability_foundation`: Runtime Telemetry And Command Observability Foundation (`completed` at `2026-03-22T18:49:35Z`) - Delivered runtime telemetry across host, reusable core, and plan command paths and validated the tranche.
