@@ -7,15 +7,15 @@ from shutil import copytree
 import pytest
 from watchtower_plan.closeout import TracePurgeService
 from watchtower_plan.sync.all import AllSyncRecord, AllSyncResult
+from watchtower_plan.testing.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
 from watchtower_plan.workspace.constants import (
     PLAN_INITIATIVE_INDEX_PATH,
     PLAN_TASK_INDEX_PATH,
 )
 
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
 from watchtower_core.control_plane.loader import (
     TRACE_PURGE_RECORD_DIRECTORY,
     TRACEABILITY_INDEX_PATH,

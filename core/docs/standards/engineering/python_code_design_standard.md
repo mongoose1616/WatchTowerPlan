@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_code_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-23T20:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines the local design philosophy, naming rules, and consolidati
 Keep the Python workspace coherent, explicit, and easy to maintain by giving contributors one authoritative rule set for module shape, naming, typing, documentation, testing, and reusable-core extraction.
 
 ## Scope
-- Applies to Python package code under `core/python/src/watchtower_core/`, `core/python/src/watchtower_host/`, and pack-owned package roots such as `<pack-root>/python/src/watchtower_<pack>/`, workspace tests under `core/python/tests/`, and the package-facing docs that describe those code boundaries.
+- Applies to Python package code under `core/python/src/watchtower_core/`, `core/python/src/watchtower_host/`, and pack-owned package roots such as `<pack-root>/python/src/watchtower_<pack>/`, shared workspace tests under `core/python/tests/`, pack-owned tests under `<pack-root>/python/tests/`, and the package-facing docs that describe those code boundaries.
 - Covers module responsibilities, boundary placement, naming, typing posture, docstrings, tests, and how to reduce sprawl or duplication.
 - Does not redefine workspace bootstrap, dependency management, or repository-wide git process rules that already belong to narrower or broader standards.
 
@@ -86,6 +86,9 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Write tests around observable behavior. Use unit tests for narrow helpers and integration tests for repo-local orchestration, loader behavior, pack materialization, or multi-surface sync flows.
 - Keep fixtures local and explicit. Prefer a small helper or fixture near the tests that need it over a broad hidden fixture tree.
 - Do not let `tests/unit/` grow back into a repo-bootstrap suite. Tests that need `tests.fixture_repo_support`, pack materialization, initiative bootstrap, governed-doc copying, sync orchestration, or closeout flows belong in `tests/integration/`.
+- Do not let `core/python/tests/` become a pack-owned test suite. Tests there must stay pack-neutral: if a test needs to import `watchtower_<pack>` directly, move it under the owning pack root such as `<pack-root>/python/tests/`.
+- When shared-core tests need pack context, load it through synthetic fixture packs, pack manifests, or typed loader/runtime seams instead of importing the live hosted pack package directly.
+- Do not bind shared-core tests to the live current-repository pack workspace just because it is convenient. A direct dependency on `plan/` as the active hosted-pack workspace is a sign that the test belongs under the owning pack root or needs synthetic fixture-pack setup instead.
 
 ## Structure or Data Model
 ### Python boundary checkpoints
@@ -113,6 +116,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Reviewers should reject stateful helper classes whose behavior could be expressed as pure functions without losing boundary clarity.
 - The narrowest meaningful `uv run pytest ...`, `uv run ruff check ...`, and `uv run mypy ...` commands should be run for touched Python surfaces.
 - Reviewers should reject new unit tests that import repo fixture helpers or otherwise require pack materialization to run.
+- Reviewers should reject new `core/python/tests/**` imports of `watchtower_<pack>` or `watchtower_<pack>.testing`.
 
 ## Change Control
 - Update this standard when the repository's Python boundary taxonomy, naming rules, docstring posture, or consolidation rules change materially.
@@ -139,4 +143,4 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Composition, pure functions, and pragmatic exceptions are preferred here because they strengthen testability and boundary clarity, not because they are universal rules for every code base.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-23T20:10:00Z`

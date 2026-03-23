@@ -2,15 +2,60 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from shutil import copytree
 
 import pytest
+from watchtower_plan.tasks import lifecycle as task_lifecycle_module
+from watchtower_plan.testing.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_governed_applies_to_targets,
+    materialize_minimal_plan_pack,
+)
 
-from tests.integration import test_task_lifecycle as task_lifecycle_cases
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_host.cli.main import main
 
-CAPTURE_TRACE_ID = task_lifecycle_cases.CAPTURE_TRACE_ID
-task_lifecycle_capture_baseline = task_lifecycle_cases.task_lifecycle_capture_baseline
-task_lifecycle_capture_repo = task_lifecycle_cases.task_lifecycle_capture_repo
+REPO_ROOT = Path(__file__).resolve().parents[4]
+CAPTURE_TRACE_ID = "trace.task_lifecycle_capture"
+
+
+def _build_fixture_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core" / "python").mkdir(parents=True)
+    (repo_root / "core" / "python" / "tests" / "unit").mkdir(parents=True, exist_ok=True)
+    materialize_minimal_plan_pack(repo_root, REPO_ROOT)
+    materialize_governed_applies_to_targets(repo_root, REPO_ROOT)
+    loader = ControlPlaneLoader(repo_root)
+    task_lifecycle_module.PlanWorkspaceService(loader).sync(write=True)
+    task_lifecycle_module.CoordinationSyncService(loader).run(write=True)
+    return repo_root
+
+
+def _bootstrap_trace(repo_root: Path, trace_id: str) -> None:
+    bootstrap_packwide_initiative(
+        repo_root,
+        trace_id=trace_id,
+        title=f"{trace_id} Fixture",
+        summary="Seeds one live initiative package for runtime telemetry integration coverage.",
+        approve=False,
+    )
+
+
+@pytest.fixture(scope="module")
+def task_lifecycle_capture_baseline(
+    tmp_path_factory: pytest.TempPathFactory,
+) -> Path:
+    repo_root = _build_fixture_repo(tmp_path_factory.mktemp("task_lifecycle_capture_baseline"))
+    _bootstrap_trace(repo_root, CAPTURE_TRACE_ID)
+    return repo_root
+
+
+@pytest.fixture
+def task_lifecycle_capture_repo(tmp_path: Path, task_lifecycle_capture_baseline: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(task_lifecycle_capture_baseline, repo_root)
+    return repo_root
 
 
 def _load_telemetry_records(output_dir: Path) -> list[dict[str, object]]:

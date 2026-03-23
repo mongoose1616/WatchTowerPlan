@@ -7,6 +7,8 @@ from shutil import copytree
 from tempfile import mkdtemp
 
 import pytest
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_plan.initiatives import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
@@ -24,12 +26,10 @@ from watchtower_plan.tasks import (
     TaskCreateParams,
     TaskLifecycleService,
 )
+from watchtower_plan.testing.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
-from tests.fixture_repo_support import materialize_minimal_plan_pack
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-
-REPO_ROOT = Path(__file__).resolve().parents[4]
+REPO_ROOT = Path(__file__).resolve().parents[5]
 INITIATIVE_SLUG = "unit_test_plan_workspace"
 TRACE_ID = f"trace.{INITIATIVE_SLUG}"
 UPDATED_AT = "2026-03-17T15:30:00Z"

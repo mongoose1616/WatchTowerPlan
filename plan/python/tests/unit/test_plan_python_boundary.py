@@ -26,10 +26,9 @@ from watchtower_core.validation.all import ValidationAllService
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
 from watchtower_host.cli.command_index import CommandIndexSyncService
 
-CORE_PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
-PLAN_PACKAGE_ROOT = (
-    Path(__file__).resolve().parents[3] / "plan" / "python" / "src" / "watchtower_plan"
-)
+REPO_ROOT = Path(__file__).resolve().parents[4]
+CORE_PACKAGE_ROOT = REPO_ROOT / "core" / "python" / "src" / "watchtower_core"
+PLAN_PACKAGE_ROOT = REPO_ROOT / "plan" / "python" / "src" / "watchtower_plan"
 
 
 def _iter_import_modules(package_root: Path) -> list[tuple[str, str]]:

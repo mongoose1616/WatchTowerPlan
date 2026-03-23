@@ -8,14 +8,14 @@ import pytest
 from watchtower_plan.initiatives import InitiativeTaskSpec
 from watchtower_plan.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 from watchtower_plan.tasks import update_task_document
-from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
-
-from tests.fixture_repo_support import (
+from watchtower_plan.testing.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_governed_applies_to_targets,
     materialize_minimal_plan_pack,
     packwide_initiative_root,
 )
+from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.integrations.github import GitHubApiError, GitHubIssueRef, GitHubProjectContext
 

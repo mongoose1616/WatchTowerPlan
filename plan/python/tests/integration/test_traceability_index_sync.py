@@ -10,11 +10,11 @@ from watchtower_plan.initiatives import (
     InitiativeTaskSpec,
 )
 from watchtower_plan.sync import TraceabilityIndexSyncService
-from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
-
-from tests.fixture_repo_support import (
+from watchtower_plan.testing.fixture_repo_support import (
     materialize_minimal_plan_pack,
 )
+from watchtower_plan.workspace.constants import PLAN_TASK_INDEX_PATH
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

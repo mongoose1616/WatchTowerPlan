@@ -7,4 +7,4 @@
 | Path | Description |
 |---|---|
 | `core/python/tests/fixtures/README.md` | Describes the purpose of the Python test-fixtures directory. |
-| `core/python/tests/fixtures/packs/plan/` | Source fixture pack used to materialize a `plan` pack into temporary repos for validation-suite tests. |
+| `core/python/tests/fixtures/packs/plan/` | Source synthetic fixture pack used to materialize temporary hosted-pack repos for shared-core validation scenarios. The current internal pack provides the fixture content, but tests should treat this as fixture data rather than as a required live-pack import contract. |

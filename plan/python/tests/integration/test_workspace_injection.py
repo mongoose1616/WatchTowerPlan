@@ -3,7 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from tests.fixture_repo_support import materialize_governed_applies_to_targets
+from watchtower_plan.testing.fixture_repo_support import materialize_governed_applies_to_targets
+
 from watchtower_core.control_plane import ControlPlaneLoader, SchemaStore, WorkspaceConfig
 from watchtower_core.evidence import ValidationEvidenceRecorder
 from watchtower_core.validation import ArtifactValidationService, ValidationResult

@@ -9,11 +9,11 @@ from textwrap import dedent
 from typing import Any
 
 import pytest
-
-from tests.fixture_repo_support import (
+from watchtower_plan.testing.fixture_repo_support import (
     materialize_acceptance_and_evidence_paths,
     materialize_minimal_plan_pack,
 )
+
 from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )

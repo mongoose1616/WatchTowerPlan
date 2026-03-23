@@ -7,6 +7,12 @@ from shutil import copytree
 from tempfile import mkdtemp
 
 import pytest
+
+from watchtower_core.adapters.front_matter import load_front_matter
+from watchtower_core.control_plane import DocumentationFamilyHelper
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.query.rendered_search import RenderedSearchFilters
+from watchtower_core.validation.artifact import ArtifactValidationService
 from watchtower_plan.initiatives import (
     DeferredItemSpec,
     InitiativeBootstrapParams,
@@ -15,6 +21,10 @@ from watchtower_plan.initiatives import (
 )
 from watchtower_plan.promotion import GuidancePromotionService
 from watchtower_plan.query import ArtifactQueryService, ArtifactSearchParams
+from watchtower_plan.testing.fixture_repo_support import (
+    materialize_governed_applies_to_targets,
+    materialize_minimal_plan_pack,
+)
 from watchtower_plan.workspace.artifacts import PLAN_ARTIFACT_INDEX_PATH
 from watchtower_plan.workspace.constants import (
     PLAN_CLOSEOUT_INDEX_PATH,
@@ -39,17 +49,7 @@ from watchtower_plan.workspace.models import (
 )
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
-from tests.fixture_repo_support import (
-    materialize_governed_applies_to_targets,
-    materialize_minimal_plan_pack,
-)
-from watchtower_core.adapters.front_matter import load_front_matter
-from watchtower_core.control_plane import DocumentationFamilyHelper
-from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.query.rendered_search import RenderedSearchFilters
-from watchtower_core.validation.artifact import ArtifactValidationService
-
-REPO_ROOT = Path(__file__).resolve().parents[4]
+REPO_ROOT = Path(__file__).resolve().parents[5]
 
 
 @lru_cache(maxsize=1)

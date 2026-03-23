@@ -7,6 +7,14 @@ from shutil import copytree
 import pytest
 from watchtower_plan.closeout import InitiativeCloseoutService
 from watchtower_plan.sync.coordination import CoordinationSyncService
+from watchtower_plan.testing.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_acceptance_and_evidence_paths,
+    materialize_minimal_plan_pack,
+)
+from watchtower_plan.testing.initiative_package_integration_cases import (
+    test_packwide_terminal_closeout_updates_local_artifacts_and_terminal_state,
+)
 from watchtower_plan.workspace.constants import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
 )
@@ -17,14 +25,6 @@ from watchtower_plan.workspace.constants import (
     PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
 
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_acceptance_and_evidence_paths,
-    materialize_minimal_plan_pack,
-)
-from tests.integration.initiative_package_integration_cases import (
-    test_packwide_terminal_closeout_updates_local_artifacts_and_terminal_state,
-)
 from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,

@@ -17,12 +17,12 @@ from watchtower_plan.tasks import (
     TaskTransitionParams,
     TaskUpdateParams,
 )
-
-from tests.fixture_repo_support import (
+from watchtower_plan.testing.fixture_repo_support import (
     bootstrap_packwide_initiative,
     materialize_governed_applies_to_targets,
     materialize_minimal_plan_pack,
 )
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

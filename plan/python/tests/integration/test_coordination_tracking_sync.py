@@ -10,8 +10,8 @@ from watchtower_plan.sync.coordination_tracking import (
     RECENT_CLOSEOUT_LIMIT,
     CoordinationTrackingSyncService,
 )
+from watchtower_plan.testing.fixture_repo_support import materialize_minimal_plan_pack
 
-from tests.fixture_repo_support import materialize_minimal_plan_pack
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

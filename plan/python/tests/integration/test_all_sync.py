@@ -12,6 +12,10 @@ from watchtower_plan.sync.registry import (
     SYNC_TARGET_SPECS,
     sync_target_specs_for_group,
 )
+from watchtower_plan.testing.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
 from watchtower_plan.workspace.constants import (
     PLAN_COORDINATION_INDEX_PATH as COORDINATION_INDEX_PATH,
 )
@@ -22,10 +26,6 @@ from watchtower_plan.workspace.constants import (
     PLAN_TASK_INDEX_PATH as TASK_INDEX_PATH,
 )
 
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
 from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
 from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,

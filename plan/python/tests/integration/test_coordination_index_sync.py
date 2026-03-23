@@ -12,15 +12,15 @@ from watchtower_plan.query.coordination import (
 )
 from watchtower_plan.sync.coordination_index import CoordinationIndexSyncService
 from watchtower_plan.tasks import TaskLifecycleService, TaskUpdateParams
+from watchtower_plan.testing.fixture_repo_support import (
+    bootstrap_packwide_initiative,
+    materialize_minimal_plan_pack,
+)
 from watchtower_plan.workspace.constants import (
     PLAN_COORDINATION_INDEX_PATH,
     PLAN_INITIATIVE_INDEX_PATH,
 )
 
-from tests.fixture_repo_support import (
-    bootstrap_packwide_initiative,
-    materialize_minimal_plan_pack,
-)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

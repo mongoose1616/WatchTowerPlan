@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:45:00Z"
+updated_at: "2026-03-23T20:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -63,8 +63,12 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Install pack-owned packages through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_<pack>` or other hosted pack packages.
 - Treat downstream repositories that copy `core/` as a supported operating mode. Shared workspace docs may use the current internal pack as an example in this repository, but the hosted-pack dependency set and local editable source paths remain repo-local configuration that must match the packs actually present in the consuming repository.
 - During copied-core bring-up, host composition may load a selected pack integration directly from the declared pack-owned `<python_root>/src` path when workspace registration is not present yet. That bootstrap path is bounded runtime compatibility only; it does not replace the requirement to persist shared `core/python/pyproject.toml` registration once the pack is integrated.
-- Keep tests under `core/python/tests/`.
-- Keep the fast default suite under `core/python/tests/unit/` and repository-aware orchestration coverage under `core/python/tests/integration/`.
+- Keep shared pack-neutral tests under `core/python/tests/`.
+- Keep the fast default shared suite under `core/python/tests/unit/` and shared repository-aware orchestration coverage under `core/python/tests/integration/`.
+- Keep pack-owned tests under the owning pack root such as `<pack-root>/python/tests/`.
+- Do not keep tests that import `watchtower_<pack>` directly under `core/python/tests/`; those belong under the owning pack root.
+- When shared-core tests need pack context, use synthetic fixture packs or typed loader/runtime seams instead of direct imports of a live hosted pack package.
+- Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because `plan/` exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
@@ -89,7 +93,8 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/` | Required | Canonical reusable-core package root. |
 | `core/python/src/watchtower_host/` | Required for host composition | Canonical host-owned CLI and pack-composition package root. |
 | `<pack-root>/python/src/watchtower_<pack>/` | Required for each hosted pack Python surface | Pack-owned package root, installed through the shared workspace as a local editable dependency. |
-| `core/python/tests/` | Required | Canonical Python test root. |
+| `core/python/tests/` | Required | Canonical shared pack-neutral Python test root. |
+| `<pack-root>/python/tests/` | Required when the pack owns Python behavior | Pack-owned test root for direct `watchtower_<pack>` coverage. |
 
 ### Package layout
 | Path | Role |
@@ -139,8 +144,9 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `core/python/.venv/` should be reproducible from `uv sync --extra dev`.
 - Python source should be importable through the canonical package path.
 - Reusable-core packages should remain clean under the stricter `mypy` override declared in `core/python/pyproject.toml`, including `adapters/`, `validation/`, `control_plane/`, `query/`, `sync/`, `rebuild/`, `routing/`, `workflow_execution/`, `evidence/`, and `utils/`.
-- `uv run pytest -q`, `uv run ruff check .`, and `uv run mypy src` should be the default narrow validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
-- `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad Python test pass before closeout when repository-aware integration behavior changed.
+- `uv run pytest -q`, `uv run ruff check .`, and `uv run mypy src` should be the default narrow validation entrypoints for normal shared Python workspace work unless a narrower command is more appropriate.
+- `./.venv/bin/python -m pytest tests/unit tests/integration -q` should be the explicit broad shared-core Python test pass before closeout when repository-aware integration behavior changed.
+- `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` should be the pack-owned Python test pass when a change touches one hosted pack directly.
 - `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
 - Reviewers should reject shared-workspace guidance or metadata changes that make the donor repository's hosted-pack set look like a reusable-core invariant instead of current-repository configuration.
 - Reviewers should reject unapproved parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/` and approved pack-owned boundaries.
@@ -161,7 +167,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 
 ## Notes
 - This standard intentionally keeps the shared Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
-- The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/`.
+- The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-03-22T23:45:00Z`
+- `2026-03-23T20:10:00Z`
