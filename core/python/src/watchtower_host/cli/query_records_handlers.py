@@ -8,6 +8,7 @@ from watchtower_core.cli.handler_common import (
     _emit_collection_query_results,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import AcceptanceContract, ValidationEvidenceArtifact
 from watchtower_core.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
@@ -59,7 +60,7 @@ def _run_query_evidence(args: argparse.Namespace) -> int:
     )
 
 
-def _acceptance_contract_entry_payload(entry: object) -> dict[str, object]:
+def _acceptance_contract_entry_payload(entry: AcceptanceContract) -> dict[str, object]:
     return {
         "contract_id": entry.contract_id,
         "title": entry.title,
@@ -78,14 +79,14 @@ def _acceptance_contract_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_acceptance_contract_entry(entry: object) -> None:
+def _print_acceptance_contract_entry(entry: AcceptanceContract) -> None:
     print(f"- {entry.contract_id} [{entry.status}]")
     print(f"  Trace: {entry.trace_id}")
     print(f"  Source Surface: {entry.source_surface_path}")
     print(f"  Acceptance IDs: {', '.join(item.acceptance_id for item in entry.entries)}")
 
 
-def _evidence_entry_payload(entry: object) -> dict[str, object]:
+def _evidence_entry_payload(entry: ValidationEvidenceArtifact) -> dict[str, object]:
     return {
         "evidence_id": entry.evidence_id,
         "title": entry.title,
@@ -107,7 +108,7 @@ def _evidence_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_evidence_entry(entry: object) -> None:
+def _print_evidence_entry(entry: ValidationEvidenceArtifact) -> None:
     print(f"- {entry.evidence_id} [{entry.overall_result}]")
     print(f"  Trace: {entry.trace_id}")
     print(f"  Recorded At: {entry.recorded_at}")

@@ -40,7 +40,7 @@ uv run watchtower-core pack validate --format json
 
 ```sh
 cd core/python
-uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/manifests/pack_settings.json --format json
+uv run watchtower-core pack validate --pack-settings-path oversight/.wt/manifests/pack_settings.json --format json
 ```
 
 ## Behavior and Outputs
@@ -51,6 +51,7 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 - Fails closed when the pack-owned namespace command page is missing from the pack docs root, when a declared owned root is missing from the repository tree, or when pack manifests use non-portable absolute or traversing paths.
 - Fails closed when the shared `core/python` workspace is missing the pack distribution in optional dev dependencies or the pack python root in `tool.uv.sources`.
 - When a copied-core repository contains a valid local pack that has not been bootstrapped yet, validation reports structured findings such as missing shared registry or workspace wiring instead of crashing or hiding the pack entirely.
+- The same validation flow works for first-party root packs and nested multi-pack roots; the pack settings path does not need to live under `packs/` specifically.
 
 ## Related Commands
 | Command | Relationship |
@@ -68,4 +69,4 @@ uv run watchtower-core pack validate --pack-settings-path packs/oversight/.wt/ma
 - `core/python/src/watchtower_core/pack_integration/runtime_registry.py`
 
 ## Updated At
-- `2026-03-22T23:45:00Z`
+- `2026-03-23T01:55:00Z`

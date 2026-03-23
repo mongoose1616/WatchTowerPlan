@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-23T01:24:34Z",
+  "updated_at": "2026-03-23T01:51:41Z",
   "entries": [
     {
       "promotion_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
@@ -153,6 +153,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.core_portability_followup_root_pack_and_query_typing.bootstrap_shell",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/core_portability_followup_root_pack_and_query_typing",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-23T01:51:41Z",
+      "target_paths": [
+        "plan/docs/decisions/core_portability_followup_root_pack_and_query_typing_design_record.md",
+        "plan/docs/patterns/core_portability_followup_root_pack_and_query_typing_implementation_slice.md",
+        "plan/docs/references/core_portability_followup_root_pack_and_query_typing_initiative_brief.md",
+        "plan/docs/standards/governance/core_portability_followup_root_pack_and_query_typing_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.core_portability_followup_root_pack_and_query_typing.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

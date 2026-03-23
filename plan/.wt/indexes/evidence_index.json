@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-23T01:24:34Z",
+  "updated_at": "2026-03-23T01:51:41Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -120,6 +120,35 @@
         "plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "evidence_id": "evidence.core_portability_followup_root_pack_and_query_typing.bootstrap_validation_bundle",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/core_portability_followup_root_pack_and_query_typing",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/discrepancies",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-23T01:51:41Z"
     },
     {
       "evidence_id": "evidence.core_removable_plan_reference_cleanup.bootstrap_validation_bundle",

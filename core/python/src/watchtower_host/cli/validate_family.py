@@ -98,7 +98,7 @@ def register_validate_family(
             "uv run watchtower-core validate all --skip-front-matter "
             "--skip-document-semantics --skip-artifacts",
             "uv run watchtower-core validate all --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --format json",
+            "oversight/.wt/manifests/pack_settings.json --format json",
         ),
         formatter_class=HelpFormatter,
     )

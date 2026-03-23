@@ -381,7 +381,7 @@ def test_pack_scaffold_supports_json_output(
             "--pack-slug",
             "oversight",
             "--pack-root",
-            "packs/oversight",
+            "oversight",
             "--command-namespace",
             "oversight",
             "--domain-root",
@@ -398,24 +398,24 @@ def test_pack_scaffold_supports_json_output(
     assert payload["command"] == "watchtower-core pack scaffold"
     assert payload["pack_slug"] == "oversight"
     assert payload["command_namespace"] == "oversight"
-    assert payload["pack_settings_path"] == "packs/oversight/.wt/manifests/pack_settings.json"
+    assert payload["pack_settings_path"] == "oversight/.wt/manifests/pack_settings.json"
     assert (
         payload["pack_runtime_manifest_path"]
-        == "packs/oversight/.wt/manifests/pack_runtime_manifest.json"
+        == "oversight/.wt/manifests/pack_runtime_manifest.json"
     )
     assert payload["pack_registry_entry"]["pack_slug"] == "oversight"
     assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
     assert (
         payload["core_python_workspace_registration"]["uv_source"]["path"]
-        == "../../packs/oversight/python"
+        == "../../oversight/python"
     )
     created_paths = set(payload["created_paths"])
-    assert "packs/oversight/.wt/manifests/pack_settings.json" in created_paths
-    assert "packs/oversight/.wt/registries/schema_catalog.json" in created_paths
-    assert "packs/oversight/python/pyproject.toml" in created_paths
-    assert "packs/oversight/docs/commands/core_python/watchtower_core_oversight.md" in created_paths
-    assert "packs/oversight/reviews/README.md" in created_paths
-    assert "packs/oversight/assessments/README.md" in created_paths
+    assert "oversight/.wt/manifests/pack_settings.json" in created_paths
+    assert "oversight/.wt/registries/schema_catalog.json" in created_paths
+    assert "oversight/python/pyproject.toml" in created_paths
+    assert "oversight/docs/commands/core_python/watchtower_core_oversight.md" in created_paths
+    assert "oversight/reviews/README.md" in created_paths
+    assert "oversight/assessments/README.md" in created_paths
 
 
 def test_pack_bootstrap_supports_json_dry_run(
@@ -434,7 +434,7 @@ def test_pack_bootstrap_supports_json_dry_run(
             "--pack-slug",
             "oversight",
             "--pack-root",
-            "packs/oversight",
+            "oversight",
             "--format",
             "json",
         ]
@@ -447,7 +447,7 @@ def test_pack_bootstrap_supports_json_dry_run(
             "pack",
             "bootstrap",
             "--pack-settings-path",
-            "packs/oversight/.wt/manifests/pack_settings.json",
+            "oversight/.wt/manifests/pack_settings.json",
             "--format",
             "json",
         ]
@@ -490,7 +490,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
             "--pack-slug",
             "oversight",
             "--pack-root",
-            "packs/oversight",
+            "oversight",
             "--domain-root",
             "reviews",
             "--format",
@@ -505,7 +505,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
             "pack",
             "bootstrap",
             "--pack-settings-path",
-            "packs/oversight/.wt/manifests/pack_settings.json",
+            "oversight/.wt/manifests/pack_settings.json",
             "--write",
             "--no-sync-workspace",
             "--format",
@@ -523,7 +523,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     assert payload["core_python_workspace_registration"]["dependency"] == "watchtower-oversight"
     assert (
         payload["core_python_workspace_registration"]["uv_source"]["path"]
-        == "../../packs/oversight/python"
+        == "../../oversight/python"
     )
     assert payload["next_steps"] == [
         (
@@ -532,7 +532,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
         ),
         (
             "Run watchtower-core pack validate --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --format json after the "
+            "oversight/.wt/manifests/pack_settings.json --format json after the "
             "workspace sync completes."
         ),
     ]
@@ -549,7 +549,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     )
     assert "watchtower-oversight" in pyproject["project"]["optional-dependencies"]["dev"]
     assert pyproject["tool"]["uv"]["sources"]["watchtower-oversight"] == {
-        "path": "../../packs/oversight/python",
+        "path": "../../oversight/python",
         "editable": True,
     }
 

@@ -253,6 +253,63 @@
       ]
     },
     {
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "title": "Core Portability Follow-up Root Pack And Query Typing",
+      "summary": "Cleans up copied-core portability debt in shared help, command docs, tests, and host query typing without changing WatchTowerPlan's current steady-state plan workspace contract.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-23T01:51:41Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/summary.md",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "slug": "core_portability_followup_root_pack_and_query_typing",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_portability_followup_root_pack_and_query_typing.align_shared_core_tests_with_root_pack_defaults",
+        "task.core_portability_followup_root_pack_and_query_typing.bootstrap_core_portability_follow_up_root_pack_and_query_typing",
+        "task.core_portability_followup_root_pack_and_query_typing.clear_host_query_type_backlog_and_validate",
+        "task.core_portability_followup_root_pack_and_query_typing.refresh_root_pack_help_and_docs"
+      ],
+      "evidence_ids": [
+        "evidence.core_portability_followup_root_pack_and_query_typing.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-23T01:51:41Z",
+      "closure_reason": "Updated shared core to present first-party root packs as the default example topology, aligned generic portability tests with root-pack defaults, and cleared the remaining host query mypy backlog.",
+      "related_paths": [
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/initiative_brief.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/design_record.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/implementation_slice.md",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/decision_notes.md",
+        "core/docs/commands/core_python/",
+        "core/docs/references/domain_pack_authoring_reference.md",
+        "core/python/README.md",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/initiative.json",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/align_shared_core_tests_with_root_pack_defaults/task.json",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/bootstrap_core_portability_follow_up_root_pack_and_query_typing/task.json",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/clear_host_query_type_backlog_and_validate_slice/task.json",
+        "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/refresh_root_pack_help_and_docs/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_removable_plan_reference_cleanup",
       "title": "Core Removable Plan Reference Cleanup",
       "summary": "Removes non-essential plan-specific wording and examples from shared core docs, host help, and reusable-core boundaries while preserving only references required by the current repository contract.",

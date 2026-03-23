@@ -6,6 +6,7 @@ import argparse
 
 from watchtower_core.cli.handler_common import _emit_collection_query_results
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import CommandIndexEntry, RepositoryPathEntry
 from watchtower_core.query import (
     CommandQueryService,
     CommandSearchParams,
@@ -60,7 +61,7 @@ def _run_query_commands(args: argparse.Namespace) -> int:
     )
 
 
-def _path_entry_payload(entry: object) -> dict[str, object]:
+def _path_entry_payload(entry: RepositoryPathEntry) -> dict[str, object]:
     return {
         "path": entry.path,
         "kind": entry.kind,
@@ -76,7 +77,7 @@ def _path_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_path_entry(entry: object) -> None:
+def _print_path_entry(entry: RepositoryPathEntry) -> None:
     print(
         f"- {entry.path} "
         f"[{entry.surface_kind}, {entry.maturity}, {entry.priority}, {entry.audience_hint}]"
@@ -84,7 +85,7 @@ def _print_path_entry(entry: object) -> None:
     print(f"  {entry.summary}")
 
 
-def _command_entry_payload(entry: object) -> dict[str, object]:
+def _command_entry_payload(entry: CommandIndexEntry) -> dict[str, object]:
     return {
         "command_id": entry.command_id,
         "command": entry.command,
@@ -101,6 +102,6 @@ def _command_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_command_entry(entry: object) -> None:
+def _print_command_entry(entry: CommandIndexEntry) -> None:
     print(f"- {entry.command} [{entry.kind}]")
     print(f"  {entry.summary}")

@@ -290,18 +290,19 @@ Add new pack-local Python when the behavior is truly domain-specific and does no
 ### Hosted Pack Scaffold Command
 ```sh
 cd core/python
-uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/oversight --domain-root reviews --format json
+uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight --domain-root reviews --format json
 ```
 
 - Use the command when you want the pack-owned starter files plus the exact shared-registry and workspace snippets needed to finish host wiring.
 - The command intentionally does not mutate the shared pack registry or `core/python/pyproject.toml` automatically.
+- Prefer a first-party root pack such as `oversight/` unless the repository is deliberately hosting multiple packs under `packs/<slug>/`.
 - Follow scaffold with `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json`.
 - Use `--no-sync-workspace` only when a test fixture or staged refactor intentionally needs to defer `uv sync` and then run explicit validation afterward.
 
 ### Hosted Pack Bootstrap Command
 ```sh
 cd core/python
-uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/manifests/pack_settings.json --write --format json
+uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json
 ```
 
 - Use the command when you want one guarded operator path to update `pack_registry.json`, `core/python/pyproject.toml`, and immediate pack validation together.

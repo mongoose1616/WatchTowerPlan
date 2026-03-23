@@ -477,6 +477,79 @@
       ]
     },
     {
+      "task_id": "task.core_portability_followup_root_pack_and_query_typing.align_shared_core_tests_with_root_pack_defaults",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Align shared core tests with root pack defaults",
+      "summary": "Moves generic shared-core portability tests to first-party root-pack defaults while preserving explicit externalization coverage.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "validation",
+      "priority": "high",
+      "owner": "implementation_engineer",
+      "doc_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/align_shared_core_tests_with_root_pack_defaults/task.json",
+      "updated_at": "2026-03-23T01:51:21Z",
+      "applies_to": [
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.core_portability_followup_root_pack_and_query_typing.bootstrap_core_portability_follow_up_root_pack_and_query_typing",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Bootstrap Core Portability Follow-up Root Pack And Query Typing",
+      "summary": "Bootstrap Core Portability Follow-up Root Pack And Query Typing live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/bootstrap_core_portability_follow_up_root_pack_and_query_typing/task.json",
+      "updated_at": "2026-03-23T01:51:21Z"
+    },
+    {
+      "task_id": "task.core_portability_followup_root_pack_and_query_typing.clear_host_query_type_backlog_and_validate",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Clear host query type backlog and validate slice",
+      "summary": "Introduces typed helper boundaries for host query handlers and runs the bounded validation gate for the initiative.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "implementation_engineer",
+      "doc_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/clear_host_query_type_backlog_and_validate_slice/task.json",
+      "updated_at": "2026-03-23T01:51:21Z",
+      "applies_to": [
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.core_portability_followup_root_pack_and_query_typing.refresh_root_pack_help_and_docs",
+      "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+      "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
+      "initiative_title": "Core Portability Follow-up Root Pack And Query Typing",
+      "title": "Refresh root pack help and docs",
+      "summary": "Makes shared core help and command docs root-pack-first while keeping externalized packs supported.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "implementation_engineer",
+      "doc_path": "plan/initiatives/core_portability_followup_root_pack_and_query_typing/.wt/tasks/refresh_root_pack_help_and_docs/task.json",
+      "updated_at": "2026-03-23T01:51:21Z",
+      "applies_to": [
+        "core/python/src/watchtower_host/cli/",
+        "core/python/README.md",
+        "core/docs/commands/core_python/",
+        "core/docs/references/domain_pack_authoring_reference.md"
+      ]
+    },
+    {
       "task_id": "task.core_removable_plan_reference_cleanup.bootstrap_core_removable_plan_reference_cleanup",
       "initiative_id": "initiative.core_removable_plan_reference_cleanup",
       "trace_id": "trace.core_removable_plan_reference_cleanup",

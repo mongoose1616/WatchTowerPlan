@@ -111,11 +111,11 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core pack validate --format json" in captured.out
     assert (
         "uv run watchtower-core pack scaffold --pack-slug oversight "
-        "--pack-root packs/oversight --format json" in captured.out
+        "--pack-root oversight --format json" in captured.out
     )
     assert (
         "uv run watchtower-core pack bootstrap --pack-settings-path "
-        "packs/oversight/.wt/manifests/pack_settings.json --write --format json"
+        "oversight/.wt/manifests/pack_settings.json --write --format json"
         in captured.out
     )
     assert 'uv run watchtower-core route preview --request "review code and commit"' in captured.out

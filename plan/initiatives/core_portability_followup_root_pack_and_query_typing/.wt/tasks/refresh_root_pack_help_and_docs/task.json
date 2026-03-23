@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_portability_followup_root_pack_and_query_typing.refresh_root_pack_help_and_docs",
+  "slug": "refresh_root_pack_help_and_docs",
+  "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+  "title": "Refresh root pack help and docs",
+  "summary": "Makes shared core help and command docs root-pack-first while keeping externalized packs supported.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "documentation",
+  "priority": "high",
+  "owner": "implementation_engineer",
+  "created_at": "2026-03-23T01:46:20Z",
+  "updated_at": "2026-03-23T01:51:21Z",
+  "applies_to": [
+    "core/python/src/watchtower_host/cli/",
+    "core/python/README.md",
+    "core/docs/commands/core_python/",
+    "core/docs/references/domain_pack_authoring_reference.md"
+  ],
+  "scope_items": [
+    "Update host CLI help examples and pack-family wording",
+    "Update core-owned pack command docs and authoring reference"
+  ],
+  "done_when_items": [
+    "Shared help no longer implies packs/<slug> is the only supported pack root",
+    "Core-owned docs show first-party root packs as the default example topology"
+  ]
+}

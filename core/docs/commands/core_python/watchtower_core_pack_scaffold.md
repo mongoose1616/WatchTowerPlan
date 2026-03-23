@@ -23,7 +23,7 @@ uv run watchtower-core pack scaffold --pack-slug <pack_slug> --pack-root <repo_r
 
 ## Arguments and Options
 - `--pack-slug <pack_slug>`: Required hosted-pack slug such as `oversight`.
-- `--pack-root <repo_relative_pack_root>`: Required repository-relative pack root such as `packs/oversight`.
+- `--pack-root <repo_relative_pack_root>`: Required repository-relative pack root such as `oversight` or `packs/oversight`.
 - `--command-namespace <namespace>`: Optional namespace override. Defaults to `--pack-slug`.
 - `--python-distribution <distribution>`: Optional distribution override. Defaults to `watchtower-<pack_slug>`.
 - `--python-package <python_package>`: Optional package override. Defaults to `watchtower_<pack_slug>`.
@@ -34,7 +34,7 @@ uv run watchtower-core pack scaffold --pack-slug <pack_slug> --pack-root <repo_r
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/oversight
+uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight
 ```
 
 ```sh
@@ -47,6 +47,7 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 - Fails closed when the requested pack slug, namespace, distribution, or package would collide with an existing hosted pack already declared in the shared pack registry.
 - Does not mutate `core/control_plane/registries/pack_registry.json` or `core/python/pyproject.toml` automatically.
 - Emits the exact shared-registry and shared-workspace registration data that `watchtower-core pack bootstrap` will apply.
+- Supports both first-party root-pack shapes and nested `packs/<slug>` shapes. Use a direct root such as `oversight/` unless you are deliberately hosting the pack beneath a multi-pack directory.
 - After scaffold, use `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json` to register the pack and validate the resulting host wiring.
 
 ## Related Commands
@@ -63,4 +64,4 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 - `core/docs/templates/pack/`
 
 ## Updated At
-- `2026-03-21T23:59:00Z`
+- `2026-03-23T01:55:00Z`

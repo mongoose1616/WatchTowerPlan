@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.core_portability_followup_root_pack_and_query_typing` | Core Portability Follow-up Root Pack And Query Typing | `completed` | [plan.md](/plan/initiatives/core_portability_followup_root_pack_and_query_typing/plan.md) | `2026-03-23T01:51:41Z` | Updated shared core to present first-party root packs as the default example topology, aligned generic portability tests with root-pack defaults, and cleared the remaining host query mypy backlog. |
 | `trace.copy_forward_pack_runtime_hardening` | Copy-Forward Pack Runtime Hardening | `completed` | [plan.md](/plan/initiatives/copy_forward_pack_runtime_hardening/plan.md) | `2026-03-23T01:24:34Z` | Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core. |
 | `trace.core_removable_plan_reference_cleanup` | Core Removable Plan Reference Cleanup | `completed` | [plan.md](/plan/initiatives/core_removable_plan_reference_cleanup/plan.md) | `2026-03-23T00:04:09Z` | Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces. |
 | `trace.root_pack_schema_catalog_contract_alignment` | Root Pack Schema Catalog Contract Alignment | `completed` | [plan.md](/plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md) | `2026-03-22T23:08:32Z` | Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage. |
@@ -29,4 +30,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-23T01:24:34Z`_
+_Updated At: `2026-03-23T01:51:41Z`_

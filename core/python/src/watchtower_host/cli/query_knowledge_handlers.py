@@ -9,6 +9,12 @@ from watchtower_core.cli.handler_common import (
     _print_reference_usage_summary,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import (
+    FoundationIndexEntry,
+    ReferenceIndexEntry,
+    StandardIndexEntry,
+    WorkflowIndexEntry,
+)
 from watchtower_core.query import (
     FoundationQueryService,
     FoundationSearchParams,
@@ -127,7 +133,7 @@ def _run_query_standards(args: argparse.Namespace) -> int:
     )
 
 
-def _foundation_entry_payload(entry: object) -> dict[str, object]:
+def _foundation_entry_payload(entry: FoundationIndexEntry) -> dict[str, object]:
     return {
         "foundation_id": entry.foundation_id,
         "title": entry.title,
@@ -150,7 +156,7 @@ def _foundation_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_foundation_entry(entry: object) -> None:
+def _print_foundation_entry(entry: FoundationIndexEntry) -> None:
     print(f"- {entry.foundation_id} [{entry.authority}, {entry.audience}]")
     print(f"  {entry.title}")
     print(f"  {entry.summary}")
@@ -159,7 +165,7 @@ def _print_foundation_entry(entry: object) -> None:
     )
 
 
-def _workflow_entry_payload(entry: object) -> dict[str, object]:
+def _workflow_entry_payload(entry: WorkflowIndexEntry) -> dict[str, object]:
     return {
         "workflow_id": entry.workflow_id,
         "title": entry.title,
@@ -182,7 +188,7 @@ def _workflow_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_workflow_entry(entry: object) -> None:
+def _print_workflow_entry(entry: WorkflowIndexEntry) -> None:
     _print_reference_usage_summary(
         header=f"- {entry.workflow_id} [{entry.status}, {entry.phase_type}, {entry.task_family}]",
         title=entry.title,
@@ -192,7 +198,7 @@ def _print_workflow_entry(entry: object) -> None:
     )
 
 
-def _reference_entry_payload(entry: object) -> dict[str, object]:
+def _reference_entry_payload(entry: ReferenceIndexEntry) -> dict[str, object]:
     return {
         "reference_id": entry.reference_id,
         "title": entry.title,
@@ -212,7 +218,7 @@ def _reference_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_reference_entry(entry: object) -> None:
+def _print_reference_entry(entry: ReferenceIndexEntry) -> None:
     _print_reference_usage_summary(
         header=f"- {entry.reference_id} [{entry.status}, {entry.repository_status}]",
         title=entry.title,
@@ -226,7 +232,7 @@ def _print_reference_entry(entry: object) -> None:
         print(f"  Cited by {len(entry.cited_by_paths)} doc(s).")
 
 
-def _standard_entry_payload(entry: object) -> dict[str, object]:
+def _standard_entry_payload(entry: StandardIndexEntry) -> dict[str, object]:
     return {
         "standard_id": entry.standard_id,
         "category": entry.category,
@@ -251,7 +257,7 @@ def _standard_entry_payload(entry: object) -> dict[str, object]:
     }
 
 
-def _print_standard_entry(entry: object) -> None:
+def _print_standard_entry(entry: StandardIndexEntry) -> None:
     print(f"- {entry.standard_id} [{entry.category}, owner={entry.owner}]")
     print(f"  {entry.title}")
     print(f"  {entry.summary}")

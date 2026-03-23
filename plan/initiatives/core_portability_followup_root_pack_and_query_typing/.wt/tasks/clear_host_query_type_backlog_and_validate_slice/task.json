@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_portability_followup_root_pack_and_query_typing.clear_host_query_type_backlog_and_validate",
+  "slug": "clear_host_query_type_backlog_and_validate_slice",
+  "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
+  "title": "Clear host query type backlog and validate slice",
+  "summary": "Introduces typed helper boundaries for host query handlers and runs the bounded validation gate for the initiative.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "implementation_engineer",
+  "created_at": "2026-03-23T01:46:38Z",
+  "updated_at": "2026-03-23T01:51:21Z",
+  "applies_to": [
+    "core/python/src/watchtower_host/cli/",
+    "core/python/tests/"
+  ],
+  "scope_items": [
+    "Type the host query payload helpers",
+    "Run mypy, pytest, ruff, and validate-all for the touched slice"
+  ],
+  "done_when_items": [
+    "The three host query handler modules pass mypy",
+    "The initiative validation commands pass on the final tree"
+  ]
+}

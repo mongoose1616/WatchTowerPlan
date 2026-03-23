@@ -41,9 +41,9 @@ def register_pack_family(
             "uv run watchtower-core pack describe --format json",
             "uv run watchtower-core pack validate --format json",
             "uv run watchtower-core pack scaffold --pack-slug oversight "
-            "--pack-root packs/oversight --format json",
+            "--pack-root oversight --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --write --format json",
+            "oversight/.wt/manifests/pack_settings.json --write --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -106,7 +106,7 @@ def register_pack_family(
             "uv run watchtower-core pack validate",
             "uv run watchtower-core pack validate --format json",
             "uv run watchtower-core pack validate --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --format json",
+            "oversight/.wt/manifests/pack_settings.json --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -133,11 +133,11 @@ def register_pack_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core pack bootstrap --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --format json",
+            "oversight/.wt/manifests/pack_settings.json --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --write --format json",
+            "oversight/.wt/manifests/pack_settings.json --write --format json",
             "uv run watchtower-core pack bootstrap --pack-settings-path "
-            "packs/oversight/.wt/manifests/pack_settings.json --write "
+            "oversight/.wt/manifests/pack_settings.json --write "
             "--no-sync-workspace --format json",
         ),
         formatter_class=HelpFormatter,
@@ -171,7 +171,7 @@ def register_pack_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core pack scaffold --pack-slug oversight "
-            "--pack-root packs/oversight",
+            "--pack-root oversight",
             "uv run watchtower-core pack scaffold --pack-slug reviews "
             "--pack-root packs/reviews --command-namespace reviews "
             "--domain-root assessments --domain-root reviews --format json",
@@ -188,7 +188,7 @@ def register_pack_family(
     pack_scaffold_parser.add_argument(
         "--pack-root",
         required=True,
-        help="Repository-relative pack root such as packs/oversight.",
+        help="Repository-relative pack root such as oversight or packs/oversight.",
     )
     pack_scaffold_parser.add_argument(
         "--command-namespace",

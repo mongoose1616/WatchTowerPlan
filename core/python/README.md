@@ -58,8 +58,8 @@
 - `uv run watchtower-core pack list --format json`
 - `uv run watchtower-core pack describe --format json`
 - `uv run watchtower-core pack validate --format json`
-- `uv run watchtower-core pack scaffold --pack-slug oversight --pack-root packs/oversight --format json`
-- `uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/manifests/pack_settings.json --write --format json`
+- `uv run watchtower-core pack scaffold --pack-slug oversight --pack-root oversight --format json`
+- `uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifests/pack_settings.json --write --format json`
 - `uv run watchtower-core sync command-index`
 - `uv run watchtower-core sync route-index`
 - `uv run watchtower-core sync repository-paths`
