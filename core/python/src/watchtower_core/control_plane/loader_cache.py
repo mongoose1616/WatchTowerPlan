@@ -9,6 +9,7 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader_constants import (
     _KEEP_ACTIVE_PACK_SETTINGS,
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
+    _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
 )
 
 if TYPE_CHECKING:
@@ -113,7 +114,12 @@ def _invalidate_typed_document_state(loader: Any, relative_path: str) -> None:
     stale_merge_keys = tuple(
         cache_key
         for cache_key in loader._typed_document_cache
-        if cache_key.startswith(f"{_MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX}::")
+        if cache_key.startswith(
+            (
+                f"{_MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX}::",
+                f"{_MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX}::",
+            )
+        )
         and relative_path in cache_key.split("::")[1:]
     )
     for cache_key in stale_merge_keys:

@@ -7,6 +7,7 @@ from typing import Any, cast
 
 from watchtower_core.control_plane.loader_constants import (
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
+    _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     ACTOR_REGISTRY_PATH,
     AUTHORITY_MAP_PATH,
@@ -293,14 +294,48 @@ def load_rendered_surface_registry(loader: Any) -> RenderedSurfaceRegistry:
 
 def load_workflow_metadata_registry(loader: Any) -> WorkflowMetadataRegistry:
     """Load the current workflow metadata registry."""
-
-    return _load_optional_surface(
-        loader,
-        surface_name="workflow_metadata_registry",
-        relative_path=WORKFLOW_METADATA_REGISTRY_PATH,
+    current_path = loader._current_surface_path(
+        "workflow_metadata_registry",
+        WORKFLOW_METADATA_REGISTRY_PATH,
         default_path=WORKFLOW_METADATA_REGISTRY_PATH,
-        builder=WorkflowMetadataRegistry.from_document,
     )
+    if current_path == WORKFLOW_METADATA_REGISTRY_PATH:
+        return cast(
+            WorkflowMetadataRegistry,
+            loader._load_typed_document(
+                current_path,
+                WorkflowMetadataRegistry.from_document,
+            ),
+        )
+
+    cache_key = "::".join(
+        (
+            _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
+            WORKFLOW_METADATA_REGISTRY_PATH,
+            current_path,
+        )
+    )
+    cached = loader._typed_document_cache.get(cache_key)
+    if cached is not None:
+        return cast(WorkflowMetadataRegistry, cached)
+
+    core_registry = cast(
+        WorkflowMetadataRegistry,
+        loader._load_typed_document(
+            WORKFLOW_METADATA_REGISTRY_PATH,
+            WorkflowMetadataRegistry.from_document,
+        ),
+    )
+    pack_registry = cast(
+        WorkflowMetadataRegistry,
+        loader._load_typed_document(
+            current_path,
+            WorkflowMetadataRegistry.from_document,
+        ),
+    )
+    merged_registry = WorkflowMetadataRegistry.merge(core_registry, pack_registry)
+    loader._typed_document_cache[cache_key] = merged_registry
+    return merged_registry
 
 
 def load_documentation_family_registry(

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
+
 import pytest
 
-from tests.unit.control_plane_loader_test_support import REPO_ROOT
+from tests.unit.control_plane_loader_test_support import REPO_ROOT, copy_validation_repo_subset
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     RenderedSurfaceRegistry,
@@ -106,6 +108,120 @@ def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
     assert entry.phase_type == "execution"
     assert entry.task_family == "github_integration"
     assert "workflow.task_lifecycle_management" in entry.companion_workflow_ids
+
+
+def test_control_plane_loader_merges_pack_owned_workflow_metadata_registry(
+    tmp_path,
+) -> None:
+    repo_root = copy_validation_repo_subset(tmp_path)
+    pack_root = repo_root / "packs" / "oversight"
+    machine_root = pack_root / ".wt"
+    machine_root.mkdir(parents=True)
+    workflow_metadata_path = machine_root / "registries" / "workflow_metadata_registry.json"
+    workflow_metadata_path.parent.mkdir(parents=True)
+    workflow_metadata_path.write_text(
+        json.dumps(
+            {
+                "$schema": (
+                    "urn:watchtower:schema:artifacts:registries:"
+                    "workflow-metadata-registry:v1"
+                ),
+                "id": "registry.workflow_metadata",
+                "title": "Pack Workflow Metadata Registry",
+                "status": "active",
+                "entries": [
+                    {
+                        "workflow_id": "workflow.review_execution_baseline",
+                        "phase_type": "execution",
+                        "task_family": "oversight_review_execution",
+                        "primary_risks": [
+                            "scope_drift",
+                            "evidence_gap",
+                        ],
+                        "extra_trigger_tags": [
+                            "review",
+                            "baseline",
+                            "evidence",
+                        ],
+                        "companion_workflow_ids": [
+                            "workflow.review_package_lifecycle",
+                            "workflow.standards_context",
+                            "workflow.task_handoff_review",
+                        ],
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    pack_settings_path = machine_root / "manifests" / "pack_settings.json"
+    pack_settings_path.parent.mkdir(parents=True)
+    pack_settings_path.write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+                "surface_name": "pack_settings",
+                "contract_version": "v1",
+                "description": "Pack settings for workflow metadata merge tests.",
+                "updated_at": "2026-03-23T04:10:00Z",
+                "pack_id": "pack.oversight",
+                    "surfaces": [
+                        {
+                            "surface_name": "schema_catalog",
+                            "surface_kind": "index",
+                            "path": "core/control_plane/registries/schema_catalog.json",
+                            "authority": "authoritative",
+                            "visibility": "hidden",
+                        },
+                        {
+                            "surface_name": "validator_registry",
+                            "surface_kind": "registry",
+                            "path": "core/control_plane/registries/validator_registry.json",
+                            "authority": "authoritative",
+                            "visibility": "hidden",
+                        },
+                        {
+                            "surface_name": "workflow_metadata_registry",
+                            "surface_kind": "registry",
+                            "path": (
+                                "packs/oversight/.wt/registries/"
+                                "workflow_metadata_registry.json"
+                            ),
+                            "authority": "authoritative",
+                            "visibility": "hidden",
+                        }
+                ],
+                "workspace_roots": {
+                    "workspace_root": "packs/oversight",
+                    "machine_root": "packs/oversight/.wt",
+                    "docs_root": "packs/oversight/docs",
+                    "workflows_root": "packs/oversight/workflows",
+                    "tracking_root": "packs/oversight/tracking",
+                    "initiatives_root": "packs/oversight/initiatives",
+                    "projects_root": "packs/oversight/projects",
+                    "overview_path": "packs/oversight/overview.md",
+                },
+                "default_validation_suite_id": "suite.oversight.validation_baseline",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path="packs/oversight/.wt/manifests/pack_settings.json",
+    )
+
+    registry = loader.load_workflow_metadata_registry()
+
+    assert registry.get("workflow.code_review").phase_type == "review"
+    assert registry.get("workflow.review_execution_baseline").task_family == (
+        "oversight_review_execution"
+    )
 
 
 def test_control_plane_loader_reads_repository_path_index() -> None:

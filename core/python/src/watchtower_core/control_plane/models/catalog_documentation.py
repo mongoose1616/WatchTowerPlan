@@ -59,6 +59,49 @@ class WorkflowMetadataRegistry:
                 return entry
         raise KeyError(workflow_id)
 
+    @classmethod
+    def merge(
+        cls,
+        *registries: WorkflowMetadataRegistry,
+    ) -> WorkflowMetadataRegistry:
+        """Return one merged workflow-metadata registry."""
+
+        if not registries:
+            raise ValueError("At least one workflow metadata registry is required.")
+        schema_id = registries[0].schema_id
+        artifact_id = registries[0].artifact_id
+        title = registries[0].title
+        status = registries[0].status
+        merged_entries: dict[str, WorkflowMetadataDefinition] = {}
+        for registry in registries:
+            if registry.schema_id != schema_id:
+                raise ValueError(
+                    "Workflow metadata registries must share the same schema_id: "
+                    f"{registry.schema_id} != {schema_id}"
+                )
+            if registry.artifact_id != artifact_id:
+                raise ValueError(
+                    "Workflow metadata registries must share the same artifact_id: "
+                    f"{registry.artifact_id} != {artifact_id}"
+                )
+            for entry in registry.entries:
+                existing = merged_entries.get(entry.workflow_id)
+                if existing is None:
+                    merged_entries[entry.workflow_id] = entry
+                    continue
+                if existing != entry:
+                    raise ValueError(
+                        "Workflow metadata registries declare conflicting entries for "
+                        f"{entry.workflow_id}"
+                    )
+        return cls(
+            schema_id=schema_id,
+            artifact_id=artifact_id,
+            title=title,
+            status=status,
+            entries=tuple(merged_entries[key] for key in sorted(merged_entries)),
+        )
+
 
 @dataclass(frozen=True, slots=True)
 class DocumentationFamilyEntry:
