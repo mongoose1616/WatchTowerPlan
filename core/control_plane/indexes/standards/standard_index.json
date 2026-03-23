@@ -12,7 +12,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/authority_map_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -25,17 +25,11 @@
         "core/control_plane/registries/README.md"
       ],
       "internal_reference_paths": [
-        "plan/docs/standards/data_contracts/coordination_index_standard.md",
-        "plan/docs/standards/data_contracts/initiative_index_standard.md",
-        "plan/docs/standards/data_contracts/traceability_index_standard.md",
         "core/docs/standards/data_contracts/repository_path_index_standard.md",
         "core/docs/standards/data_contracts/schema_catalog_standard.md",
         "core/control_plane/registries/README.md"
       ],
       "applied_reference_paths": [
-        "plan/docs/standards/data_contracts/coordination_index_standard.md",
-        "plan/docs/standards/data_contracts/initiative_index_standard.md",
-        "plan/docs/standards/data_contracts/traceability_index_standard.md",
         "core/docs/standards/data_contracts/repository_path_index_standard.md",
         "core/docs/standards/data_contracts/schema_catalog_standard.md",
         "core/control_plane/registries/README.md"
@@ -713,7 +707,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/compact_document_authoring_standard.md",
-      "updated_at": "2026-03-18T14:00:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -722,22 +716,18 @@
       "operationalization_paths": [
         "core/docs/templates/",
         "core/docs/templates/README.md",
-        "plan/tracking/",
-        "plan/initiatives/",
-        "plan/projects/"
+        "<pack>/tracking/",
+        "<pack>/initiatives/",
+        "<pack>/projects/"
       ],
       "internal_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/workflows/workflow_design_standard.md",
-        "plan/docs/standards/governance/task_tracking_standard.md",
-        "plan/docs/standards/governance/initiative_tracking_standard.md",
         "core/docs/templates/README.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/metadata/front_matter_standard.md",
-        "core/docs/standards/workflows/workflow_design_standard.md",
-        "plan/docs/standards/governance/task_tracking_standard.md",
-        "plan/docs/standards/governance/initiative_tracking_standard.md"
+        "core/docs/standards/workflows/workflow_design_standard.md"
       ],
       "tags": [
         "standard",
@@ -1254,7 +1244,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-19T20:15:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1265,9 +1255,9 @@
       "operationalization_paths": [
         "core/python/",
         "core/control_plane/",
-        "plan/",
+        "<pack>/",
         "core/docs/",
-        "plan/docs/",
+        "<pack>/docs/",
         "core/workflows/modules/core.md"
       ],
       "internal_reference_paths": [
@@ -1276,7 +1266,6 @@
         "core/docs/standards/engineering/git_commit_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/data_contracts/command_index_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
         "core/docs/foundations/engineering_design_principles.md"
       ],
@@ -1286,7 +1275,6 @@
         "core/docs/standards/engineering/git_commit_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/data_contracts/command_index_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
         "core/docs/foundations/engineering_design_principles.md"
       ],
@@ -1304,7 +1292,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-20T23:55:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1312,7 +1300,7 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "plan/tracking/task_tracking.md"
+        "<pack>/tracking/task_tracking.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/git_commit_message_guidance_reference.md",
@@ -1322,19 +1310,14 @@
       "internal_reference_paths": [
         "core/docs/standards/engineering/git_workflow_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/docs/references/git_commit_message_guidance_reference.md",
         "core/workflows/modules/commit_closeout.md",
         "core/docs/references/conventional_commits_reference.md",
-        "core/docs/references/semver_reference.md",
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/docs/references/semver_reference.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/engineering/git_workflow_standard.md",
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
         "core/docs/references/git_commit_message_guidance_reference.md",
         "core/workflows/modules/commit_closeout.md"
       ],
@@ -1360,7 +1343,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/git_workflow_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1369,32 +1352,25 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/commit_closeout.md",
-        "plan/tracking/task_tracking.md",
-        "plan/tracking/coordination_tracking.md"
+        "<pack>/tracking/task_tracking.md",
+        "<pack>/tracking/coordination_tracking.md"
       ],
       "applies_to": [
         "core/docs/standards/engineering/git_commit_standard.md",
-        "plan/docs/standards/governance/github_collaboration_standard.md",
         "core/workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
         "core/docs/standards/engineering/git_commit_standard.md",
-        "plan/docs/standards/governance/github_collaboration_standard.md",
-        "core/workflows/modules/commit_closeout.md"
+        "core/workflows/modules/commit_closeout.md",
+        "plan/docs/standards/governance/github_collaboration_standard.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
-        "core/docs/standards/engineering/git_commit_standard.md",
-        "plan/docs/standards/governance/github_collaboration_standard.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "applied_reference_paths": [
         "core/docs/standards/engineering/engineering_best_practices_standard.md",
-        "core/docs/standards/engineering/git_commit_standard.md",
-        "plan/docs/standards/governance/github_collaboration_standard.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md"
+        "core/docs/standards/engineering/git_commit_standard.md"
       ],
       "tags": [
         "standard",
@@ -1410,7 +1386,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-23T05:10:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1781,7 +1757,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-12T02:46:38Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1792,7 +1768,7 @@
         "core/control_plane/schemas/interfaces/README.md",
         "core/control_plane/schemas/interfaces/documentation/",
         "core/docs/standards/metadata/front_matter_standard.md",
-        "plan/tracking/task_tracking.md"
+        "<pack>/tracking/task_tracking.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/front_matter_reference.md"
@@ -1801,7 +1777,6 @@
         "core/docs/references/front_matter_reference.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
-        "plan/docs/standards/data_contracts/status_tracking_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
         "core/control_plane/schemas/interfaces/README.md"
@@ -1810,7 +1785,6 @@
         "core/docs/references/front_matter_reference.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/timestamp_standard.md",
-        "plan/docs/standards/data_contracts/status_tracking_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
         "core/control_plane/schemas/interfaces/README.md"
@@ -1839,7 +1813,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/naming_and_ids_standard.md",
-      "updated_at": "2026-03-16T20:30:00Z",
+      "updated_at": "2026-03-23T16:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1851,7 +1825,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/indexes/",
         "core/control_plane/contracts/",
-        "plan/"
+        "<pack>/"
       ],
       "reference_doc_paths": [
         "core/docs/references/rfc_9562_uuid_reference.md",
@@ -1895,7 +1869,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/terminology_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1905,23 +1879,21 @@
       "operationalization_paths": [
         "core/control_plane/",
         "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md"
+        "<pack>/workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
         "core/docs/foundations/engineering_design_principles.md",
         "core/docs/foundations/product_direction.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/front_matter_standard.md",
-        "core/docs/standards/metadata/timestamp_standard.md",
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "applied_reference_paths": [
         "core/docs/foundations/engineering_design_principles.md",
         "core/docs/foundations/product_direction.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/metadata/front_matter_standard.md",
-        "core/docs/standards/metadata/timestamp_standard.md",
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/docs/standards/metadata/timestamp_standard.md"
       ],
       "tags": [
         "standard",
@@ -1937,7 +1909,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/metadata/timestamp_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1954,7 +1926,6 @@
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
-        "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/references/rfc_3339_timestamp_reference.md",
         "core/docs/references/rfc_9557_timestamp_extensions_reference.md"
       ],
@@ -1962,7 +1933,6 @@
         "core/docs/standards/metadata/front_matter_standard.md",
         "core/docs/standards/metadata/naming_and_ids_standard.md",
         "core/docs/standards/data_contracts/schema_standard.md",
-        "plan/docs/standards/data_contracts/validation_evidence_standard.md",
         "core/docs/references/rfc_3339_timestamp_reference.md",
         "core/docs/references/rfc_9557_timestamp_extensions_reference.md"
       ],
@@ -2103,7 +2073,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2113,7 +2083,7 @@
         "AGENTS.md",
         "core/workflows/modules/core.md",
         "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md"
+        "<pack>/workflows/ROUTING_TABLE.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/agent_workflow_authoring_reference.md"
@@ -2162,7 +2132,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2171,9 +2141,9 @@
       ],
       "operationalization_paths": [
         "core/workflows/modules/",
-        "plan/workflows/modules/",
+        "<pack>/workflows/modules/",
         "core/workflows/ROUTING_TABLE.md",
-        "plan/workflows/ROUTING_TABLE.md",
+        "<pack>/workflows/ROUTING_TABLE.md",
         "core/docs/templates/workflow_template.md",
         "AGENTS.md"
       ],

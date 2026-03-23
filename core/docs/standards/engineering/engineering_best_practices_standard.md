@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T20:15:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -39,13 +39,13 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [command_index_standard.md](/core/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- Pack-owned traceability standards under `<pack>/docs/standards/governance/`: traced planning or lifecycle work should keep those joins aligned when a hosted pack publishes them.
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
 
 ## Guidance
 - Start from the routed workflow set and the nearest applicable `AGENTS.md` and `README.md` before making changes.
-- Keep live planning authority in `plan/**`, machine-readable authority in `core/control_plane/`, durable human guidance in `core/docs/` and `plan/docs/`, and executable Python behavior in `core/python/`.
+- Keep live pack authority in hosted pack roots such as `<pack>/**`, machine-readable authority in `core/control_plane/`, durable human guidance in `core/docs/` and hosted-pack docs roots such as `<pack>/docs/`, and executable shared Python behavior in `core/python/`.
 - Prefer deterministic, local-first behavior over hidden heuristics or implicit repository scans.
 - Prefer published indexes, registries, and contracts over hardcoded lookup tables when a governed control-plane surface already exists.
 - Keep CLI entrypoints thin. Put real behavior in package services and pass explicit arguments rather than hardcoding one-off values in commands.
@@ -85,7 +85,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `plan/`; `core/docs/`; `plan/docs/`; `core/workflows/modules/core.md`
+- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `<pack>/`; `core/docs/`; `<pack>/docs/`; `core/workflows/modules/core.md`
 
 ## Validation
 - Code changes should run the narrowest meaningful automated checks for the touched surfaces, such as targeted `pytest`, schema validation, command smoke tests, or index validation.
@@ -104,7 +104,6 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [git_commit_standard.md](/core/docs/standards/engineering/git_commit_standard.md)
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 - [command_index_standard.md](/core/docs/standards/data_contracts/command_index_standard.md)
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md)
 - [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
 
 ## Notes
@@ -112,4 +111,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-19T20:15:00Z`
+- `2026-03-23T16:50:00Z`

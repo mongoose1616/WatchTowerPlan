@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_governance_reference_deplanification_followup.0005_evidence_shell_seeded",
+  "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+  "sequence": 5,
+  "event_type": "evidence_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T16:32:44Z",
+  "summary": "Seeded the evidence shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.core_governance_reference_deplanification_followup",
+  "related_paths": [
+    "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md",
+    "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+    "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+    "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md"
+  ]
+}

@@ -8,6 +8,9 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.operationalization_paths import (
+    operationalization_path_matches,
+)
 from watchtower_core.sync.standard_index import StandardIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -149,6 +152,39 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     for standard_id in planning_family_member_ids:
         entry = next(entry for entry in entries if entry["standard_id"] == standard_id)
         assert "planning_index_family" in entry.get("tags", [])
+
+    compact_entry = next(
+        entry
+        for entry in entries
+        if entry["standard_id"] == "std.documentation.compact_document_authoring"
+    )
+    assert "<pack>/tracking/" in compact_entry.get("operationalization_paths", [])
+    assert "<pack>/initiatives/" in compact_entry.get("operationalization_paths", [])
+
+    git_workflow_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.engineering.git_workflow"
+    )
+    assert "<pack>/tracking/task_tracking.md" in git_workflow_entry.get(
+        "operationalization_paths",
+        [],
+    )
+    assert "<pack>/tracking/coordination_tracking.md" in git_workflow_entry.get(
+        "operationalization_paths",
+        [],
+    )
+
+
+def test_pack_placeholder_operationalization_paths_match_live_pack_paths() -> None:
+    assert operationalization_path_matches(
+        "plan/tracking/task_tracking.md",
+        "<pack>/tracking/task_tracking.md",
+        REPO_ROOT,
+    )
+    assert operationalization_path_matches(
+        "plan/tracking/task_tracking.md",
+        "<pack>/tracking/",
+        REPO_ROOT,
+    )
 
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:
@@ -298,7 +334,10 @@ def test_standard_index_sync_extracts_document_relative_reference_paths(
     loader = ControlPlaneLoader(repo_root)
     document = StandardIndexSyncService(loader).build_document()
 
-    entry = document["entries"][0]
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    entry = entries[0]
+    assert isinstance(entry, dict)
     assert entry["standard_id"] == "std.documentation.example"
     assert entry["uses_internal_references"] is True
     assert entry["uses_external_references"] is True

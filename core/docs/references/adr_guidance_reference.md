@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "adr_guidance"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -28,7 +28,7 @@ Provide a concise baseline for recording important architectural or policy decis
 - `https://adr.github.io/` - verified 2026-03-09; Architectural Decision Records (ADRs).
 
 ## Related Standards and Sources
-- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
+- Pack-owned decision-capture standards under `<pack>/docs/standards/governance/`
 
 ## Quick Reference or Distilled Reference
 ### When ADRs Add Value
@@ -53,7 +53,8 @@ Provide a concise baseline for recording important architectural or policy decis
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md)
+- [repository_standards_posture.md](/core/docs/foundations/repository_standards_posture.md)
 
 ### Why It Matters Here
 - Use this reference when building ADR templates or decision-capture standards under the owning pack standards root.
@@ -64,11 +65,11 @@ Provide a concise baseline for recording important architectural or policy decis
 - Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [decision_capture_standard.md](/plan/docs/standards/governance/decision_capture_standard.md)
+- Pack-owned decision-capture standards under `<pack>/docs/standards/governance/`
 
 ## Notes
 - Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-23T16:50:00Z`

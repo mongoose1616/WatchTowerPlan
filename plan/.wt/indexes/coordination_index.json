@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T16:20:08Z",
+  "updated_at": "2026-03-23T16:54:27Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "title": "Core Governance Reference Deplanification Followup",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T16:54:27Z",
+      "key_surface_path": "plan/initiatives/core_governance_reference_deplanification_followup/plan.md",
+      "closure_reason": "Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders."
+    },
     {
       "trace_id": "trace.core_pack_neutrality_followup",
       "title": "Core Pack Neutrality Followup",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T22:28:03Z",
       "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
       "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication"
-    },
-    {
-      "trace_id": "trace.command_latency_reduction_using_runtime_telemetry",
-      "title": "Command Latency Reduction Using Runtime Telemetry",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T20:50:23Z",
-      "key_surface_path": "plan/initiatives/command_latency_reduction_using_runtime_telemetry/plan.md",
-      "closure_reason": "Validated and benchmarked latency reductions on the final optimized tree."
     }
   ]
 }

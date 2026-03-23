@@ -4,7 +4,7 @@
 _No open tasks._
 
 ## Closed Task Summary
-- `completed`: 101
+- `completed`: 102
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -34,6 +34,7 @@ _No open tasks._
 | [task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/cover_bootstrap_mode_copy_forward_behavior/task.json) | `completed` | `high` | `validation_engineer` | `trace.copy_forward_pack_runtime_hardening` | Adds reusable-core regression coverage for copied-core repos with valid local packs, stale donor registry metadata, and incomplete local workspace rewiring. |
 | [task.copy_forward_pack_runtime_hardening.harden_selected_pack_commands](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/harden_selected_pack_commands/task.json) | `completed` | `high` | `implementation_engineer` | `trace.copy_forward_pack_runtime_hardening` | Makes pack list, describe, validate, and selected namespace resolution use the effective hosted-pack runtime view and return structured failures for stale authored registry entries. |
 | [task.copy_forward_pack_runtime_hardening.implement_effective_pack_discovery](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/implement_effective_pack_discovery/task.json) | `completed` | `high` | `implementation_engineer` | `trace.copy_forward_pack_runtime_hardening` | Adds a runtime-only effective hosted-pack view that supplements valid authored registry entries with manifest-discovered bootstrap-mode packs. |
+| [task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup](/plan/initiatives/core_governance_reference_deplanification_followup/.wt/tasks/bootstrap_core_governance_reference_deplanification_followup/task.json) | `completed` | `high` | `repository_maintainer` | `trace.core_governance_reference_deplanification_followup` | Bootstrap Core Governance Reference Deplanification Followup live initiative package. |
 | [task.core_host_pack_architecture_hard_cutover.docs_workflows.004](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/publish_host_pack_standards_references_templates_and_workflow_modules/task.json) | `completed` | `high` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Documents the final core-host-pack contract and updates workflow routing, command docs, and pack authoring guidance. |
 | [task.core_host_pack_architecture_hard_cutover.host_runtime.002](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/introduce_watchtower_host_and_move_cli_composition_out_of_reusable_core/task.json) | `completed` | `high` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Moves parser construction and command registration into a host-owned package while preserving the watchtower-core binary name. |
 | [task.core_host_pack_architecture_hard_cutover.pack_contract.001](/plan/initiatives/core_host_pack_architecture_hard_cutover/.wt/tasks/add_governed_pack_registry_and_runtime_manifest_contracts/task.json) | `completed` | `high` | `repository_maintainer` | `trace.core_host_pack_architecture_hard_cutover` | Defines the core-owned registry, schemas, typed models, and validator hooks for host-pack integration. |
@@ -111,4 +112,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-23T16:19:58Z`_
+_Updated At: `2026-03-23T16:54:10Z`_

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:46:38Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,7 @@ This standard defines when repository documents should use front matter, which k
 Keep document metadata predictable enough for indexing, ownership tracking, status signaling, retrieval ranking, and machine validation without turning every Markdown file into a metadata-heavy artifact.
 
 ## Scope
-- Applies to Markdown documents in `core/docs/**`, `plan/docs/**`, and other governed document families that adopt front matter.
+- Applies to Markdown documents in `core/docs/**`, hosted-pack docs roots such as `<pack>/docs/**`, and other governed document families that adopt front matter.
 - Covers front matter placement, required and optional keys, document-family profiles, and machine-validation boundaries.
 - Does not define the full repository-wide naming policy for every metadata value.
 
@@ -36,7 +36,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - [front_matter_reference.md](/core/docs/references/front_matter_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- Pack-owned status-tracking standards under `<pack>/docs/standards/data_contracts/`: hosted packs that govern extra status vocabularies should keep their front-matter expectations aligned with those status rules.
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/core/control_plane/schemas/interfaces/README.md): family entrypoint and inventory surface this standard should stay aligned with.
@@ -64,10 +64,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
 - `core/docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
 - the shared and pack-owned standards roots standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
-- `core/docs/foundations/**` and mirrored `plan/docs/foundations/**` foundation documents should include front matter and validate against the foundation profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
+- `core/docs/foundations/**` and mirrored hosted-pack foundation roots such as `<pack>/docs/foundations/**` should include front matter and validate against the foundation profile. Short directory `README.md` files under those roots remain plain Markdown unless a narrower local rule says otherwise.
 - `core/docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
-- Initiative-local authored package docs and rendered tracking surfaces such as `plan/tracking/task_tracking.md` remain plain Markdown unless a narrower future standard later governs them.
-- `AGENTS.md` files remain plain Markdown by default, including nested instruction overlays under `core/docs/**`, `plan/docs/**`, `core/workflows/**`, and `plan/workflows/**`.
+- Initiative-local authored package docs and rendered tracking surfaces such as `<pack>/tracking/task_tracking.md` remain plain Markdown unless a narrower future standard later governs them.
+- `AGENTS.md` files remain plain Markdown by default, including nested instruction overlays under `core/docs/**`, `<pack>/docs/**`, `core/workflows/**`, and `<pack>/workflows/**`.
 - Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
 ## Structure or Data Model
@@ -94,11 +94,11 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 |---|---|---|
 | `core/docs/references/**` | Required for governed reference docs | `reference_front_matter.schema.json` |
 | the shared and pack-owned standards roots | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.schema.json` |
-| `core/docs/foundations/**` and `plan/docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
+| `core/docs/foundations/**` and mirrored hosted-pack foundation roots such as `<pack>/docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.schema.json` |
 | `core/docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
 | the shared and pack-owned workflow roots | Optional but approved when metadata is operationally useful | `workflow_front_matter.schema.json` |
-| `plan/initiatives/**` and `plan/projects/**` authored package docs | Not required by default; current initiative package docs remain plain Markdown inputs | none |
+| `<pack>/initiatives/**` and `<pack>/projects/**` authored package docs | Not required by default; current initiative package docs remain plain Markdown inputs | none |
 | short directory `README.md` files | Not required by default | none |
 
 ### Validation boundary
@@ -122,7 +122,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ## Examples
 - A long-lived reference under `core/docs/references/**` should use the reference front matter profile.
 - A standard under the shared and pack-owned standards roots should use the standard front matter profile.
-- A mirrored foundation document under `core/docs/foundations/**` and `plan/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
+- A mirrored foundation document under `core/docs/foundations/**` and the corresponding hosted-pack mirror root such as `<pack>/docs/foundations/**` should use the foundation front matter profile and stay byte-identical across both roots.
 - A command page under `core/docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - An initiative-local `initiative_brief.md`, `design_record.md`, `implementation_slice.md`, or `decision_notes.md` should usually remain plain Markdown unless a later governed profile is introduced for that family.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
@@ -130,7 +130,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Operationalization
 - `Modes`: `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `core/docs/standards/metadata/front_matter_standard.md`; `plan/tracking/task_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `core/docs/standards/metadata/front_matter_standard.md`; `<pack>/tracking/task_tracking.md`
 
 ## Validation
 - Front matter should parse cleanly as YAML.
@@ -148,17 +148,16 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - [front_matter_reference.md](/core/docs/references/front_matter_reference.md)
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md)
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md)
-- [status_tracking_standard.md](/plan/docs/standards/data_contracts/status_tracking_standard.md)
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md)
 - [README.md](/core/control_plane/schemas/interfaces/README.md)
 
 ## Notes
-- This standard intentionally does not require front matter on every document in `core/docs/**` or `plan/docs/**`.
+- This standard intentionally does not require front matter on every document in `core/docs/**` or hosted-pack docs roots such as `<pack>/docs/**`.
 - Path-based scans should not treat `AGENTS.md` overlays as missing governed front matter.
 - The exact allowed values for identifiers, statuses, owners, and audiences can be tightened later by companion metadata standards without changing the basic front matter structure.
 - Retrieval-oriented keys should stay small and intentional. If they become broad keyword dumps, they will reduce rather than improve retrieval quality.
 - Document families that already have a dedicated machine-readable companion artifact, such as `core/docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-12T02:46:38Z`
+- `2026-03-23T16:50:00Z`

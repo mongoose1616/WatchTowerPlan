@@ -15,6 +15,8 @@ from watchtower_core.adapters import (
     split_semicolon_list,
 )
 from watchtower_core.control_plane.operationalization_paths import (
+    expand_pack_placeholder_operationalization_paths,
+    operationalization_path_has_pack_placeholder,
     operationalization_path_is_glob,
 )
 from watchtower_core.documentation.governed_documents import ordered_unique
@@ -187,6 +189,12 @@ def _normalize_standard_operationalization_path(
         raise ValueError(
             f"{relative_path} operationalization surface must be a valid repository path: {value}"
         )
+    if operationalization_path_has_pack_placeholder(without_fragment):
+        return _normalize_pack_placeholder_operationalization_path(
+            relative_path,
+            without_fragment,
+            repo_root,
+        )
     if operationalization_path_is_glob(without_fragment):
         normalized_pattern = _normalize_repo_relative_glob_pattern(
             relative_path,
@@ -209,6 +217,67 @@ def _normalize_standard_operationalization_path(
     if normalized.endswith("/"):
         raise ValueError(f"{relative_path} {_STANDARD_FILE_PATH_ERROR}: {value}")
     return normalized
+
+
+def _normalize_pack_placeholder_operationalization_path(
+    relative_path: str,
+    value: str,
+    repo_root: Path,
+) -> str:
+    if value.startswith(("http://", "https://", "mailto:", "/")) or any(
+        part == ".." for part in PurePosixPath(value).parts
+    ):
+        raise ValueError(
+            f"{relative_path} operationalization surface must be a valid repository path: {value}"
+        )
+
+    expanded = expand_pack_placeholder_operationalization_paths(value, repo_root)
+    if not expanded:
+        raise ValueError(
+            f"{relative_path} operationalization surface pack placeholder does not resolve "
+            f"to any hosted pack root: {value}"
+        )
+
+    any_directory = False
+    any_file = False
+    any_glob_match = False
+    for candidate in expanded:
+        if operationalization_path_is_glob(candidate):
+            normalized_pattern = _normalize_repo_relative_glob_pattern(
+                relative_path,
+                candidate,
+                repo_root,
+            )
+            if normalized_pattern is not None:
+                any_glob_match = True
+            continue
+
+        normalized = normalize_repo_path_reference(candidate, repo_root)
+        if normalized is None:
+            continue
+        resolved = repo_root / Path(normalized.rstrip("/"))
+        if not resolved.exists():
+            continue
+        if resolved.is_dir():
+            any_directory = True
+            continue
+        any_file = True
+
+    if operationalization_path_is_glob(value):
+        if not any_glob_match:
+            raise ValueError(f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}")
+        return value
+
+    if not any_directory and not any_file:
+        raise ValueError(
+            f"{relative_path} operationalization surface pack placeholder does not resolve "
+            f"to any live repository surface: {value}"
+        )
+    if any_directory and not value.endswith("/"):
+        raise ValueError(f"{relative_path} {_STANDARD_DIRECTORY_PATH_ERROR}: {value}")
+    if any_file and value.endswith("/"):
+        raise ValueError(f"{relative_path} {_STANDARD_FILE_PATH_ERROR}: {value}")
+    return value
 
 
 def _normalize_repo_relative_glob_pattern(

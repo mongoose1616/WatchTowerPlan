@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T05:10:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,7 +24,7 @@ This standard defines the minimum developer-facing surface set and extension rul
 Make hosted-pack onboarding, extension, and review predictable by stating the smallest acceptable pack shape in one place instead of forcing contributors to reconstruct it from schemas, validators, templates, and scattered standards.
 
 ## Scope
-- Applies to hosted packs such as `plan/` and future pack roots registered through the shared host runtime.
+- Applies to hosted pack roots such as `<pack>/` that are registered through the shared host runtime.
 - Covers the minimum pack-owned files, required shared registration surfaces, and the rules for growing additional pack-local Python.
 - Does not replace the lower-level machine-contract schemas or the reusable-core versus host boundary rules.
 
@@ -135,4 +135,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-23T05:10:00Z`
+- `2026-03-23T16:50:00Z`

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.core_governance_reference_deplanification_followup.summary_surface_drift",
+  "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+  "category": "stale_rendered_surface",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Rendered surface drift detected for plan/initiatives/core_governance_reference_deplanification_followup/summary.md.",
+  "source_paths": [
+    "plan/initiatives/core_governance_reference_deplanification_followup/summary.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-23T16:35:34Z",
+  "updated_at": "2026-03-23T16:36:09Z"
+}

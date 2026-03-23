@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -92,7 +92,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 
 ## Operationalization
 - `Modes`: `workflow`
-- `Operational Surfaces`: `AGENTS.md`; `core/workflows/modules/core.md`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `AGENTS.md`; `core/workflows/modules/core.md`; `core/workflows/ROUTING_TABLE.md`; `<pack>/workflows/ROUTING_TABLE.md`
 
 ## Validation
 - A routed task should start with enough context to act correctly but not so much context that unrelated instructions compete.
@@ -117,4 +117,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:50:00Z`

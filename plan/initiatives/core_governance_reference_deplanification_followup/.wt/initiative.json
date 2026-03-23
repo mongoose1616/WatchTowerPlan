@@ -1,0 +1,89 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+  "trace_id": "trace.core_governance_reference_deplanification_followup",
+  "slug": "core_governance_reference_deplanification_followup",
+  "title": "Core Governance Reference Deplanification Followup",
+  "summary": "Removes remaining unnecessary plan-owned governance and tracking references from shared core docs and standards while preserving true current-repo facts and explicit pack-owned boundaries.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T16:32:44Z",
+  "updated_at": "2026-03-23T16:54:27Z",
+  "task_ids": [
+    "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.core_governance_reference_deplanification_followup.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.core_governance_reference_deplanification_followup.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.core_governance_reference_deplanification_followup.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md",
+      "sha256": "93f213b843f68617fa299528852eedb1b25f5d93189a77924097fb664a06dc14",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T16:36:06Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+      "sha256": "429fc989d268731baf93e13ca85a3381309e32f25d54e4845b9c00541474cea6",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T16:36:06Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+      "sha256": "81a00e3e525ed35efef9f3b461b47fa1705ae99ebb0c1590c6a23c09cf1075a5",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T16:36:06Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md",
+      "sha256": "9f0ac23115ff37a01d431aa9c3b301e17b5467307f5aff9a8d2c72c71baf5fdd",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T16:36:06Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T16:35:30Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T16:36:06Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T16:36:21Z"
+    }
+  ],
+  "closed_at": "2026-03-23T16:54:27Z",
+  "closure_reason": "Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders."
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup.0001_created",
+  "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T16:32:44Z",
+  "summary": "Created task task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup during initiative bootstrap.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup"
+}

@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-23T16:20:08Z",
+  "updated_at": "2026-03-23T16:54:27Z",
   "entries": [
     {
       "closeout_id": "closeout.command_latency_reduction_using_runtime_telemetry.bootstrap_recap",
@@ -103,6 +103,31 @@
         "cancelled"
       ],
       "updated_at": "2026-03-22T16:13:43Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.core_governance_reference_deplanification_followup.bootstrap_recap",
+      "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "initiative_title": "Core Governance Reference Deplanification Followup",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/core_governance_reference_deplanification_followup",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.core_governance_reference_deplanification_followup.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.core_governance_reference_deplanification_followup.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-23T16:54:27Z",
       "terminal_state": "completed"
     },
     {

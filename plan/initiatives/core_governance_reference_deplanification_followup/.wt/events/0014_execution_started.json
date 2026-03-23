@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.core_governance_reference_deplanification_followup.0014_execution_started",
+  "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+  "sequence": 14,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T16:54:10Z",
+  "summary": "Execution started after task task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup entered completed.",
+  "payload": {
+    "task_id": "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup",
+    "task_status": "completed"
+  },
+  "trace_id": "trace.core_governance_reference_deplanification_followup",
+  "related_paths": [
+    "plan/initiatives/core_governance_reference_deplanification_followup/.wt/tasks/bootstrap_core_governance_reference_deplanification_followup/task.json"
+  ]
+}

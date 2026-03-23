@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -114,7 +114,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `core/workflows/modules/`; `plan/workflows/modules/`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`; `AGENTS.md`
+- `Operational Surfaces`: `core/workflows/modules/`; `<pack>/workflows/modules/`; `core/workflows/ROUTING_TABLE.md`; `<pack>/workflows/ROUTING_TABLE.md`; `core/docs/templates/workflow_template.md`; `AGENTS.md`
 
 ## Validation
 - A reviewer should be able to identify the workflow's single objective quickly.
@@ -147,4 +147,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:50:00Z`

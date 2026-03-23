@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "authority_map"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -22,7 +22,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 ## Purpose
 - Publish one machine-readable policy answer for which planning or governance surface is canonical for a recurring question.
 - Reduce surface-lookup ambiguity for agents, scripts, and maintainers without turning the authority map into a second path index or prose encyclopedia.
-- Keep canonical-versus-rendered-surface relationships explicit as the live plan and governance corpus grows.
+- Keep canonical-versus-rendered-surface relationships explicit as the live planning and governance corpus grows.
 
 ## Scope
 - Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/`.
@@ -35,9 +35,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Reviewing whether a proposed lookup policy belongs in the authority map or in a different registry or index.
 
 ## Related Standards and Sources
-- [coordination_index_standard.md](/plan/docs/standards/data_contracts/coordination_index_standard.md): defines the machine start-here planning surface the authority map should point to for current-state questions.
-- [initiative_index_standard.md](/plan/docs/standards/data_contracts/initiative_index_standard.md): defines the machine initiative-family surface the authority map should point to for broader active-or-history initiative lookup.
-- [traceability_index_standard.md](/plan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from initiative and coordination views.
+- Pack-owned planning index standards under `<pack>/docs/standards/data_contracts/`: define the coordination, initiative, and traceability surfaces a hosted pack may expose for current-state and history lookup.
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md): defines the broader repository path lookup surface the authority map must not duplicate.
 - [schema_catalog_standard.md](/core/docs/standards/data_contracts/schema_catalog_standard.md): defines schema-catalog update expectations for this registry family.
 - [README.md](/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
@@ -102,15 +100,13 @@ This standard defines the role, structure, and boundary rules for the authored a
 
 ## Change Control
 - Update this standard when the repository changes how canonical planning or governance surfaces are resolved.
-- Update the companion schema, live registry, command docs, root and planning entrypoints, and affected governance standards in the same change set when authority precedence changes materially.
+- Update the companion schema, live registry, command docs, root entrypoints, and affected pack-owned planning standards in the same change set when authority precedence changes materially.
 - Prefer updating the authority map over scattering canonical-surface policy across several READMEs.
 
 ## References
-- [coordination_index_standard.md](/plan/docs/standards/data_contracts/coordination_index_standard.md)
-- [initiative_index_standard.md](/plan/docs/standards/data_contracts/initiative_index_standard.md)
-- [traceability_index_standard.md](/plan/docs/standards/data_contracts/traceability_index_standard.md)
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md)
 - [README.md](/core/control_plane/registries/README.md)
+- Pack-owned planning index standards under `<pack>/docs/standards/data_contracts/`
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-23T16:50:00Z`

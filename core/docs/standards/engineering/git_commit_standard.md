@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-20T23:55:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -38,8 +38,7 @@ This standard defines the repository commit-message policy for human maintainers
 ## Related Standards and Sources
 - [git_workflow_standard.md](/core/docs/standards/engineering/git_workflow_standard.md): commit closeout should fit the local branch workflow instead of carrying branch policy inline.
 - [engineering_best_practices_standard.md](/core/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [task_handling_threshold_standard.md](/plan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
-- [traceability_standard.md](/plan/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
+- Pack-owned task-threshold and traceability standards under `<pack>/docs/standards/`: non-trivial or traced work should preserve the owning pack's task-handling or trace metadata explicitly in commit history when those surfaces exist.
 - [git_commit_message_guidance_reference.md](/core/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [commit_closeout.md](/core/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
 
@@ -168,7 +167,7 @@ workflow.
 
 ## Operationalization
 - `Modes`: `workflow`
-- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `plan/tracking/task_tracking.md`
+- `Operational Surfaces`: `core/workflows/modules/commit_closeout.md`; `<pack>/tracking/task_tracking.md`
 
 ## Validation
 - One logical change per commit. Refactors, fixes, and docs should be separate when practical.
@@ -260,11 +259,10 @@ fi
 - [conventional_commits_reference.md](/core/docs/references/conventional_commits_reference.md)
 - [git_commit_message_guidance_reference.md](/core/docs/references/git_commit_message_guidance_reference.md)
 - [semver_reference.md](/core/docs/references/semver_reference.md)
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
 
 ## Notes
 - This is the normative repository policy for Git commit messages.
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-20T23:55:00Z`
+- `2026-03-23T16:50:00Z`

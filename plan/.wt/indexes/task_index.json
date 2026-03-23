@@ -304,6 +304,21 @@
       "updated_at": "2026-03-22T16:12:58Z"
     },
     {
+      "task_id": "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup",
+      "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "initiative_title": "Core Governance Reference Deplanification Followup",
+      "title": "Bootstrap Core Governance Reference Deplanification Followup",
+      "summary": "Bootstrap Core Governance Reference Deplanification Followup live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_governance_reference_deplanification_followup/.wt/tasks/bootstrap_core_governance_reference_deplanification_followup/task.json",
+      "updated_at": "2026-03-23T16:54:10Z"
+    },
+    {
       "task_id": "task.core_host_pack_architecture_hard_cutover.bootstrap_core_host_pack_architecture_hard_cutover",
       "initiative_id": "initiative.core_host_pack_architecture_hard_cutover",
       "trace_id": "trace.core_host_pack_architecture_hard_cutover",

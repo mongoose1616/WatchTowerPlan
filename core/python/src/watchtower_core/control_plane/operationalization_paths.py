@@ -5,6 +5,10 @@ from __future__ import annotations
 from glob import has_magic
 from pathlib import Path, PurePosixPath
 
+from watchtower_core.control_plane.pack_settings_discovery import discover_pack_settings_paths
+
+_PACK_PLACEHOLDER_TOKENS = ("<pack>", "<pack-root>")
+
 
 def operationalization_path_matches(
     requested_path: str,
@@ -12,6 +16,28 @@ def operationalization_path_matches(
     repo_root: Path,
 ) -> bool:
     """Return whether one concrete path matches one indexed operationalization entry."""
+
+    if operationalization_path_has_pack_placeholder(indexed_path):
+        return any(
+            _operationalization_path_matches_expanded(
+                requested_path,
+                candidate,
+                repo_root,
+            )
+            for candidate in expand_pack_placeholder_operationalization_paths(
+                indexed_path,
+                repo_root,
+            )
+        )
+    return _operationalization_path_matches_expanded(requested_path, indexed_path, repo_root)
+
+
+def _operationalization_path_matches_expanded(
+    requested_path: str,
+    indexed_path: str,
+    repo_root: Path,
+) -> bool:
+    """Return whether one concrete path matches one concrete indexed entry."""
 
     normalized_requested = requested_path.casefold()
     normalized_indexed = indexed_path.casefold()
@@ -33,6 +59,35 @@ def operationalization_path_is_glob(indexed_path: str) -> bool:
     return has_magic(indexed_path)
 
 
+def operationalization_path_has_pack_placeholder(indexed_path: str) -> bool:
+    """Return whether one indexed operationalization entry uses a hosted-pack placeholder."""
+
+    return any(token in indexed_path for token in _PACK_PLACEHOLDER_TOKENS)
+
+
+def expand_pack_placeholder_operationalization_paths(
+    indexed_path: str,
+    repo_root: Path,
+) -> tuple[str, ...]:
+    """Expand one hosted-pack placeholder path into concrete current-repo pack paths."""
+
+    if not operationalization_path_has_pack_placeholder(indexed_path):
+        return (indexed_path,)
+
+    expanded: list[str] = []
+    seen: set[str] = set()
+    for settings_path in discover_pack_settings_paths(repo_root):
+        pack_root = Path(settings_path).parents[2].as_posix()
+        candidate = indexed_path
+        for token in _PACK_PLACEHOLDER_TOKENS:
+            candidate = candidate.replace(token, pack_root)
+        if candidate in seen:
+            continue
+        expanded.append(candidate)
+        seen.add(candidate)
+    return tuple(expanded)
+
+
 def operationalization_path_is_directory(indexed_path: str, repo_root: Path) -> bool:
     """Return whether one indexed operationalization entry resolves to a directory."""
 
@@ -44,6 +99,8 @@ def operationalization_path_is_directory(indexed_path: str, repo_root: Path) -> 
 
 
 __all__ = [
+    "expand_pack_placeholder_operationalization_paths",
+    "operationalization_path_has_pack_placeholder",
     "operationalization_path_is_directory",
     "operationalization_path_is_glob",
     "operationalization_path_matches",

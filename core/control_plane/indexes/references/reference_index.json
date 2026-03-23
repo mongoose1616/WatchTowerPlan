@@ -10,7 +10,7 @@
       "summary": "This document provides a working reference for architecture decision records as a durable decision-capture pattern.",
       "status": "active",
       "doc_path": "core/docs/references/adr_guidance_reference.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -24,7 +24,8 @@
         "plan/docs/standards/governance/decision_capture_standard.md"
       ],
       "related_paths": [
-        "plan/docs/standards/governance/decision_capture_standard.md"
+        "core/docs/foundations/engineering_design_principles.md",
+        "core/docs/foundations/repository_standards_posture.md"
       ],
       "tags": [
         "reference",
@@ -259,7 +260,7 @@
       "summary": "This document captures a local distilled reference for Diataxis so documentation in this repository can be written consistently without depending on external browsing during normal authoring work.",
       "status": "active",
       "doc_path": "core/docs/references/diataxis_local_reference.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-23T16:50:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -273,7 +274,9 @@
         "plan/docs/standards/governance/reference_distillation_standard.md"
       ],
       "related_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/docs/templates/documentation_template.md",
+        "core/docs/templates/readme_template.md",
+        "core/docs/templates/workflow_template.md"
       ],
       "tags": [
         "reference",

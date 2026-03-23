@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -38,7 +38,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/core/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- Pack-owned reference-distillation standards under `<pack>/docs/standards/governance/`: external terminology should be mapped into repository-native language consistently when a hosted pack publishes local distillations.
 
 ## Guidance
 - Prefer one canonical repository term for each recurring concept.
@@ -71,7 +71,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`
-- `Operational Surfaces`: `core/control_plane/`; `core/workflows/ROUTING_TABLE.md`; `plan/workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/`; `core/workflows/ROUTING_TABLE.md`; `<pack>/workflows/ROUTING_TABLE.md`
 
 ## Validation
 - Durable docs and governed artifacts should not use competing terms as if they were equal canonical names.
@@ -96,4 +96,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T16:50:00Z`

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "timestamp"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,7 +36,7 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- Pack-owned validation-evidence standards under `<pack>/docs/standards/data_contracts/`: evidence-record families should keep their timestamp semantics aligned with this baseline.
 - [rfc_3339_timestamp_reference.md](/core/docs/references/rfc_3339_timestamp_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [rfc_9557_timestamp_extensions_reference.md](/core/docs/references/rfc_9557_timestamp_extensions_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
@@ -87,7 +87,6 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md)
 - [naming_and_ids_standard.md](/core/docs/standards/metadata/naming_and_ids_standard.md)
 - [schema_standard.md](/core/docs/standards/data_contracts/schema_standard.md)
-- [validation_evidence_standard.md](/plan/docs/standards/data_contracts/validation_evidence_standard.md)
 - [rfc_3339_timestamp_reference.md](/core/docs/references/rfc_3339_timestamp_reference.md)
 - [rfc_9557_timestamp_extensions_reference.md](/core/docs/references/rfc_9557_timestamp_extensions_reference.md)
 
@@ -96,4 +95,4 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - `generated_at` is approved as a reserved field name even if it is not yet widely used.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-23T16:50:00Z`

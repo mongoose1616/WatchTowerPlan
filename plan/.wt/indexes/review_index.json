@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-23T16:20:08Z",
+  "updated_at": "2026-03-23T16:54:27Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -74,6 +74,24 @@
         "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T16:13:43Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.core_governance_reference_deplanification_followup",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "initiative_title": "Core Governance Reference Deplanification Followup",
+      "title": "Core Governance Reference Deplanification Followup",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_governance_reference_deplanification_followup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T16:54:27Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -554,6 +572,22 @@
         "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T16:13:43Z"
+    },
+    {
+      "review_subject_id": "promotion.core_governance_reference_deplanification_followup.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_governance_reference_deplanification_followup",
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "initiative_title": "Core Governance Reference Deplanification Followup",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_governance_reference_deplanification_followup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T16:54:27Z"
     },
     {
       "review_subject_id": "promotion.core_host_pack_architecture_hard_cutover.bootstrap_shell",

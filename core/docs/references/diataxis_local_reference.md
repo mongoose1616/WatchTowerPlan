@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "diataxis_local"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -35,7 +35,7 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - [documentation_template.md](/core/docs/templates/documentation_template.md)
 - [readme_template.md](/core/docs/templates/readme_template.md)
 - [workflow_template.md](/core/docs/templates/workflow_template.md)
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
+- Pack-owned reference-distillation standards under `<pack>/docs/standards/governance/`
 
 ## Quick Reference or Distilled Reference
 ### The Four Documentation Modes
@@ -67,7 +67,9 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
 
 ### Current Touchpoints
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
+- [documentation_template.md](/core/docs/templates/documentation_template.md)
+- [readme_template.md](/core/docs/templates/readme_template.md)
+- [workflow_template.md](/core/docs/templates/workflow_template.md)
 
 ### Why It Matters Here
 - the shared and pack-owned workflow roots primarily map to how-to guidance because they define procedural steps for planning tasks and operational flows.
@@ -88,7 +90,7 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - [documentation_template.md](/core/docs/templates/documentation_template.md)
 - [readme_template.md](/core/docs/templates/readme_template.md)
 - [workflow_template.md](/core/docs/templates/workflow_template.md)
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
+- Pack-owned reference-distillation standards under `<pack>/docs/standards/governance/`
 
 ## Notes
 - This document is intentionally short and operational.
@@ -98,4 +100,4 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-23T16:50:00Z`

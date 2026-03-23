@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "compact_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T14:00:00Z"
+updated_at: "2026-03-23T16:50:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,7 +24,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## Scope
 - Applies to repository-authored templates under `core/docs/templates/`.
-- Applies to live `plan/**` rendered trackers and initiative-local authored planning packages.
+- Applies to pack-owned rendered trackers and initiative-local or project-local authored planning packages under hosted pack roots such as `<pack>/tracking/`, `<pack>/initiatives/`, and `<pack>/projects/`.
 - Applies to generic documentation and workflow guidance when that guidance materially shapes authored output size.
 - Does not replace family-specific front matter, traceability, or schema requirements.
 
@@ -36,8 +36,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 ## Related Standards and Sources
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md): compact authoring must preserve governed front matter where the document family requires machine-readable metadata.
 - [workflow_design_standard.md](/core/docs/standards/workflows/workflow_design_standard.md): workflow modules keep their structural sections, but their execution guidance should still prefer proportional repository output.
-- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md): human task tracking remains derived from authoritative task records, but still needs browseable active and terminal tables.
-- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md): initiative tracking remains derived, but should not collapse away terminal rows that humans actually need to inspect.
+- Pack-owned task and initiative tracking standards under `<pack>/docs/standards/governance/`: human tracking remains derived from authoritative records, but still needs browseable active and terminal tables.
 
 ## Guidance
 - Default every authored template to the smallest section set that usually carries non-derivable value.
@@ -54,7 +53,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `core/docs/templates/`; `core/docs/templates/README.md`; `plan/tracking/`; `plan/initiatives/`; `plan/projects/`
+- `Operational Surfaces`: `core/docs/templates/`; `core/docs/templates/README.md`; `<pack>/tracking/`; `<pack>/initiatives/`; `<pack>/projects/`
 
 ## Validation
 - Reviewers should reject templates that normalize low-value optional sections into every new document.
@@ -68,8 +67,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 ## References
 - [core/docs/templates/README.md](/core/docs/templates/README.md)
 - [front_matter_standard.md](/core/docs/standards/metadata/front_matter_standard.md)
-- [task_tracking_standard.md](/plan/docs/standards/governance/task_tracking_standard.md)
-- [initiative_tracking_standard.md](/plan/docs/standards/governance/initiative_tracking_standard.md)
+- Pack-owned tracking standards under `<pack>/docs/standards/governance/`
 
 ## Updated At
-- `2026-03-18T14:00:00Z`
+- `2026-03-23T16:50:00Z`

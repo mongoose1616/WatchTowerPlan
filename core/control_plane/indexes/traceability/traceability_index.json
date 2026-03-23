@@ -163,6 +163,36 @@
       ]
     },
     {
+      "trace_id": "trace.core_governance_reference_deplanification_followup",
+      "title": "Core Governance Reference Deplanification Followup",
+      "summary": "Removes remaining unnecessary plan-owned governance and tracking references from shared core docs and standards while preserving true current-repo facts and explicit pack-owned boundaries.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T16:54:27Z",
+      "closed_at": "2026-03-23T16:54:27Z",
+      "closure_reason": "Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders.",
+      "source_surface_paths": [
+        "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_governance_reference_deplanification_followup.bootstrap_core_governance_reference_deplanification_followup"
+      ],
+      "related_paths": [
+        "plan/initiatives/core_governance_reference_deplanification_followup/.wt/initiative.json",
+        "plan/initiatives/core_governance_reference_deplanification_followup/.wt/tasks/bootstrap_core_governance_reference_deplanification_followup/task.json",
+        "plan/initiatives/core_governance_reference_deplanification_followup/decision_notes.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/design_record.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/implementation_slice.md",
+        "plan/initiatives/core_governance_reference_deplanification_followup/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_host_pack_architecture_hard_cutover",
       "title": "Core Host Pack Architecture Hard Cutover",
       "summary": "Separates reusable core, host composition, and pack-native runtime behind governed pack contracts, host-owned CLI composition, and pack interface validation.",

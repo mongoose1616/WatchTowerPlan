@@ -88,7 +88,7 @@ Keep the Python workspace coherent, explicit, and easy to maintain by giving con
 - Do not let `tests/unit/` grow back into a repo-bootstrap suite. Tests that need `tests.fixture_repo_support`, pack materialization, initiative bootstrap, governed-doc copying, sync orchestration, or closeout flows belong in `tests/integration/`.
 - Do not let `core/python/tests/` become a pack-owned test suite. Tests there must stay pack-neutral: if a test needs to import `watchtower_<pack>` directly, move it under the owning pack root such as `<pack-root>/python/tests/`.
 - When shared-core tests need pack context, load it through synthetic fixture packs, pack manifests, or typed loader/runtime seams instead of importing the live hosted pack package directly.
-- Do not bind shared-core tests to the live current-repository pack workspace just because it is convenient. A direct dependency on `plan/` as the active hosted-pack workspace is a sign that the test belongs under the owning pack root or needs synthetic fixture-pack setup instead.
+- Do not bind shared-core tests to the live current-repository pack workspace just because it is convenient. A direct dependency on the active hosted-pack workspace is a sign that the test belongs under the owning pack root or needs synthetic fixture-pack setup instead.
 
 ## Structure or Data Model
 ### Python boundary checkpoints

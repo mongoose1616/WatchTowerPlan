@@ -68,7 +68,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep pack-owned tests under the owning pack root such as `<pack-root>/python/tests/`.
 - Do not keep tests that import `watchtower_<pack>` directly under `core/python/tests/`; those belong under the owning pack root.
 - When shared-core tests need pack context, use synthetic fixture packs or typed loader/runtime seams instead of direct imports of a live hosted pack package.
-- Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because `plan/` exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
+- Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because the active hosted-pack workspace exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
 - Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
