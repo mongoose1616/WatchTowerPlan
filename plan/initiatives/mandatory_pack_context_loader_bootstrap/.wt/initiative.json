@@ -1,0 +1,104 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+  "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+  "slug": "mandatory_pack_context_loader_bootstrap",
+  "title": "Mandatory Pack Context Loader Bootstrap",
+  "summary": "Makes effective pack resolution and PackContext activation the required first phase for pack-aware loader, host, validation, and runtime operations.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T22:39:16Z",
+  "updated_at": "2026-03-23T23:19:12Z",
+  "task_ids": [
+    "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.mandatory_pack_context_loader_bootstrap.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.mandatory_pack_context_loader_bootstrap.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.mandatory_pack_context_loader_bootstrap.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md",
+      "sha256": "401362109c4a0a08f6972f23e835b30f290cca2c58cc4287efc3b5a9f14805b6",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T23:17:32Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+      "sha256": "1fa2bae874f27b75d9a0eb1316fd85124e2580b75e6c919edde800b5397c7c19",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T23:17:32Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+      "sha256": "685ce4ce3957556c752165464c9b1e2c7a94154455ebb8c79ab07873351f8e4a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T23:17:32Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md",
+      "sha256": "604c57bd1cc2167c0b64e980b7885fb8830fe6c3300199011206c51bb5ba7be2",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T23:17:32Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T22:40:59Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T22:41:28Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T23:09:37Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T23:11:26Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T23:17:32Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T23:18:03Z"
+    }
+  ],
+  "closed_at": "2026-03-23T23:19:12Z",
+  "closure_reason": "Implemented and validated mandatory effective-pack activation and PackContext bootstrap"
+}

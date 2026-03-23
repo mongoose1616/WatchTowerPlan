@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.mandatory_pack_context_loader_bootstrap.0007_promotion_shell_seeded",
+  "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+  "sequence": 7,
+  "event_type": "promotion_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T22:39:16Z",
+  "summary": "Seeded the promotion shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+  "related_paths": [
+    "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md",
+    "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+    "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+    "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md"
+  ]
+}

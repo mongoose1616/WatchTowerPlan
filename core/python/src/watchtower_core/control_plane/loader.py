@@ -81,6 +81,9 @@ from watchtower_core.control_plane.loader_pack_settings import (
     _surface_name_for_active_path as _surface_name_for_active_path_method,
 )
 from watchtower_core.control_plane.loader_pack_settings import (
+    activate_pack_settings as _activate_pack_settings_public_method,
+)
+from watchtower_core.control_plane.loader_pack_settings import (
     default_pack_settings_path as _default_pack_settings_path_method,
 )
 from watchtower_core.control_plane.loader_pack_settings import (
@@ -91,6 +94,9 @@ from watchtower_core.control_plane.loader_pack_settings import (
 )
 from watchtower_core.control_plane.loader_surfaces import (
     load_acceptance_contracts as _load_acceptance_contracts_method,
+)
+from watchtower_core.control_plane.loader_surfaces import (
+    load_active_pack_context as _load_active_pack_context_method,
 )
 from watchtower_core.control_plane.loader_surfaces import (
     load_actor_registry as _load_actor_registry_method,
@@ -347,6 +353,7 @@ class ControlPlaneLoader:
 
     derive = _derive_method
     _activate_pack_settings = _activate_pack_settings_method
+    activate_pack_settings = _activate_pack_settings_public_method
 
     set_validated_document_override = _set_validated_document_override_method
     set_validated_directory_override = _set_validated_directory_override_method
@@ -394,6 +401,7 @@ class ControlPlaneLoader:
     load_acceptance_contracts = _load_acceptance_contracts_method
     load_validation_evidence_artifacts = _load_validation_evidence_artifacts_method
     load_trace_purge_records = _load_trace_purge_records_method
+    load_active_pack_context = _load_active_pack_context_method
     load_pack_context = _load_pack_context_method
     load_declared_surface = _load_declared_surface_method
     load_known_surface = _load_known_surface_method

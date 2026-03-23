@@ -344,10 +344,10 @@ class SyncHarness:
             )
         active_pack_settings_path = self._loader.active_pack_settings_path
         if active_pack_settings_path is None:
-            default_pack_settings_path = self._loader.default_pack_settings_path()
-            candidate_path = self._repo_root / default_pack_settings_path
-            if candidate_path.exists():
-                active_pack_settings_path = default_pack_settings_path
+            try:
+                active_pack_settings_path = self._loader.activate_pack_settings()
+            except Exception:
+                active_pack_settings_path = None
         return ControlPlaneLoader(
             workspace_config=self._loader.workspace_config,
             schema_store=self._loader.schema_store,

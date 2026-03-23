@@ -79,6 +79,18 @@ def _activate_pack_settings(loader: Any, pack_settings_path: str) -> None:
     loader._active_artifact_index_path = loader._active_surface_paths.get("artifact_index")
 
 
+def activate_pack_settings(
+    loader: Any,
+    pack_settings_path: str = PACK_SETTINGS_PATH,
+) -> str:
+    """Activate one effective pack settings path on this loader and return it."""
+
+    effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
+    if loader.active_pack_settings_path != effective_pack_settings_path:
+        loader._activate_pack_settings(effective_pack_settings_path)
+    return cast(str, effective_pack_settings_path)
+
+
 def pack_runtime_manifest_path(
     loader: Any,
     pack_settings_path: str = PACK_SETTINGS_PATH,
@@ -227,12 +239,7 @@ def _ensure_default_pack_settings_activated(loader: Any) -> None:
 
     if loader.active_pack_settings_path is not None:
         return
-    default_path = _registered_default_pack_settings_path(loader)
-    if default_path is None:
-        default_path = loader._discover_default_pack_settings_path()
-    if default_path is None or default_path == CORE_PACK_SETTINGS_PATH:
-        return
-    loader._activate_pack_settings(default_path)
+    loader.activate_pack_settings(PACK_SETTINGS_PATH)
 
 
 def _registered_default_pack_settings_path(loader: Any) -> str | None:

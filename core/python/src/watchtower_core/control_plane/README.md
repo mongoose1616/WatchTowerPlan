@@ -23,3 +23,5 @@ Reusable control-plane helpers for governed pack/runtime loading, policy and fam
 - Keep authored machine authority in `core/control_plane/**` and live pack machine state in pack workspaces rather than in reusable core.
 - Keep generic pack/runtime helpers here and push pack-local behavior back out to the owning `watchtower_<pack>` package when it depends on a pack-specific workspace.
 - Keep repo-local pack behavior out of this namespace when it depends on initiative lifecycle rules, pack tracking semantics, or pack-owned rendered surfaces.
+- Treat pack-aware loading as a two-step contract: activate the effective pack settings first, then build the full `PackContext` only when the caller needs pack-governed surfaces beyond runtime identity and owned roots.
+- Minimal copied-pack or synthetic runtime fixtures may satisfy runtime-manifest and integration loading without declaring every governance surface required by `PackContext`. Do not force the heavy context into seams that only need the active pack identity.

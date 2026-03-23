@@ -82,6 +82,10 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
     seen_slugs: set[str] = set()
     seen_namespaces: set[str] = set()
     seen_settings_paths: set[str] = set()
+    try:
+        active_pack_settings_path = loader.activate_pack_settings()
+    except Exception:
+        active_pack_settings_path = None
 
     for entry in authored_registry.packs:
         error_message = _authored_entry_error(loader, entry)
@@ -105,8 +109,10 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
         if settings_path in seen_settings_paths:
             continue
         try:
-            pack_settings = loader.load_pack_settings(settings_path)
-            runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=settings_path)
+            pack_loader = loader.derive(active_pack_settings_path=settings_path)
+            pack_loader.activate_pack_settings()
+            pack_settings = pack_loader.load_pack_settings()
+            runtime_manifest = pack_loader.load_pack_runtime_manifest()
         except Exception:
             continue
         if (
@@ -128,13 +134,12 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
 
     entries.extend(discovered_entries)
     if entries and not any(entry.default_repo_pack for entry in entries):
-        try:
-            default_settings_path = cast(str, loader.default_pack_settings_path())
-        except Exception:
-            default_settings_path = None
-        if default_settings_path is not None:
+        if active_pack_settings_path is not None:
             entries = [
-                replace(entry, default_repo_pack=entry.pack_settings_path == default_settings_path)
+                replace(
+                    entry,
+                    default_repo_pack=entry.pack_settings_path == active_pack_settings_path,
+                )
                 for entry in entries
             ]
 
@@ -207,15 +212,16 @@ def synthesize_pack_registry_entry(
 
 
 def _authored_entry_error(loader: Any, entry: PackRegistryEntry) -> str | None:
+    entry_loader = loader.derive(active_pack_settings_path=None)
     try:
-        loader.load_pack_settings(entry.pack_settings_path)
+        entry_loader.load_pack_settings(entry.pack_settings_path)
     except Exception as exc:
         return (
             f"Hosted-pack registry entry for {entry.pack_slug!r} is unusable because its "
             f"pack settings path could not be loaded: {entry.pack_settings_path} ({exc})"
         )
     try:
-        loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
+        entry_loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
     except Exception as exc:
         return (
             f"Hosted-pack registry entry for {entry.pack_slug!r} is unusable because its "

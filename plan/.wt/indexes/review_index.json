@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-23T22:04:08Z",
+  "updated_at": "2026-03-23T23:19:12Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -308,6 +308,24 @@
         "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T22:52:52Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "initiative_title": "Mandatory Pack Context Loader Bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.mandatory_pack_context_loader_bootstrap.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T23:19:12Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -816,6 +834,22 @@
         "evidence.ledger_retirement_contract_change.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T22:52:52Z"
+    },
+    {
+      "review_subject_id": "promotion.mandatory_pack_context_loader_bootstrap.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "initiative_title": "Mandatory Pack Context Loader Bootstrap",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.mandatory_pack_context_loader_bootstrap.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T23:19:12Z"
     },
     {
       "review_subject_id": "promotion.pack_bootstrap_installation_contract.bootstrap_shell",

@@ -48,14 +48,17 @@ def load_active_pack_integration(
         "load_active_pack_integration",
         attributes={"pack_settings_path": pack_settings_path},
     ) as operation:
-        pack_settings = loader.load_pack_settings(pack_settings_path)
-        runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
+        effective_pack_settings_path = loader.activate_pack_settings(pack_settings_path)
+        pack_settings = loader.load_pack_settings(effective_pack_settings_path)
+        runtime_manifest = loader.load_pack_runtime_manifest(
+            pack_settings_path=effective_pack_settings_path
+        )
         runtime_view = load_pack_registry_runtime_view(loader)
         try:
             registry_entry = runtime_view.get_by_pack_id(pack_settings.pack_id)
         except KeyError:
             registry_entry = synthesize_pack_registry_entry(
-                pack_settings_path=pack_settings_path,
+                pack_settings_path=effective_pack_settings_path,
                 pack_settings=pack_settings,
                 runtime_manifest=runtime_manifest,
             )
@@ -84,11 +87,11 @@ def load_registered_pack_integrations(
     with telemetry_operation("pack_runtime", "load_registered_pack_integrations") as operation:
         loaded: list[LoadedPackIntegration] = []
         for entry in effective_pack_registry_entries(loader):
-            pack_settings = loader.load_pack_settings(entry.pack_settings_path)
-            runtime_manifest = loader.load_pack_runtime_manifest(
-                pack_settings_path=entry.pack_settings_path
-            )
-            descriptor = _load_pack_integration_descriptor(runtime_manifest, loader.repo_root)
+            pack_loader = loader.derive(active_pack_settings_path=entry.pack_settings_path)
+            pack_loader.activate_pack_settings()
+            pack_settings = pack_loader.load_pack_settings()
+            runtime_manifest = pack_loader.load_pack_runtime_manifest()
+            descriptor = _load_pack_integration_descriptor(runtime_manifest, pack_loader.repo_root)
             loaded.append(
                 LoadedPackIntegration(
                     pack_settings=pack_settings,

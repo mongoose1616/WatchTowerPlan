@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-23T22:04:08Z",
+  "updated_at": "2026-03-23T23:19:12Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -497,6 +497,35 @@
         "plan/initiatives/ledger_retirement_contract_change/.wt/initiative.json"
       ],
       "updated_at": "2026-03-21T22:52:52Z"
+    },
+    {
+      "evidence_id": "evidence.mandatory_pack_context_loader_bootstrap.bootstrap_validation_bundle",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "initiative_title": "Mandatory Pack Context Loader Bootstrap",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/mandatory_pack_context_loader_bootstrap",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/discrepancies",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-23T23:19:12Z"
     },
     {
       "evidence_id": "evidence.pack_bootstrap_installation_contract.bootstrap_validation_bundle",

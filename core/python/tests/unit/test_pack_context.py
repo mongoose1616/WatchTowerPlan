@@ -42,6 +42,17 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     assert "coordination_index" not in context.indexes
 
 
+def test_load_active_pack_context_activates_and_caches_effective_pack() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    first = loader.load_active_pack_context(CORE_PACK_SETTINGS_PATH)
+    second = loader.load_active_pack_context()
+
+    assert first is second
+    assert loader.active_pack_settings_path == CORE_PACK_SETTINGS_PATH
+    assert first.pack_settings_path == CORE_PACK_SETTINGS_PATH
+
+
 def test_pack_context_exposes_loaded_surfaces_by_name() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 

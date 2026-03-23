@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T20:35:00Z"
+updated_at: "2026-03-23T23:20:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -78,6 +78,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
 - Keep `integration_module` under the pack’s declared `python_package`; jumping out into unrelated packages weakens copy-out portability.
 - Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
+- Treat effective pack activation as Phase 0 for any pack-aware runtime path. Host and reusable-core runtime helpers should resolve the effective pack settings path before reading runtime manifests, owned roots, or default-pack machine outputs.
+- Build the full typed `PackContext` only when the caller needs declared pack-governed surfaces such as schema catalogs, validator registries, validation suites, policy registries, or other declared governance helpers. Minimal runtime-only pack fixtures may intentionally stop short of that full surface set.
 - Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
 - When the pack owns workflow modules whose `workflow.*` IDs are not already described by the shared core workflow metadata registry, publish a pack-owned `workflow_metadata_registry` and keep it limited to pack-owned entries. The loader merges that registry with the shared core workflow metadata surface and rejects conflicting duplicates.
 - Treat pack-owned live indexes such as `task_index` and `initiative_index` as optional capabilities. Generic host commands should read them only when the active pack declares those surfaces.
@@ -126,7 +128,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
    - Run `uv run watchtower-core pack describe --pack <slug> --format json`.
    - Run `uv run watchtower-core doctor --format json` after bootstrap to prove the generic host health snapshot stays pack-neutral and does not assume plan-owned live indexes.
-   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command, repository-path, reference, standard, workflow, and route discovery indexes for the copied repository.
+- In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command, repository-path, reference, standard, workflow, and route discovery indexes for the copied repository.
+- Keep runtime-only copied-pack proofs thin: when the test or command is only checking runtime-manifest, import, or command-namespace behavior, activate the effective pack first but do not require the full `PackContext`. Save full-context requirements for validation and governed-surface helpers that actually consume those surfaces.
 7. Prove portability and extensibility.
    - Make the pack importable from its own `<pack>/python/src` path or installed package root.
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
@@ -386,4 +389,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-23T20:35:00Z`
+- `2026-03-23T23:20:00Z`

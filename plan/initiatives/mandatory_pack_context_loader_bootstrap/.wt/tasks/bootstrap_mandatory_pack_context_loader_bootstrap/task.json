@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap",
+  "slug": "bootstrap_mandatory_pack_context_loader_bootstrap",
+  "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+  "title": "Bootstrap Mandatory Pack Context Loader Bootstrap",
+  "summary": "Bootstrap Mandatory Pack Context Loader Bootstrap live initiative package.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T22:39:16Z",
+  "updated_at": "2026-03-23T23:18:56Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

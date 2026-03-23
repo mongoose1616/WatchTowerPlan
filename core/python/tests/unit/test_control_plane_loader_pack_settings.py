@@ -50,6 +50,28 @@ def test_control_plane_loader_reads_pack_registry_and_runtime_manifest(
     assert loader.pack_runtime_manifest_path() == surfaces["pack_runtime_manifest_path"]
 
 
+def test_control_plane_loader_load_pack_runtime_manifest_activates_minimal_pack_first(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(repo_root)
+
+    runtime_manifest = loader.load_pack_runtime_manifest()
+
+    assert runtime_manifest.command_namespace == "oversight"
+    assert loader.active_pack_settings_path == surfaces["pack_settings_path"]
+
+
 def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog(
     tmp_path: Path,
 ) -> None:

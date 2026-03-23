@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.mandatory_pack_context_loader_bootstrap`: Mandatory Pack Context Loader Bootstrap (`completed` at `2026-03-23T23:19:12Z`) - Implemented and validated mandatory effective-pack activation and PackContext bootstrap
 - `trace.copied_core_doctor_pack_surface_neutrality`: Copied Core Doctor Pack Surface Neutrality (`completed` at `2026-03-23T22:04:08Z`) - Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage
 - `trace.copied_core_discovery_surface_reconciliation_followup`: Copied Core Discovery Surface Reconciliation Followup (`completed` at `2026-03-23T18:17:30Z`) - Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions.
 - `trace.core_governance_reference_deplanification_followup`: Core Governance Reference Deplanification Followup (`completed` at `2026-03-23T16:54:27Z`) - Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders.
@@ -25,7 +26,6 @@
 - `trace.copied_core_bootstrap_and_validator_alignment`: Copied Core Bootstrap And Validator Alignment (`completed` at `2026-03-23T02:57:21Z`) - Tolerated identical copied shared validators and taught pack bootstrap to reconcile stale donor registry and discovery surfaces during copied-core bring-up.
 - `trace.core_portability_followup_root_pack_and_query_typing`: Core Portability Follow-up Root Pack And Query Typing (`completed` at `2026-03-23T01:51:41Z`) - Updated shared core to present first-party root packs as the default example topology, aligned generic portability tests with root-pack defaults, and cleared the remaining host query mypy backlog.
 - `trace.copy_forward_pack_runtime_hardening`: Copy-Forward Pack Runtime Hardening (`completed` at `2026-03-23T01:24:34Z`) - Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core.
-- `trace.core_removable_plan_reference_cleanup`: Core Removable Plan Reference Cleanup (`completed` at `2026-03-23T00:04:09Z`) - Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

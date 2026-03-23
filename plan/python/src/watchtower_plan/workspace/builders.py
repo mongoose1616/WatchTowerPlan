@@ -734,6 +734,7 @@ class PlanWorkspaceDocumentBuilder:
         snapshot: PlanInitiativeSnapshot,
     ) -> tuple[PlanDiscrepancyIndexEntry, ...]:
         initiative = snapshot.initiative_document
+        terminal_statuses = {"resolved", "closed", "completed", "cancelled"}
         return tuple(
             PlanDiscrepancyIndexEntry(
                 discrepancy_id=str(document["discrepancy_id"]),
@@ -754,6 +755,7 @@ class PlanWorkspaceDocumentBuilder:
                 updated_at=str(document["updated_at"]),
             )
             for document in snapshot.discrepancy_documents
+            if str(document.get("status", "")) not in terminal_statuses
         )
 
     def _build_evidence_entries(

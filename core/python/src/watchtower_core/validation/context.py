@@ -43,34 +43,29 @@ class PackValidationContext:
     ) -> PackValidationContext:
         """Build a pack-aware validation context from one base loader."""
 
-        effective_pack_settings_path = loader.effective_pack_settings_path(pack_settings_path)
-        effective_loader = (
-            loader
-            if loader.active_pack_settings_path == effective_pack_settings_path
-            else loader.derive(active_pack_settings_path=effective_pack_settings_path)
-        )
-        pack_settings = effective_loader.load_pack_settings(effective_pack_settings_path)
+        effective_pack_settings_path = loader.activate_pack_settings(pack_settings_path)
+        pack_settings = loader.load_pack_settings(effective_pack_settings_path)
         declared_surfaces = {
             declaration.surface_name: declaration for declaration in pack_settings.surfaces
         }
         surfaces: dict[str, object] = {
-            "schema_catalog": effective_loader.load_schema_catalog(),
+            "schema_catalog": loader.load_schema_catalog(),
         }
         for surface_name in _REQUIRED_VALIDATION_SURFACE_NAMES:
             declaration = declared_surfaces.get(surface_name)
             if declaration is None:
                 continue
-            surfaces[surface_name] = effective_loader.load_declared_surface(
+            surfaces[surface_name] = loader.load_declared_surface(
                 surface_name=declaration.surface_name,
                 relative_path=declaration.path,
             )
 
         return cls(
-            pack_root=effective_loader.resolve_path(pack_settings.workspace_roots.workspace_root),
+            pack_root=loader.resolve_path(pack_settings.workspace_roots.workspace_root),
             pack_settings_path=effective_pack_settings_path,
             pack_settings=pack_settings,
             workspace_roots=pack_settings.workspace_roots,
-            loader=effective_loader,
+            loader=loader,
             schema_catalog=_require_surface(surfaces, "schema_catalog", SchemaCatalog),
             validator_registry=_require_surface(
                 surfaces,

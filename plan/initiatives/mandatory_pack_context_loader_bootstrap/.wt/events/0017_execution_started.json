@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.mandatory_pack_context_loader_bootstrap.0017_execution_started",
+  "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+  "sequence": 17,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T23:18:56Z",
+  "summary": "Execution started after task task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap entered completed.",
+  "payload": {
+    "task_id": "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap",
+    "task_status": "completed"
+  },
+  "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+  "related_paths": [
+    "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/tasks/bootstrap_mandatory_pack_context_loader_bootstrap/task.json"
+  ]
+}

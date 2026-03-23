@@ -454,6 +454,73 @@ def test_authored_input_drift_requires_confirmation_before_review_is_restored(
     assert resolved_discrepancy["status"] == "resolved"
 
 
+def test_bootstrap_packwide_initiative_reconciles_real_derived_surfaces(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = InitiativePackageService(ControlPlaneLoader(repo_root))
+
+    result = service.bootstrap_packwide(_bootstrap_params(), write=True)
+
+    assert result.wrote is True
+    assert result.validation_passed is True
+    assert result.lifecycle_stage == "ready_for_review"
+
+    state = _initiative_state(repo_root)
+    assert state["lifecycle_stage"] == "ready_for_review"
+    assert state["discrepancy_ids"] == []
+    assert state["gate_state"] == {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "pending",
+        "ready_for_execution": False,
+        "blocking_reasons": [],
+    }
+
+
+def test_authored_input_confirmation_reconciles_real_derived_surfaces(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_bootstrapped_packwide_repo(
+        tmp_path,
+        include_decision_notes=True,
+    )
+    service = InitiativePackageService(ControlPlaneLoader(repo_root))
+
+    brief_path = _initiative_root(repo_root) / "initiative_brief.md"
+    brief_path.write_text(
+        brief_path.read_text(encoding="utf-8")
+        + "\n## Drift\nThis edit should require explicit confirmation.\n",
+        encoding="utf-8",
+    )
+
+    readiness = service.validate_packwide(INITIATIVE_SLUG, write=True)
+
+    assert readiness.passed is False
+    assert "authored_input_drift" in readiness.blocking_reasons
+
+    confirm_result = service.confirm_authored_inputs(
+        INITIATIVE_SLUG,
+        "actor.repository_maintainer",
+        write=True,
+    )
+
+    assert confirm_result.wrote is True
+    assert confirm_result.validation_passed is True
+    assert confirm_result.lifecycle_stage == "ready_for_review"
+
+    refreshed_state = _initiative_state(repo_root)
+    assert refreshed_state["lifecycle_stage"] == "ready_for_review"
+    assert refreshed_state["discrepancy_ids"] == []
+    assert refreshed_state["gate_state"] == {
+        "capture_complete": True,
+        "machine_valid": True,
+        "approval_status": "pending",
+        "ready_for_execution": False,
+        "blocking_reasons": [],
+    }
+
+
 def test_machine_root_human_surface_policy_blocks_stray_readme(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

@@ -363,7 +363,7 @@ def _resolve_output_dir(
             None,
         )
 
-    pack_settings_path = loader.default_pack_settings_path()
+    pack_settings_path = loader.activate_pack_settings()
     pack_settings = loader.load_pack_settings(pack_settings_path)
     machine_root = pack_settings.workspace_roots.machine_root
     machine_root_path = loader.resolve_path(machine_root)

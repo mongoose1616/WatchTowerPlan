@@ -682,6 +682,36 @@
       ]
     },
     {
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "summary": "Makes effective pack resolution and PackContext activation the required first phase for pack-aware loader, host, validation, and runtime operations.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T23:19:12Z",
+      "closed_at": "2026-03-23T23:19:12Z",
+      "closure_reason": "Implemented and validated mandatory effective-pack activation and PackContext bootstrap",
+      "source_surface_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap"
+      ],
+      "related_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/initiative.json",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/tasks/bootstrap_mandatory_pack_context_loader_bootstrap/task.json",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md",
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.pack_bootstrap_installation_contract",
       "title": "Pack Bootstrap Installation Contract",
       "summary": "Turns hosted-pack scaffold output into a safe registration and shared-workspace installation flow.",

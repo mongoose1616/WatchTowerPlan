@@ -8,6 +8,7 @@ from typing import Any, cast
 from watchtower_core.control_plane.loader_constants import (
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
     _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
+    _PACK_CONTEXT_CACHE_PREFIX,
     ACCEPTANCE_CONTRACTS_DIRECTORY,
     ACTOR_REGISTRY_PATH,
     AUTHORITY_MAP_PATH,
@@ -198,7 +199,7 @@ def load_pack_runtime_manifest(
     """Load one typed pack-runtime manifest."""
 
     effective_path = (
-        loader.pack_runtime_manifest_path(pack_settings_path)
+        loader.pack_runtime_manifest_path(loader.activate_pack_settings(pack_settings_path))
         if relative_path is None
         else loader._current_pack_settings_path(relative_path)
     )
@@ -656,10 +657,42 @@ def load_pack_context(
 ) -> PackContext:
     """Load one PackContext from pack settings and its declared governed surfaces."""
 
+    if pack_settings_path == PACK_SETTINGS_PATH:
+        return cast(PackContext, loader.load_active_pack_context(pack_settings_path))
+    effective_pack_settings_path = loader._current_pack_settings_path(pack_settings_path)
+    if loader.active_pack_settings_path == effective_pack_settings_path:
+        return cast(PackContext, loader.load_active_pack_context(pack_settings_path))
     return PackContext.from_loader(
         loader,
-        pack_settings_path=loader._current_pack_settings_path(pack_settings_path),
+        pack_settings_path=effective_pack_settings_path,
     )
+
+
+def load_active_pack_context(
+    loader: Any,
+    pack_settings_path: str = PACK_SETTINGS_PATH,
+) -> PackContext:
+    """Activate and cache the effective PackContext for one pack-aware operation."""
+
+    effective_pack_settings_path = loader.activate_pack_settings(pack_settings_path)
+    cache_key = _pack_context_cache_key(loader, effective_pack_settings_path)
+    cached = loader._typed_document_cache.get(cache_key)
+    if cached is not None:
+        return cast(PackContext, cached)
+    context = PackContext.from_loader(
+        loader,
+        pack_settings_path=effective_pack_settings_path,
+    )
+    loader._typed_document_cache[cache_key] = context
+    return context
+
+
+def _pack_context_cache_key(loader: Any, pack_settings_path: str) -> str:
+    """Build one cache key that invalidates with the pack settings and declared surfaces."""
+
+    pack_settings = loader.load_pack_settings(pack_settings_path)
+    surface_paths = tuple(declaration.path for declaration in pack_settings.surfaces)
+    return "::".join((_PACK_CONTEXT_CACHE_PREFIX, pack_settings_path, *surface_paths))
 
 
 def _declared_surface_loaders(loader: Any) -> dict[str, Callable[[str], object]]:

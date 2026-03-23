@@ -984,6 +984,21 @@
       "updated_at": "2026-03-21T22:52:41Z"
     },
     {
+      "task_id": "task.mandatory_pack_context_loader_bootstrap.bootstrap_mandatory_pack_context_loader_bootstrap",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "initiative_title": "Mandatory Pack Context Loader Bootstrap",
+      "title": "Bootstrap Mandatory Pack Context Loader Bootstrap",
+      "summary": "Bootstrap Mandatory Pack Context Loader Bootstrap live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/mandatory_pack_context_loader_bootstrap/.wt/tasks/bootstrap_mandatory_pack_context_loader_bootstrap/task.json",
+      "updated_at": "2026-03-23T23:18:56Z"
+    },
+    {
       "task_id": "task.pack_bootstrap_installation_contract.bootstrap_pack_bootstrap_installation_contract",
       "initiative_id": "initiative.pack_bootstrap_installation_contract",
       "trace_id": "trace.pack_bootstrap_installation_contract",

@@ -463,8 +463,10 @@ def _resolve_describe_context(
     pack_slug: str | None,
 ) -> tuple[PackRegistryEntry, PackRuntimeManifest]:
     entry = _resolve_registry_entry(loader, pack_slug)
+    pack_loader = loader.derive(active_pack_settings_path=entry.pack_settings_path)
     try:
-        manifest = loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
+        pack_loader.activate_pack_settings()
+        manifest = pack_loader.load_pack_runtime_manifest()
     except (ControlPlaneError, ValueError) as exc:
         raise ValueError(
             f"Hosted-pack registry entry for {entry.pack_slug!r} is not usable: {exc}"

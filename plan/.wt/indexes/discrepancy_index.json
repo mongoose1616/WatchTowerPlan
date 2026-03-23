@@ -3,7 +3,7 @@
   "id": "index.plan_discrepancies",
   "title": "Plan Workspace Discrepancy Index",
   "status": "active",
-  "updated_at": "2026-03-23T22:04:08Z",
+  "updated_at": "2026-03-23T23:19:12Z",
   "entries": [
     {
       "discrepancy_id": "discrepancy.copied_core_discovery_surface_reconciliation_followup.decision_notes_drift",
@@ -1129,6 +1129,261 @@
         "plan/.wt/indexes/review_index.json"
       ],
       "updated_at": "2026-03-21T03:01:51Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.artifact_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/artifact_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/artifact_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.closeout_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/closeout_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/closeout_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.coordination_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/coordination_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/coordination_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.decision_notes_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/decision_notes.md"
+      ],
+      "updated_at": "2026-03-23T23:17:34Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.design_record_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/design_record.md"
+      ],
+      "updated_at": "2026-03-23T23:17:34Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.discrepancy_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/discrepancy_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/discrepancy_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.evidence_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/evidence_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/evidence_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.guidance_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/guidance_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/guidance_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.implementation_slice_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/implementation_slice.md"
+      ],
+      "updated_at": "2026-03-23T23:17:34Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.initiative_brief_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "authored_input_drift",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Authored input drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md; machine confirmation is required.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/initiative_brief.md"
+      ],
+      "updated_at": "2026-03-23T23:17:34Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.initiative_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/initiative_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.plan_surface_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/plan.md.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/plan.md"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.progress_surface_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/progress.md.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/progress.md"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.promotion_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/promotion_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/promotion_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.readiness_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/readiness_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/readiness_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.review_index_index_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_aggregate_index",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Aggregate index drift detected for plan/.wt/indexes/review_index.json.",
+      "source_paths": [
+        "plan/.wt/indexes/review_index.json"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
+    },
+    {
+      "discrepancy_id": "discrepancy.mandatory_pack_context_loader_bootstrap.summary_surface_drift",
+      "initiative_id": "initiative.mandatory_pack_context_loader_bootstrap",
+      "trace_id": "trace.mandatory_pack_context_loader_bootstrap",
+      "title": "Mandatory Pack Context Loader Bootstrap",
+      "category": "stale_rendered_surface",
+      "severity": "high",
+      "gate_effect": "readiness",
+      "status": "resolved",
+      "summary": "Rendered surface drift detected for plan/initiatives/mandatory_pack_context_loader_bootstrap/summary.md.",
+      "source_paths": [
+        "plan/initiatives/mandatory_pack_context_loader_bootstrap/summary.md"
+      ],
+      "updated_at": "2026-03-23T23:17:39Z"
     },
     {
       "discrepancy_id": "discrepancy.pack_starter_templates_and_oversight_alignment.artifact_index_index_drift",

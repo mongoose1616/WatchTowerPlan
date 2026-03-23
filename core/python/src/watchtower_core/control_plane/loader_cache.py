@@ -10,6 +10,7 @@ from watchtower_core.control_plane.loader_constants import (
     _KEEP_ACTIVE_PACK_SETTINGS,
     _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX,
     _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX,
+    _PACK_CONTEXT_CACHE_PREFIX,
 )
 
 if TYPE_CHECKING:
@@ -116,6 +117,7 @@ def _invalidate_typed_document_state(loader: Any, relative_path: str) -> None:
         for cache_key in loader._typed_document_cache
         if cache_key.startswith(
             (
+                f"{_PACK_CONTEXT_CACHE_PREFIX}::",
                 f"{_MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX}::",
                 f"{_MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX}::",
             )

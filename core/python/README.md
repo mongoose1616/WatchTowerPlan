@@ -163,11 +163,14 @@ Use the nested READMEs under `integrations/github/` and the reusable-core subpac
 ## Programmatic Use
 - `watchtower_core.control_plane.WorkspaceConfig` supports alternate logical workspace prefixes through direct construction when a non-default repository layout is needed.
 - `ControlPlaneLoader.load_pack_settings()` exposes the repository's current pack-settings load root as a typed reusable-core startup surface.
-- `ControlPlaneLoader.load_pack_context()` materializes a reusable `PackContext` by loading pack settings and the surfaces declared there.
+- `ControlPlaneLoader.activate_pack_settings()` is the Phase 0 bootstrap for any pack-aware runtime seam. Use it before reading the default pack runtime manifest, owned roots, or other pack-selected runtime metadata.
+- `ControlPlaneLoader.load_active_pack_context()` activates and caches the full typed `PackContext` for the effective pack. Use it when the caller needs pack-governed surfaces such as the schema catalog, validator registry, validation-suite registry, or other declared governance surfaces.
+- `ControlPlaneLoader.load_pack_context()` remains available for explicit-path loading, but the default pack-aware path should flow through `activate_pack_settings()` and then `load_active_pack_context()` when the consumer truly needs the full context.
 - `ControlPlaneLoader.load_validation_suite_registry()` exposes the active validation-suite registry, including pack-declared suite baselines.
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.
 - `watchtower_core.validation.suite.ValidationSuiteService` runs declared validation suites against the active pack settings surface, including pack-local schema and validator registries.
+- Minimal runtime-only fixture packs may intentionally omit the full shared governance surface set. Those seams still must activate the effective pack first, but they should not require `load_active_pack_context()` unless they truly consume the declared governance surfaces.
 - Keep pack-agnostic loading and validation logic out of pack-owned namespaces, and move generic behavior back into reusable-core packages when it stops being pack-specific.
 - Pack-owned namespaces should be consumed through the shared workspace installation contract, not through repo-local `sys.path` mutation.
 - Pack-owned namespaces are not second generic Python roots and not mirrors of `watchtower_core`; keep them narrow and pack-owned.

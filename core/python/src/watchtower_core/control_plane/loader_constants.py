@@ -33,5 +33,6 @@ VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/records/validation_evidence"
 
 TArtifact = TypeVar("TArtifact")
 _KEEP_ACTIVE_PACK_SETTINGS = object()
+_PACK_CONTEXT_CACHE_PREFIX = "__pack_context__"
 _MERGED_VALIDATOR_REGISTRY_CACHE_PREFIX = "__merged_validator_registry__"
 _MERGED_WORKFLOW_METADATA_REGISTRY_CACHE_PREFIX = "__merged_workflow_metadata_registry__"

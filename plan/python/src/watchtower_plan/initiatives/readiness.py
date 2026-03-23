@@ -291,6 +291,11 @@ class InitiativeReadinessCoordinator:
                 actor_id=approver_actor_id,
                 recorded_at=updated_at,
             )
+            readiness = self.validate_initiative(
+                location,
+                write=True,
+                require_approved=False,
+            )
             self._context.sync_derived_surfaces(location)
             readiness = self.validate_initiative(
                 location,

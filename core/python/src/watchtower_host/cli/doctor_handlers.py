@@ -11,7 +11,8 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 
 def _declared_pack_surface_names(loader: ControlPlaneLoader) -> frozenset[str]:
-    pack_settings = loader.load_pack_settings(loader.default_pack_settings_path())
+    pack_settings_path = loader.activate_pack_settings()
+    pack_settings = loader.load_pack_settings(pack_settings_path)
     return frozenset(declaration.surface_name for declaration in pack_settings.surfaces)
 
 
@@ -33,8 +34,10 @@ def _optional_entry_count(
 
 def _default_pack_command_namespace(loader: ControlPlaneLoader) -> str | None:
     try:
-        pack_settings_path = loader.default_pack_settings_path()
-        runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
+        pack_settings_path = loader.activate_pack_settings()
+        runtime_manifest = loader.load_pack_runtime_manifest(
+            pack_settings_path=pack_settings_path
+        )
     except (ArtifactLoadError, KeyError, ValueError):
         runtime_manifest = None
     if runtime_manifest is not None:

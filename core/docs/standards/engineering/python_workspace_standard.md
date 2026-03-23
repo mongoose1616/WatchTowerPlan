@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T22:05:00Z"
+updated_at: "2026-03-23T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -69,6 +69,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep pack-owned tests under the owning pack root such as `<pack-root>/python/tests/`.
 - Do not keep tests that import `watchtower_<pack>` directly under `core/python/tests/`; those belong under the owning pack root.
 - When shared-core tests need pack context, use synthetic fixture packs or typed loader/runtime seams instead of direct imports of a live hosted pack package.
+- Treat effective pack activation as the first step for any pack-aware test seam. Tests that only need runtime manifest, owned roots, import resolution, or command-namespace behavior should activate the effective pack settings first and should not require a full `PackContext` unless they actually consume pack-governed surfaces.
 - Do not let the live current-repository pack workspace become an accidental shared-core test dependency. If a test only passes because the active hosted-pack workspace exists, either move it under the owning pack root or replace that dependency with synthetic fixture-pack setup.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
@@ -171,4 +172,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code plus direct pack tests under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/` and `<pack-root>/python/tests/`.
 
 ## Updated At
-- `2026-03-23T22:05:00Z`
+- `2026-03-23T23:20:00Z`

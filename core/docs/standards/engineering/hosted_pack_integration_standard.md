@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T20:35:00Z"
+updated_at: "2026-03-23T23:20:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -87,6 +87,8 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - `query_runtime` and `sync_targets` must publish non-empty command and target inventories.
 - Keep pack-local validator registries limited to pack-owned validators. Shared core validator IDs belong in `core/control_plane/registries/validator_registry.json`; conflicting duplicates should be treated as contract drift.
 - When a pack publishes workflow IDs that are not already described by the shared core workflow metadata registry, keep those entries in a pack-owned `workflow_metadata_registry` and point `pack_settings.json` at that pack-local path. The loader merges the shared core registry with the pack-owned registry and rejects conflicting duplicates.
+- Treat effective pack activation as mandatory Phase 0 for any pack-aware runtime, validation, sync, or host helper. Runtime-manifest and integration loading must not guess the default pack independently of the loader-owned activation step.
+- Require the full typed `PackContext` only in seams that actually consume pack-governed surfaces beyond runtime identity. Minimal runtime-only fixture packs may omit governance surfaces such as `governance_surface_map`, `path_pattern_registry`, or `status_registry` while still remaining valid for runtime-manifest and integration proofs.
 - Additional pack-local Python must live under `<pack>/python/src/watchtower_<pack>/` and should be organized by domain feature rather than by mirrored copies of reusable-core package taxonomy.
 - Use `watchtower_<pack>` for domain-specific lifecycle behavior, rendering, semantic validation, query handlers, sync targets, and feature services.
 - Move code into `watchtower_core` when the behavior is truly cross-pack, schema-backed, or pack-agnostic.
@@ -139,4 +141,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-23T20:35:00Z`
+- `2026-03-23T23:20:00Z`

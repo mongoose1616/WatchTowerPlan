@@ -1386,7 +1386,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-23T20:35:00Z",
+      "updated_at": "2026-03-23T23:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1559,7 +1559,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-23T22:05:00Z",
+      "updated_at": "2026-03-23T23:20:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

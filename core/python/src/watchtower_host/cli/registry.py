@@ -155,15 +155,14 @@ def discover_registered_pack_command_groups(
     discoveries: list[PackCommandGroupDiscovery] = []
     seen_names = {spec.name for spec in CORE_COMMAND_GROUP_SPECS}
     for entry in effective_pack_registry_entries(active_loader):
+        pack_loader = active_loader.derive(active_pack_settings_path=entry.pack_settings_path)
         namespace = entry.command_namespace
         if namespace in seen_names:
             raise ValueError(f"Duplicate top-level command namespace: {namespace}")
         discoveries.append(
             PackCommandGroupDiscovery(
                 registry_entry=entry,
-                runtime_manifest=active_loader.load_pack_runtime_manifest(
-                    pack_settings_path=entry.pack_settings_path
-                ),
+                runtime_manifest=pack_loader.load_pack_runtime_manifest(),
             )
         )
         seen_names.add(namespace)
@@ -180,11 +179,10 @@ def find_registered_pack_command_group(
     entry = _find_registered_pack_entry(command_namespace, active_loader)
     if entry is None:
         return None
+    pack_loader = active_loader.derive(active_pack_settings_path=entry.pack_settings_path)
     return PackCommandGroupDiscovery(
         registry_entry=entry,
-        runtime_manifest=active_loader.load_pack_runtime_manifest(
-            pack_settings_path=entry.pack_settings_path
-        ),
+        runtime_manifest=pack_loader.load_pack_runtime_manifest(),
     )
 
 
@@ -200,17 +198,15 @@ def load_pack_command_group_spec(
     entry = _find_registered_pack_entry(command_namespace, active_loader)
     if entry is None:
         return None
-    runtime_manifest = active_loader.load_pack_runtime_manifest(
-        pack_settings_path=entry.pack_settings_path
-    )
+    pack_loader = active_loader.derive(active_pack_settings_path=entry.pack_settings_path)
+    runtime_manifest = pack_loader.load_pack_runtime_manifest()
     discovery = PackCommandGroupDiscovery(
         registry_entry=entry,
         runtime_manifest=runtime_manifest,
     )
     try:
         loaded = load_active_pack_integration(
-            active_loader,
-            pack_settings_path=entry.pack_settings_path,
+            pack_loader,
         )
         if discovery.runtime_manifest.command_namespace != discovery.name:
             raise ValueError(
