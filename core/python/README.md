@@ -19,7 +19,7 @@
 | `core/python/src/watchtower_core/telemetry/README.md` | Describes the local runtime telemetry package, sink rules, and opt-out environment variables. |
 | `core/python/src/watchtower_host/README.md` | Describes the host-owned CLI composition boundary for the `watchtower-core` binary. |
 | `core/python/tests/` | Holds pack-neutral shared-core and host tests plus synthetic fixture data. |
-| `<pack-root>/python/tests/` | Holds tests that import or exercise one hosted pack directly, such as `plan/python/tests/`. |
+| `<pack-root>/python/tests/` | Holds tests that import or exercise one hosted pack directly. |
 | `core/python/tools/` | Holds small workspace-local helper scripts such as `dev_shell.sh` when they are warranted. |
 
 ## Onboarding
@@ -33,7 +33,7 @@
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
 - `uv sync --extra dev` installs `watchtower_core` and any repo-local hosted pack packages declared in the shared workspace metadata.
 - In this repository, the shared workspace metadata currently includes one internal hosted pack. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
-- Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `plan/python/tests/`.
+- Keep the test split explicit: `core/python/tests/` is the shared pack-neutral suite, while pack-owned tests live under the owning pack root such as `<pack-root>/python/tests/`.
 - Keep the shared-core suite live-pack-neutral: if a test needs a real `watchtower_<pack>` import or depends on the live `plan/` workspace being present, move it under the owning pack root or replace it with synthetic fixture-pack setup.
 - During copied-core bring-up, `watchtower-core pack list`, `pack describe`, `pack validate`, selected pack namespaces, and `validate all` can discover a valid local pack from `<pack>/.wt/manifests/pack_settings.json` plus `<pack>/python/src` even before shared workspace wiring is persisted. Treat that as temporary bootstrap compatibility: `watchtower-core pack bootstrap --write` is the step that reconciles the shared hosted-pack registry, shared workspace metadata, and shared command/repository-path discovery surfaces for the copied repository.
 - `watchtower-core pack scaffold` now emits a starter pack-owned `workflow_metadata_registry` and wires the starter validator and validation-suite surfaces to it. Replace the starter workflow entry with the pack's real workflow IDs before relying on workflow indexing or route preview for the new pack.
@@ -43,8 +43,8 @@
 ### Common Commands
 - `uv run pytest -q`
 - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
-- `./.venv/bin/python -m pytest ../../plan/python/tests -q`
-- `./.venv/bin/python -m pytest tests/unit tests/integration ../../plan/python/tests -q`
+- `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
+- `./.venv/bin/python -m pytest tests/unit tests/integration ../../<pack-root>/python/tests -q`
 - `uv run ruff check .`
 - `uv run mypy src`
 - `./core/python/.venv/bin/mypy core/python/src/watchtower_core`
@@ -108,8 +108,8 @@
 - Repo-root `./core/python/.venv/bin/mypy ...` commands are supported through the root [mypy.ini](/mypy.ini) when you do not want to `cd core/python` first.
 - `uv run pytest -q` is the fast local default and collects only `core/python/tests/unit/`.
 - Use `./.venv/bin/python -m pytest tests/unit tests/integration -q` for the broad shared-core Python validation pass when a change touches reusable-core, host composition, synthetic pack fixtures, or multi-surface CLI behavior.
-- Use `./.venv/bin/python -m pytest ../../plan/python/tests -q` when the change touches `watchtower_plan` or other plan-owned Python surfaces.
-- Use `./.venv/bin/python -m pytest tests/unit tests/integration ../../plan/python/tests -q` when one change spans both shared core and the plan-owned package.
+- Use `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q` when the change touches one hosted pack directly.
+- Use `./.venv/bin/python -m pytest tests/unit tests/integration ../../<pack-root>/python/tests -q` when one change spans both shared core and one hosted pack.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before shared root sync commands, pack-owned sync-all commands, or `validate all`.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.

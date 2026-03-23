@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-23T05:52:40Z",
+  "updated_at": "2026-03-23T14:55:54Z",
   "entries": [
     {
       "closeout_id": "closeout.command_latency_reduction_using_runtime_telemetry.bootstrap_recap",
@@ -128,6 +128,31 @@
         "cancelled"
       ],
       "updated_at": "2026-03-21T00:42:04Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.core_pack_neutral_portability_cleanup.bootstrap_recap",
+      "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+      "trace_id": "trace.core_pack_neutral_portability_cleanup",
+      "initiative_title": "Core Pack Neutral Portability Cleanup",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/core_pack_neutral_portability_cleanup",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.core_pack_neutral_portability_cleanup.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.core_pack_neutral_portability_cleanup.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-23T14:55:54Z",
       "terminal_state": "completed"
     },
     {

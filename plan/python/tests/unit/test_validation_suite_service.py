@@ -8,6 +8,9 @@ from types import SimpleNamespace
 
 import pytest
 from watchtower_plan import integration as plan_integration
+from watchtower_plan.testing.externalized_plan_fixtures import (
+    materialize_externalized_plan_validation_suite,
+)
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -41,7 +44,7 @@ def test_pack_contract_validation_fails_when_runtime_manifest_is_missing(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     (repo_root / surfaces["pack_runtime_manifest_path"]).unlink()
 
     result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
@@ -56,7 +59,7 @@ def test_pack_contract_validation_fails_when_pack_command_doc_is_missing(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     (repo_root / surfaces["command_doc_relative_path"]).unlink()
 
     result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
@@ -71,7 +74,7 @@ def test_pack_contract_validation_fails_when_core_python_workspace_dependency_is
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
     pyproject_text = pyproject_path.read_text(encoding="utf-8")
     pyproject_path.write_text(
@@ -91,7 +94,7 @@ def test_pack_contract_validation_fails_when_core_python_workspace_source_drifts
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
     pyproject_text = pyproject_path.read_text(encoding="utf-8")
     pyproject_path.write_text(
@@ -114,7 +117,7 @@ def test_pack_contract_validation_fails_when_pack_python_root_is_missing(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     rmtree(repo_root / "packs" / "plan" / "python")
 
     result = PackContractValidationService(ControlPlaneLoader(repo_root)).validate(
@@ -129,7 +132,7 @@ def test_pack_contract_validation_fails_when_docs_root_is_not_pack_local(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
     runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
     runtime_manifest["owned_roots"]["docs_root"] = "core/docs"
@@ -150,7 +153,7 @@ def test_pack_contract_validation_fails_when_named_domain_roots_drift(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
     runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
     runtime_manifest["owned_roots"]["domain_roots"]["initiatives"] = "packs/plan/traces"
@@ -171,7 +174,7 @@ def test_pack_contract_validation_fails_when_pack_settings_surface_leaves_pack_a
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     pack_settings_path = repo_root / surfaces["pack_settings_path"]
     pack_settings = json.loads(pack_settings_path.read_text(encoding="utf-8"))
     relocated_surface = repo_root / "shared" / "schema_catalog.json"
@@ -198,7 +201,7 @@ def test_pack_contract_validation_fails_when_reusable_core_imports_pack_runtime(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     illegal_import = repo_root / "core/python/src/watchtower_core/illegal_import.py"
     illegal_import.parent.mkdir(parents=True, exist_ok=True)
     illegal_import.write_text("import watchtower_plan.integration\n", encoding="utf-8")
@@ -215,7 +218,7 @@ def test_pack_contract_validation_fails_when_pack_runtime_imports_host_runtime(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     illegal_import = repo_root / "packs/plan/python/src/watchtower_plan/illegal_import.py"
     illegal_import.parent.mkdir(parents=True, exist_ok=True)
     illegal_import.write_text("from watchtower_host.cli import main\n", encoding="utf-8")
@@ -232,7 +235,7 @@ def test_pack_contract_validation_fails_when_reusable_core_imports_host_runtime(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     illegal_import = repo_root / "core/python/src/watchtower_core/illegal_host_import.py"
     illegal_import.parent.mkdir(parents=True, exist_ok=True)
     illegal_import.write_text("from watchtower_host.cli import parser\n", encoding="utf-8")
@@ -249,7 +252,7 @@ def test_pack_contract_validation_fails_when_reusable_core_mutates_sys_path(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     illegal_mutation = repo_root / "core/python/src/watchtower_core/illegal_sys_path.py"
     illegal_mutation.parent.mkdir(parents=True, exist_ok=True)
     illegal_mutation.write_text(
@@ -291,7 +294,7 @@ def test_pack_contract_validation_fails_when_suite_registry_surface_is_missing(
 
 def test_validation_suite_service_runs_pack_suite(tmp_path: Path) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     loader = ControlPlaneLoader(
         repo_root,
         active_pack_settings_path=surfaces["pack_settings_path"],
@@ -374,7 +377,7 @@ def test_pack_contract_validation_fails_when_integration_module_is_not_pack_loca
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
     runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
     runtime_manifest["integration_module"] = "watchtower_host.cli.main"
@@ -395,7 +398,7 @@ def test_pack_contract_validation_fails_when_command_namespace_conflicts(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     surfaces = materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -420,7 +423,7 @@ def test_pack_contract_validation_fails_when_integration_module_is_missing(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     runtime_manifest_path = repo_root / surfaces["pack_runtime_manifest_path"]
     runtime_manifest = json.loads(runtime_manifest_path.read_text(encoding="utf-8"))
     runtime_manifest["integration_module"] = "watchtower_plan.missing_integration"

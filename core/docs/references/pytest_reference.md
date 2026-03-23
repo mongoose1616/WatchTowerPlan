@@ -38,7 +38,6 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 - [tests](/core/python/tests/)
-- [plan/python/tests](/plan/python/tests/)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -71,7 +70,6 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - [python_workspace_standard.md](/core/docs/standards/engineering/python_workspace_standard.md)
 - [pyproject.toml](/core/python/pyproject.toml)
 - [tests](/core/python/tests/)
-- [plan/python/tests](/plan/python/tests/)
 
 ### Why It Matters Here
 - Use this reference when future repository automation needs a default Python test framework.
@@ -94,7 +92,7 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - This reference supports future Python automation work and does not imply the repo already has a Python test suite.
 - If test policy becomes more formal, it should move into `core/docs/standards/engineering/`.
 - Canonical upstream sources were rechecked on `2026-03-18` during the Python code-design standards alignment pass.
-- Local repository policy now splits shared pack-neutral tests under `core/python/tests/` from pack-owned direct-runtime tests under pack roots such as `plan/python/tests/`.
+- Local repository policy now splits shared pack-neutral tests under `core/python/tests/` from pack-owned direct-runtime tests under owning pack roots such as `<pack-root>/python/tests/`.
 - Shared-core tests that need pack context should use synthetic fixture packs or typed loader seams rather than depending on the live current-repository pack workspace.
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 

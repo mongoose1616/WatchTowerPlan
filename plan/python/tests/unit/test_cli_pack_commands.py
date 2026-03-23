@@ -24,13 +24,16 @@ from watchtower_plan.cli import (
 from watchtower_plan.cli import (
     tasks as plan_tasks_cli,
 )
+from watchtower_plan.testing.externalized_plan_fixtures import (
+    externalized_plan_command_surface_paths,
+    materialize_externalized_plan_command_docs,
+    materialize_externalized_plan_python,
+    materialize_externalized_plan_validation_suite,
+)
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
-    externalized_plan_command_surface_paths,
     materialize_externalized_fixture_python,
-    materialize_externalized_plan_command_docs,
-    materialize_externalized_plan_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -202,7 +205,7 @@ def test_pack_commands_support_second_pack_fixture(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -238,7 +241,7 @@ def test_pack_commands_support_root_pack_fixture(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(["pack", "describe", "--pack", "plan", "--format", "json"])
@@ -256,7 +259,7 @@ def test_pack_validate_supports_second_pack_fixture(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -288,7 +291,7 @@ def test_pack_commands_still_work_when_another_registered_pack_is_broken(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     oversight_surfaces = materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -412,7 +415,7 @@ def test_pack_validate_reports_missing_pack_command_doc_via_cli(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     (repo_root / surfaces["command_doc_relative_path"]).unlink()
     monkeypatch.chdir(repo_root / "core" / "python")
 
@@ -440,7 +443,7 @@ def test_pack_scaffold_supports_json_output(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(
@@ -494,7 +497,7 @@ def test_pack_bootstrap_supports_json_dry_run(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     scaffold_result = main(
@@ -555,7 +558,7 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
     _patch_live_plan_command_surfaces(monkeypatch, repo_root / "packs" / "plan")
@@ -726,7 +729,7 @@ def test_pack_scaffold_rejects_registry_collisions(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(
@@ -754,7 +757,7 @@ def test_host_command_registry_loads_second_pack_namespace(
     monkeypatch,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -798,7 +801,7 @@ def test_selected_pack_namespace_loading_isolated_from_broken_other_pack(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     oversight_surfaces = materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -842,7 +845,7 @@ def test_introspection_marks_broken_pack_namespace_unavailable(
     tmp_path: Path,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     oversight_surfaces = materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -879,7 +882,7 @@ def test_parser_specs_route_pack_commands_to_owned_doc_roots(
     monkeypatch,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",

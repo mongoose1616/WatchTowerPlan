@@ -23,7 +23,10 @@ from watchtower_core.control_plane.loader import (
 def test_control_plane_loader_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        active_pack_settings_path="core/control_plane/manifests/pack_settings.json",
+    )
     validator_registry_path = loader.load_pack_settings().get("validator_registry").path
     validator_registry_loads = 0
     original_load_validated_document = loader.load_validated_document
@@ -65,8 +68,24 @@ def test_control_plane_loader_reuses_pack_registry_materialization(
     assert pack_registry_loads == 1
 
 
-def test_control_plane_loader_invalidates_document_and_directory_cache_state() -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+def test_control_plane_loader_invalidates_document_and_directory_cache_state(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
+    )
     validator_registry_path = loader.load_pack_settings().get("validator_registry").path
     original_registry_document = deepcopy(loader.load_validated_document(validator_registry_path))
     original_contract_documents = tuple(
@@ -79,19 +98,18 @@ def test_control_plane_loader_invalidates_document_and_directory_cache_state() -
     original_registry = loader.load_validator_registry()
     stale_registry_document = deepcopy(original_registry_document)
     for validator in stale_registry_document["validators"]:
-        if validator["id"] == "validator.plan.validation_bundle":
-            validator["title"] = "Stale Plan Validation Bundle Validator"
+        if validator["id"] == surfaces["validator_id"]:
+            validator["title"] = "Stale Fixture Validation Validator"
             break
     else:
-        raise AssertionError("Expected plan validator entry to exist in active registry.")
+        raise AssertionError("Expected fixture validator entry to exist in active registry.")
     loader.set_validated_document_override(validator_registry_path, stale_registry_document)
 
     updated_registry = loader.load_validator_registry()
 
     assert updated_registry is not original_registry
     assert (
-        updated_registry.get("validator.plan.validation_bundle").title
-        == "Stale Plan Validation Bundle Validator"
+        updated_registry.get(surfaces["validator_id"]).title == "Stale Fixture Validation Validator"
     )
 
     removed_path, removed_document = original_contract_documents[0]

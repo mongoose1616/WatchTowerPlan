@@ -21,7 +21,7 @@ def _copy_validation_repo_subset(tmp_path: Path) -> Path:
     return repo_root
 
 
-def test_validate_suite_runs_plan_domain_pack_fixture_via_cli_json(
+def test_validate_suite_runs_synthetic_pack_fixture_via_cli_json(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     capsys,
@@ -48,7 +48,7 @@ def test_validate_suite_runs_plan_domain_pack_fixture_via_cli_json(
     assert payload["command"] == "watchtower-core validate suite"
     assert payload["status"] == "ok"
     assert payload["passed"] is True
-    assert payload["suite_id"] == "suite.plan.validation_baseline"
+    assert payload["suite_id"] == surfaces["suite_id"]
     targets = {record["target"] for record in payload["records"]}
     assert surfaces["pack_settings_path"] in targets
     assert surfaces["artifact_relative_path"] in targets
@@ -182,7 +182,7 @@ def test_validate_suite_rejects_unknown_suite_id_via_cli(
             "validate",
             "suite",
             "--suite-id",
-            "suite.plan.missing",
+            surfaces["suite_id"].replace(".validation_baseline", ".missing"),
             "--pack-settings-path",
             surfaces["pack_settings_path"],
             "--format",

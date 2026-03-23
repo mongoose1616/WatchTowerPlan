@@ -1048,8 +1048,7 @@
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
-        "core/python/tests/",
-        "plan/python/tests/"
+        "core/python/tests/"
       ],
       "tags": [
         "reference",

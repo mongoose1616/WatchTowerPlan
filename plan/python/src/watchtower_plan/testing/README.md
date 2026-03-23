@@ -7,3 +7,4 @@
 - This package is test support, not production runtime API.
 - Shared-core tests must not import this package.
 - Prefer synthetic fixture-pack support in `core/python/tests/` when a shared-core test only needs generic pack context.
+- Keep live-plan externalization helpers here rather than in `core/python/tests/` so the shared-core fixture layer stays pack-neutral.

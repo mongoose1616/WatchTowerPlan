@@ -1,16 +1,33 @@
 from __future__ import annotations
 
-from tests.pack_fixture_support import REPO_ROOT
+from pathlib import Path
+
+from tests.pack_fixture_support import (
+    materialize_pack_validation_suite,
+    materialize_validation_repo_subset,
+)
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.validation.context import PackValidationContext
 
 
 def test_pack_validation_context_loads_only_shared_validation_surfaces(
+    tmp_path: Path,
     monkeypatch,
 ) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
     loader = ControlPlaneLoader(
-        REPO_ROOT,
-        active_pack_settings_path="plan/.wt/manifests/pack_settings.json",
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
     )
     requested_surface_names: list[str] = []
     original = loader.load_declared_surface

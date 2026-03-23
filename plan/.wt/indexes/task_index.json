@@ -492,6 +492,21 @@
       ]
     },
     {
+      "task_id": "task.core_pack_neutral_portability_cleanup.bootstrap_core_pack_neutral_portability_cleanup",
+      "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+      "trace_id": "trace.core_pack_neutral_portability_cleanup",
+      "initiative_title": "Core Pack Neutral Portability Cleanup",
+      "title": "Bootstrap Core Pack Neutral Portability Cleanup",
+      "summary": "Bootstrap Core Pack Neutral Portability Cleanup live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/core_pack_neutral_portability_cleanup/.wt/tasks/bootstrap_core_pack_neutral_portability_cleanup/task.json",
+      "updated_at": "2026-03-23T14:55:43Z"
+    },
+    {
       "task_id": "task.core_portability_followup_root_pack_and_query_typing.align_shared_core_tests_with_root_pack_defaults",
       "initiative_id": "initiative.core_portability_followup_root_pack_and_query_typing",
       "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",

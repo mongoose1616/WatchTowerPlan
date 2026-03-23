@@ -19,9 +19,7 @@ aliases:
 applies_to:
   - "core/python/src/watchtower_host/cli/"
   - "core/python/src/watchtower_core/cli/"
-  - "plan/python/src/watchtower_plan/cli/"
   - "core/docs/commands/"
-  - "plan/docs/commands/"
 ---
 
 # CLI Help Text Standard
@@ -95,7 +93,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 
 ## Operationalization
 - `Modes`: `documentation`; `runtime`
-- `Operational Surfaces`: `core/docs/commands/`; `plan/docs/commands/`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`; `plan/python/src/watchtower_plan/cli/`; `core/docs/commands/core_python/watchtower_core.md`; `plan/docs/commands/core_python/watchtower_core_plan.md`
+- `Operational Surfaces`: `core/docs/commands/`; `core/python/src/watchtower_host/cli/`; `core/python/src/watchtower_core/cli/`; `core/docs/commands/core_python/watchtower_core.md`
 
 ## Validation
 - Root and command-group `--help` output should be understandable without opening the implementation file first.

@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.core_pack_neutral_portability_cleanup.bootstrap_core_pack_neutral_portability_cleanup",
+  "slug": "bootstrap_core_pack_neutral_portability_cleanup",
+  "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+  "title": "Bootstrap Core Pack Neutral Portability Cleanup",
+  "summary": "Bootstrap Core Pack Neutral Portability Cleanup live initiative package.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T14:14:16Z",
+  "updated_at": "2026-03-23T14:55:43Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

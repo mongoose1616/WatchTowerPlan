@@ -16,43 +16,45 @@ def test_extraction_output_helper_builds_schema_valid_document() -> None:
     helper = ExtractionOutputEnvelopeHelper(ControlPlaneLoader(REPO_ROOT))
 
     document = helper.build_document(
-        envelope_id="envelope.plan_example.design_record",
+        envelope_id="envelope.example_pack.design_record",
         title="Extraction Envelope: Design Record",
         summary="Structured extraction output before promotion into decision_record guidance.",
         status="active",
-        pack_id="pack.plan",
-        work_item_id="promotion.plan_example.bootstrap_shell",
-        trace_id="trace.plan_example",
-        source_note_id="note.plan_example.design_record",
-        workflow_run_id="run.plan_example.guidance_promotion",
+        pack_id="pack.example",
+        work_item_id="promotion.example_pack.bootstrap_shell",
+        trace_id="trace.example_pack",
+        source_note_id="note.example_pack.design_record",
+        workflow_run_id="run.example_pack.guidance_promotion",
         extraction_method="governed_guidance_promotion",
         created_at="2026-03-18T02:10:00Z",
         observations=(
             ExtractionObservationSpec(
-                observation_id="observation.plan_example.design_record",
+                observation_id="observation.example_pack.design_record",
                 summary="The design record is eligible for governed promotion.",
                 tags=("design_record", "decision_record"),
             ),
         ),
         candidate_knowledge=(
             ExtractionCandidateKnowledgeSpec(
-                candidate_id="candidate.plan_example.design_record",
-                title="Plan Example Decision Record: Design Record",
+                candidate_id="candidate.example_pack.design_record",
+                title="Example Pack Decision Record: Design Record",
                 summary=(
-                    "Promoted decision record extracted from the design record for Plan Example."
+                    "Promoted decision record extracted from the design record for Example Pack."
                 ),
                 knowledge_family="decision_record",
-                evidence_artifact_ids=("evidence.plan_example.bootstrap_validation_bundle",),
+                evidence_artifact_ids=("evidence.example_pack.bootstrap_validation_bundle",),
                 tags=("promoted_guidance", "design_record", "decision_record"),
             ),
         ),
-        notes="Promotion record promotion.plan_example.bootstrap_shell remains authoritative.",
+        notes="Promotion record promotion.example_pack.bootstrap_shell remains authoritative.",
     )
 
     artifact = helper.artifact_from_document(document)
 
-    assert artifact.artifact_id == "envelope.plan_example.design_record"
+    assert artifact.artifact_id == "envelope.example_pack.design_record"
     assert artifact.observation_count == 1
     assert artifact.knowledge_count == 1
     assert artifact.knowledge_families == ("decision_record",)
-    assert artifact.evidence_artifact_ids == ("evidence.plan_example.bootstrap_validation_bundle",)
+    assert artifact.evidence_artifact_ids == (
+        "evidence.example_pack.bootstrap_validation_bundle",
+    )

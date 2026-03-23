@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-23T05:52:40Z",
+  "updated_at": "2026-03-23T14:55:54Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -92,6 +92,24 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.core_pack_neutral_portability_cleanup",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+      "trace_id": "trace.core_pack_neutral_portability_cleanup",
+      "initiative_title": "Core Pack Neutral Portability Cleanup",
+      "title": "Core Pack Neutral Portability Cleanup",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.core_pack_neutral_portability_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T14:55:54Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -534,6 +552,22 @@
         "evidence.core_host_pack_architecture_hard_cutover.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-21T00:42:04Z"
+    },
+    {
+      "review_subject_id": "promotion.core_pack_neutral_portability_cleanup.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+      "trace_id": "trace.core_pack_neutral_portability_cleanup",
+      "initiative_title": "Core Pack Neutral Portability Cleanup",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.core_pack_neutral_portability_cleanup.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T14:55:54Z"
     },
     {
       "review_subject_id": "promotion.core_portability_followup_root_pack_and_query_typing.bootstrap_shell",

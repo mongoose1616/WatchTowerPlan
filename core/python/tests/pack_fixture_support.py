@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 from shutil import copy2, copytree, ignore_patterns
+from typing import Any, cast
 
-from watchtower_core.pack_integration import (
+from watchtower_core.pack_integration.docs import pack_command_entry_doc_path
+from watchtower_core.pack_integration.workspace_registration import (
     core_python_workspace_registration,
     ensure_core_python_workspace_registration,
-    pack_command_entry_doc_path,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -20,12 +20,12 @@ _DEFAULT_FIXTURE_WT_ROOT = "packs/plan/.wt"
 def materialize_pack_validation_suite(
     pack_root: Path,
     *,
-    pack_id: str = "pack.plan",
-    pack_slug: str = "plan",
-    command_namespace: str = "plan",
-    python_distribution: str = "watchtower-plan",
-    python_package: str = "watchtower_plan",
-    integration_module: str = "watchtower_plan.integration",
+    pack_id: str = "pack.fixture",
+    pack_slug: str = "fixture",
+    command_namespace: str = "fixture",
+    python_distribution: str = "watchtower-fixture-pack",
+    python_package: str = "watchtower_fixture_pack",
+    integration_module: str = "watchtower_fixture_pack.integration",
     default_repo_pack: bool | None = None,
     include_validation_suite_registry: bool = True,
     suite_step_validator_id: str | None = None,
@@ -45,6 +45,14 @@ def materialize_pack_validation_suite(
     suite_id = f"suite.{pack_slug}.validation_baseline"
     validator_id = f"validator.packs.{note_slug}"
     schema_id = f"urn:watchtower:schema:interfaces:packs:{schema_slug}:v1"
+    _materialize_synthetic_pack_python(
+        pack_root=pack_root,
+        pack_id=pack_id,
+        pack_slug=pack_slug,
+        command_namespace=command_namespace,
+        python_distribution=python_distribution,
+        python_package=python_package,
+    )
 
     if note_slug != "plan_note":
         original_artifact_path = pack_root / ".wt" / "work_items" / "plan_note.json"
@@ -115,7 +123,7 @@ def materialize_pack_validation_suite(
         docs_root=runtime_manifest["owned_roots"]["docs_root"],
     )
     if integration_module == "watchtower_plan.integration":
-        command_source_surface = f"{actual_pack_root}/python/src/watchtower_plan/cli/namespace.py"
+        command_source_surface = f"{actual_pack_root}/python/src/{python_package}/cli/namespace.py"
     else:
         command_source_surface = (
             f"{actual_pack_root}/python/src/{integration_module.replace('.', '/')}.py"
@@ -152,9 +160,7 @@ def materialize_pack_validation_suite(
     pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
     if register_with_host_registry and pack_registry_path.exists():
         pack_registry = _load_json(pack_registry_path)
-        effective_default_pack = (
-            default_repo_pack if default_repo_pack is not None else (pack_slug == "plan")
-        )
+        effective_default_pack = default_repo_pack if default_repo_pack is not None else False
         registry_entry = {
             "pack_id": pack_id,
             "pack_slug": pack_slug,
@@ -179,7 +185,7 @@ def materialize_pack_validation_suite(
             packs.append(registry_entry)
         elif registry_mode == "replace_default":
             replaced = False
-            updated: list[dict[str, object]] = []
+            updated: list[dict[str, Any]] = []
             for entry in packs:
                 if entry.get("pack_id") == pack_id or entry.get("default_repo_pack") is True:
                     updated.append(registry_entry)
@@ -282,56 +288,6 @@ def materialize_validation_repo_subset(tmp_path: Path) -> Path:
     return repo_root
 
 
-def externalized_plan_command_surface_paths(pack_root: Path) -> dict[str, str]:
-    """Return plan CLI source-surface paths rooted at one externalized pack root."""
-
-    repo_root = _discover_repo_root(pack_root)
-    actual_pack_root = pack_root.relative_to(repo_root).as_posix()
-    cli_root = f"{actual_pack_root}/python/src/watchtower_plan/cli"
-    return {
-        "namespace": f"{cli_root}/namespace.py",
-        "handlers": f"{cli_root}/handlers.py",
-        "query": f"{cli_root}/query.py",
-        "sync": f"{cli_root}/sync.py",
-        "closeout": f"{cli_root}/closeout.py",
-        "tasks": f"{cli_root}/tasks.py",
-    }
-
-
-def materialize_externalized_plan_python(pack_python_root: Path) -> None:
-    """Copy the live plan package into an externalized pack-owned python root."""
-
-    source_root = REPO_ROOT / "plan" / "python"
-    pack_python_root.mkdir(parents=True, exist_ok=True)
-    for filename in ("pyproject.toml", "README.md", "AGENTS.md"):
-        source_path = source_root / filename
-        if source_path.exists():
-            copy2(source_path, pack_python_root / filename)
-    copytree(
-        source_root / "src" / "watchtower_plan",
-        pack_python_root / "src" / "watchtower_plan",
-        dirs_exist_ok=True,
-    )
-
-
-def materialize_externalized_plan_command_docs(pack_root: Path) -> None:
-    """Copy live plan command docs into one externalized pack root."""
-
-    repo_root = _discover_repo_root(pack_root)
-    actual_pack_root = pack_root.relative_to(repo_root).as_posix()
-    source_root = REPO_ROOT / "plan" / "docs" / "commands"
-    target_root = pack_root / "docs" / "commands"
-    copytree(source_root, target_root, dirs_exist_ok=True)
-    for path in sorted(target_root.rglob("*.md")):
-        text = path.read_text(encoding="utf-8")
-        text = re.sub(
-            r"(?<!packs/)(/?)plan/python/src/watchtower_plan/",
-            rf"\1{actual_pack_root}/python/src/watchtower_plan/",
-            text,
-        )
-        path.write_text(text, encoding="utf-8")
-
-
 def materialize_externalized_fixture_python(
     pack_python_root: Path,
     *,
@@ -387,6 +343,65 @@ def materialize_externalized_fixture_python(
             path.write_text(text, encoding="utf-8")
 
 
+def _materialize_synthetic_pack_python(
+    *,
+    pack_root: Path,
+    pack_id: str,
+    pack_slug: str,
+    command_namespace: str,
+    python_distribution: str,
+    python_package: str,
+) -> None:
+    repo_root = _discover_repo_root(pack_root)
+    package_root = pack_root / "python" / "src" / python_package
+    if package_root.exists():
+        return
+    materialize_externalized_fixture_python(
+        pack_root / "python",
+        python_distribution=python_distribution,
+        python_package=python_package,
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description=(
+            f"Synthetic {pack_slug} runtime package used to prove hosted-pack portability."
+        ),
+    )
+    integration_path = package_root / "integration.py"
+    integration_text = integration_path.read_text(encoding="utf-8")
+    integration_text = integration_text.replace(
+        'pack_id="pack.oversight"',
+        f'pack_id="{pack_id}"',
+    )
+    integration_text = integration_text.replace(
+        'pack_slug="oversight"',
+        f'pack_slug="{pack_slug}"',
+    )
+    integration_text = integration_text.replace(
+        'command_namespace="oversight"',
+        f'command_namespace="{command_namespace}"',
+    )
+    integration_text = integration_text.replace(
+        'python_package="watchtower_oversight_fixture"',
+        f'python_package="{python_package}"',
+    )
+    integration_text = integration_text.replace(
+        "Synthetic oversight namespace used to prove hosted-pack extensibility.",
+        f"Synthetic {command_namespace} namespace used to prove hosted-pack extensibility.",
+    )
+    integration_text = integration_text.replace(
+        '"core/python/tests/fixtures/python/watchtower_oversight_fixture/integration.py"',
+        f'"{pack_root.relative_to(repo_root).as_posix()}/python/src/{python_package}/integration.py"',
+    )
+    integration_path.write_text(integration_text, encoding="utf-8")
+
+
 def _discover_repo_root(start: Path) -> Path:
     candidate = start.resolve()
     for parent in (candidate, *candidate.parents):
@@ -395,15 +410,15 @@ def _discover_repo_root(start: Path) -> Path:
     raise ValueError(f"Could not discover repo root for fixture destination: {start}")
 
 
-def _load_json(path: Path) -> dict[str, object]:
-    return json.loads(path.read_text(encoding="utf-8"))
+def _load_json(path: Path) -> dict[str, Any]:
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
-def _write_json(path: Path, document: dict[str, object]) -> None:
+def _write_json(path: Path, document: dict[str, Any]) -> None:
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
-def _materialize_owned_roots(repo_root: Path, owned_roots: dict[str, object]) -> None:
+def _materialize_owned_roots(repo_root: Path, owned_roots: dict[str, Any]) -> None:
     for relative_path in owned_roots.values():
         if isinstance(relative_path, str) and relative_path:
             (repo_root / relative_path).mkdir(parents=True, exist_ok=True)

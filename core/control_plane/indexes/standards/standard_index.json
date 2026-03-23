@@ -1092,25 +1092,20 @@
       ],
       "operationalization_paths": [
         "core/docs/commands/",
-        "plan/docs/commands/",
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
-        "plan/python/src/watchtower_plan/cli/",
-        "core/docs/commands/core_python/watchtower_core.md",
-        "plan/docs/commands/core_python/watchtower_core_plan.md"
+        "core/docs/commands/core_python/watchtower_core.md"
       ],
       "applies_to": [
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
-        "plan/python/src/watchtower_plan/cli/",
-        "core/docs/commands/",
-        "plan/docs/commands/"
+        "core/docs/commands/"
       ],
       "related_paths": [
         "core/python/src/watchtower_host/cli/",
         "core/python/src/watchtower_core/cli/",
-        "plan/python/src/watchtower_plan/cli/",
         "core/docs/commands/",
+        "plan/python/src/watchtower_plan/cli/",
         "plan/docs/commands/",
         "core/python/src/watchtower_core/cli"
       ],

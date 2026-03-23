@@ -68,8 +68,8 @@ This standard defines the baseline validation expectations for repository change
   - `./.venv/bin/python -m mypy src`
   - `./.venv/bin/ruff check src tests/unit tests/integration`
   - `./.venv/bin/python -m pytest tests/unit tests/integration -q`
-- When a pack-owned Python boundary such as `plan/python/**` changes, run the owning pack test root as part of the baseline, for example:
-  - `./.venv/bin/python -m pytest ../../plan/python/tests -q`
+- When a pack-owned Python boundary changes, run the owning pack test root as part of the baseline, for example:
+  - `./.venv/bin/python -m pytest ../../<pack-root>/python/tests -q`
 - When one change spans both shared core and a hosted pack, run both the shared-core suite and the affected pack-owned test root before closeout.
 - Keep validation evidence split the same way the suites are split: shared-core validation should prove `core/python/tests/` remains pack-neutral, while pack-owned validation should cover direct `watchtower_<pack>` behavior from the owning pack root.
 - When a change is docs-only and does not affect the Python workspace, narrower validation may be sufficient if the touched surfaces remain within governed Markdown or derived-index boundaries.

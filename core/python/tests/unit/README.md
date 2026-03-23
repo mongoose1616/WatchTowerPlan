@@ -12,9 +12,9 @@
 | `core/python/tests/unit/test_unit_suite_boundary.py` | Fail-closed guard that blocks repo-fixture helper imports and direct hosted-pack imports from the shared unit suite. |
 
 ## Suite Families
-- CLI parser and handler tests stay here when they can validate shared behavior without bootstrapping a temp repo or importing a hosted pack directly. See `test_cli_knowledge_query_commands.py`, `test_cli_route_and_path_commands.py`, `test_cli_validate_commands.py`, and `test_route_preview_handlers.py`.
+- CLI parser and handler tests stay here when they can validate shared behavior without bootstrapping a temp repo or importing a hosted pack directly. See `test_cli_route_and_path_commands.py`, `test_cli_validate_commands.py`, and `test_route_preview_handlers.py`.
 - Reusable-core service tests stay here when they operate directly on governed artifacts, synthetic fixture packs, or in-memory data, such as `test_artifact_validation.py`, `test_control_plane_loader_pack_settings.py`, `test_rebuild_harness.py`, `test_schema_store_catalog_validation.py`, and `test_validation_evidence.py`.
-- Boundary and policy guards stay here when they are pure import, export, vocabulary, or contract checks over shared surfaces, such as `test_python_tooling_contracts.py`, `test_planning_vocabulary.py`, `test_retention_policy.py`, and `test_sync_harness.py`.
+- Boundary and policy guards stay here when they are pure import, export, or contract checks over shared surfaces, such as `test_python_tooling_contracts.py` and `test_sync_harness.py`.
 
 ## Notes
 - This suite is now a true fast unit corpus.

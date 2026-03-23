@@ -219,6 +219,36 @@
       ]
     },
     {
+      "trace_id": "trace.core_pack_neutral_portability_cleanup",
+      "title": "Core Pack Neutral Portability Cleanup",
+      "summary": "Removes remaining shared-core plan-specific test and documentation coupling so copied core works with any hosted pack.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T14:55:54Z",
+      "closed_at": "2026-03-23T14:55:54Z",
+      "closure_reason": "Completed core pack-neutral portability cleanup and validated copied-core compatibility",
+      "source_surface_paths": [
+        "plan/initiatives/core_pack_neutral_portability_cleanup/decision_notes.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/design_record.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.core_pack_neutral_portability_cleanup.bootstrap_core_pack_neutral_portability_cleanup"
+      ],
+      "related_paths": [
+        "plan/initiatives/core_pack_neutral_portability_cleanup/.wt/initiative.json",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/.wt/tasks/bootstrap_core_pack_neutral_portability_cleanup/task.json",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/decision_notes.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/design_record.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/implementation_slice.md",
+        "plan/initiatives/core_pack_neutral_portability_cleanup/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
       "title": "Core Portability Follow-up Root Pack And Query Typing",
       "summary": "Cleans up copied-core portability debt in shared help, command docs, tests, and host query typing without changing WatchTowerPlan's current steady-state plan workspace contract.",

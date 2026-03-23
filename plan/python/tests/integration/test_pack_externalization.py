@@ -24,13 +24,16 @@ from watchtower_plan.cli import (
 from watchtower_plan.cli import (
     tasks as plan_tasks_cli,
 )
+from watchtower_plan.testing.externalized_plan_fixtures import (
+    externalized_plan_command_surface_paths,
+    materialize_externalized_plan_command_docs,
+    materialize_externalized_plan_python,
+    materialize_externalized_plan_validation_suite,
+)
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
-    externalized_plan_command_surface_paths,
     materialize_externalized_fixture_python,
-    materialize_externalized_plan_command_docs,
-    materialize_externalized_plan_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -97,7 +100,7 @@ def test_pack_validate_succeeds_with_externalized_plan_package(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
     monkeypatch.chdir(repo_root / "core" / "python")
     monkeypatch.syspath_prepend(str(repo_root / "packs" / "plan" / "python" / "src"))
@@ -130,7 +133,7 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
     _patch_live_plan_command_surfaces(monkeypatch, repo_root / "packs" / "plan")
@@ -198,7 +201,7 @@ def test_pack_validate_fails_when_externalized_plan_manifest_keeps_old_plan_path
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    surfaces = materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
 
     pack_settings_path = repo_root / surfaces["pack_settings_path"]
@@ -273,7 +276,7 @@ def test_pack_validate_supports_externalized_second_pack_package(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     surfaces = materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -336,7 +339,7 @@ def test_externalized_multi_pack_parser_registers_namespaced_command_docs(
     monkeypatch,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
         pack_id="pack.oversight",
@@ -390,7 +393,7 @@ def test_pack_scaffold_output_becomes_validation_ready_after_host_wiring(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
-    materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     result = main(

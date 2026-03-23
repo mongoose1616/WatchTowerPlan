@@ -23,17 +23,30 @@ from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchem
 from watchtower_core.pack_integration.roots import discover_pack_workspace_roots
 
 
-def test_control_plane_loader_reads_pack_registry_and_runtime_manifest() -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+def test_control_plane_loader_reads_pack_registry_and_runtime_manifest(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(repo_root)
 
     pack_registry = loader.load_pack_registry()
     runtime_manifest = loader.load_pack_runtime_manifest()
 
     assert isinstance(pack_registry, PackRegistry)
-    assert pack_registry.default_pack().pack_slug == "plan"
+    assert pack_registry.default_pack().pack_slug == "oversight"
     assert isinstance(runtime_manifest, PackRuntimeManifest)
-    assert runtime_manifest.integration_module == "watchtower_plan.integration"
-    assert loader.pack_runtime_manifest_path() == "plan/.wt/manifests/pack_runtime_manifest.json"
+    assert runtime_manifest.integration_module == "watchtower_oversight_fixture.integration"
+    assert loader.pack_runtime_manifest_path() == surfaces["pack_runtime_manifest_path"]
 
 
 def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog(
@@ -249,19 +262,39 @@ def test_control_plane_loader_rejects_supplemental_paths_with_explicit_schema_st
         )
 
 
-def test_control_plane_loader_reads_pack_settings() -> None:
-    loader = ControlPlaneLoader(REPO_ROOT)
+def test_control_plane_loader_reads_pack_settings(tmp_path: Path) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        default_repo_pack=True,
+    )
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
+    )
 
     pack_settings = loader.load_pack_settings()
 
-    assert pack_settings.pack_id == "pack.plan"
-    assert pack_settings.get("schema_catalog").path == ("plan/.wt/registries/schema_catalog.json")
-    assert pack_settings.get("rendered_surface_registry").path == (
-        "plan/.wt/registries/rendered_surface_registry.json"
+    assert pack_settings.pack_id == "pack.oversight"
+    assert pack_settings.get("schema_catalog").path == (
+        "oversight/.wt/registries/schema_catalog.json"
     )
-    assert pack_settings.get("status_registry").surface_kind == "status_registry"
-    assert pack_settings.workspace_roots.workspace_root == "plan"
-    assert pack_settings.default_validation_suite_id == "suite.plan.validation_baseline"
+    assert pack_settings.get("validator_registry").path == (
+        "oversight/.wt/registries/validator_registry.json"
+    )
+    assert {surface.surface_name for surface in pack_settings.surfaces} == {
+        "schema_catalog",
+        "validator_registry",
+        "validation_suite_registry",
+    }
+    assert pack_settings.workspace_roots.workspace_root == "oversight"
+    assert pack_settings.default_validation_suite_id == surfaces["suite_id"]
 
 
 def test_control_plane_loader_exposes_generic_typed_document_path() -> None:

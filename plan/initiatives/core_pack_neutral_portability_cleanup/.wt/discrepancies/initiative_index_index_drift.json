@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.core_pack_neutral_portability_cleanup.initiative_index_index_drift",
+  "initiative_id": "initiative.core_pack_neutral_portability_cleanup",
+  "category": "stale_aggregate_index",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Aggregate index drift detected for plan/.wt/indexes/initiative_index.json.",
+  "source_paths": [
+    "plan/.wt/indexes/initiative_index.json"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-23T14:19:03Z",
+  "updated_at": "2026-03-23T14:54:55Z"
+}
