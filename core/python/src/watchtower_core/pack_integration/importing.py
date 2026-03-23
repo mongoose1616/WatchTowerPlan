@@ -24,13 +24,14 @@ def import_pack_integration_module(
     fall back to the declared `<python_root>/src` path for this one import.
     """
 
+    source_root = repo_root / python_root / "src"
     try:
-        return import_module(integration_module), "workspace"
+        imported = import_module(integration_module)
     except ModuleNotFoundError as exc:
         if not _matches_pack_module_lookup(exc, python_package):
             raise
         return (
-            _import_module_from_pack_root(
+            _import_module_from_pack_root_fresh(
                 repo_root=repo_root,
                 integration_module=integration_module,
                 python_package=python_package,
@@ -38,6 +39,17 @@ def import_pack_integration_module(
             ),
             "pack_python_root",
         )
+    if not source_root.is_dir() or _module_originates_from_source_root(imported, source_root):
+        return imported, "workspace"
+    return (
+        _import_module_from_pack_root_fresh(
+            repo_root=repo_root,
+            integration_module=integration_module,
+            python_package=python_package,
+            python_root=python_root,
+        ),
+        "pack_python_root",
+    )
 
 
 def _matches_pack_module_lookup(exc: ModuleNotFoundError, python_package: str) -> bool:
@@ -70,6 +82,22 @@ def _import_module_from_pack_root(
         module_name=integration_module,
         source_path=module_path,
         submodule_search_locations=submodule_search_locations,
+    )
+
+
+def _import_module_from_pack_root_fresh(
+    *,
+    repo_root: Path,
+    integration_module: str,
+    python_package: str,
+    python_root: str,
+) -> ModuleType:
+    _purge_package_modules(python_package)
+    return _import_module_from_pack_root(
+        repo_root=repo_root,
+        integration_module=integration_module,
+        python_package=python_package,
+        python_root=python_root,
     )
 
 
@@ -129,6 +157,28 @@ def _load_module_from_source(
         sys.modules.pop(module_name, None)
         raise
     return module
+
+
+def _module_originates_from_source_root(module: ModuleType, source_root: Path) -> bool:
+    resolved_root = source_root.resolve()
+    module_file = getattr(module, "__file__", None)
+    if isinstance(module_file, str) and module_file:
+        return _path_is_within_root(Path(module_file), resolved_root)
+    module_search_paths = getattr(module, "__path__", None)
+    if module_search_paths is None:
+        return False
+    return any(_path_is_within_root(Path(path), resolved_root) for path in module_search_paths)
+
+
+def _path_is_within_root(path: Path, root: Path) -> bool:
+    resolved_path = path.resolve()
+    return resolved_path == root or resolved_path.is_relative_to(root)
+
+
+def _purge_package_modules(package_name: str) -> None:
+    for module_name in tuple(sys.modules):
+        if module_name == package_name or module_name.startswith(f"{package_name}."):
+            sys.modules.pop(module_name, None)
 
 
 __all__ = ["import_pack_integration_module"]

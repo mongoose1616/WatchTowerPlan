@@ -44,13 +44,44 @@ def _operationalization_path_matches_expanded(
     if normalized_requested == normalized_indexed:
         return True
     if operationalization_path_is_glob(indexed_path):
-        return PurePosixPath(normalized_requested).match(normalized_indexed)
+        if PurePosixPath(normalized_requested).match(normalized_indexed):
+            return True
+        if normalized_indexed.endswith("/"):
+            return any(
+                PurePosixPath(candidate).match(normalized_indexed)
+                for candidate in _requested_directory_prefixes(normalized_requested)
+            )
+        return False
     if operationalization_path_is_directory(indexed_path, repo_root):
         directory_prefix = (
             normalized_indexed if normalized_indexed.endswith("/") else f"{normalized_indexed}/"
         )
         return normalized_requested.startswith(directory_prefix)
     return False
+
+
+def _requested_directory_prefixes(requested_path: str) -> tuple[str, ...]:
+    """Return directory prefixes for one requested path, deepest first."""
+
+    stripped = requested_path.rstrip("/")
+    if not stripped:
+        return ()
+
+    parts = PurePosixPath(stripped).parts
+    if not parts:
+        return ()
+
+    if requested_path.endswith("/"):
+        start = len(parts)
+    else:
+        start = len(parts) - 1
+    if start <= 0:
+        return ()
+
+    return tuple(
+        f"{PurePosixPath(*parts[:count]).as_posix()}/"
+        for count in range(start, 0, -1)
+    )
 
 
 def operationalization_path_is_glob(indexed_path: str) -> bool:

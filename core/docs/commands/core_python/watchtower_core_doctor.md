@@ -40,6 +40,8 @@ uv run watchtower-core doctor --format json
 ## Behavior and Outputs
 - In `human` mode, the command prints a workspace-health summary including the repo root, loaded governed-surface counts, and the recommended validation baseline.
 - In `json` mode, the command prints a single JSON object describing the command, workspace, repo root, result status, governed-surface counts, and the recommended validation baseline, then exits with status code `0`.
+- Pack-owned live-index counts such as `tasks` or `initiatives` are included only when the active pack actually declares those surfaces; copied-core repositories with simpler packs report `0` instead of failing.
+- When copied-core discovery finds an active pack runtime before shared hosted-pack registry reconciliation is complete, the recommended pack sync baseline follows the discovered pack runtime manifest instead of any stale donor registry default.
 - The recommended validation baseline now distinguishes the fast unit-only default (`uv run pytest -q`) from the explicit full-suite command (`./.venv/bin/python -m pytest tests/unit tests/integration -q`).
 - The command does not mutate repository state.
 - The command remains lightweight, but it is now a real health snapshot rather than only a scaffold placeholder.
@@ -55,4 +57,4 @@ uv run watchtower-core doctor --format json
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-23T20:35:00Z`

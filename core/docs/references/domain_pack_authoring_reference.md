@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T22:05:00Z"
+updated_at: "2026-03-23T20:35:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -80,6 +80,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
 - Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
 - When the pack owns workflow modules whose `workflow.*` IDs are not already described by the shared core workflow metadata registry, publish a pack-owned `workflow_metadata_registry` and keep it limited to pack-owned entries. The loader merges that registry with the shared core workflow metadata surface and rejects conflicting duplicates.
+- Treat pack-owned live indexes such as `task_index` and `initiative_index` as optional capabilities. Generic host commands should read them only when the active pack declares those surfaces.
+- Keep pack-local semantic validation thin. Import shared helpers such as `watchtower_core.documentation.standards`, `watchtower_core.documentation.reference_semantics`, and `watchtower_core.sync.workflow_index` instead of forking donor copies into modules like `watchtower_<pack>.standards`.
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
 - Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
@@ -123,11 +125,13 @@ This repository also treats copy-forward adoption as a supported operating mode:
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
    - Run `uv run watchtower-core pack describe --pack <slug> --format json`.
+   - Run `uv run watchtower-core doctor --format json` after bootstrap to prove the generic host health snapshot stays pack-neutral and does not assume plan-owned live indexes.
    - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command, repository-path, reference, standard, workflow, and route discovery indexes for the copied repository.
 7. Prove portability and extensibility.
    - Make the pack importable from its own `<pack>/python/src` path or installed package root.
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
    - When the host-pack contract changes materially, prove the change against a second pack or synthetic second-pack fixture rather than validating only the default pack.
+   - When pack-owned document semantics or standard parsing changes materially, prove the change through shared helper imports rather than by copying shared parser modules into the pack.
 
 ### Starter Template Set
 | Template | Use |
@@ -382,4 +386,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-23T22:05:00Z`
+- `2026-03-23T20:35:00Z`

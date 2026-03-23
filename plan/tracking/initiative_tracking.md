@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Title | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- | --- |
+| `trace.copied_core_doctor_pack_surface_neutrality` | Copied Core Doctor Pack Surface Neutrality | `completed` | [plan.md](/plan/initiatives/copied_core_doctor_pack_surface_neutrality/plan.md) | `2026-03-23T22:04:08Z` | Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage |
 | `trace.copied_core_discovery_surface_reconciliation_followup` | Copied Core Discovery Surface Reconciliation Followup | `completed` | [plan.md](/plan/initiatives/copied_core_discovery_surface_reconciliation_followup/plan.md) | `2026-03-23T18:17:30Z` | Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions. |
 | `trace.core_governance_reference_deplanification_followup` | Core Governance Reference Deplanification Followup | `completed` | [plan.md](/plan/initiatives/core_governance_reference_deplanification_followup/plan.md) | `2026-03-23T16:54:27Z` | Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders. |
 | `trace.core_pack_neutrality_followup` | Core Pack Neutrality Followup | `completed` | [plan.md](/plan/initiatives/core_pack_neutrality_followup/plan.md) | `2026-03-23T16:20:08Z` | Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary. |
@@ -36,4 +37,4 @@ _No active initiatives._
 | `trace.pack_domain_hardcoding_remediation` | Pack Domain Hardcoding Remediation | `completed` | [plan.md](/plan/initiatives/pack_domain_hardcoding_remediation/plan.md) | `2026-03-20T01:25:48Z` | Removed remaining pack-domain hardcoding from reusable core, moved plan-domain runtime under plan/python, and validated the pack-driven endstate. |
 | `trace.plan_requirements_decisions_adherence_remediation` | Requirements And Decisions Adherence Remediation | `completed` | [plan.md](/plan/initiatives/plan_requirements_decisions_adherence_remediation/plan.md) | `2026-03-19T18:39:56Z` | Retired root docs, completed the initiative-package hard cutover, restored rich rendered surfaces, and validated the repository. |
 
-_Updated At: `2026-03-23T18:17:30Z`_
+_Updated At: `2026-03-23T22:04:08Z`_

@@ -1,15 +1,14 @@
 from __future__ import annotations
 
+import importlib
 import json
 from dataclasses import replace
 from pathlib import Path
 
 import pytest
-from watchtower_plan import integration as plan_integration
 from watchtower_plan.testing.externalized_plan_fixtures import (
     materialize_externalized_plan_validation_suite,
 )
-from watchtower_plan.validation.document_semantics import DocumentSemanticsValidationService
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
@@ -64,16 +63,21 @@ def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str
     return surfaces
 
 
+def _current_plan_integration_module():
+    return importlib.import_module("watchtower_plan.integration")
+
+
 def test_load_pack_validation_runtime_uses_repo_pack_contract() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     runtime = load_pack_validation_runtime(loader)
+    service = runtime.document_semantics_factory(loader)
+    service_module = importlib.import_module(service.__class__.__module__)
 
     assert isinstance(runtime, PackValidationRuntime)
-    assert isinstance(
-        runtime.document_semantics_factory(loader),
-        DocumentSemanticsValidationService,
-    )
+    assert service.__class__.__module__ == "watchtower_plan.validation.document_semantics"
+    assert service.__class__.__name__ == "DocumentSemanticsValidationService"
+    assert service.__class__ is service_module.DocumentSemanticsValidationService
     assert runtime.suite_target_resolver is resolve_pack_validation_suite_targets
 
 
@@ -156,6 +160,7 @@ def test_load_pack_sync_runtime_returns_plan_sync_contract() -> None:
 def test_load_pack_query_runtime_fails_closed_on_empty_command_list(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         query_runtime=lambda: PackQueryRuntime(commands=()),
@@ -170,6 +175,7 @@ def test_load_pack_query_runtime_fails_closed_on_empty_command_list(
 def test_load_pack_sync_runtime_fails_closed_on_empty_target_list(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         sync_targets=lambda: PackSyncRuntime(targets=()),

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.copied_core_doctor_pack_surface_neutrality.guidance_index_index_drift",
+  "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+  "category": "stale_aggregate_index",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Aggregate index drift detected for plan/.wt/indexes/guidance_index.json.",
+  "source_paths": [
+    "plan/.wt/indexes/guidance_index.json"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-23T19:29:19Z",
+  "updated_at": "2026-03-23T19:29:53Z"
+}

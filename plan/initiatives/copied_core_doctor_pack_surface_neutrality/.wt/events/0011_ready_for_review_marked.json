@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.copied_core_doctor_pack_surface_neutrality.0011_ready_for_review_marked",
+  "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+  "sequence": 11,
+  "event_type": "ready_for_review_marked",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T19:29:55Z",
+  "summary": "The initiative package passed capture validation and is ready for review.",
+  "payload": {},
+  "trace_id": "trace.copied_core_doctor_pack_surface_neutrality"
+}

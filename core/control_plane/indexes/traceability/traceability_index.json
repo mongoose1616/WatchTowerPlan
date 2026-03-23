@@ -119,6 +119,36 @@
       ]
     },
     {
+      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+      "title": "Copied Core Doctor Pack Surface Neutrality",
+      "summary": "Makes the generic doctor command tolerate copied-core repositories whose active pack does not publish plan-style live indexes such as task_index or initiative_index.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T22:04:08Z",
+      "closed_at": "2026-03-23T22:04:08Z",
+      "closure_reason": "Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage",
+      "source_surface_paths": [
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality"
+      ],
+      "related_paths": [
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/initiative.json",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/tasks/bootstrap_copied_core_doctor_pack_surface_neutrality/task.json",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.copy_forward_pack_runtime_hardening",
       "title": "Copy-Forward Pack Runtime Hardening",
       "summary": "Hardens reusable core for copied-core host scenarios by discovering unbootstrapped hosted packs from manifests, structuring stale-registry failures, and keeping current shared workspace contracts explicit.",

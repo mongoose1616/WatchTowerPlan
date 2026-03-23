@@ -16,6 +16,7 @@
 - None.
 
 ## Recent Completions or Changes
+- `trace.copied_core_doctor_pack_surface_neutrality`: Copied Core Doctor Pack Surface Neutrality (`completed` at `2026-03-23T22:04:08Z`) - Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage
 - `trace.copied_core_discovery_surface_reconciliation_followup`: Copied Core Discovery Surface Reconciliation Followup (`completed` at `2026-03-23T18:17:30Z`) - Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions.
 - `trace.core_governance_reference_deplanification_followup`: Core Governance Reference Deplanification Followup (`completed` at `2026-03-23T16:54:27Z`) - Removed remaining unnecessary plan-owned governance references from shared core docs and added pack-neutral operationalization path support for hosted-pack placeholders.
 - `trace.core_pack_neutrality_followup`: Core Pack Neutrality Followup (`completed` at `2026-03-23T16:20:08Z`) - Removed remaining donor-style plan assumptions from shared core tests, fixtures, and core-owned standards while preserving plan-owned coverage behind the pack boundary.
@@ -25,7 +26,6 @@
 - `trace.core_portability_followup_root_pack_and_query_typing`: Core Portability Follow-up Root Pack And Query Typing (`completed` at `2026-03-23T01:51:41Z`) - Updated shared core to present first-party root packs as the default example topology, aligned generic portability tests with root-pack defaults, and cleared the remaining host query mypy backlog.
 - `trace.copy_forward_pack_runtime_hardening`: Copy-Forward Pack Runtime Hardening (`completed` at `2026-03-23T01:24:34Z`) - Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core.
 - `trace.core_removable_plan_reference_cleanup`: Core Removable Plan Reference Cleanup (`completed` at `2026-03-23T00:04:09Z`) - Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces.
-- `trace.root_pack_schema_catalog_contract_alignment`: Root Pack Schema Catalog Contract Alignment (`completed` at `2026-03-22T23:08:32Z`) - Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage.
 
 ## Navigation Links
 - [initiative_tracking.md](/plan/tracking/initiative_tracking.md)

@@ -29,7 +29,7 @@ def test_reference_index_sync_builds_schema_valid_document() -> None:
     assert any(
         entry["reference_id"] == "ref.github_collaboration"
         and entry["uses_external_references"] is True
-        and ".github/" in entry.get("related_paths", [])
+        and ".github/README.md" in entry.get("related_paths", [])
         for entry in entries
     )
 

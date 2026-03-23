@@ -182,6 +182,7 @@ def _required_surface_path(
     active_path = loader._active_surface_paths.get(surface_name)
     if active_path is not None:
         return cast(str, active_path)
+    _ensure_default_pack_settings_activated(loader)
     default_pack_settings = loader._current_pack_settings_path(PACK_SETTINGS_PATH)
     pack_settings = loader.load_pack_settings(default_pack_settings)
     try:
@@ -204,6 +205,7 @@ def _surface_name_for_active_path(loader: Any, relative_path: str) -> str | None
 def _default_pack_surface_path(loader: Any, surface_name: str, fallback_path: str) -> str:
     """Return one default-pack surface path when the default pack is available."""
 
+    _ensure_default_pack_settings_activated(loader)
     try:
         declaration = loader.load_pack_settings(PACK_SETTINGS_PATH).get(surface_name)
     except (ArtifactLoadError, KeyError, ValueError):
@@ -218,6 +220,19 @@ def _discover_default_pack_settings_path(loader: Any) -> str | None:
     if not candidates:
         return None
     return candidates[0]
+
+
+def _ensure_default_pack_settings_activated(loader: Any) -> None:
+    """Activate the effective default pack so pack-local schemas resolve lazily."""
+
+    if loader.active_pack_settings_path is not None:
+        return
+    default_path = _registered_default_pack_settings_path(loader)
+    if default_path is None:
+        default_path = loader._discover_default_pack_settings_path()
+    if default_path is None or default_path == CORE_PACK_SETTINGS_PATH:
+        return
+    loader._activate_pack_settings(default_path)
 
 
 def _registered_default_pack_settings_path(loader: Any) -> str | None:

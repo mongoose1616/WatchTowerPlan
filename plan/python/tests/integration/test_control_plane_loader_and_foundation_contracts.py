@@ -76,7 +76,7 @@ def test_foundations_context_review_loads_foundation_review_and_discovery_routes
     assert "core/docs/foundations/engineering_stack_direction.md" in markdown
     assert "core/docs/foundations/product_direction.md" in markdown
     assert "core/docs/foundations/customer_story.md" in markdown
-    assert "plan/tracking/coordination_tracking.md" in markdown
+    assert "active pack's coordination tracker or coordination index" in markdown
     assert "SUMMARY.md" not in markdown
     assert "watchtower-core query foundations" in markdown
 
@@ -119,7 +119,7 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "core/python/src/watchtower_core/sync/foundation_index.py" in markdown
     assert "core/python/src/watchtower_core/query/foundations.py" in markdown
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
-    assert "*/docs/commands/core_python/watchtower_core_*_sync_foundation_index.md" in markdown
+    assert "*/docs/commands/core_python/" in markdown
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T22:30:00Z"
+updated_at: "2026-03-23T20:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -58,6 +58,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
 - When `pack_settings.json` points `workflow_metadata_registry` at a pack-local registry, treat that registry as an additive extension over the shared core workflow metadata registry. Identical duplicates may be tolerated during copied-core bring-up, but conflicting duplicates are contract failures.
 - Keep pack-local validator registries additive as well. Shared core validator IDs should come from the shared core validator registry rather than copied pack-local duplicates.
+- Treat pack-owned live indexes such as `task_index` or `initiative_index` as optional pack surfaces. Generic host commands must not require them unless the active pack explicitly declares them.
+- When generic host or validation code reads a default-pack governed surface, activate the effective default pack settings first so pack-local schema catalogs participate before pack-owned artifacts are validated.
 - Let pack-interface validation scan live source roots when they exist so reusable core cannot import a hosted pack and a hosted pack cannot import host composition.
 - In copy-forward bootstrap mode, `pack list`, `pack describe`, `pack validate`, selected pack-namespace discovery, and `validate all` may synthesize a runtime-only pack entry from valid local manifests when a consuming repository has copied `core/` and one or more pack roots but has not yet persisted shared registry or workspace wiring.
 - Runtime-only discovered entries are operational bring-up compatibility, not steady-state shared authority. They must not suppress validation findings about missing `pack_registry.json` declarations or missing `core/python/pyproject.toml` hosted-pack registration.
@@ -116,6 +118,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 ## Validation
 - `watchtower-core validate all` should fail closed on pack-interface contract drift.
 - `watchtower-core validate all` should report unbootstrapped copied-pack state as structured pack-contract failures instead of crashing on missing authored registry entries.
+- `watchtower-core doctor` should report `0` for pack-owned live-index counts when the active pack does not declare those surfaces instead of failing on plan-specific assumptions.
+- `watchtower-core doctor` should derive the recommended pack sync baseline from the effective default pack runtime when copied-core discovery has moved ahead of shared hosted-pack registry reconciliation.
 - `watchtower-core validate all` and `watchtower-core pack validate --pack <slug>` should fail closed when live source roots contain forbidden `watchtower_core -> watchtower_<pack>` or `watchtower_<pack> -> watchtower_host` imports.
 - `watchtower-core pack validate --pack <slug>` should fail closed when the hosted-pack registry declares a conflicting `command_namespace`.
 - `watchtower-core pack validate --pack <slug>` should fail closed when `core/python/pyproject.toml` is missing the hosted-pack distribution in optional dev dependencies or missing the pack python root in `tool.uv.sources`.
@@ -141,4 +145,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-23T22:30:00Z`
+- `2026-03-23T20:35:00Z`

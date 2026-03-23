@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:guidance-promotion-record:v1",
+  "id": "promotion.copied_core_doctor_pack_surface_neutrality.bootstrap_shell",
+  "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+  "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+  "title": "Bootstrap Promotion Shell",
+  "status": "candidate",
+  "approval_state": "pending",
+  "review_refs": [
+    "repository_maintainer_review"
+  ],
+  "evidence_refs": [
+    "evidence.copied_core_doctor_pack_surface_neutrality.bootstrap_validation_bundle"
+  ],
+  "updated_at": "2026-03-23T22:04:08Z",
+  "candidates": [
+    {
+      "candidate_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md",
+      "source_artifact_kind": "initiative_brief",
+      "target_family": "reference",
+      "target_path": "plan/docs/references/copied_core_doctor_pack_surface_neutrality_initiative_brief.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+      "source_artifact_kind": "design_record",
+      "target_family": "decision_record",
+      "target_path": "plan/docs/decisions/copied_core_doctor_pack_surface_neutrality_design_record.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+      "source_artifact_kind": "implementation_slice",
+      "target_family": "pattern",
+      "target_path": "plan/docs/patterns/copied_core_doctor_pack_surface_neutrality_implementation_slice.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    },
+    {
+      "candidate_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md",
+      "source_artifact_kind": "decision_notes",
+      "target_family": "standard",
+      "target_path": "plan/docs/standards/governance/copied_core_doctor_pack_surface_neutrality_decision_notes.md",
+      "review_path": "repository_maintainer_review",
+      "provenance_expectation": "Promotions must cite the source initiative id, trace id, and evidence bundle id.",
+      "mirror_update_mode": "none",
+      "mirror_target_paths": []
+    }
+  ]
+}

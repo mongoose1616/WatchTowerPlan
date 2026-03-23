@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T18:17:30Z",
+  "updated_at": "2026-03-23T22:04:08Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+      "title": "Copied Core Doctor Pack Surface Neutrality",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T22:04:08Z",
+      "key_surface_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/plan.md",
+      "closure_reason": "Fixed copied-core doctor/default-pack loading and removed pack-module reload contamination from shared-plus-plan validation coverage"
+    },
     {
       "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup",
       "title": "Copied Core Discovery Surface Reconciliation Followup",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-23T00:04:09Z",
       "key_surface_path": "plan/initiatives/core_removable_plan_reference_cleanup/plan.md",
       "closure_reason": "Removed non-essential plan references from shared core while preserving current-repo facts and required pack-owned surfaces."
-    },
-    {
-      "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
-      "title": "Root Pack Schema Catalog Contract Alignment",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T23:08:32Z",
-      "key_surface_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md",
-      "closure_reason": "Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage."
     }
   ]
 }

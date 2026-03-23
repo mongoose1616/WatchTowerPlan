@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib
 import json
 import sys
 import tomllib
@@ -8,7 +9,6 @@ from contextlib import contextmanager
 from dataclasses import replace
 from pathlib import Path
 
-from watchtower_plan import integration as plan_integration
 from watchtower_plan.cli import (
     closeout as plan_closeout_cli,
 )
@@ -95,7 +95,12 @@ def _temporary_module_prefix_reload(prefix: str) -> Iterator[None]:
         sys.modules.update(original_modules)
 
 
+def _current_plan_integration_module():
+    return importlib.import_module("watchtower_plan.integration")
+
+
 def _patch_live_plan_command_surfaces(monkeypatch, pack_root: Path) -> None:
+    plan_integration = _current_plan_integration_module()
     paths = externalized_plan_command_surface_paths(pack_root)
     monkeypatch.setattr(
         plan_integration,
@@ -181,6 +186,7 @@ def test_pack_describe_reports_runtime_hook_errors_without_masking_import_succes
     capsys,
     monkeypatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         query_runtime=lambda: PackQueryRuntime(commands=()),

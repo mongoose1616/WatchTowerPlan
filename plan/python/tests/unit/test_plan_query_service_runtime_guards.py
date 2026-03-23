@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-from watchtower_plan.query.coordination import (
-    CoordinationQueryService,
-    CoordinationSearchParams,
-)
+import importlib
+
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
+
+
+def _current_coordination_module():
+    return importlib.import_module("watchtower_plan.query.coordination")
 
 
 def test_plan_workspace_service_reuses_cached_pack_loader(
@@ -31,6 +33,7 @@ def test_plan_workspace_service_reuses_cached_pack_loader(
 def test_coordination_query_service_skips_history_service_for_active_queries(
     monkeypatch,
 ) -> None:
+    coordination = _current_coordination_module()
     entry = InitiativeIndexEntry(
         trace_id="trace.example",
         title="Example Initiative",
@@ -86,17 +89,13 @@ def test_coordination_query_service_skips_history_service_for_active_queries(
             "active coordination queries should not instantiate InitiativeQueryService"
         )
 
-    monkeypatch.setattr(
-        "watchtower_plan.query.coordination.PlanWorkspaceService",
-        FakePlanWorkspaceService,
-    )
-    monkeypatch.setattr(
-        "watchtower_plan.query.coordination.InitiativeQueryService",
-        _unexpected_initiative_service,
-    )
+    monkeypatch.setattr(coordination, "PlanWorkspaceService", FakePlanWorkspaceService)
+    monkeypatch.setattr(coordination, "InitiativeQueryService", _unexpected_initiative_service)
 
-    result = CoordinationQueryService(ControlPlaneLoader(discover_repo_root())).search(
-        CoordinationSearchParams(initiative_status="active")
+    result = coordination.CoordinationQueryService(
+        ControlPlaneLoader(discover_repo_root())
+    ).search(
+        coordination.CoordinationSearchParams(initiative_status="active")
     )
 
     assert result.index is index

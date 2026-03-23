@@ -189,6 +189,21 @@
       "updated_at": "2026-03-23T18:17:18Z"
     },
     {
+      "task_id": "task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality",
+      "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+      "initiative_title": "Copied Core Doctor Pack Surface Neutrality",
+      "title": "Bootstrap Copied Core Doctor Pack Surface Neutrality",
+      "summary": "Bootstrap Copied Core Doctor Pack Surface Neutrality live initiative package.",
+      "status": "active",
+      "task_status": "completed",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/tasks/bootstrap_copied_core_doctor_pack_surface_neutrality/task.json",
+      "updated_at": "2026-03-23T22:03:58Z"
+    },
+    {
       "task_id": "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",
       "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
       "trace_id": "trace.copy_forward_pack_runtime_hardening",

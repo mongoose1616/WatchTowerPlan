@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from tests.pack_fixture_support import (
+    materialize_pack_task_index_surface,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -97,6 +98,33 @@ def test_control_plane_loader_discovers_repo_local_default_pack_settings_path(
 
     assert loader.default_pack_settings_path() == surfaces["pack_settings_path"]
     assert pack_settings.pack_id == "pack.loader_test"
+
+
+def test_control_plane_loader_lazily_activates_default_pack_schema_catalog_for_task_index(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    task_surface = materialize_pack_task_index_surface(repo_root / "oversight")
+    loader = ControlPlaneLoader(repo_root)
+
+    task_index = loader.load_task_index()
+
+    assert task_index.schema_id == task_surface["schema_id"]
+    assert loader.active_pack_settings_path == surfaces["pack_settings_path"]
+    assert loader.load_schema_catalog().get(task_surface["schema_id"]).canonical_relative_path == (
+        task_surface["schema_relative_path"]
+    )
 
 
 def test_control_plane_loader_prefers_registry_default_pack_settings_path(

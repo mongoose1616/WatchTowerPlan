@@ -164,19 +164,20 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
     assert scaffold_result == 0
     capsys.readouterr()
 
-    with _temporary_module_prefix_reload("watchtower_oversight"):
-        bootstrap_result = main(
-            [
-                "pack",
-                "bootstrap",
-                "--pack-settings-path",
-                "packs/oversight/.wt/manifests/pack_settings.json",
-                "--write",
-                "--no-sync-workspace",
-                "--format",
-                "json",
-            ]
-        )
+    with _temporary_module_prefix_reload("watchtower_plan"):
+        with _temporary_module_prefix_reload("watchtower_oversight"):
+            bootstrap_result = main(
+                [
+                    "pack",
+                    "bootstrap",
+                    "--pack-settings-path",
+                    "packs/oversight/.wt/manifests/pack_settings.json",
+                    "--write",
+                    "--no-sync-workspace",
+                    "--format",
+                    "json",
+                ]
+            )
     bootstrap_payload = json.loads(capsys.readouterr().out)
 
     assert bootstrap_result == 0
@@ -184,18 +185,19 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
 
     monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
 
-    with _temporary_module_prefix_reload("watchtower_oversight"):
-        validate_result = main(
-            [
-                "pack",
-                "validate",
-                "--pack-settings-path",
-                "packs/oversight/.wt/manifests/pack_settings.json",
-                "--format",
-                "json",
-            ]
-        )
-        validate_payload = json.loads(capsys.readouterr().out)
+    with _temporary_module_prefix_reload("watchtower_plan"):
+        with _temporary_module_prefix_reload("watchtower_oversight"):
+            validate_result = main(
+                [
+                    "pack",
+                    "validate",
+                    "--pack-settings-path",
+                    "packs/oversight/.wt/manifests/pack_settings.json",
+                    "--format",
+                    "json",
+                ]
+            )
+            validate_payload = json.loads(capsys.readouterr().out)
 
     assert validate_result == 0
     assert validate_payload["passed"] is True
@@ -399,6 +401,7 @@ def test_pack_scaffold_output_becomes_validation_ready_after_host_wiring(
     capsys,
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
+    stale_repo_root = materialize_validation_repo_subset(tmp_path / "stale")
     materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
@@ -437,22 +440,60 @@ def test_pack_scaffold_output_becomes_validation_ready_after_host_wiring(
         ),
     )
 
-    monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
-
-    result = main(
-        [
-            "pack",
-            "validate",
-            "--pack-settings-path",
-            scaffold_payload["pack_settings_path"],
-            "--format",
-            "json",
-        ]
+    materialize_externalized_fixture_python(
+        stale_repo_root / "packs" / "oversight" / "python",
+        python_distribution="watchtower-oversight",
+        python_package="watchtower_oversight",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
     )
-    payload = json.loads(capsys.readouterr().out)
+    monkeypatch.syspath_prepend(str(stale_repo_root / "packs" / "oversight" / "python" / "src"))
+
+    with _temporary_module_prefix_reload("watchtower_plan"):
+        with _temporary_module_prefix_reload("watchtower_oversight"):
+            stale_module = importlib.import_module("watchtower_oversight.integration")
+            assert stale_module.__file__ is not None
+            assert str(
+                (
+                    stale_repo_root
+                    / "packs"
+                    / "oversight"
+                    / "python"
+                    / "src"
+                    / "watchtower_oversight"
+                ).resolve()
+            ) in str(Path(stale_module.__file__).resolve())
+
+            monkeypatch.syspath_prepend(
+                str(repo_root / "packs" / "oversight" / "python" / "src")
+            )
+            result = main(
+                [
+                    "pack",
+                    "validate",
+                    "--pack-settings-path",
+                    scaffold_payload["pack_settings_path"],
+                    "--format",
+                    "json",
+                ]
+            )
+            payload = json.loads(capsys.readouterr().out)
+            current_module = importlib.import_module("watchtower_oversight.integration")
 
     assert result == 0
     assert scaffold_payload["status"] == "ok"
     assert payload["command"] == "watchtower-core pack validate"
     assert payload["pack_settings_path"] == "packs/oversight/.wt/manifests/pack_settings.json"
     assert payload["passed"] is True
+    assert current_module.__file__ is not None
+    assert str(
+        (repo_root / "packs" / "oversight" / "python" / "src" / "watchtower_oversight").resolve()
+    ) in str(Path(current_module.__file__).resolve())

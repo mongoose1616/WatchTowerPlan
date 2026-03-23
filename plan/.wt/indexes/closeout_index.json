@@ -3,7 +3,7 @@
   "id": "index.closeouts",
   "title": "Plan Workspace Closeout Index",
   "status": "active",
-  "updated_at": "2026-03-23T18:17:30Z",
+  "updated_at": "2026-03-23T22:04:08Z",
   "entries": [
     {
       "closeout_id": "closeout.command_latency_reduction_using_runtime_telemetry.bootstrap_recap",
@@ -78,6 +78,31 @@
         "cancelled"
       ],
       "updated_at": "2026-03-23T18:17:30Z",
+      "terminal_state": "completed"
+    },
+    {
+      "closeout_id": "closeout.copied_core_doctor_pack_surface_neutrality.bootstrap_recap",
+      "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+      "initiative_title": "Copied Core Doctor Pack Surface Neutrality",
+      "title": "Bootstrap Closeout Shell",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/copied_core_doctor_pack_surface_neutrality",
+      "expected_outcome": "Close out the initiative with validated capture, readiness, and follow-up accounting.",
+      "acceptance_ids": [
+        "acceptance.copied_core_doctor_pack_surface_neutrality.bootstrap"
+      ],
+      "evidence_ids": [
+        "evidence.copied_core_doctor_pack_surface_neutrality.bootstrap_validation_bundle"
+      ],
+      "follow_up_handling": "Record unresolved work as deferred items or bounded follow-up initiatives before closeout.",
+      "promotion_review_required": true,
+      "terminal_state_options": [
+        "completed",
+        "superseded",
+        "cancelled"
+      ],
+      "updated_at": "2026-03-23T22:04:08Z",
       "terminal_state": "completed"
     },
     {

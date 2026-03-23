@@ -282,6 +282,156 @@ def materialize_pack_validation_suite(
     }
 
 
+def materialize_pack_task_index_surface(
+    pack_root: Path,
+    *,
+    pack_slug: str | None = None,
+) -> dict[str, str]:
+    """Add one pack-owned task index backed by a pack-local schema."""
+
+    repo_root = _discover_repo_root(pack_root)
+    actual_pack_root = pack_root.relative_to(repo_root).as_posix()
+    actual_wt_root = f"{actual_pack_root}/.wt"
+    effective_pack_slug = pack_slug or pack_root.name
+    schema_id = f"urn:watchtower:schema:artifacts:{effective_pack_slug}:task-summary-index:v1"
+    schema_relative_path = f"{actual_wt_root}/schemas/artifacts/task_index.schema.json"
+    task_index_relative_path = f"{actual_wt_root}/indexes/task_index.json"
+    task_index_id = f"index.{effective_pack_slug}_tasks"
+    (repo_root / schema_relative_path).parent.mkdir(parents=True, exist_ok=True)
+    (repo_root / task_index_relative_path).parent.mkdir(parents=True, exist_ok=True)
+    _write_json(
+        repo_root / schema_relative_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": f"{effective_pack_slug.title()} Task Index",
+            "description": "Pack-local task index schema for copied-core fixture tests.",
+            "type": "object",
+            "required": ["$schema", "id", "title", "status", "entries"],
+            "properties": {
+                "$schema": {"const": schema_id},
+                "id": {"const": task_index_id},
+                "title": {"type": "string", "minLength": 1},
+                "status": {"type": "string", "enum": ["draft", "active", "deprecated"]},
+                "entries": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "task_id",
+                            "initiative_id",
+                            "trace_id",
+                            "initiative_title",
+                            "title",
+                            "summary",
+                            "status",
+                            "task_status",
+                            "task_kind",
+                            "priority",
+                            "owner",
+                            "doc_path",
+                            "updated_at",
+                        ],
+                        "properties": {
+                            "task_id": {"type": "string", "minLength": 1},
+                            "initiative_id": {"type": "string", "minLength": 1},
+                            "trace_id": {"type": "string", "minLength": 1},
+                            "initiative_title": {"type": "string", "minLength": 1},
+                            "title": {"type": "string", "minLength": 1},
+                            "summary": {"type": "string", "minLength": 1},
+                            "status": {
+                                "type": "string",
+                                "enum": ["draft", "active", "deprecated"],
+                            },
+                            "task_status": {
+                                "type": "string",
+                                "enum": [
+                                    "planned",
+                                    "ready",
+                                    "in_progress",
+                                    "in_review",
+                                    "blocked",
+                                    "completed",
+                                    "cancelled",
+                                ],
+                            },
+                            "task_kind": {"type": "string", "minLength": 1},
+                            "priority": {
+                                "type": "string",
+                                "enum": ["critical", "high", "medium", "low"],
+                            },
+                            "owner": {"type": "string", "minLength": 1},
+                            "doc_path": {"type": "string", "minLength": 1},
+                            "updated_at": {"type": "string", "format": "date-time"},
+                        },
+                        "additionalProperties": False,
+                    },
+                },
+            },
+            "additionalProperties": False,
+        },
+    )
+    _write_json(
+        repo_root / task_index_relative_path,
+        {
+            "$schema": schema_id,
+            "id": task_index_id,
+            "title": f"{effective_pack_slug.title()} Task Index",
+            "status": "active",
+            "entries": [
+                {
+                    "task_id": f"task.{effective_pack_slug}.bootstrap",
+                    "initiative_id": f"initiative.{effective_pack_slug}_bootstrap",
+                    "trace_id": f"trace.{effective_pack_slug}_bootstrap",
+                    "initiative_title": f"{effective_pack_slug.title()} Bootstrap",
+                    "title": f"Bootstrap {effective_pack_slug}",
+                    "summary": f"Bootstrap the {effective_pack_slug} fixture pack.",
+                    "status": "active",
+                    "task_status": "ready",
+                    "task_kind": "governance",
+                    "priority": "high",
+                    "owner": "repository_maintainer",
+                    "doc_path": f"{actual_wt_root}/tasks/bootstrap/task.json",
+                    "updated_at": "2026-03-23T20:15:00Z",
+                }
+            ],
+        },
+    )
+    schema_catalog_path = pack_root / ".wt" / "registries" / "schema_catalog.json"
+    schema_catalog = _load_json(schema_catalog_path)
+    schema_catalog.setdefault("schemas", []).append(
+        {
+            "schema_id": schema_id,
+            "title": f"{effective_pack_slug.title()} Task Index",
+            "description": "Pack-local task index schema for copied-core fixture tests.",
+            "status": "active",
+            "schema_family": "artifact",
+            "subject_kind": "task_index",
+            "version": "v1",
+            "canonical_path": schema_relative_path,
+        }
+    )
+    _write_json(schema_catalog_path, schema_catalog)
+    pack_settings_path = pack_root / ".wt" / "manifests" / "pack_settings.json"
+    pack_settings = _load_json(pack_settings_path)
+    pack_settings.setdefault("surfaces", []).append(
+        {
+            "surface_name": "task_index",
+            "surface_kind": "index",
+            "path": task_index_relative_path,
+            "authority": "derived",
+            "visibility": "mixed",
+            "rebuildable": True,
+        }
+    )
+    _write_json(pack_settings_path, pack_settings)
+    return {
+        "schema_id": schema_id,
+        "schema_relative_path": schema_relative_path,
+        "task_index_path": task_index_relative_path,
+    }
+
+
 def materialize_validation_repo_subset(
     tmp_path: Path,
     *,

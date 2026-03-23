@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.copied_core_doctor_pack_surface_neutrality.0014_execution_started",
+  "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+  "sequence": 14,
+  "event_type": "execution_started",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T22:03:58Z",
+  "summary": "Execution started after task task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality entered completed.",
+  "payload": {
+    "task_id": "task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality",
+    "task_status": "completed"
+  },
+  "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+  "related_paths": [
+    "plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/tasks/bootstrap_copied_core_doctor_pack_surface_neutrality/task.json"
+  ]
+}

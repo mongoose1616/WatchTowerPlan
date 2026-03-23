@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-23T18:17:30Z",
+  "updated_at": "2026-03-23T22:04:08Z",
   "entries": [
     {
       "promotion_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
@@ -117,6 +117,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.copied_core_discovery_surface_reconciliation_followup.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.copied_core_doctor_pack_surface_neutrality.bootstrap_shell",
+      "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+      "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+      "initiative_title": "Copied Core Doctor Pack Surface Neutrality",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/copied_core_doctor_pack_surface_neutrality",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+        "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-23T22:04:08Z",
+      "target_paths": [
+        "plan/docs/decisions/copied_core_doctor_pack_surface_neutrality_design_record.md",
+        "plan/docs/patterns/copied_core_doctor_pack_surface_neutrality_implementation_slice.md",
+        "plan/docs/references/copied_core_doctor_pack_surface_neutrality_initiative_brief.md",
+        "plan/docs/standards/governance/copied_core_doctor_pack_surface_neutrality_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.copied_core_doctor_pack_surface_neutrality.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

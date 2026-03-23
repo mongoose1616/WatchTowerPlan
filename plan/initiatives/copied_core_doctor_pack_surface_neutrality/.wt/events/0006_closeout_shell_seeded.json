@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.copied_core_doctor_pack_surface_neutrality.0006_closeout_shell_seeded",
+  "initiative_id": "initiative.copied_core_doctor_pack_surface_neutrality",
+  "sequence": 6,
+  "event_type": "closeout_shell_seeded",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T19:20:34Z",
+  "summary": "Seeded the closeout shell.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.copied_core_doctor_pack_surface_neutrality",
+  "related_paths": [
+    "plan/initiatives/copied_core_doctor_pack_surface_neutrality/initiative_brief.md",
+    "plan/initiatives/copied_core_doctor_pack_surface_neutrality/design_record.md",
+    "plan/initiatives/copied_core_doctor_pack_surface_neutrality/implementation_slice.md",
+    "plan/initiatives/copied_core_doctor_pack_surface_neutrality/decision_notes.md"
+  ]
+}

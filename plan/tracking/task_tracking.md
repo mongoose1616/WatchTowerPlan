@@ -4,7 +4,7 @@
 _No open tasks._
 
 ## Closed Task Summary
-- `completed`: 103
+- `completed`: 104
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -31,6 +31,7 @@ _No open tasks._
 | [task.command_latency_reduction_using_runtime_telemetry.reduce_validation_and_pack_runtime_latency](/plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/tasks/reduce_validation_and_pack_runtime_latency/task.json) | `completed` | `high` | `repository_maintainer` | `trace.command_latency_reduction_using_runtime_telemetry` | Cuts avoidable latency in validation, schema, and pack-runtime execution paths that remain prominent after the baseline pass. |
 | [task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json) | `completed` | `high` | `repository_maintainer` | `trace.copied_core_bootstrap_and_validator_alignment` | Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package. |
 | [task.copied_core_discovery_surface_reconciliation_followup.bootstrap_copied_core_discovery_surface_reconciliation_followup](/plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/tasks/bootstrap_copied_core_discovery_surface_reconciliation_followup/task.json) | `completed` | `high` | `repository_maintainer` | `trace.copied_core_discovery_surface_reconciliation_followup` | Bootstrap Copied Core Discovery Surface Reconciliation Followup live initiative package. |
+| [task.copied_core_doctor_pack_surface_neutrality.bootstrap_copied_core_doctor_pack_surface_neutrality](/plan/initiatives/copied_core_doctor_pack_surface_neutrality/.wt/tasks/bootstrap_copied_core_doctor_pack_surface_neutrality/task.json) | `completed` | `high` | `repository_maintainer` | `trace.copied_core_doctor_pack_surface_neutrality` | Bootstrap Copied Core Doctor Pack Surface Neutrality live initiative package. |
 | [task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/bootstrap_copy_forward_pack_runtime_hardening/task.json) | `completed` | `high` | `repository_maintainer` | `trace.copy_forward_pack_runtime_hardening` | Bootstrap Copy-Forward Pack Runtime Hardening live initiative package. |
 | [task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/cover_bootstrap_mode_copy_forward_behavior/task.json) | `completed` | `high` | `validation_engineer` | `trace.copy_forward_pack_runtime_hardening` | Adds reusable-core regression coverage for copied-core repos with valid local packs, stale donor registry metadata, and incomplete local workspace rewiring. |
 | [task.copy_forward_pack_runtime_hardening.harden_selected_pack_commands](/plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/harden_selected_pack_commands/task.json) | `completed` | `high` | `implementation_engineer` | `trace.copy_forward_pack_runtime_hardening` | Makes pack list, describe, validate, and selected namespace resolution use the effective hosted-pack runtime view and return structured failures for stale authored registry entries. |
@@ -113,4 +114,4 @@ _No open tasks._
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_one](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_one/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the first full repository assessment after the main cutover slices land and convert any new gaps into tracked remediation work. |
 | [task.plan_requirements_decisions_adherence_remediation.run_assessment_pass_two](/plan/initiatives/plan_requirements_decisions_adherence_remediation/.wt/tasks/run_full_assessment_pass_two/task.json) | `completed` | `medium` | `repository_maintainer` | `trace.plan_requirements_decisions_adherence_remediation` | Run the final repository assessment after cleanup and guards are in place and close any remaining gaps before initiative closeout. |
 
-_Updated At: `2026-03-23T18:17:18Z`_
+_Updated At: `2026-03-23T22:03:58Z`_

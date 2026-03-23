@@ -236,7 +236,11 @@ def test_live_standard_operationalization_paths_are_canonical() -> None:
             )
 
             for value in operationalization_paths:
-                if any(token in value for token in "*?["):
+                if (
+                    any(token in value for token in "*?[")
+                    or "<pack>" in value
+                    or "<pack-root>" in value
+                ):
                     continue
                 candidate = REPO_ROOT / value.rstrip("/")
                 if candidate.is_dir():

@@ -27,6 +27,8 @@ def materialize_externalized_plan_python(pack_python_root: Path) -> None:
     """Copy the live plan package into an externalized pack-owned python root."""
 
     source_root = REPO_ROOT / "plan" / "python"
+    repo_root = _discover_repo_root(pack_python_root)
+    actual_pack_root = pack_python_root.relative_to(repo_root).as_posix().removesuffix("/python")
     pack_python_root.mkdir(parents=True, exist_ok=True)
     for filename in ("pyproject.toml", "README.md", "AGENTS.md"):
         source_path = source_root / filename
@@ -37,6 +39,12 @@ def materialize_externalized_plan_python(pack_python_root: Path) -> None:
         pack_python_root / "src" / "watchtower_plan",
         dirs_exist_ok=True,
     )
+    source_surface_prefix = "plan/python/src/watchtower_plan/"
+    target_surface_prefix = f"{actual_pack_root}/python/src/watchtower_plan/"
+    for path in sorted((pack_python_root / "src" / "watchtower_plan").rglob("*.py")):
+        text = path.read_text(encoding="utf-8")
+        text = text.replace(source_surface_prefix, target_surface_prefix)
+        path.write_text(text, encoding="utf-8")
 
 
 def materialize_externalized_plan_validation_suite(

@@ -185,6 +185,11 @@ def test_pack_placeholder_operationalization_paths_match_live_pack_paths() -> No
         "<pack>/tracking/",
         REPO_ROOT,
     )
+    assert operationalization_path_matches(
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
+        "*/docs/commands/core_python/",
+        REPO_ROOT,
+    )
 
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:

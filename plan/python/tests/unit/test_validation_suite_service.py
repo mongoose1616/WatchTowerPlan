@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib
 import json
 from dataclasses import replace
 from pathlib import Path
@@ -7,7 +8,6 @@ from shutil import copy2, rmtree
 from types import SimpleNamespace
 
 import pytest
-from watchtower_plan import integration as plan_integration
 from watchtower_plan.testing.externalized_plan_fixtures import (
     materialize_externalized_plan_validation_suite,
 )
@@ -31,6 +31,10 @@ from watchtower_core.validation import (
     ValidationSuiteService,
 )
 from watchtower_core.validation._pack_contract import runtime as pack_contract_runtime
+
+
+def _current_plan_integration_module():
+    return importlib.import_module("watchtower_plan.integration")
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
@@ -361,11 +365,16 @@ def test_load_pack_validation_runtime_returns_plan_validation_hooks() -> None:
 def test_pack_contract_validation_fails_when_validation_provider_returns_invalid_runtime(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         validation_provider=lambda: object(),
     )
-    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 
@@ -521,11 +530,16 @@ def test_pack_contract_validation_fails_when_integration_descriptor_is_missing(
 def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runtime(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         query_runtime=lambda: object(),
     )
-    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 
@@ -536,11 +550,16 @@ def test_pack_contract_validation_fails_when_query_runtime_returns_invalid_runti
 def test_pack_contract_validation_fails_when_query_runtime_returns_empty_commands(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         query_runtime=lambda: PackQueryRuntime(commands=()),
     )
-    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 
@@ -551,11 +570,16 @@ def test_pack_contract_validation_fails_when_query_runtime_returns_empty_command
 def test_pack_contract_validation_fails_when_sync_targets_returns_invalid_runtime(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         sync_targets=lambda: object(),
     )
-    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 
@@ -566,11 +590,16 @@ def test_pack_contract_validation_fails_when_sync_targets_returns_invalid_runtim
 def test_pack_contract_validation_fails_when_sync_targets_returns_empty_targets(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    plan_integration = _current_plan_integration_module()
     bad_descriptor = replace(
         plan_integration.PACK_INTEGRATION,
         sync_targets=lambda: PackSyncRuntime(targets=()),
     )
-    monkeypatch.setattr(plan_integration, "PACK_INTEGRATION", bad_descriptor)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(PACK_INTEGRATION=bad_descriptor), "workspace"),
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 

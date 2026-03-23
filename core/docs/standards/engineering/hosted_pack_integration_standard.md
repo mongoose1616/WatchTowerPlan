@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T22:05:00Z"
+updated_at: "2026-03-23T20:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -90,6 +90,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Additional pack-local Python must live under `<pack>/python/src/watchtower_<pack>/` and should be organized by domain feature rather than by mirrored copies of reusable-core package taxonomy.
 - Use `watchtower_<pack>` for domain-specific lifecycle behavior, rendering, semantic validation, query handlers, sync targets, and feature services.
 - Move code into `watchtower_core` when the behavior is truly cross-pack, schema-backed, or pack-agnostic.
+- Reuse shared documentation, standard-parsing, and workflow-index helpers from `watchtower_core` instead of copying donor implementations into pack-local helper modules.
 - Keep CLI parser construction, root command-family composition, pack discovery, and dispatch in `watchtower_host`; pack code must not import `watchtower_host`.
 - Keep optional operational runtime outputs such as telemetry under `<pack>/.wt/runtime/` so they remain pack-local machine state rather than shared-core authority.
 - When new pack-local Python introduces new machine or human surfaces, update the companion manifests, command docs, workflows, tracking surfaces, domain-root declarations, and tests in the same change set.
@@ -124,6 +125,7 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Reviewers should reject pack-local validator or workflow metadata registries that copy shared core entries with conflicting content.
 - Reviewers should reject runtime manifests or integration modules that declare the required capabilities without exporting the matching hooks.
 - Reviewers should reject new pack-local Python that mirrors generic reusable-core package families without a real domain need.
+- Reviewers should reject pack-local helper modules that fork generic standard, reference, or workflow parsing logic already exported by `watchtower_core`.
 - `watchtower-core pack validate --pack <slug>` or `--pack-settings-path <path>` should pass before a pack is treated as integrated.
 
 ## Change Control
@@ -137,4 +139,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-23T22:05:00Z`
+- `2026-03-23T20:35:00Z`
