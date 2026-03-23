@@ -1,7 +1,7 @@
 # `watchtower-core pack list`
 
 ## Summary
-This command lists the hosted packs declared in the shared pack registry.
+This command lists the hosted packs available through the effective runtime view.
 
 ## Use When
 - You need to see the hosted packs available in the current repository.
@@ -37,8 +37,9 @@ uv run watchtower-core pack list --format json
 ```
 
 ## Behavior and Outputs
-- Reads the hosted-pack registry from `core/control_plane/registries/pack_registry.json`.
+- Reads the effective hosted-pack runtime view from shared registry data plus any valid runtime-only manifest discoveries available in the current repository.
 - Reports each hosted pack's slug, pack ID, command namespace, distribution, package name, and settings paths.
+- Marks the default repository pack from authored registry metadata when present; otherwise it derives the default from the active pack settings path when one usable pack is available during copied-core bring-up.
 - In `json` mode, returns one result array for scripting and workflow use.
 
 ## Related Commands
@@ -51,6 +52,7 @@ uv run watchtower-core pack list --format json
 ## Source Surface
 - `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
+- `core/python/src/watchtower_core/pack_integration/runtime_registry.py`
 
 ## Updated At
-- `2026-03-20T19:20:00Z`
+- `2026-03-22T23:45:00Z`

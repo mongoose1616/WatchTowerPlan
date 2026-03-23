@@ -10,6 +10,7 @@ from watchtower_plan.validation.document_semantics import DocumentSemanticsValid
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
+    materialize_externalized_fixture_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -28,6 +29,36 @@ from watchtower_core.pack_integration.runtime import (
 )
 from watchtower_core.telemetry import create_telemetry_session
 from watchtower_core.validation.pack_targets import resolve_pack_validation_suite_targets
+
+
+def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str, str]:
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    materialize_externalized_fixture_python(
+        repo_root / "oversight" / "python",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+    )
+    return surfaces
 
 
 def test_load_pack_validation_runtime_uses_repo_pack_contract() -> None:
@@ -212,3 +243,35 @@ def test_selected_pack_loading_still_works_when_another_registered_pack_is_broke
     assert loaded.registry_entry.pack_slug == "plan"
     with pytest.raises(ModuleNotFoundError):
         load_registered_pack_integrations(loader)
+
+
+def test_load_active_pack_integration_supports_unbootstrapped_root_pack_fixture(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    loader = ControlPlaneLoader(
+        repo_root,
+        active_pack_settings_path=surfaces["pack_settings_path"],
+    )
+
+    loaded = load_active_pack_integration(
+        loader,
+        pack_settings_path=surfaces["pack_settings_path"],
+    )
+
+    assert loaded.registry_entry.pack_slug == "oversight"
+    assert loaded.runtime_manifest.command_namespace == "oversight"
+    assert loaded.integration.command_namespace == "oversight"
+
+
+def test_load_registered_pack_integrations_discovers_unbootstrapped_root_pack_fixture(
+    tmp_path: Path,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    loader = ControlPlaneLoader(repo_root)
+
+    loaded = load_registered_pack_integrations(loader)
+
+    assert tuple(item.registry_entry.pack_slug for item in loaded) == ("oversight",)

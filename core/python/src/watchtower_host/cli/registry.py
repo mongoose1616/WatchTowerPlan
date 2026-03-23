@@ -11,6 +11,10 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import PackRegistryEntry, PackRuntimeManifest
 from watchtower_core.pack_integration.docs import pack_command_docs_root
 from watchtower_core.pack_integration.runtime import load_active_pack_integration
+from watchtower_core.pack_integration.runtime_registry import (
+    effective_pack_registry_entries,
+    find_runtime_pack_registry_entry_by_namespace,
+)
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], object]
 
@@ -150,7 +154,7 @@ def discover_registered_pack_command_groups(
     active_loader = loader or ControlPlaneLoader()
     discoveries: list[PackCommandGroupDiscovery] = []
     seen_names = {spec.name for spec in CORE_COMMAND_GROUP_SPECS}
-    for entry in active_loader.load_pack_registry().packs:
+    for entry in effective_pack_registry_entries(active_loader):
         namespace = entry.command_namespace
         if namespace in seen_names:
             raise ValueError(f"Duplicate top-level command namespace: {namespace}")
@@ -270,10 +274,7 @@ def _find_registered_pack_entry(
     command_namespace: str,
     loader: ControlPlaneLoader,
 ) -> PackRegistryEntry | None:
-    for entry in loader.load_pack_registry().packs:
-        if entry.command_namespace == command_namespace:
-            return entry
-    return None
+    return find_runtime_pack_registry_entry_by_namespace(loader, command_namespace)
 
 
 def _unavailable_pack_command_group(

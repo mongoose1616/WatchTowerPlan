@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from importlib import import_module
+from pathlib import Path
 
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.control_plane.models import (
@@ -16,6 +16,12 @@ from watchtower_core.pack_integration import (
     PackQueryRuntime,
     PackSyncRuntime,
     PackValidationRuntime,
+)
+from watchtower_core.pack_integration.importing import import_pack_integration_module
+from watchtower_core.pack_integration.runtime_registry import (
+    effective_pack_registry_entries,
+    load_pack_registry_runtime_view,
+    synthesize_pack_registry_entry,
 )
 from watchtower_core.telemetry import telemetry_operation
 
@@ -43,9 +49,17 @@ def load_active_pack_integration(
         attributes={"pack_settings_path": pack_settings_path},
     ) as operation:
         pack_settings = loader.load_pack_settings(pack_settings_path)
-        registry_entry = loader.load_pack_registry().get_by_pack_id(pack_settings.pack_id)
         runtime_manifest = loader.load_pack_runtime_manifest(pack_settings_path=pack_settings_path)
-        descriptor = _load_pack_integration_descriptor(runtime_manifest)
+        runtime_view = load_pack_registry_runtime_view(loader)
+        try:
+            registry_entry = runtime_view.get_by_pack_id(pack_settings.pack_id)
+        except KeyError:
+            registry_entry = synthesize_pack_registry_entry(
+                pack_settings_path=pack_settings_path,
+                pack_settings=pack_settings,
+                runtime_manifest=runtime_manifest,
+            )
+        descriptor = _load_pack_integration_descriptor(runtime_manifest, loader.repo_root)
         loaded = LoadedPackIntegration(
             pack_settings=pack_settings,
             registry_entry=registry_entry,
@@ -68,14 +82,13 @@ def load_registered_pack_integrations(
     """Load every hosted-pack integration declared in the shared pack registry."""
 
     with telemetry_operation("pack_runtime", "load_registered_pack_integrations") as operation:
-        registry = loader.load_pack_registry()
         loaded: list[LoadedPackIntegration] = []
-        for entry in registry.packs:
+        for entry in effective_pack_registry_entries(loader):
             pack_settings = loader.load_pack_settings(entry.pack_settings_path)
             runtime_manifest = loader.load_pack_runtime_manifest(
                 pack_settings_path=entry.pack_settings_path
             )
-            descriptor = _load_pack_integration_descriptor(runtime_manifest)
+            descriptor = _load_pack_integration_descriptor(runtime_manifest, loader.repo_root)
             loaded.append(
                 LoadedPackIntegration(
                     pack_settings=pack_settings,
@@ -195,7 +208,10 @@ def load_pack_sync_runtime(
         return validated
 
 
-def _load_pack_integration_descriptor(runtime_manifest: PackRuntimeManifest) -> PackIntegration:
+def _load_pack_integration_descriptor(
+    runtime_manifest: PackRuntimeManifest,
+    repo_root: Path,
+) -> PackIntegration:
     with telemetry_operation(
         "pack_runtime_import",
         runtime_manifest.integration_module,
@@ -204,7 +220,12 @@ def _load_pack_integration_descriptor(runtime_manifest: PackRuntimeManifest) -> 
             "command_namespace": runtime_manifest.command_namespace,
         },
     ) as operation:
-        module = import_module(runtime_manifest.integration_module)
+        module, import_source = import_pack_integration_module(
+            repo_root=repo_root,
+            integration_module=runtime_manifest.integration_module,
+            python_package=runtime_manifest.python_package,
+            python_root=runtime_manifest.owned_roots.python_root,
+        )
         descriptor = getattr(module, "PACK_INTEGRATION", None)
         if not isinstance(descriptor, PackIntegration):
             raise ValueError(
@@ -216,6 +237,7 @@ def _load_pack_integration_descriptor(runtime_manifest: PackRuntimeManifest) -> 
             operation.set_result(
                 status="ok",
                 capability_count=len(runtime_manifest.declared_capabilities),
+                import_source=import_source,
             )
         return descriptor
 

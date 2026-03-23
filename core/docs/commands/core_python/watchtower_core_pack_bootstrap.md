@@ -50,6 +50,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - Fails closed when the pack settings path is not repository-relative and portable.
 - Fails closed when the declared integration module cannot be resolved beneath the pack-owned `python/src` root.
 - Computes and applies the shared `pack_registry.json` entry plus the shared `core/python/pyproject.toml` dev-dependency and `tool.uv.sources` registration for the pack.
+- Promotes a runtime-only discovered copied-core pack into the normal steady-state shared registry and shared workspace contract.
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
 - When `--write` is omitted, reports the pending shared changes without mutating the repository.
 - When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
@@ -71,4 +72,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-21T23:59:00Z`
+- `2026-03-22T23:45:00Z`

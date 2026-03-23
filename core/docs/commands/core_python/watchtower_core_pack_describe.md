@@ -38,10 +38,11 @@ uv run watchtower-core pack describe --format json
 ```
 
 ## Behavior and Outputs
-- Reads the shared hosted-pack registry entry and the pack-owned runtime manifest for the selected pack.
+- Resolves the selected pack through the effective hosted-pack runtime view, then reads the pack-owned runtime manifest.
 - Reports declared capabilities, required validation suites, owned roots, the integration module path, and the typed query or sync runtimes published by the pack integration descriptor.
 - Separates integration-module import status from runtime-hook validity so malformed query or sync contracts stay visible to operators instead of looking like a plain import failure.
 - Attempts to import the declared integration module and reports whether that import succeeds.
+- In copied-core bring-up mode, a valid local pack can still be described before shared workspace registration exists. When an authored registry entry is stale or unusable, the command returns a structured error instead of a raw loader traceback.
 
 ## Related Commands
 | Command | Relationship |
@@ -53,6 +54,7 @@ uv run watchtower-core pack describe --format json
 ## Source Surface
 - `core/python/src/watchtower_host/cli/pack_handlers.py`
 - `core/control_plane/registries/pack_registry.json`
+- `core/python/src/watchtower_core/pack_integration/runtime_registry.py`
 
 ## Updated At
-- `2026-03-20T23:58:00Z`
+- `2026-03-22T23:45:00Z`

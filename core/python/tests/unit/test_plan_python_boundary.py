@@ -94,7 +94,7 @@ def test_public_query_root_exports_generic_query_services_and_fails_closed_for_p
         == "watchtower_core.query.artifact_families"
     )
 
-    with pytest.raises(AttributeError, match="watchtower_plan.query"):
+    with pytest.raises(AttributeError, match=r"watchtower_<pack>\.query"):
         _ = public_query.CoordinationQueryService
 
 
@@ -117,7 +117,7 @@ def test_public_rebuild_root_fails_closed_with_plan_boundary_guidance() -> None:
         public_rebuild.MarkdownReconciliationHelper.__module__
         == "watchtower_core.rebuild.rendered_views"
     )
-    with pytest.raises(AttributeError, match="watchtower_plan"):
+    with pytest.raises(AttributeError, match=r"watchtower_<pack>"):
         _ = public_rebuild.PlanWorkspaceService
 
 
@@ -130,7 +130,7 @@ def test_public_workflow_execution_root_fails_closed_with_plan_boundary_guidance
         public_workflow_execution.WorkflowExecutionStep.__module__
         == "watchtower_core.workflow_execution.harness"
     )
-    with pytest.raises(AttributeError, match="watchtower_plan"):
+    with pytest.raises(AttributeError, match=r"owning pack package"):
         _ = public_workflow_execution.InitiativePackageService
 
 
@@ -151,14 +151,14 @@ def test_public_routing_root_exports_reusable_routing_engine() -> None:
 def test_public_validation_root_fails_closed_with_plan_boundary_guidance() -> None:
     with pytest.raises(AttributeError, match="watchtower_core.validation.all"):
         _ = public_validation.ValidationAllService
-    with pytest.raises(AttributeError, match="watchtower_plan.validation"):
+    with pytest.raises(AttributeError, match=r"watchtower_<pack>\.validation"):
         _ = public_validation.DocumentSemanticsValidationService
 
 
 def test_public_closeout_root_fails_closed_with_plan_boundary_guidance() -> None:
-    with pytest.raises(AttributeError, match="watchtower_plan.closeout"):
+    with pytest.raises(AttributeError, match=r"watchtower_<pack>\.closeout"):
         _ = public_closeout.InitiativeCloseoutService
-    with pytest.raises(AttributeError, match="watchtower_plan.closeout"):
+    with pytest.raises(AttributeError, match=r"watchtower_<pack>\.closeout"):
         _ = public_closeout.TracePurgeService
 
 

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import importlib
 import json
 
 from watchtower_core.cli.handler_common import (
@@ -11,15 +10,21 @@ from watchtower_core.cli.handler_common import (
     _emit_detail_result,
     _run_value_error_operation,
 )
+from watchtower_core.control_plane.errors import ControlPlaneError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import PackRegistryEntry
+from watchtower_core.control_plane.models import PackRegistryEntry, PackRuntimeManifest
 from watchtower_core.pack_integration.bootstrap import (
     PackBootstrapRequest,
     bootstrap_hosted_pack,
 )
+from watchtower_core.pack_integration.importing import import_pack_integration_module
 from watchtower_core.pack_integration.runtime import (
     load_pack_query_runtime,
     load_pack_sync_runtime,
+)
+from watchtower_core.pack_integration.runtime_registry import (
+    effective_pack_registry_entries,
+    resolve_runtime_pack_registry_entry,
 )
 from watchtower_core.pack_integration.scaffold import (
     PackScaffoldRequest,
@@ -33,8 +38,7 @@ from watchtower_core.validation.pack_contract import (
 
 def _run_pack_list(args: argparse.Namespace) -> int:
     loader = ControlPlaneLoader()
-    registry = loader.load_pack_registry()
-    entries = tuple(registry.packs)
+    entries = effective_pack_registry_entries(loader)
 
     return _emit_collection_query_results(
         args,
@@ -66,12 +70,11 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
         args,
         command_name="watchtower-core pack describe",
         prefix="Pack error",
-        operation=lambda: _resolve_registry_entry(loader, args.pack),
+        operation=lambda: _resolve_describe_context(loader, args.pack),
     )
     if resolved is None:
         return 1
-    entry = resolved
-    manifest = loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
+    entry, manifest = resolved
 
     integration_importable = False
     integration_error: str | None = None
@@ -81,7 +84,12 @@ def _run_pack_describe(args: argparse.Namespace) -> int:
     sync_runtime_targets: list[str] | None = None
     sync_runtime_error: str | None = None
     try:
-        module = importlib.import_module(manifest.integration_module)
+        module, _ = import_pack_integration_module(
+            repo_root=loader.repo_root,
+            integration_module=manifest.integration_module,
+            python_package=manifest.python_package,
+            python_root=manifest.owned_roots.python_root,
+        )
         descriptor = getattr(module, "PACK_INTEGRATION", None)
         integration_importable = True
     except Exception as exc:  # pragma: no cover - fail-closed operator path
@@ -280,6 +288,21 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
     if result is None:
         return 1
 
+    next_steps: list[str] = (
+        [
+            (
+                "Run uv sync in core/python before using the hosted pack from a clean "
+                "shell or environment."
+            ),
+            (
+                "Run watchtower-core pack validate --pack-settings-path "
+                f"{result.pack_settings_path} --format json after the workspace sync "
+                "completes."
+            ),
+        ]
+        if result.workspace_sync_required
+        else []
+    )
     payload = {
         "command": "watchtower-core pack bootstrap",
         "status": "ok",
@@ -301,21 +324,7 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
         "validation_passed": result.validation_passed,
         "changed_paths": list(result.changed_paths),
         "wrote": result.wrote,
-        "next_steps": (
-            [
-                (
-                    "Run uv sync in core/python before using the hosted pack from a clean "
-                    "shell or environment."
-                ),
-                (
-                    "Run watchtower-core pack validate --pack-settings-path "
-                    f"{result.pack_settings_path} --format json after the workspace sync "
-                    "completes."
-                ),
-            ]
-            if result.workspace_sync_required
-            else []
-        ),
+        "next_steps": next_steps,
     }
 
     def _render_human() -> None:
@@ -347,9 +356,9 @@ def _run_pack_bootstrap(args: argparse.Namespace) -> int:
             print("Changed Paths:")
             for path in result.changed_paths:
                 print(f"- {path}")
-        if payload["next_steps"]:
+        if next_steps:
             print("Next Steps:")
-            for step in payload["next_steps"]:
+            for step in next_steps:
                 print(f"- {step}")
 
     return _emit_detail_result(
@@ -442,14 +451,25 @@ def _resolve_registry_entry(
     loader: ControlPlaneLoader,
     pack_slug: str | None,
 ) -> PackRegistryEntry:
-    registry = loader.load_pack_registry()
-    if pack_slug is None:
-        return registry.default_pack()
     try:
-        return registry.get_by_pack_slug(pack_slug)
+        return resolve_runtime_pack_registry_entry(loader, pack_slug)
     except KeyError:
-        available = ", ".join(entry.pack_slug for entry in registry.packs)
+        available = ", ".join(entry.pack_slug for entry in effective_pack_registry_entries(loader))
         raise ValueError(f"Unknown pack slug: {pack_slug}. Available packs: {available}") from None
+
+
+def _resolve_describe_context(
+    loader: ControlPlaneLoader,
+    pack_slug: str | None,
+) -> tuple[PackRegistryEntry, PackRuntimeManifest]:
+    entry = _resolve_registry_entry(loader, pack_slug)
+    try:
+        manifest = loader.load_pack_runtime_manifest(pack_settings_path=entry.pack_settings_path)
+    except (ControlPlaneError, ValueError) as exc:
+        raise ValueError(
+            f"Hosted-pack registry entry for {entry.pack_slug!r} is not usable: {exc}"
+        ) from None
+    return entry, manifest
 
 
 def _render_pack_registry_entry(entry: PackRegistryEntry) -> None:

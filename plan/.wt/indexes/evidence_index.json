@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-23T00:04:09Z",
+  "updated_at": "2026-03-23T01:24:34Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -33,6 +33,35 @@
         "plan/initiatives/command_latency_reduction_using_runtime_telemetry/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T20:50:23Z"
+    },
+    {
+      "evidence_id": "evidence.copy_forward_pack_runtime_hardening.bootstrap_validation_bundle",
+      "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+      "trace_id": "trace.copy_forward_pack_runtime_hardening",
+      "initiative_title": "Copy-Forward Pack Runtime Hardening",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/copy_forward_pack_runtime_hardening",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/discrepancies",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-23T01:24:34Z"
     },
     {
       "evidence_id": "evidence.core_copy_forward_operating_mode_documentation.bootstrap_validation_bundle",

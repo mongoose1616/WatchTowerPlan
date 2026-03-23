@@ -75,6 +75,68 @@
       ]
     },
     {
+      "trace_id": "trace.copy_forward_pack_runtime_hardening",
+      "title": "Copy-Forward Pack Runtime Hardening",
+      "summary": "Hardens reusable core for copied-core host scenarios by discovering unbootstrapped hosted packs from manifests, structuring stale-registry failures, and keeping current shared workspace contracts explicit.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-23T01:24:34Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "plan/initiatives/copy_forward_pack_runtime_hardening/plan.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "plan/initiatives/copy_forward_pack_runtime_hardening/summary.md",
+      "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+      "slug": "copy_forward_pack_runtime_hardening",
+      "scope_type": "pack_wide",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "source_surface_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",
+        "task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode",
+        "task.copy_forward_pack_runtime_hardening.harden_selected_pack_commands",
+        "task.copy_forward_pack_runtime_hardening.implement_effective_pack_discovery",
+        "task.copy_forward_pack_runtime_hardening.refresh_docs_and_closeout"
+      ],
+      "evidence_ids": [
+        "evidence.copy_forward_pack_runtime_hardening.bootstrap_validation_bundle"
+      ],
+      "closed_at": "2026-03-23T01:24:34Z",
+      "closure_reason": "Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core.",
+      "related_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md",
+        "core/docs/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/pack_integration/",
+        "core/python/src/watchtower_host/cli/",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/initiative.json",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/bootstrap_copy_forward_pack_runtime_hardening/task.json",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/cover_bootstrap_mode_copy_forward_behavior/task.json",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/harden_selected_pack_commands/task.json",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/implement_effective_pack_discovery/task.json",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/refresh_docs_and_close_out_the_slice/task.json"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.core_copy_forward_operating_mode_documentation",
       "title": "Core Copy Forward Operating Mode Documentation",
       "summary": "Document that downstream WatchTower repositories may consume the shared core by copying core/ alone or alongside one or more hosted packs.",

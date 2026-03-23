@@ -3,7 +3,7 @@
   "id": "index.promotions",
   "title": "Plan Workspace Promotion Index",
   "status": "active",
-  "updated_at": "2026-03-23T00:04:09Z",
+  "updated_at": "2026-03-23T01:24:34Z",
   "entries": [
     {
       "promotion_id": "promotion.command_latency_reduction_using_runtime_telemetry.bootstrap_shell",
@@ -39,6 +39,45 @@
       "approval_state": "pending",
       "evidence_refs": [
         "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle"
+      ],
+      "provenance_expectations": [
+        "Promotions must cite the source initiative id, trace id, and evidence bundle id."
+      ]
+    },
+    {
+      "promotion_id": "promotion.copy_forward_pack_runtime_hardening.bootstrap_shell",
+      "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+      "trace_id": "trace.copy_forward_pack_runtime_hardening",
+      "initiative_title": "Copy-Forward Pack Runtime Hardening",
+      "title": "Bootstrap Promotion Shell",
+      "status": "candidate",
+      "initiative_root": "plan/initiatives/copy_forward_pack_runtime_hardening",
+      "candidate_count": 4,
+      "candidate_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+        "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
+      ],
+      "target_families": [
+        "decision_record",
+        "pattern",
+        "reference",
+        "standard"
+      ],
+      "review_paths": [
+        "repository_maintainer_review"
+      ],
+      "updated_at": "2026-03-23T01:24:34Z",
+      "target_paths": [
+        "plan/docs/decisions/copy_forward_pack_runtime_hardening_design_record.md",
+        "plan/docs/patterns/copy_forward_pack_runtime_hardening_implementation_slice.md",
+        "plan/docs/references/copy_forward_pack_runtime_hardening_initiative_brief.md",
+        "plan/docs/standards/governance/copy_forward_pack_runtime_hardening_decision_notes.md"
+      ],
+      "approval_state": "pending",
+      "evidence_refs": [
+        "evidence.copy_forward_pack_runtime_hardening.bootstrap_validation_bundle"
       ],
       "provenance_expectations": [
         "Promotions must cite the source initiative id, trace id, and evidence bundle id."

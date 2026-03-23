@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-23T00:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -57,7 +57,7 @@ Keep standards structured enough that internal and external authority is not onl
 
 ## Operationalization
 - `Modes`: `validation`; `sync`; `query`; `documentation`
-- `Operational Surfaces`: `core/docs/standards/*/*_standard.md`; `core/python/src/watchtower_core/sync/standard_index.py`; `core/python/src/watchtower_core/query/standards.py`; `core/docs/commands/core_python/watchtower_core_query_standards.md`; `core/docs/templates/standard_document_template.md`
+- `Operational Surfaces`: `core/docs/standards/*/*_standard.md`; `plan/docs/standards/*/*_standard.md`; `core/python/src/watchtower_core/sync/standard_index.py`; `core/python/src/watchtower_core/query/standards.py`; `core/docs/commands/core_python/watchtower_core_query_standards.md`; `core/docs/templates/standard_document_template.md`
 
 ## Structure or Data Model
 ### Required sections
@@ -98,4 +98,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/core/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-23T00:05:00Z`

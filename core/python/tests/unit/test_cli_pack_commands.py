@@ -9,6 +9,7 @@ from watchtower_plan import integration as plan_integration
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
+    materialize_externalized_fixture_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -17,6 +18,36 @@ from watchtower_core.pack_integration import PackQueryRuntime
 from watchtower_host.cli.introspection import iter_host_command_parser_specs
 from watchtower_host.cli.main import main
 from watchtower_host.cli.registry import load_command_group_specs, load_pack_command_group_spec
+
+
+def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str, str]:
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    materialize_externalized_fixture_python(
+        repo_root / "oversight" / "python",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+    )
+    return surfaces
 
 
 def test_pack_list_supports_json_output(capsys) -> None:
@@ -229,6 +260,81 @@ def test_pack_commands_still_work_when_another_registered_pack_is_broken(
     assert result == 0
     assert payload["pack"] == "plan"
     assert payload["passed"] is True
+
+
+def test_pack_list_discovers_unbootstrapped_root_pack_in_copied_core_repo(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "list", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert {entry["pack_slug"] for entry in payload["results"]} == {"oversight"}
+    assert payload["results"][0]["default_repo_pack"] is True
+
+
+def test_pack_describe_discovers_unbootstrapped_root_pack_in_copied_core_repo(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "describe", "--pack", "oversight", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack"]["pack_slug"] == "oversight"
+    assert payload["pack"]["pack_settings_path"] == surfaces["pack_settings_path"]
+    assert payload["integration"]["importable"] is True
+    assert payload["integration"]["query_runtime_commands"] == ["assessments", "reviews"]
+
+
+def test_pack_describe_reports_stale_authored_registry_entry_as_structured_error(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "describe", "--pack", "plan", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core pack describe"
+    assert payload["status"] == "error"
+    assert "Hosted-pack registry entry for 'plan' is unusable" in payload["message"]
+
+
+def test_pack_validate_reports_unbootstrapped_root_pack_as_structured_failure(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(["pack", "validate", "--pack", "oversight", "--format", "json"])
+
+    payload = json.loads(capsys.readouterr().out)
+    issue_codes = {issue["code"] for issue in payload["issues"]}
+    assert result == 1
+    assert payload["pack"] == "oversight"
+    assert payload["passed"] is False
+    assert "pack_registry_entry_missing" in issue_codes
+    assert "pack_workspace_dependency_missing" in issue_codes
+    assert "pack_workspace_source_missing" in issue_codes
 
 
 def test_pack_validate_reports_missing_pack_command_doc_via_cli(
@@ -502,6 +608,23 @@ def test_host_command_registry_loads_second_pack_namespace(
     specs = load_command_group_specs(include_pack_namespaces=True)
 
     assert any(spec.name == "plan" for spec in specs)
+    assert any(spec.name == "oversight" for spec in specs)
+
+
+def test_host_command_registry_discovers_unbootstrapped_root_pack_namespace(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    specs = load_command_group_specs(
+        loader=ControlPlaneLoader(repo_root),
+        include_pack_namespaces=True,
+    )
+
+    assert all(spec.name != "plan" for spec in specs)
     assert any(spec.name == "oversight" for spec in specs)
 
 

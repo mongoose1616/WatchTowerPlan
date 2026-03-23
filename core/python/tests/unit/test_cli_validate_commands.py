@@ -4,10 +4,42 @@ import json
 from pathlib import Path
 
 from tests.pack_fixture_support import (
+    REPO_ROOT,
+    materialize_externalized_fixture_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
 from watchtower_host.cli.main import main
+
+
+def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str, str]:
+    surfaces = materialize_pack_validation_suite(
+        repo_root / "oversight",
+        pack_id="pack.oversight",
+        pack_slug="oversight",
+        command_namespace="oversight",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        integration_module="watchtower_oversight_fixture.integration",
+        register_with_host_registry=False,
+        register_with_core_python_workspace=False,
+    )
+    materialize_externalized_fixture_python(
+        repo_root / "oversight" / "python",
+        python_distribution="watchtower-oversight-fixture",
+        python_package="watchtower_oversight_fixture",
+        source_package_root=(
+            REPO_ROOT
+            / "core"
+            / "python"
+            / "tests"
+            / "fixtures"
+            / "python"
+            / "watchtower_oversight_fixture"
+        ),
+        description="Synthetic oversight runtime package used to prove hosted-pack portability.",
+    )
+    return surfaces
 
 
 def test_validate_front_matter_supports_json_output(capsys) -> None:
@@ -324,6 +356,43 @@ def test_validate_all_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
+
+
+def test_validate_all_reports_unbootstrapped_root_pack_without_crashing(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    result = main(
+        [
+            "validate",
+            "all",
+            "--skip-front-matter",
+            "--skip-document-semantics",
+            "--skip-artifacts",
+            "--skip-acceptance",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate all"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is False
+    assert payload["included_families"] == ["pack_contract"]
+    assert payload["failed_count"] == 1
+    assert payload["results"][0]["family"] == "pack_contract"
+    issue_codes = {issue["code"] for issue in payload["results"][0]["issues"]}
+    assert "pack_registry_entry_missing" in issue_codes
+    assert "pack_workspace_dependency_missing" in issue_codes
+    assert "pack_workspace_source_missing" in issue_codes
 
 
 def test_validate_suite_supports_json_output(capsys) -> None:

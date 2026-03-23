@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.copy_forward_pack_runtime_hardening.implement_effective_pack_discovery",
+  "slug": "implement_effective_pack_discovery",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "title": "Implement effective pack discovery",
+  "summary": "Adds a runtime-only effective hosted-pack view that supplements valid authored registry entries with manifest-discovered bootstrap-mode packs.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "implementation_engineer",
+  "created_at": "2026-03-23T00:39:55Z",
+  "updated_at": "2026-03-23T01:24:17Z",
+  "related_ids": [
+    "initiative.copy_forward_pack_runtime_hardening",
+    "design.copy_forward_pack_runtime_hardening.discovery"
+  ],
+  "applies_to": [
+    "core/python/src/watchtower_core/control_plane/",
+    "core/python/src/watchtower_core/pack_integration/"
+  ],
+  "scope_items": [
+    "Design and implement runtime-only hosted-pack discovery that merges valid authored registry entries with discovered first-party and nested pack manifests.",
+    "Keep authored pack_registry.json as the persisted canonical surface after bootstrap."
+  ],
+  "done_when_items": [
+    "Reusable-core code exposes an effective hosted-pack runtime view suitable for host discovery and selected-pack resolution.",
+    "Current WatchTowerPlan plan-pack behavior remains unchanged."
+  ]
+}

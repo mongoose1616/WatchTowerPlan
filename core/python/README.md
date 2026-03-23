@@ -32,6 +32,7 @@
 - Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
 - `uv sync --extra dev` installs `watchtower_core` and any repo-local hosted pack packages declared in the shared workspace metadata.
 - In this repository, the shared workspace metadata currently includes one internal hosted pack. In a downstream repository that copies `core/`, the hosted-pack dependencies and local `tool.uv.sources` entries are repo-local configuration and should be updated to match the copied pack set instead of inheriting the donor repo's package list.
+- During copied-core bring-up, `watchtower-core pack list`, `pack describe`, `pack validate`, selected pack namespaces, and `validate all` can discover a valid local pack from `<pack>/.wt/manifests/pack_settings.json` plus `<pack>/python/src` even before shared workspace wiring is persisted. Treat that as temporary bootstrap compatibility: `watchtower-core pack bootstrap --write` is still the step that makes the hosted pack part of the shared steady-state workspace contract.
 - Interactive shell path: run `./tools/dev_shell.sh` when you want a shell with `.venv` activated for repeated local commands.
 - Manual fallback: run `source .venv/bin/activate` if you specifically want to activate the environment in your current shell.
 
@@ -80,6 +81,11 @@
   - [watchtower_core_validate.md](/core/docs/commands/core_python/watchtower_core_validate.md)
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 - Open the owning pack command-doc root when you need pack-native bootstrap, live query, task, sync, or closeout commands.
+- Use the `pack` command pages below when you need the copied-core bring-up contract explained explicitly:
+  - [watchtower_core_pack_list.md](/core/docs/commands/core_python/watchtower_core_pack_list.md)
+  - [watchtower_core_pack_describe.md](/core/docs/commands/core_python/watchtower_core_pack_describe.md)
+  - [watchtower_core_pack_validate.md](/core/docs/commands/core_python/watchtower_core_pack_validate.md)
+  - [watchtower_core_pack_bootstrap.md](/core/docs/commands/core_python/watchtower_core_pack_bootstrap.md)
 
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
@@ -103,6 +109,7 @@
 - The decision, design, implementation, initiative, and task tracking sync commands rebuild summary-first human trackers with companion terminal-history tables. Use the paired `query` commands when you need exact filtered machine lookup.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
 - Pack-owned command namespaces remain responsible for live bootstrap, task, closeout, and pack-local state inspection behavior.
+- Runtime-only discovered hosted packs are expected during copied-core bring-up. They may load and validate, but they should still report missing shared registry or workspace wiring until `watchtower-core pack bootstrap --write` persists those shared surfaces.
 - `watchtower_core` is the reusable-core namespace. Push generic loaders, validators, query helpers, sync helpers, adapters, and utilities back into `watchtower_core` when they stop being pack-specific.
 - Keep pack-owned namespaces narrow; do not grow them into pack-flavored mirrors of `watchtower_core`.
 - Keep pack machine-state roots out of the Python workspace. Python source, workflow prose, and hand-maintained implementation logic do not belong under `.wt/`.

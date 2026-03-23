@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.copy_forward_pack_runtime_hardening.refresh_docs_and_close_out_the_slice.0001_created",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T00:40:35Z",
+  "summary": "Created live task task.copy_forward_pack_runtime_hardening.refresh_docs_and_closeout.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer",
+    "doc_path": "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/refresh_docs_and_close_out_the_slice/task.json"
+  },
+  "task_id": "task.copy_forward_pack_runtime_hardening.refresh_docs_and_closeout"
+}

@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-22T23:45:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -119,6 +119,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
    - Run `uv run watchtower-core pack describe --pack <slug> --format json`.
+   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`.
 7. Prove portability and extensibility.
    - Make the pack importable from its own `<pack>/python/src` path or installed package root.
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
@@ -362,6 +363,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path packs/oversight/.wt/m
 ## Notes
 - This reference captures the current hosted-pack contract and should move in lockstep with pack scaffolding, bootstrap, and validation behavior.
 - Canonical upstream sources were reviewed on 2026-03-20 during the host-pack boundary hard-cutover tranche.
+- Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-22T23:45:00Z`

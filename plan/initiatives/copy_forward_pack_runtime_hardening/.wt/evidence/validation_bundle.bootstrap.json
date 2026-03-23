@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:validation-bundle:v1",
+  "id": "evidence.copy_forward_pack_runtime_hardening.bootstrap_validation_bundle",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "trace_id": "trace.copy_forward_pack_runtime_hardening",
+  "title": "Bootstrap Validation Bundle",
+  "status": "completed",
+  "updated_at": "2026-03-23T01:24:34Z",
+  "entries": [
+    {
+      "entry_id": "entry.copy_forward_pack_runtime_hardening.schema_validation",
+      "acceptance_label": "package_contracts_valid",
+      "validation_type": "schema_validation",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/initiative.json"
+      ]
+    },
+    {
+      "entry_id": "entry.copy_forward_pack_runtime_hardening.gate_validation",
+      "acceptance_label": "ready_for_execution_gate",
+      "validation_type": "readiness_gate",
+      "owner": "repository_maintainer",
+      "target_phase": "readiness",
+      "expected_output_paths": [
+        "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/discrepancies"
+      ]
+    }
+  ]
+}

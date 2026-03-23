@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening.0001_created",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T00:37:25Z",
+  "summary": "Created task task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening during initiative bootstrap.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "repository_maintainer"
+  },
+  "task_id": "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-event-stream:v1",
+  "event_id": "event.copy_forward_pack_runtime_hardening.cover_bootstrap_mode_copy_forward_behavior.0001_created",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "sequence": 1,
+  "event_type": "created",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T00:40:21Z",
+  "summary": "Created live task task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode.",
+  "payload": {
+    "status": "active",
+    "task_status": "planned",
+    "owner": "validation_engineer",
+    "doc_path": "plan/initiatives/copy_forward_pack_runtime_hardening/.wt/tasks/cover_bootstrap_mode_copy_forward_behavior/task.json"
+  },
+  "task_id": "task.copy_forward_pack_runtime_hardening.cover_copy_forward_bootstrap_mode"
+}

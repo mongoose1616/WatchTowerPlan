@@ -7,6 +7,7 @@ from watchtower_core.control_plane.loader import (
     PACK_SETTINGS_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.pack_integration.runtime_registry import synthesize_pack_registry_entry
 from watchtower_core.telemetry import telemetry_operation
 from watchtower_core.validation._pack_contract.boundaries import dependency_boundary_issues
 from watchtower_core.validation._pack_contract.manifest import (
@@ -48,7 +49,6 @@ class PackContractValidationService:
                     pack_settings_path=pack_settings_path,
                 )
                 pack_registry = context.loader.load_pack_registry()
-                registry_entry = pack_registry.get_by_pack_id(context.pack_settings.pack_id)
                 runtime_manifest = context.loader.load_pack_runtime_manifest(
                     pack_settings_path=context.pack_settings_path
                 )
@@ -76,6 +76,26 @@ class PackContractValidationService:
                         validator_id=result.validator_id,
                     )
                 return result
+
+            try:
+                registry_entry = pack_registry.get_by_pack_id(context.pack_settings.pack_id)
+            except KeyError:
+                registry_entry = synthesize_pack_registry_entry(
+                    pack_settings_path=context.pack_settings_path,
+                    pack_settings=context.pack_settings,
+                    runtime_manifest=runtime_manifest,
+                )
+                issues.append(
+                    ValidationIssue(
+                        code="pack_registry_entry_missing",
+                        message=(
+                            "Shared hosted-pack registry does not declare this pack yet. "
+                            "Run watchtower-core pack bootstrap to persist shared registry "
+                            "and workspace wiring for the discovered pack."
+                        ),
+                        location=context.pack_settings_path,
+                    )
+                )
 
             if registry_entry.pack_settings_path != context.pack_settings_path:
                 issues.append(
@@ -126,7 +146,7 @@ class PackContractValidationService:
             issues.extend(command_doc_issues(context, runtime_manifest))
             issues.extend(core_python_workspace_issues(context, runtime_manifest))
             issues.extend(validation_suite_issues(context, runtime_manifest))
-            issues.extend(integration_issues(runtime_manifest))
+            issues.extend(integration_issues(runtime_manifest, repo_root=context.loader.repo_root))
             issues.extend(dependency_boundary_issues(context, runtime_manifest))
 
             result = ValidationResult(

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-import importlib
+from pathlib import Path
 from typing import Any
 
 from watchtower_core.pack_integration import (
@@ -10,6 +10,7 @@ from watchtower_core.pack_integration import (
     SUPPORTED_PACK_CAPABILITIES,
     PackIntegration,
 )
+from watchtower_core.pack_integration.importing import import_pack_integration_module
 from watchtower_core.pack_integration.runtime import (
     validate_pack_query_runtime,
     validate_pack_sync_runtime,
@@ -18,7 +19,11 @@ from watchtower_core.pack_integration.runtime import (
 from watchtower_core.validation.models import ValidationIssue
 
 
-def integration_issues(runtime_manifest: Any) -> tuple[ValidationIssue, ...]:
+def integration_issues(
+    runtime_manifest: Any,
+    *,
+    repo_root: Path,
+) -> tuple[ValidationIssue, ...]:
     issues: list[ValidationIssue] = []
     if runtime_manifest.integration_module != runtime_manifest.python_package and not (
         runtime_manifest.integration_module.startswith(f"{runtime_manifest.python_package}.")
@@ -62,7 +67,12 @@ def integration_issues(runtime_manifest: Any) -> tuple[ValidationIssue, ...]:
             )
         )
     try:
-        module = importlib.import_module(runtime_manifest.integration_module)
+        module, _ = import_pack_integration_module(
+            repo_root=repo_root,
+            integration_module=runtime_manifest.integration_module,
+            python_package=runtime_manifest.python_package,
+            python_root=runtime_manifest.owned_roots.python_root,
+        )
     except ModuleNotFoundError:
         return (
             *issues,

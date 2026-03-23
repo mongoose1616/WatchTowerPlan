@@ -31,6 +31,8 @@ def materialize_pack_validation_suite(
     validator_schema_ids: tuple[str, ...] | None = None,
     registry_mode: str = "replace_default",
     extra_domain_root_names: tuple[str, ...] = (),
+    register_with_host_registry: bool = True,
+    register_with_core_python_workspace: bool = True,
 ) -> dict[str, str]:
     repo_root = _discover_repo_root(pack_root)
     copytree(_PLAN_FIXTURE_ROOT, pack_root, dirs_exist_ok=True)
@@ -130,7 +132,7 @@ def materialize_pack_validation_suite(
     )
 
     pack_registry_path = repo_root / "core" / "control_plane" / "registries" / "pack_registry.json"
-    if pack_registry_path.exists():
+    if register_with_host_registry and pack_registry_path.exists():
         pack_registry = _load_json(pack_registry_path)
         effective_default_pack = (
             default_repo_pack if default_repo_pack is not None else (pack_slug == "plan")
@@ -173,7 +175,7 @@ def materialize_pack_validation_suite(
         _write_json(pack_registry_path, pack_registry)
 
     pyproject_path = repo_root / "core" / "python" / "pyproject.toml"
-    if pyproject_path.exists():
+    if register_with_core_python_workspace and pyproject_path.exists():
         ensure_core_python_workspace_registration(
             pyproject_path,
             core_python_workspace_registration(

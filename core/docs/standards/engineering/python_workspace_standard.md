@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-22T23:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -62,6 +62,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep reusable-core Python source under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain Python source under the owning pack root such as `<pack-root>/python/src/watchtower_<pack>/`.
 - Install pack-owned packages through the shared `core/python` workspace contract; do not rely on repo-local `sys.path` mutation to import `watchtower_<pack>` or other hosted pack packages.
 - Treat downstream repositories that copy `core/` as a supported operating mode. Shared workspace docs may use the current internal pack as an example in this repository, but the hosted-pack dependency set and local editable source paths remain repo-local configuration that must match the packs actually present in the consuming repository.
+- During copied-core bring-up, host composition may load a selected pack integration directly from the declared pack-owned `<python_root>/src` path when workspace registration is not present yet. That bootstrap path is bounded runtime compatibility only; it does not replace the requirement to persist shared `core/python/pyproject.toml` registration once the pack is integrated.
 - Keep tests under `core/python/tests/`.
 - Keep the fast default suite under `core/python/tests/unit/` and repository-aware orchestration coverage under `core/python/tests/integration/`.
 - Keep shared CLI entrypoint composition under `core/python/src/watchtower_host/cli/`; pack-owned namespace registration belongs in the owning pack package.
@@ -163,4 +164,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The repository currently has three Python layers: reusable core under `core/python/src/watchtower_core/`, host composition under `core/python/src/watchtower_host/`, and pack-domain code under pack-owned roots such as `<pack-root>/python/src/watchtower_<pack>/`.
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-22T23:45:00Z`

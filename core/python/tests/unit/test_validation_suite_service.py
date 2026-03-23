@@ -440,10 +440,14 @@ def test_pack_contract_validation_fails_when_integration_module_is_missing(
 def test_pack_contract_validation_fails_when_integration_module_raises_during_import(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    def _raise_runtime_error(_module_name: str) -> object:
+    def _raise_runtime_error(**_kwargs: object) -> tuple[object, str]:
         raise RuntimeError("boom")
 
-    monkeypatch.setattr(pack_contract_runtime.importlib, "import_module", _raise_runtime_error)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        _raise_runtime_error,
+    )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()
 
@@ -459,10 +463,14 @@ def test_pack_contract_validation_records_failed_telemetry_for_import_errors(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    def _raise_runtime_error(_module_name: str) -> object:
+    def _raise_runtime_error(**_kwargs: object) -> tuple[object, str]:
         raise RuntimeError("boom")
 
-    monkeypatch.setattr(pack_contract_runtime.importlib, "import_module", _raise_runtime_error)
+    monkeypatch.setattr(
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        _raise_runtime_error,
+    )
     session = create_telemetry_session(
         ControlPlaneLoader(REPO_ROOT),
         ["pack", "validate", "--pack", "plan"],
@@ -496,9 +504,9 @@ def test_pack_contract_validation_fails_when_integration_descriptor_is_missing(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(
-        pack_contract_runtime.importlib,
-        "import_module",
-        lambda _module_name: SimpleNamespace(),
+        pack_contract_runtime,
+        "import_pack_integration_module",
+        lambda **_kwargs: (SimpleNamespace(), "workspace"),
     )
 
     result = PackContractValidationService(ControlPlaneLoader(REPO_ROOT)).validate()

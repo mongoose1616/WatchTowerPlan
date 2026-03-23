@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.copy_forward_pack_runtime_hardening.0003_authored_inputs_confirmed",
+  "initiative_id": "initiative.copy_forward_pack_runtime_hardening",
+  "sequence": 3,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.watchtower_core",
+  "recorded_at": "2026-03-23T00:37:25Z",
+  "summary": "Confirmed the authored intake documents into machine state.",
+  "payload": {
+    "task_count": 1
+  },
+  "trace_id": "trace.copy_forward_pack_runtime_hardening",
+  "related_paths": [
+    "plan/initiatives/copy_forward_pack_runtime_hardening/initiative_brief.md",
+    "plan/initiatives/copy_forward_pack_runtime_hardening/design_record.md",
+    "plan/initiatives/copy_forward_pack_runtime_hardening/implementation_slice.md",
+    "plan/initiatives/copy_forward_pack_runtime_hardening/decision_notes.md"
+  ]
+}

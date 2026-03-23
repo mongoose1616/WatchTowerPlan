@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T00:04:09Z",
+  "updated_at": "2026-03-23T01:24:34Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.copy_forward_pack_runtime_hardening",
+      "title": "Copy-Forward Pack Runtime Hardening",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T01:24:34Z",
+      "key_surface_path": "plan/initiatives/copy_forward_pack_runtime_hardening/plan.md",
+      "closure_reason": "Implemented copied-core bootstrap-mode pack discovery and structured runtime hardening in reusable core."
+    },
     {
       "trace_id": "trace.core_removable_plan_reference_cleanup",
       "title": "Core Removable Plan Reference Cleanup",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T15:17:46Z",
       "key_surface_path": "plan/initiatives/core_shared_language_deplanification/plan.md",
       "closure_reason": "Normalized shared-core language and validated the governed surfaces."
-    },
-    {
-      "trace_id": "trace.test_suite_efficiency_and_redundancy_reduction",
-      "title": "Test Suite Efficiency And Redundancy Reduction",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T08:52:36Z",
-      "key_surface_path": "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/plan.md",
-      "closure_reason": "Reduced the Python suite from a non-finishing >28 minute baseline to a validated 19m46s full run by collapsing redundant CLI coverage, caching expensive integration baselines, and trimming repeated coordination rebuild work."
     }
   ]
 }

@@ -170,7 +170,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-22T23:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -184,6 +184,7 @@
         "core/python/src/watchtower_core/sync/foundation_index.py",
         "core/python/src/watchtower_core/query/foundations.py",
         "core/docs/commands/core_python/watchtower_core_query_foundations.md",
+        "plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
         "core/control_plane/indexes/foundations/README.md"
@@ -218,7 +219,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-21T23:59:00Z",
+      "updated_at": "2026-03-22T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -969,7 +970,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T00:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -980,6 +981,7 @@
       ],
       "operationalization_paths": [
         "core/docs/standards/*/*_standard.md",
+        "plan/docs/standards/*/*_standard.md",
         "core/python/src/watchtower_core/sync/standard_index.py",
         "core/python/src/watchtower_core/query/standards.py",
         "core/docs/commands/core_python/watchtower_core_query_standards.md",
@@ -1596,7 +1598,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-22T23:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

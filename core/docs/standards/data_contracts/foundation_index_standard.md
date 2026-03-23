@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T22:15:00Z"
+updated_at: "2026-03-22T23:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,7 +89,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/sync/foundation_index.py`; `core/python/src/watchtower_core/query/foundations.py`; `core/docs/commands/core_python/watchtower_core_query_foundations.md`; `plan/docs/commands/core_python/watchtower_core_plan_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.
@@ -113,4 +113,4 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [README.md](/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At
-- `2026-03-22T22:15:00Z`
+- `2026-03-22T23:55:00Z`
