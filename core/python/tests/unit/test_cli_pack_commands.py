@@ -481,6 +481,7 @@ def test_pack_scaffold_supports_json_output(
     created_paths = set(payload["created_paths"])
     assert "oversight/.wt/manifests/pack_settings.json" in created_paths
     assert "oversight/.wt/registries/schema_catalog.json" in created_paths
+    assert "oversight/.wt/registries/workflow_metadata_registry.json" in created_paths
     assert "oversight/python/pyproject.toml" in created_paths
     assert "oversight/docs/commands/core_python/watchtower_core_oversight.md" in created_paths
     assert "oversight/reviews/README.md" in created_paths

@@ -214,6 +214,11 @@ def _write_scaffold_files(
             _load_template(repo_root, "pack_validation_suite_registry_template.json"),
         ),
         (
+            "pack_workflow_metadata_registry_template.json",
+            f"{resolved.pack_root}/.wt/registries/workflow_metadata_registry.json",
+            _load_template(repo_root, "pack_workflow_metadata_registry_template.json"),
+        ),
+        (
             "pack_validator_registry_template.json",
             f"{resolved.pack_root}/.wt/registries/validator_registry.json",
             _load_template(repo_root, "pack_validator_registry_template.json"),

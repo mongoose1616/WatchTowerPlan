@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T03:46:24Z"
+updated_at: "2026-03-23T05:10:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -78,6 +78,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - Make integration hooks describe real pack capabilities. `query_runtime` and `sync_targets` should return typed runtime summaries with non-empty command and target inventories, not placeholders.
 - Keep `integration_module` under the pack’s declared `python_package`; jumping out into unrelated packages weakens copy-out portability.
 - Keep pack-settings surfaces pack-local unless they intentionally consume shared `core/control_plane/**` machine authority.
+- Keep pack-local validator registries limited to pack-owned validators. Do not copy shared core validator entries into a pack-local validator registry unless the entry is intentionally identical and temporary copied-core residue.
+- When the pack owns workflow modules whose `workflow.*` IDs are not already described by the shared core workflow metadata registry, publish a pack-owned `workflow_metadata_registry` and keep it limited to pack-owned entries. The loader merges that registry with the shared core workflow metadata surface and rejects conflicting duplicates.
 - Publish the pack namespace command entry page inside the pack-owned docs root so host introspection and pack-interface validation can find it without special cases.
 - Expect pack-interface validation to scan live source roots when present; pack code must stay free of `watchtower_host` imports and reusable core must stay free of pack imports.
 - Use `domain_roots` for optional pack-native roots that are not part of the shared workspace baseline.
@@ -102,6 +104,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 2. Publish the machine contracts.
    - Add `<pack>/.wt/manifests/pack_settings.json`.
    - Add `<pack>/.wt/manifests/pack_runtime_manifest.json`.
+   - Add `<pack>/.wt/registries/workflow_metadata_registry.json` when the pack owns workflow IDs outside the shared core workflow metadata registry. New-pack scaffolds should keep the starter file and replace its example entry with real workflow IDs before relying on workflow indexing or route preview.
    - Keep both manifests under `<pack>/.wt/manifests/` and keep all declared paths repository-relative.
 3. Publish the pack-native Python harness.
    - Add `<pack>/python/pyproject.toml`.
@@ -133,6 +136,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 | `core/docs/templates/pack/pack_runtime_manifest_template.json` | Seed `<pack>/.wt/manifests/pack_runtime_manifest.json`. |
 | `core/docs/templates/pack/pack_schema_catalog_template.json` | Seed `<pack>/.wt/registries/schema_catalog.json`. |
 | `core/docs/templates/pack/pack_validation_suite_registry_template.json` | Seed `<pack>/.wt/registries/validation_suite_registry.json`. |
+| `core/docs/templates/pack/pack_workflow_metadata_registry_template.json` | Seed `<pack>/.wt/registries/workflow_metadata_registry.json`. |
 | `core/docs/templates/pack/pack_validator_registry_template.json` | Seed `<pack>/.wt/registries/validator_registry.json`. |
 | `core/docs/templates/pack/pack_note_schema_template.json` | Seed the starter pack-local note schema under `<pack>/.wt/schemas/interfaces/packs/`. |
 | `core/docs/templates/pack/pack_note_artifact_template.json` | Seed the starter pack-local note artifact under `<pack>/.wt/work_items/`. |
@@ -148,6 +152,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 |---|---|
 | `<pack>/.wt/manifests/pack_settings.json` | Declares the pack load root and governed surfaces |
 | `<pack>/.wt/manifests/pack_runtime_manifest.json` | Declares host-facing runtime metadata and owned roots |
+| `<pack>/.wt/registries/workflow_metadata_registry.json` | Extends the shared workflow metadata registry with pack-owned workflow IDs |
 | `<pack>/python/pyproject.toml` | Makes the pack package installable or externally importable |
 | `<pack>/python/src/watchtower_<pack>/__init__.py` | Creates the pack-owned Python package root |
 | `<pack>/python/src/watchtower_<pack>/integration.py` | Exports `PACK_INTEGRATION` for host discovery |
@@ -186,6 +191,13 @@ Use this as the smallest practical starting point for a load-root that can satis
       "path": "<pack_root>/.wt/registries/validation_suite_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
+    },
+    {
+      "surface_name": "workflow_metadata_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/workflow_metadata_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
     }
   ],
   "workspace_roots": {
@@ -202,8 +214,10 @@ Use this as the smallest practical starting point for a load-root that can satis
 ```
 
 - Keep `schema_catalog`, `validator_registry`, and `validation_suite_registry` present by name. The current validator treats them as required runtime surfaces, not just optional declarations.
+- Keep `workflow_metadata_registry` present when the pack owns workflow IDs outside the shared core registry, and replace the starter scaffold entry with the pack's real workflow IDs before rebuilding workflow or route indexes.
 - Keep `overview_path` present even when the rendered overview is still a placeholder. It is part of the current schema contract.
 - Add `domain_roots` only when the pack truly owns additional roots such as `reviews`, `assessments`, or `targets`.
+- Keep pack-local validator registries additive. Shared core validators belong in `core/control_plane/registries/validator_registry.json`, not as conflicting copied entries inside the pack.
 
 ### Minimum `pack_runtime_manifest.json`
 Use this as the smallest practical host-facing runtime manifest.
@@ -367,4 +381,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-23T03:46:24Z`
+- `2026-03-23T05:10:00Z`

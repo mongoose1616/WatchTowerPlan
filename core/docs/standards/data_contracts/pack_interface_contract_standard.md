@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "pack_interface"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:45:00Z"
+updated_at: "2026-03-23T05:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,6 +56,8 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - Keep command namespaces unique across the hosted-pack registry.
 - Keep pack-settings surfaces pack-local unless they intentionally point at shared core control-plane authority under `core/control_plane/`.
 - Keep each pack namespace's command docs under the pack-owned docs root and publish the namespace entry page at `<pack>/docs/commands/core_python/watchtower_core_<namespace>.md`.
+- When `pack_settings.json` points `workflow_metadata_registry` at a pack-local registry, treat that registry as an additive extension over the shared core workflow metadata registry. Identical duplicates may be tolerated during copied-core bring-up, but conflicting duplicates are contract failures.
+- Keep pack-local validator registries additive as well. Shared core validator IDs should come from the shared core validator registry rather than copied pack-local duplicates.
 - Let pack-interface validation scan live source roots when they exist so reusable core cannot import a hosted pack and a hosted pack cannot import host composition.
 - In copy-forward bootstrap mode, `pack list`, `pack describe`, `pack validate`, selected pack-namespace discovery, and `validate all` may synthesize a runtime-only pack entry from valid local manifests when a consuming repository has copied `core/` and one or more pack roots but has not yet persisted shared registry or workspace wiring.
 - Runtime-only discovered entries are operational bring-up compatibility, not steady-state shared authority. They must not suppress validation findings about missing `pack_registry.json` declarations or missing `core/python/pyproject.toml` hosted-pack registration.
@@ -124,6 +126,7 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - Reviewers should reject pack manifests that point pack-owned command docs back at shared core docs or omit the pack namespace command page entirely.
 - Reviewers should reject pack manifests or pack-settings surfaces that use absolute paths, parent traversal, or non-pack-local paths outside `core/control_plane/`.
 - Reviewers should reject runtime manifests whose integration module falls outside the declared pack python package.
+- Reviewers should reject pack-local workflow metadata or validator registries that shadow shared core entries with conflicting definitions.
 
 ## Change Control
 - Update this standard when the hosted-pack registry shape, runtime-manifest contract, or required validation behavior changes materially.
@@ -138,4 +141,4 @@ Make hosted-pack discovery, validation, and runtime wiring deterministic and fai
 - The machine contract is intentionally explicit so pack discovery remains reviewable and portable.
 
 ## Updated At
-- `2026-03-22T23:45:00Z`
+- `2026-03-23T05:10:00Z`

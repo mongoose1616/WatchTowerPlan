@@ -5,7 +5,7 @@
   "status": "active",
   "validators": [
     {
-      "id": "validator.packs.<note_slug>",
+      "id": "validator.<pack_slug>.<note_slug>",
       "title": "<pack_title> Note Validator",
       "description": "Pack-local validator for the starter note artifact.",
       "status": "active",
@@ -16,6 +16,20 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:<schema_slug>:v1"
+      ]
+    },
+    {
+      "id": "validator.<pack_slug>.workflow_metadata_registry",
+      "title": "<pack_title> Workflow Metadata Registry Validator",
+      "description": "Validates the pack-owned workflow metadata registry that extends the shared core workflow metadata surface.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_metadata_registry",
+      "applies_to": [
+        "<pack_root>/.wt/registries/workflow_metadata_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
       ]
     }
   ]

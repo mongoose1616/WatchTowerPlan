@@ -47,6 +47,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 
 ## Behavior and Outputs
 - Loads the declared pack settings and runtime manifest before changing shared host surfaces.
+- Expects any pack-owned `workflow_metadata_registry` declared by `pack_settings.json` to exist already; bootstrap does not invent pack-local workflow metadata for the pack.
 - Fails closed when the pack settings path is not repository-relative and portable.
 - Fails closed when the declared integration module cannot be resolved beneath the pack-owned `python/src` root.
 - Computes and applies the shared `pack_registry.json` entry plus the shared `core/python/pyproject.toml` dev-dependency and `tool.uv.sources` registration for the pack.
@@ -55,6 +56,7 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
 - Removes unusable donor registry entries when copied-core bootstrap is reconciling the current repository's active hosted pack into place.
 - Rebuilds `core/control_plane/indexes/commands/command_index.json` and `core/control_plane/indexes/repository_paths/repository_path_index.json` whenever the shared hosted-pack registry changes.
+- When a new pack will publish workflow IDs outside the shared core workflow metadata registry, scaffold or author the pack-owned `workflow_metadata_registry` before bootstrap so later workflow-index and route-preview runs have the required metadata.
 - When `--write` is omitted, reports the pending shared changes without mutating the repository.
 - When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
 - When `--write` is used with `--no-sync-workspace`, applies the shared wiring but reports validation as deferred until the shared workspace is synced honestly.
@@ -75,4 +77,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-23T01:55:00Z`
+- `2026-03-23T05:10:00Z`

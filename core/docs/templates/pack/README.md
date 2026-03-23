@@ -12,6 +12,7 @@
 | `core/docs/templates/pack/pack_runtime_manifest_template.json` | Template for the pack-owned `pack_runtime_manifest.json` host contract under `<pack>/.wt/manifests/`. |
 | `core/docs/templates/pack/pack_schema_catalog_template.json` | Template for the pack-owned schema catalog under `<pack>/.wt/registries/`. |
 | `core/docs/templates/pack/pack_validation_suite_registry_template.json` | Template for the pack-owned validation suite registry under `<pack>/.wt/registries/`. |
+| `core/docs/templates/pack/pack_workflow_metadata_registry_template.json` | Template for the pack-owned workflow metadata registry under `<pack>/.wt/registries/`. |
 | `core/docs/templates/pack/pack_validator_registry_template.json` | Template for the pack-owned validator registry under `<pack>/.wt/registries/`. |
 | `core/docs/templates/pack/pack_note_schema_template.json` | Template for a minimal pack-local note schema under `<pack>/.wt/schemas/interfaces/packs/`. |
 | `core/docs/templates/pack/pack_note_artifact_template.json` | Template for a minimal pack-local note artifact under `<pack>/.wt/work_items/`. |
@@ -23,4 +24,4 @@
 ## Notes
 `Pair this starter set with core/docs/templates/readme_template.md, core/docs/templates/workflow_template.md, and core/docs/templates/routing_table_template.md when a new pack also needs local README.md files or workflow docs.`
 
-`Keep these starter templates aligned with core/docs/standards/engineering/hosted_pack_integration_standard.md and core/docs/references/domain_pack_authoring_reference.md so the scaffolded file set still satisfies the current minimum hosted-pack contract.`
+`Keep these starter templates aligned with core/docs/standards/engineering/hosted_pack_integration_standard.md and core/docs/references/domain_pack_authoring_reference.md so the scaffolded file set still satisfies the current minimum hosted-pack contract, including pack-owned workflow metadata whenever a pack publishes workflow IDs outside the shared core registry.`

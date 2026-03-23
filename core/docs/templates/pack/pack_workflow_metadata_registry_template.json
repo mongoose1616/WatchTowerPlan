@@ -1,0 +1,25 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
+  "id": "registry.workflow_metadata",
+  "title": "<pack_title> Workflow Metadata",
+  "status": "active",
+  "entries": [
+    {
+      "workflow_id": "workflow.<pack_slug>.starter_context",
+      "phase_type": "shared",
+      "task_family": "<pack_slug>_context",
+      "primary_risks": [
+        "missing_context",
+        "route_mismatch"
+      ],
+      "extra_trigger_tags": [
+        "<pack_slug>",
+        "starter",
+        "context"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    }
+  ]
+}

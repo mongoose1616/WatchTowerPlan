@@ -26,6 +26,13 @@
       "path": "<pack_root>/.wt/registries/validation_suite_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
+    },
+    {
+      "surface_name": "workflow_metadata_registry",
+      "surface_kind": "registry",
+      "path": "<pack_root>/.wt/registries/workflow_metadata_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
     }
   ],
   "workspace_roots": {
@@ -38,5 +45,5 @@
     "domain_roots": {}
   },
   "default_validation_suite_id": "suite.<pack_slug>.validation_baseline",
-  "notes": "Expand the surfaces list and domain_roots map only when the pack owns additional governed artifacts or runtime roots."
+  "notes": "Keep the starter workflow_metadata_registry surface pack-local and replace its example entry with the pack's real workflow IDs as workflow docs are authored. Expand domain_roots only when the pack owns additional governed artifacts or runtime roots."
 }

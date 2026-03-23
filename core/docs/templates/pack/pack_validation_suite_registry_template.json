@@ -17,6 +17,16 @@
           "step_kind": "pack_contract"
         },
         {
+          "id": "step.<pack_slug>.workflow_metadata_registry",
+          "title": "Validate <pack_slug> workflow metadata registry",
+          "description": "Validate the pack-owned workflow metadata registry before workflow indexing depends on it.",
+          "step_kind": "artifact",
+          "paths": [
+            "<pack_root>/.wt/registries/workflow_metadata_registry.json"
+          ],
+          "validator_id": "validator.<pack_slug>.workflow_metadata_registry"
+        },
+        {
           "id": "step.<pack_slug>.artifacts",
           "title": "Validate <pack_slug> starter artifact",
           "description": "Validate the starter pack note artifact.",
@@ -24,7 +34,7 @@
           "paths": [
             "<pack_root>/.wt/work_items/<note_slug>.json"
           ],
-          "validator_id": "validator.packs.<note_slug>"
+          "validator_id": "validator.<pack_slug>.<note_slug>"
         }
       ]
     }

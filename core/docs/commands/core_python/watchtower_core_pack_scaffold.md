@@ -44,11 +44,13 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 
 ## Behavior and Outputs
 - Renders pack-owned starter files under the requested pack root, including pack manifests, minimal validation registries, a starter note schema and artifact, namespace command docs, workflow guidance, tracking guidance, and the pack-native Python package skeleton.
+- Renders a starter pack-owned `workflow_metadata_registry` and wires the starter `pack_settings.json`, validator registry, and validation suite to it so new packs have a place to publish pack-specific workflow IDs immediately.
 - Fails closed when the requested pack slug, namespace, distribution, or package would collide with an existing hosted pack already declared in the shared pack registry.
 - Does not mutate `core/control_plane/registries/pack_registry.json` or `core/python/pyproject.toml` automatically.
 - Emits the exact shared-registry and shared-workspace registration data that `watchtower-core pack bootstrap` will apply.
 - Supports both first-party root-pack shapes and nested `packs/<slug>` shapes. Use a direct root such as `oversight/` unless you are deliberately hosting the pack beneath a multi-pack directory.
 - After scaffold, use `watchtower-core pack bootstrap --pack-settings-path <path> --write --format json` to register the pack and validate the resulting host wiring.
+- Replace the starter workflow metadata entry with the pack's real workflow IDs before relying on workflow indexing, route preview, or pack-owned workflow docs.
 
 ## Related Commands
 | Command | Relationship |
@@ -64,4 +66,4 @@ uv run watchtower-core pack scaffold --pack-slug reviews --pack-root packs/revie
 - `core/docs/templates/pack/`
 
 ## Updated At
-- `2026-03-23T01:55:00Z`
+- `2026-03-23T05:10:00Z`
