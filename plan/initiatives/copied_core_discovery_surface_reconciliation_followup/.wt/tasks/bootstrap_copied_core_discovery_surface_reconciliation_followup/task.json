@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:task-state:v1",
+  "task_id": "task.copied_core_discovery_surface_reconciliation_followup.bootstrap_copied_core_discovery_surface_reconciliation_followup",
+  "slug": "bootstrap_copied_core_discovery_surface_reconciliation_followup",
+  "initiative_id": "initiative.copied_core_discovery_surface_reconciliation_followup",
+  "title": "Bootstrap Copied Core Discovery Surface Reconciliation Followup",
+  "summary": "Bootstrap Copied Core Discovery Surface Reconciliation Followup live initiative package.",
+  "status": "active",
+  "task_status": "completed",
+  "task_kind": "governance",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T17:47:04Z",
+  "updated_at": "2026-03-23T18:17:18Z",
+  "dependency_task_ids": [],
+  "blocker_task_ids": [],
+  "related_ids": []
+}

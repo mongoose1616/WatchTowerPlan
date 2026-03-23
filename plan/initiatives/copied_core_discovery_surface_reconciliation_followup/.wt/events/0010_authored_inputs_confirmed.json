@@ -1,0 +1,12 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-event-stream:v1",
+  "event_id": "event.copied_core_discovery_surface_reconciliation_followup.0010_authored_inputs_confirmed",
+  "initiative_id": "initiative.copied_core_discovery_surface_reconciliation_followup",
+  "sequence": 10,
+  "event_type": "authored_inputs_confirmed",
+  "actor_id": "actor.repository_maintainer",
+  "recorded_at": "2026-03-23T17:51:31Z",
+  "summary": "An authorized maintainer confirmed the authored intake documents into machine state.",
+  "payload": {},
+  "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup"
+}

@@ -17,7 +17,7 @@ Use this workflow to inspect the current repository, codebase, document set, or 
 ## Workflow
 1. Identify the current surfaces in scope.
    - Select the files, directories, artifacts, interfaces, or documents that materially affect the task.
-   - When the work belongs to an existing planning trace, start with `plan/tracking/initiative_tracking.md` or the initiative index before fanning out into initiative, design, decision, implementation, or task family surfaces.
+   - When the work belongs to an existing planning trace, start with the active pack's initiative tracker or initiative index before fanning out into initiative, design, decision, implementation, or task family surfaces.
    - Focus on the minimum local context needed for correct execution.
 2. Inspect the current state directly.
    - Read the relevant local files, neighboring surfaces, and existing patterns.

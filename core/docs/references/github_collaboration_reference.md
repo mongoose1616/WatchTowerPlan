@@ -13,7 +13,7 @@ updated_at: "2026-03-23T16:35:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
-  - ".github/"
+  - "repository_host_collaboration"
   - "pack_owned_github_collaboration"
   - "pack_owned_github_task_sync"
 aliases:

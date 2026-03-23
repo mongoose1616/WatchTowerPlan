@@ -182,22 +182,14 @@
         "guidance",
         "reference",
         "conventional",
-        "commits",
-        "plan",
-        "standards",
-        "governance",
-        "task",
-        "handling",
-        "threshold",
-        "standard"
+        "commits"
       ],
       "companion_workflow_ids": [
         "workflow.task_handoff_review"
       ],
       "related_paths": [
         "core/docs/references/git_commit_message_guidance_reference.md",
-        "core/docs/references/conventional_commits_reference.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md"
+        "core/docs/references/conventional_commits_reference.md"
       ],
       "reference_doc_paths": [
         "core/docs/references/git_commit_message_guidance_reference.md",
@@ -205,8 +197,7 @@
       ],
       "internal_reference_paths": [
         "core/docs/references/git_commit_message_guidance_reference.md",
-        "core/docs/references/conventional_commits_reference.md",
-        "plan/docs/standards/governance/task_handling_threshold_standard.md"
+        "core/docs/references/conventional_commits_reference.md"
       ],
       "external_reference_urls": [
         "https://cbea.ms/git-commit/",
@@ -528,12 +519,11 @@
         "vendor",
         "controlled",
         "behavior",
-        "plan",
-        "docs",
-        "governance",
+        "core",
+        "workflows",
+        "modules",
         "reference",
         "distillation",
-        "standard",
         "official"
       ],
       "companion_workflow_ids": [
@@ -541,10 +531,10 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/workflows/modules/reference_distillation.md"
       ],
       "internal_reference_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md"
+        "core/workflows/modules/reference_distillation.md"
       ]
     },
     {
@@ -661,9 +651,6 @@
         "python",
         "watchtower",
         "validate",
-        "plan",
-        "sync",
-        "all",
         "registry"
       ],
       "companion_workflow_ids": [
@@ -672,13 +659,11 @@
       ],
       "related_paths": [
         "core/docs/standards/data_contracts/schema_standard.md",
-        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md"
       ],
       "internal_reference_paths": [
         "core/docs/standards/data_contracts/schema_standard.md",
-        "core/docs/commands/core_python/watchtower_core_validate_artifact.md",
-        "plan/docs/commands/core_python/watchtower_core_plan_sync_all.md"
+        "core/docs/commands/core_python/watchtower_core_validate_artifact.md"
       ]
     },
     {
@@ -807,13 +792,11 @@
         "cleanly",
         "repository",
         "needs",
-        "plan",
+        "core",
         "docs",
         "standards",
-        "governance",
-        "standard",
-        "core",
         "documentation",
+        "standard",
         "templates",
         "template",
         "distill"
@@ -822,12 +805,10 @@
         "workflow.task_handoff_review"
       ],
       "related_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
         "core/docs/templates/reference_template.md"
       ],
       "internal_reference_paths": [
-        "plan/docs/standards/governance/reference_distillation_standard.md",
         "core/docs/standards/documentation/reference_md_standard.md",
         "core/docs/templates/reference_template.md"
       ]

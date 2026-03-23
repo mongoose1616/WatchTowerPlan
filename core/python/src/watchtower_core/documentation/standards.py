@@ -232,11 +232,6 @@ def _normalize_pack_placeholder_operationalization_path(
         )
 
     expanded = expand_pack_placeholder_operationalization_paths(value, repo_root)
-    if not expanded:
-        raise ValueError(
-            f"{relative_path} operationalization surface pack placeholder does not resolve "
-            f"to any hosted pack root: {value}"
-        )
 
     any_directory = False
     any_file = False
@@ -265,14 +260,11 @@ def _normalize_pack_placeholder_operationalization_path(
 
     if operationalization_path_is_glob(value):
         if not any_glob_match:
-            raise ValueError(f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}")
+            return value
         return value
 
     if not any_directory and not any_file:
-        raise ValueError(
-            f"{relative_path} operationalization surface pack placeholder does not resolve "
-            f"to any live repository surface: {value}"
-        )
+        return value
     if any_directory and not value.endswith("/"):
         raise ValueError(f"{relative_path} {_STANDARD_DIRECTORY_PATH_ERROR}: {value}")
     if any_file and value.endswith("/"):

@@ -6,6 +6,7 @@ This command reconciles one hosted pack into the shared hosted-pack registry, sh
 ## Use When
 - You have already scaffolded or authored a pack root and want the host to load it through the normal pack contract.
 - You want one guarded command to update `pack_registry.json`, `core/python/pyproject.toml`, shared command discovery, shared repository-path discovery, and optional workspace sync behavior together.
+- You want copied-core bring-up to reconcile the broader shared discovery state, not just the registry and workspace metadata.
 - You want bootstrap-time validation before treating a new hosted pack as loadable.
 
 ## Command
@@ -55,8 +56,15 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Works for both first-party root packs and nested `packs/<slug>` packs as long as the manifest path is repository-relative and the pack contract is valid.
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
 - Removes unusable donor registry entries when copied-core bootstrap is reconciling the current repository's active hosted pack into place.
-- Rebuilds `core/control_plane/indexes/commands/command_index.json` and `core/control_plane/indexes/repository_paths/repository_path_index.json` whenever the shared hosted-pack registry changes.
+- Rebuilds the shared discovery indexes whenever the shared hosted-pack registry changes:
+  - `core/control_plane/indexes/commands/command_index.json`
+  - `core/control_plane/indexes/repository_paths/repository_path_index.json`
+  - `core/control_plane/indexes/references/reference_index.json`
+  - `core/control_plane/indexes/standards/standard_index.json`
+  - `core/control_plane/indexes/workflows/workflow_index.json`
+  - `core/control_plane/indexes/routes/route_index.json`
 - When a new pack will publish workflow IDs outside the shared core workflow metadata registry, scaffold or author the pack-owned `workflow_metadata_registry` before bootstrap so later workflow-index and route-preview runs have the required metadata.
+- Copy-forward support applies to source-owned `core/` surfaces only. Do not copy `core/python/.venv`, editable-install metadata from an existing environment, build caches, or pack `.wt/runtime/**` outputs into the consuming repository.
 - When `--write` is omitted, reports the pending shared changes without mutating the repository.
 - When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
 - When `--write` is used with `--no-sync-workspace`, applies the shared wiring but reports validation as deferred until the shared workspace is synced honestly.
@@ -77,4 +85,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - `core/python/src/watchtower_core/validation/pack_contract.py`
 
 ## Updated At
-- `2026-03-23T05:10:00Z`
+- `2026-03-23T22:05:00Z`

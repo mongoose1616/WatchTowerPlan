@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T05:10:00Z"
+updated_at: "2026-03-23T22:05:00Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -94,6 +94,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 
 - Do not treat the donor repository's current internal pack as a reusable-core default just because its examples appear in shared docs.
 - Do not hard-code a donor pack into shared workspace metadata, host defaults, or pack-authoring guidance; those are consuming-repository choices.
+- Do not copy `core/python/.venv`, editable-install metadata, caches, or pack `.wt/runtime/**` outputs into the consuming repository. Copy-forward portability assumes source surfaces plus an explicit `watchtower-core pack bootstrap --write` reconciliation step, not donor environment residue.
 
 ### Portable Pack Authoring Checklist
 1. Create the pack-owned root surfaces.
@@ -122,7 +123,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
    - Run `uv run watchtower-core pack describe --pack <slug> --format json`.
-   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command and repository-path discovery indexes for the copied repository.
+   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command, repository-path, reference, standard, workflow, and route discovery indexes for the copied repository.
 7. Prove portability and extensibility.
    - Make the pack importable from its own `<pack>/python/src` path or installed package root.
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.
@@ -381,4 +382,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-23T05:10:00Z`
+- `2026-03-23T22:05:00Z`

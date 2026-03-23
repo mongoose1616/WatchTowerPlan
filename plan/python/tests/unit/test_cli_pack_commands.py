@@ -204,7 +204,10 @@ def test_pack_commands_support_second_pack_fixture(
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = materialize_validation_repo_subset(tmp_path)
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
     materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_pack_validation_suite(
         repo_root / "packs" / "oversight",
@@ -542,6 +545,10 @@ def test_pack_bootstrap_supports_json_dry_run(
         "core/control_plane/indexes/repository_paths/repository_path_index.json"
         in payload["changed_paths"]
     )
+    assert "core/control_plane/indexes/references/reference_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/standards/standard_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/workflows/workflow_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/routes/route_index.json" in payload["changed_paths"]
     assert "core/python/pyproject.toml" in payload["changed_paths"]
 
     registry = json.loads(
@@ -557,7 +564,10 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = materialize_validation_repo_subset(tmp_path)
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
     materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
@@ -623,6 +633,10 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
         "core/control_plane/indexes/repository_paths/repository_path_index.json"
         in payload["changed_paths"]
     )
+    assert "core/control_plane/indexes/references/reference_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/standards/standard_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/workflows/workflow_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/routes/route_index.json" in payload["changed_paths"]
 
     registry = json.loads(
         (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
@@ -651,7 +665,10 @@ def test_pack_bootstrap_reconciles_copied_core_registry_and_command_discovery(
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = materialize_validation_repo_subset(tmp_path)
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
     surfaces = _materialize_unbootstrapped_oversight_root_pack(repo_root)
     monkeypatch.chdir(repo_root / "core" / "python")
 
@@ -681,6 +698,10 @@ def test_pack_bootstrap_reconciles_copied_core_registry_and_command_discovery(
         "core/control_plane/indexes/repository_paths/repository_path_index.json"
         in payload["changed_paths"]
     )
+    assert "core/control_plane/indexes/references/reference_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/standards/standard_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/workflows/workflow_index.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/routes/route_index.json" in payload["changed_paths"]
 
     registry = json.loads(
         (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
@@ -711,6 +732,61 @@ def test_pack_bootstrap_reconciles_copied_core_registry_and_command_discovery(
     )
     indexed_paths = {entry["path"] for entry in repository_path_index["entries"]}
     assert all(not path.startswith("plan/") for path in indexed_paths)
+
+    reference_index = json.loads(
+        (
+            repo_root / "core" / "control_plane" / "indexes" / "references" / "reference_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert all(
+        not path.startswith("plan/")
+        for entry in reference_index["entries"]
+        for path in (
+            list(entry.get("cited_by_paths", [])) + list(entry.get("applied_by_paths", []))
+        )
+    )
+
+    standard_index = json.loads(
+        (
+            repo_root / "core" / "control_plane" / "indexes" / "standards" / "standard_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert all(
+        not path.startswith("plan/")
+        for entry in standard_index["entries"]
+        for path in (
+            list(entry.get("operationalization_paths", []))
+            + list(entry.get("related_paths", []))
+            + list(entry.get("applied_reference_paths", []))
+        )
+    )
+
+    workflow_index = json.loads(
+        (
+            repo_root / "core" / "control_plane" / "indexes" / "workflows" / "workflow_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert all(not entry["doc_path"].startswith("plan/") for entry in workflow_index["entries"])
+    assert all(
+        not path.startswith("plan/")
+        for entry in workflow_index["entries"]
+        for path in (
+            list(entry.get("related_paths", []))
+            + list(entry.get("reference_doc_paths", []))
+            + list(entry.get("internal_reference_paths", []))
+        )
+    )
+
+    route_index = json.loads(
+        (
+            repo_root / "core" / "control_plane" / "indexes" / "routes" / "route_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert all(
+        not path.startswith("plan/")
+        for entry in route_index["entries"]
+        for path in entry.get("required_workflow_paths", [])
+    )
 
     query_result = main(["query", "commands", "--query", "oversight", "--format", "json"])
 

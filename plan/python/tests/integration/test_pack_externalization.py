@@ -99,7 +99,10 @@ def test_pack_validate_succeeds_with_externalized_plan_package(
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = materialize_validation_repo_subset(tmp_path)
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
     surfaces = materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
     monkeypatch.chdir(repo_root / "core" / "python")
@@ -132,7 +135,10 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
     monkeypatch,
     capsys,
 ) -> None:
-    repo_root = materialize_validation_repo_subset(tmp_path)
+    repo_root = materialize_validation_repo_subset(
+        tmp_path,
+        include_shared_discovery_sources=True,
+    )
     materialize_externalized_plan_validation_suite(repo_root / "packs" / "plan")
     materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
     materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")

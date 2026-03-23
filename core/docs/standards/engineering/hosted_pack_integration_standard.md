@@ -10,7 +10,7 @@ tags:
   - "hosted_pack"
   - "integration"
 owner: "repository_maintainer"
-updated_at: "2026-03-23T16:50:00Z"
+updated_at: "2026-03-23T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -94,6 +94,8 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - Keep optional operational runtime outputs such as telemetry under `<pack>/.wt/runtime/` so they remain pack-local machine state rather than shared-core authority.
 - When new pack-local Python introduces new machine or human surfaces, update the companion manifests, command docs, workflows, tracking surfaces, domain-root declarations, and tests in the same change set.
 - Prefer `watchtower-core pack scaffold` to create pack-owned starter surfaces and `watchtower-core pack bootstrap` to update the shared registry and shared workspace registration together.
+- Treat copied-core adoption as source transfer plus explicit reconciliation. Do not copy donor `.venv`, local editable-install metadata, caches, or pack `.wt/runtime/**` outputs and expect them to be part of the hosted-pack contract.
+- Expect `watchtower-core pack bootstrap --write` to reconcile the shared hosted-pack registry, shared workspace registration, and the shared command, repository-path, reference, standard, workflow, and route discovery indexes when the hosted-pack set changes.
 
 ## Structure or Data Model
 ### Additional pack-local Python ownership rules
@@ -135,4 +137,4 @@ Make hosted-pack onboarding, extension, and review predictable by stating the sm
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md)
 
 ## Updated At
-- `2026-03-23T16:50:00Z`
+- `2026-03-23T22:05:00Z`

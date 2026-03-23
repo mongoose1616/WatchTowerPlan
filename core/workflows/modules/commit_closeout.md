@@ -21,7 +21,6 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 ## Additional Files to Load
 - [git_commit_message_guidance_reference.md](/core/docs/references/git_commit_message_guidance_reference.md): defines the local commit-message shape this workflow should preserve when writing the final commit.
 - [conventional_commits_reference.md](/core/docs/references/conventional_commits_reference.md): provides the commit prefix guidance used when a conventional commit style is helpful.
-- [task_handling_threshold_standard.md](/plan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly instead of leaving it implicit at commit time.
 
 ## Workflow
 1. Inspect the change set and confirm commit readiness.
@@ -34,7 +33,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
    - Choose the commit type and optional scope that best reflect the dominant effect of the change.
    - Write the subject in imperative voice with 72 characters or fewer and no trailing punctuation.
    - Add a body and footers when the change is complex, risky, trace-linked, task-linked, or breaking.
-   - For traced or non-trivial work, include `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason`.
+   - For traced or non-trivial work, include `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason` when the active pack or repository task-handling rules require durable outcome tracking.
    - Prefer repository semantic trace and task identifiers over opaque UUIDs when adding commit metadata.
 3. Validate the commit message and create the commit when requested.
    - Check the message against the repository regex and commit-message rules from the standard.

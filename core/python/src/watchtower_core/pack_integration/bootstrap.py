@@ -25,6 +25,18 @@ COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.json"
 )
+REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.json"
+STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.json"
+WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.json"
+ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.json"
+SHARED_DISCOVERY_ARTIFACT_PATHS = (
+    COMMAND_INDEX_ARTIFACT_PATH,
+    REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
+    REFERENCE_INDEX_ARTIFACT_PATH,
+    STANDARD_INDEX_ARTIFACT_PATH,
+    WORKFLOW_INDEX_ARTIFACT_PATH,
+    ROUTE_INDEX_ARTIFACT_PATH,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -95,8 +107,9 @@ def bootstrap_hosted_pack(
     pack_registry_path = repo_root / PACK_REGISTRY_PATH
     pyproject_path = repo_root / CORE_PYPROJECT_RELATIVE_PATH
     uv_lock_path = repo_root / CORE_UV_LOCK_RELATIVE_PATH
-    command_index_path = repo_root / COMMAND_INDEX_ARTIFACT_PATH
-    repository_path_index_path = repo_root / REPOSITORY_PATH_INDEX_ARTIFACT_PATH
+    shared_discovery_paths = tuple(
+        repo_root / relative_path for relative_path in SHARED_DISCOVERY_ARTIFACT_PATHS
+    )
 
     registry_document = json.loads(pack_registry_path.read_text(encoding="utf-8"))
     updated_registry_document, pack_registry_changed = _updated_pack_registry_document(
@@ -117,8 +130,7 @@ def bootstrap_hosted_pack(
     changed_paths = []
     if pack_registry_changed:
         changed_paths.append(PACK_REGISTRY_PATH)
-        changed_paths.append(COMMAND_INDEX_ARTIFACT_PATH)
-        changed_paths.append(REPOSITORY_PATH_INDEX_ARTIFACT_PATH)
+        changed_paths.extend(SHARED_DISCOVERY_ARTIFACT_PATHS)
     if core_python_pyproject_changed:
         changed_paths.append(CORE_PYPROJECT_RELATIVE_PATH)
     if request.sync_workspace and request.write and core_python_pyproject_changed:
@@ -142,16 +154,8 @@ def bootstrap_hosted_pack(
 
     original_registry_text = pack_registry_path.read_text(encoding="utf-8")
     original_pyproject_text = current_pyproject_text
-    original_uv_lock_text = (
-        uv_lock_path.read_text(encoding="utf-8") if uv_lock_path.exists() else None
-    )
-    original_command_index_text = (
-        command_index_path.read_text(encoding="utf-8") if command_index_path.exists() else None
-    )
-    original_repository_path_index_text = (
-        repository_path_index_path.read_text(encoding="utf-8")
-        if repository_path_index_path.exists()
-        else None
+    original_workspace_file_texts = _snapshot_optional_texts(
+        (uv_lock_path, *shared_discovery_paths)
     )
     workspace_sync_ran = False
     validation_passed: bool | None = None
@@ -180,12 +184,7 @@ def bootstrap_hosted_pack(
             original_registry_text=original_registry_text,
             pyproject_path=pyproject_path,
             original_pyproject_text=original_pyproject_text,
-            uv_lock_path=uv_lock_path,
-            original_uv_lock_text=original_uv_lock_text,
-            command_index_path=command_index_path,
-            original_command_index_text=original_command_index_text,
-            repository_path_index_path=repository_path_index_path,
-            original_repository_path_index_text=original_repository_path_index_text,
+            original_workspace_file_texts=original_workspace_file_texts,
         )
         if workspace_sync_ran:
             _best_effort_workspace_resync(repo_root)
@@ -413,47 +412,57 @@ def _restore_workspace_files(
     original_registry_text: str,
     pyproject_path: Path,
     original_pyproject_text: str,
-    uv_lock_path: Path,
-    original_uv_lock_text: str | None,
-    command_index_path: Path,
-    original_command_index_text: str | None,
-    repository_path_index_path: Path,
-    original_repository_path_index_text: str | None,
+    original_workspace_file_texts: dict[Path, str | None],
 ) -> None:
     pack_registry_path.write_text(original_registry_text, encoding="utf-8")
     pyproject_path.write_text(original_pyproject_text, encoding="utf-8")
-    if original_uv_lock_text is None:
-        if uv_lock_path.exists():
-            uv_lock_path.unlink()
-    else:
-        uv_lock_path.write_text(original_uv_lock_text, encoding="utf-8")
-    if original_command_index_text is None:
-        if command_index_path.exists():
-            command_index_path.unlink()
-    else:
-        command_index_path.write_text(original_command_index_text, encoding="utf-8")
-    if original_repository_path_index_text is None:
-        if repository_path_index_path.exists():
-            repository_path_index_path.unlink()
-        return
-    repository_path_index_path.write_text(
-        original_repository_path_index_text,
-        encoding="utf-8",
-    )
+    for path, original_text in original_workspace_file_texts.items():
+        if original_text is None:
+            if path.exists():
+                path.unlink()
+            continue
+        path.write_text(original_text, encoding="utf-8")
 
 
 def _rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
+    from watchtower_core.sync.reference_index import ReferenceIndexSyncService
     from watchtower_core.sync.repository_paths import RepositoryPathIndexSyncService
+    from watchtower_core.sync.route_index import RouteIndexSyncService
+    from watchtower_core.sync.standard_index import StandardIndexSyncService
+    from watchtower_core.sync.workflow_index import WorkflowIndexSyncService
 
     command_index_module = import_module("watchtower_host.cli.command_index")
     command_index_service_class = command_index_module.CommandIndexSyncService
-    command_index_service = command_index_service_class(ControlPlaneLoader(repo_root))
+    loader = ControlPlaneLoader(repo_root)
+    command_index_service = command_index_service_class(loader)
     command_index_document = command_index_service.build_document()
     command_index_service.write_document(command_index_document)
 
-    repository_path_service = RepositoryPathIndexSyncService(ControlPlaneLoader(repo_root))
+    repository_path_service = RepositoryPathIndexSyncService(loader)
     repository_path_document = repository_path_service.build_document()
     repository_path_service.write_document(repository_path_document)
+
+    reference_index_service = ReferenceIndexSyncService(loader)
+    reference_index_document = reference_index_service.build_document()
+    reference_index_service.write_document(reference_index_document)
+
+    standard_index_service = StandardIndexSyncService(loader)
+    standard_index_document = standard_index_service.build_document()
+    standard_index_service.write_document(standard_index_document)
+
+    workflow_index_service = WorkflowIndexSyncService(loader)
+    workflow_index_document = workflow_index_service.build_document()
+    workflow_index_service.write_document(workflow_index_document)
+
+    route_index_service = RouteIndexSyncService(loader)
+    route_index_document = route_index_service.build_document()
+    route_index_service.write_document(route_index_document)
+
+
+def _snapshot_optional_texts(paths: tuple[Path, ...]) -> dict[Path, str | None]:
+    return {
+        path: (path.read_text(encoding="utf-8") if path.exists() else None) for path in paths
+    }
 
 
 def _validate_relative_path(relative_path: str) -> str:

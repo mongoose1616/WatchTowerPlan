@@ -493,16 +493,16 @@ def _workflow_routing_table(resolved: _ResolvedPackScaffold) -> str:
             (
                 f"Use this table when `{resolved.pack_slug}` later adds pack-local workflow "
                 "modules. Until then, route shared pack-boundary and validation work through "
-                "`/core/workflows/ROUTING_TABLE.md`."
+                "`core/workflows/ROUTING_TABLE.md`."
             ),
             "",
             "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
             "|---|---|---|",
             (
                 f"| {resolved.pack_title} pack integration | {resolved.pack_slug}, pack, "
-                "contract, validation | `/core/workflows/modules/core.md`, "
-                "`/core/workflows/modules/domain_pack_integration.md`, "
-                "`/core/workflows/modules/pack_interface_validation.md` |"
+                "contract, validation | `core/workflows/modules/core.md`, "
+                "`core/workflows/modules/domain_pack_integration.md`, "
+                "`core/workflows/modules/pack_interface_validation.md` |"
             ),
         )
     )

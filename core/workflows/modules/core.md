@@ -4,7 +4,7 @@
 Use this workflow to load the minimum shared standards and instructions that apply across all routed workflow modules.
 
 ## Use When
-- Any task has been routed through `core/workflows/ROUTING_TABLE.md` or `plan/workflows/ROUTING_TABLE.md`.
+- Any task has been routed through `core/workflows/ROUTING_TABLE.md` or an active pack routing table.
 - A task needs the shared repository-level or path-level instructions that apply before task-specific module behavior.
 
 ## Inputs

@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T16:54:27Z",
+  "updated_at": "2026-03-23T18:17:30Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup",
+      "title": "Copied Core Discovery Surface Reconciliation Followup",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T18:17:30Z",
+      "key_surface_path": "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/plan.md",
+      "closure_reason": "Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions."
+    },
     {
       "trace_id": "trace.core_governance_reference_deplanification_followup",
       "title": "Core Governance Reference Deplanification Followup",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T23:08:32Z",
       "key_surface_path": "plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md",
       "closure_reason": "Implemented donor-neutral schema-catalog canonical-path support for first-party root packs and validated it with reusable-core unit and CLI regression coverage."
-    },
-    {
-      "trace_id": "trace.repository_tech_debt_reduction_program",
-      "title": "Repository Tech Debt Reduction Program",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T22:28:03Z",
-      "key_surface_path": "plan/initiatives/repository_tech_debt_reduction_program/plan.md",
-      "closure_reason": "Delivered the first repository tech-debt tranche across test runtime, stale compatibility cleanup, and validator authority deduplication"
     }
   ]
 }

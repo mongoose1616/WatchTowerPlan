@@ -157,6 +157,54 @@ def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
     ]
 
 
+def test_route_index_sync_normalizes_root_relative_workflow_paths(tmp_path: Path) -> None:
+    repo_root = tmp_path / "repo"
+    core_workflows_dir = repo_root / "core/workflows"
+    core_modules_dir = core_workflows_dir / "modules"
+    core_modules_dir.mkdir(parents=True)
+    (core_modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
+    (core_modules_dir / "code_validation.md").write_text(
+        "# Code Validation\n",
+        encoding="utf-8",
+    )
+    (core_workflows_dir / "ROUTING_TABLE.md").write_text(
+        "\n".join(
+            [
+                "# Core Workflow Routing Table",
+                "",
+                "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
+                "|---|---|---|",
+                "| Root Relative Route | normalize root relative | "
+                "`/core/workflows/modules/core.md`, "
+                "`/core/workflows/modules/code_validation.md` |",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    service = RouteIndexSyncService(ControlPlaneLoader(REPO_ROOT))
+    service._repo_root = repo_root
+
+    document = service.build_document()
+
+    assert document["entries"] == [
+        {
+            "route_id": "route.root_relative_route",
+            "task_type": "Root Relative Route",
+            "trigger_keywords": ["normalize root relative"],
+            "required_workflow_ids": [
+                "workflow.core",
+                "workflow.code_validation",
+            ],
+            "required_workflow_paths": [
+                "core/workflows/modules/core.md",
+                "core/workflows/modules/code_validation.md",
+            ],
+        }
+    ]
+
+
 def test_route_preview_service_scores_request_text() -> None:
     service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
 

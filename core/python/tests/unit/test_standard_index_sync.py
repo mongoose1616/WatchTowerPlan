@@ -103,7 +103,7 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert "core/docs/commands/core_python/watchtower_core_query_foundations.md" in (
         foundation_entry.get("operationalization_paths", [])
     )
-    assert "*/docs/commands/core_python/watchtower_core_*_sync_foundation_index.md" in (
+    assert "*/docs/commands/core_python/" in (
         foundation_entry.get("operationalization_paths", [])
     )
     assert "core/control_plane/indexes/foundations/README.md" in (
@@ -425,3 +425,83 @@ def test_standard_index_sync_rejects_noncanonical_directory_operationalization_p
     )
     with pytest.raises(ValueError, match=message):
         StandardIndexSyncService(loader).build_document()
+
+
+def test_standard_index_sync_allows_pack_placeholder_operationalization_without_live_match(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    _write_repo_file(repo_root / "README.md")
+    _write_repo_file(repo_root / "core/docs/README.md")
+    reference_path = repo_root / "core/docs/references/example_reference.md"
+    _write_reference_fixture(reference_path)
+    standard_path = repo_root / "core/docs/standards/documentation/example_standard.md"
+    standard_path.parent.mkdir(parents=True, exist_ok=True)
+    standard_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "std.documentation.example"
+            title: "Example Standard"
+            summary: "Exercises pack-placeholder operationalization without a live pack match."
+            type: "standard"
+            status: "active"
+            tags:
+              - "standard"
+              - "documentation"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-23T22:20:00Z"
+            audience: "shared"
+            authority: "authoritative"
+            ---
+
+            # Example Standard
+
+            ## Summary
+            Exercises pack-placeholder operationalization without a live pack match.
+
+            ## Purpose
+            Keep pack-neutral operationalization declarations valid before
+            one live pack publishes the surface.
+
+            ## Scope
+            - Applies to one pack-neutral standard-index fixture.
+
+            ## Use When
+            - Rebuilding the governed standard index before a hosted pack owns the declared file.
+
+            ## Related Standards and Sources
+            - [example_reference.md](../../references/example_reference.md): governed local
+              reference doc drives the rule.
+
+            ## Guidance
+            - Keep pack placeholders stable even when the current repository
+              has no matching live file yet.
+
+            ## Operationalization
+            - `Modes`: `documentation`
+            - `Operational Surfaces`: `<pack>/tracking/task_tracking.md`
+
+            ## Validation
+            - Standard-index sync should preserve the pack placeholder instead of rejecting it.
+
+            ## Change Control
+            - Update placeholder parsing and matching together if this rule changes.
+
+            ## References
+            - [README.md](../../README.md)
+
+            ## Updated At
+            - `2026-03-23T22:20:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+
+    document = StandardIndexSyncService(loader).build_document()
+
+    entry = document["entries"][0]
+    assert entry["operationalization_paths"] == ["<pack>/tracking/task_tracking.md"]

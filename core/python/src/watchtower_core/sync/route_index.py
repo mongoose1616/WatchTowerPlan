@@ -30,6 +30,8 @@ def _workflow_path(
     workflow_module_roots: tuple[str, ...],
 ) -> str:
     candidate = path.strip().strip("`")
+    if candidate.startswith("/"):
+        candidate = candidate[1:]
     if not candidate.endswith(".md"):
         raise ValueError(f"Route index found unexpected workflow path entry: {path}")
     if any(candidate.startswith(f"{root}/") for root in workflow_module_roots):

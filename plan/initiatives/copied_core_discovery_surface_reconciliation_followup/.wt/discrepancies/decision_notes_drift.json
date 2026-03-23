@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:discrepancy-record:v1",
+  "discrepancy_id": "discrepancy.copied_core_discovery_surface_reconciliation_followup.decision_notes_drift",
+  "initiative_id": "initiative.copied_core_discovery_surface_reconciliation_followup",
+  "category": "authored_input_drift",
+  "severity": "high",
+  "gate_effect": "readiness",
+  "status": "resolved",
+  "summary": "Authored input drift detected for plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md; machine confirmation is required.",
+  "source_paths": [
+    "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md"
+  ],
+  "resolution_owner": "repository_maintainer",
+  "detected_at": "2026-03-23T17:51:10Z",
+  "updated_at": "2026-03-23T17:51:35Z"
+}

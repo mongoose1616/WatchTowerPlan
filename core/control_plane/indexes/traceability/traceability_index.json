@@ -89,6 +89,36 @@
       ]
     },
     {
+      "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup",
+      "title": "Copied Core Discovery Surface Reconciliation Followup",
+      "summary": "Extends copied-core bootstrap so shared discovery surfaces converge beyond command and repository-path indexes, and updates copy-forward guidance to exclude runtime environment artifacts.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T18:17:30Z",
+      "closed_at": "2026-03-23T18:17:30Z",
+      "closure_reason": "Expanded copied-core bootstrap reconciliation, normalized routed workflow paths, and removed root-pack-only pack contract assumptions.",
+      "source_surface_paths": [
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/design_record.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/implementation_slice.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.copied_core_discovery_surface_reconciliation_followup.bootstrap_copied_core_discovery_surface_reconciliation_followup"
+      ],
+      "related_paths": [
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/initiative.json",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/tasks/bootstrap_copied_core_discovery_surface_reconciliation_followup/task.json",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/decision_notes.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/design_record.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/implementation_slice.md",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.copy_forward_pack_runtime_hardening",
       "title": "Copy-Forward Pack Runtime Hardening",
       "summary": "Hardens reusable core for copied-core host scenarios by discovering unbootstrapped hosted packs from manifests, structuring stale-registry failures, and keeping current shared workspace contracts explicit.",

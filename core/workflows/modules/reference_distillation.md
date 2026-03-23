@@ -15,14 +15,12 @@ Use this workflow to extract durable local guidance from external source materia
 - Distillation goal or target question
 - Relevant repository context and neighboring docs
 - Internal standards and canonical references applied
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md)
 - Related local references, standards, or design documents
 - External guidance notes when needed
 - Version, baseline, or date-sensitivity information when relevant
 - Open questions or uncertainties in the source material
 
 ## Additional Files to Load
-- [reference_distillation_standard.md](/plan/docs/standards/governance/reference_distillation_standard.md): defines how external source material should be normalized into repo-local reference documents.
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md): defines the required structure and quality bar for the resulting reference doc.
 - [reference_template.md](/core/docs/templates/reference_template.md): provides the dense local-reference shape the output should follow.
 
@@ -43,7 +41,7 @@ Use this workflow to extract durable local guidance from external source materia
    - Call out version-sensitive or environment-sensitive constraints explicitly.
 4. Choose the repository output shape.
    - Decide whether the result should become a local reference, a standards update, supporting design input, or a companion document set.
-   - Keep normative policy in `core/docs/standards/**` or `plan/docs/standards/**` and supporting lookup material in `core/docs/references/**` when documentation changes are required.
+   - Keep normative policy in `core/docs/standards/**` or the owning pack's `docs/standards/**` and supporting lookup material in `core/docs/references/**` when documentation changes are required.
    - If the requested deliverable is a new repository document, add `documentation_generation.md` rather than treating distillation notes as the final document implicitly.
    - Split the output if multiple unrelated references would otherwise be forced into one file.
 5. Review for accuracy and maintainability.

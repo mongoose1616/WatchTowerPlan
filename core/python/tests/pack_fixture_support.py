@@ -282,7 +282,11 @@ def materialize_pack_validation_suite(
     }
 
 
-def materialize_validation_repo_subset(tmp_path: Path) -> Path:
+def materialize_validation_repo_subset(
+    tmp_path: Path,
+    *,
+    include_shared_discovery_sources: bool = False,
+) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(
@@ -302,6 +306,26 @@ def materialize_validation_repo_subset(tmp_path: Path) -> Path:
         REPO_ROOT / "core" / "python" / "src" / "watchtower_host",
         repo_root / "core" / "python" / "src" / "watchtower_host",
     )
+    if include_shared_discovery_sources:
+        copytree(
+            REPO_ROOT / "core",
+            repo_root / "core",
+            dirs_exist_ok=True,
+            ignore=ignore_patterns(
+                ".venv",
+                "__pycache__",
+                ".pytest_cache",
+                ".ruff_cache",
+                ".mypy_cache",
+            ),
+        )
+        for source_path in REPO_ROOT.iterdir():
+            if not source_path.is_file():
+                continue
+            copy2(source_path, repo_root / source_path.name)
+        github_root = REPO_ROOT / ".github"
+        if github_root.exists():
+            copytree(github_root, repo_root / ".github", dirs_exist_ok=True)
     return repo_root
 
 

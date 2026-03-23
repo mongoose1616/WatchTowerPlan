@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-23T16:54:27Z",
+  "updated_at": "2026-03-23T18:17:30Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -62,6 +62,35 @@
         "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/initiative.json"
       ],
       "updated_at": "2026-03-23T02:57:21Z"
+    },
+    {
+      "evidence_id": "evidence.copied_core_discovery_surface_reconciliation_followup.bootstrap_validation_bundle",
+      "initiative_id": "initiative.copied_core_discovery_surface_reconciliation_followup",
+      "trace_id": "trace.copied_core_discovery_surface_reconciliation_followup",
+      "initiative_title": "Copied Core Discovery Surface Reconciliation Followup",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/copied_core_discovery_surface_reconciliation_followup",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/discrepancies",
+        "plan/initiatives/copied_core_discovery_surface_reconciliation_followup/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-23T18:17:30Z"
     },
     {
       "evidence_id": "evidence.copy_forward_pack_runtime_hardening.bootstrap_validation_bundle",
