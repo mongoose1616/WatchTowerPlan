@@ -61,7 +61,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^core/docs/references/.+\\.md$"
+        "pattern": "^(?:core|[^/]+|packs/[^/]+)/docs/references/.+\\.md$"
       }
     },
     "stringList": {

@@ -104,10 +104,14 @@ def bootstrap_hosted_pack(
         pack_registry_entry,
         invalid_pack_settings_paths=invalid_pack_settings_paths,
     )
+    retained_workspace_dependencies = _retained_workspace_dependencies(
+        updated_registry_document,
+    )
     current_pyproject_text = pyproject_path.read_text(encoding="utf-8")
     updated_pyproject_text, core_python_pyproject_changed = render_core_python_workspace_pyproject(
         current_pyproject_text,
         registration,
+        retained_dependencies=retained_workspace_dependencies,
     )
 
     changed_paths = []
@@ -293,6 +297,24 @@ def _updated_pack_registry_document(
     )
     updated_document = {**registry_document, "packs": sorted_packs}
     return updated_document, changed
+
+
+def _retained_workspace_dependencies(
+    registry_document: dict[str, object],
+) -> tuple[str, ...]:
+    raw_packs = registry_document.get("packs")
+    if not isinstance(raw_packs, list):
+        raise ValueError("Pack registry document is missing its packs list.")
+    return tuple(
+        sorted(
+            {
+                str(entry["python_distribution"])
+                for entry in raw_packs
+                if isinstance(entry, dict) and isinstance(entry.get("python_distribution"), str)
+            },
+            key=str.casefold,
+        )
+    )
 
 
 def _matches_same_pack(

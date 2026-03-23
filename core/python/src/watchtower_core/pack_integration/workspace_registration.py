@@ -86,17 +86,46 @@ def parse_core_python_workspace_state(pyproject_text: str) -> CorePythonWorkspac
 def render_core_python_workspace_pyproject(
     pyproject_text: str,
     registration: CorePythonWorkspaceRegistration,
+    *,
+    retained_dependencies: tuple[str, ...] | None = None,
 ) -> tuple[str, bool]:
     """Return updated pyproject text with the hosted-pack registration applied."""
 
     state = parse_core_python_workspace_state(pyproject_text)
-    dev_dependencies = tuple(
-        sorted(
-            {*(state.dev_dependencies), registration.dependency},
-            key=str.casefold,
+    if retained_dependencies is None:
+        dev_dependencies = tuple(
+            sorted(
+                {*(state.dev_dependencies), registration.dependency},
+                key=str.casefold,
+            )
         )
-    )
-    uv_sources = state.uv_source_map()
+        uv_sources = state.uv_source_map()
+    else:
+        retained = set(retained_dependencies)
+        retained.add(registration.dependency)
+
+        pack_dependency_names = {
+            name
+            for name, path, _editable in state.uv_sources
+            if name.startswith("watchtower-") and path.startswith("..")
+        }
+
+        dev_dependencies = tuple(
+            sorted(
+                {
+                    dependency
+                    for dependency in state.dev_dependencies
+                    if dependency not in pack_dependency_names or dependency in retained
+                }
+                | retained,
+                key=str.casefold,
+            )
+        )
+        uv_sources = {
+            name: source
+            for name, source in state.uv_source_map().items()
+            if name not in pack_dependency_names or name in retained
+        }
     uv_sources[registration.dependency] = {
         "path": registration.uv_source_path,
         "editable": registration.editable,

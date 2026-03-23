@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "standard_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:46:38Z"
+updated_at: "2026-03-23T03:46:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,9 +53,9 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Capture the standard owner and the authored `applies_to` targets from standard front matter instead of hiding that information behind generic related-path retrieval.
 - Keep path-valued `applies_to` entries and derived `related_paths` in canonical repo-relative file-versus-directory form so exact path lookup stays deterministic.
 - Capture the subset of references that materially shape the standard so applied source use is auditable instead of only cited.
-- Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into `core/docs/references/**`.
+- Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into shared or owning-pack `docs/references/**` roots.
 - Capture compact operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard, using exact repo paths, directories, or bounded repo-relative glob patterns when a standard governs a repeating file family.
-- When a standard materially depends on external authority, prefer citing a local governed reference doc in `core/docs/references/**` rather than only raw external URLs.
+- When a standard materially depends on external authority, prefer citing a local governed reference doc in the shared or owning-pack `docs/references/**` roots rather than only raw external URLs.
 - Keep the index aligned with the standards corpus in the same change set.
 
 ## Operationalization
@@ -103,7 +103,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Every entry should have a stable `standard_id`.
 - Every entry should carry the authored `owner` value and, when present, the full `applies_to` list from standard front matter.
 - Path-valued `applies_to` and derived `related_paths` should preserve canonical repo-relative file-versus-directory syntax.
-- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/`.
+- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - `operationalization_modes` should be compact lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
 - Standards that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
 - Applied reference fields should reflect the actual `Related Standards and Sources` section rather than inferred prose.
@@ -119,4 +119,4 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [reference_md_standard.md](/core/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
-- `2026-03-12T02:46:38Z`
+- `2026-03-23T03:46:24Z`

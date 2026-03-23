@@ -4,7 +4,7 @@
   "title": "Governed Acceptance Example Contract",
   "status": "active",
   "trace_id": "trace.governed_acceptance_example",
-  "source_surface_path": "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
+  "source_surface_path": "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
   "entries": [
     {
       "acceptance_id": "ac.governed_acceptance_example.001",
@@ -13,8 +13,9 @@
         "req.example_acceptance_contract.001"
       ],
       "validation_targets": [
-        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md",
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "core/docs/commands/core_python/watchtower_core_query_evidence.md",
         "core/control_plane/indexes/traceability/traceability_index.json"
       ],
       "related_paths": [

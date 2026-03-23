@@ -425,6 +425,7 @@
       "closed_at": "2026-03-19T11:00:00Z",
       "closure_reason": "Published the durable generic acceptance and evidence example used by repository standards and command documentation.",
       "source_surface_paths": [
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
         "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
         "plan/docs/standards/governance/traceability_standard.md"
       ],
@@ -449,9 +450,7 @@
         "core/control_plane/records/validation_evidence/governed_acceptance_example_validation_baseline.json",
         "core/docs/commands/core_python/watchtower_core_query_acceptance.md",
         "core/docs/commands/core_python/watchtower_core_query_evidence.md",
-        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md",
-        "plan/docs/standards/data_contracts/acceptance_contract_standard.md",
-        "plan/docs/standards/governance/traceability_standard.md"
+        "core/docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ],
       "tags": [
         "traceability"

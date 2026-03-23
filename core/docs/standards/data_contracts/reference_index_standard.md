@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-19T08:21:14Z"
+updated_at: "2026-03-23T03:46:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,11 +24,11 @@ Provide a compact lookup and discovery surface for governed reference documents,
 
 ## Scope
 - Applies to machine-readable reference index artifacts stored under `core/control_plane/indexes/references/`.
-- Covers placement, entry shape, update expectations, and the relationship between the index and the authored reference documents under `core/docs/references/`.
+- Covers placement, entry shape, update expectations, and the relationship between the index and the authored reference documents under shared and pack-owned references roots.
 - Does not replace the reference documents themselves.
 
 ## Use When
-- Adding a new governed reference under `core/docs/references/`.
+- Adding a new governed reference under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - Refreshing reference-tracking data after a reference document is renamed, removed, or materially retargeted.
 - Building lookup or routing tooling that needs a compact machine-readable view over the reference corpus.
 
@@ -46,7 +46,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Store published reference indexes under `core/control_plane/indexes/references/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published reference index artifact.
-- Every reference index entry must point to an existing governed reference under `core/docs/references/`.
+- Every reference index entry must point to an existing governed reference under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - Carry stable `reference_id` values from the governed reference front matter.
 - Carry a deterministic `repository_status` value derived from the reference document's `Current Repository Status` subsection.
 - Capture whether the reference document publishes internal repository touchpoints and external canonical upstream sources.
@@ -71,7 +71,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `title` | Required | Human-readable reference title. |
 | `summary` | Required | Concise description of the reference document. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
-| `doc_path` | Required | Repository-relative path to the reference document. |
+| `doc_path` | Required | Repository-relative path to the reference document under the shared or owning-pack references root. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the reference document’s `Updated At` value. |
 | `repository_status` | Required | Deterministic current-maturity classification such as `candidate_future_guidance`, `supporting_authority`, or `active_support`. |
 | `uses_internal_references` | Required | Whether the reference document explicitly maps to local repository surfaces. |
@@ -90,7 +90,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 
 ## Validation
 - The reference index should validate against its published artifact schema.
-- Every `doc_path` should exist and point to a file under `core/docs/references/`.
+- Every `doc_path` should exist and point to a file under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - Every entry should have a stable `reference_id`.
 - Every entry should publish at least one canonical upstream URL.
 - Every entry should publish one approved `repository_status` value derived from the governed reference document.
@@ -109,4 +109,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-19T08:21:14Z`
+- `2026-03-23T03:46:24Z`

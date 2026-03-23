@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:55:00Z"
+updated_at: "2026-03-23T03:46:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,7 +50,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Carry stable `foundation_id` values from governed front matter.
 - Carry front-matter `audience` into the index so intent-layer routing is queryable without reparsing Markdown.
 - Capture reverse citation and reverse application paths so repo tooling can answer which standards, workflows, and planning docs currently rely on a foundation doc.
-- When a foundation doc depends on external authority, prefer citing a local governed reference doc in `core/docs/references/**` rather than only raw external URLs.
+- When a foundation doc depends on external authority, prefer citing a local governed reference doc in the shared or owning-pack `docs/references/**` roots rather than only raw external URLs.
 - Publish compact operationalization metadata that covers the authoritative sync, query, and bounded documentation surfaces for the foundation-index family so tooling can resolve the contract from the surfaces engineers actually touch.
 - Keep the index aligned with the foundations corpus in the same change set.
 
@@ -96,7 +96,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Every `doc_path` should exist and point to a file under `core/docs/foundations/`.
 - Every entry should have a stable `foundation_id`.
 - Every entry should preserve the governed front-matter `audience` value.
-- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/`.
+- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - Reverse citation and application paths should point only to Markdown docs under shared or pack-owned documentation and workflow roots.
 - Operationalization should explicitly cover the authoritative sync/query owners and the bounded family documentation surfaces that explain how to read or rebuild the foundation index.
 - Reviewers should reject entries that omit material citation or application usage already present in the source docs.
@@ -113,4 +113,4 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [README.md](/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At
-- `2026-03-22T23:55:00Z`
+- `2026-03-23T03:46:24Z`

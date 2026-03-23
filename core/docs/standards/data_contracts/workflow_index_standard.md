@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-18T05:44:52Z"
+updated_at: "2026-03-23T03:46:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -54,7 +54,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Capture local governed reference-doc paths separately from broader internal path references.
 - Derive workflow reference fields from the optional `Additional Files to Load` section rather than from generic routing-baseline boilerplate.
 - Derive workflow reference fields only from checkout-portable repo-native links; filesystem-absolute link targets are invalid workflow input because they are not stable across clones or worktrees.
-- When a workflow materially depends on external authority, prefer citing a local governed reference doc in `core/docs/references/**` rather than only raw external URLs.
+- When a workflow materially depends on external authority, prefer citing a local governed reference doc in the shared or owning-pack `docs/references/**` roots rather than only raw external URLs.
 - Do not treat `AGENTS.md`, the shared routing table and any pack-owned routing tables, `core/workflows/modules/core.md`, or the generic workflow standards as task-specific additional-load files.
 - Keep the workflow index aligned with the workflow corpus in the same change set.
 
@@ -101,7 +101,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Every `doc_path` should exist and point to a file under the shared or owning-pack workflow module roots.
 - Every entry should have a stable `workflow_id`.
 - `phase_type`, `task_family`, and `trigger_tags` should stay retrieval-oriented and should not duplicate whole workflow prose blocks.
-- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/`.
+- `reference_doc_paths` should point only to governed reference docs under `core/docs/references/` or an owning pack’s `docs/references/` root.
 - `internal_reference_paths` and `reference_doc_paths` should resolve from repo-native workflow links rather than machine-local filesystem roots.
 - `companion_workflow_ids`, when present, should resolve to other entries in the same workflow index artifact.
 - Workflows that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
@@ -120,4 +120,4 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - [repository_path_index_standard.md](/core/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-18T05:44:52Z`
+- `2026-03-23T03:46:24Z`

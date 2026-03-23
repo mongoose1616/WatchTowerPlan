@@ -9,7 +9,7 @@ tags:
   - "domain_pack"
   - "architecture"
 owner: "repository_maintainer"
-updated_at: "2026-03-22T23:45:00Z"
+updated_at: "2026-03-23T03:46:24Z"
 audience: "shared"
 authority: "reference"
 ---
@@ -42,8 +42,8 @@ This repository also treats copy-forward adoption as a supported operating mode:
 - [hosted_pack_integration_standard.md](/core/docs/standards/engineering/hosted_pack_integration_standard.md): defines the minimum integrated pack surface set and extension rules this guide operationalizes.
 - [core_host_pack_python_boundary_standard.md](/core/docs/standards/engineering/core_host_pack_python_boundary_standard.md): turns the architectural split in this reference into an enforceable repository standard.
 - [pack_interface_contract_standard.md](/core/docs/standards/data_contracts/pack_interface_contract_standard.md): governs the machine contracts that a pack must publish to be host-loadable.
-- [requirements.md](/requirements.md): provides the authoritative endstate direction for reusable core, hosted domains, and portability expectations.
-- [decisions.md](/decisions.md): records the repository-level design decisions that this reference must support rather than reinterpret.
+- [repository_scope.md](/core/docs/foundations/repository_scope.md): defines the shared boundary between reusable core, host composition, and hosted packs.
+- [engineering_design_principles.md](/core/docs/foundations/engineering_design_principles.md): records the shared architectural principles this reference operationalizes.
 
 ## Quick Reference or Distilled Reference
 ### Layer Responsibilities
@@ -367,4 +367,4 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Runtime-only discovered packs are expected during copied-core bring-up, but they do not replace the steady-state shared registry and shared workspace contract.
 
 ## Updated At
-- `2026-03-22T23:45:00Z`
+- `2026-03-23T03:46:24Z`

@@ -631,8 +631,13 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
         (repo_root / "core" / "python" / "pyproject.toml").read_text(encoding="utf-8")
     )
     assert "watchtower-oversight" in pyproject["project"]["optional-dependencies"]["dev"]
+    assert "watchtower-plan" in pyproject["project"]["optional-dependencies"]["dev"]
     assert pyproject["tool"]["uv"]["sources"]["watchtower-oversight"] == {
         "path": "../../oversight/python",
+        "editable": True,
+    }
+    assert pyproject["tool"]["uv"]["sources"]["watchtower-plan"] == {
+        "path": "../../packs/plan/python",
         "editable": True,
     }
 
