@@ -170,7 +170,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-22T23:55:00Z",
+      "updated_at": "2026-03-23T03:46:24Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -219,7 +219,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/pack_interface_contract_standard.md",
-      "updated_at": "2026-03-22T23:45:00Z",
+      "updated_at": "2026-03-23T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -287,7 +287,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-19T08:21:14Z",
+      "updated_at": "2026-03-23T03:46:24Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -530,7 +530,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/standard_index_standard.md",
-      "updated_at": "2026-03-12T02:46:38Z",
+      "updated_at": "2026-03-23T03:46:24Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -575,7 +575,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-18T05:44:52Z",
+      "updated_at": "2026-03-23T03:46:24Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1425,7 +1425,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/hosted_pack_integration_standard.md",
-      "updated_at": "2026-03-21T23:59:00Z",
+      "updated_at": "2026-03-23T05:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1485,7 +1485,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_code_design_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T20:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1598,7 +1598,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-22T23:45:00Z",
+      "updated_at": "2026-03-23T20:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2063,7 +2063,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "core/docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-22T22:15:00Z",
+      "updated_at": "2026-03-23T20:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

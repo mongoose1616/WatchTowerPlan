@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-23T02:57:21Z",
+  "updated_at": "2026-03-23T05:52:40Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -380,6 +380,24 @@
         "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T22:28:03Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
+    },
+    {
+      "review_subject_id": "initiative.repository_validation_repair_loop_closeout",
+      "subject_kind": "initiative",
+      "initiative_id": "initiative.repository_validation_repair_loop_closeout",
+      "trace_id": "trace.repository_validation_repair_loop_closeout",
+      "initiative_title": "Repository Validation Repair Loop Closeout",
+      "title": "Repository Validation Repair Loop Closeout",
+      "review_state": "approved",
+      "review_refs": [
+        "actor.repository_maintainer"
+      ],
+      "evidence_refs": [
+        "evidence.repository_validation_repair_loop_closeout.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T05:52:40Z",
       "lifecycle_stage": "completed",
       "ready_for_execution": false
     },
@@ -772,6 +790,22 @@
         "evidence.repository_tech_debt_reduction_program.bootstrap_validation_bundle"
       ],
       "updated_at": "2026-03-22T22:28:03Z"
+    },
+    {
+      "review_subject_id": "promotion.repository_validation_repair_loop_closeout.bootstrap_shell",
+      "subject_kind": "promotion",
+      "initiative_id": "initiative.repository_validation_repair_loop_closeout",
+      "trace_id": "trace.repository_validation_repair_loop_closeout",
+      "initiative_title": "Repository Validation Repair Loop Closeout",
+      "title": "Bootstrap Promotion Shell",
+      "review_state": "pending",
+      "review_refs": [
+        "repository_maintainer_review"
+      ],
+      "evidence_refs": [
+        "evidence.repository_validation_repair_loop_closeout.bootstrap_validation_bundle"
+      ],
+      "updated_at": "2026-03-23T05:52:40Z"
     },
     {
       "review_subject_id": "promotion.root_pack_schema_catalog_contract_alignment.bootstrap_shell",

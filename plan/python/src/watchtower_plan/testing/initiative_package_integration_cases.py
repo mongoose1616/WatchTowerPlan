@@ -5,6 +5,7 @@ from functools import lru_cache
 from pathlib import Path
 from shutil import copytree
 from tempfile import mkdtemp
+from typing import cast
 
 import pytest
 
@@ -35,6 +36,8 @@ TRACE_ID = f"trace.{INITIATIVE_SLUG}"
 UPDATED_AT = "2026-03-17T15:30:00Z"
 PROJECT_INITIATIVE_SLUG = "watchtower_runtime_bootstrap"
 PROJECT_TRACE_ID = f"trace.{PROJECT_INITIATIVE_SLUG}"
+JsonObject = dict[str, object]
+JsonObjectList = list[JsonObject]
 
 
 @lru_cache(maxsize=1)
@@ -98,8 +101,8 @@ def _bootstrap_params(
     )
 
 
-def _load_json(path: Path) -> dict[str, object]:
-    return json.loads(path.read_text(encoding="utf-8"))
+def _load_json(path: Path) -> JsonObject:
+    return cast(JsonObject, json.loads(path.read_text(encoding="utf-8")))
 
 
 def _initiative_root(repo_root: Path) -> Path:
@@ -108,6 +111,10 @@ def _initiative_root(repo_root: Path) -> Path:
 
 def _initiative_state(repo_root: Path) -> dict[str, object]:
     return _load_json(_initiative_root(repo_root) / ".wt" / "initiative.json")
+
+
+def _object_list(value: object) -> JsonObjectList:
+    return cast(JsonObjectList, value)
 
 
 def _bootstrap_project(loader: ControlPlaneLoader) -> None:
@@ -868,7 +875,7 @@ def test_validate_packwide_reconciles_stale_approval_and_task_inventory_from_mac
     }
     stale_state["approvals"] = [
         approval
-        for approval in stale_state["approvals"]
+        for approval in _object_list(stale_state["approvals"])
         if approval["approval_kind"] != "ready_for_execution"
     ]
     state_path.write_text(f"{json.dumps(stale_state, indent=2)}\n", encoding="utf-8")
@@ -898,5 +905,5 @@ def test_validate_packwide_reconciles_stale_approval_and_task_inventory_from_mac
     ]
     assert any(
         approval["approval_kind"] == "ready_for_execution"
-        for approval in refreshed_state["approvals"]
+        for approval in _object_list(refreshed_state["approvals"])
     )

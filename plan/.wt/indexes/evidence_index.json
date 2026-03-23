@@ -3,7 +3,7 @@
   "id": "index.evidence",
   "title": "Plan Workspace Evidence Index",
   "status": "active",
-  "updated_at": "2026-03-23T02:57:21Z",
+  "updated_at": "2026-03-23T05:52:40Z",
   "entries": [
     {
       "evidence_id": "evidence.command_latency_reduction_using_runtime_telemetry.bootstrap_validation_bundle",
@@ -613,6 +613,35 @@
         "plan/initiatives/repository_tech_debt_reduction_program/.wt/initiative.json"
       ],
       "updated_at": "2026-03-22T22:28:03Z"
+    },
+    {
+      "evidence_id": "evidence.repository_validation_repair_loop_closeout.bootstrap_validation_bundle",
+      "initiative_id": "initiative.repository_validation_repair_loop_closeout",
+      "trace_id": "trace.repository_validation_repair_loop_closeout",
+      "initiative_title": "Repository Validation Repair Loop Closeout",
+      "title": "Bootstrap Validation Bundle",
+      "status": "completed",
+      "initiative_root": "plan/initiatives/repository_validation_repair_loop_closeout",
+      "entry_count": 2,
+      "acceptance_labels": [
+        "package_contracts_valid",
+        "ready_for_execution_gate"
+      ],
+      "validation_types": [
+        "readiness_gate",
+        "schema_validation"
+      ],
+      "owners": [
+        "repository_maintainer"
+      ],
+      "target_phases": [
+        "readiness"
+      ],
+      "expected_output_paths": [
+        "plan/initiatives/repository_validation_repair_loop_closeout/.wt/discrepancies",
+        "plan/initiatives/repository_validation_repair_loop_closeout/.wt/initiative.json"
+      ],
+      "updated_at": "2026-03-23T05:52:40Z"
     },
     {
       "evidence_id": "evidence.root_pack_schema_catalog_contract_alignment.bootstrap_validation_bundle",

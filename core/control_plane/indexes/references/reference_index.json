@@ -287,7 +287,7 @@
       "summary": "Reference for structuring a domain pack so it integrates cleanly with reusable core and a host-owned CLI.",
       "status": "active",
       "doc_path": "core/docs/references/domain_pack_authoring_reference.md",
-      "updated_at": "2026-03-22T23:45:00Z",
+      "updated_at": "2026-03-23T05:10:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1025,7 +1025,7 @@
       "summary": "Working reference for using pytest as the default Python test framework in this repository.",
       "status": "active",
       "doc_path": "core/docs/references/pytest_reference.md",
-      "updated_at": "2026-03-18T06:23:45Z",
+      "updated_at": "2026-03-23T20:10:00Z",
       "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
@@ -1048,7 +1048,8 @@
         "core/docs/standards/engineering/python_code_design_standard.md",
         "core/docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
-        "core/python/tests/"
+        "core/python/tests/",
+        "plan/python/tests/"
       ],
       "tags": [
         "reference",

@@ -1,0 +1,89 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:plan:initiative-state:v1",
+  "initiative_id": "initiative.repository_validation_repair_loop_closeout",
+  "trace_id": "trace.repository_validation_repair_loop_closeout",
+  "slug": "repository_validation_repair_loop_closeout",
+  "title": "Repository Validation Repair Loop Closeout",
+  "summary": "Runs repeated broad validation and review loops, fixes newly surfaced issues, and closes only after two consecutive clean full passes.",
+  "scope_type": "pack_wide",
+  "status": "completed",
+  "lifecycle_stage": "completed",
+  "review_status": "approved",
+  "owner": "repository_maintainer",
+  "created_at": "2026-03-23T05:21:12Z",
+  "updated_at": "2026-03-23T05:52:40Z",
+  "task_ids": [
+    "task.repository_validation_repair_loop_closeout.bootstrap_repository_validation_repair_loop_closeout"
+  ],
+  "deferred_item_ids": [],
+  "discrepancy_ids": [],
+  "evidence_ids": [
+    "evidence.repository_validation_repair_loop_closeout.bootstrap_validation_bundle"
+  ],
+  "promotion_ids": [
+    "promotion.repository_validation_repair_loop_closeout.bootstrap_shell"
+  ],
+  "closeout_ids": [
+    "closeout.repository_validation_repair_loop_closeout.bootstrap_recap"
+  ],
+  "authored_inputs": [
+    {
+      "doc_kind": "initiative_brief",
+      "path": "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md",
+      "sha256": "a825ac9e95cf938830766d74d5eac51d89f74eae8598815da11f8462a0c648e4",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T05:22:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "design_record",
+      "path": "plan/initiatives/repository_validation_repair_loop_closeout/design_record.md",
+      "sha256": "68677aab0f3c070fe2658e0ff6f678a92255e9c854093af6687118c955083e6a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T05:22:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "implementation_slice",
+      "path": "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
+      "sha256": "b50ae2c45c2ce9c43fc5d5036871eb248b4c2b22c6f4a52a81d113b7c8d4090c",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T05:22:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    },
+    {
+      "doc_kind": "decision_notes",
+      "path": "plan/initiatives/repository_validation_repair_loop_closeout/decision_notes.md",
+      "sha256": "1802e3d68de841dfe080c82a262952119bdca48174b3e64c7e385ee15614d41a",
+      "proposal_status": "confirmed",
+      "last_confirmed_at": "2026-03-23T05:22:50Z",
+      "last_confirmed_by": "actor.repository_maintainer"
+    }
+  ],
+  "gate_state": {
+    "capture_complete": true,
+    "machine_valid": true,
+    "approval_status": "approved",
+    "ready_for_execution": false,
+    "blocking_reasons": []
+  },
+  "approvals": [
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T05:22:34Z"
+    },
+    {
+      "approval_kind": "authored_input_confirmation",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T05:22:50Z"
+    },
+    {
+      "approval_kind": "ready_for_execution",
+      "actor_id": "actor.repository_maintainer",
+      "approved_at": "2026-03-23T05:23:08Z"
+    }
+  ],
+  "closed_at": "2026-03-23T05:52:40Z",
+  "closure_reason": "Repaired the surfaced typing drift and completed two consecutive clean broad validation passes."
+}

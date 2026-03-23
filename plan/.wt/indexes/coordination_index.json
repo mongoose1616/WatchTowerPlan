@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T02:57:21Z",
+  "updated_at": "2026-03-23T05:52:40Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active plan-workspace initiatives exist.",
   "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.repository_validation_repair_loop_closeout",
+      "title": "Repository Validation Repair Loop Closeout",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T05:52:40Z",
+      "key_surface_path": "plan/initiatives/repository_validation_repair_loop_closeout/plan.md",
+      "closure_reason": "Repaired the surfaced typing drift and completed two consecutive clean broad validation passes."
+    },
     {
       "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
       "title": "Copied Core Bootstrap And Validator Alignment",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-22T16:52:56Z",
       "key_surface_path": "plan/initiatives/plan_task_tracking_sync_performance/plan.md",
       "closure_reason": "Removed repeated task-state and validator rebuild hot paths so plan coordination writes return to operational latency."
-    },
-    {
-      "trace_id": "trace.first_party_root_pack_roots",
-      "title": "First-Party Root Pack Roots",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T16:30:08Z",
-      "key_surface_path": "plan/initiatives/first_party_root_pack_roots/plan.md",
-      "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction."
     }
   ]
 }

@@ -5,6 +5,7 @@ from functools import lru_cache
 from pathlib import Path
 from shutil import copytree
 from tempfile import mkdtemp
+from typing import cast
 
 import pytest
 
@@ -50,6 +51,8 @@ from watchtower_plan.workspace.models import (
 from watchtower_plan.workspace.service import PlanWorkspaceService
 
 REPO_ROOT = Path(__file__).resolve().parents[5]
+JsonObject = dict[str, object]
+JsonObjectList = list[JsonObject]
 
 
 @lru_cache(maxsize=1)
@@ -104,8 +107,12 @@ def _bootstrap_params(
     )
 
 
-def _load_json(path: Path) -> dict[str, object]:
-    return json.loads(path.read_text(encoding="utf-8"))
+def _load_json(path: Path) -> JsonObject:
+    return cast(JsonObject, json.loads(path.read_text(encoding="utf-8")))
+
+
+def _object_list(value: object) -> JsonObjectList:
+    return cast(JsonObjectList, value)
 
 
 def _mark_tasks_completed(initiative_root: Path, *, updated_at: str) -> None:
@@ -670,16 +677,16 @@ def test_plan_workspace_sync_uses_latest_task_state_timestamp_for_indexes(
     initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
     initiative_entry = next(
         entry
-        for entry in initiative_index["entries"]
+        for entry in _object_list(initiative_index["entries"])
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
     assert initiative_entry["updated_at"] == "2099-03-17T23:30:00Z"
-    assert initiative_entry["active_task_summaries"][0]["task_status"] == "ready"
+    assert _object_list(initiative_entry["active_task_summaries"])[0]["task_status"] == "ready"
 
     readiness_index = _load_json(repo_root / PLAN_READINESS_INDEX_PATH)
     readiness_entry = next(
         entry
-        for entry in readiness_index["entries"]
+        for entry in _object_list(readiness_index["entries"])
         if entry["initiative_id"] == "initiative.workspace_delta"
     )
     assert readiness_entry["updated_at"] == "2099-03-17T23:30:00Z"
@@ -738,7 +745,7 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
     initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
     initiative_entry = next(
         entry
-        for entry in initiative_index["entries"]
+        for entry in _object_list(initiative_index["entries"])
         if entry["initiative_id"] == "initiative.workspace_epsilon"
     )
     assert initiative_entry["current_phase"] == "closeout"
@@ -751,7 +758,7 @@ def test_plan_workspace_sync_supports_closing_initiatives_with_no_open_tasks(
     coordination_index = _load_json(repo_root / PLAN_COORDINATION_INDEX_PATH)
     assert all(
         task["trace_id"] != "trace.workspace_epsilon"
-        for task in coordination_index["actionable_tasks"]
+        for task in _object_list(coordination_index["actionable_tasks"])
     )
 
     progress_view = (repo_root / "plan/initiatives/workspace_epsilon/progress.md").read_text(
@@ -803,7 +810,7 @@ def test_plan_workspace_sync_treats_task_complete_ready_initiatives_as_closeout(
     initiative_index = _load_json(repo_root / PLAN_INITIATIVE_INDEX_PATH)
     initiative_entry = next(
         entry
-        for entry in initiative_index["entries"]
+        for entry in _object_list(initiative_index["entries"])
         if entry["initiative_id"] == "initiative.workspace_zeta"
     )
     assert initiative_entry["initiative_status"] == "active"

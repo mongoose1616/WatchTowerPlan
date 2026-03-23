@@ -915,6 +915,36 @@
       ]
     },
     {
+      "trace_id": "trace.repository_validation_repair_loop_closeout",
+      "title": "Repository Validation Repair Loop Closeout",
+      "summary": "Runs repeated broad validation and review loops, fixes newly surfaced issues, and closes only after two consecutive clean full passes.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T05:52:40Z",
+      "closed_at": "2026-03-23T05:52:40Z",
+      "closure_reason": "Repaired the surfaced typing drift and completed two consecutive clean broad validation passes.",
+      "source_surface_paths": [
+        "plan/initiatives/repository_validation_repair_loop_closeout/decision_notes.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/design_record.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md"
+      ],
+      "task_ids": [
+        "task.repository_validation_repair_loop_closeout.bootstrap_repository_validation_repair_loop_closeout"
+      ],
+      "related_paths": [
+        "plan/initiatives/repository_validation_repair_loop_closeout/.wt/initiative.json",
+        "plan/initiatives/repository_validation_repair_loop_closeout/.wt/tasks/bootstrap_repository_validation_repair_loop_closeout/task.json",
+        "plan/initiatives/repository_validation_repair_loop_closeout/decision_notes.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/design_record.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/implementation_slice.md",
+        "plan/initiatives/repository_validation_repair_loop_closeout/initiative_brief.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
       "trace_id": "trace.root_pack_schema_catalog_contract_alignment",
       "title": "Root Pack Schema Catalog Contract Alignment",
       "summary": "Extends the reusable-core schema catalog canonical-path contract to support first-party root pack machine roots such as <pack>/.wt without donor-specific exceptions.",
@@ -1035,11 +1065,6 @@
       "related_paths": [
         "core/python/README.md",
         "core/python/tests/",
-        "core/python/tests/integration/test_all_sync.py",
-        "core/python/tests/integration/test_cli_planning_query_commands.py",
-        "core/python/tests/integration/test_cli_sync_commands.py",
-        "core/python/tests/integration/test_initiative_closeout.py",
-        "core/python/tests/integration/test_task_lifecycle.py",
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/initiative.json",
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/bootstrap_test_suite_efficiency_and_redundancy_reduction/task.json",
         "plan/initiatives/test_suite_efficiency_and_redundancy_reduction/.wt/tasks/optimize_sync_cli_hotspots/task.json",

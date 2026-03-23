@@ -2518,6 +2518,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "core/docs/templates/pack/pack_workflow_metadata_registry_template.json",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for the pack-owned workflow metadata registry under `<pack>/.wt/registries/`.",
+      "parent_path": "core/docs/templates/pack/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/docs/templates/readme_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
@@ -2846,7 +2856,7 @@
       "path": "core/python/tests/",
       "kind": "directory",
       "surface_kind": "python_tests",
-      "summary": "Holds Python tests and fixtures for package behavior, validation, and sync/query flows.",
+      "summary": "Holds pack-neutral shared-core and host tests plus synthetic fixture data.",
       "parent_path": "core/python/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2883,16 +2893,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/fixture_repo_support.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Canonical temporary-repo and pack-materialization helper surface for repository-aware scenarios.",
-      "parent_path": "core/python/tests/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/python/tests/fixtures/",
       "kind": "directory",
       "surface_kind": "python_tests",
@@ -2916,7 +2916,7 @@
       "path": "core/python/tests/fixtures/packs/plan/",
       "kind": "directory",
       "surface_kind": "python_tests",
-      "summary": "Source fixture pack used to materialize a `plan` pack into temporary repos for validation-suite tests.",
+      "summary": "Source synthetic fixture pack used to materialize temporary hosted-pack repos for shared-core validation scenarios. The current internal pack provides the fixture content, but tests should treat this as fixture data rather than as a required live-pack import contract.",
       "parent_path": "core/python/tests/fixtures/packs/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2983,40 +2983,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/integration/test_project_workspace_service.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for project-scoped workspace surfaces layered on top of the pack context.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Integration tests for standards, templates, and authored operationalization contract coverage.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_task_lifecycle_service.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Integration tests for initiative-local live task creation, updates, transitions, and dependent surface refreshes.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/integration/test_task_workflow_end_to_end.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "End-to-end integration tests for live task workflows, queries, tracking, and initiative projections.",
       "parent_path": "core/python/tests/integration/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3046,7 +3016,7 @@
       "path": "core/python/tests/pack_fixture_support.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Reusable static pack-fixture materialization helpers for validation-pack scenarios.",
+      "summary": "Reusable synthetic pack-fixture materialization helpers for shared-core validation scenarios.",
       "parent_path": "core/python/tests/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3096,7 +3066,7 @@
       "path": "core/python/tests/unit/test_unit_suite_boundary.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Fail-closed guard that blocks repo-fixture helper imports from the unit suite.",
+      "summary": "Fail-closed guard that blocks repo-fixture helper imports and direct hosted-pack imports from the shared unit suite.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3728,6 +3698,56 @@
       "surface_kind": "pack_surface",
       "summary": "Compact initiative-family query service over phase, owner, and blocker rendered surfaces.",
       "parent_path": "plan/python/src/watchtower_plan/query/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/src/watchtower_plan/testing/",
+      "kind": "directory",
+      "surface_kind": "pack_workspace",
+      "summary": "Holds reusable plan-owned test-support helpers and shared case modules.",
+      "parent_path": "plan/python/src/watchtower_plan/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/tests/",
+      "kind": "directory",
+      "surface_kind": "pack_workspace",
+      "summary": "Holds plan-owned tests that import or exercise `watchtower_plan` directly.",
+      "parent_path": "plan/python/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/tests/README.md",
+      "kind": "file",
+      "surface_kind": "pack_surface",
+      "summary": "Describes the purpose of the plan-owned test root.",
+      "parent_path": "plan/python/tests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/tests/integration/",
+      "kind": "directory",
+      "surface_kind": "pack_workspace",
+      "summary": "Holds plan-owned integration tests for live workspace, initiative, task, sync, and closeout flows.",
+      "parent_path": "plan/python/tests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "plan/python/tests/unit/",
+      "kind": "directory",
+      "surface_kind": "pack_workspace",
+      "summary": "Holds plan-owned unit tests that import `watchtower_plan` directly without repo materialization.",
+      "parent_path": "plan/python/tests/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "shared"

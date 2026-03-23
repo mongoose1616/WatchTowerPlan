@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.repository_validation_repair_loop_closeout` | `completed` | `2026-03-23T05:52:40Z` | [plan.md](/plan/initiatives/repository_validation_repair_loop_closeout/plan.md) |
 | `trace.copied_core_bootstrap_and_validator_alignment` | `completed` | `2026-03-23T02:57:21Z` | [plan.md](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md) |
 | `trace.core_portability_followup_root_pack_and_query_typing` | `completed` | `2026-03-23T01:51:41Z` | [plan.md](/plan/initiatives/core_portability_followup_root_pack_and_query_typing/plan.md) |
 | `trace.copy_forward_pack_runtime_hardening` | `completed` | `2026-03-23T01:24:34Z` | [plan.md](/plan/initiatives/copy_forward_pack_runtime_hardening/plan.md) |
 | `trace.core_removable_plan_reference_cleanup` | `completed` | `2026-03-23T00:04:09Z` | [plan.md](/plan/initiatives/core_removable_plan_reference_cleanup/plan.md) |
-| `trace.root_pack_schema_catalog_contract_alignment` | `completed` | `2026-03-22T23:08:32Z` | [plan.md](/plan/initiatives/root_pack_schema_catalog_contract_alignment/plan.md) |
 
-_Updated At: `2026-03-23T02:57:21Z`_
+_Updated At: `2026-03-23T05:52:40Z`_
