@@ -5,11 +5,31 @@ import json
 import sys
 from collections.abc import Iterator
 from contextlib import contextmanager
+from dataclasses import replace
 from pathlib import Path
+
+from watchtower_plan import integration as plan_integration
+from watchtower_plan.cli import (
+    closeout as plan_closeout_cli,
+)
+from watchtower_plan.cli import (
+    namespace as plan_namespace_cli,
+)
+from watchtower_plan.cli import (
+    query as plan_query_cli,
+)
+from watchtower_plan.cli import (
+    sync as plan_sync_cli,
+)
+from watchtower_plan.cli import (
+    tasks as plan_tasks_cli,
+)
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
+    externalized_plan_command_surface_paths,
     materialize_externalized_fixture_python,
+    materialize_externalized_plan_command_docs,
     materialize_externalized_plan_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
@@ -42,6 +62,33 @@ def _temporary_module_prefix_reload(prefix: str) -> Iterator[None]:
     finally:
         _purge_module_prefix(prefix)
         sys.modules.update(original_modules)
+
+
+def _patch_live_plan_command_surfaces(monkeypatch, pack_root: Path) -> None:
+    paths = externalized_plan_command_surface_paths(pack_root)
+    monkeypatch.setattr(
+        plan_integration,
+        "PACK_INTEGRATION",
+        replace(
+            plan_integration.PACK_INTEGRATION,
+            command_implementation_path=paths["namespace"],
+            command_subcommand_implementation_paths=(
+                ("bootstrap", paths["handlers"]),
+                ("confirm-inputs", paths["handlers"]),
+                ("approve", paths["handlers"]),
+                ("query", paths["query"]),
+                ("sync", paths["sync"]),
+                ("closeout", paths["closeout"]),
+                ("task", paths["tasks"]),
+            ),
+        ),
+    )
+    monkeypatch.setattr(plan_namespace_cli, "IMPLEMENTATION_PATH", paths["namespace"])
+    monkeypatch.setattr(plan_namespace_cli, "SUBCOMMAND_IMPLEMENTATION_PATH", paths["handlers"])
+    monkeypatch.setattr(plan_query_cli, "IMPLEMENTATION_PATH", paths["query"])
+    monkeypatch.setattr(plan_sync_cli, "IMPLEMENTATION_PATH", paths["sync"])
+    monkeypatch.setattr(plan_closeout_cli, "IMPLEMENTATION_PATH", paths["closeout"])
+    monkeypatch.setattr(plan_tasks_cli, "IMPLEMENTATION_PATH", paths["tasks"])
 
 
 def test_pack_validate_succeeds_with_externalized_plan_package(
@@ -84,6 +131,9 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
     materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
+    materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
+    _patch_live_plan_command_surfaces(monkeypatch, repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     scaffold_result = main(
@@ -105,18 +155,19 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
     assert scaffold_result == 0
     capsys.readouterr()
 
-    bootstrap_result = main(
-        [
-            "pack",
-            "bootstrap",
-            "--pack-settings-path",
-            "packs/oversight/.wt/manifests/pack_settings.json",
-            "--write",
-            "--no-sync-workspace",
-            "--format",
-            "json",
-        ]
-    )
+    with _temporary_module_prefix_reload("watchtower_oversight"):
+        bootstrap_result = main(
+            [
+                "pack",
+                "bootstrap",
+                "--pack-settings-path",
+                "packs/oversight/.wt/manifests/pack_settings.json",
+                "--write",
+                "--no-sync-workspace",
+                "--format",
+                "json",
+            ]
+        )
     bootstrap_payload = json.loads(capsys.readouterr().out)
 
     assert bootstrap_result == 0
@@ -124,17 +175,18 @@ def test_pack_bootstrap_registers_scaffolded_pack_without_manual_host_edits(
 
     monkeypatch.syspath_prepend(str(repo_root / "packs" / "oversight" / "python" / "src"))
 
-    validate_result = main(
-        [
-            "pack",
-            "validate",
-            "--pack-settings-path",
-            "packs/oversight/.wt/manifests/pack_settings.json",
-            "--format",
-            "json",
-        ]
-    )
-    validate_payload = json.loads(capsys.readouterr().out)
+    with _temporary_module_prefix_reload("watchtower_oversight"):
+        validate_result = main(
+            [
+                "pack",
+                "validate",
+                "--pack-settings-path",
+                "packs/oversight/.wt/manifests/pack_settings.json",
+                "--format",
+                "json",
+            ]
+        )
+        validate_payload = json.loads(capsys.readouterr().out)
 
     assert validate_result == 0
     assert validate_payload["passed"] is True

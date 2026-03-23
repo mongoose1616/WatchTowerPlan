@@ -119,7 +119,7 @@ This repository also treats copy-forward adoption as a supported operating mode:
 6. Validate the contract before treating the pack as loadable.
    - Run `uv run watchtower-core pack validate --pack-settings-path <pack>/.wt/manifests/pack_settings.json --format json`.
    - Run `uv run watchtower-core pack describe --pack <slug> --format json`.
-   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`.
+   - In copied-core bring-up mode, `pack list`, `pack describe`, `pack validate`, selected namespaces, and `validate all` can use valid local manifests plus the declared pack-owned `<python_root>/src` path before shared registry and workspace wiring is written. Treat that as temporary compatibility and finish with `pack bootstrap --write`, which also reconciles the shared command and repository-path discovery indexes for the copied repository.
 7. Prove portability and extensibility.
    - Make the pack importable from its own `<pack>/python/src` path or installed package root.
    - Run at least one namespaced CLI proof such as `uv run watchtower-core <namespace> --help` or parser-introspection coverage.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from shutil import copy2, copytree, ignore_patterns
 
@@ -113,6 +114,12 @@ def materialize_pack_validation_suite(
         command_namespace=command_namespace,
         docs_root=runtime_manifest["owned_roots"]["docs_root"],
     )
+    if integration_module == "watchtower_plan.integration":
+        command_source_surface = f"{actual_pack_root}/python/src/watchtower_plan/cli/namespace.py"
+    else:
+        command_source_surface = (
+            f"{actual_pack_root}/python/src/{integration_module.replace('.', '/')}.py"
+        )
     command_doc_path = repo_root / command_doc_relative_path
     command_doc_path.parent.mkdir(parents=True, exist_ok=True)
     command_doc_path.write_text(
@@ -122,6 +129,17 @@ def materialize_pack_validation_suite(
                 "",
                 "## Summary",
                 f"Fixture command page for the `{command_namespace}` hosted-pack namespace.",
+                "",
+                "## Command",
+                "| Field | Value |",
+                "|---|---|",
+                f"| Invocation | `watchtower-core {command_namespace}` |",
+                "| Kind | `root_command` |",
+                "| Workspace | `core_python` |",
+                f"| Source Surface | `{command_source_surface}` |",
+                "",
+                "## Source Surface",
+                f"- `{command_source_surface}`",
                 "",
                 "## Updated At",
                 "- `2026-03-21T02:20:00Z`",
@@ -245,6 +263,10 @@ def materialize_validation_repo_subset(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(
+        REPO_ROOT / "core" / "docs" / "commands",
+        repo_root / "core" / "docs" / "commands",
+    )
+    copytree(
         REPO_ROOT / "core" / "docs" / "templates",
         repo_root / "core" / "docs" / "templates",
     )
@@ -253,7 +275,27 @@ def materialize_validation_repo_subset(tmp_path: Path) -> Path:
         REPO_ROOT / "core" / "python" / "pyproject.toml",
         repo_root / "core" / "python" / "pyproject.toml",
     )
+    copytree(
+        REPO_ROOT / "core" / "python" / "src" / "watchtower_host",
+        repo_root / "core" / "python" / "src" / "watchtower_host",
+    )
     return repo_root
+
+
+def externalized_plan_command_surface_paths(pack_root: Path) -> dict[str, str]:
+    """Return plan CLI source-surface paths rooted at one externalized pack root."""
+
+    repo_root = _discover_repo_root(pack_root)
+    actual_pack_root = pack_root.relative_to(repo_root).as_posix()
+    cli_root = f"{actual_pack_root}/python/src/watchtower_plan/cli"
+    return {
+        "namespace": f"{cli_root}/namespace.py",
+        "handlers": f"{cli_root}/handlers.py",
+        "query": f"{cli_root}/query.py",
+        "sync": f"{cli_root}/sync.py",
+        "closeout": f"{cli_root}/closeout.py",
+        "tasks": f"{cli_root}/tasks.py",
+    }
 
 
 def materialize_externalized_plan_python(pack_python_root: Path) -> None:
@@ -272,6 +314,24 @@ def materialize_externalized_plan_python(pack_python_root: Path) -> None:
     )
 
 
+def materialize_externalized_plan_command_docs(pack_root: Path) -> None:
+    """Copy live plan command docs into one externalized pack root."""
+
+    repo_root = _discover_repo_root(pack_root)
+    actual_pack_root = pack_root.relative_to(repo_root).as_posix()
+    source_root = REPO_ROOT / "plan" / "docs" / "commands"
+    target_root = pack_root / "docs" / "commands"
+    copytree(source_root, target_root, dirs_exist_ok=True)
+    for path in sorted(target_root.rglob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        text = re.sub(
+            r"(?<!packs/)(/?)plan/python/src/watchtower_plan/",
+            rf"\1{actual_pack_root}/python/src/watchtower_plan/",
+            text,
+        )
+        path.write_text(text, encoding="utf-8")
+
+
 def materialize_externalized_fixture_python(
     pack_python_root: Path,
     *,
@@ -282,6 +342,8 @@ def materialize_externalized_fixture_python(
 ) -> None:
     """Materialize a synthetic pack package under one pack-owned python root."""
 
+    repo_root = _discover_repo_root(pack_python_root)
+    actual_pack_root = pack_python_root.relative_to(repo_root).as_posix().removesuffix("/python")
     pack_python_root.mkdir(parents=True, exist_ok=True)
     (pack_python_root / "src").mkdir(parents=True, exist_ok=True)
     (pack_python_root / "pyproject.toml").write_text(
@@ -316,6 +378,13 @@ def materialize_externalized_fixture_python(
         dirs_exist_ok=True,
         ignore=ignore_patterns("__pycache__", "*.pyc"),
     )
+    if source_package_root.is_relative_to(REPO_ROOT):
+        source_surface_prefix = f"{source_package_root.relative_to(REPO_ROOT).as_posix()}/"
+        target_surface_prefix = f"{actual_pack_root}/python/src/{python_package}/"
+        for path in sorted((pack_python_root / "src" / python_package).rglob("*.py")):
+            text = path.read_text(encoding="utf-8")
+            text = text.replace(source_surface_prefix, target_surface_prefix)
+            path.write_text(text, encoding="utf-8")
 
 
 def _discover_repo_root(start: Path) -> Path:

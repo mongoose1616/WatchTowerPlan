@@ -63,8 +63,10 @@
       "title": "Copied Core Bootstrap And Validator Alignment",
       "summary": "Hardens copied-core portability by reconciling stale donor discovery surfaces during pack bootstrap and tolerating identical shared validator copies during merged validator loading.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-23T02:27:31Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-23T02:57:21Z",
+      "closed_at": "2026-03-23T02:57:21Z",
+      "closure_reason": "Tolerated identical copied shared validators and taught pack bootstrap to reconcile stale donor registry and discovery surfaces during copied-core bring-up.",
       "source_surface_paths": [
         "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
         "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",

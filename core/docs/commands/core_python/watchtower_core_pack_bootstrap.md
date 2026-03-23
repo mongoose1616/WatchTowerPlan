@@ -1,11 +1,11 @@
 # `watchtower-core pack bootstrap`
 
 ## Summary
-This command registers one hosted pack into the shared hosted-pack registry and shared `core/python` workspace metadata.
+This command reconciles one hosted pack into the shared hosted-pack registry, shared `core/python` workspace metadata, and the shared governed discovery surfaces.
 
 ## Use When
 - You have already scaffolded or authored a pack root and want the host to load it through the normal pack contract.
-- You want one guarded command to update `pack_registry.json`, `core/python/pyproject.toml`, and optional workspace sync behavior together.
+- You want one guarded command to update `pack_registry.json`, `core/python/pyproject.toml`, shared command discovery, shared repository-path discovery, and optional workspace sync behavior together.
 - You want bootstrap-time validation before treating a new hosted pack as loadable.
 
 ## Command
@@ -53,6 +53,8 @@ uv run watchtower-core pack bootstrap --pack-settings-path oversight/.wt/manifes
 - Promotes a runtime-only discovered copied-core pack into the normal steady-state shared registry and shared workspace contract.
 - Works for both first-party root packs and nested `packs/<slug>` packs as long as the manifest path is repository-relative and the pack contract is valid.
 - Preserves an existing pack's `default_repo_pack` and notes when the bootstrap targets a pack already in the registry.
+- Removes unusable donor registry entries when copied-core bootstrap is reconciling the current repository's active hosted pack into place.
+- Rebuilds `core/control_plane/indexes/commands/command_index.json` and `core/control_plane/indexes/repository_paths/repository_path_index.json` whenever the shared hosted-pack registry changes.
 - When `--write` is omitted, reports the pending shared changes without mutating the repository.
 - When `--write` is used and the shared workspace is synced, validates the hosted pack immediately after applying the shared wiring and restores the shared files if validation fails.
 - When `--write` is used with `--no-sync-workspace`, applies the shared wiring but reports validation as deferred until the shared workspace is synced honestly.

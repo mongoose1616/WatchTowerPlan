@@ -5,18 +5,25 @@ from __future__ import annotations
 import json
 import subprocess
 from dataclasses import dataclass
+from importlib import import_module
 from pathlib import Path, PurePosixPath
 
 from watchtower_core.control_plane.loader import (
     PACK_REGISTRY_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.pack_integration.runtime_registry import load_pack_registry_runtime_view
 from watchtower_core.pack_integration.workspace_registration import (
     CORE_PYPROJECT_RELATIVE_PATH,
     CORE_UV_LOCK_RELATIVE_PATH,
     CorePythonWorkspaceRegistration,
     core_python_workspace_registration,
     render_core_python_workspace_pyproject,
+)
+
+COMMAND_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/commands/command_index.json"
+REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
+    "core/control_plane/indexes/repository_paths/repository_path_index.json"
 )
 
 
@@ -80,15 +87,22 @@ def bootstrap_hosted_pack(
         python_root=runtime_manifest.owned_roots.python_root,
         python_distribution=runtime_manifest.python_distribution,
     )
+    runtime_view = load_pack_registry_runtime_view(loader)
+    invalid_pack_settings_paths = {
+        entry.pack_settings_path for entry in runtime_view.invalid_entries
+    }
 
     pack_registry_path = repo_root / PACK_REGISTRY_PATH
     pyproject_path = repo_root / CORE_PYPROJECT_RELATIVE_PATH
     uv_lock_path = repo_root / CORE_UV_LOCK_RELATIVE_PATH
+    command_index_path = repo_root / COMMAND_INDEX_ARTIFACT_PATH
+    repository_path_index_path = repo_root / REPOSITORY_PATH_INDEX_ARTIFACT_PATH
 
     registry_document = json.loads(pack_registry_path.read_text(encoding="utf-8"))
     updated_registry_document, pack_registry_changed = _updated_pack_registry_document(
         registry_document,
         pack_registry_entry,
+        invalid_pack_settings_paths=invalid_pack_settings_paths,
     )
     current_pyproject_text = pyproject_path.read_text(encoding="utf-8")
     updated_pyproject_text, core_python_pyproject_changed = render_core_python_workspace_pyproject(
@@ -99,13 +113,11 @@ def bootstrap_hosted_pack(
     changed_paths = []
     if pack_registry_changed:
         changed_paths.append(PACK_REGISTRY_PATH)
+        changed_paths.append(COMMAND_INDEX_ARTIFACT_PATH)
+        changed_paths.append(REPOSITORY_PATH_INDEX_ARTIFACT_PATH)
     if core_python_pyproject_changed:
         changed_paths.append(CORE_PYPROJECT_RELATIVE_PATH)
-    if (
-        request.sync_workspace
-        and request.write
-        and (pack_registry_changed or core_python_pyproject_changed)
-    ):
+    if request.sync_workspace and request.write and core_python_pyproject_changed:
         changed_paths.append(CORE_UV_LOCK_RELATIVE_PATH)
 
     if not request.write:
@@ -118,9 +130,7 @@ def bootstrap_hosted_pack(
             pack_registry_changed=pack_registry_changed,
             core_python_pyproject_changed=core_python_pyproject_changed,
             workspace_sync_ran=False,
-            workspace_sync_required=(
-                request.sync_workspace and (pack_registry_changed or core_python_pyproject_changed)
-            ),
+            workspace_sync_required=request.sync_workspace and core_python_pyproject_changed,
             validation_passed=None,
             changed_paths=tuple(changed_paths),
             wrote=False,
@@ -130,6 +140,14 @@ def bootstrap_hosted_pack(
     original_pyproject_text = current_pyproject_text
     original_uv_lock_text = (
         uv_lock_path.read_text(encoding="utf-8") if uv_lock_path.exists() else None
+    )
+    original_command_index_text = (
+        command_index_path.read_text(encoding="utf-8") if command_index_path.exists() else None
+    )
+    original_repository_path_index_text = (
+        repository_path_index_path.read_text(encoding="utf-8")
+        if repository_path_index_path.exists()
+        else None
     )
     workspace_sync_ran = False
     validation_passed: bool | None = None
@@ -142,10 +160,12 @@ def bootstrap_hosted_pack(
             )
         if core_python_pyproject_changed:
             pyproject_path.write_text(updated_pyproject_text, encoding="utf-8")
-        if request.sync_workspace and (pack_registry_changed or core_python_pyproject_changed):
+        if pack_registry_changed:
+            _rebuild_shared_discovery_surfaces(repo_root)
+        if request.sync_workspace and core_python_pyproject_changed:
             _run_workspace_sync(repo_root)
             workspace_sync_ran = True
-        if workspace_sync_ran or not (pack_registry_changed or core_python_pyproject_changed):
+        if workspace_sync_ran or not core_python_pyproject_changed:
             validation_passed = _validate_bootstrapped_pack(
                 repo_root=repo_root,
                 pack_settings_path=pack_settings_path,
@@ -158,6 +178,10 @@ def bootstrap_hosted_pack(
             original_pyproject_text=original_pyproject_text,
             uv_lock_path=uv_lock_path,
             original_uv_lock_text=original_uv_lock_text,
+            command_index_path=command_index_path,
+            original_command_index_text=original_command_index_text,
+            repository_path_index_path=repository_path_index_path,
+            original_repository_path_index_text=original_repository_path_index_text,
         )
         if workspace_sync_ran:
             _best_effort_workspace_resync(repo_root)
@@ -172,9 +196,7 @@ def bootstrap_hosted_pack(
         pack_registry_changed=pack_registry_changed,
         core_python_pyproject_changed=core_python_pyproject_changed,
         workspace_sync_ran=workspace_sync_ran,
-        workspace_sync_required=(
-            not workspace_sync_ran and (pack_registry_changed or core_python_pyproject_changed)
-        ),
+        workspace_sync_required=not workspace_sync_ran and core_python_pyproject_changed,
         validation_passed=validation_passed,
         changed_paths=tuple(changed_paths),
         wrote=True,
@@ -219,6 +241,8 @@ def _build_pack_registry_entry(
 def _updated_pack_registry_document(
     registry_document: dict[str, object],
     candidate_entry: dict[str, object],
+    *,
+    invalid_pack_settings_paths: set[str],
 ) -> tuple[dict[str, object], bool]:
     raw_packs = registry_document.get("packs")
     if not isinstance(raw_packs, list):
@@ -240,11 +264,24 @@ def _updated_pack_registry_document(
             if merged_entry != entry:
                 changed = True
             continue
+        if entry.get("pack_settings_path") in invalid_pack_settings_paths:
+            changed = True
+            continue
         _raise_conflict_if_present(entry, candidate_entry)
         updated_packs.append(entry)
 
     if not matched_existing:
         updated_packs.append(candidate_entry)
+        changed = True
+
+    if not any(bool(entry.get("default_repo_pack", False)) for entry in updated_packs):
+        updated_packs = [
+            {
+                **entry,
+                "default_repo_pack": _matches_same_pack(entry, candidate_entry),
+            }
+            for entry in updated_packs
+        ]
         changed = True
 
     sorted_packs = sorted(
@@ -356,14 +393,45 @@ def _restore_workspace_files(
     original_pyproject_text: str,
     uv_lock_path: Path,
     original_uv_lock_text: str | None,
+    command_index_path: Path,
+    original_command_index_text: str | None,
+    repository_path_index_path: Path,
+    original_repository_path_index_text: str | None,
 ) -> None:
     pack_registry_path.write_text(original_registry_text, encoding="utf-8")
     pyproject_path.write_text(original_pyproject_text, encoding="utf-8")
     if original_uv_lock_text is None:
         if uv_lock_path.exists():
             uv_lock_path.unlink()
+    else:
+        uv_lock_path.write_text(original_uv_lock_text, encoding="utf-8")
+    if original_command_index_text is None:
+        if command_index_path.exists():
+            command_index_path.unlink()
+    else:
+        command_index_path.write_text(original_command_index_text, encoding="utf-8")
+    if original_repository_path_index_text is None:
+        if repository_path_index_path.exists():
+            repository_path_index_path.unlink()
         return
-    uv_lock_path.write_text(original_uv_lock_text, encoding="utf-8")
+    repository_path_index_path.write_text(
+        original_repository_path_index_text,
+        encoding="utf-8",
+    )
+
+
+def _rebuild_shared_discovery_surfaces(repo_root: Path) -> None:
+    from watchtower_core.sync.repository_paths import RepositoryPathIndexSyncService
+
+    command_index_module = import_module("watchtower_host.cli.command_index")
+    command_index_service_class = command_index_module.CommandIndexSyncService
+    command_index_service = command_index_service_class(ControlPlaneLoader(repo_root))
+    command_index_document = command_index_service.build_document()
+    command_index_service.write_document(command_index_document)
+
+    repository_path_service = RepositoryPathIndexSyncService(ControlPlaneLoader(repo_root))
+    repository_path_document = repository_path_service.build_document()
+    repository_path_service.write_document(repository_path_document)
 
 
 def _validate_relative_path(relative_path: str) -> str:

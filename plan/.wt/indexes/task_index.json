@@ -166,12 +166,12 @@
       "title": "Bootstrap Copied Core Bootstrap And Validator Alignment",
       "summary": "Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package.",
       "status": "active",
-      "task_status": "planned",
+      "task_status": "completed",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
-      "updated_at": "2026-03-23T02:25:39Z"
+      "updated_at": "2026-03-23T02:57:08Z"
     },
     {
       "task_id": "task.copy_forward_pack_runtime_hardening.bootstrap_copy_forward_pack_runtime_hardening",

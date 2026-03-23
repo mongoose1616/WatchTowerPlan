@@ -4,7 +4,7 @@
   "initiative_id": "initiative.copied_core_bootstrap_and_validator_alignment",
   "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
   "title": "Bootstrap Promotion Shell",
-  "status": "planned",
+  "status": "candidate",
   "approval_state": "pending",
   "review_refs": [
     "repository_maintainer_review"
@@ -12,7 +12,7 @@
   "evidence_refs": [
     "evidence.copied_core_bootstrap_and_validator_alignment.bootstrap_validation_bundle"
   ],
-  "updated_at": "2026-03-23T02:25:39Z",
+  "updated_at": "2026-03-23T02:57:21Z",
   "candidates": [
     {
       "candidate_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md",

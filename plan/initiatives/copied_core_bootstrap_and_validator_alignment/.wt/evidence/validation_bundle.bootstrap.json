@@ -4,8 +4,8 @@
   "initiative_id": "initiative.copied_core_bootstrap_and_validator_alignment",
   "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
   "title": "Bootstrap Validation Bundle",
-  "status": "planned",
-  "updated_at": "2026-03-23T02:25:39Z",
+  "status": "completed",
+  "updated_at": "2026-03-23T02:57:21Z",
   "entries": [
     {
       "entry_id": "entry.copied_core_bootstrap_and_validator_alignment.schema_validation",

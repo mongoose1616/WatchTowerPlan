@@ -1,15 +1,36 @@
 from __future__ import annotations
 
 import json
+import sys
 import tomllib
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import replace
 from pathlib import Path
 
 from watchtower_plan import integration as plan_integration
+from watchtower_plan.cli import (
+    closeout as plan_closeout_cli,
+)
+from watchtower_plan.cli import (
+    namespace as plan_namespace_cli,
+)
+from watchtower_plan.cli import (
+    query as plan_query_cli,
+)
+from watchtower_plan.cli import (
+    sync as plan_sync_cli,
+)
+from watchtower_plan.cli import (
+    tasks as plan_tasks_cli,
+)
 
 from tests.pack_fixture_support import (
     REPO_ROOT,
+    externalized_plan_command_surface_paths,
     materialize_externalized_fixture_python,
+    materialize_externalized_plan_command_docs,
+    materialize_externalized_plan_python,
     materialize_pack_validation_suite,
     materialize_validation_repo_subset,
 )
@@ -48,6 +69,54 @@ def _materialize_unbootstrapped_oversight_root_pack(repo_root: Path) -> dict[str
         description="Synthetic oversight runtime package used to prove hosted-pack portability.",
     )
     return surfaces
+
+
+def _purge_module_prefix(prefix: str) -> None:
+    for module_name in tuple(sys.modules):
+        if module_name == prefix or module_name.startswith(f"{prefix}."):
+            sys.modules.pop(module_name, None)
+
+
+@contextmanager
+def _temporary_module_prefix_reload(prefix: str) -> Iterator[None]:
+    original_modules = {
+        module_name: module
+        for module_name, module in sys.modules.items()
+        if module_name == prefix or module_name.startswith(f"{prefix}.")
+    }
+    _purge_module_prefix(prefix)
+    try:
+        yield
+    finally:
+        _purge_module_prefix(prefix)
+        sys.modules.update(original_modules)
+
+
+def _patch_live_plan_command_surfaces(monkeypatch, pack_root: Path) -> None:
+    paths = externalized_plan_command_surface_paths(pack_root)
+    monkeypatch.setattr(
+        plan_integration,
+        "PACK_INTEGRATION",
+        replace(
+            plan_integration.PACK_INTEGRATION,
+            command_implementation_path=paths["namespace"],
+            command_subcommand_implementation_paths=(
+                ("bootstrap", paths["handlers"]),
+                ("confirm-inputs", paths["handlers"]),
+                ("approve", paths["handlers"]),
+                ("query", paths["query"]),
+                ("sync", paths["sync"]),
+                ("closeout", paths["closeout"]),
+                ("task", paths["tasks"]),
+            ),
+        ),
+    )
+    monkeypatch.setattr(plan_namespace_cli, "IMPLEMENTATION_PATH", paths["namespace"])
+    monkeypatch.setattr(plan_namespace_cli, "SUBCOMMAND_IMPLEMENTATION_PATH", paths["handlers"])
+    monkeypatch.setattr(plan_query_cli, "IMPLEMENTATION_PATH", paths["query"])
+    monkeypatch.setattr(plan_sync_cli, "IMPLEMENTATION_PATH", paths["sync"])
+    monkeypatch.setattr(plan_closeout_cli, "IMPLEMENTATION_PATH", paths["closeout"])
+    monkeypatch.setattr(plan_tasks_cli, "IMPLEMENTATION_PATH", paths["tasks"])
 
 
 def test_pack_list_supports_json_output(capsys) -> None:
@@ -464,6 +533,11 @@ def test_pack_bootstrap_supports_json_dry_run(
     assert payload["workspace_sync_required"] is True
     assert payload["validation_passed"] is None
     assert "core/control_plane/registries/pack_registry.json" in payload["changed_paths"]
+    assert "core/control_plane/indexes/commands/command_index.json" in payload["changed_paths"]
+    assert (
+        "core/control_plane/indexes/repository_paths/repository_path_index.json"
+        in payload["changed_paths"]
+    )
     assert "core/python/pyproject.toml" in payload["changed_paths"]
 
     registry = json.loads(
@@ -481,6 +555,9 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
 ) -> None:
     repo_root = materialize_validation_repo_subset(tmp_path)
     materialize_pack_validation_suite(repo_root / "packs" / "plan")
+    materialize_externalized_plan_command_docs(repo_root / "packs" / "plan")
+    materialize_externalized_plan_python(repo_root / "packs" / "plan" / "python")
+    _patch_live_plan_command_surfaces(monkeypatch, repo_root / "packs" / "plan")
     monkeypatch.chdir(repo_root / "core" / "python")
 
     scaffold_result = main(
@@ -500,18 +577,19 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
     assert scaffold_result == 0
     capsys.readouterr()
 
-    result = main(
-        [
-            "pack",
-            "bootstrap",
-            "--pack-settings-path",
-            "oversight/.wt/manifests/pack_settings.json",
-            "--write",
-            "--no-sync-workspace",
-            "--format",
-            "json",
-        ]
-    )
+    with _temporary_module_prefix_reload("watchtower_oversight"):
+        result = main(
+            [
+                "pack",
+                "bootstrap",
+                "--pack-settings-path",
+                "oversight/.wt/manifests/pack_settings.json",
+                "--write",
+                "--no-sync-workspace",
+                "--format",
+                "json",
+            ]
+        )
 
     payload = json.loads(capsys.readouterr().out)
     assert result == 0
@@ -536,6 +614,11 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
             "workspace sync completes."
         ),
     ]
+    assert "core/control_plane/indexes/commands/command_index.json" in payload["changed_paths"]
+    assert (
+        "core/control_plane/indexes/repository_paths/repository_path_index.json"
+        in payload["changed_paths"]
+    )
 
     registry = json.loads(
         (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
@@ -552,6 +635,83 @@ def test_pack_bootstrap_write_updates_registry_and_workspace(
         "path": "../../oversight/python",
         "editable": True,
     }
+
+
+def test_pack_bootstrap_reconciles_copied_core_registry_and_command_discovery(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    repo_root = materialize_validation_repo_subset(tmp_path)
+    surfaces = _materialize_unbootstrapped_oversight_root_pack(repo_root)
+    monkeypatch.chdir(repo_root / "core" / "python")
+
+    with _temporary_module_prefix_reload("watchtower_oversight_fixture"):
+        result = main(
+            [
+                "pack",
+                "bootstrap",
+                "--pack-settings-path",
+                surfaces["pack_settings_path"],
+                "--write",
+                "--no-sync-workspace",
+                "--format",
+                "json",
+            ]
+        )
+
+    payload = json.loads(capsys.readouterr().out)
+    assert result == 0
+    assert payload["pack_slug"] == "oversight"
+    assert payload["wrote"] is True
+    assert payload["pack_registry_changed"] is True
+    assert payload["core_python_pyproject_changed"] is True
+    assert payload["workspace_sync_required"] is True
+    assert "core/control_plane/indexes/commands/command_index.json" in payload["changed_paths"]
+    assert (
+        "core/control_plane/indexes/repository_paths/repository_path_index.json"
+        in payload["changed_paths"]
+    )
+
+    registry = json.loads(
+        (repo_root / "core" / "control_plane" / "registries" / "pack_registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert [entry["pack_slug"] for entry in registry["packs"]] == ["oversight"]
+    assert registry["packs"][0]["default_repo_pack"] is True
+
+    command_index = json.loads(
+        (
+            repo_root / "core" / "control_plane" / "indexes" / "commands" / "command_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    commands = {entry["command"] for entry in command_index["entries"]}
+    assert "watchtower-core oversight" in commands
+    assert all(not command.startswith("watchtower-core plan") for command in commands)
+
+    repository_path_index = json.loads(
+        (
+            repo_root
+            / "core"
+            / "control_plane"
+            / "indexes"
+            / "repository_paths"
+            / "repository_path_index.json"
+        ).read_text(encoding="utf-8")
+    )
+    indexed_paths = {entry["path"] for entry in repository_path_index["entries"]}
+    assert all(not path.startswith("plan/") for path in indexed_paths)
+
+    query_result = main(["query", "commands", "--query", "oversight", "--format", "json"])
+
+    query_payload = json.loads(capsys.readouterr().out)
+    assert query_result == 0
+    assert query_payload["result_count"] >= 1
+    assert any(
+        entry["command"] == "watchtower-core oversight"
+        for entry in query_payload["results"]
+    )
 
 
 def test_pack_scaffold_rejects_registry_collisions(

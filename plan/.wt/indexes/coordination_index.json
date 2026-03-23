@@ -3,76 +3,25 @@
   "id": "index.coordination",
   "title": "Plan Workspace Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-23T02:27:31Z",
-  "coordination_mode": "active_work",
-  "summary": "Active plan-workspace initiatives exist and the coordination surface points to the current pack-wide next work.",
-  "recommended_next_action": "Promote the next planned task to ready before opening follow-up work.",
-  "recommended_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-23T02:57:21Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active plan-workspace initiatives exist.",
+  "recommended_next_action": "Bootstrap a new initiative package before starting execution.",
+  "recommended_surface_path": "plan/plan_overview.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
-  "entries": [
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.copied_core_bootstrap_and_validator_alignment",
       "title": "Copied Core Bootstrap And Validator Alignment",
-      "summary": "Hardens copied-core portability by reconciling stale donor discovery surfaces during pack bootstrap and tolerating identical shared validator copies during merged validator loading.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "capture",
-      "updated_at": "2026-03-23T02:27:31Z",
-      "open_task_count": 1,
-      "blocked_task_count": 0,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-23T02:57:21Z",
       "key_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
-      "next_action": "Promote the next planned task to ready before opening follow-up work.",
-      "next_surface_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/plan.md",
-      "initiative_id": "initiative.copied_core_bootstrap_and_validator_alignment",
-      "slug": "copied_core_bootstrap_and_validator_alignment",
-      "scope_type": "pack_wide",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment",
-          "title": "Bootstrap Copied Core Bootstrap And Validator Alignment",
-          "task_status": "planned",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json",
-          "is_actionable": false
-        }
-      ],
-      "source_surface_paths": [
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md"
-      ],
-      "task_ids": [
-        "task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment"
-      ],
-      "evidence_ids": [
-        "evidence.copied_core_bootstrap_and_validator_alignment.bootstrap_validation_bundle"
-      ],
-      "related_paths": [
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/initiative_brief.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/design_record.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/implementation_slice.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/decision_notes.md",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/initiative.json",
-        "plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json"
-      ],
-      "tags": [
-        "traceability"
-      ]
-    }
-  ],
-  "actionable_tasks": [],
-  "recent_closed_initiatives": [
+      "closure_reason": "Tolerated identical copied shared validators and taught pack bootstrap to reconcile stale donor registry and discovery surfaces during copied-core bring-up."
+    },
     {
       "trace_id": "trace.core_portability_followup_root_pack_and_query_typing",
       "title": "Core Portability Follow-up Root Pack And Query Typing",
@@ -144,14 +93,6 @@
       "closed_at": "2026-03-22T16:30:08Z",
       "key_surface_path": "plan/initiatives/first_party_root_pack_roots/plan.md",
       "closure_reason": "Implemented deterministic first-party root-pack discovery and validated root-pack host/core/pack interaction."
-    },
-    {
-      "trace_id": "trace.core_copy_forward_operating_mode_documentation",
-      "title": "Core Copy Forward Operating Mode Documentation",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-22T16:13:43Z",
-      "key_surface_path": "plan/initiatives/core_copy_forward_operating_mode_documentation/plan.md",
-      "closure_reason": "Documented copy-forward core adoption and donor-neutral shared-core guidance."
     }
   ]
 }

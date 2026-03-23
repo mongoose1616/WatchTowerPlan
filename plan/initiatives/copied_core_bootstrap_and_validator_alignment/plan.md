@@ -5,9 +5,9 @@
 - `trace_id`: `trace.copied_core_bootstrap_and_validator_alignment`
 - `scope_type`: `pack_wide`
 - `owner`: `repository_maintainer`
-- `lifecycle_stage`: `ready_for_execution`
+- `lifecycle_stage`: `completed`
 - `review_status`: `approved`
-- `updated_at`: `2026-03-23T02:27:31Z`
+- `updated_at`: `2026-03-23T02:57:21Z`
 
 ## Scope and Non-Goals
 Hardens copied-core portability by reconciling stale donor discovery surfaces during pack bootstrap and tolerating identical shared validator copies during merged validator loading.
@@ -20,7 +20,7 @@ Hardens copied-core portability by reconciling stale donor discovery surfaces du
 ## Planned Slices or Workstreams
 | Task | Status | Priority | Owner | Summary |
 | --- | --- | --- | --- | --- |
-| [task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json) | `planned` | `high` | `repository_maintainer` | Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package. |
+| [task.copied_core_bootstrap_and_validator_alignment.bootstrap_copied_core_bootstrap_and_validator_alignment](/plan/initiatives/copied_core_bootstrap_and_validator_alignment/.wt/tasks/bootstrap_copied_core_bootstrap_and_validator_alignment/task.json) | `completed` | `high` | `repository_maintainer` | Bootstrap Copied Core Bootstrap And Validator Alignment live initiative package. |
 
 ## Dependencies and Risks
 - No current blockers, dependencies, or open discrepancy risks are recorded.
@@ -29,7 +29,7 @@ Hardens copied-core portability by reconciling stale donor discovery surfaces du
 - `capture_complete`: `True`
 - `machine_valid`: `True`
 - `approval_status`: `approved`
-- `ready_for_execution`: `True`
+- `ready_for_execution`: `False`
 - `blocking_reasons`: `none`
 - Task count: `1`
 - Evidence bundle count: `1`

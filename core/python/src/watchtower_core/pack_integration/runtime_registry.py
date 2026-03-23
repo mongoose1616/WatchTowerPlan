@@ -20,6 +20,7 @@ class PackRegistryRuntimeView:
     """Effective hosted-pack view used by runtime composition."""
 
     entries: tuple[PackRegistryEntry, ...]
+    invalid_entries: tuple[PackRegistryEntry, ...] = ()
     invalid_authored_entries: tuple[tuple[str, str], ...] = ()
 
     def get_by_pack_id(self, pack_id: str) -> PackRegistryEntry:
@@ -75,6 +76,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
 
     authored_registry = loader.load_pack_registry()
     entries: list[PackRegistryEntry] = []
+    invalid_typed_entries: list[PackRegistryEntry] = []
     invalid_entries: list[tuple[str, str]] = []
     seen_pack_ids: set[str] = set()
     seen_slugs: set[str] = set()
@@ -84,6 +86,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
     for entry in authored_registry.packs:
         error_message = _authored_entry_error(loader, entry)
         if error_message is not None:
+            invalid_typed_entries.append(entry)
             invalid_entries.extend(
                 (
                     (entry.pack_slug, error_message),
@@ -142,6 +145,7 @@ def load_pack_registry_runtime_view(loader: Any) -> PackRegistryRuntimeView:
                 key=lambda entry: (not entry.default_repo_pack, entry.pack_slug.casefold()),
             )
         ),
+        invalid_entries=tuple(invalid_typed_entries),
         invalid_authored_entries=tuple(invalid_entries),
     )
     loader._typed_document_cache[_RUNTIME_VIEW_CACHE_KEY] = runtime_view

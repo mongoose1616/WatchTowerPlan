@@ -3,7 +3,7 @@
   "id": "index.reviews",
   "title": "Plan Workspace Review Index",
   "status": "active",
-  "updated_at": "2026-03-23T02:27:31Z",
+  "updated_at": "2026-03-23T02:57:21Z",
   "entries": [
     {
       "review_subject_id": "initiative.command_latency_reduction_using_runtime_telemetry",
@@ -37,9 +37,9 @@
       "evidence_refs": [
         "evidence.copied_core_bootstrap_and_validator_alignment.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-23T02:27:31Z",
-      "lifecycle_stage": "ready_for_execution",
-      "ready_for_execution": true
+      "updated_at": "2026-03-23T02:57:21Z",
+      "lifecycle_stage": "completed",
+      "ready_for_execution": false
     },
     {
       "review_subject_id": "initiative.copy_forward_pack_runtime_hardening",
@@ -467,7 +467,7 @@
       "evidence_refs": [
         "evidence.copied_core_bootstrap_and_validator_alignment.bootstrap_validation_bundle"
       ],
-      "updated_at": "2026-03-23T02:25:39Z"
+      "updated_at": "2026-03-23T02:57:21Z"
     },
     {
       "review_subject_id": "promotion.copy_forward_pack_runtime_hardening.bootstrap_shell",
